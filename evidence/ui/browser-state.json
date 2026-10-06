@@ -1,0 +1,181 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "b30a7e8336944e279b952b066ffafa62",
+      "role": "user",
+      "content": "Hello, this is a synthetic UI smoke.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "4b916855b31948659defa1f5198c5043",
+      "role": "assistant",
+      "content": "I have recorded your message. This response uses the mock provider.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"b30a7e8336944e279b952b066ffafa62\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "7084104b270744809cae6dfd6b67a20c",
+      "role": "user",
+      "content": "Make a draft about fictional green stationery, do not send.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "585340f545824d8a81778386d268757b",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: queued.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"b30a7e8336944e279b952b066ffafa62\",\"4b916855b31948659defa1f5198c5043\",\"7084104b270744809cae6dfd6b67a20c\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "da006b9b956f4e408d9a398644c2cd6b",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"b38e6e0020ab45c5b6699b509617b820\"}",
+      "usable": 1,
+      "source_event_id": "505c80cba60b4a6abcb7fe9a7f90e3cc",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "1c8014db9b14451e9ca25d5349f6e8a8",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"f11aadc5155a4069906a72b36b7b0694\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"b38e6e0020ab45c5b6699b509617b820\"}",
+      "usable": 1,
+      "source_event_id": "3639d24117834133bc4ede31f6cda8a3",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "3176c9cdfd014561af37e631a7f896a4",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"e97472171123414bbe151f98ff8a52aa\",\"attempt_id\":\"f11aadc5155a4069906a72b36b7b0694\",\"check_status\":\"pass\",\"receipt_id\":\"1d6d8e025b61475e9f70abed4576a2d3\"},\"event\":\"goal.completed\",\"goal_id\":\"b38e6e0020ab45c5b6699b509617b820\"}",
+      "usable": 1,
+      "source_event_id": "8a17579a6bea4a7a9f0bdd475a5ba9a2",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "b38e6e0020ab45c5b6699b509617b820",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "abb766f86b87406b95c80f09b8013fc6",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "b38e6e0020ab45c5b6699b509617b820",
+      "revision": 1,
+      "acceptance_id": "abb766f86b87406b95c80f09b8013fc6",
+      "specification": "Make a draft about fictional green stationery, do not send.",
+      "sources": "[\"7084104b270744809cae6dfd6b67a20c\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "abb766f86b87406b95c80f09b8013fc6",
+      "goal_id": "b38e6e0020ab45c5b6699b509617b820",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "f11aadc5155a4069906a72b36b7b0694",
+      "goal_id": "b38e6e0020ab45c5b6699b509617b820",
+      "revision": 1,
+      "acceptance_id": "abb766f86b87406b95c80f09b8013fc6",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"b30a7e8336944e279b952b066ffafa62\",\"4b916855b31948659defa1f5198c5043\",\"7084104b270744809cae6dfd6b67a20c\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "1d6d8e025b61475e9f70abed4576a2d3",
+      "attempt_id": "f11aadc5155a4069906a72b36b7b0694",
+      "artifact_id": "e97472171123414bbe151f98ff8a52aa",
+      "hash": "01d8ea0b520436ec56b8ffa4b45598c23173cdfddf195533298947a94139d120",
+      "size": 79,
+      "revision": 1,
+      "epoch": 1
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "f11aadc5155a4069906a72b36b7b0694",
+      "receipt_id": "1d6d8e025b61475e9f70abed4576a2d3",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "505c80cba60b4a6abcb7fe9a7f90e3cc",
+      "goal_id": "b38e6e0020ab45c5b6699b509617b820",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "3639d24117834133bc4ede31f6cda8a3",
+      "goal_id": "b38e6e0020ab45c5b6699b509617b820",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"f11aadc5155a4069906a72b36b7b0694\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "8a17579a6bea4a7a9f0bdd475a5ba9a2",
+      "goal_id": "b38e6e0020ab45c5b6699b509617b820",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"e97472171123414bbe151f98ff8a52aa\",\"attempt_id\":\"f11aadc5155a4069906a72b36b7b0694\",\"check_status\":\"pass\",\"receipt_id\":\"1d6d8e025b61475e9f70abed4576a2d3\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "artifacts": [
+    {
+      "id": "e97472171123414bbe151f98ff8a52aa",
+      "hash": "01d8ea0b520436ec56b8ffa4b45598c23173cdfddf195533298947a94139d120",
+      "size": 79
+    }
+  ],
+  "provider": "mock",
+  "runtime": {
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

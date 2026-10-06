@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "started_at": "2026-10-06T12:37:58.409832+00:00",
+  "ended_at": "2026-10-06T12:38:07.451556+00:00",
+  "provider": "official_claude_opus_tool_free",
+  "model_requested": "opus",
+  "actual_model_version": "not reported by text output",
+  "adapter": "pal/native.py + pal/native_supervisor.py",
+  "native_cli_version": "2.1.291 (Claude Code)",
+  "python": "3.9.6",
+  "sqlite": "3.54.0",
+  "live_calls": 3,
+  "capabilities": {
+    "model_tools": [],
+    "mcp": [],
+    "customizations": "safe-mode",
+    "canonical_store_access": false,
+    "paid_fallback": false,
+    "session_persistence": false
+  },
+  "cost_verification": {
+    "verified_at": 1791290278.364795,
+    "no_extra_charge": true,
+    "route": "official_claude_pro",
+    "official_ui": "https://claude.ai/settings/usage",
+    "native_ui_org_match": true,
+    "observation": {
+      "subscription": "Pro",
+      "session_used_percent": 16,
+      "week_used_percent": 3,
+      "use_credits": false,
+      "credit_balance_usd": 0,
+      "auto_reload": false,
+      "monthly_extra_usage_usd": 0
+    },
+    "settings_changed": false,
+    "new_login": false,
+    "scope": "three short synthetic clean text live smoke calls",
+    "ttl_seconds": 900
+  },
+  "host_receipt": {
+    "id": "1730fe0ce86847a18690c64197ad8246",
+    "attempt_id": "bff5fa77e9cf46d7bf796c374332f2e5",
+    "artifact_id": "576c5d1864124a1f8412b0d54a421ecd",
+    "hash": "eb012c22e497ef87a60add8c78039bf964804b8ef2dabf4c1275cc12312d92e5",
+    "size": 276,
+    "revision": 1,
+    "epoch": 1
+  },
+  "host_checks": [
+    "fixed_local_draft_criteria",
+    "UTF8",
+    "nonempty",
+    "max4096bytes",
+    "hash_readback",
+    "current_revision_epoch",
+    "usable_source_manifest"
+  ],
+  "quality_claim": "none",
+  "normal_conversation_goal_count": 0,
+  "draft_goal_count": 1
+}

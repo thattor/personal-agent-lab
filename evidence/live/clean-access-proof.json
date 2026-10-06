@@ -1,0 +1,20 @@
+{
+  "verified_at": 1791290278.364795,
+  "no_extra_charge": true,
+  "route": "official_claude_pro",
+  "official_ui": "https://claude.ai/settings/usage",
+  "native_ui_org_match": true,
+  "observation": {
+    "subscription": "Pro",
+    "session_used_percent": 16,
+    "week_used_percent": 3,
+    "use_credits": false,
+    "credit_balance_usd": 0,
+    "auto_reload": false,
+    "monthly_extra_usage_usd": 0
+  },
+  "settings_changed": false,
+  "new_login": false,
+  "scope": "three short synthetic clean text live smoke calls",
+  "ttl_seconds": 900
+}

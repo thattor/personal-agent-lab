@@ -4,18 +4,18 @@ Stable-0 may be declared only when all REQUIRED rows are PASS with evidence and 
 
 | ID | Required | Acceptance | Evidence | Status |
 |---|---|---|---|---|
-| S0-01 | yes | Normal conversation works without unnecessary Goals; reversible draft intent creates work only when needed | automated + live language log | not_run |
+| S0-01 | yes | Normal conversation works without unnecessary Goals; reversible draft intent creates work only when needed | [full tests](evidence/tests/ui-native-full.txt); [live language](evidence/live/2026-10-06-clean/language.json); [browser](evidence/ui/browser-smoke.md) | PASS |
 | S0-02 | yes | Slow task execution does not block conversation/control ingress | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
-| S0-03 | yes | Goal + fixed criteria + Attempt + host receipt complete a local draft end-to-end; model self-report alone cannot complete it | automated + live provider smoke | not_run |
+| S0-03 | yes | Goal + fixed criteria + Attempt + host receipt complete a local draft end-to-end; model self-report alone cannot complete it | [full tests](evidence/tests/ui-native-full.txt); [live host receipt](evidence/live/2026-10-06-clean/host-evidence.json); [live result](evidence/live/2026-10-06-clean/result.json) | PASS |
 | S0-04 | yes | Executor/model cannot mutate canonical Goal/criteria/approval/reference state or invoke unallowed capability | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
 | S0-05 | yes | Duplicate message/result and stale/late result cause no duplicate completion/report/effect | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
 | S0-06 | yes | Crash/restart at acceptance/claim/completion/outbox boundaries preserves state and avoids duplicate report | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
-| S0-07 | yes | Cancel prevents late result from completing Goal; pause/resume and input-resume work exactly once | deterministic + fault tests | not_run |
+| S0-07 | yes | Cancel prevents late result from completing Goal; pause/resume and input-resume work exactly once | [full tests](evidence/tests/ui-native-full.txt); [controls](tests/test_controls_memory.py); [SIGKILL pause/resume/input](tests/test_crash.py); [runtime fencing](tests/test_runtime.py) | PASS |
 | S0-08 | yes | Correction supersedes old context; forget stops AI reference while retaining raw user-viewable history | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
 | S0-09 | yes | Secret canary never appears in persisted conversational memory, prompts, logs, or test artifacts after sanitization path | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
-| S0-10 | yes | One official real provider path works with an already-authorized account and verified no-additional-charge condition | capability record + live smoke | not_run |
+| S0-10 | yes | One official real provider path works with an already-authorized account and verified no-additional-charge condition | [official access/cost proof and live smoke](evidence/live/2026-10-06-clean/result.json); [actual draft](evidence/live/2026-10-06-clean/draft.txt); [native boundary tests](tests/test_native.py) | PASS |
 | S0-11 | yes | Failure/blocked/unverified states are reported; no silent success and no infinite retry | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
-| S0-12 | yes | UI exposes conversation result and read-only inspect state sufficiently to diagnose Goal/Attempt/evidence | browser smoke | not_run |
+| S0-12 | yes | UI exposes conversation result and read-only inspect state sufficiently to diagnose Goal/Attempt/evidence | [actual Chrome smoke](evidence/ui/browser-smoke.md); [canonical readback](evidence/ui/browser-state.json); [HTTP tests](tests/test_http.py) | PASS |
 | S0-13 | yes | 72-hour soak completes with zero manual canonical-state repair | soak log | not_run |
 
 ## Required automated scenarios
@@ -75,3 +75,9 @@ Each PASS row must link to a commit, test/log/artifact path, or live-smoke recor
 ## S2 host runtime evidence — 2026-10-06
 
 33 tests PASS. [Full log](evidence/tests/s2-runtime.txt), 21 real transaction SIGKILL subcases plus worker death between Executor return and host apply. Event-barrier verifies conversation/cancel while Executor remains blocked. Negative result schemas attempt to alter Goal/criteria/approval/reference/evidence and invoke send/shell; host rejects all, no receipt. Native model tools are not yet exposed/enabled. No live/UI/soak claim.
+
+## Native/UI and soak preparation evidence — 2026-10-06
+
+[47-test full log](evidence/tests/ui-native-full.txt). Native real-path smoke PASS used the already-authenticated official Claude Pro connection, three short synthetic tool-free calls, no credits/fallback/new login; adapter and actual versions in the result. The failed auth environment attempt and partial planning-transcript candidate are preserved and do not count as PASS. Host verified the clean 276-byte draft SHA256/revision/epoch/source binding. [Defects and fixes](docs/DEFECTS.md). Browser/HTTP evidence covers normal conversation, local draft, inspect, supported restart, read-only/CSRF/CSP constraints and session receipt.
+
+S0-01–12 now PASS. S0-13 remains not_run until a clean baseline and actual soak start are recorded. The preparation [preflight log](evidence/tests/soak-preflight.txt) is explicitly PREFLIGHT_ONLY. D-016 retains real human-use minimums; a fully scripted soak cannot pass. Human session span uses host observation times rather than a client-supplied timestamp.

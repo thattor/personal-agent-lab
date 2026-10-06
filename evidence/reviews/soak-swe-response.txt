@@ -1,0 +1,98 @@
+# SWE-2 High review: 72-hour soak harness design
+
+## Overall verdict
+
+The design is sound and adoptable. The right instincts are all present: independent measurement log, read-only prober, baseline hash gating, stop-on-failure with preservation, verifier separate from driver, mock-only unattended operation, and a preflight that structurally cannot emit S0-13. Below are the gaps I would close **before** writing substantial harness code, ordered by whether they can silently invalidate the evidence.
+
+## Blocking gaps / holes
+
+### 1. ACK-vs-commit fate is a product prerequisite, not just a harness concern
+The "record ACK IDs before progressing" plan has a hole: an HTTP timeout or connection reset after server commit leaves op fate **unknown**. To resolve this without ever guessing, the product must guarantee:
+
+- Every mutating POST accepts a **client-generated idempotency key**, and ingress dedupe is transactional (already implied by your ingress design).
+- The key's fate is **queryable through the normal read API** (e.g., message/goal lookup by client op ID returns accepted/absent).
+
+If the read path cannot resolve an idempotency key, the harness cannot distinguish "lost message" from "lost ACK" — that is a product gap that must be closed or confirmed before preflight, since the soak's zero-lost-message claim depends on it.
+
+Driver-side rule: classify every mutation outcome as `acked | reconciled | absent`, where `reconciled` = post-hoc read confirms the key was applied. Only `acked`/`reconciled` count toward the ≥20 turns. `reconciled`-absent after bounded retry is **stop-on-failure** (it's a lost-message signal), never silent retry.
+
+### 2. Measurement log durability + tamper-evidence
+- fsync each JSONL record (events are sparse — cost is nothing). Otherwise a driver crash loses the tail and you cannot distinguish "gap" from "lost evidence".
+- Add a per-record hash chain (`seq, prev_sha256, utc, monotonic, event`) so truncation/editing is detectable at audit time. ~10 lines, and it makes "driver restarted and resumed without faking continuity" *verifiable* rather than asserted.
+- Per-run manifest + segment model is right. On resume: verify the chain, append a `resumed` record with actual downtime bounds, never backfill.
+
+### 3. Clock semantics — macOS will bite you
+On macOS, `time.monotonic()` does **not** advance while the system is asleep. So:
+
+- Elapsed-for-72h must be measured on **UTC wall clock**; monotonic is only useful as a *detector*, not the metric.
+- Emit checkpoint pairs `(utc, monotonic)` periodically (every 5–15 min). `utc_delta − monotonic_delta` ≫ tolerance ⇒ system sleep during which the host was suspended ⇒ record as disclosed downtime; require post-wake full reconciliation.
+- Discontinuous UTC jumps vs monotonic ⇒ `clock_jump` event ⇒ `reset_required` (either direction invalidates the elapsed claim).
+- Endpoints-only evidence is insufficient — a soak that only logs start/end cannot prove the middle. The periodic prober is what makes "across duration" and "all failures visible" real. Keep it.
+
+### 4. In-flight work at restart — deliberately hit the window
+"Supported terminate/restart while state running" only proves fencing if the kill lands *inside* the mock's bounded delay while an Executor attempt is in flight. Make it deterministic-ish:
+
+- Seed a PRNG (record seed in manifest); pick the terminate time randomly within `[0, D]` after confirming an attempt is running.
+- Post-restart, verify: attempt fenced or legitimately resumed, report/outcome **exactly once**, no stale apply. This is the soak-level instance of your SIGKILL tests — same assertions.
+- Distinguish `graceful_terminate` vs `sigkill` events in the log. A driver-side watchdog kill (host hang) is a crash event, logged as such — it can continue the soak but is evidence, not noise.
+- Assert second-launch-while-alive fails (nonblocking flock) once — cheap extra invariant.
+
+### 5. Driver lifecycle: derive, don't remember
+- The driver should hold **no invariant state in memory that isn't derivable**. Rebuild the accepted-ID set / invariant state from the product read APIs + read-only DB at each checkpoint; use the log only for the driver's own action history. Then a driver crash loses only a progress cursor, and resume is trivially honest.
+- Resume must be explicit (`--resume <manifest-dir>`); never auto-continue silently.
+- SIGTERM/SIGINT on the driver → write a clean `segment_closed` record + fsync. Well-formed downtime.
+
+### 6. Read-only SQLite probing — specifics matter
+- Open `file:...?mode=ro` plus `PRAGMA query_only=ON`. In WAL mode a ro connection works fine while the host holds the db open (shm exists, same user). Do **not** open a normal rw connection — it can checkpoint the WAL on close, which is a write outside the app.
+- `PRAGMA quick_check` periodically; full `integrity_check` only at session checkpoints (0/24/48/72h) if the DB is large.
+- Never invoke `wal_checkpoint` from the prober.
+- Receipt/blob hash reads: byte-level `SELECT` or file reads are fine; atime changes are not canonical mutation. Ensure hashes are over content, not metadata.
+
+### 7. Secret canary — aim it at the leak boundary
+A canary planted in a user message legitimately lands in message storage, so "not in DB" is the wrong assertion. The actual leak boundary is **what the provider receives** and cross-namespace visibility:
+
+- Give the mock provider a read-only "received requests" introspection endpoint. Scan its payloads for (a) the secret canary, (b) the ref-stopped context canary. The ref-stop recheck feature means stopped content must never reach provider input — this doubles as the strongest leak check.
+- Also scan captured host stdout/stderr and the measurement log itself (driver must never log env vars).
+- Host stdio: redirect to **files**, not `PIPE` — a full pipe deadlocks the host over 72h and would be a self-inflicted failure. Bound or rotate if the host is chatty.
+
+### 8. Baseline hash — scope it precisely
+"Hash the source tree" is brittle (pyc, venv, editor files). Acceptance resets on *semantic/persistence/recovery* changes, so:
+
+- Prefer `git rev-parse HEAD` + hash of `git status --porcelain` + diff hash of dirty files, restricted to a **defined file set** (product runtime/schema/persistence/recovery; explicitly excluding tests, docs, ACCEPTANCE.md, the driver itself). Record the file-set definition in the manifest.
+- Driver/test/doc changes mid-soak must *not* reset. Product file change mid-soak → `reset_required` even though the running process still holds old code — simplest faithful reading of the acceptance rule.
+- Check baseline at every checkpoint, not just the end.
+
+## Downtime decision — recommendation
+
+Model the requirement as a **continuous UTC span with disclosed, bounded gaps**, not 72h of uptime:
+
+- Pass requires: `elapsed_utc ≥ 72h`, all scheduled sessions executed, final session **starting after** elapsed ≥ 72h, all invariants clean, baseline constant, log chain intact — plus disclosed downtime within caps (suggest: total ≤ 6h, single gap ≤ 4h; exact numbers are a DECISIONS.md call).
+- Restart-while-unfinished is a *required* soak action, so restarts cannot logically reset the clock. The same logic extends to bounded disclosed downtime **provided** post-gap reconciliation (all accepted IDs present, invariants hold, no lost effects) passes before continuing.
+- Reset on: baseline mismatch, log-chain corruption/truncation, clock jump, undisclosed downtime (a gap with no manifest record — unprovable), any invariant failure.
+- System sleep = disclosed downtime + reconciliation, since the host was suspended not dead.
+
+This is the interpretation I'd put to DECISIONS.md; consistent with Opus's call on faithfulness, and I'd argue demanding uninterrupted uptime actually *under*-tests the recovery surface you're trying to prove.
+
+## Smallest safe harness
+
+~500 stdlib lines, four modules, in this order:
+
+1. `soak/log.py` — manifest + hash-chained fsync'd JSONL segments. (~60 lines)
+2. `soak/client.py` — HTTP client: idempotency keys, bounded timeouts, `acked|reconciled|absent` tri-state. (~80)
+3. `soak/driver.py` — table-driven session plan (same plan file for preflight and soak; durations are data, not a `--fast` flag) + periodic prober + host lifecycle (wait-for-ready via read endpoint, never `sleep()`; capture stdio to files; record pid/argv/env-whitelist-hash). (~150)
+4. `soak/verify.py` — standalone read-only recount over DB + logs → `verdict.json`. Counts come from canonical state and the log, never from driver claims. (~100)
+
+Verdict gate, hard requirement: `manifest.mode == "soak"` (written at manifest creation, immutable per segment) **and** `elapsed_utc ≥ 72h` **and** full invariant recount clean → emits `S0-13-CANDIDATE`. Preflight emits `PREFLIGHT-RESULT`. Separate output filenames and a separate verifier entry point — no shared code path where a flag could widen the gate.
+
+## Preflight test list (before real soak)
+
+- Full compressed cycle (~10 min): all four sessions, ≥20 turns, ≥5 goals, cancel, pause, correct, ref-stop, restart-while-running with in-flight mock work.
+- Driver `SIGKILL` mid-run → `--resume` → chain verifies, downtime disclosed, continues.
+- Timeout/unknown-fate path: force a dropped ACK (mock or proxy), assert reconcile resolves and doesn't double-count.
+- Synthetic invariant trip: feed `verify.py` a crafted log/DB with duplicate report ID / missing accepted ID → must FAIL, not PASS.
+- Canary: assert mock-received-payload scan catches a planted canary and passes a clean run.
+- Clock: simulate a manifest with a clock-jump/gap record → `reset_required`.
+- Preflight manifest → verifier → cannot emit candidate verdict (negative test on the gate itself).
+- Preflight uses a **separate data dir and port** — never the soak DB.
+
+Nothing here requires product changes except possibly **item 1** (idempotency-key fate queryable via read API) — verify that first, since everything else in the evidence chain leans on it.

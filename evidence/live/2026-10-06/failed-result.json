@@ -1,0 +1,8 @@
+{
+  "status": "FAIL",
+  "provider": "official_claude_opus_tool_free",
+  "reason": "ProviderUnavailable on both conversation calls and task; no host receipt; persisted failed Goal",
+  "manual_state_repair": false,
+  "diagnosis": "pending; do not blind retry",
+  "live_success_claim": false
+}

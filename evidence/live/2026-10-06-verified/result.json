@@ -1,0 +1,61 @@
+{
+  "status": "partial",
+  "started_at": "2026-10-06T12:26:54.593349+00:00",
+  "ended_at": "2026-10-06T12:27:20.226306+00:00",
+  "provider": "official_claude_opus_tool_free",
+  "model_requested": "opus",
+  "actual_model_version": "not reported by text output",
+  "adapter": "pal/native.py + pal/native_supervisor.py",
+  "native_cli_version": "2.1.291 (Claude Code)",
+  "python": "3.9.6",
+  "sqlite": "3.54.0",
+  "live_calls": 3,
+  "capabilities": {
+    "model_tools": [],
+    "mcp": [],
+    "customizations": "safe-mode",
+    "canonical_store_access": false,
+    "paid_fallback": false,
+    "session_persistence": false
+  },
+  "cost_verification": {
+    "verified_at": 1791289609.023972,
+    "no_extra_charge": true,
+    "route": "official_claude_pro",
+    "official_ui": "https://claude.ai/settings/usage",
+    "observation": {
+      "subscription": "Pro",
+      "session_used_percent": 13,
+      "week_used_percent": 3,
+      "use_credits": false,
+      "credit_balance_usd": 0,
+      "auto_reload": false
+    },
+    "settings_changed": false,
+    "new_login": false,
+    "scope": "three short synthetic live smoke calls after diagnosed env correction",
+    "ttl_seconds": 900
+  },
+  "host_receipt": {
+    "id": "e10fefd460b7453380123a74e3af7483",
+    "attempt_id": "5b6ce769fc1c493baf6d61402263c23b",
+    "artifact_id": "93137b1673934bc9bfc0afc9a2e63b3c",
+    "hash": "cd93bab387f850acaab80ccc031ee252decdff0b142f3cba50a05cc77030bb84",
+    "size": 1729,
+    "revision": 1,
+    "epoch": 1
+  },
+  "host_checks": [
+    "fixed_local_draft_criteria",
+    "UTF8",
+    "nonempty",
+    "max4096bytes",
+    "hash_readback",
+    "current_revision_epoch",
+    "usable_source_manifest"
+  ],
+  "quality_claim": "none",
+  "normal_conversation_goal_count": 0,
+  "draft_goal_count": 1,
+  "limitation": "Host byte/hash/revision checks passed, but plan-mode text output included non-executed pseudo tool invocations around the draft. Not accepted as final clean live draft evidence. Superseded route verification pending."
+}

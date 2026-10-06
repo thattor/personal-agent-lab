@@ -1,6 +1,8 @@
 """Two runtime lanes and data-only model boundary. Mock is always the default."""
 import fcntl
 import json
+import os
+import time
 import re
 import threading
 from concurrent.futures import ThreadPoolExecutor, Future
@@ -27,13 +29,20 @@ class WorkOrder:
 class MockProvider:
     identity = 'mock'
 
+    def __init__(self, task_delay=0):
+        if not 0 <= task_delay <= 60:
+            raise ValueError('mock delay must be bounded')
+        self.task_delay=task_delay
+        self._stop=threading.Event()
+
     def complete(self, prompt):
         if prompt.startswith('DRAFT\n'):
+            self._stop.wait(self.task_delay)
             return 'Local draft (mock): ' + prompt.split('\n', 2)[1]
         return 'I have recorded your message. This response uses the mock provider.'
 
     def stop(self):
-        pass
+        self._stop.set()
 
 
 class ProviderExecutor:
@@ -42,7 +51,7 @@ class ProviderExecutor:
         self.provider = provider
 
     def execute(self, order):
-        content = self.provider.complete('DRAFT\n' + order.specification + '\nRelevant sanitized context: ' + json.dumps(order.context, ensure_ascii=False))
+        content = self.provider.complete('DRAFT\n' + order.specification + '\nReturn only the requested draft text, without tool invocations or planning transcript.\nRelevant sanitized context: ' + json.dumps(order.context, ensure_ascii=False))
         return {'goal_id': order.goal_id, 'attempt_id': order.attempt_id, 'epoch': order.epoch, 'action': 'local_draft', 'content': content}
 
     def stop(self):
@@ -51,11 +60,13 @@ class ProviderExecutor:
 
 class Runtime:
     def __init__(self, path, provider=None, executor=None, fault=None):
+        self.started_at=time.time()
         self._closed = threading.Event()
         self._wake = threading.Event()
         self.idle = threading.Event()
         self._reply_lock = threading.Lock()
         self._responses = {}
+        self._worker_error = ''
         self._fault = fault or (lambda point: None)
         Path(path).parent.mkdir(parents=True, exist_ok=True)
         self._lockfile = open(str(path) + '.lock', 'a')
@@ -97,6 +108,7 @@ class Runtime:
         text = sanitize(text)
         if not isinstance(text, str) or len(text) > 12000:
             raise ValueError('message exceeds input bound')
+        original_request={'text':text,'goal_id':goal_id,'control':control}
         lower = text.lower().strip()
         if control is None and lower in ('stop that', 'cancel that', '止めて', '停止して'):
             control = {'action':'cancel'}
@@ -107,8 +119,25 @@ class Runtime:
         if control is None and lower in ('resume that','再開して'):
             control = {'action':'resume'}
             goal_id = self._latest_goal()
-        intent = 'control' if control is not None else self.intent(text)
-        result = self.store.ingress(key, text, intent, goal_id, control)
+        forget = False
+        if control is None and lower in ('forget that','忘れて'):
+            prior = [r for r in self.store.inspect()['records'] if r['role']=='user' and r['usable']]
+            if prior:
+                control = {'source_id':prior[-1]['id']}
+                forget = True
+        if control is None and lower.startswith('answer:'):
+            current_id = self._latest_goal()
+            if current_id:
+                current = self.store.get_goal(current_id)
+                if current['state']=='waiting_input':
+                    goal_id = current_id
+                    control = {'action':'input','text':text.partition(':')[2].strip(),'question_id':current['question_id'],'epoch':current['epoch']}
+        if control is None and lower.startswith('correct that:'):
+            goal_id = self._latest_goal()
+            if goal_id:
+                control = {'action':'correct','text':text.partition(':')[2].strip()}
+        intent = 'forget' if forget else ('control' if control is not None else self.intent(text))
+        result = self.store.ingress(key, text, intent, goal_id, control, request=original_request)
         if lower.startswith('remember ') or '覚えて' in text:
             self.store.note('memory:' + key, text, [result['record_id']])
         if result['goal']:
@@ -126,11 +155,17 @@ class Runtime:
         if stored is not None:
             return stored
         context = self.store.context()
-        if ingress['goal']:
+        if ingress['intent']=='forget':
+            content = 'Reference stopped. Raw history remains available in Inspect.'
+        elif ingress['goal']:
             content = 'Work recorded. Current canonical state: ' + self.store.get_goal(ingress['goal']['id'])['state'] + '.'
+        elif any(term in text.lower() for term in ('what happened','previous thing','work status','進捗','どうなった')) and self._latest_goal():
+            current=self.store.get_goal(self._latest_goal())
+            content='Current work is '+current['state']+'.'+(' Reason: '+current['reason'] if current['reason'] else '')
         else:
             try:
-                content = self.provider.complete('CONVERSATION\n' + text + '\nRelevant sanitized context: ' + json.dumps([(r['role'],r['content']) for r in context['records']] + [('note',n['content']) for n in context['notes']], ensure_ascii=False))
+                canonical=[{k:g[k] for k in ('id','state','revision','reason')} for g in self.store.inspect()['goals'][-5:]]
+                content = self.provider.complete('CONVERSATION\n' + text + '\nRelevant sanitized context: ' + json.dumps([(r['role'],r['content']) for r in context['records']] + [('note',n['content']) for n in context['notes']], ensure_ascii=False)+'\nCurrent canonical work (overrides old conversation summaries): '+json.dumps(canonical))
             except Exception as error:
                 content = 'Conversation provider unavailable: ' + type(error).__name__ + '. Your message remains recorded.'
         try:
@@ -155,6 +190,23 @@ class Runtime:
             self.store.fail(order.attempt_id, 'capability_violation')
 
     def _work(self):
+        try:
+            self._work_loop()
+        except Exception as error:
+            self._worker_error='worker_error:'+type(error).__name__
+            try:
+                for attempt in self.store.inspect()['attempts']:
+                    if attempt['status']=='running':
+                        self.store.fail(attempt['id'],self._worker_error)
+                self.store.record('host-worker-error','assistant',self._worker_error)
+            except Exception:
+                pass  # Read-only health remains available even if canonical storage fails.
+            self.idle.set()
+
+    def health(self):
+        return {'pid':os.getpid(),'started_at':self.started_at,'worker_alive':self._worker.is_alive(),'worker_error':self._worker_error,'stopping':self._closed.is_set()}
+
+    def _work_loop(self):
         while not self._closed.is_set():
             self._wake.wait()
             self._wake.clear()

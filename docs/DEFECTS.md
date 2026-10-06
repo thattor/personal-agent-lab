@@ -7,8 +7,32 @@ Fix: both operations invoke the same host transactional source invalidation help
 Prevention: keep correction/reference-stop publication and slot-release checks in the full suite. Next boundary changes must exercise both paths with an in-flight Attempt. 20 tests green after fix, including 18 real SIGKILL crash boundary subcases. No runtime DB repaired.
 
 ## 2026-10-06 — startup checkout mismatch
-Observation: supplied cwd had no HEAD/remote and lacked required new root documents. Initial AGENTS lookup followed its old project-document pointer before identifying the mismatch. No old implementation code was read/reused.
-Correction/prevention: clone only the named GitHub repository into an independent checkout, read its ordered root documents and current master Issue. For this greenfield project, reject a checkout without the mandated root STATE/SPEC/DESIGN/ACCEPTANCE/DECISIONS before following other project pointers. Preserved original workspace unchanged.
+Observation: supplied cwd had no HEAD/remote and lacked required new root documents. Initial lookup followed the old project-document pointer and a memory keyword search surfaced an old review entry, contrary to the explicit greenfield exclusion. That material was excluded from design/reuse input; no old implementation code was read/imported/migrated. This was a startup instruction error, not authorization to reuse the old project.
+Correction/prevention: clone only the named GitHub repository into an independent checkout, read its ordered root documents and current master Issue. For this greenfield project, reject a checkout without the mandated root STATE/SPEC/DESIGN/ACCEPTANCE/DECISIONS before following other project pointers; skip memory queries that could retrieve excluded old PAL material. Preserved original workspace unchanged.
 
 ## 2026-10-06 — transitive memory reference stop
 Review-driven finding: disabling a source alone still left an assistant reply derived from it eligible as later context. Fix: shared read boundary recursively verifies Record manifests and MemoryNote sources; raw derived records remain inspectable. Regression covers source→assistant→note propagation. This prevention is verified by the full 33-test suite.
+
+## 2026-10-06 — native auth lost during environment scrubbing
+Failure: initial live smoke failed with no receipts, preserving failed Goal and provider errors. Host auth status was logged-in, while the adapter CLI reported Not logged in.
+Cause/evidence: read-only official auth status under minimal HOME/PATH environment reported loggedIn=false. Adding only USER/LOGNAME restored existing claude.ai Pro authentication. No Claude/Anthropic environment variables were present; no token extraction occurred. OS identity omission disrupted macOS keychain lookup.
+Fix: allowlist USER/LOGNAME in both official auth preflight and native subprocess environment. API keys/tokens/config overrides stay excluded. Add deterministic env-isolation regression test. Capture sanitized failed stdout/stderr for targeted diagnosis only; vendor output does not become canonical success evidence.
+Additional finding: live-smoke harness checked normal conversation created no Goal but initially did not reject a provider-unavailable response. Fixed to assert live responses are not fallback errors before continuing. Preserve the failed evidence as FAIL; do not edit its Goal. Next verification: repeat smoke in a separate synthetic DB after fresh official quota/cost check.
+
+Test-harness follow-up: adding a durable reference-stop audit event made an assertion that counted all Records fail (3 vs 2), although both raw conversational Records were retained correctly. Corrected the assertion to count records without source_event_id and retain separate audit-vs-memory checks. No product behavior changed to make the test green.
+
+## 2026-10-06 — plan-mode transcript in native draft text
+Finding: host structural/hash checks passed, but readback of the first successful native draft revealed non-executed `<invoke Write>`/`ExitPlanMode` text around the requested draft. No tools were available; these were text, not authorized operations. The artifact was not a clean plain-text draft.
+Cause: reused reviewer plan permission mode on the product text adapter, retaining a planning-oriented default system prompt.
+Fix: product native adapter uses default permission mode with tools still empty, safe-mode/MCP-off unchanged, and explicit text-only system prompt. Product Executor requests draft text only. Live smoke now rejects pseudo invocation wrappers for its plain-text synthetic scenario; earlier candidate evidence remains partial. Reviewer plan-mode commands remain scoped to review. Next verification: clean native draft plus host receipts and no wrapper output, after fresh cost check.
+
+## 2026-10-06 — natural control retry changed its resolved target
+Finding: a retry of “forget that” could resolve a different latest source after the first request changed reference state, conflicting with the original idempotency key. Same issue could affect a retried natural cancel after another Goal arrived.
+Cause: ingress hash included host-resolved routing fields instead of only the original client request.
+Fix/prevention: Runtime captures original sanitized text and explicit client Goal/control fields before resolving natural intent; transactional ingress dedupes that immutable request and returns the original bound target/result on replay. Keep regression for repeated natural forget; explicit changed-payload key conflict tests remain. This is a dedupe bug fix within D-011/D-013, not a behavior reduction.
+
+## Soak preflight: unbounded power history query
+2026-10-06: First preflight failed visibly because full `pmset -g log` did not finish within 30 seconds. No canonical repair or soak clock started. Cause: historical system-log retrieval on every healthy measurement, although UTC/uptime showed no gap. Fix: retrieve bounded, filtered power evidence only when raw-clock comparison detects sleep/gap; unavailable evidence fails the run rather than silently excusing downtime. Next verification: fresh preflight must reach measurement and planned unfinished restart. Keep the failed run/log for inspection.
+
+## Browser receipt translation
+2026-10-06: Chrome automatically translated JSON field names/punctuation inside the session receipt, making copied text invalid JSON. This was observed through the browser DOM, not inferred from a screenshot. Added `translate="no"` and `notranslate` to the receipt, with HTTP assertion; browser recheck must show unchanged JSON. Ordinary UI text may still be translated. Synthetic browser sessions never count as human soak use.

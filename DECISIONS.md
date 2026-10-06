@@ -108,3 +108,28 @@ Adopt before runtime implementation:
 - Error/capability violations terminate rather than loop; repeated unverified signatures escalate to a diagnostic input question. Budget still limits every claim.
 Rejected SWE suggestion 7: canonical unknown is NOT read-only validation fallback. D-011/Opus require persisted unknown for durable external-effect ambiguity; this newer reviewer suggestion conflicts with accepted semantics and is not adopted. No real external effect capability is exposed.
 Verification: Event/barrier concurrency tests; disposable-DB fault tests; second-host lock test; native provider isolation/cancellation tests. Additional caller/model constraints are implementation enforcement, not scope reductions.
+
+## D-014 — Official tool-free route and UI evidence
+Date: 2026-10-06
+Implemented within reviewed D-011–13 contracts: official existing Claude Pro route, fresh no-additional-charge proof expiring after 15 minutes, native auth rechecked under the same scrubbed OS identity environment, model tools empty, safe-mode, MCP empty, no API-token/config override inheritance, no paid fallback or saved model sessions. Process-lifetime supervisor pipe kills/reaps native process groups after timeout/shutdown/host SIGKILL. Native text generator uses a text-only system prompt/default permission mode; reviewer plan mode is not a product contract.
+Evidence: [clean real smoke](evidence/live/2026-10-06-clean/result.json), [actual draft](evidence/live/2026-10-06-clean/draft.txt), [host evidence](evidence/live/2026-10-06-clean/host-evidence.json). Prior [failed](evidence/live/2026-10-06/failed-result.json) and [partial planning-transcript candidate](evidence/live/2026-10-06-verified/result.json) remain visible; neither counts as PASS. Causes/prevention: [defect record](docs/DEFECTS.md).
+UI: loopback only, exact Host/Origin, JSON/size bounds, textContent/CSP, conversation and read-only inspect; browser/readback evidence in evidence/ui. UI default is mock; real provider proof is the separate live path. No new auth, payment, grant, public route or unrelated-project mutation.
+
+## D-015 — Lost ACK and original request dedupe
+Date: 2026-10-06
+Question/implementation review: [SWE-2 soak review](evidence/reviews/soak-swe-response.txt), item 1.
+Adopted: read-only operation fate lookup by client key. Dedupe hashes original sanitized client request, not host-resolved natural-language routing fields that may change on retry. Replay returns original target/ACK; different client payload conflicts. Atomic Record/Goal/outbox boundary unchanged. Natural forget regression verifies target binding.
+
+## D-016 — Faithful soak gate and human participation
+Date: 2026-10-06
+Question/answers: [Opus question](evidence/reviews/soak-opus-question.txt), [Opus response](evidence/reviews/soak-opus-response.txt), [SWE question](evidence/reviews/soak-swe-question.txt), [SWE response](evidence/reviews/soak-swe-response.txt).
+Adopt before monitor implementation:
+- Scripted fixture turns cannot satisfy user-turn/Goal/control minimums. Required human participation: >=20 typed UI turns, >=3 distinct sessions whose first/last span >=72 hours, >=5 human-created Goals, >=1 human cancellation, >=1 human correction or reference-stop. Only the human may attest those sessions/receipts. UI key namespace/session receipt corroborates identity; a label alone does not prove human input.
+- Supported planned restart while unfinished may be scripted and must prove abandonment/fencing, resumed same Goal, lost-ACK reconciliation, no second completion/report. An unplanned death does not count as the required planned restart.
+- Mock-adapter host-stability soak is allowed; no live-provider reliability claim follows. S0-10 live smoke remains separate. Bounded mock task latency is host configuration for control/restart exercises; default remains zero and no product time-wake feature is introduced.
+- All S0-01–12 PASS and clean baseline commit before clock starts. Baseline includes tracked runtime/store/schema/adapter/UI, probe semantics, Python version and declared provider config. Source/probe-semantic changes, detected invariant failure or repairs require a new run; docs/evidence-only changes do not.
+- Separate monitor; readonly SQLite mode=ro/query_only, public HTTP, fsync/hash-chained measurements every five minutes with UTC + CLOCK_UPTIME_RAW, app PID/start, boot time. Disclosed sleep is downtime, not uptime. Unexplained >15-minute gaps and clock discontinuities fail/reset; planned supported restarts are logged. Sleep/wake records are filtered to this run. No DB repair or fabricated host receipts.
+- Count only attested UI sessions; retain expected accepted keys/IDs and reconcile against canonical state. A candidate cannot declare Stable-0; controller still performs final full suite/acceptance audit/master issue closure.
+Rejected: counting synthetic traffic as human use; arbitrary SWE downtime allowances (6h/4h) without accepted basis; SWE statement that secret canary may legitimately persist (S0-09 explicitly requires sanitation before persistence); treating reviewer text/claims as product evidence.
+Opus claimed a global plan artifact in its response; exact named path stat showed it did not exist. Use repository-captured response only, not the model's artifact claim.
+Current blocker to autonomous completion: required human participation. A fully scripted substitute would alter accepted evidence meaning and needs explicit user judgment. Prepare concrete UI, monitor and green evidence before asking.

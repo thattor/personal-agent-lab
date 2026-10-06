@@ -138,6 +138,8 @@ class Store:
     def _dedupe(self, db, key, kind, payload):
         if not isinstance(key, str) or not key or len(key) > 200:
             raise ValueError('invalid idempotency key')
+        if sanitize(key) != key:
+            raise ValueError('idempotency key contains secret-like content')
         digest = hashlib.sha256(encode(sanitize(payload)).encode()).hexdigest()
         old = db.execute('SELECT * FROM dedupe WHERE key=?', (key,)).fetchone()
         if old:
@@ -405,15 +407,20 @@ class Store:
 
     def forget(self, key, source_id):
         with self._tx('forget') as db:
-            digest, old = self._dedupe(db, key, 'forget', [source_id])
-            if old is not None:
-                return old
-            if not db.execute('SELECT 1 FROM records WHERE id=?', (source_id,)).fetchone():
-                raise ValueError('unknown source')
-            db.execute('UPDATE records SET usable=0 WHERE id=?', (source_id,))
-            self._disable_notes(db, source_id)
-            affected = self._invalidate_source(db, source_id)
-            return self._remember(db, key, 'forget', digest, {'source_id': source_id, 'affected': affected})
+            return self._forget(db, key, source_id)
+
+    def _forget(self, db, key, source_id):
+        digest, old = self._dedupe(db, key, 'forget', [source_id])
+        if old is not None:
+            return old
+        if not db.execute('SELECT 1 FROM records WHERE id=?', (source_id,)).fetchone():
+            raise ValueError('unknown source')
+        db.execute('UPDATE records SET usable=0 WHERE id=?', (source_id,))
+        self._disable_notes(db, source_id)
+        affected = self._invalidate_source(db, source_id)
+        self._event(db, None, 'reference.stopped', {'source_id':source_id})
+        return self._remember(db, key, 'forget', digest, {'source_id': source_id, 'affected': affected})
+
 
     def _invalidate_source(self, db, source_id):
         affected = []
@@ -562,12 +569,12 @@ class Store:
                 raise ValueError('unknown artifact')
             return bytes(row['body'])
 
-    def ingress(self, key, content, intent='conversation', goal_id=None, control=None):
+    def ingress(self, key, content, intent='conversation', goal_id=None, control=None, request=None):
         content = sanitize(content)
-        if intent not in ('conversation', 'draft', 'control'):
+        if intent not in ('conversation', 'draft', 'control', 'forget'):
             raise ValueError('unsupported ingress intent')
         with self._tx('ingress') as db:
-            digest, old = self._dedupe(db, key, 'ingress', [content, intent, goal_id, control])
+            digest, old = self._dedupe(db, key, 'ingress', request if request is not None else [content, intent, goal_id, control])
             if old is not None:
                 return old
             record_id = uid()
@@ -576,11 +583,17 @@ class Store:
             goal = None
             if intent == 'draft':
                 goal = self._create_goal(db, 'handoff:' + key, content, {'kind': 'local_draft', 'max_bytes': 4096}, [record_id])
+            elif intent == 'forget':
+                if not isinstance(control,dict) or set(control) != {'source_id'}:
+                    raise ValueError('forget requires source ID')
+                self._forget(db, 'action:' + key, control['source_id'])
             elif intent == 'control':
                 if not goal_id or not isinstance(control, dict):
                     raise ValueError('control requires Goal and action')
                 goal = self._control(db, 'action:' + key, goal_id, **control)
             result = {'record_id': record_id, 'goal': goal, 'intent': intent}
+            if intent in ('control','forget'):
+                result['action']='forget' if intent=='forget' else control['action']
             return self._remember(db, key, 'ingress', digest, result)
 
     def approve(self, key, goal_id, fingerprint):
@@ -601,3 +614,9 @@ class Store:
         with self._connection() as db:
             row = db.execute("SELECT result FROM dedupe WHERE key=? AND kind='record'", ('response:' + client_key,)).fetchone()
             return json.loads(row['result']) if row else None
+
+    def operation(self, key):
+        """Read-only fate lookup: resolve a lost ACK without guessing or repeating effects."""
+        with self._connection() as db:
+            row=db.execute('SELECT kind,result FROM dedupe WHERE key=?',(key,)).fetchone()
+            return {'status':'accepted','kind':row['kind'],'result':json.loads(row['result'])} if row else {'status':'absent'}

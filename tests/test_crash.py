@@ -102,3 +102,36 @@ threading.Event().wait(8)
             store.recover()
             self.assertEqual(store.get_goal(goal['id'])['state'],'queued')
             self.assertEqual(store.inspect()['attempts'][0]['status'],'abandoned')
+
+    def test_pause_resume_and_input_crash_replay_exactly_once(self):
+        for action in ('pause','resume','input'):
+            for boundary in ('mid_transaction','before_commit','after_commit'):
+                with self.subTest(action=action,boundary=boundary),tempfile.TemporaryDirectory() as temp:
+                    path=Path(temp)/'state.db'
+                    store=Store(path)
+                    goal=store.create_goal('g','Make a draft',{'kind':'local_draft','max_bytes':200})
+                    attempt=store.claim()
+                    kwargs={}
+                    if action=='resume':
+                        store.control('pause',goal['id'],'pause')
+                    elif action=='input':
+                        waiting=store.waiting(attempt['id'],'Audience needed')
+                        kwargs={'text':'Synthetic colleagues','question_id':waiting['question_id'],'epoch':waiting['epoch']}
+                    before=store.inspect()
+                    code="""
+import os,signal,sys,json
+from pal.store import Store
+def die(point):
+    if point=='control.'+sys.argv[4]:os.kill(os.getpid(),signal.SIGKILL)
+s=Store(sys.argv[1],fault=die)
+s.control('command',sys.argv[2],sys.argv[3],**json.loads(sys.argv[5]))
+"""
+                    child=subprocess.run([sys.executable,'-c',code,str(path),goal['id'],action,boundary,json.dumps(kwargs)],capture_output=True,timeout=10)
+                    self.assertEqual(child.returncode,-signal.SIGKILL,child.stderr.decode())
+                    reopened=Store(path)
+                    if boundary!='after_commit':self.assertEqual(reopened.inspect(),before)
+                    first=reopened.control('command',goal['id'],action,**kwargs)
+                    second=reopened.control('command',goal['id'],action,**kwargs)
+                    self.assertEqual(first,second)
+                    matching=[e for e in reopened.inspect()['events'] if e['kind']=='goal.'+action]
+                    self.assertEqual(len(matching),1)

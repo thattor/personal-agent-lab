@@ -1,0 +1,195 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "eddc3e3dadf14aa194f1e713415706ae",
+      "role": "user",
+      "content": "Hello. Reply briefly about our synthetic stationery exercise.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "9f37685de8e244e99f6a9d205d539a8e",
+      "role": "assistant",
+      "content": "Hello! I don't have any earlier details about the synthetic stationery exercise in our current context, so I'm starting fresh. Could you share what you'd like to work on? For example, I could draft sample stationery items like letterheads, notecards, or invitations, write product descriptions, or help design the exercise itself.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"eddc3e3dadf14aa194f1e713415706ae\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "b806ea250ea747669b85a71fc658b274",
+      "role": "user",
+      "content": "Record only: make a draft later. Do not start work now.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "fb49ea42b0ad4e39a91196f2ce8922ef",
+      "role": "assistant",
+      "content": "Noted. I'll hold off for now and make the stationery exercise draft later when you're ready. Just let me know when to start.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"eddc3e3dadf14aa194f1e713415706ae\",\"9f37685de8e244e99f6a9d205d539a8e\",\"b806ea250ea747669b85a71fc658b274\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "e758342430c949a0b508e3a172149a46",
+      "role": "user",
+      "content": "Make a draft of three sentences inviting a fictional colleague to discuss synthetic apples. Keep it local, do not send. Output only draft text.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "fbdf4818309248ce88bfa2f4bbfde671",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: running.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"eddc3e3dadf14aa194f1e713415706ae\",\"9f37685de8e244e99f6a9d205d539a8e\",\"b806ea250ea747669b85a71fc658b274\",\"fb49ea42b0ad4e39a91196f2ce8922ef\",\"e758342430c949a0b508e3a172149a46\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "9fae0eef2c6d4c16b3547b0f0b8db4cd",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"e7921d5e82544b6d89cb943973943995\"}",
+      "usable": 1,
+      "source_event_id": "f520b35949694c229682494a33f700e9",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 8,
+      "id": "3752a6fb1b5149c9a990afcff208933d",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"bff5fa77e9cf46d7bf796c374332f2e5\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"e7921d5e82544b6d89cb943973943995\"}",
+      "usable": 1,
+      "source_event_id": "a6674d461a6948fa92039e8fe1a702d4",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 9,
+      "id": "1c9e12164fcf4e25bf6773a9b1549907",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"576c5d1864124a1f8412b0d54a421ecd\",\"attempt_id\":\"bff5fa77e9cf46d7bf796c374332f2e5\",\"check_status\":\"pass\",\"receipt_id\":\"1730fe0ce86847a18690c64197ad8246\"},\"event\":\"goal.completed\",\"goal_id\":\"e7921d5e82544b6d89cb943973943995\"}",
+      "usable": 1,
+      "source_event_id": "155094aa685d422d9deb9e71a80a274b",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "e7921d5e82544b6d89cb943973943995",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "f9bde48aa40a40afad256e57edebd497",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "e7921d5e82544b6d89cb943973943995",
+      "revision": 1,
+      "acceptance_id": "f9bde48aa40a40afad256e57edebd497",
+      "specification": "Make a draft of three sentences inviting a fictional colleague to discuss synthetic apples. Keep it local, do not send. Output only draft text.",
+      "sources": "[\"e758342430c949a0b508e3a172149a46\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "f9bde48aa40a40afad256e57edebd497",
+      "goal_id": "e7921d5e82544b6d89cb943973943995",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "bff5fa77e9cf46d7bf796c374332f2e5",
+      "goal_id": "e7921d5e82544b6d89cb943973943995",
+      "revision": 1,
+      "acceptance_id": "f9bde48aa40a40afad256e57edebd497",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"eddc3e3dadf14aa194f1e713415706ae\",\"9f37685de8e244e99f6a9d205d539a8e\",\"b806ea250ea747669b85a71fc658b274\",\"fb49ea42b0ad4e39a91196f2ce8922ef\",\"e758342430c949a0b508e3a172149a46\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "1730fe0ce86847a18690c64197ad8246",
+      "attempt_id": "bff5fa77e9cf46d7bf796c374332f2e5",
+      "artifact_id": "576c5d1864124a1f8412b0d54a421ecd",
+      "hash": "eb012c22e497ef87a60add8c78039bf964804b8ef2dabf4c1275cc12312d92e5",
+      "size": 276,
+      "revision": 1,
+      "epoch": 1
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "bff5fa77e9cf46d7bf796c374332f2e5",
+      "receipt_id": "1730fe0ce86847a18690c64197ad8246",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "f520b35949694c229682494a33f700e9",
+      "goal_id": "e7921d5e82544b6d89cb943973943995",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "a6674d461a6948fa92039e8fe1a702d4",
+      "goal_id": "e7921d5e82544b6d89cb943973943995",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"bff5fa77e9cf46d7bf796c374332f2e5\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "155094aa685d422d9deb9e71a80a274b",
+      "goal_id": "e7921d5e82544b6d89cb943973943995",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"576c5d1864124a1f8412b0d54a421ecd\",\"attempt_id\":\"bff5fa77e9cf46d7bf796c374332f2e5\",\"check_status\":\"pass\",\"receipt_id\":\"1730fe0ce86847a18690c64197ad8246\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "artifacts": [
+    {
+      "id": "576c5d1864124a1f8412b0d54a421ecd",
+      "hash": "eb012c22e497ef87a60add8c78039bf964804b8ef2dabf4c1275cc12312d92e5",
+      "size": 276
+    }
+  ]
+}

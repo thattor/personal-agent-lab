@@ -1,0 +1,44 @@
+**Verdict on the S0-13 soak proposal**
+
+1. **The "real-use" claim is rejected.** Scripted turns sent through HTTP ingress are fixture traffic, and AGENTS.md says fixtures are not product evidence. "20 user turns" cannot be met by a harness unless DECISIONS.md *already* defines "user turn" as any ingress turn. Adopting that definition now, for convenience, would lower the gate, which needs the user's approval, not Opus's.
+2. **A live provider is not required inside S0-13.** The gate text doesn't ask for it, and S0-10 is separate. Label the soak "host-stability soak, mock adapter path." It proves nothing about `pal/native*.py`.
+3. **The synthetic driver stays useful** as extra load and as a read-only prober. Its turns are tagged `origin=harness` and never count toward the required minimums.
+
+**Human input required (precise conditions)**
+
+- **H1.** At least 20 human-typed turns through the loopback UI. They must span at least 3 distinct session IDs, and the first and last counted sessions must be at least 72h apart in wall-clock time. Short sessions are fine.
+- **H2.** A human creates at least 5 Goals and performs 1 cancel and 1 correction or reference-stop, all through the normal UI/API controls.
+- **H3.** One supported supervisor restart while a task is unfinished. It can be scripted or done by the operator. The evidence must show:
+  - the task resumes or is fenced;
+  - no stale apply;
+  - resending the same client key after restart returns the original ack and produces no second report.
+- **H4.** Without H1 and H2, S0-13 stays NOT PASS. This review does not count as evidence.
+
+**Wall-clock and downtime**
+
+- **Clock start.** The clock starts only after S0-01–12 are PASS on a clean commit. The current tree is dirty (`pal/native.py`, `server.py` and `web/` are untracked), so no baseline exists yet.
+- **Baseline hash.** It covers tracked source, the lockfile, schema version, runtime and provider-default config, and the Python version.
+- **Harness isolation.** The harness runs as a separate process. It uses only public HTTP plus SQLite with `mode=ro`, not `immutable=1`, which can return stale reads. No timed wake runs inside the app.
+- **Sleep and gaps.**
+  - Every 5 minutes, log wall clock alongside `CLOCK_UPTIME_RAW`, the app PID and start time, and boot time.
+  - Capture `pmset -g log` at each session.
+  - Sleep counts as reported downtime, never as uptime. `caffeinate` is allowed.
+  - A gap longer than 15 minutes with no matching sleep record is a failure.
+- **Unplanned process death or reboot** is an inspectable failure and does not count as H3.
+- **Evidence log.** Hash-chain the evidence log and commit its head hash at each session.
+
+**Reset conditions**
+
+The clock restarts at 0 on any of these:
+
+- a change to the baseline hash: runtime, store, schema, recovery, controls, adapter, or provider-default config;
+- a harness change that alters the workload or probe semantics;
+- any manual repair, lost message or goal, duplicate report, stale apply, or canary leak (the clock resets after the fix);
+- any fix triggered by a soak finding.
+
+Docs-only and evidence-only commits do not reset the clock.
+
+The same review is in `/Users/hattoritoshiyasu/.claude/plans/opus-design-acceptance-clarification-for-curious-cosmos.md`.
+
+<invoke name="ExitPlanMode">
+</invoke>

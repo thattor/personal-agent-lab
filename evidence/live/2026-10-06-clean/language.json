@@ -1,0 +1,38 @@
+{
+  "normal": {
+    "id": "9f37685de8e244e99f6a9d205d539a8e",
+    "role": "assistant",
+    "content": "Hello! I don't have any earlier details about the synthetic stationery exercise in our current context, so I'm starting fresh. Could you share what you'd like to work on? For example, I could draft sample stationery items like letterheads, notecards, or invitations, write product descriptions, or help design the exercise itself."
+  },
+  "explicit_record_only": {
+    "id": "fb49ea42b0ad4e39a91196f2ce8922ef",
+    "role": "assistant",
+    "content": "Noted. I'll hold off for now and make the stationery exercise draft later when you're ready. Just let me know when to start."
+  },
+  "draft_request": {
+    "seq": 1,
+    "id": "e7921d5e82544b6d89cb943973943995",
+    "state": "queued",
+    "revision": 1,
+    "acceptance_id": "f9bde48aa40a40afad256e57edebd497",
+    "epoch": 0,
+    "budget": 3,
+    "total_claims": 0,
+    "reason": "",
+    "question_id": null,
+    "ambiguity": 0
+  },
+  "final_goal": {
+    "seq": 1,
+    "id": "e7921d5e82544b6d89cb943973943995",
+    "state": "completed",
+    "revision": 1,
+    "acceptance_id": "f9bde48aa40a40afad256e57edebd497",
+    "epoch": 1,
+    "budget": 2,
+    "total_claims": 1,
+    "reason": "",
+    "question_id": null,
+    "ambiguity": 0
+  }
+}

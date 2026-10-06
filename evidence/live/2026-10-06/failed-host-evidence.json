@@ -1,0 +1,179 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "22f2241f47d14d38b4b13b302c9c39bb",
+      "role": "user",
+      "content": "Hello. Reply briefly about our synthetic stationery exercise.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "cb31d11ed85342f68fca9ea27cfad4e0",
+      "role": "assistant",
+      "content": "Conversation provider unavailable: ProviderUnavailable. Your message remains recorded.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"22f2241f47d14d38b4b13b302c9c39bb\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "a71a0c91b16f43a58cc2fd331fe9c0b6",
+      "role": "user",
+      "content": "Record only: make a draft later. Do not start work now.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "9b5ab343a6654b13bd7af49e4ace3bff",
+      "role": "assistant",
+      "content": "Conversation provider unavailable: ProviderUnavailable. Your message remains recorded.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"22f2241f47d14d38b4b13b302c9c39bb\",\"cb31d11ed85342f68fca9ea27cfad4e0\",\"a71a0c91b16f43a58cc2fd331fe9c0b6\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "d446ca69946b45bf96cf53b8d4129b07",
+      "role": "user",
+      "content": "Make a draft of three sentences inviting a fictional colleague to discuss synthetic apples. Keep it local, do not send. Output only draft text.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "0619590e8b49451b83a2ccba094c575e",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: running.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"22f2241f47d14d38b4b13b302c9c39bb\",\"cb31d11ed85342f68fca9ea27cfad4e0\",\"a71a0c91b16f43a58cc2fd331fe9c0b6\",\"9b5ab343a6654b13bd7af49e4ace3bff\",\"d446ca69946b45bf96cf53b8d4129b07\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "0897a51cca6f4173ac1b802d304ad8d1",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"7f9339775d2b4d85b9cba4eedc3110e0\"}",
+      "usable": 1,
+      "source_event_id": "bf4fb260f21247bf922384f8402f81da",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 8,
+      "id": "b220cb5327814c06acdc117affad7c0d",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"caf17ff24b71494daeadde30151d66fd\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"7f9339775d2b4d85b9cba4eedc3110e0\"}",
+      "usable": 1,
+      "source_event_id": "20b6d0b4aa2340fba0a8bb117400c0be",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 9,
+      "id": "7ced5bb1e45c4d048711893492255815",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"caf17ff24b71494daeadde30151d66fd\",\"reason\":\"executor_error:ProviderUnavailable\"},\"event\":\"attempt.error\",\"goal_id\":\"7f9339775d2b4d85b9cba4eedc3110e0\"}",
+      "usable": 1,
+      "source_event_id": "1bf4b42903ea4a6a8f0085b53a5eb920",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "7f9339775d2b4d85b9cba4eedc3110e0",
+      "state": "failed",
+      "revision": 1,
+      "acceptance_id": "7f2e98c7798744f4ac7e3ef93bd712b5",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "executor_error:ProviderUnavailable",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "7f9339775d2b4d85b9cba4eedc3110e0",
+      "revision": 1,
+      "acceptance_id": "7f2e98c7798744f4ac7e3ef93bd712b5",
+      "specification": "Make a draft of three sentences inviting a fictional colleague to discuss synthetic apples. Keep it local, do not send. Output only draft text.",
+      "sources": "[\"d446ca69946b45bf96cf53b8d4129b07\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "7f2e98c7798744f4ac7e3ef93bd712b5",
+      "goal_id": "7f9339775d2b4d85b9cba4eedc3110e0",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "caf17ff24b71494daeadde30151d66fd",
+      "goal_id": "7f9339775d2b4d85b9cba4eedc3110e0",
+      "revision": 1,
+      "acceptance_id": "7f2e98c7798744f4ac7e3ef93bd712b5",
+      "epoch": 1,
+      "status": "error",
+      "manifest": "[\"22f2241f47d14d38b4b13b302c9c39bb\",\"cb31d11ed85342f68fca9ea27cfad4e0\",\"a71a0c91b16f43a58cc2fd331fe9c0b6\",\"9b5ab343a6654b13bd7af49e4ace3bff\",\"d446ca69946b45bf96cf53b8d4129b07\"]",
+      "error": "executor_error:ProviderUnavailable",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [],
+  "outcomes": [
+    {
+      "attempt_id": "caf17ff24b71494daeadde30151d66fd",
+      "receipt_id": null,
+      "check_status": "error",
+      "detail": "executor_error:ProviderUnavailable"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "bf4fb260f21247bf922384f8402f81da",
+      "goal_id": "7f9339775d2b4d85b9cba4eedc3110e0",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "20b6d0b4aa2340fba0a8bb117400c0be",
+      "goal_id": "7f9339775d2b4d85b9cba4eedc3110e0",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"caf17ff24b71494daeadde30151d66fd\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "1bf4b42903ea4a6a8f0085b53a5eb920",
+      "goal_id": "7f9339775d2b4d85b9cba4eedc3110e0",
+      "kind": "attempt.error",
+      "payload": "{\"attempt_id\":\"caf17ff24b71494daeadde30151d66fd\",\"reason\":\"executor_error:ProviderUnavailable\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "artifacts": []
+}

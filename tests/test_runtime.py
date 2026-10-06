@@ -109,7 +109,7 @@ class RuntimeTests(unittest.TestCase):
         context = runtime.store.context()
         self.assertEqual(context['records'], [])
         self.assertEqual(context['notes'], [])
-        self.assertEqual(len(runtime.store.inspect()['records']), 2)
+        self.assertEqual(len([r for r in runtime.store.inspect()['records'] if r['source_event_id'] is None]), 2)
 
     def test_normal_conversation_and_explicit_limits_do_not_create_goals(self):
         runtime = self.runtime()
@@ -122,6 +122,7 @@ class RuntimeTests(unittest.TestCase):
     def test_secret_canary_is_absent_from_captured_provider_prompts(self):
         class CaptureProvider(MockProvider):
             def __init__(self):
+                super().__init__()
                 self.prompts=[]
             def complete(self,prompt):
                 self.prompts.append(prompt)
@@ -134,3 +135,11 @@ class RuntimeTests(unittest.TestCase):
         self.assertTrue(runtime.idle.wait(2))
         self.assertNotIn(canary,str(provider.prompts))
         self.assertNotIn(canary,str(runtime.store.inspect()))
+
+    def test_status_uses_canonical_state_instead_of_old_handoff_memory(self):
+        runtime=self.runtime()
+        submitted=runtime.submit('draft','Make a draft')
+        self.assertTrue(runtime.idle.wait(2))
+        reply=runtime.submit('status','What happened with the previous thing?')['response'].result(timeout=2)
+        self.assertIn('completed',reply['content'])
+        self.assertEqual(len(runtime.store.inspect()['goals']),1)

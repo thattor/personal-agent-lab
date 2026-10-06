@@ -1,0 +1,38 @@
+<invoke name="Write">
+<parameter name="file_path">/Users/hattoritoshiyasu/.claude/plans/draft-make-a-draft-fluttering-sundae.md</parameter>
+<parameter name="content"># Draft: Invitation to Discuss Synthetic Apples
+
+## Context
+The user asked for a local-only, three-sentence draft inviting a fictional colleague to discuss synthetic apples. Nothing is to be sent.
+
+## Draft
+Hi Jordan, I'd love to set up a short meeting to talk through your recent work on synthetic apples. I'm especially curious about how the texture and flavor profiles compare to orchard-grown varieties. Would sometime next Tuesday or Wednesday afternoon work for you?
+
+## Plan
+No further steps. The draft stays local and is not sent anywhere.
+
+## Verification
+N/A. The draft text is complete.
+</parameter>
+</invoke>
+
+
+Hi Jordan, I'd love to set up a short meeting to talk through your recent work on synthetic apples. I'm especially curious about how the texture and flavor profiles compare to orchard-grown varieties. Would sometime next Tuesday or Wednesday afternoon work for you?
+
+
+<invoke name="ExitPlanMode">
+<parameter name="plan"># Draft: Invitation to Discuss Synthetic Apples
+
+## Context
+The user asked for a local-only, three-sentence draft inviting a fictional colleague to discuss synthetic apples. Nothing is to be sent.
+
+## Draft
+Hi Jordan, I'd love to set up a short meeting to talk through your recent work on synthetic apples. I'm especially curious about how the texture and flavor profiles compare to orchard-grown varieties. Would sometime next Tuesday or Wednesday afternoon work for you?
+
+## Plan
+No further steps. The draft stays local and is not sent anywhere.
+
+## Verification
+N/A. The draft text is complete.
+</parameter>
+</invoke>
