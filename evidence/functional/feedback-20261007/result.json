@@ -1,0 +1,10 @@
+{
+  "automated": true,
+  "human_evaluation": false,
+  "content_constraints": "PASS",
+  "canonical_control_correction": "existing deterministic and historical live evidence; this revalidation is corrected-name content only",
+  "baseline": "abc3fac",
+  "conversation_preference": "FAIL: still recommends writing",
+  "memory_explanation": "FAIL: falsely denies host persistence",
+  "overall": "FAIL; not F0-08 acceptance"
+}

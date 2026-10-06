@@ -1,0 +1,10 @@
+{
+  "seq": 4,
+  "id": "66d2aa8b04be4610b11e3685d66557f6",
+  "role": "assistant",
+  "content": "承知しました。この会話では次の内容を前提にします。\n\n- プロジェクト：Cedar\n- 相手：Mika\n- Mikaの貢献：資料整理を手伝い、論点を分かりやすくまとめてくれた\n\n※会話をまたいで記憶を保持することはできないため、別の会話では改めてお知らせください。\n\nMikaへのお礼の文面が必要なら、文の数や丁寧さの希望を教えていただければ下書きします。",
+  "usable": 1,
+  "source_event_id": null,
+  "manifest": "[\"6618f378a8e34cf5acd27ebf55929f94\",\"b1e33459d1944cb8801211ad945c351a\",\"e6fae69c8b8b4d8bbeb498cdf1e7db63\",\"note:d781612ee784409aa39f704a695f7a5a\"]",
+  "supersedes": null
+}

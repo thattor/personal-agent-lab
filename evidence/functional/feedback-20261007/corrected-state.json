@@ -1,0 +1,350 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "6618f378a8e34cf5acd27ebf55929f94",
+      "role": "user",
+      "content": "こんにちは。個人の小さなプロジェクトで、考えを整理するときのコツを日本語で一つ、短く教えてください。作業は始めないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "b1e33459d1944cb8801211ad945c351a",
+      "role": "assistant",
+      "content": "こんにちは。\n\nまず「このプロジェクトで一番大事にしたいことは何か」を一文で書き出してみることをおすすめします。迷ったときの判断基準になり、やることの優先順位も自然と決まりやすくなります。\n\nもしよければ、その一文を教えてください。そこから一緒に考えを整理するお手伝いをします。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"6618f378a8e34cf5acd27ebf55929f94\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "e6fae69c8b8b4d8bbeb498cdf1e7db63",
+      "role": "user",
+      "content": "これは架空のテストです。プロジェクトはCedar、相手はMikaです。Mikaは資料整理を手伝い、論点を分かりやすくまとめてくれました。覚えてください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "66d2aa8b04be4610b11e3685d66557f6",
+      "role": "assistant",
+      "content": "承知しました。この会話では次の内容を前提にします。\n\n- プロジェクト：Cedar\n- 相手：Mika\n- Mikaの貢献：資料整理を手伝い、論点を分かりやすくまとめてくれた\n\n※会話をまたいで記憶を保持することはできないため、別の会話では改めてお知らせください。\n\nMikaへのお礼の文面が必要なら、文の数や丁寧さの希望を教えていただければ下書きします。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"6618f378a8e34cf5acd27ebf55929f94\",\"b1e33459d1944cb8801211ad945c351a\",\"e6fae69c8b8b4d8bbeb498cdf1e7db63\",\"note:d781612ee784409aa39f704a695f7a5a\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "923a7e5f731841e9877bbee977462282",
+      "role": "user",
+      "content": "Mika宛にCedarプロジェクトへの協力のお礼の日本語の下書きを作成してください。全体の感謝の後に、覚えた具体的な協力を添えてください。正確に2文、本文のみ、外部に送らずローカルに保存してください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "e0c0e8e476a34a91a74f2c8267044b2a",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: queued.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"6618f378a8e34cf5acd27ebf55929f94\",\"b1e33459d1944cb8801211ad945c351a\",\"e6fae69c8b8b4d8bbeb498cdf1e7db63\",\"66d2aa8b04be4610b11e3685d66557f6\",\"923a7e5f731841e9877bbee977462282\",\"note:d781612ee784409aa39f704a695f7a5a\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "4452c56fc95c49c0bcc9d83c4a6b43b9",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"0fcf3f33bad04527ae76e8f81c215896\"}",
+      "usable": 1,
+      "source_event_id": "033f908b054344e6a08603ab624e4409",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 8,
+      "id": "517031f872c84decbd85c4031598114a",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"64202c8b77da4ffbac8f809f13711ea9\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"0fcf3f33bad04527ae76e8f81c215896\"}",
+      "usable": 1,
+      "source_event_id": "bd46571a89f6491ebe9da4e27acdf85a",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 9,
+      "id": "940f7643391f45b8a374163b1d9b6d1e",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"1281ac6b2e3e4871bb1129ca2e031389\",\"attempt_id\":\"64202c8b77da4ffbac8f809f13711ea9\",\"check_status\":\"pass\",\"receipt_id\":\"c32a0528885c4cc4b2bc351b9d15272a\"},\"event\":\"goal.completed\",\"goal_id\":\"0fcf3f33bad04527ae76e8f81c215896\"}",
+      "usable": 1,
+      "source_event_id": "077e898fbd414a1f8510c97e88d2f378",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 10,
+      "id": "25a8615c0b9c4186988b145499f2385c",
+      "role": "user",
+      "content": "Mika宛にBirchプロジェクトへの協力のお礼の日本語の下書きを作成してください。これは名前を訂正した架空の設定で、同じ資料整理の協力です。全体の感謝の後にその協力を添えてください。正確に2文、本文のみ、Cedarを含めず、外部に送らずローカルに保存してください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 11,
+      "id": "ad2f83e72d3d4e2584ac248b487a1eab",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: queued.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"6618f378a8e34cf5acd27ebf55929f94\",\"b1e33459d1944cb8801211ad945c351a\",\"e6fae69c8b8b4d8bbeb498cdf1e7db63\",\"66d2aa8b04be4610b11e3685d66557f6\",\"923a7e5f731841e9877bbee977462282\",\"e0c0e8e476a34a91a74f2c8267044b2a\",\"25a8615c0b9c4186988b145499f2385c\",\"note:d781612ee784409aa39f704a695f7a5a\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 12,
+      "id": "cde2c463de61478fab068148e09878c3",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"92573add6fac4d37906eb91cb0271e49\"}",
+      "usable": 1,
+      "source_event_id": "f2fbacf2222647dba038b8d704a921cc",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 13,
+      "id": "ea5ae90cc7c24649aa8cf6fc983535a6",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"e1b3866045934d51916d16e3c773d99d\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"92573add6fac4d37906eb91cb0271e49\"}",
+      "usable": 1,
+      "source_event_id": "889f11ce0d914960a0bc03dca8fd6f27",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 14,
+      "id": "246196ce61b944498ba388d6dc7961e6",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"f270dbb069364a279411e3954f77dd2d\",\"attempt_id\":\"e1b3866045934d51916d16e3c773d99d\",\"check_status\":\"pass\",\"receipt_id\":\"2a39f4653868421587c821bbf6ccee25\"},\"event\":\"goal.completed\",\"goal_id\":\"92573add6fac4d37906eb91cb0271e49\"}",
+      "usable": 1,
+      "source_event_id": "34d911805ed84f66b8512e320d492b18",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [
+    {
+      "id": "d781612ee784409aa39f704a695f7a5a",
+      "content": "これは架空のテストです。プロジェクトはCedar、相手はMikaです。Mikaは資料整理を手伝い、論点を分かりやすくまとめてくれました。覚えてください。",
+      "sources": "[\"e6fae69c8b8b4d8bbeb498cdf1e7db63\"]",
+      "usable": 1
+    }
+  ],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "0fcf3f33bad04527ae76e8f81c215896",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "44e6cd1fe8b844f7b2b42232a67f0074",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    {
+      "seq": 2,
+      "id": "92573add6fac4d37906eb91cb0271e49",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "793a077f8a7443e980aa62265be08dca",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "0fcf3f33bad04527ae76e8f81c215896",
+      "revision": 1,
+      "acceptance_id": "44e6cd1fe8b844f7b2b42232a67f0074",
+      "specification": "Mika宛にCedarプロジェクトへの協力のお礼の日本語の下書きを作成してください。全体の感謝の後に、覚えた具体的な協力を添えてください。正確に2文、本文のみ、外部に送らずローカルに保存してください。",
+      "sources": "[\"923a7e5f731841e9877bbee977462282\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "goal_id": "92573add6fac4d37906eb91cb0271e49",
+      "revision": 1,
+      "acceptance_id": "793a077f8a7443e980aa62265be08dca",
+      "specification": "Mika宛にBirchプロジェクトへの協力のお礼の日本語の下書きを作成してください。これは名前を訂正した架空の設定で、同じ資料整理の協力です。全体の感謝の後にその協力を添えてください。正確に2文、本文のみ、Cedarを含めず、外部に送らずローカルに保存してください。",
+      "sources": "[\"25a8615c0b9c4186988b145499f2385c\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "44e6cd1fe8b844f7b2b42232a67f0074",
+      "goal_id": "0fcf3f33bad04527ae76e8f81c215896",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "id": "793a077f8a7443e980aa62265be08dca",
+      "goal_id": "92573add6fac4d37906eb91cb0271e49",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "64202c8b77da4ffbac8f809f13711ea9",
+      "goal_id": "0fcf3f33bad04527ae76e8f81c215896",
+      "revision": 1,
+      "acceptance_id": "44e6cd1fe8b844f7b2b42232a67f0074",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"6618f378a8e34cf5acd27ebf55929f94\",\"b1e33459d1944cb8801211ad945c351a\",\"e6fae69c8b8b4d8bbeb498cdf1e7db63\",\"66d2aa8b04be4610b11e3685d66557f6\",\"923a7e5f731841e9877bbee977462282\",\"note:d781612ee784409aa39f704a695f7a5a\"]",
+      "error": "",
+      "external_intent": 0
+    },
+    {
+      "seq": 2,
+      "id": "e1b3866045934d51916d16e3c773d99d",
+      "goal_id": "92573add6fac4d37906eb91cb0271e49",
+      "revision": 1,
+      "acceptance_id": "793a077f8a7443e980aa62265be08dca",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"6618f378a8e34cf5acd27ebf55929f94\",\"b1e33459d1944cb8801211ad945c351a\",\"e6fae69c8b8b4d8bbeb498cdf1e7db63\",\"66d2aa8b04be4610b11e3685d66557f6\",\"923a7e5f731841e9877bbee977462282\",\"e0c0e8e476a34a91a74f2c8267044b2a\",\"25a8615c0b9c4186988b145499f2385c\",\"note:d781612ee784409aa39f704a695f7a5a\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "c32a0528885c4cc4b2bc351b9d15272a",
+      "attempt_id": "64202c8b77da4ffbac8f809f13711ea9",
+      "artifact_id": "1281ac6b2e3e4871bb1129ca2e031389",
+      "hash": "a0c3a4b8177ee371cbd0021ca219b689b2a2f55ca24c6511b77591dc331e65c2",
+      "size": 249,
+      "revision": 1,
+      "epoch": 1
+    },
+    {
+      "id": "2a39f4653868421587c821bbf6ccee25",
+      "attempt_id": "e1b3866045934d51916d16e3c773d99d",
+      "artifact_id": "f270dbb069364a279411e3954f77dd2d",
+      "hash": "3298e045d58dfd610a659046a32963767cc92c41297d15a8c2311890b78f2b1a",
+      "size": 270,
+      "revision": 1,
+      "epoch": 1
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "64202c8b77da4ffbac8f809f13711ea9",
+      "receipt_id": "c32a0528885c4cc4b2bc351b9d15272a",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    },
+    {
+      "attempt_id": "e1b3866045934d51916d16e3c773d99d",
+      "receipt_id": "2a39f4653868421587c821bbf6ccee25",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "033f908b054344e6a08603ab624e4409",
+      "goal_id": "0fcf3f33bad04527ae76e8f81c215896",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "bd46571a89f6491ebe9da4e27acdf85a",
+      "goal_id": "0fcf3f33bad04527ae76e8f81c215896",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"64202c8b77da4ffbac8f809f13711ea9\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "077e898fbd414a1f8510c97e88d2f378",
+      "goal_id": "0fcf3f33bad04527ae76e8f81c215896",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"1281ac6b2e3e4871bb1129ca2e031389\",\"attempt_id\":\"64202c8b77da4ffbac8f809f13711ea9\",\"check_status\":\"pass\",\"receipt_id\":\"c32a0528885c4cc4b2bc351b9d15272a\"}",
+      "delivered": 1
+    },
+    {
+      "seq": 4,
+      "id": "f2fbacf2222647dba038b8d704a921cc",
+      "goal_id": "92573add6fac4d37906eb91cb0271e49",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 5,
+      "id": "889f11ce0d914960a0bc03dca8fd6f27",
+      "goal_id": "92573add6fac4d37906eb91cb0271e49",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"e1b3866045934d51916d16e3c773d99d\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 6,
+      "id": "34d911805ed84f66b8512e320d492b18",
+      "goal_id": "92573add6fac4d37906eb91cb0271e49",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"f270dbb069364a279411e3954f77dd2d\",\"attempt_id\":\"e1b3866045934d51916d16e3c773d99d\",\"check_status\":\"pass\",\"receipt_id\":\"2a39f4653868421587c821bbf6ccee25\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "artifacts": [
+    {
+      "id": "1281ac6b2e3e4871bb1129ca2e031389",
+      "hash": "a0c3a4b8177ee371cbd0021ca219b689b2a2f55ca24c6511b77591dc331e65c2",
+      "size": 249
+    },
+    {
+      "id": "f270dbb069364a279411e3954f77dd2d",
+      "hash": "3298e045d58dfd610a659046a32963767cc92c41297d15a8c2311890b78f2b1a",
+      "size": 270
+    }
+  ],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 4,
+    "expires_at": 1791329971.777098,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 77936,
+    "started_at": 1791329071.826988,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

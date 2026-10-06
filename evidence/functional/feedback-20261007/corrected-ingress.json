@@ -1,0 +1,24 @@
+{
+  "request": {
+    "key": "functional:corrected",
+    "text": "Mika宛にBirchプロジェクトへの協力のお礼の日本語の下書きを作成してください。これは名前を訂正した架空の設定で、同じ資料整理の協力です。全体の感謝の後にその協力を添えてください。正確に2文、本文のみ、Cedarを含めず、外部に送らずローカルに保存してください。"
+  },
+  "ack": {
+    "record_id": "25a8615c0b9c4186988b145499f2385c",
+    "goal": {
+      "seq": 2,
+      "id": "92573add6fac4d37906eb91cb0271e49",
+      "state": "queued",
+      "revision": 1,
+      "acceptance_id": "793a077f8a7443e980aa62265be08dca",
+      "epoch": 0,
+      "budget": 3,
+      "total_claims": 0,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    "intent": "draft"
+  },
+  "automated": true
+}
