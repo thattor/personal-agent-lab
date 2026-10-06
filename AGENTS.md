@@ -79,7 +79,7 @@ Before each call, confirm the account is already authenticated and the selected 
 If leaving a red state because of a real blocker, STATE.md must contain the exact failure, evidence, attempts, and next action.
 
 ## Stable declaration
-Never call the product Stable-0 until every required Stable-0 row in ACCEPTANCE.md is PASS with linked evidence and the 72-hour soak gate is complete.
+Never call the product Stable-0 until every required Stable-0 row in ACCEPTANCE.md is PASS with linked evidence under the revised functional-first definition adopted in D-019. The historical 72-hour soak row is optional and must not be relabelled PASS.
 
 A mock, fixture, reviewer opinion, or model self-report is not product evidence.
 

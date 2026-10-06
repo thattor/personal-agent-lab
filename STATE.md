@@ -4,7 +4,7 @@
 Reach Stable-0 as defined in ACCEPTANCE.md. Stable-0 is **incomplete**.
 
 ## Current phase
-S0-01 through S0-12 PASS. User-requested Japanese/English UI presentation implemented and verified; English canonical/provider/receipt contracts unchanged. Soak02 was intentionally stopped/reset for the UI baseline change; fresh soak03 running. Stable-0 remains incomplete.
+D-019 explicitly adopted by user: revised Stable-0 is functional-first. Existing S0-01–12 structural evidence retained; required F0-01–08 pending. Historical soak03 is optional/unmet, not a completion gate. Implement bounded opt-in official real-provider UI after SWE-2 High review; mock default and all safety/recovery boundaries retained. Stable-0 incomplete.
 
 ## Working checkout
 `/private/tmp/personal-agent-lab-stable0-20261006`, same private GitHub repository, remote origin/main. Original supplied untracked workspace preserved. No old implementation/schema was reused; the accidental startup metadata inspection is explicitly recorded in docs/DEFECTS.md. Do not inspect it again.
@@ -12,17 +12,17 @@ S0-01 through S0-12 PASS. User-requested Japanese/English UI presentation implem
 ## Last green increment
 55 integrated tests PASS: [full log](evidence/tests/ui-native-soak-full.txt), [actual monitor preflight](evidence/tests/soak-preflight-summary.json). Controls/input/pause/resume real SIGKILL fault coverage, independent lanes, typed host-only capabilities, original-request dedupe/fate lookup, native lifetime supervision and secret-free OS auth environment. [Clean live smoke](evidence/live/2026-10-06-clean/result.json): 3 official Claude Pro calls, tools/MCP empty, no extra-charge/fallback/new login, actual 276-byte host-verified draft. [Browser smoke](evidence/ui/browser-smoke.md): conversation/draft/inspect/restart/session receipt. Prior failed/partial live attempts are preserved and do not count as PASS.
 
-## Active soak
-Soak01 retained after reproduced stale UI warning; soak02 retained and intentionally reset for the user's bilingual UI request. Both old DBs/hash chains/receipts stay intact. [Soak02 directly confirmed receipt and reset](evidence/soak/2026-10-07/soak02-human-and-reset.json). No old human counts/time/restart proof transferred. Bilingual UI only changes display text; fixed controls, canonical values, receipts and provider remain English. [55-test full suite](evidence/tests/ui-bilingual-full.txt), [actual refresh recovery probe](evidence/ui/recovery/bilingual-after.txt). New runtime/soak-20261007-03 started 2026-10-07T06:14:18.834450+09:00 from clean pushed baseline 1863ef2a3037b335fa6f257a8d6fd95fb44da9dc on port58500, monitor PID3322/app PID3324. [Fresh start and served bilingual UI](evidence/soak/2026-10-07/start-03.json).
+## Historical soak (stopped for approved development)
+Soak01 retained after reproduced stale UI warning; soak02 retained and intentionally reset for the user's bilingual UI request. Both old DBs/hash chains/receipts stay intact. [Soak02 directly confirmed receipt and reset](evidence/soak/2026-10-07/soak02-human-and-reset.json). No old human counts/time/restart proof transferred. Bilingual UI only changes display text; fixed controls, canonical values, receipts and provider remain English. [55-test full suite](evidence/tests/ui-bilingual-full.txt), [actual refresh recovery probe](evidence/ui/recovery/bilingual-after.txt). Historical runtime/soak-20261007-03 started 2026-10-07T06:14:18.834450+09:00 from clean pushed baseline 1863ef2a3037b335fa6f257a8d6fd95fb44da9dc on port58500, monitor PID3322/app PID3324. [Fresh start and served bilingual UI](evidence/soak/2026-10-07/start-03.json).
 
 ## Exact next action
-User asked Opus+Astra to reconsider the heavy long-term gate for personal use. D-018 records completed dialogue and a PROPOSED, NOT ADOPTED consensus: actual expected real-provider UI functionality first, retain security/recovery guarantees, make 72h/turn/session quotas optional observation with old unmet history preserved. Present single completion-definition adoption decision to user; no routine technical questions or more quota requests now. Until explicit adoption, original Stable-0 remains incomplete and current monitor/evidence stays unchanged. If adopted, record decision BEFORE implementation; obtain SWE-2 High contract review for bounded explicit real-provider UI/access-proof/failure handling, then implement finite functional acceptance within existing cost/auth/default-mock boundaries.
+Fresh official SWE-2 High existing-auth/Free model preflight, concrete real-provider UI/access expiry/failure contract review, record adopted findings before code. Close old monitor observation honestly and preserve DB/hash chain before runtime changes; update operational heartbeat to revised functional work. Implement/test bounded live UI, run fixed F0 scenarios and obtain one real human usefulness evaluation only after reviewable concrete UI is ready. No remaining 72h/human-count quota request.
 
 ## Acceptance status
-S0-01–12 PASS with evidence. S0-13 in_progress (soak03: 10 turns, 2 sessions, 5 Goals; restart/cancel/correction verified; time/remaining turns/session pending). Master Issue #1 open; no Stable-0 declaration.
+S0-01–12 structural PASS evidence retained, revalidate affected code. S0-13 historical/nonrequired/NOT PASS. F0-01–08 required and pending; direct human usefulness evaluation only after real UI is ready. Master Issue #1 remains open.
 
 ## Human participation requirement
-D-016/Opus explicitly rejects substituting scripted traffic for user turns. The user must type >=20 turns in >=3 sessions spanning >=72 hours, create >=5 Goals, cancel once and correct/reference-stop once. Monitor may perform the supported unfinished restart and read-only checks. Preparing this concrete environment requires no new auth, broader permission, payment or public exposure. An autonomous-only substitute would change accepted evidence meaning and requires the user's judgment.
+D-019 supersedes old time/turn/session quotas. Human confirmation of actual usefulness is required once for the fixed real-provider scenario set; scripted outputs are never human attestations. Previous receipts retained as honest historical host/control proof. No routine repeated participation or approval prompts.
 
 ## Deferred
 PublicSearch, time wake, proactive topics, Dreaming, multi-Expert, vectors, local inference, automatic procedure updates, external push.
@@ -79,3 +79,7 @@ Restart receipt increment: [full suite 55 PASS](evidence/tests/soak03-human-rest
 [Second-session increment full suite: 55 PASS](evidence/tests/soak03-human-session-02.txt). Evidence/docs-only change retains baseline and clock.
 
 User steering and Opus/Astra reconsideration: [D-018](DECISIONS.md). Both reviewers agree current mock UI/time quotas do not prove expected functional behavior. Recommendation is pending explicit adoption; original S0-13 not PASS, no canonical changes or historical evidence rewrite. [Full suite 55 PASS](evidence/tests/personal-use-reconsideration.txt).
+
+D-019 direct adoption received; goal/accepted completion definition updated before code. App goal replacement unavailable for unfinished objective; do not fake completion. Repository objective and this latest user instruction supersede stale blocked app-card72h text.
+
+D-019 implementation transition: old soak03 monitor/app stopped normally before runtime changes; [24-record terminal hash chain and retained snapshot](evidence/soak/2026-10-07/soak03-functional-development-stop.json). No old time/count transfer or canonical repair. Operational heartbeat updated to revised functional objective. [55-test adoption suite](evidence/tests/functional-definition-adoption.txt).

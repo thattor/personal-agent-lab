@@ -50,7 +50,7 @@ Implement in this order unless evidence justifies a better order:
 6. one real provider smoke path using an already-authorized official no-extra-charge connection;
 7. read-only inspect UI and end-to-end local draft scenario;
 8. complete all required acceptance evidence;
-9. run the 72-hour soak and fix any defects; if a persistence/recovery semantic fix resets the soak, restart the 72-hour gate.
+9. complete fixed real-provider UI functional/content scenarios and one direct human usefulness evaluation under D-019; long-term observation is optional, historical S0-13 remains unmet.
 
 PublicSearch live, time wake, proactive topic suggestions, dreaming, multi-Expert, vector DB, local inference, automatic procedure updates, and external push optimization are post-Stable-0. Do not let them delay the goal.
 
@@ -75,7 +75,7 @@ Before ending any Codex session:
 If Stable-0 is not yet achieved, the final message of the session should say that development is incomplete and point to the exact next action. Do not present an intermediate milestone as project completion.
 
 ## Completion
-Declare Stable-0 only when every required row in ACCEPTANCE.md is PASS with evidence and the 72-hour soak is complete with zero manual canonical-state repair.
+Declare Stable-0 only when every required row in ACCEPTANCE.md is PASS with evidence and the optional historical 72-hour soak is complete with zero manual canonical-state repair.
 
 When complete:
 1. run the full suite one final time;
@@ -85,3 +85,5 @@ When complete:
 5. report what was proven, what remains deferred, and any known limitations.
 
 Begin now. Read the repository source of truth and implement the next unfinished Stable-0 slice.
+
+D-019 supersedes any older mandatory72h/20turn/3session wording in this historical prompt. Completion is all currently REQUIRED S0/F0 rows with evidence, final full suite/version/limitations and master Issue closure. Do not label old unmet soak PASS.

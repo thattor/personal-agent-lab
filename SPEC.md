@@ -90,3 +90,6 @@ These are not removed from the project; they are outside Stable-0:
 
 ## Non-goals
 Stable-0 does not promise perfect recall, perfect secret detection, exactly-once arbitrary external side effects, host-compromise resistance, or automatic deletion from external backups/services.
+
+## Revised completion — D-019
+Stable-0 requires functional real-provider UI acceptance for conversation, remember/recall, context-grounded useful draft content, correction, reference-stop and authoritative work/status controls, in addition to canonical/security/recovery protections. Mock remains default; real-provider UI is explicitly selected and bounded by fresh official no-extra-charge proof. Human evaluates usefulness once for the fixed scenario set. Long-term observation is optional; no long-term stability claim follows these finite scenarios.

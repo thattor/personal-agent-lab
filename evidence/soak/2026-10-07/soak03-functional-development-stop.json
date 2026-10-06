@@ -1,0 +1,224 @@
+{
+  "run": "runtime/soak-20261007-03",
+  "reason": "D-019 user-adopted functional-first development; supported stop before runtime changes",
+  "historical_gate": "NOT PASS; nonrequired; no clock/count transfer",
+  "chain_rows": 24,
+  "chain_head": "62d6ca7f91550cb428d6d90bad5d35235f3a643d1e22c9b5ac0cb9646e3c9a7a",
+  "terminal_events": [
+    {
+      "seq": 22,
+      "event": "final_snapshot",
+      "sha256": "4eb63275e25dbcf001b9a5e43656552db54089ca9b5561db11d2ba66e98ac6e5",
+      "data": {
+        "summary": {
+          "attempt_statuses": {
+            "27ece96ed563413b923d7c9f5215d31d": "pass",
+            "2d813ac32fcd420492be74a964d783e7": "abandoned",
+            "6e8ff90f44c040d79a07748acc7e7f10": "fenced",
+            "957b377ac1c745ad966411af3e8d6843": "pass",
+            "c2593f27502947b4a18c29c1c7713884": "fenced",
+            "c38352c0e8fd4930a66b15a11f4be3ae": "pass",
+            "d5178eb4ace34a1dae85383dd2b4c5ad": "pass"
+          },
+          "counts": {
+            "attempts": 7,
+            "events": 19,
+            "goals": 5,
+            "outcomes": 4,
+            "receipts": 4,
+            "records": 41
+          },
+          "goal_states": {
+            "13f118991ffe4696a0dfd588b8a2f1cf": "completed",
+            "637447abb859409db7ea9ac3ad97d36a": "completed",
+            "912a4851c8f34337876755a51ae20a8b": "cancelled",
+            "a95cdd435ec542148c12cc99d435b8be": "completed",
+            "f72f8128d9c949aab17ca3943e24af1e": "completed"
+          },
+          "ops": {
+            "harness:canary": {
+              "action": null,
+              "goal_id": null,
+              "intent": "conversation",
+              "record_id": "52197149d26440e08ae83bb6f24d91fe"
+            },
+            "ui:0e4058f2-440b-497a-9629-9ddbbdd52b58:1791322661751:2cf03869-1a2f-4723-a6a3-b6ba069008e6": {
+              "action": null,
+              "goal_id": "a95cdd435ec542148c12cc99d435b8be",
+              "intent": "draft",
+              "record_id": "fdf35866b3934b8f97bfb0bc687f669c"
+            },
+            "ui:0e4058f2-440b-497a-9629-9ddbbdd52b58:1791322678085:e7d51b08-395d-4c73-9fe4-84b3680e4313": {
+              "action": null,
+              "goal_id": null,
+              "intent": "conversation",
+              "record_id": "2eebeb4527054b63873fdc861818d9b7"
+            },
+            "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322049752:fb54e79b-1923-444f-b3e3-533ee6773be2": {
+              "action": null,
+              "goal_id": null,
+              "intent": "conversation",
+              "record_id": "b44a80558f3e4a5b86418b2bc754d7cb"
+            },
+            "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322168774:f1ac25c2-fd9d-4735-800a-af1605e02b22": {
+              "action": null,
+              "goal_id": "13f118991ffe4696a0dfd588b8a2f1cf",
+              "intent": "draft",
+              "record_id": "be910deb76d145299bd3194ce1e59dfd"
+            },
+            "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322326283:a9f22dfe-e55b-4a24-a6c0-f3fbebd268c8": {
+              "action": null,
+              "goal_id": "f72f8128d9c949aab17ca3943e24af1e",
+              "intent": "draft",
+              "record_id": "83b19105c2fe402980d42a7273cce2ed"
+            },
+            "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322328166:9911178e-42b3-42af-b60b-c3a1959b66cc": {
+              "action": null,
+              "goal_id": null,
+              "intent": "conversation",
+              "record_id": "0aeb14b25cc64aabb025f2e76d945906"
+            },
+            "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322353218:de6ee5ee-ddcc-4c79-ba3a-4a9334d5811e": {
+              "action": null,
+              "goal_id": "912a4851c8f34337876755a51ae20a8b",
+              "intent": "draft",
+              "record_id": "c56fdb3c56754238bc03ccd527433b3a"
+            },
+            "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322355772:e42f0708-f9c2-45cb-9b20-2ce963334c25": {
+              "action": "cancel",
+              "goal_id": "912a4851c8f34337876755a51ae20a8b",
+              "intent": "control",
+              "record_id": "2ab48f68b210468984fde871b9729e38"
+            },
+            "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322521394:11cbf188-7db9-496a-a774-9ef863cbd29f": {
+              "action": null,
+              "goal_id": "637447abb859409db7ea9ac3ad97d36a",
+              "intent": "draft",
+              "record_id": "6731700f334440feab75b3361ff5e445"
+            },
+            "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322523593:f8d83621-ff6d-479f-8f3b-a433267fc151": {
+              "action": "correct",
+              "goal_id": "637447abb859409db7ea9ac3ad97d36a",
+              "intent": "control",
+              "record_id": "7ff2882d63414ccf90906ac314fbab2d"
+            }
+          },
+          "reports": 19
+        }
+      }
+    },
+    {
+      "seq": 23,
+      "event": "monitor_stopped",
+      "sha256": "629dc4816e5f273175006f704a0039e14acf20efe1c527036117aaff90f4e43c",
+      "data": {
+        "intentional": true,
+        "mode": "soak"
+      }
+    },
+    {
+      "seq": 24,
+      "event": "reset_required",
+      "sha256": "62d6ca7f91550cb428d6d90bad5d35235f3a643d1e22c9b5ac0cb9646e3c9a7a",
+      "data": {
+        "reason": "continuous monitor stopped before final controller audit"
+      }
+    }
+  ],
+  "snapshot": {
+    "ops": {
+      "harness:canary": {
+        "record_id": "52197149d26440e08ae83bb6f24d91fe",
+        "goal_id": null,
+        "intent": "conversation",
+        "action": null
+      },
+      "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322049752:fb54e79b-1923-444f-b3e3-533ee6773be2": {
+        "record_id": "b44a80558f3e4a5b86418b2bc754d7cb",
+        "goal_id": null,
+        "intent": "conversation",
+        "action": null
+      },
+      "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322168774:f1ac25c2-fd9d-4735-800a-af1605e02b22": {
+        "record_id": "be910deb76d145299bd3194ce1e59dfd",
+        "goal_id": "13f118991ffe4696a0dfd588b8a2f1cf",
+        "intent": "draft",
+        "action": null
+      },
+      "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322326283:a9f22dfe-e55b-4a24-a6c0-f3fbebd268c8": {
+        "record_id": "83b19105c2fe402980d42a7273cce2ed",
+        "goal_id": "f72f8128d9c949aab17ca3943e24af1e",
+        "intent": "draft",
+        "action": null
+      },
+      "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322328166:9911178e-42b3-42af-b60b-c3a1959b66cc": {
+        "record_id": "0aeb14b25cc64aabb025f2e76d945906",
+        "goal_id": null,
+        "intent": "conversation",
+        "action": null
+      },
+      "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322353218:de6ee5ee-ddcc-4c79-ba3a-4a9334d5811e": {
+        "record_id": "c56fdb3c56754238bc03ccd527433b3a",
+        "goal_id": "912a4851c8f34337876755a51ae20a8b",
+        "intent": "draft",
+        "action": null
+      },
+      "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322355772:e42f0708-f9c2-45cb-9b20-2ce963334c25": {
+        "record_id": "2ab48f68b210468984fde871b9729e38",
+        "goal_id": "912a4851c8f34337876755a51ae20a8b",
+        "intent": "control",
+        "action": "cancel"
+      },
+      "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322521394:11cbf188-7db9-496a-a774-9ef863cbd29f": {
+        "record_id": "6731700f334440feab75b3361ff5e445",
+        "goal_id": "637447abb859409db7ea9ac3ad97d36a",
+        "intent": "draft",
+        "action": null
+      },
+      "ui:c59ed97c-3b15-4693-82eb-b33599828089:1791322523593:f8d83621-ff6d-479f-8f3b-a433267fc151": {
+        "record_id": "7ff2882d63414ccf90906ac314fbab2d",
+        "goal_id": "637447abb859409db7ea9ac3ad97d36a",
+        "intent": "control",
+        "action": "correct"
+      },
+      "ui:0e4058f2-440b-497a-9629-9ddbbdd52b58:1791322661751:2cf03869-1a2f-4723-a6a3-b6ba069008e6": {
+        "record_id": "fdf35866b3934b8f97bfb0bc687f669c",
+        "goal_id": "a95cdd435ec542148c12cc99d435b8be",
+        "intent": "draft",
+        "action": null
+      },
+      "ui:0e4058f2-440b-497a-9629-9ddbbdd52b58:1791322678085:e7d51b08-395d-4c73-9fe4-84b3680e4313": {
+        "record_id": "2eebeb4527054b63873fdc861818d9b7",
+        "goal_id": null,
+        "intent": "conversation",
+        "action": null
+      }
+    },
+    "goal_states": {
+      "13f118991ffe4696a0dfd588b8a2f1cf": "completed",
+      "f72f8128d9c949aab17ca3943e24af1e": "completed",
+      "912a4851c8f34337876755a51ae20a8b": "cancelled",
+      "637447abb859409db7ea9ac3ad97d36a": "completed",
+      "a95cdd435ec542148c12cc99d435b8be": "completed"
+    },
+    "attempt_statuses": {
+      "2d813ac32fcd420492be74a964d783e7": "abandoned",
+      "27ece96ed563413b923d7c9f5215d31d": "pass",
+      "d5178eb4ace34a1dae85383dd2b4c5ad": "pass",
+      "c2593f27502947b4a18c29c1c7713884": "fenced",
+      "6e8ff90f44c040d79a07748acc7e7f10": "fenced",
+      "957b377ac1c745ad966411af3e8d6843": "pass",
+      "c38352c0e8fd4930a66b15a11f4be3ae": "pass"
+    },
+    "counts": {
+      "records": 41,
+      "goals": 5,
+      "attempts": 7,
+      "receipts": 4,
+      "outcomes": 4,
+      "events": 19
+    },
+    "reports": 19
+  },
+  "canonical_repair": false
+}

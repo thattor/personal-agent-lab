@@ -16,7 +16,7 @@ Stable-0 may be declared only when all REQUIRED rows are PASS with evidence and 
 | S0-10 | yes | One official real provider path works with an already-authorized account and verified no-additional-charge condition | [official access/cost proof and live smoke](evidence/live/2026-10-06-clean/result.json); [actual draft](evidence/live/2026-10-06-clean/draft.txt); [native boundary tests](tests/test_native.py) | PASS |
 | S0-11 | yes | Failure/blocked/unverified states are reported; no silent success and no infinite retry | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
 | S0-12 | yes | UI exposes conversation result and read-only inspect state sufficiently to diagnose Goal/Attempt/evidence | [actual Chrome smoke](evidence/ui/browser-smoke.md); [canonical readback](evidence/ui/browser-state.json); [HTTP tests](tests/test_http.py) | PASS |
-| S0-13 | yes | 72-hour soak completes with zero manual canonical-state repair | [fresh bilingual soak03 baseline/start](evidence/soak/2026-10-07/start-03.json); [retained previous receipt/reset](evidence/soak/2026-10-07/soak02-human-and-reset.json) | in_progress (soak03: 10 turns, 2 sessions, 5 Goals; restart/cancel/correction verified; time/remaining turns/session pending) |
+| S0-13 | no (historical D-019) | 72-hour soak completes with zero manual canonical-state repair | [fresh bilingual soak03 baseline/start](evidence/soak/2026-10-07/start-03.json); [retained previous receipt/reset](evidence/soak/2026-10-07/soak02-human-and-reset.json) | in_progress (soak03: 10 turns, 2 sessions, 5 Goals; restart/cancel/correction verified; time/remaining turns/session pending) |
 
 ## Required automated scenarios
 At minimum:
@@ -38,7 +38,8 @@ Use synthetic/non-secret data. Record provider/model/adapter capability, start/e
 
 A mock pass does not satisfy S0-10.
 
-## 72-hour soak
+## Historical 72-hour soak — optional after D-019
+The original criterion below remains historical NOT PASS; D-019 removes its time/turn/session quotas from completion gates. Preserve runs and never reclassify unmet evidence as PASS.
 Start only after S0-01 through S0-12 are PASS.
 
 Minimum workload:
@@ -119,3 +120,19 @@ Soak03 [human correction and revision fencing evidence](evidence/soak/2026-10-07
 Soak03 [second directly confirmed session and fifth Goal](evidence/soak/2026-10-07/soak03-human-session-02.json): 10 turns / 2 sessions / 5 Goals, restart/cancel/correction verified. S0-13 remains in_progress: >=20 turns, >=3 sessions, >=72h human span and elapsed soak still required.
 
 2026-10-07 user-requested Opus/Astra reconsideration: [D-018 proposal, NOT adopted](DECISIONS.md). Functional real-provider UI acceptance is recommended before time quotas; existing acceptance definition/status remains unchanged pending one explicit user decision. Mock UI and quality_claim:none smoke do not prove semantic usefulness; no long-term PASS claimed.
+
+## Functional acceptance — fixed before live execution, D-019
+Required rows below are additions, not retrospective claims about mock/transport evidence. Synthetic test facts only. Actual public loopback UI/API and official provider route must run; preserve exact input/response/artifact/host receipts, provider/bounds/version and no-extra-charge proof. Automated content checks are not human usefulness evidence. Human evaluates this finite set once; no turn/session quotas.
+
+| ID | Required | Fixed scenario and expected behavior | Evidence | Status |
+|---|---|---|---|---|
+| F0-01 | yes | Ordinary Japanese conversation gets relevant Japanese answer and creates no Goal. | pending | not_run |
+| F0-02 | yes | Remember synthetic project name Cedar and recipient Mika; later recall returns both using usable source context. | pending | not_run |
+| F0-03 | yes | Create Japanese local thank-you draft for Mika about Cedar, 2 sentences, no sending: actual artifact includes Mika/Cedar, fits requested purpose/constraints, host receipt/hash valid. | pending | not_run |
+| F0-04 | yes | Correct the active draft to project Birch; old Attempt/result fenced, revised artifact includes Birch and excludes superseded Cedar, criteria stay fixed. | pending | not_run |
+| F0-05 | yes | Remember unique synthetic fact; explicitly forget its exact source, retained raw history inspectable but source/note absent from subsequent model prompt; recall does not reproduce unique fact. | pending | not_run |
+| F0-06 | yes | Status response reflects canonical state; cancel blocks late result; pause/resume and bound input-resume work exactly once. Deterministic fault tests plus actual UI control/status evidence, not model state claims. | pending | not_run |
+| F0-07 | yes | Explicit real-provider UI requires fresh official Pro proof and bounded call budget; expiry/exhaustion/auth failure visible, no fallback, mock never silently substitutes live. Default startup stays mock. | pending | not_run |
+| F0-08 | yes | Direct human evaluation of real UI scenario set confirms conversation/recall/draft/correction usefulness; any failure remains inspectable and is fixed/retested. | pending | human_pending |
+
+Final completion: every required S0/F0 row PASS with actual evidence, final full regression suite PASS, exact version/limitations, update STATE and master Issue #1. Long-term observation/sleep/auth refresh reliability remain explicitly unproven unless separately recorded. S0-13 is not a blocking row and remains historical unmet.
