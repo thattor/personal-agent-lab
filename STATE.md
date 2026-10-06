@@ -4,7 +4,7 @@
 Reach Stable-0 as defined in ACCEPTANCE.md. Stable-0 is **incomplete**.
 
 ## Current phase
-S0-01 through S0-12 PASS. Official tool-free native smoke and actual Chrome UI evidence complete. S0-13 soak01 was invalidated by a reproduced stale UI warning and is retained/stopped; the fix is verified and a fresh soak02 baseline is ready. Stable-0 remains incomplete.
+S0-01 through S0-12 PASS. Official tool-free native smoke and actual Chrome UI evidence complete. S0-13 soak01 was invalidated by a reproduced stale UI warning and is retained/stopped; the fix is verified and fresh soak02 is running. Stable-0 remains incomplete.
 
 ## Working checkout
 `/private/tmp/personal-agent-lab-stable0-20261006`, same private GitHub repository, remote origin/main. Original supplied untracked workspace preserved. No old implementation/schema was reused; the accidental startup metadata inspection is explicitly recorded in docs/DEFECTS.md. Do not inspect it again.
@@ -13,14 +13,14 @@ S0-01 through S0-12 PASS. Official tool-free native smoke and actual Chrome UI e
 55 integrated tests PASS: [full log](evidence/tests/ui-native-soak-full.txt), [actual monitor preflight](evidence/tests/soak-preflight-summary.json). Controls/input/pause/resume real SIGKILL fault coverage, independent lanes, typed host-only capabilities, original-request dedupe/fate lookup, native lifetime supervision and secret-free OS auth environment. [Clean live smoke](evidence/live/2026-10-06-clean/result.json): 3 official Claude Pro calls, tools/MCP empty, no extra-charge/fallback/new login, actual 276-byte host-verified draft. [Browser smoke](evidence/ui/browser-smoke.md): conversation/draft/inspect/restart/session receipt. Prior failed/partial live attempts are preserved and do not count as PASS.
 
 ## Active soak
-Old runtime/soak-20261006-01 retained, explicitly INVALIDATED after direct human UI finding. Supported monitor stop appended reset_required; original DB/history and human/restart evidence preserved. [Finding and verified canonical recovery](evidence/soak/2026-10-06/ui-recovery-finding.json). UI fix clears recovered state-fetch warnings, preserving message failures. [Actual JS red/green probe](evidence/ui/recovery/after.txt), [55-test full suite](evidence/tests/ui-recovery-full.txt). No canonical repair. New run runtime/soak-20261007-02 will start from this clean committed baseline on loopback port58500. No previous human counts, time or restart proof transferred.
+Old runtime/soak-20261006-01 retained, explicitly INVALIDATED after direct human UI finding. Supported monitor stop appended reset_required; original DB/history and human/restart evidence preserved. [Finding and verified canonical recovery](evidence/soak/2026-10-06/ui-recovery-finding.json). UI fix clears recovered state-fetch warnings, preserving message failures. [Actual JS red/green probe](evidence/ui/recovery/after.txt), [55-test full suite](evidence/tests/ui-recovery-full.txt). No canonical repair. New run runtime/soak-20261007-02 started 2026-10-07T06:08:30.879116+09:00 from baseline 37b33dbf8a7d2df1b710e3e8b9d8b4dcffffbc9e on loopback port58500; monitor PID96212/app PID96214. [Fresh start](evidence/soak/2026-10-07/start-02.json). No previous human counts, time or restart proof transferred.
 
 ## Exact next action
-Launch fresh soak02, verify owned health/hash chain and record baseline. Then human reloads conversation UI (new session/fixed JS/fresh data), sends one ordinary message, supplies Session receipt and explicit human-input confirmation. Register ONLY that newly confirmed session before the first draft so unfinished restart is armed. Accumulate >=20 human turns / >=3 sessions spanning >=72 hours / >=5 human Goals / cancel / correction or reference-stop. No scripted substitute or self-attestation.
+Fresh soak02 health/hash chain verified. Human reloads conversation UI (new session/fixed JS/fresh data), sends one ordinary message, supplies Session receipt and explicit human-input confirmation. Register ONLY that newly confirmed session before the first draft so unfinished restart is armed. Accumulate >=20 human turns / >=3 sessions spanning >=72 hours / >=5 human Goals / cancel / correction or reference-stop. No scripted substitute or self-attestation.
 When an anchored candidate qualifies, perform final full suite, acceptance/controller audit, historical-chain verification, evidence commit/push and Issue closure. Stable-0 remains incomplete.
 
 ## Acceptance status
-S0-01–12 PASS with evidence. S0-13 reset_required (fresh baseline ready). Master Issue #1 open; no Stable-0 declaration.
+S0-01–12 PASS with evidence. S0-13 in_progress (soak02 human_pending). Master Issue #1 open; no Stable-0 declaration.
 
 ## Human participation requirement
 D-016/Opus explicitly rejects substituting scripted traffic for user turns. The user must type >=20 turns in >=3 sessions spanning >=72 hours, create >=5 Goals, cancel once and correct/reference-stop once. Monitor may perform the supported unfinished restart and read-only checks. Preparing this concrete environment requires no new auth, broader permission, payment or public exposure. An autonomous-only substitute would change accepted evidence meaning and requires the user's judgment.
@@ -51,3 +51,5 @@ The exact monitor/app processes remain live and unchanged; local measurement and
 
 ## UI recovery defect correction
 2026-10-07: direct human test proved unfinished restart and single draft completion; screenshot also exposed stale outage warning. Deterministic actual-JS failure→success probe reproduced and verified the minimal fix. Existing design preserved; routine UI fix exemption applies. Soak01 intentionally invalidated, not repaired or silently continued; fresh baseline/run required under D-016/D-017. Earlier active-host, counts, next-action and blocked notes above are historical and superseded by the current phase/active soak sections.
+
+Fresh soak02 startup verified healthy, source/versions captured, initial fsync chain valid and human counts zero. Hourly operational automation updated to active soak02; old run explicitly excluded. The user must reload the conversation page to load fixed JavaScript and establish a new UI session. Previous screenshots/receipts are retained as historical defect/recovery evidence only. No old attestation was copied.
