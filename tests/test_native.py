@@ -196,8 +196,13 @@ class BoundedNativeTests(unittest.TestCase):
                         response=runtime.submit('chat','Hello')['response'].result(timeout=2)
                         self.assertIn('Conversation provider unavailable',response['content'])
                         draft=runtime.submit('draft','Make a draft')
-                        self.assertTrue(runtime.idle.wait(2))
-                        self.assertEqual(runtime.store.get_goal(draft['goal']['id'])['state'],'failed')
+                        # idle is a worker hint, not a per-Goal completion receipt.
+                        deadline=time.monotonic()+2
+                        goal=runtime.store.get_goal(draft['goal']['id'])
+                        while goal['state'] in ('queued','running') and time.monotonic()<deadline:
+                            time.sleep(.01)
+                            goal=runtime.store.get_goal(draft['goal']['id'])
+                        self.assertEqual(goal['state'],'failed')
                         self.assertEqual(runtime.store.inspect()['receipts'],[])
                         self.assertNotEqual(runtime.provider.identity,'mock')
                         self.assertEqual(call.call_count,2 if reason=='auth' else 0)

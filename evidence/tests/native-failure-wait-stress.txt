@@ -1,0 +1,25 @@
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 1.588s
+
+OK
