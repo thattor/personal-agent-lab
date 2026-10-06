@@ -152,3 +152,5 @@ Response-style revision ccfba35: [66-test full regression](evidence/tests/human-
 Revised real response content checks [PASS on ccfba35](evidence/functional/feedback-20261007-02/README.md): direct-question conversation, host memory explanation and grounded2-sentence drafts. These are automated real-provider results; F0-08 awaits direct revised human usefulness confirmation.
 
 Revised-output continuation audit: [owned host/read-only canonical invariants/evidence-link checks](evidence/functional/feedback-20261007-02/continuation-audit.json) and [66 tests PASS](evidence/tests/feedback-continuation-audit-full.txt). Human window has presented revised outputs; no direct revised verdict yet. F0-08 remains pending; no Stable promotion.
+
+Revised evaluation blocked audit: F0-08 remains human_pending, with no direct revised-output verdict. [Current blocker and exact release condition](evidence/operations/revised-evaluation-blocked-audit.json). No acceptance criterion or PASS status changed.

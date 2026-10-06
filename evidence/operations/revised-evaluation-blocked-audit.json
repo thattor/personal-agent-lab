@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-10-06T23:29:48.996151+00:00",
+  "judgment_id": "F0-08",
+  "target_version": "ccfba35",
+  "human_thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "latest_turn": "01a1138a-84e9-72b3-b092-987fde75c2aa",
+  "latest_turn_status": "completed",
+  "thread_status": "idle",
+  "new_direct_human_answer": false,
+  "consecutive_pending_goal_turns_at_least": 3,
+  "classification": "genuine human evaluation blocker, not a live process wait",
+  "independent_work": "Previously completed regression and evidence audit; no remaining independent accepted implementation slice identified.",
+  "release_condition": "Direct human revised usefulness answer for ccfba35, or concrete mismatch requiring development.",
+  "next_action": "Read and preserve the authentic answer; fix/revalidate mismatch or perform final full suite, acceptance/version/limitations audit and master Issue closure.",
+  "canonical_writes": false,
+  "provider_calls": 0,
+  "stable_complete": false,
+  "scheduler_changed": false,
+  "tests": {
+    "full_suite": "PASS, 66 tests",
+    "evidence": "evidence/tests/revised-evaluation-blocked-full-authorized.txt",
+    "restricted_attempt": "evidence/tests/revised-evaluation-blocked-full.txt",
+    "restricted_failure": "Seven HTTP setup errors: sandbox denied loopback bind; authorized rerun passed."
+  }
+}
