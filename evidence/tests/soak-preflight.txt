@@ -1,0 +1,2 @@
+{"human_minimums":"20 turns, 3 attested sessions across 72h, 5 Goals, cancel, correction/reference-stop","mode":"preflight","run":"/private/tmp/personal-agent-lab-stable0-20261006/runtime/preflight-20261006-f","url":"http://127.0.0.1:58501"}
+{"log_head":"8e2d4d554bbf8a759b8a6077cbd3fc067f604ea89fd8b53055c5adf458beaa15","status":"PREFLIGHT_COMPLETE"}

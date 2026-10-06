@@ -36,3 +36,6 @@ Fix/prevention: Runtime captures original sanitized text and explicit client Goa
 
 ## Browser receipt translation
 2026-10-06: Chrome automatically translated JSON field names/punctuation inside the session receipt, making copied text invalid JSON. This was observed through the browser DOM, not inferred from a screenshot. Added `translate="no"` and `notranslate` to the receipt, with HTTP assertion; browser recheck must show unchanged JSON. Ordinary UI text may still be translated. Synthetic browser sessions never count as human soak use.
+
+## Monitor edit syntax caught by preflight
+2026-10-06: A broad textual replacement while adding reconciliation misindented the second snapshot block. Preflight failed before starting any process/DB/soak. The library suite had passed because it did not import the entry script. Corrected the block; the attestation/atomic-export contract test now imports the actual monitor script, so this syntax gap is covered in the full suite. Continue to require the separate process preflight for lifecycle behavior.

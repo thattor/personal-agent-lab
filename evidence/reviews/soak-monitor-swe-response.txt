@@ -1,0 +1,54 @@
+Reviewed against D-016. Findings ordered by severity; each with the smallest fix.
+
+## Blocking — run dies or the verdict can't stand
+
+**1. Canary scan self-destructs on `pal.db`**
+The canary is sent through `/api/message`, so it is legitimately persisted in `run/pal.db` (and `-wal`/`-shm`). The scan iterates all of `run/` excluding only `monitor.lock`, so the first probe (`last_probe==0`, fires on the first loop iteration) raises `secret canary leak`. Soak *and* preflight die within ~1s.
+*Fix:* scan an allowlist — `app.log`, `measurements.jsonl`, `manifest.json`, `candidate.json` — rather than `iterdir()` minus lock. Allowlist also covers future files (attestation, `-wal`, `-shm`, `-journal`).
+
+**2. No terminal success state; evidence self-invalidates**
+Any soak-mode stop appends `reset_required`, so `candidate()` over the finished log is always `FAIL`. And `log[-1]['utc'] >= now-600` means post-hoc evaluation can never reach `S0-13-CANDIDATE` anyway. The only PASS artifact is `candidate.json`, which is unanchored — no seq/head binding it to `measurements.jsonl` — and freely rewritable.
+*Fix:* (a) when status first flips to `S0-13-CANDIDATE`, append a `soak_candidate` event into the chain carrying counts, attestation digest, and the log head; (b) include `{seq, sha256}` in every `candidate.json` write; (c) emit `reset_required` on stop only if no `soak_candidate` exists; (d) express freshness as a property of that qualifying event, not of evaluation-time `now`.
+
+**3. Attestation file is unanchored and a parse race is fatal**
+`json.loads(attestation_path.read_text())` runs inside the probe on a human-edited file: a partial save → `JSONDecodeError` → `failure` → 72h void. Its content also drives the verdict yet is never committed to the chain — post-hoc edits are undetectable and the verdict can't be re-derived.
+*Fix:* try/except around the parse (keep last-good, note `attestation_parse_error` in the measurement row); on content change, append an `attestation` event with sha256 of the raw bytes and parsed `session_ids`.
+
+**4. Restart can bind to a session the human never attests → unrecoverable PENDING**
+In soak, `planned_restart` fires on the first `ui:` draft attempt — likely before any attestation exists. If that session is never attested, `planned_restart_verified` exists but the candidate's session term never holds, and `restart_done` blocks a second qualifying attempt. Result: silent permanent PENDING, 72h wasted.
+*Fix:* arm the restart only once an attestation file exists, and choose the draft key only from attested sessions (humans attest sessions as they occur). Minimum if you keep current arming: emit a distinct `restart_session_unattested` reason instead of silent PENDING.
+
+## Serious — contract coverage gaps
+
+**5. "Every 5 min checks" is never proven**
+Nothing verifies measurement cadence across the window. A ≤900 s gap (SIGSTOP, IO stall) slips under the `wall>900` pmset gate; a mid-run monitor outage leaves no finding. The evidence cannot demonstrate continuous observation.
+*Fix:* in `candidate()`, walk `measurement` events and require max inter-measurement `utc` gap ≤600 s over `[started_at, last]`, first measurement within 600 s of `started_at`.
+
+**6. Canonical-repair detection is thin**
+`expected` pins only dedupe ingress ops (4 fields). Deleting or rewriting any other previously-seen row — record text, an event row, an orphan receipt, an attempt's terminal fields — is invisible; wholesale `pal.db` replacement preserving dedupe rows is invisible; inode swap is invisible. "No canonical repair" currently rests on almost nothing.
+*Fix:* extend `expected` to per-table `{id: digest(row)}` for append-mostly tables (`records`, `receipts`, `outcomes`, `events`, `dedupe`, `acceptances`) and require previously-seen ids present and byte-identical; for `goals`/`attempts`, verify only legal transitions (status, revision/epoch monotonic). Optionally record `pal.db` `(st_ino, st_mtime)` per measurement and flag inode change. If canonical `events` is itself hash-chained, verify the chain — it's currently only counted.
+
+**7. Missing reverse invariants**
+- Pass attempt / completed goal with *no* matching pass outcome is never checked (only outcome→attempt direction).
+- `planned_restart_verified` asserts old attempt abandoned + epoch bump but never asserts a *new running attempt* exists for the goal — "same Goal recovery" is unproven if epoch bumps with nothing resumed.
+- The verified event omits `new_attempt_id` and the ACK digests (`'original_ack':True` is a bare claim).
+*Fix:* assert pass-outcome ⇔ attempt-pass ⇔ goal-completed correspondence; after restart require exactly one new running attempt with `epoch == goal['epoch']` and log its id plus `digest(original)`/`digest(replay)`.
+
+**8. Counting nits**
+`{v['goal_id'] for ... if v['intent']=='draft'}` counts `None` as a goal — a draft op without a goal inflates the count by one. Filter `if v['goal_id']`. Also verify the app actually emits action values `cancel`/`correct`/`forget` — if "reference-stop" is emitted as e.g. `reference_stop`, `correct_or_forget` can never reach 1 → permanent PENDING with no signal.
+
+## Robustness — won't block a clean run, will kill real ones
+
+**9. Single transient failure loses 72 h.** `urlopen(timeout=5)` blips, `pmset` timeout, a file vanishing under `iterdir()` mid-scan → `failure` → reset. Add one short retry for health/snapshot/HTTP probes; keep hard-fail only for invariant violations.
+
+**10. Clock-step handling.** `abs(wall-awake)>30` without pmset Sleep+Wake → reset. Failing closed is correct (a forward wall step could fake `elapsed`), but a legitimate NTP step nukes the run. Keep fail-closed, but distinguish the finding (`uptime` agrees, wall jumps = clock step vs suspend) so resets are diagnosable; a `CLOCK_MONOTONIC` cross-check separates the cases.
+
+**11. `git status --porcelain` gate.** Confirm `runtime/` is gitignored, else the first run dir blocks every subsequent soak start. Also `baseline()` covers only `pal/` + the monitor script — drift in anything else the app loads is invisible; hash the full tracked tree or document the scope.
+
+**12. Small stuff.** `/api/operation/'+key` unquoted — `[^:]+` admits `/ ? #`, use `quote(key, safe='')`. `candidate.json`/`manifest.json` non-atomic writes — tmp+rename. `planned_restart_race` still performs a real app restart, so evidence can show >1 restart vs "single supported planned restart" — either contract-tolerated or gate on attempt age (e.g., trigger only when attempt age < ~3 s of the 10 s delay). Verify `/api/operation/{key}['result']` shape actually equals the `/api/message` response for the ACK equality check. A second SIGTERM in `finally` can mask the original exception.
+
+## Inherent (note, not fixable in code)
+
+Attestation is the only thing distinguishing "human-typed" from script-injected `ui:` turns in an attested session — that's the contract's trust model, not a defect. Cheap corroboration available: the unused 13-digit ms in the key could be checked against `observed_at` (reject keys whose embedded timestamp predates monitor start or skews badly) to catch pre-fabricated/replayed keys.
+
+Priority order: **1** (nothing runs), **2–3** (evidence can't carry a PASS), **4** (72h silently unwinnable), then **5–7** to make the contract claims real.

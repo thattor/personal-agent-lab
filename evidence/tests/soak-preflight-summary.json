@@ -1,0 +1,13 @@
+{
+  "mode": "PREFLIGHT_ONLY",
+  "can_satisfy_S0_13": false,
+  "planned_restart": "verified",
+  "same_goal": "completed",
+  "old_attempt": "abandoned",
+  "new_attempt": "307ddd3076fc4d2999c1fafaa744fe20",
+  "ack_digest_match": true,
+  "outcomes": 1,
+  "receipts": 1,
+  "canonical_repairs": 0,
+  "log_head": "8e2d4d554bbf8a759b8a6077cbd3fc067f604ea89fd8b53055c5adf458beaa15"
+}

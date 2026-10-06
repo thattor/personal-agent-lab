@@ -1,0 +1,380 @@
+Review this concrete Stable-0 mock soak monitor implementation for holes only. Existing contract D-016: actual 72h wall clock; 20 human-typed UI turns, 3 human-attested sessions spanning >=72h, 5 human Goals, cancel and correction/reference-stop. Scripted turns never count. Single supported planned restart during unfinished human Goal, original ACK replay and same Goal recovery; independent read-only hash-chained probe, no canonical repair, every5min clock/health/receipt checks, failures reset. Preflight cannot count. No paid fallback/new auth/public network/model tool calls. Identify blocking defects with smallest fixes. Do not modify files or access other directories.
+
+"""Read-only soak measurement and verifier. No model or canonical-write capability."""
+import hashlib
+import json
+import platform
+import re
+import sqlite3
+import time
+from pathlib import Path
+from urllib.parse import quote
+
+HOURS_72 = 72 * 60 * 60
+
+
+def canonical(value):
+    return json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False)
+
+
+def digest(value):
+    return hashlib.sha256(canonical(value).encode()).hexdigest()
+
+
+class EvidenceLog:
+    def __init__(self,path):
+        self.path=Path(path)
+        self.records=self.read(self.path)
+
+    @staticmethod
+    def read(path):
+        if not Path(path).exists():
+            return []
+        records=[]
+        previous='0'*64
+        for line in Path(path).read_text().splitlines():
+            row=json.loads(line)
+            checksum=row.pop('sha256')
+            if row.get('seq')!=len(records)+1 or row.get('previous')!=previous or digest(row)!=checksum:
+                raise RuntimeError('soak evidence chain invalid')
+            row['sha256']=checksum
+            records.append(row)
+            previous=checksum
+        return records
+
+    def append(self,event,data):
+        import os
+        row={'seq':len(self.records)+1,'previous':self.records[-1]['sha256'] if self.records else '0'*64,'utc':time.time(),'uptime_raw':time.clock_gettime(time.CLOCK_UPTIME_RAW),'event':event,'data':data}
+        row['sha256']=digest(row)
+        self.path.parent.mkdir(parents=True,exist_ok=True)
+        with self.path.open('a') as stream:
+            stream.write(canonical(row)+'\n')
+            stream.flush()
+            os.fsync(stream.fileno())
+        self.records.append(row)
+        return row
+
+
+def baseline(repo,profile):
+    repo=Path(repo)
+    files=[p for p in (repo/'pal').rglob('*') if p.is_file() and p.suffix in ('.py','.js','.css','.html')]
+    files.append(repo/'scripts'/'soak_monitor.py')
+    return {'python':platform.python_version(),'profile':profile,'schema_version':1,'files':{str(p.relative_to(repo)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}}
+
+
+def readonly_snapshot(path):
+    path=Path(path).resolve()
+    db=sqlite3.connect('file:'+quote(str(path),safe='/')+'?mode=ro',uri=True)
+    db.row_factory=sqlite3.Row
+    try:
+        db.execute('PRAGMA query_only=ON')
+        db.execute('BEGIN')
+        integrity=db.execute('PRAGMA quick_check').fetchone()[0]
+        if integrity!='ok':
+            raise RuntimeError('canonical integrity check failed')
+        names=('records','goals','attempts','receipts','outcomes','acceptances','events','dedupe')
+        result={name:[dict(r) for r in db.execute('SELECT * FROM '+name)] for name in names}
+        blobs={r['id']:bytes(r['body']) for r in db.execute('SELECT id,body FROM artifacts')}
+        result['blob_checks']={k:{'hash':hashlib.sha256(v).hexdigest(),'size':len(v),'utf8':valid_utf8(v)} for k,v in blobs.items()}
+        return result
+    finally:
+        db.close()
+
+
+def valid_utf8(body):
+    try:
+        text=body.decode('utf-8',errors='strict')
+        return bool(text.strip()) and '\x00' not in text and not text.startswith('\ufeff')
+    except UnicodeError:
+        return False
+
+
+def check_snapshot(data,expected=None):
+    records={r['id']:r for r in data['records']}
+    goals={g['id']:g for g in data['goals']}
+    attempts={a['id']:a for a in data['attempts']}
+    criteria={a['id']:json.loads(a['criteria']) for a in data['acceptances']}
+    receipts={r['id']:r for r in data['receipts']}
+    if len([a for a in attempts.values() if a['status']=='running'])>1:
+        raise RuntimeError('multiple active execution slots')
+    for a in attempts.values():
+        g=goals[a['goal_id']]
+        if a['status']=='running' and (g['state']!='running' or a['revision']!=g['revision'] or a['epoch']!=g['epoch']):
+            raise RuntimeError('stale active Attempt')
+    for receipt in receipts.values():
+        attempt=attempts[receipt['attempt_id']]
+        blob=data['blob_checks'][receipt['artifact_id']]
+        cap=criteria[attempt['acceptance_id']]['max_bytes']
+        if not blob['utf8'] or blob['hash']!=receipt['hash'] or blob['size']!=receipt['size'] or blob['size']>cap or receipt['epoch']!=attempt['epoch'] or receipt['revision']!=attempt['revision']:
+            raise RuntimeError('invalid host evidence binding')
+    completed=set()
+    for outcome in data['outcomes']:
+        if outcome['check_status']=='pass':
+            attempt=attempts[outcome['attempt_id']]
+            goal=goals[attempt['goal_id']]
+            if attempt['status']!='pass' or goal['state']!='completed' or attempt['revision']!=goal['revision'] or attempt['epoch']!=goal['epoch'] or outcome['receipt_id'] not in receipts or goal['id'] in completed:
+                raise RuntimeError('stale or duplicate completion')
+            completed.add(goal['id'])
+    source_events=[r['source_event_id'] for r in records.values() if r['source_event_id']]
+    if len(source_events)!=len(set(source_events)):
+        raise RuntimeError('duplicate local report')
+    ops={}
+    for operation in data['dedupe']:
+        if operation['kind']!='ingress':
+            continue
+        value=json.loads(operation['result'])
+        goal=value.get('goal')
+        if value['record_id'] not in records or (goal and goal['id'] not in goals):
+            raise RuntimeError('lost accepted ingress')
+        ops[operation['key']]={'record_id':value['record_id'],'goal_id':goal['id'] if goal else None,'intent':value['intent'],'action':value.get('action')}
+    if expected and any(key not in ops or ops[key]!=value for key,value in expected.items()):
+        raise RuntimeError('lost or changed previously observed accepted operation')
+    return {'ops':ops,'goal_states':{g['id']:g['state'] for g in goals.values()},'attempt_statuses':{a['id']:a['status'] for a in attempts.values()},'counts':{name:len(data[name]) for name in ('records','goals','attempts','receipts','outcomes','events')},'reports':len(source_events)}
+
+
+def human_counts(ops,attestation,observed_at=None):
+    # Namespace is corroboration, not an assertion of humanity. Require direct user attestation.
+    sessions=set(attestation.get('session_ids',[])) if attestation.get('source')=='direct_user_attestation' else set()
+    turns=[]
+    for key,value in ops.items():
+        match=re.fullmatch(r'ui:([^:]+):(\d{13}):([^:]+)',key)
+        if match and match.group(1) in sessions:
+            timestamp=(observed_at or {}).get(key)
+            if timestamp is not None:
+                turns.append((match.group(1),timestamp,value))
+    observed={s for s,_,_ in turns}
+    times=[timestamp for _,timestamp,_ in turns]
+    return {'sessions':sorted(observed),'turns':len(turns),'goals':len({v['goal_id'] for _,_,v in turns if v['intent']=='draft'}),'cancel':sum(v['action']=='cancel' for _,_,v in turns),'correct_or_forget':sum(v['action'] in ('correct','forget') for _,_,v in turns),'first_at':min(times) if times else None,'last_at':max(times) if times else None}
+
+
+def candidate(manifest,log,summary,attestation,now=None):
+    now=time.time() if now is None else now
+    if not log or log[0]['event']!='baseline' or log[0]['data']['manifest_hash']!=digest(manifest):
+        raise RuntimeError('manifest/log baseline mismatch')
+    if any(r['event'] in ('failure','reset_required') for r in log):
+        return {'status':'FAIL','reason':'soak finding or reset recorded'}
+    if manifest['mode']!='soak':
+        return {'status':'PREFLIGHT_ONLY','can_satisfy_S0_13':False}
+    observed_at={}
+    for row in log:
+        if row['event']=='ingress_observed':
+            for key in row['data']['keys']:
+                observed_at.setdefault(key,row['utc'])
+    counts=human_counts(summary['ops'],attestation,observed_at)
+    elapsed=now-manifest['started_at']
+    span=(counts['last_at']-counts['first_at']) if counts['first_at'] is not None else 0
+    restart=any(r['event']=='planned_restart_verified' and r['data'].get('key','').split(':')[1:2] in [[s] for s in counts['sessions']] for r in log)
+    enough=counts['turns']>=20 and len(counts['sessions'])>=3 and counts['goals']>=5 and counts['cancel']>=1 and counts['correct_or_forget']>=1
+    result={'status':'PENDING_HUMAN_OR_TIME','elapsed_seconds':elapsed,'required_seconds':HOURS_72,'human_session_span_seconds':span,'human':counts,'planned_restart_verified':restart,'manual_canonical_repairs':0,'live_provider_reliability_claim':False}
+    if elapsed>=HOURS_72 and span>=HOURS_72 and enough and restart and log[-1]['utc']>=now-600:
+        result['status']='S0-13-CANDIDATE'
+    return result
+
+
+#!/usr/bin/env python3
+"""Owned loopback mock host + readonly, wall-clock soak measurements. No model calls."""
+import argparse
+import fcntl
+import hashlib
+import json
+import os
+import re
+import signal
+import subprocess
+import sys
+import time
+import urllib.request
+import uuid
+from pathlib import Path
+
+REPO=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(REPO))
+from pal.soak import EvidenceLog,baseline,canonical,candidate,check_snapshot,digest,readonly_snapshot
+
+
+def request(base,path,body=None):
+    data=canonical(body).encode() if body is not None else None
+    req=urllib.request.Request(base+path,data=data,headers={'Origin':base,'Content-Type':'application/json'})
+    with urllib.request.urlopen(req,timeout=5) as response:
+        return json.load(response)
+
+
+def boot_time():
+    return subprocess.check_output(['/usr/sbin/sysctl','-n','kern.boottime'],text=True).strip()
+
+
+def sleep_events(started_at):
+    # Store only relevant power-event timestamps/labels, never general host history.
+    text=subprocess.check_output(['/usr/bin/pmset','-g','log'],text=True,timeout=20)
+    rows=[]
+    for line in text.splitlines():
+        match=re.match(r'^(\d{4}-\d\d-\d\d \d\d:\d\d:\d\d [+-]\d{4})\s+(Sleep|Wake|DarkWake)\s',line)
+        if match:
+            stamp=time.mktime(time.strptime(match.group(1)[:19],'%Y-%m-%d %H:%M:%S'))
+            if stamp>=started_at:
+                rows.append({'utc':stamp,'kind':match.group(2)})
+    return rows
+
+
+def start_app(run,port):
+    stream=(run/'app.log').open('ab')
+    app=subprocess.Popen([sys.executable,'-m','pal.server','--db',str(run/'pal.db'),'--port',str(port),'--mock-task-delay','10'],cwd=str(REPO),stdout=stream,stderr=stream)
+    stream.close()
+    base=f'http://127.0.0.1:{port}'
+    for _ in range(100):
+        if app.poll() is not None:
+            raise RuntimeError('owned host failed startup; inspect app.log')
+        try:
+            health=request(base,'/api/health')
+            if health['pid']!=app.pid:
+                raise RuntimeError('port belongs to another process')
+            return app,health
+        except OSError:
+            time.sleep(.1)
+    app.terminate()
+    app.wait(timeout=10)
+    raise RuntimeError('host startup timed out')
+
+
+def stop_app(app):
+    if app and app.poll() is None:
+        app.send_signal(signal.SIGTERM)
+        app.wait(timeout=15)
+
+
+def planned_restart(app,run,port,log,summary):
+    data=readonly_snapshot(run/'pal.db')
+    active=next((a for a in data['attempts'] if a['status']=='running'),None)
+    if not active:
+        return app,None
+    key=next((k for k,v in summary['ops'].items() if v['intent']=='draft' and v['goal_id']==active['goal_id'] and (k.startswith('ui:') or log.records[0]['data']['mode']=='preflight')),None)
+    if not key:
+        return app,None
+    record_id=summary['ops'][key]['record_id']
+    text=next(r['content'] for r in data['records'] if r['id']==record_id)
+    base=f'http://127.0.0.1:{port}'
+    original=request(base,'/api/operation/'+key)['result']
+    log.append('planned_restart_intent',{'key':key,'attempt_id':active['id'],'goal_id':active['goal_id'],'epoch':active['epoch'],'pid':app.pid})
+    stop_app(app)
+    stopped=readonly_snapshot(run/'pal.db')
+    old=next(a for a in stopped['attempts'] if a['id']==active['id'])
+    app,health=start_app(run,port)
+    if old['status']!='running':
+        log.append('planned_restart_race',{'reason':'Attempt ended before shutdown; not qualifying','key':key})
+        return app,health
+    replay=request(base,'/api/message',{'key':key,'text':text})
+    if replay!=original:
+        raise RuntimeError('restart replay ACK changed')
+    recovered=readonly_snapshot(run/'pal.db')
+    old=next(a for a in recovered['attempts'] if a['id']==active['id'])
+    goal=next(g for g in recovered['goals'] if g['id']==active['goal_id'])
+    if old['status']!='abandoned' or goal['epoch']<=active['epoch'] or len([g for g in recovered['goals'] if g['id']==goal['id']])!=1:
+        raise RuntimeError('unfinished restart did not fence/resume same Goal')
+    check_snapshot(recovered,summary['ops'])
+    log.append('planned_restart_verified',{'key':key,'old_attempt':active['id'],'old_epoch':active['epoch'],'new_epoch':goal['epoch'],'same_goal':goal['id'],'original_ack':True,'old_status':old['status'],'new_host':health})
+    return app,health
+
+
+def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--run',required=True,help='fresh run directory inside repository runtime/')
+    parser.add_argument('--mode',choices=('soak','preflight'),default='soak')
+    parser.add_argument('--port',type=int,default=58500)
+    parser.add_argument('--preflight-seconds',type=int,default=25)
+    args=parser.parse_args()
+    run=Path(args.run).resolve()
+    if REPO/'runtime' not in run.parents or run.exists():
+        parser.error('run must be a fresh directory inside repository runtime/')
+    profile={'provider':'mock','task_delay_seconds':10,'bind':'127.0.0.1','port':args.port}
+    if args.mode=='soak':
+        if subprocess.check_output(['git','status','--porcelain'],cwd=str(REPO)).strip():
+            parser.error('soak requires a clean committed baseline')
+        acceptance=(REPO/'ACCEPTANCE.md').read_text()
+        for number in range(1,13):
+            row=next((line for line in acceptance.splitlines() if line.startswith(f'| S0-{number:02d} |')),'')
+            if not row.endswith('| PASS |'):
+                parser.error('S0-01 through S0-12 must all be PASS')
+    run.mkdir(parents=True)
+    lock=(run/'monitor.lock').open('w')
+    fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+    app=None
+    log=EvidenceLog(run/'measurements.jsonl')
+    stopping=False
+    def stop(*_):
+        nonlocal stopping
+        stopping=True
+    signal.signal(signal.SIGTERM,stop)
+    signal.signal(signal.SIGINT,stop)
+    try:
+        app,health=start_app(run,args.port)
+        manifest={'mode':args.mode,'started_at':time.time(),'git_head':subprocess.check_output(['git','rev-parse','HEAD'],cwd=str(REPO),text=True).strip(),'baseline':baseline(REPO,profile),'boot_time':boot_time(),'initial_host':health}
+        (run/'manifest.json').write_text(canonical(manifest)+'\n')
+        log.append('baseline',{'manifest_hash':digest(manifest),'mode':args.mode})
+        base=f'http://127.0.0.1:{args.port}'
+        canary='sk-'+uuid.uuid4().hex+uuid.uuid4().hex
+        request(base,'/api/message',{'key':'harness:canary','text':'Synthetic sanitation canary: '+canary})
+        if args.mode=='preflight':
+            request(base,'/api/message',{'key':'harness:restart','text':'Make a draft about synthetic monitoring, do not send.'})
+        print(canonical({'url':base,'run':str(run),'mode':args.mode,'human_minimums':'20 turns, 3 attested sessions across 72h, 5 Goals, cancel, correction/reference-stop'}),flush=True)
+        previous=None
+        expected={}
+        last_probe=0
+        restart_done=False
+        while not stopping:
+            now=time.time()
+            if args.mode=='preflight' and now-manifest['started_at']>=args.preflight_seconds:
+                break
+            if app.poll() is not None:
+                raise RuntimeError('unexpected app exit')
+            summary=check_snapshot(readonly_snapshot(run/'pal.db'),expected)
+            new_keys=sorted(set(summary['ops'])-set(expected))
+            if new_keys:
+                log.append('ingress_observed',{'keys':new_keys})
+                expected=summary['ops']
+            if not restart_done:
+                app,new_health=planned_restart(app,run,args.port,log,summary)
+                if new_health:
+                    health=new_health
+                restart_done=any(r['event']=='planned_restart_verified' for r in log.records)
+            if now-last_probe>=300 or last_probe==0:
+                current=request(base,'/api/health')
+                if current['pid']!=app.pid or current['started_at']!=health['started_at'] or current['worker_error'] or not current['worker_alive']:
+                    raise RuntimeError('host identity/worker failure')
+                if baseline(REPO,profile)!=manifest['baseline'] or boot_time()!=manifest['boot_time']:
+                    raise RuntimeError('baseline or boot changed; reset required')
+                raw=time.clock_gettime(time.CLOCK_UPTIME_RAW)
+                power=[]
+                if previous:
+                    wall=now-previous['utc']; awake=raw-previous['raw']
+                    if wall<0 or awake<0:
+                        raise RuntimeError('clock moved backward')
+                    if abs(wall-awake)>30 or wall>900:
+                        power=sleep_events(previous['utc'])
+                        if not any(r['kind']=='Sleep' for r in power) or not any(r['kind'] in ('Wake','DarkWake') for r in power):
+                            raise RuntimeError('unexplained clock/gap discontinuity')
+                for path in run.iterdir():
+                    if path.is_file() and path.name!='monitor.lock' and canary.encode() in path.read_bytes():
+                        raise RuntimeError('secret canary leak')
+                summary=check_snapshot(readonly_snapshot(run/'pal.db'),expected)
+                row=log.append('measurement',{'summary':summary,'host':current,'boot_time':manifest['boot_time'],'sleep_wake':power,'canary_scan':'PASS','canary_hash':hashlib.sha256(canary.encode()).hexdigest()})
+                previous={'utc':row['utc'],'raw':row['uptime_raw']}
+                last_probe=now
+                attestation_path=run/'human-attestation.json'
+                attestation=json.loads(attestation_path.read_text()) if attestation_path.exists() else {}
+                (run/'candidate.json').write_text(canonical(candidate(manifest,log.records,summary,attestation))+'\n')
+            # Fine polling only until the required unfinished restart; measurements stay 5 min.
+            time.sleep(1 if not restart_done or args.mode=='preflight' else 5)
+        log.append('monitor_stopped',{'mode':args.mode,'intentional':True})
+        if args.mode=='soak':
+            log.append('reset_required',{'reason':'continuous monitor stopped before final controller audit'})
+        print(canonical({'status':'PREFLIGHT_COMPLETE' if args.mode=='preflight' else 'STOPPED_RESET_REQUIRED','log_head':log.records[-1]['sha256']}),flush=True)
+    except Exception as error:
+        log.append('failure',{'type':type(error).__name__,'reason':str(error)})
+        raise
+    finally:
+        stop_app(app)
+        lock.close()
+
+
+if __name__=='__main__':
+    main()
