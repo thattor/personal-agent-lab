@@ -191,6 +191,7 @@ class Store:
             if supersedes:
                 db.execute('UPDATE records SET usable=0 WHERE id=?', (supersedes,))
                 self._disable_notes(db, supersedes)
+                self._invalidate_source(db, supersedes)
             db.execute('INSERT INTO records(id,role,content,manifest,supersedes) VALUES (?,?,?,?,?)',
                        (identity, role, content, encode(list(manifest)), supersedes))
             return self._remember(db, key, 'record', digest, {'id': identity, 'role': role, 'content': content})
@@ -379,22 +380,26 @@ class Store:
                 raise ValueError('unknown source')
             db.execute('UPDATE records SET usable=0 WHERE id=?', (source_id,))
             self._disable_notes(db, source_id)
-            affected = []
-            for goal in db.execute("SELECT * FROM goals WHERE state NOT IN ('completed','cancelled','failed','unknown')").fetchall():
-                revision = db.execute('SELECT * FROM revisions WHERE goal_id=? AND revision=?', (goal['id'], goal['revision'])).fetchone()
-                explicit = source_id in json.loads(revision['sources'])
-                active = db.execute("SELECT * FROM attempts WHERE goal_id=? AND status='running'", (goal['id'],)).fetchone()
-                incidental = active and not self._usable(db, json.loads(active['manifest']))
-                if not explicit and not incidental:
-                    continue
-                self._fence(db, goal['id'])
-                if explicit:
-                    self._wait(db, goal['id'], 'reference_stopped')
-                else:
-                    db.execute("UPDATE goals SET state='queued',reason='context_reference_stopped' WHERE id=?", (goal['id'],))
-                affected.append(goal['id'])
-                self._event(db, goal['id'], 'goal.reference_stopped', {'source_id': source_id})
+            affected = self._invalidate_source(db, source_id)
             return self._remember(db, key, 'forget', digest, {'source_id': source_id, 'affected': affected})
+
+    def _invalidate_source(self, db, source_id):
+        affected = []
+        for goal in db.execute("SELECT * FROM goals WHERE state NOT IN ('completed','cancelled','failed','unknown')").fetchall():
+            revision = db.execute('SELECT * FROM revisions WHERE goal_id=? AND revision=?', (goal['id'], goal['revision'])).fetchone()
+            explicit = source_id in json.loads(revision['sources'])
+            active = db.execute("SELECT * FROM attempts WHERE goal_id=? AND status='running'", (goal['id'],)).fetchone()
+            incidental = active and not self._usable(db, json.loads(active['manifest']))
+            if not explicit and not incidental:
+                continue
+            self._fence(db, goal['id'])
+            if explicit:
+                self._wait(db, goal['id'], 'reference_stopped')
+            else:
+                db.execute("UPDATE goals SET state='queued',reason='context_reference_stopped' WHERE id=?", (goal['id'],))
+            affected.append(goal['id'])
+            self._event(db, goal['id'], 'goal.reference_stopped', {'source_id': source_id})
+        return affected
 
     def recover(self):
         """Call once at supported process startup, with no other worker alive."""

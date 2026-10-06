@@ -67,3 +67,7 @@ Each PASS row must link to a commit, test/log/artifact path, or live-smoke recor
 ## S1 evidence — 2026-10-06
 
 [8 deterministic core tests](evidence/tests/s1-unittest.txt), [test source](tests/test_store.py), [versions](evidence/tests/s1-version.json). Covers duplicate ingress/result, single slot, immutable criteria, host receipt gate, artifact immutability, cancel fencing, replay and schema guard. This is partial evidence only; it does not satisfy full fault, capability, memory, live-provider, UI or soak rows. No REQUIRED row promoted to PASS.
+
+## Controls/recovery evidence — 2026-10-06
+
+[20-test full log](evidence/tests/s1-controls-crash.txt), [controls/memory tests](tests/test_controls_memory.py), [18 SIGKILL boundary subcases](tests/test_crash.py). Real disposable SQLite DBs verified atomic create/claim/artifact/completion/control/delivery before and after commits, bounded restart retries, reference-stop and conversational correction fencing, stale input question rejection, secret-canary DB/WAL scan. Runtime/worker/UI integration still required before full rows PASS. Defect diagnosis and shared invalidation fix: [record](docs/DEFECTS.md).
