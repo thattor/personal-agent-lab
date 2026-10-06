@@ -1,0 +1,13 @@
+test_artifact_and_receipt_tamper_is_rejected_by_db (test_store.StoreTests) ... ok
+test_cancel_fences_result_and_invalid_transition (test_store.StoreTests) ... ok
+test_completion_requires_host_receipt_and_dedupes (test_store.StoreTests) ... ok
+test_duplicate_ingress_returns_original_and_conflicts_are_visible (test_store.StoreTests) ... ok
+test_goal_and_immutable_criteria_and_outbox_are_atomic (test_store.StoreTests) ... ok
+test_outbox_replay_reports_once (test_store.StoreTests) ... ok
+test_schema_version_mismatch_fails_closed (test_store.StoreTests) ... ok
+test_single_task_slot_and_fifo_claim (test_store.StoreTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.115s
+
+OK

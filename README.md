@@ -23,3 +23,13 @@ Reach **Stable-0**, the minimum stable implementation defined in ACCEPTANCE.md.
 This repository is greenfield. Old PAL implementations and compatibility constraints are explicitly out of scope.
 
 Stable-0 is not complete until all required acceptance rows pass and the 72-hour soak finishes without manual canonical-state repair.
+
+## Run deterministic tests
+
+Python standard library only; no dependency install required.
+
+```sh
+python3 -m unittest discover -s tests -v
+```
+
+The host canonical store is in `pal/store.py`. It is not an Executor capability. Draft bytes are bounded SQLite blobs and host receipts are verified by readback. There is no live runtime/UI yet. See STATE.md for exact continuation.

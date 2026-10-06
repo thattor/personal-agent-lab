@@ -1,0 +1,75 @@
+**Verdict: ADOPT, with the binding conditions below.** You asked for no tools or file access, so I did not write a plan file. This is the review response only.
+
+Storing artifacts as SQLite blobs in the same transaction as the receipt satisfies the artifact semantics from my S1 review. It also removes a whole class of failures: files without a receipt, receipts without a file, and half-renamed files. It costs nothing, needs no new permission, and gives no model a database capability. None of the conditions lowers a gate. They state what "same transaction" has to mean for the claim to hold.
+
+## What this design gets right
+- Bytes and receipt are committed atomically, so no reconciliation pass is needed after a crash.
+- A backup or snapshot of the database is automatically consistent with the evidence.
+- Artifact IDs chosen by the host mean executor paths never become canonical identity.
+- Reading the blob back and re-checking it against the immutable acceptance version keeps the completion check independent of anything the executor reports.
+
+## Binding conditions (all required)
+
+**C1 – Separate identity from content.**
+- `artifact_id` is opaque and issued by the host. `sha256` is an attribute of the artifact, not its key.
+- If you deduplicate by hash, use a separate content table with references counted from artifact rows. Two goals producing identical bytes must not share one lifecycle row, or garbage collection and forget for one goal will affect the other.
+
+**C2 – The host computes the hash from the bytes it actually inserts.**
+- The host reads the executor's output exactly once into memory.
+- It hashes, checks, and inserts that same buffer. It never re-reads the source, which closes the time-of-check/time-of-use gap.
+- If the output arrives through a scratch path, open it inside the sandbox with `O_NOFOLLOW` and reject non-regular files.
+- A hash supplied by the executor is advisory at most and is never stored as evidence.
+
+**C3 – Fencing happens inside the insert transaction.**
+- The blob insert and receipt binding must check, in the same transaction, that the attempt is still current (attempt epoch or fencing token) and not cancelled or superseded.
+- A stale result may land as an unreferenced staged blob, but it must never be bound to a receipt.
+- This is what keeps "goal revision and receipt bindings unchanged" true under races.
+
+**C4 – Enforce immutability in the database, not just by convention.**
+- Add `BEFORE UPDATE` triggers on blob and receipt rows that abort the change.
+- Add `BEFORE DELETE` triggers that abort unless the row is staged and unreferenced.
+- Without these, "immutable" is only a promise from application code.
+
+**C5 – Bounds are fixed in the acceptance version.**
+- The maximum size and encoding rules are part of the immutable acceptance version.
+- Encoding rules: strict UTF-8 decode, raw bytes hashed, no normalization, and an explicit decision on whether a BOM or NUL bytes are allowed.
+- Content over the cap is rejected with a receipt recording the rejection. It is never truncated.
+- Check the size before buffering the whole payload, not after.
+
+**C6 – Durability settings.**
+- Use `journal_mode=WAL` with `synchronous=FULL`.
+- `NORMAL` in WAL mode can lose a commit that was already acknowledged if power fails. That would mean a receipt shown to the user could disappear, which breaks the evidence claim.
+
+**C7 – Garbage collection must not race completion.**
+- A blob is collectable only if it has no receipt or evidence reference, its attempt is terminal (or it is older than a grace period), and it is not published.
+- Run the check and the delete in one transaction.
+- Published evidence is never a GC candidate.
+
+**C8 – Forget and reference-stop interaction. This is the one real semantic tradeoff.**
+- SQLite deletion does not erase bytes. Deleted pages stay in the freelist and the WAL.
+- If forget means the bytes are gone, you need `PRAGMA secure_delete=ON`, a WAL checkpoint, and tombstone rows that keep the `artifact_id`, `sha256`, and receipt.
+- Evidence then still proves that content with hash X existed and was accepted, but the content itself is unrecoverable.
+- If the existing S1 decisions already say forget does not apply to published evidence bytes, record that explicitly.
+- Either way, do not leave this implicit. It is a forget-semantics question, so it falls under the Opus gate and needs a recorded decision.
+
+**C9 – Export stays outside the canonical store.**
+- The later read-only export writes derived files using temp file, fsync, and rename, then verifies the hash after writing.
+- Exported files are never canonical and never read back as evidence.
+
+## Tradeoffs accepted
+- **Database growth and checkpoint cost from blobs in the WAL:** acceptable because drafts are small and capped.
+- **No streaming or incremental blob I/O:** not needed at this size.
+- **A single writer serializes large inserts:** acceptable for Stable-0 concurrency.
+- **Reading back from the same database is weaker verification than an independent store:** it still catches corruption and logic bugs, and `PRAGMA integrity_check` covers the rest in the soak test.
+
+## Required fault-injection evidence (adds to the gates, does not replace any)
+1. `kill -9` before commit: neither the blob nor the receipt exists.
+2. `kill -9` after commit: both exist, and the read-back hash matches.
+3. A stale or cancelled attempt submits a result: the blob stays unbound, and GC later removes it.
+4. Any update to a published blob, or deletion of a referenced one, is aborted by a trigger.
+5. Content over the cap, invalid UTF-8, or a symlinked or non-regular source is rejected with a receipt.
+6. Forget according to the C8 decision: the tombstone remains, and the bytes are not recoverable from the database file (search the raw file for a marker string after checkpoint).
+7. A GC race with an in-flight completion: no evidence is lost.
+
+## Suggested DECISIONS.md entry
+> D-S1-artifacts: Draft artifacts are stored as SQLite blobs with host-issued IDs and a host-computed sha256, inserted with the receipt in one fenced transaction. They are immutable via triggers, capped by the acceptance version, and collected only when staged and unreferenced. Durability is WAL with synchronous=FULL. Forget semantics follow C8 (pending an explicit decision). Opus: adopted with C1–C9. SWE-2 High: proposer.

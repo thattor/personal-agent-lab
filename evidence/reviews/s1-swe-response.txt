@@ -1,0 +1,79 @@
+# Advisory review: S1 storage/concurrency strategy
+
+Overall the strategy is sound: per-op connection + `BEGIN IMMEDIATE` + WAL + `synchronous=FULL` is the right minimal durable core, dedupe-by-key, revision pinning, epoch fencing, and outbox-in-same-tx are the correct primitives. Below are the holes I see, then the minimal contracts and test matrix I'd require before Codex implements.
+
+## 1. Connection/pragma hygiene
+
+- `foreign_keys`, `busy_timeout`, and `synchronous` are **per-connection**; `journal_mode=WAL` is persistent. A single missed pragma on a fresh connection silently disables FK enforcement. Require one `connect()` helper inside Store that always applies the full set, and a test that an orphan insert actually raises `IntegrityError` on a brand-new connection.
+- Set `PRAGMA user_version` and fail hard on mismatch — "no migrations" still needs a schema-mismatch guard, cost ≈ zero.
+- Enforce "no transaction while model runs" structurally: Store API = one call = one `BEGIN IMMEDIATE`…commit. Any multi-step operation spanning a model call is a bug by construction; add a test asserting no open write tx across worker boundaries (e.g., `conn.in_transaction` checks in hooks).
+
+## 2. Dedupe (ingress and results)
+
+- **Canonicalization is the weak point.** "Hash of sanitized payload" needs an exact spec: which fields are volatile (timestamps, request ids) and how canonicalization works (canonical JSON, sorted keys). Too loose → true retries hash differently → duplicate effects. Too aggressive → distinct requests collide → false conflicts. Recommend hashing canonical JSON of an explicitly enumerated field list, documented in the schema comment.
+- **Store the result, not just the hash.** Dedupe row needs `(client_key PK, op_kind, payload_hash, result_ref/result_json)` so a replay returns the originally created goal_id — otherwise "idempotent" replays error or create confusion.
+- **Result dedupe is asymmetric.** Second identical completion arrives *after* success → the "current running attempt" check fails → error. That's wrong: it must return the stored outcome (idempotent replay), distinct from fenced/stale (error). Put `UNIQUE(attempt_id)` on the outcome row; on completion, `INSERT OR` → on conflict, SELECT and return existing outcome.
+- Four distinct outcomes must be distinguishable: replay-returns-stored, conflict (key reuse w/ different payload), fenced, rejected (bad receipt). Give them distinct error codes for deterministic tests.
+- Use `INSERT ... ON CONFLICT` + unique constraints as the backstop even though `BEGIN IMMEDIATE` serializes writers — constraints are what make the invariant testable.
+
+## 3. Immutable criteria / revisions
+
+- Proposal doesn't say what happens to a **running attempt when criteria are revised**. Pick one and test it. Smallest safe: attempt stays pinned to `revision_no`; completion records outcome *for that revision* and marks it `superseded` if the goal's current revision advanced; acceptance verdicts always evaluate the current revision. (Alternative — fence on revision change — is simpler still and arguably safer; either is defensible, indecision is not.)
+- Enforce immutability at two levels: no UPDATE/DELETE path in Store API, plus a SQLite trigger `RAISE(ABORT)` on UPDATE/DELETE of the revision table as a testable backstop. Test: direct SQL update attempt → fails, row unchanged.
+- `goal_revision(goal_id, revision_no, criteria_json)` PK `(goal_id, revision_no)`, monotonic. No hash-chain — over-engineering for Stable-0.
+
+## 4. Stale fencing / epoch
+
+- **Define the epoch precisely**: `goal.fence_epoch` INTEGER, bumped by *every* fencing op — cancel, correct, forget — uniformly. If correction bumps epoch, epoch-check alone subsumes revision fencing (fewer moving parts); still store `revision_no` on the attempt for evidence/evaluation.
+- **Fencing must be a compare-and-set, not check-then-write**: `UPDATE attempt SET status=?, outcome=? WHERE attempt_id=? AND status='running' AND epoch=?` and require `cursor.rowcount == 1` inside the same tx as outcome+event inserts. Same pattern for claim and for cancel/correct/forget themselves (`UPDATE goal ... WHERE id=? AND status IN (...)`).
+- **Results must be addressed to `attempt_id`, not `goal_id`.** This is the key detail that fences results from a crashed attempt #1 against a reclaimed attempt #2. Make the completion API require the attempt token.
+- **"Single running Attempt"**: partial unique index `CREATE UNIQUE INDEX ... ON attempt WHERE status='running'` — but the contract says "one task slot," so clarify scope: global single slot = index without `goal_id`; per-goal = `ON attempt(goal_id) WHERE status='running'`. Decide and test the index directly (second running insert → `IntegrityError`).
+- Forget: tombstone, don't delete — preserves the evidence chain and makes fenced completion's error deterministic ("goal forgotten" vs "no such goal").
+
+## 5. Claim recovery
+
+- Claim tx = conditional goal UPDATE (queued→claimed) + attempt INSERT (attempt_id, attempt_no, revision_no, epoch) + outbox event, all one `BEGIN IMMEDIATE`. Selection inside the tx: `ORDER BY seq LIMIT 1` for determinism.
+- Recovery-on-open pass: `running → interrupted`, goal → `queued` (reclaimable, new `attempt_no`), outbox `delivered=0` → replay. Define explicitly which states are reversible: queued/claimed yes; completed never; effect-ambiguous → `unknown` terminal evidence state.
+- Late-result path after recovery is already fenced by `status='running'` failing the CAS — but return an explicit "stale/interrupted" error, never silent success.
+- Add a third crash hook: **mid-transaction between statements** (e.g., after attempt INSERT, before outbox INSERT, inside the tx). "After write" and "after commit" miss the atomicity property you most need to prove. Implement via a test-only Store hook that calls `os._exit()`.
+
+## 6. Approval binding — biggest gap
+
+The proposal never mentions approvals. If Stable-0 has *any* approval or user-acceptance record: it must be bound to `(goal_id, revision_no)` and consumed atomically in the same tx as the transition it authorizes — a verdict on rev 3 must never bless rev 4, and a replayed approval must not double-apply (unique constraint on use). If Stable-0 truly has no approvals, say so explicitly in the spec; don't leave it implicit.
+
+## 7. Artifact atomicity / trusted receipt
+
+- Smallest safe choice: **artifacts as SQLite blobs in a CAS table keyed by sha256** — atomicity, fsync ordering, and crash safety come free with the tx. Filesystem artifacts would require tmp-write→fsync→rename→fsync-dir→commit ordering; avoid in Stable-0 unless artifacts are large.
+- "Trusted" = host-minted only. Receipt = `(artifact_id, sha256, size)` computed by the host at write time, in the same tx that stores the blob. No model/executor-callable path to receipt minting — enforce by API surface, not by checking a flag the caller supplies.
+- Readback: inside the completion tx, SELECT blob, recompute hash, compare to receipt. Mismatch/missing → completion rejected, no outcome, no event.
+- Tests: fabricated receipt (unknown artifact_id, hash mismatch) → rejected; tampered blob → next readback fails.
+
+## 8. Outbox / Record ordering
+
+- Add a per-lane monotonic `seq` (counter row updated in the same tx, or `MAX(seq)+1` inside it). Wall-clock ordering is non-deterministic and untestable.
+- Event keys deterministic (op+entity+seq) → replay after restart dedupes via `INSERT OR IGNORE`.
+- Keep `delivered` flag + startup rescan even though delivery is same-tx — covers "committed but caller believed failed."
+
+## Minimal contract summary
+
+1. `connect()` applies full pragma set; `user_version` checked on open.
+2. `ingress_dedupe(client_key PK, op_kind, payload_hash, result_json)`; canonicalization spec fixed.
+3. `goal_revision` immutable (PK pair + abort trigger); `goal.fence_epoch`, `current_revision`.
+4. `attempt` bound to `(attempt_id, attempt_no, revision_no, epoch)`; partial unique index enforcing the single running slot at contract scope.
+5. All mutations: `BEGIN IMMEDIATE` + rowcount-checked CAS UPDATEs; multi-writes in one tx.
+6. Completion: artifact readback/hash verify → CAS on `(attempt_id, running, epoch)` → outcome (`UNIQUE(attempt_id)`) + event; duplicate completion returns stored outcome.
+7. Recovery-on-open: running→interrupted, requeue reversible, outbox rescan, ambiguous→unknown.
+8. Approvals bound to `(goal_id, revision_no)`, single-use, atomic consume — or explicit "no approvals in Stable-0."
+
+## Deterministic test matrix
+
+- Pragma/schema: FK enforced on fresh conn; WAL; FULL sync; user_version mismatch → hard fail.
+- Dedupe: replay→same result/no second effect; key+diff payload→conflict; double completion→one outcome row, one event.
+- Fencing: cancel/correct/forget while running → completion fenced, zero writes; result for attempt #1 after reclaim → fenced; CAS rowcount=0 path.
+- Revision: UPDATE attempt → abort; pinned-revision completion semantics per the decision above.
+- Crash matrix (subprocess + `os._exit` hooks): for each of create-goal / claim / complete / cancel / deliver — kill mid-tx, post-commit-pre-response → reopen → no partial tx, replay returns result, attempt interrupted+requeued, exactly-once Record append.
+- Artifact: fabricated/mismatched receipt → rejected; blob tamper → readback fail.
+- Slot: direct second running-attempt insert → `IntegrityError`; sequential claims → deterministic FIFO.
+- Outbox restart: committed event, undelivered → delivered once on reopen.
+
+Two decisions Codex should pin before coding: (a) running-attempt behavior on criteria revision — superseded-flag vs fence; (b) whether "one task slot" is global or per-goal — the index differs. Everything else above is mechanical.

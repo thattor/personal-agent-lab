@@ -1,0 +1,60 @@
+**Verdict:** Compatible with the baseline once the adjustments below are applied. None of them lowers a Stable-0 gate. I rejected three items: auto-pause on forget, "unverified → failed", and resume always going to queued.
+
+I answered in text only, as you asked. I wrote no plan file and used no tools.
+
+## 1. Goal states, Attempts, unverified results
+
+- **Adopt the 8 states.** `unknown` should only be reachable from an approved external action whose result is ambiguous. In Stable-0 that means fault injection with a spy tool. Only an explicit user step can resolve it; nothing resolves it automatically.
+- **Use one fencing token.** `Goal.epoch` goes up on every claim, pause, cancel, correction, reference stop and input answer. Each Attempt records `goal_revision`, `acceptance_version_id` and `epoch` when it is claimed. A result is accepted only through a compare-and-set in one transaction: Goal is `running`, the epoch matches and the revision matches. Everything else is stale or duplicate and is rejected but still logged.
+- **Reject "unverified → Goal failed".** Record unverified at the Attempt level: `outcome ∈ {pass, fail, unverified, error, fenced, abandoned}` with its check status. Only `pass` can complete the Goal. If an Attempt is unverified, the Goal goes to `queued` while retry budget remains, otherwise to `waiting_input` with reason `unverified`. Failing a Goal because the verifier was unavailable throws away work. Keep `failed` for a verified fail with no budget left, or for an unrecoverable error.
+- **Separate revision from acceptance version.** Every correction creates a new Goal revision. That fences active Attempts, invalidates approvals and invalidates any pending input question. A new immutable acceptance version is created only when the correction changes the criteria. Approvals stay bound to fingerprint plus Goal revision, as in the baseline.
+
+## 2. Cancel, pause, input, crash recovery
+
+- **Adopt** cancel as terminal and fencing. Cancelling from `unknown` must keep the external-ambiguity flag visible in inspect.
+- **Adjust pause.** Allow pause only from `queued` or `running`, and only when the user initiates it. Resume goes from `paused` to `queued` with a deduped control key. Do not allow pausing a `waiting_input` Goal: it has nothing in flight, and resuming it to `queued` would silently drop the pending question.
+- **Adopt the input rule, bound tighter.** An answer is keyed by `question_id` plus epoch and is accepted once. Answers to a question invalidated by a correction are rejected.
+- **Adjust crash recovery.**
+  - Persist the retry budget and consume it when an Attempt is claimed, not when it fails. Otherwise a crash loop never spends budget.
+  - On restart, mark orphaned `running` Attempts `abandoned` and bump the epoch.
+  - If there is no recorded external intent, the Goal goes to `queued` while budget remains, else `waiting_input`.
+  - If there is a recorded external intent with no host receipt, the Goal goes to `unknown`. This needs a durable intent record written before any external effect.
+  - Reset the budget on a new revision, with a small global cap per Goal.
+
+## 3. Reference stop (forget)
+
+- **Reject auto-pause; it is too broad.** It also overloads `paused`, which should stay user-only.
+- **Adopt instead:**
+  1. Flip the record's AI-usable flag. Disable every MemoryNote derived from it, including notes with several sources.
+  2. Each Attempt, and each Responder reply, records a context manifest of the record and note IDs it used. The commit/publish transaction re-checks that every manifest item is still usable. This is the real guarantee, and it also covers races that fence propagation misses.
+  3. Fence active Attempts whose manifest includes the stopped record. If the record was only incidental context, re-queue the Goal for a fresh Attempt without it. Move the Goal to `waiting_input` with reason `reference_stopped` only if its spec or acceptance explicitly cites the record.
+  4. Raw history stays inspectable. Already-sent provider context is acknowledged as non-retractable. Outputs published before the stop are not retracted in Stable-0; they keep their provenance so inspect can show it.
+
+## 4. Local draft completion
+
+- **Adopt, with these specifics:**
+  - The host chooses the artifact path from Goal and Attempt; the Executor never supplies it, which prevents path traversal.
+  - The host writes atomically: temp file, fsync, rename.
+  - The host reads the file back and computes the hash itself.
+  - Size and UTF-8 bounds live in the acceptance version.
+  - The Expert verifies against the `hostReceipt` row looked up by ID. Any receipt fields the Executor supplies are ignored, so a fabricated receipt cannot match.
+  - Unreferenced staged artifacts are garbage-collected during recovery.
+- **Adopt the no-quality-claim rule.** ACCEPTANCE wording must not imply quality.
+
+## 5. Event outbox
+
+- **Adopt, with a rename:** call it "effectively-once durable local report". Enforce it with `UNIQUE(source_event_id)` on conversation messages. Insert the message and mark the event delivered in the same transaction. External push stays deferred.
+
+## 6. Stack
+
+- **Adopt stdlib only:**
+  - `sqlite3` in WAL mode, with `BEGIN IMMEDIATE` for all compare-and-set transactions.
+  - `ThreadingHTTPServer` bound to 127.0.0.1 only.
+  - `urllib` for the provider smoke.
+  - `unittest`.
+- The worker and concurrency model still needs a SWE-2 High consult before implementation.
+
+## Record for DECISIONS.md
+
+- **Adopted:** 1 (with unverified handled at Attempt level and the revision/acceptance split), 2 (adjusted), 3 (replacement design), 4, 5, 6.
+- **Rejected:** auto-pause on forget; unverified → failed; resume always going to `queued` from any paused source.

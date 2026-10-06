@@ -1,0 +1,7 @@
+{
+  "python": "3.9.6",
+  "sqlite": "3.54.0",
+  "platform": "Darwin",
+  "suite": "python3 -m unittest discover -s tests -v",
+  "tests": 8
+}

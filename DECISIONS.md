@@ -71,3 +71,27 @@ Owner: implementation acceptance decision, based on Opus/SWE-2 review.
 
 ## Pending decisions
 None that block Slice S1. Add entries only when a consultation gate actually triggers.
+
+## D-011 — S1 review and concrete state contracts
+Date: 2026-10-06
+Question: [S1 proposal to Opus](evidence/reviews/s1-opus-question.txt); [SWE-2 implementation proposal](evidence/reviews/s1-swe-question.txt).
+Responses: [Opus](evidence/reviews/s1-opus-response.txt), [SWE-2 High](evidence/reviews/s1-swe-response.txt). Routes: [verified official access](evidence/reviews/access-2026-10-06.md).
+Adopted before implementation:
+- States queued/running/waiting_input/paused/completed/cancelled/failed/unknown. Global single task slot. Host controls every mutation.
+- One epoch increases on claims and fencing controls; Attempt also pins Goal revision and immutable acceptance version. Corrections create revisions; unchanged criteria reuse acceptance version.
+- Attempt outcomes pass/fail/unverified/error/fenced/abandoned. Unverified retries within claim-consumed budget, then waiting_input; it never becomes a PASS or an automatic Goal failure.
+- Pause is user-only from queued/running. Resume only paused. Input answer must match current question ID and epoch; dedupe returns original result.
+- Crash recovery is an explicit supported startup operation, never a side effect of creating each Store handle. Abandon orphaned Attempts, bump epoch, requeue within persisted budget; exhaustion waits for input. External ambiguous intent remains unknown, never automatically retried.
+- Forget disables raw AI references and all affected derived notes; recheck full context manifests before publication. Incidental context requeues; explicit task/criteria source loss waits for input. Do not overload user pause.
+- SQLite per-operation connection/transaction, FK/timeout/FULL each connection, WAL, schema-version guard; immutable criteria triggers; unique global running-slot index; dedupe includes canonical payload hash plus original result; outcome unique per Attempt.
+- Goal transition and event transactionally coupled. Durable local report uses unique source_event_id and marks delivered in same transaction; external push deferred.
+- Tests terminate real subprocesses mid-transaction and after commit, not merely simulated exceptions.
+Rejected: auto-pause on forget, unverified => failed, unbound input answer, generic state-update API, unbounded crash retries.
+Artifact representation remains under a short follow-up review: SWE recommends transactionally stored SQLite blobs while Opus described filesystem atomic staging. No artifact implementation until resolved.
+Stack: stdlib only; this honors the explicit user requirement over SPEC's optional FastAPI/pytest preference. Native official provider CLI is the authorized route; no new API credentials.
+
+## D-012 — Atomic bounded draft evidence
+Date: 2026-10-06
+Question/response: [Opus follow-up](evidence/reviews/s1-artifact-question.txt), [answer](evidence/reviews/s1-artifact-response.txt).
+Adopted: SQLite blobs and host-issued opaque artifact IDs, bounded small draft buffer, strict UTF-8, no BOM/NUL, host hash of inserted bytes, host receipt and blob in one fenced transaction; immutable update/delete triggers. No scratch paths or staged unbound artifacts are exposed/created, so filesystem/symlink staging and GC races are eliminated by construction. Size/encoding rejection is retained as host rejection evidence; never truncate to meet acceptance. Receipt readback/hash/bounds rechecked before completion.
+Forget remains reference stop, not byte deletion (D-006). Published evidence bytes/receipts remain inspectable; never feed audit/artifacts automatically into conversational memory. No secure erasure is claimed. This selects Opus C8's explicitly retained-evidence option. Derived export files are not canonical evidence.

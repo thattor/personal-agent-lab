@@ -63,3 +63,7 @@ Nothing can compress the 72-hour wall-clock gate. Continue improving non-disrupt
 
 ## Evidence discipline
 Each PASS row must link to a commit, test/log/artifact path, or live-smoke record in the repo. Reviewer opinions are not evidence. Codex must not self-certify Stable-0 until this file is fully evidenced.
+
+## S1 evidence — 2026-10-06
+
+[8 deterministic core tests](evidence/tests/s1-unittest.txt), [test source](tests/test_store.py), [versions](evidence/tests/s1-version.json). Covers duplicate ingress/result, single slot, immutable criteria, host receipt gate, artifact immutability, cancel fencing, replay and schema guard. This is partial evidence only; it does not satisfy full fault, capability, memory, live-provider, UI or soak rows. No REQUIRED row promoted to PASS.
