@@ -1,0 +1,32 @@
+{
+  "source_thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "target_baseline": "307058d",
+  "direct_human": true,
+  "answers": [
+    {
+      "turn": "01a11381-f78f-7212-9f9a-fd3f2540d235",
+      "target": "conversation",
+      "answer_summary": "口調と長さは良好。書き出すなどの作業を勧めるより、本人が考える重要な点を教えてくださいと尋ね、PALが作業する会話がよい。",
+      "result": "improvement_requested"
+    },
+    {
+      "turn": "01a11382-f740-7a91-83d9-e4998a321cac",
+      "target": "recall",
+      "answer": "特に期待通りというか、特にコメントはないです。",
+      "result": "no_change_requested; not blanket acceptance"
+    },
+    {
+      "turn": "01a11384-242d-78e0-8dce-3d87d774503d",
+      "target": "Cedar draft",
+      "answer": "あるプロジェクトで誰かに協力してもらったから「このプロジェクトうまくいきましたよ、ありがとう」という、そういう感じでいいと思います。それでいきましょう。",
+      "result": "accepted for explained fictional setting only"
+    },
+    {
+      "turn": "01a11385-46c3-7902-86d0-b3f5e07a509c",
+      "target": "Birch draft",
+      "answer_summary": "全体のお礼に、状況に合う具体的な協力を1〜2件添えてよい。難しければ無理に入れなくてよい。Mikaさんの丁寧なサポートのおかげで進めることができました、という感じがよい。",
+      "result": "grounded wording preference; no authorization to invent facts"
+    }
+  ],
+  "F0-08": "revision_and_live_retest_pending"
+}
