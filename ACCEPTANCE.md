@@ -16,7 +16,7 @@ Stable-0 may be declared only when all REQUIRED rows are PASS with evidence and 
 | S0-10 | yes | One official real provider path works with an already-authorized account and verified no-additional-charge condition | [official access/cost proof and live smoke](evidence/live/2026-10-06-clean/result.json); [actual draft](evidence/live/2026-10-06-clean/draft.txt); [native boundary tests](tests/test_native.py) | PASS |
 | S0-11 | yes | Failure/blocked/unverified states are reported; no silent success and no infinite retry | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
 | S0-12 | yes | UI exposes conversation result and read-only inspect state sufficiently to diagnose Goal/Attempt/evidence | [actual Chrome smoke](evidence/ui/browser-smoke.md); [canonical readback](evidence/ui/browser-state.json); [HTTP tests](tests/test_http.py) | PASS |
-| S0-13 | yes | 72-hour soak completes with zero manual canonical-state repair | [fresh bilingual soak03 baseline/start](evidence/soak/2026-10-07/start-03.json); [retained previous receipt/reset](evidence/soak/2026-10-07/soak02-human-and-reset.json) | in_progress (soak03 human_pending) |
+| S0-13 | yes | 72-hour soak completes with zero manual canonical-state repair | [fresh bilingual soak03 baseline/start](evidence/soak/2026-10-07/start-03.json); [retained previous receipt/reset](evidence/soak/2026-10-07/soak02-human-and-reset.json) | in_progress (soak03 one confirmed human turn/session; human/time/restart gates pending) |
 
 ## Required automated scenarios
 At minimum:
@@ -107,3 +107,5 @@ Fresh soak02 started 2026-10-07T06:08:30.879116+09:00 after UI fix/full suite PA
 2026-10-07 user-requested bilingual UI: Japanese/English labels and status/controls/errors/inspect headings; internal routing/canonical/receipt JSON remain English. [55-test suite](evidence/tests/ui-bilingual-full.txt), [actual UI refresh probe](evidence/ui/recovery/bilingual-after.txt). S0-12 PASS with presentation change. [Soak02 attested receipt/reset](evidence/soak/2026-10-07/soak02-human-and-reset.json); fresh bilingual baseline/run required under D-016/D-017, no prior time/count transfer.
 
 Fresh bilingual soak03 start 2026-10-07T06:14:18.834450+09:00, clean pushed baseline 1863ef2a3037b335fa6f257a8d6fd95fb44da9dc. [Owned health/manifest/hash-chain and served bilingual UI](evidence/soak/2026-10-07/start-03.json). Previous runs retained; human/time/restart counts start from zero. Hourly follow-up now targets soak03.
+
+Soak03 human participation: [first directly confirmed receipt and monitor anchor](evidence/soak/2026-10-07/soak03-human-session-01.json). S0-13 remains in_progress; one turn/session is not PASS.
