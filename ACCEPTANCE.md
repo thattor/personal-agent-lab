@@ -16,7 +16,7 @@ Stable-0 may be declared only when all REQUIRED rows are PASS with evidence and 
 | S0-10 | yes | One official real provider path works with an already-authorized account and verified no-additional-charge condition | [official access/cost proof and live smoke](evidence/live/2026-10-06-clean/result.json); [actual draft](evidence/live/2026-10-06-clean/draft.txt); [native boundary tests](tests/test_native.py) | PASS |
 | S0-11 | yes | Failure/blocked/unverified states are reported; no silent success and no infinite retry | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
 | S0-12 | yes | UI exposes conversation result and read-only inspect state sufficiently to diagnose Goal/Attempt/evidence | [actual Chrome smoke](evidence/ui/browser-smoke.md); [canonical readback](evidence/ui/browser-state.json); [HTTP tests](tests/test_http.py) | PASS |
-| S0-13 | yes | 72-hour soak completes with zero manual canonical-state repair | soak log | not_run |
+| S0-13 | yes | 72-hour soak completes with zero manual canonical-state repair | [actual start/baseline](evidence/soak/2026-10-06/start.json); [initial hash chain](evidence/soak/2026-10-06/start-measurements.jsonl) | in_progress (human_pending) |
 
 ## Required automated scenarios
 At minimum:
@@ -85,3 +85,9 @@ S0-01–12 now PASS. S0-13 remains not_run until a clean baseline and actual soa
 ## Soak monitor readiness — 2026-10-06
 
 [55-test full log](evidence/tests/ui-native-soak-full.txt), [gate and monitor contract tests](tests/test_soak.py), [separate final preflight](evidence/tests/soak-preflight.txt), [preflight summary](evidence/tests/soak-preflight-summary.json), [fsync hash chain](evidence/tests/soak-preflight-measurements.jsonl), [source/version baseline](evidence/tests/soak-preflight-manifest.json). Preflight proves owned-process restart, a new Attempt completing the same Goal, original/replayed ACK digest equality, one outcome/receipt and read-only invariants. It is explicitly not 72-hour or human-use evidence. Required human participation and review choices: D-016/D-017.
+
+## Actual soak start
+
+Started 2026-10-06T13:41:26.756470+00:00 from clean pushed baseline c887c35d540a55f6f3108d546da3220f0852b76a. Mock adapter, loopback port 58500, 10-second bounded draft delay. Initial read-only checks/secret-canary scan PASS; zero human turns/Goals attested. This start is not S0-13 PASS. Latest mutable measurement/candidate files stay in ignored runtime/soak-20261006-01; commit only evidence summaries/snapshots without raw human conversation. Runtime/probe semantics must remain unchanged during this run.
+
+Session-close full verification: [55-test log while real soak runs](evidence/tests/soak-start-full.txt). Operational hourly follow-up registered; no scheduled execution or 72-hour completion is claimed. The required human attestation remains pending; master Issue #1 stays open.

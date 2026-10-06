@@ -39,3 +39,6 @@ Fix/prevention: Runtime captures original sanitized text and explicit client Goa
 
 ## Monitor edit syntax caught by preflight
 2026-10-06: A broad textual replacement while adding reconciliation misindented the second snapshot block. Preflight failed before starting any process/DB/soak. The library suite had passed because it did not import the entry script. Corrected the block; the attestation/atomic-export contract test now imports the actual monitor script, so this syntax gap is covered in the full suite. Continue to require the separate process preflight for lifecycle behavior.
+
+## Follow-up registration argument
+2026-10-06: Initial heartbeat registration was rejected before creation because destination/targetThreadId was omitted. Corrected to explicit current-thread destination/id; the app returned automationId pal-stable-0-soak-audit ACTIVE and its view card was read. No duplicate automation was created; scheduled execution remains unverified until an actual run. Next similar registration: provide explicit target identity.

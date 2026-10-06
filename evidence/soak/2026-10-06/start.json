@@ -1,0 +1,17 @@
+{
+  "status": "IN_PROGRESS_HUMAN_PENDING",
+  "started_at": "2026-10-06T13:41:26.756470+00:00",
+  "baseline_commit": "c887c35d540a55f6f3108d546da3220f0852b76a",
+  "manifest_sha256": "5b58adfd080d225905389f400c031190905fde0da6da87817e2f521e107bdd38",
+  "first_log_head": "e96df88a49afda114b872e386db2cd0a32de13a19902e910868b12f403f497ef",
+  "monitor_pid": 28510,
+  "app_pid": 28513,
+  "loopback_url": "http://127.0.0.1:58500/",
+  "runtime_run": "runtime/soak-20261006-01",
+  "current_human_turns": 0,
+  "canary_scan": "PASS",
+  "canonical_repairs": 0,
+  "paid_native_calls": 0,
+  "minimum_wall_seconds": 259200,
+  "stable_0_complete": false
+}
