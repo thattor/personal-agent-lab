@@ -1,0 +1,11 @@
+Astra (gpt-6-astra/high), read-only code and docs review, independent agent /root/astra_acceptance_review. Controller captures conclusions from actual agent messages; not product evidence.
+Conclusion: expected functional behavior first.72h/20turn quota has insufficient risk justification for personaluse; agree Opus primaryreconsideration.
+Code evidence: server.py alwaysMockProvider; runtime mock fixedconversation/requestecho; live smoke quality_claim:none; store completion verifies bytes/size/hash,not semanticfit.
+Prior Opus prompt constrained notlowerexistinggate; faithfulinterpretation notindependent72hjustification.
+Response to Opus: reject newPersonalUsable1label, repeatedP0/P1/P4 approvals,user-onlydeclaration,newdependencyhashframework asunnecessarybureaucracy. One explicit user adoption of prospectiveStable0revision suffices; preserveolddefinition/logs/oldS013unmet, neverPASSbyrelabel.
+Smallest synthesis: finiteexistingSPECscenarios(conversation/nounwantedGoal,conditionfuldraft,remember/recall,correct/forgetreference-stop,stop/progress/resume); retainhostsecurity/canonical/recoverytests; boundedexplicitopt-inrealUIusingexistingofficialnoextra-charge route, mockDEFAULT unchanged; humanjudges actualusefulness, structuralchecks automated. SWE2Highreviewsimplementation beforechanges.
+72h/turn/sessionquotas becomeoptionalongoingobservationonly AFTERexplicitadoption. Data corruption,duplicates,staleapply,forgetviolations remainblocking.
+Caveats: Opuslease/backoffexamples notverifiedimplementedmechanisms; actualtimingAccessProof15minutes/native timeout. SIGSTOP/SIGCONT doesn'tsimulatewallclockjump/macOSsleep. Useactualcontracts andexistingcommitdiff+affectedchecks; no broadnewarchitecture.
+No code, canonicalwrites, humaninput, attestation or acceptance adoption performed by reviewer.
+
+Final Astra assent after reading Opus follow-up: one prospective explicit adoption, no newlabel/repeatedapproval. AccessProof already uses time.time() at native.py:26, not sleep-paused monotonic alone; clock-change behavior is implementation-review topic, not newstopgate. Precommit scenarios; legitimate later changes retain oldresults/rationale and reverify, never change condition merely to hidefailures. Require concrete draftcontentconstraintfit, not only subjectivepositiveimpression. No adoption/codechanges.

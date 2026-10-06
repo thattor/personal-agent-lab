@@ -117,3 +117,5 @@ Soak03 [four-input conversation/cancel evidence](evidence/soak/2026-10-07/soak03
 Soak03 [human correction and revision fencing evidence](evidence/soak/2026-10-07/soak03-human-correction.json): eight confirmed turns / four Goals / one session; correction verified. S0-13 remains in_progress with fifth Goal, remaining turns/sessions and >=72h human span/time pending.
 
 Soak03 [second directly confirmed session and fifth Goal](evidence/soak/2026-10-07/soak03-human-session-02.json): 10 turns / 2 sessions / 5 Goals, restart/cancel/correction verified. S0-13 remains in_progress: >=20 turns, >=3 sessions, >=72h human span and elapsed soak still required.
+
+2026-10-07 user-requested Opus/Astra reconsideration: [D-018 proposal, NOT adopted](DECISIONS.md). Functional real-provider UI acceptance is recommended before time quotas; existing acceptance definition/status remains unchanged pending one explicit user decision. Mock UI and quality_claim:none smoke do not prove semantic usefulness; no long-term PASS claimed.

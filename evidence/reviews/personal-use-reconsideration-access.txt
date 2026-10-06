@@ -1,0 +1,2 @@
+Verified 2026-10-06T21:42:30.656574+00:00
+Official CLI: existing claude.ai first-party Pro login. Chrome official usage: session18%, week7%; use credits switch aria-checked=false; purchase credit balance$0, auto-reload off. No login/settings changes. Text-only explicit opus, tools/MCP empty, safe mode, no session persistence, no paid fallback.
