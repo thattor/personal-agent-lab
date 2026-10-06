@@ -16,7 +16,7 @@ Stable-0 may be declared only when all REQUIRED rows are PASS with evidence and 
 | S0-10 | yes | One official real provider path works with an already-authorized account and verified no-additional-charge condition | [official access/cost proof and live smoke](evidence/live/2026-10-06-clean/result.json); [actual draft](evidence/live/2026-10-06-clean/draft.txt); [native boundary tests](tests/test_native.py) | PASS |
 | S0-11 | yes | Failure/blocked/unverified states are reported; no silent success and no infinite retry | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
 | S0-12 | yes | UI exposes conversation result and read-only inspect state sufficiently to diagnose Goal/Attempt/evidence | [actual Chrome smoke](evidence/ui/browser-smoke.md); [canonical readback](evidence/ui/browser-state.json); [HTTP tests](tests/test_http.py) | PASS |
-| S0-13 | yes | 72-hour soak completes with zero manual canonical-state repair | [fresh bilingual soak03 baseline/start](evidence/soak/2026-10-07/start-03.json); [retained previous receipt/reset](evidence/soak/2026-10-07/soak02-human-and-reset.json) | in_progress (soak03 one confirmed human turn/session; human/time/restart gates pending) |
+| S0-13 | yes | 72-hour soak completes with zero manual canonical-state repair | [fresh bilingual soak03 baseline/start](evidence/soak/2026-10-07/start-03.json); [retained previous receipt/reset](evidence/soak/2026-10-07/soak02-human-and-reset.json) | in_progress (soak03: 6 turns, 1 session, 3 Goals; restart/cancel verified; correction/time/remaining counts pending) |
 
 ## Required automated scenarios
 At minimum:
@@ -111,3 +111,5 @@ Fresh bilingual soak03 start 2026-10-07T06:14:18.834450+09:00, clean pushed base
 Soak03 human participation: [first directly confirmed receipt and monitor anchor](evidence/soak/2026-10-07/soak03-human-session-01.json). S0-13 remains in_progress; one turn/session is not PASS.
 
 Soak03 [first human draft/restart proof](evidence/soak/2026-10-07/soak03-human-restart.json): two confirmed turns / one session / one Goal; restart verified and one host-checked artifact. Remaining human/time/control requirements still pending; S0-13 is not PASS.
+
+Soak03 [four-input conversation/cancel evidence](evidence/soak/2026-10-07/soak03-human-conversation-cancel.json): six confirmed turns, one session, three Goals, cancel fenced with no artifact receipt. S0-13 remains in_progress; correction/time/session/turn gates pending.
