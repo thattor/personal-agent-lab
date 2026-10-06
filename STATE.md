@@ -4,7 +4,7 @@
 Reach Stable-0 as defined in ACCEPTANCE.md. Stable-0 is **incomplete**.
 
 ## Current phase
-S0-01 through S0-12 PASS. Official tool-free native smoke and actual Chrome UI evidence complete. S0-13 mock host soak is running; actual human-use gate remains incomplete.
+S0-01 through S0-12 PASS. Official tool-free native smoke and actual Chrome UI evidence complete. S0-13 mock host soak is running; controller is blocked on required human participation. Stable-0 remains incomplete.
 
 ## Working checkout
 `/private/tmp/personal-agent-lab-stable0-20261006`, same private GitHub repository, remote origin/main. Original supplied untracked workspace preserved. No old implementation/schema was reused; the accidental startup metadata inspection is explicitly recorded in docs/DEFECTS.md. Do not inspect it again.
@@ -38,3 +38,8 @@ Session closing verification: full suite in evidence/tests/soak-start-full.txt. 
 
 ## First goal-continuation audit
 2026-10-06T13:50:31.174033+00:00: verified wait, exact monitor/app processes live and HTTP worker healthy; unchanged runtime/probe baseline; hash chain valid, no findings or repair; no UI ingress/attestation. Full suite 55 PASS. [Checkpoint](evidence/soak/2026-10-06/continuation-01.json). Previous turn made implementation/evidence progress; this continuation confirms the live wait, not Stable completion. Existing human-participation request remains pending; do not repeat it or synthesize an answer. Next action remains direct human receipt/attestation followed by normal draft/restart workload.
+
+## Three-turn blocked audit
+2026-10-06T13:52:37.644578+00:00: the initial implementation turn requested actual human participation; first goal continuation verified the live wait; second continuation again confirms no UI ingress/attestation. Same blocker across three consecutive goal turns. [Audit](evidence/soak/2026-10-06/blocked-audit.json), [55-test full suite](evidence/tests/soak-blocked-audit.txt). No useful autonomous implementation slice remains within accepted scope: S0-01–12 already PASS, and more fixtures/idle elapsed time cannot supply human turns, sessions, Goals or controls. Controller marks the thread goal blocked after this evidence push. This is not a Stable declaration or a PAL Goal-state mutation.
+
+The exact monitor/app processes remain live and unchanged; local measurement and hourly operational audit remain active. Do not stop/restart/repair them merely because controller is blocked, do not self-attest and do not repeat the pending participation question. Release: human supplies the first actual UI receipt and explicit human-typed confirmation; then process it as described above and resume acceptance work. An explicit request to reconsider the human-use gate requires Opus review and a recorded accepted decision; no change is inferred from silence or automatic goal messages. Master Issue #1 remains open.

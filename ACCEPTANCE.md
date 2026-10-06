@@ -93,3 +93,5 @@ Started 2026-10-06T13:41:26.756470+00:00 from clean pushed baseline c887c35d540a
 Session-close full verification: [55-test log while real soak runs](evidence/tests/soak-start-full.txt). Operational hourly follow-up registered; no scheduled execution or 72-hour completion is claimed. The required human attestation remains pending; master Issue #1 stays open.
 
 Read-only goal-continuation check 2026-10-06T13:50:31.174033+00:00: [live-handle/health/baseline checkpoint](evidence/soak/2026-10-06/continuation-01.json), [55-test suite](evidence/tests/soak-continuation-01.txt). S0-13 remains in progress and human_pending; no PASS promotion, no clock reset or canonical repair.
+
+Blocked audit 2026-10-06T13:52:37.644578+00:00: [three-turn human-input blocker](evidence/soak/2026-10-06/blocked-audit.json), [55-test full verification](evidence/tests/soak-blocked-audit.txt). S0-13 remains in_progress/human_pending and is not PASS. Runtime/monitor remain live, baseline unchanged, no repair; controller blocked status does not invalidate or complete the measurement run.

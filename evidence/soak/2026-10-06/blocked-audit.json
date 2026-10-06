@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-10-06T13:52:37.644578+00:00",
+  "controller_classification": "blocked_on_required_human_input",
+  "consecutive_goal_turns": 3,
+  "previous_turn_classification": "verified_wait",
+  "monitor_pid": 28510,
+  "app_health": {
+    "pid": 28513,
+    "started_at": 1791294086.587188,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  },
+  "baseline_unchanged": true,
+  "log_head": "784e1e4c133712a1270dec86086e22a6beb108c34035e6e9361865956bc56710",
+  "measurements": 3,
+  "ui_operations": 0,
+  "human_attestation": false,
+  "canonical_repairs": 0,
+  "candidate": {
+    "elapsed_seconds": 601.3967759609222,
+    "human": {
+      "cancel": 0,
+      "correct_or_forget": 0,
+      "first_at": null,
+      "goals": 0,
+      "last_at": null,
+      "sessions": [],
+      "turns": 0
+    },
+    "human_session_span_seconds": 0,
+    "live_provider_reliability_claim": false,
+    "log_seq": 5,
+    "log_sha256": "784e1e4c133712a1270dec86086e22a6beb108c34035e6e9361865956bc56710",
+    "manual_canonical_repairs": 0,
+    "planned_restart_verified": false,
+    "required_seconds": 259200,
+    "status": "PENDING_HUMAN_OR_TIME"
+  },
+  "full_suite": "55 PASS",
+  "master_issue": "OPEN; no new comments",
+  "blocker": "Only the human can supply actual typed sessions and their attestation; independent host monitor continues but cannot satisfy human minimums. No accepted autonomous substitute exists under D-016.",
+  "release_condition": "Direct human UI session receipt/attestation, or explicit user request to reconsider accepted human-use criteria followed by required Opus review.",
+  "runtime_processes_stopped": false
+}
