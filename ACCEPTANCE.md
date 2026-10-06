@@ -150,3 +150,5 @@ Scheduled follow-up found a test observer race, preserved [red](evidence/tests/n
 Response-style revision ccfba35: [66-test full regression](evidence/tests/human-response-style-refined-full.txt). First real revalidation [FAIL retained](evidence/functional/feedback-20261007/result.json); prior F0 scenario PASS evidence remains historical baseline307058d, not proof of revised response behavior. F0-08 still pending revised live output review. No acceptance criterion was weakened.
 
 Revised real response content checks [PASS on ccfba35](evidence/functional/feedback-20261007-02/README.md): direct-question conversation, host memory explanation and grounded2-sentence drafts. These are automated real-provider results; F0-08 awaits direct revised human usefulness confirmation.
+
+Revised-output continuation audit: [owned host/read-only canonical invariants/evidence-link checks](evidence/functional/feedback-20261007-02/continuation-audit.json) and [66 tests PASS](evidence/tests/feedback-continuation-audit-full.txt). Human window has presented revised outputs; no direct revised verdict yet. F0-08 remains pending; no Stable promotion.

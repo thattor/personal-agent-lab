@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-06T23:27:23.889960+00:00",
+  "checkout_head": "fb7f2bc3e7b0b2e931e5f90b747bdc9ea51e5fa7",
+  "runtime_baseline": "ccfba35dd0623e16e87a4d6e3798266a4cda42e5",
+  "owned_host_pid": 78703,
+  "owned_host_identity_verified": true,
+  "readonly_invariants": "PASS",
+  "counts": {
+    "records": 14,
+    "goals": 2,
+    "attempts": 2,
+    "receipts": 2,
+    "outcomes": 2,
+    "events": 6
+  },
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 4,
+    "expires_at": 1791330039.668994,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "required_acceptance_links_missing": [],
+  "versions": {
+    "python": "3.9.6",
+    "sqlite": "3.54.0"
+  },
+  "canonical_writes": false,
+  "new_provider_calls": false,
+  "human_usefulness": "pending",
+  "purpose": "preparation; not final Stable audit"
+}
