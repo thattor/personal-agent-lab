@@ -1,0 +1,66 @@
+Advisory review of the proposed contracts. Overall the shape is sound — single slot, epoch fencing, CAS-style transitions, atomic blob+receipt, durable report replay, no ambient tools. The gaps are almost all in *transaction boundaries and fence-token plumbing*, not in scope. Smallest safe corrections below.
+
+## Corrections that should land before code
+
+**1. Make claim a single conditional transaction.**
+Budget consumption, epoch bump, state `queued→running`, and Attempt row insert must be one `UPDATE ... WHERE state='queued' AND epoch=?` plus insert, committed together. If they are separate ops, a crash leaves either a consumed budget with no attempt or a running task with a stale epoch. Recovery then treats "budget consumed, attempt abandoned" as a normal abandoned-attempt case.
+
+**2. Same pattern for every transition that pairs a state change with a side effect.**
+- Ingress: user Record + Handoff + client-key dedupe row in **one** transaction. Otherwise a crash between persist and handoff gives a recorded message with no Goal, and retry semantics become ambiguous.
+- Artifact publish: forget/context-manifest recheck must run **inside** the blob+receipt transaction, not before it. A recheck-then-commit gap is exactly the leak window forget is supposed to close.
+- Report events: written in the same transaction as the state change they describe (outbox style), replay keyed by unique event_key, ordered by monotonic seq, not wall clock.
+
+**3. Fence token on every worker-facing artifact.**
+WorkOrder carries `(task_id, attempt_id, epoch)` captured at claim. Executor results must echo all three. The completion write is `UPDATE ... WHERE attempt_id=? AND epoch=? AND state='running'`; stale results are silently discarded as fenced — never applied, never retried. Same check applies to `waiting_input` proposals: a second input-request while a question is outstanding in the same epoch is a violation.
+
+**4. Pause must fence, not preempt.**
+You can't deterministically stop a mid-executor thread. Contract: user pause on `queued|running` bumps epoch and sets `paused`; an in-flight result that returns afterward is fenced; resume requeues and consumes a fresh attempt on next claim. Document this explicitly — it's the cheapest coherent semantics. Same for cancel (terminal + epoch bump; worker may finish, result discarded).
+
+**5. Define "capability violation" handling.**
+Unknown action, extra fields, wrong types, oversized content → deterministic `failed` with reason `capability_violation`, no retry. This is a contract breach, not a transient fault, so it must not burn the unverified-retry path or produce a diagnosis escalation loop.
+
+**6. Define the failure signature for escalation.**
+"Repeated identical failures" needs a deterministic signature: e.g. normalized `(status, canonicalized detail)` hash per task. Consecutive identical signatures ≥ threshold → escalate (fail with diagnosis or waiting_input with a diagnostic question — pick one and pin it). No model involvement.
+
+**7. Pin `unknown` to read-side only.**
+States written by the host are the other seven. `unknown` exists only for inspect surfaces that fail state validation — never a stored value.
+
+**8. Input acceptance is epoch-checked, once.**
+Outstanding question row carries `(question_id, epoch)`. Accepting input requires both match; acceptance bumps epoch and enqueues. Late/duplicate answers are rejected as fenced. This closes the "input twice" and "answer after correction" races.
+
+## Provider / UI / process-lifetime tightening
+
+- **Provider:** scrub env (minimal allowlist, no inherited credentials), argv-only exec (no shell), kill the *process group* on timeout, byte cap on stdout, stdin carries only the frozen request string. On task cancel, fence-only is acceptable (call may finish, result discarded); on shutdown, group-kill then join. Verify no orphan process survives SIGKILL of the host — add that to the fault harness.
+- **UI:** one connection per thread (ThreadingHTTPServer spawns threads; no shared sqlite handle), explicit `127.0.0.1` bind, reject chunked/missing Content-Length, method allowlist. POST client keys go in the same idempotency-transaction pattern as ingress. Inspect serialization runs through the same sanitizer as everything else — you already scan it, good.
+- **OS lock:** use `flock`-style locks held for process lifetime, not PID files (auto-release on SIGKILL). Second host must fail fast non-zero, not wait — test this.
+- **Recovery order:** acquire lock → open store → run recovery **once** (abandoned running attempts → fresh Attempt per your D-012 rule; replay undelivered reports) → start UI/worker. Worker store handles failing mid-run propagate to attempt failure; no reconnect.
+
+## Fault harness additions
+
+Your injection points cover the transaction-boundary cases. Add three cheap ones:
+
+- Kill *after* executor returns but *before* result apply → on restart, the result is fenced or the attempt recovered; pin which.
+- Kill mid-CLI-provider-call → assert no orphaned process group.
+- Second-host launch while first holds lock → assert fast non-zero exit, first host unaffected.
+
+Keep barriers/Events as the only coordination — your "no sleeps as correctness proof" rule is right. Direct-DB negative probes in disposable DBs only is also right; never let the harness "repair" canonical state.
+
+## Acceptable as stated
+
+Single global slot, mock-by-default provider with separately verified live route, strict UTF-8/NUL/BOM validation plus hash+readback gate, host-opaque artifact IDs, sanitize-before-persistence with fragment-built canary scanned across DB+WAL+inspect+prompts. One addition: put a numeric size cap on draft content in the contract ("small" is ambiguous at validation time).
+
+## Summary of contract amendments
+
+1. Claim = one CAS transaction (state + epoch + budget + attempt row).
+2. Ingress dedupe + record + handoff = one transaction.
+3. Forget recheck inside the publish transaction.
+4. `(attempt_id, epoch)` fence token on WorkOrder and echoed on results; all applies conditional.
+5. Pause/cancel/correction bump epoch; in-flight results fenced; resume consumes fresh budget.
+6. Capability violation → terminal fail, no retry.
+7. Deterministic failure signature for escalation.
+8. `unknown` is read-side only.
+9. Input accept requires matching question+epoch, accepted once.
+10. Provider env scrub + group kill + no-orphan fault test.
+11. Second host fails fast; recovery runs once under lock before serving.
+
+None of these change product scope — they're all boundary conditions inside the contracts you proposed.

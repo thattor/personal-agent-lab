@@ -5,16 +5,16 @@ Stable-0 may be declared only when all REQUIRED rows are PASS with evidence and 
 | ID | Required | Acceptance | Evidence | Status |
 |---|---|---|---|---|
 | S0-01 | yes | Normal conversation works without unnecessary Goals; reversible draft intent creates work only when needed | automated + live language log | not_run |
-| S0-02 | yes | Slow task execution does not block conversation/control ingress | deterministic concurrency test | not_run |
+| S0-02 | yes | Slow task execution does not block conversation/control ingress | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
 | S0-03 | yes | Goal + fixed criteria + Attempt + host receipt complete a local draft end-to-end; model self-report alone cannot complete it | automated + live provider smoke | not_run |
-| S0-04 | yes | Executor/model cannot mutate canonical Goal/criteria/approval/reference state or invoke unallowed capability | negative tests | not_run |
-| S0-05 | yes | Duplicate message/result and stale/late result cause no duplicate completion/report/effect | deterministic tests | not_run |
-| S0-06 | yes | Crash/restart at acceptance/claim/completion/outbox boundaries preserves state and avoids duplicate report | fault-injection tests | not_run |
+| S0-04 | yes | Executor/model cannot mutate canonical Goal/criteria/approval/reference state or invoke unallowed capability | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
+| S0-05 | yes | Duplicate message/result and stale/late result cause no duplicate completion/report/effect | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
+| S0-06 | yes | Crash/restart at acceptance/claim/completion/outbox boundaries preserves state and avoids duplicate report | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
 | S0-07 | yes | Cancel prevents late result from completing Goal; pause/resume and input-resume work exactly once | deterministic + fault tests | not_run |
-| S0-08 | yes | Correction supersedes old context; forget stops AI reference while retaining raw user-viewable history | deterministic memory tests | not_run |
-| S0-09 | yes | Secret canary never appears in persisted conversational memory, prompts, logs, or test artifacts after sanitization path | automated scan | not_run |
+| S0-08 | yes | Correction supersedes old context; forget stops AI reference while retaining raw user-viewable history | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
+| S0-09 | yes | Secret canary never appears in persisted conversational memory, prompts, logs, or test artifacts after sanitization path | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
 | S0-10 | yes | One official real provider path works with an already-authorized account and verified no-additional-charge condition | capability record + live smoke | not_run |
-| S0-11 | yes | Failure/blocked/unverified states are reported; no silent success and no infinite retry | automated tests | not_run |
+| S0-11 | yes | Failure/blocked/unverified states are reported; no silent success and no infinite retry | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
 | S0-12 | yes | UI exposes conversation result and read-only inspect state sufficiently to diagnose Goal/Attempt/evidence | browser smoke | not_run |
 | S0-13 | yes | 72-hour soak completes with zero manual canonical-state repair | soak log | not_run |
 
@@ -71,3 +71,7 @@ Each PASS row must link to a commit, test/log/artifact path, or live-smoke recor
 ## Controls/recovery evidence — 2026-10-06
 
 [20-test full log](evidence/tests/s1-controls-crash.txt), [controls/memory tests](tests/test_controls_memory.py), [18 SIGKILL boundary subcases](tests/test_crash.py). Real disposable SQLite DBs verified atomic create/claim/artifact/completion/control/delivery before and after commits, bounded restart retries, reference-stop and conversational correction fencing, stale input question rejection, secret-canary DB/WAL scan. Runtime/worker/UI integration still required before full rows PASS. Defect diagnosis and shared invalidation fix: [record](docs/DEFECTS.md).
+
+## S2 host runtime evidence — 2026-10-06
+
+33 tests PASS. [Full log](evidence/tests/s2-runtime.txt), 21 real transaction SIGKILL subcases plus worker death between Executor return and host apply. Event-barrier verifies conversation/cancel while Executor remains blocked. Negative result schemas attempt to alter Goal/criteria/approval/reference/evidence and invoke send/shell; host rejects all, no receipt. Native model tools are not yet exposed/enabled. No live/UI/soak claim.

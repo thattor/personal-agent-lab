@@ -18,7 +18,9 @@ def die(point):
     if point == operation + '.' + boundary:
         os.kill(os.getpid(), signal.SIGKILL)
 store.fault = die
-if operation == 'create':
+if operation == 'ingress':
+    store.ingress('ingress','Make a draft','draft')
+elif operation == 'create':
     store.create_goal('create', 'draft', {'kind':'local_draft','max_bytes':200})
 elif operation == 'claim':
     store.claim()
@@ -35,12 +37,12 @@ elif operation == 'deliver':
 
 class CrashTests(unittest.TestCase):
     def test_transaction_crash_matrix(self):
-        for operation in ('create', 'claim', 'artifact', 'complete', 'control', 'deliver'):
+        for operation in ('ingress', 'create', 'claim', 'artifact', 'complete', 'control', 'deliver'):
             for boundary in ('mid_transaction', 'before_commit', 'after_commit'):
                 with self.subTest(operation=operation, boundary=boundary), tempfile.TemporaryDirectory() as temp:
                     path = Path(temp) / 'state.db'
                     store = Store(path)
-                    if operation != 'create':
+                    if operation not in ('create', 'ingress'):
                         store.create_goal('create', 'draft', {'kind':'local_draft','max_bytes':200})
                     if operation in ('artifact', 'complete', 'control'):
                         store.claim()
@@ -76,6 +78,27 @@ class CrashTests(unittest.TestCase):
                     delivered = reopened.inspect()
                     reopened.deliver()
                     self.assertEqual(reopened.inspect(), delivered)
-                    self.assertEqual(len(delivered['records']), len(delivered['events']))
+                    self.assertEqual(len([r for r in delivered['records'] if r['source_event_id']]), len(delivered['events']))
                     with reopened._connection() as db:
                         self.assertEqual(db.execute('PRAGMA integrity_check').fetchone()[0], 'ok')
+
+    def test_process_death_after_executor_return_recovers_without_result_apply(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / 'state.db'
+            store = Store(path)
+            goal = store.create_goal('g', 'Make a draft', {'kind':'local_draft','max_bytes':200})
+            code = """
+import os,signal,sys,threading
+from pal.runtime import Runtime
+def die(point):
+    if point == 'worker.after_executor_before_apply':
+        os.kill(os.getpid(),signal.SIGKILL)
+runtime=Runtime(sys.argv[1],fault=die)
+threading.Event().wait(8)
+"""
+            child = subprocess.run([sys.executable,'-c',code,str(path)],capture_output=True,timeout=10)
+            self.assertEqual(child.returncode,-signal.SIGKILL,child.stderr.decode())
+            self.assertEqual(store.inspect()['receipts'],[])
+            store.recover()
+            self.assertEqual(store.get_goal(goal['id'])['state'],'queued')
+            self.assertEqual(store.inspect()['attempts'][0]['status'],'abandoned')

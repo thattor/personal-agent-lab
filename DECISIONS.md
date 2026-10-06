@@ -95,3 +95,16 @@ Date: 2026-10-06
 Question/response: [Opus follow-up](evidence/reviews/s1-artifact-question.txt), [answer](evidence/reviews/s1-artifact-response.txt).
 Adopted: SQLite blobs and host-issued opaque artifact IDs, bounded small draft buffer, strict UTF-8, no BOM/NUL, host hash of inserted bytes, host receipt and blob in one fenced transaction; immutable update/delete triggers. No scratch paths or staged unbound artifacts are exposed/created, so filesystem/symlink staging and GC races are eliminated by construction. Size/encoding rejection is retained as host rejection evidence; never truncate to meet acceptance. Receipt readback/hash/bounds rechecked before completion.
 Forget remains reference stop, not byte deletion (D-006). Published evidence bytes/receipts remain inspectable; never feed audit/artifacts automatically into conversational memory. No secure erasure is claimed. This selects Opus C8's explicitly retained-evidence option. Derived export files are not canonical evidence.
+
+## D-013 — Two lanes, atomic ingress and bounded result contracts
+Date: 2026-10-06
+Question/answer: [runtime proposal](evidence/reviews/s2-swe-question.txt), [SWE-2 High review](evidence/reviews/s2-swe-response.txt).
+Adopt before runtime implementation:
+- Message Record + explicit draft handoff/Goal + ingress dedupe in one host transaction; ordered persistent outbox.
+- One task thread, independent conversation pool; no provider call inside a Store transaction. Global task slot enforced by database; process-lifetime nonblocking flock prevents a second host/recovery racing a live worker.
+- WorkOrder is immutable data only; response must echo Goal/Attempt/epoch. Host rejects unknown action/extra canonical-state fields/wrong types with terminal capability_violation. Product Executor has no shell/filesystem/store capability.
+- All result, receipt and Responder publication transactions recheck context manifest usability.
+- Pause/cancel fence results rather than promise synchronous preemption of arbitrary threads. Shutdown stops provider process groups; native calls use stdin, bounded output/timeout, tool-free route, minimal environment and no paid fallback.
+- Error/capability violations terminate rather than loop; repeated unverified signatures escalate to a diagnostic input question. Budget still limits every claim.
+Rejected SWE suggestion 7: canonical unknown is NOT read-only validation fallback. D-011/Opus require persisted unknown for durable external-effect ambiguity; this newer reviewer suggestion conflicts with accepted semantics and is not adopted. No real external effect capability is exposed.
+Verification: Event/barrier concurrency tests; disposable-DB fault tests; second-host lock test; native provider isolation/cancellation tests. Additional caller/model constraints are implementation enforcement, not scope reductions.

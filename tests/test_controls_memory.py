@@ -92,7 +92,7 @@ class ControlMemoryTests(unittest.TestCase):
         goal = self.goal()
         for count in range(3):
             attempt = self.store.claim()
-            self.store.fail(attempt['id'], 'verifier unavailable', check_status='unverified')
+            self.store.fail(attempt['id'], 'verifier unavailable ' + str(count), check_status='unverified')
         current = self.store.get_goal(goal['id'])
         self.assertEqual(current['state'], 'waiting_input')
         self.assertEqual(current['budget'], 0)
@@ -146,3 +146,39 @@ class ControlMemoryTests(unittest.TestCase):
         for path in self.path.parent.iterdir():
             if path.is_file():
                 self.assertNotIn(canary.encode(), path.read_bytes())
+
+    def test_approval_is_invalidated_by_new_revision(self):
+        goal = self.goal()
+        approval = self.store.approve('approval',goal['id'],'concrete-action-fingerprint')
+        self.store.control('correct',goal['id'],'correct',text='Changed draft')
+        current = self.store.inspect()['approvals'][0]
+        self.assertEqual(current['valid'],0)
+        self.assertEqual(current['revision'],approval['revision'])
+
+    def test_repeated_unverified_escalates_diagnosis_without_infinite_retry(self):
+        goal = self.goal()
+        for _ in range(2):
+            attempt = self.store.claim()
+            self.store.fail(attempt['id'],'unavailable','unverified')
+        current = self.store.get_goal(goal['id'])
+        self.assertEqual(current['state'],'waiting_input')
+        self.assertEqual(current['reason'],'repeated_unverified_requires_diagnosis')
+
+    def test_external_intent_ambiguity_stays_unknown_on_restart(self):
+        goal = self.goal()
+        attempt = self.store.claim()
+        # Disposable fault-injection spy, no external action or runtime-state repair.
+        with self.store._connection() as db:
+            db.execute('UPDATE attempts SET external_intent=1 WHERE id=?',(attempt['id'],))
+        self.store.recover()
+        current = self.store.get_goal(goal['id'])
+        self.assertEqual(current['state'],'unknown')
+        self.assertEqual(current['ambiguity'],1)
+        self.assertIsNone(self.store.claim())
+
+    def test_input_after_source_stop_needs_correction_to_replace_dependency(self):
+        source=self.store.record('source','user','Old target')
+        goal=self.store.create_goal('g','Make a draft',{'kind':'local_draft','max_bytes':100},[source['id']])
+        self.store.forget('forget',source['id'])
+        self.store.control('correct',goal['id'],'correct',text='New standalone draft target')
+        self.assertIsNotNone(self.store.claim())

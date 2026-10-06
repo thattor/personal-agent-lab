@@ -9,3 +9,6 @@ Prevention: keep correction/reference-stop publication and slot-release checks i
 ## 2026-10-06 — startup checkout mismatch
 Observation: supplied cwd had no HEAD/remote and lacked required new root documents. Initial AGENTS lookup followed its old project-document pointer before identifying the mismatch. No old implementation code was read/reused.
 Correction/prevention: clone only the named GitHub repository into an independent checkout, read its ordered root documents and current master Issue. For this greenfield project, reject a checkout without the mandated root STATE/SPEC/DESIGN/ACCEPTANCE/DECISIONS before following other project pointers. Preserved original workspace unchanged.
+
+## 2026-10-06 — transitive memory reference stop
+Review-driven finding: disabling a source alone still left an assistant reply derived from it eligible as later context. Fix: shared read boundary recursively verifies Record manifests and MemoryNote sources; raw derived records remain inspectable. Regression covers source→assistant→note propagation. This prevention is verified by the full 33-test suite.

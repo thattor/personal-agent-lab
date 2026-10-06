@@ -175,6 +175,10 @@ class Store:
                 note = db.execute('SELECT sources FROM notes WHERE id=?', (identity,)).fetchone()
                 if not self._usable(db, json.loads(note['sources'])):
                     return False
+            else:
+                record = db.execute('SELECT manifest FROM records WHERE id=?', (identity,)).fetchone()
+                if not self._usable(db, json.loads(record['manifest'])):
+                    return False
         return True
 
     def record(self, key, role, content, manifest=(), supersedes=None):
@@ -211,10 +215,21 @@ class Store:
 
     def context(self):
         with self._connection() as db:
-            records = [dict(r) for r in db.execute('SELECT * FROM records WHERE usable=1 AND source_event_id IS NULL ORDER BY seq')]
+            records = [dict(r) for r in db.execute('SELECT * FROM records WHERE usable=1 AND source_event_id IS NULL ORDER BY seq') if self._usable(db, [r['id']])]
             notes = [dict(r) for r in db.execute('SELECT * FROM notes WHERE usable=1') if self._usable(db, json.loads(r['sources']))]
+            # Re-read source rows for selected notes; summaries never replace negation/conditions.
+            selected = records[-30:]
+            selected_ids = {r['id'] for r in selected}
+            for note in notes[:20]:
+                for source in json.loads(note['sources']):
+                    if source not in selected_ids:
+                        row = db.execute('SELECT * FROM records WHERE id=?', (source,)).fetchone()
+                        if row is not None and row['source_event_id'] is None:
+                            selected.append(dict(row))
+                            selected_ids.add(source)
+            selected.sort(key=lambda r: r['seq'])
             # Audit/outbox reports are inspectable, not conversational memory.
-            return {'records': records[-30:], 'notes': notes[:20], 'manifest': [r['id'] for r in records[-30:]] + ['note:' + n['id'] for n in notes[:20]]}
+            return {'records': selected, 'notes': notes[:20], 'manifest': [r['id'] for r in selected] + ['note:' + n['id'] for n in notes[:20]]}
 
     def _criteria(self, criteria):
         if not isinstance(criteria, dict) or set(criteria) != {'kind', 'max_bytes'}:
@@ -224,21 +239,25 @@ class Store:
         return criteria
 
     def create_goal(self, key, specification, criteria, sources=()):
+        with self._tx('create') as db:
+            return self._create_goal(db, key, specification, criteria, sources)
+
+    def _create_goal(self, db, key, specification, criteria, sources=()):
         criteria = self._criteria(criteria)
         specification = sanitize(specification)
-        with self._tx('create') as db:
-            digest, old = self._dedupe(db, key, 'goal', [specification, criteria, list(sources)])
-            if old is not None:
-                return old
-            if not self._usable(db, sources):
-                raise StaleResult('Goal cites unavailable source')
-            identity, acceptance = uid(), uid()
-            db.execute('INSERT INTO goals(id,state,revision,acceptance_id) VALUES (?,\'queued\',1,?)', (identity, acceptance))
-            db.execute('INSERT INTO acceptances VALUES (?,?,?)', (acceptance, identity, encode(criteria)))
-            db.execute('INSERT INTO revisions VALUES (?,1,?,?,?,?)', (identity, acceptance, specification, encode(list(sources)), encode(criteria)))
-            self.fault('create.mid_transaction')
-            self._event(db, identity, 'goal.queued', {'revision': 1})
-            return self._remember(db, key, 'goal', digest, self._goal(db, identity))
+        digest, old = self._dedupe(db, key, 'goal', [specification, criteria, list(sources)])
+        if old is not None:
+            return old
+        if not self._usable(db, sources):
+            raise StaleResult('Goal cites unavailable source')
+        identity, acceptance = uid(), uid()
+        db.execute('INSERT INTO goals(id,state,revision,acceptance_id) VALUES (?,\'queued\',1,?)', (identity, acceptance))
+        db.execute('INSERT INTO acceptances VALUES (?,?,?)', (acceptance, identity, encode(criteria)))
+        db.execute('INSERT INTO revisions VALUES (?,1,?,?,?,?)', (identity, acceptance, specification, encode(list(sources)), encode(criteria)))
+        self.fault('create.mid_transaction')
+        self._event(db, identity, 'goal.queued', {'revision': 1})
+        return self._remember(db, key, 'goal', digest, self._goal(db, identity))
+
 
     def claim(self, manifest=()):
         with self._tx('claim') as db:
@@ -257,7 +276,7 @@ class Store:
                 self._wait(db, goal['id'], 'reference_stopped')
                 return None
             identity, epoch = uid(), goal['epoch'] + 1
-            db.execute("UPDATE goals SET state='running',epoch=?,budget=budget-1,total_claims=total_claims+1,reason='',question_id=NULL WHERE id=? AND state='queued'", (epoch, goal['id']))
+            db.execute("UPDATE goals SET state='running',epoch=?,budget=budget-1,total_claims=total_claims+1,reason='',question_id=NULL WHERE id=? AND state='queued' AND epoch=?", (epoch, goal['id'], goal['epoch']))
             db.execute("INSERT INTO attempts(id,goal_id,revision,acceptance_id,epoch,status,manifest) VALUES (?,?,?,?,?,'running',?)", (identity, goal['id'], goal['revision'], goal['acceptance_id'], epoch, encode(sources)))
             self.fault('claim.mid_transaction')
             self._event(db, goal['id'], 'attempt.claimed', {'attempt_id': identity, 'epoch': epoch})
@@ -308,10 +327,19 @@ class Store:
                 goal = self._goal(db, attempt['goal_id'])
                 # Error/fail do not blindly auto-retry identical failures.
                 if check_status == 'unverified':
-                    if goal['budget'] > 0 and goal['total_claims'] < self.MAX_TOTAL_CLAIMS:
+                    prior = db.execute('SELECT COUNT(*) FROM outcomes o JOIN attempts a ON a.id=o.attempt_id WHERE a.goal_id=? AND a.revision=? AND o.check_status=? AND o.detail=?', (goal['id'], goal['revision'], check_status, sanitize(reason))).fetchone()[0]
+                    if prior >= 2:
+                        self._wait(db, goal['id'], 'repeated_unverified_requires_diagnosis')
+                    elif goal['budget'] > 0 and goal['total_claims'] < self.MAX_TOTAL_CLAIMS:
                         db.execute("UPDATE goals SET state='queued',reason='unverified' WHERE id=?", (goal['id'],))
                     else:
                         self._wait(db, goal['id'], 'unverified')
+                elif check_status == 'fail' and goal['budget'] > 0 and goal['total_claims'] < self.MAX_TOTAL_CLAIMS:
+                    prior = db.execute('SELECT COUNT(*) FROM outcomes o JOIN attempts a ON a.id=o.attempt_id WHERE a.goal_id=? AND a.revision=? AND o.check_status=? AND o.detail=?', (goal['id'], goal['revision'], check_status, sanitize(reason))).fetchone()[0]
+                    if prior >= 2:
+                        self._wait(db, goal['id'], 'repeated_failure_requires_diagnosis')
+                    else:
+                        db.execute("UPDATE goals SET state='queued',reason=? WHERE id=?", (sanitize(reason), goal['id']))
                 else:
                     db.execute("UPDATE goals SET state='failed',reason=? WHERE id=?", (sanitize(reason), goal['id']))
                 self._event(db, goal['id'], 'attempt.' + check_status, {'attempt_id': attempt_id, 'reason': reason})
@@ -330,41 +358,45 @@ class Store:
 
     def control(self, key, goal_id, action, text=None, criteria=None, question_id=None, epoch=None):
         with self._tx('control') as db:
-            payload = [goal_id, action, text, criteria, question_id, epoch]
-            digest, old = self._dedupe(db, key, 'control', payload)
-            if old is not None:
-                return old
-            goal = self._goal(db, goal_id)
-            if action == 'cancel' and goal['state'] not in ('completed', 'cancelled'):
-                self._fence(db, goal_id)
-                db.execute("UPDATE goals SET state='cancelled',reason='user_cancelled' WHERE id=?", (goal_id,))
-            elif action == 'pause' and goal['state'] in ('queued', 'running'):
-                self._fence(db, goal_id)
-                db.execute("UPDATE goals SET state='paused',reason='user_paused' WHERE id=?", (goal_id,))
-            elif action == 'resume' and goal['state'] == 'paused':
-                db.execute("UPDATE goals SET state='queued',reason='' WHERE id=?", (goal_id,))
-            elif action == 'input' and goal['state'] == 'waiting_input' and goal['question_id'] == question_id and goal['epoch'] == epoch and text:
-                if goal['total_claims'] >= self.MAX_TOTAL_CLAIMS:
-                    raise InvalidTransition('global retry cap reached')
-                self._fence(db, goal_id)
-                db.execute("UPDATE goals SET state='queued',budget=MAX(budget,1),reason='' WHERE id=?", (goal_id,))
-                db.execute("INSERT INTO records(id,role,content) VALUES (?,'user',?)", (uid(), sanitize(text)))
-            elif action == 'correct' and goal['state'] not in ('completed', 'cancelled', 'unknown') and text:
-                previous = db.execute('SELECT * FROM revisions WHERE goal_id=? AND revision=?', (goal_id, goal['revision'])).fetchone()
-                self._fence(db, goal_id)
-                acceptance = goal['acceptance_id']
-                new_criteria = self._criteria(criteria) if criteria is not None else json.loads(previous['criteria'])
-                if encode(new_criteria) != previous['criteria']:
-                    acceptance = uid()
-                    db.execute('INSERT INTO acceptances VALUES (?,?,?)', (acceptance, goal_id, encode(new_criteria)))
-                revision = goal['revision'] + 1
-                db.execute('INSERT INTO revisions VALUES (?,?,?,?,?,?)', (goal_id, revision, acceptance, sanitize(text), previous['sources'], encode(new_criteria)))
-                db.execute("UPDATE goals SET state='queued',revision=?,acceptance_id=?,budget=3,reason='' WHERE id=?", (revision, acceptance, goal_id))
-            else:
-                raise InvalidTransition('invalid control transition or stale input question')
-            self.fault('control.mid_transaction')
-            self._event(db, goal_id, 'goal.' + action, {'revision': self._goal(db, goal_id)['revision']})
-            return self._remember(db, key, 'control', digest, self._goal(db, goal_id))
+            return self._control(db, key, goal_id, action, text, criteria, question_id, epoch)
+
+    def _control(self, db, key, goal_id, action, text=None, criteria=None, question_id=None, epoch=None):
+        payload = [goal_id, action, text, criteria, question_id, epoch]
+        digest, old = self._dedupe(db, key, 'control', payload)
+        if old is not None:
+            return old
+        goal = self._goal(db, goal_id)
+        if action == 'cancel' and goal['state'] not in ('completed', 'cancelled'):
+            self._fence(db, goal_id)
+            db.execute("UPDATE goals SET state='cancelled',reason='user_cancelled' WHERE id=?", (goal_id,))
+        elif action == 'pause' and goal['state'] in ('queued', 'running'):
+            self._fence(db, goal_id)
+            db.execute("UPDATE goals SET state='paused',reason='user_paused' WHERE id=?", (goal_id,))
+        elif action == 'resume' and goal['state'] == 'paused':
+            db.execute("UPDATE goals SET state='queued',reason='' WHERE id=?", (goal_id,))
+        elif action == 'input' and goal['state'] == 'waiting_input' and goal['question_id'] == question_id and goal['epoch'] == epoch and text:
+            if goal['total_claims'] >= self.MAX_TOTAL_CLAIMS:
+                raise InvalidTransition('global retry cap reached')
+            self._fence(db, goal_id)
+            db.execute("UPDATE goals SET state='queued',budget=MAX(budget,1),reason='' WHERE id=?", (goal_id,))
+            db.execute("INSERT INTO records(id,role,content) VALUES (?,'user',?)", (uid(), sanitize(text)))
+        elif action == 'correct' and goal['state'] not in ('completed', 'cancelled', 'unknown') and text:
+            previous = db.execute('SELECT * FROM revisions WHERE goal_id=? AND revision=?', (goal_id, goal['revision'])).fetchone()
+            self._fence(db, goal_id)
+            acceptance = goal['acceptance_id']
+            new_criteria = self._criteria(criteria) if criteria is not None else json.loads(previous['criteria'])
+            if encode(new_criteria) != previous['criteria']:
+                acceptance = uid()
+                db.execute('INSERT INTO acceptances VALUES (?,?,?)', (acceptance, goal_id, encode(new_criteria)))
+            revision = goal['revision'] + 1
+            db.execute('INSERT INTO revisions VALUES (?,?,?,?,?,?)', (goal_id, revision, acceptance, sanitize(text), '[]', encode(new_criteria)))
+            db.execute("UPDATE goals SET state='queued',revision=?,acceptance_id=?,budget=3,reason='' WHERE id=?", (revision, acceptance, goal_id))
+        else:
+            raise InvalidTransition('invalid control transition or stale input question')
+        self.fault('control.mid_transaction')
+        self._event(db, goal_id, 'goal.' + action, {'revision': self._goal(db, goal_id)['revision']})
+        return self._remember(db, key, 'control', digest, self._goal(db, goal_id))
+
 
     def _disable_notes(self, db, source_id):
         for note in db.execute('SELECT * FROM notes WHERE usable=1').fetchall():
@@ -529,3 +561,43 @@ class Store:
             if not row:
                 raise ValueError('unknown artifact')
             return bytes(row['body'])
+
+    def ingress(self, key, content, intent='conversation', goal_id=None, control=None):
+        content = sanitize(content)
+        if intent not in ('conversation', 'draft', 'control'):
+            raise ValueError('unsupported ingress intent')
+        with self._tx('ingress') as db:
+            digest, old = self._dedupe(db, key, 'ingress', [content, intent, goal_id, control])
+            if old is not None:
+                return old
+            record_id = uid()
+            db.execute("INSERT INTO records(id,role,content) VALUES (?,'user',?)", (record_id, content))
+            self.fault('ingress.mid_transaction')
+            goal = None
+            if intent == 'draft':
+                goal = self._create_goal(db, 'handoff:' + key, content, {'kind': 'local_draft', 'max_bytes': 4096}, [record_id])
+            elif intent == 'control':
+                if not goal_id or not isinstance(control, dict):
+                    raise ValueError('control requires Goal and action')
+                goal = self._control(db, 'action:' + key, goal_id, **control)
+            result = {'record_id': record_id, 'goal': goal, 'intent': intent}
+            return self._remember(db, key, 'ingress', digest, result)
+
+    def approve(self, key, goal_id, fingerprint):
+        """Called only for explicit user approval, not an Executor capability."""
+        with self._tx('approve') as db:
+            digest, old = self._dedupe(db, key, 'approve', [goal_id, fingerprint])
+            if old is not None:
+                return old
+            goal = self._goal(db, goal_id)
+            if goal['state'] in ('cancelled','completed','unknown'):
+                raise InvalidTransition('Goal cannot receive new approval')
+            identity = uid()
+            db.execute('INSERT INTO approvals(id,goal_id,revision,fingerprint) VALUES (?,?,?,?)', (identity, goal_id, goal['revision'], fingerprint))
+            self._event(db, goal_id, 'approval.recorded', {'approval_id': identity, 'revision': goal['revision']})
+            return self._remember(db, key, 'approve', digest, {'id':identity,'revision':goal['revision'],'fingerprint':fingerprint})
+
+    def stored_reply(self, client_key):
+        with self._connection() as db:
+            row = db.execute("SELECT result FROM dedupe WHERE key=? AND kind='record'", ('response:' + client_key,)).fetchone()
+            return json.loads(row['result']) if row else None
