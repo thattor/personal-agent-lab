@@ -4,7 +4,7 @@
 Reach Stable-0 as defined in ACCEPTANCE.md. Stable-0 is **incomplete**.
 
 ## Current phase
-S0-01 through S0-12 PASS. Official tool-free native smoke and actual Chrome UI evidence complete. S0-13 mock host soak is running; controller is blocked on required human participation. Stable-0 remains incomplete.
+S0-01 through S0-12 PASS. Official tool-free native smoke and actual Chrome UI evidence complete. S0-13 soak01 was invalidated by a reproduced stale UI warning and is retained/stopped; the fix is verified and a fresh soak02 baseline is ready. Stable-0 remains incomplete.
 
 ## Working checkout
 `/private/tmp/personal-agent-lab-stable0-20261006`, same private GitHub repository, remote origin/main. Original supplied untracked workspace preserved. No old implementation/schema was reused; the accidental startup metadata inspection is explicitly recorded in docs/DEFECTS.md. Do not inspect it again.
@@ -13,15 +13,14 @@ S0-01 through S0-12 PASS. Official tool-free native smoke and actual Chrome UI e
 55 integrated tests PASS: [full log](evidence/tests/ui-native-soak-full.txt), [actual monitor preflight](evidence/tests/soak-preflight-summary.json). Controls/input/pause/resume real SIGKILL fault coverage, independent lanes, typed host-only capabilities, original-request dedupe/fate lookup, native lifetime supervision and secret-free OS auth environment. [Clean live smoke](evidence/live/2026-10-06-clean/result.json): 3 official Claude Pro calls, tools/MCP empty, no extra-charge/fallback/new login, actual 276-byte host-verified draft. [Browser smoke](evidence/ui/browser-smoke.md): conversation/draft/inspect/restart/session receipt. Prior failed/partial live attempts are preserved and do not count as PASS.
 
 ## Active soak
-Started 2026-10-06T13:41:26.756470+00:00, clean baseline `c887c35d540a55f6f3108d546da3220f0852b76a`. Monitor PID 28510; app PID 28513; runtime/soak-20261006-01. Conversation http://127.0.0.1:58500/ and read-only /inspect. Initial canary/invariants PASS, human turns 0. [Start evidence](evidence/soak/2026-10-06/start.json). Match owned process command/start/boot identity before any lifecycle operation; do not blindly restart or repair DB.
+Old runtime/soak-20261006-01 retained, explicitly INVALIDATED after direct human UI finding. Supported monitor stop appended reset_required; original DB/history and human/restart evidence preserved. [Finding and verified canonical recovery](evidence/soak/2026-10-06/ui-recovery-finding.json). UI fix clears recovered state-fetch warnings, preserving message failures. [Actual JS red/green probe](evidence/ui/recovery/after.txt), [55-test full suite](evidence/tests/ui-recovery-full.txt). No canonical repair. New run runtime/soak-20261007-02 will start from this clean committed baseline on loopback port58500. No previous human counts, time or restart proof transferred.
 
 ## Exact next action
-First actual human receipt matched and directly attested; session `e54860be-d03d-4668-aa5d-c094fe15ebcb` registered atomically and anchored by the monitor (seq93). One human turn counted. Exact next action: human creates the first draft in this SAME browser session; reviewed monitor performs the supported unfinished restart automatically. Do not refresh this page before saving its receipt. Then accumulate >=20 human turns / >=3 sessions spanning >=72 actual hours / >=5 human Goals / cancellation / correction or reference-stop. Confirm later session receipts directly; no scripted substitute or self-attestation.
-
-Read live hash chain/candidate/health; diagnose any finding without canonical repair. Runtime/probe changes or failures reset this run. When an anchored candidate qualifies, run final full suite/evidence audit, write the controller completion marker described in README, verify anchored orderly final completion, update all acceptance/Stable state, commit/push, and close Issue #1.
+Launch fresh soak02, verify owned health/hash chain and record baseline. Then human reloads conversation UI (new session/fixed JS/fresh data), sends one ordinary message, supplies Session receipt and explicit human-input confirmation. Register ONLY that newly confirmed session before the first draft so unfinished restart is armed. Accumulate >=20 human turns / >=3 sessions spanning >=72 hours / >=5 human Goals / cancel / correction or reference-stop. No scripted substitute or self-attestation.
+When an anchored candidate qualifies, perform final full suite, acceptance/controller audit, historical-chain verification, evidence commit/push and Issue closure. Stable-0 remains incomplete.
 
 ## Acceptance status
-S0-01–12 PASS with evidence. S0-13 in_progress (human_pending). Master Issue #1 open; no Stable-0 declaration.
+S0-01–12 PASS with evidence. S0-13 reset_required (fresh baseline ready). Master Issue #1 open; no Stable-0 declaration.
 
 ## Human participation requirement
 D-016/Opus explicitly rejects substituting scripted traffic for user turns. The user must type >=20 turns in >=3 sessions spanning >=72 hours, create >=5 Goals, cancel once and correct/reference-stop once. Monitor may perform the supported unfinished restart and read-only checks. Preparing this concrete environment requires no new auth, broader permission, payment or public exposure. An autonomous-only substitute would change accepted evidence meaning and requires the user's judgment.
@@ -49,3 +48,6 @@ The exact monitor/app processes remain live and unchanged; local measurement and
 
 ## First attested human session
 2026-10-07 06:05 JST: human directly confirmed the screenshot receipt input. Session/key/record ID matched read-only canonical ingress; one actual human turn registered with monitor-anchored attestation. [Evidence](evidence/soak/2026-10-06/human-session-01.json), [55-test full suite](evidence/tests/soak-human-session-01.txt). Existing baseline/clock unchanged; no canonical writes, repairs, runtime changes or new provider calls. Planned restart is armed for unfinished work in this session, not yet performed. S0-13 remains incomplete. Historical blocked condition of no first receipt is released; subsequent human actions and time gate remain outstanding. Exact next action: human sends the first local draft request in the same page session, then controller verifies supported restart evidence.
+
+## UI recovery defect correction
+2026-10-07: direct human test proved unfinished restart and single draft completion; screenshot also exposed stale outage warning. Deterministic actual-JS failure→success probe reproduced and verified the minimal fix. Existing design preserved; routine UI fix exemption applies. Soak01 intentionally invalidated, not repaired or silently continued; fresh baseline/run required under D-016/D-017. Earlier active-host, counts, next-action and blocked notes above are historical and superseded by the current phase/active soak sections.

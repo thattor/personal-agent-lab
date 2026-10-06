@@ -1,0 +1,140 @@
+{
+  "finding": "Recovered host leaves stale State unavailable text visible in UI",
+  "source": "direct user screenshots in controller chat",
+  "chain_valid": true,
+  "health": {
+    "pid": 94252,
+    "started_at": 1791320755.921537,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  },
+  "restart": [
+    {
+      "data": {
+        "attempt_id": "f554115ae6a14263a9879bb7e461d32f",
+        "epoch": 1,
+        "goal_id": "4a58c6bfebdf44e0b5b31104bc3d8076",
+        "key": "ui:e54860be-d03d-4668-aa5d-c094fe15ebcb:1791320754792:cc2c3293-255f-4dc4-a0a3-8d9333523ced",
+        "pid": 28513
+      },
+      "event": "planned_restart_intent",
+      "previous": "01eb53d5788c5207acdd27b246087ef3ad51c05d3f1d9209416bb79a311924eb",
+      "seq": 95,
+      "uptime_raw": 629320.030592541,
+      "utc": 1791320755.781406,
+      "sha256": "03230531d021b4ee732caa711e6cf453d1dc8e3e3ec4ed5696ffe0a51cc97f88"
+    },
+    {
+      "data": {
+        "key": "ui:e54860be-d03d-4668-aa5d-c094fe15ebcb:1791320754792:cc2c3293-255f-4dc4-a0a3-8d9333523ced",
+        "new_attempt_id": "c290572cc97e4a4e89fa52498c28e2ea",
+        "new_epoch": 3,
+        "new_host": {
+          "pid": 94252,
+          "started_at": 1791320755.921537,
+          "stopping": false,
+          "worker_alive": true,
+          "worker_error": ""
+        },
+        "old_attempt": "f554115ae6a14263a9879bb7e461d32f",
+        "old_epoch": 1,
+        "old_status": "abandoned",
+        "original_ack_digest": "4fcafdc6aed4dc81309844eb4364d4828c79971f81f17e8894262136bde40ad3",
+        "replayed_ack_digest": "4fcafdc6aed4dc81309844eb4364d4828c79971f81f17e8894262136bde40ad3",
+        "same_goal": "4a58c6bfebdf44e0b5b31104bc3d8076"
+      },
+      "event": "planned_restart_verified",
+      "previous": "03230531d021b4ee732caa711e6cf453d1dc8e3e3ec4ed5696ffe0a51cc97f88",
+      "seq": 96,
+      "uptime_raw": 629320.3162415,
+      "utc": 1791320756.067055,
+      "sha256": "aca7a65c4cd3b83ef7bc4d7c407b8f45cb570383dee66766f27128366e932697"
+    }
+  ],
+  "summary": {
+    "ops": {
+      "harness:canary": {
+        "record_id": "f4246cf085814774b8e73d79afa4d5c7",
+        "goal_id": null,
+        "intent": "conversation",
+        "action": null
+      },
+      "ui:e54860be-d03d-4668-aa5d-c094fe15ebcb:1791320650036:92987be7-a836-4f5e-80eb-d2bd2316eda8": {
+        "record_id": "9a6f615d614d4c0a92544c9cf60b04a4",
+        "goal_id": null,
+        "intent": "conversation",
+        "action": null
+      },
+      "ui:e54860be-d03d-4668-aa5d-c094fe15ebcb:1791320754792:cc2c3293-255f-4dc4-a0a3-8d9333523ced": {
+        "record_id": "21acba00024143cfabbc443aba01d416",
+        "goal_id": "4a58c6bfebdf44e0b5b31104bc3d8076",
+        "intent": "draft",
+        "action": null
+      }
+    },
+    "goal_states": {
+      "4a58c6bfebdf44e0b5b31104bc3d8076": "completed"
+    },
+    "attempt_statuses": {
+      "f554115ae6a14263a9879bb7e461d32f": "abandoned",
+      "c290572cc97e4a4e89fa52498c28e2ea": "pass"
+    },
+    "counts": {
+      "records": 11,
+      "goals": 1,
+      "attempts": 2,
+      "receipts": 1,
+      "outcomes": 1,
+      "events": 5
+    },
+    "reports": 5
+  },
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "f554115ae6a14263a9879bb7e461d32f",
+      "goal_id": "4a58c6bfebdf44e0b5b31104bc3d8076",
+      "revision": 1,
+      "acceptance_id": "d5bb4a9c4e7b4430801a1bce6df9a82c",
+      "epoch": 1,
+      "status": "abandoned",
+      "manifest": "[\"f4246cf085814774b8e73d79afa4d5c7\",\"47857ff882b04d109838a3ad4d347ac4\",\"9a6f615d614d4c0a92544c9cf60b04a4\",\"de51705b8c2c48eabcc7c8af9a55bbbd\",\"21acba00024143cfabbc443aba01d416\"]",
+      "error": "process_restart",
+      "external_intent": 0
+    },
+    {
+      "seq": 2,
+      "id": "c290572cc97e4a4e89fa52498c28e2ea",
+      "goal_id": "4a58c6bfebdf44e0b5b31104bc3d8076",
+      "revision": 1,
+      "acceptance_id": "d5bb4a9c4e7b4430801a1bce6df9a82c",
+      "epoch": 3,
+      "status": "pass",
+      "manifest": "[\"f4246cf085814774b8e73d79afa4d5c7\",\"47857ff882b04d109838a3ad4d347ac4\",\"9a6f615d614d4c0a92544c9cf60b04a4\",\"de51705b8c2c48eabcc7c8af9a55bbbd\",\"21acba00024143cfabbc443aba01d416\",\"7406b8f5edf74633b50905aa9af24d7d\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "17286c63317d42d18773568bd172764d",
+      "attempt_id": "c290572cc97e4a4e89fa52498c28e2ea",
+      "artifact_id": "52b84a5ff3234512bda065905f9142c5",
+      "hash": "27a27d26daa23196cbf5983e62b77380ee1c5b77cb8268e3f2eb2b9458f2205b",
+      "size": 82,
+      "revision": 1,
+      "epoch": 3
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "c290572cc97e4a4e89fa52498c28e2ea",
+      "receipt_id": "17286c63317d42d18773568bd172764d",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "soak_verdict": "INVALIDATED_UI_FINDING_RESET_REQUIRED",
+  "canonical_repair": false
+}

@@ -1,0 +1,1 @@
+recovered unchanged state must clear stale warning

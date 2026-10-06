@@ -29,7 +29,7 @@ function render(data){
     for(const goal of data.goals.slice(-3)){const card=node('article');card.append(node('strong','Work: '+goal.state),node('p',goal.reason ? goal.reason.replaceAll('_',' ') : ''));work.append(card);}
   }
 }
-async function refresh(){try{const response=await fetch('/api/state');if(!response.ok)throw new Error('State unavailable');const data=await response.json();const signature=JSON.stringify(data);if(signature!==previous){render(data);previous=signature;}}catch(error){document.getElementById('error').textContent='State unavailable. Your recorded work is retained.';}}
+async function refresh(){try{const response=await fetch('/api/state');if(!response.ok)throw new Error('State unavailable');const data=await response.json();const signature=JSON.stringify(data);const error=document.getElementById('error');if(error.textContent==='State unavailable. Your recorded work is retained.')error.textContent='';if(signature!==previous){render(data);previous=signature;}}catch(error){document.getElementById('error').textContent='State unavailable. Your recorded work is retained.';}}
 const form=document.getElementById('message');
 if(form)form.addEventListener('submit',async event=>{
   event.preventDefault();const input=document.getElementById('text');const button=form.querySelector('button');button.disabled=true;document.getElementById('error').textContent='';
