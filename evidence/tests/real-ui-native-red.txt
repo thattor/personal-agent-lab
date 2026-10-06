@@ -1,0 +1,57 @@
+test_concurrent_call_budget_counts_failures_and_never_runs_over_limit (test_native.BoundedNativeTests) ... ERROR
+test_expiry_blocks_auth_subprocess_and_status_is_read_only (test_native.BoundedNativeTests) ... ERROR
+test_malformed_proof_never_authorizes (test_native.BoundedNativeTests) ... FAIL
+test_bounded_text_and_failure_and_timeout (test_native.NativeTests) ... ok
+test_env_keeps_os_identity_but_never_inherits_api_tokens (test_native.NativeTests) ... ok
+test_expired_or_unverified_route_cannot_run (test_native.NativeTests) ... ok
+test_native_cli_contract_has_no_tools_mcp_hooks_fallback_or_persistence (test_native.NativeTests) ... ok
+test_parent_sigkill_stops_provider_group (test_native.NativeTests) ... ok
+
+======================================================================
+ERROR: test_concurrent_call_budget_counts_failures_and_never_runs_over_limit (test_native.BoundedNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 86, in test_concurrent_call_budget_counts_failures_and_never_runs_over_limit
+    provider=NativeClaude(AccessProof(time.time(),True),max_calls=2)
+TypeError: __init__() got an unexpected keyword argument 'max_calls'
+
+======================================================================
+ERROR: test_expiry_blocks_auth_subprocess_and_status_is_read_only (test_native.BoundedNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 103, in test_expiry_blocks_auth_subprocess_and_status_is_read_only
+    provider=NativeClaude(AccessProof(time.time()-901,True),max_calls=2)
+TypeError: __init__() got an unexpected keyword argument 'max_calls'
+
+======================================================================
+ERROR: test_malformed_proof_never_authorizes (test_native.BoundedNativeTests) (value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 80, in test_malformed_proof_never_authorizes
+    AccessProof(value, True).check()
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/native.py", line 26, in check
+    age = time.time() - self.verified_at
+TypeError: unsupported operand type(s) for -: 'float' and 'NoneType'
+
+======================================================================
+ERROR: test_malformed_proof_never_authorizes (test_native.BoundedNativeTests) (value='now')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 80, in test_malformed_proof_never_authorizes
+    AccessProof(value, True).check()
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/native.py", line 26, in check
+    age = time.time() - self.verified_at
+TypeError: unsupported operand type(s) for -: 'float' and 'str'
+
+======================================================================
+FAIL: test_malformed_proof_never_authorizes (test_native.BoundedNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 82, in test_malformed_proof_never_authorizes
+    AccessProof(time.time(), 'true').check()
+AssertionError: ProviderUnavailable not raised
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.528s
+
+FAILED (failures=1, errors=4)

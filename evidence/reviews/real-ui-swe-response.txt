@@ -1,0 +1,45 @@
+Review of the bounded live-provider slice. Verdict: the design is directionally sound — admission-time proof gating, no refund/retry/fallback, shared budget, status stays pure. The main holes are in (a) budget boundedness across restart, (b) wall-clock dependence, and (c) a few precise validation/race semantics that need pinning before implementation.
+
+## Concrete holes
+
+**1. Restart resets the budget — the "bounded" claim breaks.** Counter is per-process; proof is valid 900s. Kill/restart the host N times within the window → N×16 calls against one proof, and nothing stops a loop of crashes from doing this. Persisting in the canonical DB is correctly ruled out. Smallest fix that restores unconditional boundedness: make the proof single-use. On successful construction, atomically create a marker file named `sha256(canonical_proof_json)` (O_CREAT|O_EXCL) under a non-canonical runtime dir; construction refuses if the marker exists. Restart then requires the operator to re-run the fresh UI check and issue a new proof — which matches the stated operator workflow ("metadata only after actual fresh check") and arguably matches the semantics better than a reusable token. If per-boot re-verification is too burdensome, the fallback is a sidecar ledger keyed by proof digest with atomic append — strictly more code for a weaker guarantee. Recommend the marker. Note this requires `--access-proof` be a file path (or content hashed identically regardless of transport), and argv-visible inline JSON is mildly undesirable anyway — prefer path.
+
+**2. `time.time()` for age is rewindable.** A backward clock adjustment re-validates an expired proof. Fix cheaply at load time: compute `expires_mono = time.monotonic() + (900 - age_at_load)`; all subsequent `check()` calls compare against monotonic. Keep the wall-clock `age` check once at admission for the `0 <= age` bound. Also make `check(now=None)` / inject a clock so the "expires between reserve and spawn" test is deterministic rather than sleeping.
+
+**3. `no_extra_charge` must be `is True`, not `== True`.** `json.loads` yields `1` for `1`, and `1 == True` in Python. Also: `json.loads` accepts `NaN`, `Infinity`, `-Infinity` natively — an `isfinite` check is necessary but also consider `parse_constant` raising to reject at parse time. Require exactly the three keys: reject unknown AND missing.
+
+**4. Reservation lifecycle needs three explicit pins:**
+- Proof expires between reserve and second check → call aborts pre-spawn, slot permanently consumed (consistent with no-refund; conservative — but write it down and test it).
+- Caller cancels during the auth subprocess → supervisor kills process group, slot consumed. Pin that the kill happens on cancellation, not just host death.
+- The budget lock must be released before the auth subprocess wait (reserve-only-under-lock). Holding it across a 120s wait serializes both lanes. Confirm in code review.
+
+**5. `authorized_now` must not spawn auth.** Status is specified as not consuming budget, but there's a subtler trap: if `authorized_now` runs the auth subprocess, it violates "controls/status avoid provider calls" and can burn 120s on the status path. `authorized_now` should be pure: `proof.check() and remaining > 0`. If a prior call failed auth, surface that via a `last_error` field rather than probing. Enumerate `unavailable_reason` as a closed enum — e.g. `proof_missing | proof_malformed | proof_expired | proof_consumed | budget_exhausted` — so tests can assert exact strings.
+
+**6. One provider instance shared by both lanes.** "Shared budget" is only true if `build_provider` returns a single instance handed to the conversation pool AND the task worker. If anything constructs per-lane, you silently get 2×16. Pin with a test: 8 concurrent calls split across lanes, limit 2 → exactly 2 auth attempts total.
+
+**7. Budget exhaustion mid-Goal → terminal failure with no continuation.** Already consistent with `taskProviderUnavailable`, but document the recovery path explicitly: operator issues a new proof + new WorkOrder/new Attempt; no silent resume. Otherwise someone will later "fix" this by adding retry.
+
+**8. Flag-scoping rejects.** `--access-proof` or `--native-call-limit` passed with `--provider mock` should reject, not be ignored — a silently ignored proof is exactly the operator-confusion bug this slice exists to prevent.
+
+**9. Mid-call expiry is fine — say so.** Proof can expire during the 120s model subprocess. Admission-time validity only; in-flight calls finish or die by the supervisor. This is correct (the proof gates admission, the OS-level auth governs the actual call) but should be an explicit invariant, not an accident.
+
+**10. Proof self-declaration limit — accepted, document it.** The proof attests the operator claimed credits OFF + Pro auth at `verified_at`; it cannot verify the UI state itself, and state can change within the 900s window. The TTL is the mitigation. This is the right trade-off for Stable-0 (any stronger check = web activation, ruled out) but record it in DECISIONS so nobody treats the proof as cryptographic evidence.
+
+## Recommended smallest implementation order
+
+1. `AccessProof.parse(path|str)` → strict dict (3 keys, no extras), `verified_at` non-bool finite numeric, `no_extra_charge is True`, `route` exact; compute `expires_mono`, `expires_at` at construction.
+2. `build_provider(args)`: validate flags → load+validate proof → create consumed-marker → construct provider → only then Store. Any failure exits before Store creation. Mock path rejects proof/limit flags.
+3. `NativeClaude.call()`: `with lock: check() and remaining>0 and remaining-=1` → auth subprocess (supervised, cancellable) → `check()` again → model subprocess. All failures → raise provider error, no retry.
+4. `provider_status()`: pure read — `{remaining_calls, expires_at, authorized_now, unavailable_reason, last_error}`.
+5. Map provider errors to existing recorded-message (conversation) and `taskProviderUnavailable` (task) paths. No new runtime plumbing.
+
+## Test additions beyond your list
+
+- Proof expires between reserve and second check (injected clock) → no model spawn, slot consumed.
+- Cancel during auth subprocess → group killed, slot consumed.
+- Same proof, second process boot → construction rejected (marker exists).
+- Cross-lane concurrency: 8 calls, limit 2 → 2 auth attempts.
+- `provider_status` during exhaustion → `remaining_calls=0`, `budget_exhausted`, zero subprocess spawns (assert via spy).
+- `1` for `no_extra_charge` rejected; `NaN`/`Infinity` tokens in JSON rejected at parse or check.
+
+Net: adopt the slice with the single-use proof marker, monotonic expiry, `is True`/key-exactness validation, and the pinned race semantics above. Nothing here requires new dependencies or canonical-state changes.

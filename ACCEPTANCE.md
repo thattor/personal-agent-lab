@@ -1,6 +1,6 @@
 # ACCEPTANCE.md — Stable-0 definition of done
 
-Stable-0 may be declared only when all REQUIRED rows are PASS with evidence and the soak gate is complete. blocked, partial, mock-only, and not_run are not PASS.
+Stable-0 may be declared only when all REQUIRED rows are PASS with evidence and the final audit is complete (D-019). blocked, partial, mock-only functional evidence, and not_run are not PASS. The original soak criterion remains unmet and historical; it is no longer required.
 
 | ID | Required | Acceptance | Evidence | Status |
 |---|---|---|---|---|
@@ -16,7 +16,7 @@ Stable-0 may be declared only when all REQUIRED rows are PASS with evidence and 
 | S0-10 | yes | One official real provider path works with an already-authorized account and verified no-additional-charge condition | [official access/cost proof and live smoke](evidence/live/2026-10-06-clean/result.json); [actual draft](evidence/live/2026-10-06-clean/draft.txt); [native boundary tests](tests/test_native.py) | PASS |
 | S0-11 | yes | Failure/blocked/unverified states are reported; no silent success and no infinite retry | [33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py) | PASS |
 | S0-12 | yes | UI exposes conversation result and read-only inspect state sufficiently to diagnose Goal/Attempt/evidence | [actual Chrome smoke](evidence/ui/browser-smoke.md); [canonical readback](evidence/ui/browser-state.json); [HTTP tests](tests/test_http.py) | PASS |
-| S0-13 | no (historical D-019) | 72-hour soak completes with zero manual canonical-state repair | [fresh bilingual soak03 baseline/start](evidence/soak/2026-10-07/start-03.json); [retained previous receipt/reset](evidence/soak/2026-10-07/soak02-human-and-reset.json) | in_progress (soak03: 10 turns, 2 sessions, 5 Goals; restart/cancel/correction verified; time/remaining turns/session pending) |
+| S0-13 | no (historical D-019) | 72-hour soak completes with zero manual canonical-state repair | [fresh bilingual soak03 baseline/start](evidence/soak/2026-10-07/start-03.json); [terminal chain preserved](evidence/soak/2026-10-07/soak03-functional-development-stop.json) | NOT PASS (stopped for approved functional development; original time/count criterion unmet) |
 
 ## Required automated scenarios
 At minimum:
@@ -136,3 +136,5 @@ Required rows below are additions, not retrospective claims about mock/transport
 | F0-08 | yes | Direct human evaluation of real UI scenario set confirms conversation/recall/draft/correction usefulness; any failure remains inspectable and is fixed/retested. | pending | human_pending |
 
 Final completion: every required S0/F0 row PASS with actual evidence, final full regression suite PASS, exact version/limitations, update STATE and master Issue #1. Long-term observation/sleep/auth refresh reliability remain explicitly unproven unless separately recorded. S0-13 is not a blocking row and remains historical unmet.
+
+D-020 implementation regression: [65 tests PASS](evidence/tests/real-ui-bounded-green.txt) cover proof schema/replay/numeric forms/symlink, concurrent exhausted budget, expiry/rewind/sleep wall age, supervised shutdown during auth and startup contracts; [actual JS refresh PASS](evidence/tests/real-ui-refresh-green.txt). F0-07 structural checks pass; actual live host/banner still pending, so row remains not_run pending complete evidence.

@@ -8,6 +8,7 @@ from pathlib import Path
 from urllib.parse import urlsplit,unquote
 
 from .runtime import Runtime,MockProvider
+from .native import NativeClaude,AccessProof
 
 _WEB=Path(__file__).resolve().parent/'web'
 
@@ -60,7 +61,7 @@ def make_server(runtime,port=8765):
             elif route=='/api/health':
                 self.send(200,runtime.health())
             elif route=='/api/state':
-                self.send(200,dict(runtime.store.inspect(),provider=runtime.provider.identity,runtime=runtime.health()))
+                self.send(200,dict(runtime.store.inspect(),provider=runtime.provider.identity,provider_status=runtime.provider.status() if hasattr(runtime.provider,'status') else {'mode':'mock'},runtime=runtime.health()))
             elif route.startswith('/api/artifact/'):
                 try:
                     self.send(200,runtime.store.artifact(route.rsplit('/',1)[-1]),'text/plain; charset=utf-8')
@@ -104,19 +105,39 @@ def make_server(runtime,port=8765):
     return server
 
 
+def build_provider(args, marker_dir=Path('runtime/native-proof-use')):
+    if args.provider=='mock':
+        if args.access_proof is not None or args.native_call_limit is not None:
+            raise ValueError('native options require explicit official provider')
+        return MockProvider(args.mock_task_delay)
+    if args.provider!='official_claude_pro' or not args.access_proof or args.mock_task_delay:
+        raise ValueError('explicit official provider requires proof and no mock delay')
+    limit=16 if args.native_call_limit is None else args.native_call_limit
+    provider=NativeClaude(AccessProof.load(args.access_proof),max_calls=limit)
+    provider.proof.consume(marker_dir)
+    return provider
+
+
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--db',default='runtime/pal.db')
     parser.add_argument('--port',type=int,default=8765)
     parser.add_argument('--mock-task-delay',type=float,default=0,help='bounded mock execution latency for control/recovery exercises')
+    parser.add_argument('--provider',choices=('mock','official_claude_pro'),default='mock')
+    parser.add_argument('--access-proof',help='operator-issued fresh official no-extra-charge metadata JSON')
+    parser.add_argument('--native-call-limit',type=int,help='bounded generation invocations, 1..32 (default16)')
     args=parser.parse_args()
-    runtime=Runtime(args.db,provider=MockProvider(args.mock_task_delay))  # Always mock; live smoke is a separate explicit command.
+    try:
+        provider=build_provider(args)
+    except (ValueError,RuntimeError,OSError) as error:
+        parser.error(str(error))
+    runtime=Runtime(args.db,provider=provider)
     server=make_server(runtime,args.port)
     def stop(*_):
         threading.Thread(target=server.shutdown,daemon=True).start()
     signal.signal(signal.SIGTERM,stop)
     signal.signal(signal.SIGINT,stop)
-    print(f'PAL mock conversation: http://127.0.0.1:{server.server_port}',flush=True)
+    print(f'PAL {provider.identity} conversation: http://127.0.0.1:{server.server_port}',flush=True)
     try:
         server.serve_forever()
     finally:

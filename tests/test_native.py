@@ -71,3 +71,112 @@ class NativeTests(unittest.TestCase):
         with patch.dict(os.environ, {'USER':'synthetic-user','LOGNAME':'synthetic-user','ANTHROPIC_API_KEY':'synthetic-forbidden','CLAUDE_CODE_OAUTH_TOKEN':'synthetic-forbidden'}):
             output=supervised_text([sys.executable,'-c',"import os;print(os.environ.get('USER')=='synthetic-user',os.environ.get('LOGNAME')=='synthetic-user','ANTHROPIC_API_KEY' in os.environ,'CLAUDE_CODE_OAUTH_TOKEN' in os.environ)"],'test',timeout=3,max_output=500)
         self.assertEqual(output,'True True False False')
+
+
+class BoundedNativeTests(unittest.TestCase):
+    def test_malformed_proof_never_authorizes(self):
+        for value in (True, None, 'now', float('inf'), float('nan')):
+            with self.subTest(value=value), self.assertRaises(ProviderUnavailable):
+                AccessProof(value, True).check()
+        with self.assertRaises(ProviderUnavailable):
+            AccessProof(time.time(), 'true').check()
+
+    def test_concurrent_call_budget_counts_failures_and_never_runs_over_limit(self):
+        from concurrent.futures import ThreadPoolExecutor
+        provider=NativeClaude(AccessProof(time.time(),True),max_calls=2)
+        auth=json.dumps({'loggedIn':True,'authMethod':'claude.ai','subscriptionType':'pro'})
+        def supervised(command,*args,**kwargs):
+            if command[-2:]==['auth','status']:
+                return auth
+            raise ProviderUnavailable('synthetic failure')
+        def run(_):
+            try:
+                return provider.complete('synthetic')
+            except ProviderUnavailable:
+                return 'denied'
+        with patch('pal.native.supervised_text',side_effect=supervised) as model:
+            with ThreadPoolExecutor(max_workers=8) as pool:
+                self.assertEqual(list(pool.map(run,range(8))),['denied']*8)
+            self.assertEqual(model.call_count,4)
+            self.assertEqual(sum(call.args[0][-2:]==['auth','status'] for call in model.call_args_list),2)
+        status=provider.status()
+        self.assertEqual(status['calls_remaining'],0)
+        self.assertFalse(status['authorized_now'])
+
+    def test_expiry_blocks_auth_subprocess_and_status_is_read_only(self):
+        provider=NativeClaude(AccessProof(time.time()-901,True),max_calls=2)
+        with patch('pal.native.supervised_text') as auth:
+            self.assertFalse(provider.status()['authorized_now'])
+            with self.assertRaises(ProviderUnavailable):
+                provider.complete('synthetic')
+            auth.assert_not_called()
+        self.assertEqual(provider.status()['calls_remaining'],2)
+
+    def test_clock_rewind_cannot_extend_proof_and_status_never_calls_provider(self):
+        with patch('pal.native.time.time',return_value=10000), patch('pal.native.time.monotonic',return_value=500):
+            provider=NativeClaude(AccessProof(10000,True))
+        with patch('pal.native.time.time',return_value=10001), patch('pal.native.time.monotonic',return_value=1401), patch('pal.native.supervised_text') as call:
+            for _ in range(1000):
+                self.assertEqual(provider.status()['unavailable_reason'],'proof_expired')
+            with self.assertRaises(ProviderUnavailable): provider.complete('denied')
+            call.assert_not_called()
+
+    def test_expiry_during_auth_consumes_slot_without_generation(self):
+        proof=AccessProof(time.time(),True)
+        provider=NativeClaude(proof,max_calls=2)
+        def auth(*args,**kwargs):
+            object.__setattr__(proof,'verified_at',0)
+            return json.dumps({'loggedIn':True,'authMethod':'claude.ai','subscriptionType':'pro'})
+        with patch('pal.native.supervised_text',side_effect=auth) as call:
+            with self.assertRaises(ProviderUnavailable): provider.complete('denied')
+            self.assertEqual(call.call_count,1)
+        self.assertEqual(provider.status()['calls_remaining'],1)
+
+    def test_proof_consumption_is_canonical_and_rejects_unsafe_files(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp); path=root/'proof.json'; markers=root/'markers'
+            timestamp=int(time.time())
+            value={'verified_at':timestamp,'no_extra_charge':True,'route':'official_claude_pro'}
+            path.write_text(json.dumps(value))
+            AccessProof.load(path).consume(markers)
+            value['verified_at']=float(timestamp)
+            path.write_text(json.dumps(value))
+            with self.assertRaises(ProviderUnavailable): AccessProof.load(path).consume(markers)
+            for raw in ('{"verified_at":0,"verified_at":1,"no_extra_charge":true,"route":"official_claude_pro"}', '{"verified_at":NaN,"no_extra_charge":true,"route":"official_claude_pro"}'):
+                path.write_text(raw)
+                with self.assertRaises(ValueError): AccessProof.load(path)
+            link=root/'link'; link.symlink_to(path)
+            with self.assertRaises(OSError): AccessProof.load(link)
+            directory_link=root/'directory-link'; directory_link.symlink_to(markers)
+            with self.assertRaises(OSError): AccessProof(time.time(),True).consume(directory_link)
+
+    def test_shutdown_during_auth_kills_owned_child_and_consumes_slot(self):
+        import threading
+        with tempfile.TemporaryDirectory() as temp:
+            pidfile=Path(temp)/'pid'
+            helper='import os,sys,time;from pathlib import Path;Path(sys.argv[1]).write_text(str(os.getpid()));time.sleep(20)'
+            provider=NativeClaude(AccessProof(time.time(),True),max_calls=2)
+            outcomes=[]
+            def run():
+                try: provider.complete('synthetic')
+                except ProviderUnavailable: outcomes.append('stopped')
+            with patch.object(provider,'_auth_command',return_value=[sys.executable,'-c',helper,str(pidfile)]):
+                thread=threading.Thread(target=run); thread.start()
+                try:
+                    deadline=time.monotonic()+5
+                    while not pidfile.exists() and time.monotonic()<deadline: time.sleep(.02)
+                    self.assertTrue(pidfile.exists())
+                    pid=int(pidfile.read_text())
+                    provider.stop(); thread.join(10)
+                    self.assertFalse(thread.is_alive())
+                    self.assertEqual(outcomes,['stopped'])
+                    with self.assertRaises(ProcessLookupError): os.kill(pid,0)
+                    self.assertEqual(provider.status()['calls_remaining'],1)
+                finally:
+                    provider.stop(); thread.join(12)
+
+    def test_wall_jump_and_sleep_expire_without_monotonic_progress(self):
+        with patch('pal.native.time.time',return_value=10000), patch('pal.native.time.monotonic',return_value=500):
+            proof=AccessProof(10000,True)
+        for wall in (9999,10901):
+            with patch('pal.native.time.time',return_value=wall), patch('pal.native.time.monotonic',return_value=500), self.assertRaises(ProviderUnavailable): proof.check()

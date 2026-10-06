@@ -1,0 +1,741 @@
+SWE-2 HIGH implementation review, text-only no tools/files/edits. Read concrete sources included. GreenfieldPALonly, nooldPAL. User explicitly adopted D019 after Opus+Astra: finite realUIfunctionalacceptance first, existingsecurity/canonical/recovery guarantees retained,72hquotasoptional historicalunmet. Mockdefault. No extra payment/newlogin/publicscope/paidfallback. You are required implementationconsultant; controller codes/tests.
+Next SMALL slice: connect existing NativeClaude to explicit server startup '--provider official_claude_pro --access-proof <json> --native-call-limit 16' (default provider mock; refuse proof/budget args withmock, invalidproof beforeStorecreation/recovery). AccessProof JSON only verified_at/no_extra_charge/route metadata, nevercredentials. Existing operator fresh actual officialauth/cost check issues proof <15minTTL; not model/browser boolean selfapproval; UI cannot create/renewproof. NativeClaude.reserve call underthreadlock beforeauth/spawn, max16attempts (failedcallsconsume), checksfreshproof eachcall; no automaticrenewal/no fallback/noUIprovider switch. Threadsafe budget under both conversation/tasklanes. Expose nonsecret provider_status in readonly/api/state: mode, remainingcalls, expires_at, authorized_now, unavailable_reason. Native failure remains existing visibleconversationerror or failedGoal; no canonicalwritefrommodel. Existinghostprocesslock/contextfence/outbox unchanged. Limit gates enforced before subprocessauth and recheckfreshproof immediatelybefore modelspawn. Onhostexitgroupkillunchanged. --native-call-limit bounded1..32; startup max16 chosen for finite synthetic scenario set. No indefinitecallsor paidfallback.
+Server startup supports mockdefault and explicitproof/provider. Bilingualbanner denotesmockvsreal, remainingbudget/proofexpiry; failclosed no silentlymockreplacement. Existing file storecanonicalmetadata unchanged; usefreshdevelopmentDB, oldsoakstopnormally preservechainoldNOTPASS. F07tests: mockdefault invalidoptionsdon'tinitializeStore; budget concurrent exactcount, expired/False/malformed/nonfiniteproofnoauth/spawn; quota exhaustion visible with acceptedmessage persisted; nativeauthfailure, stalecontext withholding, cancel+shutdown. ActualrealUIAPI functionalchecksF01..F06 separatelyprecommitted; nofixturecalledliveevidence. HumanusefulnessneededonceafterUIconcrete.
+Questions: challenge contracts, implementationholes, smallest safedesign and tests. Costproofexpiresin15minwallclock; noUIrenewal. Clockrollback shouldfailclosed versus proofverified_at/future; supervise executiondeadline120secondsmonotonic. Is startup callbudget perhost acceptableboundedoptinsession? Avoid new persistenceframework; verifyproofusingstrictnumericfinite(boolrejected)/routeexacttrue. Review sources and recommend minimaldiff. Do NOT generate largecode, use tools, enablefallback, or changeacceptance.
+
+SOURCE pal/native.py
+"""Official tool-free Claude route, explicit fresh no-extra-charge proof required."""
+import json
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+import threading
+import time
+from dataclasses import dataclass
+from pathlib import Path
+from .sanitize import sanitize
+
+
+class ProviderUnavailable(RuntimeError):
+    pass
+
+
+@dataclass(frozen=True)
+class AccessProof:
+    verified_at: float
+    no_extra_charge: bool
+    route: str = 'official_claude_pro'
+
+    def check(self):
+        age = time.time() - self.verified_at
+        if self.route != 'official_claude_pro' or not self.no_extra_charge or not 0 <= age <= 900:
+            raise ProviderUnavailable('fresh official route/cost verification required')
+
+
+def native_environment():
+    # USER/LOGNAME are non-secret OS identity required by macOS keychain lookup.
+    # Do not inherit API keys, tokens, config overrides, or third-party routes.
+    environment = {'HOME':os.environ['HOME'], 'PATH':os.environ.get('PATH','/usr/bin:/bin'), 'TERM':'dumb', 'CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC':'1'}
+    for key in ('USER','LOGNAME'):
+        if key in os.environ:
+            environment[key] = os.environ[key]
+    return environment
+
+
+def supervised_text(command, prompt, timeout=120, max_output=65536, owner=None, diagnostics=None):
+    prompt = sanitize(prompt)
+    if len(prompt) > 131072:
+        raise ProviderUnavailable('provider prompt bound exceeded')
+    try:
+        request = prompt.encode('utf-8',errors='strict')
+    except UnicodeError:
+        raise ProviderUnavailable('provider prompt encoding invalid') from None
+    if len(request) > 131072:
+        raise ProviderUnavailable('provider prompt byte bound exceeded')
+    # CLI handles its own already-existing first-party auth. No credential values inherited.
+    environment = native_environment()
+    control_read, control_write = os.pipe()
+    process = None
+    try:
+        with tempfile.TemporaryDirectory(prefix='pal-native-') as scratch:
+            environment['TMPDIR'] = scratch
+            process = subprocess.Popen([sys.executable,str(Path(__file__).with_name('native_supervisor.py')),str(control_read),str(timeout),str(max_output),json.dumps(command)],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,pass_fds=(control_read,),cwd=scratch,env=environment)
+            os.close(control_read)
+            control_read = None
+            if owner is not None:
+                owner.register(process,control_write)
+            try:
+                stdout, stderr = process.communicate(input=request,timeout=timeout+8)
+            except subprocess.TimeoutExpired:
+                process.terminate()
+                process.communicate(timeout=6)
+                raise ProviderUnavailable('native provider deadline exceeded') from None
+            if process.returncode != 0:
+                if diagnostics is not None:
+                    diagnostics.append(sanitize(stderr.decode('utf-8',errors='replace'))[:2000])
+                raise ProviderUnavailable('native provider failed, stopped, or exceeded bound')
+            if len(stdout) > max_output:
+                raise ProviderUnavailable('native output bound exceeded')
+            try:
+                text = stdout.decode('utf-8',errors='strict').strip()
+            except UnicodeError:
+                raise ProviderUnavailable('native output encoding invalid') from None
+            if not text:
+                raise ProviderUnavailable('native provider returned empty output')
+            return sanitize(text)
+    finally:
+        if owner is not None and process is not None:
+            owner.unregister(process)
+        if control_read is not None:
+            os.close(control_read)
+        try:
+            os.close(control_write)
+        except OSError:
+            pass
+        if process is not None and process.poll() is None:
+            process.terminate()
+            process.communicate(timeout=6)
+
+
+class NativeClaude:
+    identity = 'official_claude_opus_tool_free'
+
+    def __init__(self, proof):
+        self.proof = proof
+        self._lock = threading.Lock()
+        self._calls = {}
+        self._stopped = False
+
+    def command(self):
+        executable = shutil.which('claude')
+        if not executable:
+            raise ProviderUnavailable('official Claude CLI not installed')
+        return [executable,'-p','--model','opus','--safe-mode','--permission-mode','default','--system-prompt','You are the text-only PAL assistant. Return only the requested conversational reply or draft. You have no tools and cannot execute actions. Do not emit tool invocations, plan files, execution claims, or control instructions. Canonical task state and completion are owned by the host.','--tools','','--strict-mcp-config','--mcp-config','{"mcpServers":{}}','--disable-slash-commands','--no-session-persistence','--output-format','text']
+
+    def register(self, process, control_fd):
+        with self._lock:
+            if self._stopped:
+                os.write(control_fd,b'x')
+                raise ProviderUnavailable('native provider stopped')
+            self._calls[process] = control_fd
+
+    def unregister(self, process):
+        with self._lock:
+            self._calls.pop(process,None)
+
+    def complete(self, prompt):
+        self.proof.check()
+        with self._lock:
+            if self._stopped:
+                raise ProviderUnavailable('native provider stopped')
+        # Verify existing native auth via official command. Do not log account fields.
+        result = subprocess.run([self.command()[0],'auth','status'],capture_output=True,text=True,timeout=10,env=native_environment())
+        try:
+            status = json.loads(result.stdout)
+        except ValueError:
+            raise ProviderUnavailable('official auth status unavailable') from None
+        if result.returncode != 0 or not status.get('loggedIn') or status.get('authMethod') != 'claude.ai' or status.get('subscriptionType') not in ('pro','max'):
+            raise ProviderUnavailable('existing official subscription authentication required')
+        self.proof.check()
+        return supervised_text(self.command(),prompt,timeout=120,max_output=65536,owner=self)
+
+    def stop(self):
+        with self._lock:
+            self._stopped = True
+            for control_fd in self._calls.values():
+                try:
+                    os.write(control_fd,b'x')
+                except OSError:
+                    pass
+            self._calls.clear()
+
+SOURCE pal/server.py
+"""Loopback conversation and strictly read-only inspect UI; no external exposure."""
+import argparse
+import json
+import signal
+import threading
+from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
+from pathlib import Path
+from urllib.parse import urlsplit,unquote
+
+from .runtime import Runtime,MockProvider
+
+_WEB=Path(__file__).resolve().parent/'web'
+
+
+def make_server(runtime,port=8765):
+    class Handler(BaseHTTPRequestHandler):
+        def log_message(self,*args):
+            pass  # Do not log request bodies, account identifiers, or raw error text.
+
+        def send(self,status,body,content_type='application/json; charset=utf-8'):
+            if isinstance(body,dict):
+                body=json.dumps(body,ensure_ascii=False).encode()
+            elif isinstance(body,str):
+                body=body.encode()
+            self.send_response(status)
+            self.send_header('Content-Type',content_type)
+            self.send_header('Content-Length',str(len(body)))
+            self.send_header('Cache-Control','no-store')
+            self.send_header('X-Content-Type-Options','nosniff')
+            self.send_header('X-Frame-Options','DENY')
+            self.send_header('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'")
+            self.end_headers()
+            self.wfile.write(body)
+
+        def allowed(self,post=False):
+            expected=f'127.0.0.1:{self.server.server_port}'
+            if self.headers.get('Host')!=expected:
+                self.send(403,{'error':'unexpected host'})
+                return False
+            if post and self.headers.get('Origin')!='http://'+expected:
+                self.send(403,{'error':'unexpected origin'})
+                return False
+            return True
+
+        def do_GET(self):
+            if not self.allowed():
+                return
+            route=urlsplit(self.path).path
+            files={'/':'conversation.html','/inspect':'inspect.html','/app.js':'app.js','/style.css':'style.css'}
+            if route in files:
+                path=_WEB/files[route]
+                mime={'html':'text/html; charset=utf-8','js':'text/javascript; charset=utf-8','css':'text/css; charset=utf-8'}[path.suffix[1:]]
+                self.send(200,path.read_bytes(),mime)
+            elif route.startswith('/api/operation/'):
+                key=unquote(route[len('/api/operation/'):])
+                if not key or len(key)>200:
+                    self.send(400,{'error':'invalid operation key'})
+                else:
+                    self.send(200,runtime.store.operation(key))
+            elif route=='/api/health':
+                self.send(200,runtime.health())
+            elif route=='/api/state':
+                self.send(200,dict(runtime.store.inspect(),provider=runtime.provider.identity,runtime=runtime.health()))
+            elif route.startswith('/api/artifact/'):
+                try:
+                    self.send(200,runtime.store.artifact(route.rsplit('/',1)[-1]),'text/plain; charset=utf-8')
+                except ValueError:
+                    self.send(404,{'error':'unknown artifact'})
+            else:
+                self.send(404,{'error':'unknown route'})
+
+        def do_POST(self):
+            if not self.allowed(post=True):
+                return
+            if self.path!='/api/message':
+                self.send(405,{'error':'inspect and artifacts are read-only'})
+                return
+            if self.headers.get('Transfer-Encoding') or self.headers.get('Content-Type')!='application/json':
+                self.send(400,{'error':'JSON with bounded Content-Length required'})
+                return
+            try:
+                size=int(self.headers.get('Content-Length','0'))
+            except ValueError:
+                size=0
+            if not 0<size<=65536:
+                self.send(413,{'error':'request size bound'})
+                return
+            try:
+                payload=json.loads(self.rfile.read(size))
+                if not isinstance(payload,dict) or not {'key','text'}<=set(payload) or not set(payload)<={'key','text','goal_id','control'}:
+                    raise ValueError('invalid message contract')
+                result=runtime.submit(**payload)
+                self.send(202,{k:v for k,v in result.items() if k!='response'})
+            except (ValueError,TypeError,RuntimeError):
+                self.send(400,{'error':'message rejected; check current state or request fields'})
+
+        def do_PUT(self):
+            self.send(405,{'error':'unsupported method'})
+        do_DELETE=do_PUT
+        do_PATCH=do_PUT
+
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+    server.daemon_threads=True
+    return server
+
+
+def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--db',default='runtime/pal.db')
+    parser.add_argument('--port',type=int,default=8765)
+    parser.add_argument('--mock-task-delay',type=float,default=0,help='bounded mock execution latency for control/recovery exercises')
+    args=parser.parse_args()
+    runtime=Runtime(args.db,provider=MockProvider(args.mock_task_delay))  # Always mock; live smoke is a separate explicit command.
+    server=make_server(runtime,args.port)
+    def stop(*_):
+        threading.Thread(target=server.shutdown,daemon=True).start()
+    signal.signal(signal.SIGTERM,stop)
+    signal.signal(signal.SIGINT,stop)
+    print(f'PAL mock conversation: http://127.0.0.1:{server.server_port}',flush=True)
+    try:
+        server.serve_forever()
+    finally:
+        server.server_close()
+        runtime.close()
+
+
+if __name__=='__main__':
+    main()
+
+SOURCE pal/runtime.py
+"""Two runtime lanes and data-only model boundary. Mock is always the default."""
+import fcntl
+import json
+import os
+import time
+import re
+import threading
+from concurrent.futures import ThreadPoolExecutor, Future
+from dataclasses import dataclass
+from pathlib import Path
+
+from .sanitize import sanitize
+from .store import Store, StaleResult, EvidenceRejected
+
+
+@dataclass(frozen=True)
+class WorkOrder:
+    goal_id: str
+    attempt_id: str
+    epoch: int
+    revision: int
+    acceptance_id: str
+    specification: str
+    context: tuple
+    max_bytes: int
+    capabilities: tuple = ('local_draft',)
+
+
+class MockProvider:
+    identity = 'mock'
+
+    def __init__(self, task_delay=0):
+        if not 0 <= task_delay <= 60:
+            raise ValueError('mock delay must be bounded')
+        self.task_delay=task_delay
+        self._stop=threading.Event()
+
+    def complete(self, prompt):
+        if prompt.startswith('DRAFT\n'):
+            self._stop.wait(self.task_delay)
+            return 'Local draft (mock): ' + prompt.split('\n', 2)[1]
+        return 'I have recorded your message. This response uses the mock provider.'
+
+    def stop(self):
+        self._stop.set()
+
+
+class ProviderExecutor:
+    """Text generation only; returns a proposal, never an authoritative receipt."""
+    def __init__(self, provider):
+        self.provider = provider
+
+    def execute(self, order):
+        content = self.provider.complete('DRAFT\n' + order.specification + '\nReturn only the requested draft text, without tool invocations or planning transcript.\nRelevant sanitized context: ' + json.dumps(order.context, ensure_ascii=False))
+        return {'goal_id': order.goal_id, 'attempt_id': order.attempt_id, 'epoch': order.epoch, 'action': 'local_draft', 'content': content}
+
+    def stop(self):
+        self.provider.stop()
+
+
+class Runtime:
+    def __init__(self, path, provider=None, executor=None, fault=None):
+        self.started_at=time.time()
+        self._closed = threading.Event()
+        self._wake = threading.Event()
+        self.idle = threading.Event()
+        self._reply_lock = threading.Lock()
+        self._responses = {}
+        self._worker_error = ''
+        self._fault = fault or (lambda point: None)
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
+        self._lockfile = open(str(path) + '.lock', 'a')
+        try:
+            fcntl.flock(self._lockfile, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            self._lockfile.close()
+            raise RuntimeError('another PAL host owns this canonical store') from None
+        try:
+            self.store = Store(path)
+            self.store.recover()
+            self.store.deliver()
+        except BaseException:
+            self._lockfile.close()
+            raise
+        self.provider = provider or MockProvider()
+        self.executor = executor or ProviderExecutor(self.provider)
+        self._conversation = ThreadPoolExecutor(max_workers=2, thread_name_prefix='pal-conversation')
+        self._worker = threading.Thread(target=self._work, name='pal-task', daemon=True)
+        self._worker.start()
+        self._wake.set()
+
+    @staticmethod
+    def intent(text):
+        lower = text.lower().strip()
+        if any(term in lower for term in ('record only', 'not yet', 'later', 'まだ', '記録だけ')):
+            return 'conversation'
+        if re.match(r'^(?:make|create|write|prepare|please (?:make|create|write|prepare))\b.*\bdraft\b', lower) or lower.startswith('draft ') or ('下書き' in lower and any(term in lower for term in ('作って','作成','お願い'))):
+            return 'draft'
+        return 'conversation'
+
+    def _latest_goal(self):
+        goals = self.store.inspect()['goals']
+        return goals[-1]['id'] if goals else None
+
+    def submit(self, key, text, goal_id=None, control=None):
+        if self._closed.is_set():
+            raise RuntimeError('runtime is stopping')
+        text = sanitize(text)
+        if not isinstance(text, str) or len(text) > 12000:
+            raise ValueError('message exceeds input bound')
+        original_request={'text':text,'goal_id':goal_id,'control':control}
+        lower = text.lower().strip()
+        if control is None and lower in ('stop that', 'cancel that', '止めて', '停止して'):
+            control = {'action':'cancel'}
+            goal_id = self._latest_goal()
+        if control is None and lower in ('pause that','一時停止して'):
+            control = {'action':'pause'}
+            goal_id = self._latest_goal()
+        if control is None and lower in ('resume that','再開して'):
+            control = {'action':'resume'}
+            goal_id = self._latest_goal()
+        forget = False
+        if control is None and lower in ('forget that','忘れて'):
+            prior = [r for r in self.store.inspect()['records'] if r['role']=='user' and r['usable']]
+            if prior:
+                control = {'source_id':prior[-1]['id']}
+                forget = True
+        if control is None and lower.startswith('answer:'):
+            current_id = self._latest_goal()
+            if current_id:
+                current = self.store.get_goal(current_id)
+                if current['state']=='waiting_input':
+                    goal_id = current_id
+                    control = {'action':'input','text':text.partition(':')[2].strip(),'question_id':current['question_id'],'epoch':current['epoch']}
+        if control is None and lower.startswith('correct that:'):
+            goal_id = self._latest_goal()
+            if goal_id:
+                control = {'action':'correct','text':text.partition(':')[2].strip()}
+        intent = 'forget' if forget else ('control' if control is not None else self.intent(text))
+        result = self.store.ingress(key, text, intent, goal_id, control, request=original_request)
+        if lower.startswith('remember ') or '覚えて' in text:
+            self.store.note('memory:' + key, text, [result['record_id']])
+        if result['goal']:
+            self.idle.clear()
+            self._wake.set()
+        with self._reply_lock:
+            response = self._responses.get(key)
+            if response is None:
+                response = self._conversation.submit(self._respond, key, text, result)
+                self._responses[key] = response
+        return dict(result, response=response)
+
+    def _respond(self, key, text, ingress):
+        stored = self.store.stored_reply(key)
+        if stored is not None:
+            return stored
+        context = self.store.context()
+        if ingress['intent']=='forget':
+            content = 'Reference stopped. Raw history remains available in Inspect.'
+        elif ingress['goal']:
+            content = 'Work recorded. Current canonical state: ' + self.store.get_goal(ingress['goal']['id'])['state'] + '.'
+        elif any(term in text.lower() for term in ('what happened','previous thing','work status','進捗','どうなった')) and self._latest_goal():
+            current=self.store.get_goal(self._latest_goal())
+            content='Current work is '+current['state']+'.'+(' Reason: '+current['reason'] if current['reason'] else '')
+        else:
+            try:
+                canonical=[{k:g[k] for k in ('id','state','revision','reason')} for g in self.store.inspect()['goals'][-5:]]
+                content = self.provider.complete('CONVERSATION\n' + text + '\nRelevant sanitized context: ' + json.dumps([(r['role'],r['content']) for r in context['records']] + [('note',n['content']) for n in context['notes']], ensure_ascii=False)+'\nCurrent canonical work (overrides old conversation summaries): '+json.dumps(canonical))
+            except Exception as error:
+                content = 'Conversation provider unavailable: ' + type(error).__name__ + '. Your message remains recorded.'
+        try:
+            return self.store.record('response:' + key, 'assistant', content, context['manifest'])
+        except StaleResult:
+            return self.store.record('response:' + key, 'assistant', 'Response withheld because its source references changed.')
+
+    def _apply(self, order, result):
+        if not isinstance(result, dict) or result.get('goal_id') != order.goal_id or result.get('attempt_id') != order.attempt_id or result.get('epoch') != order.epoch:
+            self.store.fail(order.attempt_id, 'capability_violation')
+            return
+        token_fields = {'goal_id','attempt_id','epoch'}
+        if result.get('action') == 'local_draft' and set(result) == token_fields | {'action','content'} and isinstance(result['content'], str) and len(result['content']) <= order.max_bytes:
+            receipt = self.store.write_draft(order.attempt_id, result['content'])
+            self.store.complete(order.attempt_id, receipt['id'])
+        elif result.get('status') in ('waiting_input','unverified','error') and set(result) == token_fields | {'status','detail'} and isinstance(result['detail'], str) and len(result['detail']) <= 2000:
+            if result['status'] == 'waiting_input':
+                self.store.waiting(order.attempt_id, result['detail'])
+            else:
+                self.store.fail(order.attempt_id, result['detail'], result['status'])
+        else:
+            self.store.fail(order.attempt_id, 'capability_violation')
+
+    def _work(self):
+        try:
+            self._work_loop()
+        except Exception as error:
+            self._worker_error='worker_error:'+type(error).__name__
+            try:
+                for attempt in self.store.inspect()['attempts']:
+                    if attempt['status']=='running':
+                        self.store.fail(attempt['id'],self._worker_error)
+                self.store.record('host-worker-error','assistant',self._worker_error)
+            except Exception:
+                pass  # Read-only health remains available even if canonical storage fails.
+            self.idle.set()
+
+    def health(self):
+        return {'pid':os.getpid(),'started_at':self.started_at,'worker_alive':self._worker.is_alive(),'worker_error':self._worker_error,'stopping':self._closed.is_set()}
+
+    def _work_loop(self):
+        while not self._closed.is_set():
+            self._wake.wait()
+            self._wake.clear()
+            if self._closed.is_set():
+                break
+            while not self._closed.is_set():
+                context = self.store.context()
+                attempt = self.store.claim(context['manifest'])
+                if attempt is None:
+                    self.store.deliver()
+                    self.idle.set()
+                    break
+                self.idle.clear()
+                order = WorkOrder(attempt['goal_id'], attempt['id'], attempt['epoch'], attempt['revision'], attempt['acceptance_id'], attempt['specification'], tuple([(r['role'],r['content']) for r in context['records']] + [('note',n['content']) for n in context['notes']]), attempt['criteria']['max_bytes'])
+                try:
+                    result = self.executor.execute(order)
+                    self._fault('worker.after_executor_before_apply')
+                    if self._closed.is_set():
+                        break
+                    self._apply(order, result)
+                except StaleResult:
+                    # Store has retained rejection; no current-state mutation.
+                    pass
+                except EvidenceRejected as error:
+                    try:
+                        self.store.fail(order.attempt_id, str(error), 'fail')
+                    except StaleResult:
+                        pass
+                except Exception as error:
+                    try:
+                        self.store.fail(order.attempt_id, 'executor_error:' + type(error).__name__)
+                    except StaleResult:
+                        pass
+                self.store.deliver()
+        self.idle.set()
+
+    def close(self):
+        if self._closed.is_set():
+            return
+        self._closed.set()
+        self._wake.set()
+        stopper = getattr(self.executor, 'stop', None)
+        if stopper:
+            stopper()
+        self.provider.stop()
+        self._conversation.shutdown(wait=True)
+        self._worker.join(timeout=5)
+        if self._worker.is_alive():
+            # Keep process lock held: a new host must not recover behind a live worker.
+            raise RuntimeError('task worker did not stop; process lock retained')
+        fcntl.flock(self._lockfile, fcntl.LOCK_UN)
+        self._lockfile.close()
+
+SOURCE tests/test_native.py
+import json
+import os
+import signal
+import subprocess
+import sys
+import tempfile
+import time
+import unittest
+from unittest.mock import patch
+from pathlib import Path
+from pal.native import supervised_text, NativeClaude, AccessProof, ProviderUnavailable
+
+
+class NativeTests(unittest.TestCase):
+    def test_bounded_text_and_failure_and_timeout(self):
+        output = supervised_text([sys.executable,'-c','import sys; print(sys.stdin.read())'], 'sanitized synthetic prompt', timeout=3, max_output=1000)
+        self.assertIn('synthetic', output)
+        with self.assertRaises(ProviderUnavailable):
+            supervised_text([sys.executable,'-c','import sys;sys.stdout.write("x"*10000)'], 'test', timeout=3, max_output=500)
+        with self.assertRaises(ProviderUnavailable):
+            supervised_text([sys.executable,'-c','import time;time.sleep(20)'], 'test', timeout=0.2, max_output=500)
+        with self.assertRaises(ProviderUnavailable):
+            supervised_text([sys.executable,'-c','import sys;sys.exit(3)'], 'test', timeout=3, max_output=500)
+
+    def test_expired_or_unverified_route_cannot_run(self):
+        provider = NativeClaude(AccessProof(verified_at=0, no_extra_charge=True))
+        with self.assertRaises(ProviderUnavailable):
+            provider.complete('No call allowed')
+        with self.assertRaises(ProviderUnavailable):
+            NativeClaude(AccessProof(verified_at=time.time(), no_extra_charge=False)).complete('No call allowed')
+
+    def test_parent_sigkill_stops_provider_group(self):
+        with tempfile.TemporaryDirectory() as temp:
+            pidfile=Path(temp)/'pid.txt'
+            helper = "import os,sys,time; from pathlib import Path; Path(sys.argv[1]).write_text(str(os.getpid())); time.sleep(30)"
+            parent_code="""\nimport sys\nfrom pal.native import supervised_text\nsupervised_text([sys.executable,'-c',sys.argv[2],sys.argv[1]],'test',timeout=25,max_output=500)\n"""
+            parent=subprocess.Popen([sys.executable,'-c',parent_code,str(pidfile),helper],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+            try:
+                deadline=time.monotonic()+5
+                while not pidfile.exists() and time.monotonic()<deadline:
+                    time.sleep(.02)  # bounded observation polling, not concurrency correctness proof
+                self.assertTrue(pidfile.exists())
+                native_pid=int(pidfile.read_text())
+                os.kill(parent.pid,signal.SIGKILL)
+                parent.communicate(timeout=5)
+                deadline=time.monotonic()+5
+                alive=True
+                while time.monotonic()<deadline:
+                    try:
+                        os.kill(native_pid,0)
+                    except ProcessLookupError:
+                        alive=False
+                        break
+                    time.sleep(.02)
+                self.assertFalse(alive,'orphan native process survived parent death')
+            finally:
+                if parent.poll() is None:
+                    parent.kill()
+                parent.communicate(timeout=5)
+
+    def test_native_cli_contract_has_no_tools_mcp_hooks_fallback_or_persistence(self):
+        provider=NativeClaude(AccessProof(time.time(),True))
+        command=provider.command()
+        self.assertIn('--safe-mode',command)
+        self.assertEqual(command[command.index('--tools')+1],'')
+        self.assertIn('--strict-mcp-config',command)
+        self.assertIn('--no-session-persistence',command)
+        self.assertNotIn('--fallback-model',command)
+
+    def test_env_keeps_os_identity_but_never_inherits_api_tokens(self):
+        with patch.dict(os.environ, {'USER':'synthetic-user','LOGNAME':'synthetic-user','ANTHROPIC_API_KEY':'synthetic-forbidden','CLAUDE_CODE_OAUTH_TOKEN':'synthetic-forbidden'}):
+            output=supervised_text([sys.executable,'-c',"import os;print(os.environ.get('USER')=='synthetic-user',os.environ.get('LOGNAME')=='synthetic-user','ANTHROPIC_API_KEY' in os.environ,'CLAUDE_CODE_OAUTH_TOKEN' in os.environ)"],'test',timeout=3,max_output=500)
+        self.assertEqual(output,'True True False False')
+
+SOURCE tests/test_http.py
+import json
+import tempfile
+import threading
+import unittest
+import urllib.request
+import urllib.error
+from pathlib import Path
+from pal.runtime import Runtime
+from pal.server import make_server
+
+
+class HTTPTests(unittest.TestCase):
+    def setUp(self):
+        self.temp=tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.runtime=Runtime(Path(self.temp.name)/'state.db')
+        self.addCleanup(self.runtime.close)
+        self.server=make_server(self.runtime,0)
+        self.thread=threading.Thread(target=self.server.serve_forever,daemon=True)
+        self.thread.start()
+        self.base=f'http://127.0.0.1:{self.server.server_port}'
+
+    def tearDown(self):
+        self.server.shutdown()
+        self.server.server_close()
+        self.thread.join(3)
+        self.runtime.close()
+        self.temp.cleanup()
+
+    def request(self,path,body=None,headers=None,method=None):
+        data=json.dumps(body).encode() if body is not None else None
+        request=urllib.request.Request(self.base+path,data=data,method=method,headers=headers or {})
+        try:
+            response=urllib.request.urlopen(request,timeout=3)
+        except urllib.error.HTTPError as error:
+            response=error
+        with response:
+            return response.status,response.read(),response.headers
+
+    def post(self,body,path='/api/message',origin=None):
+        return self.request(path,body,{'Origin':origin or self.base,'Content-Type':'application/json'})
+
+    def test_conversation_draft_and_inspect_artifact(self):
+        status,body,_=self.post({'key':'hello','text':'Hello'})
+        self.assertEqual(status,202)
+        self.assertIsNone(json.loads(body)['goal'])
+        status,body,_=self.post({'key':'draft','text':'Make a draft, do not send'})
+        self.assertEqual(status,202)
+        self.assertTrue(self.runtime.idle.wait(2))
+        status,body,_=self.request('/api/state')
+        state=json.loads(body)
+        self.assertEqual(state['goals'][0]['state'],'completed')
+        artifact=state['receipts'][0]['artifact_id']
+        status,body,headers=self.request('/api/artifact/'+artifact)
+        self.assertEqual(status,200)
+        self.assertTrue(body)
+        self.assertIn('text/plain',headers['Content-Type'])
+        for route in ('/','/inspect','/app.js','/style.css'):
+            self.assertEqual(self.request(route)[0],200)
+
+    def test_inspect_is_read_only_and_cross_origin_cannot_mutate(self):
+        before=self.runtime.store.inspect()
+        self.assertEqual(self.post({'key':'bad','text':'Make a draft'},origin='https://evil.invalid')[0],403)
+        self.assertEqual(self.post({'key':'bad','text':'Hello'},path='/api/state')[0],405)
+        self.assertEqual(self.request('/api/state',headers={'Host':'evil.invalid'})[0],403)
+        self.assertEqual(self.runtime.store.inspect(),before)
+        self.assertEqual(self.request('/api/state',method='DELETE')[0],405)
+
+    def test_duplicate_client_message_and_invalid_fields(self):
+        body={'key':'same','text':'Make a draft'}
+        a=self.post(body)
+        b=self.post(body)
+        self.assertEqual(json.loads(a[1]),json.loads(b[1]))
+        self.assertEqual(len(self.runtime.store.inspect()['goals']),1)
+        self.assertEqual(self.post({'key':'bad','text':'Hello','state':'completed'})[0],400)
+        self.assertEqual(self.post({'key':'same','text':'Different'})[0],400)
+
+    def test_conversational_remember_and_forget(self):
+        self.post({'key':'remember','text':'Remember the fictional project is green'})
+        source=self.runtime.store.inspect()['records'][0]
+        self.assertEqual(len(self.runtime.store.context()['notes']),1)
+        self.assertEqual(self.post({'key':'forget','text':'Forget that'})[0],202)
+        self.assertNotIn(source['id'],self.runtime.store.context()['manifest'])
+        retained=[r for r in self.runtime.store.inspect()['records'] if r['id']==source['id']][0]
+        self.assertEqual(retained['usable'],0)
+        self.assertTrue(retained['content'])
+
+    def test_ui_csp_no_inline_model_html_and_request_bounds(self):
+        status,body,headers=self.request('/')
+        self.assertIn("script-src 'self'",headers['Content-Security-Policy'])
+        self.assertIn(b'id="session-receipt" translate="no"',body)
+        _,script,_=self.request('/app.js')
+        self.assertIn(b'textContent',script)
+        self.assertNotIn(b'innerHTML',script)
+        self.assertEqual(self.request('/api/message',{'key':'x','text':'x'},headers={'Origin':self.base,'Content-Type':'text/plain'})[0],400)
+        self.assertEqual(self.post({'key':'big','text':'x'*70000})[0],413)
+
+    def test_lost_ack_fate_can_be_queried_without_duplicate_effect(self):
+        self.post({'key':'lost-ack','text':'Make a draft'})
+        status,body,_=self.request('/api/operation/lost-ack')
+        fate=json.loads(body)
+        self.assertEqual(fate['status'],'accepted')
+        goal_id=fate['result']['goal']['id']
+        self.assertEqual(self.request('/api/operation/absent')[0],200)
+        self.assertEqual(json.loads(self.request('/api/operation/absent')[1])['status'],'absent')
+        self.post({'key':'lost-ack','text':'Make a draft'})
+        self.assertEqual(self.runtime.store.inspect()['goals'][0]['id'],goal_id)
+        self.assertEqual(len(self.runtime.store.inspect()['goals']),1)
+
+    def test_duplicate_natural_forget_keeps_original_target_binding(self):
+        self.post({'key':'remember','text':'Remember the fictional color is green'})
+        first=self.post({'key':'forget','text':'Forget that'})
+        state=self.runtime.store.inspect()
+        second=self.post({'key':'forget','text':'Forget that'})
+        self.assertEqual(first[0],202)
+        self.assertEqual(json.loads(first[1]),json.loads(second[1]))
+        references=[e for e in self.runtime.store.inspect()['events'] if e['kind']=='reference.stopped']
+        self.assertEqual(len(references),1)
+        self.assertEqual(len([r for r in self.runtime.store.inspect()['records'] if r['role']=='user']),len([r for r in state['records'] if r['role']=='user']))

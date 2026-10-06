@@ -1,5 +1,8 @@
 """Official tool-free Claude route, explicit fresh no-extra-charge proof required."""
 import json
+import math
+import hashlib
+import stat
 import os
 import shutil
 import subprocess
@@ -7,7 +10,7 @@ import sys
 import tempfile
 import threading
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from .sanitize import sanitize
 
@@ -22,10 +25,67 @@ class AccessProof:
     no_extra_charge: bool
     route: str = 'official_claude_pro'
 
+    _loaded_wall: float = field(default_factory=lambda: time.time(), init=False, repr=False)
+    _loaded_mono: float = field(default_factory=lambda: time.monotonic(), init=False, repr=False)
+
     def check(self):
-        age = time.time() - self.verified_at
-        if self.route != 'official_claude_pro' or not self.no_extra_charge or not 0 <= age <= 900:
-            raise ProviderUnavailable('fresh official route/cost verification required')
+        try:
+            numeric = type(self.verified_at) in (int,float) and math.isfinite(self.verified_at)
+            if not numeric or self.no_extra_charge is not True or self.route != 'official_claude_pro':
+                raise ProviderUnavailable('proof_malformed')
+            age = time.time() - self.verified_at
+            elapsed = time.monotonic() - self._loaded_mono
+            remaining = 900 - (self._loaded_wall - self.verified_at)
+            if not 0 <= age <= 900 or not 0 <= elapsed < remaining:
+                raise ProviderUnavailable('proof_expired')
+        except (TypeError,ValueError,OverflowError):
+            raise ProviderUnavailable('proof_malformed') from None
+
+    @classmethod
+    def load(cls, path):
+        def pairs(items):
+            value={}
+            for key,item in items:
+                if key in value:
+                    raise ValueError('duplicate proof key')
+                value[key]=item
+            return value
+        def constant(_):
+            raise ValueError('nonfinite proof value')
+        fd=os.open(path,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+        with os.fdopen(fd,'rb') as stream:
+            if not stat.S_ISREG(os.fstat(stream.fileno()).st_mode):
+                raise ValueError('proof must be a regular file')
+            raw=stream.read(4097)
+        if len(raw)>4096:
+            raise ValueError('proof size bound')
+        value=json.loads(raw.decode('utf-8'),object_pairs_hook=pairs,parse_constant=constant)
+        if not isinstance(value,dict) or set(value)!={'verified_at','no_extra_charge','route'}:
+            raise ValueError('invalid proof schema')
+        proof=cls(**value)
+        proof.check()
+        return proof
+
+    def consume(self, directory):
+        self.check()
+        canonical=json.dumps({'verified_at':float(self.verified_at).hex(),'no_extra_charge':True,'route':self.route},sort_keys=True,separators=(',',':'),allow_nan=False)
+        name=hashlib.sha256(canonical.encode()).hexdigest()
+        directory=Path(directory)
+        directory.mkdir(parents=True,exist_ok=True,mode=0o700)
+        dirfd=os.open(str(directory),os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+        try:
+            info=os.fstat(dirfd)
+            if info.st_uid!=os.getuid() or info.st_mode & 0o022:
+                raise ValueError('unsafe proof marker directory')
+            try:
+                fd=os.open(name,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600,dir_fd=dirfd)
+            except FileExistsError:
+                raise ProviderUnavailable('proof_consumed') from None
+            with os.fdopen(fd,'wb') as stream:
+                stream.write(b'consumed\n'); stream.flush(); os.fsync(stream.fileno())
+            os.fsync(dirfd)
+        finally:
+            os.close(dirfd)
 
 
 def native_environment():
@@ -96,8 +156,12 @@ def supervised_text(command, prompt, timeout=120, max_output=65536, owner=None, 
 class NativeClaude:
     identity = 'official_claude_opus_tool_free'
 
-    def __init__(self, proof):
+    def __init__(self, proof, max_calls=16):
+        if type(max_calls) is not int or not 1<=max_calls<=32:
+            raise ValueError("native call limit must be 1..32")
         self.proof = proof
+        self._remaining = max_calls
+        self._last_error = ""
         self._lock = threading.Lock()
         self._calls = {}
         self._stopped = False
@@ -119,21 +183,47 @@ class NativeClaude:
         with self._lock:
             self._calls.pop(process,None)
 
-    def complete(self, prompt):
-        self.proof.check()
+    def status(self):
         with self._lock:
+            reason='stopped' if self._stopped else ''
+            if not reason:
+                try:
+                    self.proof.check()
+                except ProviderUnavailable as error:
+                    reason=str(error)
+            if not reason and self._remaining==0:
+                reason='budget_exhausted'
+            return {'mode':'official_claude_pro','calls_remaining':self._remaining,
+                    'expires_at':self.proof.verified_at+900 if type(self.proof.verified_at) in (int,float) and math.isfinite(self.proof.verified_at) else None,
+                    'authorized_now':not reason,'unavailable_reason':reason,'last_error':self._last_error}
+
+    def _auth_command(self):
+        return [self.command()[0],'auth','status']
+
+    def complete(self, prompt):
+        with self._lock:
+            self.proof.check()
             if self._stopped:
-                raise ProviderUnavailable('native provider stopped')
-        # Verify existing native auth via official command. Do not log account fields.
-        result = subprocess.run([self.command()[0],'auth','status'],capture_output=True,text=True,timeout=10,env=native_environment())
+                raise ProviderUnavailable('stopped')
+            if self._remaining==0:
+                raise ProviderUnavailable('budget_exhausted')
+            self._remaining-=1
+        phase='auth_unavailable'
         try:
-            status = json.loads(result.stdout)
-        except ValueError:
-            raise ProviderUnavailable('official auth status unavailable') from None
-        if result.returncode != 0 or not status.get('loggedIn') or status.get('authMethod') != 'claude.ai' or status.get('subscriptionType') not in ('pro','max'):
-            raise ProviderUnavailable('existing official subscription authentication required')
-        self.proof.check()
-        return supervised_text(self.command(),prompt,timeout=120,max_output=65536,owner=self)
+            raw=supervised_text(self._auth_command(),'',timeout=10,max_output=8192,owner=self)
+            try:
+                status=json.loads(raw)
+            except ValueError:
+                raise ProviderUnavailable('auth_unavailable') from None
+            if not isinstance(status,dict) or not status.get('loggedIn') or status.get('authMethod')!='claude.ai' or status.get('subscriptionType') not in ('pro','max'):
+                raise ProviderUnavailable('auth_unavailable')
+            self.proof.check()
+            phase='generation_unavailable'
+            return supervised_text(self.command(),prompt,timeout=120,max_output=65536,owner=self)
+        except Exception:
+            with self._lock:
+                self._last_error=phase
+            raise
 
     def stop(self):
         with self._lock:

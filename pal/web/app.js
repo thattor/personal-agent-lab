@@ -9,7 +9,8 @@ receipt();
 function node(tag,text,className){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;}
 function artifactLink(id){const a=node('a','Open local draft / 下書きを開く');a.href='/api/artifact/'+encodeURIComponent(id);a.target='_blank';a.rel='noopener';return a;}
 function render(data){
-  document.getElementById('provider').textContent='Provider: '+data.provider+' · local drafts / ローカル下書き';
+  const access=data.provider_status||{mode:'mock'};
+  document.getElementById('provider').textContent='Provider: '+data.provider+' · local drafts / ローカル下書き'+(access.mode==='mock'?' · Mock / 模擬応答':' · Official live / 公式実モデル · remaining / 残り '+access.calls_remaining+' · '+(access.authorized_now?'Proof valid / 利用証明有効':'Unavailable / 利用不可: '+access.unavailable_reason)+(access.last_error?' · '+access.last_error:''));
   if(isInspect){
     const root=document.getElementById('inspect');root.replaceChildren();
     for(const table of ['goals','attempts','outcomes','receipts','artifacts','rejections','records','notes','revisions','acceptances','events','approvals']){

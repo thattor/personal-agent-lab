@@ -117,3 +117,30 @@ class HTTPTests(unittest.TestCase):
         references=[e for e in self.runtime.store.inspect()['events'] if e['kind']=='reference.stopped']
         self.assertEqual(len(references),1)
         self.assertEqual(len([r for r in self.runtime.store.inspect()['records'] if r['role']=='user']),len([r for r in state['records'] if r['role']=='user']))
+
+
+class ProviderStartupTests(unittest.TestCase):
+    def test_default_is_mock_and_live_options_do_not_create_store(self):
+        from types import SimpleNamespace
+        from pal.server import build_provider
+        args=SimpleNamespace(provider='mock',access_proof=None,native_call_limit=None,mock_task_delay=0)
+        self.assertEqual(build_provider(args).identity,'mock')
+        for field,value in (('access_proof','missing.json'),('native_call_limit',2)):
+            bad=SimpleNamespace(**vars(args)); setattr(bad,field,value)
+            with self.assertRaises(ValueError): build_provider(bad)
+
+    def test_live_startup_requires_valid_proof_before_runtime(self):
+        from types import SimpleNamespace
+        from pal.server import build_provider
+        import time
+        with tempfile.TemporaryDirectory() as temp:
+            path=Path(temp)/'proof.json'
+            args=SimpleNamespace(provider='official_claude_pro',access_proof=str(path),native_call_limit=4,mock_task_delay=0)
+            for value in ({'verified_at':0,'no_extra_charge':True},{'verified_at':time.time(),'no_extra_charge':False},{'verified_at':time.time(),'no_extra_charge':True,'token':'forbidden'}):
+                path.write_text(json.dumps(value))
+                with self.assertRaises((ValueError,RuntimeError)): build_provider(args,marker_dir=Path(temp)/'markers')
+            path.write_text(json.dumps({'verified_at':time.time(),'no_extra_charge':True,'route':'official_claude_pro'}))
+            provider=build_provider(args,marker_dir=Path(temp)/'markers')
+            self.assertEqual(provider.status()['calls_remaining'],4)
+            self.assertNotEqual(provider.identity,'mock')
+            provider.stop()

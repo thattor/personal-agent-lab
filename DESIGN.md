@@ -88,3 +88,6 @@ Opus review on 2026-10-06 concluded that minimum stable should exclude external-
 
 ## Design review rule
 If implementation pressure suggests changing any semantic above, pause that change, obtain an Opus review, record the decision in DECISIONS.md, then continue.
+
+## Explicit official-provider UI — D-020
+Mock remains default. Opt-in startup validates strict fresh metadata and consumes a canonical one-use proof marker before Store construction. One shared NativeClaude reserves bounded invocation slots under a lock, releases it before supervised auth/generation, and exposes pure in-memory status. Dual wall/elapsed expiry prevents clock rewind extension and sleep from hiding wall age. Failures consume admitted slots and remain inspectable; no automatic renewal, retry, or fallback. Markers are per-checkout trusted-operator guardrails, not global or cryptographic limits. Official CLI internals are not proven retry-free. Goal cancellation fences results; host shutdown terminates all supervised children. See README for invocation limits and the 1020-second outer generation window.

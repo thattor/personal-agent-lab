@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-06T21:52:09.647185+00:00",
+  "status": "not_completed",
+  "route": "official swe-2-high",
+  "bounded_deadline_seconds": 180,
+  "output_bound": 40000,
+  "diagnosis": "supervised_text returned failed/stopped/exceeded-bound without captured reviewer response; exact cause not yet established",
+  "fresh_auth_valid": true,
+  "paid_fallback": false,
+  "action": "Reduce large source payload; capture bounded CLI stdout/stderr to diagnose and obtain focused review, no blind identical retry"
+}

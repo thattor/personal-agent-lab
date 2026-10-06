@@ -1,0 +1,1 @@
+PASS: actual refresh clears recovered state warnings for transport/HTTP/JSON failures, preserves message failures, handles unchanged state.

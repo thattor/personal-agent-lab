@@ -1,0 +1,69 @@
+# Verdict: approve with five small fixes
+
+The design is sound in its bounds. I agree with both rejections of SWE's proposals. These items are concrete holes, each fixable inside the adopted scope.
+
+## Concrete holes
+
+**1. The repo-relative marker directory lets one proof be used more than once.**
+The marker lives at `runtime/native-proof-use/`, inside the repo. A second checkout, worktree or copied repo has a different marker directory. The same proof then passes once per checkout, giving 32 × N calls.
+- **Smallest fix:** put the marker in a fixed per-user location outside the repo. One example is `~/Library/Application Support/<app>/native-proof-use/`, created with mode 0700 and checked for owner and mode.
+- **If the repo-local location must stay:** disclose "one use per checkout" as an accepted limit of the guardrail.
+
+**2. `nofollow` only protects the last path component.**
+If `native-proof-use/` or a parent directory is a symlink, the markers can land on tmpfs or be redirected.
+- **Fix:** open the directory with `O_DIRECTORY|O_NOFOLLOW`. Verify it is a real directory owned by the uid with no group or world write. Create the marker with `openat(dirfd, …, O_CREAT|O_EXCL|O_NOFOLLOW, 0600)`. Then `fsync` the file and `fsync(dirfd)`.
+- **Never delete markers.** Cleanup would reopen reuse, and the files are tiny.
+
+**3. Duplicate JSON keys get past the "exactly 3 keys" check.**
+Given `{"no_extra_charge":false,"no_extra_charge":true,…}`, Python `json` keeps the last value. Equivalent key aliasing can also produce the same hash from different raw bytes.
+- **Fix:** parse with `object_pairs_hook` and reject any duplicate key.
+- **Bound the proof file read:** require a regular file, open it with `O_NOFOLLOW`, cap it at about 4 KiB, and require UTF-8.
+- **Reject non-finite numbers explicitly:** `parse_constant` must reject NaN and Infinity, which Python accepts by default.
+
+**4. The marker hash must use canonical values, not raw bytes.**
+Hash `json.dumps({k: v}, sort_keys=True, separators=(",",":"), allow_nan=False)` over the validated values. Normalize `verified_at` to a single representation first, for example `float(v).hex()` or an integer-millisecond rule. Otherwise `1.7e9`, `1700000000` and `1700000000.0` produce different markers for the same proof.
+- Bool-as-int is already excluded.
+- Reject `-0.0` or negative values. The future/age check covers these anyway.
+
+**5. SDK or provider retries can multiply real calls beyond the budget.**
+If the NativeClaude provider or the Anthropic SDK retries internally (for example `max_retries` > 0, or transport retries), one reserved attempt becomes several billed requests. The "16/32 attempts" bound then stops being a real cap.
+- **Fix:** set SDK retries to 0, so that each budget unit is one HTTP request.
+- **Add a test:** a stub transport counts requests per reservation and asserts exactly one.
+- The auth phase follows the same rule: any token or refresh request the provider makes is either reserved or provably free and non-model.
+
+## Clock design
+
+I agree with the dual check. Make three points precise:
+- **Evaluate at reservation time, under the budget lock.** Both checks must pass: `0 ≤ wall_now − verified_at ≤ 900`, and `mono_now < mono_deadline`. `mono_deadline` is set at load as `mono_load + (900 − wall_age_at_load)`.
+- **No future-skew tolerance.** The proof is produced on the same host, so strict fail-closed is correct.
+- **Disclose the worst case.** Real exposure is 900 s plus one admitted call's 120 s deadline. State 1020 s as the true outer bound in the docs.
+
+Tests to add: wall clock rewound into the window, wall clock jumped forward, monotonic paused (simulated sleep), and expiry racing with admission under the lock.
+
+## Cancel and status
+
+- **I agree with rejecting per-Goal kill.** Fencing (D013) is correct. One wasted bounded call per accepted cancel is an honest disclosure. Ensure a cancelled Goal's admitted slot cannot be re-admitted or refunded.
+- **Status stays pure.** It should read only in-memory budget, expiry and error state. It should never re-read the proof file or marker, and never touch the provider. Add a test that 1000 status calls make zero provider or auth invocations and leave budget unchanged.
+
+## Ordering check
+
+The startup order is right:
+1. Parse options and proof, validating schema, values and both clocks. Reject anything invalid at this stage.
+2. Create the marker, which burns the proof.
+3. Construct the Store and provider. A failure here means a fresh proof is required.
+
+A crash between marker creation and the directory `fsync` either leaves the marker in place (fail closed) or loses it. Losing it allows at most one re-use within TTL. The `fsync` makes this negligible, so it is acceptable.
+
+## Regressions to guard
+
+- Mock remains the default when no explicit startup is given. Test with the proof file present and no flag, and assert no marker is created and no auth happens.
+- Invalid options create no marker and no Store, so a later valid startup with the same proof still works.
+- Same proof at a copied path: rejected. Same proof re-serialized with whitespace, key order or number form changed: rejected.
+- The 33rd attempt is rejected with the closed error code, and so is any attempt after expiry. In-flight calls finish or time out at 120 s.
+- Host death or shutdown during the auth phase: the supervisor cleans up, the budget stays consumed, and restarting the same proof is rejected.
+
+## Smallest alternative
+
+None is needed beyond the fixes above. If you want fewer moving parts, drop the in-memory budget counter as a separate concept. Make the marker the single-use gate, and keep the counter as a plain per-process integer guarded by the reservation lock. That is effectively what you have already; just don't persist the counter.
+
+**Net:** adopt, with the per-user marker location (or a disclosed per-checkout limit), duplicate-key rejection, canonical numeric hashing, directory nofollow via `openat`, and zero SDK retries.
