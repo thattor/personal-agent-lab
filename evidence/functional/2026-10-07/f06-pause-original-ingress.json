@@ -1,0 +1,24 @@
+{
+  "request": {
+    "key": "functional:f06-pause-original",
+    "text": "Mika 宛に Birch の架空の打合せ案内の日本語下書きを作成してください。2文、本文だけ、外部送信しない。"
+  },
+  "ack": {
+    "record_id": "2f7d641de71847a8b39922fe9464181b",
+    "goal": {
+      "seq": 3,
+      "id": "44f0c86048e94ac9a7adc2676c42e764",
+      "state": "queued",
+      "revision": 1,
+      "acceptance_id": "fd331b1c759749038dbff015f45b5ae2",
+      "epoch": 0,
+      "budget": 3,
+      "total_claims": 0,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    "intent": "draft"
+  },
+  "automated": true
+}

@@ -1,0 +1,25 @@
+{
+  "request": {
+    "key": "functional:f06-pause",
+    "text": "pause that"
+  },
+  "ack": {
+    "record_id": "a9a2269ba5714a7e90babb64e69b7854",
+    "goal": {
+      "seq": 3,
+      "id": "44f0c86048e94ac9a7adc2676c42e764",
+      "state": "paused",
+      "revision": 1,
+      "acceptance_id": "fd331b1c759749038dbff015f45b5ae2",
+      "epoch": 2,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "user_paused",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    "intent": "control",
+    "action": "pause"
+  },
+  "automated": true
+}

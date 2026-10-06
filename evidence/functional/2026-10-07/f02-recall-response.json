@@ -1,0 +1,10 @@
+{
+  "seq": 6,
+  "id": "cf69da6cea404edfa32d3f422286fb0d",
+  "role": "assistant",
+  "content": "プロジェクト名は **Cedar**、相手の名前は **Mika** です。",
+  "usable": 1,
+  "source_event_id": null,
+  "manifest": "[\"c09e51d3364540c59a40baea7c5f73e6\",\"878f315390d243bd916ffd80e4590f6e\",\"d3b55784330d4bbb98d8678d936a342f\",\"014b319466304000814d7072cc72daae\",\"9b3c7eea362c4c96b6616b82d44a9c1b\",\"note:1b9a6091f530440bb6440c00ed7c48ca\"]",
+  "supersedes": null
+}

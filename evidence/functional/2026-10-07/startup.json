@@ -1,0 +1,51 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "c09e51d3364540c59a40baea7c5f73e6",
+      "role": "user",
+      "content": "こんにちは。個人の小さなプロジェクトで、考えを整理するときのコツを日本語で一つ、短く教えてください。作業は始めないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "878f315390d243bd916ffd80e4590f6e",
+      "role": "assistant",
+      "content": "こんにちは。\n\n**「まず一行で『このプロジェクトで何ができたら完成か』を書き出す」**のがおすすめです。\n\nゴールが一文で言えると、迷ったときに「これはそのゴールに必要か？」と判断でき、やることの優先順位や削るべきものが自然と見えてきます。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"c09e51d3364540c59a40baea7c5f73e6\"]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [],
+  "revisions": [],
+  "acceptances": [],
+  "attempts": [],
+  "receipts": [],
+  "outcomes": [],
+  "events": [],
+  "approvals": [],
+  "rejections": [],
+  "artifacts": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 31,
+    "expires_at": 1791324883.163075,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 74721,
+    "started_at": 1791323983.233084,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

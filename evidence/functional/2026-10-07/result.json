@@ -1,0 +1,35 @@
+{
+  "status": "functional automated/content checks PASS; human pending",
+  "observed_at": 1791324211.320451,
+  "baseline_sha": "307058d23269bb66ab91c1e8bf6a2b1e10decc01",
+  "provider": "official_claude_opus_tool_free",
+  "model_requested": "opus",
+  "actual_model_version": "not exposed by text-only CLI output",
+  "native_cli_version": "2.1.291 (Claude Code)",
+  "python": "3.9.6",
+  "sqlite": "3.54.0",
+  "host_generation_invocations": 13,
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 19,
+    "expires_at": 1791324883.163075,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "health": {
+    "pid": 74721,
+    "started_at": 1791323983.233084,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  },
+  "manual_canonical_repairs": 0,
+  "human_attestation": false,
+  "limitations": [
+    "only finite synthetic scenario set; usefulness pending direct human evaluation",
+    "no long-term/sleep/auth-refresh reliability claim",
+    "per-checkout trusted operator proof marker; CLI internal HTTP retries not independently observed",
+    "input-resume covered by deterministic fault tests; no natural live waiting-input generation capability claimed"
+  ]
+}

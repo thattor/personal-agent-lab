@@ -1,0 +1,12 @@
+{
+  "request": {
+    "key": "functional:f06-status",
+    "text": "今の作業の進捗はどうなった？"
+  },
+  "ack": {
+    "record_id": "74829348f54749ba9c4c44adc17b62e8",
+    "goal": null,
+    "intent": "conversation"
+  },
+  "automated": true
+}

@@ -1,0 +1,24 @@
+{
+  "request": {
+    "key": "functional:f04-original",
+    "text": "Mika 宛に Cedar の協力への感謝を日本語2文の下書きに作成してください。外部送信せず本文だけを保存してください。"
+  },
+  "ack": {
+    "record_id": "b6cfb639d790469ba1ae6f0115f5c5cc",
+    "goal": {
+      "seq": 2,
+      "id": "228669f245164e2fa268c45a39a53b77",
+      "state": "queued",
+      "revision": 1,
+      "acceptance_id": "47eb14bb4ee64cecb1abce57799e0e25",
+      "epoch": 0,
+      "budget": 3,
+      "total_claims": 0,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    "intent": "draft"
+  },
+  "automated": true
+}

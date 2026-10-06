@@ -1,0 +1,25 @@
+{
+  "request": {
+    "key": "functional:f06-resume",
+    "text": "resume that"
+  },
+  "ack": {
+    "record_id": "691506ef06f54944b9fad3d3df0d1a31",
+    "goal": {
+      "seq": 3,
+      "id": "44f0c86048e94ac9a7adc2676c42e764",
+      "state": "queued",
+      "revision": 1,
+      "acceptance_id": "fd331b1c759749038dbff015f45b5ae2",
+      "epoch": 2,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    "intent": "control",
+    "action": "resume"
+  },
+  "automated": true
+}

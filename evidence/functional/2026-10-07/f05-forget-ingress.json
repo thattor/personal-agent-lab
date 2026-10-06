@@ -1,0 +1,13 @@
+{
+  "request": {
+    "key": "functional:f05-forget",
+    "text": "forget that"
+  },
+  "ack": {
+    "record_id": "ca2ae64f69c24f56a1dff1ef487aa0a9",
+    "goal": null,
+    "intent": "forget",
+    "action": "forget"
+  },
+  "automated": true
+}

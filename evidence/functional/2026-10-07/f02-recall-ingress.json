@@ -1,0 +1,12 @@
+{
+  "request": {
+    "key": "functional:f02-recall",
+    "text": "さっき覚えた架空のプロジェクト名と相手の名前を日本語で短く答えてください。"
+  },
+  "ack": {
+    "record_id": "9b3c7eea362c4c96b6616b82d44a9c1b",
+    "goal": null,
+    "intent": "conversation"
+  },
+  "automated": true
+}

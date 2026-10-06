@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/runtime/functional-20261007-01/probe.py", line 45, in <module>
+    reply('f01'); assert state()['goals']==[]
+  File "/private/tmp/personal-agent-lab-stable0-20261006/runtime/functional-20261007-01/probe.py", line 17, in reply
+    records=[r for r in data['records'] if r['key']=='response:functional:'+key]
+  File "/private/tmp/personal-agent-lab-stable0-20261006/runtime/functional-20261007-01/probe.py", line 17, in <listcomp>
+    records=[r for r in data['records'] if r['key']=='response:functional:'+key]
+KeyError: 'key'
+
+Cause: probe incorrectly assumed records expose an operation key. Corrected to actual ingress record ID and response manifest. Re-submit uses same request/key and cannot create a duplicate effect or model call. No product change or canonical repair.

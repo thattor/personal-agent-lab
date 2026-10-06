@@ -1,0 +1,17 @@
+{
+  "verified_at": 1791323983.163075,
+  "official_usage_url": "https://claude.ai/settings/usage",
+  "observed_plan": "Pro",
+  "session_used_percent": 20,
+  "week_used_percent": 7,
+  "use_credits_switch": false,
+  "purchased_credits_usd": 0,
+  "auto_reload": false,
+  "settings_changed": false,
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "no_extra_charge": true
+}

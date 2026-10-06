@@ -1,0 +1,312 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "c09e51d3364540c59a40baea7c5f73e6",
+      "role": "user",
+      "content": "こんにちは。個人の小さなプロジェクトで、考えを整理するときのコツを日本語で一つ、短く教えてください。作業は始めないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "878f315390d243bd916ffd80e4590f6e",
+      "role": "assistant",
+      "content": "こんにちは。\n\n**「まず一行で『このプロジェクトで何ができたら完成か』を書き出す」**のがおすすめです。\n\nゴールが一文で言えると、迷ったときに「これはそのゴールに必要か？」と判断でき、やることの優先順位や削るべきものが自然と見えてきます。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"c09e51d3364540c59a40baea7c5f73e6\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "d3b55784330d4bbb98d8678d936a342f",
+      "role": "user",
+      "content": "覚えてください。これは架空のテストです。プロジェクト名は Cedar、相手の名前は Mika です。以後この表記を使ってください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "014b319466304000814d7072cc72daae",
+      "role": "assistant",
+      "content": "承知しました。この会話では、プロジェクト名は **Cedar**、相手の名前は **Mika** と表記します。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"c09e51d3364540c59a40baea7c5f73e6\",\"878f315390d243bd916ffd80e4590f6e\",\"d3b55784330d4bbb98d8678d936a342f\",\"note:1b9a6091f530440bb6440c00ed7c48ca\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "9b3c7eea362c4c96b6616b82d44a9c1b",
+      "role": "user",
+      "content": "さっき覚えた架空のプロジェクト名と相手の名前を日本語で短く答えてください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "cf69da6cea404edfa32d3f422286fb0d",
+      "role": "assistant",
+      "content": "プロジェクト名は **Cedar**、相手の名前は **Mika** です。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"c09e51d3364540c59a40baea7c5f73e6\",\"878f315390d243bd916ffd80e4590f6e\",\"d3b55784330d4bbb98d8678d936a342f\",\"014b319466304000814d7072cc72daae\",\"9b3c7eea362c4c96b6616b82d44a9c1b\",\"note:1b9a6091f530440bb6440c00ed7c48ca\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "01656c291ca847de966a943199579d64",
+      "role": "user",
+      "content": "Mika 宛に Cedar プロジェクトへの協力を感謝する日本語の下書きを作成してください。正確に2文にしてください。本文だけで、Mika と Cedar の表記を含め、外部には送らずローカルに保存してください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 8,
+      "id": "4ee8db3b7ba640f38e79049ab88ab1e0",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: running.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"c09e51d3364540c59a40baea7c5f73e6\",\"878f315390d243bd916ffd80e4590f6e\",\"d3b55784330d4bbb98d8678d936a342f\",\"014b319466304000814d7072cc72daae\",\"9b3c7eea362c4c96b6616b82d44a9c1b\",\"cf69da6cea404edfa32d3f422286fb0d\",\"01656c291ca847de966a943199579d64\",\"note:1b9a6091f530440bb6440c00ed7c48ca\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 9,
+      "id": "f6e2cc54f905415d8fbbbb135ee6f89d",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"60b5ae78b8054de08d0d9e64108fa79d\"}",
+      "usable": 1,
+      "source_event_id": "43b2add3486a4fd89d9e4ff3cb7fd7bb",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 10,
+      "id": "267ddc176aa1460eada78f0020270ce4",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"4849a956159c4cd19a29610ded8f7f03\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"60b5ae78b8054de08d0d9e64108fa79d\"}",
+      "usable": 1,
+      "source_event_id": "4d675b7340d44a70a1835139c936f037",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 11,
+      "id": "4f0e69836b80474cafa9407d87d968da",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"401e90e607f747c2b088ad0d63dfe71a\",\"attempt_id\":\"4849a956159c4cd19a29610ded8f7f03\",\"check_status\":\"pass\",\"receipt_id\":\"d30987ef40304dfb8ad75b7018ad125a\"},\"event\":\"goal.completed\",\"goal_id\":\"60b5ae78b8054de08d0d9e64108fa79d\"}",
+      "usable": 1,
+      "source_event_id": "0b7a1d516abc47089a8f5ccee6abdcf2",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 12,
+      "id": "b6cfb639d790469ba1ae6f0115f5c5cc",
+      "role": "user",
+      "content": "Mika 宛に Cedar の協力への感謝を日本語2文の下書きに作成してください。外部送信せず本文だけを保存してください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 13,
+      "id": "00ebc0230642492a99ebcf3e5460025f",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: running.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"c09e51d3364540c59a40baea7c5f73e6\",\"878f315390d243bd916ffd80e4590f6e\",\"d3b55784330d4bbb98d8678d936a342f\",\"014b319466304000814d7072cc72daae\",\"9b3c7eea362c4c96b6616b82d44a9c1b\",\"cf69da6cea404edfa32d3f422286fb0d\",\"01656c291ca847de966a943199579d64\",\"4ee8db3b7ba640f38e79049ab88ab1e0\",\"b6cfb639d790469ba1ae6f0115f5c5cc\",\"note:1b9a6091f530440bb6440c00ed7c48ca\"]",
+      "supersedes": null
+    }
+  ],
+  "notes": [
+    {
+      "id": "1b9a6091f530440bb6440c00ed7c48ca",
+      "content": "覚えてください。これは架空のテストです。プロジェクト名は Cedar、相手の名前は Mika です。以後この表記を使ってください。",
+      "sources": "[\"d3b55784330d4bbb98d8678d936a342f\"]",
+      "usable": 1
+    }
+  ],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "60b5ae78b8054de08d0d9e64108fa79d",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "9e1f2378d0be467b9deb19f0bde172b3",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    {
+      "seq": 2,
+      "id": "228669f245164e2fa268c45a39a53b77",
+      "state": "running",
+      "revision": 1,
+      "acceptance_id": "47eb14bb4ee64cecb1abce57799e0e25",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "60b5ae78b8054de08d0d9e64108fa79d",
+      "revision": 1,
+      "acceptance_id": "9e1f2378d0be467b9deb19f0bde172b3",
+      "specification": "Mika 宛に Cedar プロジェクトへの協力を感謝する日本語の下書きを作成してください。正確に2文にしてください。本文だけで、Mika と Cedar の表記を含め、外部には送らずローカルに保存してください。",
+      "sources": "[\"01656c291ca847de966a943199579d64\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "goal_id": "228669f245164e2fa268c45a39a53b77",
+      "revision": 1,
+      "acceptance_id": "47eb14bb4ee64cecb1abce57799e0e25",
+      "specification": "Mika 宛に Cedar の協力への感謝を日本語2文の下書きに作成してください。外部送信せず本文だけを保存してください。",
+      "sources": "[\"b6cfb639d790469ba1ae6f0115f5c5cc\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "9e1f2378d0be467b9deb19f0bde172b3",
+      "goal_id": "60b5ae78b8054de08d0d9e64108fa79d",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "id": "47eb14bb4ee64cecb1abce57799e0e25",
+      "goal_id": "228669f245164e2fa268c45a39a53b77",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "4849a956159c4cd19a29610ded8f7f03",
+      "goal_id": "60b5ae78b8054de08d0d9e64108fa79d",
+      "revision": 1,
+      "acceptance_id": "9e1f2378d0be467b9deb19f0bde172b3",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"c09e51d3364540c59a40baea7c5f73e6\",\"878f315390d243bd916ffd80e4590f6e\",\"d3b55784330d4bbb98d8678d936a342f\",\"014b319466304000814d7072cc72daae\",\"9b3c7eea362c4c96b6616b82d44a9c1b\",\"cf69da6cea404edfa32d3f422286fb0d\",\"01656c291ca847de966a943199579d64\",\"note:1b9a6091f530440bb6440c00ed7c48ca\"]",
+      "error": "",
+      "external_intent": 0
+    },
+    {
+      "seq": 2,
+      "id": "ff840bd2f50f481f97d5ca5725c9718f",
+      "goal_id": "228669f245164e2fa268c45a39a53b77",
+      "revision": 1,
+      "acceptance_id": "47eb14bb4ee64cecb1abce57799e0e25",
+      "epoch": 1,
+      "status": "running",
+      "manifest": "[\"c09e51d3364540c59a40baea7c5f73e6\",\"878f315390d243bd916ffd80e4590f6e\",\"d3b55784330d4bbb98d8678d936a342f\",\"014b319466304000814d7072cc72daae\",\"9b3c7eea362c4c96b6616b82d44a9c1b\",\"cf69da6cea404edfa32d3f422286fb0d\",\"01656c291ca847de966a943199579d64\",\"4ee8db3b7ba640f38e79049ab88ab1e0\",\"b6cfb639d790469ba1ae6f0115f5c5cc\",\"note:1b9a6091f530440bb6440c00ed7c48ca\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "d30987ef40304dfb8ad75b7018ad125a",
+      "attempt_id": "4849a956159c4cd19a29610ded8f7f03",
+      "artifact_id": "401e90e607f747c2b088ad0d63dfe71a",
+      "hash": "8d5bdc54b0d5cd40a476dacd7f4f02623981ff625186f7a6e56065ddddd31ca0",
+      "size": 200,
+      "revision": 1,
+      "epoch": 1
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "4849a956159c4cd19a29610ded8f7f03",
+      "receipt_id": "d30987ef40304dfb8ad75b7018ad125a",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "43b2add3486a4fd89d9e4ff3cb7fd7bb",
+      "goal_id": "60b5ae78b8054de08d0d9e64108fa79d",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "4d675b7340d44a70a1835139c936f037",
+      "goal_id": "60b5ae78b8054de08d0d9e64108fa79d",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"4849a956159c4cd19a29610ded8f7f03\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "0b7a1d516abc47089a8f5ccee6abdcf2",
+      "goal_id": "60b5ae78b8054de08d0d9e64108fa79d",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"401e90e607f747c2b088ad0d63dfe71a\",\"attempt_id\":\"4849a956159c4cd19a29610ded8f7f03\",\"check_status\":\"pass\",\"receipt_id\":\"d30987ef40304dfb8ad75b7018ad125a\"}",
+      "delivered": 1
+    },
+    {
+      "seq": 4,
+      "id": "e12a285c889448c7a2e14e7519cbcbd6",
+      "goal_id": "228669f245164e2fa268c45a39a53b77",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 0
+    },
+    {
+      "seq": 5,
+      "id": "965018f09bab45b584da4466c8e3375f",
+      "goal_id": "228669f245164e2fa268c45a39a53b77",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"ff840bd2f50f481f97d5ca5725c9718f\",\"epoch\":1}",
+      "delivered": 0
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "artifacts": [
+    {
+      "id": "401e90e607f747c2b088ad0d63dfe71a",
+      "hash": "8d5bdc54b0d5cd40a476dacd7f4f02623981ff625186f7a6e56065ddddd31ca0",
+      "size": 200
+    }
+  ],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 27,
+    "expires_at": 1791324883.163075,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 74721,
+    "started_at": 1791323983.233084,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

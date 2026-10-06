@@ -1,0 +1,12 @@
+{
+  "request": {
+    "key": "functional:f02-remember",
+    "text": "覚えてください。これは架空のテストです。プロジェクト名は Cedar、相手の名前は Mika です。以後この表記を使ってください。"
+  },
+  "ack": {
+    "record_id": "d3b55784330d4bbb98d8678d936a342f",
+    "goal": null,
+    "intent": "conversation"
+  },
+  "automated": true
+}

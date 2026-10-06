@@ -1,0 +1,25 @@
+{
+  "request": {
+    "key": "functional:f04-correct",
+    "text": "correct that: Mika 宛に Birch プロジェクトへの協力を感謝する日本語2文の下書き。本文に Birch と Mika を含め、Cedar は一切含めない。本文のみで外部に送らない。"
+  },
+  "ack": {
+    "record_id": "81aa895e137e4b0f8b5d230bddaef427",
+    "goal": {
+      "seq": 2,
+      "id": "228669f245164e2fa268c45a39a53b77",
+      "state": "queued",
+      "revision": 2,
+      "acceptance_id": "47eb14bb4ee64cecb1abce57799e0e25",
+      "epoch": 2,
+      "budget": 3,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    "intent": "control",
+    "action": "correct"
+  },
+  "automated": true
+}

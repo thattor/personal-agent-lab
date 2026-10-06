@@ -75,7 +75,7 @@ Before ending any Codex session:
 If Stable-0 is not yet achieved, the final message of the session should say that development is incomplete and point to the exact next action. Do not present an intermediate milestone as project completion.
 
 ## Completion
-Declare Stable-0 only when every required row in ACCEPTANCE.md is PASS with evidence and the optional historical 72-hour soak is complete with zero manual canonical-state repair.
+Declare Stable-0 only when every required structural and functional row in ACCEPTANCE.md is PASS with evidence and the final full suite/audit is complete. The historical 72-hour soak remains unmet and optional under D-019.
 
 When complete:
 1. run the full suite one final time;

@@ -1,0 +1,12 @@
+{
+  "request": {
+    "key": "functional:f05-remember",
+    "text": "覚えてください。架空テストの合言葉は LANTERN-8472 です。この文だけをその情報源にしてください。"
+  },
+  "ack": {
+    "record_id": "f44db0ac214e4a01b1316b20e9f4eb7d",
+    "goal": null,
+    "intent": "conversation"
+  },
+  "automated": true
+}

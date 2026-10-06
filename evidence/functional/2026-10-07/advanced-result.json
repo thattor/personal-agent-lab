@@ -1,0 +1,6 @@
+{
+  "F0-04": "content/fencing/fixed-criteria checks PASS",
+  "F0-05": "usable context/response manifest/recall checks PASS; prompt built from actual context implementation",
+  "F0-06": "live pause/resume/status/cancel/conversation PASS; input resume covered by deterministic fault suite",
+  "human_attestation": false
+}

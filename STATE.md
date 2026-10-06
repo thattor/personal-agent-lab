@@ -4,7 +4,7 @@
 Reach Stable-0 as defined in ACCEPTANCE.md. Stable-0 is **incomplete**.
 
 ## Current phase
-D-019 explicitly adopted by user: revised Stable-0 is functional-first. Existing S0-01–12 structural evidence retained; required F0-01–08 pending. Historical soak03 is optional/unmet, not a completion gate. Implement bounded opt-in official real-provider UI after SWE-2 High review; mock default and all safety/recovery boundaries retained. Stable-0 incomplete.
+D-019 adopted functional-first Stable-0. S0-01–12 structural PASS revalidated; actual official F0-01–07 PASS with finite functional evidence and 66 full tests. F0-08 awaits one direct human usefulness evaluation of the prepared real UI outputs; no time/turn/session quotas. Historical S0-13 NOT PASS/nonrequired. Stable-0 incomplete.
 
 ## Working checkout
 `/private/tmp/personal-agent-lab-stable0-20261006`, same private GitHub repository, remote origin/main. Original supplied untracked workspace preserved. No old implementation/schema was reused; the accidental startup metadata inspection is explicitly recorded in docs/DEFECTS.md. Do not inspect it again.
@@ -16,10 +16,10 @@ D-019 explicitly adopted by user: revised Stable-0 is functional-first. Existing
 Soak01 retained after reproduced stale UI warning; soak02 retained and intentionally reset for the user's bilingual UI request. Both old DBs/hash chains/receipts stay intact. [Soak02 directly confirmed receipt and reset](evidence/soak/2026-10-07/soak02-human-and-reset.json). No old human counts/time/restart proof transferred. Bilingual UI only changes display text; fixed controls, canonical values, receipts and provider remain English. [55-test full suite](evidence/tests/ui-bilingual-full.txt), [actual refresh recovery probe](evidence/ui/recovery/bilingual-after.txt). Historical runtime/soak-20261007-03 started 2026-10-07T06:14:18.834450+09:00 from clean pushed baseline 1863ef2a3037b335fa6f257a8d6fd95fb44da9dc on port58500, monitor PID3322/app PID3324. [Fresh start and served bilingual UI](evidence/soak/2026-10-07/start-03.json).
 
 ## Exact next action
-Bounded official UI implementation passes 65 regression tests and the actual JS refresh probe. Commit/push this coherent increment, then perform fresh official existing-auth/no-extra-charge verification and run the fixed F0-01–06 scenarios over the actual loopback API/UI. Preserve real outputs and host evidence; F0-07 live startup/status readback and F0-08 direct human usefulness remain pending. No time/count quotas.
+Human reviews the actual Japanese conversation/recall and Cedar/Birch two-sentence local drafts at http://127.0.0.1:58500/ and directly reports whether they are useful/expected, or identifies a concrete mismatch. This is F0-08 usefulness evidence, not renewed time/turn quotas or routine technical approval. On that reply, diagnose/fix/retest any mismatch; if accepted, final full suite/evidence/version/all-required-row audit and master Issue #1 closure. Do not mark Stable complete before that evaluation. No fake attestation.
 
 ## Acceptance status
-S0-01–12 structural PASS evidence retained, revalidate affected code. S0-13 historical/nonrequired/NOT PASS. F0-01–08 required and pending; direct human usefulness evaluation only after real UI is ready. Master Issue #1 remains open.
+S0-01–12 and F0-01–07 PASS; historical S0-13 NOT PASS/nonrequired. F0-08 human_pending. Master Issue #1 remains open.
 
 ## Human participation requirement
 D-019 supersedes old time/turn/session quotas. Human confirmation of actual usefulness is required once for the fixed real-provider scenario set; scripted outputs are never human attestations. Previous receipts retained as honest historical host/control proof. No routine repeated participation or approval prompts.
@@ -85,3 +85,5 @@ D-019 direct adoption received; goal/accepted completion definition updated befo
 D-019 implementation transition: old soak03 monitor/app stopped normally before runtime changes; [24-record terminal hash chain and retained snapshot](evidence/soak/2026-10-07/soak03-functional-development-stop.json). No old time/count transfer or canonical repair. Operational heartbeat updated to revised functional objective. [55-test adoption suite](evidence/tests/functional-definition-adoption.txt).
 
 D-020 bounded UI implementation: strict one-use metadata proof, dual expiry, shared atomic invocation budget, supervised auth and generation, pure visible provider status, explicit CLI selection/default mock. [65-test full suite](evidence/tests/real-ui-bounded-green.txt), [actual refresh probe](evidence/tests/real-ui-refresh-green.txt). Test-first failures retained. Live functionality not yet claimed. Old runtime and optional soak clocks remain stopped and preserved.
+
+Functional baseline 307058d: explicit official host PID74721 on port58500, runtime/functional-20261007-01/state.db (new DB, old soak DBs intact). Proof expires at1791324883.163075; 13 of32 host generation invocations used. UI mode/budget visible; no auto renewal/mock fallback. Fresh official verification + explicit restart needed for further native calls after expiry; historical responses/artifacts/inspect remain available. [Real evidence](evidence/functional/2026-10-07/README.md), [66 tests](evidence/tests/real-functional-full.txt). F0-05 prompt backed by actual context implementation and response manifest reconstruction, not raw stdin logging. Scripted browser receipt never counts as human input.

@@ -180,3 +180,25 @@ class BoundedNativeTests(unittest.TestCase):
             proof=AccessProof(10000,True)
         for wall in (9999,10901):
             with patch('pal.native.time.time',return_value=wall), patch('pal.native.time.monotonic',return_value=500), self.assertRaises(ProviderUnavailable): proof.check()
+
+    def test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback(self):
+        from pal.runtime import Runtime
+        for reason in ('expired','exhausted','auth'):
+            with self.subTest(reason=reason), tempfile.TemporaryDirectory() as temp:
+                provider=NativeClaude(AccessProof(time.time()-901 if reason=='expired' else time.time(),True),max_calls=2)
+                if reason=='exhausted':
+                    with patch('pal.native.supervised_text',side_effect=ProviderUnavailable('synthetic')):
+                        for _ in range(2):
+                            with self.assertRaises(ProviderUnavailable): provider.complete('consume')
+                with patch('pal.native.supervised_text',return_value='{"loggedIn":false}') as call:
+                    runtime=Runtime(Path(temp)/'state.db',provider=provider)
+                    try:
+                        response=runtime.submit('chat','Hello')['response'].result(timeout=2)
+                        self.assertIn('Conversation provider unavailable',response['content'])
+                        draft=runtime.submit('draft','Make a draft')
+                        self.assertTrue(runtime.idle.wait(2))
+                        self.assertEqual(runtime.store.get_goal(draft['goal']['id'])['state'],'failed')
+                        self.assertEqual(runtime.store.inspect()['receipts'],[])
+                        self.assertNotEqual(runtime.provider.identity,'mock')
+                        self.assertEqual(call.call_count,2 if reason=='auth' else 0)
+                    finally: runtime.close()

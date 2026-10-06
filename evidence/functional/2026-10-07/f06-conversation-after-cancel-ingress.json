@@ -1,0 +1,12 @@
+{
+  "request": {
+    "key": "functional:f06-conversation-after-cancel",
+    "text": "こんにちは。外に出る前の持ち物確認を日本語で一言お願いします。作業は始めないでください。"
+  },
+  "ack": {
+    "record_id": "1a2fc34935c245b69bc0a22725c82d2b",
+    "goal": null,
+    "intent": "conversation"
+  },
+  "automated": true
+}

@@ -1,0 +1,9 @@
+{
+  "method": "reconstructed from actual response manifest plus immutable source record/note bytes and unchanged canonical work at call; not a raw stdin capture",
+  "runtime_builder": "pal/runtime.py Runtime._respond",
+  "source_snapshot": "f05-state.json",
+  "response": "f05-recall-response.json",
+  "prompt_sha256": "bb36bc1c31e0edc382577122fded2052805934ded3bb5e193a75476e8dc11339",
+  "forgotten_fact_absent": true,
+  "raw_history_retained": true
+}

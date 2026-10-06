@@ -1,0 +1,25 @@
+{
+  "request": {
+    "key": "functional:f06-cancel",
+    "text": "stop that"
+  },
+  "ack": {
+    "record_id": "292d5971a61b4b55bec6dce9ee9c8faf",
+    "goal": {
+      "seq": 4,
+      "id": "3704c78771364f21b85a66b889a1f383",
+      "state": "cancelled",
+      "revision": 1,
+      "acceptance_id": "835da1c48c8f4861903d646409b5bac5",
+      "epoch": 2,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "user_cancelled",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    "intent": "control",
+    "action": "cancel"
+  },
+  "automated": true
+}

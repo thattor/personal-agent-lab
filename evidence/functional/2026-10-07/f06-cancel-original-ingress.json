@@ -1,0 +1,24 @@
+{
+  "request": {
+    "key": "functional:f06-cancel-original",
+    "text": "Mika 宛に Birch の架空の遠足案内の日本語下書きを作成してください。2文、本文だけ、外部送信しない。"
+  },
+  "ack": {
+    "record_id": "13532887d66241169975bd6cf947a4f0",
+    "goal": {
+      "seq": 4,
+      "id": "3704c78771364f21b85a66b889a1f383",
+      "state": "queued",
+      "revision": 1,
+      "acceptance_id": "835da1c48c8f4861903d646409b5bac5",
+      "epoch": 0,
+      "budget": 3,
+      "total_claims": 0,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    "intent": "draft"
+  },
+  "automated": true
+}

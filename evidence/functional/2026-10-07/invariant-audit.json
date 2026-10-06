@@ -1,0 +1,123 @@
+{
+  "ops": {
+    "functional:f01": {
+      "record_id": "c09e51d3364540c59a40baea7c5f73e6",
+      "goal_id": null,
+      "intent": "conversation",
+      "action": null
+    },
+    "functional:f02-remember": {
+      "record_id": "d3b55784330d4bbb98d8678d936a342f",
+      "goal_id": null,
+      "intent": "conversation",
+      "action": null
+    },
+    "functional:f02-recall": {
+      "record_id": "9b3c7eea362c4c96b6616b82d44a9c1b",
+      "goal_id": null,
+      "intent": "conversation",
+      "action": null
+    },
+    "functional:f03": {
+      "record_id": "01656c291ca847de966a943199579d64",
+      "goal_id": "60b5ae78b8054de08d0d9e64108fa79d",
+      "intent": "draft",
+      "action": null
+    },
+    "functional:f04-original": {
+      "record_id": "b6cfb639d790469ba1ae6f0115f5c5cc",
+      "goal_id": "228669f245164e2fa268c45a39a53b77",
+      "intent": "draft",
+      "action": null
+    },
+    "functional:f04-correct": {
+      "record_id": "81aa895e137e4b0f8b5d230bddaef427",
+      "goal_id": "228669f245164e2fa268c45a39a53b77",
+      "intent": "control",
+      "action": "correct"
+    },
+    "functional:f05-remember": {
+      "record_id": "f44db0ac214e4a01b1316b20e9f4eb7d",
+      "goal_id": null,
+      "intent": "conversation",
+      "action": null
+    },
+    "functional:f05-forget": {
+      "record_id": "ca2ae64f69c24f56a1dff1ef487aa0a9",
+      "goal_id": null,
+      "intent": "forget",
+      "action": "forget"
+    },
+    "functional:f05-recall": {
+      "record_id": "c5da5b6bb5104037aa66647a8954b8f5",
+      "goal_id": null,
+      "intent": "conversation",
+      "action": null
+    },
+    "functional:f06-pause-original": {
+      "record_id": "2f7d641de71847a8b39922fe9464181b",
+      "goal_id": "44f0c86048e94ac9a7adc2676c42e764",
+      "intent": "draft",
+      "action": null
+    },
+    "functional:f06-pause": {
+      "record_id": "a9a2269ba5714a7e90babb64e69b7854",
+      "goal_id": "44f0c86048e94ac9a7adc2676c42e764",
+      "intent": "control",
+      "action": "pause"
+    },
+    "functional:f06-status": {
+      "record_id": "74829348f54749ba9c4c44adc17b62e8",
+      "goal_id": null,
+      "intent": "conversation",
+      "action": null
+    },
+    "functional:f06-resume": {
+      "record_id": "691506ef06f54944b9fad3d3df0d1a31",
+      "goal_id": "44f0c86048e94ac9a7adc2676c42e764",
+      "intent": "control",
+      "action": "resume"
+    },
+    "functional:f06-cancel-original": {
+      "record_id": "13532887d66241169975bd6cf947a4f0",
+      "goal_id": "3704c78771364f21b85a66b889a1f383",
+      "intent": "draft",
+      "action": null
+    },
+    "functional:f06-cancel": {
+      "record_id": "292d5971a61b4b55bec6dce9ee9c8faf",
+      "goal_id": "3704c78771364f21b85a66b889a1f383",
+      "intent": "control",
+      "action": "cancel"
+    },
+    "functional:f06-conversation-after-cancel": {
+      "record_id": "1a2fc34935c245b69bc0a22725c82d2b",
+      "goal_id": null,
+      "intent": "conversation",
+      "action": null
+    }
+  },
+  "goal_states": {
+    "60b5ae78b8054de08d0d9e64108fa79d": "completed",
+    "228669f245164e2fa268c45a39a53b77": "completed",
+    "44f0c86048e94ac9a7adc2676c42e764": "completed",
+    "3704c78771364f21b85a66b889a1f383": "cancelled"
+  },
+  "attempt_statuses": {
+    "4849a956159c4cd19a29610ded8f7f03": "pass",
+    "ff840bd2f50f481f97d5ca5725c9718f": "fenced",
+    "70906fe6b9a540ff80a76b3f5fe8b1b7": "pass",
+    "37dd5977506d41b68dd0425a45b2f26e": "fenced",
+    "be94993a22fe4b75a5a305d5375f9746": "pass",
+    "ff69e3b85e0b4974a225c5e238c4ee84": "fenced"
+  },
+  "counts": {
+    "records": 50,
+    "goals": 4,
+    "attempts": 6,
+    "receipts": 3,
+    "outcomes": 3,
+    "events": 18
+  },
+  "reports": 18
+}

@@ -1,0 +1,10 @@
+{
+  "seq": 22,
+  "id": "67cb75ce4e95401e9dadfb7d4a6c1eb7",
+  "role": "assistant",
+  "content": "承知しました。この会話では、架空テストの合言葉は **LANTERN-8472** として覚えておきます。情報源はこの文のみとします。",
+  "usable": 1,
+  "source_event_id": null,
+  "manifest": "[\"c09e51d3364540c59a40baea7c5f73e6\",\"878f315390d243bd916ffd80e4590f6e\",\"d3b55784330d4bbb98d8678d936a342f\",\"014b319466304000814d7072cc72daae\",\"9b3c7eea362c4c96b6616b82d44a9c1b\",\"cf69da6cea404edfa32d3f422286fb0d\",\"01656c291ca847de966a943199579d64\",\"4ee8db3b7ba640f38e79049ab88ab1e0\",\"b6cfb639d790469ba1ae6f0115f5c5cc\",\"00ebc0230642492a99ebcf3e5460025f\",\"81aa895e137e4b0f8b5d230bddaef427\",\"018801ac4e3e4e88b66114203c933230\",\"f44db0ac214e4a01b1316b20e9f4eb7d\",\"note:1b9a6091f530440bb6440c00ed7c48ca\",\"note:24a09fc416f74fbb976edbd1636d7dab\"]",
+  "supersedes": null
+}

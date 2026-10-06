@@ -1,0 +1,6 @@
+{
+  "exit_code": 2,
+  "stderr": "usage: server.py [-h] [--db DB] [--port PORT]\n                 [--mock-task-delay MOCK_TASK_DELAY]\n                 [--provider {mock,official_claude_pro}]\n                 [--access-proof ACCESS_PROOF]\n                 [--native-call-limit NATIVE_CALL_LIMIT]\nserver.py: error: proof_consumed\n",
+  "new_store_created": false,
+  "auth_or_generation_invoked": false
+}

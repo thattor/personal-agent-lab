@@ -1,0 +1,12 @@
+{
+  "request": {
+    "key": "functional:f05-recall",
+    "text": "忘れる操作をした架空テストの合言葉は何でしたか。参照できなければ分からないと答えてください。推測はしないでください。"
+  },
+  "ack": {
+    "record_id": "c5da5b6bb5104037aa66647a8954b8f5",
+    "goal": null,
+    "intent": "conversation"
+  },
+  "automated": true
+}
