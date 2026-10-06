@@ -1,0 +1,41 @@
+{
+  "checked_at": "2026-10-06T13:50:31.174033+00:00",
+  "classification": "verified_wait",
+  "monitor_pid": 28510,
+  "app_health": {
+    "pid": 28513,
+    "started_at": 1791294086.587188,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  },
+  "baseline_unchanged": true,
+  "measurements": 2,
+  "log_head": "4f7581e5eb2476ef85cf218542c50777f2d17c839631c926d69ed82bda887f79",
+  "attestation_present": false,
+  "ui_operations": 0,
+  "candidate": {
+    "elapsed_seconds": 300.7200059890747,
+    "human": {
+      "cancel": 0,
+      "correct_or_forget": 0,
+      "first_at": null,
+      "goals": 0,
+      "last_at": null,
+      "sessions": [],
+      "turns": 0
+    },
+    "human_session_span_seconds": 0,
+    "live_provider_reliability_claim": false,
+    "log_seq": 4,
+    "log_sha256": "4f7581e5eb2476ef85cf218542c50777f2d17c839631c926d69ed82bda887f79",
+    "manual_canonical_repairs": 0,
+    "planned_restart_verified": false,
+    "required_seconds": 259200,
+    "status": "PENDING_HUMAN_OR_TIME"
+  },
+  "full_suite": "55 PASS",
+  "test_log_sha256": "a3f91e7e55dcccc19f28ff9cc5df2e67d8a6320560e1f318ba7d6093d4eaa9fa",
+  "master_issue": "OPEN; no new comments",
+  "source_or_canonical_changes": false
+}
