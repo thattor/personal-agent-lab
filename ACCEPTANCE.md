@@ -109,3 +109,5 @@ Fresh soak02 started 2026-10-07T06:08:30.879116+09:00 after UI fix/full suite PA
 Fresh bilingual soak03 start 2026-10-07T06:14:18.834450+09:00, clean pushed baseline 1863ef2a3037b335fa6f257a8d6fd95fb44da9dc. [Owned health/manifest/hash-chain and served bilingual UI](evidence/soak/2026-10-07/start-03.json). Previous runs retained; human/time/restart counts start from zero. Hourly follow-up now targets soak03.
 
 Soak03 human participation: [first directly confirmed receipt and monitor anchor](evidence/soak/2026-10-07/soak03-human-session-01.json). S0-13 remains in_progress; one turn/session is not PASS.
+
+Soak03 [first human draft/restart proof](evidence/soak/2026-10-07/soak03-human-restart.json): two confirmed turns / one session / one Goal; restart verified and one host-checked artifact. Remaining human/time/control requirements still pending; S0-13 is not PASS.
