@@ -1,0 +1,12 @@
+{
+  "request": {
+    "key": "functional:remember",
+    "text": "これは架空のテストです。プロジェクトはCedar、相手はMikaです。Mikaは資料整理を手伝い、論点を分かりやすくまとめてくれました。覚えてください。"
+  },
+  "ack": {
+    "record_id": "bbb0abd29a2042eea416428391d4e96c",
+    "goal": null,
+    "intent": "conversation"
+  },
+  "automated": true
+}

@@ -1,0 +1,8 @@
+# Human-feedback revalidation
+Runtime baseline ccfba35; actual official Claude Pro tool-free Opus on new loopback58502. Fresh usage25%/week8%, extra-credit switchOFF, purchasedcredit0, autoreloadOFF; no new auth/fallback/settings change. Eight generation-invocation cap, four used in this automated scenario set. Existing DBs/outputs retained; original58500 remains separate. All inputs are automated synthetic probes, never human input.
+
+Fictional setting: project Cedar, collaborator Mika, explicitly supplied contribution: organizing materials and making discussion points clear. Draft request: overall gratitude followed by supplied contribution, Japanese exactly2 sentences, local only. Corrected-name content request changes project to Birch and preserves contribution/format. This is corrected content revalidation, not new proof of active correction fencing; original live and deterministic fencing evidence remain separate.
+
+Actual responses and host-receipt/hash-verified artifact bytes are linked JSON/text in this directory. Conversation now asks the user's important goal then offers organization without writing homework. Remember response no longer denies host persistence. Both drafts include provided contributions without invented obstacles or success stories. Controller content review passes; direct revised human usefulness review remains pending. First failed style run is preserved in ../feedback-20261007/result.json.
+
+Regression: ../../tests/human-response-style-refined-full.txt (66 PASS). No canonical repair, security change, acceptance relaxation, soak or long-term reliability claim.

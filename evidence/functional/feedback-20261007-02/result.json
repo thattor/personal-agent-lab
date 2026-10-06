@@ -1,0 +1,12 @@
+{
+  "automated": true,
+  "human_evaluation": false,
+  "content_constraints": "PASS",
+  "canonical_control_correction": "existing deterministic and historical live evidence; this revalidation is corrected-name content only",
+  "baseline": "ccfba35",
+  "conversation_preference_review": "PASS: asks important user judgment, offers priority organization, no writing homework",
+  "memory_explanation_review": "PASS: host-context reference possible; no false cross-session denial",
+  "draft_grounding_review": "PASS: names and supplied materials/issue organization contribution, exactly2 sentences, host hash verified",
+  "human_usefulness": "pending",
+  "long_term_claim": false
+}

@@ -1,0 +1,12 @@
+{
+  "request": {
+    "key": "functional:conversation",
+    "text": "こんにちは。個人の小さなプロジェクトで、考えを整理するときのコツを日本語で一つ、短く教えてください。作業は始めないでください。"
+  },
+  "ack": {
+    "record_id": "bd3242443b6b494ab9868e13caba9dc7",
+    "goal": null,
+    "intent": "conversation"
+  },
+  "automated": true
+}

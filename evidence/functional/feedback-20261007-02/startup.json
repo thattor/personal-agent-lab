@@ -1,0 +1,30 @@
+{
+  "records": [],
+  "notes": [],
+  "goals": [],
+  "revisions": [],
+  "acceptances": [],
+  "attempts": [],
+  "receipts": [],
+  "outcomes": [],
+  "events": [],
+  "approvals": [],
+  "rejections": [],
+  "artifacts": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 8,
+    "expires_at": 1791330039.668994,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 78703,
+    "started_at": 1791329139.718239,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

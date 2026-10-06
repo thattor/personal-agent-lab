@@ -146,3 +146,7 @@ Scheduled follow-up found a test observer race, preserved [red](evidence/tests/n
 2026-10-07 continuing development/human-judgment split: actual ongoing human thread verified; F0-08 remains human_pending, not inferred from continuation authorization. [Regression checkpoint](evidence/tests/development-handoff-full.txt). STATE.md identifies the evidence-bound handoff and only dependent completion work waits. No acceptance, production, provider proof or canonical-state change.
 
 2026-10-07 direct human F0-08 answers received: [source turns and scoped answers](evidence/functional/2026-10-07/human-evaluation.json). Conversation improvement and grounded thank-you preferences are being reflected; original outputs preserved. F0-08 remains pending affected real-provider revalidation and confirmation.
+
+Response-style revision ccfba35: [66-test full regression](evidence/tests/human-response-style-refined-full.txt). First real revalidation [FAIL retained](evidence/functional/feedback-20261007/result.json); prior F0 scenario PASS evidence remains historical baseline307058d, not proof of revised response behavior. F0-08 still pending revised live output review. No acceptance criterion was weakened.
+
+Revised real response content checks [PASS on ccfba35](evidence/functional/feedback-20261007-02/README.md): direct-question conversation, host memory explanation and grounded2-sentence drafts. These are automated real-provider results; F0-08 awaits direct revised human usefulness confirmation.
