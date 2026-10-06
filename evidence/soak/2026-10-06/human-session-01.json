@@ -1,0 +1,42 @@
+{
+  "confirmed_at": "2026-10-06T21:05:11.780008+00:00",
+  "confirmation_source": "direct human reply in this controller chat following screenshot receipt",
+  "human_confirmation": "このreceiptの入力は、私本人が画面で行いました。",
+  "session_id": "e54860be-d03d-4668-aa5d-c094fe15ebcb",
+  "matched_operations": {
+    "ui:e54860be-d03d-4668-aa5d-c094fe15ebcb:1791320650036:92987be7-a836-4f5e-80eb-d2bd2316eda8": {
+      "record_id": "9a6f615d614d4c0a92544c9cf60b04a4",
+      "goal_id": null,
+      "intent": "conversation",
+      "action": null
+    }
+  },
+  "attestation_anchor": {
+    "seq": 93,
+    "sha256": "ce4e7202d18f7e4b5d6b9ee4691c213b32ce38a329d27c8dd21e02ed2308aee0"
+  },
+  "verdict": {
+    "status": "PENDING_HUMAN_OR_TIME",
+    "elapsed_seconds": 26625.023332834244,
+    "required_seconds": 259200,
+    "human_session_span_seconds": -1.0087931156158447,
+    "human": {
+      "sessions": [
+        "e54860be-d03d-4668-aa5d-c094fe15ebcb"
+      ],
+      "turns": 1,
+      "goals": 0,
+      "cancel": 0,
+      "correct_or_forget": 0,
+      "first_at": 1791320650.920653,
+      "last_at": 1791320649.91186
+    },
+    "planned_restart_verified": false,
+    "manual_canonical_repairs": 0,
+    "live_provider_reliability_claim": false
+  },
+  "planned_restart_armed": true,
+  "canonical_writes_performed": false,
+  "runtime_baseline_changed": false,
+  "next_action": "Human creates the first local draft in this same browser session; monitor performs the reviewed supported unfinished restart."
+}
