@@ -1,0 +1,2 @@
+Verified 2026-10-07T04:11:10.494788+00:00
+Official Claude usage UI Pro; session34%, week14%; usage credits OFF, monthly spend$0.00, auto-reload OFF. Scrubbed official CLI loggedIn:true/authMethod:claude.ai/subscriptionType:pro. No changed settings/new auth/paid fallback. GitHub Projects read failed: missing read:project scope; no refresh performed. Existing repo Issues/milestones available. Project-level tracking will use one global goal Issue, not claim a Projects board exists.

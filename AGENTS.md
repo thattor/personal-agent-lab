@@ -1,7 +1,7 @@
 # AGENTS.md — Personal Agent Lab
 
 ## Mission
-Stable-0 is released under D-019. Resume the currently scoped milestone from STATE.md: Stable-1 under D-021, with prospective N1 acceptance in ACCEPTANCE.md. Continue within that accepted scope; later roadmap candidates remain deferred. Preserve all Stable-0 safeguards and honest evidence. The user requested the next milestone/task setup; this scope-setting increment does not claim new implementation.
+The project-level destination is the personal assistant described in SPEC.md. Manage project goal → GitHub milestone → goal-bearing Issue → verified work unit under G-001/D-022. [Overall plan P-001 v1](docs/plans/P-001-v1.md) is PROPOSED, not human-adopted. Stable-0 is released; Stable-1 under D-021 is the sole ACTIVE implementation milestone. Resume STATE.md, continue independently authorized work, and never activate PROPOSED stages from GitHub metadata alone.
 
 This is a greenfield project. Do not search for, read, copy, migrate, or preserve compatibility with any old PAL implementation, schema, workflow, review, P0/P1 list, or codebase.
 
@@ -17,7 +17,7 @@ Read at the start of every work session:
 If documents conflict, later explicit decisions in DECISIONS.md win. Never silently weaken accepted product behavior to make tests pass.
 
 ## Roles
-- Codex: controller and implementer. Own planning, coding, tests, commits, evidence, and continuation to Stable-0.
+- Codex: controller and implementer. Own project/milestone/Issue loops, coding, tests, commits, evidence, checkpoints and continuation within the current adopted plan.
 - Opus: independent design partner. Consult before adopting a design change.
 - Devin SWE-2 High: implementation-design and code-generation partner. Consult for substantial implementation architecture, concurrency, persistence, recovery, idempotency, test harnesses, provider/tool boundaries, or uncertain substantial code generation.
 
@@ -49,7 +49,8 @@ Ask the user only when:
 - a new login/authentication or broader permission is required;
 - any additional payment or metered paid fallback would be required;
 - external/public exposure is required;
-- accepted product behavior must be changed and Opus review cannot resolve it within existing decisions.
+- a material development-plan/scope/acceptance/priority change needs actual human finalization after Opus agreement under G-001;
+- accepted product behavior cannot be resolved within existing decisions after Opus review.
 
 If a safer, no-cost, no-new-permission alternative exists, use it and continue.
 
@@ -74,7 +75,9 @@ Before each call, confirm the account is already authenticated and the selected 
 7. Run required fault injection or live smoke when the slice calls for it.
 8. Update ACCEPTANCE.md with evidence and STATE.md with current state.
 9. Commit a small green increment. Reference acceptance and decision IDs.
-10. Continue immediately to the next unfinished item. Do not stop merely because one slice passed.
+10. Evaluate the unit goal and contribution to its Issue/milestone/project; record outcome/evidence/commit/limits/plan impact/next action. Continue the next unfinished authorized item.
+11. At Issue closure independently verify its objective; at milestone exit/entry evaluate project contribution and plan assumptions. Defects/repeated causes/user feedback/assumption failures trigger early checkpoints. Closed children alone never complete the parent.
+12. Material plan changes: discuss/agreed with Opus → versioned evidence-bound proposal → actual human decision → update docs/GitHub → resume dependencies. Pending judgment blocks only affected work; routine technical decisions remain autonomous. See D-022 and docs/plans/P-001-v1.md. Do not restart paused schedules.
 
 If leaving a red state because of a real blocker, STATE.md must contain the exact failure, evidence, attempts, and next action.
 

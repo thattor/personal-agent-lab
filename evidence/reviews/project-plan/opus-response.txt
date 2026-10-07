@@ -1,0 +1,104 @@
+# Independent Opus review: P-001 draft and governance bootstrap
+
+I didn't use any tools and didn't write a plan file, as you asked. This is review text only. Nothing here is human assent.
+
+## 1. Stage ordering and release scope
+
+**Ordering is sound.** 1 → 1.1 → 2 → 3 follows real dependencies:
+- Stable-1.1 clarification needs Stable-1 targeting.
+- Proactive preparation needs retrieval.
+- Retrieval needs the existing forget and correction semantics.
+
+**Gaps to fix:**
+
+1. **Stable-1 / 1.1 boundary leak.** Stable-1 must state what happens today when ingress sees missing content. It should hold safely, with no guess, and mark the case "deferred to 1.1". Otherwise #3 will quietly absorb 1.1 scope.
+2. **Global goal vs PAL-1.0 mismatch.** The global goal includes proactive preparation, but PAL-1.0 as described may not. Say explicitly which clauses of the goal PAL-1.0 satisfies. Otherwise "1.0 released" will be read as "goal reached".
+3. **Untestable phrases.** "Relevant", "only essential questions" and "naturally" need a frozen representative workload set and rubric at milestone entry. They must never be read as universal properties. You already disclaim universality; also bind each phrase to a named rubric.
+4. **Stable-2 acceptance needs privacy items:**
+   - Forgotten or negated content is never retrieved or surfaced.
+   - Epoch fencing holds across conversations.
+   - The bounded context limit is stated together with its provider invocation cost under D-020.
+5. **PAL-1.0 "supported run/restart" needs explicit platform scope** (local macOS assumed). It must not implicitly claim long-run stability; the 72h result is still unmet. If long-run stability matters, it needs its own acceptance item and a human decision.
+6. **Early usefulness-assumption check.** If the user's real usefulness depends on iPhone access or notifications, a desktop-local PAL-1.0 may fail the human usefulness gate. Ask the human at Stable-1 exit, not at 1.0.
+
+## 2. Proactive and time-based work
+
+**Recommendation: exclude system-initiated proactive and time-triggered behavior from PAL-1.0, and propose it separately (e.g., P-002 / PAL-1.1).** Reasons:
+- Time triggers imply a background process, a scheduler and probably notifications. Notifications are a gated candidate capability.
+- They also imply invocations without a user turn, which strains D-020's bounded budget with no auto-renewal.
+- Keeping them in 1.0 would quietly expand cost and permission scope.
+
+**Smallest safe split:**
+- **Stable-3a (may be in 1.0 if the human chooses):** reversible local preparation done only inside a user-initiated turn, within explicit limits.
+- **Stable-3b (separate proposal):** system-initiated topic or time opportunities, with refusal and reference exclusions and notification authority.
+
+Put this split to the human as an explicit choice. Do not decide it here.
+
+## 3. Bootstrap: governance already adopted, P-001 not yet adopted
+
+1. **Record the governance as G-001.** Treat it as the human-issued instruction, with a verbatim quote, the source chat and the date. Do not paraphrase it into broader rules. G-001 is active. P-001 is not.
+2. **P-001 status: DRAFT → PROPOSED (after this review) → ADOPTED** only when the human makes an explicit targeted statement naming P-001, its version and content hash.
+3. **If the human edits P-001, the edit becomes P-001 v2.** It gets a delta-only Opus review, then the human adopts that exact version.
+4. **Stable-1 runs under D-021, independent of P-001.** P-001 only references Stable-1; adopting or rejecting P-001 does not change Stable-1.
+5. **Open governance question for the human:** G-001 says changes must be "agreed with Opus". What happens if Opus objects? Recommendation: record the objection, and let the human decide over it explicitly. That interpretation is the human's call, not ours.
+6. **Reviewer independence.** Record the reviewer's model ID and inputs. If the same agent drafted the plan, record that too. A review is an assessment and never an approval.
+
+## 4. Challenge: future milestones as PROPOSED on GitHub
+
+**Smallest safe scheme: don't create future milestones or issues yet.** Proposed milestones next to an active one can be picked up as work and are mutable, which blurs plan history. Instead:
+- Keep the canonical P-001 in a repo file such as `docs/plan/P-001.md`, committed. Its content hash and SHA are the immutable record.
+- Create one global goal Issue. Label it `plan:proposed`, or leave the goal text in the doc and have the Issue link to the commit SHA.
+- Keep future stages as sections in the doc. Create their milestones only after adoption.
+
+**If you do create them now:** add a `PROPOSED —` title prefix and a `plan:awaiting-adoption` label, leave them unassigned, give them no due dates, and add a rule that agents never take work from non-ACTIVE milestones.
+
+## 5. Minimal templates
+
+**Plan (P-00n)**
+- id / version / content hash / status: DRAFT, PROPOSED, ADOPTED or SUPERSEDED
+- supersedes
+- cause / evidence / delta
+- affected work / independent work
+- alternatives / recommendation
+- reviewer_assessment: Opus, model ID, verdict, objections
+- human_decision: quoted message reference, or EMPTY. Only a human message can fill this; an agent never does.
+
+**Project (global goal Issue)**
+- goal text, with a reference to the plan version that adopted it
+- PAL-1.0 clause coverage
+- required milestone gates
+- frozen rubric reference
+- blocker audit
+- human overall usefulness result
+- rule: children closed ≠ goal done
+
+**Milestone**
+- status
+- user-visible outcome
+- dependencies / exclusions
+- acceptance IDs, pinned before implementation
+- cost and permission envelope (the D-020 budget restated)
+- evidence / limits
+- effect on the global goal
+- exit evaluation: assumptions, user value, permission costs
+
+**Issue**
+- objective / acceptance IDs / in-scope / out-of-scope / dependencies
+- work-unit log
+- close only with objective verification; NOT_RUN, BLOCKED and PARTIAL are never PASS
+- plan_impact: none, within-scope, or requires P-00n
+
+**Work-unit record (one per green coherent unit)**
+- test → implementation → verification → evidence (artifacts, commit SHA)
+- delta / next
+- anomalies, which trigger an early evaluation when:
+  - the same root cause recurs, or
+  - an assumption is falsified, or
+  - there is a real defect or user feedback
+
+## 6. Conclusion to record
+
+> **R-001 (Opus review of P-001 draft, 2026-10-07): CHANGES RECOMMENDED; no blocking objection to the governance structure.**
+> - Recommended revisions: §1 items 1–6; split Stable-3 into 3a/3b, with 3b excluded from PAL-1.0 pending a separate proposal; G-001/P-001 separation; canonical plan in a repo file; future milestones deferred until adoption.
+> - Open human questions: whether 3a is in PAL-1.0; how to handle an Opus objection; whether iPhone or notifications are required for usefulness.
+> - **This review is not adoption. P-001 remains unadopted pending an explicit human decision. Stable-1 continues under D-021, unaffected.**

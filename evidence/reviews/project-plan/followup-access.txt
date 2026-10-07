@@ -1,0 +1,1 @@
+Verified 2026-10-07T04:14:07.548540+00:00 official Claude usage refresh: Pro, session35%,week14%, extra credits OFF, monthly$0.00, auto reload OFF. Official scrubbed CLI loggedIn true/claude.ai/pro. No settings changed.

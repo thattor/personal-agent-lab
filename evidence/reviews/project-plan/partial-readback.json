@@ -1,0 +1,157 @@
+{
+  "milestones": [
+    {
+      "number": 1,
+      "title": "Stable-1 — Natural Japanese local delegation",
+      "state": "open"
+    },
+    {
+      "number": 2,
+      "title": "PROPOSED — Stable-1.1 — Essential clarification and bound resume",
+      "state": "open"
+    },
+    {
+      "number": 3,
+      "title": "PROPOSED — Stable-2 — Relevant source-backed cross-conversation memory",
+      "state": "open"
+    },
+    {
+      "number": 4,
+      "title": "PROPOSED — Stable-3a — User-initiated reversible local preparation",
+      "state": "open"
+    },
+    {
+      "number": 5,
+      "title": "PROPOSED — PAL-1.0 — Integrated private personal-use release",
+      "state": "open"
+    },
+    {
+      "number": 6,
+      "title": "PROPOSED — Post-PAL-1.0 — System-initiated assistance candidates",
+      "state": "open"
+    },
+    {
+      "number": 7,
+      "title": "Stable-0 — Released functional-first core",
+      "state": "closed"
+    }
+  ],
+  "issues": [
+    {
+      "milestone": {
+        "number": 6,
+        "title": "PROPOSED — Post-PAL-1.0 — System-initiated assistance candidates",
+        "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Optional separate proposal for topics/time opportunities or information/notification access; require actual user value, refusal/reference exclusions and permission/cost/provider boundaries. Not required for proposed PAL-1.0. Dependency: Separate human-adopted extension plan. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. OPTIONAL, not a project completion gate.",
+        "dueOn": null
+      },
+      "number": 11,
+      "state": "OPEN",
+      "title": "PROPOSED — Post-PAL-1.0 — System-initiated assistance candidates"
+    },
+    {
+      "milestone": {
+        "number": 5,
+        "title": "PROPOSED — PAL-1.0 — Integrated private personal-use release",
+        "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Prove project clauses G-P01–04 in precommitted integrated local-macOS workloads, human overall usefulness, supported operation/recovery and bounded official access/cost; final audit/version/limits. Dependency: Stable-3a. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+        "dueOn": null
+      },
+      "number": 10,
+      "state": "OPEN",
+      "title": "PROPOSED — PAL-1.0 — Integrated private personal-use release"
+    },
+    {
+      "milestone": {
+        "number": 4,
+        "title": "PROPOSED — Stable-3a — User-initiated reversible local preparation",
+        "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Prepare useful local reversible results within a user-initiated interaction and explicit record-only/not-yet/scope limits; no unsolicited scheduler/provider call or external side effect. Dependency: Stable-2. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+        "dueOn": null
+      },
+      "number": 9,
+      "state": "OPEN",
+      "title": "PROPOSED — Stable-3a — User-initiated reversible local preparation"
+    },
+    {
+      "milestone": {
+        "number": 3,
+        "title": "PROPOSED — Stable-2 — Relevant source-backed cross-conversation memory",
+        "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Retrieve bounded relevant usable context with source/negation/correction fidelity, named forget/privacy probes and cross-session fencing. Freeze context and provider-cost caps before proof. Dependency: Stable-1.1. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+        "dueOn": null
+      },
+      "number": 8,
+      "state": "OPEN",
+      "title": "PROPOSED — Stable-2 — Relevant source-backed cross-conversation memory"
+    },
+    {
+      "milestone": {
+        "number": 2,
+        "title": "PROPOSED — Stable-1.1 — Essential clarification and bound resume",
+        "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Ask only essential missing content; bind the actual answer to the same request and reject stale/cross-target answers. Preserve fixed criteria, dedupe, recovery and actual UI usefulness. Dependency: Stable-1. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+        "dueOn": null
+      },
+      "number": 7,
+      "state": "OPEN",
+      "title": "PROPOSED — Stable-1.1 — Essential clarification and bound resume"
+    },
+    {
+      "milestone": null,
+      "number": 6,
+      "state": "OPEN",
+      "title": "PAL project goal — integrated personal assistant delivery"
+    },
+    {
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "description": "D-021: local draft request/non-request recognition and safe correction/cancel targeting. Required N1-01–08; bounded official live UI plus one actual human usefulness evaluation. No new tools, external sending, always-on access or72h quotas.",
+        "dueOn": null
+      },
+      "number": 5,
+      "state": "OPEN",
+      "title": "Stable-1: prove the new flow on real UI and close release acceptance"
+    },
+    {
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "description": "D-021: local draft request/non-request recognition and safe correction/cancel targeting. Required N1-01–08; bounded official live UI plus one actual human usefulness evaluation. No new tools, external sending, always-on access or72h quotas.",
+        "dueOn": null
+      },
+      "number": 4,
+      "state": "OPEN",
+      "title": "Stable-1: resolve correction and cancel to the intended work"
+    },
+    {
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "description": "D-021: local draft request/non-request recognition and safe correction/cancel targeting. Required N1-01–08; bounded official live UI plus one actual human usefulness evaluation. No new tools, external sending, always-on access or72h quotas.",
+        "dueOn": null
+      },
+      "number": 3,
+      "state": "OPEN",
+      "title": "Stable-1: distinguish local draft requests from conversation and limits"
+    },
+    {
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "description": "D-021: local draft request/non-request recognition and safe correction/cancel targeting. Required N1-01–08; bounded official live UI plus one actual human usefulness evaluation. No new tools, external sending, always-on access or72h quotas.",
+        "dueOn": null
+      },
+      "number": 2,
+      "state": "OPEN",
+      "title": "Deliver Stable-1: natural Japanese local delegation"
+    },
+    {
+      "milestone": null,
+      "number": 1,
+      "state": "CLOSED",
+      "title": "Reach Stable-0 minimum stable implementation"
+    }
+  ],
+  "issue1": {
+    "number": 1,
+    "state": "closed",
+    "milestone": null
+  }
+}

@@ -176,3 +176,7 @@ These rows define the NEXT release, not Stable-0. All begin NOT_RUN. No old PASS
 | N1-08 | yes | Full regression and affected S0/F0 behaviors revalidated on the release candidate, no weakened criteria/security/forget/lease semantics; final version/limits/evidence audit, next milestone parent Issue closure and private release record | Pending final suite and controller audit | NOT_RUN |
 
 Content-missing clarification/answer generation is a Stable-1.1 candidate; N1-03/04 target-selection questions do not claim that broader feature. Before substantial implementation, obtain the required official SWE-2 High contract review. Host-visible target choices must be bound/persistent rather than raw model controls; exact representation remains an implementation-review decision.
+
+## Project goal acceptance proposal — P-001 v1 / D-022
+
+Not new Stable-0 or Stable-1 gates. G-P01–04 remain prospective NOT_RUN until actual human plan adoption; definitions and stage dependencies are frozen in docs/plans/P-001-v1.md. GitHub goal Issue#6 aggregates milestone results but requires its own integrated proof and authentic human usefulness before completion. Per-Issue and per-milestone objective gates/limits freeze before implementation; counts/closed children alone do not prove parent completion. Current Stable-1 acceptance stays N1-01–08 unchanged. Material plan/acceptance changes require Opus agreement and actual human finalization.

@@ -1,0 +1,16 @@
+{
+  "judgment": "HR-PERM-001",
+  "human_permission_approval": "Direct user: goal-setting permissions approved; continue work",
+  "requested_scope": "project",
+  "actual_device_authorization": "pending",
+  "projects_board_created": false,
+  "git_credential_change": false,
+  "independent_work": "existing repository Issues/milestones; approved D-021 Stable-1",
+  "one_time_code": "intentionally omitted",
+  "auto_review_rejection": {
+    "operation": "repeat closed-milestone assignment before diagnosis",
+    "reason": "read-only diagnosis required before repeating failed mutation",
+    "rejected_mutation_executed": false,
+    "safe_alternative": "read existing IDs/state; finish unrelated goal hierarchy; preserve history by links without assignment/reopening"
+  }
+}

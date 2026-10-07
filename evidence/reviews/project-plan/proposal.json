@@ -1,0 +1,18 @@
+{
+  "plan_id": "P-001",
+  "version": 1,
+  "status": "PROPOSED",
+  "path": "docs/plans/P-001-v1.md",
+  "sha256": "6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21",
+  "governance": "G-001 active by direct user instruction",
+  "reviewer": "official Claude CLI model alias opus; backend exact model version not exposed",
+  "review_inputs": [
+    "evidence/reviews/project-plan/opus-question.txt",
+    "evidence/reviews/project-plan/opus-followup-question.txt"
+  ],
+  "review_response": "evidence/reviews/project-plan/opus-followup-response.txt",
+  "review_result": "AGREED on revised six-point proposal; controller verifies file conforms to delta; followup reviewer did not have initial review context",
+  "human_decision": null,
+  "implementation_authority": "D-021 Stable-1 only until actual P-001 adoption",
+  "github_projects": "pending actual device authorization, not created"
+}

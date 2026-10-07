@@ -1,0 +1,367 @@
+{
+  "project_goal_issue": {
+    "body": "## Project goal\nDeliver a private personal PAL that retains relevant conversational context, accepts natural requests, asks only indispensable human judgments/content, prepares authorized reversible local results, verifies outcomes and returns results/blockers/decisions without requiring the user to manage internal tasks.\n\n## Authority and plan\nG-001 governance ACTIVE by direct user instruction. Overall product plan P-001 v1 PROPOSED / HR-PLAN-001 awaiting direct human adoption, hash: 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Canonical proposal: docs/plans/P-001-v1.md; status/answers: DECISIONS.md D-022; continuation: STATE.md. Stable-1 independently ACTIVE under D-021. Permission approval does not adopt future product scope.\n\n## Project acceptance\nG-P01: every required adopted milestone gate with release-version evidence PASS.\nG-P02: precommitted integrated workloads/rubric prove context → recall → request → necessary question → local preparation → verified return, not just isolated components.\nG-P03: control/security/forget/recovery/bounded official cost and blocker audit hold at integration.\nG-P04: authentic human overall usefulness, final suite/version/use/limits record and project-goal audit before closure.\nAll project gates are NOT_RUN until the plan is adopted and demonstrated. Closed child issues are not project completion. Stable-0 completion remains intact, not overall completion.\n\n## Goal loops and checkpoints\nEach Issue: goal/criteria/dependencies → bounded unit → required review → test/implement/verify/evidence/commit/push → evaluate unit contribution → next unmet condition. Close only after objective verification. Milestone aggregates but independently verifies its user-visible promise. Project independently verifies integrated usefulness.\nCheckpoints: coherent green unit, Issue exit, milestone exit/entry, and defect/repeated cause/user feedback/assumption failure. Record goal verdict, evidence/version, remaining uncertainty, plan impact and exact next step. No timer/checkpoint keepalive.\n\n## Plan changes\nMaterial plan/scope/acceptance/priority change: Opus discuss/agreement → versioned proposal with evidence/delta/recommendation/affected vs independent work → actual targeted human decision → canonical docs/GitHub activation. Pending decision blocks only its dependencies. Routine technical choices/bug fixes within approved scope remain autonomous. Only ACTIVE approved milestones enter execution.\n\n## Next\nContinue Stable-1 Issue#3 corpus and concrete official SWE-2 High contract review. HR-PLAN-001 future activation waits independently. Projects board pending actual GitHub device authorization; this Issue is project-level tracking, not a claimed Projects board.\n\n## Milestone map\n- RELEASED: https://github.com/thattor/personal-agent-lab/milestone/7, historical Issue#1 CLOSED (link only; closed-milestone CLI assignment failed and was not repeated after approval rejection).\n- ACTIVE: https://github.com/thattor/personal-agent-lab/milestone/1, parent#2, work#3–5.\n- PROPOSED required if adopted: https://github.com/thattor/personal-agent-lab/milestone/2, Issue#7.\n- PROPOSED required if adopted: https://github.com/thattor/personal-agent-lab/milestone/3, Issue#8.\n- PROPOSED required if adopted: https://github.com/thattor/personal-agent-lab/milestone/4, Issue#9.\n- PROPOSED required if adopted: https://github.com/thattor/personal-agent-lab/milestone/5, Issue#10.\n- OPTIONAL proposal: https://github.com/thattor/personal-agent-lab/milestone/6, Issue#11.\n",
+    "milestone": null,
+    "number": 6,
+    "state": "OPEN",
+    "title": "PAL project goal — integrated personal assistant delivery",
+    "url": "https://github.com/thattor/personal-agent-lab/issues/6"
+  },
+  "milestones": [
+    {
+      "number": 1,
+      "title": "Stable-1 — Natural Japanese local delegation",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/milestone/1",
+      "description": "STATUS: ACTIVE under D-021, independent of pending P-001. Project goal#6. Natural Japanese local draft recognition and safe correction/cancel targeting; N1-01–08. Issues3→4→5, parent2. Preserve D-020, no new tools/cost/public exposure or72h quota. At exit evaluate user value and desktop-local assumption against project goal.",
+      "open_issues": 4,
+      "closed_issues": 0,
+      "due_on": null
+    },
+    {
+      "number": 2,
+      "title": "PROPOSED — Stable-1.1 — Essential clarification and bound resume",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/milestone/2",
+      "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Ask only essential missing content; bind the actual answer to the same request and reject stale/cross-target answers. Preserve fixed criteria, dedupe, recovery and actual UI usefulness. Dependency: Stable-1. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+      "open_issues": 1,
+      "closed_issues": 0,
+      "due_on": null
+    },
+    {
+      "number": 3,
+      "title": "PROPOSED — Stable-2 — Relevant source-backed cross-conversation memory",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/milestone/3",
+      "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Retrieve bounded relevant usable context with source/negation/correction fidelity, named forget/privacy probes and cross-session fencing. Freeze context and provider-cost caps before proof. Dependency: Stable-1.1. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+      "open_issues": 1,
+      "closed_issues": 0,
+      "due_on": null
+    },
+    {
+      "number": 4,
+      "title": "PROPOSED — Stable-3a — User-initiated reversible local preparation",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/milestone/4",
+      "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Prepare useful local reversible results within a user-initiated interaction and explicit record-only/not-yet/scope limits; no unsolicited scheduler/provider call or external side effect. Dependency: Stable-2. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+      "open_issues": 1,
+      "closed_issues": 0,
+      "due_on": null
+    },
+    {
+      "number": 5,
+      "title": "PROPOSED — PAL-1.0 — Integrated private personal-use release",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/milestone/5",
+      "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Prove project clauses G-P01–04 in precommitted integrated local-macOS workloads, human overall usefulness, supported operation/recovery and bounded official access/cost; final audit/version/limits. Dependency: Stable-3a. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+      "open_issues": 1,
+      "closed_issues": 0,
+      "due_on": null
+    },
+    {
+      "number": 6,
+      "title": "PROPOSED — Post-PAL-1.0 — System-initiated assistance candidates",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/milestone/6",
+      "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Optional separate proposal for topics/time opportunities or information/notification access; require actual user value, refusal/reference exclusions and permission/cost/provider boundaries. Not required for proposed PAL-1.0. Dependency: Separate human-adopted extension plan. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. OPTIONAL, not a project completion gate.",
+      "open_issues": 1,
+      "closed_issues": 0,
+      "due_on": null
+    },
+    {
+      "number": 7,
+      "title": "Stable-0 — Released functional-first core",
+      "state": "closed",
+      "html_url": "https://github.com/thattor/personal-agent-lab/milestone/7",
+      "description": "RELEASED under D-019. All20 required S0/F0 PASS; Issue1 and private stable-0 release complete. Historical S0-13 remains unmet/nonrequired. Metadata linkage only; no transferred/fabricated evidence.",
+      "open_issues": 0,
+      "closed_issues": 0,
+      "due_on": null
+    }
+  ],
+  "issues": [
+    {
+      "assignees": [],
+      "labels": [
+        {
+          "id": "LA_kwDOU99FDM8AAAAC7ZtssQ",
+          "name": "plan:awaiting-adoption",
+          "description": "Plan proposal only; no implementation until direct human adoption",
+          "color": "D4C5F9"
+        }
+      ],
+      "milestone": {
+        "number": 6,
+        "title": "PROPOSED — Post-PAL-1.0 — System-initiated assistance candidates",
+        "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Optional separate proposal for topics/time opportunities or information/notification access; require actual user value, refusal/reference exclusions and permission/cost/provider boundaries. Not required for proposed PAL-1.0. Dependency: Separate human-adopted extension plan. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. OPTIONAL, not a project completion gate.",
+        "dueOn": null
+      },
+      "number": 11,
+      "state": "OPEN",
+      "title": "PROPOSED — Post-PAL-1.0 — System-initiated assistance candidates"
+    },
+    {
+      "assignees": [],
+      "labels": [
+        {
+          "id": "LA_kwDOU99FDM8AAAAC7ZtssQ",
+          "name": "plan:awaiting-adoption",
+          "description": "Plan proposal only; no implementation until direct human adoption",
+          "color": "D4C5F9"
+        }
+      ],
+      "milestone": {
+        "number": 5,
+        "title": "PROPOSED — PAL-1.0 — Integrated private personal-use release",
+        "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Prove project clauses G-P01–04 in precommitted integrated local-macOS workloads, human overall usefulness, supported operation/recovery and bounded official access/cost; final audit/version/limits. Dependency: Stable-3a. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+        "dueOn": null
+      },
+      "number": 10,
+      "state": "OPEN",
+      "title": "PROPOSED — PAL-1.0 — Integrated private personal-use release"
+    },
+    {
+      "assignees": [],
+      "labels": [
+        {
+          "id": "LA_kwDOU99FDM8AAAAC7ZtssQ",
+          "name": "plan:awaiting-adoption",
+          "description": "Plan proposal only; no implementation until direct human adoption",
+          "color": "D4C5F9"
+        }
+      ],
+      "milestone": {
+        "number": 4,
+        "title": "PROPOSED — Stable-3a — User-initiated reversible local preparation",
+        "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Prepare useful local reversible results within a user-initiated interaction and explicit record-only/not-yet/scope limits; no unsolicited scheduler/provider call or external side effect. Dependency: Stable-2. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+        "dueOn": null
+      },
+      "number": 9,
+      "state": "OPEN",
+      "title": "PROPOSED — Stable-3a — User-initiated reversible local preparation"
+    },
+    {
+      "assignees": [],
+      "labels": [
+        {
+          "id": "LA_kwDOU99FDM8AAAAC7ZtssQ",
+          "name": "plan:awaiting-adoption",
+          "description": "Plan proposal only; no implementation until direct human adoption",
+          "color": "D4C5F9"
+        }
+      ],
+      "milestone": {
+        "number": 3,
+        "title": "PROPOSED — Stable-2 — Relevant source-backed cross-conversation memory",
+        "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Retrieve bounded relevant usable context with source/negation/correction fidelity, named forget/privacy probes and cross-session fencing. Freeze context and provider-cost caps before proof. Dependency: Stable-1.1. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+        "dueOn": null
+      },
+      "number": 8,
+      "state": "OPEN",
+      "title": "PROPOSED — Stable-2 — Relevant source-backed cross-conversation memory"
+    },
+    {
+      "assignees": [],
+      "labels": [
+        {
+          "id": "LA_kwDOU99FDM8AAAAC7ZtssQ",
+          "name": "plan:awaiting-adoption",
+          "description": "Plan proposal only; no implementation until direct human adoption",
+          "color": "D4C5F9"
+        }
+      ],
+      "milestone": {
+        "number": 2,
+        "title": "PROPOSED — Stable-1.1 — Essential clarification and bound resume",
+        "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Ask only essential missing content; bind the actual answer to the same request and reject stale/cross-target answers. Preserve fixed criteria, dedupe, recovery and actual UI usefulness. Dependency: Stable-1. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+        "dueOn": null
+      },
+      "number": 7,
+      "state": "OPEN",
+      "title": "PROPOSED — Stable-1.1 — Essential clarification and bound resume"
+    },
+    {
+      "assignees": [],
+      "labels": [],
+      "milestone": null,
+      "number": 6,
+      "state": "OPEN",
+      "title": "PAL project goal — integrated personal assistant delivery"
+    },
+    {
+      "assignees": [],
+      "labels": [],
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "description": "STATUS: ACTIVE under D-021, independent of pending P-001. Project goal#6. Natural Japanese local draft recognition and safe correction/cancel targeting; N1-01–08. Issues3→4→5, parent2. Preserve D-020, no new tools/cost/public exposure or72h quota. At exit evaluate user value and desktop-local assumption against project goal.",
+        "dueOn": null
+      },
+      "number": 5,
+      "state": "OPEN",
+      "title": "Stable-1: prove the new flow on real UI and close release acceptance"
+    },
+    {
+      "assignees": [],
+      "labels": [],
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "description": "STATUS: ACTIVE under D-021, independent of pending P-001. Project goal#6. Natural Japanese local draft recognition and safe correction/cancel targeting; N1-01–08. Issues3→4→5, parent2. Preserve D-020, no new tools/cost/public exposure or72h quota. At exit evaluate user value and desktop-local assumption against project goal.",
+        "dueOn": null
+      },
+      "number": 4,
+      "state": "OPEN",
+      "title": "Stable-1: resolve correction and cancel to the intended work"
+    },
+    {
+      "assignees": [],
+      "labels": [],
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "description": "STATUS: ACTIVE under D-021, independent of pending P-001. Project goal#6. Natural Japanese local draft recognition and safe correction/cancel targeting; N1-01–08. Issues3→4→5, parent2. Preserve D-020, no new tools/cost/public exposure or72h quota. At exit evaluate user value and desktop-local assumption against project goal.",
+        "dueOn": null
+      },
+      "number": 3,
+      "state": "OPEN",
+      "title": "Stable-1: distinguish local draft requests from conversation and limits"
+    },
+    {
+      "assignees": [],
+      "labels": [],
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "description": "STATUS: ACTIVE under D-021, independent of pending P-001. Project goal#6. Natural Japanese local draft recognition and safe correction/cancel targeting; N1-01–08. Issues3→4→5, parent2. Preserve D-020, no new tools/cost/public exposure or72h quota. At exit evaluate user value and desktop-local assumption against project goal.",
+        "dueOn": null
+      },
+      "number": 2,
+      "state": "OPEN",
+      "title": "Deliver Stable-1: natural Japanese local delegation"
+    },
+    {
+      "assignees": [],
+      "labels": [],
+      "milestone": null,
+      "number": 1,
+      "state": "CLOSED",
+      "title": "Reach Stable-0 minimum stable implementation"
+    }
+  ],
+  "project_subissues": [
+    {
+      "number": 2,
+      "title": "Deliver Stable-1: natural Japanese local delegation",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/issues/2",
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "state": "open",
+        "html_url": "https://github.com/thattor/personal-agent-lab/milestone/1"
+      }
+    },
+    {
+      "number": 7,
+      "title": "PROPOSED — Stable-1.1 — Essential clarification and bound resume",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/issues/7",
+      "milestone": {
+        "number": 2,
+        "title": "PROPOSED — Stable-1.1 — Essential clarification and bound resume",
+        "state": "open",
+        "html_url": "https://github.com/thattor/personal-agent-lab/milestone/2"
+      }
+    },
+    {
+      "number": 8,
+      "title": "PROPOSED — Stable-2 — Relevant source-backed cross-conversation memory",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/issues/8",
+      "milestone": {
+        "number": 3,
+        "title": "PROPOSED — Stable-2 — Relevant source-backed cross-conversation memory",
+        "state": "open",
+        "html_url": "https://github.com/thattor/personal-agent-lab/milestone/3"
+      }
+    },
+    {
+      "number": 9,
+      "title": "PROPOSED — Stable-3a — User-initiated reversible local preparation",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/issues/9",
+      "milestone": {
+        "number": 4,
+        "title": "PROPOSED — Stable-3a — User-initiated reversible local preparation",
+        "state": "open",
+        "html_url": "https://github.com/thattor/personal-agent-lab/milestone/4"
+      }
+    },
+    {
+      "number": 10,
+      "title": "PROPOSED — PAL-1.0 — Integrated private personal-use release",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/issues/10",
+      "milestone": {
+        "number": 5,
+        "title": "PROPOSED — PAL-1.0 — Integrated private personal-use release",
+        "state": "open",
+        "html_url": "https://github.com/thattor/personal-agent-lab/milestone/5"
+      }
+    },
+    {
+      "number": 11,
+      "title": "PROPOSED — Post-PAL-1.0 — System-initiated assistance candidates",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/issues/11",
+      "milestone": {
+        "number": 6,
+        "title": "PROPOSED — Post-PAL-1.0 — System-initiated assistance candidates",
+        "state": "open",
+        "html_url": "https://github.com/thattor/personal-agent-lab/milestone/6"
+      }
+    }
+  ],
+  "milestone1_subissues": [
+    {
+      "number": 3,
+      "title": "Stable-1: distinguish local draft requests from conversation and limits",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/issues/3",
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "state": "open",
+        "html_url": "https://github.com/thattor/personal-agent-lab/milestone/1"
+      }
+    },
+    {
+      "number": 4,
+      "title": "Stable-1: resolve correction and cancel to the intended work",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/issues/4",
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "state": "open",
+        "html_url": "https://github.com/thattor/personal-agent-lab/milestone/1"
+      }
+    },
+    {
+      "number": 5,
+      "title": "Stable-1: prove the new flow on real UI and close release acceptance",
+      "state": "open",
+      "html_url": "https://github.com/thattor/personal-agent-lab/issues/5",
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "state": "open",
+        "html_url": "https://github.com/thattor/personal-agent-lab/milestone/1"
+      }
+    }
+  ],
+  "projects_board": "not created; pending human device authorization",
+  "closed_milestone_assignment": "unresolved CLI failure; link-only historical representation; no reopening or workaround",
+  "plan_sha256": "6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21"
+}

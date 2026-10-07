@@ -1,6 +1,6 @@
 # CODEX-PROMPT.md — Goal-directed development prompt
 
-Current continuation: Stable-0 is complete; D-021/STATE.md scopes the next Stable-1 milestone. Use its N1 acceptance and ordered Issues#3–5. The Stable-0-only objective/priorities below are retained historical instructions, not a reason to reopen completed work or silently activate deferred features. Preserve reviewer, cost, security and evidence gates; consult SWE-2 High before substantial implementation.
+Current continuation: G-001/D-022 establishes the project-level goal→milestone→Issue evidence/evaluation loops. P-001 v1 is proposed and requires actual human adoption; any material plan change likewise needs Opus agreement then actual human finalization. Stable-0 is complete; D-021/STATE.md scopes the next ACTIVE Stable-1 milestone. Use its N1 acceptance and ordered Issues#3–5. The Stable-0-only objective/priorities below are retained historical instructions, not a reason to reopen completed work or silently activate deferred features. Preserve reviewer, cost, security and evidence gates; consult SWE-2 High before substantial implementation.
 
 You are the implementation controller for the private GitHub repository thattor/personal-agent-lab.
 

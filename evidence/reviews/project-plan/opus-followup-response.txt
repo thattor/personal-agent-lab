@@ -1,0 +1,15 @@
+**AGREED.** This is the smallest workable user-requested project→milestone→issue loop, with the future plan held in a proposed state until a real human adopts it. I see no blocking regression.
+
+**Caveat on the basis:** I can't see the saved P-001 review in this session. This agreement covers the delta as you stated it here. If any of the six points departs from what that review accepted, that earlier text controls on the conflict.
+
+**Non-blocking notes** (record them, but they don't gate adoption):
+
+1. **§2/§4 rubrics:** "Finite provider cost" and "bounded context" need numeric caps fixed before the run, not after.
+   - "Forget never referenced" should be tested against a named probe set, so it isn't read as a universal guarantee.
+2. **§4 desktop-local assessment:** Make this a single recorded human judgment at Stable1 exit, with no quota and no repeat prompting. If the answer is "not enough", it goes to the existing conditional phone-UX gate, not into Stable1.
+3. **§5 hash binding:** The controller should hash the content at the moment it is shown. A human adoption then binds to what was actually shown, not to a later edit of the same version label.
+4. **§5 deadlock:** Withholding activation without Opus agreement is a governance choice the human made in G-001. The human can still amend G-001 itself directly. State this once, so the rule can't be read as a model veto over the project owner.
+5. **§6 GitHub:** If the repo is public, the PROPOSED milestone and Issue titles are published when created. You've said there is no new public exposure, so this only matters if visibility changes.
+   - The Projects board stays explicitly deferred pending human device auth. Nothing should claim it exists.
+
+No runtime implementation decisions are made here, and the SWE gates remain.
