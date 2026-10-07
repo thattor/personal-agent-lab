@@ -1,0 +1,9 @@
+{
+  "checked_at": 1791363864.383667,
+  "exit_code": 0,
+  "oauth_scopes": [
+    "gist, read:org, repo, workflow"
+  ],
+  "project_scope_present": false,
+  "user_body_omitted": true
+}

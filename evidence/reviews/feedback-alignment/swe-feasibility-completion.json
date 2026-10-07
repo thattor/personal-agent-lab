@@ -1,0 +1,12 @@
+{
+  "status": "incomplete",
+  "observed_at": "2026-10-07T09:09:58.124000+00:00",
+  "exec_session": 85010,
+  "exec_exit_code": 1,
+  "failure": "controller subprocess.TimeoutExpired at 300 seconds; subprocess.run terminated child",
+  "official_review_verdict": null,
+  "stdout_not_preserved": "wrapper did not catch TimeoutExpired; no completed response available",
+  "diagnosis": "terminal controller deadline observed; provider/tool cause not established",
+  "session_recovery": "devin list with authorized execution returned No session selected; does not prove no stored sessions",
+  "next": "use streamed output and explicit session export on any scoped continuation; fresh auth/Free verification, no blind identical rerun or paid fallback"
+}
