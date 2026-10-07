@@ -1,17 +1,18 @@
 import json
+import copy
 import tempfile
 import time
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 
 from pal.native import ProviderUnavailable
 from pal.primary import primary_prompt
 from pal.store import Store
-from scripts.live_evidence import verify_journal
+from scripts.live_evidence import EvidenceJournal, verify_journal
 from scripts.live_runner import RunRejected
 from scripts.primary_qualification import (PrimaryGate, QualificationRunner, load_matrix,
-                                           seed_case, verify_run, verify_snapshot)
+                                           seed_case, verify_run, verify_snapshot, build_live)
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT/'evidence/reviews/judgment-boundary/primary-heldout.json'
@@ -273,6 +274,201 @@ class PrimaryGateTests(unittest.TestCase):
             gate.complete('PRIMARY\none')
         self.assertEqual(gate.attempts,1)
         self.assertEqual(self.provider.stopped,1)
+
+
+class RecognitionQualificationTests(unittest.TestCase):
+    setUp = PrimaryQualificationTests.setUp
+    tearDown = PrimaryQualificationTests.tearDown
+    def matrix(self):
+        return {'recognition_regression':True,'max_primary_calls':16,'cases':[{
+            'id':'R01','setup':{'sources':[],'goals':[],'questions':[]},'turns':[
+                {'input_record_ref':'request','user_text':'案内の下書きをお願いします。',
+                 'acceptable_outcome_set':[{'action_kind':'none','goal_count':0},
+                                           {'action_kind':'local_draft','goal_count':1}]},
+                {'input_record_ref':'answer','user_text':'土曜日の読書会への案内です。',
+                 'only_if_prior_action':'none',
+                 'acceptable_outcome_set':[{'action_kind':'local_draft','goal_count':1}]}]}]}
+
+    def recognition_runner(self, matrix=None, response=None):
+        self.provider = Scripted(response)
+        with patch('scripts.primary_qualification.load_matrix',return_value=matrix or self.matrix()):
+            self.runner = QualificationRunner(ROOT,self.directory,self.provider,
+                                              scope='scripted',candidate='test-only')
+        return self.runner
+
+    def delegate(self, _):
+        return json.dumps({'reply':'受け付けます。','action':{
+            'kind':'local_draft','spec':'読書会の案内を下書きする','source_ids':[]}})
+
+    def test_delegate_skips_answer_without_input_or_call_and_finishes_one_case(self):
+        runner = self.recognition_runner(response=self.delegate)
+        runner.run_next();runner.judge(True,'Sufficient request delegates.')
+        data = runner.stores[0].inspect()
+        self.assertEqual(len(data['primary_turns']),1)
+        self.assertNotIn('answer',runner.bindings[0])
+        self.assertEqual(len(self.provider.prompts),1)
+        self.assertEqual(len(runner.accepted),1)
+        self.assertEqual(len(runner.skipped),1)
+        result = runner.finish()
+        self.assertEqual((result['accepted_turns'],result['skipped_turns'],result['covered_cases']),(1,1,1))
+        verified = verify_run(self.directory)
+        self.assertEqual((verified['judged_turns'],verified['skipped_turns']),(1,1))
+        self.assertTrue(verified['completed'])
+
+    def test_ask_uses_actual_reply_and_frozen_answer_then_one_goal(self):
+        def response(prompt):
+            if len(self.provider.prompts)==1:
+                return json.dumps({'reply':'何の案内ですか？','action':{'kind':'none'}})
+            return self.delegate(prompt)
+        runner = self.recognition_runner(response=response)
+        first=runner.run_next();runner.judge(True,'One essential question.')
+        second=runner.run_next()
+        context=json.loads(self.provider.prompts[1].split('\nINPUT_JSON\n',1)[1])
+        self.assertIn('何の案内ですか？',[r['content'] for r in context['records']])
+        self.assertEqual(second['input'],self.matrix()['cases'][0]['turns'][1]['user_text'])
+        self.assertNotIn('only_if_prior_action',self.provider.prompts[1])
+        runner.judge(True,'Answer delegates once.');result=runner.finish()
+        self.assertEqual((result['attempts'],result['covered_cases'],result['skipped_turns']),(2,1,0))
+        self.assertEqual(len(runner.stores[0].inspect()['goals']),1)
+
+    def test_failure_never_skips_or_completes(self):
+        runner=self.recognition_runner(response=self.delegate)
+        runner.run_next();runner.judge(False,'Failed semantic content.')
+        self.assertEqual(runner.skipped,[])
+        self.assertFalse(verify_run(self.directory)['completed'])
+        with self.assertRaises(RunRejected):runner.run_next()
+
+    def test_one_skipped_case_does_not_complete_unexecuted_cases(self):
+        matrix=self.matrix()
+        other=copy.deepcopy(matrix['cases'][0]);other['id']='R02'
+        other['turns'][0]['input_record_ref']='request2'
+        other['turns'][1]['input_record_ref']='answer2'
+        matrix['cases'].append(other)
+        runner=self.recognition_runner(matrix,response=self.delegate)
+        runner.run_next();runner.judge(True,'First case delegates.')
+        with self.assertRaises(RunRejected):runner.finish()
+        runner.close()
+        result=verify_run(self.directory)
+        self.assertFalse(result['completed'])
+        self.assertEqual((result['judged_turns'],result['skipped_turns']),(1,1))
+
+    def test_second_question_cannot_pass_or_skip(self):
+        runner=self.recognition_runner();runner.run_next();runner.judge(True,'Essential question.')
+        runner.run_next()
+        with self.assertRaises(RunRejected):runner.judge(True,'A second question is not recognition.')
+        self.assertEqual(runner.skipped,[])
+        runner.judge(False,'Follow-up did not delegate.')
+        self.assertFalse(verify_run(self.directory)['completed'])
+
+    def test_missing_actual_stored_reply_cannot_admit_answer(self):
+        runner=self.recognition_runner();runner.run_next()
+        with patch.object(runner.stores[0],'stored_reply',return_value=''):
+            with self.assertRaises(RunRejected):runner.judge(True,'Cannot substitute a fixture question.')
+        self.assertEqual(runner.skipped,[])
+        self.assertEqual(len(self.provider.prompts),1)
+
+    def test_invalid_conditional_schema_and_budget_rejected_before_run_creation(self):
+        for mutation in ('first','value','three','first_kind','reask','goals','overflow','budget'):
+            matrix=self.matrix();case=matrix['cases'][0]
+            if mutation=='first':case['turns'][0]['only_if_prior_action']='none'
+            elif mutation=='value':case['turns'][1]['only_if_prior_action']='local_draft'
+            elif mutation=='three':case['turns'].append(copy.deepcopy(case['turns'][1]))
+            elif mutation=='first_kind':case['turns'][0]['acceptable_outcome_set']=[{'action_kind':'remember'}]
+            elif mutation=='reask':case['turns'][1]['acceptable_outcome_set']=[{'action_kind':'none'}]
+            elif mutation=='goals':case['setup']['goals']=[{}]
+            elif mutation=='overflow':matrix['cases']=[dict(copy.deepcopy(case),id=str(i)) for i in range(9)]
+            elif mutation=='budget':matrix['max_primary_calls']=17
+            with self.subTest(mutation=mutation):
+                with self.assertRaises(RunRejected):self.recognition_runner(matrix)
+                self.assertFalse(self.directory.exists())
+                self.assertEqual(self.provider.prompts,[])
+
+    def test_invalid_matrix_precedes_live_provider_and_proof_construction(self):
+        matrix=self.matrix();matrix['max_primary_calls']=1
+        with patch('scripts.primary_qualification.load_matrix',return_value=matrix), \
+             patch('scripts.primary_qualification.clean_candidate'), \
+             patch('scripts.primary_qualification.AccessProof.load',side_effect=AssertionError('proof touched')):
+            with self.assertRaises(RunRejected):
+                build_live(ROOT,ROOT/'runtime/nonexistent-recognition-test','unused','test-only')
+
+    def test_live_native_owner_and_record_use_sixteen_bound(self):
+        owner=Mock();owner.command.return_value=['unused-cli']
+        proof=Mock();proof.verified_at=time.time();proof.route='existing'
+        result=Mock();result.journal=Mock()
+        with patch('scripts.primary_qualification.load_matrix',return_value=self.matrix()), \
+             patch('scripts.primary_qualification.clean_candidate'), \
+             patch('scripts.primary_qualification.AccessProof.load',return_value=proof), \
+             patch('scripts.primary_qualification.AuditedNative',return_value=owner) as native, \
+             patch('scripts.primary_qualification.subprocess.run',return_value=Mock(stdout='test version')), \
+             patch('scripts.primary_qualification.QualificationRunner',return_value=result):
+            build_live(ROOT,ROOT/'runtime/nonexistent-recognition-test','unused','test-only')
+        native.assert_called_once_with(proof,max_calls=16)
+        self.assertEqual(result.journal.append.call_args.args[0]['native_slots'],16)
+        proof.consume.assert_called_once()
+
+    def test_goal_count_rejects_incorrect_controller_pass(self):
+        matrix=self.matrix();matrix['cases'][0]['turns'][0]['acceptable_outcome_set']=[
+            {'action_kind':'local_draft','goal_count':0}]
+        runner=self.recognition_runner(matrix,response=self.delegate);runner.run_next()
+        with self.assertRaises(RunRejected):runner.judge(True,'Wrong expected total must reject.')
+        self.assertEqual(runner.skipped,[])
+        runner.judge(False,'Goal count discrepancy.')
+
+    def test_verifier_rejects_unjustified_skip_even_with_valid_chain(self):
+        runner=self.recognition_runner();runner.journal.append({
+            'event':'turn.skipped','case':'R01','turn':2,'prior_turn':1,
+            'prior_action':'local_draft','only_if_prior_action':'none'})
+        runner.close()
+        with self.assertRaises(RunRejected):verify_run(self.directory)
+
+    def test_verifier_rejects_call_on_justified_skipped_turn(self):
+        runner=self.recognition_runner(response=self.delegate)
+        runner.run_next();runner.judge(True,'Delegation skips answer.')
+        runner.journal.append({'event':'call.started','case':'R01','turn':2,'call_sequence':2})
+        runner.close()
+        with self.assertRaises(RunRejected):verify_run(self.directory)
+
+    def rewritten_evidence(self, records):
+        directory=Path(self.temp.name)/'rewritten'
+        directory.mkdir()
+        for path in self.directory.glob('*.txt'):
+            (directory/path.name).write_bytes(path.read_bytes())
+        with EvidenceJournal(directory/'journal.jsonl','scripted') as journal:
+            for record in records:
+                journal.append({k:v for k,v in record.items() if k not in
+                                ('sequence','scope','previous_sha256','sha256','recorded_at')})
+        return directory
+
+    def test_completed_plan_requires_real_successful_call_lifecycle(self):
+        runner=self.recognition_runner(response=self.delegate)
+        runner.run_next();runner.judge(True,'Delegate once.');runner.finish()
+        records=verify_journal(self.directory/'journal.jsonl')
+        events={'permit.granted','call.started','call.returned','proposal.received'}
+        forged=[dict(r) for r in records if r['event'] not in events]
+        next(r for r in forged if r['event']=='qualification.finished')['attempts']=0
+        next(r for r in forged if r['event']=='run.closed')['attempts']=0
+        directory=self.rewritten_evidence(forged)
+        with self.assertRaises(RunRejected):verify_run(directory)
+
+    def test_duplicate_capture_cannot_replace_judged_action_to_justify_skip(self):
+        runner=self.recognition_runner()
+        first=runner.run_next();runner.judge(True,'Essential question.')
+        replacement=copy.deepcopy(first)
+        replacement['proposal']['action']={'kind':'local_draft','spec':'replacement','source_ids':[]}
+        runner.journal.append(dict(replacement,event='turn.captured'))
+        runner.journal.append({'event':'turn.skipped','case':'R01','turn':2,'prior_turn':1,
+                               'prior_action':'local_draft','only_if_prior_action':'none'})
+        runner.journal.append({'event':'qualification.finished','accepted_turns':1,
+                               'skipped_turns':1,'covered_cases':1,'attempts':1})
+        runner.close()
+        with self.assertRaises(RunRejected):verify_run(self.directory)
+
+    def test_sixteen_call_gate_is_effective(self):
+        events=[];provider=Scripted()
+        gate=PrimaryGate(provider,events.append,time.monotonic()+900,max_calls=16)
+        for i in range(16):gate.grant('R',i,'PRIMARY\n'+str(i));gate.complete('PRIMARY\n'+str(i))
+        with self.assertRaises(ProviderUnavailable):gate.grant('R',17,'PRIMARY\nextra')
+        self.assertEqual(len(provider.prompts),16)
 
 
 if __name__=='__main__':

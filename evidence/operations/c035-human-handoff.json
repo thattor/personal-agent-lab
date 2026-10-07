@@ -1,0 +1,28 @@
+{
+  "judgment_id": "HR-STABLE1-001",
+  "source": "controller authorized ongoing human window handoff",
+  "thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "evidence_commit": "2d65c73cf8eb745f8094570721aedc1fc83501bd",
+  "product_candidate": "1a14de986de2756ffea83c2671e506a32cccfdf6",
+  "material": "evidence/reviews/judgment-boundary/ui-production-run/human-material.md",
+  "delivery": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"threadId\":\"01a1137a-8de3-7890-b874-cdd0a7125711\"}"
+      }
+    ],
+    "isError": false
+  },
+  "human_answer": false,
+  "dependent_work": "Current-candidate usefulness and final release only",
+  "independent_work": "C036 frozen original40 Primary recognition regression and release evidence audit",
+  "readback": {
+    "thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "turn_id": "01a1171f-74de-75f0-8305-930a8699fcde",
+    "status": "completed",
+    "presentation_confirmed": true,
+    "human_answer_present": false,
+    "note": "Window presented one whole-flow HR-STABLE1-001 evaluation and linked actual saved outputs; development continues independently."
+  }
+}

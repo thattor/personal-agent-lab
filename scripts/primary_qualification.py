@@ -28,9 +28,15 @@ COHORTS = {
                              '34baf6e4969d8e1d0e6fb36bd1fe86721e6364cf958524f556fc3ea3f474351d'),
     'unseen-plus-contrasts': ('evidence/reviews/judgment-boundary/primary-unseen-contrasts.json',
                              '39046068664082dcbd1afb0aace9425b79da44a0a7298ff4e9a501ae28c28608'),
+    'recognition-r01-r08': ('evidence/reviews/judgment-boundary/recognition-r01-r08.json',
+                           'ffc83ef138739495bf31ba37991b43ddd226d3f1429f854b46c2885d15f16e23'),
+    'recognition-r09-r16': ('evidence/reviews/judgment-boundary/recognition-r09-r16.json',
+                           'fea4c3df865c9a32e9f2c37cb3286d65c152b07a8317170d8c79379c2ec05e91'),
+    'recognition-n01-n24': ('evidence/reviews/judgment-boundary/recognition-n01-n24.json',
+                           '9ae4c340caf6d2795b75565a530704885b9a7fe1fd72be5e9e07919d7650138a'),
 }
 ORACLE_FIELDS = ('PAL_ORACLE_ONLY','acceptable_outcome_set','required_observations',
-                 'disallowed_effects','interpretation_reason','target_ref')
+                 'disallowed_effects','interpretation_reason','target_ref','only_if_prior_action')
 
 
 def digest(raw):
@@ -42,6 +48,48 @@ def load_matrix(path, expected_sha=FIXTURE_SHA):
     if digest(raw) != expected_sha:
         raise RunRejected('frozen corpus changed')
     return json.loads(raw)
+
+
+def validate_matrix(matrix):
+    """Check the frozen measurement envelope before files, proof or native owner."""
+    max_calls = matrix.get('max_primary_calls',24)
+    if type(max_calls) is not int or max_calls not in (16,24):
+        raise RunRejected('unsupported cohort call bound')
+    recognition = matrix.get('recognition_regression',False)
+    if type(recognition) is not bool:
+        raise RunRejected('invalid recognition scope')
+    cases = matrix['cases']
+    if not cases or len({c['id'] for c in cases})!=len(cases):
+        raise RunRejected('empty or duplicate cohort cases')
+    if sum(len(c['turns']) for c in cases)>max_calls:
+        raise RunRejected('worst-case cohort calls exceed bound')
+    for case in cases:
+        turns = case['turns']
+        if recognition and (case['setup']['goals'] or not 1<=len(turns)<=2):
+            raise RunRejected('recognition fixture must start without Goals')
+        for ti,turn in enumerate(turns):
+            expected = turn['acceptable_outcome_set']
+            if not expected or any('goal_count' in e and
+                    (type(e['goal_count']) is not int or e['goal_count'] not in (0,1)) for e in expected):
+                raise RunRejected('invalid frozen Goal count')
+            if 'only_if_prior_action' not in turn:
+                continue
+            first_kinds = {e['action_kind'] for e in turns[0]['acceptable_outcome_set']}
+            if (not recognition or case['id'].startswith('N') or ti!=1 or len(turns)!=2 or
+                    turn['only_if_prior_action']!='none' or
+                    not first_kinds or not first_kinds<={'none','local_draft'} or
+                    {e['action_kind'] for e in expected}!={'local_draft'} or
+                    not isinstance(turn['user_text'],str) or not turn['user_text'].strip()):
+                raise RunRejected('invalid conditional answer')
+    return max_calls
+
+
+def cohort_matrix(root, cohort):
+    if cohort not in COHORTS:
+        raise ValueError('unknown frozen qualification cohort')
+    fixture, expected_sha = COHORTS[cohort]
+    matrix = load_matrix(root/fixture,expected_sha)
+    return fixture,matrix,validate_matrix(matrix)
 
 
 class QualificationPin(SourcePin):
@@ -145,8 +193,11 @@ def verify_snapshot(store, context):
 
 
 class PrimaryGate:
-    def __init__(self, provider, sink, deadline, clock=time.monotonic):
+    def __init__(self, provider, sink, deadline, clock=time.monotonic, max_calls=24):
+        if type(max_calls) is not int or max_calls not in (16,24):
+            raise RunRejected('unsupported Primary gate bound')
         self.provider,self.sink,self.deadline,self.clock = provider,sink,deadline,clock
+        self.max_calls = max_calls
         self.attempts = 0
         self._lock = threading.Lock()
         self._permit = None
@@ -165,7 +216,7 @@ class PrimaryGate:
     def grant(self, case, turn, prompt):
         safe = sanitize(prompt)
         with self._lock:
-            denied = (self.closed or self.clock()>=self.deadline or self.attempts>=24 or
+            denied = (self.closed or self.clock()>=self.deadline or self.attempts>=self.max_calls or
                       self._active or self._permit is not None or not safe.startswith('PRIMARY\n'))
             if not denied:
                 self._permit = (case,turn,digest(safe.encode('utf-8')))
@@ -182,7 +233,7 @@ class PrimaryGate:
         raw = sanitize(prompt).encode('utf-8')
         with self._lock:
             permit = self._permit
-            denied = (self.closed or self.clock()>=self.deadline or self.attempts>=24 or
+            denied = (self.closed or self.clock()>=self.deadline or self.attempts>=self.max_calls or
                       self._active or permit is None or digest(raw)!=permit[2])
             if not denied:
                 self._permit = None
@@ -220,19 +271,19 @@ class QualificationRunner:
         self.journal = self.gate = self.watchdog = None
         self.closed = False
         self.stores,self.bindings,self.accepted = [],[],[]
+        self.skipped,self.prior = [],{}
         self.index,self.pending = 0,None
         try:
             if scope not in ('scripted','live_synthetic'):
                 raise ValueError('unsupported qualification scope')
-            if cohort not in COHORTS:
-                raise ValueError('unknown frozen qualification cohort')
+            fixture,self.matrix,self.max_calls = cohort_matrix(self.root,cohort)
             if scope=='live_synthetic':
                 if type(provider) is not AuditedNative or not provider._operator_ready or provider._runner_claimed:
                     raise ValueError('qualification requires one audited official owner')
+                if provider.initial_slots!=self.max_calls:
+                    raise RunRejected('native owner differs from cohort bound')
                 provider.proof.check()
                 provider._runner_claimed = True
-            fixture, expected_sha = COHORTS[cohort]
-            self.matrix = load_matrix(self.root/fixture,expected_sha)
             self.pin = QualificationPin(self.root,self.root/fixture)
             freeze = json.loads((self.root/FREEZE).read_text())
             if any(digest((self.root/p).read_bytes())!=sha for p,sha in freeze['files'].items()):
@@ -242,7 +293,7 @@ class QualificationRunner:
             remaining = 900 if scope=='scripted' else 900-(time.time()-provider.proof.verified_at)
             if remaining<=0: raise ProviderUnavailable('proof expired before run')
             self.deadline = time.monotonic()+min(900,remaining)
-            self.gate = PrimaryGate(provider,self.journal.append,self.deadline)
+            self.gate = PrimaryGate(provider,self.journal.append,self.deadline,max_calls=self.max_calls)
             if scope=='live_synthetic': provider.sink = self.journal.append
             self.watchdog = RunWatchdog(self.gate,self.deadline)
             self.watchdog.start()
@@ -250,7 +301,11 @@ class QualificationRunner:
                                  'cohort':cohort,'fixture':fixture,
                                  'product_candidate':freeze['candidate'],'provider':provider.identity,
                                  'proof_remaining_seconds':remaining,'deadline_monotonic':self.deadline,
-                                 'max_attempts':24,'resume':False,'faults_disabled':True,
+                                 'max_attempts':self.max_calls,'resume':False,'faults_disabled':True,
+                                 'planned_turns':[{'case':c['id'],'turn':ti+1,
+                                    **({'only_if_prior_action':t['only_if_prior_action']}
+                                       if 'only_if_prior_action' in t else {})}
+                                    for c in self.matrix['cases'] for ti,t in enumerate(c['turns'])],
                                  'claim':'Primary semantics and host application only; no workers/UI/Expert/race/human proof',
                                  'human_evaluation':False})
             for case in self.matrix['cases']:
@@ -269,6 +324,11 @@ class QualificationRunner:
         if self.closed or self.gate.closed:
             raise RunRejected('qualification run closed')
         self.pin.check()
+
+    def _has_reply(self, case_index, key):
+        reply = self.stores[case_index].stored_reply(key)
+        return (isinstance(reply,dict) and isinstance(reply.get('content'),str) and
+                bool(reply['content'].strip()))
 
     def _blob(self, name, text):
         raw = text.encode('utf-8',errors='strict')
@@ -294,6 +354,11 @@ class QualificationRunner:
         key = 'qualification:'+turn['input_record_ref']
         stage,prepared = 'prepare',False
         try:
+            if 'only_if_prior_action' in turn:
+                prior = self.prior.get(case_index)
+                if (prior is None or prior['action']!='none' or
+                        not self._has_reply(case_index,prior['key'])):
+                    raise RunRejected('conditional answer lacks judged actual reply')
             before = store.inspect()
             admission = store.prepare_primary(key,turn['user_text'])
             prepared = True
@@ -350,27 +415,43 @@ class QualificationRunner:
         ci,ti = self.turns[self.index]
         expected = self.matrix['cases'][ci]['turns'][ti]['acceptable_outcome_set']
         action = self.pending['proposal']['action']
+        following = self.matrix['cases'][ci]['turns'][ti+1:ti+2]
+        conditional = following and 'only_if_prior_action' in following[0]
         if passed:
             matched = any(action['kind']==e['action_kind'] and ('target_ref' not in e or
                           self.bindings[ci][e['target_ref']]==action.get('goal_id',action.get('question_id',action.get('source_id'))))
+                          and ('goal_count' not in e or len(self.pending['after']['goals'])==e['goal_count'])
                           for e in expected)
-            if not matched or self.pending['outcome']['primary_status']!='complete':
+            if (not matched or self.pending['outcome']['primary_status']!='complete' or
+                    (self.matrix.get('recognition_regression',False) and len(self.pending['after']['goals'])>1)):
                 raise RunRejected('controller PASS conflicts with action/target or host rejection')
+            if conditional and action['kind']=='none' and not self._has_reply(ci,self.pending['key']):
+                raise RunRejected('conditional answer requires actual stored reply')
         self.journal.append({'event':'turn.judged','case':self.pending['case'],'turn':self.pending['turn'],
                              'passed':passed,'rationale':rationale,'judge':'controller','human_evaluation':False})
         if passed:
             self.accepted.append((self.pending['case'],self.pending['turn']))
+            self.prior[ci] = {'action':action['kind'],'key':self.pending['key']}
             self.index += 1
+            if conditional and action['kind']=='local_draft':
+                skipped = (self.pending['case'],ti+2)
+                self.journal.append({'event':'turn.skipped','case':skipped[0],'turn':skipped[1],
+                                     'prior_turn':ti+1,'prior_action':action['kind'],
+                                     'only_if_prior_action':following[0]['only_if_prior_action']})
+                self.skipped.append(skipped)
+                self.index += 1
             self.pending = None
         else:
             self.close()
-        return {'accepted':passed,'accepted_turns':len(self.accepted),'human_evaluation':False}
+        return {'accepted':passed,'accepted_turns':len(self.accepted),
+                'skipped_turns':len(self.skipped),'human_evaluation':False}
 
     def finish(self):
         self._check()
-        if len(self.accepted)!=len(self.turns) or self.pending is not None:
+        if len(self.accepted)+len(self.skipped)!=len(self.turns) or self.pending is not None:
             raise RunRejected('qualification incomplete')
         result = {'event':'qualification.finished','accepted_turns':len(self.accepted),
+                  'skipped_turns':len(self.skipped),'covered_cases':len({c for c,t in self.accepted+self.skipped}),
                   'attempts':self.gate.attempts,'human_evaluation':False}
         try: self.journal.append(result)
         finally: self.close()
@@ -405,8 +486,83 @@ def verify_run(directory):
             raw = stream.read(131073)
         if len(raw)!=blob['bytes'] or len(raw)>131072 or digest(raw)!=blob['sha256']:
             raise RunRejected('evidence blob mismatch')
+    plan = records[0].get('planned_turns') if records else None
+    planned = {(t['case'],t['turn']):t for t in plan} if plan is not None else {}
+    captures,passes,skips,judged_captures = {},{},{},{}
+    for record in records:
+        event = record['event']
+        if event=='turn.captured':
+            pair = (record['case'],record['turn'])
+            if pair in captures:
+                raise RunRejected('duplicate captured turn')
+            captures[pair] = record
+        elif event=='turn.judged' and record['passed']:
+            pair = (record['case'],record['turn'])
+            if pair not in captures or pair in passes:
+                raise RunRejected('judgment lacks unique captured turn')
+            passes[pair] = record
+            judged_captures[pair] = captures[pair]
+        elif event=='turn.skipped':
+            pair = (record['case'],record['turn'])
+            prior = (record['case'],record['prior_turn'])
+            if (pair in skips or pair in passes or pair not in planned or prior not in passes or
+                    record['turn']!=2 or record['prior_turn']!=1 or
+                    record['only_if_prior_action']!='none' or
+                    planned[pair].get('only_if_prior_action')!='none' or
+                    record['prior_action']!='local_draft' or
+                    judged_captures[prior]['proposal']['action']['kind']!='local_draft'):
+                raise RunRejected('unjustified conditional skip')
+            skips[pair] = record
+    for record in records:
+        if ((record.get('case'),record.get('turn')) in skips and record['event'] in
+                ('snapshot.verified','prompt.built','permit.granted','call.started','call.returned',
+                 'call.failed','proposal.received','turn.captured','turn.failed','turn.judged')):
+            raise RunRejected('skipped turn has input or call evidence')
+    finished = [r for r in records if r['event']=='qualification.finished']
+    if plan is not None and finished:
+        result = finished[0]
+        calls = sum(r['event']=='call.started' for r in records)
+        if (len(planned)!=len(plan) or set(passes)|set(skips)!=set(planned) or
+                len(finished)!=1 or any(r['event']=='turn.judged' and not r['passed'] for r in records) or
+                result['accepted_turns']!=len(passes) or result.get('skipped_turns',0)!=len(skips) or
+                result['attempts']!=calls or calls>records[0]['max_attempts'] or
+                result.get('covered_cases')!=len({case for case,turn in planned})):
+            raise RunRejected('qualification completion lacks full justified coverage')
+        lifecycle_events = ('prompt.built','permit.granted','call.started',
+                            'proposal.received','call.returned','turn.captured')
+        lifecycles = {pair:{event:[] for event in lifecycle_events} for pair in passes}
+        for record in records:
+            event = record['event']
+            if event in ('call.failed','turn.failed'):
+                raise RunRejected('completed qualification contains failed call')
+            if event in lifecycle_events:
+                pair = (record.get('case'),record.get('turn'))
+                if pair not in lifecycles:
+                    raise RunRejected('completed qualification contains unplanned call')
+                lifecycles[pair][event].append(record)
+        if calls!=len(passes):
+            raise RunRejected('accepted turn lacks exactly one call')
+        call_sequences = []
+        for pair,events in lifecycles.items():
+            if any(len(events[event])!=1 for event in lifecycle_events):
+                raise RunRejected('incomplete or repeated successful call lifecycle')
+            prompt,permit,start,proposal,returned,capture = [events[event][0] for event in lifecycle_events]
+            order = [r['sequence'] for r in (prompt,permit,start,proposal,returned,capture,passes[pair],result)]
+            if (order!=sorted(order) or
+                    permit.get('prompt_sha256')!=prompt['blob']['sha256'] or
+                    start.get('prompt_sha256')!=permit.get('prompt_sha256') or
+                    returned.get('response_sha256')!=proposal['blob']['sha256'] or
+                    returned.get('discarded') is not False or
+                    type(start.get('call_sequence')) is not int or
+                    returned.get('call_sequence')!=start.get('call_sequence')):
+                raise RunRejected('successful call lifecycle binding mismatch')
+            call_sequences.append(start['call_sequence'])
+        if sorted(call_sequences)!=list(range(1,calls+1)):
+            raise RunRejected('successful call sequence accounting mismatch')
     return {'records':len(records),'completed':any(r['event']=='qualification.finished' for r in records),
             'judged_turns':sum(r['event']=='turn.judged' for r in records),
+            'skipped_turns':len(skips),'covered_cases':len({case for case,turn in passes|skips})
+                if finished else 0,
             'scope':records[0]['scope'] if records else None,'human_evaluation':False}
 
 
@@ -414,10 +570,10 @@ def build_live(root, directory, proof_path, candidate, cohort='heldout-v1'):
     root,directory = Path(root).resolve(),Path(directory).resolve()
     directory.relative_to(root/'runtime')
     if directory.exists(): raise FileExistsError(directory)
-    if cohort not in COHORTS: raise ValueError('unknown frozen qualification cohort')
+    _,_,max_calls = cohort_matrix(root,cohort)
     clean_candidate(root,candidate)
     proof = AccessProof.load(proof_path)
-    owner = AuditedNative(proof,max_calls=24)
+    owner = AuditedNative(proof,max_calls=max_calls)
     try:
         command = owner.command()
         owner._frozen_command = list(command)
@@ -433,7 +589,7 @@ def build_live(root, directory, proof_path, candidate, cohort='heldout-v1'):
         raise
     try:
         runner.journal.append({'event':'operator.config','command':command,'cli_version':version.stdout.strip(),
-                               'python_version':sys.version,'native_slots':24,
+                               'python_version':sys.version,'native_slots':max_calls,
                                'access_proof':{'verified_at':proof.verified_at,'route':proof.route,'no_extra_charge':True},
                                'actual_model':'official Claude --model opus (service revision not exposed)',
                                'qwen_qualification':False,'human_evaluation':False})

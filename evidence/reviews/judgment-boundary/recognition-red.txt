@@ -1,0 +1,221 @@
+test_expiry_between_grant_and_call_does_not_contact_provider (test_primary_qualification.PrimaryGateTests) ... ok
+test_response_after_deadline_is_not_returned (test_primary_qualification.PrimaryGateTests) ... ok
+test_twenty_four_attempt_cap_and_single_use_permit (test_primary_qualification.PrimaryGateTests) ... ok
+test_wrong_prompt_does_not_use_a_slot_or_provider (test_primary_qualification.PrimaryGateTests) ... ok
+test_decode_and_provider_failure_are_visible_and_settled (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_every_frozen_fixture_has_exact_host_and_offered_bindings (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_initial_journal_failure_still_stops_owned_provider (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_new_cohort_excludes_observed_cases_and_preserves_untested_cases (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_next_requires_judgment_and_turn_two_uses_actual_reply (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_oracle_canary_never_reaches_provider (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_post_deadline_response_is_retained_but_input_is_rejected (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_raw_unsafe_proposal_retained_before_host_rejection (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_read_only_verification_detects_changed_raw_proposal (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_snapshot_omission_is_setup_failure_before_a_model_call (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_unknown_cohort_cannot_invoke_provider_or_create_run (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_verify_is_read_only_and_old_run_cannot_resume (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_wrong_offered_target_can_apply_but_cannot_receive_semantic_pass (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_ask_uses_actual_reply_and_frozen_answer_then_one_goal (test_primary_qualification.RecognitionQualificationTests) ... ERROR
+test_decode_and_provider_failure_are_visible_and_settled (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_delegate_skips_answer_without_input_or_call_and_finishes_one_case (test_primary_qualification.RecognitionQualificationTests) ... ERROR
+test_every_frozen_fixture_has_exact_host_and_offered_bindings (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_failure_never_skips_or_completes (test_primary_qualification.RecognitionQualificationTests) ... ERROR
+test_goal_count_rejects_incorrect_controller_pass (test_primary_qualification.RecognitionQualificationTests) ... FAIL
+test_initial_journal_failure_still_stops_owned_provider (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_invalid_conditional_schema_and_budget_rejected_before_run_creation (test_primary_qualification.RecognitionQualificationTests) ... test_invalid_matrix_precedes_live_provider_and_proof_construction (test_primary_qualification.RecognitionQualificationTests) ... FAIL
+test_missing_actual_stored_reply_cannot_admit_answer (test_primary_qualification.RecognitionQualificationTests) ... FAIL
+test_new_cohort_excludes_observed_cases_and_preserves_untested_cases (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_next_requires_judgment_and_turn_two_uses_actual_reply (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_oracle_canary_never_reaches_provider (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_post_deadline_response_is_retained_but_input_is_rejected (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_raw_unsafe_proposal_retained_before_host_rejection (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_read_only_verification_detects_changed_raw_proposal (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_sixteen_call_gate_is_effective (test_primary_qualification.RecognitionQualificationTests) ... ERROR
+test_snapshot_omission_is_setup_failure_before_a_model_call (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_unknown_cohort_cannot_invoke_provider_or_create_run (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_verifier_rejects_unjustified_skip_even_with_valid_chain (test_primary_qualification.RecognitionQualificationTests) ... FAIL
+test_verify_is_read_only_and_old_run_cannot_resume (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_wrong_offered_target_can_apply_but_cannot_receive_semantic_pass (test_primary_qualification.RecognitionQualificationTests) ... ok
+
+======================================================================
+ERROR: test_ask_uses_actual_reply_and_frozen_answer_then_one_goal (test_primary_qualification.RecognitionQualificationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 329, in test_ask_uses_actual_reply_and_frozen_answer_then_one_goal
+    self.assertEqual((result['attempts'],result['covered_cases'],result['skipped_turns']),(2,1,0))
+KeyError: 'covered_cases'
+
+======================================================================
+ERROR: test_delegate_skips_answer_without_input_or_call_and_finishes_one_case (test_primary_qualification.RecognitionQualificationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 309, in test_delegate_skips_answer_without_input_or_call_and_finishes_one_case
+    self.assertEqual(len(runner.skipped),1)
+AttributeError: 'QualificationRunner' object has no attribute 'skipped'
+
+======================================================================
+ERROR: test_failure_never_skips_or_completes (test_primary_qualification.RecognitionQualificationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 335, in test_failure_never_skips_or_completes
+    self.assertEqual(runner.skipped,[])
+AttributeError: 'QualificationRunner' object has no attribute 'skipped'
+
+======================================================================
+ERROR: test_invalid_conditional_schema_and_budget_rejected_before_run_creation (test_primary_qualification.RecognitionQualificationTests) (mutation='value')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 358, in test_invalid_conditional_schema_and_budget_rejected_before_run_creation
+    with self.assertRaises(RunRejected):self.recognition_runner(matrix)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 293, in recognition_runner
+    self.runner = QualificationRunner(ROOT,self.directory,self.provider,
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/primary_qualification.py", line 240, in __init__
+    self.directory.mkdir(mode=0o700,parents=False,exist_ok=False)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1313, in mkdir
+    self._accessor.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: '/private/var/folders/0m/64ldqrln7cv89sqrxrkqjgz00000gn/T/tmplpyfaygh/run'
+
+======================================================================
+ERROR: test_invalid_conditional_schema_and_budget_rejected_before_run_creation (test_primary_qualification.RecognitionQualificationTests) (mutation='three')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 358, in test_invalid_conditional_schema_and_budget_rejected_before_run_creation
+    with self.assertRaises(RunRejected):self.recognition_runner(matrix)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 293, in recognition_runner
+    self.runner = QualificationRunner(ROOT,self.directory,self.provider,
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/primary_qualification.py", line 240, in __init__
+    self.directory.mkdir(mode=0o700,parents=False,exist_ok=False)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1313, in mkdir
+    self._accessor.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: '/private/var/folders/0m/64ldqrln7cv89sqrxrkqjgz00000gn/T/tmplpyfaygh/run'
+
+======================================================================
+ERROR: test_invalid_conditional_schema_and_budget_rejected_before_run_creation (test_primary_qualification.RecognitionQualificationTests) (mutation='first_kind')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 358, in test_invalid_conditional_schema_and_budget_rejected_before_run_creation
+    with self.assertRaises(RunRejected):self.recognition_runner(matrix)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 293, in recognition_runner
+    self.runner = QualificationRunner(ROOT,self.directory,self.provider,
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/primary_qualification.py", line 240, in __init__
+    self.directory.mkdir(mode=0o700,parents=False,exist_ok=False)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1313, in mkdir
+    self._accessor.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: '/private/var/folders/0m/64ldqrln7cv89sqrxrkqjgz00000gn/T/tmplpyfaygh/run'
+
+======================================================================
+ERROR: test_invalid_conditional_schema_and_budget_rejected_before_run_creation (test_primary_qualification.RecognitionQualificationTests) (mutation='reask')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 358, in test_invalid_conditional_schema_and_budget_rejected_before_run_creation
+    with self.assertRaises(RunRejected):self.recognition_runner(matrix)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 293, in recognition_runner
+    self.runner = QualificationRunner(ROOT,self.directory,self.provider,
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/primary_qualification.py", line 240, in __init__
+    self.directory.mkdir(mode=0o700,parents=False,exist_ok=False)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1313, in mkdir
+    self._accessor.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: '/private/var/folders/0m/64ldqrln7cv89sqrxrkqjgz00000gn/T/tmplpyfaygh/run'
+
+======================================================================
+ERROR: test_invalid_conditional_schema_and_budget_rejected_before_run_creation (test_primary_qualification.RecognitionQualificationTests) (mutation='goals')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 358, in test_invalid_conditional_schema_and_budget_rejected_before_run_creation
+    with self.assertRaises(RunRejected):self.recognition_runner(matrix)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 293, in recognition_runner
+    self.runner = QualificationRunner(ROOT,self.directory,self.provider,
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/primary_qualification.py", line 240, in __init__
+    self.directory.mkdir(mode=0o700,parents=False,exist_ok=False)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1313, in mkdir
+    self._accessor.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: '/private/var/folders/0m/64ldqrln7cv89sqrxrkqjgz00000gn/T/tmplpyfaygh/run'
+
+======================================================================
+ERROR: test_invalid_conditional_schema_and_budget_rejected_before_run_creation (test_primary_qualification.RecognitionQualificationTests) (mutation='overflow')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 358, in test_invalid_conditional_schema_and_budget_rejected_before_run_creation
+    with self.assertRaises(RunRejected):self.recognition_runner(matrix)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 293, in recognition_runner
+    self.runner = QualificationRunner(ROOT,self.directory,self.provider,
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/primary_qualification.py", line 240, in __init__
+    self.directory.mkdir(mode=0o700,parents=False,exist_ok=False)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1313, in mkdir
+    self._accessor.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: '/private/var/folders/0m/64ldqrln7cv89sqrxrkqjgz00000gn/T/tmplpyfaygh/run'
+
+======================================================================
+ERROR: test_invalid_conditional_schema_and_budget_rejected_before_run_creation (test_primary_qualification.RecognitionQualificationTests) (mutation='budget')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 358, in test_invalid_conditional_schema_and_budget_rejected_before_run_creation
+    with self.assertRaises(RunRejected):self.recognition_runner(matrix)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 293, in recognition_runner
+    self.runner = QualificationRunner(ROOT,self.directory,self.provider,
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/primary_qualification.py", line 240, in __init__
+    self.directory.mkdir(mode=0o700,parents=False,exist_ok=False)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1313, in mkdir
+    self._accessor.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: '/private/var/folders/0m/64ldqrln7cv89sqrxrkqjgz00000gn/T/tmplpyfaygh/run'
+
+======================================================================
+ERROR: test_sixteen_call_gate_is_effective (test_primary_qualification.RecognitionQualificationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 387, in test_sixteen_call_gate_is_effective
+    gate=PrimaryGate(provider,events.append,time.monotonic()+900,max_calls=16)
+TypeError: __init__() got an unexpected keyword argument 'max_calls'
+
+======================================================================
+FAIL: test_goal_count_rejects_incorrect_controller_pass (test_primary_qualification.RecognitionQualificationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 374, in test_goal_count_rejects_incorrect_controller_pass
+    with self.assertRaises(RunRejected):runner.judge(True,'Wrong expected total must reject.')
+AssertionError: RunRejected not raised
+
+======================================================================
+FAIL: test_invalid_conditional_schema_and_budget_rejected_before_run_creation (test_primary_qualification.RecognitionQualificationTests) (mutation='first')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 358, in test_invalid_conditional_schema_and_budget_rejected_before_run_creation
+    with self.assertRaises(RunRejected):self.recognition_runner(matrix)
+AssertionError: RunRejected not raised
+
+======================================================================
+FAIL: test_invalid_matrix_precedes_live_provider_and_proof_construction (test_primary_qualification.RecognitionQualificationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 368, in test_invalid_matrix_precedes_live_provider_and_proof_construction
+    build_live(ROOT,ROOT/'runtime/nonexistent-recognition-test','unused','test-only')
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/primary_qualification.py", line 419, in build_live
+    proof = AccessProof.load(proof_path)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1152, in _execute_mock_call
+    raise effect
+AssertionError: proof touched
+
+======================================================================
+FAIL: test_missing_actual_stored_reply_cannot_admit_answer (test_primary_qualification.RecognitionQualificationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 342, in test_missing_actual_stored_reply_cannot_admit_answer
+    with self.assertRaises(RunRejected):runner.judge(True,'Cannot substitute a fixture question.')
+AssertionError: RunRejected not raised
+
+======================================================================
+FAIL: test_verifier_rejects_unjustified_skip_even_with_valid_chain (test_primary_qualification.RecognitionQualificationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 383, in test_verifier_rejects_unjustified_skip_even_with_valid_chain
+    with self.assertRaises(RunRejected):verify_run(self.directory)
+AssertionError: RunRejected not raised
+
+----------------------------------------------------------------------
+Ran 39 tests in 4.184s
+
+FAILED (failures=5, errors=11)

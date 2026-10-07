@@ -1,0 +1,37 @@
+test_expiry_between_grant_and_call_does_not_contact_provider (test_primary_qualification.PrimaryGateTests) ... ok
+test_response_after_deadline_is_not_returned (test_primary_qualification.PrimaryGateTests) ... ok
+test_twenty_four_attempt_cap_and_single_use_permit (test_primary_qualification.PrimaryGateTests) ... ok
+test_wrong_prompt_does_not_use_a_slot_or_provider (test_primary_qualification.PrimaryGateTests) ... ok
+test_decode_and_provider_failure_are_visible_and_settled (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_every_frozen_fixture_has_exact_host_and_offered_bindings (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_initial_journal_failure_still_stops_owned_provider (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_new_cohort_excludes_observed_cases_and_preserves_untested_cases (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_next_requires_judgment_and_turn_two_uses_actual_reply (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_oracle_canary_never_reaches_provider (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_post_deadline_response_is_retained_but_input_is_rejected (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_raw_unsafe_proposal_retained_before_host_rejection (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_read_only_verification_detects_changed_raw_proposal (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_snapshot_omission_is_setup_failure_before_a_model_call (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_unknown_cohort_cannot_invoke_provider_or_create_run (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_verify_is_read_only_and_old_run_cannot_resume (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_wrong_offered_target_can_apply_but_cannot_receive_semantic_pass (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_ask_uses_actual_reply_and_frozen_answer_then_one_goal (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_completed_plan_requires_real_successful_call_lifecycle (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_delegate_skips_answer_without_input_or_call_and_finishes_one_case (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_duplicate_capture_cannot_replace_judged_action_to_justify_skip (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_failure_never_skips_or_completes (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_goal_count_rejects_incorrect_controller_pass (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_invalid_conditional_schema_and_budget_rejected_before_run_creation (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_invalid_matrix_precedes_live_provider_and_proof_construction (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_live_native_owner_and_record_use_sixteen_bound (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_missing_actual_stored_reply_cannot_admit_answer (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_one_skipped_case_does_not_complete_unexecuted_cases (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_second_question_cannot_pass_or_skip (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_sixteen_call_gate_is_effective (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_verifier_rejects_call_on_justified_skipped_turn (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_verifier_rejects_unjustified_skip_even_with_valid_chain (test_primary_qualification.RecognitionQualificationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 3.028s
+
+OK

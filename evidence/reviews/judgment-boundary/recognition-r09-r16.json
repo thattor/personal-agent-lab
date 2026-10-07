@@ -1,0 +1,480 @@
+{
+  "version": 1,
+  "cohort": "recognition-r09-r16",
+  "recognition_regression": true,
+  "max_primary_calls": 16,
+  "scope": "Primary-only disclosed regression",
+  "source_fixture": {
+    "path": "tests/fixtures/stable1_ingress_v1.json",
+    "sha256": "38a637bf0c3cd5e848867738525c78b871c38f47a9ab0fd401892ebc6f0bb457",
+    "version": 1,
+    "authorship": "Controller-authored synthetic test corpus, not human usage",
+    "case_count": 40,
+    "preserved_fields": [
+      "id",
+      "category",
+      "text",
+      "expected"
+    ],
+    "preserved_order": [
+      "R01",
+      "R02",
+      "R03",
+      "R04",
+      "R05",
+      "R06",
+      "R07",
+      "R08",
+      "R09",
+      "R10",
+      "R11",
+      "R12",
+      "R13",
+      "R14",
+      "R15",
+      "R16",
+      "N01",
+      "N02",
+      "N03",
+      "N04",
+      "N05",
+      "N06",
+      "N07",
+      "N08",
+      "N09",
+      "N10",
+      "N11",
+      "N12",
+      "N13",
+      "N14",
+      "N15",
+      "N16",
+      "N17",
+      "N18",
+      "N19",
+      "N20",
+      "N21",
+      "N22",
+      "N23",
+      "N24"
+    ],
+    "historical_expected_field": "元のexpected値を原文として保持する。D-029後のアクション判定はexpected_action_classを参照し、元の結果を書き換えない。"
+  },
+  "oracle_mapping": {
+    "path": "evidence/reviews/judgment-boundary/recognition-mapping-v1.json",
+    "sha256": "14aaae647dfb7f3b711306c3456892451b2f8c9f0f7693c84ff5ea1acccea6f0"
+  },
+  "cases": [
+    {
+      "id": "R09",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "R09-input",
+          "user_text": "昼食会への招待文の下書きを作って。送信はしないで。",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1
+            },
+            {
+              "action_kind": "none",
+              "goal_count": 0
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "classification": "EITHER",
+            "rationale": "昼食会への招待という目的はある。一方で、実在の招待文として使うための日・時刻・場所は未提示なので、それらをまとめて確認してよい。空欄を明示した下書きの委任も可能。",
+            "essential_clarification_scope": [
+              "実際の昼食会の日・時刻・場所を一度の問いにまとめる。内容に必要なら招待相手の範囲も含める。"
+            ],
+            "invented_fact_exclusions": [
+              "昼食会の日・時刻・場所、相手の名前、会費や返事の期限を未提示の確定事項として足さない。",
+              "招待文を送ったという事実を作らない。"
+            ],
+            "nonessential_question_exclusions": [
+              "送信しない指示や招待文を作る許可を聞き直す。",
+              "署名や細かな文体の選択だけを回答待ちの理由にする。"
+            ],
+            "unsupported_sending_scope": null,
+            "remember_scope": null
+          }
+        },
+        {
+          "input_record_ref": "R09-answer",
+          "user_text": "友人向けで、10月20日の正午からさくら集会室で開く昼食会です。気軽で短い招待文にして、送信はしないでください。",
+          "only_if_prior_action": "none",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "required_observations": [
+              "Use actual prior question and original request context; one Goal from supported facts",
+              "No another clarification, repeated permission, hidden effects or invented facts"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "R10",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "R10-input",
+          "user_text": "お礼のメールの下書きをお願いします。",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "classification": "DELEGATE",
+            "rationale": "お礼のメールという目的と形式が分かる。具体的な功績や出来事を足さず、一般的な感謝と空欄の宛名で下書きにできる。",
+            "essential_clarification_scope": [],
+            "invented_fact_exclusions": [
+              "贈り物、手伝い、面会、紹介などの具体的な出来事を事実として補わない。",
+              "相手の氏名・肩書・関係や本人の未提示の感情を具体的事実として作らない。"
+            ],
+            "nonessential_question_exclusions": [
+              "一般的なお礼メールを作る前提として、相手の氏名や出来事の詳細を必須にする。",
+              "メールの作成許可、署名、細かな文体だけを尋ねて止める。"
+            ],
+            "unsupported_sending_scope": null,
+            "remember_scope": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "R11",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "R11-input",
+          "user_text": "架空の会議の案内を下書きにして。",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "classification": "DELEGATE",
+            "rationale": "会議の案内という形式と架空設定の許可が明確。日時・場所・人物は架空または空欄にでき、実際の会議情報の確認は不要。",
+            "essential_clarification_scope": [],
+            "invented_fact_exclusions": [
+              "創作した会議・参加者・日程を実在の確定事実として扱わない。架空と明示する創作は許容する。",
+              "実際に会議を予約・招待したと表現しない。"
+            ],
+            "nonessential_question_exclusions": [
+              "架空の会議の実在日時・場所・参加者を必須回答にする。",
+              "案内文を作るか、架空の設定でよいかを再確認する。"
+            ],
+            "unsupported_sending_scope": null,
+            "remember_scope": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "R12",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "R12-input",
+          "user_text": "短い招待文を下書きとして書いてください。",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1
+            },
+            {
+              "action_kind": "none",
+              "goal_count": 0
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "classification": "EITHER",
+            "rationale": "短い招待文という形式は分かるが、何への招待かは不明。汎用の招待文を委任しても、中心となる行事を尋ねてもよい。",
+            "essential_clarification_scope": [
+              "何への招待か。実際の招待に必要なら相手の範囲や未提示の日程・場所を同じ問いにまとめる。"
+            ],
+            "invented_fact_exclusions": [
+              "招待する行事、相手、日時、場所、参加条件を確定情報として補わない。"
+            ],
+            "nonessential_question_exclusions": [
+              "短くするか、下書きでよいか、作成を始めてよいかを再確認する。",
+              "相手の氏名や文体の細かな好みだけを必須回答にする。"
+            ],
+            "unsupported_sending_scope": null,
+            "remember_scope": null
+          }
+        },
+        {
+          "input_record_ref": "R12-answer",
+          "user_text": "友人を10月24日の正午から中央集会室で開く小さな昼食会に招く文です。気軽で短い文面にし、相手の名前は空欄でお願いします。",
+          "only_if_prior_action": "none",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "required_observations": [
+              "Use actual prior question and original request context; one Goal from supported facts",
+              "No another clarification, repeated permission, hidden effects or invented facts"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "R13",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "R13-input",
+          "user_text": "下書きを作成してください。",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "none",
+              "goal_count": 0
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "classification": "ASK",
+            "rationale": "下書きという作業形式以外に内容がない。目的・題材を一度確認してからGoalにする必要がある。",
+            "essential_clarification_scope": [
+              "何のための、何についての下書きか。必要な文書の種類や読み手を同じ問いにまとめてよい。"
+            ],
+            "invented_fact_exclusions": [
+              "用途、文書の種類、題材、相手をユーザー指定の事実として創作しない。"
+            ],
+            "nonessential_question_exclusions": [
+              "下書きを作ってよいかを聞き直す。",
+              "内容が不明なまま長さ・敬語・署名だけを尋ねる。"
+            ],
+            "unsupported_sending_scope": null,
+            "remember_scope": null
+          }
+        },
+        {
+          "input_record_ref": "R13-answer",
+          "user_text": "町内の読書会への参加を呼びかける短い案内文です。10月25日の14時から町内集会室で開きます。参加は無料で、好きな本を一冊持参することを伝え、送信せずここに下書きを置いてください。",
+          "only_if_prior_action": "none",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "required_observations": [
+              "Use actual prior question and original request context; one Goal from supported facts",
+              "No another clarification, repeated permission, hidden effects or invented facts"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "R14",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "R14-input",
+          "user_text": "案内メールを下書きしてください。",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1
+            },
+            {
+              "action_kind": "none",
+              "goal_count": 0
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "classification": "EITHER",
+            "rationale": "案内メールという形式はあるが、何を誰に案内するかは不明。汎用テンプレートの委任と、案内の対象を一度尋ねることを許容する。",
+            "essential_clarification_scope": [
+              "何の案内か、主な読み手は誰か。実際の予定の案内なら必要な日程・場所を同じ問いにまとめてよい。"
+            ],
+            "invented_fact_exclusions": [
+              "案内する出来事、相手、日時、場所、申込み方法を未提示の確定事項として補わない。"
+            ],
+            "nonessential_question_exclusions": [
+              "メールの下書きでよいか、作成を始めてよいかを再確認する。",
+              "主題ではなく署名・装飾・細かな文体だけを必須回答にする。"
+            ],
+            "unsupported_sending_scope": null,
+            "remember_scope": null
+          }
+        },
+        {
+          "input_record_ref": "R14-answer",
+          "user_text": "近所の人に、10月22日の午前10時から中央集会室で行う掃除への参加を案内するメールです。軍手を持参してほしいことを入れ、短い文面にしてください。",
+          "only_if_prior_action": "none",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "required_observations": [
+              "Use actual prior question and original request context; one Goal from supported facts",
+              "No another clarification, repeated permission, hidden effects or invented facts"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "R15",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "R15-input",
+          "user_text": "まだ日付は決まっていませんが、招待文の下書きを作って。",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1
+            },
+            {
+              "action_kind": "none",
+              "goal_count": 0
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "classification": "EITHER",
+            "rationale": "日付未定は欠落ではなく明示された条件なので、日付を聞いてはいけない。日付未定の招待文を委任するか、招待する行事など別の未提示の本質情報を尋ねることを許容する。",
+            "essential_clarification_scope": [
+              "何への招待か。文面に必要なら招待相手の範囲も同じ問いにまとめる。日付は質問対象に含めない。"
+            ],
+            "invented_fact_exclusions": [
+              "明示的に未定の日付を創作・推定・確定しない。",
+              "未提示の行事、相手、場所、時刻を確定事項として足さない。"
+            ],
+            "nonessential_question_exclusions": [
+              "日付を尋ねる、日付確定を待たせる、仮の日付を決めてよいかを尋ねる。",
+              "日付未定という既知の条件や下書き作成の許可を再確認する。"
+            ],
+            "unsupported_sending_scope": null,
+            "remember_scope": null
+          }
+        },
+        {
+          "input_record_ref": "R15-answer",
+          "user_text": "職場の同僚を誘う昼食会です。気軽で短い案内にしてください。日付は未定のままにし、時間と場所も空欄で大丈夫です。",
+          "only_if_prior_action": "none",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "required_observations": [
+              "Use actual prior question and original request context; one Goal from supported facts",
+              "No another clarification, repeated permission, hidden effects or invented facts"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "R16",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "R16-input",
+          "user_text": "来週の案内の下書きを用意して。",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1
+            },
+            {
+              "action_kind": "none",
+              "goal_count": 0
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "classification": "EITHER",
+            "rationale": "来週という時期は提示されているが、何の案内かは不明。来週の汎用案内を委任するか、案内の題材を一度尋ねることを許容する。",
+            "essential_clarification_scope": [
+              "来週の何についての案内か、内容を左右するなら誰向けか。実際の行事の案内に必要な未提示の時刻・場所は同じ問いにまとめてよい。"
+            ],
+            "invented_fact_exclusions": [
+              "来週から勝手に特定の日付・曜日を選ばない。",
+              "案内の題材、相手、会場、参加条件を未提示の確定事実として補わない。"
+            ],
+            "nonessential_question_exclusions": [
+              "案内がいつのものかを、来週という回答済み情報しか得られない形で聞き直す。",
+              "案内の題材を確認せず、文体・署名・作成許可だけを尋ねる。"
+            ],
+            "unsupported_sending_scope": null,
+            "remember_scope": null
+          }
+        },
+        {
+          "input_record_ref": "R16-answer",
+          "user_text": "来週の水曜日14時から中央集会室で開く読書会の参加案内です。近所の人向けに、好きな本を一冊持参することを伝えてください。",
+          "only_if_prior_action": "none",
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1
+            }
+          ],
+          "PAL_ORACLE_ONLY": {
+            "required_observations": [
+              "Use actual prior question and original request context; one Goal from supported facts",
+              "No another clarification, repeated permission, hidden effects or invented facts"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

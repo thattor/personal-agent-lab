@@ -255,3 +255,22 @@ An initial read-only database export encountered artifact BLOB values unsupporte
 JSON. No file or canonical write occurred. The next export explicitly records UTF-8,
 size and SHA256 for each BLOB, then independently matches HTTP bytes to host receipts.
 Do not stringify byte objects or silently omit artifacts from evidence.
+
+## C036 evidence accounting review
+
+Independent review found two malformed new-run histories that the read-only verifier
+would accept: a finished accepted/skipped sequence without any call evidence, and a
+duplicate capture overwriting a previously judged action before a conditional skip.
+The verifier checked aggregate counts and the latest capture rather than requiring
+one ordered successful call/capture/judgment per accepted turn. No real run used the
+new extension yet; this is a test-evidence verification defect, not product behavior.
+Repair with focused malformed-history regressions and minimal lifecycle/duplicate
+checks before actual model use. Preserve the initial226-test green log as intermediate.
+Next verification must prove both histories are rejected and genuine conditional
+execution/skip histories still verify; do not edit an old journal to make it conform.
+
+Verified repair before live use: recognition-verifier-red.txt retains both failures,
+recognition-verifier-green.txt32 focused PASS; recognition-full-final.txt228 full
+PASS21.995s. Independent focused re-review clears both findings. Per-turn ordered
+prompt/permit/start/proposal/return/capture/judgment binding and duplicate rejection
+now enforce the pre-existing evidence contract. No old journal was edited.

@@ -236,3 +236,22 @@ inputs, one whole-flow human evaluation using actual saved outputs, then release
 SWE-2 High Free implementation review completed213.730s; conditional-answer/budget/
 accounting contracts were adopted in DECISIONS.md before the test-only C036 extension.
 No current-regression execution or result is claimed yet.
+
+## C036 — Freeze versioned recognition regression and validate its accounting
+
+Exact original40 inputs/order preserved; six DELEGATE, three ASK, seven EITHER and
+24zero-Goal cases frozen with oracle/answers before execution. Three cohorts enforce
+16/16/24 maximum Primary calls; conditional answers only after an essential actual
+question, direct delegation skips with no input/call. No product/prompt change.
+Official Opus/SWE adoption preceded extension. Independent verifier gaps reproduced
+and fixed;32 focused/228 full tests PASS, reviewed again without remaining blocker.
+Evidence: recognition-mapping-v1.json, recognition-freeze-validation.json,
+recognition-independent-review.md and recognition-full-final.txt. Historical failed,
+stopped and literal-oracle observations remain unchanged. No actual new-regression PASS.
+
+Whole-flow human material actually delivered to the persistent window, which presented
+one evaluation; receipt evidence/operations/c035-human-handoff.json. No owner answer yet.
+Next: clean pushed candidate then three first-attempt cohorts, each separately fresh
+official no-extra-charge proof, stop on failure/no resampling; maintain exact product
+baseline1a14de9. Integrate actual owner feedback and affected evidence audit independently.
+Stable1 and globalPAL remain incomplete; no Qwen qualification or future scope activation.

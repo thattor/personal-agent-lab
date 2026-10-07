@@ -1,0 +1,34 @@
+{
+  "status": "PASS_FREEZE_VALIDATION_ONLY",
+  "original_40_ids_text_order_preserved": true,
+  "product_candidate": "1a14de986de2756ffea83c2671e506a32cccfdf6",
+  "product_hashes_unchanged": true,
+  "cohorts": [
+    {
+      "cohort": "recognition-r01-r08",
+      "fixture": "evidence/reviews/judgment-boundary/recognition-r01-r08.json",
+      "sha256": "ffc83ef138739495bf31ba37991b43ddd226d3f1429f854b46c2885d15f16e23",
+      "cases": 8,
+      "planned_turns": 12,
+      "max_calls": 16
+    },
+    {
+      "cohort": "recognition-r09-r16",
+      "fixture": "evidence/reviews/judgment-boundary/recognition-r09-r16.json",
+      "sha256": "fea4c3df865c9a32e9f2c37cb3286d65c152b07a8317170d8c79379c2ec05e91",
+      "cases": 8,
+      "planned_turns": 14,
+      "max_calls": 16
+    },
+    {
+      "cohort": "recognition-n01-n24",
+      "fixture": "evidence/reviews/judgment-boundary/recognition-n01-n24.json",
+      "sha256": "9ae4c340caf6d2795b75565a530704885b9a7fe1fd72be5e9e07919d7650138a",
+      "cases": 24,
+      "planned_turns": 24,
+      "max_calls": 24
+    }
+  ],
+  "actual_provider_calls": 0,
+  "human_evaluation": false
+}
