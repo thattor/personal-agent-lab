@@ -1,0 +1,41 @@
+{
+  "verified_at": 1791406039.24501,
+  "source_commit": "99440433d143e45f065daee70b7f0b67e48b4d34",
+  "issues": [
+    {
+      "number": 2,
+      "url": "https://github.com/thattor/personal-agent-lab/issues/2",
+      "state": "OPEN",
+      "body_sha256": "20e43e72f3cd6bbcf2a78390f5e792b6494faa33c1d1af9a95ba6b36c747ec35",
+      "milestone": 1
+    },
+    {
+      "number": 5,
+      "url": "https://github.com/thattor/personal-agent-lab/issues/5",
+      "state": "OPEN",
+      "body_sha256": "c70fe5a30fce0b48b015026b9e7021761af48c040a88f71f0a487dec1d27cd36",
+      "milestone": 1
+    },
+    {
+      "number": 6,
+      "url": "https://github.com/thattor/personal-agent-lab/issues/6",
+      "state": "OPEN",
+      "body_sha256": "f6f97ab32a4ed3b14223a380043ad4a666aa56ee261db64e49d949e92c036019",
+      "milestone": null
+    },
+    {
+      "number": 12,
+      "url": "https://github.com/thattor/personal-agent-lab/issues/12",
+      "state": "OPEN",
+      "body_sha256": "dc1e45db87624c85135c4155fd5ba3edf4f6171792417d6b67555989ba6aba91",
+      "milestone": 1
+    }
+  ],
+  "milestone": {
+    "number": 1,
+    "state": "open",
+    "url": "https://github.com/thattor/personal-agent-lab/milestone/1",
+    "description": "STATUS: ACTIVE under D-021/D-029, independent of proposed P-001. Project goal#6. Natural Japanese model-led local delegation, grounded drafts and safe correction/cancel targeting. Every currently required N1 row in ACCEPTANCE.md, including N1-09/10, plus affected S0/F0 regression, actual whole-flow usefulness and final audit. Historical Issues3/4; active12 then5; parent2. Preserve D-020, no new tools/cost/public exposure or72h quota. At exit evaluate actual user value against project goal."
+  },
+  "scope": "Current checkpoint and existing accepted criteria synchronized; no release, Issue closure or future milestone activation."
+}

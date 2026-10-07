@@ -1,0 +1,11 @@
+{
+  "sent_at": 1791406102.474633,
+  "thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "thread_title": "\u4eba\u9593\u306e\u5bfe\u5fdc\u304c\u5fc5\u8981\u306a\u3082\u306e\u30c1\u30e3\u30c3\u30c8",
+  "decision_id": "HR-ACCESS-002",
+  "source_commit": "99440433d143e45f065daee70b7f0b67e48b4d34",
+  "tool_result": "send_message_to_thread returned target thread ID",
+  "scope": "Only exact PAL workspace trust through official Devin UI; no routine design question, auth/payment or global permission change.",
+  "human_answer_received": false,
+  "delivery_claim": "Submitted to existing authorized human window; not a human answer, approval, completed trust action or completed SWE review."
+}
