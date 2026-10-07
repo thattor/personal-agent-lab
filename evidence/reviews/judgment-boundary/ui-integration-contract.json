@@ -1,0 +1,124 @@
+{
+  "id": "D029-UI-INTEGRATION-02",
+  "scope": "live_synthetic_with_fixture_preconditions",
+  "product_baseline": "1a14de9",
+  "human_evaluation": false,
+  "qwen_qualification": false,
+  "max_native_calls": 8,
+  "max_run_seconds": 600,
+  "max_proof_age_seconds": 900,
+  "resampling": false,
+  "setup_method": "Existing reviewed scripts.primary_qualification.seed_case public Store APIs in a NEW disposable DB, then unchanged production pal.server. No SQL updates, old DB, or fake model-generated question claim.",
+  "setup": {
+    "sources": [
+      {
+        "ref": "meeting-source",
+        "role": "user",
+        "content": "地域の星空観察会のお知らせを日本語で下書きしてください。日付は10月20日、開始は18時です。会場だけ未定なので確認してから使い、他の詳細は加えず、送信はしません。",
+        "usable": true
+      },
+      {
+        "ref": "shelf-source",
+        "role": "user",
+        "content": "家族向けに、土曜日10時から11時まで本棚を整理する手順メモを下書きしてください。机で本を「残す」「譲る」に分け、残す本は棚へ、譲る本は箱へ入れます。送信はしません。",
+        "usable": true
+      },
+      {
+        "ref": "walk-source",
+        "role": "user",
+        "content": "10月25日10時から青葉公園を散策する家族向けの案内を300字以内で下書きしてください。この情報だけを使い、送信はしません。",
+        "usable": true
+      }
+    ],
+    "goals": [
+      {
+        "ref": "meeting-goal",
+        "label": "地域の星空観察会の案内を下書きする。10月20日18時開始。会場は確認してから使用し、他の事実を追加しない。",
+        "state": "waiting_input",
+        "revision": 1,
+        "epoch": 1,
+        "source_refs": [
+          "meeting-source"
+        ],
+        "fixed_criteria": {
+          "kind": "local_draft",
+          "max_bytes": 4096
+        }
+      },
+      {
+        "ref": "shelf-goal",
+        "label": "家族向けに土曜日10時から11時まで本棚整理する手順メモ。机で残す本と譲る本に分け、残す本は棚へ、譲る本は箱へ。",
+        "state": "paused",
+        "revision": 1,
+        "epoch": 1,
+        "source_refs": [
+          "shelf-source"
+        ],
+        "fixed_criteria": {
+          "kind": "local_draft",
+          "max_bytes": 4096
+        }
+      },
+      {
+        "ref": "walk-goal",
+        "label": "10月25日10時から青葉公園を散策する家族向けの案内を300字以内で下書きする。この事実以外を追加しない。",
+        "state": "paused",
+        "revision": 1,
+        "epoch": 1,
+        "source_refs": [
+          "walk-source"
+        ],
+        "fixed_criteria": {
+          "kind": "local_draft",
+          "max_bytes": 4096
+        }
+      }
+    ],
+    "questions": [
+      {
+        "ref": "meeting-question",
+        "goal_ref": "meeting-goal",
+        "text": "星空観察会の会場はどこですか？",
+        "revision": 1,
+        "epoch": 1
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "UI-ANSWER",
+      "input": "会場は青葉集会室です。18時開始で、星空観察会の案内文の下書きを仕上げてください。",
+      "required": [
+        "ordinary main conversation selects existing meeting-question",
+        "same meeting-goal, no duplicate Goal",
+        "original answer record bound, question answered",
+        "actual Expert artifact includes October20 18:00 and Aoba meeting room, no invented conditions; browser and receipt match"
+      ],
+      "scope_limit": "Persisted question is a declared host fixture. Live natural answer to same-Goal Expert completion is measured; the question was not model-generated in this run."
+    },
+    {
+      "id": "UI-CORRECT",
+      "input": "保留中の本棚整理メモは、時間を土曜日10時から10時半に変えて。本を「残す」「譲る」に分け、譲る本を箱に入れるところまでにしてください。残す本を棚に戻す工程は外してください。",
+      "required": [
+        "ordinary conversation selects exact shelf-goal correct",
+        "one revision advance, same acceptance/criteria, other Goals unchanged",
+        "actual completed artifact has revised time and steps without shelf-return instruction; browser and receipt match"
+      ]
+    },
+    {
+      "id": "UI-CANCEL",
+      "actions": [
+        "use exact walk-goal Resume button",
+        "observe offered Cancel button and click promptly",
+        "observe canonical cancellation and eventual attempt settlement"
+      ],
+      "required": [
+        "same walk-goal cancelled with no artifact or receipt from cancelled work",
+        "completed meeting/shelf Goals unchanged",
+        "no extra inference for structured controls"
+      ],
+      "scope_limit": "If not claimed yet, report queued cancellation only. No invented in-flight proof or preferred-timing retry."
+    }
+  ],
+  "stop": "First actual contract failure or auth/cost/deadline boundary. Preserve all evidence; no retry or proof renewal."
+}

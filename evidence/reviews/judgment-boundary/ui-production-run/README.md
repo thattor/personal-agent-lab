@@ -40,3 +40,8 @@ review found no substantive authority/target/source defect, while preserving the
 literal PHB01/2 oracle discrepancy. No strict whole-corpus or whole-acceptance PASS
 is inferred. N1-07 actual end-to-end usefulness and N1-08 final release audit remain.
 One evaluation packet is [human-material.md](human-material.md); no micro-approval.
+
+The clipped screenshot ui-invite-artifact.jpg has an observer rendering distortion;
+it is retained but is not the display proof. The native full screenshot
+ui-invite-artifact-full.jpg was inspected and is readable. Cause of the alternate
+clip API layout is unconfirmed; use the verified native capture for this evidence.

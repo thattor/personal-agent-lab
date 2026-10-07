@@ -215,3 +215,22 @@ all raw evidence/stop labels; annotate the reasoning error, no re-score or resam
 Do not add hypothetical artifact consequences or formatting preferences to a pass gate.
 Next cases will be judged against exact precommitted observations; actual artifact
 quality is checked in the separate required UI/Expert path. No prompt/product change.
+
+## C034 browser observer scope and screenshot handling
+
+Direct artifact navigation returned ERR_BLOCKED_BY_CLIENT, while following the actual
+UI link and selecting only its exact known URL successfully displayed the HTTP200
+artifact. Root cause of direct-navigation failure is unconfirmed; not a product failure
+or an excuse to suppress browser protections. Broad tab inventory was rejected by
+automatic approval review for unrelated private metadata. Use known owned URL binding,
+not broad discovery, for subsequent artifact checks. Verified on both actual artifacts.
+Alternate clipped capture produced distorted wrapping; retained alongside inspected
+native full capture. Cause unconfirmed. Use native capture and inspect before publishing
+visual evidence; do not claim the distorted image is observed product layout. No global
+permission change, browser override or heavy new approval procedure introduced.
+
+An inline metadata update failed source decoding before any edit; the following tool
+batch nevertheless committed the already-green evidence without that intended update.
+Correct the missing metadata in a subsequent commit, retain history, and stop dependent
+mutations on any nonzero command result. Use explicit UTF-8 source encoding or structured
+patches for non-ASCII text. This did not change product code or any runtime database.
