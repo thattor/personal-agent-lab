@@ -1,0 +1,24 @@
+test_explicit_template_only_and_correct_revision_eligibility (test_template_intake.TemplateIntakeTests) ... FAIL
+test_explicit_template_runtime_preview_is_never_completed (test_template_intake.TemplateIntakeTests) ... ERROR
+test_generic_and_unmarked_template_requests_do_not_enable_preview (test_template_intake.TemplateIntakeTests) ... ok
+
+======================================================================
+ERROR: test_explicit_template_runtime_preview_is_never_completed (test_template_intake.TemplateIntakeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_template_intake.py", line 38, in test_explicit_template_runtime_preview_is_never_completed
+    receipt = runtime.store.inspect()['receipts'][0]
+IndexError: list index out of range
+
+======================================================================
+FAIL: test_explicit_template_only_and_correct_revision_eligibility (test_template_intake.TemplateIntakeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_template_intake.py", line 15, in test_explicit_template_only_and_correct_revision_eligibility
+    self.assertTrue(first['template_preview_allowed'])
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.072s
+
+FAILED (failures=1, errors=1)

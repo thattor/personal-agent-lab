@@ -1,0 +1,8 @@
+test_explicit_template_only_and_correct_revision_eligibility (test_template_intake.TemplateIntakeTests) ... ok
+test_explicit_template_runtime_preview_is_never_completed (test_template_intake.TemplateIntakeTests) ... ok
+test_generic_and_unmarked_template_requests_do_not_enable_preview (test_template_intake.TemplateIntakeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.072s
+
+OK

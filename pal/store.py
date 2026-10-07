@@ -12,6 +12,7 @@ from contextlib import contextmanager
 from pathlib import Path
 
 from .sanitize import sanitize
+from .template_intake import allows_preview
 from .draft_envelope import validate_placeholders, EnvelopeRejected
 
 
@@ -331,7 +332,7 @@ class Store:
         identity, acceptance = uid(), uid()
         db.execute('INSERT INTO goals(id,state,revision,acceptance_id) VALUES (?,\'queued\',1,?)', (identity, acceptance))
         db.execute('INSERT INTO acceptances VALUES (?,?,?)', (acceptance, identity, encode(criteria)))
-        db.execute('INSERT INTO revisions(goal_id,revision,acceptance_id,specification,sources,criteria) VALUES (?,1,?,?,?,?)', (identity, acceptance, specification, encode(list(sources)), encode(criteria)))
+        db.execute('INSERT INTO revisions(goal_id,revision,acceptance_id,specification,sources,criteria,template_preview_allowed) VALUES (?,1,?,?,?,?,?)', (identity, acceptance, specification, encode(list(sources)), encode(criteria), int(allows_preview(specification))))
         self.fault('create.mid_transaction')
         self._event(db, identity, 'goal.queued', {'revision': 1})
         return self._remember(db, key, 'goal', digest, self._goal(db, identity))
@@ -569,7 +570,7 @@ class Store:
                 acceptance = uid()
                 db.execute('INSERT INTO acceptances VALUES (?,?,?)', (acceptance, goal_id, encode(new_criteria)))
             revision = goal['revision'] + 1
-            db.execute('INSERT INTO revisions(goal_id,revision,acceptance_id,specification,sources,criteria) VALUES (?,?,?,?,?,?)', (goal_id, revision, acceptance, sanitize(text), encode(sources), encode(new_criteria)))
+            db.execute('INSERT INTO revisions(goal_id,revision,acceptance_id,specification,sources,criteria,template_preview_allowed) VALUES (?,?,?,?,?,?,?)', (goal_id, revision, acceptance, sanitize(text), encode(sources), encode(new_criteria), int(allows_preview(sanitize(text)))))
             db.execute("UPDATE goals SET state='queued',revision=?,acceptance_id=?,budget=3,reason='' WHERE id=?", (revision, acceptance, goal_id))
         else:
             raise InvalidTransition('invalid control transition or stale input question')
