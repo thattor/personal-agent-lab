@@ -1,0 +1,10 @@
+{
+  "isDraft": false,
+  "isPrerelease": false,
+  "tagName": "stable-0",
+  "targetCommitish": "main",
+  "url": "https://github.com/thattor/personal-agent-lab/releases/tag/stable-0",
+  "release_commit": "1f80683ae9231ee17b17266e73a3769a05e82b1c",
+  "source_hashes_match_final_audit": true,
+  "required_rows_PASS": 20
+}
