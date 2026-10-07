@@ -190,3 +190,14 @@ method, preserve old results, run only12 unexecuted frozen turns next, then actu
 UI/Expert artifacts and one genuine usefulness evaluation. No project/milestone closure.
 
 C032 verification: full213 tests PASS18.849s, remaining cohort setup/suffix identity verified with no provider invocation. Product remains1a14de9. Exact next: fresh bounded12-turn actual run, then real UI/Expert check.
+
+## C033 — Complete remaining model-led intake measurement
+
+Twelve first attempts completed on694044d/product1a14de9;12 controller-accepted semantic
+outcomes,154-record chain and24 blobs verified,24 supervisors exit0,6 DB integrity OK.
+PHB01/2 proposal does not echo current source ID: the frozen host binds it automatically.
+Literal oracle-field discrepancy is explicitly retained; no strict all-fields PASS or
+Qwen/Expert/UI/human proof inferred. No product change, rerun or retrospective rescue of
+old stop results. Unit adds actual semantic evidence; Issue12/N1-10 remains incomplete.
+Next: fixed production UI/Expert check on a new bounded owned store, then one actual
+end-to-end usefulness evaluation. No new question about routine format or implementation.

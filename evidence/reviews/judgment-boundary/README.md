@@ -126,3 +126,9 @@ retroactive PASS or resampling. Scope of findings and artifact consequences stay
 New remaining cohort copies only the unexecuted suffix unchanged;6cases/12turns, SHA34baf6…351d.
 Its fixture audit constructs exact public-API setup without provider calls; same reviewed
 immutable selector/gate/deadline/proof bounds. Real UI/Expert and human acceptance remain.
+
+C033 remaining measurement is retained in [primary-third-run](primary-third-run/README.md).
+Twelve actual turns completed; controller semantic acceptance is distinct from one
+literal source_ids oracle discrepancy and from whole-row/model qualification. The host
+binds the current source under the unchanged pre-disclosure contract. No Qwen call,
+product/prompt change, real new UI/Expert artifact or human evaluation claimed here.
