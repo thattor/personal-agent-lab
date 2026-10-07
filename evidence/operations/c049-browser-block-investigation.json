@@ -1,0 +1,58 @@
+{
+  "recorded_at": "2026-10-08T07:54:40.253821+09:00",
+  "baseline": "83767f33e84f44a19bf169af57d2b81990527844",
+  "owner_authorization": {
+    "thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "turn": "01a1188d-3eb8-7513-b4ee-ef00ce651726",
+    "message": "01a1188d-3f6b-7ec2-8565-b25288585c6c",
+    "text": "はい 送ってください。",
+    "scope": "Send the preceding bounded browser-block investigation request to development; no new access/payment/auth/public reporting."
+  },
+  "diagnostic_results": [
+    {
+      "action": "cua.getApp(\"Codex\")",
+      "status": "DENIED",
+      "reason": "Computer Use is not allowed to use the app 'com.openai.codex' for safety reasons."
+    },
+    {
+      "action": "cua.createBrowserTab(\"iab\", \"chrome://policy\", {visible:false})",
+      "status": "DENIED",
+      "reason": "Browser Use URL policy allows only http: and https:. No workaround, indirect execution, raw CDP, browser commands, alternate surfaces or policy circumvention permitted."
+    }
+  ],
+  "cause": "UNKNOWN",
+  "clearance": false,
+  "human_followup": "HR-ACCESS-003: read-only Browse default and applicable local-site exception",
+  "provider_calls": 0,
+  "canonical_writes": 0,
+  "permission_changes": 0,
+  "external_support_submissions": 0,
+  "schedules_restarted": 0,
+  "files": {
+    "pal/server.py": "eb8928a0ada019d5f98aa623d2af47d174aaa53d36ed516fc5c7dc369531fced",
+    "pal/web/app.js": "e9e23bf661574ee4317215878382cb8246438ca57d438b9727ad02d902b911df",
+    "evidence/reviews/judgment-boundary/ui-c045-partial/ABS-A2/artifact-browser-block.png": "0fef27c0efb6d74e474dd075590e4d94d02dfb9723ad80ef0d98de19046be2e7"
+  },
+  "source_comparison": {
+    "c045_serving_source": {
+      "revision": "814638db3e8742e68b2fe675c6abc41632d21a5e",
+      "scope": [
+        "pal/server.py",
+        "pal/web/app.js"
+      ],
+      "changes": []
+    },
+    "c047_green_source": {
+      "revision": "c44d3b4d46a68295a3c8d8a5502471a21daa7046",
+      "scope": [
+        "pal",
+        "scripts",
+        "tests"
+      ],
+      "changes": []
+    }
+  },
+  "validation_correction": "First audit incorrectly compared all harness/tests to C045; the expected C047 controlled probe caused its assertion to fail. Correct comparisons bind serving files to C045 and all source/tests to C047 green. No source changed.",
+  "tests": "No source changes since c047-full.txt: 268 tests PASS24.048s; documentation-only, no rerun.",
+  "local_links_and_hashes": "PASS"
+}

@@ -25,6 +25,22 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
+Latest C049: owner explicitly requested supported browser-block diagnosis through the
+persistent human window; source turn01a1188d verified. Investigation completed within
+scope; [findings and HR-ACCESS-003](evidence/operations/c049-browser-block-investigation.md).
+Client restriction confirmed, exact winning rule/cause UNKNOWN. Native Codex settings
+access is tool-denied; documented chrome://policy is also transport-denied (http/https
+only), no workaround. A concrete owner check is now available: Settings → Browser →
+Agent permissions, observe Browse default and 127.0.0.1/site-port exception, change
+nothing. If absent/nonblocking, private OpenAI Support draft is ready but not sent.
+Await actual environment facts in the human window, then diagnose the specific rule or
+supported vendor remedy. A non-Block label or submitted report alone is not clearance.
+Goal card stays BLOCKED; this explicit investigation ran, not an idle wait. Product/tests
+and N1 statuses unchanged; full268 PASS retained. C048's no-concrete-owner-operation
+statement is historical and superseded by C049.
+
+Historical C048 checkpoint:
+
 C048 blocked audit is complete. C047 completed the remaining independent cancellation
 slice; two following automatic continuations found no supported artifact-access clearance
 or independent required work. The human window is idle, latest turn01a11852 completed

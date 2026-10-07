@@ -280,3 +280,9 @@ at C047 exit and two automatic continuations; no new supported clearance/human r
 or independent required slice. Goal BLOCKED with objective unchanged. Existing N1 states
 and268-test evidence remain unchanged; no new test, provider call, PASS or release claim.
 See evidence/operations/c048-blocked-audit.json.
+
+C049 browser-block investigation: retained screenshot/source and official guidance
+reviewed. Cause UNKNOWN; native-settings and chrome://policy reads refused, no bypass.
+HR-ACCESS-003 asks only for visible Browse permission values; private support draft
+prepared, not sent. No new model run, code/test change, acceptance promotion or access
+clearance. [Investigation](evidence/operations/c049-browser-block-investigation.md).

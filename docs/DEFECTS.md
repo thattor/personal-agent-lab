@@ -481,3 +481,22 @@ exposing the same limitation. Preserve controller-audit-initial.json, then verif
 authorized loopback context: exact ECONNREFUSED61 and ProcessLookupError for owned PID,
 plus actual terminal exit0. Corrected report cites teardown-check.json. Next network
 closure audit must record errno and treat permissions/timeouts as unknown, not closed.
+
+## C049 — access refusal was recorded without completing safe diagnosis
+
+C048 preserved the denied content correctly but its next action merely waited for an
+allowed path, without an official settings/support investigation or concrete owner step.
+This process gap is evidenced by c048-blocked-audit.json and superseded STATE text;
+the original browser failure's technical cause remains unknown.
+
+Following explicit owner-directed investigation, C049 inspected retained evidence and
+unchanged source, verified official diagnostic/support guidance, and attempted supported
+read-only settings/policy access. Those tools refused access; no workaround followed.
+HR-ACCESS-003 now asks for exact visible Browse default/site-rule values without change,
+and a private support draft is prepared. This is a real inaccessible environment fact,
+not a routine technical choice shifted to the owner.
+
+Next access incident: distinguish a prohibited content retry/bypass from independent
+safe diagnosis; complete available documented diagnosis and give the exact remaining
+observation or support route before describing only passive wait. Current correction is
+verified as an actionable handoff, not as browser-access resolution or release PASS.

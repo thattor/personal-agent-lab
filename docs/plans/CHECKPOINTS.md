@@ -478,3 +478,18 @@ frozen affected actual cases, one current whole-flow owner evaluation and final 
 audit. Original NOT_VERIFIED/VOID evidence remains. No concrete new owner operation is
 established, so no invented technical question or repeated trust request is sent. This
 checkpoint records an impasse, not a completed work unit or Stable1/project release.
+
+## C049 — supported access diagnosis, not another blocked poll
+
+Owner authorized the exact investigation through the human window. Saved error,
+unchanged server/link source and official OpenAI settings/support guidance reviewed.
+Native settings and chrome://policy inspection refused by distinct tool boundaries;
+no denied-content retry/workaround. Exact cause UNKNOWN. HR-ACCESS-003 supplies a
+concrete read-only owner check and private support draft. Evidence:
+operations/c049-browser-block-investigation.md. Product/model/tests/acceptance unchanged;
+no Opus/SWE design/code gate triggered by operational diagnosis.
+
+Unit result: supported diagnostic/support handoff ready; access unresolved. Next: obtain
+actual Browse/site-rule facts, diagnose observed rule or formal vendor remedy. Permission
+change or support submission needs its own authorization. Resume frozen affected cases
+only after allowed access; original NOT_VERIFIED and remaining release gates preserved.
