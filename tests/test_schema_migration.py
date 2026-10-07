@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from pal.store import Store, _SCHEMA, _SELECTION_SCHEMA
+from pal.store import Store, _SCHEMA, _SELECTION_SCHEMA, _QUESTION_SCHEMA
 
 
 class SchemaMigrationTests(unittest.TestCase):
@@ -110,3 +110,25 @@ Store(sys.argv[1], fault=fault)
             with sqlite3.connect(path) as db:
                 return db.execute("SELECT name,sql FROM sqlite_master ORDER BY name").fetchall()
         self.assertEqual(schema(old_path), schema(fresh_path))
+
+    def test_v3_upgrade_adds_primary_without_changing_existing_rows(self):
+        old_path = Path(self.temp.name) / 'v3.db'
+        with sqlite3.connect(old_path) as db:
+            db.executescript(_SCHEMA + _SELECTION_SCHEMA + _QUESTION_SCHEMA)
+            db.execute("ALTER TABLE receipts ADD COLUMN role TEXT NOT NULL DEFAULT 'draft' CHECK(role IN ('draft','preview'))")
+            db.execute('ALTER TABLE revisions ADD COLUMN template_preview_allowed INTEGER NOT NULL DEFAULT 0 CHECK(template_preview_allowed IN (0,1))')
+            db.execute('PRAGMA user_version=3')
+            db.execute("INSERT INTO records(id,role,content) VALUES ('retained','user','original')")
+        def fail(point):
+            if point == 'schema.before_commit': raise RuntimeError('injected')
+        with self.assertRaises(RuntimeError): Store(old_path,fault=fail)
+        with sqlite3.connect(old_path) as db:
+            self.assertEqual(db.execute('PRAGMA user_version').fetchone()[0],3)
+            self.assertFalse(db.execute("SELECT 1 FROM sqlite_master WHERE name='primary_turns'").fetchone())
+        upgraded = Store(old_path)
+        self.assertEqual(upgraded.inspect()['records'][0]['content'],'original')
+        self.assertEqual(upgraded.inspect()['primary_turns'],[])
+        admitted = upgraded.prepare_primary('first','new input')
+        upgraded.recover()
+        self.assertEqual(upgraded.operation('first')['result']['primary_status'],'interrupted')
+        self.assertEqual(upgraded.operation('first')['result']['record_id'],admitted['record_id'])

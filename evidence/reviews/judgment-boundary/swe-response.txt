@@ -1,0 +1,154 @@
+# PAL Primary-turn implementation review
+
+## Verdict on the candidate strategy
+
+`SCHEMA_VERSION 4` + `primary_turns` is the right shape, but shrink it to **marker + outcome** and let the existing `dedupe`/`operation` machinery carry replay. Recover-sweep `pending → interrupted` satisfies the visible/no-retry policy with minimum code: no retry state machine exists anywhere, replay reads the persisted outcome, and the original ingress record remains. It is sufficient *provided* in-process provider/parse failures also persist a terminal row (below) — otherwise a `pending` row with no crash leaks forever.
+
+## Recommended schema (smallest correct)
+
+```sql
+CREATE TABLE IF NOT EXISTS primary_turns (
+  client_key   TEXT PRIMARY KEY,        -- same namespace as dedupe keys
+  request_hash TEXT NOT NULL,           -- sha256 of canonical sanitized request payload
+  record_id    TEXT NOT NULL REFERENCES records(id),
+  status       TEXT NOT NULL CHECK(status IN ('pending','complete','rejected','interrupted')),
+  snapshot     TEXT NOT NULL,           -- IDs + metadata only, no content
+  outcome      TEXT                     -- JSON projection, ids/status strings only
+);
+```
+
+- `Store.SCHEMA_VERSION = 4`; accept `3` in the version tuple, run the one `CREATE TABLE`, `PRAGMA user_version=4`.
+- **No content in `snapshot`.** Store `{manifest:[source_ids], goals:{id:{revision,epoch,state}}, questions:{id:{goal_id,revision,epoch,round,status}}, goals_overflow:bool, questions_overflow:bool}`. Contents for the prompt are fetched fresh *by ID* at prompt-build time; revalidation at finish re-reads current rows. This kills the stale-snapshot leak through `inspect` and through any later model context. Eligible = targetable goals (non-terminal) capped via `LIMIT 11` overflow detection; questions = `status='open'` rows only (diagnostic `waiting_input` reasons have no `questions` row, so they are never eligible — test 4 falls out free).
+- **Do not** write a `dedupe` row at prepare. `primary_turns` is the admission record; the `kind='ingress'` dedupe row is written at finish so `operation()` stays uniform for terminal turns.
+
+## Store methods and transaction structure
+
+Two new public methods plus small edits to three existing ones. Everything else is private factoring.
+
+### `prepare_primary(key, request)` — tx `primary_prepare`
+
+```
+BEGIN IMMEDIATE
+row = SELECT * FROM primary_turns WHERE client_key=key
+if row:
+    if row.request_hash != digest(request): raise Conflict          # conflicting same-key bytes
+    return {admission:'replay', status:row.status, outcome:row.outcome, record_id}
+old = _dedupe(db, key, 'ingress', request)                          # key used by structured path earlier
+if old: return {admission:'replay', status:'complete', result:old}
+INSERT INTO records(id,role,content) VALUES (uid,'user',sanitized_text)   # direct INSERT, not _record
+snapshot = _primary_snapshot(db)                                    # factors out of context()
+INSERT INTO primary_turns(..., 'pending', snapshot, NULL)
+COMMIT -> {admission:'pending', digest, record_id, snapshot}
+```
+
+Notes:
+- `context()` must be refactored to `_context(db)` + public wrapper, since prepare runs inside a tx and `context()` opens its own connection. Same for the eligible-goal/question scan.
+- Use the **direct record INSERT**, not `_record` (a `kind='record'` dedupe row for ingress would collide semantically and is pointless). Keep `_remember` for the finish path.
+- Candidate's "small `_ingress` factoring or calling private `_record`/`_remember`" is right in spirit but do **not** route through `ingress()` — its payload shape (`intent`/`control`) doesn't match the primary request, and calling the public method would nest a public tx. Factor privates only.
+
+### `finish_primary(key, proposal=None, error=None)` — tx `primary_finish`
+
+Single entry point for both success and failure so runtime has exactly one "close the turn" call:
+
+```
+BEGIN IMMEDIATE
+row = SELECT * FROM primary_turns WHERE client_key=key
+if row.status != 'pending': COMMIT -> return stored outcome        # terminal replay, no re-apply
+if error is not None:
+    persist_rejected(detail=error)                                  # provider/malformed/uninterpreted
+else:
+    validate closed form (exact key sets per kind, dup-key reject)  # pure, before any write
+    resolve host-filled fields:
+      answer  -> goal_id=questions[qid].goal_id, epoch=current goal.epoch   # model supplies ONLY question_id
+      control -> op in cancel|pause|resume|correct; goal_id must be in snapshot.goals
+      local_draft/remember/forget -> all source_ids ⊆ snapshot.manifest and _usable
+      goals_overflow   -> answer/control kinds rejected ('target_overflow')
+      questions_overflow -> answer kind rejected
+    SAVEPOINT effect
+    apply exactly one:
+      local_draft: _create_goal(db,'handoff:'+key, spec, {'kind':'local_draft','max_bytes':4096},
+                              [record_id]+source_ids)               # ingress auto-included
+      answer:      _control(db,'action:'+key, q.goal_id,'input',
+                            text=ingress_content, question_id=qid, epoch=goal.epoch,
+                            source_record_id=record_id)
+      control:     _control(db,'action:'+key, goal_id, op,
+                            text=spec, source_record_id=record_id, extra_sources=source_ids)
+      remember:    INSERT note(content=source.content, sources=[source_id])  # raw preserved
+      forget:      _forget(db,'action:'+key, source_id)
+      none:        (no effect)
+    on StaleResult/InvalidTransition/EvidenceRejected/Conflict:
+      ROLLBACK TO effect -> persist_rejected(specific host reason)   # model prose discarded
+reply write:
+  none    -> _record(db,'response:'+key,'assistant', model_reply, snapshot.manifest)
+             (StaleResult -> 'Response withheld because its source references changed.')
+  effect  -> _record(db,'response:'+key,'assistant', fixed host status string, effect_sources)
+             # host effect reply only; model cannot pre-claim success
+  rejected-> _record(db,'response:'+key,'assistant', host no-effect reason, [])
+_remember(db, key, 'ingress', digest, {record_id, goal, intent:'conversation', primary:outcome})
+UPDATE primary_turns SET status=..., outcome=...
+COMMIT
+```
+
+Why the `SAVEPOINT` is mandatory, not optional: `_control` mutates before it can raise in some paths (`_fence` runs ahead of later checks). Validation-before-effects alone doesn't cover executor-internal partial writes. `ROLLBACK TO` the savepoint, then persist the rejected outcome in the same tx — this is the "closed proposal validation before effects, atomic apply" requirement and answers the candidate's "don't swallow exceptions after mutation" worry directly.
+
+### Edits to existing methods
+
+- **`recover()`**: append `UPDATE primary_turns SET status='interrupted', outcome=<interrupted projection> WHERE status='pending'`. Same-key replay then returns the interrupted outcome; new message = new key. No other code path may touch `pending`.
+- **`operation(key)`**: check `primary_turns` first — return `{status:'pending'}` or the stored outcome projection for interrupted; fall through to `dedupe` for terminal turns (`'accepted'`) and `'absent'`. This is the "stable accepted ingress + separate primary outcome projection" — do **not** rewrite the immutable ingress dedupe after the inferred goal.
+- **`inspect()`**: add `primary_turns` projected to `{client_key, record_id, status, outcome}` — snapshot excluded or content-free anyway.
+
+### `_control` signature change (one real hole)
+
+`correct` currently sources only `[source_record_id]`. The frozen contract gives `correct` `source_ids`. Add an optional `extra_sources=()` parameter merged into the revision's sources and into the dedupe payload; recheck `_usable`. Also confirm: `correct` with `criteria=None` keeps the prior acceptance (existing code already reuses `previous['criteria']` — fixed-acceptance requirement holds). `answer` reuses the existing `source_record_id` path in `_control` `input` — this is why "host original sanitized ingress text" works unchanged.
+
+## Runtime structure
+
+- `submit()`: **structured fields present** (`control` or `goal_id` non-None) → existing synchronous `ingress(intent='control'/'forget')` path, untouched, immediate even when both conversation workers are busy. **Ordinary text** → `prepare_primary`, then under `self._reply_lock`: `self._responses.get(key)` or submit `_primary(key, text, admission)` to `_conversation`. The existing `_responses` map already implements "concurrent identical POSTs share one task" — the lock just has to span admission→future insertion as the candidate says.
+- `_primary`: replay → return stored/interrupted projection, **no provider call**. Pending → build prompt from snapshot (contents fetched by id) → `provider.complete` once → `decode` → `finish_primary`. `try/except Exception -> finish_primary(key, error=...)` so only process death leaves `pending` for `recover()`. Then return the stored reply record (it exists in all terminal paths).
+- Explicit-control must never wait on a model call — it doesn't; it never enters the pool.
+
+## Ordering recommendation (avoid parser hybrid + sync-receipt assumptions)
+
+Do it in this order, and remove lexical preemption **in the same commit** that enables the model actions — a half-state where `parse_control`/`pause that`/`answer:`/`forget that`/`remember `/`classify`-shortcut coexist with the model is exactly the "parser hybrid" to avoid:
+
+1. Schema + `prepare`/`finish` skeleton + `recover`/`operation`/`inspect` projections (store-level unit tests green: admission, replay, conflict, interrupted).
+2. `_primary` worker + mock `PRIMARY\n` JSON responses + submit routing with **all lexical blocks deleted in this commit**.
+3. Action kinds in slices.
+
+The synchronous-receipt problem: `test_default_mock_local_draft_end_to_end` asserts `submitted['goal']` from the `submit` return value. For model-chosen actions the goal can't be known at submit time without blocking on inference. Recommended contract: `submit` keeps returning `{'response': Future}`; the future resolves **after** `finish_primary` commits, and the goal projection is read via `operation(key)['result']['goal']` or `/api/state`. Tests must change `submitted['goal']` → `response.result()` then `operation(key)`. Structured-control tests keep their synchronous `result['goal']`. Do **not** block `submit` on the model to preserve the old shape — that serializes HTTP handler latency to provider latency and reintroduces a receipt-before-commit assumption.
+
+Minimal UI projection: POST `/api/message` 202 body gains `{record_id, intent:'conversation', primary_status}`; UI polls `GET /api/operation/<key>` (pending → accepted/outcome incl. `goal`) and `/api/state` (sanitized `primary_turns`). No snapshot content is ever emitted.
+
+## Closed-form contract (validation)
+
+Top level: exactly `{reply:str ≤8KB, action:{...}}` — no `confidence`, no `clarify` kind, no criteria/capabilities/approval/tool fields.
+
+| kind | exact keys | host fills/rechecks |
+|---|---|---|
+| `none` | `{kind}` | reply is the only output; `none`+reply = natural clarification |
+| `local_draft` | `{kind,spec≤12KB,source_ids≤50}` | criteria fixed `local_draft/4096`; sources ⊆ snapshot |
+| `answer` | `{kind,question_id}` | goal_id, epoch, round, open status — model supplies qid only |
+| `control` | `{kind,goal_id,op}` + `{spec,source_ids}` iff `op='correct'` | revision/epoch rechecked inside `_control`; unchanged acceptance |
+| `remember`/`forget` | `{kind,source_id}` | usable, ∈ snapshot |
+
+Decode with an `object_pairs_hook` duplicate-key rejector (test 1); malformed/non-JSON/extra fields → `rejected` outcome, never silent.
+
+## Implementation holes in the candidate (numbered)
+
+1. **Pending leak without crash**: provider raises or decoder fails but process lives → without `finish_primary(error=...)` the row stays `pending` forever and the key is bricked until restart. The unified `finish_primary` error path is required, not optional.
+2. **`_dedupe` PK race**: between prepare and finish, another kind could claim the same key in `dedupe`; `_remember` at finish then hits `IntegrityError`, not `Conflict`. Catch it → persist `rejected('key_conflict')`.
+3. **`operation()` between prepare and finish returns `absent`** unless it consults `primary_turns` — a lost-ACK client would see "absent" for a stored input. Covered above.
+4. **Mock provider breaks everything**: `MockProvider.complete` returns prose for non-`DRAFT` prompts → every ordinary message becomes `rejected`. It needs a `PRIMARY\n` branch returning closed JSON. And it must not substring-match `'make a draft'`: `test_normal_conversation...` submits `'Record only: make a draft later'` expecting no goal. Use a deterministic prefix trigger (e.g. text starting `'Make a draft'`) — flag this as the mock-semantics decision, since naive matching silently flips test expectations.
+5. **Snapshot-stored content**: if `snapshot` stores record/spec/prompt text it leaks through `inspect` and goes stale — store id→metadata maps only.
+6. **`_control` `correct` ignores model `source_ids`** (signature hole above).
+7. **`forget that`/`remember `/`answer:`/`pause that` lexical removal regressions**: they're all deleted at once; anything not yet model-enabled silently stops working. Order commits so removal never precedes the replacement kind.
+8. **`request_clarification`/`waiting` for Expert remain on the task lane** — untouched; Primary `answer` targets `questions` rows only, and `waiting_input` goals without a `questions` row (diagnostic waits) are correctly unanswerable.
+9. **Two finishers for one key** (e.g. duplicate worker submission bug): the `status != 'pending'` check at the top of `finish_primary` makes the second a no-op returning stored outcome — keep it inside the tx, checked after `BEGIN IMMEDIATE`.
+10. **`_responses` map never cleaned** — futures accumulate per key; fine for now but note `key` is unbounded user input; a `del`/weakref cleanup or documented bound is worth one line.
+11. **Test-7 fault points**: reuse `self.fault` at `primary_prepare.before_commit` / `primary_finish.before_commit` and a runtime `primary.after_provider_before_finish` hook — without the middle hook, "after provider/before commit" can't be exercised. All three resolve to `interrupted` via recover or rolled-back `pending` → recover. No duplicate effects possible since apply+outcome+dedupe commit atomically.
+
+## Smallest first green increment
+
+**Increment 1**: schema v4 + `prepare_primary` + `finish_primary` + `recover`/`operation`/`inspect` changes + `_primary` worker + mock `PRIMARY` branch + submit routing — with **only `none` and `local_draft` enabled**. All other kinds validate the closed form then get `rejected('action_unavailable')` — a visible no-effect outcome, not a silent drop. Lexical preemption is removed in this commit because `local_draft` covers the draft E2E path (via the prefix-matched mock), and `pause/forget/answer` shortcuts have no test coverage in the supplied suite. `answer`/`control`/`remember`/`forget` land in increment 2 as pure `finish_primary` additions — zero schema or routing changes.
+
+This keeps the first diff to ~one table, two methods, one worker function, one routing branch — and leaves every frozen semantic (one call, snapshot membership, atomic apply, interrupted-on-recovery, no lexical preemption) already true for the enabled kinds rather than retrofitted.

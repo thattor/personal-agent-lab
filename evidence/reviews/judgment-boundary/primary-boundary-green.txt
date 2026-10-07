@@ -1,0 +1,19 @@
+test_admission_is_durable_and_same_key_conflicts_before_any_effect (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_answer_uses_original_ingress_and_binds_nonlatest_question_once (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_cancel_and_forget_between_prepare_and_finish_reject_stale_result (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_closed_json_rejects_duplicates_authority_and_paraphrased_answer (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_concurrent_admission_and_finish_publish_one_effect_and_reply (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_correct_retains_fixed_criteria_and_source_bindings (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_diagnostic_wait_not_in_snapshot_and_overflow_has_no_partial_target_set (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_draft_commit_reply_and_replay_are_one_atomic_outcome (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_expected_mid_effect_failure_rolls_back_before_rejection_is_saved (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_none_and_fabricated_target_never_fall_back_to_latest_goal (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_primary_snapshot_has_no_content_and_long_keys_have_bounded_internal_keys (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_real_process_deaths_do_not_leave_partial_effects_or_replay_inference (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_recovery_interruption_and_provider_failure_are_terminal_without_retry (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_remember_keeps_original_source_and_forget_stops_reference_without_purge (tests.test_primary.PrimaryBoundaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.487s
+
+OK

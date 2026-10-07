@@ -58,3 +58,12 @@ boundary, but that cannot establish a Qwen PASS or an equivalence claim.
 Next: official SWE-2 High Free source/transaction review, host-boundary tests and
 implementation. Complete real model functionality before the one meaningful owner
 usefulness evaluation. Do not ask the owner to choose implementation, wording or fixtures.
+
+
+## C028 persistence increment
+
+Official SWE source contract review completed in432.479s, with fresh existing standalone SWE-2 High Free proof and no paid fallback (`swe-access.json`, `swe-completion.json`, `swe-response.txt`). Supplied source snapshot is retained; no credentials/account metadata recorded. D029 contains adopted and rejected details.
+
+`primary-boundary-red.txt` records the missing-module test-first failure. The initial implementation's diagnostic-wait test incorrectly called the user-facing `waiting` API; corrected fixture uses repeated unverified failure to produce an actual diagnostic wait. Product question semantics unchanged. `primary-boundary-green.txt`:14 tests PASS0.487s, including concurrent admission/application and actual process kills. `primary-boundary-full-final.txt`:185 tests PASS15.538s after added v3 migration and malformed-key regressions. Source audit by stable1_target_audit found early SQLite key binding before validation; fixed before lookup and tested list/dict/int/null/empty/oversized keys with no writes. No remaining boundary blocker reported.
+
+Runtime/UI integration is still unfinished. No production database opened/migrated; only disposable fixtures. No actual-model, Qwen capability or human usefulness PASS. Frozen independent semantic set primary-heldout.json remains unread by implementer until candidate freeze; freeze metadata is separate. Next integrate all Primary actions and immediate structured UI before activating the new path.

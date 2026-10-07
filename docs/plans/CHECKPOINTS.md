@@ -137,3 +137,10 @@ Official SWE supplied-source implementation review running; exact next action is
 apply its concrete contract then test/implement the minimum Primary boundary. This
 checkpoint proves corrected governance/tracking only, not new product function or
 Stable1 completion. App goal remains BLOCKED in readback; no unsupported status claim.
+
+
+## C-028 — Primary admission and host effects
+
+Unit goal: persistent admission before inference plus one atomic, host-validated effect/reply/outcome. Achieved in schema4 with additive migration, metadata-only snapshot, strict JSON, current source/target binding, original-answer binding, fixed criteria, reference-stop and no model authority. Pending idempotency keys are reserved; recovery exposes interruption without inference replay. Fourteen boundary tests include concurrent replay and real SIGKILL before/after admission and finish; v3 migration rollback/preservation added. Full185 PASS15.538s; independent audit identified malformed client key reaching SQLite before validation, corrected with shared early validation and regression. No other boundary blocker reported.
+
+Official standalone SWE-2 High Free contract review completed432.479s before implementation. Evidence in evidence/reviews/judgment-boundary. Existing runtimes/DBs untouched. Current Runtime is not yet integrated and remains historical lexical implementation; N1-10 PARTIAL, Issue12/Stable1/project unfinished. Exact next: one model-led ordinary Runtime path for all actions, asynchronous fate/receipt and immediate bound UI controls, tests then finite actual qualification. Plan unchanged; no new human judgment.

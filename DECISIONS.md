@@ -428,3 +428,22 @@ route and usefulness verification. No rule-only/hybrid completion claim. Officia
 High review of concrete source, transaction/idempotence, concurrency and tests precedes
 substantial code. Current code has not yet changed; historical N1 PASS remains scoped to
 old candidates and is not transferred to this architecture.
+
+D029 implementation review completed: official standalone SWE-2 High Free,432.479s,
+evidence/reviews/judgment-boundary/swe-response.txt. Adopt schema4 primary_turns metadata
+snapshot/admission/outcome, prepare before inference, by-ID usable context read, unified
+terminal failure, atomic effect/reply/outcome, savepoint rollback for expected rejection,
+recover pending as interrupted without model retry, inspect/operation fate projection,
+and extra source bindings for model correction. Ordinary submit remains asynchronous;
+new tests/client consume committed outcome instead of assuming a Goal exists at ACK.
+
+Controller reconciliations before code: reserve a pending client key at the common
+_dedupe boundary so another operation cannot occupy it, rather than trying to write a
+rejection after a uniqueness violation. Primary reply rows use the primary outcome's
+record ID for replay, avoiding user-key/internal-response-key collisions; direct insertion
+is protected by the same transaction/status CAS. Namespace internal effect keys with a
+bounded key digest. Preserve all existing fault hooks. A first store-only increment will
+not activate incomplete model routing; all replacement actions/explicit controls must
+be ready before switching Runtime. Review's claim of no shortcut test coverage applied
+only to its supplied subset, not the full suite, and is not adopted. Existing named-case
+behavior is retested. No new user approval required for these implementation choices.
