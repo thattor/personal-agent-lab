@@ -1,0 +1,9 @@
+{
+  "started_at": 1791368355.6950772,
+  "timeout_seconds": 900,
+  "candidate": "0ae5e97",
+  "supplied_source_only": true,
+  "route": "standalone SWE-2 High Free",
+  "paid_fallback": false,
+  "exec_session_id": 82542
+}
