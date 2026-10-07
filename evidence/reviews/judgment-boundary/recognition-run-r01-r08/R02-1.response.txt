@@ -1,0 +1,1 @@
+{"reply":"Happy to help. Who is the note for, and what are you thanking them for? If you'd prefer, I can write a general one instead.","action":{"kind":"none"}}

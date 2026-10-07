@@ -1,0 +1,54 @@
+Official Opus design diagnosis, supplied facts only. Do not use tools or repository access.
+Owner wants model-led intent/target/essential clarification, no routine approval noise;
+Qwen3.8-27B is a reference, actual current route is official Claude Pro opus. No extra
+payment/auth/public exposure and no resampling until a favorable answer. You previously
+reviewed D029 recognition reconciliation: preserve original40 inputs, 15/16 recognized
+requests, zero Goals on24 nonrequests, freeze DELEGATE/ASK/EITHER before running.
+
+Frozen R02 is DELEGATE: 'Please write a draft thank-you note.' A general thank-you can
+be written without inventing recipient/contribution; missing such specifics is not
+essential to this generic draft. No explicit request for personalization. Oracle disallows
+blocking on who/what details. Other frozen DELEGATE cases include fictional work and an
+explicit limited meeting reminder. ASK cases have no document purpose at all.
+
+Actual first attempts on unchanged product1a14de9, harnesscb8e394:
+R01 fictional lunch: exactly one source-bound local Goal, PASS.
+R02 raw JSON:
+{"reply":"Happy to help. Who is the note for, and what are you thanking them for? If you'd prefer, I can write a general one instead.","action":{"kind":"none"}}
+Host stores actual reply, zero Goals/effects; Primary status complete. Controller marks
+R02 a recognition miss, stops per precommitted fail-stop. No rescue answer or resampling.
+R03–08 NOT_RUN. Other precommitted cohorts R09–16 and N01–24 not started. 2/16 actual
+calls consumed, 35-record fsynced chain and all8 DBs verify. Product/prompt unchanged.
+One miss fits aggregate15/16 but the finite run operational rule says stop on first
+failure and diagnose, not blindly continue. Original results must stay unchanged.
+
+Primary system instruction currently: interpret intent/targets/essential clarification
+from conversation; no routine choices/facts already in context; thank-you details must
+be context-supported, otherwise keep thanks general. Native system text repeats that.
+The closed Primary prompt permits none, local_draft and supported host-validated actions.
+At most one action, fixed host criteria/source/snapshot validation. Generic drafting
+with no invented facts is in accepted behavior; content-free requests may ask purpose.
+
+Please challenge the diagnosis and recommend the smallest safe next action. Distinguish
+a retained single tolerated recall miss from a product defect warranting prompt change.
+Do NOT loosen the frozen R02 class, retrospectively PASS it, introduce human approval,
+add all-artifact quotas or call repeated attempts independent evidence.
+
+Option A: preserve R02 miss and unchanged product, measure ONLY never-executed cases in
+new pre-frozen bounded suffix after this review; original R01–08 process/proof/DB remain
+closed. R03–08 have10 worst-case calls (conditional answers included), so cap new owner
+at10 (total original cohort actual worst-case12<=original16), no redistribution/renewal
+and no R01/R02 retry. Other2cohorts keep16/24. Harness currently allows only16/24; lowering
+a suffix bound to10 would be a test-only validated cap amendment, no model behavior.
+Option B: address a demonstrated general unnecessary-clarification policy defect with
+the smallest non-case-specific instruction delta; freeze a new product candidate, keep
+all old results and obtain a bounded reviewed affected-regression plan before any rerun.
+
+Also independent release audit notes current actual UI proves known-context drafting,
+natural essential question/answer, same-Goal persisted-question fixture resume, unique
+correction among3Goals and actual revised artifacts. Current Primary-only heldout cases
+exercise ambiguous targets and cancellation, but current UI ambiguous-target/cancel and
+current Primary correction/pending-target process-kill paths need candidate evidence;
+legacy tests/live PASS must not silently transfer. These remain independent work.
+
+Give a concise verdict and exact adopted/rejected actions. No broader design plan needed.

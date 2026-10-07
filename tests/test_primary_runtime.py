@@ -188,5 +188,78 @@ threading.Event().wait(4)
                     self.assertEqual(runtime.store.operation('turn')['result']['primary_status'],'interrupted')
                 finally:runtime.close()
 
+    def test_target_clarification_and_correction_commit_crashes_never_rerun_primary(self):
+        code='''import os,signal,sys,threading,json
+from pathlib import Path
+from pal.runtime import Runtime,MockProvider
+class Spy(MockProvider):
+    def complete(self,prompt):
+        if not prompt.startswith('PRIMARY\\n'):raise AssertionError('unexpected worker before crash')
+        Path(sys.argv[3]).write_text('one Primary call')
+        if sys.argv[4]=='none':
+            action={'kind':'none'};reply='AとBのどちらの案内ですか？'
+        else:
+            action={'kind':'control','op':'correct','goal_id':sys.argv[5],
+                    'spec':'Aの日曜案内','source_ids':[sys.argv[6]]};reply='修正します。'
+        return json.dumps({'reply':reply,'action':action},ensure_ascii=False)
+def die(point):
+    if point==sys.argv[2]:os.kill(os.getpid(),signal.SIGKILL)
+r=Runtime(sys.argv[1],provider=Spy())
+r.store.fault=die
+r.submit('turn',sys.argv[7])
+threading.Event().wait(5)
+'''
+        for kind in ('none','correct'):
+            for point in ('primary_finish.before_commit','primary_finish.after_commit'):
+                with self.subTest(kind=kind,point=point):
+                    path=Path(self.temp.name)/(kind+'-'+point+'.db')
+                    marker=path.with_suffix('.called')
+                    store=Store(path);goals=[];sources=[]
+                    for name in ('A','B'):
+                        source=store.record('source'+name,'user',name+'の案内は土曜日です。')
+                        goal=store.create_goal('goal'+name,name+'の土曜案内',
+                                               {'kind':'local_draft','max_bytes':4096},[source['id']])
+                        store.control('pause'+name,goal['id'],'pause')
+                        goals.append(store.get_goal(goal['id']));sources.append(source['id'])
+                    text='その案内を短くして。' if kind=='none' else 'Aの案内だけ日曜日に変えて。'
+                    child=subprocess.run([sys.executable,'-c',code,str(path),point,str(marker),kind,
+                                          goals[0]['id'],sources[0],text],capture_output=True,timeout=7)
+                    self.assertEqual(child.returncode,-9,child.stderr)
+                    self.assertEqual(marker.read_text(),'one Primary call')
+                    provider=PrimaryProvider();runtime=Runtime(path,provider=provider)
+                    try:
+                        first=runtime.submit('turn',text)['response'].result(2)
+                        self.assertTrue(runtime.idle.wait(2))
+                        committed=point.endswith('after_commit')
+                        outcome=runtime.store.operation('turn')['result']
+                        self.assertEqual(outcome['primary_status'],'complete' if committed else 'interrupted')
+                        self.assertFalse(any(p.startswith('PRIMARY\n') for p in provider.prompts))
+                        state=runtime.store.inspect()
+                        self.assertEqual(len(state['goals']),2)
+                        self.assertEqual(runtime.store.get_goal(goals[1]['id']),goals[1])
+                        self.assertEqual(len(state['primary_turns']),1)
+                        self.assertEqual(sum(r['id']==outcome['response_id'] for r in state['records']),1)
+                        if kind=='none':
+                            self.assertEqual(state['goals'],goals)
+                            self.assertEqual(first['content']=='AとBのどちらの案内ですか？',committed)
+                            self.assertFalse(state['questions'])
+                            self.assertFalse(runtime.store.selections())
+                            self.assertFalse(provider.prompts)
+                        else:
+                            target=runtime.store.get_goal(goals[0]['id'])
+                            self.assertEqual(target['revision'],2 if committed else 1)
+                            self.assertEqual(target['acceptance_id'],goals[0]['acceptance_id'])
+                            self.assertEqual(sum(e['kind']=='goal.correct' for e in state['events']),int(committed))
+                            revisions=[r for r in state['revisions'] if r['goal_id']==target['id']]
+                            if committed:
+                                self.assertEqual(revisions[-1]['criteria'],revisions[0]['criteria'])
+                                self.assertEqual(set(json.loads(revisions[-1]['sources'])),
+                                                 {sources[0],outcome['record_id']})
+                        again=runtime.submit('turn',text)['response'].result(1)
+                        self.assertEqual(again,first)
+                        self.assertEqual(runtime.store.inspect(),state)
+                        self.assertFalse(any(p.startswith('PRIMARY\n') for p in provider.prompts))
+                    finally:runtime.close()
+
 
 if __name__=='__main__':unittest.main()

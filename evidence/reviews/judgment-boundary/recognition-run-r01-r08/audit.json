@@ -1,0 +1,189 @@
+{
+  "verification": {
+    "records": 35,
+    "completed": false,
+    "judged_turns": 2,
+    "skipped_turns": 0,
+    "covered_cases": 0,
+    "scope": "live_synthetic",
+    "human_evaluation": false
+  },
+  "candidate": "cb8e394bea83b80d25ed8f5eba7720167419dce5",
+  "product_candidate": "1a14de986de2756ffea83c2671e506a32cccfdf6",
+  "status": "STOPPED_ON_R02_MISS",
+  "accepted_cases": [
+    "R01"
+  ],
+  "misses": [
+    "R02"
+  ],
+  "not_run_cases": [
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08"
+  ],
+  "actual_attempts": 2,
+  "max_attempts": 16,
+  "process_exit_code": 0,
+  "human_evaluation": false,
+  "qwen_qualification": false,
+  "resampling": false,
+  "databases": [
+    {
+      "file": "R01.sqlite",
+      "integrity": "ok",
+      "goals": 1,
+      "artifacts": 0,
+      "pending_primary": 0
+    },
+    {
+      "file": "R02.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "artifacts": 0,
+      "pending_primary": 0
+    },
+    {
+      "file": "R03.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "artifacts": 0,
+      "pending_primary": 0
+    },
+    {
+      "file": "R04.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "artifacts": 0,
+      "pending_primary": 0
+    },
+    {
+      "file": "R05.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "artifacts": 0,
+      "pending_primary": 0
+    },
+    {
+      "file": "R06.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "artifacts": 0,
+      "pending_primary": 0
+    },
+    {
+      "file": "R07.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "artifacts": 0,
+      "pending_primary": 0
+    },
+    {
+      "file": "R08.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "artifacts": 0,
+      "pending_primary": 0
+    }
+  ],
+  "product_hashes_unchanged": true,
+  "supervisor_starts": [
+    {
+      "event": "native.supervisor.started",
+      "monotonic": 30.218402041,
+      "native_slot_attempt": 1,
+      "phase": "auth",
+      "previous_sha256": "35876dc253599915ae6640639e96427b19fd126e74cc738dcef6554e2733a00e",
+      "recorded_at": 1791389979.272148,
+      "scope": "live_synthetic",
+      "sequence": 15,
+      "sha256": "d6ab1ceee057385d0397c4cf31714b52b297320fb294eac4c1d46ceb2df15f5d",
+      "supervisor_pid": 49784
+    },
+    {
+      "event": "native.supervisor.started",
+      "monotonic": 30.599625291,
+      "native_slot_attempt": 1,
+      "phase": "generation",
+      "previous_sha256": "d1a46326449b3277ab30921e128471e9fef79e187d96bbf2e74c2994bcbfb7f1",
+      "recorded_at": 1791389979.653347,
+      "scope": "live_synthetic",
+      "sequence": 17,
+      "sha256": "3a0543d3d8ddc7057c9bf7dee2a5eef8611af30a17607869646461f6d9ac434c",
+      "supervisor_pid": 49795
+    },
+    {
+      "event": "native.supervisor.started",
+      "monotonic": 106.709296666,
+      "native_slot_attempt": 2,
+      "phase": "auth",
+      "previous_sha256": "cc4eb138587795c49d154d88871bc4bdd6ec86045acba7507bf179d12baa4a34",
+      "recorded_at": 1791390055.7632189,
+      "scope": "live_synthetic",
+      "sequence": 27,
+      "sha256": "fe67f8a4ce6d0dcb90efa6f9e0dbef01432982c81dd139ab8011da8728b9c5c8",
+      "supervisor_pid": 50544
+    },
+    {
+      "event": "native.supervisor.started",
+      "monotonic": 107.002422125,
+      "native_slot_attempt": 2,
+      "phase": "generation",
+      "previous_sha256": "de03e668cc35db24e4f322f881958012101077c596ca0a47f0c83ed3b8c31bee",
+      "recorded_at": 1791390056.056334,
+      "scope": "live_synthetic",
+      "sequence": 29,
+      "sha256": "42acc5a3e75459d2c87b671ed5a48df6f93ad66619c3904944513f3570e24c3d",
+      "supervisor_pid": 50555
+    }
+  ],
+  "supervisor_finishes": [
+    {
+      "event": "native.supervisor.finished",
+      "monotonic": 30.597436833,
+      "previous_sha256": "d6ab1ceee057385d0397c4cf31714b52b297320fb294eac4c1d46ceb2df15f5d",
+      "recorded_at": 1791389979.651127,
+      "returncode": 0,
+      "scope": "live_synthetic",
+      "sequence": 16,
+      "sha256": "d1a46326449b3277ab30921e128471e9fef79e187d96bbf2e74c2994bcbfb7f1",
+      "supervisor_pid": 49784
+    },
+    {
+      "event": "native.supervisor.finished",
+      "monotonic": 33.497420208,
+      "previous_sha256": "3a0543d3d8ddc7057c9bf7dee2a5eef8611af30a17607869646461f6d9ac434c",
+      "recorded_at": 1791389982.551132,
+      "returncode": 0,
+      "scope": "live_synthetic",
+      "sequence": 18,
+      "sha256": "678883a78349512d92472a8d564d25f8e8cfeb5a4411380c0194d5d0e539b9d6",
+      "supervisor_pid": 49795
+    },
+    {
+      "event": "native.supervisor.finished",
+      "monotonic": 107.000733583,
+      "previous_sha256": "fe67f8a4ce6d0dcb90efa6f9e0dbef01432982c81dd139ab8011da8728b9c5c8",
+      "recorded_at": 1791390056.054603,
+      "returncode": 0,
+      "scope": "live_synthetic",
+      "sequence": 28,
+      "sha256": "de03e668cc35db24e4f322f881958012101077c596ca0a47f0c83ed3b8c31bee",
+      "supervisor_pid": 50544
+    },
+    {
+      "event": "native.supervisor.finished",
+      "monotonic": 110.315197791,
+      "previous_sha256": "42acc5a3e75459d2c87b671ed5a48df6f93ad66619c3904944513f3570e24c3d",
+      "recorded_at": 1791390059.369083,
+      "returncode": 0,
+      "scope": "live_synthetic",
+      "sequence": 30,
+      "sha256": "1e5720d57e84dbc1649c4b8e027bc5a5dd08653093c08e31a804cbe75d0206c5",
+      "supervisor_pid": 50555
+    }
+  ]
+}

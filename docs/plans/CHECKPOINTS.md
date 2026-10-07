@@ -255,3 +255,24 @@ Next: clean pushed candidate then three first-attempt cohorts, each separately f
 official no-extra-charge proof, stop on failure/no resampling; maintain exact product
 baseline1a14de9. Integrate actual owner feedback and affected evidence audit independently.
 Stable1 and globalPAL remain incomplete; no Qwen qualification or future scope activation.
+
+
+## C037 — first recognition miss retained; bounded suffix and current crash proof
+
+C036 actual R01 PASS/R02 MISS stops at2 calls; six cases unexecuted,35-record chain/eight
+DBs preserved. Opus37.596s validates miss and chooses unchanged product plus exact
+unexecuted suffix. DECISIONS records adoption before the minimal10-slot amendment.
+Three boundary tests reject11th call/worstcase overflow, confirm exact subset/hash and
+native owner cap.35 focused/234 full PASS21.970s; sandbox bind errors retained separately.
+Current Primary ambiguous-target/correction SIGKILL/replay adds25 targeted passes with
+no product change. N1-04 host/runtime revalidation PASS. Read-only original preimplementation
+PHA04–12 audit proves zero false-positive Goals across18 utterances; N1-02 scoped PASS,
+17 original full semantic passes/one old controller stop preserved, no PHB or rescore.
+N1-03/05/06 current affected evidence remains PARTIAL; older PASS is historical.
+
+Product17 hashes still1a14de9; unit contributes to Issue12 recognition/recovery assurance,
+not whole Issue/milestone/project completion. Human whole-flow packet presented once;
+latest readback has no actual owner answer, no repeated question. Next: commit/push exact
+suffix/harness, fresh official proof and first-attempt R03–08 max10, then precommitted
+R09–16/N01–24 if no further miss. R02 consumes the only allowed request miss. No schedule,
+Qwen qualification, proof renewal, canonical repair or old runtime restart.

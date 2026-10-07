@@ -1,0 +1,35 @@
+test_admission_is_durable_and_same_key_conflicts_before_any_effect (test_primary.PrimaryBoundaryTests) ... ok
+test_ambiguous_primary_clarification_crash_is_atomic_and_replays_without_selection (test_primary.PrimaryBoundaryTests) ... ok
+test_answer_uses_original_ingress_and_binds_nonlatest_question_once (test_primary.PrimaryBoundaryTests) ... ok
+test_cancel_and_forget_between_prepare_and_finish_reject_stale_result (test_primary.PrimaryBoundaryTests) ... ok
+test_closed_json_rejects_duplicates_authority_and_paraphrased_answer (test_primary.PrimaryBoundaryTests) ... ok
+test_concurrent_admission_and_finish_publish_one_effect_and_reply (test_primary.PrimaryBoundaryTests) ... ok
+test_correct_retains_fixed_criteria_and_source_bindings (test_primary.PrimaryBoundaryTests) ... ok
+test_diagnostic_wait_not_in_snapshot_and_overflow_has_no_partial_target_set (test_primary.PrimaryBoundaryTests) ... ok
+test_draft_commit_reply_and_replay_are_one_atomic_outcome (test_primary.PrimaryBoundaryTests) ... ok
+test_expected_mid_effect_failure_rolls_back_before_rejection_is_saved (test_primary.PrimaryBoundaryTests) ... ok
+test_none_and_fabricated_target_never_fall_back_to_latest_goal (test_primary.PrimaryBoundaryTests) ... ok
+test_primary_correction_crash_rolls_back_fence_or_commits_one_bound_revision (test_primary.PrimaryBoundaryTests) ... ok
+test_primary_snapshot_has_no_content_and_long_keys_have_bounded_internal_keys (test_primary.PrimaryBoundaryTests) ... ok
+test_real_process_deaths_do_not_leave_partial_effects_or_replay_inference (test_primary.PrimaryBoundaryTests) ... ok
+test_recovery_interruption_and_provider_failure_are_terminal_without_retry (test_primary.PrimaryBoundaryTests) ... ok
+test_remember_keeps_original_source_and_forget_stops_reference_without_purge (test_primary.PrimaryBoundaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.935s
+
+OK
+test_concurrent_same_key_is_one_inference_and_immediate_explicit_cancel (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_every_ordinary_input_uses_one_primary_call_without_regex_preemption (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_explicit_control_with_max_length_key_commits_reply_and_effect_once (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_natural_answer_targets_nonlatest_question_with_original_text (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_primary_clarifies_then_hands_context_to_one_expert (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_provider_failure_is_visible_and_same_key_never_retries_or_creates_goal (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_target_clarification_and_correction_commit_crashes_never_rerun_primary (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_terminal_replay_after_forget_never_returns_cached_source_content (test_primary_runtime.PrimaryRuntimeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.542s
+
+OK

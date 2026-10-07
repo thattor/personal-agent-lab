@@ -235,5 +235,98 @@ else:
                 with reopened._connection() as db:
                     self.assertEqual(db.execute('PRAGMA integrity_check').fetchone()[0],'ok')
 
+    def test_ambiguous_primary_clarification_crash_is_atomic_and_replays_without_selection(self):
+        text='その案内を短くして。'
+        question='AとBのどちらの案内を短くしますか？'
+        code='''import os,signal,sys,json
+from pal.store import Store
+s=Store(sys.argv[1])
+def die(point):
+    if point==sys.argv[2]:os.kill(os.getpid(),signal.SIGKILL)
+s.fault=die
+s.finish_primary('ambiguous',json.loads(sys.argv[3]))
+'''
+        for point in ('primary_finish.mid_transaction','primary_finish.before_commit','primary_finish.after_commit'):
+            with self.subTest(point=point):
+                path=Path(self.temp.name)/('none-'+point+'.db');store=Store(path)
+                for name in ('A','B'):
+                    source=store.record('source'+name,'user',name+'の案内')
+                    goal=store.create_goal('goal'+name,name+'の案内',{'kind':'local_draft','max_bytes':4096},[source['id']])
+                    store.control('pause'+name,goal['id'],'pause')
+                store.prepare_primary('ambiguous',text)
+                before=store.inspect()
+                child=subprocess.run([sys.executable,'-c',code,str(path),point,
+                                      json.dumps(proposal(reply=question),ensure_ascii=False)],
+                                     capture_output=True,timeout=10)
+                self.assertEqual(child.returncode,-9,child.stderr)
+                reopened=Store(path)
+                if point!='primary_finish.after_commit':self.assertEqual(reopened.inspect(),before)
+                reopened.recover()
+                state=reopened.inspect()
+                self.assertEqual(state['goals'],before['goals'])
+                self.assertEqual(state['revisions'],before['revisions'])
+                self.assertEqual(state['events'],before['events'])
+                self.assertFalse(state['questions'])
+                self.assertFalse(reopened.selections())
+                self.assertFalse(state['receipts'])
+                outcome=reopened.operation('ambiguous')['result']
+                expected='complete' if point.endswith('after_commit') else 'interrupted'
+                self.assertEqual(outcome['primary_status'],expected)
+                reply=reopened.stored_reply('ambiguous')
+                self.assertEqual(reply['content']==question,expected=='complete')
+                self.assertEqual(reopened.prepare_primary('ambiguous',text)['primary_status'],expected)
+                self.assertEqual(reopened.finish_primary('ambiguous',proposal('local_draft',spec='must not execute',source_ids=[])),outcome)
+                self.assertEqual(reopened.inspect(),state)
+
+    def test_primary_correction_crash_rolls_back_fence_or_commits_one_bound_revision(self):
+        code='''import os,signal,sys,json
+from pal.store import Store
+s=Store(sys.argv[1])
+def die(point):
+    if point==sys.argv[2]:os.kill(os.getpid(),signal.SIGKILL)
+s.fault=die
+s.finish_primary('correct',json.loads(sys.argv[3]))
+'''
+        for point in ('control.mid_transaction','primary_finish.mid_transaction',
+                      'primary_finish.before_commit','primary_finish.after_commit'):
+            with self.subTest(point=point):
+                path=Path(self.temp.name)/('correct-'+point+'.db');store=Store(path)
+                source=store.record('sourceA','user','Aの案内は土曜日です。')
+                target=store.create_goal('goalA','Aの土曜案内',{'kind':'local_draft','max_bytes':4096},[source['id']])
+                attempt=store.claim()
+                other_source=store.record('sourceB','user','Bの案内は月曜日です。')
+                other=store.create_goal('goalB','Bの月曜案内',{'kind':'local_draft','max_bytes':2048},[other_source['id']])
+                store.control('pauseB',other['id'],'pause')
+                admitted=store.prepare_primary('correct','Aの案内だけ日曜日に変えて。')
+                before=store.inspect()
+                action=proposal('control',op='correct',goal_id=target['id'],spec='Aの日曜案内',source_ids=[source['id']])
+                child=subprocess.run([sys.executable,'-c',code,str(path),point,json.dumps(action)],capture_output=True,timeout=10)
+                self.assertEqual(child.returncode,-9,child.stderr)
+                reopened=Store(path);committed=point.endswith('after_commit')
+                if not committed:self.assertEqual(reopened.inspect(),before)
+                else:
+                    current=reopened.get_goal(target['id'])
+                    self.assertEqual((current['state'],current['revision'],current['epoch']),('queued',2,2))
+                    old_attempt=next(a for a in reopened.inspect()['attempts'] if a['id']==attempt['id'])
+                    self.assertEqual(old_attempt['status'],'fenced')
+                reopened.recover();state=reopened.inspect()
+                self.assertEqual(reopened.get_goal(other['id']),next(g for g in before['goals'] if g['id']==other['id']))
+                self.assertEqual(state['acceptances'],before['acceptances'])
+                revisions=[r for r in state['revisions'] if r['goal_id']==target['id']]
+                self.assertEqual(len(revisions),2 if committed else 1)
+                if committed:
+                    self.assertEqual(revisions[-1]['criteria'],revisions[0]['criteria'])
+                    self.assertEqual(revisions[-1]['acceptance_id'],revisions[0]['acceptance_id'])
+                    self.assertEqual(set(json.loads(revisions[-1]['sources'])),{source['id'],admitted['record_id']})
+                self.assertEqual(sum(e['kind']=='goal.correct' for e in state['events']),int(committed))
+                outcome=reopened.operation('correct')['result']
+                self.assertEqual(outcome['primary_status'],'complete' if committed else 'interrupted')
+                self.assertEqual(reopened.finish_primary('correct',action),outcome)
+                reopened.prepare_primary('correct','Aの案内だけ日曜日に変えて。')
+                self.assertEqual(reopened.inspect(),state)
+                self.assertFalse(state['receipts'])
+                with reopened._connection() as db:
+                    self.assertEqual(db.execute('PRAGMA integrity_check').fetchone()[0],'ok')
+
 
 if __name__=='__main__': unittest.main()

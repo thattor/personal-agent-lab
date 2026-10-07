@@ -1,0 +1,8 @@
+{
+  "phase": "auth observation",
+  "error": "controller treated supervised_text string as CompletedProcess",
+  "diagnosis": "helper returns sanitized text and raises on nonzero exit",
+  "generation_started": false,
+  "proof_created": false,
+  "correction": "parse returned string; verify actual helper interface before reuse"
+}

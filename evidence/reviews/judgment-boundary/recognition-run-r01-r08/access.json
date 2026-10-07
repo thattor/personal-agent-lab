@@ -1,0 +1,28 @@
+{
+  "checked_at_utc": "2026-10-07T16:18:40.818395+00:00",
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "apiProvider": "firstParty",
+    "subscriptionType": "pro"
+  },
+  "usage_ui": {
+    "url": "https://claude.ai/new#settings/usage",
+    "plan": "Pro",
+    "session_percent_used": 33,
+    "week_percent_used": 23,
+    "extra_usage_enabled": false,
+    "purchased_credit_balance_zero": true,
+    "auto_reload_enabled": false
+  },
+  "fresh_ui_observed": true,
+  "new_authentication": false,
+  "paid_fallback": false,
+  "max_primary_calls": 16,
+  "cohort": "recognition-r01-r08",
+  "proof": {
+    "verified_at": 1791389920.8183901,
+    "no_extra_charge": true,
+    "route": "official_claude_pro"
+  }
+}

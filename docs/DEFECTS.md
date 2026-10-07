@@ -274,3 +274,24 @@ recognition-verifier-green.txt32 focused PASS; recognition-full-final.txt228 ful
 PASS21.995s. Independent focused re-review clears both findings. Per-turn ordered
 prompt/permit/start/proposal/return/capture/judgment binding and duplicate rejection
 now enforce the pre-existing evidence contract. No old journal was edited.
+
+
+## C037 observer API assumptions
+
+The first fresh-auth precheck assumed supervised_text returned a CompletedProcess and
+accessed .stdout; the helper actually returns a sanitized string. It failed after an
+auth read but before proof creation or generation. Preserve precheck-error.json; inspect
+the helper contract and parse its string directly. The corrected bounded read passed.
+No fallback, model retry, credential storage or canonical mutation occurred.
+
+New target-crash tests initially assumed inspect() exported selections. It does not;
+Store.selections() is the documented code-level getter. Both failed test logs remain in
+judgment-boundary/. Correct the observer, then verify the actual transaction/replay
+invariants. Do not modify product exports merely to fit a guessed test projection.
+
+
+C037 initial full-suite invocation lacked loopback bind permission:14 HTTP/runner setups
+raised PermissionError at socket.bind, with no assertion failure. Preserve
+recognition-suffix-full.txt as environment-limited. Same source under the approved
+local-HTTP test execution scope passes234 tests in21.970s. Use that scope for later
+full suites; do not edit product code, omit HTTP tests or call the restricted run green.

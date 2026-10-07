@@ -30,6 +30,8 @@ COHORTS = {
                              '39046068664082dcbd1afb0aace9425b79da44a0a7298ff4e9a501ae28c28608'),
     'recognition-r01-r08': ('evidence/reviews/judgment-boundary/recognition-r01-r08.json',
                            'ffc83ef138739495bf31ba37991b43ddd226d3f1429f854b46c2885d15f16e23'),
+    'recognition-r03-r08': ('evidence/reviews/judgment-boundary/recognition-r03-r08.json',
+                           '6a3b9d45b1c3e9e83b998031a34bc5cd97913498dcd6a05e0da03498669bd815'),
     'recognition-r09-r16': ('evidence/reviews/judgment-boundary/recognition-r09-r16.json',
                            'fea4c3df865c9a32e9f2c37cb3286d65c152b07a8317170d8c79379c2ec05e91'),
     'recognition-n01-n24': ('evidence/reviews/judgment-boundary/recognition-n01-n24.json',
@@ -53,7 +55,7 @@ def load_matrix(path, expected_sha=FIXTURE_SHA):
 def validate_matrix(matrix):
     """Check the frozen measurement envelope before files, proof or native owner."""
     max_calls = matrix.get('max_primary_calls',24)
-    if type(max_calls) is not int or max_calls not in (16,24):
+    if type(max_calls) is not int or max_calls not in (10,16,24):
         raise RunRejected('unsupported cohort call bound')
     recognition = matrix.get('recognition_regression',False)
     if type(recognition) is not bool:
@@ -194,7 +196,7 @@ def verify_snapshot(store, context):
 
 class PrimaryGate:
     def __init__(self, provider, sink, deadline, clock=time.monotonic, max_calls=24):
-        if type(max_calls) is not int or max_calls not in (16,24):
+        if type(max_calls) is not int or max_calls not in (10,16,24):
             raise RunRejected('unsupported Primary gate bound')
         self.provider,self.sink,self.deadline,self.clock = provider,sink,deadline,clock
         self.max_calls = max_calls

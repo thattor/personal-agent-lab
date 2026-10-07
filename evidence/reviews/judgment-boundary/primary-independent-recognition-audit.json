@@ -1,0 +1,257 @@
+{
+  "scope": "N1-02 current D029 independent preimplementation frozen suffix recognition audit",
+  "rows": [
+    {
+      "case": "PHA-04",
+      "turn": 1,
+      "run": "primary-second-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "none"
+      ],
+      "actual_action": "none",
+      "host_status": "complete",
+      "journal_record_sha256": "fe52b29f150f10da2dbe601e5ffba60bfc8e1524ef45daeddf55adc48b89e526"
+    },
+    {
+      "case": "PHA-04",
+      "turn": 2,
+      "run": "primary-second-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 1,
+      "frozen_allowed_actions": [
+        "local_draft"
+      ],
+      "actual_action": "local_draft",
+      "host_status": "complete",
+      "journal_record_sha256": "7a80c894b53aaf27a58d9baf2c2e75669c506ffb4df2129302d38f85ceed2c74"
+    },
+    {
+      "case": "PHA-05",
+      "turn": 1,
+      "run": "primary-second-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "answer"
+      ],
+      "actual_action": "answer",
+      "host_status": "complete",
+      "journal_record_sha256": "e03157df288b43422fbe72b96ab8cea24db3dfe5ed7a710875b45e66d485f432"
+    },
+    {
+      "case": "PHA-05",
+      "turn": 2,
+      "run": "primary-second-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "none"
+      ],
+      "actual_action": "none",
+      "host_status": "complete",
+      "journal_record_sha256": "78103a6684ea48e9944662b7c13d595e902e3cd390cf0b366486071ada2ab2bc"
+    },
+    {
+      "case": "PHA-06",
+      "turn": 1,
+      "run": "primary-second-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "none"
+      ],
+      "actual_action": "none",
+      "host_status": "complete",
+      "journal_record_sha256": "2ecf7132f244cc3a59c775ecd246932e7f0fb26d2300ac3cd14bad6ae3590e7b"
+    },
+    {
+      "case": "PHA-06",
+      "turn": 2,
+      "run": "primary-second-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "control"
+      ],
+      "actual_action": "control",
+      "host_status": "complete",
+      "journal_record_sha256": "ee0ce154912ab9e74df523bedfd27335c91aec4b7a023611cfb62ea4e8cd09ee"
+    },
+    {
+      "case": "PHA-07",
+      "turn": 1,
+      "run": "primary-second-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "none"
+      ],
+      "actual_action": "none",
+      "host_status": "complete",
+      "journal_record_sha256": "e059dceca86e87bbff54ddd3178c2d69ef94b1288d5e21901876c27df3ae0586"
+    },
+    {
+      "case": "PHA-07",
+      "turn": 2,
+      "run": "primary-second-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "control"
+      ],
+      "actual_action": "control",
+      "host_status": "complete",
+      "journal_record_sha256": "4acdad12fc3b13e71bf971e4dc34ad82c9925e31ab1631bd07a5fd19250a7146"
+    },
+    {
+      "case": "PHA-08",
+      "turn": 1,
+      "run": "primary-second-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "control"
+      ],
+      "actual_action": "control",
+      "host_status": "complete",
+      "journal_record_sha256": "68c7cc89c7009604dd5451fdfff330dfe6b67c13488ada27234bee28fdc44bec"
+    },
+    {
+      "case": "PHA-08",
+      "turn": 2,
+      "run": "primary-second-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "control"
+      ],
+      "actual_action": "control",
+      "host_status": "complete",
+      "journal_record_sha256": "47cd1fe44097b04d26ecad27e38aa777a14f2d92963ed3a09c9325bd5b4469f4"
+    },
+    {
+      "case": "PHA-09",
+      "turn": 1,
+      "run": "primary-second-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "none"
+      ],
+      "actual_action": "none",
+      "host_status": "complete",
+      "journal_record_sha256": "4c4f317d53a2c209abc7376461806007148778ca05a10b14978f35f47aa377a6"
+    },
+    {
+      "case": "PHA-09",
+      "turn": 2,
+      "run": "primary-second-run",
+      "stored_judgment_pass": false,
+      "goal_delta": 1,
+      "frozen_allowed_actions": [
+        "local_draft"
+      ],
+      "actual_action": "local_draft",
+      "host_status": "complete",
+      "journal_record_sha256": "72aedb07f366f2a43009bfb96c4aa84ac0ce4ebc9ffe461adbe3bc518be3fdf4"
+    },
+    {
+      "case": "PHA-10",
+      "turn": 1,
+      "run": "primary-third-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "none"
+      ],
+      "actual_action": "none",
+      "host_status": "complete",
+      "journal_record_sha256": "48e1c50d41e6cb315aeeb4e3833960e50eeae23248f6e6b93cd5e5ec8755fd02"
+    },
+    {
+      "case": "PHA-10",
+      "turn": 2,
+      "run": "primary-third-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "none"
+      ],
+      "actual_action": "none",
+      "host_status": "complete",
+      "journal_record_sha256": "0305c80593a2d2842007e54dbb835564fd0d4253f21fbf257258a27570a620b0"
+    },
+    {
+      "case": "PHA-11",
+      "turn": 1,
+      "run": "primary-third-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "remember"
+      ],
+      "actual_action": "remember",
+      "host_status": "complete",
+      "journal_record_sha256": "bdc6ab15611a010c7a7644f2d042b178eb11f261ace386aac77394e9d050bb9d"
+    },
+    {
+      "case": "PHA-11",
+      "turn": 2,
+      "run": "primary-third-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "none"
+      ],
+      "actual_action": "none",
+      "host_status": "complete",
+      "journal_record_sha256": "2ddcad3f7e690dc1a87125e7a23dd375bdab2480da3ca1636055e094d29bd957"
+    },
+    {
+      "case": "PHA-12",
+      "turn": 1,
+      "run": "primary-third-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "forget"
+      ],
+      "actual_action": "forget",
+      "host_status": "complete",
+      "journal_record_sha256": "ef014beee2aa3a3832e6809592a934df4d861751bc29288e93da66e04c54bd4f"
+    },
+    {
+      "case": "PHA-12",
+      "turn": 2,
+      "run": "primary-third-run",
+      "stored_judgment_pass": true,
+      "goal_delta": 0,
+      "frozen_allowed_actions": [
+        "none"
+      ],
+      "actual_action": "none",
+      "host_status": "complete",
+      "journal_record_sha256": "051b06ad3c5b99e4cd23061695eca2d9507f3deb73f5304cc1abd215cf0e0f93"
+    }
+  ],
+  "total_utterances": 18,
+  "original_full_semantic_passes": 17,
+  "retained_controller_stops": 1,
+  "zero_goal_required_turns": 16,
+  "observed_false_positive_goals": 0,
+  "delegation_turns": 2,
+  "observed_delegations": 2,
+  "new_PHA_cases_used": false,
+  "PHB_cases_used": false,
+  "source_freeze_utc": "2026-10-07T12:49:35.377319+00:00",
+  "product_candidate": "1a14de986de2756ffea83c2671e506a32cccfdf6",
+  "implementation_commit_time": "2026-10-07T22:06:48+09:00",
+  "source_hash": "523d6b859e67d9f84162cdf6299e12a835c8ba920724442b68df3b81c9fe62a0",
+  "product_files_unchanged": 17,
+  "historical_PHA03_fail_preserved": true,
+  "historical_PHA09_stop_preserved": true,
+  "human_evaluation": false,
+  "qwen_qualification": false
+}

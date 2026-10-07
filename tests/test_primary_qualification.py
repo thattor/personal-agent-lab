@@ -12,7 +12,7 @@ from pal.store import Store
 from scripts.live_evidence import EvidenceJournal, verify_journal
 from scripts.live_runner import RunRejected
 from scripts.primary_qualification import (PrimaryGate, QualificationRunner, load_matrix,
-                                           seed_case, verify_run, verify_snapshot, build_live)
+                                           seed_case, verify_run, verify_snapshot, build_live, COHORTS)
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT/'evidence/reviews/judgment-boundary/primary-heldout.json'
@@ -391,20 +391,24 @@ class RecognitionQualificationTests(unittest.TestCase):
             with self.assertRaises(RunRejected):
                 build_live(ROOT,ROOT/'runtime/nonexistent-recognition-test','unused','test-only')
 
-    def test_live_native_owner_and_record_use_sixteen_bound(self):
-        owner=Mock();owner.command.return_value=['unused-cli']
-        proof=Mock();proof.verified_at=time.time();proof.route='existing'
-        result=Mock();result.journal=Mock()
-        with patch('scripts.primary_qualification.load_matrix',return_value=self.matrix()), \
-             patch('scripts.primary_qualification.clean_candidate'), \
-             patch('scripts.primary_qualification.AccessProof.load',return_value=proof), \
-             patch('scripts.primary_qualification.AuditedNative',return_value=owner) as native, \
-             patch('scripts.primary_qualification.subprocess.run',return_value=Mock(stdout='test version')), \
-             patch('scripts.primary_qualification.QualificationRunner',return_value=result):
-            build_live(ROOT,ROOT/'runtime/nonexistent-recognition-test','unused','test-only')
-        native.assert_called_once_with(proof,max_calls=16)
-        self.assertEqual(result.journal.append.call_args.args[0]['native_slots'],16)
-        proof.consume.assert_called_once()
+    def test_live_native_owner_and_record_use_cohort_bound(self):
+        for max_calls in (16,10):
+            with self.subTest(max_calls=max_calls):
+                owner=Mock();owner.command.return_value=['unused-cli']
+                proof=Mock();proof.verified_at=time.time();proof.route='existing'
+                result=Mock();result.journal=Mock();matrix=self.matrix()
+                matrix['max_primary_calls']=max_calls
+                with patch('scripts.primary_qualification.load_matrix',return_value=matrix), \
+                     patch('scripts.primary_qualification.clean_candidate'), \
+                     patch('scripts.primary_qualification.AccessProof.load',return_value=proof), \
+                     patch('scripts.primary_qualification.AuditedNative',return_value=owner) as native, \
+                     patch('scripts.primary_qualification.subprocess.run',return_value=Mock(stdout='test version')), \
+                     patch('scripts.primary_qualification.QualificationRunner',return_value=result):
+                    build_live(ROOT,ROOT/'runtime/nonexistent-recognition-test','unused','test-only')
+                native.assert_called_once_with(proof,max_calls=max_calls)
+                self.assertEqual(result.journal.append.call_args.args[0]['native_slots'],max_calls)
+                owner.complete.assert_not_called()
+                proof.consume.assert_called_once()
 
     def test_goal_count_rejects_incorrect_controller_pass(self):
         matrix=self.matrix();matrix['cases'][0]['turns'][0]['acceptable_outcome_set']=[
@@ -469,6 +473,44 @@ class RecognitionQualificationTests(unittest.TestCase):
         for i in range(16):gate.grant('R',i,'PRIMARY\n'+str(i));gate.complete('PRIMARY\n'+str(i))
         with self.assertRaises(ProviderUnavailable):gate.grant('R',17,'PRIMARY\nextra')
         self.assertEqual(len(provider.prompts),16)
+
+    def test_ten_call_suffix_gate_rejects_eleventh_before_provider(self):
+        events=[];provider=Scripted()
+        gate=PrimaryGate(provider,events.append,time.monotonic()+900,max_calls=10)
+        for i in range(10):
+            prompt='PRIMARY\n'+str(i);gate.grant('R',i,prompt);gate.complete(prompt)
+        with self.assertRaises(ProviderUnavailable):gate.grant('R',11,'PRIMARY\nextra')
+        self.assertEqual((gate.attempts,len(provider.prompts)),(10,10))
+
+    def test_eleven_worst_case_calls_rejected_before_suffix_run_creation(self):
+        matrix=self.matrix();matrix['max_primary_calls']=10
+        matrix['cases']=[dict(copy.deepcopy(matrix['cases'][0]),id='R'+str(i)) for i in range(5)]
+        last=copy.deepcopy(matrix['cases'][0]);last['id']='extra';last['turns']=last['turns'][:1]
+        matrix['cases'].append(last)
+        with self.assertRaisesRegex(RunRejected,'worst-case cohort calls exceed bound'):
+            self.recognition_runner(matrix)
+        self.assertFalse(self.directory.exists())
+        self.assertEqual(self.provider.prompts,[])
+
+    def test_frozen_suffix_is_exact_unexecuted_cases_and_smaller_owner(self):
+        path,sha=COHORTS['recognition-r03-r08']
+        suffix=load_matrix(ROOT/path,sha)
+        original_path,original_sha=COHORTS['recognition-r01-r08']
+        original=load_matrix(ROOT/original_path,original_sha)
+        self.assertEqual(suffix['cases'],original['cases'][2:])
+        self.assertEqual([c['id'] for c in suffix['cases']],['R03','R04','R05','R06','R07','R08'])
+        self.assertEqual(sum(len(c['turns']) for c in suffix['cases']),10)
+        self.assertEqual(suffix['max_primary_calls'],10)
+        self.assertEqual(suffix['retained_measurement']['results'],{'R01':'PASS','R02':'MISS'})
+        self.assertEqual(suffix['retained_measurement']['further_request_misses_allowed'],0)
+        self.assertLessEqual(2+suffix['max_primary_calls'],16)
+        self.runner=QualificationRunner(ROOT,self.directory,self.provider,scope='scripted',
+                                        candidate='test-only',cohort='recognition-r03-r08')
+        self.assertEqual(self.runner.gate.max_calls,10)
+        opened=verify_journal(self.directory/'journal.jsonl')[0]
+        self.assertEqual(opened['max_attempts'],10)
+        self.assertEqual(opened['hashes'][path],sha)
+        self.assertFalse(self.provider.prompts)
 
 
 if __name__=='__main__':

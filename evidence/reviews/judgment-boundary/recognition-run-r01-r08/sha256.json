@@ -1,0 +1,11 @@
+{
+  "R01-1.prompt.txt": "bd3804f2b403af7d1b118975f3271a25bf68197a91a4950337a39a2abc3668bd",
+  "R01-1.response.txt": "90133dff6a47da98ef56acdbd727884efe38dd5863d09ff4e3b7fe4e1ffa88ff",
+  "R02-1.prompt.txt": "5a6940bc75088e335d6a3113cbbd06e036ae0d88c4156baf272c4037ba45b08d",
+  "R02-1.response.txt": "54b744c564c3dfc13f4a8898dd1a73acb1322c7d10ba9abaca558b11be6901ec",
+  "README.md": "81daa617066d2375f85900688e09a00b7620c19599248b2f4ec5c6bd71ad31ff",
+  "access.json": "7a6c032376aa5d3c6c3be339bb789fc59cddaa8f3fb400c80138a4e6486267d4",
+  "audit.json": "852c524d9edcb8bf2b374ffc2db5a648db20d9be8a6aa377fc77d47e377c2c1e",
+  "journal.jsonl": "4eed13b0b05f5f13058f9bac6da77579d6ab59b52f0b81631c2133bf2ca50175",
+  "precheck-error.json": "853f9158d76361920f00fbf152f6f878e7d06a8b07d6af29760feed11243f0e4"
+}

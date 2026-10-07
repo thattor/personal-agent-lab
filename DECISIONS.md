@@ -598,3 +598,31 @@ Initial reviewer invocation failed before any verdict because stdin delivery was
 documented CLI interface; preserve it, then use documented --prompt-file. CLI models
 requires list subcommand; fresh authenticated standalone Free metadata was verified before
 the completed review. No reviewer text is human approval or product evidence.
+
+
+### D029 C037 — retain the R02 miss, measure only the unexecuted suffix
+
+Official Opus diagnosis completed37.596s with fresh existing Pro/extra usage OFF:
+recognition-r02-opus-{question,response,access,completion} under
+`evidence/reviews/judgment-boundary/`. R02 asked who/what instead of making a generic
+thank-you draft. The frozen DELEGATE miss is valid; one observation does not establish
+a general product-policy defect. The existing Primary instruction already permits a
+general thank-you. Adopt Option A, reject prompt tuning/Option B for now.
+
+Keep C036 closed: R01 PASS, R02 MISS, R03–08 NOT_RUN, original35-record chain and eight
+DBs unchanged. Freeze a new suffix containing only the exact never-executed R03–08
+cases/conditional answers, with a10-call worst-case bound. Validate rejection of an
+11th call before live execution and pin the new harness. Actual2 old calls plus at most10
+suffix calls remains below the original16 cap. No transfer of unused budget, R01/R02
+retry, proof renewal, resumed run or changed product/prompt. R09–16/N01–24 retain their
+precommitted16/24 bounds and fixed criteria. R02 consumes the single allowed miss under
+15/16: zero further request-recognition misses are allowed, and the suffix fail-stops on
+its first failure. A second miss requires diagnosis of the aggregate failure before any
+product delta; it is not permission to resample or weaken the oracle.
+
+The cap is a smaller value in the C036 official SWE-reviewed matrix/PrimaryGate/native
+owner path, with one hash-bound suffix and boundary tests, not a new harness architecture.
+Routine local parameter/test changes use that completed implementation review. All-artifact
+quotas, human micro-approval, retrospective PASS and independent-evidence claims from
+repeat attempts are rejected. Current UI ambiguous-target/cancel and Primary target/crash
+coverage remain separate release obligations. Product baseline stays1a14de9.

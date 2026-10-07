@@ -1,0 +1,45 @@
+No tools were used: you asked for none, so I have not written the plan-mode file or called ExitPlanMode. The verdict is below.
+
+## Verdict
+
+**Adopt Option A. Reject Option B for now.** The R02 miss is real and stays a miss. It does not demonstrate a general product defect that a prompt change should fix.
+
+## Challenging the diagnosis
+
+- **The miss classification is correct.** The reply offers the user a choice between personalized and general. The owner explicitly wants no such routine choices, and the frozen oracle forbids blocking on who/what details. "Zero Goals" is the right outcome to score as a recognition miss, and it was scored that way.
+- **"Product defect" is not shown.**
+  - The Primary instruction already says thank-you details must be context-supported and otherwise kept general. The model failed to follow an instruction that already exists. Nothing in the instructions is missing.
+  - The evidence is one first attempt on one case. R01, the closest sibling DELEGATE case, passed cleanly.
+  - "Demonstrated general unnecessary-clarification policy" overstates what one sample shows.
+- **Any delta would really be R02-specific.** The prompt already names thank-you notes. Stronger wording would be tuned to the observed failure, not general. It would also change the product hash, which voids the pending heldout measurement and forces a full affected regression. That cost isn't justified by one sample.
+- **Flag this for later, but don't act on it now.** The existing thank-you clause is itself close to the case. If a future product iteration happens, consider replacing it with a general "draft generically when specifics aren't essential" rule. That is not part of this action.
+
+## Adopted actions
+
+1. **Preserve the original run as closed.** Keep R01 PASS, R02 MISS, R03–08 NOT_RUN, and the 35-record chain and all 8 DBs unchanged. Leave product1a14de9 and the prompt unchanged.
+2. **Freeze the suffix before any call.** Make a test-only harness amendment that caps the new R03–08 owner at 10 worst-case calls, with conditional answers included. Before the first suffix call:
+   - Validate that the harness rejects an 11th call.
+   - Record the new harness hash.
+   - Confirm there is no change to model behavior or the product.
+3. **Keep the original budget rules.** There is no redistribution of R02's unused budget, no renewal, and no retry of R01 or R02. Cohorts R09–16 and N01–24 keep their original 16/24 caps and criteria.
+4. **Pre-state the remaining tolerance.** R02 consumed the only allowed miss under the 15/16 threshold, so zero further recognition misses are allowed across R03–R16. Write this into the frozen suffix spec.
+5. **Keep fail-stop on first failure in the suffix.** If a second recognition miss occurs on a different DELEGATE case, the aggregate fails. That recurrence across distinct cases is the trigger that makes a non-case-specific product delta (Option B) warranted. Any such change would come with a new candidate and a reviewed affected-regression plan.
+6. **Report R02 in the final aggregate as a retained single tolerated miss.** Describe the observed pattern as "clarification with general-fallback offer" and attach this diagnosis.
+
+## Rejected actions
+
+- Option B now (prompt delta and new candidate).
+- Any retry or resampling of R01 or R02, or treating suffix results as overriding R02.
+- Loosening the R02 class or retrospectively passing it.
+- Raising caps or redistributing unused calls.
+- Human approval steps.
+- All-artifact quotas.
+- Counting repeated attempts as independent evidence.
+
+## Release audit
+
+The release-audit gaps stay independent work and are not satisfied by this run:
+- current UI ambiguous-target and cancel paths
+- current Primary correction and pending-target process-kill paths
+
+Legacy tests and live PASS results do not transfer to these.
