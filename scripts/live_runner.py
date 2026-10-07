@@ -23,6 +23,7 @@ class RunRejected(RuntimeError):
 class SourcePin:
     def __init__(self, root, matrix):
         self.root = root
+        self.matrix = matrix
         paths = sorted(set(root.joinpath('pal').rglob('*.py')) |
                        set(root.joinpath('pal/web').rglob('*')) |
                        set(root.joinpath('scripts').glob('live_*.py')) | {matrix})
@@ -30,7 +31,7 @@ class SourcePin:
                        for p in paths if p.is_file()}
 
     def check(self):
-        current = SourcePin(self.root, self.root/'tests/fixtures/p002_real_ui_v1.json')
+        current = SourcePin(self.root, self.matrix)
         if current.hashes != self.hashes:
             raise RunRejected('source drift')
 
@@ -38,10 +39,16 @@ class SourcePin:
 class MatrixRunner:
     def __init__(self, root, directory, matrix, provider, *, scope, candidate):
         self.root = Path(root).resolve()
-        # Until the operator entry point and live subprocess observations are
-        # integrated, this assembly is deliberately restricted to fixtures.
-        if scope != 'scripted':
-            raise ValueError('live operator entry point not integrated')
+        if scope not in ('scripted','live_synthetic'):
+            raise ValueError('unsupported evidence scope')
+        if scope=='live_synthetic':
+            # Only the operator-created audited owner may create live records.
+            from scripts.live_operator import AuditedNative
+            if (type(provider) is not AuditedNative or not provider._operator_ready
+                    or provider._runner_claimed):
+                raise ValueError('live scope requires audited official owner')
+            provider.proof.check()
+            provider._runner_claimed = True
         self.directory = Path(directory)
         self.directory.mkdir(mode=0o700, parents=False, exist_ok=False)
         self.matrix = json.loads(Path(matrix).read_text())
@@ -51,6 +58,9 @@ class MatrixRunner:
         self.scope = scope
         self.journal = EvidenceJournal(self.directory/'journal.jsonl', scope)
         self.deadline = time.monotonic()+self.matrix['limits']['wall_seconds']
+        if scope=='live_synthetic':
+            self.deadline = min(self.deadline,time.monotonic()+max(
+                0,900-(time.time()-provider.proof.verified_at)))
         self.gate = GatedProvider(provider, self.journal.append, self.deadline,
                                   max_calls=self.matrix['limits']['total_provider_generations'])
         self.watchdog = RunWatchdog(self.gate, self.deadline)
