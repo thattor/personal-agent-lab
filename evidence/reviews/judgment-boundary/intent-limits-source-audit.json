@@ -1,0 +1,13 @@
+{
+  "frozen_at": 1791399601.320172,
+  "product_identity": "content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5",
+  "predecessor": "content:sha256:60df1d0e919ff7f45dc527581bae897ecd3750858b96dd104804ecd83c87eba2",
+  "changed_product_paths": [
+    "pal/primary.py"
+  ],
+  "only_change_is_reviewed_precedence_paragraph": true,
+  "native_expert_host_decoder_unchanged": true,
+  "heldout_sha256": "8aa8be82dc5444c3349790b180f24f2aa9591c814cf3fdd24aa283eeaf0de13f",
+  "heldout_contents_opened_before_freeze": false,
+  "semantic_status": "NOT_RUN"
+}

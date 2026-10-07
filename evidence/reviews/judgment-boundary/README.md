@@ -185,3 +185,27 @@ binding change. [74 focused tests](compound-policy-targeted-green.txt) and
 [248 full tests](compound-policy-full-green.txt) PASS. Actual model semantics NOT_RUN;
 unchanged fixed40 thresholds and independent zero-false-positive/recall-reporting remain.
 Next first attempts use compound-n01-n24, compound-r01-r08, compound-r09-r16, compound-heldout.
+
+
+### C041 failure and C042 current-authorization correction
+
+[Actual negative run](compound-run-n01-n24/README.md) on158bd48/product60df1d0e stopped
+at N17:16 PASS, one prohibited queued Goal from record-only input,7 NOT_RUN.17 calls,
+no worker/artifact/external task effect. Requests and independent12 never ran on this
+candidate; C039 request PASS cannot transfer.
+
+[Official Opus86.848s](intent-limits-opus-response.txt) supports the Primary-only
+current-authorized-scope precedence recorded in DECISIONS before edit. [New source
+freeze](primary-intent-limits-candidate-freeze.json) c55cab29 follows independent12
+authorship and precedes [disclosure](intent-limits-heldout-disclosure.json). Only the
+Primary prompt differs from C040; native/Expert/host/decoder unchanged. Existing accepted
+zero-unwanted-Goal/recall reporting and fixed40 thresholds remain. Actual semantics NOT_RUN.
+
+[75 focused tests](intent-limits-targeted-green.txt), [249 full tests](intent-limits-full-green.txt)
+and [30 actual crash/restart repetitions](intent-limits-crash-boundary-stress.txt) PASS.
+The test-only kill callback now cannot cross its named boundary while SIGKILL is pending;
+[original timing failure](intent-limits-crash-race-red.txt) and initial command-name error
+are retained. Product code was not changed by this test correction. No human/Qwen PASS.
+
+[Independent source/binding audit](intent-limits-independent-audit.json): no substantiated
+blocker; static conformance is separate from forthcoming actual semantic evidence.

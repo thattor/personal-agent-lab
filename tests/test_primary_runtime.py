@@ -166,7 +166,10 @@ class Spy(MockProvider):
         Path(sys.argv[3]).write_text('called')
         return json.dumps({'reply':'proposal','action':{'kind':'local_draft','spec':'draft','source_ids':[]}})
 def die(point):
-    if point==sys.argv[2]:os.kill(os.getpid(),signal.SIGKILL)
+    if point==sys.argv[2]:
+        os.kill(os.getpid(),signal.SIGKILL)
+        # A worker can resume after kill(2) returns but before process termination.
+        threading.Event().wait()
 r=Runtime(sys.argv[1],provider=Spy(),fault=die)
 r.submit('turn','actual input')
 threading.Event().wait(4)

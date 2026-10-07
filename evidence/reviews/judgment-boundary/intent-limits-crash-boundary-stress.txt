@@ -1,0 +1,35 @@
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 2.709s
+
+OK

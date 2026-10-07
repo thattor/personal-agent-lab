@@ -1,0 +1,1 @@
+{"reply":"Just to check: do you want me to draft the invitation now, or hold off for the moment? If now, what's it for (the event or occasion), and I'll put together a draft from there.","action":{"kind":"none"}}

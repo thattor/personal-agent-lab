@@ -1,0 +1,14 @@
+test_intent_limits_cohorts_bind_fresh_source_without_redirecting_compound (tests.test_primary_qualification.FreezeQualificationTests) ... ERROR
+
+======================================================================
+ERROR: test_intent_limits_cohorts_bind_fresh_source_without_redirecting_compound (tests.test_primary_qualification.FreezeQualificationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 613, in test_intent_limits_cohorts_bind_fresh_source_without_redirecting_compound
+    current = COHORTS['intent-limits-'+suffix]
+KeyError: 'intent-limits-n01-n24'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.017s
+
+FAILED (errors=1)

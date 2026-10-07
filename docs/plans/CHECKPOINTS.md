@@ -330,3 +330,35 @@ Current semantic outcome NOT_RUN, historicalC039 FAIL retained. Next clean pushe
 uses fixed N-first24 then English16/Japanese16 and independent12/cap16, each one-use bounded
 proof/first attempt/fail-stop. Existing affected UI/Expert/usefulness/release obligations
 remain. No criterion/scope/human-approval/cost change; Issue12/milestone/globalPAL incomplete.
+
+
+## C041 — record-only false delegation stops qualification
+
+Actual first-attempt compound-n01-n24 on pushed158bd48/product60df1d0e stopped at N17.
+N01–16 PASS; 'Record only: make a draft invitation.' proposed local_draft and produced
+one queued Goal, violating zero-Goal oracle. N18–24, request cohorts and independent12
+NOT_RUN; C040's N22 fix is unobserved.17 actual calls, no worker/artifact/external effects.
+Evidence/independent read-only audit: compound-run-n01-n24/. Decoder/host applied the raw
+proposed action as designed; current interaction frame was misunderstood by the model.
+C039 N17 had passed once; no causal attribution to C040 from these samples. Technical
+review of prompt precedence/whole authorized intent is underway with official Opus,
+not another blind retry or human micro-approval. All old sources/runs preserved.
+
+
+## C042 — honor the current authorized scope before embedded task wording
+
+Unit goal: record-only/not-yet discussion must not become delegated work, while normal
+local drafting and later delegation remain available. Opus86.848s reviewed the accepted
+SPEC-conformance fix before adoption. Primary-only product c55cab29 freezes after the
+independent12 author and before disclosure; no product edits afterward. Four new closed
+aliases retain all prior fixture hashes and product manifests under C038 SWE-reviewed
+version selection.75 focused PASS4.497s,249 full PASS19.421s. Test-only SIGKILL injection
+barrier retains the actual crash/recovery criterion;30 repeated tests/60 kills PASS.
+Original command error and timing failure remain visible in judgment-boundary/.
+
+C041's actual N17 failure is preserved, C042 semantic result NOT_RUN. Contribution is a
+reviewed implementation and deterministic assurance toward Issue12/Stable1, not model
+qualification or completion. Next: independent source audit, clean commit/push, fixed
+N-first24→English16→Japanese16→independent12/cap16 once-only actual runs and existing
+affected UI/Expert/one human whole-flow evaluation/release audit. No new scope, quota,
+human technical decision, Qwen qualification, provider endpoint, cost or schedule.

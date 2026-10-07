@@ -756,3 +756,52 @@ Append-only cohort aliases use the exact C038 official SWE-reviewed per-cohort i
 fixture/product-freeze mechanism, with deterministic binding tests. No new harness
 architecture or proof override; old freeze files and aliases remain immutable. This is
 routine parameter/test reuse, not substantial implementation requiring a new review.
+
+### D029 C041/C042 — current authorized intent precedes embedded task wording
+
+C041 actual first attempts on158bd48/product60df1d0e FAIL at N17 record-only:16 negatives
+PASS,17 calls, one prohibited queued local Goal, N18–24/R/independent12 NOT_RUN. No
+worker,artifact or external task effect. Source/evidence intact; preserve this failure.
+N22 repair not yet observed. Independent audit locates the wrong action in the raw model
+proposal, not transport/decoder/host corruption. C039 N17 passed once; causation by C040
+versus sampling/prompt sensitivity remains unproven.
+
+Official Opus86.848s completed with fresh existing Pro/extraOFF:
+intent-limits-opus-{question,response,access,completion}. Adopt BEFORE implementation:
+add a short general current-authorization precedence rule to Primary only, before its
+whole-request capability and draft guidance. Explicit limits to recording/noting,
+discussion, postponement or extent govern the task wording they cover. Do not start or
+promise that embedded work; acknowledge the limit. Interpret the semantic extent of the
+limit: draft-only/no-send still permits drafting, and wording inside requested content
+is content. A later actual delegation is a new request. Existing explicitly requested
+source-backed memory/control/correction remains possible within its own authority.
+
+Controller wording reconciliation: review's 'does not block an explicit control,
+correction or remember request' must not accidentally activate a control command merely
+being recorded. Use 'separately authorized current' actions and explicitly distinguish
+action wording only being recorded/discussed. This implements the same proposed semantic
+precedence, not a new control capability or approval gate. Source-backed remember follows
+its existing rule; no forced memory outcome or false Saved claim for none. Native/Expert,
+validator/decoder, Store, host acknowledgements, criteria, tools and costs stay unchanged.
+The C038 and C040 policy clauses are otherwise byte-identical; no N14-specific copy fix.
+
+Root cause is a missing explicit SPEC precedence requirement in Primary instructions.
+Mapping 'record only' to 'local only/no send' is a plausible model interpretation, not
+proven by a spec containing do-not-send (that wording may be ordinary draft boilerplate).
+No concrete native-system conflict is established. Single sampled results cannot prove
+causal attribution, revision/effort stability or arbitrary-language correctness.
+
+Opus withdraws its prior count-based human-escalation rule. No actual owner question
+exists: the accepted SPEC already resolves this behavior. If a future failure contradicts
+an explicitly stated contract, investigate capability/variance or a concrete structural
+hole with required review rather than append another phrase blindly. Genuine new scope,
+authority, cost or noninferable user value remains a human decision.
+
+Freeze a new independently authored12 before edit and withhold until product freeze.
+Keep original fixed40 oracle/thresholds and N-first24→R01–08 cap16→R09–16 cap16 order,
+then independent12 cap16; one fresh bounded proof per closed run, one first attempt,
+stop on any mismatch. N17 repeats are disclosed regression, not independent evidence.
+New closed aliases reuse the C038 SWE-reviewed mechanism, immutable historical manifests,
+with binding tests. No ablation/retry, extra artifact quota, human micro-question, or Qwen
+qualification claim. Existing actual UI/Expert/target/absence/running-cancel and one human
+whole-flow evaluation remain separate unfinished release obligations.

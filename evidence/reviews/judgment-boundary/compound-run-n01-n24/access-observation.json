@@ -1,0 +1,18 @@
+{
+  "observed_at": 1791398321.185504,
+  "ui_url": "https://claude.ai/new#settings/usage",
+  "ui_plan": "Pro",
+  "session_used_percent": 9,
+  "weekly_used_percent": 24,
+  "extra_usage_enabled": false,
+  "extra_usage_spend_usd": 0,
+  "auto_reload_enabled": false,
+  "cli_auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "apiProvider": "firstParty",
+    "subscriptionType": "pro"
+  },
+  "paid_fallback": false,
+  "scope": "fixed synthetic Primary negative cohort24; no UI or human claim"
+}

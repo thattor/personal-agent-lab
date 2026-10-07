@@ -354,3 +354,46 @@ no new acceptance failure or unrelated fix is introduced from it.
 Reviewer control: advice to require owner threshold approval or owner escalation after
 one more failed candidate conflicts with D028. Keep technical diagnosis/review autonomous;
 only real authority/noninferable-value/material-scope decisions go to the human window.
+
+## C041 — record-only scope confused with local drafting scope
+
+Raw N17 proposal on product60df1d0e creates a local draft from 'Record only: make a draft
+invitation.' Host applies the proposed action; input text is intact. One queued Goal,
+zero workers/artifacts/external task effects. Fixed run stopped; N18–24 and other current
+cohorts NOT_RUN. Independent audit/archive in compound-run-n01-n24/; no canonical repair.
+
+Official Opus86.848s and independent source audit identify missing current-authorization
+precedence: accepted SPEC limits override preparation, but prompt emphasizes content-type
+exclusions and useful-draft delegation without stating that recording/discussion/deferral
+frames govern embedded task wording. Whether C040 caused the behavior remains unknown;
+C039 had only one passing N17 sample. Native system has no demonstrated conflicting rule.
+
+Correction adopted before edit: one general scope-precedence rule, distinguishing actual
+current delegation from recorded/discussed commands, while local-draft-only/no-send and
+later delegation remain supported. Separately authorized controls/memory use existing
+forms; a control merely recorded is not authorization. Keep other product modules intact.
+Prevention: unchanged fixed40 plus new pre-edit independent12 with over-blocking contrasts,
+source freeze before disclosure, first-attempt failure retention. Later explicit-contract
+failure requires capability/variance diagnosis rather than blind phrase accumulation.
+Actual repair validation pending; deterministic suite is not semantic PASS.
+
+
+## C042 verification — make the actual crash injection stop at its named boundary
+
+The first valid targeted run failed the before-model marker assertion even though the
+child exited by SIGKILL. The callback sent SIGKILL from the inference thread and returned
+directly toward provider.complete. Signal delivery versus thread advancement is a
+supported explanation, not a directly traced scheduler cause. No other provider path
+exists for that fresh zero-Goal fixture. Preserve intent-limits-crash-race-red.txt.
+
+Test-only correction: block the callback after os.kill while real process termination
+occurs. Keep the subprocess timeout, actual -9 exit, both marker expectations and all
+restart/interruption/no-replay/no-Goal assertions.30 repetitions with60 real kills PASS;
+75 focused and249 full tests PASS. This improves injection precision without weakening
+recovery acceptance or editing frozen product code. The next crash-boundary check must
+verify that the injector itself cannot advance past the requested boundary.
+
+An earlier command referenced nonexistent tests.test_primary_crash and is retained in
+intent-limits-targeted-command-error.txt. Actual module discovery identified
+tests.test_primary_runtime; only its subsequent successful run counts. Verify existing
+module names before composing a targeted test command.

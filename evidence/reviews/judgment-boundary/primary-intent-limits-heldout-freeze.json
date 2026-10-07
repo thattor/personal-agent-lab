@@ -1,0 +1,82 @@
+{
+  "additional_miss_threshold": false,
+  "adoption_status": "Preparation within existing scope only. No product edit or measurement is activated by this freeze; if the controller adopts no edit after review, retain NOT_RUN.",
+  "authority_change": false,
+  "authorship": {
+    "agent": "/root/semantic_contrasts",
+    "implementation_role_for_contemplated_fix": "none",
+    "kind": "independent Codex synthetic case author",
+    "literal_contents_and_oracles_disclosed_to_controller": false
+  },
+  "byte_count": 22066,
+  "case_count": 10,
+  "case_turn_lengths_histogram": {
+    "1": 8,
+    "2": 2
+  },
+  "category_counts": {
+    "discussion_framing": 1,
+    "essential_user_choice": 1,
+    "essential_user_choice_answer": 1,
+    "explicit_remember_future_plan": 1,
+    "general_purpose_draft_without_personal_details": 1,
+    "later_actual_delegation": 1,
+    "natural_yes_from_available_context": 1,
+    "not_yet_framing": 1,
+    "record_only_imperative_en": 1,
+    "record_only_imperative_ja": 1,
+    "unsupported_compound_action": 1,
+    "user_sends_own_draft": 1
+  },
+  "fixture_id": "PAL-PRIMARY-INTENT-LIMITS-HELDOUT-v1",
+  "frozen_at_utc": "2026-10-07T18:58:30.681713+00:00",
+  "human_attestation": false,
+  "human_threshold_approval": false,
+  "independence": {
+    "basis": "New text and oracle authored before receiving or inspecting the contemplated current-intent/outer-scope change. Earlier corpora are preserved, not copied or relabelled as these cases; no future result was used for tuning.",
+    "chronology": "Controller must freeze the next candidate source after this timestamp and before opening the corpus. The author does not inspect forthcoming edits to attest their contents.",
+    "forthcoming_product_edit_or_prompt_inspected": false,
+    "new_case_outputs_seen": false,
+    "prior_knowledge": "Author knows existing D029 design/prompt/harness and earlier cases from prior work, including the controller-reported C041 fixed-N17 record-only failure. Independence is not blindness to old product knowledge or the known failure class."
+  },
+  "limitations": [
+    "Synthetic authored cases, not actual human language evaluation or usefulness proof.",
+    "Independence concerns the forthcoming fix and its outputs, not all prior design, prompt, corpus or failure knowledge.",
+    "One natural-agreement case uses a declared synthetic assistant offer; its generation by a real model is not tested.",
+    "Setup compatibility is verified only. No provider/model performance, Qwen qualification, UI, Expert, artifact or long-term reliability proof.",
+    "A future result cannot rescore or replace C041 or earlier original failures."
+  ],
+  "max_primary_calls": 16,
+  "measured_input_language_counts": {
+    "English": 2,
+    "Japanese": 10
+  },
+  "measurement_policy": "Zero unwanted Goals/external effects, recall and all misses reported, first failure stops. No additional numeric miss allowance, quota, replacement case, human threshold approval or reinterpretation of earlier results.",
+  "new_quota": false,
+  "parent_read_policy": "Metadata only until the next source/prompt candidate freeze is recorded. Do not open primary-intent-limits-heldout.json before that boundary. Existing corpus registration is sufficient; no new harness.",
+  "path": "evidence/reviews/judgment-boundary/primary-intent-limits-heldout.json",
+  "planned_primary_calls": 12,
+  "reviewer_suggestion_treated_as_owner_approval": false,
+  "schema_version": 1,
+  "serialization": "UTF-8, ensure_ascii=false, sort_keys=true, indent=2, trailing LF; SHA256 covers exact file bytes.",
+  "setup_source_role_counts": {
+    "assistant": 1,
+    "user": 1
+  },
+  "sha256": "8aa8be82dc5444c3349790b180f24f2aa9591c814cf3fdd24aa283eeaf0de13f",
+  "status": "FROZEN_NOT_RUN",
+  "turn_count": 12,
+  "validation": {
+    "cohort_registered": false,
+    "commit_created": false,
+    "harness_path": "scripts/primary_qualification.py",
+    "harness_sha256_at_validation": "39420f07e870c0b380ebd47d69b4b68c80b18e2f20c78176a717557aba314938",
+    "matrix": "PASS using existing validate_matrix, supported max_primary_calls 16.",
+    "old_database_modified": false,
+    "provider_auth_or_model_calls": 0,
+    "runner_started": false,
+    "setup": "PASS for all ten cases using unchanged seed_case and public Store APIs in temporary runtime databases. Exact source roles/content read back; zero setup Goals/questions/Attempts. Temporary databases removed.",
+    "shape": "Exactly twelve unique input_record_ref values in ten cases, with eight single-turn cases and two two-turn cases. Three essential observations for each acceptable outcome.",
+    "source_changed": false
+  }
+}

@@ -1,0 +1,105 @@
+Per your instruction this is text-only. I wrote no plan file, used no tools, and touched no product files. This conflicts with the harness's plan-mode workflow, and your explicit instruction takes precedence.
+
+# Verdict
+
+**Candidate `158bd48` / product `60df1d0e` is FAIL at N17.** N18–N24 are NOT_RUN, and so are all R items and the independent12. The N22 correction has not been observed. All of this stays recorded as it is.
+
+The evidence does support a **contract omission**. The prompt classifies utterances by *content type*: quotation, negation, hypothetical, reported, unsupported. It never classifies by *what the user currently authorizes*. The accepted SPEC sentence, "explicit limits … override preparation," has no counterpart anywhere in the Primary contract. One short, general precedence rule is justified. It is not a per-phrase patch.
+
+# 1. Is this a contract omission or an ordering issue?
+
+**Facts (from the source text):**
+- The none classes are ordinary conversation, discussion, quotation, negation, essential clarification and unsupported requests. "Record only" fits none of these. It is a present, sincere utterance that limits scope.
+- "Do not treat keywords … as permission" guards only one direction. Nothing says that a limit word *removes* permission from an imperative embedded in the same utterance.
+- The most specific action-favoring rule is C038's "use local_draft now even if the user did not ask for a generic draft." The only scope-limiting language in the prompt is about *local-only* limits on unavailable actions: "A later user reply limiting the work to local-only…"
+- The N17 spec says "for local use only … Do not include any sending or scheduling." So the model did interpret "Record only" as a limit, but as a no-send limit rather than a no-preparation limit.
+
+**Inference (plausible, not proven):**
+- The model had no contract category for "record/note, don't prepare." It mapped the limit onto the nearest limit concept the prompt does define, which is local-only and no external effects. It then applied C038's draft-now pressure.
+- C040's local-only limiting vocabulary is a plausible attractor. So is the pre-existing "No external sending…" text. As you say, the earlier single N17 pass is not a causal baseline. **C040 is not claimed as cause.**
+- N14 points the same way. The model asked "now or later" right after "Not yet," which means it did not treat postponement as settling the question. Two observations of the same class (an explicit limit not governing) support a general diagnosis over an item-specific one. N14 remains a quality observation, not a criterion.
+
+**Stochastic:**
+- This is n=1 on a provider with no effort, revision or temperature telemetry. Sampling variance cannot be separated from prompt-induced behavior.
+- That does not change the verdict. Fixed criteria are evaluated on the first attempt, and the textual omission is a fact regardless of sampling.
+
+**Native system instruction:** I see no concrete conflict for N17.
+- "Do not offload avoidable writing or planning chores" is scoped to personal-project clarification.
+- The thank-you paragraphs do not apply to an invitation.
+- "PAL host persists accepted sanitized conversation" actually supports none for a record-only request.
+- This remains a known confound, but nothing here demonstrates a gap that needs native or system role changes.
+
+# 2. Is a short precedence rule the minimum safe correction?
+
+Yes, provided it is semantic about *what the limit covers*. A bare "limit words → none" rule would over-block. The over-blocking cases you listed:
+
+| Case | Required behavior | How the rule handles it |
+|---|---|---|
+| "Draft only, don't send" / "I'll send it myself" | local_draft | A limit narrows only what it names. It excludes sending, not drafting. |
+| "Draft a reply saying I'm *not* coming yet" | local_draft | Words inside the requested content are content, not a mode limit. |
+| "Not yet" followed later by "ok, go ahead" | local_draft on the later turn | A later delegating reply is a new request. |
+| Limit plus explicit control/correct on an offered Goal ("stop there, pause it") | control | Explicit control, correction or remember is not blocked. |
+| "Record only: I prefer Tuesdays, remember that" | remember (source-backed) or none | Remember stays governed by the existing explicit-request rule. Do not suggest remember for task notes. |
+| Elliptical delegation ("invitation draft, please" / "just the draft") | local_draft | "Only/just" limits the work to drafting, so it does not prevent drafting. |
+
+**Fake memory claim risk:** a none reply to "record only" might say "Saved!". This is already covered by "Do not claim an action … in a none reply." Rely on that text and do not add more. N16–N18 will test it.
+
+# 3. Exact change (`primary_prompt` only)
+
+**Insert** immediately after `Do not create work for hypothetical/reported/negated requests.` and before `Before any drafting or other action decision, …`:
+
+> `First decide what the user currently authorizes. An explicit limit to recording or noting, discussion only, not yet, or only this far governs any task wording it covers, including an embedded or quoted imperative: use none, do not draft, start or promise that work, and acknowledge the limit naturally. A limit narrows only what it names: "draft only", "don't send" or "I'll send it myself" still requests a draft, and wording inside requested content is content, not a limit. Such a limit does not block an explicit control, correction or remember request. A later reply that delegates the work is a new request: evaluate it normally.`
+
+Everything else stays **byte-identical**:
+- C038 drafting text, including "use local_draft now". The new rule determines whether a request is an "actual local draft request" before that text applies.
+- The C040 gate.
+- Target, memory, authority and injection rules, and the forms list.
+- Native, decoder, validator, Store and host acknowledgement. Verify their hashes are unchanged.
+
+Notes on the wording:
+- **No N14-specific clause** such as "don't ask now-or-later." It would couple a quality observation into the change and would discourage legitimate offers. Record the N14 behavior on the new run either way.
+- **No changes to host or harness.** Any host-side detection of "record only" would be a semantic classifier.
+- **A different diagnostic is not needed.** The omission is established textually. An ablation would sample the known-failed item at n=1, which cannot settle cause and is the kind of retry you excluded.
+
+# 4. Is another autonomous repair justified?
+
+**Yes.** This is conformance to an accepted SPEC sentence that the contract never expressed. It is not tuning toward an observed sample. The rule covers a class (N14, N16–N18) already present in the fixed corpus.
+
+**Correction to my prior review:** my stop rule ("any failure → escalation"; "two candidates failing in new ways → owner decision") was count-based escalation, which D028 excludes. I withdraw it. The right rule is:
+- If a future failure falls in a class the contract **does** state clearly, that is evidence about instruction-following capability or variance. The next step is reviewer diagnosis, possibly a structural question that requires SWE review, not another phrase.
+- If a failure reveals another **unstated SPEC requirement**, a conformance repair remains autonomous.
+
+**No owner question exists now.**
+- The meaning of "Record only" is fixed by the SPEC.
+- The independent12 policy (zero FP, recall reported) is already accepted.
+- The model's "local-only" reading is not a value question to re-open. Doing so would weaken a fixed criterion.
+
+# 5. Is the verification plan proportionate?
+
+Yes. Nothing smaller can settle cause, because n=1 ablations cannot, and the textual fact already justifies the edit. Proceed as you described:
+- Freeze the source before disclosure.
+- Run the fixed40 negative-first, then the R items, then a fresh independent12, on first attempt with fail-stop.
+- Use one-use proofs and caps of 24/16/16/16.
+- Retain all historical runs.
+
+Adjustments:
+- **N17 is now design-contaminated** for the edit author. Run it as part of the fixed corpus, but label it that way. The independent12 is the clean generalization evidence.
+- **Suggested independent12 mix** (written by someone else and frozen before the edit; illustrative only):
+
+| Count | Utterance type | Expected |
+|---|---|---|
+| 3 | Limit + embedded imperative in English and Japanese (record/note-only, まだいい "not yet", discuss-only) | none |
+| 2 | Over-block guards: draft-only/don't-send, and negation inside requested content | local_draft |
+| 1 | Later delegation after a limit (two-turn) | local_draft |
+| 1 | Limit + explicit control on an offered Goal | control |
+| 1 | Limit + explicit source-backed remember | remember or none, no fake claim |
+| 2 | C040 guards: draft-and-send compound, and a draft the user will send | none / local_draft |
+| 1 | C038 guard: personalization-heavy draft with no "generic" cue | local_draft |
+| 1 | Essential user-owned choice | none + one grouped question |
+
+**Still unproven even if everything is green:**
+- Run-to-run stability.
+- Qwen3.8-27B qualification.
+- Generalization of limit phrasings beyond the sampled items.
+- Running-cancel and late-result observation (pre-existing).
+- Human judgment of how natural limit acknowledgements feel, including the N14 style.

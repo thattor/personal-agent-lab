@@ -1,0 +1,11 @@
+{
+  "disclosed_at": 1791400270.803322,
+  "product_frozen_at": 1791399601.320172,
+  "product_identity": "content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5",
+  "corpus_sha256": "8aa8be82dc5444c3349790b180f24f2aa9591c814cf3fdd24aa283eeaf0de13f",
+  "source_freeze_before_controller_read": true,
+  "corpus_byte_count": 22066,
+  "product_changes_after_disclosure_permitted": false,
+  "semantic_status": "NOT_RUN",
+  "human_evaluation": false
+}

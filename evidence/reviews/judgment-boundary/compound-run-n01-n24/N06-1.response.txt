@@ -1,0 +1,1 @@
+{"reply":"\"Make a draft\" means I write a first version of something for you, like an email, message, note, or plan, and keep it here for you to review. Nothing gets sent or posted; you can edit it, ask me to revise it, or use it yourself. Want me to draft something?","action":{"kind":"none"}}

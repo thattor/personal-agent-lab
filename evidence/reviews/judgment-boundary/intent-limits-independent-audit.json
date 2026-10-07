@@ -1,0 +1,122 @@
+{
+  "schema": "pal-intent-limits-independent-audit-v1",
+  "audited_at": 1791400394.0562649,
+  "baseline": "158bd480191f289ddaec58fa0bce558c65443d92",
+  "status": "NO_SUBSTANTIATED_BLOCKER",
+  "findings": [],
+  "checks": {
+    "only_adopted_reconciled_precedence_paragraph_added": true,
+    "all_historical_cohort_tuples_unchanged": true,
+    "exact_four_new_aliases": true,
+    "unchanged_fixed_input_n01-n24": true,
+    "unchanged_fixed_input_r01-r08": true,
+    "unchanged_fixed_input_r09-r16": true,
+    "functional_harness_unchanged": true,
+    "current_manifest_valid": true,
+    "evidence/reviews/judgment-boundary/primary-candidate-freeze.json_immutable": true,
+    "evidence/reviews/judgment-boundary/primary-candidate-freeze.json_same_product_set_only_primary_changed": true,
+    "evidence/reviews/judgment-boundary/primary-candidate-freeze.json_rejects_changed_product": true,
+    "evidence/reviews/judgment-boundary/primary-clarification-candidate-freeze.json_immutable": true,
+    "evidence/reviews/judgment-boundary/primary-clarification-candidate-freeze.json_same_product_set_only_primary_changed": true,
+    "evidence/reviews/judgment-boundary/primary-clarification-candidate-freeze.json_rejects_changed_product": true,
+    "evidence/reviews/judgment-boundary/primary-compound-candidate-freeze.json_immutable": true,
+    "evidence/reviews/judgment-boundary/primary-compound-candidate-freeze.json_same_product_set_only_primary_changed": true,
+    "evidence/reviews/judgment-boundary/primary-compound-candidate-freeze.json_rejects_changed_product": true,
+    "metadata_author_freeze_precedes_product_freeze": true,
+    "heldout_binding_metadata_only": true,
+    "accepted_twelve_cap_no_extra_gate_metadata": true,
+    "product_records_pre_disclosure": true,
+    "crash_test_only_blocks_after_real_kill": true,
+    "crash_assertions_unchanged": true,
+    "original_failure_retained": true,
+    "reported_post_fix_tests_green": true,
+    "d028_and_acceptance_preserved": true,
+    "recorded_author_product_disclosure_chronology": true,
+    "reviewed_sources_still_match": true
+  },
+  "source_sha256": {
+    "pal/primary.py": "76af815ed8e12dba49931129a2bcb1fe00c68b028f03b089fa467872bd7d13c2",
+    "pal/native.py": "0f01c24826a261dac4b82d42922b47a74be839067ba59feb694c3db9914e09dc",
+    "pal/runtime.py": "be8cf426e88cbe8a069d5f3bf780f0f6bc67c128d19effa3f812a84d2207ff1b",
+    "pal/store.py": "32cef5c7d6a84770847de805fd6e72c57ff811818b404746bd74ac3d07efcb45",
+    "scripts/primary_qualification.py": "490c349d6cdcfd66ebb138fc847bfaf5d1c9042dd775acfe906db72a3224da19",
+    "tests/test_primary_qualification.py": "c9fb6c75b8cd141d53b4598df635ec3d501168c541eb218bf98c1a4e44539c6a",
+    "tests/test_primary_runtime.py": "ae0c3e3ac258a4e006eb67e28ce35de8cb926ec6f0e50beadf0247252ebbfa85"
+  },
+  "historical_manifests": [
+    {
+      "path": "evidence/reviews/judgment-boundary/primary-candidate-freeze.json",
+      "sha256": "1736095ccbee1f221f0ff062b59593cae4139de739cfd88c93586d0e694be2e2",
+      "candidate": "1a14de986de2756ffea83c2671e506a32cccfdf6"
+    },
+    {
+      "path": "evidence/reviews/judgment-boundary/primary-clarification-candidate-freeze.json",
+      "sha256": "95c85537542df7747660c7917a0bcae580f06476e2f71c5b6945bc5434fe0885",
+      "candidate": "content:sha256:7c2847336e2ba32d062e5210021270e549d3b6c6f13424d07d456000d24cba57"
+    },
+    {
+      "path": "evidence/reviews/judgment-boundary/primary-compound-candidate-freeze.json",
+      "sha256": "edf9f17986c783c83dba718ecdfdd705c99024c6d0e0882f619cf37609c377b2",
+      "candidate": "content:sha256:60df1d0e919ff7f45dc527581bae897ecd3750858b96dd104804ecd83c87eba2"
+    }
+  ],
+  "new_manifest": {
+    "path": "evidence/reviews/judgment-boundary/primary-intent-limits-candidate-freeze.json",
+    "sha256": "710bc2bf6bab2529b62cbbadcf0b2abc3e4c97fc8a406b00f35d18cc41ab3062",
+    "candidate": "content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5",
+    "frozen_at": 1791399601.320172
+  },
+  "heldout_review": {
+    "contents_opened_by_this_auditor": false,
+    "metadata_sha256": "91f619983f7b8e9e6f75aaf488dacd771e3a7a5b1f8244b2efe71a6048e82919",
+    "declared_corpus_sha256": "8aa8be82dc5444c3349790b180f24f2aa9591c814cf3fdd24aa283eeaf0de13f",
+    "author_freeze_at": 1791399510.681713,
+    "literal_fixture_hash_independently_verified": false,
+    "literal_feasibility_independently_reviewed": false,
+    "scope": "Only author freeze metadata, cohort constant binding and recorded chronology reviewed. No corpus byte read or fixture validation executed.",
+    "disclosure": {
+      "path": "evidence/reviews/judgment-boundary/intent-limits-heldout-disclosure.json",
+      "sha256": "da946d9b49a97141d8ec78c9db0af61af1f04efcf4347616edbd21e70a25804a",
+      "disclosed_at": 1791400270.803322,
+      "chronology_valid": true,
+      "auditor_did_not_open_corpus": true
+    }
+  },
+  "crash_test_assessment": {
+    "observed": "Before-model subtest reached -9 returncode assertion, then failed because provider marker existed. Fault callback requested SIGKILL from the Primary worker and originally returned directly to provider.complete.",
+    "diagnosis": "Signal-request versus process-termination ordering race is a supported hypothesis; kernel scheduling and delivery were not instrumented, so exact causal mechanism remains unproven.",
+    "fix_assessment": "Blocking the faulting thread immediately after os.kill makes the injected boundary precise while real SIGKILL still terminates the process. Timeout, -9 returncode, before/after marker expectations, interrupted replay, zero further model calls and zero Goals remain unchanged. Proportionate test-only correction; no product recovery change or weakened assertion.",
+    "verification_scope": "Read root-produced logs: retained 75-test one-failure red; 75 targeted PASS, 30 repeated crash tests PASS, 249 full tests PASS. Auditor did not rerun tests. These passes support the correction but do not prove the inferred kernel cause.",
+    "other_callback": "The distinct transaction-crash callback remains unchanged; no unrequested broad test refactor was made.",
+    "stress_scope": "30 repetitions of the unchanged two-boundary assertions: 60 child processes observed as SIGKILL (-9), with both boundary and restart/no-replay checks retained."
+  },
+  "test_log_readback": {
+    "intent-limits-crash-race-red.txt": {
+      "sha256": "d532b57e209a821e7959f04eaf551ce3087d7e8c400b35faa6debac8d4d2b687",
+      "summary": "----------------------------------------------------------------------\nRan 75 tests in 5.000s\n\nFAILED (failures=1)"
+    },
+    "intent-limits-targeted-green.txt": {
+      "sha256": "ed0f725b550e30d938757489417f1fd363748df7a1bdae88d1faad88234fc458",
+      "summary": "----------------------------------------------------------------------\nRan 75 tests in 4.497s\n\nOK"
+    },
+    "intent-limits-crash-boundary-stress.txt": {
+      "sha256": "c8f133d9d65d7b43e1f4b49f7a44693d63a253c0e7362264cd132f6abe1a47be",
+      "summary": "----------------------------------------------------------------------\nRan 30 tests in 2.709s\n\nOK"
+    },
+    "intent-limits-full-green.txt": {
+      "sha256": "f52d377f50ea3c3e9e7665fdf115a44d1daf40916171bca23f2a5eb18c047035",
+      "summary": "----------------------------------------------------------------------\nRan 249 tests in 19.421s\n\nOK"
+    }
+  },
+  "limitations": [
+    "Static prompt conformance is not actual semantic performance.",
+    "No heldout contents, provider, auth or old databases were accessed.",
+    "Freeze timestamps are recorded evidence, not independent proof of every prior read."
+  ],
+  "source_edits_by_auditor": false,
+  "provider_calls": 0,
+  "writes": [
+    "runtime/intent-limits-independent-audit.json"
+  ],
+  "audit_readback_note": "The initial disclosure append assumed the prior-generation field heldout_sha256 and exited with KeyError before writing. The current schema was read back and its actual corpus_sha256 field checked. Future generation-specific records should be inspected before reusing field names."
+}

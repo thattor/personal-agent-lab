@@ -1,0 +1,82 @@
+test_added_removed_web_and_symlink_product_files_fail_closed (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_closed_cohort_mapping_preserves_old_bindings (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_compound_cohorts_reuse_fixed_inputs_and_have_separate_product_binding (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_freeze_rejects_malformed_missing_and_inexact_manifests (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_historical_freeze_fails_current_product_while_new_match_succeeds (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_intent_limits_cohorts_bind_fresh_source_without_redirecting_compound (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_isolated_root_has_only_known_corpora_and_real_hash_checks (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_legacy_old_cohort_record_remains_verifiable_without_new_fields (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_live_mismatch_precedes_clean_proof_and_owner_construction (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_new_opened_record_binds_selected_freeze_and_verifier_rejects_tampering (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_pin_tracks_selected_freeze_and_current_product_only (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_runner_mismatch_precedes_owner_claim_and_run_directory (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_source_drift_stops_runner_before_provider_invocation (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_untrusted_manifest_paths_are_rejected_before_file_reads (tests.test_primary_qualification.FreezeQualificationTests) ... ok
+test_expiry_between_grant_and_call_does_not_contact_provider (tests.test_primary_qualification.PrimaryGateTests) ... ok
+test_response_after_deadline_is_not_returned (tests.test_primary_qualification.PrimaryGateTests) ... ok
+test_twenty_four_attempt_cap_and_single_use_permit (tests.test_primary_qualification.PrimaryGateTests) ... ok
+test_wrong_prompt_does_not_use_a_slot_or_provider (tests.test_primary_qualification.PrimaryGateTests) ... ok
+test_decode_and_provider_failure_are_visible_and_settled (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_every_frozen_fixture_has_exact_host_and_offered_bindings (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_initial_journal_failure_still_stops_owned_provider (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_new_cohort_excludes_observed_cases_and_preserves_untested_cases (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_next_requires_judgment_and_turn_two_uses_actual_reply (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_oracle_canary_never_reaches_provider (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_post_deadline_response_is_retained_but_input_is_rejected (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_raw_unsafe_proposal_retained_before_host_rejection (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_read_only_verification_detects_changed_raw_proposal (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_snapshot_omission_is_setup_failure_before_a_model_call (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_unknown_cohort_cannot_invoke_provider_or_create_run (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_verify_is_read_only_and_old_run_cannot_resume (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_wrong_offered_target_can_apply_but_cannot_receive_semantic_pass (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_ask_uses_actual_reply_and_frozen_answer_then_one_goal (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_completed_plan_requires_real_successful_call_lifecycle (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_delegate_skips_answer_without_input_or_call_and_finishes_one_case (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_duplicate_capture_cannot_replace_judged_action_to_justify_skip (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_eleven_worst_case_calls_rejected_before_suffix_run_creation (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_failure_never_skips_or_completes (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_frozen_suffix_is_exact_unexecuted_cases_and_smaller_owner (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_goal_count_rejects_incorrect_controller_pass (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_invalid_conditional_schema_and_budget_rejected_before_run_creation (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_invalid_matrix_precedes_live_provider_and_proof_construction (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_live_native_owner_and_record_use_cohort_bound (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_missing_actual_stored_reply_cannot_admit_answer (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_one_skipped_case_does_not_complete_unexecuted_cases (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_second_question_cannot_pass_or_skip (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_sixteen_call_gate_is_effective (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_ten_call_suffix_gate_rejects_eleventh_before_provider (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_verifier_rejects_call_on_justified_skipped_turn (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_verifier_rejects_unjustified_skip_even_with_valid_chain (tests.test_primary_qualification.RecognitionQualificationTests) ... ok
+test_immutable_old_manifest_and_real_new_freeze_have_only_primary_change (tests.test_primary_qualification.RepositoryFreezeTests) ... ok
+test_admission_is_durable_and_same_key_conflicts_before_any_effect (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_ambiguous_primary_clarification_crash_is_atomic_and_replays_without_selection (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_answer_uses_original_ingress_and_binds_nonlatest_question_once (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_cancel_and_forget_between_prepare_and_finish_reject_stale_result (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_closed_json_rejects_duplicates_authority_and_paraphrased_answer (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_concurrent_admission_and_finish_publish_one_effect_and_reply (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_correct_retains_fixed_criteria_and_source_bindings (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_diagnostic_wait_not_in_snapshot_and_overflow_has_no_partial_target_set (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_draft_commit_reply_and_replay_are_one_atomic_outcome (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_expected_mid_effect_failure_rolls_back_before_rejection_is_saved (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_none_and_fabricated_target_never_fall_back_to_latest_goal (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_primary_correction_crash_rolls_back_fence_or_commits_one_bound_revision (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_primary_snapshot_has_no_content_and_long_keys_have_bounded_internal_keys (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_real_process_deaths_do_not_leave_partial_effects_or_replay_inference (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_recovery_interruption_and_provider_failure_are_terminal_without_retry (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_remember_keeps_original_source_and_forget_stops_reference_without_purge (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_primary_crash (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_primary_crash (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_primary_crash
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+ModuleNotFoundError: No module named 'tests.test_primary_crash'
+
+
+----------------------------------------------------------------------
+Ran 67 tests in 3.683s
+
+FAILED (errors=1)
