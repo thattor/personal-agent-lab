@@ -1,0 +1,1 @@
+PASS: shipped UI renders five bound questions, tolerates diagnostic wait, preserves drafts, posts exact binding and labels stale preview.

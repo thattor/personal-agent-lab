@@ -121,6 +121,42 @@ class HTTPTests(unittest.TestCase):
         self.assertEqual(self.request('/api/message',{'key':'x','text':'x'},headers={'Origin':self.base,'Content-Type':'text/plain'})[0],400)
         self.assertEqual(self.post({'key':'big','text':'x'*70000})[0],413)
 
+    def test_artifact_status_readonly_and_forget_stale(self):
+        self.assertTrue(self.runtime.idle.wait(2))
+        store = self.runtime.store
+        source = store.record('source','user','Friday')
+        store.create_goal('g','Draft Friday',{'kind':'local_draft','max_bytes':4096},[source['id']])
+        attempt = store.claim()
+        receipt = store.write_draft(attempt['id'],'Friday draft')
+        store.complete(attempt['id'],receipt['id'])
+        route = '/api/artifact_status/' + receipt['artifact_id']
+        before = store.inspect()
+        status, body, _ = self.request(route)
+        self.assertEqual(status,200)
+        self.assertEqual(json.loads(body),{'role':'draft','reason':'','stale':False})
+        self.assertEqual(self.post({'key':'bad','text':'mutate'},path=route)[0],405)
+        self.assertEqual(store.inspect(),before)
+        store.forget('forget-source',source['id'])
+        self.assertTrue(json.loads(self.request(route)[1])['stale'])
+        self.assertEqual(self.request('/api/artifact/'+receipt['artifact_id'])[1], b'Friday draft')
+        self.assertEqual(self.request('/api/artifact_status/unknown')[0],404)
+
+    def test_explicit_question_answer_http_rejects_wrong_binding(self):
+        self.assertTrue(self.runtime.idle.wait(2))
+        store = self.runtime.store
+        goal = store.create_goal('g','Draft invitation',{'kind':'local_draft','max_bytes':4096})
+        waiting = store.waiting(store.claim()['id'],'Which date?')
+        payload = {'key':'answer','text':'Saturday','goal_id':goal['id'],'control':{
+            'action':'input','text':'Saturday','question_id':waiting['question_id'],'epoch':waiting['epoch']+1}}
+        before = store.inspect()
+        self.assertEqual(self.post(payload)[0],400)
+        self.assertEqual(store.inspect(),before)
+        payload['control']['epoch']=waiting['epoch']
+        self.assertEqual(self.post(payload)[0],202)
+        self.assertTrue(self.runtime.idle.wait(2))
+        self.assertEqual(store.get_goal(goal['id'])['state'],'completed')
+        self.assertEqual(store.inspect()['questions'][0]['status'],'answered')
+
     def test_lost_ack_fate_can_be_queried_without_duplicate_effect(self):
         self.post({'key':'lost-ack','text':'Make a draft'})
         status,body,_=self.request('/api/operation/lost-ack')

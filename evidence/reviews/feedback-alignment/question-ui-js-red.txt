@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: all waiting questions, not last3; no phantom form
+    at /private/tmp/personal-agent-lab-stable0-20261006/tests/ui/question-flow.cjs:29:45 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 0,
+  expected: 5,
+  operator: '==',
+  diff: 'simple'
+}

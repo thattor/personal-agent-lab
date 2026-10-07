@@ -1,0 +1,25 @@
+test_artifact_status_readonly_and_forget_stale (test_http.HTTPTests) ... FAIL
+test_conversation_draft_and_inspect_artifact (test_http.HTTPTests) ... ok
+test_conversational_remember_and_forget (test_http.HTTPTests) ... ok
+test_duplicate_client_message_and_invalid_fields (test_http.HTTPTests) ... ok
+test_duplicate_natural_forget_keeps_original_target_binding (test_http.HTTPTests) ... ok
+test_explicit_question_answer_http_rejects_wrong_binding (test_http.HTTPTests) ... ok
+test_host_bound_selection_http_and_guarded_state (test_http.HTTPTests) ... ok
+test_inspect_is_read_only_and_cross_origin_cannot_mutate (test_http.HTTPTests) ... ok
+test_lost_ack_fate_can_be_queried_without_duplicate_effect (test_http.HTTPTests) ... ok
+test_ui_csp_no_inline_model_html_and_request_bounds (test_http.HTTPTests) ... ok
+test_default_is_mock_and_live_options_do_not_create_store (test_http.ProviderStartupTests) ... ok
+test_live_startup_requires_valid_proof_before_runtime (test_http.ProviderStartupTests) ... ok
+
+======================================================================
+FAIL: test_artifact_status_readonly_and_forget_stale (test_http.HTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 135, in test_artifact_status_readonly_and_forget_stale
+    self.assertEqual(status,200)
+AssertionError: 404 != 200
+
+----------------------------------------------------------------------
+Ran 12 tests in 5.345s
+
+FAILED (failures=1)
