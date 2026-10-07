@@ -1,0 +1,24 @@
+{
+  "head_before_documentation": "71955ea",
+  "candidate": "605791e723df31df454ad082423d3b5a7205c0e7",
+  "consecutive_condition_turns": [
+    "Corrective run2 completion/evidence commit and authentic judgment handoff",
+    "First continuation: live presentation completed and readiness audit92 tests PASS",
+    "Second continuation: same terminal presentation and no human answer; parent/global Issue progress synchronized"
+  ],
+  "judgment_id": "HR-STABLE1-001",
+  "latest_human_window_turn": "01a114dd-bcc3-7240-a102-0049a118720f",
+  "turn_status": "completed",
+  "window_status": "idle",
+  "authentic_answer": "NOT_RECEIVED",
+  "other_dependencies": [
+    "HR-PLAN-001 future plan activation authentic adoption absent",
+    "HR-PERM-001 Projects human device permission completion absent"
+  ],
+  "accepted_independent_work": "none remains after runtime/test/evidence/handoff/readiness/parent synchronization",
+  "tests": "92 PASS at71955ea; no pal/tests changes since candidate605791e",
+  "new_tests_or_provider_calls": "none needed for Issue/documentation-only synchronization",
+  "goal_completion": "NOT_ACHIEVED",
+  "next_action": "Receive authentic version-bound usefulness/plan/permission answer, apply only its scope, resume correction or final audit/adopted dependent development",
+  "blocked_threshold": "same human-dependent condition across original goal turn and two continuations; no live execution handle to wait on"
+}
