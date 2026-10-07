@@ -1,0 +1,9 @@
+{
+  "proposal": "P-002 v1",
+  "sha256": "142469f2a0d113ae82358b3e12c3384915b82e11b73a3035f05495ff412a6950",
+  "status": "PROPOSED",
+  "judgment_id": "HR-SCOPE-001",
+  "human_adoption": null,
+  "runtime_baseline": "605791e723df31df454ad082423d3b5a7205c0e7",
+  "review_limits": "Official Opus text-only summary review; no independent source read or implementation proof"
+}

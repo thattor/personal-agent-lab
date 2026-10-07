@@ -1,0 +1,131 @@
+# Design review: missing-content alignment for N1-07
+
+I worked only from your summary. I did not read STATE, SPEC, DESIGN, ACCEPTANCE, DECISIONS or the feedback evidence. Any claim below about the current docs depends on that summary.
+
+## 1. Is this the smallest alignment?
+
+Nearly. Three corrections would make it smaller and safer.
+
+1. **Split the delta into two parts, because only one is truly new scope.**
+   - **Part A, no silent completion.** The human rejected blank dates and venue as final handling. Marking a draft incomplete is arguably remediation of the failing N1-07 criterion, not new scope. It needs a structured status from the draft call and a host rule that never marks a Goal complete with unresolved essential fields.
+   - **Part B, the question-and-answer loop.** This covers detecting missing content, asking one bound question, binding the answer and resuming. This is the real scope delta, because it changes the P001v1 decision to defer it to Stable1.1.
+
+   Proposing both together inflates what the human must approve.
+2. **Use one structured draft call, not a separate proposal step.** That keeps the "not 4 model calls" property and stays inside the D020 32-call budget. The envelope would hold:
+   - `status`: complete, needs_input or incomplete_preview
+   - `missing[]`
+   - `known[]` with `source_ids`
+   - `question?`
+   - `placeholder_request_span?`
+   - `draft_text?`
+3. **Make "source-backed" mean something the host can check.** The host cannot verify that a value is true. It can verify that:
+   - each cited `source_id` was in this WorkOrder's context pair-list;
+   - the cited record is still usable and not forgotten at accept time;
+   - the value string appears in the cited record, or the field is downgraded to missing.
+
+   Without that check, "source-backed" is just a model assertion.
+
+Your proposal does not cover the case where the envelope is invalid or unparseable. Fail closed:
+- record the failure;
+- make no completion claim;
+- show raw text, if any, only as a preview the host labels "unverified/incomplete";
+- do not retry beyond the existing call bound.
+
+That preserves deterministic safety without claiming the system understands every phrasing perfectly.
+
+## 2. Which human requests already match, and which need a design change
+
+| Human guidance | Status |
+|---|---|
+| Natural spoken requests | **Matches.** Responder handles conversation. Not perfect first time is accepted; D024 handles correction. |
+| Imperfect reversible draft that can be corrected or discarded | **Matches.** The existing draft artifacts, D024 correction/cancel and the stale fence cover it. A1/B/C and cancel were accepted. |
+| Ordinary context, routing and preparation mostly in Primary | **Matches** the Primary host design. |
+| Expert follows a defined procedure, investigates within its capability, and escalates material changes with evidence and a recommendation | **Matches.** See §3. |
+| No new source access; no automatic procedure promotion | **Matches.** Do not read calendars even if the example mentions a schedule. |
+| Search memory, conversation and authorized sources first | **Mostly matches.** The bounded usable store (recent 30 records, first 20 notes) already exists. The gap is that the draft provider cannot report which facts it took from those sources. Envelope `known[]` closes this. |
+| Ask only what remains unknown and indispensable | **True change (Part B).** |
+| Do not silently blank dates or venue | **True change (Part A).** Small, and arguably remediation. |
+
+## 3. Does "Expert follows a defined procedure" fit a thin outcome owner plus Executor?
+
+Yes. It needs a vocabulary mapping in DESIGN, not a rewrite of responsibilities:
+
+- **Defined procedure** = fixed criteria plus the WorkOrder contract.
+- **Investigates within capability** = the Executor works only over the WorkOrder's context pair-list. No shell, no search, no new sources.
+- **Material procedure change** = Expert writes an evidence bundle plus a recommendation, and the change waits for human adoption. Nothing is promoted automatically.
+
+The risk is that "investigate" gets read as permission to search. State explicitly that "investigate" never widens the WorkOrder's source set.
+
+Asking for missing content is **not** a procedure change. It is the procedure working as designed. It must not route through Expert escalation, or every lunch request becomes a governance event.
+
+## 4. Approval vehicle
+
+**Recommendation:** a narrow Stable1 amendment, for example D025 "N1-07 remediation: essential missing content". It moves only this one deferred item from Stable1.1 into Stable1. The full P001 stays frozen and Stable1.1 stays unactivated.
+
+Reasons:
+- N1-07 is a Stable1 criterion and is not PASS. Stable1 is unfinished either way, so fixing it there adds no artificial ordering.
+- Activating Stable1.1 implies a later milestone and invites scope creep from the rest of the frozen P001.
+- Under global governance it still needs Opus agreement and then targeted human adoption, because it reverses an explicit deferral.
+
+## 5. Proposed scope and invariants
+
+**Scope:**
+- the structured draft envelope and host validation;
+- the incomplete-preview label;
+- one bound question per Goal revision;
+- answer binding and a single resume.
+
+**Out of scope:**
+- per-domain templates or field schemas;
+- a DAG or new agent;
+- external sources;
+- multi-turn interviewing.
+
+**Invariants:**
+1. The model proposes and the host decides. The model never writes canonical state.
+2. A Goal is never marked complete while any essential field is missing, unless a placeholder request is verified. Verified means the cited span exists verbatim in a user turn of this Goal.
+3. At most one outstanding question per Goal revision and epoch. Several missing fields go into **one** concise question (for example, date and venue together).
+4. `waiting_input`, the question record and the event are persisted atomically. The question is bound to the Goal, revision, epoch and source IDs.
+5. An answer is accepted only if:
+   - it matches the pending question;
+   - it passes dedupe;
+   - it is not stale (an epoch or revision change makes it stale, under the whole-snapshot fence);
+   - its sources have not been forgotten in the meantime.
+
+   An ambiguous target goes through the D024 table: the host asks which Goal, and never guesses.
+6. Resume happens once, on the same Goal, with the same fixed criteria. Provenance records the answer's source as "human answer to Q<id>".
+7. The existing English `answer` command path stays valid for prompts that have no question binding. This avoids a regression and needs a test.
+8. All existing safeguards are unchanged: mock by default, D020 single-use 900-second budget, no paid fallback, old DBs untouched.
+
+## 6. Finite acceptance criteria (mock by default, plus one bounded real run)
+
+1. **Known from memory.** Date and venue are in the usable store, so status is complete. `known[]` cites valid IDs and no question is asked.
+2. **Absent.** Status is `needs_input`. Exactly one question names both date and venue, and `waiting_input` is persisted atomically.
+3. **Explicit generic request.** Status is `incomplete_preview`. The span is verified, no question is asked, and the host label lists the missing fields.
+4. **Answer.** A bound answer resumes the same Goal once, and the draft contains the answered values with provenance.
+5. **Stale answer.** A Goal revised after the question rejects the answer as stale.
+6. **Forgotten source.** If a cited record is forgotten before acceptance, that value is downgraded to missing.
+7. **Invented citation.** A cited ID outside the WorkOrder causes rejection, the field is treated as missing, and no completion occurs.
+8. **Invalid envelope.** Fail closed. Raw text is shown only as an unverified preview.
+9. **Duplicate answer.** A deduplicated answer causes no second resume.
+10. **Regression.** The existing `waiting_input` and `answer` path and all 92 tests still pass.
+11. **Human re-evaluation.** A human re-evaluates N1-07 on the lunch case. It stays FEEDBACK_RECEIVED until that happens.
+
+**Lunch case:**
+- "Draft an invite for lunch with Sato next week". If memory holds "Thu 12:30, Ume-ya", produce the draft with citations and ask nothing.
+- With no memory, ask once: "Which day and where for lunch with Sato?"
+- With "just give me a generic template", produce a preview labeled "Incomplete: date, venue not set".
+
+## 7. The one human decision
+
+> "Adopt D025: move only 'essential missing content' (bound single question, verified incomplete preview, no silent blanks) into Stable1 to remediate N1-07, using existing context and sources only; the rest of P001 stays frozen. Yes / No."
+
+## 8. Independent work that can proceed before adoption
+
+- Regression tests that pin the current `waiting_input` and `answer` behavior.
+- Mock fixtures for the three lunch cases. Write them as expected-failing or xfail against current code, so the gap is documented and nothing is claimed.
+- Preserving the N1-07 evidence and recording the rejection verbatim with its source IDs.
+- Prototyping envelope parsing and validation as a pure function with no wiring, if your rules count that as routine accepted implementation. If they do not, hold it.
+- No real-model calls for this feature until adoption. Do not spend D020 budget early.
+
+**Biggest risk:** letting "the model judged it essential" become the only gate. Keep the host checks (citation membership, verified span, never completing with missing fields) as the deterministic floor, and accept that phrasing coverage stays imperfect.

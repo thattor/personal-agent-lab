@@ -1,0 +1,52 @@
+# D027 review: agree with the scope, with conditions
+
+**Verdict:** I agree this is the smallest coherent scope. Your corrections from the source are right. WorkOrder.context has no IDs, waiting_input/answer is always bound to question_id and epoch, and D024 covers correction and cancel only. I found no product regression in the proposal as written. There are five places where wording could quietly widen scope, and they should be fixed before the human sees the confirmation.
+
+(I did not run the trailing Python. The request said no tools, and the script would write files and make live calls.)
+
+## Hidden-expansion risks to close in the wording
+
+1. **"Provided conversation/notes."** "Notes" must mean only notes already inside the bounded context the host delivers today. Otherwise it reads as permission to fetch notes, which is a new source-access grant. Suggested wording: "only content already present in the existing bounded context; no new retrieval of any kind."
+
+2. **ID-bearing view for known[] citations.** Treat this as SWE implementation of an existing read permission, not a new data surface. Two product invariants should still be stated:
+   - The view exposes no content beyond the existing sanitized context.
+   - Forgetting a source invalidates any citation and any draft fact that depends on it, and the result is visible.
+
+   If the view cannot meet both, D027 should fall back to drafts without citations. It should not widen what is exposed.
+
+3. **Partial-answer follow-up.** "Bounded follow-up per reviewed budget" is fine as long as the product fixes the terminal behavior, even though the number itself is left to SWE. When the budget runs out, the result is a visibly incomplete preview. It is never fabricated completion and never a silent failure. Otherwise the follow-up rule becomes an open-ended clarification loop. Rule: at most one outstanding question at a time, with no permanent cap of one question total.
+
+4. **Which role asks.** The proposal should state that the question goes through the host's existing waiting_input path, tied to the same WorkOrder. No role gains new authority to originate interaction. The Executor should not decide essentialness on its own unless the WorkOrder's defined method says so. Otherwise the role mapping changes in practice even though it is "unchanged" on paper.
+
+5. **Cost.** The extra question-and-resume turn should count against the existing cost limits. It should not get a separate allowance.
+
+## Regression checks
+
+The "unchanged" list should explicitly cover these:
+
+- **Generic or creative requests** still draft without a question.
+- **Requests with sufficient known facts** produce no question.
+- **Stale answers** (epoch changed, source forgotten, WorkOrder revised) are rejected visibly. The work does not resume on them.
+- **Question text** is sanitized the same way as preview content, because it may echo source material.
+- **Placeholders in incomplete previews** cannot be mistaken for final content.
+
+## Evidence framing
+
+- N105's historical PASS stands, but it does not cover D027 behavior. The new behavior needs its own evidence over the finite set of scenarios: known, absent, explicit-generic, answered, partial, stale, forgotten, and invalid.
+- Do not say D027 resolves N107 until the human confirms it.
+- Accepted residual risk: the model may misjudge essentialness, asking too often or too rarely. Evaluation can observe this, but nothing guarantees against it. Your rejection of LLM-completeness as proof is correct. Literal membership plus usability is a necessary floor, not proof that a claim is true.
+
+## Accepted vs. pending
+
+| Already settled | Pending D027 amendment, needs one human confirmation |
+|---|---|
+| Human direction toward essential clarification | Reversing the G001 explicit deferral for this narrow addition |
+| Stable1 invariants (host validation, dedupe, epoch, forget/recover, cost, visible failure) | Grouped single question with bounded follow-up and incomplete-preview fallback |
+| Role mapping, no new agents/templates/tools, P001 not adopted, Stable1.1 not activated | Product requirement that known facts be verifiable against provided sources (mechanism left to SWE) |
+| N105 historical PASS | N107 resolution status |
+
+No source writes and no live product calls happen before the human adopts D027.
+
+## Suggested single confirmation for the human
+
+> "Reverse the G001 deferral only for this: in Stable1 local drafts, when required facts are missing or ambiguous in the already-provided context, PAL may ask one grouped question for that same work. Clarification stays bounded. If facts remain unresolved, the result is a visibly incomplete preview, never invented content. Nothing else in Stable1 or Stable1.1 changes. Approve?"

@@ -1,0 +1,19 @@
+{
+  "verified_at": 1791363343.555758,
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "ui": {
+    "plan": "Pro",
+    "session_used_percent": 28,
+    "week_used_percent": 19,
+    "extra_credits": false,
+    "purchased": "$0",
+    "monthly_spent": "$0.00",
+    "auto_reload": false
+  },
+  "route": "official_claude_pro",
+  "calls": "one bounded design review; no paid fallback"
+}
