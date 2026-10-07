@@ -89,13 +89,17 @@ def build_live(root, directory, proof_path, candidate):
     owner._operator_ready = True
     runner = MatrixRunner(root,directory,root/'tests/fixtures/p002_real_ui_v1.json',
                           owner,scope='live_synthetic',candidate=candidate)
-    owner.sink = runner.journal.append
-    runner.journal.append({'event':'operator.config','command':command,
-                          'cli_version':version.stdout.strip(),
-                          'python_version':sys.version,'provider_identity':owner.identity,
-                          'access_proof':{'verified_at':proof.verified_at,
-                                          'route':proof.route,'no_extra_charge':True},
-                          'native_slots':20,'human_evaluation':False})
+    try:
+        owner.sink = runner.journal.append
+        runner.journal.append({'event':'operator.config','command':command,
+                              'cli_version':version.stdout.strip(),
+                              'python_version':sys.version,'provider_identity':owner.identity,
+                              'access_proof':{'verified_at':proof.verified_at,
+                                              'route':proof.route,'no_extra_charge':True},
+                              'native_slots':20,'human_evaluation':False})
+    except BaseException:
+        runner.close()
+        raise
     return runner
 
 

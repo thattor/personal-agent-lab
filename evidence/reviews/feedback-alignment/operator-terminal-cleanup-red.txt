@@ -1,0 +1,20 @@
+test_config_record_failure_closes_constructed_runner (test_live_operator.LiveOperatorTests) ... ok
+test_dirty_or_wrong_candidate_rejected_before_auth (test_live_operator.LiveOperatorTests) ... ok
+test_live_owner_cannot_bypass_operator_proof_consumption (test_live_operator.LiveOperatorTests) ... ok
+test_runner_teardown_continues_when_terminal_evidence_fails (test_live_operator.LiveOperatorTests) ... FAIL
+test_supervisor_lifecycle_is_observation_not_cli_pid_or_human_proof (test_live_operator.LiveOperatorTests) ... ok
+
+======================================================================
+FAIL: test_runner_teardown_continues_when_terminal_evidence_fails (test_live_operator.LiveOperatorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_operator.py", line 23, in test_runner_teardown_continues_when_terminal_evidence_fails
+    runner.watchdog.close.assert_called_once_with()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 918, in assert_called_once_with
+    raise AssertionError(msg)
+AssertionError: Expected 'close' to be called once. Called 0 times.
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.004s
+
+FAILED (failures=1)

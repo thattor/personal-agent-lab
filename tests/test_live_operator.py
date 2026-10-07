@@ -1,14 +1,45 @@
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 from scripts.live_evidence import EvidenceJournal, verify_journal
-from scripts.live_operator import AuditedNative, clean_candidate
+from scripts.live_operator import AuditedNative, build_live, clean_candidate
 from pal.native import AccessProof
 
 
 class LiveOperatorTests(unittest.TestCase):
+    def test_runner_teardown_continues_when_terminal_evidence_fails(self):
+        from scripts.live_runner import MatrixRunner
+        runner = object.__new__(MatrixRunner)
+        runner.closed = False
+        runner.gate = Mock()
+        runner.gate.close_run.side_effect = OSError('injected terminal evidence failure')
+        runner.watchdog = Mock()
+        runner._teardown_host = Mock()
+        runner.journal = Mock()
+        with self.assertRaisesRegex(OSError, 'injected terminal evidence failure'):
+            runner.close()
+        runner.watchdog.close.assert_called_once_with()
+        runner._teardown_host.assert_called_once_with()
+        runner.journal.close.assert_called_once_with()
+
+    def test_config_record_failure_closes_constructed_runner(self):
+        root = Path(__file__).resolve().parents[1]
+        runner = Mock()
+        runner.journal.append.side_effect = OSError('injected evidence failure')
+        proof = Mock()
+        owner = Mock()
+        owner.command.return_value = ['unused-official-cli']
+        with patch('scripts.live_operator.clean_candidate'), \
+                patch('scripts.live_operator.AccessProof.load', return_value=proof), \
+                patch('scripts.live_operator.AuditedNative', return_value=owner), \
+                patch('scripts.live_operator.subprocess.run', return_value=Mock(stdout='fixture')), \
+                patch('scripts.live_operator.MatrixRunner', return_value=runner):
+            with self.assertRaisesRegex(OSError, 'injected evidence failure'):
+                build_live(root, root/'runtime/unused-failure-fixture', 'unused-proof', 'fixture')
+        runner.close.assert_called_once_with()
+
     def test_live_owner_cannot_bypass_operator_proof_consumption(self):
         import time
         from scripts.live_runner import MatrixRunner

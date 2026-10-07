@@ -245,7 +245,11 @@ class MatrixRunner:
         self.closed = True
         try:
             self.gate.close_run('controller_teardown')
-            self.watchdog.close()
-            self._teardown_host()
         finally:
-            self.journal.close()
+            try:
+                self.watchdog.close()
+            finally:
+                try:
+                    self._teardown_host()
+                finally:
+                    self.journal.close()
