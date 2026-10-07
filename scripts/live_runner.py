@@ -64,7 +64,6 @@ class MatrixRunner:
         self.gate = GatedProvider(provider, self.journal.append, self.deadline,
                                   max_calls=self.matrix['limits']['total_provider_generations'])
         self.watchdog = RunWatchdog(self.gate, self.deadline)
-        self.watchdog.start()
         self.runtime = self.server = self.thread = None
         self.case = None
         self.phase = 0
@@ -74,9 +73,14 @@ class MatrixRunner:
         self.captured = False
         self.closed = False
         self.goal_id = None
-        self.journal.append({'event':'run.started','candidate':candidate,
-                             'hashes':self.pin.hashes,'pid':os.getpid(),
-                             'human_evaluation':False})
+        try:
+            self.watchdog.start()
+            self.journal.append({'event':'run.started','candidate':candidate,
+                                 'hashes':self.pin.hashes,'pid':os.getpid(),
+                                 'human_evaluation':False})
+        except BaseException:
+            self.close()
+            raise
 
     def _check(self):
         if self.closed or self.gate.status()['run_gate_closed']:

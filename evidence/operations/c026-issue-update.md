@@ -1,0 +1,5 @@
+C025/C026 independent lifecycle fixes completed: evidence-write failure during operator configuration, runner initial record, or terminal record now attempts owned cleanup. Test-first failures retained; latest full suite 170 PASS (15.236s). No official provider calls, canonical repairs, grammar change or acceptance promotion.
+
+Evidence: evidence/reviews/feedback-alignment/runner-startup-cleanup-full.txt and operator-cleanup-final-full.txt; cause/prevention in docs/DEFECTS.md. Current actual real-provider/UI matrix remains historical candidate57b4a49; harness changes are not transferred as live proof.
+
+Issue5 remains OPEN/incomplete: HR-INPUT-001/P003 authentic grammar decision, HR-STABLE1-001 actual revised usefulness evaluation, and final candidate regression/release audit pending. Latest human-window message is agent acknowledgment only. Future P001 adoption/Projects authorization separate. Next: receive authentic version-bound decisions, implement/retest adopted delta, freeze final candidate and complete affected verification and release audit. No old quota/schedule/provider keepalive.

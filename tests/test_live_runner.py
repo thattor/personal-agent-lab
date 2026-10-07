@@ -3,6 +3,7 @@ import json
 import tempfile
 import unittest
 import urllib.request
+from unittest.mock import patch
 from pathlib import Path
 
 from pal.runtime import MockProvider
@@ -28,6 +29,31 @@ def ask(text): return {'kind':'needs_input','question':text,'citations':[]}
 
 
 class LiveRunnerTests(unittest.TestCase):
+    def test_initial_evidence_failure_closes_real_watchdog_and_journal(self):
+        from scripts.live_evidence import EvidenceJournal, RunWatchdog
+        journals, watchdogs = [], []
+        def journal_factory(*args):
+            journal = EvidenceJournal(*args); journals.append(journal)
+            self.addCleanup(journal.close)
+            return journal
+        def watchdog_factory(*args):
+            watchdog = RunWatchdog(*args); watchdogs.append(watchdog)
+            self.addCleanup(watchdog.close)
+            return watchdog
+        provider = ScriptedNative([])
+        with tempfile.TemporaryDirectory() as directory, \
+                patch('scripts.live_runner.EvidenceJournal', side_effect=journal_factory), \
+                patch('scripts.live_runner.RunWatchdog', side_effect=watchdog_factory), \
+                patch.object(EvidenceJournal, 'append', side_effect=OSError('injected startup write')):
+            with self.assertRaisesRegex(OSError, 'injected startup write'):
+                MatrixRunner(ROOT,Path(directory)/'run',MATRIX,provider,
+                             scope='scripted',candidate='fixture')
+            self.assertEqual(provider.stops, 1)
+            self.assertEqual(provider.calls, [])
+            self.assertEqual(journals[0]._fd, -1)
+            self.assertFalse(watchdogs[0]._thread.is_alive())
+            self.assertEqual((Path(directory)/'run/journal.jsonl').read_bytes(), b'')
+
     def test_fixture_assembly_cannot_claim_live_scope(self):
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaises(ValueError):

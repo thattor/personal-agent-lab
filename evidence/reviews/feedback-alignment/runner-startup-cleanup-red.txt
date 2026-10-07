@@ -1,0 +1,14 @@
+test_initial_evidence_failure_closes_real_watchdog_and_journal (test_live_runner.LiveRunnerTests) ... FAIL
+
+======================================================================
+FAIL: test_initial_evidence_failure_closes_real_watchdog_and_journal (test_live_runner.LiveRunnerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_runner.py", line 47, in test_initial_evidence_failure_closes_real_watchdog_and_journal
+    self.assertEqual(provider.stops, 1)
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+FAILED (failures=1)
