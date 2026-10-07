@@ -1,0 +1,335 @@
+{
+  "checked_at": "2026-10-07T03:52:20.237987+00:00",
+  "status": "technical_and_human_acceptance_PASS; final repository/Issue recording remains",
+  "release_name": "Stable-0 functional-first D-019",
+  "runtime_baseline": "ccfba35dd0623e16e87a4d6e3798266a4cda42e5",
+  "audit_parent": "59d5b67ceb401d248bc82aa034c49c580721e4cd",
+  "versions": {
+    "python": "3.9.6",
+    "sqlite": "3.54.0",
+    "native_cli_in_live_evidence": "2.1.291",
+    "requested_model": "opus",
+    "exact_backend_model": "not exposed by text-only CLI"
+  },
+  "required_rows": [
+    {
+      "id": "S0-01",
+      "status": "PASS",
+      "evidence": "[full tests](evidence/tests/ui-native-full.txt); [live language](evidence/live/2026-10-06-clean/language.json); [browser](evidence/ui/browser-smoke.md)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "S0-02",
+      "status": "PASS",
+      "evidence": "[33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "S0-03",
+      "status": "PASS",
+      "evidence": "[full tests](evidence/tests/ui-native-full.txt); [live host receipt](evidence/live/2026-10-06-clean/host-evidence.json); [live result](evidence/live/2026-10-06-clean/result.json)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "S0-04",
+      "status": "PASS",
+      "evidence": "[33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "S0-05",
+      "status": "PASS",
+      "evidence": "[33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "S0-06",
+      "status": "PASS",
+      "evidence": "[33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "S0-07",
+      "status": "PASS",
+      "evidence": "[full tests](evidence/tests/ui-native-full.txt); [controls](tests/test_controls_memory.py); [SIGKILL pause/resume/input](tests/test_crash.py); [runtime fencing](tests/test_runtime.py)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "S0-08",
+      "status": "PASS",
+      "evidence": "[33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "S0-09",
+      "status": "PASS",
+      "evidence": "[33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "S0-10",
+      "status": "PASS",
+      "evidence": "[official access/cost proof and live smoke](evidence/live/2026-10-06-clean/result.json); [actual draft](evidence/live/2026-10-06-clean/draft.txt); [native boundary tests](tests/test_native.py)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "S0-11",
+      "status": "PASS",
+      "evidence": "[33-test log](evidence/tests/s2-runtime.txt); [runtime](tests/test_runtime.py), [core](tests/test_store.py), [controls](tests/test_controls_memory.py), [crash matrix](tests/test_crash.py)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "S0-12",
+      "status": "PASS",
+      "evidence": "[actual Chrome smoke](evidence/ui/browser-smoke.md); [canonical readback](evidence/ui/browser-state.json); [HTTP tests](tests/test_http.py)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "F0-01",
+      "status": "PASS",
+      "evidence": "[actual functional evidence](evidence/functional/2026-10-07/README.md); [66-test suite](evidence/tests/real-functional-full.txt)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "F0-02",
+      "status": "PASS",
+      "evidence": "[actual functional evidence](evidence/functional/2026-10-07/README.md); [66-test suite](evidence/tests/real-functional-full.txt)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "F0-03",
+      "status": "PASS",
+      "evidence": "[actual functional evidence](evidence/functional/2026-10-07/README.md); [66-test suite](evidence/tests/real-functional-full.txt)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "F0-04",
+      "status": "PASS",
+      "evidence": "[actual functional evidence](evidence/functional/2026-10-07/README.md); [66-test suite](evidence/tests/real-functional-full.txt)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "F0-05",
+      "status": "PASS",
+      "evidence": "[actual functional evidence](evidence/functional/2026-10-07/README.md); [66-test suite](evidence/tests/real-functional-full.txt)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "F0-06",
+      "status": "PASS",
+      "evidence": "[actual functional evidence](evidence/functional/2026-10-07/README.md); [66-test suite](evidence/tests/real-functional-full.txt)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "F0-07",
+      "status": "PASS",
+      "evidence": "[actual functional evidence](evidence/functional/2026-10-07/README.md); [66-test suite](evidence/tests/real-functional-full.txt)",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    },
+    {
+      "id": "F0-08",
+      "status": "PASS",
+      "evidence": "evidence/final/stable0/human-evaluation.json",
+      "current_full_suite": "evidence/tests/stable0-final-full.txt"
+    }
+  ],
+  "artifact_checks": [
+    {
+      "path": "evidence/functional/2026-10-07/f03-draft.txt",
+      "sha256": "8d5bdc54b0d5cd40a476dacd7f4f02623981ff625186f7a6e56065ddddd31ca0",
+      "bytes": 200,
+      "receipt": {
+        "id": "d30987ef40304dfb8ad75b7018ad125a",
+        "attempt_id": "4849a956159c4cd19a29610ded8f7f03",
+        "artifact_id": "401e90e607f747c2b088ad0d63dfe71a",
+        "hash": "8d5bdc54b0d5cd40a476dacd7f4f02623981ff625186f7a6e56065ddddd31ca0",
+        "size": 200,
+        "revision": 1,
+        "epoch": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "path": "evidence/functional/2026-10-07/f04-draft.txt",
+      "sha256": "b88a79303d9e2c9289d457317b1ed646fa848eae34d7bc9c10c5143b9f9ecdae",
+      "bytes": 219,
+      "receipt": {
+        "id": "018d3a6925c441da980f07dce0c7d756",
+        "attempt_id": "70906fe6b9a540ff80a76b3f5fe8b1b7",
+        "artifact_id": "4d29950fcd0f431491c7bd74d7dcd295",
+        "hash": "b88a79303d9e2c9289d457317b1ed646fa848eae34d7bc9c10c5143b9f9ecdae",
+        "size": 219,
+        "revision": 2,
+        "epoch": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "path": "evidence/functional/2026-10-07/f06-resume-draft.txt",
+      "sha256": "b1f7d5b3105ec13ba78bc40f4850b9d05424d9ef72ecf88e437fccaace861fd7",
+      "bytes": 246,
+      "receipt": {
+        "id": "7fa700259dab435b99ae159dd1922417",
+        "attempt_id": "be94993a22fe4b75a5a305d5375f9746",
+        "artifact_id": "157001c6b33c4434ad938c5fc5ffa76c",
+        "hash": "b1f7d5b3105ec13ba78bc40f4850b9d05424d9ef72ecf88e437fccaace861fd7",
+        "size": 246,
+        "revision": 1,
+        "epoch": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "path": "evidence/functional/feedback-20261007-02/draft-draft.txt",
+      "sha256": "a0c3a4b8177ee371cbd0021ca219b689b2a2f55ca24c6511b77591dc331e65c2",
+      "bytes": 249,
+      "receipt": {
+        "id": "d3f564eb2d934d3cb6bcc992f71fd86f",
+        "attempt_id": "d5eec5a204e845b684f9517f7455dd02",
+        "artifact_id": "ee80bda7b85f46a198b72c5ad0952b3b",
+        "hash": "a0c3a4b8177ee371cbd0021ca219b689b2a2f55ca24c6511b77591dc331e65c2",
+        "size": 249,
+        "revision": 1,
+        "epoch": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "path": "evidence/functional/feedback-20261007-02/corrected-draft.txt",
+      "sha256": "8a4ef0bbcab780f8ba81e664d947336a0a6e2e96568770f9798290701f66d6f0",
+      "bytes": 249,
+      "receipt": {
+        "id": "2edeb206e09247e7a9f036391ba3cf39",
+        "attempt_id": "3e28cdb82f9a4339968d7eb68976146c",
+        "artifact_id": "fdd47b57bfb349b3a0a6147800427571",
+        "hash": "8a4ef0bbcab780f8ba81e664d947336a0a6e2e96568770f9798290701f66d6f0",
+        "size": 249,
+        "revision": 1,
+        "epoch": 1
+      },
+      "status": "PASS"
+    }
+  ],
+  "readonly_canonical_checks": {
+    "runtime/functional-20261007-01/state.db": {
+      "status": "PASS",
+      "counts": {
+        "records": 52,
+        "goals": 4,
+        "attempts": 6,
+        "receipts": 3,
+        "outcomes": 3,
+        "events": 18
+      },
+      "goal_states": {
+        "60b5ae78b8054de08d0d9e64108fa79d": "completed",
+        "228669f245164e2fa268c45a39a53b77": "completed",
+        "44f0c86048e94ac9a7adc2676c42e764": "completed",
+        "3704c78771364f21b85a66b889a1f383": "cancelled"
+      },
+      "blob_checks": {
+        "401e90e607f747c2b088ad0d63dfe71a": {
+          "hash": "8d5bdc54b0d5cd40a476dacd7f4f02623981ff625186f7a6e56065ddddd31ca0",
+          "size": 200,
+          "utf8": true
+        },
+        "4d29950fcd0f431491c7bd74d7dcd295": {
+          "hash": "b88a79303d9e2c9289d457317b1ed646fa848eae34d7bc9c10c5143b9f9ecdae",
+          "size": 219,
+          "utf8": true
+        },
+        "157001c6b33c4434ad938c5fc5ffa76c": {
+          "hash": "b1f7d5b3105ec13ba78bc40f4850b9d05424d9ef72ecf88e437fccaace861fd7",
+          "size": 246,
+          "utf8": true
+        }
+      }
+    },
+    "runtime/functional-feedback-20261007-02/state.db": {
+      "status": "PASS",
+      "counts": {
+        "records": 14,
+        "goals": 2,
+        "attempts": 2,
+        "receipts": 2,
+        "outcomes": 2,
+        "events": 6
+      },
+      "goal_states": {
+        "50fded7567394fe09e2bcef6902e2bd1": "completed",
+        "770355b961c84d71a7e24d18337c53cc": "completed"
+      },
+      "blob_checks": {
+        "ee80bda7b85f46a198b72c5ad0952b3b": {
+          "hash": "a0c3a4b8177ee371cbd0021ca219b689b2a2f55ca24c6511b77591dc331e65c2",
+          "size": 249,
+          "utf8": true
+        },
+        "fdd47b57bfb349b3a0a6147800427571": {
+          "hash": "8a4ef0bbcab780f8ba81e664d947336a0a6e2e96568770f9798290701f66d6f0",
+          "size": 249,
+          "utf8": true
+        }
+      }
+    }
+  },
+  "historical_chain_integrity": {
+    "runtime/soak-20261006-01/measurements.jsonl": {
+      "integrity": "PASS",
+      "records": 99,
+      "last_hash": "c6a1255faacb1171f5c2f85d53125c935d29a41423812423668a3a04aaee68c7",
+      "terminal_event": "reset_required",
+      "original_72h_gate": "NOT PASS; nonrequired D-019"
+    },
+    "runtime/soak-20261007-02/measurements.jsonl": {
+      "integrity": "PASS",
+      "records": 8,
+      "last_hash": "8ef969cf2c02e357402b2735de0052cfa430247932145318fbbe9535bb026819",
+      "terminal_event": "reset_required",
+      "original_72h_gate": "NOT PASS; nonrequired D-019"
+    },
+    "runtime/soak-20261007-03/measurements.jsonl": {
+      "integrity": "PASS",
+      "records": 24,
+      "last_hash": "62d6ca7f91550cb428d6d90bad5d35235f3a643d1e22c9b5ac0cb9646e3c9a7a",
+      "terminal_event": "reset_required",
+      "original_72h_gate": "NOT PASS; nonrequired D-019"
+    }
+  },
+  "source_unchanged_since_revised_evidence": true,
+  "source_sha256": {
+    "pal/__init__.py": "2bdd5650424f91c2d6b0bea2f85bffbf63b1e0c0f3d7ecfc22db9974663da5bc",
+    "pal/native.py": "fa16735bab681635fb5da9cf97aa98a6a6e5254fda19ca8a459ea2b016d5beb4",
+    "pal/native_supervisor.py": "23677e053705302f77d3b981ae835db557e8dfc50843d9045d01cb8f42195dbd",
+    "pal/runtime.py": "f92b562e8149b12a7d8ce6957a7c2ad5be12f4d1fc5c082462048da529645da3",
+    "pal/sanitize.py": "eb1a8dcef9cfeb659d9e5fe655eca1148012adf1f2d7883c904e5542f2009bc6",
+    "pal/server.py": "082382774420fb11ae5ac260b42e4282f39bf80d3dcdcef75214e5598e5434fb",
+    "pal/soak.py": "679c0841b5c2d5f0699296f3ee1c43bda4988fdfb19e90a769528a6f38a91f41",
+    "pal/store.py": "2712191a99700e5fcfe8294fcfe397e69c98e416faa20bcd1b51b062ef99fabc",
+    "pal/web/app.js": "3097a13ac7187a48602c96df74ee27e0cefe43ea7c6076639923b094fd5eb009",
+    "pal/web/conversation.html": "ac6866f163517d2cc50c8d32967beb248c02893c7aff918cd79653cf31041f5d",
+    "pal/web/inspect.html": "b72fa0d164b253782d8b4f399f103826f5a8e8d088a24e53d04bac859a143f90",
+    "pal/web/style.css": "a72d8491d706bc9660dd4d069889b8436e4025ea6d2564fe72e70e6c5e353e02",
+    "scripts/live_smoke.py": "3ad220c095cfc65863fb85bf6dd367fd6466faf36094ae46412afd62cdd80b1f",
+    "scripts/soak_monitor.py": "0b5d1555aa0ec37d95088e28fcecf7e509c8d99dd73b2f8e3685d2b491d0f11d",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/test_controls_memory.py": "2f0f73c2a81c57613dfa435ed4bb195be602e17c8b53bdf6ad01ce030b3b0666",
+    "tests/test_crash.py": "d91b12c37cacf5e9e3d8040c05f6e65429ab653798c6b3d0c18857d8f2a8b92f",
+    "tests/test_http.py": "9892ca68720ffcab266df8dec0827a0c1a4fa1bc904b5b9fe112b256fcc8c7f1",
+    "tests/test_native.py": "37a5ac9cdbeb1df71c42c32a459000d88459ff882b405212465604ff161ea157",
+    "tests/test_runtime.py": "b500c80866cddf65cf415a165434710236f48beb64134c61eaf72899c88729d2",
+    "tests/test_soak.py": "fbb7481822f7a51bb064901e33c98138c82bb920acfe87d73ab9bdff8573f209",
+    "tests/test_store.py": "11cb91297b1b38ac22c9f9371386c03d452e615f4757da66131b38584d0b3d95"
+  },
+  "final_suite": "66 PASS",
+  "canonical_writes_or_repairs": 0,
+  "new_provider_calls": 0,
+  "limitations": [
+    "Finite synthetic real-provider scenarios and direct human usefulness review; no universal output correctness claim.",
+    "Historical 72-hour gate unmet and optional; long-term, sleep/wake and auth-refresh reliability not proven.",
+    "Mock default; explicit official real-provider mode requires fresh operator cost/auth proof, expires after15min and has finite invocation cap; no always-on live service.",
+    "Proof marker per checkout relies on trusted operator; CLI internal HTTP retries and exact backend version not independently observed.",
+    "Bound input-resume proven by deterministic fault tests; no natural live waiting-input generation capability claimed.",
+    "External send/shell capabilities absent; PublicSearch, scheduled wake, proactive suggestions, Dreaming, multi-Expert, vector DB, local inference, automatic procedure updates and external push optimization deferred."
+  ]
+}

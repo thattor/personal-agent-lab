@@ -1,0 +1,18 @@
+{
+  "judgment_id": "F0-08",
+  "source_thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "source_turn": "01a11475-3950-7a12-a598-bb3417b79aed",
+  "source_message": "01a11475-3bd0-76c1-b980-806ec8cc8842",
+  "source_started_at": 1791344589,
+  "answer_original": "合ってる",
+  "target_runtime": "ccfba35",
+  "presented_outputs": [
+    "evidence/functional/feedback-20261007-02/conversation-response.json",
+    "evidence/functional/feedback-20261007-02/draft-draft.txt",
+    "evidence/functional/feedback-20261007-02/corrected-draft.txt"
+  ],
+  "prior_scoped_evaluation": "evidence/functional/2026-10-07/human-evaluation.json",
+  "scope": "Presented revised conversation and Cedar/Birch thank-you drafts fit user expectations. Prior recall answer requested no change. No blanket future-output, cost, permission, public exposure or long-term approval.",
+  "human_inputs_fabricated": false,
+  "status": "PASS"
+}
