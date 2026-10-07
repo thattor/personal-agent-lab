@@ -1,0 +1,34 @@
+{
+  "source": "a81b93051a02cb0a0e8f7491830b3af04cdeb649",
+  "observed_at": 1791369050.299144,
+  "scope": "scripted proposal / disposable DB, not live-provider or human evidence",
+  "case": "T1",
+  "settled": true,
+  "request": "招待文の下書き用テンプレートを作って。日時は{{date}}、場所は{{place}}の空欄にし、送らないで。",
+  "goal": {
+    "seq": 1,
+    "id": "d1711e5d3d3448cf8453eaa56cced2f1",
+    "state": "queued",
+    "revision": 1,
+    "acceptance_id": "d23ecf04df5c4709b8a4571abd2afa9e",
+    "epoch": 0,
+    "budget": 3,
+    "total_claims": 0,
+    "reason": "",
+    "question_id": null,
+    "ambiguity": 0
+  },
+  "receipts": [],
+  "outcomes": [],
+  "revisions": [
+    {
+      "goal_id": "d1711e5d3d3448cf8453eaa56cced2f1",
+      "revision": 1,
+      "acceptance_id": "d23ecf04df5c4709b8a4571abd2afa9e",
+      "specification": "招待文の下書き用テンプレートを作って。日時は{{date}}、場所は{{place}}の空欄にし、送らないで。",
+      "sources": "[\"343695b19b1d4546a626d8ba54fb6272\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 1
+    }
+  ]
+}

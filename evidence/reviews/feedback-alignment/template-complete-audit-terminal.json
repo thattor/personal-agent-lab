@@ -1,0 +1,59 @@
+{
+  "source": "a81b93051a02cb0a0e8f7491830b3af04cdeb649",
+  "observed_at": 1791369086.575136,
+  "scope": "scripted proposal / disposable DB, not live-provider or human evidence",
+  "case": "T1",
+  "observer": "canonical terminal state poll; read artifacts via receipt.artifact_id",
+  "observer_corrections": [
+    "first observation saw queued because idle event was initially set; retained initial evidence is inconclusive",
+    "second observer used receipt.id instead of receipt.artifact_id and failed before saving; verified store.artifact source before correcting"
+  ],
+  "request": "招待文の下書き用テンプレートを作って。日時は{{date}}、場所は{{place}}の空欄にし、送らないで。",
+  "goal": {
+    "seq": 1,
+    "id": "fa4454885c6b45198a20161ba70d4835",
+    "state": "completed",
+    "revision": 1,
+    "acceptance_id": "7e509f7baf604f3aa66fceed1f5d0b55",
+    "epoch": 1,
+    "budget": 2,
+    "total_claims": 1,
+    "reason": "",
+    "question_id": null,
+    "ambiguity": 0
+  },
+  "receipts": [
+    {
+      "id": "13ac579af32a40ed8d7b1f91ae5cb937",
+      "attempt_id": "22c3f199a3ff4838ae7516cda96837c8",
+      "artifact_id": "3d9a305d8b1947d5b10161405407074d",
+      "hash": "fe5a93118db35cae45adf82cc679f8fad73685219d256688db8d30750794aa04",
+      "size": 53,
+      "revision": 1,
+      "epoch": 1,
+      "role": "draft"
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "22c3f199a3ff4838ae7516cda96837c8",
+      "receipt_id": "13ac579af32a40ed8d7b1f91ae5cb937",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "fa4454885c6b45198a20161ba70d4835",
+      "revision": 1,
+      "acceptance_id": "7e509f7baf604f3aa66fceed1f5d0b55",
+      "specification": "招待文の下書き用テンプレートを作って。日時は{{date}}、場所は{{place}}の空欄にし、送らないで。",
+      "sources": "[\"e948e0708c8f4d0388020fff21e132d4\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 1
+    }
+  ],
+  "artifacts": [
+    "招待文。日時：{{date}}、場所：{{place}}。"
+  ]
+}

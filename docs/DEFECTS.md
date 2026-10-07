@@ -111,3 +111,10 @@ SWE feasibility subprocess85010 reached the controller's300-second subprocess.ru
 
 ## 2026-10-07 question-slice verification snapshot
 The first full regression run loaded old schema-version assertions while the controller updated their source during that run. Three expected-version failures reported3 versus2; displayed traceback source reflected the edited file and could mislead diagnosis. No other failures, targeted rerun PASS. Cause: test-source edit overlapped a live runner. Prevention: finish all code/test edits before the final full run; record earlier output as diagnostic, never exact-candidate proof. questions-full-first.txt retained; questions-full-final.txt is the frozen-source rerun. Earlier sandbox full suite eight HTTP bind PermissionErrors were environment restrictions, not product failures; authorized loopback rerun retained separately. No canonical data repair.
+
+
+## P002 template completion boundary — C018
+
+Scripted provider on a81b930 returns complete with unresolved {{date}}/{{place}} for frozen T1. Host creates a draft receipt and pass outcome/completed Goal. Adopted P002 requires incomplete preview for unresolved factual placeholders. Root cause established at contract boundary: complete envelope syntax and UTF8/size/hash readback validate bytes, without explicit unresolved-template-token exclusion. Prompt instruction alone does not enforce the boundary. Repair pending official Opus/SWE reconciliation; preserve frozen case and negative evidence, no live run yet. Prevention target: regression covers complete proposals retaining explicit literal template tokens, verifies no draft/PASS/complete, alongside complete drafts without unresolved tokens. This is not a general semantic-completeness guarantee.
+
+Observer corrections: initial Runtime.idle was already set and returned queued, so it is not a completion predicate; use canonical terminal-state polling. Second diagnostic used receipt.id as artifact ID, failing before saving; inspect the documented Store contract and use receipt.artifact_id. Final proof includes actual bytes with the correct ID. Initial inconclusive evidence is retained, no unsupported PASS derived.
