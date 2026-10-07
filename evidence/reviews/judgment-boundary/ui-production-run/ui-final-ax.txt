@@ -1,0 +1,58 @@
+Browser tab: 18, Title: "Personal Agent Lab", URL: "http://127.0.0.1:59460/".
+0 AXWebArea Personal Agent Lab, URL: 127.0.0.1:59460/
+	1 container
+		2 link Description: Personal Agent Lab, Value: 127.0.0.1:59460/
+		3 link Description: Inspect / 状態を見る, Value: 127.0.0.1:59460/inspect
+		17 text Provider: official_claude_opus_tool_free · local drafts / ローカル下書き · Official live / 公式実モデル · remaining / 残り 2 · Proof valid / 利用証明有効
+		5 heading What’s on your mind? / 何をお手伝いしましょうか？, Value: 1
+			6 text What’s on your mind? / 何をお手伝いしましょうか？
+		7 text Talk, remember something, or ask for a draft. Drafts stay local. / 会話・記憶・下書きの依頼ができます。下書きはローカルに保存されます。
+		8 container Description: Conversation, ID: conversation
+			18 container
+				19 text user / あなた 背景だけ共有します。まだ作成依頼ではありません。架空の社内勉強会で、同僚の美香さんに配布資料の誤字を確認してもらいました。お礼は丁寧すぎない日本語の二文にしたいです。
+				20 button Stop AI reference / AI参照を停止
+			21 container
+				22 text assistant / アシスタント 背景、承知しました。美香さんに配布資料の誤字を確認してもらったお礼を、丁寧すぎない日本語の二文で、ですね。作成のご依頼をいただければ、それに沿って下書きします。
+			23 container
+				24 text user / あなた では、美香さんへのお礼をその条件で下書きして。送らずにここに置いてください。
+				25 button Stop AI reference / AI参照を停止
+			26 container
+				27 text assistant / アシスタント 下書きを受け付けました：架空の社内勉強会の配布資料について、誤字を確認してくれた同僚の美香さんへのお礼の下書きを作成する。日本語で、丁寧すぎない(カジュアル寄りだが失礼のない)トーン、ちょうど二文。まず全体的な感謝を伝え、具体的な行為としては「配布資料の誤字を確認してくれたこと」のみに触れる。確認の結果や効果(誤字がいくつ見つかった、資料が良くなった、勉強会が成功した等)は書かない。提供されていない詳細は加えない。送信はせず下書きとして提示するのみ。 / Local draft accepted.
+			28 container
+				29 text assistant / アシスタント Work accepted. / 作業を受け付けました。
+			30 container
+				31 text assistant / アシスタント Preparing your draft… / 下書きを作成中です。
+			32 container
+				33 text assistant / アシスタント Your local draft is ready. / 下書きが完成しました。
+				34 link Description: Open local draft / 下書きを開く, Value: 127.0.0.1:59460/api/artifact/9f6398c4124245d6ad1234edf6a71d6a
+			35 container
+				36 text user / あなた 祖母の誕生日の集まりの案内を家族向けに下書きしてください。日付・開始時刻・場所はまだ伝えていません。その三点は私に確認してから使い、下書きだけをここに置いてください。
+				37 button Stop AI reference / AI参照を停止
+			38 container
+				39 text assistant / アシスタント 承知しました。おばあさまの誕生日の集まりの案内を家族向けに下書きしますね。まず、集まりの日付・開始時刻・場所を教えていただけますか？いただいた内容をもとに下書きを作ります。
+			40 container
+				41 text user / あなた 11月3日の正午から、祖母の自宅で開きます。その情報で案内を下書きしてください。
+				42 button Stop AI reference / AI参照を停止
+			43 container
+				44 text assistant / アシスタント 下書きを受け付けました：祖母の誕生日の集まりについて、家族向けの案内文を日本語で下書きする。日付は11月3日、開始時刻は正午、場所は祖母の自宅。この三点はユーザーが提供したとおりに使い、年・終了時刻・持ち物・参加人数・出欠の締め切りなど、提供されていない詳細は加えない。家族向けの温かく親しみやすいトーンにする。送信はせず、下書きとしてここに提示するのみ。 / Local draft accepted.
+			45 container
+				46 text assistant / アシスタント Work accepted. / 作業を受け付けました。
+			47 container
+				48 text assistant / アシスタント Preparing your draft… / 下書きを作成中です。
+			49 container
+				50 text assistant / アシスタント Your local draft is ready. / 下書きが完成しました。
+				51 link Description: Open local draft / 下書きを開く, Value: 127.0.0.1:59460/api/artifact/95b3c17165c54c9a97b550aeb7c1f368
+		9 container message
+			10 text Your message / メッセージ
+			11 text entry area (settable) Your message / メッセージ, ID: text
+			12 button Send / 入力を送信
+		13 container Description: Current work, ID: work
+			52 container
+				53 text Work / 作業: completed / 完了 架空の社内勉強会の配布資料について、誤字を確認してくれた同僚の美香さんへのお礼の下書きを作成する。日本語で、丁寧すぎない(カジュアル寄りだが失礼のない)トーン、ちょうど二文。まず全体的な感謝を伝え、具体的な行為としては「配布資料の誤字を確認してくれたこと」のみに触れる。確認の結果や効果(誤字がいくつ見つかった、資料が良くなった、勉強会が成功した等)は書かない。提供されていない詳細は加えない。送信はせず下書きとして提示するのみ。
+			54 container
+				55 text Work / 作業: completed / 完了 祖母の誕生日の集まりについて、家族向けの案内文を日本語で下書きする。日付は11月3日、開始時刻は正午、場所は祖母の自宅。この三点はユーザーが提供したとおりに使い、年・終了時刻・持ち物・参加人数・出欠の締め切りなど、提供されていない詳細は加えない。家族向けの温かく親しみやすいトーンにする。送信はせず、下書きとしてここに提示するのみ。
+		14 text Talk naturally in English or Japanese. Work buttons act directly while a reply is pending. / 日本語・英語で自然に話しかけてください。返答待ちでも、作業欄のボタンで直接操作できます。
+		15 button (collapsed) Session receipt / 利用記録, Secondary Actions: Expand
+			16 text Session receipt / 利用記録
+
+The focused UI element is 51 link Description: Open local draft / 下書きを開く, URL: 127.0.0.1:59460/api/artifact/95b3c17165c54c9a97b550aeb7c1f368

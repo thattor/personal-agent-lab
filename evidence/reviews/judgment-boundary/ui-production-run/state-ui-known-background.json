@@ -1,0 +1,61 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "6fbe793715354b058270a43d7246d3e2",
+      "role": "user",
+      "content": "背景だけ共有します。まだ作成依頼ではありません。架空の社内勉強会で、同僚の美香さんに配布資料の誤字を確認してもらいました。お礼は丁寧すぎない日本語の二文にしたいです。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "ec58ab6fceba45b6ab6d85f74a95c8a1",
+      "role": "assistant",
+      "content": "背景、承知しました。美香さんに配布資料の誤字を確認してもらったお礼を、丁寧すぎない日本語の二文で、ですね。作成のご依頼をいただければ、それに沿って下書きします。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"6fbe793715354b058270a43d7246d3e2\"]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [],
+  "revisions": [],
+  "acceptances": [],
+  "attempts": [],
+  "receipts": [],
+  "outcomes": [],
+  "events": [],
+  "approvals": [],
+  "rejections": [],
+  "questions": [],
+  "artifacts": [],
+  "primary_turns": [
+    {
+      "client_key": "ui:6666ba32-2dae-433a-b8ed-7d27c3960523:1791385687545:2cff0af9-cb1a-454c-868f-c6f275522edb",
+      "record_id": "6fbe793715354b058270a43d7246d3e2",
+      "status": "complete",
+      "outcome": "{\"goal\":null,\"intent\":\"conversation\",\"primary_status\":\"complete\",\"record_id\":\"6fbe793715354b058270a43d7246d3e2\",\"response_id\":\"ec58ab6fceba45b6ab6d85f74a95c8a1\"}"
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 7,
+    "expires_at": 1791386549.4564962,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 93620,
+    "started_at": 1791385652.262379,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

@@ -132,3 +132,8 @@ Twelve actual turns completed; controller semantic acceptance is distinct from o
 literal source_ids oracle discrepancy and from whole-row/model qualification. The host
 binds the current source under the unchanged pre-disclosure contract. No Qwen call,
 product/prompt change, real new UI/Expert artifact or human evaluation claimed here.
+
+C034 [actual production UI/Expert proof](ui-production-run/README.md) completed two
+fixed cases on a1ba755/product1a14de9; six official slots, four synthetic UI inputs,
+two completed artifacts with matched receipts. Full213 PASS18.510s. Actual human
+usefulness and final release audit remain; Qwen3.8-27B still unqualified.

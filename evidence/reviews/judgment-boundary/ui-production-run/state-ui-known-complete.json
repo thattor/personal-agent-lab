@@ -1,0 +1,209 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "6fbe793715354b058270a43d7246d3e2",
+      "role": "user",
+      "content": "背景だけ共有します。まだ作成依頼ではありません。架空の社内勉強会で、同僚の美香さんに配布資料の誤字を確認してもらいました。お礼は丁寧すぎない日本語の二文にしたいです。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "ec58ab6fceba45b6ab6d85f74a95c8a1",
+      "role": "assistant",
+      "content": "背景、承知しました。美香さんに配布資料の誤字を確認してもらったお礼を、丁寧すぎない日本語の二文で、ですね。作成のご依頼をいただければ、それに沿って下書きします。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"6fbe793715354b058270a43d7246d3e2\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "23556e9cb1d04a9cbdcf27e7c1868e84",
+      "role": "user",
+      "content": "では、美香さんへのお礼をその条件で下書きして。送らずにここに置いてください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "898d0886fa50458fbe89555b73ff2bb2",
+      "role": "assistant",
+      "content": "下書きを受け付けました：架空の社内勉強会の配布資料について、誤字を確認してくれた同僚の美香さんへのお礼の下書きを作成する。日本語で、丁寧すぎない(カジュアル寄りだが失礼のない)トーン、ちょうど二文。まず全体的な感謝を伝え、具体的な行為としては「配布資料の誤字を確認してくれたこと」のみに触れる。確認の結果や効果(誤字がいくつ見つかった、資料が良くなった、勉強会が成功した等)は書かない。提供されていない詳細は加えない。送信はせず下書きとして提示するのみ。 / Local draft accepted.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"6fbe793715354b058270a43d7246d3e2\",\"ec58ab6fceba45b6ab6d85f74a95c8a1\",\"23556e9cb1d04a9cbdcf27e7c1868e84\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "2e9528a200ba47f0964603da51af9a11",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"a6d239cd1ff941da9868c2b8f7dae78e\"}",
+      "usable": 1,
+      "source_event_id": "cdaf331addeb4a1a8abc0b53feacc4ca",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "f2310a4e4e844c2eac1a99429cc82e89",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"b16a037a35d54c029695e9dbef45e8c6\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"a6d239cd1ff941da9868c2b8f7dae78e\"}",
+      "usable": 1,
+      "source_event_id": "ad7520daf044495089b62f4527502b69",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "27d0c49919894169b850fd2a83577aa8",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"9f6398c4124245d6ad1234edf6a71d6a\",\"attempt_id\":\"b16a037a35d54c029695e9dbef45e8c6\",\"check_status\":\"pass\",\"receipt_id\":\"04995a7cb6be40b0ac1f862aa095a6b9\"},\"event\":\"goal.completed\",\"goal_id\":\"a6d239cd1ff941da9868c2b8f7dae78e\"}",
+      "usable": 1,
+      "source_event_id": "0de7a27951564664a60bbe07daa7b953",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "a6d239cd1ff941da9868c2b8f7dae78e",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "b20b03a20e4d4dfc848b09a639a9295d",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "a6d239cd1ff941da9868c2b8f7dae78e",
+      "revision": 1,
+      "acceptance_id": "b20b03a20e4d4dfc848b09a639a9295d",
+      "specification": "架空の社内勉強会の配布資料について、誤字を確認してくれた同僚の美香さんへのお礼の下書きを作成する。日本語で、丁寧すぎない(カジュアル寄りだが失礼のない)トーン、ちょうど二文。まず全体的な感謝を伝え、具体的な行為としては「配布資料の誤字を確認してくれたこと」のみに触れる。確認の結果や効果(誤字がいくつ見つかった、資料が良くなった、勉強会が成功した等)は書かない。提供されていない詳細は加えない。送信はせず下書きとして提示するのみ。",
+      "sources": "[\"23556e9cb1d04a9cbdcf27e7c1868e84\",\"6fbe793715354b058270a43d7246d3e2\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "b20b03a20e4d4dfc848b09a639a9295d",
+      "goal_id": "a6d239cd1ff941da9868c2b8f7dae78e",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "b16a037a35d54c029695e9dbef45e8c6",
+      "goal_id": "a6d239cd1ff941da9868c2b8f7dae78e",
+      "revision": 1,
+      "acceptance_id": "b20b03a20e4d4dfc848b09a639a9295d",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"6fbe793715354b058270a43d7246d3e2\",\"ec58ab6fceba45b6ab6d85f74a95c8a1\",\"23556e9cb1d04a9cbdcf27e7c1868e84\",\"898d0886fa50458fbe89555b73ff2bb2\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "04995a7cb6be40b0ac1f862aa095a6b9",
+      "attempt_id": "b16a037a35d54c029695e9dbef45e8c6",
+      "artifact_id": "9f6398c4124245d6ad1234edf6a71d6a",
+      "hash": "6788dcac5a1f899a818582b965707d836d04c0468f06d29b9b9090e40b79ab22",
+      "size": 150,
+      "revision": 1,
+      "epoch": 1,
+      "role": "draft"
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "b16a037a35d54c029695e9dbef45e8c6",
+      "receipt_id": "04995a7cb6be40b0ac1f862aa095a6b9",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "cdaf331addeb4a1a8abc0b53feacc4ca",
+      "goal_id": "a6d239cd1ff941da9868c2b8f7dae78e",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "ad7520daf044495089b62f4527502b69",
+      "goal_id": "a6d239cd1ff941da9868c2b8f7dae78e",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"b16a037a35d54c029695e9dbef45e8c6\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "0de7a27951564664a60bbe07daa7b953",
+      "goal_id": "a6d239cd1ff941da9868c2b8f7dae78e",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"9f6398c4124245d6ad1234edf6a71d6a\",\"attempt_id\":\"b16a037a35d54c029695e9dbef45e8c6\",\"check_status\":\"pass\",\"receipt_id\":\"04995a7cb6be40b0ac1f862aa095a6b9\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "questions": [],
+  "artifacts": [
+    {
+      "id": "9f6398c4124245d6ad1234edf6a71d6a",
+      "hash": "6788dcac5a1f899a818582b965707d836d04c0468f06d29b9b9090e40b79ab22",
+      "size": 150
+    }
+  ],
+  "primary_turns": [
+    {
+      "client_key": "ui:6666ba32-2dae-433a-b8ed-7d27c3960523:1791385687545:2cff0af9-cb1a-454c-868f-c6f275522edb",
+      "record_id": "6fbe793715354b058270a43d7246d3e2",
+      "status": "complete",
+      "outcome": "{\"goal\":null,\"intent\":\"conversation\",\"primary_status\":\"complete\",\"record_id\":\"6fbe793715354b058270a43d7246d3e2\",\"response_id\":\"ec58ab6fceba45b6ab6d85f74a95c8a1\"}"
+    },
+    {
+      "client_key": "ui:6666ba32-2dae-433a-b8ed-7d27c3960523:1791385755057:55bd7e29-6d58-43ba-85a1-912cb2f7385f",
+      "record_id": "23556e9cb1d04a9cbdcf27e7c1868e84",
+      "status": "complete",
+      "outcome": "{\"goal\":{\"acceptance_id\":\"b20b03a20e4d4dfc848b09a639a9295d\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"a6d239cd1ff941da9868c2b8f7dae78e\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":0},\"intent\":\"draft\",\"primary_status\":\"complete\",\"record_id\":\"23556e9cb1d04a9cbdcf27e7c1868e84\",\"response_id\":\"898d0886fa50458fbe89555b73ff2bb2\"}"
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 5,
+    "expires_at": 1791386549.4564962,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 93620,
+    "started_at": 1791385652.262379,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "at": 1791386172.034527,
+  "candidate": "a1ba75510dbf859c78e9c9e7a8dfd736c4adbaac",
+  "scope": "live_synthetic",
+  "human_evaluation": false,
+  "qwen_qualification": false,
+  "product_source_unchanged": true,
+  "native_slots_used": 6,
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 2,
+    "expires_at": 1791386549.4564962,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "goals": [
+    {
+      "seq": 1,
+      "id": "a6d239cd1ff941da9868c2b8f7dae78e",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "b20b03a20e4d4dfc848b09a639a9295d",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    {
+      "seq": 2,
+      "id": "9c46b8526ce5471bba041e37fb9383ec",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "46dbc14b00c2411c9709686438b5af25",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "artifacts": [
+    {
+      "receipt": {
+        "id": "04995a7cb6be40b0ac1f862aa095a6b9",
+        "attempt_id": "b16a037a35d54c029695e9dbef45e8c6",
+        "artifact_id": "9f6398c4124245d6ad1234edf6a71d6a",
+        "hash": "6788dcac5a1f899a818582b965707d836d04c0468f06d29b9b9090e40b79ab22",
+        "size": 150,
+        "revision": 1,
+        "epoch": 1,
+        "role": "draft"
+      },
+      "http_status": 200,
+      "projection": {
+        "role": "draft",
+        "reason": "",
+        "stale": false
+      },
+      "text": "美香さん、今回は本当にありがとう！勉強会の配布資料の誤字を確認してくれたこと、すごく感謝しています。"
+    },
+    {
+      "receipt": {
+        "id": "05a06aab86f942579ff35c06484d53df",
+        "attempt_id": "386ae58803774f7dbb5106047350c14b",
+        "artifact_id": "95b3c17165c54c9a97b550aeb7c1f368",
+        "hash": "55eaddf51f38cef5f97bba6d96d7f4f38b471240ab40146d7202f1972f9c3c1d",
+        "size": 305,
+        "revision": 1,
+        "epoch": 1,
+        "role": "draft"
+      },
+      "http_status": 200,
+      "projection": {
+        "role": "draft",
+        "reason": "",
+        "stale": false
+      },
+      "text": "みんなへ\n\nおばあちゃんの誕生日をお祝いする集まりを開きます。\n\n日時：11月3日 正午から\n場所：おばあちゃんの家\n\n家族みんなで、おばあちゃんの誕生日を一緒にお祝いしましょう。みんなに会えるのを楽しみにしています！"
+    }
+  ],
+  "ui_known": "controller_PASS",
+  "ui_clarify": "controller_PASS",
+  "clarification_route": "Primary none question before Goal; next natural reply creates one Goal",
+  "raw_native_responses_retained": false,
+  "duration_from_freeze_seconds": 522.5780317783356
+}

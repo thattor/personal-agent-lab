@@ -1,0 +1,136 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "6fbe793715354b058270a43d7246d3e2",
+      "role": "user",
+      "content": "背景だけ共有します。まだ作成依頼ではありません。架空の社内勉強会で、同僚の美香さんに配布資料の誤字を確認してもらいました。お礼は丁寧すぎない日本語の二文にしたいです。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "ec58ab6fceba45b6ab6d85f74a95c8a1",
+      "role": "assistant",
+      "content": "背景、承知しました。美香さんに配布資料の誤字を確認してもらったお礼を、丁寧すぎない日本語の二文で、ですね。作成のご依頼をいただければ、それに沿って下書きします。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"6fbe793715354b058270a43d7246d3e2\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "23556e9cb1d04a9cbdcf27e7c1868e84",
+      "role": "user",
+      "content": "では、美香さんへのお礼をその条件で下書きして。送らずにここに置いてください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "898d0886fa50458fbe89555b73ff2bb2",
+      "role": "assistant",
+      "content": "下書きを受け付けました：架空の社内勉強会の配布資料について、誤字を確認してくれた同僚の美香さんへのお礼の下書きを作成する。日本語で、丁寧すぎない(カジュアル寄りだが失礼のない)トーン、ちょうど二文。まず全体的な感謝を伝え、具体的な行為としては「配布資料の誤字を確認してくれたこと」のみに触れる。確認の結果や効果(誤字がいくつ見つかった、資料が良くなった、勉強会が成功した等)は書かない。提供されていない詳細は加えない。送信はせず下書きとして提示するのみ。 / Local draft accepted.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"6fbe793715354b058270a43d7246d3e2\",\"ec58ab6fceba45b6ab6d85f74a95c8a1\",\"23556e9cb1d04a9cbdcf27e7c1868e84\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "2e9528a200ba47f0964603da51af9a11",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"a6d239cd1ff941da9868c2b8f7dae78e\"}",
+      "usable": 1,
+      "source_event_id": "cdaf331addeb4a1a8abc0b53feacc4ca",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "f2310a4e4e844c2eac1a99429cc82e89",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"b16a037a35d54c029695e9dbef45e8c6\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"a6d239cd1ff941da9868c2b8f7dae78e\"}",
+      "usable": 1,
+      "source_event_id": "ad7520daf044495089b62f4527502b69",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "27d0c49919894169b850fd2a83577aa8",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"9f6398c4124245d6ad1234edf6a71d6a\",\"attempt_id\":\"b16a037a35d54c029695e9dbef45e8c6\",\"check_status\":\"pass\",\"receipt_id\":\"04995a7cb6be40b0ac1f862aa095a6b9\"},\"event\":\"goal.completed\",\"goal_id\":\"a6d239cd1ff941da9868c2b8f7dae78e\"}",
+      "usable": 1,
+      "source_event_id": "0de7a27951564664a60bbe07daa7b953",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 8,
+      "id": "609d73f98c6e4a3b8785a9910ee91b76",
+      "role": "user",
+      "content": "祖母の誕生日の集まりの案内を家族向けに下書きしてください。日付・開始時刻・場所はまだ伝えていません。その三点は私に確認してから使い、下書きだけをここに置いてください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 9,
+      "id": "1f71c2e98faf406c80a680c143be4e21",
+      "role": "assistant",
+      "content": "承知しました。おばあさまの誕生日の集まりの案内を家族向けに下書きしますね。まず、集まりの日付・開始時刻・場所を教えていただけますか？いただいた内容をもとに下書きを作ります。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"6fbe793715354b058270a43d7246d3e2\",\"ec58ab6fceba45b6ab6d85f74a95c8a1\",\"23556e9cb1d04a9cbdcf27e7c1868e84\",\"898d0886fa50458fbe89555b73ff2bb2\",\"609d73f98c6e4a3b8785a9910ee91b76\"]",
+      "supersedes": null
+    }
+  ],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "a6d239cd1ff941da9868c2b8f7dae78e",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "b20b03a20e4d4dfc848b09a639a9295d",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "questions": [],
+  "primary_turns": [
+    {
+      "client_key": "ui:6666ba32-2dae-433a-b8ed-7d27c3960523:1791385687545:2cff0af9-cb1a-454c-868f-c6f275522edb",
+      "request_hash": "5de6d05a2c9417aa8fd452c5d704bfe490e83e9447cfe8ea002f5b803765287f",
+      "record_id": "6fbe793715354b058270a43d7246d3e2",
+      "status": "complete",
+      "snapshot": "{\"goals\":[],\"goals_overflow\":false,\"manifest\":[\"6fbe793715354b058270a43d7246d3e2\"],\"questions\":[],\"recent_work\":[]}",
+      "outcome": "{\"goal\":null,\"intent\":\"conversation\",\"primary_status\":\"complete\",\"record_id\":\"6fbe793715354b058270a43d7246d3e2\",\"response_id\":\"ec58ab6fceba45b6ab6d85f74a95c8a1\"}"
+    },
+    {
+      "client_key": "ui:6666ba32-2dae-433a-b8ed-7d27c3960523:1791385755057:55bd7e29-6d58-43ba-85a1-912cb2f7385f",
+      "request_hash": "b8c35911db413112e74832dfd872ca3d728074b725ad55463fe8d1d76d0b9daa",
+      "record_id": "23556e9cb1d04a9cbdcf27e7c1868e84",
+      "status": "complete",
+      "snapshot": "{\"goals\":[],\"goals_overflow\":false,\"manifest\":[\"6fbe793715354b058270a43d7246d3e2\",\"ec58ab6fceba45b6ab6d85f74a95c8a1\",\"23556e9cb1d04a9cbdcf27e7c1868e84\"],\"questions\":[],\"recent_work\":[]}",
+      "outcome": "{\"goal\":{\"acceptance_id\":\"b20b03a20e4d4dfc848b09a639a9295d\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"a6d239cd1ff941da9868c2b8f7dae78e\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":0},\"intent\":\"draft\",\"primary_status\":\"complete\",\"record_id\":\"23556e9cb1d04a9cbdcf27e7c1868e84\",\"response_id\":\"898d0886fa50458fbe89555b73ff2bb2\"}"
+    },
+    {
+      "client_key": "ui:6666ba32-2dae-433a-b8ed-7d27c3960523:1791385948093:5c09fa0d-eb79-469c-980b-b0b4bdb0eb1b",
+      "request_hash": "d35fca1c4f5f15e9be9a54baea65291499c3c0fbe5f7c8120df9bd074ef0995e",
+      "record_id": "609d73f98c6e4a3b8785a9910ee91b76",
+      "status": "complete",
+      "snapshot": "{\"goals\":[],\"goals_overflow\":false,\"manifest\":[\"6fbe793715354b058270a43d7246d3e2\",\"ec58ab6fceba45b6ab6d85f74a95c8a1\",\"23556e9cb1d04a9cbdcf27e7c1868e84\",\"898d0886fa50458fbe89555b73ff2bb2\",\"609d73f98c6e4a3b8785a9910ee91b76\"],\"questions\":[],\"recent_work\":[{\"epoch\":1,\"id\":\"a6d239cd1ff941da9868c2b8f7dae78e\",\"revision\":1,\"state\":\"completed\"}]}",
+      "outcome": "{\"goal\":null,\"intent\":\"conversation\",\"primary_status\":\"complete\",\"record_id\":\"609d73f98c6e4a3b8785a9910ee91b76\",\"response_id\":\"1f71c2e98faf406c80a680c143be4e21\"}"
+    }
+  ]
+}

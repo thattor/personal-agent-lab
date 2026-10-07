@@ -201,3 +201,16 @@ Qwen/Expert/UI/human proof inferred. No product change, rerun or retrospective r
 old stop results. Unit adds actual semantic evidence; Issue12/N1-10 remains incomplete.
 Next: fixed production UI/Expert check on a new bounded owned store, then one actual
 end-to-end usefulness evaluation. No new question about routine format or implementation.
+
+## C034 — Prove the real conversation-to-artifact path
+
+Fixed production entrypoint/UI case unit met on candidatea1ba755/product1a14de9.
+Four synthetic UI inputs used6 of8 official slots, elapsed523 seconds within600 limit.
+Background stays conversation; contextual request creates one real artifact. Missing
+date/time/place causes one natural question; answer produces the second real artifact.
+Both actual UI-opened bodies match host receipts, no raw native telemetry claimed.
+Read-only DB integrity/pending checks and normal owned teardown verified. Full213
+PASS18.510s. Source unchanged; no new design/harness or old-matrix guard bypass.
+Contribution: working end-to-end evaluation candidate for #5; #12/#2/PAL remain open.
+Next: one meaningful HR-STABLE1-001 evaluation packet, affected release-coverage audit;
+apply actual feedback, then final release audit. No human micro-approval or Qwen claim.
