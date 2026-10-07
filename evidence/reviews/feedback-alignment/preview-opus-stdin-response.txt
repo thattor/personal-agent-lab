@@ -1,0 +1,59 @@
+# Opus design review: terminal incomplete-preview semantics (D-027/P-002)
+
+This review uses only the facts you supplied. I did not read the source, as requested. That also means I skipped the plan-file workflow.
+
+## Recommendation: Option B, with tight conditions
+
+B is the smaller canonical change, and its meaning is honest. Under fixed acceptance, a goal that ends without meeting its criteria has not achieved its goal. `failed` already means "terminal, not achieved." What P-002 adds is a host-recorded reason and a labeled preview artifact. It does not add a new kind of outcome.
+
+A changes the Goal lifecycle itself. Every place that reads the enum needs a full audit: terminal-set lists, recovery scans, resume and approval eligibility, forget fencing, UI cards, and metrics. A new state is easy to leave out of a terminal-set check by accident. Recovery could then treat it as non-terminal and re-run or resume it. That is a worse regression than any label confusion B could cause.
+
+**Switch to A only if** your audit finds that `failed` already triggers behavior that a reason code cannot cleanly gate, such as auto-retry, error alerts, or a retry button with new semantics. That would be a routine implementation finding, not a product decision.
+
+## Required B semantics
+
+1. **Canonical state.** Goal `failed` with a new host-set `terminal_reason = clarification_exhausted`. The reason describes why the goal stopped; "preview" is a property of the artifact. If `terminal_reason` does not exist yet, add it as a nullable column through the existing versioned migration. That avoids rebuilding a CHECK constraint.
+2. **Attempt.** Set Attempt `unverified` with outcome `unverified` in the same dedicated transaction, never via `fail()`. Confirm that recovery and requeue decide based on Goal state, not on Attempt `unverified` alone. Otherwise a restart could requeue the attempt.
+3. **Separate artifact role.** The preview must not go through the path that emits `goal.completed` or the completion artifact link.
+   - Use a distinct host artifact role, `preview`, and a distinct event, `goal.incomplete_preview`.
+   - `complete()` must reject any receipt whose role is not the normal deliverable. That keeps a preview receipt from ever being replayed as a completion.
+4. **Labeling that survives download.** UI labels disappear once the file leaves the app.
+   - Use a host-controlled filename marker for every format.
+   - For text-like formats, add a host-prepended banner, inserted before hashing so the receipt covers the labeled bytes.
+   - Labels come from the host, never from model output.
+5. **Receipts prove bytes only.** Keep the existing hash/size/UTF-8 readback receipt and bind the role into its metadata. Do not create a new receipt capability. Nothing in the receipt, event, or UI may imply that the criteria were evaluated or passed.
+6. **Display mapping.** UI and API render `(failed, clarification_exhausted)` as "Incomplete — preview available (not accepted)." This is a deterministic, documented mapping from canonical fields, not a reinterpretation of the enum. Any existing "error/failed" alert path should skip this reason.
+
+## Checks on authority and regressions
+
+- **Model authority.** Exhaustion is a host counter, not a model claim. A model that asks pointless questions only reaches `failed`, so it gains no authority or status. A model that asks nothing goes through normal `complete()` with fixed acceptance. Nothing gives the model an early exit to preview.
+- **Fencing.** The terminal transaction must check, inside a single SQLite transaction:
+  - active attempt id, epoch, and goal revision;
+  - that no source used by the attempt has been forgotten since the attempt started.
+  
+  If any check fails, fence the attempt and write no preview.
+- **Forget.** The forget query for affected artifacts must include the `preview` role. Soft-retain and fence it exactly as drafts are handled. It must not stay downloadable after a forget.
+- **Atomicity and duplicates.** Use an idempotency key `(attempt_id, terminal_preview)`, unique. Write the artifact as temp file, rename, then read back, all before the DB commit. Emit the event in the same transaction. A crash after rename but before commit leaves an orphan file, which startup cleanup sweeps. A duplicate call after commit returns the existing result as a no-op.
+- **Races.** Cancel and terminal preview contend through the same fence, and the first commit wins. A cancelled goal produces no preview. Pause during `waiting_input` keeps existing semantics. Restart while a question is outstanding stays `waiting`; it does not count as exhaustion.
+- **Questions table.**
+  - Constraints: unique `(attempt_id, round)`, plus a partial unique index allowing one open question per attempt.
+  - Answers bind by explicit `question_id` and are checked against epoch and revision.
+  - A stale or mismatched answer is rejected visibly, never silently rebound.
+  - Define the trigger precisely: preview happens when the model requests a third follow-up after two answered follow-ups. Running out of the call cap mid-round should take the same path, not a generic error.
+- **Testing limits.** "Generic or creative tasks don't ask; known facts aren't asked about" is prompt behavior and cannot be guaranteed. Deterministic tests should use a scripted provider to cover counting, fencing, binding, and the terminal transaction. Live behavior should be recorded as observational evidence, not as a PASS on that guarantee. This matches your note that budget numbers are not a product language guarantee.
+- **No continuation.** A late answer after the terminal preview must not reopen the goal. Do not wire "use this preview as a source for a new goal." That would be new behavior; users keep only the existing new-goal path.
+
+## Possible material choices for the human
+
+Given P-002 as you describe it, I see none that require a human decision, with two caveats:
+
+1. **Download.** If P-002 says only "visibly incomplete preview" and does not explicitly allow download, then making the preview downloadable is a scope question. Confirm the wording in the source turn. If it is ambiguous, ship view-only and propose download separately.
+2. **The word "failed".** If the human objects to any user-visible appearance of "failed", for example in exports or API output, that is a product-language choice. The display mapping above should satisfy "visibly incomplete" without it.
+
+Everything else is routine implementation under D-027: reason column, role, event, fencing, idempotency, question constraints, and budget numbers. A versus B is decided by your audit, not by the human.
+
+## Before adopting
+
+1. Record this question, answer, and the B-with-fallback-to-A conclusion in DECISIONS.md.
+2. Audit every consumer of `failed` and of Attempt `unverified`: recovery, requeue, alerts, retry UI, and metrics.
+3. Write the failing tests first: terminal transaction, fence races, forget coverage, and `complete()` rejecting a preview receipt.

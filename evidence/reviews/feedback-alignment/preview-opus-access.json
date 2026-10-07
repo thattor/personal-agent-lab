@@ -1,0 +1,16 @@
+{
+  "loggedIn": true,
+  "authMethod": "claude.ai",
+  "subscriptionType": "pro",
+  "checked_at": 1791364705.293668,
+  "exit_code": 0,
+  "ui": {
+    "plan": "Pro",
+    "session_used_percent": 30,
+    "week_used_percent": 19,
+    "extra_credits": false,
+    "purchased": "$0",
+    "monthly_spent": "$0.00",
+    "auto_reload": false
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "loggedIn": true,
+  "authMethod": "claude.ai",
+  "subscriptionType": "pro",
+  "checked_at": 1791364745.191365,
+  "ui_proof": "preview-opus-access.json; same current observed Pro30%/19%, extra credits false",
+  "$0_purchased": true,
+  "call_change": "stdin prompt avoids variadic mcp-config swallowing positional prompt"
+}

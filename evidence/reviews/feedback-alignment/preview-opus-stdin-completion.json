@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "started_at": 1791364748.913545,
+  "finished_at": 1791364810.1276648,
+  "tools": "none",
+  "stderr_retained_locally": true,
+  "prompt_transport": "stdin"
+}

@@ -1,0 +1,19 @@
+{
+  "baseline": "c03d9147cfc547e2e14de4b96941d1f8dce9b1be",
+  "source_hashes": {
+    "pal/store.py": "b6a75691b45e3692daa619032b0ffe4e4aceac355797ffe2686d76f73a355aeb",
+    "pal/runtime.py": "c596cd93a4ce7b691cfe7fdee1a1109b963940932f59dd27f3fe08ecf0be4c71",
+    "pal/server.py": "65ae13c5028202d2031ac3f9b78af44920a1b2f53163d11f1daf5d20cf940a5c",
+    "pal/web/app.js": "e6a64e849724e7ea61f1a67bd0d4ee9b8775001a442b3fd3417369194bd71911"
+  },
+  "observations": {
+    "artifact_atomicity": "Immutable SQLite BLOB, receipt and event support same transaction; no disk rename/orphan sweeper needed",
+    "failed_consumers": "claim selects queued only; recover selects running Attempt only. Dedicated terminal unverified will not be recovered automatically. UI generic failed label needs exact host reason mapping.",
+    "legacy_fail": "fail(unverified) can requeue or waiting_input; not valid terminal preview path",
+    "reference_stop": "_invalidate_source excludes terminal Goals, checks revision sources and running Attempt manifests. Waiting incidental source coverage is absent. Historic artifact read has no usability gate; retained-human-inspect must not be silently redefined.",
+    "completion": "complete verifies active Attempt, matching receipt, UTF8/hash/size, then emits goal.completed; role fence absent",
+    "answer_binding": "baseline input binds question_id/epoch but has no persisted question row or revision-bound answer-source metadata; latest-goal runtime routing is ambiguous for multiple waiting Goals"
+  },
+  "review_status": "Opus source reconciliation in progress, no changed canonical design adopted here",
+  "canonical_writes": false
+}

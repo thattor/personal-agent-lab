@@ -1,0 +1,94 @@
+**Opus follow-up review: smallest safe incomplete-preview contract under P002**
+
+This review uses only the facts you supplied. I used no tools and read no source. Anything below that depends on code behavior is a condition to verify in tests, not something I confirmed.
+
+## Verdicts
+
+**1. Atomic BLOB write: AGREED.** Reject file paths, rename and orphan-sweep mechanisms. Two conditions:
+- **Fencing inside the transaction.** The same `BEGIN IMMEDIATE` must re-check all of these before it inserts anything:
+  - the Attempt is still `running`;
+  - the epoch matches;
+  - the Goal revision matches;
+  - every referenced source has `usable=1`.
+
+  If any check fails, roll back and write nothing. The Attempt is then fenced, and no preview exists.
+- **Idempotency.** Add a unique constraint on (attempt_id, artifact kind) so a crash-and-retry cannot create a second preview. Because the commit is atomic, recovery sees either the whole result or nothing. In the "nothing" case the Attempt is still `running`, so the existing running-Attempt recovery handles it.
+
+**2. Reuse the existing Goal reason: AGREED.** No `terminal_reason` column. Conditions:
+- `reason` is a closed enum set by the host. Model text is never copied into it.
+- The two new values are `clarification_exhausted` and `incomplete_template`.
+- The UI maps each exact value to a label, e.g. "Incomplete preview: clarification limit reached" or "Incomplete template preview". It does not show a bare "failed".
+- Tests must prove three exclusions:
+  - `claim` never selects these Goals;
+  - recovery never selects them;
+  - acceptance never treats an `unverified` outcome as PASS.
+
+**3. Forget as reference-stop: AGREED, and consistent with P002.** P002 requires visible invalidation, not deletion or read denial. In the facts you supplied I see no accepted requirement for read suppression, so do not add it.
+- **What stays the same.** `artifact(id)` keeps returning the historical bytes for human inspection.
+- **Stale indicator.** The stale or reference-stopped marker is computed at read time from source usability. It is shown outside the BLOB, never written into it, because the BLOB is immutable and hashed.
+- **What gets gated.** Every reuse is gated on usability:
+  - using the artifact as an input or citation;
+  - regeneration or new generation;
+  - showing it in the current event projection as a valid result.
+- **Forget during an in-flight Attempt** is handled by the fencing check in point 1.
+
+**4. Early incomplete preview: AGREED, but authority must move earlier.** The permission to produce an early preview is set by the host at intake or revision and stored on the Goal revision before any Attempt starts. The Attempt's model never sets or changes it.
+- **Ambiguous requests fail closed.** If the request is not clearly generic or template, the ordinary clarification path applies.
+- **Visibility.** The flag is shown to the user so they can correct it by revising the Goal.
+- **Unauthorized proposals.** If the flag is false and the model proposes `incomplete_preview`, the host rejects it as an invalid proposal. It is not converted into a preview.
+- **Generic creative work with no placeholders** goes through normal acceptance. Add one cheap host check:
+  - every declared placeholder must appear literally in the body;
+  - every token in the body matching the fixed placeholder syntax must be declared.
+
+  Passing this check proves consistency only, not semantic completeness.
+- **Fixed criteria never PASS.**
+
+**5. Manifest and hash: AGREED.**
+- In the same transaction, check that each source ID exists, has `usable=1` and is within the Goal's permitted scope, and that each citation is a literal match.
+- The banner is fixed host text added before hashing. Reject any body that contains the banner string, so the model cannot spoof it.
+- The hash proves the bytes are intact, not that the content is true.
+- Display stays in the existing read-only text UI. No export or download feature.
+
+**6. Question budget: AGREED.**
+- **Single open question.** Enforce one open question per Goal with a partial unique index on `goal_id` where the status is open.
+- **Question ID binding.** Each question ID is bound to the Goal, revision, epoch, issuing Attempt and round.
+- **Answers.**
+  - An answer must reference the open question ID and match the current revision and epoch. Stale answers are rejected visibly.
+  - Only answer records whose source is the user count toward the budget. Automatic recovery never counts.
+- **Closing questions.** Cancel or forget closes the open question.
+- **Unresolved, and belongs to the SWE budget review:** what happens when the third `needs_input` arrives without a usable draft. My suggested minimum:
+  - The host issues no third question and starts one final Attempt flagged as preview-required.
+  - If that Attempt produces no valid preview, the Goal fails with `clarification_exhausted` and no artifact.
+  - The budget is per Goal, and a Goal revision does not reset it.
+
+## Material human choice
+None. Everything above stays within P002. The question budget waits only on the SWE technical review.
+
+## Canonical contract
+- **Pre-conditions**
+  - The Goal revision carries `template_preview_allowed` (set by the host at intake, fails closed).
+  - At most one question per Goal is open.
+  - The budget counts answered rounds, using user-sourced answers only.
+- **Preview commit** happens in one `BEGIN IMMEDIATE` transaction:
+  1. Check that the Attempt is running and the epoch and revision match.
+  2. Check every manifest source: it exists, is usable, is in scope, and each citation matches literally.
+  3. Run the placeholder consistency check and the body bounds/UTF-8 checks.
+  4. Check that the banner string is absent from the body.
+  5. Insert the BLOB, which is the host banner plus the body, with its hash.
+  6. Insert the receipt and the preview event.
+  7. Set the Attempt to `unverified`.
+  8. Set the Goal to `failed` with reason `incomplete_template` or `clarification_exhausted`.
+- **When a commit is allowed**
+  - `incomplete_template` requires `template_preview_allowed`.
+  - `clarification_exhausted` requires that the budget has been reached.
+  - Any check failure rolls back the whole transaction.
+- **Reads**
+  - Historical bytes remain readable.
+  - The stale or reference-stopped indicator is computed at read time.
+  - All reuse, generation and current projection are gated on source usability.
+  - No deletion is claimed.
+- **Never**
+  - PASS for these Goals.
+  - Generic retry of failed Goals.
+  - Recovery treated as a user answer.
+  - Model-written reason text.
