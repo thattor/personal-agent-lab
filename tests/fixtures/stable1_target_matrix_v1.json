@@ -1,0 +1,137 @@
+{
+  "status": "Proposed semantic matrix under D-021, contract review pending; not executed",
+  "authorship": "Synthetic controller test cases, not actual human inputs",
+  "cases": [
+    {
+      "id": "T01",
+      "action": "cancel",
+      "goals": [],
+      "text": "その作業を止めて",
+      "expected": "no_target_no_goal_mutation"
+    },
+    {
+      "id": "T02",
+      "action": "cancel",
+      "goals": [
+        [
+          "Cedar",
+          "queued"
+        ]
+      ],
+      "text": "その下書きを中止して",
+      "expected": "unique_Cedar_cancel"
+    },
+    {
+      "id": "T03",
+      "action": "correct",
+      "goals": [
+        [
+          "Cedar",
+          "running"
+        ]
+      ],
+      "text": "その下書きを訂正して: 短い招待文にしてください",
+      "expected": "unique_Cedar_revision_fixed_criteria"
+    },
+    {
+      "id": "T04",
+      "action": "cancel",
+      "goals": [
+        [
+          "Cedar",
+          "queued"
+        ],
+        [
+          "Birch",
+          "queued"
+        ]
+      ],
+      "text": "その下書きを止めて",
+      "expected": "persistent_choice_no_goal_mutation"
+    },
+    {
+      "id": "T05",
+      "action": "cancel",
+      "goals": [
+        [
+          "Cedar",
+          "queued"
+        ],
+        [
+          "Birch",
+          "queued"
+        ]
+      ],
+      "text": "Cedarの下書きを止めて",
+      "expected": "unique_Cedar_cancel_Birch_unchanged"
+    },
+    {
+      "id": "T06",
+      "action": "cancel",
+      "goals": [
+        [
+          "Cedar",
+          "completed"
+        ],
+        [
+          "Birch",
+          "waiting_input"
+        ],
+        [
+          "Maple",
+          "cancelled"
+        ]
+      ],
+      "text": "Birchの下書きを止めて",
+      "expected": "unique_Birch_cancel_others_unchanged"
+    },
+    {
+      "id": "T07",
+      "action": "correct",
+      "goals": [
+        [
+          "Cedar",
+          "queued"
+        ],
+        [
+          "Cedar",
+          "waiting_input"
+        ],
+        [
+          "Birch",
+          "cancelled"
+        ]
+      ],
+      "text": "Cedarの下書きを訂正して: 招待文を短くして",
+      "expected": "persistent_choice_no_goal_mutation"
+    },
+    {
+      "id": "T08",
+      "action": "cancel",
+      "goals": [
+        [
+          "Birch",
+          "queued"
+        ]
+      ],
+      "text": "Cedarの下書きを止めて",
+      "expected": "no_match_no_fallback_to_Birch"
+    },
+    {
+      "id": "T09",
+      "action": "correct",
+      "goals": [
+        [
+          "Cedar",
+          "completed"
+        ],
+        [
+          "Maple",
+          "cancelled"
+        ]
+      ],
+      "text": "Cedarの下書きを訂正して: 短くして",
+      "expected": "terminal_target_no_goal_mutation"
+    }
+  ]
+}

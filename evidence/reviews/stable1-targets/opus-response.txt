@@ -1,0 +1,119 @@
+# Review: PAL Stable-1 Issue 4 natural-control target selection contract
+
+## Verdict
+
+**Approve the direction, with corrections.** The core shape fits D-021:
+
+- the parser stays pure,
+- target resolution moves into the ingress transaction,
+- ambiguity never falls back to the latest Goal,
+- the selection snapshot is host-issued and bound to revision and epoch,
+- choices are applied once.
+
+There are seven holes to close before code: storage semantics, staleness criteria, `forget` interaction, the transaction mode, cue rules, text replies while a selector is pending, and baseline disclosure. None needs a material plan change if you adopt the corrections below. SWE-2's independent review is separate and not represented here.
+
+## Storage: new table or dedupe JSON?
+
+**Recommendation: one minimal `control_selections` table.** It is about the same size as dedupe reuse and clearer for transactions and recovery.
+
+Problems with dedupe reuse as proposed:
+
+1. **Marking a dedupe row "consumed" mutates an idempotency record.** If consumption updates the original ingress row's result JSON, replaying the original key changes what it returns. That breaks "replay rebuilds the fixed question from the stored result." Dedupe rows must stay immutable.
+2. **Lookup needs two rows anyway.** Lookup is by `selection_id`, but the dedupe key is the ingress key. You would need a secondary row with key = `selection_id`, plus an insert-only consumption-marker row. That is three overloaded rows instead of one purpose-built row.
+3. **Hidden preconditions.** Reuse is only safe if the dedupe uniqueness covers `(kind, key)`, there is no TTL or pruning of dedupe rows, and nothing else scans dedupe by kind. Unless you have confirmed all three, it is fragile.
+
+Minimal table:
+
+- `selection_id` (primary key, host uid)
+- `conversation_id`
+- `source_record_id`
+- `action`
+- `proposal_json`: immutable; holds the correction text and up to 3 choices (goal_id, revision, epoch, state at issue, label)
+- `created_ingress_key`
+- `consumed_by_ingress_key` (nullable)
+- `created_at`
+
+Consumption is a single conditional update: set `consumed_by_ingress_key` where the selection matches and it is still null, then require exactly one row changed. Do this in the same transaction as the control and the dedupe result. The ingress dedupe row stays immutable and still stores the question result for replay.
+
+Acceptable fallback if you must avoid a schema change: an insert-only marker row of kind `selection_use`, keyed by `selection_id`, with the uniqueness constraint giving the exactly-once guarantee. Use it only after verifying the three preconditions above. Either option is within D-021; a table is not a workflow engine.
+
+## Contract corrections (all within D-021)
+
+1. **Define staleness precisely.** "Bound snapshot" should not mean exact state equality.
+   - Valid means: same revision, same epoch, and the target is still eligible for the action *now*.
+   - A queued Goal being claimed and moving to running, with no epoch change, should still be cancellable or correctable.
+   - Completed, cancelled, or a revision/epoch change means stale: show a fixed reply and do not mutate.
+   - Write down whether worker claim bumps the epoch, and test both sides.
+
+2. **Use `BEGIN IMMEDIATE` for ingress, with a busy timeout.** Otherwise two concurrent clicks can hit a read-to-write upgrade `SQLITE_BUSY` and surface an error instead of the fixed "already applied" reply.
+   - The loser must see the selection consumed and get a reply distinct from "stale": "already applied" versus "task changed."
+
+3. **`forget` interaction (privacy hole).**
+   - The selector copies the correction text.
+   - Forgetting the source record must either purge `proposal_json`'s text, in the same transaction as the forget, or leave it inert.
+   - A later click must return a fixed "request no longer available" reply.
+   - Replays of the original key must not resurrect the forgotten text. This means the stored dedupe result must not inline the correction text either; reference it instead.
+
+4. **Bind selectors to scope.**
+   - A `selection_id` from another conversation or source must be rejected exactly like an unknown id (no oracle).
+   - A `target_id` not in the offered set must be rejected.
+   - Reusing a choice key with a different `selection_id` or `target_id` is a hash conflict and must be rejected, not treated as a replay.
+
+5. **Specify cue rules.**
+   - The parser emits the literal cue only.
+   - Matching is on normalized (casefold, whitespace-collapse) exact substring against the stored Goal label/title, over eligible targets only.
+   - Exactly one match: select it. Zero or two or more matches with eligible targets present: ask for selection, without ranking.
+   - If the cue matches only completed or cancelled Goals: give a fixed explanation naming that state, and never redirect to another Goal.
+   - No fuzzy matching and no model involvement.
+
+6. **Set precedence with pending input.** If a Goal is `waiting_input` and the text parses as a natural control, the control parse wins over the epoch-bound answer path, and vice versa for non-control text. Pin this down and regression-test it. A correction that fences increments the epoch, so a pending answer goes stale as designed.
+
+7. **Plain text while a selector is pending.** Buttons are the only binding path. "the second one" goes through normal ingress and could become a new Goal. Choose one:
+   - **(a)** The fixed question says "use the buttons." This is within D-021.
+   - **(b)** Parse ordinal replies. This is scope growth: human decision.
+
+   I recommend (a) plus a test that typed text never consumes a selector.
+
+8. **What a choice ingress records.** It should write a host-generated user-visible record (e.g., "Selected: <snapshot label>"), never echo editable action, specification, or criteria. Correction criteria are copied from the target revision at apply time, and the proposal must not contain criteria.
+
+9. **Make the host question replay-safe.** The ingress transaction must persist the fixed bilingual question as the assistant record, so that `_respond`'s stored-reply path covers it. A crash between commit and response must never reach the provider.
+
+10. **Treat labels as untrusted user text.** Use snapshot labels, rendered as text only in the UI (no HTML), and truncate them deterministically.
+
+11. **More than 3 eligible targets.** A unique cue may still select. Otherwise give a fixed "name the task more specifically" reply with no buttons and no first-three guess. Out of N1-03 scope but correct.
+
+12. **Old pending selectors.** Leaving them clickable is acceptable because snapshot binding guarantees correctness. Optionally show "already used" or "outdated" when re-rendered. No supersession logic is needed.
+
+13. **Explicit API path.** The explicit `goal_id`/control API stays a separate, validated path. It must not accept a `selection_id`, and the selection path must not bypass its validations.
+
+## Test plan additions
+
+- **Claim race:** queued Goal, then claim to running, then click. The click applies, with fence and epoch bump. Then: complete, then click; result is stale with no mutation. Also: correction by another key, then click; stale due to revision change.
+- **Concurrency:** two concurrent clicks under `BEGIN IMMEDIATE` produce exactly one control, one "already applied" reply, and no `SQLITE_BUSY` surfaced.
+- **Scope rejection:** cross-conversation `selection_id`, foreign `target_id`, and choice-key hash conflict all reject with identical outward behavior for unknown and foreign ids.
+- **`forget`:**
+  - forget the source, then click: fixed rejection;
+  - replay the original key after forget: no correction text;
+  - kill the process mid-forget: rollback leaves no partial purge.
+- **Typed text with a selector pending:** never consumes the selector; it follows normal routing.
+- **Precedence:** `waiting_input` plus a natural correction, versus a plain answer.
+- **Kill points:**
+  - after the selector commit and before the response: replay returns the stored question with zero provider calls;
+  - inside the choice transaction: full rollback, selector still unconsumed;
+  - after the choice commit and before outbox delivery: replay shows no duplicate artifacts or reports.
+- **Pruning (dedupe fallback only):** dedupe pruning or retention does not remove selectors.
+- Keep the rest of your list: the 0–3 state matrix, fixed criteria, cue cases, restart dedupe, rollback at the transaction midpoint, and the English single-target, pause/resume, provider-lease, and grammar regressions.
+
+## Within D-021 versus human/Opus decisions
+
+**Within D-021, with no human sign-off needed:** the minimal table (or dedupe fallback), staleness semantics, `BEGIN IMMEDIATE`, `forget` purge, cue rules, buttons-only binding, and the more-than-3 behavior.
+
+**Within D-021, but call out explicitly in the evidence:** the existing English latest-pick behavior changes to asking for selection when there are multiple eligible targets. Existing tests asserting latest-pick will be rewritten. Disclose this rather than leaving it implicit.
+
+**Material changes needing human judgment, only if you want them:**
+
+- natural-language selection replies (ordinals or free-text cue answers),
+- selector expiry or TTL policy,
+- any model-assisted target matching.
+
+None of these is required for N1-03 or N1-04. N1-06 (live UI) and N1-07 (human evaluation) remain later stages.

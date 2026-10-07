@@ -1,0 +1,7 @@
+{
+  "frozen_at": "2026-10-07T04:43:37.695978+00:00",
+  "path": "tests/fixtures/stable1_target_matrix_v1.json",
+  "sha256": "0dabc52bf07e2b75d4500df592f6d391b81cadc3514215feef1ae8633e43252b",
+  "cases": 9,
+  "run_status": "not_run"
+}

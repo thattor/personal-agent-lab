@@ -1,0 +1,67 @@
+# PAL D-021 Issue 4: Design Reconciliation
+
+**Basis.** This is a text-only review. I have not inspected code. Your five code facts are my premises, and I flag where a conclusion depends on one of them.
+
+## Verdict
+
+All five corrections stay within D-021 and do not need a new human plan adoption, provided the three blockers below are closed. Each correction narrows behavior to a stricter outcome: STALE instead of a redirect, an inert selector instead of a resurrected one, and source-tracked provenance instead of `sources=[]`. None adds product scope. Point 4 is the only one that changes behavior of an existing API. It should be documented as a conformance fix, but it does not need fresh adoption.
+
+## Point-by-point
+
+**1. Epoch fencing across claim and recover.** Agreed. Since claim and recover both increment the epoch, strict equality on revision, epoch and current eligibility is the correct conservative D-021 rule. The prior Opus no-epoch-change assumption is superseded, and the claim-race test should expect STALE.
+
+- *Regression to accept, not a blocker:* a queued goal that the worker claims quickly will make most offered choices stale. This is a usability cost, not a safety issue. Record it as a known limitation and do not loosen the rule.
+- *Implementation note:* make the claim-race test deterministic. Do offer, then claim, then choose, and assert STALE. Add the reverse ordering: choose, then claim, and assert the correction applied and the claim fenced by existing criteria. Don't rely on thread timing.
+- *Implementation note:* read eligibility, set `consumed_by`, write the revision, and write the outcome record in one BEGIN IMMEDIATE transaction. Claim also takes the write lock, so it serializes correctly.
+- *Recommendation:* make STALE terminal, meaning it consumes the selector with outcome=stale. Epochs only increase, so a retry could never succeed anyway. A terminal outcome keeps resolution single and immutable. A second, different choice record on a consumed selector gets the fixed "already resolved" reply.
+
+**2. Single stream, source-bound selector, dedicated table.** Agreed. Don't invent a conversation namespace. Binding to the Store plus `source_record_id` and the source ingress key, with an exact match on `selection_id`, `source_key` and the offered `target_id`, is sufficient.
+
+- *Implementation note:* every mismatch gets one generic reject: unknown `selection_id`, wrong `source_key`, `target_id` not in the offered set, or a foreign selector. Distinct replies (STALE, unavailable, already resolved) are only returned after a full match. That gives no oracle.
+- *Implementation note:* generate `selection_id` randomly rather than with autoincrement. It costs nothing and avoids trivial enumeration, even with no auth model.
+- *Implementation note:* when zero choices are eligible, emit the fixed reply and create no selector row.
+
+**3. Forget makes the selector inert.** Agreed, with one blocker.
+
+- **Blocker A, label leakage on replay.** Labels are stored in the immutable proposal and dedupe result. A label derived from a target goal's revision can carry user text whose source is later forgotten. Replay must never emit stored labels unchecked. Replay projection should gate each choice on both:
+  - `_usable(source_record_id)`, which already makes the whole selector inert;
+  - usability of that target revision's sources.
+  
+  When the target's sources are unusable, drop the label, or the choice, in favor of a fixed placeholder. Apply the same check at apply time.
+- **Blocker B, the new table must not outlive forget policy.** The proposal JSON is a new copy of the correction text. If existing forget only marks records unusable and retains raw text, inertness via `_usable` is enough, and this becomes an implementation note. If existing forget scrubs or deletes content, then forget must also null the proposal's correction text in the same transaction. Otherwise the selector table becomes a stronger retention path than the source it came from. Confirm which case applies.
+
+**4. Correction provenance.** Agreed, and this is the most valuable correction: `sources=[]` silently defeats forget-stops for corrected goals.
+
+- Natural and selected corrections must reference the original correction's `source_record_id`, meaning the text-bearing record. Referencing the button choice record is optional and adds nothing. Keep it minimal.
+- Explicit host control API: add the source only when a real ingress user record exists. Direct `Store.control` stays sourceless with nothing fabricated. This is an observable behavior change, since forget of that record now stops the goal. Note it in the decision record as conformance with existing forget semantics. Update any test that asserts `sources=[]`.
+- Confirm there is no scope creep: no retrieval changes and no expansion of reference-stop.
+
+**5. Schema v1→v2 migration.** Agreed.
+
+- *Implementation note:* run the user_version read, CREATE IF NOT EXISTS, and the user_version write inside one BEGIN IMMEDIATE transaction. SQLite rolls back `user_version` with the transaction, so concurrent startups are safe.
+- **Blocker C, the foreign key must not obstruct forget.** If forget ever deletes record rows and `PRAGMA foreign_keys=ON`, the FK will block forget. With ON DELETE CASCADE, it will instead silently erase resolution evidence. Use no cascade, and rely on `_usable` soft-gating. If forget does hard deletes, drop FK enforcement on this column.
+- *Implementation note:* decide how a binary that expects v1 behaves on a v2 database (downgrade), and how this binary behaves on v3 or later. At minimum, refuse unknown future versions explicitly.
+
+## Minimal final contract
+
+1. Ambiguous correction produces, in one ingress transaction with no model calls:
+   - a fixed question record;
+   - a selector row: random `selection_id`, `source_record_id`, `source_key`, action, and an immutable proposal containing the correction text and choices (GoalID, revision, epoch, state, label), with `consumed_by` NULL.
+   
+   The response and dedupe result contain only `selection_id` and safe labels. With zero eligible choices, return the fixed reply and create no row.
+2. A choice, buttons only, must exactly match `selection_id`, `source_key` and an offered `target_id`. Anything else gets one generic reject.
+3. On a match, one BEGIN IMMEDIATE transaction does the following:
+   - Checks `_usable(source)` and target usability. If either fails, the outcome is unavailable.
+   - Requires exact revision, epoch and current eligibility. Otherwise the outcome is STALE.
+   - Runs `UPDATE … SET consumed_by=? WHERE selection_id=? AND consumed_by IS NULL` and requires rowcount=1. Otherwise the outcome is already-resolved.
+   - On success, applies the correction with existing criteria and fencing, with sources=[original correction record], and writes the outcome record.
+   
+   STALE and success are both terminal. Unavailable is effectively terminal as well.
+4. Replay re-projects from the immutable result through current usability. Stored text and labels are never emitted ungated.
+5. Additive v2 migration, with no repair of the original or soak database. Defaults stay unchanged: mock, no tools, permissions, budget or proactive features. No ordinals, TTL, model cue, namespace or content-missing workflow.
+
+## Summary
+
+- **Blockers:** A (label replay leak), B (selector table versus forget retention), C (FK versus forget).
+- **Implementation notes:** everything else above.
+- **Documentation:** point 4's explicit-API behavior change and the STALE-heavy usability cost.

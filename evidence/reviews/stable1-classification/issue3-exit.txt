@@ -1,0 +1,9 @@
+C-001 Issue3 objective verification — runtime commit fe3ad2b
+
+Implemented pure host local-draft classification with persisted classification/version in existing atomic ingress JSON; no schema/model/tool/cost/production-host change.
+N1-01 PASS: frozen40 before code,16/16 requests exactly one Goal/dedupe;24/24 zero Goals, unsupported sending bilingual no-provider limitation.
+N1-02 PASS after repairs, original failure preserved: official independent12 frozen before code; first candidate1 unwanted Goal/2-of4 recall retained FAIL. Final regression includes all36 reviewer cases with0 false-positive Goals,11-of12 request recall. Supplementary final unseen12 (generated after implementation, not a replacement freeze) has0 false-positive Goals,3-of4 recall. One safe miss: Japanese 草案 stays conversation; no work was claimed. No hidden100-percent natural-language claim.
+Full73 tests PASS. Source hashes and candidate-before-opening records, original failures, fresh official Opus/SWE no-extra-charge review evidence and actual96-case host audit: evidence/reviews/stable1-classification/README.md and linked files at fe3ad2b.
+
+Issue3 goal achieved within D-021 finite grammar. Parent milestone1/project6 remain incomplete: N1-03–08 unfinished, no new actual UI/provider/human evaluation. Stable-0 unchanged. P-001 and Projects device permission remain separate human waits. Current implementation plan valid, no material plan/scope/acceptance change.
+Next: Issue4 persistent host-selected target/revision/epoch transaction and restart contracts; fresh official SWE-2 High + Opus review before adoption/code. Multi-vendor max32 authorized; official Opus/SWE reviews actually ran in parallel. CO0.3 coordinator not verified here (co help is Codex wrapper); no invented CO execution.

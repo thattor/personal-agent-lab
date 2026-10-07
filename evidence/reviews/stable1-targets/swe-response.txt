@@ -1,0 +1,36 @@
+# Verdict: Contract is sound; adopt with corrections below. All items are D-021 implementation detail — nothing here triggers the Opus/human gate.
+
+The approved semantics (unique resolve-or-ask, persistent host binding, visible stale/cross-target reject, fixed criteria, no latest-guess) are fully preserved by the proposal. The pure-parser + in-transaction-resolution split is the right boundary.
+
+## Required corrections / clarifications
+
+**1. Selector storage: use the dedicated minimal table, not dedupe JSON.**
+Dedupe's invariant is write-once, immutable result. `consumed` is a state transition on a host-issued object — stuffing it into result JSON forces an UPDATE on an insert-only table and muddies "stored result returned verbatim." `control_selections(selection_id PK, source_key, proposal_json, consumed, created_at)` is ~15 lines of DDL and makes recovery inspection and the consumed-check honest. Keep dedupe for what it's for: the ambiguity ingress result (question + selection_id) and the choice ingress result (applied/stale outcome).
+
+If you do reuse dedupe anyway, the only safe variant is **insert-only**: selector row keyed `sel:{uid}`, consumption represented by inserting `consumed:{uid}` (INSERT-conflict ⇒ already consumed). Never mutate result JSON. I still recommend the table — the marker trick saves nothing once you price the keyspace conventions.
+
+**2. Consume-then-apply ordering inside the choice transaction.**
+`BEGIN IMMEDIATE` → dedupe lookup by choice key (hit ⇒ return stored result verbatim, no revalidation) → load selector (missing/consumed ⇒ store+return fixed stale reply) → re-verify target's epoch/revision/state against snapshot **inside this transaction** (this is what makes the worker-claim/complete race a visible stale rather than a wrong-target apply) → `_control` (fence, epoch increment, fixed criteria) → mark consumed → write dedupe result. One write transaction, no TOCTOU window.
+
+**3. Distinguish rejection causes in the stored result.**
+Consumed-already-answered vs. stale-snapshot vs. cross-selector/forged are three different fixed replies. Keep them distinguishable in result kind so the safety tests can assert the right one — otherwise "stale visible" is untestable.
+
+**4. Cue semantics need one sentence of precision.**
+Define: cue filters the **eligible set only**; exact-match on a stored label field after stated normalization. Then the uniform rule applies to the filtered set: 1 ⇒ apply, 0 ⇒ fixed "no such target" explanation, ≥2 ⇒ selection. Do not let a cue that matches only completed/cancelled goals fall through to ambiguity over the full eligible set — that's a silent redirect.
+
+**5. Selector scoping.**
+Bind the selector to the conversation/source request (`requestsourceid` is in the payload — enforce it on apply, don't just store it). A choice carrying a valid selection_id but a target not in `choices`, or arriving under a different source context, is a cross-selector reject.
+
+**6. Replay-of-ambiguity-after-apply.**
+Replaying the original ambiguous ingress key after a successful apply returns the stored question with the old selection_id — the selector is consumed, so any answer gets the honest stale reply. That's correct idempotent behavior; write it down so nobody "fixes" it later.
+
+## Test plan — your matrix is right; add four cases
+
+- Cue present but matches only ineligible goals ⇒ fixed no-target reply, not ambiguity.
+- Ambiguity replay post-apply returns stored question, subsequent choice ⇒ stale (consumes nothing twice).
+- Choice `target_id` absent from `choices` even with valid selection_id ⇒ cross-selector reject.
+- Two pending selectors (two different ambiguity keys) over overlapping goals: first apply wins, second selector's epoch snapshot mismatches ⇒ stale, never double-apply.
+
+## What stays out (correctly)
+
+Content-missing clarification, model/tool routing, criteria edits via choice, >3 narrowing by guess — all correctly excluded. Escalate to Opus only if implementation forces a change to the *approved semantics* (eligible-state set, fixed-criteria rule, no-mutation-on-ambiguity), not for anything in this contract.

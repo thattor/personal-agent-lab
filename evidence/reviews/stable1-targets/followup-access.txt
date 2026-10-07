@@ -1,0 +1,2 @@
+Verified 2026-10-07T04:45:11.164285+00:00
+Official Claude Pro existing loggedIn/claude.ai/pro; usage UI41%session/14%week, creditsOFF, monthly$0.00,autoReloadOFF. No auth/settings/payment/fallback changes.
