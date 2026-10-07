@@ -452,3 +452,33 @@ behavior is retested. No new user approval required for these implementation cho
 D029 integration reconciliation C029: asynchronous admission requires clients/tests to await operation fate instead of assuming a Goal exists at HTTP202. This is admission timing, not lower acceptance. Explicit controls commit host reply in their existing transaction with bounded digest keys; stale optional epoch rejects. Recent-work metadata provides status context without granting target authority. Frozen target snapshots may become stale during inference; application validates selected target, while unrelated work progress does not prevent ordinary conversation. Historical accepted ingress replay is preserved without new classification/inference. Mock-only lexical fixtures do not qualify reasoning semantics.
 
 Independent compatibility review found legacy P002 one-DRAFT-per-input permit incompatible with PRIMARY→DRAFT. Adopt fail-closed protocol guard before proof consumption, retain old matrices/budgets/evidence and keep old scripted tests scoped to Expert/observer only. New actual harness needs a separately reviewed/frozen contract; no silent call-budget increase or old PASS transfer. Independent integration audit found cached terminal Future bypassing source-stop reply projection; terminal replay now resolves a fresh guarded reply and never regenerates. This is a boundary correction within the reviewed design, not a new human approval gate.
+
+
+D029 qualification contract review completed before harness implementation: official
+standalone SWE-2 High Free,409.774s, qualification-swe-{question,response,access,completion}
+in evidence/reviews/judgment-boundary/. Adopt the minimum Primary-only evaluator calling
+unchanged production prepare/context/prompt/provider/decode/finish functions. No Runtime
+worker: queued output, Expert quality, UI and in-flight target races are not proved here.
+Old P002 gate/matrix/budget stay unchanged. New PRIMARY-only permit binds exact sanitized
+prompt hash, one serial call per turn,24 total attempts, deadline min900/proof remaining,
+one consumed proof, no resume/renewal/resampling, source/fixture pinning and owned cleanup.
+
+Before inference verify fixture rows AND offered snapshot IDs/status/source usability.
+Construct epochs with queued pause/resume then one claim; never repair rows or exhaust
+claim budgets during setup. Preserve prompt/raw response in bounded exclusive fsynced
+side files, hash-link them before application. A prior turn must be captured/judged before
+next; semantic mismatch stops, including unsafe proposals rejected by host. Stage-tagged
+failures settle prepared input via normal finish(error) where possible; otherwise record
+abandonment, never repair/replay inference. Verify/report is read-only and creates no
+provider/proof. Raw proposed actions, canonical before/after and controller reasoning
+remain separate from actual human usefulness. Test oracle fields never enter prompts.
+
+Controller reconciliations: use strict no-resume rather than another recovery workflow;
+a fixed oracle-marker/field leak check plus injected-canary test rather than matching
+ordinary words shared by the oracle and user input. Do not add pessimistic120-second
+pre-reservation as an acceptance gate; existing deadline/remaining proof is enforced.
+Reviewer fault-hook statement does not make arbitrary injected exceptions a model
+rejection: stage-specific journal records distinguish host/harness faults. No product
+prompt tuning after opening heldout cases before the first actual measurement. One-use
+proof and watchdog/process behavior already have meaningful existing tests; reuse them
+and add boundary-specific tests instead of duplicating a framework.

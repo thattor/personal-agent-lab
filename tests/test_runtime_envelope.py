@@ -1,6 +1,7 @@
 from tests.helpers import settled
 import json
 import tempfile
+import time
 import unittest
 from pathlib import Path
 from pal.runtime import Runtime, MockProvider
@@ -34,12 +35,20 @@ class RuntimeEnvelopeTests(unittest.TestCase):
         goal = runtime.store.get_goal(goal_id)
         settled(runtime, key, text, goal_id=goal_id, control={
             'action':'input', 'text':text, 'question_id':goal['question_id'], 'epoch':goal['epoch']})
-        self.assertTrue(runtime.idle.wait(3))
+        self.wait_for_work(runtime,goal_id)
+
+    def wait_for_work(self, runtime, goal_id):
+        deadline = time.monotonic()+3
+        while time.monotonic()<deadline:
+            if runtime.store.get_goal(goal_id)['state'] not in ('queued','running'):
+                return
+            time.sleep(.005)
+        self.fail('Goal did not reach a waiting or terminal state')
 
     def test_restart_bound_answer_enters_executor_and_completes_same_goal(self):
         runtime = self.start(ScriptedProvider([{'kind':'needs_input','question':'Which date?','citations':[]}]))
         goal_id = settled(runtime, 'draft','Make a draft invitation')['goal']['id']
-        self.assertTrue(runtime.idle.wait(3))
+        self.wait_for_work(runtime,goal_id)
         self.assertEqual(runtime.store.get_goal(goal_id)['state'], 'waiting_input')
         runtime.close()
         provider = ScriptedProvider([{'kind':'complete','content':'Invitation Saturday','citations':[]}])
@@ -55,7 +64,7 @@ class RuntimeEnvelopeTests(unittest.TestCase):
         runtime = self.start(ScriptedProvider([
             {'kind':'needs_input','question':q,'citations':[]} for q in ('Date and recipient?', 'Recipient?', 'Still missing recipient?')]))
         goal_id = settled(runtime, 'draft','Make a draft invitation')['goal']['id']
-        self.assertTrue(runtime.idle.wait(3))
+        self.wait_for_work(runtime,goal_id)
         self.assertEqual(runtime.store.get_goal(goal_id)['state'], 'waiting_input')
         self.answer(runtime, goal_id, 'a1', 'Saturday')
         self.assertEqual(runtime.store.get_goal(goal_id)['state'], 'waiting_input')
@@ -75,7 +84,7 @@ class RuntimeEnvelopeTests(unittest.TestCase):
                 runtime = Runtime(Path(temp)/'state.db', provider=ScriptedProvider([payload]*3))
                 try:
                     goal_id = settled(runtime, 'draft','Make a draft invitation')['goal']['id']
-                    self.assertTrue(runtime.idle.wait(3))
+                    self.wait_for_work(runtime,goal_id)
                     self.assertNotEqual(runtime.store.get_goal(goal_id)['state'], 'completed')
                     self.assertEqual(runtime.store.inspect()['receipts'], [])
                     self.assertTrue(runtime.store.inspect()['rejections'])
@@ -94,7 +103,7 @@ class RuntimeEnvelopeTests(unittest.TestCase):
                 runtime = Runtime(Path(temp)/'state.db', executor=UnsafeExecutor())
                 try:
                     goal_id = settled(runtime, 'draft','Make a draft')['goal']['id']
-                    self.assertTrue(runtime.idle.wait(3))
+                    self.wait_for_work(runtime,goal_id)
                     self.assertEqual(runtime.store.get_goal(goal_id)['state'], 'failed')
                     self.assertEqual(runtime.store.inspect()['receipts'], [])
                     self.assertIn('EnvelopeRejected', runtime.store.get_goal(goal_id)['reason'])
@@ -112,7 +121,7 @@ class RuntimeEnvelopeTests(unittest.TestCase):
         provider = InvalidProvider()
         runtime = self.start(provider)
         goal_id = settled(runtime, 'draft','Make a draft')['goal']['id']
-        self.assertTrue(runtime.idle.wait(3))
+        self.wait_for_work(runtime,goal_id)
         self.assertEqual(provider.calls, 1)
         self.assertEqual(runtime.store.get_goal(goal_id)['state'], 'failed')
         self.assertIn('EnvelopeRejected', runtime.store.get_goal(goal_id)['reason'])

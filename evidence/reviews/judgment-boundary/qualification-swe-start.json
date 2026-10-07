@@ -1,0 +1,7 @@
+{
+  "started_at": 1791380312.076214,
+  "prompt_sha256": "86da4fadf49f6178c3fe5f1a550dae73bdcd834502b788e390eccf94af323e89",
+  "model": "swe-2-high",
+  "timeout_seconds": 900,
+  "paid_fallback": false
+}

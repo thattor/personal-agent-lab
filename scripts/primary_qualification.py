@@ -1,0 +1,473 @@
+"""Finite Primary-only measurement; no workers, run resume or human attestation."""
+import argparse
+import hashlib
+import json
+import os
+import signal
+import stat
+import subprocess
+import sys
+import threading
+import time
+from pathlib import Path
+
+from pal.native import AccessProof, ProviderUnavailable, native_environment
+from pal.primary import decode_primary, primary_prompt
+from pal.sanitize import sanitize
+from pal.store import Store
+from scripts.live_evidence import EvidenceJournal, RunWatchdog, verify_journal
+from scripts.live_operator import AuditedNative, clean_candidate
+from scripts.live_runner import RunRejected, SourcePin
+
+FIXTURE = 'evidence/reviews/judgment-boundary/primary-heldout.json'
+FREEZE = 'evidence/reviews/judgment-boundary/primary-candidate-freeze.json'
+FIXTURE_SHA = '523d6b859e67d9f84162cdf6299e12a835c8ba920724442b68df3b81c9fe62a0'
+ORACLE_FIELDS = ('PAL_ORACLE_ONLY','acceptable_outcome_set','required_observations',
+                 'disallowed_effects','interpretation_reason','target_ref')
+
+
+def digest(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def load_matrix(path):
+    raw = Path(path).read_bytes()
+    if digest(raw) != FIXTURE_SHA:
+        raise RunRejected('frozen corpus changed')
+    return json.loads(raw)
+
+
+class QualificationPin(SourcePin):
+    def __init__(self, root, matrix):
+        super().__init__(root,matrix)
+        for path in sorted((root/'scripts').glob('primary_*.py')):
+            self.hashes[str(path.relative_to(root))] = digest(path.read_bytes())
+        self.hashes[FREEZE] = digest((root/FREEZE).read_bytes())
+
+    def check(self):
+        if QualificationPin(self.root,self.matrix).hashes != self.hashes:
+            raise RunRejected('qualification source drift')
+
+
+def seed_case(store, case):
+    bindings = {}
+    setup = case['setup']
+    for source in setup['sources']:
+        if source['usable'] is not True:
+            raise RunRejected('unsupported unusable setup source')
+        bindings[source['ref']] = store.record(source['ref'],source['role'],source['content'])['id']
+    for note in setup.get('memory_notes',[]):
+        if note['usable'] is not True:
+            raise RunRejected('unsupported unusable setup note')
+        bindings[note['ref']] = store.note(note['ref'],note['content'],
+                                         [bindings[s] for s in note['source_refs']])['id']
+    for goal in setup['goals']:
+        ref = goal['ref']
+        actual = store.create_goal(ref,goal['label'],goal['fixed_criteria'],
+                                   [bindings[s] for s in goal['source_refs']])
+        bindings[ref] = actual['id']
+        state, epoch = goal['state'],goal['epoch']
+        if goal['revision'] != 1 or state not in ('queued','paused','running','waiting_input'):
+            raise RunRejected('unsupported fixture goal')
+        cycles = epoch-1 if state in ('paused','running','waiting_input') else epoch
+        for index in range(cycles):
+            store.control(f'{ref}:pause:{index}',actual['id'],'pause')
+            store.control(f'{ref}:resume:{index}',actual['id'],'resume')
+        if state=='paused':
+            store.control(ref+':paused',actual['id'],'pause')
+        elif state in ('running','waiting_input'):
+            attempt = store.claim()
+            if attempt is None or attempt['goal_id'] != actual['id']:
+                raise RunRejected('fixture claimed another Goal')
+            if state=='waiting_input':
+                question = next(q for q in setup['questions'] if q['goal_ref']==ref)
+                actual = store.request_clarification(attempt['id'],question['text'])
+                bindings[question['ref']] = actual['question_id']
+    data = store.inspect()
+    for expected in setup['goals']:
+        goal = next(g for g in data['goals'] if g['id']==bindings[expected['ref']])
+        revision = next(r for r in data['revisions'] if r['goal_id']==goal['id'])
+        if (any(goal[k]!=expected[k] for k in ('state','epoch','revision')) or
+                json.loads(revision['criteria'])!=expected['fixed_criteria'] or
+                json.loads(revision['sources'])!=[bindings[s] for s in expected['source_refs']] or
+                revision['specification']!=expected['label']):
+            raise RunRejected('fixture Goal mismatch')
+    for expected in setup['questions']:
+        actual = next(q for q in data['questions'] if q['id']==bindings[expected['ref']])
+        if (actual['goal_id']!=bindings[expected['goal_ref']] or actual['status']!='open' or
+                actual['prompt']!=expected['text'] or
+                any(actual[k]!=expected[k] for k in ('epoch','revision'))):
+            raise RunRejected('fixture question mismatch')
+    for expected in setup['sources']:
+        actual = next(r for r in data['records'] if r['id']==bindings[expected['ref']])
+        if actual['content']!=expected['content'] or actual['usable']!=1:
+            raise RunRejected('fixture source mismatch')
+    for expected in setup.get('memory_notes',[]):
+        actual = next(n for n in data['notes'] if n['id']==bindings[expected['ref']])
+        if (actual['content']!=expected['content'] or actual['usable']!=1 or
+                json.loads(actual['sources'])!=[bindings[s] for s in expected['source_refs']]):
+            raise RunRejected('fixture note mismatch')
+    for field,table in (('latest_goal_ref','goals'),('latest_source_ref','records'),
+                        ('latest_displayed_question_ref','questions')):
+        if field in setup and data[table][-1]['id']!=bindings[setup[field]]:
+            raise RunRejected('fixture ordering mismatch')
+    return bindings
+
+
+def verify_snapshot(store, context):
+    data = store.inspect()
+    usable = set(store.context()['manifest'])
+    active = [g for g in data['goals'] if g['state'] not in ('completed','cancelled','unknown')]
+    if len(active)>10 or context['goals_overflow']:
+        raise RunRejected('unexpected fixture target overflow')
+    expected = []
+    for goal in active:
+        revision = next(r for r in data['revisions'] if r['goal_id']==goal['id'] and r['revision']==goal['revision'])
+        if set(json.loads(revision['sources']))<=usable:
+            expected.append(goal)
+    fields = ('id','state','revision','epoch','question_id')
+    if {tuple(g[k] for k in fields) for g in context['goals']} != {tuple(g[k] for k in fields) for g in expected}:
+        raise RunRejected('offered Goal snapshot differs from fixture')
+    questions = [q for q in data['questions'] if q['status']=='open' and
+                 any(g['id']==q['goal_id'] and g['question_id']==q['id'] and
+                     g['epoch']==q['epoch'] and g['revision']==q['revision'] for g in expected)]
+    if {q['id'] for q in context['questions']}!={q['id'] for q in questions}:
+        raise RunRejected('offered question snapshot differs from fixture')
+    if set(context['manifest'])!=usable:
+        raise RunRejected('offered source manifest differs from fixture')
+
+
+class PrimaryGate:
+    def __init__(self, provider, sink, deadline, clock=time.monotonic):
+        self.provider,self.sink,self.deadline,self.clock = provider,sink,deadline,clock
+        self.attempts = 0
+        self._lock = threading.Lock()
+        self._permit = None
+        self._active = self.closed = False
+
+    def close_run(self, reason):
+        with self._lock:
+            if self.closed: return
+            self.closed = True
+            self._permit = None
+        try:
+            self.provider.stop()
+        finally:
+            self.sink({'event':'run.closed','reason':reason,'attempts':self.attempts})
+
+    def grant(self, case, turn, prompt):
+        safe = sanitize(prompt)
+        with self._lock:
+            denied = (self.closed or self.clock()>=self.deadline or self.attempts>=24 or
+                      self._active or self._permit is not None or not safe.startswith('PRIMARY\n'))
+            if not denied:
+                self._permit = (case,turn,digest(safe.encode('utf-8')))
+        if denied:
+            self.close_run('permit_denied')
+            raise ProviderUnavailable('Primary permit denied')
+        try:
+            self.sink({'event':'permit.granted','case':case,'turn':turn,'prompt_sha256':self._permit[2]})
+        except BaseException:
+            self.close_run('permit_evidence_failed')
+            raise
+
+    def complete(self, prompt, record_response=None):
+        raw = sanitize(prompt).encode('utf-8')
+        with self._lock:
+            permit = self._permit
+            denied = (self.closed or self.clock()>=self.deadline or self.attempts>=24 or
+                      self._active or permit is None or digest(raw)!=permit[2])
+            if not denied:
+                self._permit = None
+                self._active = True
+                self.attempts += 1
+        if denied:
+            self.close_run('unplanned_or_expired_call')
+            raise ProviderUnavailable('Primary generation gate closed')
+        event = {'case':permit[0],'turn':permit[1],'call_sequence':self.attempts}
+        try:
+            self.sink(dict(event,event='call.started',prompt_sha256=permit[2]))
+            response = self.provider.complete(raw.decode('utf-8'))
+            if record_response is not None:
+                record_response(response)
+            self.sink(dict(event,event='call.returned',response_sha256=digest(response.encode('utf-8')),
+                           discarded=self.clock()>=self.deadline or self.closed))
+            if self.clock()>=self.deadline or self.closed:
+                raise ProviderUnavailable('Primary deadline at return')
+            return response
+        except BaseException as error:
+            try:
+                self.sink(dict(event,event='call.failed',error_type=type(error).__name__))
+            finally:
+                self.close_run('call_failed')
+            raise
+        finally:
+            with self._lock:
+                self._active = False
+
+
+class QualificationRunner:
+    def __init__(self, root, directory, provider, *, scope, candidate):
+        self.root,self.directory = Path(root).resolve(),Path(directory).resolve()
+        self.provider,self.scope = provider,scope
+        self.journal = self.gate = self.watchdog = None
+        self.closed = False
+        self.stores,self.bindings,self.accepted = [],[],[]
+        self.index,self.pending = 0,None
+        try:
+            if scope not in ('scripted','live_synthetic'):
+                raise ValueError('unsupported qualification scope')
+            if scope=='live_synthetic':
+                if type(provider) is not AuditedNative or not provider._operator_ready or provider._runner_claimed:
+                    raise ValueError('qualification requires one audited official owner')
+                provider.proof.check()
+                provider._runner_claimed = True
+            self.matrix = load_matrix(self.root/FIXTURE)
+            self.pin = QualificationPin(self.root,self.root/FIXTURE)
+            freeze = json.loads((self.root/FREEZE).read_text())
+            if any(digest((self.root/p).read_bytes())!=sha for p,sha in freeze['files'].items()):
+                raise RunRejected('product candidate differs from pre-disclosure freeze')
+            self.directory.mkdir(mode=0o700,parents=False,exist_ok=False)
+            self.journal = EvidenceJournal(self.directory/'journal.jsonl',scope)
+            remaining = 900 if scope=='scripted' else 900-(time.time()-provider.proof.verified_at)
+            if remaining<=0: raise ProviderUnavailable('proof expired before run')
+            self.deadline = time.monotonic()+min(900,remaining)
+            self.gate = PrimaryGate(provider,self.journal.append,self.deadline)
+            if scope=='live_synthetic': provider.sink = self.journal.append
+            self.watchdog = RunWatchdog(self.gate,self.deadline)
+            self.watchdog.start()
+            self.journal.append({'event':'run.opened','candidate':candidate,'hashes':self.pin.hashes,
+                                 'product_candidate':freeze['candidate'],'provider':provider.identity,
+                                 'proof_remaining_seconds':remaining,'deadline_monotonic':self.deadline,
+                                 'max_attempts':24,'resume':False,'faults_disabled':True,
+                                 'claim':'Primary semantics and host application only; no workers/UI/Expert/race/human proof',
+                                 'human_evaluation':False})
+            for case in self.matrix['cases']:
+                store = Store(self.directory/(case['id']+'.sqlite'))
+                mapping = seed_case(store,case)
+                self.stores.append(store)
+                self.bindings.append(mapping)
+                self.journal.append({'event':'fixture.verified','case':case['id'],'bindings':mapping,
+                                     'snapshot':store.inspect()})
+            self.turns = [(i,t) for i,c in enumerate(self.matrix['cases']) for t in range(len(c['turns']))]
+        except BaseException:
+            self.close()
+            raise
+
+    def _check(self):
+        if self.closed or self.gate.closed:
+            raise RunRejected('qualification run closed')
+        self.pin.check()
+
+    def _blob(self, name, text):
+        raw = text.encode('utf-8',errors='strict')
+        if len(raw)>131072: raise RunRejected('evidence blob too large')
+        fd = os.open(self.directory/name,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
+        with os.fdopen(fd,'wb') as stream:
+            stream.write(raw)
+            stream.flush()
+            os.fsync(stream.fileno())
+        directory = os.open(self.directory,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+        try: os.fsync(directory)
+        finally: os.close(directory)
+        return {'name':name,'sha256':digest(raw),'bytes':len(raw)}
+
+    def run_next(self):
+        self._check()
+        if self.pending is not None or self.index>=len(self.turns):
+            raise RunRejected('prior turn needs judgment or corpus exhausted')
+        case_index,turn_index = self.turns[self.index]
+        case = self.matrix['cases'][case_index]
+        turn = case['turns'][turn_index]
+        store,mapping = self.stores[case_index],self.bindings[case_index]
+        key = 'qualification:'+turn['input_record_ref']
+        stage,prepared = 'prepare',False
+        try:
+            before = store.inspect()
+            admission = store.prepare_primary(key,turn['user_text'])
+            prepared = True
+            if admission['primary_status']!='pending':
+                raise RunRejected('qualification does not replay inference')
+            mapping[turn['input_record_ref']] = admission['record_id']
+            stage = 'context'
+            context = store.primary_context(key)
+            verify_snapshot(store,context)
+            self.journal.append({'event':'snapshot.verified','case':case['id'],'turn':turn_index+1,
+                                 'key':key,'input_record_id':admission['record_id'],
+                                 'offered_goals':context['goals'],'offered_questions':context['questions'],
+                                 'manifest':context['manifest'],'before':before})
+            stage = 'prompt'
+            prompt = primary_prompt(context)
+            if any(field in prompt for field in ORACLE_FIELDS):
+                raise RunRejected('oracle field in model prompt')
+            if prompt!=sanitize(prompt):
+                raise RunRejected('prompt would change at transport boundary')
+            blob = self._blob(f'{case["id"]}-{turn_index+1}.prompt.txt',prompt)
+            self.journal.append({'event':'prompt.built','case':case['id'],'turn':turn_index+1,'blob':blob})
+            self.pin.check()
+            self.gate.grant(case['id'],turn_index+1,prompt)
+            stage = 'call'
+            def preserve_response(raw):
+                blob = self._blob(f'{case["id"]}-{turn_index+1}.response.txt',raw)
+                self.journal.append({'event':'proposal.received','case':case['id'],'turn':turn_index+1,'blob':blob})
+            raw = self.gate.complete(prompt,preserve_response)
+            stage = 'decode'
+            proposal = decode_primary(raw)
+            stage = 'finish'
+            self.pin.check()
+            outcome = store.finish_primary(key,proposal)
+            self.pending = {'case':case['id'],'turn':turn_index+1,'key':key,
+                            'input':turn['user_text'],'proposal':proposal,'outcome':outcome,
+                            'after':store.inspect(),'reply':store.stored_reply(key),'bindings':dict(mapping)}
+            self.journal.append(dict(self.pending,event='turn.captured'))
+            return self.pending
+        except BaseException as error:
+            try:
+                if prepared and store.operation(key)['status']=='pending':
+                    store.finish_primary(key,error=type(error).__name__)
+                self.journal.append({'event':'turn.failed','case':case['id'],'turn':turn_index+1,
+                                     'stage':stage,'error_type':type(error).__name__,
+                                     'operation':store.operation(key)})
+            finally:
+                self.close()
+            raise
+
+    def judge(self, passed, rationale):
+        self._check()
+        if self.pending is None or type(passed) is not bool or not isinstance(rationale,str) or not rationale.strip():
+            raise RunRejected('a captured turn and explicit controller judgment are required')
+        ci,ti = self.turns[self.index]
+        expected = self.matrix['cases'][ci]['turns'][ti]['acceptable_outcome_set']
+        action = self.pending['proposal']['action']
+        if passed:
+            matched = any(action['kind']==e['action_kind'] and ('target_ref' not in e or
+                          self.bindings[ci][e['target_ref']]==action.get('goal_id',action.get('question_id',action.get('source_id'))))
+                          for e in expected)
+            if not matched or self.pending['outcome']['primary_status']!='complete':
+                raise RunRejected('controller PASS conflicts with action/target or host rejection')
+        self.journal.append({'event':'turn.judged','case':self.pending['case'],'turn':self.pending['turn'],
+                             'passed':passed,'rationale':rationale,'judge':'controller','human_evaluation':False})
+        if passed:
+            self.accepted.append((self.pending['case'],self.pending['turn']))
+            self.index += 1
+            self.pending = None
+        else:
+            self.close()
+        return {'accepted':passed,'accepted_turns':len(self.accepted),'human_evaluation':False}
+
+    def finish(self):
+        self._check()
+        if len(self.accepted)!=len(self.turns) or self.pending is not None:
+            raise RunRejected('qualification incomplete')
+        result = {'event':'qualification.finished','accepted_turns':len(self.accepted),
+                  'attempts':self.gate.attempts,'human_evaluation':False}
+        try: self.journal.append(result)
+        finally: self.close()
+        verify_run(self.directory)
+        return result
+
+    def close(self):
+        if self.closed: return
+        self.closed = True
+        try:
+            if self.gate is not None: self.gate.close_run('operator_closed')
+            else: self.provider.stop()
+        finally:
+            try:
+                if self.watchdog is not None: self.watchdog.close()
+            finally:
+                if self.journal is not None: self.journal.close()
+
+
+def verify_run(directory):
+    directory = Path(directory)
+    records = verify_journal(directory/'journal.jsonl')
+    for record in records:
+        blob = record.get('blob')
+        if blob is None: continue
+        if Path(blob['name']).name!=blob['name']:
+            raise RunRejected('invalid evidence blob name')
+        fd = os.open(directory/blob['name'],os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+        with os.fdopen(fd,'rb') as stream:
+            if not stat.S_ISREG(os.fstat(stream.fileno()).st_mode):
+                raise RunRejected('invalid evidence blob type')
+            raw = stream.read(131073)
+        if len(raw)!=blob['bytes'] or len(raw)>131072 or digest(raw)!=blob['sha256']:
+            raise RunRejected('evidence blob mismatch')
+    return {'records':len(records),'completed':any(r['event']=='qualification.finished' for r in records),
+            'judged_turns':sum(r['event']=='turn.judged' for r in records),
+            'scope':records[0]['scope'] if records else None,'human_evaluation':False}
+
+
+def build_live(root, directory, proof_path, candidate):
+    root,directory = Path(root).resolve(),Path(directory).resolve()
+    directory.relative_to(root/'runtime')
+    if directory.exists(): raise FileExistsError(directory)
+    clean_candidate(root,candidate)
+    proof = AccessProof.load(proof_path)
+    owner = AuditedNative(proof,max_calls=24)
+    try:
+        command = owner.command()
+        owner._frozen_command = list(command)
+        version = subprocess.run([command[0],'--version'],capture_output=True,text=True,
+                                 check=True,timeout=10,env=native_environment())
+        if len(version.stdout.encode('utf-8'))>4096: raise ValueError('CLI version bound')
+        proof.consume(root/'runtime/native-proof-use')
+        owner._operator_ready = True
+        runner = QualificationRunner(root,directory,owner,scope='live_synthetic',candidate=candidate)
+    except BaseException:
+        owner.stop()
+        raise
+    try:
+        runner.journal.append({'event':'operator.config','command':command,'cli_version':version.stdout.strip(),
+                               'python_version':sys.version,'native_slots':24,
+                               'access_proof':{'verified_at':proof.verified_at,'route':proof.route,'no_extra_charge':True},
+                               'actual_model':'official Claude --model opus (service revision not exposed)',
+                               'qwen_qualification':False,'human_evaluation':False})
+    except BaseException:
+        runner.close()
+        raise
+    return runner
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--verify')
+    parser.add_argument('--run-directory')
+    parser.add_argument('--access-proof')
+    parser.add_argument('--candidate')
+    args = parser.parse_args()
+    if args.verify:
+        if args.run_directory or args.access_proof or args.candidate:
+            parser.error('verify is read-only and takes no execution arguments')
+        print(json.dumps(verify_run(args.verify)),flush=True)
+        return
+    if not all((args.run_directory,args.access_proof,args.candidate)):
+        parser.error('run directory, proof and candidate are required')
+    root = Path(__file__).resolve().parents[1]
+    runner = build_live(root,args.run_directory,args.access_proof,args.candidate)
+    def interrupted(signum, frame):
+        raise SystemExit('qualification interrupted')
+    signal.signal(signal.SIGTERM,interrupted)
+    signal.signal(signal.SIGINT,interrupted)
+    try:
+        print(json.dumps({'ready':True,'scope':'live_synthetic','human_evaluation':False}),flush=True)
+        for line in sys.stdin:
+            request = json.loads(line)
+            if request=={'action':'next'}:
+                result = runner.run_next()
+            elif set(request)=={'action','passed','rationale'} and request['action']=='judge':
+                result = runner.judge(request['passed'],request['rationale'])
+            elif request=={'action':'finish'}:
+                print(json.dumps(runner.finish(),ensure_ascii=False),flush=True)
+                return
+            else:
+                raise ValueError('unsupported qualification command')
+            print(json.dumps(result,ensure_ascii=False),flush=True)
+    finally:
+        runner.close()
+
+
+if __name__=='__main__':
+    from scripts.primary_qualification import main as entry
+    entry()

@@ -151,3 +151,16 @@ Official standalone SWE-2 High Free contract review completed432.479s before imp
 Unit goal achieved: ordinary input goes to one Primary JSON call, then host validation/application and independent Expert work; natural clarification/answer/control/memory/reference-stop use the same boundary. No rule preemption or silent provider fallback, no latest-Goal answer shortcut. Immediate explicit UI controls are epoch-bound; asynchronous receipts track terminal fate. Full196 tests PASS16.599s and both shipped-JS synthetic DOM tests PASS. New actual Runtime process kills before/after model return prove no inference replay. Source-stop cached reply hole found by independent audit was fixed with terminal guarded reads and regression. All tests use fixtures, not real model or human acceptance. Existing hosts/stores unchanged.
 
 Historical P002 live operator disabled by protocol guard before proof loading/consumption; frozen matrix/budget preserved. Its deterministic scenarios now explicitly prove legacy Expert/observer fixtures via host Store admission, not new conversational intake. Current N1-09/10 PARTIAL; Issue12/milestone/project incomplete. Next freeze source/prompt before reading independent heldout, review bounded new actual-provider harness, run fresh authorized real-function/UI proof and one actual owner usefulness evaluation. No new human choice or plan change.
+
+
+## C030 — Make actual Primary measurement trustworthy without changing its prompt
+
+Issue12 / milestone1 / project6. Work-unit objective: a bounded truthful evaluator for
+D029 semantics, after the old P002 permit became incompatible. Official SWE Free review
+and independent setup/source audit completed; 15 targeted tests,211 full PASS18.056s.
+Prior missing-module and idle-observer failure logs retained. Production files still
+match1a14de9 pre-oracle freeze. Evidence: evidence/reviews/judgment-boundary/README.md.
+Unit goal met as test infrastructure, not actual model/UI/human proof. No product scope,
+criteria, model prompt, call-budget renewal or future-plan activation. GitHub hierarchy
+readback synchronized. Next: fresh bounded actual Primary corpus, diagnose first failure,
+then separate real UI/Expert proof and one authentic end-to-end usefulness evaluation.

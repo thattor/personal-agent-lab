@@ -1,0 +1,25 @@
+{
+  "recorded_at": 1791380632.777761,
+  "candidate": "1a14de986de2756ffea83c2671e506a32cccfdf6",
+  "reviewer": "stable1_target_audit",
+  "scope": "read_only_fixture_setup_feasibility",
+  "corpus_sha256": "523d6b859e67d9f84162cdf6299e12a835c8ba920724442b68df3b81c9fe62a0",
+  "conclusion": "All twelve setups are feasible using public Store APIs; no impossible alias or question binding found.",
+  "recipes": {
+    "running_epoch_N": "N-1 queued pause/resume cycles, then exactly one claim",
+    "waiting_epoch_N": "running recipe then request_clarification",
+    "paused_epoch_N": "N-1 queued pause/resume cycles then one final queued pause"
+  },
+  "required_verification": [
+    "Original source contents retained; Goal label maps to specification",
+    "Claim identity matches intended Goal, one claim budget consumed",
+    "Goal state/revision/epoch/fixed criteria match fixture",
+    "Question IDs/current binding/status match fixture",
+    "Note source IDs and all usability match fixture",
+    "Never call recovery after seeding running cases; no Runtime worker",
+    "Map ordinary turn refs to actual host-issued admission IDs"
+  ],
+  "provider_calls": 0,
+  "canonical_writes": 0,
+  "human_evaluation": false
+}

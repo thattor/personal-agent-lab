@@ -1,0 +1,20 @@
+test_expiry_between_grant_and_call_does_not_contact_provider (tests.test_primary_qualification.PrimaryGateTests) ... ok
+test_response_after_deadline_is_not_returned (tests.test_primary_qualification.PrimaryGateTests) ... ok
+test_twenty_four_attempt_cap_and_single_use_permit (tests.test_primary_qualification.PrimaryGateTests) ... ok
+test_wrong_prompt_does_not_use_a_slot_or_provider (tests.test_primary_qualification.PrimaryGateTests) ... ok
+test_decode_and_provider_failure_are_visible_and_settled (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_every_frozen_fixture_has_exact_host_and_offered_bindings (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_initial_journal_failure_still_stops_owned_provider (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_next_requires_judgment_and_turn_two_uses_actual_reply (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_oracle_canary_never_reaches_provider (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_post_deadline_response_is_retained_but_input_is_rejected (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_raw_unsafe_proposal_retained_before_host_rejection (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_read_only_verification_detects_changed_raw_proposal (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_snapshot_omission_is_setup_failure_before_a_model_call (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_verify_is_read_only_and_old_run_cannot_resume (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+test_wrong_offered_target_can_apply_but_cannot_receive_semantic_pass (tests.test_primary_qualification.PrimaryQualificationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 2.033s
+
+OK

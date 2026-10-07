@@ -1,0 +1,18 @@
+test_primary_qualification (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_primary_qualification (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_primary_qualification
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 14, in <module>
+    from scripts.primary_qualification import (PrimaryGate, QualificationRunner, load_matrix,
+ModuleNotFoundError: No module named 'scripts.primary_qualification'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

@@ -1,0 +1,65 @@
+Contract review of the proposed `primary_qualification.py` harness against the supplied source. Verdict first, then holes, then the minimum guard/test set, then blocker-vs-optional.
+
+## 1. Is identical Store + prompt + provider path without Runtime the truthful minimal Primary evaluator?
+
+Yes, with three caveats that must be made explicit in the run record:
+
+- **Parity must be asserted, not assumed.** The truthful claim requires the harness to call the *same* `Store.prepare_primary / primary_context / pal.primary.primary_prompt / decode_primary / finish_primary` from the frozen candidate commit — not copies. Journal the module file hashes at `run.opened` and re-check them in `verify` mode. If production Runtime ever wraps the prompt (prefix, suffix, post-processing), the harness silently diverges; add a startup assertion that the harness's prompt bytes are produced by `primary_prompt(context)` itself.
+- **What is not proven must be labeled.** With no Runtime worker active, nothing mutates goals between `prepare_primary` (snapshot) and `finish_primary` (revalidation). So the `StaleResult` race paths in `_primary_target`/`_usable` are never exercised, and local_draft goals stay queued forever. You already label the queued limitation; add the concurrency-staleness gap too.
+- **Kind vocabulary mismatch is a real seam.** `GatedProvider.grant` only accepts `('DRAFT','CONVERSATION')` and `complete` requires `prompt.startswith(permit[2]+'\n')`; `primary_prompt` emits `PRIMARY\n`. The new wrapper must use kind `'PRIMARY'` only — do not widen the old enum so a DRAFT-shaped permit can sneak through, and do not reuse the `max_calls ≤ 20` bound.
+
+## 2. Holes
+
+### Gate / replay
+1. **Permit bound only to kind is too weak.** Prefix-checking `PRIMARY\n` means any PRIMARY prompt passes the permit — a bug that rebuilds the prompt for the wrong case/turn would still call the model. Fix order: `prepare → context → prompt → sanitize → journal prompt sha256 → grant(case, turn, prompt_sha256) → complete`. `complete` verifies `sha256(sanitized_prompt) == permit hash`. This is strictly stronger than the old gate and prevents both wrong-prompt and replay-after-failure.
+2. **Resumable boundary must be `permit.granted`, not "turn".** A crash between `call.started` and `finish.outcome` leaves a `pending` `primary_turns` row; `prepare_primary` with the same key then returns the pending outcome, and a naive resume would grant a second model call for the same turn = resampling. Rule: `next` scans the verified journal prefix; if the last turn has `permit.granted`/`call.started` without `turn.judged`, the run is terminal-inconclusive and no new grant is possible. Re-entry for stages *before* grant is safe (prepare/context are idempotent) but simplest is no resume at all — pick one and journal which.
+3. **`verify`/`report` mode must never construct the provider or touch the proof.** Inject a counting provider factory in tests; assert it was never called in verify mode. This is the "no second runtime" answer to fault visibility: the journal is the flight recorder; a read-only `status` command prints the last committed stage per case from `verify_journal` output.
+4. **Journal capacity is a latent run-killer.** `call.started` embeds the full sanitized prompt in one event; `_MAX_RECORD` is 256KB and `_MAX_JOURNAL` 16MB. A large context prompt can exceed the record bound — and since `sink` is inside the `try`, a journal append failure is caught as `call.failed` and closes the run *after* the attempt was already counted: a recording limit becomes a consumed slot and a dead run. Fix: write full prompt/raw response to side files (`O_EXCL`, fsync, `0o600`) and journal only their sha256 + byte count, or pre-check prompt size at the `prompt.built` stage and fail before grant. Prefer side files — it also removes the 16MB margin concern (24 × ~512KB worst case).
+
+### Transactional / fixture
+5. **Verify the prepared snapshot, not just DB rows.** The oracle-relevant surface is what `prepare_primary` actually offered: `snapshot.goals` IDs, `snapshot.questions`, `goals_overflow`, `manifest`. Two drop-rules are silent and will produce false model failures if untested:
+   - a waiting question is offered only if `question.revision == goal.revision AND question.epoch == goal.epoch AND issued attempt manifest is usable` — if epoch advanced after the question opened, the goal is offered but the question isn't;
+   - 11+ non-terminal goals → `goals_overflow` and *zero* targets offered, even if all usable.
+   `fixture.verified` must assert the offered ID sets and overflow flag equal the frozen expectation per turn.
+6. **`prepare_primary` does not check `_usable(manifest)` at admission**; StaleResult surfaces at `primary_context` or `finish_primary`. If turn1's forget removes a source in turn2's manifest, turn2 prepares fine then fails at context resolution. The harness must classify `StaleResult` at context resolution as a *fixture/harness fault*, journal it distinctly from a model failure, and stop — never let it masquerade as a rejected proposal.
+7. **Settle every prepared turn exactly once.** Every `prepare` must end in `finish_primary(proposal)` or `finish_primary(error=…)`; a dangling `pending` row blocks clean re-keying and corrupts `operation()` semantics. Enumerate exits: success, decode failure, provider failure, post-deadline return — all must settle or explicitly abandon-with-journal.
+8. **`self.fault('primary_finish.mid_transaction')` must be inert in the live run.** A live fault would produce an indistinguishable `rejected` outcome. Journal a `faults.disabled` assertion at `run.opened`; deterministic tests cover the fault path separately.
+9. **Crash during `primary_context` is opaque.** `dict(db.execute(...).fetchone())` raises `TypeError`, not `StaleResult`, on a missing row. Wrap each stage boundary so every exception lands in the journal with its stage tag (`fixture`, `prepare`, `context`, `prompt`, `call`, `decode`, `finish`, `judge`) — that's your fault-visibility story.
+
+### Oracle isolation / judging
+10. **Journal the raw proposal before `finish_primary`.** On host rejection, `_finish_primary_outcome` discards the action fields — the journal's `proposal.received` is the only record of an unsafe attempt (unoffered goal_id, invented question_id). If it's journaled after finish, a crash loses the evidence needed for "unsafe even though host rejected" judgments.
+11. **Canary leak guard.** The stated isolation requirement ("expected answers never reach model prompt") deserves a mechanical check: before grant, scan the sanitized prompt for a canary set of oracle-only strings from the fixture; on hit, abort before grant and journal `leak.guard.tripped` (hashes only — don't put the answers in the journal payload either).
+12. **`next` must require the prior turn to be judged.** Ordering gate: refuse `next` unless the verified journal shows the previous turn's `finish.outcome` **and** `turn.judged`. This serializes turns, guarantees turn2 context is built on committed turn1 effects, and prevents a controller backlog from outrunning evidence.
+
+### Budget / proof
+13. **Deadline inputs journaled.** Record `proof_remaining` and the computed `min(900, remaining)` deadline at `run.opened`; fail fast at open if remaining can't cover even one bounded call.
+14. **Proof acquired exactly once at construction.** Consume the existing native-proof-use token into the gate once; the wrapper is a single-run object with no re-acquire path. `RunWatchdog`'s owner must be the gate (`close_run` → `provider.stop`), and `provider.stop` must be scoped to this run's AuditNative subprocess — the shared artifact is the proof record, not the process.
+
+## 3. Minimum deterministic tests (scripted provider through the same Store/prompt methods, `scope='scripted'`)
+
+Blockers:
+
+1. **Fixture isomorphism**: building a case yields the exact frozen (state, revision, epoch, question_id) tuples, with epoch 2/4/5 reached via whitelisted public methods only — instrument Store to record invoked mutator names and assert the whitelist `{record, note, create_goal, control, claim, request_clarification, prepare_primary, finish_primary}`.
+2. **Snapshot truth**: prepared snapshot offers exactly the expected goal/question IDs and overflow flag per turn; include a case where epoch advanced post-question to prove the drop-rule is detected at verification, not at judgment.
+3. **Turn2 context**: turn2's resolved context contains turn1's user `record_id` and host `response_id`.
+4. **Permit binding**: wrong-prompt hash → denied with zero stub provider calls; second `complete` without grant → denied; call after `close_run` → provider never invoked (counting stub).
+5. **Replay wall**: `next` on a turn whose journal shows `call.started` without `turn.judged` raises before grant; verify mode never constructs provider/proof.
+6. **Leak guard**: oracle canary injected into a fixture string → abort before grant, journal event present.
+7. **Exit enumeration**: each of {decode-fail, provider-raise, post-deadline return} ends with the turn settled via `finish_primary(error)` and no `pending` rows; journal verifies as a valid prefix ending in `call.failed`/`run.closed`.
+8. **Unsafe-rejected evidence**: scripted proposal with unoffered `goal_id` → host `rejected`/`source_or_target_changed`, journal still holds the attempted action for controller judgment.
+9. **Wrong-but-valid action**: offered target with wrong op → host *applies* it; journal carries action + pre/post goal state sufficient for controller fail — proves the host is not a safety net.
+10. **Cap/deadline**: 24 scripted calls succeed, 25th denied without provider contact; deadline expiry between grant and complete → denied, provider untouched.
+11. **Proof single-use**: second acquisition raises; gate is single-instance.
+12. **Watchdog**: fake-clock expiry → `close_run` → owned provider `stop` called, nothing else torn down.
+13. **Prompt parity**: harness prompt bytes == `primary_prompt(primary_context(...))` from candidate modules; module hashes asserted at open.
+
+Optional improvements:
+
+- Mechanical pre-flags journaled for the controller (unoffered IDs, `source_ids ⊄ manifest`, empty spec) — advisory only, judgment stays human-controller.
+- End-of-run per-case DB content hash for post-run tamper evidence.
+- Allow pre-grant-only re-entry for operator convenience (strict no-resume is fine too — just pick one).
+- A `status` subcommand rendering last-stage-per-case from `verify_journal`.
+
+## 4. Bottom line
+
+The architecture is the right minimal shape: Production Store + `primary_prompt` + gated single `complete` + `decode_primary` + `finish_primary`, journaled per stage, is a truthful Primary-only evaluator and does not need a second runtime. The changes I'd require before it's sound are not new capabilities — they're: prompt-hash-bound permits, the grant-line resume boundary, side-file evidence for oversized prompts, snapshot-level fixture verification, settling every prepared turn, pre-finish raw-proposal journaling, and the judged-before-next ordering gate. Everything else — full Expert usefulness, concurrency staleness, queued-draft execution — correctly belongs to the separately bounded later run and must not be claimed by this one.

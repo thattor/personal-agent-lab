@@ -1,0 +1,12 @@
+{
+  "observed_at": 1791380265.501146,
+  "route": "installed_official_devin",
+  "authenticated": true,
+  "selected_model": "swe-2-high",
+  "standalone_free_model_line": [
+    "swe-2-high                                                               SWE-2 High  [262K context, Free]"
+  ],
+  "model_command_exit": 0,
+  "auth_command_exit": 0,
+  "paid_fallback": false
+}

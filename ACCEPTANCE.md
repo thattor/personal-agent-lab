@@ -227,3 +227,14 @@ C026: constructor initial run.started failure now closes the fully initialized r
 Post-C026 blocked audit: three consecutive automatic goal continuations found the same idle human thread and terminal agent acknowledgment01a1160c, with no authentic HR-INPUT-001/P003 or HR-STABLE1-001 answer. This is no progress, not a verified live-process wait. C025/C026 independent fixes are completed/pushed; release-coverage audit identifies only judgment-dependent final work. Evidence: evidence/operations/stable1-c026-judgment-blocked-audit.json. Goal to BLOCKED under the three-turn rule, objective unchanged; Stable1 and overall project incomplete. Release: receive an authentic version-bound owner decision/evaluation in the ongoing human thread, then record/adopt its exact scope and resume corresponding implementation/retest or evaluation, followed by final candidate affected regression/live audit. P001 future adoption and Projects authorization remain separate. Last full170 PASS15.236s retained; no source change since that suite, so no redundant rerun for this documentation-only checkpoint. No repeated question, schedule restart, provider renewal/call or canonical write.
 
 D028/D029 checkpoint: invalid HR-INPUT form-only/wording wait withdrawn after authentic owner feedback and official Opus review. Stable1 remains incomplete; one end-to-end actual human evaluation and final audit are unchanged. Prior N1 PASS evidence is historical to its candidate; changed Primary architecture requires affected release regression. Qwen model-card existence is not PAL performance proof. No old quota or scheduled wake restored.
+
+
+C030 N1-10 partial verification: separately reviewed finite Primary-only harness ready;
+[15 targeted checks](evidence/reviews/judgment-boundary/qualification-targeted.txt),
+[211 full tests PASS18.056s](evidence/reviews/judgment-boundary/qualification-full-final.txt).
+Pre-disclosure product freeze1a14de9/corpus hash retained; no model-prompt tuning after
+oracle disclosure. Native24/one-use proof/remaining-proof deadline/no resume, raw-proposal
+retention, exact fixture and offered snapshot, judged-before-next and read-only journal
+verification covered. Original observer failure and20-repeat fix evidence retained.
+These are infrastructure/host tests: actual Primary semantics, revised UI/Expert function,
+Qwen capability and N1-07 usefulness are not PASS. Existing named acceptance unchanged.
