@@ -618,7 +618,32 @@ class Store:
             result['artifacts'] = [dict(r) for r in db.execute('SELECT id,hash,size FROM artifacts')]
             return result
 
-    def write_draft(self, attempt_id, content):
+    def _verify_citations(self, db, attempt, citations):
+        """Literal source floor in the application TX, never semantic proof."""
+        if not isinstance(citations, (list, tuple)) or len(citations) > 50:
+            raise EvidenceRejected('invalid citation collection')
+        manifest = set(json.loads(attempt['manifest']))
+        for citation in citations:
+            if not isinstance(citation, dict) or set(citation) != {'source_id', 'quote'}:
+                raise EvidenceRejected('invalid citation fields')
+            source, quote = citation['source_id'], citation['quote']
+            if not isinstance(source, str) or not isinstance(quote, str) or not source.strip() or not quote.strip():
+                raise EvidenceRejected('invalid citation text')
+            try:
+                if len(source.encode('utf-8')) > 128 or len(quote.encode('utf-8')) > 2000:
+                    raise EvidenceRejected('citation exceeds byte bound')
+            except UnicodeError:
+                raise EvidenceRejected('invalid citation unicode') from None
+            if source not in manifest or not self._usable(db, [source]):
+                raise EvidenceRejected('citation source outside usable manifest')
+            if source.startswith('note:'):
+                row = db.execute('SELECT content FROM notes WHERE id=?', (source[5:],)).fetchone()
+            else:
+                row = db.execute('SELECT content FROM records WHERE id=?', (source,)).fetchone()
+            if row is None or quote not in row['content']:
+                raise EvidenceRejected('citation quote not in stored sanitized source')
+
+    def write_draft(self, attempt_id, content, citations=()):
         """Host capability: accept bounded text proposal, mint receipt from actual bytes."""
         error = None
         receipt = None
@@ -628,9 +653,15 @@ class Store:
                 self._reject(db, attempt_id, 'stale artifact')
                 error = StaleResult('stale artifact proposal')
             else:
+                try:
+                    self._verify_citations(db, attempt, citations)
+                except EvidenceRejected as rejected:
+                    error = rejected
                 criteria = json.loads(db.execute('SELECT criteria FROM acceptances WHERE id=?', (attempt['acceptance_id'],)).fetchone()['criteria'])
                 cap = criteria['max_bytes']
-                if not isinstance(content, str) or not content.strip() or len(content) > cap:
+                if error:
+                    pass
+                elif not isinstance(content, str) or not content.strip() or len(content) > cap:
                     error = EvidenceRejected('invalid draft type, empty draft, or size bound')
                 elif '\x00' in content or content.startswith('\ufeff'):
                     error = EvidenceRejected('draft contains forbidden NUL or BOM')

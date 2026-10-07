@@ -1,0 +1,104 @@
+Review of proposed P002 increment against supplied baseline only. Findings ordered by severity; tests and Opus items at the end.
+
+VERDICT
+The contract is directionally sound and consistent with D027, but as written it understates three concrete code-level problems: no internal helpers exist yet to share between `waiting`/`finish_preview` and the new dispatch, `decode_draft` crashes on criteria max_bytes > 12000, and citation validation has a TOCTOU hole unless it runs inside the application transaction. Item-by-item:
+
+1. request_clarification — dispatch is necessary but the shared helper does not exist
+- Hole: `waiting()` and `finish_preview()` each open their own `_tx`. "Reuse internal helper" presumes helpers that are not in the baseline. You must extract `_open_question(db, ...)` (question row insert + attempt 'waiting' + goal waiting_input + event, reusing the answered/budget/claims predicate) and `_preview_tx(db, attempt, reason, content, missing)` (the body of `finish_preview` after its outcome-replay and `_active` checks). Public `waiting()`/`finish_preview()` become thin wrappers preserving exact current behavior. Do NOT call the public methods from the dispatch — nested `BEGIN IMMEDIATE` on `isolation_level=None` connections raises.
+- Replay order inside the dispatch TX must be: (a) `questions.attempt_id` lookup — same prompt + current bindings + usable manifest → return goal; different prompt → Conflict; (b) `outcomes.attempt_id` lookup — same 'clarification_exhausted' outcome → return it, different → Conflict; (c) `_active` → stale rejection + StaleResult; (d) exhaustion predicate → `_preview_tx`; else `_open_question`. This preserves `waiting()`'s existing replay/conflict semantics and `finish_preview()`'s outcome replay exactly.
+- The dispatch must never raise `QuestionBudgetExhausted` — exhaustion is a normal committed outcome now. `waiting()` keeps raising for backward compatibility.
+- Use a new operation name for `_tx` (e.g. 'clarify') so fault injection at clarify.before_commit / clarify.after_commit / clarify.mid_transaction is testable. Keep `self.fault('question.mid_transaction')`-style mid-TX points only inside the shared helpers with distinct names so existing fault tests on 'waiting'/'preview' don't silently change meaning.
+- Edge already consistent: question and outcome on one attempt are mutually exclusive (`_active` requires 'running'; a 'waiting' attempt can't reach outcome code). Keep it that way — dispatch must insert at most one of them.
+- The crash gap the proposal cites is real but only exists between "waiting raised" and a hypothetical second `finish_preview` call — the current baseline actually mis-handles it worse: `QuestionBudgetExhausted` propagates to `_work_loop`'s generic handler and becomes `fail(..., 'executor_error:QuestionBudgetExhausted')` → terminal 'failed' with NO preview artifact, violating D027's terminal semantics. The dispatch fixes this; do not leave the legacy `_apply` 'waiting_input' status branch raising into the generic handler undocumented — keep it (backward compat) but record the limitation.
+
+2. WorkOrder / citations — three real holes
+- Hole (TOCTOU): "all source IDs belong to this Attempt manifest/context and quotes are literal substrings" must be enforced INSIDE the same canonical TX as the application, not in `_apply` or executor. `_active` already rechecks whole-manifest usability in-TX; add `_verify_citations(db, attempt, citations)` invoked from `write_draft` (new optional `citations=()` param — keep signature default for compat), from `_open_question`/`_preview_tx` callers for needs_input and incomplete_preview. Source lookup must resolve manifest entries verbatim — manifest contains bare record ids and 'note:'+id for notes; pin citation.source_id == manifest entry verbatim and document it. Fetch source content from records/notes in-TX; quote must be substring of the STORED sanitized content (records.content / notes.content are already sanitize()'d — quotes of raw pre-sanitization text will correctly fail).
+- Hole (load-bearing, not cosmetic): the question text never enters conversational context — `context()` only carries records/notes; the prompt lives in `questions.prompt` and `goals.reason`. The answer record does reach context (usable user record, manifest on next claim), but without the question binding the model sees an orphan answer. Proposal item 2's question/answer bindings are therefore required for correctness. Best insertion point: `claim()` returns `row['questions']` (rows for this goal ordered by round, with revision/epoch/status/prompt/answer content joined from records) and `row['template_preview_allowed']` fetched inside the claim TX — deterministic, no extra snapshot race. Cap defensively (last ~10 rows).
+- Hole (sketchy wording): "Answers must actually reach same Goal context after restart" — true today via records, BUT only while usable. If the answer record is forgotten, the answer silently vanishes while `questions.answer_record_id` dangles. The binding fetch must mark such answers 'unavailable' rather than emitting stale text, and claim's `_usable` check already catches manifest-level breakage. Test this.
+- Immutability is fine: WorkOrder is frozen; add `sources: tuple` of (id, role, content) and `questions: tuple` — built only in `_work_loop` from the claim row/context snapshot. Since record/note content is immutable and claim re-checks usability, a pre-claim `context()` read is consistent enough; do not fetch content post-claim in a second read that could disagree with the claimed manifest.
+
+3. Executor boundary — two real holes
+- Hole (crash): `decode_draft(raw, max_bytes)` raises `ValueError` for max_bytes > 12000 while criteria allow up to 65536. `create_goal` accepts e.g. 65536; executor then dies with 'executor_error:ValueError' → terminal 'failed', no preview, no fault detail. Fix in the executor: `decode_draft(raw, min(order.max_bytes, 12000))`. This effectively caps model-produced content at 12000 bytes — a tighter bound, not a widened criterion — but document it explicitly, since a >12000-byte draft can then never complete via envelope.
+- Hole (trust boundary): bindings must be host-injected. The three closed envelope forms carry no goal/attempt/epoch; `ProviderExecutor.execute` must attach `{'goal_id','attempt_id','epoch','proposal':data}` itself. `_apply` must re-validate the closed outer set AND the proposal's closed form/kind again (cheap; executor is a boundary but `_apply` is the host gate). Never read identity fields from provider JSON.
+- Fault visibility: malformed JSON → EnvelopeRejected in executor → generic handler → 'executor_error:EnvelopeRejected' → terminal 'error'. This is finite and non-escalating (good — no paid retry on malformed output), but the attempts.error/outcomes detail is only the type name. Acceptable; if you want the reason visible, map EnvelopeRejected to `fail(attempt, 'envelope_rejected:<sanitized detail>', 'fail')` — note that 'fail' auto-retries within budget, giving a deterministic-mock model a bounded second try. Either is within caps; pick one and record it. Do not special-case extra budget.
+- Keep the legacy `status` result forms in `_apply` (waiting_input/unverified/error) for backward-compat executors; add the envelope `proposal` form alongside.
+
+4. Template intake — mostly right, one wiring gap and one semantics choice
+- Wiring: every `INSERT INTO revisions` must set `template_preview_allowed` explicitly — `_create_goal` (classified from sanitized spec text) and `_control` 'correct' (classified fresh from the correction text — "correct creates fresh eligibility" confirmed). The immutable-revision trigger already guarantees no post-hoc mutation. `finish_preview` reads `revision['template_preview_allowed']` — correct as written.
+- Keep the classifier maximally conservative: literal blank-template cues only ('template'/'テンプレート'/'ひな形'/'blank form' plus placeholder marks like {{x}} or '＿＿'/'___'), host grammar in the style of controls.py/classification.py, no model involvement. Generic creative requests must classify false.
+- Semantics choice to pin down: ineligible `incomplete_preview` envelope. Recommended: EvidenceRejected('ineligible preview reason') → 'fail' path (bounded, visible, model may still complete next try). Do NOT auto-convert to a user question — that fabricates an "essential unknown" the user never implied and spends the 2-answer budget on a non-essential ask. If Codex instead wants convert-to-question, that is a D027 semantics change → Opus.
+- Edge: preview eligibility is checked in-TX at apply time against the CURRENT revision — correct. A 'correct' between claim and apply fences the attempt anyway.
+
+5. UI/server — smaller than proposed, with one trap
+- Trap (legacy phantom question_id): `_wait` sets `goals.question_id` to a fresh uid with NO questions row (reference_stopped, retry_budget_exhausted, repeated_failure_requires_diagnosis, unverified). The UI must render `goal.reason` when the question_id has no row, and the questions row's prompt when it does. Do not "fix" `_wait` — per instructions it's intentionally unchanged.
+- `/api/state` already exposes `questions` via inspect — sufficient for the per-Goal answer UI. Answer posts must carry explicit `goal_id` + `control:{action:'input',text,question_id,epoch}`; host already validates question_id+epoch+revision (via the question row) in `_control`.
+- Removing the `answer:`→latestGoal shortcut in `submit()` is the right call (the current code silently targets `goals[-1]`). After removal, 'answer: x' becomes plain conversation — record it as a deliberate grammar change.
+- `artifact_status()` already computes role/stale/reason but the server doesn't expose it. Add a read-only GET `/api/artifact_status/<id>`; keep `/api/artifact` raw bytes read-only. PREVIEW_BANNER is embedded in preview bodies, but the stale indicator needs the status endpoint.
+
+ADDITIONAL HOLES NOT IN THE PROPOSAL TEXT
+- Two-TX write_draft→complete: already crash-safe (a committed receipt without outcome leaves attempt 'running' → recover abandons → requeue; receipt.attempt_id UNIQUE makes replay Conflict-checkable, not corrupt). Keep as-is; do NOT merge into a mega-TX — smaller diff.
+- Exhaustion preview vs tiny criteria: `finish_preview` rejects bodies > criteria.max_bytes. A goal with max_bytes < ~2.5KB (criteria floor is 1) can never hold the fixed summary → EvidenceRejected → 'fail' retry → eventually terminal 'failed' without preview — finite but technically deviates from "terminal failed reason + preview receipt" for that corner. Options: (a) accept and document (ingress drafts use 4096, so unreachable via UI — recommend); (b) exempt preview bound from max_bytes — that is widening the effective bound and would need Opus. Pick (a).
+- Answered count is per-GOAL across revisions (questions count has no revision filter). After 'correct', a goal with 2 answered can never ask again — any needs_input on the new revision instantly produces the exhaustion preview. This matches "per Goal" in D027 literally; if anyone wants a per-revision reset → Opus gate (correction semantics).
+- Reaching total_claims>=9 is nearly impossible without budget refresh: 'fail'/'unverified' requeue only while budget>0, and budget is 3 per revision. Claims exhaustion only materializes across correct/answer cycles (which refresh budget but not claims). Test must drive it via 'correct' or repeated answers, not via fails.
+- needs_input on the attempt where total_claims==9 hits the exhaustion predicate BEFORE insert (claims already 9) → preview, no question — consistent; and an open question can therefore never exist at claims>=9, so the `input` control's global-cap check is defensive only.
+- Determinism of exhaustion summary: 'No clarification question was stored.' fallback is reachable (e.g., claims-cap preview with zero prior questions) — keep the existing fallback text.
+
+MINIMAL SAFE SEQUENCING
+1. Store layer first: extract `_open_question`/`_preview_tx` internals; add `request_clarification`, `_verify_citations`, `write_draft(citations=())`, questions-by-goal fetch inside `claim`, `template_preview_allowed` on revision inserts; expose nothing else. Land with store-level tests.
+2. Runtime: WorkOrder fields (sources keyed by manifest id, questions, template_preview_allowed), executor envelope prompt + decode + host-injected bindings, `_apply` dispatch (complete→write_draft+complete with citations; needs_input→request_clarification; incomplete_preview→finish_preview; re-validate closed forms).
+3. Host template classifier (new small grammar fn) wired into ingress create_goal and 'correct'.
+4. Mock: deterministic JSON envelope for DRAFT prompts ('complete' with citations:[] preserving 'Local draft (mock): ' content); deterministic test markers for needs_input/incomplete_preview (e.g. explicit MOCK_ tokens in spec — mock-only, documented); conversation path byte-identical.
+5. UI + server: per-Goal question display + bound answer posts; remove `answer:` shortcut; `/api/artifact_status`; preview/completed visual separation.
+6. Then fault-injection/restart/concurrency evidence.
+
+EXACT TESTS
+Store (dispatch):
+- S1: claim → request_clarification → one open question, round=1, bound attempt/revision/epoch; attempt 'waiting'; goal waiting_input; event present.
+- S2: same call replayed same text → same question returned, no second row; different text → Conflict('conflicting question for Attempt').
+- S3: ask→answer→claim→ask→answer→claim→request_clarification → SINGLE tx: no third question row, outcome unverified 'clarification_exhausted', preview receipt role 'preview', artifact starts PREVIEW_BANNER and quotes the round-2 prompt, goal 'failed' (not completed), attempt 'unverified', open questions closed.
+- S4: budget<=0 variant — get a running attempt with budget 0 (budget 1 at claim) → needs_input → same preview outcome.
+- S5: total_claims>=9 variant — refresh budget via 'correct' cycles until claim 9 → needs_input → preview.
+- S6: crash — fault at clarify.before_commit raises → assert rollback (no question, no outcome, attempt 'running', goal 'running'); recover() → abandoned → requeue → retry succeeds.
+- S7: crash — fault at clarify.after_commit raises post-commit → question persisted; retry same args → replay returns existing question.
+- S8: stale — cancel during running → dispatch → StaleResult + rejections row 'stale input request'; no question.
+- S9: forget manifest source while attempt running → dispatch → stale; forget while question open → `_invalidate_source` fences, closes question, diagnostic wait with phantom question_id; old question_id answer → InvalidTransition.
+- S10: request_clarification on already-'waiting' attempt with unchanged bindings → returns goal (no insert).
+Store (citations):
+- S11: citation.source_id not in attempt manifest → EvidenceRejected at write_draft/dispatch; quote not substring of stored sanitized content → rejected; 'note:' prefixed id resolves against notes.content; citations:[] accepted; >50 rejected at decode layer before store.
+- S12: citation to a record forgotten BETWEEN executor output and apply → in-TX manifest usability check rejects (StaleResult via _active) — proves no TOCTOU.
+Store (preview eligibility):
+- S13: template_preview_allowed=1 revision → executor incomplete_preview → unverified + preview artifact honoring placeholder validation; same on revision with flag 0 → EvidenceRejected, goal NOT completed, no artifact.
+- S14: 'correct' with template cue → new revision flag 1; old revision rows unchanged (immutable trigger); 'correct' without cue → flag 0.
+- S15: finish_preview replay — same args returns outcome; different content/missing → Conflict hash mismatch.
+Backward compat / last claim:
+- S16: public `waiting()` still raises QuestionBudgetExhausted at answered cap; `finish_preview()` still works standalone; `_wait` diagnostic paths unchanged (waiting_input + phantom question_id, reason text only).
+- S17: complete on 9th claim → write_draft+complete → 'completed' normally. needs_input on 9th claim → preview (S5). incomplete_preview-eligible on last claim → preview.
+- S18: answered==2 then 'correct' → needs_input on new revision → immediate exhaustion preview (documents per-goal counting).
+Runtime/restart/concurrency:
+- R1: restart with goal waiting_input → state persists; bound answer via explicit goal/question/epoch → requeue → completes; next claim manifest contains the answer record id; WorkOrder questions binding contains prompt+answer.
+- R2: stale epoch answer post-restart/correct → InvalidTransition, no record marked answered.
+- R3: partial answer → second question round=2 bound to NEW attempt/epoch.
+- R4: concurrent input vs dispatch — use a fault latch inside clarify.mid_transaction to hold the TX while 'input' control runs; assert exactly one terminal state (question open-then-answered, or answer wins → dispatch stale rejection), never two open questions, never question+outcome both.
+- R5: executor returns malformed JSON / duplicate keys / NaN / oversized envelope → deterministic executor_error or fail path per chosen mapping; zero extra model calls, caps intact.
+- R6: mock envelope determinism — same spec → byte-identical envelope; conversation replies unchanged; marker specs produce needs_input and incomplete_preview deterministically.
+- R7: 'answer: x' post-change → conversation intent, no control effect, no goal mutation.
+- R8: decode bound — goal created with max_bytes 65536 → executor calls decode_draft with min(65536,12000) → no ValueError; content >12000 → EnvelopeRejected.
+UI/acceptance (manual or HTTP-level):
+- U1: two waiting goals → UI shows each goal's own question text (from questions.prompt), answer posts explicit binding; wrong-epoch answer rejected visibly.
+- U2: diagnostic wait (reference_stopped) renders reason text, no missing-question crash.
+- U3: preview artifact vs completed artifact visually distinct; artifact_status returns stale:true after source forget; endpoint read-only (POST→405 already enforced).
+
+ITEMS REQUIRING OPUS (design-level, per consultation gates)
+1. Per-goal vs per-revision answered count after 'correct' — recommendation: keep per-goal (D027 literal); only escalate if a reset is wanted.
+2. Ineligible incomplete_preview handling — recommendation: reject+fail; escalate only if auto-question is desired (that changes "essential unknowns" semantics).
+3. Removal of the bare 'answer:' shortcut — user-visible ingress grammar change closest to correction/input semantics; the proposal directs it, but a one-line DECISIONS entry plus a quick Opus confirm is cheap insurance.
+4. Preview bound for max_bytes<~2.5KB goals — recommendation: accept EvidenceRejected→terminal-failed corner and document; any exemption of preview size from criteria is a bound change → Opus.
+Nothing else rises to a design change: one-TX dispatch, in-TX citation floor, claim-returned bindings, mock envelopes, and the status endpoint are all implementation within D027.
+
+NON-ISSUES CONFIRMED (don't refactor these)
+- `_wait` phantom question_id and global-claim-cap semantics — intentionally unchanged; UI just tolerates them.
+- `recover()` does not touch waiting_input goals or count toward answered/claims — correct.
+- write_draft→complete two-TX gap — already crash-safe via recovery + receipt replay checks.
+- `finish_preview` closing open questions and forcing 'failed'/unverified — already correct.
+- questions schema constraints (one open per goal, one per attempt, round unique, immutable binding trigger) — already sufficient for replay safety; no schema change needed for the dispatch.
+- `decode_draft` closed forms, duplicate-key rejection, nonfinite rejection, byte bounds — correct as-is; only the caller-side clamp is missing.

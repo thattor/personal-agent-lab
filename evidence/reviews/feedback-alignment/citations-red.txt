@@ -1,0 +1,32 @@
+test_exact_record_and_prefixed_note_match_stored_sanitized_text (tests.test_citations.CitationTests) ... ERROR
+test_forget_between_proposal_and_apply_rejects_with_no_bytes (tests.test_citations.CitationTests) ... ERROR
+test_unknown_raw_and_malformed_citations_reject_before_artifact (tests.test_citations.CitationTests) ... ERROR
+
+======================================================================
+ERROR: test_exact_record_and_prefixed_note_match_stored_sanitized_text (tests.test_citations.CitationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_citations.py", line 31, in test_exact_record_and_prefixed_note_match_stored_sanitized_text
+    receipt = self.store.write_draft(self.attempt['id'], 'Invitation Friday', citations=[
+TypeError: write_draft() got an unexpected keyword argument 'citations'
+
+======================================================================
+ERROR: test_forget_between_proposal_and_apply_rejects_with_no_bytes (tests.test_citations.CitationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_citations.py", line 42, in test_forget_between_proposal_and_apply_rejects_with_no_bytes
+    self.store.write_draft(self.attempt['id'], 'Invitation Friday', citations=proposal)
+TypeError: write_draft() got an unexpected keyword argument 'citations'
+
+======================================================================
+ERROR: test_unknown_raw_and_malformed_citations_reject_before_artifact (tests.test_citations.CitationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_citations.py", line 26, in test_unknown_raw_and_malformed_citations_reject_before_artifact
+    self.store.write_draft(self.attempt['id'], 'Invitation Friday', citations=citations)
+TypeError: write_draft() got an unexpected keyword argument 'citations'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.034s
+
+FAILED (errors=3)
