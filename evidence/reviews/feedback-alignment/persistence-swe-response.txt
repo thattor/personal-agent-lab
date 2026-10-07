@@ -1,0 +1,157 @@
+Reviewed against the supplied source only. Verdicts first, then holes, contracts, and tests.
+
+## Verdicts on your two explicit questions
+
+**Can the host mint an honest labeled missing-information summary with no model invocation? Yes, and it is the better option.** It is deterministic, consumes zero claims, cannot be ignored or spoofed by the model, and is honest by construction: the bytes are a fixed host template quoting only stored question/`missing` text. A "preview-required instruction" to the model keeps the failure mode you're trying to close (model returns `needs_input` anyway) and costs nothing to support *additionally*, but it must never be the only path. Ship the minted fallback; treat the model's voluntary `incomplete_preview` as the opportunistic path.
+
+**Is a purely data/schema increment safe inert?** Technically yes — with three conditions — but it is the wrong seam:
+
+- All new columns need defaults (`role DEFAULT 'draft'`, `template_preview_allowed DEFAULT 0`), and the `questions` table/indexes are additive.
+- Nothing writes `role='preview'` yet, so `UNIQUE(receipts.attempt_id)` is never contested and the `complete` role gate is dormant.
+- **Correction to your plan:** the schema bump and the switch to named-column `INSERT`s are one atomic commit, not separable. The moment `receipts`/`revisions` gain a column, the positional `INSERT INTO receipts VALUES (?,?,?,?,?,?,?)` in `write_draft` and both `INSERT INTO revisions VALUES ...` sites raise "table has N columns but M values supplied." A schema-only commit without the insert fix breaks the store.
+
+Better seam, two slices instead of one:
+
+- **Slice A (this increment):** schema v3 + questions lifecycle wiring (`waiting`/`input`/`_fence`) + `complete` role gate + read helper. No preview write path exists, yet question rows accumulate canonically and the two-question cap (already adopted) is enforced. Active-but-correct, not inert.
+- **Slice B:** `finish_preview` + runtime envelope dispatch + `template_preview_allowed` intake plumbing + UI label mapping. Lands on proven state — eligibility is checkable from day one because Slice A already populates it.
+
+Rationale: if you ship `finish_preview` without persisted questions, `clarification_exhausted` has no canonical proof and you are back to trusting the caller — exactly what you flagged as unacceptable. If you ship schema-only, nothing observable changed and you have no evidence value. Slice A is the smallest increment that both delivers an adopted behavior and manufactures the proof Slice B needs.
+
+## Migration shape (SCHEMA_VERSION 2 → 3)
+
+```
+ACCEPTED_VERSIONS = (0, 1, 2, 3)
+```
+
+1. Update `_SCHEMA` to the final v3 shape for fresh databases: `receipts` gains `role TEXT NOT NULL DEFAULT 'draft' CHECK(role IN ('draft','preview'))`, `revisions` gains `template_preview_allowed INTEGER NOT NULL DEFAULT 0`, plus:
+
+```sql
+CREATE TABLE IF NOT EXISTS questions (
+  id TEXT PRIMARY KEY,
+  goal_id TEXT NOT NULL REFERENCES goals(id),
+  attempt_id TEXT REFERENCES attempts(id),   -- NULL for diagnostic waits if you keep minting pseudo-ids; prefer NOT NULL + no row for diagnostics
+  revision INTEGER NOT NULL,
+  epoch INTEGER NOT NULL,
+  round INTEGER NOT NULL,
+  prompt TEXT NOT NULL,
+  status TEXT NOT NULL CHECK(status IN ('open','answered','closed')),
+  answer_record_id TEXT REFERENCES records(id));
+CREATE UNIQUE INDEX IF NOT EXISTS one_open_question_per_goal
+  ON questions(goal_id) WHERE status='open';
+CREATE UNIQUE INDEX IF NOT EXISTS question_round_per_goal
+  ON questions(goal_id, round);
+```
+
+2. For existing databases: guarded `ALTER` via `PRAGMA table_info` — `ADD COLUMN` has no `IF NOT EXISTS`, and the same init path serves fresh and upgraded DBs. `CHECK` on `ADD COLUMN` is legal and is validated against existing rows; the defaults satisfy it. `ALTER` does not fire the immutability triggers.
+3. Same `BEGIN IMMEDIATE` migration block, `self.fault('schema.before_commit')` already in place, `PRAGMA user_version=3`.
+4. Convert every `INSERT` into `receipts`, `revisions`, `outcomes`, `artifacts`, `attempts` to named-column form in the same commit — non-negotiable per above.
+5. Test that a v2 fixture DB and a fresh v3 DB produce identical `table_info`/`index_list` for every table.
+
+## Contracts
+
+### Slice A — questions lifecycle
+
+`waiting(attempt_id, reason)` — signature unchanged, semantics extended:
+
+- `_active` check first (as today); on stale, also `self._reject(db, attempt_id, 'stale input request')` before raising — current code records no audit for stale waiting, unlike `fail`/`complete`. Minor consistency fix.
+- Inside the tx: `open_or_answered = COUNT(*) FROM questions WHERE goal_id=? AND status IN ('open','answered')`. If `>= 2`, raise `QuestionBudgetExhausted` (new `class QuestionBudgetExhausted(InvalidTransition)` — additive, lands as a fail/`error` under today's generic worker catch, which is ugly-but-terminal until Slice B; acceptable interim).
+- Otherwise insert the row: `round = open_or_answered + 1`, `attempt_id`, `revision`, `epoch` from the active attempt, `prompt = sanitize(reason)`, `status='open'`; set `goals.question_id` to the row id (replaces the bare `uid()` mint for this path only).
+- Diagnostic waits (`_wait` from `claim`, `recover`, `fail`, `_invalidate_source`) keep minting the bare uid and insert **no** question row. This preserves the existing answer-to-resume behavior for non-clarification waits and keeps the "one open question" invariant scoped to real questions.
+
+`_control` `input` branch — after the existing `question_id`/`epoch`/state match:
+
+- `UPDATE questions SET status='answered', answer_record_id=<new record id> WHERE id=? AND status='open'` — tolerate `rowcount=0` (diagnostic pseudo-question; existing resume semantics unchanged).
+- Order matters: insert the `records` row first, then bind it. The answer is host-written with `role='user'` — canonical "actual user record," not countable by recovery.
+
+`_fence` — two fixes:
+
+- `UPDATE questions SET status='closed' WHERE goal_id=? AND status='open'` — answers Opus's "cancel or forget closes the open question," and makes stale `input` after a revision fail correctly (question no longer open *and* epoch bumped — defense in depth).
+- `UPDATE attempts SET status='fenced' WHERE goal_id=? AND status IN ('running','waiting')` — current code orphans `waiting` attempts forever; recover() only sweeps `running`. After an answer is accepted, the waiting attempt must terminate.
+
+`complete` — after the receipt fetch: `if receipt['role'] != 'draft' → EvidenceRejected('preview receipt cannot complete')`. Dormant until Slice B; ship it now so the invariant exists before any preview row can.
+
+`inspect` — receipts rows carry `role` automatically via `SELECT *`; `artifacts` projection unchanged (bytes stay in `artifact()`).
+
+### Slice B — `finish_preview`
+
+```python
+PREVIEW_REASONS = ('incomplete_template', 'clarification_exhausted')
+PREVIEW_BANNER = '<fixed host bytes — e.g. "INCOMPLETE PREVIEW / 未完成の下書き\n\n">'
+
+def finish_preview(self, attempt_id, reason, content=None, missing=None):
+```
+
+Authority and ordering, in one `self._tx('preview')`:
+
+1. `reason in PREVIEW_REASONS` else `ValueError` — closed enum, checked *before* opening the tx.
+2. **Idempotent replay before `_active`** (mirrors `complete`): existing `outcomes` row for the attempt → must be `check_status='unverified'`, `receipt_id` non-NULL, that receipt `role='preview'`, `detail == reason`, and `hash == sha256(banner + body(content, missing))` → return saved result. Any mismatch → `Conflict`. A prior `fail(...,'unverified')` outcome (`receipt_id NULL`) correctly collides → `Conflict`.
+3. `attempt = self._active(db, attempt_id)` → on `None`, `_reject('stale preview')` + `StaleResult`. `_active` already re-checks all four fences Opus required: running status, goal running, epoch match, revision match, manifest usability — inside the same `BEGIN IMMEDIATE`, satisfying the fencing condition without new machinery.
+4. **Canonical eligibility** — the part that keeps terminal authority host-proven:
+   - `incomplete_template`: `revisions[goal.revision].template_preview_allowed == 1`
+   - `clarification_exhausted`: `COUNT(questions WHERE goal_id=? AND status='answered') >= 2`
+   - Failure → `_reject('ineligible preview reason')` + `EvidenceRejected`. Nothing caller-supplied can substitute for this state.
+5. Content path:
+   - `content` given: same checks as `write_draft` (str, strip, no NUL/BOM, strict UTF-8) plus `PREVIEW_BANNER not in content` (spoof guard) and `len(banner + body) <= criteria['max_bytes']` — bound applies to the *stored* bytes.
+   - `content is None`: mint `body = fixed_template_lines + sanitize(missing or <latest question prompt for goal>)`. Deterministic — the question `prompt` column is immutable — so idempotent retries reproduce identical bytes and the hash check in step 2 works.
+6. Existing receipt on the attempt (crash between a prior `write_draft` and `complete`): `role='preview'` + hash match → reuse; `role='draft'` or hash mismatch → `Conflict`. `UNIQUE(receipts.attempt_id)` stays exactly as-is — it is your dedupe anchor, do not weaken it, as you said.
+7. Writes: `artifacts` (banner+body, sha256, size) → `receipts` (`role='preview'`) → `attempts.status='unverified'` CAS on `status='running'` → `outcomes(attempt, receipt_id, 'unverified', reason)` → `UPDATE questions SET status='closed' WHERE goal_id AND status='open'` (hygiene; none should exist) → `goals.state='failed', reason=<enum>, question_id=NULL` → `_event('goal.preview', {attempt_id, receipt_id, artifact_id, reason, missing})`.
+8. Return the outcome dict.
+
+Trust-boundary note for DECISIONS: caller-supplied `content`/`missing` is *evidence text*, not authority — worst case a hostile caller writes a clearly-bannered incomplete artifact on an attempt that was already eligible to terminate. It can never become `pass`, never chooses an ineligible reason, and never survives a stale attempt. If you want the `clarification_exhausted` path to accept no caller content at all, restrict `content=None` to that reason — one `if`, worth doing.
+
+`deliver()` picks up `goal.preview` → an assistant record with reason + artifact_id lands in the transcript = the "visible incomplete" end state. `context()`'s `source_event_id IS NULL` filter keeps it out of model context — verify with a test, don't assume.
+
+Read helper for the UI slice: `artifact_status(artifact_id)` → `{role, reason, stale}` where `stale = not self._usable(db, json.loads(attempt.manifest))` via receipt→attempt join. Pure read tx, computes reference-stop at read time, bytes untouched. Cheap enough to include in Slice A.
+
+## Holes found (beyond what you listed)
+
+1. **`waiting` orphans.** `waiting()` sets the attempt to `'waiting'` and nothing ever terminates it — `_fence` only matches `'running'`, `recover` only sweeps `'running'`. Every clarification cycle leaves a permanently non-terminal attempt row. Fixed by the `_fence` change above; also add a `recover` test asserting `waiting_input` goals and open questions survive restart intact (epoch unchanged, answer still matchable).
+2. **Stranded `waiting_input` at the global cap.** `input` raises `InvalidTransition('global retry cap reached')` when `total_claims >= 9` — *before* recording the answer. A goal parked at `waiting_input` with claims exhausted becomes unanswerable forever, and the user's answer is silently dropped. Same class of strand exists for `_wait('retry_budget_exhausted')` pseudo-questions. **This is a product-choice hole, not yours to fix unilaterally** — my recommendation: on input-at-cap, still record the answer record + mark the question answered, then set `state='failed', reason='retry_budget_exhausted'`. Flag for Opus; do not bake into Slice A without agreement.
+3. **Diagnostic `unverified` waits grant extra claims.** `fail(...,'unverified')` with budget 0 → `_wait('unverified')` → user "answers" → `budget=MAX(0,1)=1` → another claim. Worst case ≈ 9 claims per goal through alternating wait/answer cycles — within the global cap, but the effective per-goal budget is not 3. Pre-existing semantics, adopted behavior, don't change — but the exact retry count below accounts for it.
+4. **Unauthorized `incomplete_preview` proposal termination.** Model proposes `incomplete_preview` with flag=0 on the *final* claim: `EvidenceRejected` → `fail(...,'fail')` → budget 0 → `state='failed'`. Terminal, correct. But if the proposal arrives malformed enough to hit `unverified` with budget 0 → `_wait('unverified')` — the endless-wait path. Slice B's `_apply` must map *all* envelope rejections on a budget-exhausted attempt to a terminal branch (fail → failed, or `finish_preview` if eligible), never to `waiting`.
+5. **`waiting` records no rejection on stale** — inconsistent with `fail`/`complete`/`write_draft` which all `_reject` first. One line, fold into Slice A.
+6. **Placeholder consistency check has no declaration source.** Opus requires "every declared placeholder appears literally; every placeholder-syntax token declared" — but the `incomplete_preview` envelope has no `placeholders` field, only `content`/`missing`/`citations`. Either the envelope gains a field (schema-adjacent change, needs Opus sign-off on the exact shape) or the check degenerates to "fixed-syntax tokens present in body must be enumerated in `missing`." Recommend deferring the check to the envelope-integration slice and sending the one-line spec question back to Opus now, in parallel — don't let it block Slice A.
+
+## Exact retry accounting
+
+Per goal, clarification path: claim1 → Q1 → answer (budget `MAX(2,1)=2`) → claim2 → Q2 → answer (`MAX(1,1)=1`) → claim3 → terminal. **3 claims, 2 answered questions, 0 model invocations for the minted preview** — `finish_preview` executes on the already-running third attempt. `total_claims=3 ≤ 9`. Matches your reconciliation exactly; the fourth-generation suggestion is correctly rejected.
+
+Worst case including diagnostic waits/corrections: each user answer to any `waiting_input` state grants `≥1` claim until `total_claims=9`; `correct` resets `budget=3` (existing behavior) but `total_claims` keeps counting, so hard ceiling is 9 claims regardless. Question rounds are per-goal across all revisions — no reset — per the adopted rule.
+
+## Tests
+
+**Slice A — migration:**
+- v2 fixture → open → `role='draft'` on all old receipts, `template_preview_allowed=0` on old revisions, `artifact()` bytes byte-identical to pre-migration.
+- Fresh v3 ≡ migrated v3 (`table_info` + `index_list` diff).
+- `write_draft`/`_create_goal`/`_control(correct)` succeed post-migration (the named-column inserts).
+- Fault at `schema.before_commit` → reopen → migration retries cleanly (version still 2, ALTER guards make re-entry safe).
+
+**Slice A — questions:**
+- waiting → one `open` row, round 1, bound attempt/revision/epoch; `goals.question_id == row.id`.
+- input → `answered` + `answer_record_id` set + goal queued.
+- Second cycle → round 2. Third `waiting()` → `QuestionBudgetExhausted`, **no third row**, attempt untouched (`running` — Slice B's `finish_preview` picks it up).
+- Diagnostic `_wait` (e.g. `reference_stopped`) → `question_id` set, zero question rows.
+- Partial unique index: force a second open insert → `IntegrityError`.
+- forget mid-wait → question `closed`, attempt `fenced` (the `_fence` fix), subsequent `input` → `InvalidTransition`.
+- Kill between `waiting` and `input` → restart, `recover` → goal still `waiting_input`, open row intact, answer still accepted (epoch unchanged).
+- Correction → new revision, question rows from round 1–2 unchanged, next `waiting()` starts at round **3** (no reset).
+
+**Slice B — `finish_preview`:**
+- Happy path each reason → single-tx contents: BLOB = banner+body, hash/size match receipt, receipt `role='preview'`, outcome `unverified`/`detail=reason`, attempt `unverified`, goal `failed`+exact reason, exactly one `goal.preview` event, `deliver` surfaces a record.
+- Fault at `preview.before_commit` → retry same args → identical receipt returned; assert zero artifact/receipt/outcome rows between the two calls (atomicity — nothing partial is ever visible).
+- Retry with different `content`/`missing`/`reason` → `Conflict`, state untouched.
+- Stale: cancel/forget between executor return and call → `StaleResult` + rejection row + zero preview rows.
+- Forget *after* commit → goal already `failed`, skipped by `_invalidate_source`; `artifact()` still returns bytes; `artifact_status` reports `stale=True`. This is your "source forgotten" transaction test.
+- Eligibility: flag=0 + `incomplete_template` → `EvidenceRejected`; answered<2 + `clarification_exhausted` → `EvidenceRejected`. Both leave rejection rows, no state change.
+- Banner-in-content → `EvidenceRejected`. `len(banner+body) > max_bytes` → `EvidenceRejected`.
+- `complete(attempt, preview_receipt)` → `EvidenceRejected`; attempt stays `unverified`, goal stays `failed`. The PASS-exclusion test Opus required.
+- `claim` never selects `failed` goals; `recover` ignores non-running attempts on failed goals; no path writes `pass` on a `preview` receipt.
+- End-to-end mock: 3 claims → third `needs_input` → minted preview → `failed`/`clarification_exhausted`, `total_claims==3`, and the transcript's last visible line is the preview event — assert no `waiting_input` state is ever reached after the second answer.
+
+## Open items to route back to Opus (do not implement around them)
+
+1. Placeholder declaration source for the consistency check (envelope field vs. derive-from-`missing`).
+2. `waiting_input` goals stranded at `total_claims=9` — recommendation above.
+3. Confirm `content=None` restricted to `clarification_exhausted`, or allowed for both reasons.
+
+Everything else above stays within P002: no new enum beyond the two adopted reasons, no capability, no provider path, no claims added, no paid route.

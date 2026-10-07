@@ -1,0 +1,27 @@
+test_binding_immutable_and_one_open_question_per_goal (tests.test_questions.QuestionTests) ... ok
+test_changed_question_and_stale_answer_never_rebind (tests.test_questions.QuestionTests) ... ok
+test_closed_question_round_not_reused_after_correction (tests.test_questions.QuestionTests) ... ok
+test_diagnostic_waits_do_not_fabricate_clarification (tests.test_questions.QuestionTests) ... ok
+test_forget_incidental_waiting_context_closes_question (tests.test_questions.QuestionTests) ... ok
+test_preview_receipt_is_not_completion_evidence (tests.test_questions.QuestionTests) ... ok
+test_question_and_answer_process_kill_roll_back_whole_transaction (tests.test_questions.QuestionTests) ... ok
+test_question_answer_restart_and_replay_provenance (tests.test_questions.QuestionTests) ... ok
+test_two_answers_bound_and_third_request_creates_no_question (tests.test_questions.QuestionTests) ... ok
+test_additive_upgrade_preserves_rows_and_reopens (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_fault_rolls_back_schema_and_version_together (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_future_schema_refuses_without_mutation (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_process_kill_before_and_after_commit_is_recoverable (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_v2_receipts_defaults_bytes_and_fresh_schema_equivalence (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_artifact_and_receipt_tamper_is_rejected_by_db (tests.test_store.StoreTests) ... ok
+test_cancel_fences_result_and_invalid_transition (tests.test_store.StoreTests) ... ok
+test_completion_requires_host_receipt_and_dedupes (tests.test_store.StoreTests) ... ok
+test_duplicate_ingress_returns_original_and_conflicts_are_visible (tests.test_store.StoreTests) ... ok
+test_goal_and_immutable_criteria_and_outbox_are_atomic (tests.test_store.StoreTests) ... ok
+test_outbox_replay_reports_once (tests.test_store.StoreTests) ... ok
+test_schema_version_mismatch_fails_closed (tests.test_store.StoreTests) ... ok
+test_single_task_slot_and_fifo_claim (tests.test_store.StoreTests) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.435s
+
+OK

@@ -1,0 +1,75 @@
+
+<invoke name="Write">
+<parameter name="file_path">/Users/hattoritoshiyasu/.claude/plans/official-opus-delta-review-harmonic-stearns.md</parameter>
+<parameter name="content"># Opus delta review — P-001 v2 draft (HR-PLAN-001 revision direction)
+
+Scope: delta review only, against frozen P-001 v1, P-002 v1, and the human receipt HR-PLAN-001. This review does not adopt any plan and does not authorize future scope. Agreement from Opus is not human adoption.
+
+## Verdict
+**Conditional agreement.** The direction is sound and faithful to the human request: small steps, concrete examples, cross-session retrieval and expanded preparation moved out of the first required scope, and no new milestones or model hierarchy. Before the draft is frozen as v2 and presented for human judgment, it needs the material changes below (C1–C8). No new features, soak, auth, cost or permissions are proposed here.
+
+## Does it honestly separate the first usable release from overall completion?
+Mostly yes. It says "最初の完成版を全体ゴール達成と呼ばない" and keeps Issue 6 open. Two regressions weaken that separation:
+
+- **C1. Overall completion criteria were dropped.** v1 defined PAL-1.0 and G-P01–04 (integrated scenario, integrated safety, human overall evaluation, final audit). v2 removes them and adds nothing in their place, so the overall goal no longer has a defined end. Fix: keep G-P01–04 verbatim as the Project completion conditions, applied to "後から採用する統合範囲". State that PAL-1.0's concrete scope is TBD and will be fixed by a later human decision.
+- **C2. Terminology.** "最初の完成版" still reads as "completed product". Rename it to **最初の利用可能版 (first usable release)** throughout, including F.
+
+## Material changes required
+- **C3. P-002 provenance.** The draft says "採用済みP002", but the P-002 v1 file says HR-SCOPE-001 is still awaiting adoption. Cite the actual adoption record (the DECISIONS.md entry, D-027, and the human receipt) by ID. If no such record exists, C/D/E must be marked conditional on HR-SCOPE-001, and the draft must not call P-002 adopted.
+- **C4. Fate of v1 Stable-1.1/2/3a.** State explicitly:
+  - v1 Stable-1.1 is superseded only to the extent of P-002 (essential local-draft clarification).
+  - Any broader clarification, Stable-2 and 3a become later candidates, not PROPOSED milestones.
+  - If PROPOSED GitHub milestones already exist, they are relabelled as candidate/superseded with history kept. They are not deleted and not activated.
+
+  This avoids redundant milestones while keeping traceability.
+- **C5. Restore the v1 Stable-1 exit check.** "終了時にdesktop-localが本人用途に足りるかを評価" is missing from F. Add it back.
+- **C6. A–F are work units, not a parallel acceptance system.** Add a mapping column from A–F to N1-01..08 plus the P-002 amendment cases. F passes only when the N1 rows and amendment rows pass, plus actual human re-evaluation (N1-07) and the final audit (N1-08). Historical PASS evidence stays as it was; it is not relabelled.
+- **C7. Make the examples concrete enough to answer the human's three questions.**
+  - **B — how correction and cancel are evaluated.** A fixed script:
+    1. Create two drafts.
+    2. Correct only draft #2 to a dinner version.
+    3. Check that #1 is byte-unchanged and #2 changes.
+    4. Re-send the stale selection or deliver a late result; check that it is visibly rejected.
+    5. Cancel #1; check that no later output is attached to it.
+    6. The human confirms each step in the real UI with a yes/no rubric that is fixed in advance.
+  - **C.** Specify "同じ会話内／既に渡されたbounded context" so this cannot be read as cross-session retrieval. Add a negative example: if the user has forgotten or reference-stopped the date, it must not be used, and the flow goes to D.
+  - **D — difficulties to state.** "一度まとめて聞く" contradicts P-002's bounded follow-ups. Reword to "未解決の質問は常に1件、まとめて聞く。追加質問回数はSWE契約の上限内". The difficulties to list explicitly are:
+    - deciding what is essential versus nice-to-have, so the assistant does not over-ask;
+    - binding the answer to the question, the work item and the epoch;
+    - an answer arriving after a correction or cancel;
+    - a partial answer;
+    - a restart while waiting for input;
+    - a duplicate answer.
+  - **E.** Generic templates show unresolved placeholders as a visibly incomplete preview. Numeric limits are fixed before execution and are not loosened afterwards (v1 rule).
+- **C8. Answer "what is retained" for the two deferred areas.** One sentence: existing Stable-0 memory, recall, forget/reference-stop and recovery keep working unchanged. Only *new* cross-session retrieval and *new* kinds of local preparation are deferred. This addresses the human's uncertainty without removing anything.
+
+## Human decision section (needed before presentation)
+Complete HR-PLAN-001 to the v1 governance format:
+- old version v1 and new version v2 with hashes;
+- the evidence: this review and the human receipt;
+- the recommendation: adopt v2, first usable release = Stable-1 A–F;
+- the alternative: adopt v1 as is, or send a concrete adjustment;
+- the effect of no answer: only future-scope activation waits, and Stable-1 continues under D-021 and P-002 as adopted;
+- the unlock condition: an actual human answer bound to the presented v2 hash.
+
+Freeze the file as `P-001-v2.md` (not "draft") before asking.
+
+## Minimum safe plan (recommended)
+1. Apply C1–C8 to the draft.
+2. Freeze it as v2.
+3. Run the Opus delta check on the fixes only.
+4. Present HR-PLAN-001 for the v2 hash.
+5. Meanwhile, Stable-1 work already authorized (A/B evaluation; C/D/E only if C3 confirms P-002 adoption) continues independently. Activate no future milestone.
+
+## Verification
+- Diff v2 against v1: every v1 safeguard row (security, cancel, forget, recovery, cost, D-020 budget, host-only writes, the paused schedule staying paused) is still present or explicitly referenced.
+- G-P01–04 are present.
+- Every A–F unit maps to an N1 or amendment ID.
+- The P-002 adoption ID resolves in DECISIONS.md.
+</parameter>
+</invoke>
+
+
+
+<invoke name="ExitPlanMode">
+</invoke>

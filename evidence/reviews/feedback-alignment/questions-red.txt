@@ -1,0 +1,18 @@
+test_questions (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_questions (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_questions
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_questions.py", line 6, in <module>
+    from pal.store import Store, InvalidTransition, QuestionBudgetExhausted
+ImportError: cannot import name 'QuestionBudgetExhausted' from 'pal.store' (/private/tmp/personal-agent-lab-stable0-20261006/pal/store.py)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

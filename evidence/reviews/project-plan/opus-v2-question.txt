@@ -1,0 +1,142 @@
+Official Opus delta review, no tools/source access. Discuss proposed P001 v2 draft after actual human asks small achievable steps; challenge regressions, recommend minimum safe plan, explicitly agree or identify changes. NOT adopting plan or starting future scope. Preserve overall assistant objective, existing Stable0 safeguards and independently adopted P002/Stable1. Proposed initial usable release=Stable1 A-F; cross-session retrieval and expanded preparation are later candidates (not existing memory removal), overall goal remains incomplete until subsequently adopted integrated scope proven. Check does this honestly distinguish first usable release from overall completion? Could smaller slices and concrete examples meet human direction without creating redundant milestones/process? Actual human provenance receipt below. Frozen v1 below and draft below. Please only material delta, no new features/soak/auth/cost/permissions. A-F work units within existing milestone, no extra model hierarchy.
+
+FILE evidence/operations/plan-small-steps-human-20261007.json
+{
+  "judgment_id": "HR-PLAN-001",
+  "source_thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "source_turn": "01a115a6-de24-7440-a842-8f59928da170",
+  "source_message": "01a115a6-df2a-7233-b080-ca626b40a149",
+  "received_at": 1791365399.526166,
+  "direct_human_summary": "各機能を小さく分割して段階的に実装したい。訂正等の評価方法、不足情報確認の難所、会話横断とローカル準備の必要範囲が不明。後二者は最初の必須範囲から外してよいのではないか。将来的な追加を見据え、到達・実装しやすい単位にする。",
+  "interpretation": "Revision direction only, not full P001 adoption. Preserve adopted P002/current safeguards.",
+  "next_action": "Prepare Opus-reviewed P001 v2 with concrete examples, criteria, difficulties, exclusions; then authentic version-bound finalization. No repeated v1 adoption question."
+}
+
+FILE docs/plans/P-001-v1.md
+# P-001 v1 — Personal Agent Lab 全体開発計画案
+
+Status: PROPOSED / AWAITING_HUMAN_ADOPTION. Date: 2026-10-07.
+Governance G-001 is active by direct human instruction; this product plan is not adopted. Stable-1 continues independently under D-021. This document is frozen when proposed; any substantive revision gets a new version. Adoption/status/evidence are recorded in DECISIONS.md, not by rewriting this version.
+
+## Project：全体ゴール
+
+会話の文脈を保持し、自然な依頼を受け、本人にしか決められないこと・不可欠な不足情報だけを確認し、許可された範囲で可逆な準備を進め、検証済みの結果・ブロッカー・必要な判断を返す個人用PALを完成させる。ユーザーに内部タスクの管理を押し付けない。
+
+この計画案の最初の全体完成点はPAL-1.0。ローカルmacOS・private・本人が開始した利用の中で上記の価値を成立させる。システム発の定時起動・自発提案・通知は次の拡張案であり、PAL-1.0に暗黙に含めない。人間が別の最終範囲を選ぶ場合は変更案をOpusと議論して再提出する。
+
+Projectの完了条件：
+- G-P01：承認した各必須マイルストーンの完成条件が、対象版と証拠付きでPASS。
+- G-P02：会話→記憶・呼び戻し→自然な依頼→必要な確認→ローカル準備→検証結果の返却を、事前に固定した代表的な利用シナリオと本人評価基準で実証。各機能の単独PASSだけでは全体完成にしない。
+- G-P03：訂正・中止・忘れる／参照停止・重複防止・復旧・失敗表示・権限／費用境界が統合時も有効。未解決blockerの監査が完了。
+- G-P04：本人の実際の総合有用性評価、最終フルテスト、版・利用方法・制約・残課題の記録、全体ゴールIssue監査とクローズ。
+「自然」「関連」「必要な質問」は固定シナリオと評価基準に限った主張。あらゆる依頼の正しさ、常時運用、長期安定性を保証しない。子Issueのクローズ数は完成証拠にならない。
+
+## Milestone：段階別ゴールと依存関係
+
+| 段階 | ゴール・全体への寄与 | 完成時に評価すること | 状態・依存 |
+|---|---|---|---|
+| Stable-0 | 会話・記憶・ローカル下書きと、安全な正本・制御・復旧の最小版 | D-019のS0/F0証拠、本人評価、最終監査。旧72hは未達／非必須 | RELEASED、既存証拠を保持 |
+| Stable-1 | 自然な依頼を雑談・保留と区別し、訂正・中止の対象を安全に特定 | N1-01–08。不要なGoal・誤対象変更を防ぐ。実UI・本人有用性。終了時にdesktop-localが本人用途に足りるかを評価 | ACTIVE、D-021承認済み、Issue#3→#4→#5 |
+| Stable-1.1 | 不可欠な不足内容だけを尋ね、本人回答から同じ作業を再開 | 十分な入力には不要な質問をしない。不足を捏造しない。質問・対象・revision/epochの紐付け、古い／別対象の回答拒否、重複・復旧、実UI・本人評価 | PROPOSED、Stable-1とP-001採用に依存 |
+| Stable-2 | 会話をまたいで、必要な記憶と根拠を小さく取り出す | 関連する利用可能な原文・条件・否定・訂正を保持。参照停止情報をモデルに出さない。会話横断fencing、context量とD-020呼出予算、実UI・本人評価 | PROPOSED、Stable-1.1とP-001採用に依存 |
+| Stable-3a | 本人が開始した会話の範囲で、可逆なローカル準備を進める | 明示した「記録だけ／まだ／ここまで」を守る。必要な準備と不要な仕事を区別。複数の準備を安全に保持・検証・報告し、外部副作用を起こさない。実UI・本人評価 | PROPOSED、Stable-2とP-001採用に依存 |
+| PAL-1.0 | 上記を統合した個人利用版を完成 | G-P01–04。ローカルmacOSの起動・停止・復旧手順、bounded公式providerでの実利用経路、統合シナリオ、本人有用性、最終版／制約監査 | PROPOSED、前段の必須gateに依存 |
+| Post-PAL-1.0 / 3b | システム発の提案・時間契機などを検討 | 本人用途、拒否・参照停止、background／通知／権限／費用／provider予算を別途審査。採用後に初めて具体的な完成条件を確定 | OPTIONAL CANDIDATE、PAL-1.0必須外、別提案が必要 |
+
+Stable-1の内容不足は、既存範囲で安全な一般文・明示placeholderが成立する場合に限り扱い、情報を捏造しない。内容不足への質問生成・回答再開エンジンをStable-1へ取り込まない。対象選択の質問はStable-1の既存範囲。
+
+PublicSearch、iPhone/private accessの改善、外部通知は、本人用途に必要と分かった時に独立した権限・費用・完成条件付き提案にする。外部送信・購入・公開は本計画の自動実行範囲外。Dreaming、vector DB、multi-Expert、local inference、automatic procedure updates、arbitrary shell/repo/browser toolsは技術選択／拡張候補であり、入れること自体を完成条件にしない。既存の将来候補を削除したことにもならない。
+
+## Issue：ゴールを持つ開発ループ
+
+各Issueに親Project／milestone、ゴール、承認計画版、対象内外、Acceptance ID、依存関係、作業単位、証拠、結果評価、次の操作を記す。
+
+ループ：正本／現状確認 → 未達条件に結び付いた作業単位を選ぶ → 必要なreview → test → 最小実装 → 検証 → 証拠・commit/push → 単位ゴール達成とmilestone／全体への寄与を評価 → 次の未達条件。
+
+Issueの条件が全て証拠付きPASSなら、Issue自身のゴールを評価して閉じる。milestoneは各Issueの結果を束ね、ユーザーに約束した結果を別途評価する。Projectはmilestoneの結果を束ね、統合利用価値を別途評価する。下位の状態だけで上位を自動完了にしない。
+
+## チェックポイントと計画変更
+
+| 契機 | 評価・記録 | 次の動作 |
+|---|---|---|
+| coherent green作業単位 | 対象Issue／commit、目的、検証と証拠、結果、異常、全体への寄与、次の作業 | 達成なら次単位、未達なら原因診断・修正 |
+| Issue完了 | AcceptanceとIssueゴール、milestoneへの寄与、依存解除、計画の前提が保たれるか | 閉じて次Issue。部分達成は閉じない |
+| milestone終了／次段開始 | 全体への寄与、本人価値、前提・依存・コスト／権限、次段scope／固定rubric | 必須gate PASS後のみ完了。未承認段階へは進まない |
+| 本人feedback、実不具合、同じ原因の反復、前提崩れ | 根拠、原因／未確定、影響範囲、修正または計画変更の必要 | 該当作業を止めて診断。独立した承認範囲は続行 |
+
+materialな計画／scope／完成条件／優先順位／最終範囲の変更は、Opusと議論・合意 → IDと版を持つ具体的提案 → 本人判断 → 正本とGitHub更新 → 依存開発再開。合意できない変更は発効させず、異論と安全な代替を記録する。本人はG-001の運用ルール自体を明示的に変更でき、モデルが案件所有者に拒否権を持つという意味ではない。承認済み範囲内の通常の実装選択・不具合修正は計画変更と区別し、毎回人間承認を求めない。
+
+変更提案には、判断ID、旧／新plan版、対象版・証拠、理由・差分、Opus結論と残る異論、推奨／代替、待つ作業／独立作業、解除条件を付ける。前の計画と失敗証拠を残す。本人回答は提示版に限って適用し、AIの説明・権限承認・別版への回答を採用と誤認しない。本人はhashを手入力する必要はなく、開発側が回答と提示版hashを照合する。
+
+## 実行と管理の境界
+
+mock default、fresh official no-extra-charge proof、D-020の期限／予算、host-only canonical writes、fixed criteria、security／cancel／forget／recoveryを維持。context量・provider呼出数・評価probe集合の数値上限は各段階の実行前に固定し、実行後に緩めない。SWE-2 Highはsubstantial実装前、Opusはdesign変更前。新auth・権限・費用・公開は別判断。停止済みの定期実行は再開しない。
+
+PROPOSED milestone/Issueはゴールと候補を示す管理用登録であり実装許可ではない。ACTIVEの承認範囲だけを開発ループへ渡す。GitHub Projectsボードが使えなくても、全体ゴールIssue→milestone→Issueの追跡は継続する。
+
+## 人間判断 HR-PLAN-001
+
+推奨：このP-001 v1を全体計画として採用する。PAL-1.0に本人開始のローカル準備（3a）までを含め、システム発の提案・時間起動（3b）は別拡張にする。
+代替：PAL-1.0の範囲・順序について具体的な希望を返す。修正版をdelta-onlyでOpusと議論して再提出する。
+未回答：未来scopeの実装・将来milestone activationだけ待つ。現在のStable-1はD-021のまま独立して進められる。
+解除条件：提示されたP-001 v1に対する本人の実際の採用判断、または修正指示。Opusの合意は本人採用ではない。
+
+FILE docs/plans/P-001-v2-draft.md
+# P-001 v2 draft — 小さな到達点を積み上げる開発計画
+
+Status: DRAFT / NOT ADOPTED. P001 v1を保持し、本人の改訂指示とP002採用を反映したレビュー用案。Opusとの協議後、固定した提案版を人間判断へ渡す。現在のStable-1開発許可を変更しない。
+
+## 全体ゴールと最初の完成版
+
+全体の目的は、会話の文脈を保持し、自然な依頼を受け、許可された可逆な準備を進め、検証結果と必要な本人判断を返す個人用アシスタント。全体ゴールを縮めず、小さな版で実際に使って次の追加を決める。
+
+最初の完成版候補は、本人が始めたローカル会話の中で、自然な依頼→既に渡された会話・記憶を使う→不可欠な情報だけ聞く→同じ下書きを続ける→開く→必要なら訂正／中止、を成立させるStable-1。新しい会話横断検索と、下書き以外のローカル準備拡張は最初の完成版の必須外候補。既存の記憶・参照停止・復旧・費用境界は残す。最初の完成版を全体ゴール達成と呼ばない。
+
+## 小さい作業単位と確認ポイント
+
+| 単位 | できることの例 | 完成条件 | 難所・対象外 |
+|---|---|---|---|
+| A 自然な依頼 | 「短い招待文の下書きを作って」 | 固定した依頼／雑談／保留で不要な作業が生まれず、本人の実UIで下書きを開ける | 言語のあらゆる言い方は保証しない。既存Issue3の証拠は保持 |
+| B 対象を選んで訂正・中止 | 2件あるとき、選んだ下書きだけ夕食向けに直す／中止する | 選んだ作業だけ変わる。古い選択と遅い結果を拒否。実UIで本人確認 | 文章への注釈機能を追加する意味ではない。既存Issue4の保護を残す |
+| C 既にある情報を使う | 日時を会話で伝えた後、招待文を依頼 | 利用可能な日時を使い、再質問や創作をしない固定実例 | 今の bounded context のみ。新検索／新権限なし |
+| D 足りない情報を一度まとめて聞く | 日時が不可欠だがない場合に聞き、回答後に同じ依頼を続ける | 質問IDと作業が結び付き、回答・重複・訂正・参照停止・再起動でも誤再開しない | 実装上は質問と回答の保存・競合が難所。本人に内部管理を要求しない |
+| E 解決しない場合を正直に返す | 「日時未定のテンプレートで」／質問後も情報不足 | 未完成表示、捏造なし、完了扱いなし、上限内で止まる | 無限質問／追加費用／勝手な生成回数増加なし |
+| F 最初の完成版を評価 | A〜Eの固定した実利用例を通して使う | 現必須N1各行PASS、本人の有用性再評価、最終フルテスト、版／制約／Issue監査 | テストやレビューのみで本人評価を代行しない |
+
+A/Bは既存証拠付き実装を再利用して評価し、再開発しない。C/D/Eは採用済みP002を小さい実装・検証単位に分ける。同じStable-1 milestoneのIssue内で、各単位のゴール・証拠・達成評価を記録する。単位PASSの積み上げだけでFを自動PASSにしない。
+
+## その後の候補
+
+最初の版を使ったチェックポイントで、必要性と実例が分かった機能だけ次の小さいmilestone候補にする。会話横断の記憶は「別の会話で指定した1件を根拠付きで呼び戻す」から、ローカル準備拡張は「本人が依頼した1種類の可逆な成果物」から提案する。具体的な範囲・固定受入・費用／権限をOpusと協議し、本人が確定するまでは未承認。これらを恒久的に削除したり、全体ゴールに必要な文脈保持を完了扱いにはしない。
+
+公開検索、時間起動、自発提案、Dreaming、vector DB、多Expert、ローカル推論、外部送信は自動で追加しない。停止済み定期実行は再開しない。
+
+## Project → milestone → issue の評価
+
+各green作業単位でIssueの目的・証拠・残り・次の操作を評価し、Issue出口でmilestoneへの寄与、milestone出口で本人の価値と全体への寄与を確認する。計画変更は根拠→Opus合意→版付き案→人間判断→正本／GitHub反映。待ちは依存作業だけ。全体ゴールIssue6は、後から採用した必要範囲と統合利用価値が実証されるまで閉じない。
+
+## 人間判断へ出す差分
+
+HR-PLAN-001: 既存保護と採用済みP002を維持し、初期版の範囲をStable-1のA〜Fに整理する。P001 v1で初期全体完成に必須としていた新しい会話横断・準備拡張は、初期版必須外の後続候補へ移す。これは全体目的の達成宣言ではない。推奨案は小さい実利用版を先に完成させ、使用結果から次の範囲を確定すること。具体版提示後の本人判断までは将来milestoneを有効化しない。
+
+FILE docs/plans/P-002-v1.md
+# P-002 v1 — narrow Stable-1 clarification amendment
+
+Status: PROPOSED; HR-SCOPE-001 awaits authentic human adoption. P-001 v1 stays frozen and unadopted. This is not Stable-1 completion.
+
+## Background and recommendation
+Actual human feedback accepts the finite draft/control results but requires PAL to use available context before asking about essential unknown facts. Current D-021 explicitly defers content clarification. Recommend moving only essential local-draft clarification into unfinished Stable-1; broader Stable-1.1 and future stages remain inactive.
+
+## Product delta
+- Use only already-delivered, sanitized bounded conversation/notes. No new retrieval, calendar, tools or permissions.
+- If those facts suffice, draft without a question. For example, a provided date/place is reused rather than requested again.
+- If essential facts are missing or ambiguous, ask one concise grouped question through host waiting_input, bound to the same work/question/epoch. Resume only on a valid answer. At most one outstanding question; follow-up count is bounded by the implementation contract reviewed by SWE-2 High within existing cost limits.
+- If the user explicitly requests a generic/creative/blank template, draft without clarification and visibly label any unresolved factual placeholders as an incomplete preview. If clarification exhausts its budget, also stop at a visibly incomplete preview; never invent facts or mark unresolved work complete.
+- Host validates any proposed known-fact provenance against usable provided sources. ID metadata must expose no additional content. Forget invalidates source-dependent facts/results visibly. Literal membership is a necessary floor, not proof of semantic truth. Mechanism requires SWE review; citations are omitted if these bounds cannot be met.
+- Primary/Expert/Executor responsibilities stay as accepted: no new agent, autonomous procedure promotion, capability or model canonical-state authority. Defined WorkOrder method and host mediate clarification; question text is sanitized.
+
+## Verification and completion
+Freeze finite known/absent/generic/answered/partial/stale/forgotten/invalid cases before execution; test duplicate handling, recovery and stale rejection with no wrong work resume. Preserve historical N1-05/06 evidence, negative feedback and old failures. Add amendment evidence rather than relabel historical PASS as new proof. N1-07 requires actual direct human re-evaluation after repair; N1-08 final audit remains required. No universal language, grounding or perfect-first-draft guarantee.
+
+## Judgment
+ID: HR-SCOPE-001. Target: P-002 v1 plus proposed D-027, runtime baseline605791e. Evidence: feedback receipt and official Opus initial/follow-up reviews under evidence/reviews/feedback-alignment/. Reason: G-001 requires human finalization to reverse the explicit deferral. Recommendation: adopt only this amendment. Alternative: keep the deferral and record the known mismatch without claiming N1-07 PASS. Adoption unblocks SWE implementation-contract review, then tests/implementation/bounded real proof and human evaluation. Existing ordinary implementation remains autonomous. This is not blanket P-001 adoption or Projects authorization.

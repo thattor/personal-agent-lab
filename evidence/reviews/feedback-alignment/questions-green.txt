@@ -1,0 +1,11 @@
+test_binding_immutable_and_one_open_question_per_goal (tests.test_questions.QuestionTests) ... ok
+test_closed_question_round_not_reused_after_correction (tests.test_questions.QuestionTests) ... ok
+test_diagnostic_waits_do_not_fabricate_clarification (tests.test_questions.QuestionTests) ... ok
+test_forget_incidental_waiting_context_closes_question (tests.test_questions.QuestionTests) ... ok
+test_question_answer_restart_and_replay_provenance (tests.test_questions.QuestionTests) ... ok
+test_two_answers_bound_and_third_request_creates_no_question (tests.test_questions.QuestionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.098s
+
+OK

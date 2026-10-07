@@ -30,6 +30,10 @@ class EvidenceRejected(ValueError):
     pass
 
 
+class QuestionBudgetExhausted(InvalidTransition):
+    pass
+
+
 def encode(value):
     return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False)
 
@@ -104,6 +108,21 @@ CREATE TABLE IF NOT EXISTS control_selections (
 '''
 
 
+_QUESTION_SCHEMA = '''
+CREATE TABLE IF NOT EXISTS questions (
+ id TEXT PRIMARY KEY, goal_id TEXT NOT NULL REFERENCES goals(id),
+ attempt_id TEXT NOT NULL REFERENCES attempts(id), revision INTEGER NOT NULL,
+ epoch INTEGER NOT NULL, round INTEGER NOT NULL CHECK(round > 0), prompt TEXT NOT NULL,
+ status TEXT NOT NULL CHECK(status IN ('open','answered','closed')),
+ answer_record_id TEXT REFERENCES records(id));
+CREATE UNIQUE INDEX IF NOT EXISTS one_open_question_per_goal ON questions(goal_id) WHERE status='open';
+CREATE UNIQUE INDEX IF NOT EXISTS question_round_per_goal ON questions(goal_id,round);
+CREATE UNIQUE INDEX IF NOT EXISTS one_question_per_attempt ON questions(attempt_id);
+CREATE TRIGGER IF NOT EXISTS question_binding_immutable BEFORE UPDATE OF id,goal_id,attempt_id,revision,epoch,round,prompt ON questions BEGIN SELECT RAISE(ABORT,'immutable question binding'); END;
+CREATE TRIGGER IF NOT EXISTS question_no_delete BEFORE DELETE ON questions BEGIN SELECT RAISE(ABORT,'immutable question history'); END;
+'''
+
+
 def schema_statements(script):
     """Split complete SQL statements without executescript's implicit commit."""
     pending = ''
@@ -117,8 +136,9 @@ def schema_statements(script):
 
 
 class Store:
-    SCHEMA_VERSION = 2
+    SCHEMA_VERSION = 3
     MAX_TOTAL_CLAIMS = 9
+    MAX_ANSWERED_QUESTIONS = 2
 
     def __init__(self, path, fault=None):
         self.path = str(Path(path))
@@ -126,7 +146,7 @@ class Store:
         Path(self.path).parent.mkdir(parents=True, exist_ok=True)
         with self._connection() as db:
             version = db.execute('PRAGMA user_version').fetchone()[0]
-            if version not in (0, 1, self.SCHEMA_VERSION):
+            if version not in (0, 1, 2, self.SCHEMA_VERSION):
                 raise RuntimeError('unsupported canonical schema version')
             db.execute('PRAGMA journal_mode=WAL')
             db.execute('BEGIN IMMEDIATE')
@@ -134,12 +154,20 @@ class Store:
                 # Recheck after acquiring the writer lock: another initializer
                 # may have upgraded the database while this connection waited.
                 version = db.execute('PRAGMA user_version').fetchone()[0]
-                if version not in (0, 1, self.SCHEMA_VERSION):
+                if version not in (0, 1, 2, self.SCHEMA_VERSION):
                     raise RuntimeError('unsupported canonical schema version')
                 if version < self.SCHEMA_VERSION:
                     for statement in schema_statements(_SCHEMA + _SELECTION_SCHEMA):
                         db.execute(statement)
-                    db.execute('PRAGMA user_version=2')
+                    for table, column, declaration in (
+                        ('receipts', 'role', "TEXT NOT NULL DEFAULT 'draft' CHECK(role IN ('draft','preview'))"),
+                        ('revisions', 'template_preview_allowed', 'INTEGER NOT NULL DEFAULT 0 CHECK(template_preview_allowed IN (0,1))')):
+                        columns = {row['name'] for row in db.execute('PRAGMA table_info(' + table + ')')}
+                        if column not in columns:
+                            db.execute('ALTER TABLE ' + table + ' ADD COLUMN ' + column + ' ' + declaration)
+                    for statement in schema_statements(_QUESTION_SCHEMA):
+                        db.execute(statement)
+                    db.execute('PRAGMA user_version=3')
                     self.fault('schema.before_commit')
                     db.commit()
                     self.fault('schema.after_commit')
@@ -299,7 +327,7 @@ class Store:
         identity, acceptance = uid(), uid()
         db.execute('INSERT INTO goals(id,state,revision,acceptance_id) VALUES (?,\'queued\',1,?)', (identity, acceptance))
         db.execute('INSERT INTO acceptances VALUES (?,?,?)', (acceptance, identity, encode(criteria)))
-        db.execute('INSERT INTO revisions VALUES (?,1,?,?,?,?)', (identity, acceptance, specification, encode(list(sources)), encode(criteria)))
+        db.execute('INSERT INTO revisions(goal_id,revision,acceptance_id,specification,sources,criteria) VALUES (?,1,?,?,?,?)', (identity, acceptance, specification, encode(list(sources)), encode(criteria)))
         self.fault('create.mid_transaction')
         self._event(db, identity, 'goal.queued', {'revision': 1})
         return self._remember(db, key, 'goal', digest, self._goal(db, identity))
@@ -344,7 +372,8 @@ class Store:
         db.execute('INSERT OR IGNORE INTO rejections(attempt_id,reason) VALUES (?,?)', (attempt_id, reason))
 
     def _fence(self, db, goal_id):
-        db.execute("UPDATE attempts SET status='fenced' WHERE goal_id=? AND status='running'", (goal_id,))
+        db.execute("UPDATE attempts SET status='fenced' WHERE goal_id=? AND status IN ('running','waiting')", (goal_id,))
+        db.execute("UPDATE questions SET status='closed' WHERE goal_id=? AND status='open'", (goal_id,))
         db.execute('UPDATE approvals SET valid=0 WHERE goal_id=?', (goal_id,))
         db.execute('UPDATE goals SET epoch=epoch+1,question_id=NULL WHERE id=?', (goal_id,))
 
@@ -394,13 +423,38 @@ class Store:
         return {'attempt_id': attempt_id, 'receipt_id': None, 'check_status': check_status, 'detail': sanitize(reason)}
 
     def waiting(self, attempt_id, reason):
+        if not isinstance(reason, str) or not reason.strip() or len(reason.encode('utf-8')) > 2000:
+            raise EvidenceRejected('invalid question text')
+        error = None
+        result = None
         with self._tx('waiting') as db:
+            old = db.execute('SELECT * FROM questions WHERE attempt_id=?', (attempt_id,)).fetchone()
+            if old:
+                if old['prompt'] != sanitize(reason):
+                    raise Conflict('conflicting question for Attempt')
+                goal = self._goal(db, old['goal_id'])
+                issued = db.execute('SELECT * FROM attempts WHERE id=?', (attempt_id,)).fetchone()
+                if old['status'] == 'open' and goal['state'] == 'waiting_input' and goal['question_id'] == old['id'] and goal['revision'] == old['revision'] and goal['epoch'] == old['epoch'] and self._usable(db, json.loads(issued['manifest'])):
+                    return goal
             attempt = self._active(db, attempt_id)
             if not attempt:
-                raise StaleResult('stale input request')
-            db.execute("UPDATE attempts SET status='waiting' WHERE id=?", (attempt_id,))
-            self._wait(db, attempt['goal_id'], reason)
-            return self._goal(db, attempt['goal_id'])
+                self._reject(db, attempt_id, 'stale input request')
+                error = StaleResult('stale input request')
+            else:
+                answered = db.execute("SELECT COUNT(*) FROM questions WHERE goal_id=? AND status='answered'", (attempt['goal_id'],)).fetchone()[0]
+                if answered >= self.MAX_ANSWERED_QUESTIONS:
+                    raise QuestionBudgetExhausted('clarification limit reached')
+                round_number = db.execute('SELECT COALESCE(MAX(round),0)+1 FROM questions WHERE goal_id=?', (attempt['goal_id'],)).fetchone()[0]
+                question = uid()
+                db.execute("INSERT INTO questions(id,goal_id,attempt_id,revision,epoch,round,prompt,status) VALUES (?,?,?,?,?,?,?,'open')", (question, attempt['goal_id'], attempt_id, attempt['revision'], attempt['epoch'], round_number, sanitize(reason)))
+                db.execute("UPDATE attempts SET status='waiting' WHERE id=?", (attempt_id,))
+                db.execute("UPDATE goals SET state='waiting_input',reason=?,question_id=? WHERE id=?", (sanitize(reason), question, attempt['goal_id']))
+                self.fault('question.mid_transaction')
+                self._event(db, attempt['goal_id'], 'goal.waiting_input', {'reason': sanitize(reason), 'question_id': question})
+                result = self._goal(db, attempt['goal_id'])
+        if error:
+            raise error
+        return result
 
     def control(self, key, goal_id, action, text=None, criteria=None, question_id=None, epoch=None):
         with self._tx('control') as db:
@@ -424,11 +478,23 @@ class Store:
         elif action == 'resume' and goal['state'] == 'paused':
             db.execute("UPDATE goals SET state='queued',reason='' WHERE id=?", (goal_id,))
         elif action == 'input' and goal['state'] == 'waiting_input' and goal['question_id'] == question_id and goal['epoch'] == epoch and text:
+            question = db.execute('SELECT * FROM questions WHERE id=?', (question_id,)).fetchone()
+            if question:
+                issued = db.execute('SELECT * FROM attempts WHERE id=?', (question['attempt_id'],)).fetchone()
+                if question['status'] != 'open' or question['goal_id'] != goal_id or question['revision'] != goal['revision'] or question['epoch'] != epoch or not self._usable(db, json.loads(issued['manifest'])):
+                    raise InvalidTransition('question unavailable')
             if goal['total_claims'] >= self.MAX_TOTAL_CLAIMS:
                 raise InvalidTransition('global retry cap reached')
+            answer_id = source_record_id or uid()
+            if source_record_id is None:
+                db.execute("INSERT INTO records(id,role,content) VALUES (?,'user',?)", (answer_id, sanitize(text)))
+            elif not db.execute("SELECT 1 FROM records WHERE id=? AND role='user' AND usable=1", (answer_id,)).fetchone():
+                raise InvalidTransition('answer source unavailable')
+            if question:
+                db.execute("UPDATE questions SET status='answered',answer_record_id=? WHERE id=? AND status='open'", (answer_id, question_id))
+            self.fault('answer.mid_transaction')
             self._fence(db, goal_id)
             db.execute("UPDATE goals SET state='queued',budget=MAX(budget,1),reason='' WHERE id=?", (goal_id,))
-            db.execute("INSERT INTO records(id,role,content) VALUES (?,'user',?)", (uid(), sanitize(text)))
         elif action == 'correct' and goal['state'] not in ('completed', 'cancelled', 'unknown') and text:
             sources = [source_record_id] if source_record_id is not None else []
             if sources and not self._usable(db, sources):
@@ -441,7 +507,7 @@ class Store:
                 acceptance = uid()
                 db.execute('INSERT INTO acceptances VALUES (?,?,?)', (acceptance, goal_id, encode(new_criteria)))
             revision = goal['revision'] + 1
-            db.execute('INSERT INTO revisions VALUES (?,?,?,?,?,?)', (goal_id, revision, acceptance, sanitize(text), encode(sources), encode(new_criteria)))
+            db.execute('INSERT INTO revisions(goal_id,revision,acceptance_id,specification,sources,criteria) VALUES (?,?,?,?,?,?)', (goal_id, revision, acceptance, sanitize(text), encode(sources), encode(new_criteria)))
             db.execute("UPDATE goals SET state='queued',revision=?,acceptance_id=?,budget=3,reason='' WHERE id=?", (revision, acceptance, goal_id))
         else:
             raise InvalidTransition('invalid control transition or stale input question')
@@ -477,8 +543,8 @@ class Store:
         for goal in db.execute("SELECT * FROM goals WHERE state NOT IN ('completed','cancelled','failed','unknown')").fetchall():
             revision = db.execute('SELECT * FROM revisions WHERE goal_id=? AND revision=?', (goal['id'], goal['revision'])).fetchone()
             explicit = source_id in json.loads(revision['sources'])
-            active = db.execute("SELECT * FROM attempts WHERE goal_id=? AND status='running'", (goal['id'],)).fetchone()
-            incidental = active and not self._usable(db, json.loads(active['manifest']))
+            active = db.execute("SELECT * FROM attempts WHERE goal_id=? AND status IN ('running','waiting')", (goal['id'],)).fetchall()
+            incidental = any(not self._usable(db, json.loads(row['manifest'])) for row in active)
             if not explicit and not incidental:
                 continue
             self._fence(db, goal['id'])
@@ -523,7 +589,7 @@ class Store:
         with self._connection() as db:
             # A coherent read snapshot, no mutation capability exposed to UI.
             db.execute('BEGIN')
-            names = ('records', 'notes', 'goals', 'revisions', 'acceptances', 'attempts', 'receipts', 'outcomes', 'events', 'approvals', 'rejections')
+            names = ('records', 'notes', 'goals', 'revisions', 'acceptances', 'attempts', 'receipts', 'outcomes', 'events', 'approvals', 'rejections', 'questions')
             result = {name: [dict(r) for r in db.execute('SELECT * FROM ' + name)] for name in names}
             result['artifacts'] = [dict(r) for r in db.execute('SELECT id,hash,size FROM artifacts')]
             return result
@@ -564,7 +630,7 @@ class Store:
                         artifact_id, receipt_id = uid(), uid()
                         db.execute('INSERT INTO artifacts VALUES (?,?,?,?)', (artifact_id, body, digest, len(body)))
                         self.fault('artifact.mid_transaction')
-                        db.execute('INSERT INTO receipts VALUES (?,?,?,?,?,?,?)', (receipt_id, attempt_id, artifact_id, digest, len(body), attempt['revision'], attempt['epoch']))
+                        db.execute('INSERT INTO receipts(id,attempt_id,artifact_id,hash,size,revision,epoch) VALUES (?,?,?,?,?,?,?)', (receipt_id, attempt_id, artifact_id, digest, len(body), attempt['revision'], attempt['epoch']))
                         receipt = dict(db.execute('SELECT * FROM receipts WHERE id=?', (receipt_id,)).fetchone())
         if error:
             raise error
@@ -585,7 +651,9 @@ class Store:
                 error = StaleResult('stale Attempt completion')
             else:
                 receipt = db.execute('SELECT * FROM receipts WHERE id=? AND attempt_id=?', (receipt_id, attempt_id)).fetchone()
-                if receipt is None or receipt['revision'] != attempt['revision'] or receipt['epoch'] != attempt['epoch']:
+                if receipt is not None and receipt['role'] != 'draft':
+                    error = EvidenceRejected('preview receipt cannot complete')
+                elif receipt is None or receipt['revision'] != attempt['revision'] or receipt['epoch'] != attempt['epoch']:
                     error = EvidenceRejected('missing or mismatched host receipt')
                 else:
                     artifact = db.execute('SELECT * FROM artifacts WHERE id=?', (receipt['artifact_id'],)).fetchone()
