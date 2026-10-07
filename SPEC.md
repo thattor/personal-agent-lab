@@ -42,8 +42,9 @@ PAL should preserve the thread, do reversible preparation proactively, and retur
 - Model self-report is not proof.
 
 ### Logical roles
-- Primary: canonical control plane, routing/state/approval/dedupe.
-- Responder: conversational response and handoff proposal; cannot mutate routing state.
+- Primary Bot: model-led conversation understanding, intent/target selection, delegation proposal and essential natural clarification (D-029).
+- Host control boundary: canonical routing/state/approval/dedupe authority; validates and commits proposals.
+- Responder: model conversational output; cannot directly mutate routing state.
 - Expert: durable outcome owner with minimal control logic.
 - Executor: execution owner within WorkOrder scope.
 
@@ -110,3 +111,22 @@ The product destination is an assistant that preserves conversational context, t
 Stable-1 adds no task type beyond a local draft. Combined draft-and-send and send-only requests receive an explicit unsupported-action explanation with no Goal; a subsequent local-only request can create one. Discussion, quotations, hypothetical requests, record-only instructions and negation/deferral must not silently create work. Natural correction/cancel requires unique host-validated targeting; ambiguous references must not mutate an arbitrary latest Goal. Existing single-target English controls remain supported, with fixed criteria and source restrictions preserved. Forget remains explicit and reference-stop semantics remain unchanged.
 
 The existing recent30-record/first20-note context assembly is a known bounded implementation limitation. Stable-1 does not overhaul memory or claim unlimited recall. Official-provider proof freshness, finite invocation budget, mock default and human judgment boundaries remain D-020. No schedule or paused follow-up is restarted by setting this milestone.
+
+## Model-led intake correction — D-029
+
+The reasoning model interprets ordinary conversation and proposes the next supported
+operation. Keywords/regex must not preempt it on the actual model path, and provider
+failure must not fall back to guessed actions. Primary asks naturally only when essential
+information is unavailable from context. These product conversations are distinct from
+the development human-judgment window; routine implementation choices are autonomous.
+
+The host enforces identities, current usable sources, permissions, fixed acceptance,
+budgets, dedupe and stale-result rejection. Explicit structured controls remain available
+without waiting for a model. Expert prepares local results under this boundary. A model
+claim does not prove an effect or successful completion.
+
+Qwen3.8-27B is the owner's reference for reasoning capability. Actual capability is
+measured on PAL intent/context/clarification/delegation tasks, not assumed from a model
+name or parameter count. Current authorized transport remains explicit bounded official
+access with mock default. Changing an endpoint or installing local inference is not
+implied by choosing the reference model.

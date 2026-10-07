@@ -147,3 +147,17 @@ Injected startup config append raised before main's finally; the constructed run
 
 ## C026 initial run record failure
 Follow-up to C025 found MatrixRunner.__init__ starts watchdog/acquires journal before initial run.started append; append failure escapes before the caller obtains the runner. The test-first reproduction asserts zero stop calls (red), and inspection identifies the acquired resources. Initialize all close fields first, wrap watchdog start/initial append, and use the existing guaranteed cleanup path on exception. Green assertions verify actual fd closed and actual thread stopped, one scripted-provider stop, no generation, and preserved empty journal. Full170 PASS15.236s. Prevention: check both acquired-object startup and fully returned-object teardown for evidence-sink failure; constructor failures before these initialized resources remain outside this test. No false complete record or historical evidence repair.
+
+## Invalid human-judgment escalation — 2026-10-07
+
+Mistake: controller escalated form-only input handling and exact notice wording as
+HR-INPUT-001, and the human window asked a sentence-level usefulness question. Cause
+established from D027 review/proposal and authentic human-window turns: reviewer caution
+was treated as owner authority, and implementation convenience displaced the natural
+conversation goal. The old blocked observation also became stale after later answers.
+Correction: D028 withdraws the question and wait; D029 restores LLM semantic intake.
+Prevention: before escalation identify the noninferable fact and material consequence;
+use latest authentic owner messages; reviewer advice is not a permission source. Keep
+one end-to-end usefulness evaluation after a working candidate. Verification: existing
+HRs reclassified and human window notified; effectiveness at future checkpoints remains
+to be observed. Wrong-target code defect stays open until implementation/tests pass.

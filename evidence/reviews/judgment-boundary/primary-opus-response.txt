@@ -1,0 +1,131 @@
+# Verdict: Faithful to owner direction. Approve with pruning and four guards.
+
+The proposal follows the owner's direction. The owner explicitly made model-led semantic intake the product core and delegated model selection and verification to us. None of the following requires owner approval:
+
+- the action schema
+- the model choice (current official Opus)
+- per-example wording
+
+The one owner end-to-end session is an **evaluation**, not an approval gate. Label it that way so it cannot become a recurring approval loop.
+
+Three corrections are needed:
+
+1. **"Stable1 cannot complete on rule-only routing" also forbids a hybrid.** Regex must not pre-empt the model on the model path, even temporarily for actions not yet migrated. A hybrid would quietly reinstate the rejected core.
+2. **Provider unavailability must not fall back to regex.** This covers budget exhaustion, errors and crashes. The input stays stored and is shown as "not interpreted (reason)". Structured UI controls stay usable. Nothing is applied by guessing.
+3. **The model does not need its own clarify action.** Clarification is `none` plus a reply. The next turn is interpreted with that recent conversation in context. Do not create a new pending-question type for Primary's own questions. Keep existing Expert/P002 pending questions as they are.
+
+# Smallest schema and role division
+
+```
+PrimaryProposal {
+  reply: string                       // pre-effect text; must not assert outcomes
+  action: one of
+    none
+    local_draft { spec, source_ids[] }          // source_ids ⊆ snapshot
+    answer      { question_id }                 // text = original sanitized ingress, host-filled
+    control     { op: cancel|pause|resume|correct, goal_id, revision,
+                  spec?, source_ids[]? }        // spec only for correct
+    remember    { source_id, label? }           // completion increment
+    forget      { source_id }                   // completion increment
+}
+```
+
+Leave out confidence fields, free-form parameters, multiple actions and tool names. A confidence score is uncalibrated and adds nothing the host can safely use.
+
+**Primary (model)** handles interpretation, target selection among snapshot members, spec synthesis, natural clarification and explaining unsupported requests.
+
+**Host** handles everything else:
+- validating the schema
+- checking that every ID belongs to the snapshot and is still usable
+- checking revision and epoch
+- applying existing functions in one transaction
+- idempotency per ingress
+- writing all status and effect text
+
+**Expert (ProviderExecutor)** stays unchanged. It receives the committed spec as untrusted user-domain data under the fixed host criteria.
+
+# The one extra guard you asked about
+
+**For draft and correct:** require `source_ids` drawn from the snapshot, and show a **host-rendered echo** of the committed spec next to its sources: "準備します: «spec» (based on: …)". For correct, show the changed text. This is not an approval. It makes a misreading visible and fixable through cancel/correct, which is the right trade-off for local-only reversible drafts. Also enforce:
+- a hard length cap
+- the spec cannot change criteria, capability or task type (it is data only)
+
+**For remember:** store **only original source text** referenced by `source_id`, normally the current ingress. The model may add a short `label`. Mark the label as derived, display it, and never treat it as fact in future context. This blocks memory poisoning, where the model invents "user prefers X".
+
+**For forget:** this is the only action where a wrong target can destroy user value. Do not add a confirmation loop. Instead:
+- Apply a host **tombstone** that removes the source from all future snapshots immediately.
+- Echo the exact excerpt that was forgotten, with a structured Undo.
+- Run the physical purge on a short, fixed host rule.
+
+If existing forget semantics already purge immediately, keep them, but then the target must be an exact snapshot member and the echo must quote it.
+
+**For answer:** `question_id` must be an open pending question in the snapshot. The answer text is always the original sanitized ingress, never a paraphrase. If several questions are plausible, the model replies to clarify. The latest-Goal guess is removed.
+
+**On rejection at commit** (stale state, invalid ID, schema violation): discard the model's reply, because it may already claim success. Show a host message along the lines of "I couldn't apply that because X; please restate." Never show model prose that conflicts with the committed outcome.
+
+# Real blockers vs. accepted uncertainty
+
+**Blockers.** Each must be zero in tests and evaluation:
+- Regex or `parse_control` pre-empting the model on the model path, or used as a silent fallback.
+- Any committed effect on an ID outside the snapshot, or with stale revision/epoch.
+- A duplicate provider call or duplicate effect on ingress replay. A crash between provider return and commit must be visible and must not retry automatically.
+- Model text appearing as success when the host did not commit an effect.
+- Answer text derived from paraphrase. Remember content derived from model text.
+- A structured control blocked behind an in-flight Primary or task call.
+- A committed `spec` widening capability or criteria.
+- Mock results cited as live evidence.
+
+**Accepted as visible and correctable:**
+- Wrong intent on clear-ish text that produces a reversible draft or correct with echo.
+- Pause or resume on the wrong one of several Goals, with echo.
+- Cancel on the wrong Goal. This is accepted only because drafts are local and re-creatable, the echo names the Goal, and recovery is one step.
+- Over-clarifying or under-clarifying. Measure these, but they are not blockers.
+- A compound turn where only one operation applies. The reply must say what was deferred.
+
+# Increments
+
+1. **Boundary:** snapshot, Primary call, schema validation, atomic commit, per-ingress attempt/outcome record, replay and crash behaviour, structured-UI bypass, no-fallback state.
+2. **Core semantics:** `none`, `local_draft`, `answer`, `control` limited to cancel/pause/resume.
+3. **Completion:** `correct`, `remember`, `forget` through the same boundary, plus live qualified-route UI verification.
+
+While an action is unmigrated, it is reachable only through structured UI. On the model path the model explains it is not yet available. No regex path. Stable1 completes only after step 3.
+
+# Finite acceptance criteria
+
+**Mechanics (mock, deterministic, required):**
+- replay idempotence
+- a crash at each point: before the call, after the call, mid-commit
+- stale snapshot after a concurrent structured cancel
+- an invalid or foreign ID
+- schema violation
+- budget exhaustion leading to the "not interpreted" state
+- a structured control during in-flight inference
+- rejection discarding the model reply
+- forget tombstone excluding the source from the next snapshot, and undo restoring it
+
+**Semantic (real Opus, one finite run, fixed call budget):**
+- Use the frozen regression corpus plus a held-out multi-turn set of roughly 40–60 cases. Freeze it before evaluation and do not use it for prompt tuning. If tuning touches it, replace it.
+- Label each case with a **set of acceptable outcomes**. For example, an ambiguous case may accept "clarify" or the correct target.
+- Coverage must include:
+  - Japanese negation
+  - quotation and reported speech, e.g. 「キャンセルって言われた」
+  - hypotheticals
+  - multiple open Goals and questions
+  - bare answers
+  - unsupported send/remote requests
+  - forget on similar sources
+  - injection inside quoted content
+- **Gate:** zero blocker events. At least about 90% acceptable outcomes on clear cases. Needless clarification at or below about 10% on clear cases. Zero wrong-target destructive commits on ambiguous cases.
+- Re-run only the failing cases once to check for non-determinism, and report both runs.
+- If Opus misses the gate, record that as evidence. Do not add another vendor or model.
+
+**Usefulness:** one owner end-to-end session on the qualified live route with natural tasks. It is an evaluation only, with no per-example approval.
+
+# Bottom line
+
+Proceed with the three-step increments. Before substantial code, have SWE-2 High verify in particular:
+- the snapshot/commit validation
+- the no-fallback rule
+- reply suppression on rejection
+
+This is reviewer advice, not owner authority.

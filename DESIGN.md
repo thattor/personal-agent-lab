@@ -10,7 +10,7 @@ PAL uses 2 operational bots / 4 logical responsibilities:
 The separation is logical and capability-based, not a requirement for four daemons or four LLM calls.
 
 ### Primary
-Deterministic control plane where possible. Owns ingress/egress, canonical state transitions, routing decision, approval binding, idempotency, and outbox.
+D-029: the Primary model owns semantic interpretation and proposes one supported action. The host owns ingress/egress, canonical state transitions, validated routing, approval binding, idempotency and outbox. Deterministic code validates authority and state; it does not replace ordinary conversation understanding with lexical routing.
 
 ### Responder
 Builds conversational output from Context Builder and may emit a structured handoff/control proposal. It cannot directly mutate routing or Goal state.
@@ -106,3 +106,18 @@ D027 runtime integration: immutable WorkOrder contains claim-bound source-ID/con
 D027 template eligibility is host grammar over sanitized current specification: explicit template/blank-form cue plus literal placeholder marker. Create/correct persist immutable eligibility; no model override, generic requests remain false.
 
 D027 presentation integration: all waiting Goals have their own bound answer form only for a matching open persisted question/revision/epoch. Diagnostic waits show reason. Polling retains draft/retry identity; answer ACK enters session receipt. Artifact-status GET remains read-only, distinguishes preview and source-stale historical output; raw bytes retained. Bare answer grammar unchanged pending separate review.
+
+## Model-led Primary — D-029
+
+One ordinary input is persisted before one bounded Primary call. The model returns a
+reply plus one closed action (or none). A host snapshot supplies bounded usable source,
+Goal and question identities; model output cannot invent authority. Source/specification
+IDs, revision/epoch, question status and source usability are rechecked in the commit
+transaction. Original sanitized user input is the answer; source-backed memory preserves
+original content. Model text is not used to announce a rejected/uncommitted effect.
+
+Replay and restart preserve the input/outcome without automatic inference. Interrupted
+input is visible and can be reissued by the user. Explicit structured controls continue
+while inference runs. No lexical preemption/fallback, additional agent hierarchy, new
+clarification workflow, arbitrary tool, physical forget purge or hidden model retry.
+Substantial implementation details require the pending official SWE source review.

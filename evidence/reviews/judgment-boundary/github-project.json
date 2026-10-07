@@ -1,0 +1,241 @@
+{
+  "project": {
+    "closed": false,
+    "fields": {
+      "totalCount": 13
+    },
+    "id": "PVT_kwHOBe6QT84BmD1_",
+    "items": {
+      "totalCount": 11
+    },
+    "number": 1,
+    "owner": {
+      "login": "thattor",
+      "type": "User"
+    },
+    "public": false,
+    "readme": "# Personal Agent Lab\n\n全体ゴール: 会話を理解し、必要な文脈を保ち、権限内の仕事をExpertへ渡して役に立つ結果を返す個人アシスタント。\n\nIssue #6 → GitHub milestone → 各Issueのゴール → 証拠付きチェックポイントで管理する。\n\n- 現在: Stable-1。Primaryの意味理解をLLMへ担当させる修正、実機能検証、最後に本人の実際の有用性評価。\n- Stable-0: 完了済み。過去の証拠を保存。\n- PROPOSEDの将来Issueは候補。Todoへの登録は着手承認を意味しない。\n- 技術判断・実装方法・案内文は開発側が解決する。本人にしか分からず成果を左右する事項だけ人間判断へ。\n- 正本: 対象repositoryのSTATE.md、SPEC.md、DESIGN.md、ACCEPTANCE.md、DECISIONS.md。最新本人指示が優先。\n- 実行能力はlocal draftまで。新認証、追加課金、公開、外部送信はこのboardで許可されない。\n",
+    "shortDescription": "PAL全体ゴール→milestone→Issue。Stable-1開発中。実装判断は開発側、本人判断は不可欠な価値・権限だけ。将来案の登録は実装承認を意味しない。",
+    "title": "Personal Agent Lab — development goals",
+    "url": "https://github.com/users/thattor/projects/1"
+  },
+  "items": {
+    "items": [
+      {
+        "content": {
+          "body": "## Project goal\nDeliver a private personal PAL that retains relevant conversational context, accepts natural requests, asks only indispensable human judgments/content, prepares authorized reversible local results, verifies outcomes and returns results/blockers/decisions without requiring the user to manage internal tasks.\n\n## Authority and plan\nG-001 governance ACTIVE by direct user instruction. Overall product plan P-001 v1 PROPOSED / HR-PLAN-001 awaiting direct human adoption, hash: 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Canonical proposal: docs/plans/P-001-v1.md; status/answers: DECISIONS.md D-022; continuation: STATE.md. Stable-1 independently ACTIVE under D-021. Permission approval does not adopt future product scope.\n\n## Project acceptance\nG-P01: every required adopted milestone gate with release-version evidence PASS.\nG-P02: precommitted integrated workloads/rubric prove context → recall → request → necessary question → local preparation → verified return, not just isolated components.\nG-P03: control/security/forget/recovery/bounded official cost and blocker audit hold at integration.\nG-P04: authentic human overall usefulness, final suite/version/use/limits record and project-goal audit before closure.\nAll project gates are NOT_RUN until the plan is adopted and demonstrated. Closed child issues are not project completion. Stable-0 completion remains intact, not overall completion.\n\n## Goal loops and checkpoints\nEach Issue: goal/criteria/dependencies → bounded unit → required review → test/implement/verify/evidence/commit/push → evaluate unit contribution → next unmet condition. Close only after objective verification. Milestone aggregates but independently verifies its user-visible promise. Project independently verifies integrated usefulness.\nCheckpoints: coherent green unit, Issue exit, milestone exit/entry, and defect/repeated cause/user feedback/assumption failure. Record goal verdict, evidence/version, remaining uncertainty, plan impact and exact next step. No timer/checkpoint keepalive.\n\n## Plan changes\nMaterial plan/scope/acceptance/priority change: Opus discuss/agreement → versioned proposal with evidence/delta/recommendation/affected vs independent work → actual targeted human decision → canonical docs/GitHub activation. Pending decision blocks only its dependencies. Routine technical choices/bug fixes within approved scope remain autonomous. Only ACTIVE approved milestones enter execution.\n\n## Next\nStable-1 Issues#3/#4 CLOSED; Issue#5 finite real functionality N1-05/06 PASS on605791e,92 tests PASS, authentic new-flow evaluation N1-07 pending and N1-08 final release audit NOT_RUN. Receive scoped HR-STABLE1-001 answer, then diagnose/retest or complete final audit/private Stable-1 release. Evidence: evidence/functional/stable1-20261007-run2/README.md; original FAIL/timing VOID retained. This is milestone progress, not global completion. HR-PLAN-001 future activation waits independently. Projects board pending actual GitHub device authorization; this Issue is project-level tracking, not a claimed Projects board.\n\n## Milestone map\n- RELEASED: https://github.com/thattor/personal-agent-lab/milestone/7, historical Issue#1 CLOSED (link only; closed-milestone CLI assignment failed and was not repeated after approval rejection).\n- ACTIVE: https://github.com/thattor/personal-agent-lab/milestone/1, parent#2, work#3–5.\n- PROPOSED required if adopted: https://github.com/thattor/personal-agent-lab/milestone/2, Issue#7.\n- PROPOSED required if adopted: https://github.com/thattor/personal-agent-lab/milestone/3, Issue#8.\n- PROPOSED required if adopted: https://github.com/thattor/personal-agent-lab/milestone/4, Issue#9.\n- PROPOSED required if adopted: https://github.com/thattor/personal-agent-lab/milestone/5, Issue#10.\n- OPTIONAL proposal: https://github.com/thattor/personal-agent-lab/milestone/6, Issue#11.\n",
+          "number": 6,
+          "repository": "thattor/personal-agent-lab",
+          "title": "PAL project goal — integrated personal assistant delivery",
+          "type": "Issue",
+          "url": "https://github.com/thattor/personal-agent-lab/issues/6"
+        },
+        "id": "PVTI_lAHOBe6QT84BmD1_zg_IodE",
+        "repository": "https://github.com/thattor/personal-agent-lab",
+        "status": "In Progress",
+        "title": "PAL project goal — integrated personal assistant delivery"
+      },
+      {
+        "content": {
+          "body": "Stable-0 is released and Issue#1 remains closed. D-021 scopes the next step toward PAL accepting work without the user managing internal tasks.\n\nDeliver natural Japanese local-draft request recognition plus safe correction/cancel targeting. No content-missing clarification feature, new task/tool, memory overhaul, always-on provider, external sending, schedule, payment or public exposure.\n\nAcceptance: all N1-01–08 in ACCEPTANCE.md PASS with actual evidence, one direct human evaluation, final full suite/version/limitations audit and private release. Current N1-01 through N1-06 PASS; N1-07 HUMAN_PENDING; N1-08 final release audit NOT_RUN. Evidence: evidence/functional/stable1-20261007-run2/README.md, candidate605791e, post-live92 tests PASS; original failure/timing VOID retained. Existing S0/F0 safety/functional meaning and D-020 boundaries remain. Historical72h quotas remain nonrequired.\n\nNext action: receive authentic version-bound HR-STABLE1-001 usefulness judgment in the ongoing human window, then diagnose/retest mismatch or final full-suite/version/limits/release audit. Required official reviews and accepted implementation are recorded through D-026. Independent work proceeds while genuinely human-dependent work waits in the ongoing human-judgment thread.\n\nThis issue organizes authorized next scope; no implementation is claimed by its creation.\n\nOrdered work:\n- [x] #3 — ingress intent and independent corpus\n- [x] #4 — correction/cancel target binding and recovery\n- [ ] #5 — real UI, authentic human evaluation and release audit\n\nSource of truth: SPEC.md positioning, ACCEPTANCE.md N1 rows, DECISIONS.md D-021, STATE.md continuation.\n\n\n## G-001 goal tracking\nParent project goal#6; ACTIVE milestone1 under D-021, independent of pending P-001 adoption. Objective is the concrete outcome above. Acceptance: N1-01–08. Dependency: Issues3,4,5.\nWork-unit loop: next unmet criterion → required review → test → minimum implementation → verify → evidence/commit/push → evaluate objective and parent contribution → next. Checkpoint records candidate/version, outcome/evidence, limitation/blocker, plan impact (none/within-scope/change proposal) and next action. Close only after objective verification, not child closure/model opinion. Material plan changes require Opus agreement and actual human finalization; routine approved-scope choices remain autonomous.\n",
+          "number": 2,
+          "repository": "thattor/personal-agent-lab",
+          "title": "Deliver Stable-1: natural Japanese local delegation",
+          "type": "Issue",
+          "url": "https://github.com/thattor/personal-agent-lab/issues/2"
+        },
+        "id": "PVTI_lAHOBe6QT84BmD1_zg_Iofo",
+        "milestone": {
+          "description": "STATUS: ACTIVE under D-021, independent of pending P-001. Project goal#6. Natural Japanese local draft recognition and safe correction/cancel targeting; N1-01–08. Issues3→4→5, parent2. Preserve D-020, no new tools/cost/public exposure or72h quota. At exit evaluate user value and desktop-local assumption against project goal.",
+          "dueOn": "",
+          "title": "Stable-1 — Natural Japanese local delegation"
+        },
+        "repository": "https://github.com/thattor/personal-agent-lab",
+        "status": "In Progress",
+        "title": "Deliver Stable-1: natural Japanese local delegation"
+      },
+      {
+        "content": {
+          "body": "## Goal\nAsk only essential missing content; bind the actual answer to the same request and reject stale/cross-target answers. Preserve fixed criteria, dedupe, recovery and actual UI usefulness.\n\n## Parent and authority\nProject goal#6; milestone 2. P-001 v1 PROPOSED; HR-PLAN-001 pending actual human adoption. This Issue is future goal/scope tracking, not permission to implement. Dependency: Stable-1.\n\n## Completion conditions\nActual plan adoption and milestone-entry scope/acceptance/rubric fixed before code; required Opus/SWE-2 High consultations; feature evidence and affected regression; actual official-provider UI with fresh no-extra-charge proof where required; authentic human usefulness; milestone audit/version/limits. All NOT_RUN. Precise numeric probes/caps freeze at entry. No self-report/hypothetical PASS. Required only after proposed plan adoption.\n\n## Work and evaluation loop\nWhen ACTIVE: split into goal-bearing coherent vertical units, test → implementation → verification → evidence → commit/push → objective verdict/parent contribution → next. Record checkpoints at units/Issue/milestone and actual anomalies. Before activation, only explicit planning/review is authorized; do not pick this Issue as runtime work.\n\n## Plan-impact gate\nMaterial scope/order/acceptance change requires Opus agreement, versioned proposal and actual human finalization. No new auth/cost/public exposure or provider auto-renewal by this Issue. Refer to docs/plans/P-001-v1.md / DECISIONS.md D-022.\n",
+          "number": 7,
+          "repository": "thattor/personal-agent-lab",
+          "title": "PROPOSED — Stable-1.1 — Essential clarification and bound resume",
+          "type": "Issue",
+          "url": "https://github.com/thattor/personal-agent-lab/issues/7"
+        },
+        "id": "PVTI_lAHOBe6QT84BmD1_zg_Iof4",
+        "labels": [
+          "plan:awaiting-adoption"
+        ],
+        "milestone": {
+          "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Ask only essential missing content; bind the actual answer to the same request and reject stale/cross-target answers. Preserve fixed criteria, dedupe, recovery and actual UI usefulness. Dependency: Stable-1. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+          "dueOn": "",
+          "title": "PROPOSED — Stable-1.1 — Essential clarification and bound resume"
+        },
+        "repository": "https://github.com/thattor/personal-agent-lab",
+        "status": "Todo",
+        "title": "PROPOSED — Stable-1.1 — Essential clarification and bound resume"
+      },
+      {
+        "content": {
+          "body": "## Goal\nRetrieve bounded relevant usable context with source/negation/correction fidelity, named forget/privacy probes and cross-session fencing. Freeze context and provider-cost caps before proof.\n\n## Parent and authority\nProject goal#6; milestone 3. P-001 v1 PROPOSED; HR-PLAN-001 pending actual human adoption. This Issue is future goal/scope tracking, not permission to implement. Dependency: Stable-1.1.\n\n## Completion conditions\nActual plan adoption and milestone-entry scope/acceptance/rubric fixed before code; required Opus/SWE-2 High consultations; feature evidence and affected regression; actual official-provider UI with fresh no-extra-charge proof where required; authentic human usefulness; milestone audit/version/limits. All NOT_RUN. Precise numeric probes/caps freeze at entry. No self-report/hypothetical PASS. Required only after proposed plan adoption.\n\n## Work and evaluation loop\nWhen ACTIVE: split into goal-bearing coherent vertical units, test → implementation → verification → evidence → commit/push → objective verdict/parent contribution → next. Record checkpoints at units/Issue/milestone and actual anomalies. Before activation, only explicit planning/review is authorized; do not pick this Issue as runtime work.\n\n## Plan-impact gate\nMaterial scope/order/acceptance change requires Opus agreement, versioned proposal and actual human finalization. No new auth/cost/public exposure or provider auto-renewal by this Issue. Refer to docs/plans/P-001-v1.md / DECISIONS.md D-022.\n",
+          "number": 8,
+          "repository": "thattor/personal-agent-lab",
+          "title": "PROPOSED — Stable-2 — Relevant source-backed cross-conversation memory",
+          "type": "Issue",
+          "url": "https://github.com/thattor/personal-agent-lab/issues/8"
+        },
+        "id": "PVTI_lAHOBe6QT84BmD1_zg_IogE",
+        "labels": [
+          "plan:awaiting-adoption"
+        ],
+        "milestone": {
+          "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Retrieve bounded relevant usable context with source/negation/correction fidelity, named forget/privacy probes and cross-session fencing. Freeze context and provider-cost caps before proof. Dependency: Stable-1.1. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+          "dueOn": "",
+          "title": "PROPOSED — Stable-2 — Relevant source-backed cross-conversation memory"
+        },
+        "repository": "https://github.com/thattor/personal-agent-lab",
+        "status": "Todo",
+        "title": "PROPOSED — Stable-2 — Relevant source-backed cross-conversation memory"
+      },
+      {
+        "content": {
+          "body": "## Goal\nPrepare useful local reversible results within a user-initiated interaction and explicit record-only/not-yet/scope limits; no unsolicited scheduler/provider call or external side effect.\n\n## Parent and authority\nProject goal#6; milestone 4. P-001 v1 PROPOSED; HR-PLAN-001 pending actual human adoption. This Issue is future goal/scope tracking, not permission to implement. Dependency: Stable-2.\n\n## Completion conditions\nActual plan adoption and milestone-entry scope/acceptance/rubric fixed before code; required Opus/SWE-2 High consultations; feature evidence and affected regression; actual official-provider UI with fresh no-extra-charge proof where required; authentic human usefulness; milestone audit/version/limits. All NOT_RUN. Precise numeric probes/caps freeze at entry. No self-report/hypothetical PASS. Required only after proposed plan adoption.\n\n## Work and evaluation loop\nWhen ACTIVE: split into goal-bearing coherent vertical units, test → implementation → verification → evidence → commit/push → objective verdict/parent contribution → next. Record checkpoints at units/Issue/milestone and actual anomalies. Before activation, only explicit planning/review is authorized; do not pick this Issue as runtime work.\n\n## Plan-impact gate\nMaterial scope/order/acceptance change requires Opus agreement, versioned proposal and actual human finalization. No new auth/cost/public exposure or provider auto-renewal by this Issue. Refer to docs/plans/P-001-v1.md / DECISIONS.md D-022.\n",
+          "number": 9,
+          "repository": "thattor/personal-agent-lab",
+          "title": "PROPOSED — Stable-3a — User-initiated reversible local preparation",
+          "type": "Issue",
+          "url": "https://github.com/thattor/personal-agent-lab/issues/9"
+        },
+        "id": "PVTI_lAHOBe6QT84BmD1_zg_IogY",
+        "labels": [
+          "plan:awaiting-adoption"
+        ],
+        "milestone": {
+          "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Prepare useful local reversible results within a user-initiated interaction and explicit record-only/not-yet/scope limits; no unsolicited scheduler/provider call or external side effect. Dependency: Stable-2. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+          "dueOn": "",
+          "title": "PROPOSED — Stable-3a — User-initiated reversible local preparation"
+        },
+        "repository": "https://github.com/thattor/personal-agent-lab",
+        "status": "Todo",
+        "title": "PROPOSED — Stable-3a — User-initiated reversible local preparation"
+      },
+      {
+        "content": {
+          "body": "## Goal\nProve project clauses G-P01–04 in precommitted integrated local-macOS workloads, human overall usefulness, supported operation/recovery and bounded official access/cost; final audit/version/limits.\n\n## Parent and authority\nProject goal#6; milestone 5. P-001 v1 PROPOSED; HR-PLAN-001 pending actual human adoption. This Issue is future goal/scope tracking, not permission to implement. Dependency: Stable-3a.\n\n## Completion conditions\nActual plan adoption and milestone-entry scope/acceptance/rubric fixed before code; required Opus/SWE-2 High consultations; feature evidence and affected regression; actual official-provider UI with fresh no-extra-charge proof where required; authentic human usefulness; milestone audit/version/limits. All NOT_RUN. Precise numeric probes/caps freeze at entry. No self-report/hypothetical PASS. Required only after proposed plan adoption.\n\n## Work and evaluation loop\nWhen ACTIVE: split into goal-bearing coherent vertical units, test → implementation → verification → evidence → commit/push → objective verdict/parent contribution → next. Record checkpoints at units/Issue/milestone and actual anomalies. Before activation, only explicit planning/review is authorized; do not pick this Issue as runtime work.\n\n## Plan-impact gate\nMaterial scope/order/acceptance change requires Opus agreement, versioned proposal and actual human finalization. No new auth/cost/public exposure or provider auto-renewal by this Issue. Refer to docs/plans/P-001-v1.md / DECISIONS.md D-022.\n",
+          "number": 10,
+          "repository": "thattor/personal-agent-lab",
+          "title": "PROPOSED — PAL-1.0 — Integrated private personal-use release",
+          "type": "Issue",
+          "url": "https://github.com/thattor/personal-agent-lab/issues/10"
+        },
+        "id": "PVTI_lAHOBe6QT84BmD1_zg_Iogs",
+        "labels": [
+          "plan:awaiting-adoption"
+        ],
+        "milestone": {
+          "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Prove project clauses G-P01–04 in precommitted integrated local-macOS workloads, human overall usefulness, supported operation/recovery and bounded official access/cost; final audit/version/limits. Dependency: Stable-3a. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. Proposed required PAL-1.0 stage.",
+          "dueOn": "",
+          "title": "PROPOSED — PAL-1.0 — Integrated private personal-use release"
+        },
+        "repository": "https://github.com/thattor/personal-agent-lab",
+        "status": "Todo",
+        "title": "PROPOSED — PAL-1.0 — Integrated private personal-use release"
+      },
+      {
+        "content": {
+          "body": "## Goal\nOptional separate proposal for topics/time opportunities or information/notification access; require actual user value, refusal/reference exclusions and permission/cost/provider boundaries. Not required for proposed PAL-1.0.\n\n## Parent and authority\nProject goal#6; milestone 6. P-001 v1 PROPOSED; HR-PLAN-001 pending actual human adoption. This Issue is future goal/scope tracking, not permission to implement. Dependency: Separate human-adopted extension plan.\n\n## Completion conditions\nActual plan adoption and milestone-entry scope/acceptance/rubric fixed before code; required Opus/SWE-2 High consultations; feature evidence and affected regression; actual official-provider UI with fresh no-extra-charge proof where required; authentic human usefulness; milestone audit/version/limits. All NOT_RUN. Precise numeric probes/caps freeze at entry. No self-report/hypothetical PASS. Optional separate extension; requires its own proposal, not enabled by core P-001 adoption.\n\n## Work and evaluation loop\nWhen ACTIVE: split into goal-bearing coherent vertical units, test → implementation → verification → evidence → commit/push → objective verdict/parent contribution → next. Record checkpoints at units/Issue/milestone and actual anomalies. Before activation, only explicit planning/review is authorized; do not pick this Issue as runtime work.\n\n## Plan-impact gate\nMaterial scope/order/acceptance change requires Opus agreement, versioned proposal and actual human finalization. No new auth/cost/public exposure or provider auto-renewal by this Issue. Refer to docs/plans/P-001-v1.md / DECISIONS.md D-022.\n",
+          "number": 11,
+          "repository": "thattor/personal-agent-lab",
+          "title": "PROPOSED — Post-PAL-1.0 — System-initiated assistance candidates",
+          "type": "Issue",
+          "url": "https://github.com/thattor/personal-agent-lab/issues/11"
+        },
+        "id": "PVTI_lAHOBe6QT84BmD1_zg_IohI",
+        "labels": [
+          "plan:awaiting-adoption"
+        ],
+        "milestone": {
+          "description": "STATUS: PROPOSED / AWAITING_HUMAN_ADOPTION. P-001 v1 6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21. Project goal#6. Goal: Optional separate proposal for topics/time opportunities or information/notification access; require actual user value, refusal/reference exclusions and permission/cost/provider boundaries. Not required for proposed PAL-1.0. Dependency: Separate human-adopted extension plan. No dates/assignees or implementation authority. Scope activation requires actual human P-001 adoption and fixed milestone-entry acceptance/reviews. OPTIONAL, not a project completion gate.",
+          "dueOn": "",
+          "title": "PROPOSED — Post-PAL-1.0 — System-initiated assistance candidates"
+        },
+        "repository": "https://github.com/thattor/personal-agent-lab",
+        "status": "Todo",
+        "title": "PROPOSED — Post-PAL-1.0 — System-initiated assistance candidates"
+      },
+      {
+        "content": {
+          "body": "D-021 first vertical slice. Freeze40 cases and expected host outcomes before implementation (16 requests/24 nonrequests); arrange12 independent reviewer-held-out cases. Required categories and thresholds: ACCEPTANCE.md N1-01/N1-02.\n\nReview concrete classification contract with official SWE-2 High before substantive code; consult Opus before changing semantics. Model outputs cannot directly route/write canonical state. Test → minimum implementation → actual host verification → evidence → green commit/push.\n\nExit: request recognition threshold met, zero unwanted Goals, safe visible misses, explicit no-Goal explanation for send-only/combined-send requests, held-out evaluation on fixed candidate and regression. Preserve existing English single-target baseline and mock default.\n\nNo other tools/tasks/proof renewal or memory overhaul.\n\n## G-001 goal tracking\nParent project goal#6; ACTIVE milestone1 under D-021, independent of pending P-001 adoption. Objective is the concrete outcome above. Acceptance: N1-01,N1-02; affected N1-08 regression. Dependency: None; next active work.\nWork-unit loop: next unmet criterion → required review → test → minimum implementation → verify → evidence/commit/push → evaluate objective and parent contribution → next. Checkpoint records candidate/version, outcome/evidence, limitation/blocker, plan impact (none/within-scope/change proposal) and next action. Close only after objective verification, not child closure/model opinion. Material plan changes require Opus agreement and actual human finalization; routine approved-scope choices remain autonomous.\n",
+          "number": 3,
+          "repository": "thattor/personal-agent-lab",
+          "title": "Stable-1: distinguish local draft requests from conversation and limits",
+          "type": "Issue",
+          "url": "https://github.com/thattor/personal-agent-lab/issues/3"
+        },
+        "id": "PVTI_lAHOBe6QT84BmD1_zg_Iois",
+        "milestone": {
+          "description": "STATUS: ACTIVE under D-021, independent of pending P-001. Project goal#6. Natural Japanese local draft recognition and safe correction/cancel targeting; N1-01–08. Issues3→4→5, parent2. Preserve D-020, no new tools/cost/public exposure or72h quota. At exit evaluate user value and desktop-local assumption against project goal.",
+          "dueOn": "",
+          "title": "Stable-1 — Natural Japanese local delegation"
+        },
+        "repository": "https://github.com/thattor/personal-agent-lab",
+        "status": "Done",
+        "title": "Stable-1: distinguish local draft requests from conversation and limits"
+      },
+      {
+        "content": {
+          "body": "After ingress slice, review concrete host target-resolution and persistent ambiguity-selection contracts with official SWE-2 High, and Opus for semantic changes. Follow N1-03/N1-04.\n\nFor0–3 mixed-state Goals: uniquely resolve natural correction/cancel or ask which target without changing any Goal. Bind choices to host-issued target/revision/epoch context; reject stale/cross-target operations with explanation. Never guess latest Goal. Preserve fixed criteria, dedupe, late-result fencing, cancel, correction, forget and outbox/recovery.\n\nExit: zero wrong-target changes; crash/restart while selection pending and correction active preserves bindings, no duplicate effect/report; targeted and full tests, evidence and green commit/push.\n\nContent-missing draft clarification is deferred to a separately scoped Stable-1.1 candidate.\n\n## G-001 goal tracking\nParent project goal#6; ACTIVE milestone1 under D-021, independent of pending P-001 adoption. Objective is the concrete outcome above. Acceptance: N1-03,N1-04; affected N1-08 regression. Dependency: Issue3 contract.\nWork-unit loop: next unmet criterion → required review → test → minimum implementation → verify → evidence/commit/push → evaluate objective and parent contribution → next. Checkpoint records candidate/version, outcome/evidence, limitation/blocker, plan impact (none/within-scope/change proposal) and next action. Close only after objective verification, not child closure/model opinion. Material plan changes require Opus agreement and actual human finalization; routine approved-scope choices remain autonomous.\n",
+          "number": 4,
+          "repository": "thattor/personal-agent-lab",
+          "title": "Stable-1: resolve correction and cancel to the intended work",
+          "type": "Issue",
+          "url": "https://github.com/thattor/personal-agent-lab/issues/4"
+        },
+        "id": "PVTI_lAHOBe6QT84BmD1_zg_Ioi8",
+        "milestone": {
+          "description": "STATUS: ACTIVE under D-021, independent of pending P-001. Project goal#6. Natural Japanese local draft recognition and safe correction/cancel targeting; N1-01–08. Issues3→4→5, parent2. Preserve D-020, no new tools/cost/public exposure or72h quota. At exit evaluate user value and desktop-local assumption against project goal.",
+          "dueOn": "",
+          "title": "Stable-1 — Natural Japanese local delegation"
+        },
+        "repository": "https://github.com/thattor/personal-agent-lab",
+        "status": "Done",
+        "title": "Stable-1: resolve correction and cancel to the intended work"
+      },
+      {
+        "content": {
+          "body": "After the two functional slices, freeze real UI scripts, absence probes, budgets and human rubric (N1-05–08). Use synthetic/non-secret context and fresh existing official no-extra-charge checks. No automatic renewal/fallback or new permissions.\n\nArchive actual prompt/context/output/host receipts; prove requests and target ambiguity/correction/cancel through UI, grounded draft constraints and no invented planted-absence facts. Deterministic tests/reviewer opinion do not substitute live function or human evaluation.\n\nSend a scoped version/evidence-bound usefulness judgment to ongoing 人間の対応が必要なものチャット; never fabricate input, answers or approval. Continue independent fixes while waiting; resolve negative feedback and retest.\n\nExit: all N1 acceptance rows with evidence PASS, final full suite and impacted S0/F0 audit, version/known limits recorded, parent audited/closed and private stable release. No72h/turn/session quotas.\n\n## G-001 goal tracking\nParent project goal#6; ACTIVE milestone1 under D-021, independent of pending P-001 adoption. Objective is the concrete outcome above. Acceptance: N1-05–08. Dependency: Issues3,4.\nWork-unit loop: next unmet criterion → required review → test → minimum implementation → verify → evidence/commit/push → evaluate objective and parent contribution → next. Checkpoint records candidate/version, outcome/evidence, limitation/blocker, plan impact (none/within-scope/change proposal) and next action. Close only after objective verification, not child closure/model opinion. Material plan changes require Opus agreement and actual human finalization; routine approved-scope choices remain autonomous.\n",
+          "number": 5,
+          "repository": "thattor/personal-agent-lab",
+          "title": "Stable-1: prove the new flow on real UI and close release acceptance",
+          "type": "Issue",
+          "url": "https://github.com/thattor/personal-agent-lab/issues/5"
+        },
+        "id": "PVTI_lAHOBe6QT84BmD1_zg_IojA",
+        "milestone": {
+          "description": "STATUS: ACTIVE under D-021, independent of pending P-001. Project goal#6. Natural Japanese local draft recognition and safe correction/cancel targeting; N1-01–08. Issues3→4→5, parent2. Preserve D-020, no new tools/cost/public exposure or72h quota. At exit evaluate user value and desktop-local assumption against project goal.",
+          "dueOn": "",
+          "title": "Stable-1 — Natural Japanese local delegation"
+        },
+        "repository": "https://github.com/thattor/personal-agent-lab",
+        "status": "In Progress",
+        "title": "Stable-1: prove the new flow on real UI and close release acceptance"
+      },
+      {
+        "content": {
+          "body": "## Goal\nComplete revised functional-first Stable-0 under D-019, explicitly adopted by the user on 2026-10-07 after official Opus/Astra deliberation.\n\nRequire every currently required S0/F0 row in ACCEPTANCE.md PASS with evidence, final full suite/version/limitations, and one direct human usefulness evaluation of fixed bounded real-provider UI scenarios. Keep canonical/security/recovery protections and mock default. 72h/20turn/3session quotas are optional observation; original S0-13 remains unmet historical evidence, never PASS by relabel.\n\n## Required process\n- Read repository AGENTS/STATE/SPEC/DESIGN/ACCEPTANCE/DECISIONS in order; no old PAL reuse.\n- Opus before design changes; official Devin SWE-2 High before substantial implementation, fresh existing-auth/no-extra-charge check, no paid fallback.\n- Record decisions and honest evidence; commit/push coherent green increments.\n- No new auth, extra cost, public exposure or model canonical writes.\n\n## Current state\n- [x] S0-01–12 structural/provider-transport/UI evidence at prior green baseline (revalidate affected implementation).\n- [x] User-approved D-019 completion revision and precommitted functional scenario set.\n- [x] Bounded explicit official real-provider UI with proof expiry/call budget/failure visibility.\n- [x] F0-01–07 actual functionality/content evidence and regressions.\n- [x] F0-08 one direct human usefulness evaluation of real UI.\n- [x] Final required-row audit/full suite/version/limitations.\n\nHistorical soak03 stopped normally for approved development; hashes/DB/10 human turns/2 sessions/5Goals/restart/cancel/correct evidence retained. Not a72hPASS. Do not close for an intermediate milestone. Source of truth: DECISIONS.md D-019 and ACCEPTANCE.md.\n\n\n### Functional verification 2026-10-07\nD-019 revised completion is adopted. Reviewed bounded real-provider UI baseline307058d; explicit official Pro route/no-extra-charge check. F0-01–07 PASS: Japanese conversation without Goal, Cedar/Mika remember/recall, two-sentence local thank-you artifact, active Birch correction with old-result fencing, forgotten source excluded, actual pause/resume/cancel/canonical status and browser Send. 66 regression tests PASS. Actual artifacts/hash/invariants/version and honest limitations: evidence/functional/2026-10-07/README.md. No manual canonical repair or paid fallback.\nF0-08 remains pending one direct human usefulness evaluation of this concrete real UI set. Stable-0 remains incomplete and this Issue stays open. No 72-hour/turn/session quotas; original historical S0-13 NOT PASS. After evaluation: final suite and all-required-row audit before closure.\n\n\n## Final controller completion audit — 2026-10-07\nAll20 REQUIRED rows (S0-01–12 and F0-01–08) PASS under D-019. Audit commit de3f26591c532692cadf3643f87893138f15bda2; production runtime baseline ccfba35dd0623e16e87a4d6e3798266a4cda42e5 unchanged.\n\nActual direct human revised evaluation: message01a11475-3bd0-76c1-b980-806ec8cc8842, 「合ってる」, scoped to presented revised conversation/Cedar/Birch outputs, combined with earlier recall feedback. No broad future permission inferred. Human-answer wait in earlier notes is historical and released.\n\nFinal66-test full suite PASS;5 artifact/receipt hash matches,2 read-only canonical DB checks,3 retained historical chains PASS integrity. F0-04 active correction/fixed criteria/fencing remains original actual live proof; revised-name content is explicitly separate. Forget prompt digest checks actual reconstructed payload, with export newline disclosed. No manual canonical repair or new provider calls.\n\nEvidence: [final audit](https://github.com/thattor/personal-agent-lab/blob/de3f26591c532692cadf3643f87893138f15bda2/evidence/final/stable0/audit.json), [human answer](https://github.com/thattor/personal-agent-lab/blob/de3f26591c532692cadf3643f87893138f15bda2/evidence/final/stable0/human-evaluation.json), [final suite](https://github.com/thattor/personal-agent-lab/blob/de3f26591c532692cadf3643f87893138f15bda2/evidence/tests/stable0-final-full.txt).\n\nVersion: Stable-0 functional-first; Python3.9.6, SQLite3.54.0, observed official Claude CLI2.1.291, requested opus (exact backend version unexposed). Finite accepted usefulness, not universal output quality. Mock default; real UI explicitly bounded with fresh15min operator proof and invocation cap; no always-on native service, internal CLI retry or global-account boundedness claim. Input-resume fault-tested, no natural live waiting-input generation claim. Historical S0-13 NOT PASS/nonrequired; long-term/sleep/auth-refresh reliability unproven. Deferred PublicSearch/time wake/proactive/Dreaming/multi-Expert/vector/local inference/procedure updates/external push remain excluded.\n\nRequired completion audit is satisfied; close this Issue as completed and record version/Stable state on private main.\n",
+          "number": 1,
+          "repository": "thattor/personal-agent-lab",
+          "title": "Reach Stable-0 minimum stable implementation",
+          "type": "Issue",
+          "url": "https://github.com/thattor/personal-agent-lab/issues/1"
+        },
+        "id": "PVTI_lAHOBe6QT84BmD1_zg_IouE",
+        "repository": "https://github.com/thattor/personal-agent-lab",
+        "status": "Done",
+        "title": "Reach Stable-0 minimum stable implementation"
+      }
+    ],
+    "totalCount": 11
+  }
+}

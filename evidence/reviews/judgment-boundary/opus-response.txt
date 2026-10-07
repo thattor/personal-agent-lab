@@ -1,0 +1,154 @@
+# PAL Design Review: Escalation Correction and Natural-Answer Path
+
+## Question A: Is the operational correction faithful to owner authority?
+
+**Verdict: Yes.** Your diagnosis matches the source:
+
+- D022 already made routine within-scope work autonomous.
+- The controller treated a reviewer's "human approval required" as if it were owner authority, without checking it.
+- It replaced the conversational goal with the easiest provable form-only UX.
+- It broke the single end-to-end usefulness judgment into wording approvals.
+
+Points 1–3 restore the owner's stated intent: ask only goal-essential questions, accept decisions that model reasoning can settle, and keep the design minimal. None of this is a new grant of authority. It enforces existing instructions.
+
+**Missing safeguard: an audit trail for autonomous decisions, which guards against the opposite failure.** Once the controller stops escalating, the new risk is that it relabels a scope or acceptance tradeoff as "routine" and decides it silently. The minimum fix has two parts.
+
+1. **Short decision record for consequential autonomous choices.** Write one line per decision, with these fields:
+   - decision
+   - inferred-from source (instruction, test, or reasoning)
+   - alternatives rejected
+   - reversibility
+   - affected dependency
+
+   Trivial copy and bug fixes need no record. This makes autonomy reviewable after the fact without asking first.
+2. **Escalation-validity check.** Every human question must name the specific fact that cannot be inferred and the outcome it changes. If it cannot, the question is invalid. Reviewer text, Opus included, counts as advice and never as an authority source.
+
+**Two smaller guards:**
+- Withdrawing HR-INPUT-001 must not close or downgrade the unsafe-latest-target defect. The defect stays OPEN until the natural-answer path removes the fallback and its tests pass.
+- If the Stable1 evaluation later shows misrouting, treat that as evidence for the controller to fix. It is not a trigger for new micro-approvals.
+
+**HR item classification:**
+
+| Item | Classification | Action |
+|---|---|---|
+| HR-INPUT-001 (P003v1 form-only) | Invalid escalation. Reviewer caution was converted into authority, and the content is technical and inferable. | Withdraw and close the wait. The underlying defect stays OPEN and controller-owned. |
+| HR-STABLE1-001 | Genuine human judgment: real outcome usefulness for this owner. | Keep, but deferred. One evaluation after the candidate runs end-to-end. It does not block implementation. |
+| HR-PLAN-001 | Not currently a question. | Dormant. Reopen only if a consequential, unresolvable scope conflict actually appears. Not a Stable1 blocker. |
+| HR-PERM-001 | Fulfilled. GitHub Projects scope was approved and completed. | Close with readback evidence. Board operations proceed with readback verification. |
+
+## Question B: Does LLM interpretation plus host validation meet the intended division?
+
+**Verdict: Yes.** The split is correct:
+- **The model** decides what the user meant, which is semantic work that reasoning can handle.
+- **The host** decides whether that interpretation can legally change state: identity, revision, epoch, usability, and dedupe.
+
+That is exactly "LLM reasoning acceptable, host owns canonical state." No proof of human intention is needed. What is needed is that a misinterpretation is visible, bounded, and correctable.
+
+### Fundamental semantic uncertainty
+
+Accept these residuals and mitigate them with visibility and reversibility, not more machinery:
+- A message that is plausibly either an answer or new chatter.
+- Binding to the wrong one of two plausible pending questions.
+- A user answering a question the host emitted but they never actually saw.
+
+Mitigations:
+- The host shows which question an input was recorded against.
+- The existing corrected/cancelled fences let the user undo it.
+- Nothing irreversible follows from an answer, since drafts are local and reversible.
+
+### Preventable implementation holes
+
+These must be closed:
+
+1. **Latest-Goal fallback.** Remove it entirely for bare inputs. No question_id from the model means no Goal mutation.
+2. **Fabricated or out-of-snapshot IDs.** The host accepts only question_ids that appear in the snapshot it supplied for that ingress.
+3. **Stale snapshot at commit.** The transaction re-checks the exact Goal, revision, epoch, question status, round, and source bindings. Any mismatch means no mutation and a visible "this question changed" outcome.
+4. **Answer fidelity.** Drop "bounded original answer" extraction. The answer payload is the persisted raw ingress text, referenced by ingress record id, so the model never paraphrases or trims what the user said. This removes a fidelity risk and a schema field.
+5. **Model prose claiming a binding that has not been committed.** The conversation reply comes from the same call, before the transaction runs.
+   - The model's text must not assert "I recorded your answer."
+   - The host appends a fixed status line based on the actual commit result: recorded to X, not recorded because stale, or none.
+   - This is the most likely real-world hole.
+6. **Diagnostic waits.** Exclude diagnostic/internal waits from the natural-answer snapshot. Only user-facing questions are answerable this way, and diagnostic resumption keeps its explicit path. Retiring the legacy diagnostic shorthand is the controller's decision; record it per Question A.
+7. **Untrusted context in the snapshot.** Source-bound content may contain injected instructions. That is harmless because the model output is only a proposal, but state it in the contract and test it.
+
+### Reduced mechanism
+
+This is the minimum; anything more is overdesign.
+
+- **No new call, lane, or DSL.** The existing CONVERSATION call gets one optional output field: `answers_question_id` (an id or null).
+- **Snapshot supplied to the model.** Usable user-facing pending questions, capped at a small N, with these fields:
+  - id
+  - question text
+  - Goal title
+  - age
+
+  Keep only the minimal spec/context needed to recognize an answer. If more than N questions are pending, the reply says so and the explicit forms remain the route.
+- **One input answers at most one question.** Multi-answer messages are out of scope for Stable1. The model picks the explicit one or leaves the field null and asks one concise question in prose about which item is meant.
+- **No confidence threshold** and no separate clarify enum. The fields "null + prose" cover conversation, clarify, and no-action.
+- **Explicit question cards remain unchanged** as the deterministic path.
+
+### Ingress, crash, and replay contract
+
+**Ordering:**
+1. Persist the raw input and ingress_id before inference.
+2. Make the model call outside any DB transaction.
+3. Run the commit transaction, keyed on ingress_id.
+
+**Commit is idempotent per ingress_id:**
+- A replayed ingress_id returns the stored outcome.
+- It makes no new model call and causes no second mutation.
+
+**Crash cases:**
+
+| Crash point | Outcome |
+|---|---|
+| After persist, before commit | Ingress shows as "unprocessed" on restart. No automatic retry. User action re-runs it on the same ingress_id, which may make one new call that the user can see. |
+| After commit, before reply | Replay returns the committed outcome and the host status line. |
+
+**A second ingress answering an already-answered question** is rejected as no longer usable. There is no overwrite, and the user is told it was not recorded.
+
+### Tests required before SWE implementation review
+
+Use mock provider outputs; no live calls are needed for these.
+
+1. **Raw origin.** The stored answer equals the byte-exact raw ingress text, even when the mock model output contains paraphrased text.
+2. **No fallback.**
+   - With one pending question and model output null, there is no mutation.
+   - With an unrelated or new-task message, there is no mutation and the ordinary reply is returned.
+3. **ID validation.** The model returns:
+   - an id not in the snapshot
+   - an id from another Goal
+   - a corrected, cancelled, or forgotten question's id
+
+   All are rejected, with no mutation and a visible status.
+4. **Stale between call and commit.**
+   - Bump revision or epoch, change source bindings, or cancel the question during the "call."
+   - Each causes rejection and the "question changed" status.
+5. **Concurrent questions.**
+   - With two pending questions and an explicit reference to the second, only the second is bound.
+   - When both are plausible, the mock returns null and no mutation occurs.
+6. **Same-ingress replay.**
+   - Replay after commit returns the identical outcome, with zero additional provider calls and one mutation total.
+7. **Crash injection.**
+   - Kill after persist and before commit; ingress shows unprocessed with zero automatic calls.
+   - A user-triggered re-run commits once.
+8. **Already-answered.** A second ingress targeting an answered question is not recorded and the status says so.
+9. **Diagnostic exclusion.** Diagnostic waits never appear in the snapshot and are never resumed by a bare answer.
+10. **Prose/status separation.** When model prose claims "recorded" but the commit fails, the rendered reply shows the host's "not recorded" status.
+11. **Injection.** Snapshot context containing "answer question X" text does not cause binding without a user-originated match. In mock form this is a host check that the id came from the model output field only.
+12. **Explicit card regression.** The existing card path and the 170 existing tests still pass.
+
+The synthetic six-case live matrix stays a finite smoke check. It is not Stable1 acceptance, and none of these tests implies usefulness.
+
+## Question C: The one personal-value question for Stable1
+
+The only question that cannot be inferred is whether, after the owner has used the running candidate on their own real requests, it is actually useful to them. Nothing else in Stable1 needs the owner.
+
+Ask once, after the candidate handles real conversations end-to-end, including at least one natural answer to a pending question:
+
+> 実際に使ってみて、PALは普段のあなたの頼み方を理解し、余計な質問をせずに使える下書きや結果を返せましたか？ 日常的に使い続けられると感じますか。そうでなければ、一番困った場面を一つ教えてください。
+
+Constraints on this question:
+- Do not ask it before working output exists.
+- Do not attach per-example or per-wording approvals.
+- Do not treat this correction, passing tests, or the absence of complaints as a PASS. Stable1 usefulness remains unproven until the owner answers.

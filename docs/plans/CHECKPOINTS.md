@@ -117,3 +117,23 @@ C023: actual frozen P002-LIVE-v1 UI matrix on pushed candidate57b4a49 completed 
 
 
 C024: actual C023 revised evidence sent to ongoing human thread; receipt evidence/operations/c023-human-handoff-20261007.json, no new owner response inferred. Read-only retained ingress ACK audit links actual UI request/answer/forget keys and Goal bindings for all six cases. release-coverage.md maps current deterministic/live proof and final-candidate gaps; no whole-row or milestone promotion. Exact next: consume actual HR-INPUT-001/P003 and HR-STABLE1-001 replies when received; adopt only version-bound owner decisions, implement/retest approved delta and freeze final candidate for affected controls/absence/regression/release audit. HR-PLAN-001 future scope independent. No repetitive question, new provider call/proof renewal/old schedule or extra tests. Goal ACTIVE; Stable1 incomplete.
+
+## C-027 — Essential judgment boundary and model-led direction
+
+Goal: remove unnecessary human blockers and restore actual conversational intent.
+Authentic owner/window messages and official tool-free Opus reviews establish D028/D029.
+HR-INPUT/P003 approval wait withdrawn; wrong-target defect remains controller work.
+One end-to-end usefulness evaluation remains after implementation. No routine question
+returned to the owner. Model capability reference Qwen3.8-27B recorded, actual PAL
+qualification NOT_RUN. Existing170-test baseline PASS15.046s; code unchanged.
+
+Private Project1 verified with11 historical Issues plus new implementation Issue12 under
+parent2/milestone1/global6. Future proposals remain dormant; no new permission/auth,
+paid fallback, public exposure or schedule. Parent/release Issue current status corrected.
+
+Plan impact: adopted owner-directed semantic responsibility correction, with completed
+Opus agreement and explicit rejection of reviewer purge/undo or loosened criteria.
+Official SWE supplied-source implementation review running; exact next action is to
+apply its concrete contract then test/implement the minimum Primary boundary. This
+checkpoint proves corrected governance/tracking only, not new product function or
+Stable1 completion. App goal remains BLOCKED in readback; no unsupported status claim.

@@ -1,0 +1,5 @@
+Current checkpoint: D028/D029 adopts the latest owner's model-led Primary direction. Reasoning-solvable technical choices are autonomous; HR-INPUT/P003 form-only and wording approval is withdrawn. Stable1's next work is implementation Issue#12, then #5 actual functional/usefulness/final-release audit. One owner end-to-end evaluation remains after working output, no micro-evaluations.
+
+Private Projects board now verified: https://github.com/users/thattor/projects/1 . HR-PERM authorization fulfilled; no further device login required. The board contains existing repository Issues and milestone links. Future proposed stages remain dormant/unadopted; current implementation is independent.
+
+Qwen3.8-27B is the owner's reasoning-capability reference. Official model identity confirmed; actual PAL performance is not yet qualified. Current bounded official transport, mock default and all cost/security/reference-stop/recovery boundaries remain. See DECISIONS D028/D029 and evidence/reviews/judgment-boundary/.

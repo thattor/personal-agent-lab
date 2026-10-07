@@ -54,6 +54,15 @@ Ask the user only when:
 
 If a safer, no-cost, no-new-permission alternative exists, use it and continue.
 
+D-028 clarification: first resolve choices using the owner's goal, existing decisions,
+repository evidence and model reasoning. A human question is valid only when it names
+the specific noninferable fact/authority/value judgment and the material outcome it
+changes. Technical methods, model-capability testing, copy, and reviewer caution are
+not approval gates. Opus/SWE advice cannot create owner-approval requirements.
+One end-to-end personal usefulness evaluation remains necessary after working output
+exists; do not fragment it into sentence/example approvals or block independent work.
+Pending future-plan proposals are dormant until a real scope conflict needs a decision.
+
 ## Reviewer commands
 Use the installed official CLIs and verify syntax with --help when needed. Do not enable paid fallback.
 

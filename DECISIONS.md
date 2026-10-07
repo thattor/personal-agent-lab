@@ -356,3 +356,75 @@ Opus agrees with SWE notice-only bare answer recommendation, static bilingual no
 
 
 D027 harness journal/watchdog increment applies completed SWE/Opus test-only contract: append-only exclusive journal, fsync hash chain, no resume/overwrite or human scope, finite record/run bytes, monotonic owner watchdog and visible callback errors. Journal sequence is reserved record order; gate call_sequence independently tracks attempted permits. Actual SIGKILL/deadline tests use supervised synthetic Python children and scripted scope, never official live/cost evidence. No provider/host/canonical semantic change; full finite runner remains next.
+
+## D-028 — Restore inference-based autonomy and essential human questions, 2026-10-07
+
+Authority: direct owner correction in the controller thread: reasoning-solvable decisions
+are within the permitted scope; ask only questions indispensable to the goal. The ongoing
+human window also rejected micro-copy evaluation and requested minimum design with
+Primary semantic interpretation. See evidence/reviews/judgment-boundary/README.md for
+source turn/message IDs. This instruction supersedes the HR-INPUT-001/P003 approval wait.
+
+Question to official Opus: challenge the root cause and minimum correction without
+weakening personal evaluation, scope, cost, permission or canonical safeguards.
+Conclusion: controller converted reviewer advice into human authority, chose a form-only
+workaround over the conversation goal, and split one usefulness judgment into wording
+approvals. Adopt the reviewed correction (opus-response.txt, completed58.957s): technical
+choices and evidence-backed reasoning stay controller-owned. A proposed human question
+must identify a noninferable fact and material consequence. Important autonomous choices
+are recorded in existing decisions/checkpoints with source, rejected alternative,
+reversibility and affected work; trivial copy needs no record or extra process.
+
+HR-INPUT-001/P003v1 approval request is WITHDRAWN; frozen proposal/history preserved.
+The unsafe latest-Goal answer defect stays OPEN, owned by development. HR-STABLE1-001
+remains an actual end-to-end usefulness evaluation after a working candidate, with no
+per-example/wording approvals and no fabricated PASS. HR-PLAN-001 is DORMANT while there
+is no concrete unresolved material scope conflict; P001 future stages are not silently
+adopted. HR-PERM-001 is FULFILLED by authentic owner authorization and verified GitHub
+Projects scope/creation. New permission, payment, exposure and genuine changes to the
+project goal remain human boundaries. No recurring schedule is resumed.
+
+## D-029 — Model-led Primary with host-owned effects, 2026-10-07
+
+Authority: the owner's latest direct explanation explicitly asks a capable reasoning
+model to understand conversation, select work, infer available context and clarify only
+unknown essential information. Primary Bot plus Expert Bot remains the overall goal.
+This is an adopted correction of implementation direction, not another plan-approval
+question. Follow-up owner reference model: **Qwen3.8-27B**. Official model identity is
+verified at https://huggingface.co/Qwen/Qwen3.8-27B; actual PAL qualification is NOT_RUN.
+Do not claim another model's passing result proves Qwen performance. This reference
+does not itself enable a new endpoint, local installation, credentials or paid service.
+
+Official Opus question/conclusion: primary-opus-question.txt / primary-opus-response.txt,
+completed63.838s with fresh existing Pro and extra usage OFF. Adopt model-led semantic
+intake, one closed proposal per ordinary turn, host identity/snapshot/source/epoch/CAS
+checks and atomic effect+response. Reject regex preemption and silent regex fallback on
+the actual model path. Provider failure leaves the input visibly uninterpreted. Structured
+UI controls remain immediate while model/task calls run. Primary clarification is a
+normal conversational reply; reuse existing Expert questions rather than invent another
+workflow. No new task type: only local draft/control, existing source-backed memory and
+reference-stop. Fixed criteria and capability policy stay host-owned.
+
+Planned action forms: none, local_draft(spec, source_ids), answer(question_id),
+control(op, goal_id, optional corrected spec/source_ids), remember(source_id),
+forget(source_id). The model selects only supplied IDs; host injects revisions/epochs
+and original sanitized answer text. New/corrected spec is bounded untrusted data tied to
+usable source IDs, displayed as the actual committed interpretation, never an approval
+request. Remember stores original source text rather than invented preference facts.
+Do not show pre-effect model success prose when effect validation fails.
+
+Controller reconciliations/rejections: Opus's physical purge/undo/tombstone suggestion
+contradicts accepted reference-stop semantics and is REJECTED. Preserve raw history and
+existing source exclusion, with no purge or new undo system. Do not relax existing
+named-case zero wrong-target/false-positive criteria to the reviewer's approximate90%
+suggestion. Semantic uncertainty is measured by finite actual-model cases, never proved
+by schema checks or mock output. A provider failure is not a reason for a new vendor or
+paid fallback. Do not add the reviewer's40–60-case size or one natural-answer human quota
+as an arbitrary acceptance requirement; freeze a proportionate contract before live tests.
+
+Implementation increments: reviewed persistence/proposal boundary; model-led conversation,
+draft and answer; controls/remember/reference-stop on that same boundary; bounded actual
+route and usefulness verification. No rule-only/hybrid completion claim. Official SWE-2
+High review of concrete source, transaction/idempotence, concurrency and tests precedes
+substantial code. Current code has not yet changed; historical N1 PASS remains scoped to
+old candidates and is not transferred to this architecture.
