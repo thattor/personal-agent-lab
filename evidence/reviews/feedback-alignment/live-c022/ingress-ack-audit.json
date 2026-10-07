@@ -1,0 +1,250 @@
+{
+  "scope": "live_synthetic",
+  "human_evaluation": false,
+  "cases": [
+    {
+      "case": "K1",
+      "read_only_retained_ack_rows": [
+        {
+          "key": "ui:7a92ffd7-a0a4-4a5a-9d26-66ee8c80038c:1791370834559:6b057c77-ac7d-4e86-b06f-7dc7afa56c68",
+          "kind": "ingress",
+          "result": {
+            "classification": "draft",
+            "classifier_version": "local-draft-1",
+            "goal": {
+              "acceptance_id": "e44d1abdffb94712b14b78b83cbeb448",
+              "ambiguity": 0,
+              "budget": 3,
+              "epoch": 0,
+              "id": "6ac4064d5e034076ad1c028cc6cbeea2",
+              "question_id": null,
+              "reason": "",
+              "revision": 1,
+              "seq": 1,
+              "state": "queued",
+              "total_claims": 0
+            },
+            "intent": "draft",
+            "record_id": "7b6b2252b1074152addee4cffd5c9b5d"
+          }
+        }
+      ]
+    },
+    {
+      "case": "A1",
+      "read_only_retained_ack_rows": [
+        {
+          "key": "ui:cb8bb251-720b-42da-9137-d5f1bb27ae6f:1791370880355:ab09646f-9aa1-4f5b-a980-dc6ac21a1230",
+          "kind": "ingress",
+          "result": {
+            "classification": "draft",
+            "classifier_version": "local-draft-1",
+            "goal": {
+              "acceptance_id": "e196f172a9414aba9d2e78a813c14d47",
+              "ambiguity": 0,
+              "budget": 3,
+              "epoch": 0,
+              "id": "486af68aa18b4e4db650412c2fd23f90",
+              "question_id": null,
+              "reason": "",
+              "revision": 1,
+              "seq": 1,
+              "state": "queued",
+              "total_claims": 0
+            },
+            "intent": "draft",
+            "record_id": "5b13633f9a2247858d1fdfbc02f9872d"
+          }
+        },
+        {
+          "key": "ui:cb8bb251-720b-42da-9137-d5f1bb27ae6f:45feb3d8-4084-4a80-993a-bf41393fb2ad",
+          "kind": "ingress",
+          "result": {
+            "action": "input",
+            "goal": {
+              "acceptance_id": "e196f172a9414aba9d2e78a813c14d47",
+              "ambiguity": 0,
+              "budget": 2,
+              "epoch": 2,
+              "id": "486af68aa18b4e4db650412c2fd23f90",
+              "question_id": null,
+              "reason": "",
+              "revision": 1,
+              "seq": 1,
+              "state": "queued",
+              "total_claims": 1
+            },
+            "intent": "control",
+            "record_id": "cd13924a852f482e9c631511d87ad3dd"
+          }
+        }
+      ]
+    },
+    {
+      "case": "G1",
+      "read_only_retained_ack_rows": [
+        {
+          "key": "ui:07bcecd5-1f7d-49f5-8d9b-9eaac468a754:1791370934605:5aaf9ea5-0442-4aab-a4ac-ea39c6b9e21c",
+          "kind": "ingress",
+          "result": {
+            "classification": "draft",
+            "classifier_version": "local-draft-1",
+            "goal": {
+              "acceptance_id": "53359be920984568b1b6b515f137e9cf",
+              "ambiguity": 0,
+              "budget": 3,
+              "epoch": 0,
+              "id": "23dcc8c8713a46d2a73b0a008f6d0cdc",
+              "question_id": null,
+              "reason": "",
+              "revision": 1,
+              "seq": 1,
+              "state": "queued",
+              "total_claims": 0
+            },
+            "intent": "draft",
+            "record_id": "499343c70da745dfb81a14dca1d5131c"
+          }
+        }
+      ]
+    },
+    {
+      "case": "T1",
+      "read_only_retained_ack_rows": [
+        {
+          "key": "ui:e671ce5d-0101-4af6-8e21-18999d15be4f:1791370974988:d18513e9-3b8e-4629-a985-40a50ae76220",
+          "kind": "ingress",
+          "result": {
+            "classification": "draft",
+            "classifier_version": "local-draft-1",
+            "goal": {
+              "acceptance_id": "accaecc0e47d48f1af3ea87658dc942c",
+              "ambiguity": 0,
+              "budget": 3,
+              "epoch": 0,
+              "id": "9c8692ea1ffc481da4a04c0544760215",
+              "question_id": null,
+              "reason": "",
+              "revision": 1,
+              "seq": 1,
+              "state": "queued",
+              "total_claims": 0
+            },
+            "intent": "draft",
+            "record_id": "290aa3d6f4a1424da6b924f3f7567d71"
+          }
+        },
+        {
+          "key": "ui:e671ce5d-0101-4af6-8e21-18999d15be4f:1791371002221:edfe30a3-7cc9-4544-832f-749056cca586",
+          "kind": "ingress",
+          "result": {
+            "action": "forget",
+            "goal": null,
+            "intent": "forget",
+            "record_id": "84a0d57cfee14b21b1ec051977e2e3e7"
+          }
+        }
+      ]
+    },
+    {
+      "case": "P1",
+      "read_only_retained_ack_rows": [
+        {
+          "key": "ui:90486485-e7a8-478b-b10d-2303a0c70afa:1791371057587:0ca27941-3758-4e03-bb6c-4e1b19e7afe7",
+          "kind": "ingress",
+          "result": {
+            "classification": "draft",
+            "classifier_version": "local-draft-1",
+            "goal": {
+              "acceptance_id": "f63a5b5a06814ec1b50d5f3565d44936",
+              "ambiguity": 0,
+              "budget": 3,
+              "epoch": 0,
+              "id": "9096fa50efd447c4b1a090d19fd85672",
+              "question_id": null,
+              "reason": "",
+              "revision": 1,
+              "seq": 1,
+              "state": "queued",
+              "total_claims": 0
+            },
+            "intent": "draft",
+            "record_id": "cb12e5df2cf74edeb712e2ea7b32d24f"
+          }
+        },
+        {
+          "key": "ui:90486485-e7a8-478b-b10d-2303a0c70afa:958daf02-34c6-474f-999e-a09ef451ca11",
+          "kind": "ingress",
+          "result": {
+            "action": "input",
+            "goal": {
+              "acceptance_id": "f63a5b5a06814ec1b50d5f3565d44936",
+              "ambiguity": 0,
+              "budget": 2,
+              "epoch": 2,
+              "id": "9096fa50efd447c4b1a090d19fd85672",
+              "question_id": null,
+              "reason": "",
+              "revision": 1,
+              "seq": 1,
+              "state": "queued",
+              "total_claims": 1
+            },
+            "intent": "control",
+            "record_id": "d8134ae5d1f344f6bb76eb2798ee2c64"
+          }
+        },
+        {
+          "key": "ui:90486485-e7a8-478b-b10d-2303a0c70afa:c0789492-2acd-4ba8-857d-0c5337be1bfa",
+          "kind": "ingress",
+          "result": {
+            "action": "input",
+            "goal": {
+              "acceptance_id": "f63a5b5a06814ec1b50d5f3565d44936",
+              "ambiguity": 0,
+              "budget": 1,
+              "epoch": 4,
+              "id": "9096fa50efd447c4b1a090d19fd85672",
+              "question_id": null,
+              "reason": "",
+              "revision": 1,
+              "seq": 1,
+              "state": "queued",
+              "total_claims": 2
+            },
+            "intent": "control",
+            "record_id": "a28f644177bb49f08d8b3e494255b228"
+          }
+        }
+      ]
+    },
+    {
+      "case": "F1",
+      "read_only_retained_ack_rows": [
+        {
+          "key": "ui:4a653eb1-31ec-44cf-857e-41a7a1fa630e:1791371128039:3295c6d7-b8ea-450e-a53b-35d050650b4e",
+          "kind": "ingress",
+          "result": {
+            "classification": "draft",
+            "classifier_version": "local-draft-1",
+            "goal": {
+              "acceptance_id": "0e8a721dae35429e867c3bb7525ecd5c",
+              "ambiguity": 0,
+              "budget": 3,
+              "epoch": 0,
+              "id": "172022905c6d42ee96c6c373014c343a",
+              "question_id": null,
+              "reason": "",
+              "revision": 1,
+              "seq": 1,
+              "state": "queued",
+              "total_claims": 0
+            },
+            "intent": "draft",
+            "record_id": "009e72741ebb4df8be6cf4836929de78"
+          }
+        }
+      ]
+    }
+  ]
+}

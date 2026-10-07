@@ -1,0 +1,12 @@
+{
+  "recorded_at": "2026-10-07T11:08:59.188842+00:00",
+  "destination_thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "actual_send_returned_thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "judgment_id": "HR-STABLE1-001",
+  "candidate": "57b4a49",
+  "evidence_commit": "d4ee0fc",
+  "material": "evidence/reviews/feedback-alignment/live-c022/human-material.md",
+  "purpose": "update existing judgment queue with actual revised evidence, no duplicate question",
+  "human_response": null,
+  "no_inferred_approval_or_usefulness": true
+}
