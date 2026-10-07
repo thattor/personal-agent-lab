@@ -1,0 +1,1 @@
+{"reply":"Got it, I won't start a draft for now. If you want me to write the invitation, just let me know, and tell me what it's for if you'd like it tailored.","action":{"kind":"none"}}

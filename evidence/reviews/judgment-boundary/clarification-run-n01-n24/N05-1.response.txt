@@ -1,0 +1,1 @@
+{"reply":"Sounds like someone asked for an invitation draft. Do you want me to draft one? If so, what's the invitation for?","action":{"kind":"none"}}

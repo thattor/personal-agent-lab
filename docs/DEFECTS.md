@@ -330,3 +330,27 @@ A standalone py_compile command hit macOS's configured bytecode-cache write boun
 outside this checkout. AST parsing succeeded, and subsequent checks use python3 -B; no
 source repair or broader cache permission is needed. This was tooling environment, not
 a syntax/product failure.
+
+
+## C039 — announced partial work bypassed the whole-request boundary
+
+On product7c284733, N22 asked to draft and send. Primary narrowed this to a local draft,
+producing one queued Goal, violating the frozen none/zero-Goal oracle. The actual stored
+reply preserves spec's do-not-send wording but omits the explicit cannot-send explanation;
+no rendered UI was audited. No worker or external task effect ran. R01–16 all recognized,
+N01–21 passed; failed N22 and unexecuted N23/N24 remain preserved in clarification-run-*/.
+
+Official Opus89.16s agrees the prompt's 'do not silently perform a partial compound request'
+is ambiguous: an announced partial task can seem allowed. General drafting guidance may
+reinforce it; the older product did not execute N22, so causal regression attribution is
+unproven. Correction adopted in D029/C040: whole-request unavailable-action gate before
+drafting; remove the contradictory permission, distinguish assistant-send from drafts the
+user sends, and permit a later acceptance of a local-only offer. Primary only; host/native/
+Expert remain unchanged. Prevent recurrence with the unchanged fixed40 plus a pre-edit
+independent12 including over-blocking and separate-offer acceptance contrasts. Actual
+revalidation remains pending. N14 re-asking after 'Not yet' stays a quality observation;
+no new acceptance failure or unrelated fix is introduced from it.
+
+Reviewer control: advice to require owner threshold approval or owner escalation after
+one more failed candidate conflicts with D028. Keep technical diagnosis/review autonomous;
+only real authority/noninferable-value/material-scope decisions go to the human window.

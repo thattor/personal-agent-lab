@@ -1,0 +1,776 @@
+{
+  "schema": "pal-closed-primary-run-audit-v1",
+  "audited_at": 1791396127.025704,
+  "run": "runtime/clarification-c039-r09-r16",
+  "auditor": "Astra independent artifact audit",
+  "status": "PASS",
+  "findings": [],
+  "verifier": {
+    "records": 158,
+    "completed": true,
+    "judged_turns": 12,
+    "skipped_turns": 2,
+    "covered_cases": 8,
+    "scope": "live_synthetic",
+    "human_evaluation": false
+  },
+  "candidate": "4a5ec27bbfc064cb6f4aca697ee37a2a2bff6188",
+  "product_identity": "content:sha256:7c2847336e2ba32d062e5210021270e549d3b6c6f13424d07d456000d24cba57",
+  "event_counts": {
+    "run.opened": 1,
+    "fixture.verified": 8,
+    "operator.config": 1,
+    "snapshot.verified": 12,
+    "prompt.built": 12,
+    "permit.granted": 12,
+    "call.started": 12,
+    "native.supervisor.started": 24,
+    "native.supervisor.finished": 24,
+    "proposal.received": 12,
+    "call.returned": 12,
+    "turn.captured": 12,
+    "turn.judged": 12,
+    "turn.skipped": 2,
+    "qualification.finished": 1,
+    "run.closed": 1
+  },
+  "checks": {
+    "existing_verifier_completed": true,
+    "exact_candidate_and_cohort": true,
+    "closed_once_at_end": true,
+    "twelve_actual_calls_within_sixteen_slots": true,
+    "eight_cases_twelve_accepted_two_skipped": true,
+    "no_failures": true,
+    "all_pinned_source_and_fixture_hashes_match": true,
+    "canonical_product_identity": true,
+    "exact_case_set": true,
+    "official_tool_free_route_recorded": true,
+    "human_qwen_not_claimed": true,
+    "supervisor_lifecycle_1": true,
+    "supervisor_lifecycle_2": true,
+    "supervisor_lifecycle_3": true,
+    "supervisor_lifecycle_4": true,
+    "supervisor_lifecycle_5": true,
+    "supervisor_lifecycle_6": true,
+    "supervisor_lifecycle_7": true,
+    "supervisor_lifecycle_8": true,
+    "supervisor_lifecycle_9": true,
+    "supervisor_lifecycle_10": true,
+    "supervisor_lifecycle_11": true,
+    "supervisor_lifecycle_12": true,
+    "no_extra_supervisor_calls": true,
+    "expected_skips_only": true,
+    "R09_empty_wal": true,
+    "R09_integrity": true,
+    "R09_settled_actual_primary_turns": true,
+    "R09_one_queued_unclaimed_goal": true,
+    "R09_no_worker_or_external_effects": true,
+    "R09-1_authentic_input_and_prompt": true,
+    "R09-1_no_oracle_fields": true,
+    "R09-1_raw_proposal_canonical_outcome_authoritative_reply": true,
+    "R09-1_snapshot_binding": true,
+    "R09-1_fixed_action_and_goal_count": true,
+    "R09-1_spec_and_source_binding": true,
+    "R09-2_skip_prior_delegation": true,
+    "R09-2_skip_has_no_input_call_or_blob": true,
+    "R10_empty_wal": true,
+    "R10_integrity": true,
+    "R10_settled_actual_primary_turns": true,
+    "R10_one_queued_unclaimed_goal": true,
+    "R10_no_worker_or_external_effects": true,
+    "R10-1_authentic_input_and_prompt": true,
+    "R10-1_no_oracle_fields": true,
+    "R10-1_raw_proposal_canonical_outcome_authoritative_reply": true,
+    "R10-1_snapshot_binding": true,
+    "R10-1_fixed_action_and_goal_count": true,
+    "R10-1_spec_and_source_binding": true,
+    "R11_empty_wal": true,
+    "R11_integrity": true,
+    "R11_settled_actual_primary_turns": true,
+    "R11_one_queued_unclaimed_goal": true,
+    "R11_no_worker_or_external_effects": true,
+    "R11-1_authentic_input_and_prompt": true,
+    "R11-1_no_oracle_fields": true,
+    "R11-1_raw_proposal_canonical_outcome_authoritative_reply": true,
+    "R11-1_snapshot_binding": true,
+    "R11-1_fixed_action_and_goal_count": true,
+    "R11-1_spec_and_source_binding": true,
+    "R12_empty_wal": true,
+    "R12_integrity": true,
+    "R12_settled_actual_primary_turns": true,
+    "R12_one_queued_unclaimed_goal": true,
+    "R12_no_worker_or_external_effects": true,
+    "R12-1_authentic_input_and_prompt": true,
+    "R12-1_no_oracle_fields": true,
+    "R12-1_raw_proposal_canonical_outcome_authoritative_reply": true,
+    "R12-1_snapshot_binding": true,
+    "R12-1_fixed_action_and_goal_count": true,
+    "R12-1_spec_and_source_binding": true,
+    "R12-2_skip_prior_delegation": true,
+    "R12-2_skip_has_no_input_call_or_blob": true,
+    "R13_empty_wal": true,
+    "R13_integrity": true,
+    "R13_settled_actual_primary_turns": true,
+    "R13_one_queued_unclaimed_goal": true,
+    "R13_no_worker_or_external_effects": true,
+    "R13-1_authentic_input_and_prompt": true,
+    "R13-1_no_oracle_fields": true,
+    "R13-1_raw_proposal_canonical_outcome_authoritative_reply": true,
+    "R13-1_snapshot_binding": true,
+    "R13-1_fixed_action_and_goal_count": true,
+    "R13-2_authentic_input_and_prompt": true,
+    "R13-2_no_oracle_fields": true,
+    "R13-2_raw_proposal_canonical_outcome_authoritative_reply": true,
+    "R13-2_snapshot_binding": true,
+    "R13-2_fixed_action_and_goal_count": true,
+    "R13-2_spec_and_source_binding": true,
+    "R13-2_actual_prior_reply_in_context": true,
+    "R14_empty_wal": true,
+    "R14_integrity": true,
+    "R14_settled_actual_primary_turns": true,
+    "R14_one_queued_unclaimed_goal": true,
+    "R14_no_worker_or_external_effects": true,
+    "R14-1_authentic_input_and_prompt": true,
+    "R14-1_no_oracle_fields": true,
+    "R14-1_raw_proposal_canonical_outcome_authoritative_reply": true,
+    "R14-1_snapshot_binding": true,
+    "R14-1_fixed_action_and_goal_count": true,
+    "R14-2_authentic_input_and_prompt": true,
+    "R14-2_no_oracle_fields": true,
+    "R14-2_raw_proposal_canonical_outcome_authoritative_reply": true,
+    "R14-2_snapshot_binding": true,
+    "R14-2_fixed_action_and_goal_count": true,
+    "R14-2_spec_and_source_binding": true,
+    "R14-2_actual_prior_reply_in_context": true,
+    "R15_empty_wal": true,
+    "R15_integrity": true,
+    "R15_settled_actual_primary_turns": true,
+    "R15_one_queued_unclaimed_goal": true,
+    "R15_no_worker_or_external_effects": true,
+    "R15-1_authentic_input_and_prompt": true,
+    "R15-1_no_oracle_fields": true,
+    "R15-1_raw_proposal_canonical_outcome_authoritative_reply": true,
+    "R15-1_snapshot_binding": true,
+    "R15-1_fixed_action_and_goal_count": true,
+    "R15-2_authentic_input_and_prompt": true,
+    "R15-2_no_oracle_fields": true,
+    "R15-2_raw_proposal_canonical_outcome_authoritative_reply": true,
+    "R15-2_snapshot_binding": true,
+    "R15-2_fixed_action_and_goal_count": true,
+    "R15-2_spec_and_source_binding": true,
+    "R15-2_actual_prior_reply_in_context": true,
+    "R16_empty_wal": true,
+    "R16_integrity": true,
+    "R16_settled_actual_primary_turns": true,
+    "R16_one_queued_unclaimed_goal": true,
+    "R16_no_worker_or_external_effects": true,
+    "R16-1_authentic_input_and_prompt": true,
+    "R16-1_no_oracle_fields": true,
+    "R16-1_raw_proposal_canonical_outcome_authoritative_reply": true,
+    "R16-1_snapshot_binding": true,
+    "R16-1_fixed_action_and_goal_count": true,
+    "R16-2_authentic_input_and_prompt": true,
+    "R16-2_no_oracle_fields": true,
+    "R16-2_raw_proposal_canonical_outcome_authoritative_reply": true,
+    "R16-2_snapshot_binding": true,
+    "R16-2_fixed_action_and_goal_count": true,
+    "R16-2_spec_and_source_binding": true,
+    "R16-2_actual_prior_reply_in_context": true,
+    "all_run_files_byte_identical_after_audit": true
+  },
+  "databases": [
+    {
+      "case": "R09",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R10",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R11",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R12",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R13",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R14",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R15",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R16",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    }
+  ],
+  "turns": [
+    {
+      "case": "R09",
+      "turn": 1,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "cda4878419e7750661540815f346557d3bd96da939475b2ae5ab61f5ebcccc57",
+      "response_sha256": "395defab0c5c6a1bf7e99e71f22e0b1eeb53504e2f616d1636821e6e18287fd1",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false
+    },
+    {
+      "case": "R10",
+      "turn": 1,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "9074948b58d133c59364eefb6f11648d2c56a648c4e62a81b455dc9f2119f989",
+      "response_sha256": "7bec284c0e4b96fb27067a567e2a9b6b712dcb4586ff605915daccf66f359926",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false
+    },
+    {
+      "case": "R11",
+      "turn": 1,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "3beeb5c9d5248b132758f34218f8754acead017145edcd0284e5e8345c68a640",
+      "response_sha256": "dc3510c58af642f9f2dd147bbd4ac7f93e1deb1b22b708b7b2e3136e723f2bc6",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false
+    },
+    {
+      "case": "R12",
+      "turn": 1,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "357848388629c3f8c7b4c24a0c2963eaa1b2ba9bed228904f29c595c911049b4",
+      "response_sha256": "e5b6d529be158dd6de324689f25f9a432a5995389232e5c512ef8c0711a2acff",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false
+    },
+    {
+      "case": "R13",
+      "turn": 1,
+      "action": "none",
+      "goal_count_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "2a54f2d91a09bc2e6c4a2e3c2f38506e8cb55e459de50b736731ffadc4e94fc2",
+      "response_sha256": "ffde1c6dcd9f02d567b143334914372c7b5cb9ce31b2a69dd2a4336f667b2b83",
+      "stored_reply_authority": "model_none_reply",
+      "model_proposed_reply_equals_stored_reply": true
+    },
+    {
+      "case": "R13",
+      "turn": 2,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "fa0b587f4cc91f661a501a6c5cf93126f02ba03d5c454620f84c64075a864f3f",
+      "response_sha256": "42da2fe79971fada38f431a50635661f3a2a430ccff2c20d8302a620ddd37622",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false
+    },
+    {
+      "case": "R14",
+      "turn": 1,
+      "action": "none",
+      "goal_count_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "b93cd77548b718a30e24a4f16ee30480b6be72b7b950618229f46b3126e0eb7a",
+      "response_sha256": "7ec9403b1e3e08827e44242be8c500615d9f95e80b99b91f3d3d7a2ebdb33bb1",
+      "stored_reply_authority": "model_none_reply",
+      "model_proposed_reply_equals_stored_reply": true
+    },
+    {
+      "case": "R14",
+      "turn": 2,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "2c915d2f50c5224211e7c237677b4297f3be1db376a9dace436018ce3902d646",
+      "response_sha256": "d49476f4a55b8476198c6919e376f9992793d0adaaafd7e66533162387b1dcd9",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false
+    },
+    {
+      "case": "R15",
+      "turn": 1,
+      "action": "none",
+      "goal_count_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "bccc8e8d2cf835a60cf88a5d43ea26abe280f08d7c17bc6c5ef578b1f463ce87",
+      "response_sha256": "5712dd9b595664ded4557b986e29c27e353874d41c8360aa55df5ba42387b954",
+      "stored_reply_authority": "model_none_reply",
+      "model_proposed_reply_equals_stored_reply": true
+    },
+    {
+      "case": "R15",
+      "turn": 2,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "5112b4c898008132db6873df67739082522242ed2fc33ffeb32cdc406ae70a22",
+      "response_sha256": "f561b45dfeb45a76873e0229353d5608e954552d15579ef26687615e11c0ef5d",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false
+    },
+    {
+      "case": "R16",
+      "turn": 1,
+      "action": "none",
+      "goal_count_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "fb0b61f4f38797fd6a7c33be3315e4524aa5d97d329f07de99f76765e232367d",
+      "response_sha256": "32287e958d3a0f0f672b366330250bd6a026f3f609a90133b1743afbbc9b19fd",
+      "stored_reply_authority": "model_none_reply",
+      "model_proposed_reply_equals_stored_reply": true
+    },
+    {
+      "case": "R16",
+      "turn": 2,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "1b7b2ce9af64d0e2e86fecd6e399d04f3f81bb58e6cfc35dd688a92cc1832cf2",
+      "response_sha256": "86f5daa228e57e234a35512dbeeffc0ce6bc426fa59c39dbd56d92fe9e36b701",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false
+    }
+  ],
+  "skips": [
+    {
+      "case": "R09",
+      "turn": 2,
+      "reason": "first turn delegated, so frozen conditional answer was not submitted",
+      "no_turn_events": true,
+      "no_prompt_or_response_blob": true,
+      "no_input_record": true,
+      "no_primary_turn_key": true
+    },
+    {
+      "case": "R12",
+      "turn": 2,
+      "reason": "first turn delegated, so frozen conditional answer was not submitted",
+      "no_turn_events": true,
+      "no_prompt_or_response_blob": true,
+      "no_input_record": true,
+      "no_primary_turn_key": true
+    }
+  ],
+  "supervisor_lifecycles": [
+    {
+      "case": "R09",
+      "turn": 1,
+      "slot": 1,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R10",
+      "turn": 1,
+      "slot": 2,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R11",
+      "turn": 1,
+      "slot": 3,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R12",
+      "turn": 1,
+      "slot": 4,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R13",
+      "turn": 1,
+      "slot": 5,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R13",
+      "turn": 2,
+      "slot": 6,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R14",
+      "turn": 1,
+      "slot": 7,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R14",
+      "turn": 2,
+      "slot": 8,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R15",
+      "turn": 1,
+      "slot": 9,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R15",
+      "turn": 2,
+      "slot": 10,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R16",
+      "turn": 1,
+      "slot": 11,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R16",
+      "turn": 2,
+      "slot": 12,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    }
+  ],
+  "run_file_sha256": {
+    "R14-2.response.txt": "d49476f4a55b8476198c6919e376f9992793d0adaaafd7e66533162387b1dcd9",
+    "R13.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R10.sqlite": "e535cf80e8f5c8ceec4a6af5a8c3d37a92cc869647b38328c607c35fa11552cd",
+    "R09-1.prompt.txt": "cda4878419e7750661540815f346557d3bd96da939475b2ae5ab61f5ebcccc57",
+    "R13-2.response.txt": "42da2fe79971fada38f431a50635661f3a2a430ccff2c20d8302a620ddd37622",
+    "R13.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R12.sqlite": "21b549160f1ee515242ccd5c69bd7f649b7237f9caf89280c8647b3617615dec",
+    "R16.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R16.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R15-2.response.txt": "f561b45dfeb45a76873e0229353d5608e954552d15579ef26687615e11c0ef5d",
+    "R15-2.prompt.txt": "5112b4c898008132db6873df67739082522242ed2fc33ffeb32cdc406ae70a22",
+    "R11.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R16.sqlite": "d6faa172d88d60f31c30dff25f91330df815c050fe7502a693a96f4bd3d53693",
+    "R10-1.prompt.txt": "9074948b58d133c59364eefb6f11648d2c56a648c4e62a81b455dc9f2119f989",
+    "R11.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R11-1.prompt.txt": "3beeb5c9d5248b132758f34218f8754acead017145edcd0284e5e8345c68a640",
+    "R16-1.prompt.txt": "fb0b61f4f38797fd6a7c33be3315e4524aa5d97d329f07de99f76765e232367d",
+    "R14.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R14-2.prompt.txt": "2c915d2f50c5224211e7c237677b4297f3be1db376a9dace436018ce3902d646",
+    "R13-2.prompt.txt": "fa0b587f4cc91f661a501a6c5cf93126f02ba03d5c454620f84c64075a864f3f",
+    "R14.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R16-2.response.txt": "86f5daa228e57e234a35512dbeeffc0ce6bc426fa59c39dbd56d92fe9e36b701",
+    "R14.sqlite": "4d2ac18add2a987c9c2451368fc71b630ee8e9654b10045392e7872b381896dc",
+    "R14-1.prompt.txt": "b93cd77548b718a30e24a4f16ee30480b6be72b7b950618229f46b3126e0eb7a",
+    "R13-1.prompt.txt": "2a54f2d91a09bc2e6c4a2e3c2f38506e8cb55e459de50b736731ffadc4e94fc2",
+    "R11.sqlite": "32c93b96237ff6f2451c20d292b952e574afb5cfd5edf4fd935b6b0cd012b631",
+    "R16-2.prompt.txt": "1b7b2ce9af64d0e2e86fecd6e399d04f3f81bb58e6cfc35dd688a92cc1832cf2",
+    "R10-1.response.txt": "7bec284c0e4b96fb27067a567e2a9b6b712dcb4586ff605915daccf66f359926",
+    "journal.jsonl": "ddcdc068e6cf049b948a1868cff4cf9de804e5ad70d9f8048ba85062e6a7d130",
+    "R12.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R12-1.prompt.txt": "357848388629c3f8c7b4c24a0c2963eaa1b2ba9bed228904f29c595c911049b4",
+    "R11-1.response.txt": "dc3510c58af642f9f2dd147bbd4ac7f93e1deb1b22b708b7b2e3136e723f2bc6",
+    "R15-1.prompt.txt": "bccc8e8d2cf835a60cf88a5d43ea26abe280f08d7c17bc6c5ef578b1f463ce87",
+    "R13.sqlite": "82c100493858835700386fc4a689725f308ccc3c971989f3b9b12090ab85e155",
+    "R12.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R16-1.response.txt": "32287e958d3a0f0f672b366330250bd6a026f3f609a90133b1743afbbc9b19fd",
+    "R15.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R09-1.response.txt": "395defab0c5c6a1bf7e99e71f22e0b1eeb53504e2f616d1636821e6e18287fd1",
+    "R14-1.response.txt": "7ec9403b1e3e08827e44242be8c500615d9f95e80b99b91f3d3d7a2ebdb33bb1",
+    "R09.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R09.sqlite": "ef7b56f74532a39ac231efa123051805da80b44697e1f8205c2e4f53666b196d",
+    "R15.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R13-1.response.txt": "ffde1c6dcd9f02d567b143334914372c7b5cb9ce31b2a69dd2a4336f667b2b83",
+    "R09.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R10.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R12-1.response.txt": "e5b6d529be158dd6de324689f25f9a432a5995389232e5c512ef8c0711a2acff",
+    "R15.sqlite": "2efecc6ed9157faf08a6d80d618ecf4cd8243bdc956eb314870402bb1a4c68f0",
+    "R15-1.response.txt": "5712dd9b595664ded4557b986e29c27e353874d41c8360aa55df5ba42387b954",
+    "R10.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "semantic_review": {
+    "outcome": "No substantiated mismatch found in the 12 saved responses against frozen R09-R16 expectations.",
+    "observations": [
+      "R10 immediately delegates general thanks; the prior overasking failure does not recur on this changed-candidate regression.",
+      "R09 and R12 use an allowed direct-delegation path. Their frozen follow-up answers were not supplied.",
+      "R13-R16 ask one purpose/content question then delegate using the actual follow-up. R15 explicitly leaves the date undecided.",
+      "Supplied facts remain in draft specifications; missing factual logistics are unspecified or placeholders.",
+      "Eight Goals are queued and unclaimed. No drafts were produced by an Expert or worker."
+    ]
+  },
+  "scope": {
+    "actual": "12 official Claude Opus Primary calls on eight synthetic recognition cases, with host state and retained supervisor evidence audited.",
+    "synthetic_inputs": true,
+    "human_evaluation": false,
+    "qwen_qualification": false,
+    "expert_or_executor_execution": false,
+    "ui_validation": false,
+    "new_provider_calls_by_audit": 0,
+    "limitations": [
+      "Audit checks retained local evidence; provider and account/billing state were not independently contacted.",
+      "Eight local_draft stored replies are host-generated acknowledgments containing specifications; proposed optional-personalization copy is not evidence of display. Four none clarification replies are stored model replies.",
+      "This regression does not qualify the other cohorts, unseen behavior, complete draft usefulness, or milestone release.",
+      "Service model revision is not exposed by the recorded CLI."
+    ]
+  },
+  "read_only_method": "SQLite mode=ro&immutable=1 after empty-WAL checks; no Store construction; all run files hashed before and after."
+}

@@ -15,7 +15,7 @@ from scripts.live_evidence import EvidenceJournal, verify_journal
 from scripts.live_runner import RunRejected, product_rel_paths
 from scripts.primary_qualification import (PrimaryGate, QualificationRunner, load_matrix,
                                            seed_case, verify_run, verify_snapshot, build_live, COHORTS,
-                                           FREEZE, NEW_FREEZE, validate_freeze, cohort_matrix, QualificationPin)
+                                           FREEZE, NEW_FREEZE, COMPOUND_FREEZE, validate_freeze, cohort_matrix, QualificationPin)
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT/'evidence/reviews/judgment-boundary/primary-heldout.json'
@@ -52,7 +52,7 @@ def isolated_test_root(destination):
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT/relative, target)
     (destination/'runtime').mkdir()
-    for relative in (FREEZE, NEW_FREEZE):
+    for relative in (FREEZE, NEW_FREEZE, COMPOUND_FREEZE):
         synthetic_freeze(destination, relative)
     return destination
 
@@ -563,15 +563,15 @@ class FreezeQualificationTests(unittest.TestCase):
     def test_isolated_root_has_only_known_corpora_and_real_hash_checks(self):
         evidence = self.root/'evidence/reviews/judgment-boundary'
         self.assertEqual({p.name for p in evidence.iterdir()},
-                         set(KNOWN_FIXTURES) | {Path(FREEZE).name, Path(NEW_FREEZE).name})
+                         set(KNOWN_FIXTURES) | {Path(FREEZE).name, Path(NEW_FREEZE).name, Path(COMPOUND_FREEZE).name})
         self.assertFalse((evidence/'primary-clarification-heldout.json').exists())
         with self.assertRaises((FileNotFoundError, RunRejected)):
             cohort_matrix(self.root, 'clarification-heldout')
-        for relative in (FREEZE, NEW_FREEZE):
+        for relative in (FREEZE, NEW_FREEZE, COMPOUND_FREEZE):
             self.assertEqual(validate_freeze(self.root, relative)['scope'], 'SCRIPTED_TEST_ONLY')
         source = self.root/'pal/primary.py'
         source.write_bytes(source.read_bytes()+b'\n# scripted drift\n')
-        for relative in (FREEZE, NEW_FREEZE):
+        for relative in (FREEZE, NEW_FREEZE, COMPOUND_FREEZE):
             with self.assertRaises(RunRejected):
                 validate_freeze(self.root, relative)
 
@@ -581,7 +581,10 @@ class FreezeQualificationTests(unittest.TestCase):
                'recognition-r09-r16', 'recognition-n01-n24'}
         new = {'clarification-r01-r08', 'clarification-r09-r16',
                'clarification-n01-n24', 'clarification-heldout'}
-        self.assertEqual(set(COHORTS), old | new)
+        compound = {'compound-n01-n24', 'compound-r01-r08', 'compound-r09-r16', 'compound-heldout'}
+        self.assertEqual(set(COHORTS), old | new | compound)
+        for name in compound:
+            self.assertEqual(COHORTS[name][2], COMPOUND_FREEZE)
         for name in old:
             self.assertEqual(COHORTS[name][2], FREEZE)
         for name in new:
@@ -593,6 +596,17 @@ class FreezeQualificationTests(unittest.TestCase):
             self.assertEqual((fixture, freeze), (COHORTS['clarification-'+suffix][0], NEW_FREEZE))
             self.assertEqual(maximum, 24 if suffix=='n01-n24' else 16)
             self.assertTrue(matrix['cases'])
+
+    def test_compound_cohorts_reuse_fixed_inputs_and_have_separate_product_binding(self):
+        for suffix in ('n01-n24', 'r01-r08', 'r09-r16'):
+            alias = COHORTS['compound-'+suffix]
+            self.assertEqual(alias[:2], COHORTS['recognition-'+suffix][:2])
+            self.assertEqual(alias[2],
+                'evidence/reviews/judgment-boundary/primary-compound-candidate-freeze.json')
+            self.assertNotEqual(alias[2], COHORTS['clarification-'+suffix][2])
+        self.assertFalse((self.root/'evidence/reviews/judgment-boundary/primary-compound-heldout.json').exists())
+        with self.assertRaises(RunRejected):
+            cohort_matrix(self.root, 'compound-heldout')
 
     def test_freeze_rejects_malformed_missing_and_inexact_manifests(self):
         valid = synthetic_freeze(self.root, NEW_FREEZE)
@@ -728,13 +742,21 @@ class RepositoryFreezeTests(unittest.TestCase):
     def test_immutable_old_manifest_and_real_new_freeze_have_only_primary_change(self):
         self.assertEqual(hashlib.sha256((ROOT/FREEZE).read_bytes()).hexdigest(), OLD_FREEZE_SHA)
         old = json.loads((ROOT/FREEZE).read_text())
-        new = validate_freeze(ROOT, NEW_FREEZE)
+        clarification_path = ROOT/NEW_FREEZE
+        self.assertEqual(hashlib.sha256(clarification_path.read_bytes()).hexdigest(),
+                         '95c85537542df7747660c7917a0bcae580f06476e2f71c5b6945bc5434fe0885')
+        clarification = json.loads(clarification_path.read_text())
+        new = validate_freeze(ROOT, COMPOUND_FREEZE)
+        self.assertEqual(set(clarification['files']), set(new['files']))
+        self.assertEqual({path for path in new['files'] if new['files'][path]!=clarification['files'][path]},
+                         {'pal/primary.py'})
         self.assertEqual(set(old['files']), set(new['files']))
         self.assertEqual({path for path in old['files'] if old['files'][path]!=new['files'][path]},
                          {'pal/primary.py'})
-        self.assertEqual(new['heldout_sha256'], COHORTS['clarification-heldout'][1])
+        self.assertEqual(new['heldout_sha256'], COHORTS['compound-heldout'][1])
         self.assertFalse(new['heldout_contents_opened_before_freeze'])
         with self.assertRaises(RunRejected):validate_freeze(ROOT, FREEZE)
+        with self.assertRaises(RunRejected):validate_freeze(ROOT, NEW_FREEZE)
 
 
 if __name__=='__main__':

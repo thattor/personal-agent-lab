@@ -1,0 +1,23 @@
+{
+  "verified_at": 1791395395.9113228,
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "apiProvider": "firstParty",
+    "subscriptionType": "pro"
+  },
+  "usage_ui": {
+    "source": "https://claude.ai/new#settings/usage",
+    "plan": "Pro",
+    "extra_usage_enabled": false,
+    "purchased_credit_balance": 0,
+    "automatic_reload": false,
+    "session_used_percent": 3,
+    "week_used_percent": 23
+  },
+  "candidate": "4a5ec27bbfc064cb6f4aca697ee37a2a2bff6188",
+  "cohort": "clarification-r09-r16",
+  "max_calls": 16,
+  "paid_fallback": false,
+  "human_evaluation": false
+}

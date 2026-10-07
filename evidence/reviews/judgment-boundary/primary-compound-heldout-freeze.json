@@ -1,0 +1,81 @@
+{
+  "authority_change": false,
+  "authorship": {
+    "agent": "/root/semantic_contrasts",
+    "implementation_role_for_new_fix": "none",
+    "kind": "independent Codex synthetic case author",
+    "parent_content_disclosure": false
+  },
+  "byte_count": 21461,
+  "case_count": 10,
+  "case_turn_lengths_histogram": {
+    "1": 8,
+    "2": 2
+  },
+  "category_counts": {
+    "active_assistant_compound_send_en": 1,
+    "active_assistant_compound_send_ja": 1,
+    "general_purpose_draft_without_personalization": 1,
+    "negated_sending_inside_real_draft": 1,
+    "nonrequest_hypothetical": 1,
+    "quoted_sending_inside_real_draft": 1,
+    "separate_local_only_acceptance_explicit": 1,
+    "separate_local_only_acceptance_natural_yes": 1,
+    "unknown_essential_user_choice": 1,
+    "unknown_essential_user_choice_answer": 1,
+    "unsupported_posting_compound": 1,
+    "user_sends_own_draft_purpose": 1
+  },
+  "fixture_id": "PAL-PRIMARY-COMPOUND-HELDOUT-v1",
+  "frozen_at_utc": "2026-10-07T18:30:13.184417+00:00",
+  "human_attestation": false,
+  "human_threshold_or_approval_change": false,
+  "independence": {
+    "basis": "Fresh corpus and oracle authored before the contemplated compound-policy prompt edit and withheld from its controller until a subsequent product freeze. No old case is reused as independent evidence and no future result has been used for tuning.",
+    "chronology_condition": "The controller must record the new candidate product/prompt freeze after this timestamp and before opening the corpus; this author does not inspect forthcoming edits to attest their contents.",
+    "new_candidate_prompt_inspected": false,
+    "new_case_model_outputs_seen": false,
+    "new_product_edit_inspected": false,
+    "prior_knowledge": "The author knows existing D029 design/prompt/harness and earlier cases from prior work, plus the controller-reported C038 N22 compound-send failure and request-recognition result. Not blind to the known failure class or earlier implementation."
+  },
+  "limitations": [
+    "Synthetic author evidence, not human-authored language, actual human usefulness, Qwen qualification or general reliability proof.",
+    "Independence is from the forthcoming product edit and its outputs, not from all prior design, known failures or old case knowledge.",
+    "The natural-yes context includes a declared synthetic assistant local-only offer; no claim that the current model generated that offer.",
+    "Setup compatibility only has been verified: no provider execution, semantic PASS, UI, Expert or real artifact proof.",
+    "Earlier failed corpora and results remain unchanged; this is not a rescore or substitute for their required regression."
+  ],
+  "max_primary_calls": 16,
+  "measured_input_language_counts": {
+    "English": 3,
+    "Japanese": 9
+  },
+  "measurement_policy": "Exactly twelve planned turns within the existing sixteen-call cap. First safety/semantic mismatch stops; retain all misses and report recall/NOT_RUN. Unused cap is not authorization for retries, resampling, extra turns or replacement cases.",
+  "new_quota": false,
+  "parent_read_policy": "Metadata only until the controller records the next candidate product/prompt freeze. Do not open primary-compound-heldout.json beforehand. Register its exact hash through the existing qualification cohort path afterwards; no new harness.",
+  "path": "evidence/reviews/judgment-boundary/primary-compound-heldout.json",
+  "planned_primary_calls": 12,
+  "reviewer_suggestion_adopted_as_owner_approval": false,
+  "schema_version": 1,
+  "serialization": "UTF-8, ensure_ascii=false, sort_keys=true, indent=2, trailing LF; SHA256 covers exact file bytes.",
+  "setup_source_role_counts": {
+    "assistant": 1,
+    "user": 1
+  },
+  "sha256": "07b985afca49ce3e9e8a8e575cd39a9e5b73fe5aa4904739c8f0a4ebfdc5475c",
+  "status": "FROZEN_NOT_RUN",
+  "turn_count": 12,
+  "validation": {
+    "cohort_registered": false,
+    "git_commit_created": false,
+    "harness_path": "scripts/primary_qualification.py",
+    "harness_sha256_at_validation": "4f53137d8718a931094c4d375c59fffd31bf8852a57c826138744947110942fd",
+    "old_canonical_databases_modified": false,
+    "product_or_harness_changed": false,
+    "provider_auth_or_model_calls": 0,
+    "runner_started": false,
+    "seed_case": "PASS for all ten setups using existing seed_case and public Store APIs in temporary runtime databases; exact roles/content read back, zero setup Goals/questions/Attempts, temporary databases removed.",
+    "shape": "Twelve fixed input_record_ref values, ten cases (eight one-turn and two two-turn), one clear acceptable action and three essential observations per turn.",
+    "validate_matrix": "PASS using existing scripts.primary_qualification.validate_matrix; supported cap 16."
+  }
+}

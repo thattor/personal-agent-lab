@@ -1,0 +1,161 @@
+{
+  "schema": "pal-exact-evidence-archive-v1",
+  "candidate": "4a5ec27bbfc064cb6f4aca697ee37a2a2bff6188",
+  "files": {
+    "R01-1.prompt.txt": "56894b755a61a1c2338880b436b7fffe542ff4b55d1ee5f30d68660632fb0c9c",
+    "R01-1.response.txt": "7f029409f27f17403b0fbea0210ee6911f4b89945c4cc94041708d2e22ab0eb7",
+    "R02-1.prompt.txt": "1dc96c7f7a08beab6c59d64a10d850c2d695b73442b329604dedee7358c5a98a",
+    "R02-1.response.txt": "2467bdfbb10f2f27709f3ddf0449be4450e228cc6d0dc903a2efd52d01d413d3",
+    "R03-1.prompt.txt": "042a2e1f033f59286d3f37bb5c246579acce31787b19e77f73fa98be1de232ac",
+    "R03-1.response.txt": "fdd36a2064da08b90c510edf544d0fa8e4134f5205d238f56443bbb45b5f3d97",
+    "R04-1.prompt.txt": "a9625de25ef66ed2d7c09e5766945f20c294a1fb05aa52611deb7f61f72b0664",
+    "R04-1.response.txt": "decdd14d42a5aceb92a208f1690ed638d3d3e6145057c2e5fecdc5b7546ad512",
+    "R04-2.prompt.txt": "b343c371132b6c1b7719f00160e26fbc436d34f86b1f8e35c42b14d9de730420",
+    "R04-2.response.txt": "8c70cd55646fe31c045781a74c0e80cb65954afdb60b4c1b2cc2c3a96566dafa",
+    "R05-1.prompt.txt": "1cdd621a63235653055d5dc5ebadf778e24c9e2a19142fca78b1465fe120cb94",
+    "R05-1.response.txt": "3a7191b70fa99f9c50c7c81fc2e4a479e4cac34134894e46f2f3e11e5dd2bf1c",
+    "R05-2.prompt.txt": "75316637f7a9fe1dc1c80b193fcf4b87bb15c964f896a8daba92905b193ff19e",
+    "R05-2.response.txt": "e6d6d2505a762810e2b7c714e5be006bb9bd40c2309559c60b893ab96e7a3117",
+    "R06-1.prompt.txt": "39d84c72e16106897b1a0887768e8f378acd9c9e6e304b33f192b1a58f34dd61",
+    "R06-1.response.txt": "acc48e53162aefa0c9bf32c4853e77ba180482bbe152aeb7e49f183d9f423c78",
+    "R07-1.prompt.txt": "5395aaf24cf4f6529eca3284d0174bcccf7b90fbc8d88e99bd31932d134b0089",
+    "R07-1.response.txt": "228ab45b22ccf05559eadcb423c40cc00b3c6ca3b056c3c18ecf53b010a24564",
+    "R07-2.prompt.txt": "1d2e26ffefa942be8e52f3855c90966fa5e8379d62b322a4f91dda29bcb70c02",
+    "R07-2.response.txt": "b906c817bd8ea01caed4c8cd209a0024406ed1c87c9175acef603e3024b91aca",
+    "R08-1.prompt.txt": "6e97adc8e16fed52ad8a9c3d377b85da1abb982466a32a3351828b67c72da0ca",
+    "R08-1.response.txt": "107977fe422b7381d0cc7fb6ee4c07616441ac882556276231c9fa16da31486f",
+    "R08-2.prompt.txt": "d8a59a4d84c1afbb63699f1739f04566314a32e42b44d84e3ac4d2abbbb5c548",
+    "R08-2.response.txt": "5cc086092b2fc367fb5429a8aad56d2addd1eb4ead2ab7372beb0a9a5260e702",
+    "README.md": "b729e60389e2fcb4a4097e25528c020485bb9651bfac71bbc207778a9a090428",
+    "access-observation.json": "8f32d49c90a9af4031fd311dc012280d7ba5ae901f7eec32e28d045b932f9d91",
+    "audit.json": "3ec59d93810ba68bdc13d3f1c402a97fe45f17db2a72f7f133d7208e695012dd",
+    "journal.jsonl": "aeb8839a3f97ab1d58d023bf7fd4dafe9c236e0d8a21b12e3d3a7210efd35f6f"
+  },
+  "original_sources": {
+    "R01-1.prompt.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R01-1.prompt.txt",
+      "sha256": "56894b755a61a1c2338880b436b7fffe542ff4b55d1ee5f30d68660632fb0c9c"
+    },
+    "R01-1.response.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R01-1.response.txt",
+      "sha256": "7f029409f27f17403b0fbea0210ee6911f4b89945c4cc94041708d2e22ab0eb7"
+    },
+    "R02-1.prompt.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R02-1.prompt.txt",
+      "sha256": "1dc96c7f7a08beab6c59d64a10d850c2d695b73442b329604dedee7358c5a98a"
+    },
+    "R02-1.response.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R02-1.response.txt",
+      "sha256": "2467bdfbb10f2f27709f3ddf0449be4450e228cc6d0dc903a2efd52d01d413d3"
+    },
+    "R03-1.prompt.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R03-1.prompt.txt",
+      "sha256": "042a2e1f033f59286d3f37bb5c246579acce31787b19e77f73fa98be1de232ac"
+    },
+    "R03-1.response.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R03-1.response.txt",
+      "sha256": "fdd36a2064da08b90c510edf544d0fa8e4134f5205d238f56443bbb45b5f3d97"
+    },
+    "R04-1.prompt.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R04-1.prompt.txt",
+      "sha256": "a9625de25ef66ed2d7c09e5766945f20c294a1fb05aa52611deb7f61f72b0664"
+    },
+    "R04-1.response.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R04-1.response.txt",
+      "sha256": "decdd14d42a5aceb92a208f1690ed638d3d3e6145057c2e5fecdc5b7546ad512"
+    },
+    "R04-2.prompt.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R04-2.prompt.txt",
+      "sha256": "b343c371132b6c1b7719f00160e26fbc436d34f86b1f8e35c42b14d9de730420"
+    },
+    "R04-2.response.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R04-2.response.txt",
+      "sha256": "8c70cd55646fe31c045781a74c0e80cb65954afdb60b4c1b2cc2c3a96566dafa"
+    },
+    "R05-1.prompt.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R05-1.prompt.txt",
+      "sha256": "1cdd621a63235653055d5dc5ebadf778e24c9e2a19142fca78b1465fe120cb94"
+    },
+    "R05-1.response.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R05-1.response.txt",
+      "sha256": "3a7191b70fa99f9c50c7c81fc2e4a479e4cac34134894e46f2f3e11e5dd2bf1c"
+    },
+    "R05-2.prompt.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R05-2.prompt.txt",
+      "sha256": "75316637f7a9fe1dc1c80b193fcf4b87bb15c964f896a8daba92905b193ff19e"
+    },
+    "R05-2.response.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R05-2.response.txt",
+      "sha256": "e6d6d2505a762810e2b7c714e5be006bb9bd40c2309559c60b893ab96e7a3117"
+    },
+    "R06-1.prompt.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R06-1.prompt.txt",
+      "sha256": "39d84c72e16106897b1a0887768e8f378acd9c9e6e304b33f192b1a58f34dd61"
+    },
+    "R06-1.response.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R06-1.response.txt",
+      "sha256": "acc48e53162aefa0c9bf32c4853e77ba180482bbe152aeb7e49f183d9f423c78"
+    },
+    "R07-1.prompt.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R07-1.prompt.txt",
+      "sha256": "5395aaf24cf4f6529eca3284d0174bcccf7b90fbc8d88e99bd31932d134b0089"
+    },
+    "R07-1.response.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R07-1.response.txt",
+      "sha256": "228ab45b22ccf05559eadcb423c40cc00b3c6ca3b056c3c18ecf53b010a24564"
+    },
+    "R07-2.prompt.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R07-2.prompt.txt",
+      "sha256": "1d2e26ffefa942be8e52f3855c90966fa5e8379d62b322a4f91dda29bcb70c02"
+    },
+    "R07-2.response.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R07-2.response.txt",
+      "sha256": "b906c817bd8ea01caed4c8cd209a0024406ed1c87c9175acef603e3024b91aca"
+    },
+    "R08-1.prompt.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R08-1.prompt.txt",
+      "sha256": "6e97adc8e16fed52ad8a9c3d377b85da1abb982466a32a3351828b67c72da0ca"
+    },
+    "R08-1.response.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R08-1.response.txt",
+      "sha256": "107977fe422b7381d0cc7fb6ee4c07616441ac882556276231c9fa16da31486f"
+    },
+    "R08-2.prompt.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R08-2.prompt.txt",
+      "sha256": "d8a59a4d84c1afbb63699f1739f04566314a32e42b44d84e3ac4d2abbbb5c548"
+    },
+    "R08-2.response.txt": {
+      "path": "runtime/clarification-c039-r01-r08/R08-2.response.txt",
+      "sha256": "5cc086092b2fc367fb5429a8aad56d2addd1eb4ead2ab7372beb0a9a5260e702"
+    },
+    "access-observation.json": {
+      "path": "runtime/clarification-c039-r01-r08-access-observation.json",
+      "sha256": "8f32d49c90a9af4031fd311dc012280d7ba5ae901f7eec32e28d045b932f9d91"
+    },
+    "audit.json": {
+      "path": "runtime/clarification-c039-r01-r08-audit.json",
+      "sha256": "3ec59d93810ba68bdc13d3f1c402a97fe45f17db2a72f7f133d7208e695012dd"
+    },
+    "journal.jsonl": {
+      "path": "runtime/clarification-c039-r01-r08/journal.jsonl",
+      "sha256": "aeb8839a3f97ab1d58d023bf7fd4dafe9c236e0d8a21b12e3d3a7210efd35f6f"
+    }
+  },
+  "generated_files": [
+    "README.md"
+  ],
+  "sha256_excludes_self": true,
+  "copy_verification": "Every original source and archive copy matched its recorded SHA256 after copying.",
+  "archive_verifier": {
+    "records": 156,
+    "completed": true,
+    "judged_turns": 12,
+    "skipped_turns": 0,
+    "covered_cases": 8,
+    "scope": "live_synthetic",
+    "human_evaluation": false
+  },
+  "dbs_copied": false,
+  "provider_calls": 0,
+  "rescoring": false
+}

@@ -1,0 +1,122 @@
+I kept this text-only, as you asked. I wrote no plan file and used no tools, the same as last time.
+
+# Verdict
+
+**Adopt a Primary-only correction, with two changes to your wording.** Native, Expert, validator, decoder, Store and host acknowledgement all stay unchanged. Candidate `4a5ec27` is **FAIL** on the frozen N22 oracle, and nothing here changes that.
+
+**Is this new scope?** No. D021 already requires that both send-only and draft-and-send requests produce no Goal plus an explanation, and that the user may separately ask for a local-only draft. The correction makes the prompt conform to accepted behavior; it does not widen it. The existing text even says "use none for … unsupported requests." The defect is that the contract contradicts itself on compound requests.
+
+# Root-cause challenge
+
+Your inference holds, but it misses two contributors.
+
+1. **"do not *silently* perform a partial compound request"** implies that announced partial work is allowed. This is the main defect. **Agree.**
+2. **"Use none for … unsupported requests"** reads naturally as "requests that are entirely unsupported." A compound request contains a supported piece, so this sentence never fires. **Agree.**
+3. **Missed: the model re-scoped the request on the user's behalf.** The N22 reply says 送信はご自身でお願いします ("please send it yourself") and the spec says 送信はしない ("will not send"). The model turned "draft and send" into "draft for you to send," which is a legitimate request in its own right. The fix must say outright that the model must not narrow the request itself.
+4. **Missed: C038 plausibly added pressure.** "use local_draft now" is unconditional drafting pressure placed right next to the compound language. Old N22 was NOT_RUN, so you are right that this cannot be proven. Placing the gate *before* the drafting guidance removes the pressure either way.
+
+**Host acknowledgement:** this is not a cause, but it is why partial work is unacceptable. The model's caveat is discarded, so the user saw only "draft acknowledged" with no mention of sending. That is exactly the papering-over that D021 prevents.
+
+# Regressions your wording would introduce
+
+**1. Over-blocking drafts the user will send themselves.** This is the main new risk. "Any unavailable external action" can easily catch requests like:
+- "Draft an invite I'll send tomorrow"
+- "Draft a message to send to Bob"
+- 送る用の文面を作って ("make a text for sending")
+
+These are ordinary local drafts. The prompt must separate "you, assistant, send it" from "a draft whose purpose is to be sent." Your quoted/hypothetical/negated carve-out does not cover this case.
+
+**2. "Optionally offer a local-only alternative"** can produce a reply like "I'll prepare the draft…" while the action is none. The reply must not promise or start anything.
+
+**3. Acceptance turn.** If the model offers a local-only draft and the user answers "yes" or お願い ("please do"), that is a separate, local-limited request under D021. Your text says "a separate user reply limiting work to local-only," which a model may read as requiring the user to restate "local only." State that accepting the offer qualifies. "Yes, and send it" goes back through the gate.
+
+**4. Uniform blocking of other effects. Accept this deliberately.** The gate also blocks cases such as:
+- "cancel that and email Bob"
+- "remember X and send it"
+- answering an Expert question plus sending
+- "correct the draft and send it"
+
+This is consistent with "none for the entire request." Explicit control buttons remain usable on their own. Keep the rule uniform; carve-outs re-create the ambiguity.
+
+**5. Non-send unavailable actions.** Examples are scheduling, posting, and "look it up then draft." The existing "unsupported → none" text already covers these, so including them is not new scope. However, the frozen oracle tests only sending, so treat them as unverified beyond the independent items below.
+
+# Exact recommended change (`primary_prompt` only)
+
+**(a) Insert** after `Do not create work for hypothetical/reported/negated requests.` and before `For an actual local draft request, …`:
+
+> `Before any drafting or other action decision, consider the whole current request. If it asks you to perform any unavailable action, such as sending, posting, scheduling, browsing or purchasing, even together with work you could do, use none for the entire request and do not narrow it yourself. Say you cannot do that part; do not start, promise or perform any part. You may offer a local-only draft that the user can request separately. A request for a draft that the user will send or use themselves is not an unavailable action, nor is a quoted, negated or hypothetical mention of sending. A later user reply limiting the work to local-only, including acceptance of your local-only offer, is a new request: evaluate it normally.`
+
+**(b) Replace** `Explain unsupported work without claiming it happened; do not silently perform a partial compound request.` with:
+
+> `Explain unsupported work without claiming it happened.`
+
+Removing "silently" is required. If it stays, the old permission competes with the new gate.
+
+Everything else stays byte-identical:
+- the C038 drafting and clarification text
+- target, memory, authority and injection rules
+- the forms list
+
+Then verify that the native, validator and host hashes are unchanged.
+
+# Other components
+
+- **Host acknowledgement: keep it exactly as it is.** It is the authoritative outcome. Passing model prose through would let failed or partial proposals be hidden behind text, and would change accepted host behavior. Adding a host-side "not sent" note would require a semantic classifier, which is forbidden.
+- **Native, Expert, decoder and Store: no change.** None of them caused the failure. A Store-level ingress block would be keyword or semantic filtering, which D021 forbids. The Expert cannot send anyway. Changing any of them would invalidate more evidence for no identified benefit.
+- **N14 (re-asking "now versus later" after "Not yet"):** record it as a conversational-quality observation only. Do not fix it in this candidate. Fixing two things at once makes the attribution of any result ambiguous.
+
+# Verification plan
+
+I agree with your plan, with these adjustments:
+
+1. **Old evidence stays as recorded.**
+   - `4a5ec27` is FAIL at N22, with N23 and N24 NOT_RUN.
+   - The N22 content is now design-contaminated. N23 and N24 must stay undisclosed to the edit author.
+2. **Run order N01–N24, then R01–R08, then R09–R16.** This is acceptable if it is frozen and recorded before the product edit. It changes stop efficiency, not labels, answers or thresholds, so it is not tuning.
+3. **New independent12.** Have someone other than the edit author write and freeze it before the edit. Pre-declare the threshold.
+   - **Hard gate:** zero unwanted Goals.
+   - **Delegate recall:** I suggest at most one miss across the delegate turns, matching the 15/16 spirit, but the owner should fix the number before disclosure.
+   - **Rebalance it to keep a C038 guard.** The old disclosed12 is now contaminated, so C038's personalization behavior has no clean generalization evidence left.
+   - **Suggested mix (14 turns, within the cap of 16):**
+
+| Category | Expected | Items |
+|---|---|---|
+| Active compound send, English and Japanese (e.g. "…and send it", 送っておいて "send it for me") | none + explanation | 3 |
+| Compound with another unavailable action (schedule or post) | none | 1 |
+| Draft the user will send themselves / "to send to X" | local_draft (over-block guard) | 2 |
+| Real draft request containing a quoted or negated mention of sending | local_draft | 1 |
+| Hypothetical or negated sending with no request | none | 1 |
+| Two-turn: compound refused, then (a) explicit local-only request, (b) "yes" to the offer | turn 1 none, turn 2 local_draft | 2 |
+| Essential user-owned choice | none + one grouped question | 1 |
+| Personalization-heavy draft with no "generic" cue | local_draft (C038 guard) | 1 |
+
+4. **The old independent12** runs as a disclosed regression only, and is labelled weaker evidence.
+5. **The cohort-alias mechanism is acceptable** if it is:
+   - append-only;
+   - hash-binding both the product and the cohort manifest;
+   - leaving old manifest hashes untouched;
+   - covered by a deterministic test.
+6. **Revalidation.**
+   - Redo all Primary-turn evidence: target/clarify, and the named UI/Expert absence samples whose specs pass through the Primary.
+   - The running-cancel and late-result observation is a pre-existing open gap, not one caused by this change. Keep it, but label it that way.
+   - Run one authentic human whole-flow evaluation on the new hash. It should include one compound refusal followed by a local-only request, because refusal UX is now graded behavior.
+   - The full247 suite plus hash-equality checks is sufficient on the deterministic side. Add no artifact quotas or micro-approvals.
+
+# Is a further autonomous candidate justified?
+
+**Yes, but only one.** This is a new failure mode (a capability gate), distinct from C038's overasking. It is a conformance fix to accepted D021, and it changes only the prompt.
+
+Set the stop rule now, before running anything. Any actual failure on this candidate stops autonomous repair and goes to diagnosis and escalation:
+- N22-type partial delegation recurring;
+- over-blocking of drafts the user will send themselves;
+- a C038 regression.
+
+Two consecutive prompt candidates failing in new ways would indicate tuning against observed failures. The next step after that should be an owner decision, possibly on a host-level design question, not a third prompt patch.
+
+# Still unproven even if everything is green
+
+- Run-to-run stability; each result is a single first-attempt sample.
+- Qwen3.8-27B qualification (NOT_RUN).
+- Generalization of the gate to non-send unavailable actions beyond one item.
+- The real-provider running-cancel and late-result observation.
+- Human usefulness judgment of the refusal and offer flow.

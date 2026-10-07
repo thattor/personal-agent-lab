@@ -1,0 +1,14 @@
+test_compound_cohorts_reuse_fixed_inputs_and_have_separate_product_binding (tests.test_primary_qualification.FreezeQualificationTests) ... ERROR
+
+======================================================================
+ERROR: test_compound_cohorts_reuse_fixed_inputs_and_have_separate_product_binding (tests.test_primary_qualification.FreezeQualificationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_qualification.py", line 599, in test_compound_cohorts_reuse_fixed_inputs_and_have_separate_product_binding
+    alias = COHORTS['compound-'+suffix]
+KeyError: 'compound-n01-n24'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.019s
+
+FAILED (errors=1)

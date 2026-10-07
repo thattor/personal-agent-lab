@@ -1,0 +1,1 @@
+{"reply":"I can't send messages, but I can draft the invitation for you to send. What's it for, and who is it going to?","action":{"kind":"none"}}

@@ -1,0 +1,14 @@
+{
+  "frozen_at": 1791397904.367724,
+  "product_identity": "content:sha256:60df1d0e919ff7f45dc527581bae897ecd3750858b96dd104804ecd83c87eba2",
+  "predecessor": "content:sha256:7c2847336e2ba32d062e5210021270e549d3b6c6f13424d07d456000d24cba57",
+  "changed_product_paths": [
+    "pal/primary.py"
+  ],
+  "decoder_validator_unchanged": true,
+  "native_expert_host_unchanged": true,
+  "old_manifests_unchanged": true,
+  "heldout_sha256": "07b985afca49ce3e9e8a8e575cd39a9e5b73fe5aa4904739c8f0a4ebfdc5475c",
+  "heldout_contents_opened_before_freeze": false,
+  "semantic_status": "NOT_RUN"
+}

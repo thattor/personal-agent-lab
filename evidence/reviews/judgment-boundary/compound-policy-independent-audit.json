@@ -1,0 +1,104 @@
+{
+  "schema": "pal-compound-source-review-v1",
+  "reviewed_at": 1791398126.443817,
+  "status": "NO_SUBSTANTIATED_BLOCKER",
+  "findings": [],
+  "checks": {
+    "two_exact_reviewed_clauses": true,
+    "primary_diff_is_exact_reviewed_two_clauses": true,
+    "all_old_cohort_bindings_unchanged": true,
+    "exact_four_append_only_aliases": true,
+    "unchanged_fixed_n01-n24": true,
+    "unchanged_fixed_r01-r08": true,
+    "unchanged_fixed_r09-r16": true,
+    "no_functional_harness_rewrite": true,
+    "original_manifest_immutable": true,
+    "original_rejects_changed_product": true,
+    "clarification_manifest_immutable": true,
+    "clarification_rejects_changed_product": true,
+    "current_product_hash_pal/__init__.py": true,
+    "current_product_hash_pal/classification.py": true,
+    "current_product_hash_pal/controls.py": true,
+    "current_product_hash_pal/draft_envelope.py": true,
+    "current_product_hash_pal/native.py": true,
+    "current_product_hash_pal/native_supervisor.py": true,
+    "current_product_hash_pal/primary.py": true,
+    "current_product_hash_pal/runtime.py": true,
+    "current_product_hash_pal/sanitize.py": true,
+    "current_product_hash_pal/server.py": true,
+    "current_product_hash_pal/soak.py": true,
+    "current_product_hash_pal/store.py": true,
+    "current_product_hash_pal/template_intake.py": true,
+    "current_product_hash_pal/web/app.js": true,
+    "current_product_hash_pal/web/conversation.html": true,
+    "current_product_hash_pal/web/inspect.html": true,
+    "current_product_hash_pal/web/style.css": true,
+    "current_freeze_valid": true,
+    "original_same_product_set_only_primary_changed": true,
+    "clarification_same_product_set_only_primary_changed": true,
+    "heldout_exact_hash_all_bindings": true,
+    "disclosure_product_binding": true,
+    "recorded_author_product_disclosure_order": true,
+    "exact_twelve_utterances_under_sixteen_cap": true,
+    "unique_fixed_case_and_input_ids": true,
+    "deterministic_none_or_draft_oracles": true,
+    "setups_feasible_without_goals_questions": true,
+    "input_bounds": true,
+    "natural_yes_setup_explicitly_synthetic": true,
+    "no_new_authority_quota_or_human_threshold": true,
+    "d028_autonomy_preserved_in_adoption": true,
+    "old_acceptance_not_rewritten_in_adoption": true,
+    "source_unchanged_during_review": true
+  },
+  "reviewed_source_sha256": {
+    "pal/primary.py": "1c02e1b753cf1df349b8f9e12866cea28d092d500ec26da7296b0931195ef0e5",
+    "scripts/primary_qualification.py": "39420f07e870c0b380ebd47d69b4b68c80b18e2f20c78176a717557aba314938",
+    "tests/test_primary_qualification.py": "046140b1e5337eb930b44d93683a7acfd95fb9ac5a29891abfa496ce15e68f7f"
+  },
+  "manifests": [
+    {
+      "generation": "original",
+      "path": "evidence/reviews/judgment-boundary/primary-candidate-freeze.json",
+      "sha256": "1736095ccbee1f221f0ff062b59593cae4139de739cfd88c93586d0e694be2e2",
+      "candidate": "1a14de986de2756ffea83c2671e506a32cccfdf6"
+    },
+    {
+      "generation": "clarification",
+      "path": "evidence/reviews/judgment-boundary/primary-clarification-candidate-freeze.json",
+      "sha256": "95c85537542df7747660c7917a0bcae580f06476e2f71c5b6945bc5434fe0885",
+      "candidate": "content:sha256:7c2847336e2ba32d062e5210021270e549d3b6c6f13424d07d456000d24cba57"
+    },
+    {
+      "generation": "compound",
+      "path": "evidence/reviews/judgment-boundary/primary-compound-candidate-freeze.json",
+      "sha256": "edf9f17986c783c83dba718ecdfdd705c99024c6d0e0882f619cf37609c377b2",
+      "candidate": "content:sha256:60df1d0e919ff7f45dc527581bae897ecd3750858b96dd104804ecd83c87eba2"
+    }
+  ],
+  "heldout": {
+    "sha256": "07b985afca49ce3e9e8a8e575cd39a9e5b73fe5aa4904739c8f0a4ebfdc5475c",
+    "case_count": 10,
+    "utterances": 12,
+    "max_calls": 16,
+    "expected_action_counts": {
+      "none": 5,
+      "local_draft": 7
+    },
+    "recorded_author_freeze_at": 1791397813.184417,
+    "product_freeze_at": 1791397904.367724,
+    "disclosed_at": 1791398015.062189,
+    "feasibility": "Static schema/oracle/setup/bounds review and existing pure validate_matrix PASS. No runner, Store, DB, provider, model or auth was invoked."
+  },
+  "conclusion": "Exact two-clause Primary prompt correction and four append-only cohort aliases; previous bindings and frozen acceptance preserved. No additional human gate or recall threshold adopted.",
+  "limitations": [
+    "Prompt conformance and static feasibility do not prove model semantic performance.",
+    "Temporal metadata supports recorded freeze-before-disclosure order; this audit does not independently reconstruct every prior read or human action.",
+    "The natural-yes case uses a declared synthetic assistant offer; it does not prove a model-generated offer followed by acceptance.",
+    "Concurrent full suite owned by root; this audit neither ran nor claims its result."
+  ],
+  "writes": [
+    "runtime/compound-c040-source-review.json"
+  ],
+  "provider_calls": 0,
+  "source_edits": false
+}

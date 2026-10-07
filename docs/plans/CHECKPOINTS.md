@@ -299,3 +299,34 @@ C038 green verification: official SWE712.120s reviewed version binding before ad
 all six historical journals verify unchanged. Only product prompt and test/evidence
 version selection changed. Exact next is clean pushed new-candidate once-only regression
 and affected actual UI/Expert evidence; no current semantic PASS claimed yet.
+
+
+## C039 — preserve fixed40 compound-request failure
+
+On clean pushed4a5ec27/product7c284733, English and Japanese requests passed16/16 cases,
+24 actual turns with2 conditionally skipped answers. Negative cohort passedN01–21, failed
+N22, stopped beforeN23/N24:46 total calls across three separately bounded runs. N22 created
+one queued local Goal from a draft-and-send request; no external effects/workers/artifacts.
+All three raw journals and independent DB/hash audits retained in clarification-run-*/.
+Integrity PASS is not semantic PASS. C038 independent12 and affected UI remain NOT_RUN.
+Official Opus89.16s supports a Primary-only conformance correction; adopted/reconciled
+in DECISIONS before edit, with new unseen12 frozen first and N-first execution order.
+Contribution: R02/R10 unnecessary questions resolved, new capability-scope defect exposed;
+Issue12/Stable1/globalPAL incomplete. No scope/cost/authority change or human micro-question.
+Next: freeze independent cases, edit only Primary policy, append immutable version aliases,
+test/push, then new bounded first attempts on unchanged criteria. Qwen NOT_RUN.
+
+
+## C040 — conform whole-request capability handling without over-blocking local drafts
+
+Official Opus reviewed correction is implemented in Primary only. New product60df1d0e
+was frozen after independent12 authorship and before controller disclosure; native/Expert/
+host/decoder unchanged. Four append-only cohort aliases reuse C038 SWE-reviewed binding.
+Test-first alias failure retained;74 focused PASS4.316s, full248 PASS19.987s. Independent
+source review found no blocker and verified45 bindings/order/scope observations. Evidence:
+compound-policy-source-audit.json, compound-policy-independent-audit.json and
+compound-policy-{targeted,full}-green.txt in judgment-boundary/.
+Current semantic outcome NOT_RUN, historicalC039 FAIL retained. Next clean pushed candidate
+uses fixed N-first24 then English16/Japanese16 and independent12/cap16, each one-use bounded
+proof/first attempt/fail-stop. Existing affected UI/Expert/usefulness/release obligations
+remain. No criterion/scope/human-approval/cost change; Issue12/milestone/globalPAL incomplete.

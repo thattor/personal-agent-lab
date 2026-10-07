@@ -1,0 +1,1 @@
+{"reply":"Happy to draft something for you. What's it for, and who's it going to? A quick sense of the purpose is enough, and I can handle the wording.","action":{"kind":"none"}}

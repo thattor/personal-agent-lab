@@ -1,0 +1,1 @@
+{"reply":"Happy to draft that. What's the invitation for, such as a party, dinner, meeting, or something else? Any details like date, place, or who it's going to are optional, and I can leave those general.","action":{"kind":"none"}}

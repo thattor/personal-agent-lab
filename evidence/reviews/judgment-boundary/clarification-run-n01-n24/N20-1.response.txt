@@ -1,0 +1,1 @@
+{"reply":"I can't send emails, since external sending isn't something I can do here. There's also no email content in our conversation yet. If you share what the email should say (or paste it), I can help draft or polish it so you can send it yourself.","action":{"kind":"none"}}

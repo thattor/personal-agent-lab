@@ -1,0 +1,782 @@
+{
+  "schema": "pal-closed-primary-run-audit-v1",
+  "audited_at": 1791395619.359252,
+  "run": "runtime/clarification-c039-r01-r08",
+  "auditor": "Astra independent artifact audit",
+  "status": "PASS",
+  "findings": [],
+  "verifier": {
+    "records": 156,
+    "completed": true,
+    "judged_turns": 12,
+    "skipped_turns": 0,
+    "covered_cases": 8,
+    "scope": "live_synthetic",
+    "human_evaluation": false
+  },
+  "candidate": "4a5ec27bbfc064cb6f4aca697ee37a2a2bff6188",
+  "product_identity": "content:sha256:7c2847336e2ba32d062e5210021270e549d3b6c6f13424d07d456000d24cba57",
+  "event_counts": {
+    "run.opened": 1,
+    "fixture.verified": 8,
+    "operator.config": 1,
+    "snapshot.verified": 12,
+    "prompt.built": 12,
+    "permit.granted": 12,
+    "call.started": 12,
+    "native.supervisor.started": 24,
+    "native.supervisor.finished": 24,
+    "proposal.received": 12,
+    "call.returned": 12,
+    "turn.captured": 12,
+    "turn.judged": 12,
+    "qualification.finished": 1,
+    "run.closed": 1
+  },
+  "checks": {
+    "existing_verifier_completed": true,
+    "closed_once_at_end": true,
+    "expected_cohort_and_candidate": true,
+    "candidate_exact": true,
+    "twelve_calls_within_sixteen_slots": true,
+    "all_expected_turns_accepted_no_skips": true,
+    "no_failure_events": true,
+    "current_source_and_fixture_hashes_match_run": true,
+    "product_identity_matches_canonical_map": true,
+    "exact_case_set": true,
+    "official_tool_free_route_recorded": true,
+    "human_and_qwen_not_claimed": true,
+    "supervisor_lifecycle_1": true,
+    "supervisor_lifecycle_2": true,
+    "supervisor_lifecycle_3": true,
+    "supervisor_lifecycle_4": true,
+    "supervisor_lifecycle_5": true,
+    "supervisor_lifecycle_6": true,
+    "supervisor_lifecycle_7": true,
+    "supervisor_lifecycle_8": true,
+    "supervisor_lifecycle_9": true,
+    "supervisor_lifecycle_10": true,
+    "supervisor_lifecycle_11": true,
+    "supervisor_lifecycle_12": true,
+    "no_extra_supervisor_calls": true,
+    "R01_wal_empty": true,
+    "R01_integrity": true,
+    "R01_settled_primary": true,
+    "R01_one_queued_unclaimed_goal": true,
+    "R01_no_worker_or_external_effects": true,
+    "R01-1_authentic_prompt_and_input": true,
+    "R01-1_no_oracle_fields": true,
+    "R01-1_proposal_and_host_outcome": true,
+    "R01-1_snapshot_binding": true,
+    "R01-1_fixed_action_and_goal_count": true,
+    "R01-1_draft_spec_and_host_source_binding": true,
+    "R02_wal_empty": true,
+    "R02_integrity": true,
+    "R02_settled_primary": true,
+    "R02_one_queued_unclaimed_goal": true,
+    "R02_no_worker_or_external_effects": true,
+    "R02-1_authentic_prompt_and_input": true,
+    "R02-1_no_oracle_fields": true,
+    "R02-1_proposal_and_host_outcome": true,
+    "R02-1_snapshot_binding": true,
+    "R02-1_fixed_action_and_goal_count": true,
+    "R02-1_draft_spec_and_host_source_binding": true,
+    "R03_wal_empty": true,
+    "R03_integrity": true,
+    "R03_settled_primary": true,
+    "R03_one_queued_unclaimed_goal": true,
+    "R03_no_worker_or_external_effects": true,
+    "R03-1_authentic_prompt_and_input": true,
+    "R03-1_no_oracle_fields": true,
+    "R03-1_proposal_and_host_outcome": true,
+    "R03-1_snapshot_binding": true,
+    "R03-1_fixed_action_and_goal_count": true,
+    "R03-1_draft_spec_and_host_source_binding": true,
+    "R04_wal_empty": true,
+    "R04_integrity": true,
+    "R04_settled_primary": true,
+    "R04_one_queued_unclaimed_goal": true,
+    "R04_no_worker_or_external_effects": true,
+    "R04-1_authentic_prompt_and_input": true,
+    "R04-1_no_oracle_fields": true,
+    "R04-1_proposal_and_host_outcome": true,
+    "R04-1_snapshot_binding": true,
+    "R04-1_fixed_action_and_goal_count": true,
+    "R04-2_authentic_prompt_and_input": true,
+    "R04-2_no_oracle_fields": true,
+    "R04-2_proposal_and_host_outcome": true,
+    "R04-2_snapshot_binding": true,
+    "R04-2_fixed_action_and_goal_count": true,
+    "R04-2_draft_spec_and_host_source_binding": true,
+    "R04-2_actual_previous_reply_in_context": true,
+    "R05_wal_empty": true,
+    "R05_integrity": true,
+    "R05_settled_primary": true,
+    "R05_one_queued_unclaimed_goal": true,
+    "R05_no_worker_or_external_effects": true,
+    "R05-1_authentic_prompt_and_input": true,
+    "R05-1_no_oracle_fields": true,
+    "R05-1_proposal_and_host_outcome": true,
+    "R05-1_snapshot_binding": true,
+    "R05-1_fixed_action_and_goal_count": true,
+    "R05-2_authentic_prompt_and_input": true,
+    "R05-2_no_oracle_fields": true,
+    "R05-2_proposal_and_host_outcome": true,
+    "R05-2_snapshot_binding": true,
+    "R05-2_fixed_action_and_goal_count": true,
+    "R05-2_draft_spec_and_host_source_binding": true,
+    "R05-2_actual_previous_reply_in_context": true,
+    "R06_wal_empty": true,
+    "R06_integrity": true,
+    "R06_settled_primary": true,
+    "R06_one_queued_unclaimed_goal": true,
+    "R06_no_worker_or_external_effects": true,
+    "R06-1_authentic_prompt_and_input": true,
+    "R06-1_no_oracle_fields": true,
+    "R06-1_proposal_and_host_outcome": true,
+    "R06-1_snapshot_binding": true,
+    "R06-1_fixed_action_and_goal_count": true,
+    "R06-1_draft_spec_and_host_source_binding": true,
+    "R07_wal_empty": true,
+    "R07_integrity": true,
+    "R07_settled_primary": true,
+    "R07_one_queued_unclaimed_goal": true,
+    "R07_no_worker_or_external_effects": true,
+    "R07-1_authentic_prompt_and_input": true,
+    "R07-1_no_oracle_fields": true,
+    "R07-1_proposal_and_host_outcome": true,
+    "R07-1_snapshot_binding": true,
+    "R07-1_fixed_action_and_goal_count": true,
+    "R07-2_authentic_prompt_and_input": true,
+    "R07-2_no_oracle_fields": true,
+    "R07-2_proposal_and_host_outcome": true,
+    "R07-2_snapshot_binding": true,
+    "R07-2_fixed_action_and_goal_count": true,
+    "R07-2_draft_spec_and_host_source_binding": true,
+    "R07-2_actual_previous_reply_in_context": true,
+    "R08_wal_empty": true,
+    "R08_integrity": true,
+    "R08_settled_primary": true,
+    "R08_one_queued_unclaimed_goal": true,
+    "R08_no_worker_or_external_effects": true,
+    "R08-1_authentic_prompt_and_input": true,
+    "R08-1_no_oracle_fields": true,
+    "R08-1_proposal_and_host_outcome": true,
+    "R08-1_snapshot_binding": true,
+    "R08-1_fixed_action_and_goal_count": true,
+    "R08-2_authentic_prompt_and_input": true,
+    "R08-2_no_oracle_fields": true,
+    "R08-2_proposal_and_host_outcome": true,
+    "R08-2_snapshot_binding": true,
+    "R08-2_fixed_action_and_goal_count": true,
+    "R08-2_draft_spec_and_host_source_binding": true,
+    "R08-2_actual_previous_reply_in_context": true,
+    "all_run_files_byte_identical_after_read_only_audit": true
+  },
+  "databases": [
+    {
+      "case": "R01",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R02",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R03",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R04",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R05",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R06",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R07",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R08",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    }
+  ],
+  "turns": [
+    {
+      "case": "R01",
+      "turn": 1,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "56894b755a61a1c2338880b436b7fffe542ff4b55d1ee5f30d68660632fb0c9c",
+      "response_sha256": "7f029409f27f17403b0fbea0210ee6911f4b89945c4cc94041708d2e22ab0eb7",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false,
+      "authoritative_reply_matches_contract": true
+    },
+    {
+      "case": "R02",
+      "turn": 1,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "1dc96c7f7a08beab6c59d64a10d850c2d695b73442b329604dedee7358c5a98a",
+      "response_sha256": "2467bdfbb10f2f27709f3ddf0449be4450e228cc6d0dc903a2efd52d01d413d3",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false,
+      "authoritative_reply_matches_contract": true
+    },
+    {
+      "case": "R03",
+      "turn": 1,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "042a2e1f033f59286d3f37bb5c246579acce31787b19e77f73fa98be1de232ac",
+      "response_sha256": "fdd36a2064da08b90c510edf544d0fa8e4134f5205d238f56443bbb45b5f3d97",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false,
+      "authoritative_reply_matches_contract": true
+    },
+    {
+      "case": "R04",
+      "turn": 1,
+      "action": "none",
+      "goal_count_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "a9625de25ef66ed2d7c09e5766945f20c294a1fb05aa52611deb7f61f72b0664",
+      "response_sha256": "decdd14d42a5aceb92a208f1690ed638d3d3e6145057c2e5fecdc5b7546ad512",
+      "stored_reply_authority": "model_none_reply",
+      "model_proposed_reply_equals_stored_reply": true,
+      "authoritative_reply_matches_contract": true
+    },
+    {
+      "case": "R04",
+      "turn": 2,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "b343c371132b6c1b7719f00160e26fbc436d34f86b1f8e35c42b14d9de730420",
+      "response_sha256": "8c70cd55646fe31c045781a74c0e80cb65954afdb60b4c1b2cc2c3a96566dafa",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false,
+      "authoritative_reply_matches_contract": true
+    },
+    {
+      "case": "R05",
+      "turn": 1,
+      "action": "none",
+      "goal_count_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "1cdd621a63235653055d5dc5ebadf778e24c9e2a19142fca78b1465fe120cb94",
+      "response_sha256": "3a7191b70fa99f9c50c7c81fc2e4a479e4cac34134894e46f2f3e11e5dd2bf1c",
+      "stored_reply_authority": "model_none_reply",
+      "model_proposed_reply_equals_stored_reply": true,
+      "authoritative_reply_matches_contract": true
+    },
+    {
+      "case": "R05",
+      "turn": 2,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "75316637f7a9fe1dc1c80b193fcf4b87bb15c964f896a8daba92905b193ff19e",
+      "response_sha256": "e6d6d2505a762810e2b7c714e5be006bb9bd40c2309559c60b893ab96e7a3117",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false,
+      "authoritative_reply_matches_contract": true
+    },
+    {
+      "case": "R06",
+      "turn": 1,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "39d84c72e16106897b1a0887768e8f378acd9c9e6e304b33f192b1a58f34dd61",
+      "response_sha256": "acc48e53162aefa0c9bf32c4853e77ba180482bbe152aeb7e49f183d9f423c78",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false,
+      "authoritative_reply_matches_contract": true
+    },
+    {
+      "case": "R07",
+      "turn": 1,
+      "action": "none",
+      "goal_count_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "5395aaf24cf4f6529eca3284d0174bcccf7b90fbc8d88e99bd31932d134b0089",
+      "response_sha256": "228ab45b22ccf05559eadcb423c40cc00b3c6ca3b056c3c18ecf53b010a24564",
+      "stored_reply_authority": "model_none_reply",
+      "model_proposed_reply_equals_stored_reply": true,
+      "authoritative_reply_matches_contract": true
+    },
+    {
+      "case": "R07",
+      "turn": 2,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "1d2e26ffefa942be8e52f3855c90966fa5e8379d62b322a4f91dda29bcb70c02",
+      "response_sha256": "b906c817bd8ea01caed4c8cd209a0024406ed1c87c9175acef603e3024b91aca",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false,
+      "authoritative_reply_matches_contract": true
+    },
+    {
+      "case": "R08",
+      "turn": 1,
+      "action": "none",
+      "goal_count_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "6e97adc8e16fed52ad8a9c3d377b85da1abb982466a32a3351828b67c72da0ca",
+      "response_sha256": "107977fe422b7381d0cc7fb6ee4c07616441ac882556276231c9fa16da31486f",
+      "stored_reply_authority": "model_none_reply",
+      "model_proposed_reply_equals_stored_reply": true,
+      "authoritative_reply_matches_contract": true
+    },
+    {
+      "case": "R08",
+      "turn": 2,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "d8a59a4d84c1afbb63699f1739f04566314a32e42b44d84e3ac4d2abbbb5c548",
+      "response_sha256": "5cc086092b2fc367fb5429a8aad56d2addd1eb4ead2ab7372beb0a9a5260e702",
+      "stored_reply_authority": "host_local_draft_acknowledgment",
+      "model_proposed_reply_equals_stored_reply": false,
+      "authoritative_reply_matches_contract": true
+    }
+  ],
+  "supervisor_lifecycles": [
+    {
+      "case": "R01",
+      "turn": 1,
+      "slot": 1,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R02",
+      "turn": 1,
+      "slot": 2,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R03",
+      "turn": 1,
+      "slot": 3,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R04",
+      "turn": 1,
+      "slot": 4,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R04",
+      "turn": 2,
+      "slot": 5,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R05",
+      "turn": 1,
+      "slot": 6,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R05",
+      "turn": 2,
+      "slot": 7,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R06",
+      "turn": 1,
+      "slot": 8,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R07",
+      "turn": 1,
+      "slot": 9,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R07",
+      "turn": 2,
+      "slot": 10,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R08",
+      "turn": 1,
+      "slot": 11,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    },
+    {
+      "case": "R08",
+      "turn": 2,
+      "slot": 12,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid": true
+    }
+  ],
+  "run_file_sha256": {
+    "R02.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R02.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R02.sqlite": "4bed7fa641277084ccb923100ccfe3dafb4865de1b57cd8f8d25bce8bcd7ef00",
+    "R07.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R07-2.response.txt": "b906c817bd8ea01caed4c8cd209a0024406ed1c87c9175acef603e3024b91aca",
+    "R08-2.response.txt": "5cc086092b2fc367fb5429a8aad56d2addd1eb4ead2ab7372beb0a9a5260e702",
+    "R07.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R08-1.prompt.txt": "6e97adc8e16fed52ad8a9c3d377b85da1abb982466a32a3351828b67c72da0ca",
+    "R05-1.prompt.txt": "1cdd621a63235653055d5dc5ebadf778e24c9e2a19142fca78b1465fe120cb94",
+    "R02-1.prompt.txt": "1dc96c7f7a08beab6c59d64a10d850c2d695b73442b329604dedee7358c5a98a",
+    "R08.sqlite": "6e2c3d00eb41421686a998f1fcb3092407288429cfb2d7458512dba66e26c7e9",
+    "R07-2.prompt.txt": "1d2e26ffefa942be8e52f3855c90966fa5e8379d62b322a4f91dda29bcb70c02",
+    "R04.sqlite": "4fb21800a4a3b4322419efb4ae0f3919811b3465a5f452acb6d271e486a92644",
+    "R05-2.response.txt": "e6d6d2505a762810e2b7c714e5be006bb9bd40c2309559c60b893ab96e7a3117",
+    "R04-2.response.txt": "8c70cd55646fe31c045781a74c0e80cb65954afdb60b4c1b2cc2c3a96566dafa",
+    "R03-1.prompt.txt": "042a2e1f033f59286d3f37bb5c246579acce31787b19e77f73fa98be1de232ac",
+    "R04-1.prompt.txt": "a9625de25ef66ed2d7c09e5766945f20c294a1fb05aa52611deb7f61f72b0664",
+    "R08.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R05.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R06.sqlite": "11ca6d4339382f2fbf76e040896b6f887cde5de87cceab93da1ff30f494bd17e",
+    "R05.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R08.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R06.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R02-1.response.txt": "2467bdfbb10f2f27709f3ddf0449be4450e228cc6d0dc903a2efd52d01d413d3",
+    "R04-2.prompt.txt": "b343c371132b6c1b7719f00160e26fbc436d34f86b1f8e35c42b14d9de730420",
+    "R06-1.prompt.txt": "39d84c72e16106897b1a0887768e8f378acd9c9e6e304b33f192b1a58f34dd61",
+    "R03.sqlite": "1a57c005e1e1e9c03ebbc2b861d576a168c9d78daaa7b34603dec2f5eacbf8d3",
+    "R01-1.prompt.txt": "56894b755a61a1c2338880b436b7fffe542ff4b55d1ee5f30d68660632fb0c9c",
+    "R06.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R05-1.response.txt": "3a7191b70fa99f9c50c7c81fc2e4a479e4cac34134894e46f2f3e11e5dd2bf1c",
+    "journal.jsonl": "aeb8839a3f97ab1d58d023bf7fd4dafe9c236e0d8a21b12e3d3a7210efd35f6f",
+    "R03.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R07-1.prompt.txt": "5395aaf24cf4f6529eca3284d0174bcccf7b90fbc8d88e99bd31932d134b0089",
+    "R05-2.prompt.txt": "75316637f7a9fe1dc1c80b193fcf4b87bb15c964f896a8daba92905b193ff19e",
+    "R04-1.response.txt": "decdd14d42a5aceb92a208f1690ed638d3d3e6145057c2e5fecdc5b7546ad512",
+    "R03.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R01.sqlite": "e1a0a12aa4ec9b74efe5384b7b568a3fda727afe221c23bbcc72a7cfe5b0bd25",
+    "R03-1.response.txt": "fdd36a2064da08b90c510edf544d0fa8e4134f5205d238f56443bbb45b5f3d97",
+    "R01-1.response.txt": "7f029409f27f17403b0fbea0210ee6911f4b89945c4cc94041708d2e22ab0eb7",
+    "R04.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R08-2.prompt.txt": "d8a59a4d84c1afbb63699f1739f04566314a32e42b44d84e3ac4d2abbbb5c548",
+    "R05.sqlite": "ddffdc3ef50e7dc7a2b3ca94ce3a57c19010cde85cc79ebc976580ff58570d1e",
+    "R06-1.response.txt": "acc48e53162aefa0c9bf32c4853e77ba180482bbe152aeb7e49f183d9f423c78",
+    "R04.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R07-1.response.txt": "228ab45b22ccf05559eadcb423c40cc00b3c6ca3b056c3c18ecf53b010a24564",
+    "R07.sqlite": "a95ba2bbd5867e6e1f4cc68e89e75fb307915bafeb2c894a8a83f0be811e3a66",
+    "R01.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R08-1.response.txt": "107977fe422b7381d0cc7fb6ee4c07616441ac882556276231c9fa16da31486f",
+    "R01.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+  },
+  "semantic_review": {
+    "outcome": "No substantiated mismatch found in these 12 saved responses against the fixed R01-R08 expectations.",
+    "observations": [
+      "R02 delegates a general thank-you now; optional personalization does not block it.",
+      "R04/R05/R07/R08 ask one grouped purpose/content clarification and delegate after the frozen reply.",
+      "R03 chooses an invitation/agenda for an explicitly fictional meeting; fabricated content is marked fictional and real logistics remain placeholders.",
+      "Eight Goals remain queued; there are no produced draft artifacts or worker receipts.",
+      "Proposed optional-personalization copy is not evidence that users saw it; local_draft replaces it with host acknowledgment."
+    ]
+  },
+  "scope": {
+    "actual": "12 official Claude Opus Primary calls; eight synthetic recognition cases; host application and retained supervisor evidence inspected.",
+    "synthetic_inputs": true,
+    "human_evaluation": false,
+    "qwen_qualification": false,
+    "expert_or_executor_execution": false,
+    "ui_validation": false,
+    "new_provider_calls_by_audit": 0,
+    "limitations": [
+      "The auditor checked retained local evidence; it did not independently contact the provider or recheck live account/billing state.",
+      "This regression cohort does not qualify unseen behavior, the other cohorts, complete draft usefulness, or a milestone release.",
+      "Service model revision is not exposed by the recorded official CLI.",
+      "Eight local_draft model replies, including optional personalization language, are retained proposals only. The actual stored responses are host-generated bilingual acknowledgments with the specification. Four none clarification replies are stored model replies. No rendered UI was audited."
+    ]
+  },
+  "read_only_method": "SQLite mode=ro&immutable=1 only after confirming each WAL is empty; no Store construction; all run files hashed before and after.",
+  "audit_corrections": [
+    {
+      "initial_result": "Eight apparent reply mismatches in the first audit calculation.",
+      "cause": "The auditor initially compared every stored reply to the model proposed reply, although local_draft is intentionally replaced by an authoritative host acknowledgment.",
+      "source": "pal/store.py:_primary_effect and finish_primary (lines 1188-1198 and 1242-1269)",
+      "correction": "Verified proposal equality, stored outcome equality, and action-specific canonical reply separately.",
+      "corrected_checks": [
+        "R01-1_proposal_and_host_outcome",
+        "R02-1_proposal_and_host_outcome",
+        "R03-1_proposal_and_host_outcome",
+        "R04-2_proposal_and_host_outcome",
+        "R05-2_proposal_and_host_outcome",
+        "R06-1_proposal_and_host_outcome",
+        "R07-2_proposal_and_host_outcome",
+        "R08-2_proposal_and_host_outcome"
+      ],
+      "prevention": "Future Primary audits must separate raw model proposals, host canonical acknowledgments, and rendered UI evidence; compare replies by action contract."
+    }
+  ]
+}

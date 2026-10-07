@@ -161,3 +161,27 @@ review/test/audit files. No official revised-generation or human/Qwen PASS yet.
 Next: four explicit new cohort names use new freeze, first attempt only at fixed
 16/16/24/16 caps; old cohort names refuse changed product. Actual UI/Expert named cases
 and one version-bound whole-flow human usefulness remain release requirements.
+
+
+### C039 actual clarification-candidate result
+
+Candidate4a5ec27/product7c284733 is FAIL. [R01–08](clarification-run-r01-r08/README.md)
+and [R09–16](clarification-run-r09-r16/README.md) each passed8 cases/12 calls, with2
+conditional answers skipped in the latter. [N01–24](clarification-run-n01-n24/README.md)
+stopped at N22:21 PASS, one prohibited local Goal from compound draft-and-send,2 NOT_RUN.
+All46 first-attempt calls, raw proposals, stored effects and hash-chain audits are retained.
+No actual UI, Expert, human or Qwen evidence follows from these Primary-only measurements.
+[Official Opus diagnosis](compound-policy-opus-response.txt) and controller reconciliation
+in DECISIONS support a minimal next-candidate prompt correction, not relaxing the oracle.
+
+
+### C040 revised whole-request capability candidate
+
+[Product freeze](primary-compound-candidate-freeze.json), identity60df1d0e, changes only
+Primary prompt wording. [Independent12 freeze](primary-compound-heldout-freeze.json)
+precedes edit; [disclosure](compound-heldout-disclosure.json) follows product freeze.
+[Source audit](compound-policy-independent-audit.json) finds no blocker or historical
+binding change. [74 focused tests](compound-policy-targeted-green.txt) and
+[248 full tests](compound-policy-full-green.txt) PASS. Actual model semantics NOT_RUN;
+unchanged fixed40 thresholds and independent zero-false-positive/recall-reporting remain.
+Next first attempts use compound-n01-n24, compound-r01-r08, compound-r09-r16, compound-heldout.
