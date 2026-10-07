@@ -1,0 +1,17 @@
+test_additive_upgrade_preserves_rows_and_reopens (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_fault_rolls_back_schema_and_version_together (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_future_schema_refuses_without_mutation (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_process_kill_before_and_after_commit_is_recoverable (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_artifact_and_receipt_tamper_is_rejected_by_db (tests.test_store.StoreTests) ... ok
+test_cancel_fences_result_and_invalid_transition (tests.test_store.StoreTests) ... ok
+test_completion_requires_host_receipt_and_dedupes (tests.test_store.StoreTests) ... ok
+test_duplicate_ingress_returns_original_and_conflicts_are_visible (tests.test_store.StoreTests) ... ok
+test_goal_and_immutable_criteria_and_outbox_are_atomic (tests.test_store.StoreTests) ... ok
+test_outbox_replay_reports_once (tests.test_store.StoreTests) ... ok
+test_schema_version_mismatch_fails_closed (tests.test_store.StoreTests) ... ok
+test_single_task_slot_and_fifo_claim (tests.test_store.StoreTests) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.197s
+
+OK

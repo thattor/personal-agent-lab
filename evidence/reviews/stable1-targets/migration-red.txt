@@ -1,0 +1,40 @@
+test_additive_upgrade_preserves_rows_and_reopens (tests.test_schema_migration.SchemaMigrationTests) ... FAIL
+test_fault_rolls_back_schema_and_version_together (tests.test_schema_migration.SchemaMigrationTests) ... FAIL
+test_future_schema_refuses_without_mutation (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_process_kill_before_and_after_commit_is_recoverable (tests.test_schema_migration.SchemaMigrationTests) ... 
+======================================================================
+FAIL: test_additive_upgrade_preserves_rows_and_reopens (tests.test_schema_migration.SchemaMigrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_schema_migration.py", line 31, in test_additive_upgrade_preserves_rows_and_reopens
+    self.assertEqual(self.snapshot()[0], 2)
+AssertionError: 1 != 2
+
+======================================================================
+FAIL: test_fault_rolls_back_schema_and_version_together (tests.test_schema_migration.SchemaMigrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_schema_migration.py", line 48, in test_fault_rolls_back_schema_and_version_together
+    Store(self.path, fault=fault)
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_process_kill_before_and_after_commit_is_recoverable (tests.test_schema_migration.SchemaMigrationTests) (point='schema.before_commit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_schema_migration.py", line 66, in test_process_kill_before_and_after_commit_is_recoverable
+    self.assertEqual(result.returncode, -9, result.stderr)
+AssertionError: 0 != -9 : b''
+
+======================================================================
+FAIL: test_process_kill_before_and_after_commit_is_recoverable (tests.test_schema_migration.SchemaMigrationTests) (point='schema.after_commit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_schema_migration.py", line 66, in test_process_kill_before_and_after_commit_is_recoverable
+    self.assertEqual(result.returncode, -9, result.stderr)
+AssertionError: 0 != -9 : b''
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.102s
+
+FAILED (failures=4)

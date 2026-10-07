@@ -93,8 +93,31 @@ CREATE TABLE IF NOT EXISTS approvals (
 '''
 
 
+_SELECTION_SCHEMA = '''
+CREATE TABLE IF NOT EXISTS control_selections (
+ selection_id TEXT PRIMARY KEY,
+ source_record_id TEXT NOT NULL REFERENCES records(id),
+ source_key TEXT NOT NULL,
+ action TEXT NOT NULL CHECK(action IN ('cancel','correct')),
+ proposal TEXT NOT NULL,
+ consumed_by TEXT);
+'''
+
+
+def schema_statements(script):
+    """Split complete SQL statements without executescript's implicit commit."""
+    pending = ''
+    for line in script.splitlines(keepends=True):
+        pending += line
+        if sqlite3.complete_statement(pending):
+            yield pending
+            pending = ''
+    if pending.strip():
+        raise RuntimeError('incomplete canonical schema statement')
+
+
 class Store:
-    SCHEMA_VERSION = 1
+    SCHEMA_VERSION = 2
     MAX_TOTAL_CLAIMS = 9
 
     def __init__(self, path, fault=None):
@@ -103,11 +126,29 @@ class Store:
         Path(self.path).parent.mkdir(parents=True, exist_ok=True)
         with self._connection() as db:
             version = db.execute('PRAGMA user_version').fetchone()[0]
-            if version not in (0, self.SCHEMA_VERSION):
+            if version not in (0, 1, self.SCHEMA_VERSION):
                 raise RuntimeError('unsupported canonical schema version')
             db.execute('PRAGMA journal_mode=WAL')
-            db.executescript(_SCHEMA)
-            db.execute('PRAGMA user_version=1')
+            db.execute('BEGIN IMMEDIATE')
+            try:
+                # Recheck after acquiring the writer lock: another initializer
+                # may have upgraded the database while this connection waited.
+                version = db.execute('PRAGMA user_version').fetchone()[0]
+                if version not in (0, 1, self.SCHEMA_VERSION):
+                    raise RuntimeError('unsupported canonical schema version')
+                if version < self.SCHEMA_VERSION:
+                    for statement in schema_statements(_SCHEMA + _SELECTION_SCHEMA):
+                        db.execute(statement)
+                    db.execute('PRAGMA user_version=2')
+                    self.fault('schema.before_commit')
+                    db.commit()
+                    self.fault('schema.after_commit')
+                else:
+                    db.commit()
+            except BaseException:
+                if db.in_transaction:
+                    db.rollback()
+                raise
 
     @contextmanager
     def _connection(self):
