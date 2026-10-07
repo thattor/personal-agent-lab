@@ -234,3 +234,29 @@ NOT_RUN. Ten native slots, all five owned hosts closed within600s, full249 PASS2
 Current affected acceptance remains partial; no Qwen/human/release claim. Next required
 review concerns controlled delivery at the existing fault seam, not another blind timing
 attempt. Blocked artifact contents remain inaccessible through alternate routes.
+
+
+## C047 controlled late-result probe
+
+HR-ACCESS-002 actual owner action is received; official SWE-2 High Free review completes
+exit0 in134.740s with trust respected. `c047-swe-*` records supplied question, sanitized
+access facts, response and completion. C046 Opus87.439s plus D029 C047 adoption precede
+implementation. No paid fallback/new auth or trust override.
+
+`c047-controlled-cancel-contract.json` freezes a test-only production-bound operator,
+exact two Maple UI inputs, unchanged product53a616, six harness hashes, cap3/wall600s/
+proof900s and no retry. Controlled delivery after real Executor return is the only claim;
+upstream generation cancellation, natural timing reliability, human evaluation and Qwen
+qualification remain unproven. No blocked artifact body is read.
+
+`c047-probe-test-red.txt`, `c047-probe-first.txt`, `c047-probe-repairs.txt` and
+`c047-probe-focused.txt` preserve initial implementation/fixture failures. Final
+`c047-probe-focused-final.txt` has19 PASS4.028s; `c047-full.txt` has268 PASS24.048s.
+`c047-astra-review.json` records the independently found publication race and correction.
+The earlier baseline sandbox/loopback outputs distinguish environment error from product
+verification. Exact causes and recurrence checks are in docs/DEFECTS.md. Actual live
+controlled cancellation is NOT_RUN at this freeze; no acceptance row is promoted.
+
+The exact supplied SWE question retains eight numbered blank source lines with trailing
+spaces; these are unchanged review-input bytes. Diff whitespace validation passes for
+all other changed files; the review evidence is not reformatted.

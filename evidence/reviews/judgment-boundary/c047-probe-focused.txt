@@ -1,0 +1,43 @@
+test_changed_product_bytes_rejected_despite_clean_candidate (tests.test_live_cancel_probe.CancelProbePreflightTests) ... ok
+test_consumed_proof_marker_refused_before_runtime_without_native_call (tests.test_live_cancel_probe.CancelProbePreflightTests) ... ERROR
+test_existing_run_refused_before_proof_use (tests.test_live_cancel_probe.CancelProbePreflightTests) ... ok
+test_wrong_candidate_and_dirty_source_refused_before_proof_use (tests.test_live_cancel_probe.CancelProbePreflightTests) ... ok
+test_wrong_script_hash_product_identity_and_cap_refused (tests.test_live_cancel_probe.CancelProbePreflightTests) ... ok
+test_binding_refuses_two_goals_instead_of_guessing_running_target (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+test_cancel_then_release_retains_exact_stale_artifact_without_receipt (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+test_close_while_held_never_applies_result_and_releases_host_lock (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+test_close_wins_after_stale_observation_before_pass_publication (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+test_evidence_failure_while_held_still_cleans_up_without_apply (tests.test_live_cancel_probe.CancelProbeTests) ... {"event": "operator.ready", "url": "http://127.0.0.1:65386"}
+ok
+test_expiry_during_final_snapshot_never_publishes_pass (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+test_hold_filters_primary_and_only_blocks_first_worker_point (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+test_live_invalid_preflight_never_constructs_native_owner (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+test_needs_input_is_not_complete_result_pass (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+test_pause_cannot_satisfy_cancel_release_gate (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+test_premature_release_leaves_result_held_and_no_artifact (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+test_stale_cancel_is_rejected_and_cannot_release_result (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+test_subprocess_eof_sigint_and_deadline_while_held_release_lock (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+test_wrong_target_cancel_cannot_release_bound_attempt (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+
+======================================================================
+ERROR: test_consumed_proof_marker_refused_before_runtime_without_native_call (tests.test_live_cancel_probe.CancelProbePreflightTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 415, in test_consumed_proof_marker_refused_before_runtime_without_native_call
+    build_live(self.root, self.directory, self.proof,
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_cancel_probe.py", line 278, in build_live
+    pin = QualificationPin(root, contract_path, PRODUCT_FREEZE)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/primary_qualification.py", line 152, in __init__
+    super().__init__(root,matrix)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_runner.py", line 43, in __init__
+    self.hashes = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_runner.py", line 43, in <dictcomp>
+    self.hashes = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 929, in relative_to
+    raise ValueError("{!r} is not in the subpath of {!r}"
+ValueError: '/var/folders/0m/64ldqrln7cv89sqrxrkqjgz00000gn/T/tmpmh40llmg/source/contract.json' is not in the subpath of '/private/var/folders/0m/64ldqrln7cv89sqrxrkqjgz00000gn/T/tmpmh40llmg/source' OR one path is relative and the other is absolute.
+
+----------------------------------------------------------------------
+Ran 19 tests in 4.021s
+
+FAILED (errors=1)

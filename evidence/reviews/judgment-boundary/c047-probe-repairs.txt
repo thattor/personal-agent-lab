@@ -1,0 +1,16 @@
+test_cancel_then_release_retains_exact_stale_artifact_without_receipt (tests.test_live_cancel_probe.CancelProbeTests) ... FAIL
+test_needs_input_is_not_complete_result_pass (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+test_live_invalid_preflight_never_constructs_native_owner (tests.test_live_cancel_probe.CancelProbeTests) ... ok
+
+======================================================================
+FAIL: test_cancel_then_release_retains_exact_stale_artifact_without_receipt (tests.test_live_cancel_probe.CancelProbeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 113, in test_cancel_then_release_retains_exact_stale_artifact_without_receipt
+    self.assertIn({'attempt_id': attempt['id'], 'reason': 'stale artifact'}, data['rejections'])
+AssertionError: {'attempt_id': 'b7c82554b849492c9e69f85ea6fe231b', 'reason': 'stale artifact'} not found in [{'seq': 1, 'attempt_id': 'b7c82554b849492c9e69f85ea6fe231b', 'reason': 'stale artifact'}]
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.137s
+
+FAILED (failures=1)

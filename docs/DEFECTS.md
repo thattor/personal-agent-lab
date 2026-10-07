@@ -441,3 +441,31 @@ historical C035 timing miss, this cannot prove unfinished cancellation. No cance
 submitted after completion, no artifact body inspected and no retry made. Next change
 must be a reviewer-checked, predeclared test scheduling arrangement using an existing
 fault seam, with unchanged real model data and host rules; it is not verified yet.
+
+
+## C047 — verification harness failures preserved before actual execution
+
+The sandboxed unchanged249-test baseline produced14 loopback PermissionError failures.
+The authorized loopback-enabled run passed249; these were environment setup failures,
+not assertion/product defects. Both logs retained. Subsequent missing-module RED,
+reserved journal `scope` collision and unnormalized non-Git preflight error are retained.
+Nest result payload beneath a nonreserved field and normalize preflight failures before
+proof/provider work; do not weaken journal metadata validation.
+
+One success test compared a retained rejection to a two-key dictionary even though the
+host also supplies sequence metadata. Fix only the assertion projection while preserving
+exact count, bound Attempt and reason. Child deadline verification initially used
+communicate(), closing stdin and accidentally exercising EOF instead. Keep stdin open
+until child termination and assert each exact run.closed reason (EOF, signal, deadline).
+The consumed-proof fixture also mixed /var and canonical /private/var source paths;
+resolve the disposable fixture root, then test the real proof marker. Original focused
+failure remains; final19 PASS4.028s. These are test setup corrections, not product fixes.
+
+Independent Astra identified a real harness publication race: after checking one snapshot,
+watchdog closure could occur before a second unchecked snapshot was recorded as PASS.
+Serialize release/result publication with closure; validate and record the same final
+snapshot with fresh source/deadline/open checks. Deterministic close-wins and expiry-
+during-final-snapshot regressions prove no PASS journal entry and zero artifacts after
+the race. No actual provider run occurred with the faulty harness. Final full268 PASS
+24.048s; script remains frozen during tests/live. Next related audit must check publication
+ordering as well as host correctness, and verify child tests reached their claimed cause.

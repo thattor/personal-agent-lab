@@ -1,0 +1,484 @@
+test_claim_preserves_bound_answer_after_recent_context_truncation (test_citations.CitationTests) ... ok
+test_exact_record_and_prefixed_note_match_stored_sanitized_text (test_citations.CitationTests) ... ok
+test_forget_between_proposal_and_apply_rejects_with_no_bytes (test_citations.CitationTests) ... ok
+test_forgotten_answer_is_metadata_only_and_never_prompt_source (test_citations.CitationTests) ... ok
+test_question_and_preview_validate_before_state_or_bytes (test_citations.CitationTests) ... ok
+test_unknown_raw_and_malformed_citations_reject_before_artifact (test_citations.CitationTests) ... ok
+test_english_baseline_and_original_correction_payload (test_controls.ControlParsingTests) ... ok
+test_frozen_target_cases_propose_action_without_resolving_targets (test_controls.ControlParsingTests) ... ok
+test_quotes_reports_negation_unsupported_and_empty_do_not_control (test_controls.ControlParsingTests) ... ok
+test_approval_is_invalidated_by_new_revision (test_controls_memory.ControlMemoryTests) ... ok
+test_conversation_correction_supersedes_and_frees_inflight_slot (test_controls_memory.ControlMemoryTests) ... ok
+test_correct_revision_reuses_or_replaces_immutable_acceptance (test_controls_memory.ControlMemoryTests) ... ok
+test_external_intent_ambiguity_stays_unknown_on_restart (test_controls_memory.ControlMemoryTests) ... ok
+test_fk_and_single_slot_constraints_on_fresh_connection (test_controls_memory.ControlMemoryTests) ... ok
+test_forget_explicit_goal_source_requires_input (test_controls_memory.ControlMemoryTests) ... ok
+test_forget_incidental_context_fences_but_does_not_pause (test_controls_memory.ControlMemoryTests) ... ok
+test_input_after_source_stop_needs_correction_to_replace_dependency (test_controls_memory.ControlMemoryTests) ... ok
+test_input_question_epoch_dedupe_and_correction_invalidation (test_controls_memory.ControlMemoryTests) ... ok
+test_invalid_bytes_and_oversize_are_visible_rejections (test_controls_memory.ControlMemoryTests) ... ok
+test_pause_resume_dedupe_fences_old_attempt (test_controls_memory.ControlMemoryTests) ... ok
+test_repeated_restarts_consume_budget_and_fence (test_controls_memory.ControlMemoryTests) ... ok
+test_repeated_unverified_escalates_diagnosis_without_infinite_retry (test_controls_memory.ControlMemoryTests) ... ok
+test_secret_sanitization_precedes_persistence_and_context (test_controls_memory.ControlMemoryTests) ... ok
+test_unverified_budget_is_bounded_and_never_completes (test_controls_memory.ControlMemoryTests) ... ok
+test_direct_control_remains_sourceless_and_cannot_forge_ingress_source (test_correction_sources.CorrectionSourceTests) ... ok
+test_ingress_correction_retains_real_source_and_forget_fences (test_correction_sources.CorrectionSourceTests) ... ok
+test_pause_resume_and_input_crash_replay_exactly_once (test_crash.CrashTests) ... ok
+test_process_death_after_executor_return_recovers_without_result_apply (test_crash.CrashTests) ... ok
+test_transaction_crash_matrix (test_crash.CrashTests) ... ok
+test_citations_syntax_only_and_not_canonical_tokens (test_draft_envelope.DraftEnvelopeTests) ... ok
+test_existing_large_fixed_criteria_are_not_narrowed (test_draft_envelope.DraftEnvelopeTests) ... ok
+test_json_ambiguity_and_non_json_rejected (test_draft_envelope.DraftEnvelopeTests) ... ok
+test_question_and_preview_limits (test_draft_envelope.DraftEnvelopeTests) ... ok
+test_three_proposals_are_data_not_completion (test_draft_envelope.DraftEnvelopeTests) ... ok
+test_unknown_authority_fields_and_wrong_types_rejected (test_draft_envelope.DraftEnvelopeTests) ... ok
+test_utf8_bound_and_invalid_unicode (test_draft_envelope.DraftEnvelopeTests) ... ok
+test_artifact_status_readonly_and_forget_stale (test_http.HTTPTests) ... ERROR
+test_conversation_draft_and_inspect_artifact (test_http.HTTPTests) ... ERROR
+test_conversational_remember_and_forget (test_http.HTTPTests) ... ERROR
+test_duplicate_client_message_and_invalid_fields (test_http.HTTPTests) ... ERROR
+test_duplicate_natural_forget_keeps_original_target_binding (test_http.HTTPTests) ... ERROR
+test_explicit_question_answer_http_rejects_wrong_binding (test_http.HTTPTests) ... ERROR
+test_historical_bound_selection_http_and_guarded_state (test_http.HTTPTests) ... ERROR
+test_inspect_is_read_only_and_cross_origin_cannot_mutate (test_http.HTTPTests) ... ERROR
+test_lost_ack_fate_can_be_queried_without_duplicate_effect (test_http.HTTPTests) ... ERROR
+test_primary_ambiguity_and_explicit_control_with_stale_epoch (test_http.HTTPTests) ... ERROR
+test_ui_csp_no_inline_model_html_and_request_bounds (test_http.HTTPTests) ... ERROR
+test_default_is_mock_and_live_options_do_not_create_store (test_http.ProviderStartupTests) ... ok
+test_live_startup_requires_valid_proof_before_runtime (test_http.ProviderStartupTests) ... ok
+test_first_heldout_failures_remain_regression_cases (test_ingress_classification.IngressClassificationTests) ... ok
+test_frozen_corpus_creates_only_requested_local_goals (test_ingress_classification.IngressClassificationTests) ... ok
+test_ingress_fault_does_not_leave_classification_or_partial_work (test_ingress_classification.IngressClassificationTests) ... ok
+test_persisted_classification_dominates_new_grammar_after_reply_gap (test_ingress_classification.IngressClassificationTests) ... ok
+test_second_heldout_safe_misses_remain_regression_cases (test_ingress_classification.IngressClassificationTests) ... ok
+test_typography_report_and_unknown_compound_are_conservative (test_ingress_classification.IngressClassificationTests) ... ok
+test_unsupported_reply_replayed_without_provider_or_work (test_ingress_classification.IngressClassificationTests) ... ok
+test_existing_or_symlink_journal_cannot_be_overwritten (test_live_evidence.LiveEvidenceTests) ... ok
+test_invalid_payload_never_writes_partial_evidence (test_live_evidence.LiveEvidenceTests) ... ok
+test_sigkill_keeps_fsynced_chain_and_kills_owned_native_fixture (test_live_evidence.LiveEvidenceTests) ... ok
+test_tamper_truncation_duplicate_keys_and_unsupported_scope_are_rejected (test_live_evidence.LiveEvidenceTests) ... ok
+test_threaded_append_is_chained_and_secret_patterns_are_sanitized (test_live_evidence.LiveEvidenceTests) ... ok
+test_watchdog_closes_owner_once_and_cancellation_does_not_stop_it (test_live_evidence.LiveEvidenceTests) ... ok
+test_watchdog_stops_inflight_native_fixture_and_retains_failure_chain (test_live_evidence.LiveEvidenceTests) ... ok
+test_close_of_one_runtime_does_not_stop_shared_provider (test_live_gate.LiveGateTests) ... ok
+test_concurrent_unplanned_call_stops_active_owner (test_live_gate.LiveGateTests) ... ok
+test_deadline_and_failure_stop_without_rearming (test_live_gate.LiveGateTests) ... ok
+test_late_return_and_unencodable_prompt_never_become_accepted (test_live_gate.LiveGateTests) ... ok
+test_no_permit_never_invokes_native_and_closes_run (test_live_gate.LiveGateTests) ... ok
+test_per_input_permit_is_spent_before_call_and_retry_is_denied (test_live_gate.LiveGateTests) ... ok
+test_primary_cannot_spend_historical_draft_permit (test_live_gate.LiveGateTests) ... ok
+test_total_attempt_cap_and_mismatched_kind_fail_closed (test_live_gate.LiveGateTests) ... ok
+test_config_record_failure_closes_constructed_runner (test_live_operator.LiveOperatorTests) ... ok
+test_dirty_or_wrong_candidate_rejected_before_auth (test_live_operator.LiveOperatorTests) ... ok
+test_live_owner_cannot_bypass_operator_proof_consumption (test_live_operator.LiveOperatorTests) ... ok
+test_old_operator_rejects_primary_before_auth_proof_or_any_process (test_live_operator.LiveOperatorTests) ... ok
+test_runner_teardown_continues_when_terminal_evidence_fails (test_live_operator.LiveOperatorTests) ... ok
+test_supervisor_lifecycle_is_observation_not_cli_pid_or_human_proof (test_live_operator.LiveOperatorTests) ... ok
+test_case_cannot_advance_without_capture_and_controller_observation (test_live_runner.LiveRunnerTests) ... ERROR
+test_fixture_assembly_cannot_claim_live_scope (test_live_runner.LiveRunnerTests) ... ok
+test_historical_expert_fixture_shapes_seed_forget_and_same_goal_answers (test_live_runner.LiveRunnerTests) ... ERROR
+test_initial_evidence_failure_closes_real_watchdog_and_journal (test_live_runner.LiveRunnerTests) ... ok
+test_source_drift_is_detected_before_next_case (test_live_runner.LiveRunnerTests) ... ok
+test_unexpected_case_shape_stops_without_another_generation (test_live_runner.LiveRunnerTests) ... ERROR
+test_clock_rewind_cannot_extend_proof_and_status_never_calls_provider (test_native.BoundedNativeTests) ... ok
+test_concurrent_call_budget_counts_failures_and_never_runs_over_limit (test_native.BoundedNativeTests) ... ok
+test_expiry_blocks_auth_subprocess_and_status_is_read_only (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_during_auth_consumes_slot_without_generation (test_native.BoundedNativeTests) ... ok
+test_malformed_proof_never_authorizes (test_native.BoundedNativeTests) ... ok
+test_proof_consumption_is_canonical_and_rejects_unsafe_files (test_native.BoundedNativeTests) ... ok
+test_shutdown_during_auth_kills_owned_child_and_consumes_slot (test_native.BoundedNativeTests) ... ok
+test_wall_jump_and_sleep_expire_without_monotonic_progress (test_native.BoundedNativeTests) ... ok
+test_bounded_text_and_failure_and_timeout (test_native.NativeTests) ... ok
+test_env_keeps_os_identity_but_never_inherits_api_tokens (test_native.NativeTests) ... ok
+test_expired_or_unverified_route_cannot_run (test_native.NativeTests) ... ok
+test_native_cli_contract_has_no_tools_mcp_hooks_fallback_or_persistence (test_native.NativeTests) ... ok
+test_parent_sigkill_stops_provider_group (test_native.NativeTests) ... ok
+test_atomic_dispatch_asks_then_finishes_without_third_question (test_preview.PreviewTests) ... ok
+test_atomic_dispatch_kill_at_exhaustion_has_no_stranded_question (test_preview.PreviewTests) ... ok
+test_cancel_and_forget_fence_before_any_preview_bytes (test_preview.PreviewTests) ... ok
+test_concurrent_dispatch_is_one_question_or_one_preview (test_preview.PreviewTests) ... ok
+test_early_unauthorized_template_and_nonexhausted_are_rejected (test_preview.PreviewTests) ... ok
+test_exhaustion_fallback_accepts_no_model_content_or_banner_spoof (test_preview.PreviewTests) ... ok
+test_forget_after_preview_retains_bytes_but_marks_reference_stopped (test_preview.PreviewTests) ... ok
+test_forget_before_preview_rejects_all_artifact_writes (test_preview.PreviewTests) ... ok
+test_kill_after_commit_replays_complete_terminal_transaction_once (test_preview.PreviewTests) ... ok
+test_last_claim_eligibility_is_not_a_fabricated_answer (test_preview.PreviewTests) ... ok
+test_process_kill_preview_is_atomic_and_retry_recovers_once (test_preview.PreviewTests) ... ok
+test_template_role_literal_placeholders_bounds_and_conflicting_replay (test_preview.PreviewTests) ... ok
+test_terminal_receipt_is_unverified_and_never_recovered_or_passed (test_preview.PreviewTests) ... ok
+test_admission_is_durable_and_same_key_conflicts_before_any_effect (test_primary.PrimaryBoundaryTests) ... ok
+test_ambiguous_primary_clarification_crash_is_atomic_and_replays_without_selection (test_primary.PrimaryBoundaryTests) ... ok
+test_answer_uses_original_ingress_and_binds_nonlatest_question_once (test_primary.PrimaryBoundaryTests) ... ok
+test_cancel_and_forget_between_prepare_and_finish_reject_stale_result (test_primary.PrimaryBoundaryTests) ... ok
+test_closed_json_rejects_duplicates_authority_and_paraphrased_answer (test_primary.PrimaryBoundaryTests) ... ok
+test_concurrent_admission_and_finish_publish_one_effect_and_reply (test_primary.PrimaryBoundaryTests) ... ok
+test_correct_retains_fixed_criteria_and_source_bindings (test_primary.PrimaryBoundaryTests) ... ok
+test_diagnostic_wait_not_in_snapshot_and_overflow_has_no_partial_target_set (test_primary.PrimaryBoundaryTests) ... ok
+test_draft_commit_reply_and_replay_are_one_atomic_outcome (test_primary.PrimaryBoundaryTests) ... ok
+test_expected_mid_effect_failure_rolls_back_before_rejection_is_saved (test_primary.PrimaryBoundaryTests) ... ok
+test_none_and_fabricated_target_never_fall_back_to_latest_goal (test_primary.PrimaryBoundaryTests) ... ok
+test_primary_correction_crash_rolls_back_fence_or_commits_one_bound_revision (test_primary.PrimaryBoundaryTests) ... ok
+test_primary_snapshot_has_no_content_and_long_keys_have_bounded_internal_keys (test_primary.PrimaryBoundaryTests) ... ok
+test_real_process_deaths_do_not_leave_partial_effects_or_replay_inference (test_primary.PrimaryBoundaryTests) ... ok
+test_recovery_interruption_and_provider_failure_are_terminal_without_retry (test_primary.PrimaryBoundaryTests) ... ok
+test_remember_keeps_original_source_and_forget_stops_reference_without_purge (test_primary.PrimaryBoundaryTests) ... ok
+test_added_removed_web_and_symlink_product_files_fail_closed (test_primary_qualification.FreezeQualificationTests) ... ok
+test_closed_cohort_mapping_preserves_old_bindings (test_primary_qualification.FreezeQualificationTests) ... ok
+test_compound_cohorts_reuse_fixed_inputs_and_have_separate_product_binding (test_primary_qualification.FreezeQualificationTests) ... ok
+test_freeze_rejects_malformed_missing_and_inexact_manifests (test_primary_qualification.FreezeQualificationTests) ... ok
+test_historical_freeze_fails_current_product_while_new_match_succeeds (test_primary_qualification.FreezeQualificationTests) ... ok
+test_intent_limits_cohorts_bind_fresh_source_without_redirecting_compound (test_primary_qualification.FreezeQualificationTests) ... ok
+test_isolated_root_has_only_known_corpora_and_real_hash_checks (test_primary_qualification.FreezeQualificationTests) ... ok
+test_legacy_old_cohort_record_remains_verifiable_without_new_fields (test_primary_qualification.FreezeQualificationTests) ... ok
+test_live_mismatch_precedes_clean_proof_and_owner_construction (test_primary_qualification.FreezeQualificationTests) ... ok
+test_new_opened_record_binds_selected_freeze_and_verifier_rejects_tampering (test_primary_qualification.FreezeQualificationTests) ... ok
+test_pin_tracks_selected_freeze_and_current_product_only (test_primary_qualification.FreezeQualificationTests) ... ok
+test_runner_mismatch_precedes_owner_claim_and_run_directory (test_primary_qualification.FreezeQualificationTests) ... ok
+test_source_drift_stops_runner_before_provider_invocation (test_primary_qualification.FreezeQualificationTests) ... ok
+test_untrusted_manifest_paths_are_rejected_before_file_reads (test_primary_qualification.FreezeQualificationTests) ... ok
+test_expiry_between_grant_and_call_does_not_contact_provider (test_primary_qualification.PrimaryGateTests) ... ok
+test_response_after_deadline_is_not_returned (test_primary_qualification.PrimaryGateTests) ... ok
+test_twenty_four_attempt_cap_and_single_use_permit (test_primary_qualification.PrimaryGateTests) ... ok
+test_wrong_prompt_does_not_use_a_slot_or_provider (test_primary_qualification.PrimaryGateTests) ... ok
+test_decode_and_provider_failure_are_visible_and_settled (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_every_frozen_fixture_has_exact_host_and_offered_bindings (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_initial_journal_failure_still_stops_owned_provider (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_new_cohort_excludes_observed_cases_and_preserves_untested_cases (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_next_requires_judgment_and_turn_two_uses_actual_reply (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_oracle_canary_never_reaches_provider (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_post_deadline_response_is_retained_but_input_is_rejected (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_raw_unsafe_proposal_retained_before_host_rejection (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_read_only_verification_detects_changed_raw_proposal (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_snapshot_omission_is_setup_failure_before_a_model_call (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_unknown_cohort_cannot_invoke_provider_or_create_run (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_verify_is_read_only_and_old_run_cannot_resume (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_wrong_offered_target_can_apply_but_cannot_receive_semantic_pass (test_primary_qualification.PrimaryQualificationTests) ... ok
+test_ask_uses_actual_reply_and_frozen_answer_then_one_goal (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_completed_plan_requires_real_successful_call_lifecycle (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_delegate_skips_answer_without_input_or_call_and_finishes_one_case (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_duplicate_capture_cannot_replace_judged_action_to_justify_skip (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_eleven_worst_case_calls_rejected_before_suffix_run_creation (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_failure_never_skips_or_completes (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_frozen_suffix_is_exact_unexecuted_cases_and_smaller_owner (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_goal_count_rejects_incorrect_controller_pass (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_invalid_conditional_schema_and_budget_rejected_before_run_creation (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_invalid_matrix_precedes_live_provider_and_proof_construction (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_live_native_owner_and_record_use_cohort_bound (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_missing_actual_stored_reply_cannot_admit_answer (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_one_skipped_case_does_not_complete_unexecuted_cases (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_second_question_cannot_pass_or_skip (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_sixteen_call_gate_is_effective (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_ten_call_suffix_gate_rejects_eleventh_before_provider (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_verifier_rejects_call_on_justified_skipped_turn (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_verifier_rejects_unjustified_skip_even_with_valid_chain (test_primary_qualification.RecognitionQualificationTests) ... ok
+test_historical_primary_freezes_and_current_expert_freeze_are_distinct (test_primary_qualification.RepositoryFreezeTests) ... ok
+test_concurrent_same_key_is_one_inference_and_immediate_explicit_cancel (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_every_ordinary_input_uses_one_primary_call_without_regex_preemption (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_explicit_control_with_max_length_key_commits_reply_and_effect_once (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_killed_primary_never_replays_model_after_restart (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_natural_answer_targets_nonlatest_question_with_original_text (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_primary_clarifies_then_hands_context_to_one_expert (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_provider_failure_is_visible_and_same_key_never_retries_or_creates_goal (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_target_clarification_and_correction_commit_crashes_never_rerun_primary (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_terminal_replay_after_forget_never_returns_cached_source_content (test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_binding_immutable_and_one_open_question_per_goal (test_questions.QuestionTests) ... ok
+test_changed_question_and_stale_answer_never_rebind (test_questions.QuestionTests) ... ok
+test_closed_question_round_not_reused_after_correction (test_questions.QuestionTests) ... ok
+test_diagnostic_waits_do_not_fabricate_clarification (test_questions.QuestionTests) ... ok
+test_forget_incidental_waiting_context_closes_question (test_questions.QuestionTests) ... ok
+test_preview_receipt_is_not_completion_evidence (test_questions.QuestionTests) ... ok
+test_question_and_answer_process_kill_roll_back_whole_transaction (test_questions.QuestionTests) ... ok
+test_question_answer_restart_and_replay_provenance (test_questions.QuestionTests) ... ok
+test_two_answers_bound_and_third_request_creates_no_question (test_questions.QuestionTests) ... ok
+test_conversation_independent_of_slow_attempt_and_controls_immediate (test_runtime.RuntimeTests) ... ok
+test_default_mock_local_draft_end_to_end (test_runtime.RuntimeTests) ... ok
+test_forgotten_source_excludes_transitive_derived_responses (test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (test_runtime.RuntimeTests) ... ok
+test_normal_conversation_and_explicit_limits_do_not_create_goals (test_runtime.RuntimeTests) ... ok
+test_second_host_fails_fast_and_recovery_runs_only_at_startup (test_runtime.RuntimeTests) ... ok
+test_secret_canary_is_absent_from_captured_provider_prompts (test_runtime.RuntimeTests) ... ok
+test_status_uses_canonical_state_instead_of_old_handoff_memory (test_runtime.RuntimeTests) ... ok
+test_workorder_has_no_store_path_credentials_or_mutation (test_runtime.RuntimeTests) ... ok
+test_fabricated_source_and_ineligible_preview_never_complete (test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_malformed_provider_json_is_visible_terminal_error_without_retry (test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_mock_draft_transport_is_json_but_saved_bytes_unchanged (test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_restart_bound_answer_enters_executor_and_completes_same_goal (test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_two_partial_answers_end_in_one_incomplete_preview (test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_untrusted_executor_cannot_bypass_closed_proposal_gate (test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_question_commit_and_rollback_resume_same_goal_after_process_death (test_runtime_question_crash.RuntimeQuestionCrashTests) ... ok
+test_additive_upgrade_preserves_rows_and_reopens (test_schema_migration.SchemaMigrationTests) ... ok
+test_fault_rolls_back_schema_and_version_together (test_schema_migration.SchemaMigrationTests) ... ok
+test_future_schema_refuses_without_mutation (test_schema_migration.SchemaMigrationTests) ... ok
+test_process_kill_before_and_after_commit_is_recoverable (test_schema_migration.SchemaMigrationTests) ... ok
+test_v2_receipts_defaults_bytes_and_fresh_schema_equivalence (test_schema_migration.SchemaMigrationTests) ... ok
+test_v3_upgrade_adds_primary_without_changing_existing_rows (test_schema_migration.SchemaMigrationTests) ... ok
+test_cadence_gap_cannot_be_hidden_by_recent_ingress (test_soak.SoakTests) ... ok
+test_hash_chain_detects_edit_and_reorder (test_soak.SoakTests) ... ok
+test_historic_candidate_is_anchored_and_rederived (test_soak.SoakTests) ... ok
+test_missing_reverse_evidence_and_immutable_row_history (test_soak.SoakTests) ... ok
+test_monitor_attestation_partial_save_is_pending_and_secret_fields_rejected (test_soak.SoakTests) ... ok
+test_no_fixture_unattested_or_client_clock_pass (test_soak.SoakTests) ... ok
+test_readonly_probe_binds_ack_and_actual_host_bytes (test_soak.SoakTests) ... ok
+test_real_duration_clean_run_restart_and_fresh_probe_required (test_soak.SoakTests) ... ok
+test_artifact_and_receipt_tamper_is_rejected_by_db (test_store.StoreTests) ... ok
+test_cancel_fences_result_and_invalid_transition (test_store.StoreTests) ... ok
+test_completion_requires_host_receipt_and_dedupes (test_store.StoreTests) ... ok
+test_duplicate_ingress_returns_original_and_conflicts_are_visible (test_store.StoreTests) ... ok
+test_goal_and_immutable_criteria_and_outbox_are_atomic (test_store.StoreTests) ... ok
+test_outbox_replay_reports_once (test_store.StoreTests) ... ok
+test_schema_version_mismatch_fails_closed (test_store.StoreTests) ... ok
+test_single_task_slot_and_fifo_claim (test_store.StoreTests) ... ok
+test_bound_rejection_more_than_three_and_recovery_fencing (test_target_selection.TargetSelectionTests) ... ok
+test_claim_invalidates_epoch_and_wrong_source_has_no_oracle (test_target_selection.TargetSelectionTests) ... ok
+test_concurrent_choices_apply_exactly_once (test_target_selection.TargetSelectionTests) ... ok
+test_forget_original_or_target_hides_labels_and_blocks_application (test_target_selection.TargetSelectionTests) ... ok
+test_frozen_nine_case_mixed_state_matrix (test_target_selection.TargetSelectionTests) ... ok
+test_persistent_bound_choice_once_and_fixed_correction_sources (test_target_selection.TargetSelectionTests) ... ok
+test_process_kill_selection_create_and_correct_commit_boundaries (test_target_selection.TargetSelectionTests) ... ok
+test_projection_and_choice_share_entire_snapshot_staleness (test_target_selection.TargetSelectionTests) ... ok
+test_unique_and_no_match_never_fall_back (test_target_selection.TargetSelectionTests) ... ok
+test_correction_uses_new_revision_eligibility (test_template_boundary.TemplateBoundaryTests) ... ok
+test_defensive_complete_gate_and_historical_replay (test_template_boundary.TemplateBoundaryTests) ... ok
+test_eligible_markers_reject_before_bytes_then_preview_remains_valid (test_template_boundary.TemplateBoundaryTests) ... ok
+test_filled_template_and_noneligible_literal_braces_are_unchanged (test_template_boundary.TemplateBoundaryTests) ... ok
+test_runtime_complete_markers_end_visible_without_completion (test_template_boundary.TemplateBoundaryTests) ... ok
+test_explicit_template_only_and_correct_revision_eligibility (test_template_intake.TemplateIntakeTests) ... ok
+test_explicit_template_runtime_preview_is_never_completed (test_template_intake.TemplateIntakeTests) ... ok
+test_generic_and_unmarked_template_requests_do_not_enable_preview (test_template_intake.TemplateIntakeTests) ... ok
+
+======================================================================
+ERROR: test_artifact_status_readonly_and_forget_stale (test_http.HTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
+    self.server=make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_conversation_draft_and_inspect_artifact (test_http.HTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
+    self.server=make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_conversational_remember_and_forget (test_http.HTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
+    self.server=make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_duplicate_client_message_and_invalid_fields (test_http.HTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
+    self.server=make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_duplicate_natural_forget_keeps_original_target_binding (test_http.HTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
+    self.server=make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_explicit_question_answer_http_rejects_wrong_binding (test_http.HTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
+    self.server=make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_historical_bound_selection_http_and_guarded_state (test_http.HTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
+    self.server=make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_inspect_is_read_only_and_cross_origin_cannot_mutate (test_http.HTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
+    self.server=make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_lost_ack_fate_can_be_queried_without_duplicate_effect (test_http.HTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
+    self.server=make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_primary_ambiguity_and_explicit_control_with_stale_epoch (test_http.HTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
+    self.server=make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_ui_csp_no_inline_model_html_and_request_bounds (test_http.HTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
+    self.server=make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_case_cannot_advance_without_capture_and_controller_observation (test_live_runner.LiveRunnerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_runner.py", line 139, in test_case_cannot_advance_without_capture_and_controller_observation
+    runner.start_next(); self.post(runner,runner.case['request'])
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_runner.py", line 138, in start_next
+    self.server = make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_historical_expert_fixture_shapes_seed_forget_and_same_goal_answers (test_live_runner.LiveRunnerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_runner.py", line 100, in test_historical_expert_fixture_shapes_seed_forget_and_same_goal_answers
+    info = runner.start_next(); self.assertEqual(info['case'],case_id); seen.append(case_id)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_runner.py", line 138, in start_next
+    self.server = make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_unexpected_case_shape_stops_without_another_generation (test_live_runner.LiveRunnerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_runner.py", line 124, in test_unexpected_case_shape_stops_without_another_generation
+    runner.start_next(); self.post(runner,runner.case['request'])
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_runner.py", line 138, in start_next
+    self.server = make_server(self.runtime,0)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
+    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+----------------------------------------------------------------------
+Ran 249 tests in 9.846s
+
+FAILED (errors=14)

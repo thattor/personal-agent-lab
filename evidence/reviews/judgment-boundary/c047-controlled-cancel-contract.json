@@ -1,0 +1,42 @@
+{
+  "id": "C047-CONTROLLED-CANCEL-v1",
+  "status": "FROZEN_NOT_RUN",
+  "scope": "live_synthetic",
+  "product_identity": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+  "product_freeze": "evidence/reviews/judgment-boundary/expert-commitment-candidate-freeze.json",
+  "harness_files": {
+    "scripts/live_cancel_probe.py": "560a624163ac9bca68988f65550ab74b97c40411626767f2aa787711e0a3aac7",
+    "scripts/live_evidence.py": "a5b566dc8d90f8a17e16d0a11e91850761ed0b055eb38ed0d967fc5a0b6e6823",
+    "scripts/live_gate.py": "e5fb93319524a5f04ffebd4c2d8339340665b595383f5e5228a69fb117dc6d56",
+    "scripts/live_operator.py": "e96f72bf22366e6a13ac6eae3a6fca76547960ebb824d5ccfb7692f1d3c643c5",
+    "scripts/live_runner.py": "9996bcddd711eb82eb23654a05d6b395676595b4524b458371e3ab4dea7a8842",
+    "scripts/primary_qualification.py": "490c349d6cdcfd66ebb138fc847bfaf5d1c9042dd775acfe906db72a3224da19"
+  },
+  "inputs": [
+    "Mapleの招待文の下書きを作成してください。外部には送らないでください。",
+    "Mapleの下書きを止めて"
+  ],
+  "max_calls": 3,
+  "wall_seconds": 600,
+  "max_proof_age_seconds": 900,
+  "no_retry_or_reserve": true,
+  "scheduling": "First production worker.after_executor_before_apply callback holds actual Executor return; Primary callbacks pass. Controller enters both frozen inputs through actual conversation UI. Release only after bound Goal cancellation and Attempt fencing.",
+  "pass_conditions": [
+    "exact same Goal cancelled, epoch plus one, bound Attempt fenced",
+    "unchanged revision, fixed acceptance, source rows and no new Attempt",
+    "after release exact bound stale artifact rejection",
+    "zero artifacts, receipts, outcomes, questions or approvals",
+    "exact two inputs and two Primary turns, three native slots exhausted",
+    "owned host normal closure and verified evidence chain"
+  ],
+  "claim_limitations": [
+    "Controlled delivery after actual model return, not upstream generation cancellation or natural timing reliability",
+    "No artifact body access, no human input/evaluation or Qwen qualification",
+    "Historical C035/C045 timing outcomes unchanged; no whole N1 row or release PASS"
+  ],
+  "reviews": [
+    "c046-opus-response.txt",
+    "c047-swe-response.txt"
+  ],
+  "decision": "DECISIONS.md D029 C047"
+}

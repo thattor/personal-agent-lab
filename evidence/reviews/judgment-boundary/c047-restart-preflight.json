@@ -1,0 +1,14 @@
+{
+  "recorded_at": 1791407800.658727,
+  "candidate": "5dc1f95e7452d3ead12d686b7da169b810e927c6",
+  "product": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+  "product_files_unchanged": 17,
+  "human_answer": "evidence/operations/c047-human-access-answer.json",
+  "goal_readback": "active",
+  "scope": "Current Stable-1 only; future P001 dormant",
+  "baseline_first_run": "Environment failure, 14 loopback-bind PermissionErrors under restricted sandbox; no assertion failure or product modification",
+  "baseline_authorized_loopback_run": "249 PASS19.903s",
+  "review_status": "Official SWE-2 High Free running with workspace trust respected, execution session41380; no terminal review result yet",
+  "artifact_client_boundary": "Still unresolved; no blocked artifact access or bypass",
+  "previous_goal_turn": "progress: product correction, partial actual UI tests and exact pending access handoff"
+}

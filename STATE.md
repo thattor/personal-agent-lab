@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 development continues under D-021/P002 and the latest owner-directed model-led Primary correction D-028/D-029. Reasoning-solvable technical choices are autonomous. Current technical decisions remain autonomous; the exact-next-action section records genuine access dependencies. The app goal card was read back as BLOCKED (historical post-C026 state); its objective remains valid and this directly authorized turn continues. Supported tools cannot set it active; the attempted Codex UI read/control was refused by the computer-use safety boundary. No alternate/internal-state workaround was attempted; do not claim the card was resumed. No schedule restarted.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 development continues under D-021/P002 and the latest owner-directed model-led Primary correction D-028/D-029. Reasoning-solvable technical choices are autonomous. C047 supported goal readback is ACTIVE after the user resumed the same overall objective. Earlier BLOCKED and refused UI-control observations remain historical; the controller did not activate the card through an alternate/internal-state workaround. No schedule restarted.
 
 ## Current phase
 Hierarchy and goal/evaluation loops configured: ACTIVE [milestone1](https://github.com/thattor/personal-agent-lab/milestone/1), parent#2 with actual child Issues#3/#4/#5; global Issue#6 with actual stage children#2/#7–11. Future milestones2–5 are proposed required stages IF P-001 adopted; milestone6 is optional extension, not a required PAL-1.0 gate. Milestone7 is a closed historical Stable-0 record, linked to Issue1 rather than assigned after CLI failure; Issue1 remains closed. [Actual GitHub readback](evidence/reviews/project-plan/github.json).
@@ -25,63 +25,45 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
-C044 actual UI/Expert absence probe ABS-A1 on3d53878/productc55cab29 FAILS: the local
-invitation adds an unsupported future-announcement promise. Primary specification
-correctly preserves missing facts; host/receipt/artifact/DB integrity PASS. Exactly2
-real native calls; other11 hosts NOT_RUN. Preserve original runtime and tracked
-[evidence](evidence/reviews/judgment-boundary/ui-c044-absence-failure/README.md).
-Official Opus54.829s and independent Astra agree under the existing rubric; no new gate.
+C047 resolves HR-ACCESS-002 using the direct owner reply 「実行した」 and a successful
+134.740s official SWE-2 High Free review with workspace trust respected. No new auth,
+paid fallback or trust override. Official Opus C046 and D029 C047 govern the new
+controlled-delivery probe; [owner source](evidence/operations/c047-human-access-answer.json),
+[review and test evidence](evidence/reviews/judgment-boundary/README.md#c047-controlled-late-result-probe).
 
-Minimal Expert DRAFT instruction correction adopted/recorded before edit in D029C044.
-New product content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad
-changes only its instructions constant; Runtime AST outside it and all other16 product
-files stay identical. Primary/native/Store/schema/capabilities/criteria unchanged.
-65 focused PASS3.716s; full249 PASS20.165s. Product-hash test now separately preserves
-all immutable Primary manifests and rejects old live use on the changed product.
-C043 fixed40 and independent12 retain PASS as exact unchanged-component evidence,
-not new-candidate measurements:59 calls, all four independent audits. Qwen remains
-an owner capability reference, actual PAL qualification NOT_RUN.
+The test-only operator uses existing production Runtime/build_provider/make_server and
+worker.after_executor_before_apply. Exact Goal/Attempt/epoch/criteria/source bindings,
+stop-before-release cleanup, failure/deadline/EOF/SIGINT and source/proof refusal are
+verified. Publication/closure race found by independent Astra was fixed before live.
+19 focused PASS4.028s; full268 PASS24.048s. All17 product files remain product53a616
+(content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad).
+No actual cancellation PASS follows the fixtures or reviewer verdict.
 
-C044 correction pushed as814638d. C045 actual first attempts on that exact candidate:
-ABS-A1 PASS with independently bound actual artifact/UI/receipt, TARGET-A and TARGET-B
-PASS including no wrong-target mutation. ABS-A2 NOT_VERIFIED because the IAB artifact
-page explicitly reported ChatGPT blocking/ERR_BLOCKED_BY_CLIENT; no alternate content
-access, new permission or product-cause assumption. RUNNING-CANCEL timing VOID: first
-metadata observation already terminal, no cancellation input or artifact access. Nine
-artifact-dependent hosts NOT_RUN. Ten native slots across five hosts; all exited0 with
-ports closed inside600s, sources unchanged. [Retained evidence and limits](evidence/reviews/judgment-boundary/ui-c045-partial/README.md).
-[249 full tests PASS20.122s](evidence/reviews/judgment-boundary/ui-c045-partial/full-after-live.txt).
-No whole-row semantic, human or Qwen qualification from these partial results.
+Next: commit/push this coherent green increment, verify clean exact candidate, obtain
+fresh existing official Claude Pro/extra-usage-OFF proof, then run the separately frozen
+[C047 contract](evidence/reviews/judgment-boundary/c047-controlled-cancel-contract.json)
+on one new owned loopback store. Exact two Maple inputs via actual UI, cap3/wall600s/
+proof900s, no retry/reserve. Hold only delivery after the actual Executor returns;
+release only after canonical cancellation, require the bound `stale artifact` rejection
+and zero artifacts/receipts/outcomes, normal teardown and independent chain/source audit.
+This cannot establish upstream cancellation or natural-race reliability; original
+C035/C045 timing misses stay unchanged. Goal ACTIVE; no schedule restart.
 
-Exact next: HR-ACCESS-002 owner action on the official Devin workspace-trust UI for only
-this checkout, then fresh authenticated SWE-2 High Free check and the required supplied-
-source implementation review. One invocation refused the untrusted workspace before
-review; no override or global trust/permission change was attempted. [Scoped handoff](evidence/operations/c046-access-handoff.json).
-Official Opus87.439s completed; C046 in DECISIONS records the controlled-delivery scope
-and lifecycle/binding safeguards. No probe implementation yet. After SWE review, test
-and implement the smallest existing-fault-seam arrangement, separately freeze it and
-run one bounded controlled cancellation proof. Preserve both natural timing misses;
-no blind retry, output substitution or canonical repair. This is a genuine environment
-permission dependency, not human approval of technical design.
+C045 actual partial evidence remains: ABS-A1 and TARGET-A/B PASS; ABS-A2 NOT_VERIFIED
+at explicit browser-client ERR_BLOCKED_BY_CLIENT; RUNNING-CANCEL timing VOID; nine
+artifact-dependent hosts NOT_RUN. Ten native slots/five normal teardowns retained in
+[ui-c045-partial](evidence/reviews/judgment-boundary/ui-c045-partial/README.md). The browser
+block is independent of the now-resolved Devin access condition. Do not retry that page,
+change browser/endpoint or read blocked artifact bytes by another route. Current probe
+is artifact-independent and does not access that run. No historical cap transfer.
 
-Artifact-dependent cases remain paused at the separate explicit browser-client block;
-do not bypass it or restart completed measurement/proof. Existing frozen14-host37-slot
-allocation remains historical/current partial evidence; no unused cap transfer. Current
-independent source/metadata audits and249 full tests are complete; do not manufacture
-extra work or repeat model calls while only these dependencies remain.
-
-HR-ACCESS-002 was submitted once to the existing human window; [submission receipt](evidence/operations/c046-human-handoff-receipt.json), no answer/approval inferred.
-Issue2/5/6/12 and active milestone1 were synchronized and read back without closure or
-future-stage activation: [GitHub receipt](evidence/operations/c046-github-readback.json).
-Supported goal read confirms the same overall objective still BLOCKED (historical app
-state); no supported activation method or schedule workaround used. The new access
-condition above, not obsolete input/formatting quotas, governs this checkpoint.
-
-Then receive one authentic version-bound whole-flow usefulness evaluation in the
-persistent human window once current output is ready; earlier C035 material is older
-product evidence. Final full suite/version/limitations and Issue12/5/2 audit/closure
-remain. Stable1 and overallPAL incomplete; Stable0 stays released. No schedule or
-old time/input/session quotas, and no routine human technical approval.
+C043 fixed40 and independent12 remain PASS only for their exact unchanged Primary/host
+component bindings, not new-candidate measurements. Qwen3.8-27B remains the owner's
+reference with actual PAL qualification NOT_RUN. Then finish affected actual UI/Expert
+coverage and one authentic version-bound whole-flow usefulness evaluation in the
+persistent human window, followed by final suite/version/limitations and Issue12/5/2
+exit audit. Stable1 and overallPAL are incomplete; Stable0 remains released. No obsolete
+time/input/session quota, routine human technical approval or future-stage activation.
 
 ## Historical continuation records
 

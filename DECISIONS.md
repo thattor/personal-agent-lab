@@ -900,3 +900,43 @@ an actual environment permission action, not a design preference or routine ques
 No new login/payment/public exposure requested. Existing browser-client artifact block
 remains separately unresolved; no security bypass. Record authentic outcome and fresh
 Free/auth proof before completing the required SWE review and dependent implementation.
+
+### D029 C047 — owner access response and adopted cancellation probe implementation
+
+The existing human window received the actual owner answer 「実行した」 for
+HR-ACCESS-002. Source turn/message are retained in c047-human-access-answer.json.
+Fresh existing-auth/exact SWE-2 High Free checks passed; the same official CLI review
+completed exit0 in134.740s with workspace trust respected. No trust override, new
+authentication, additional payment or scope expansion. Question/access/response and
+completion are retained as judgment-boundary/c047-swe-*.
+
+Adopt BEFORE implementation: one test-only operator using production build_provider,
+Runtime, make_server and existing worker.after_executor_before_apply fault seam.
+No provider/Executor wrapper, model-data substitution, product source or DB repair.
+Use existing clean_candidate/source-freeze helpers, EvidenceJournal and RunWatchdog;
+new closed run, absolute shared one-use proof marker directory, cap3/600s/proof900s,
+exact frozen Maple request/cancel, one attempt without reserve or resampling.
+Freeze script/product/contract hashes and verify before proof consumption. Runtime
+canonical reads expose rejections already (Store.inspect); no new read API is needed.
+
+Hold callback filters only the first worker seam, does no I/O, never raises or releases
+on its own timeout, and passes Primary points immediately. Bind exactly one Goal and
+one running Attempt from metadata, including revision/epoch/acceptance/sources.
+Release success requires the same Goal cancelled, epoch advanced exactly once AND
+the bound Attempt fenced (not the review's final-section OR), unchanged revision,
+criteria and sources, no new Attempt, and zero accepted artifacts/receipts/outcomes.
+Premature release is refused and retained. After release wait for the exact matching
+`stale artifact` rejection before success teardown. Needs-input/preview/generic failure
+or no rejection is never complete-result PASS. Wrong/pause/stale controls fail the run.
+
+Failure/EOF/deadline/SIGINT teardown starts Runtime.close in a thread, observes stopping
+before release, joins close, then shuts down the owned server. Watchdog callbacks must
+not join themselves; journal failure cannot skip cleanup or be repaired. Test point
+filtering, refusal/binding, exact success/needs-input distinction, incorrect control,
+EOF/SIGINT/deadline teardown and lock release, preflight refusal before proof use.
+
+The original RUNNING-CANCEL contract expressly permits reviewer-guided safe scheduling
+after a timing miss; it requires canonically running unfinished work and retained late
+rejection, not termination of an upstream generation. This is a separate controlled-
+delivery proof, never a rescore of C035/C045 or a natural-timing reliability claim.
+No actual live PASS, Qwen qualification, usefulness or release result follows review.

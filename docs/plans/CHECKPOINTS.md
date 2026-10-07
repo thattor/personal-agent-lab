@@ -427,3 +427,22 @@ Next: supported owner trust action, fresh Free/auth check, required SWE review, 
 reviewed test/implementation/freeze/probe. Artifact access remains independently blocked;
 no browser security workaround. Source unchanged;249-test green retained. Stable1 and
 globalPAL incomplete, no new scope/cost/provider/Qwen qualification or schedule.
+
+
+## C047 — permission resolved, controlled cancellation proof prepared
+
+Unit goal: distinguish a completed model result held before host apply from an actual
+accepted artifact, and prove cancellation fences only the intended running work.
+Owner HR-ACCESS-002 action received directly; same official SWE review succeeds with
+trust respected, Free/auth verified. Opus/SWE recommendations reconciled in D029 before
+implementation. New test-only operator, unchanged17 product files. Independent Astra
+found a PASS-publication/closure race; serialized same-snapshot finalization and two
+race tests repair it before any live use.19 focused and268 full tests PASS. Earlier
+failures and fixture mistakes retained with causes/prevention in DEFECTS.md.
+
+Plan evaluation: this is necessary independent evidence after two missed natural timing
+observations, not another arbitrary retry. Frozen exact two-input cap3/600s/proof900s
+run uses actual UI and production native/model/host boundaries; no artifact-body access
+or model-output replacement. Commit/push then fresh proof and one execution are next.
+Artifact-dependent cases still respect the separate browser-client block. WholeN1,
+usefulness, Qwen and release remain incomplete. No schedule, extra payment or new scope.

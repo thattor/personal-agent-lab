@@ -1,0 +1,11 @@
+{
+  "reviewer": "Astra independent subagent",
+  "scope": "read-only supplied harness and tests; no execution or native call",
+  "script_sha256": "560a624163ac9bca68988f65550ab74b97c40411626767f2aa787711e0a3aac7",
+  "tests_sha256": "68b474765d7edc5a7c01934309bad5034fc45e42affb07c4ec8b7c03e4e4470f",
+  "initial_finding": "Result snapshot/PASS publication could race deadline closure. Retained finding before live; no live result affected.",
+  "resolution": "Release and final publication serialize with closure. The same final snapshot is checked and journaled; deadline/closed/source are checked again before append. Journal failure propagates through cleanup.",
+  "verdict": "No further substantiated blocker in controlled late-result-fencing scope",
+  "tests_executed_by_reviewer": false,
+  "whole_product_or_live_pass": false
+}

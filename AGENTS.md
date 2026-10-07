@@ -70,7 +70,10 @@ Opus example:
 claude -p --model opus --permission-mode plan --output-format text "<review prompt>"
 
 SWE-2 High example:
-devin --model swe-2-high --permission-mode auto --sandbox --respect-workspace-trust false -p "<review prompt>"
+devin --model swe-2-high --permission-mode auto --sandbox -p "<review prompt>"
+
+Respect official workspace trust. A refusal requires the scoped owner action in
+D029 C046; never use the old trust-check override example to bypass that boundary.
 
 Before each call, confirm the account is already authenticated and the selected route does not require extra payment. Never commit credentials or private account data.
 
