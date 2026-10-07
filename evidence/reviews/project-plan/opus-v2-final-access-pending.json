@@ -1,0 +1,15 @@
+{
+  "checked_at": 1791367055.2529569,
+  "purpose": "P001v2 final Opus delta review",
+  "web_observation": "claude.ai/new#settings/usage redirected to login / account plan marketing page; no existing authenticated usage proof",
+  "cli_auth_exit": 0,
+  "cli_auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "extra_usage_verified": false,
+  "opus_generation_started": false,
+  "new_auth_performed": false,
+  "blocked_dependency_only": "P001v2 final official Opus review; existing Stable1 development and running SWE unaffected"
+}

@@ -23,6 +23,9 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
+Independent plan branch HR-AUTH-OPUS-001: P001v2 draft now incorporates conditional C1–C8, but final delta-review fresh cost proof unavailable because current official usage page redirects to login. CLI still existing loggedIn/claude.ai/Pro. No new authentication or Opus generation performed; evidence/reviews/project-plan/opus-v2-final-access-pending.json. Routed to authorized persistent human-judgment thread. Only final P001v2 review/plan activation depends on this; accepted Stable1/P002 and existing SWE session53745 continue. Do not treat web observation as CLI auth invalidity or whole-development blocker. Exact release: fresh same-account official usage view proving extra usage disabled and available subscription allowance; no credentials in chat/repo.
+
+
 Latest C-010 atomic host dispatch implemented: Store.request_clarification opens a persisted question OR commits an exhausted host preview in one BEGIN IMMEDIATE, using shared transaction helpers and unchanged eligibility/criteria/legacy diagnostic policy. Full121 PASS8.687s, targeted22 PASS; test-first failures retained, concurrent repeated dispatch gives one question/one preview and SIGKILL at exhaustion rolls back the whole decision without a stranded third question. This supersedes the earlier pending low-level atomic-dispatch concern ONLY; current Runtime/ProviderExecutor/UI do not yet use this method. Broader official SWE runtime integration review session53745 remains live, no result yet; poll same handle. No product provider/UI/production DB changes or live/human PASS. Exact next: reconcile that completed review before structured model/source/answer/UI integration, then bounded actual proof and authentic re-evaluation.
 
 
