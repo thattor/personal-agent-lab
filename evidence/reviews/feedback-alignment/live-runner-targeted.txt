@@ -1,0 +1,9 @@
+test_all_frozen_case_shapes_with_seed_forget_and_same_goal_answers (test_live_runner.LiveRunnerTests) ... ok
+test_case_cannot_advance_without_capture_and_controller_observation (test_live_runner.LiveRunnerTests) ... ok
+test_source_drift_is_detected_before_next_case (test_live_runner.LiveRunnerTests) ... ok
+test_unexpected_case_shape_stops_without_another_generation (test_live_runner.LiveRunnerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 4.252s
+
+OK
