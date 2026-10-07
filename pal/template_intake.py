@@ -1,5 +1,12 @@
 """Conservative host eligibility grammar, never model authority or completeness."""
 import re
+import unicodedata
+
+
+def has_unresolved_markers(content):
+    """Reserved template marker floor only; do not normalize stored bytes."""
+    folded = unicodedata.normalize('NFKC', content)
+    return '＿＿' in content or any(marker in folded for marker in ('{{', '}}', '___'))
 
 
 def allows_preview(specification):

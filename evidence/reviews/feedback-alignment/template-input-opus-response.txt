@@ -1,0 +1,105 @@
+Per your instruction, this review uses no tools and no plan file. It is based only on the supplied source.
+
+# A. Unresolved placeholders in eligible templates (P002 / T1)
+
+**Reconciliation.** The SWE "host-legitimate / model-behavior only" reading does not hold against adopted P002. P002 requires two outcomes: unresolved factual placeholders are "visibly label[ed]… as an incomplete preview", and the system must "never… mark unresolved work complete". In the T1 evidence, the host:
+- minted a `draft` receipt,
+- recorded `check_status: pass`, and
+- moved the Goal to `completed`
+
+for `招待文。日時：{{date}}、場所：{{place}}。`. The model chose the path, but the host signed off on the result. Model choice is not a control. The host gate is the only place this requirement can hold. Repairing it restores adopted behavior and does not weaken frozen T1. No new scope approval is needed for this repair.
+
+**Contract (smallest safe design):**
+1. **Where the gate applies.** It applies only when the attempt's immutable revision row has `template_preview_allowed=1`.
+   - Read that flag from the revision bound to `attempt.revision`.
+   - Never re-run `allows_preview` at write or complete time.
+   - A correction creates a new revision, so eligibility is recomputed only through a new revision.
+2. **`write_draft` (draft role only).** Check the sanitized text that will become `body`. Reject with `EvidenceRejected` before any artifact or receipt insert if it contains any of:
+   - any `{{…}}` token, including tokens not in the spec,
+   - an unpaired `{{` or `}}`,
+   - `___` or `＿＿`.
+
+   Apply an NFKC fold for this check only, so full-width brace variants cannot evade it. The stored bytes stay unchanged; there is no host conversion. The check must cover every marker family that `allows_preview` recognizes. Otherwise the model can evade it by switching from `{{x}}` to `___`.
+3. **`complete` defensive recheck.** Run the same predicate on the decoded `text` before the CAS. This catches receipts minted before the fix or by any other path.
+   - The existing idempotent early return on an existing `outcomes` row is left alone. Historical rows stay historical.
+4. **Preview path untouched.** Preview-role receipts keep their tokens and keep their visible "incomplete preview" label.
+5. **Prompt.** Tell the model that an eligible template with unresolved markers must go to `incomplete_preview`. No new evidence authority, budget, or retry.
+6. **Rejection outcome must be "preview or visible failure, never completed".** The supplied source doesn't show whether `_reject` ends the attempt. If it does, a model that insists on completing ends in failure, not preview. That is acceptable under the floor, but the outcome must be frozen in tests, not assumed.
+
+**Is eligible-only the smallest *safe* boundary?** Yes, with the conditions above (all marker families, gate on stored bytes, complete recheck). Two residuals should be recorded rather than fixed silently:
+- **Non-eligible revisions.** If the model emits `{{date}}` without a template cue, the draft still completes. The host can't tell an unresolved placeholder from legitimate literal braces (for example, Mustache or Jinja content). Extending the gate to non-eligible revisions changes user-visible behavior and **needs human scope confirmation**.
+- **Paraphrased blanks.** Output like `[日時]` or `（未定）` passes the gate. This is a literal floor only, consistent with P002's "necessary floor, not semantic truth".
+
+**Frozen tests (before code):**
+- **T1 scripted complete:** rejected; artifact and receipt row counts unchanged; Goal not `completed`; then the preview path yields a visible incomplete preview.
+- **Each marker family:** `{{x}}`, `___`, and `＿＿` are each rejected.
+- **Malformed and variant markers:** `{{date}`, `{date}}`, full-width braces, and a model-invented `{{time}}` are rejected.
+- **Defensive recheck:** a receipt injected via fault or fixture with tokens → `complete` rejects.
+- **Filled template:** spec has markers, draft has none → completes normally.
+- **Unaffected requests:** generic or creative requests without markers are unchanged.
+- **Non-eligible regression lock:** a non-eligible revision with literal `{{x}}` still completes. This documents the residual.
+- **Correction revision:** eligibility follows the new revision.
+- **Unchanged mechanics:** budget, claim counts, stale and idempotent replays, and preview-role writes are all unchanged.
+
+Scripted proof is not N1-07 evidence. A direct human re-evaluation is still required.
+
+**Human-confirmation boundary:**
+- Extending the gate beyond eligible revisions needs human confirmation.
+- Widening the reserved-token set beyond the eligibility grammar needs human confirmation.
+- Everything else above is implementation within adopted P002.
+
+# B. Bare `answer:`
+
+**Agree: notice-only.** The freshness check can only prove "emitted", never "seen". The Q1→Q2 rebinding residual can't be closed. P002 evidence doesn't depend on the convenience. Notice-only removes the whole wrong-target class and needs no freshness machinery.
+
+**Contract:**
+- **Recognition.** Recognize exactly the current bare `answer:` grammar. Add no new variants (for example, a full-width colon). Text that merely contains "answer:" mid-message stays ordinary conversation.
+- **One transaction.** Store the raw user record, sanitized as for normal delivery and subject to existing Forget, plus a canned assistant notice. Nothing else changes:
+  - no Goal, question, control, or event on any Goal,
+  - no provider call,
+  - no change to the `answered` count.
+- **Static notice.** No dynamic candidate list. That avoids interactions with Forget and stale-question leakage, and is smaller than SWE's listing variant.
+- **Unchanged paths.** Explicit Goal/question/epoch binding and the diagnostic API are unchanged.
+
+**Exact notice** (`<EXPLICIT_FORM>` and `<DIAGNOSTIC_FORM>` must be the existing grammar, quoted verbatim):
+
+> この入力は回答として送信されていません。新しい依頼としても扱われていません。質問に回答するには、回答フォームまたは `<EXPLICIT_FORM>` を使ってください（診断待ちの場合は `<DIAGNOSTIC_FORM>`）。
+> This was not submitted as an answer, and was not treated as a new request. To answer a question, use the answer form or `<EXPLICIT_FORM>` (for a diagnostic wait, `<DIAGNOSTIC_FORM>`).
+
+**Regressions to expect:**
+- Bare diagnostic resume is removed.
+- Existing tests and harness scripts that use bare `answer:` must move to the explicit forms.
+- Users get one extra step.
+
+**Frozen tests:**
+- Bare answer in each of these states always yields only the notice, with Goal, question, and event tables unchanged and no provider call:
+  - 0, 1, or 2 open questions,
+  - only a diagnostic wait,
+  - after a restart,
+  - while running,
+  - after cancel or Forget.
+- Explicit and diagnostic forms are unchanged (regression lock).
+- A mid-sentence "answer:" behaves as ordinary conversation.
+- The raw record is stored and can be forgotten.
+
+**Human approval required (not inferred):**
+- Adopting notice-only.
+- Removing bare diagnostic resume.
+- The exact notice wording.
+
+Until approved, the current shortcut stays unchanged and is recorded as a known unsafe path. I recommend that any N1-07 human session avoid bare `answer:`, or record its use, so the known defect doesn't contaminate the evidence.
+
+# C. Harness
+
+No product scope change, so implementation-partner review is sufficient. Points to challenge or clarify:
+- **Proof token.** Bind the single-use proof and Native20 ownership to the frozen source and matrix hash. Consume it *before* the first native call, so a crash can't become a re-run, which would be resampling.
+- **Freeze scope.** The frozen hash should also cover:
+  - the harness and observer code,
+  - prompts,
+  - the model ID and config.
+
+  The T1 record shows observer corrections. Re-reading a persisted disposable DB read-only is fine if it is logged. Re-executing is not.
+- **Permits.** One permit per planned input phase. A product-internal retry that hits a denied permit counts as a first failure and stops the run. Total cost is bounded by permits × per-call cap; state that bound explicitly.
+- **Watchdog.** At 900 s, `real.stop` must stop in-flight provider work and record a failure. It must preserve evidence, never delete it. The no-op-stop facade must be idempotent across sequential hosts.
+- **Evidence labeling.** Every artifact carries a `scope` field like the T1 record (synthetic, scripted, live, human). Synthetic fixtures can never be promoted to human evidence.
+- **Security.** Keep provider credentials and user identity out of evidence artifacts and logs. Tear down disposable hosts after evidence is saved.

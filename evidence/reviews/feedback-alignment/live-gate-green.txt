@@ -1,0 +1,12 @@
+test_close_of_one_runtime_does_not_stop_shared_provider (test_live_gate.LiveGateTests) ... ok
+test_concurrent_unplanned_call_stops_active_owner (test_live_gate.LiveGateTests) ... ok
+test_deadline_and_failure_stop_without_rearming (test_live_gate.LiveGateTests) ... ok
+test_late_return_and_unencodable_prompt_never_become_accepted (test_live_gate.LiveGateTests) ... ok
+test_no_permit_never_invokes_native_and_closes_run (test_live_gate.LiveGateTests) ... ok
+test_per_input_permit_is_spent_before_call_and_retry_is_denied (test_live_gate.LiveGateTests) ... ok
+test_total_attempt_cap_and_mismatched_kind_fail_closed (test_live_gate.LiveGateTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.015s
+
+OK

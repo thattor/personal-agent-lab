@@ -1,0 +1,13 @@
+{
+  "id": "HR-INPUT-001",
+  "plan": "P-003-v1",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "sha256": "79859419dbf29b3579cfe6e2ac3452c64246d30c71bf74f79a507c4e63258bfd",
+  "source_reviews": [
+    "live-harness-swe-response.txt",
+    "template-input-opus-response.txt"
+  ],
+  "frozen_at": 1791369672.0084329,
+  "human_confirmation": null,
+  "code_change": false
+}

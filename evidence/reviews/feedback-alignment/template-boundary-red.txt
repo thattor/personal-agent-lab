@@ -1,0 +1,76 @@
+test_correction_uses_new_revision_eligibility (test_template_boundary.TemplateBoundaryTests) ... ok
+test_defensive_complete_gate_and_historical_replay (test_template_boundary.TemplateBoundaryTests) ... ERROR
+test_eligible_markers_reject_before_bytes_then_preview_remains_valid (test_template_boundary.TemplateBoundaryTests) ... test_filled_template_and_noneligible_literal_braces_are_unchanged (test_template_boundary.TemplateBoundaryTests) ... ok
+
+======================================================================
+ERROR: test_defensive_complete_gate_and_historical_replay (test_template_boundary.TemplateBoundaryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_template_boundary.py", line 32, in test_defensive_complete_gate_and_historical_replay
+    with patch('pal.store.has_unresolved_markers', return_value=False):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1405, in __enter__
+    original, local = self.get_original()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1378, in get_original
+    raise AttributeError(
+AttributeError: <module 'pal.store' from '/private/tmp/personal-agent-lab-stable0-20261006/pal/store.py'> does not have the attribute 'has_unresolved_markers'
+
+======================================================================
+FAIL: test_eligible_markers_reject_before_bytes_then_preview_remains_valid (test_template_boundary.TemplateBoundaryTests) (text='Date {{date}}')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_template_boundary.py", line 21, in test_eligible_markers_reject_before_bytes_then_preview_remains_valid
+    with self.assertRaises(EvidenceRejected): store.write_draft(attempt['id'], text)
+AssertionError: EvidenceRejected not raised
+
+======================================================================
+FAIL: test_eligible_markers_reject_before_bytes_then_preview_remains_valid (test_template_boundary.TemplateBoundaryTests) (text='Date {{time}}')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_template_boundary.py", line 21, in test_eligible_markers_reject_before_bytes_then_preview_remains_valid
+    with self.assertRaises(EvidenceRejected): store.write_draft(attempt['id'], text)
+AssertionError: EvidenceRejected not raised
+
+======================================================================
+FAIL: test_eligible_markers_reject_before_bytes_then_preview_remains_valid (test_template_boundary.TemplateBoundaryTests) (text='Date {{date}')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_template_boundary.py", line 21, in test_eligible_markers_reject_before_bytes_then_preview_remains_valid
+    with self.assertRaises(EvidenceRejected): store.write_draft(attempt['id'], text)
+AssertionError: EvidenceRejected not raised
+
+======================================================================
+FAIL: test_eligible_markers_reject_before_bytes_then_preview_remains_valid (test_template_boundary.TemplateBoundaryTests) (text='Date {date}}')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_template_boundary.py", line 21, in test_eligible_markers_reject_before_bytes_then_preview_remains_valid
+    with self.assertRaises(EvidenceRejected): store.write_draft(attempt['id'], text)
+AssertionError: EvidenceRejected not raised
+
+======================================================================
+FAIL: test_eligible_markers_reject_before_bytes_then_preview_remains_valid (test_template_boundary.TemplateBoundaryTests) (text='Date ｛｛date｝｝')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_template_boundary.py", line 21, in test_eligible_markers_reject_before_bytes_then_preview_remains_valid
+    with self.assertRaises(EvidenceRejected): store.write_draft(attempt['id'], text)
+AssertionError: EvidenceRejected not raised
+
+======================================================================
+FAIL: test_eligible_markers_reject_before_bytes_then_preview_remains_valid (test_template_boundary.TemplateBoundaryTests) (text='Date ___')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_template_boundary.py", line 21, in test_eligible_markers_reject_before_bytes_then_preview_remains_valid
+    with self.assertRaises(EvidenceRejected): store.write_draft(attempt['id'], text)
+AssertionError: EvidenceRejected not raised
+
+======================================================================
+FAIL: test_eligible_markers_reject_before_bytes_then_preview_remains_valid (test_template_boundary.TemplateBoundaryTests) (text='Date ＿＿')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_template_boundary.py", line 21, in test_eligible_markers_reject_before_bytes_then_preview_remains_valid
+    with self.assertRaises(EvidenceRejected): store.write_draft(attempt['id'], text)
+AssertionError: EvidenceRejected not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.143s
+
+FAILED (failures=7, errors=1)

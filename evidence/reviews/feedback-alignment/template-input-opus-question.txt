@@ -1,0 +1,223 @@
+Official Opus design reconciliation, read-only supplied-source only. Do not use tools or execute code. Return concise contracts, smallest safe design, regressions and adopted-scope vs human-confirmation boundaries. No implementation or owner judgment assumed.
+A. Adopted P002 requires unresolved factual placeholders to be incomplete preview, never completed. Controller disposable scripted evidence on 958f6be shows a complete envelope containing {{date}}/{{place}} gets completed/draft receipt/pass. Latest SWE calls that host-legitimate/model-behavior only; reconcile against actual adopted requirement, do not weaken frozen T1. Proposed repair: for immutable host-eligible template revisions, reject complete/write_draft containing remaining reserved {{...}} tokens or malformed reserved delimiters before bytes/receipt, plus defensive complete recheck. Prompt explicitly directs eligible unresolved templates to incomplete_preview; no host conversion of model content, new evidence authority or budget. Filled templates/no marker normal complete; generic/creative requests unaffected. Literal floor only, not general semantic truth. Is gating only host-eligible revisions smallest safe boundary? Explain tests and any user scope approval needed for restoring accepted P002 behavior.
+B. Your earlier unique-current-question bare answer proposal required fresh emitted set/no diagnostic waits/restart redisplay. SWE recommends notice-only because emitted output/API polling never proves human saw it and Q1-intended text can still bind Q2. Recommend exact smallest safe user proposal: recognize bare answer: grammar, preserve raw user history and host canned bilingual notice directing explicit Goal/question/epoch forms; no provider call/new Goal/question/control/answered count. No changed explicit binding or diagnostic API behavior. Existing bare diagnostic resume would be removed: human-confirmed grammar delta required. Please agree/disagree, regressions, exact notice, human approval boundaries. Do not infer human confirmation. Current shortcut remains unchanged pending that human proposal.
+C. Harness review implementation contracts separately: one consumed proof/Native20 owner + no-op-stop gated facade across sequential disposable hosts; one permit per planned input phase to prevent internal retry reaching native; watchdog900s real.stop; synthetic fixtures never human evidence; freeze exact source+matrix hash; stop first failure, no resampling. No product scope change. If you see scope/security issues challenge them, otherwise implementation partner review suffices.
+
+ADOPTED P002 (original frozen status heading historical; actual activation is separately human recorded):
+# P-002 v1 — narrow Stable-1 clarification amendment
+
+Status: PROPOSED; HR-SCOPE-001 awaits authentic human adoption. P-001 v1 stays frozen and unadopted. This is not Stable-1 completion.
+
+## Background and recommendation
+Actual human feedback accepts the finite draft/control results but requires PAL to use available context before asking about essential unknown facts. Current D-021 explicitly defers content clarification. Recommend moving only essential local-draft clarification into unfinished Stable-1; broader Stable-1.1 and future stages remain inactive.
+
+## Product delta
+- Use only already-delivered, sanitized bounded conversation/notes. No new retrieval, calendar, tools or permissions.
+- If those facts suffice, draft without a question. For example, a provided date/place is reused rather than requested again.
+- If essential facts are missing or ambiguous, ask one concise grouped question through host waiting_input, bound to the same work/question/epoch. Resume only on a valid answer. At most one outstanding question; follow-up count is bounded by the implementation contract reviewed by SWE-2 High within existing cost limits.
+- If the user explicitly requests a generic/creative/blank template, draft without clarification and visibly label any unresolved factual placeholders as an incomplete preview. If clarification exhausts its budget, also stop at a visibly incomplete preview; never invent facts or mark unresolved work complete.
+- Host validates any proposed known-fact provenance against usable provided sources. ID metadata must expose no additional content. Forget invalidates source-dependent facts/results visibly. Literal membership is a necessary floor, not proof of semantic truth. Mechanism requires SWE review; citations are omitted if these bounds cannot be met.
+- Primary/Expert/Executor responsibilities stay as accepted: no new agent, autonomous procedure promotion, capability or model canonical-state authority. Defined WorkOrder method and host mediate clarification; question text is sanitized.
+
+## Verification and completion
+Freeze finite known/absent/generic/answered/partial/stale/forgotten/invalid cases before execution; test duplicate handling, recovery and stale rejection with no wrong work resume. Preserve historical N1-05/06 evidence, negative feedback and old failures. Add amendment evidence rather than relabel historical PASS as new proof. N1-07 requires actual direct human re-evaluation after repair; N1-08 final audit remains required. No universal language, grounding or perfect-first-draft guarantee.
+
+## Judgment
+ID: HR-SCOPE-001. Target: P-002 v1 plus proposed D-027, runtime baseline605791e. Evidence: feedback receipt and official Opus initial/follow-up reviews under evidence/reviews/feedback-alignment/. Reason: G-001 requires human finalization to reverse the explicit deferral. Recommendation: adopt only this amendment. Alternative: keep the deferral and record the known mismatch without claiming N1-07 PASS. Adoption unblocks SWE implementation-contract review, then tests/implementation/bounded real proof and human evaluation. Existing ordinary implementation remains autonomous. This is not blanket P-001 adoption or Projects authorization.
+
+ACTUAL NEGATIVE PROOF:
+{
+  "source": "a81b93051a02cb0a0e8f7491830b3af04cdeb649",
+  "observed_at": 1791369086.575136,
+  "scope": "scripted proposal / disposable DB, not live-provider or human evidence",
+  "case": "T1",
+  "observer": "canonical terminal state poll; read artifacts via receipt.artifact_id",
+  "observer_corrections": [
+    "first observation saw queued because idle event was initially set; retained initial evidence is inconclusive",
+    "second observer used receipt.id instead of receipt.artifact_id and failed before saving; verified store.artifact source before correcting"
+  ],
+  "request": "招待文の下書き用テンプレートを作って。日時は{{date}}、場所は{{place}}の空欄にし、送らないで。",
+  "goal": {
+    "seq": 1,
+    "id": "fa4454885c6b45198a20161ba70d4835",
+    "state": "completed",
+    "revision": 1,
+    "acceptance_id": "7e509f7baf604f3aa66fceed1f5d0b55",
+    "epoch": 1,
+    "budget": 2,
+    "total_claims": 1,
+    "reason": "",
+    "question_id": null,
+    "ambiguity": 0
+  },
+  "receipts": [
+    {
+      "id": "13ac579af32a40ed8d7b1f91ae5cb937",
+      "attempt_id": "22c3f199a3ff4838ae7516cda96837c8",
+      "artifact_id": "3d9a305d8b1947d5b10161405407074d",
+      "hash": "fe5a93118db35cae45adf82cc679f8fad73685219d256688db8d30750794aa04",
+      "size": 53,
+      "revision": 1,
+      "epoch": 1,
+      "role": "draft"
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "22c3f199a3ff4838ae7516cda96837c8",
+      "receipt_id": "13ac579af32a40ed8d7b1f91ae5cb937",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "fa4454885c6b45198a20161ba70d4835",
+      "revision": 1,
+      "acceptance_id": "7e509f7baf604f3aa66fceed1f5d0b55",
+      "specification": "招待文の下書き用テンプレートを作って。日時は{{date}}、場所は{{place}}の空欄にし、送らないで。",
+      "sources": "[\"e948e0708c8f4d0388020fff21e132d4\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 1
+    }
+  ],
+  "artifacts": [
+    "招待文。日時：{{date}}、場所：{{place}}。"
+  ]
+}
+
+LATEST SWE BRANCH B:
+ — bare `answer:` semantics
+
+## B.1 Verdict on the proposal shape
+
+Opus's diagnosis is correct on both ends: latest-Goal routing is a wrong-target regression against the adopted binding requirement, and letting `answer: x` fall through to ordinary conversation is worse (new Goal, model call, cost). The fork is between Opus's *conditional route* and the *notice-only* alternative. My recommendation: **notice-only is the smallest safe contract**, and the conditional route is acceptable only with the cheaper freshness mechanism below — which also requires conceding that "shown" can never mean "human saw".
+
+## B.2 Can the host establish shown-freshness honestly?
+
+No — and the contract must say "emitted", never "displayed" or "seen". Two candidate anchors:
+
+- **`/api/state` responses degenerate.** The UI polls state continuously; "the last response contained this question" is true at essentially all times and proves nothing about what was on screen when the user typed. Do not build freshness on API reads.
+- **The canonical event log does not degenerate.** `deliver()` already turns state transitions into durable assistant records from `events`. The meaningful invariant is: *the most recent state-changing event for this Goal is the `goal.waiting_input` event whose payload carries this `question_id` and current `epoch`.* Any correction, cancel, forget-invalidation, epoch bump, or new question emits a later event and fails the check. This is Opus's "most-recent host-delivered output + unchanged set" expressed in state the host actually owns — the "unchanged set" clause folds in, because every set change is itself an event.
+
+Restart ("question must be shown again") cannot come from durable state — durable events survive restart and would wrongly satisfy freshness. The honest minimal mechanism is an **in-memory "delivered this process" flag** set when `deliver()` emits the `waiting_input` event during the current process lifetime. After restart, pre-existing waits have no fresh emission, so bare answers get the notice while explicit bound answers still work — exactly the required asymmetry. A *durable* delivery-set token is therefore overengineering twice over: it adds a schema for a guarantee events already give, and durability is the opposite of the restart semantics you want.
+
+Residual risk to name honestly: a correction replacing Q1 with Q2 emits the Q2 `waiting_input` event; a user typing an answer meant for Q1 then still binds to Q2. The freshness check cannot fix that — it only narrows the window to "host's canonical story has not changed since emission". That residual is the price of keeping bare routing at all, and it is the strongest argument for notice-only.
+
+## B.3 Atomicity
+
+Whichever variant is chosen, resolution must happen **inside** the control transaction, not in `submit()`'s read-then-send pattern (the current `answer:` path races exactly this way). Contract: a distinct internal action (e.g. `action:'unbound_answer'`) whose `_control` branch re-checks, under the same txn, all of: exactly one `questions` row `status='open'`; its goal `waiting_input` with `question_id`/`epoch`/`revision`/manifest all current; zero diagnostic waits anywhere (goal `waiting_input` with `question_id` lacking a `questions` row — these count toward ambiguity but can never be targets); event-recency and same-process-delivery flag; then delegates to the identical `input` handler so late/duplicate/cancelled/forgotten rejection and the never-reset `answered` cap apply unchanged. Any failed condition → visible notice, no mutation, no model call, no reinterpretation as request.
+
+## B.4 Notice-only (recommended smallest design)
+
+`answer:` is recognized as grammar but never binds. Response: a canned, stored assistant notice listing the explicit answer form and, when ambiguity exists, the candidate open questions; the raw text is recorded as a user record (raw history) but creates no Goal, no question, no control, no provider call. Diagnostic waits keep their existing explicit/diagnostic semantics — the notice points to the diagnostic form. Ineligible-template input has zero open questions → same notice path. This deletes the entire wrong-target class, needs no freshness machinery at all, and costs only the convenience — which the explicit UI forms already provide and which P002's evidence model doesn't use anyway.
+
+## B.5 What needs Opus/human vs what is implementation contract
+
+Needs the D-027 semantics decision and human confirmation (user-visible grammar changes): bare-answer routing vs notice-only; dropping bare resume for diagnostic waits; notice wording; and — if routing is kept — whether the event-recency + same-process-delivery mechanism satisfies Opus's "shown" intent, since it demonstrably cannot mean human perception. Implementation-only (no Opus needed): in-memory delivery flag, notice as a stored canned record, resolving inside `_control`, harness gating.
+
+Frozen tests before any code: Opus's list plus "bare answer while only a diagnostic wait exists", "question emitted pre-restart only" (→ notice), and "`answer:` text must not create a Goal or provider call". Keep the existing shortcut untouched until the decision is recorded and the human confirms — the current path is unsafe but changing it now would preempt the review itself.
+
+STORE write_draft/complete ACTUAL SOURCE:
+    def write_draft(self, attempt_id, content, citations=()):
+        """Host capability: accept bounded text proposal, mint receipt from actual bytes."""
+        error = None
+        receipt = None
+        with self._tx('artifact') as db:
+            attempt = self._active(db, attempt_id)
+            if not attempt:
+                self._reject(db, attempt_id, 'stale artifact')
+                error = StaleResult('stale artifact proposal')
+            else:
+                try:
+                    self._verify_citations(db, attempt, citations)
+                except EvidenceRejected as rejected:
+                    error = rejected
+                criteria = json.loads(db.execute('SELECT criteria FROM acceptances WHERE id=?', (attempt['acceptance_id'],)).fetchone()['criteria'])
+                cap = criteria['max_bytes']
+                if error:
+                    pass
+                elif not isinstance(content, str) or not content.strip() or len(content) > cap:
+                    error = EvidenceRejected('invalid draft type, empty draft, or size bound')
+                elif '\x00' in content or content.startswith('\ufeff'):
+                    error = EvidenceRejected('draft contains forbidden NUL or BOM')
+                else:
+                    try:
+                        body = sanitize(content).encode('utf-8', errors='strict')
+                    except UnicodeError:
+                        error = EvidenceRejected('invalid UTF-8 draft')
+                    if error is None and len(body) > cap:
+                        error = EvidenceRejected('draft exceeds byte bound')
+                if error:
+                    self._reject(db, attempt_id, str(error))
+                else:
+                    digest = hashlib.sha256(body).hexdigest()
+                    old = db.execute('SELECT * FROM receipts WHERE attempt_id=?', (attempt_id,)).fetchone()
+                    if old:
+                        if old['hash'] != digest:
+                            raise Conflict('conflicting artifact for Attempt')
+                        receipt = dict(old)
+                    else:
+                        artifact_id, receipt_id = uid(), uid()
+                        db.execute('INSERT INTO artifacts VALUES (?,?,?,?)', (artifact_id, body, digest, len(body)))
+                        self.fault('artifact.mid_transaction')
+                        db.execute('INSERT INTO receipts(id,attempt_id,artifact_id,hash,size,revision,epoch) VALUES (?,?,?,?,?,?,?)', (receipt_id, attempt_id, artifact_id, digest, len(body), attempt['revision'], attempt['epoch']))
+                        receipt = dict(db.execute('SELECT * FROM receipts WHERE id=?', (receipt_id,)).fetchone())
+        if error:
+            raise error
+        return receipt
+
+    def complete(self, attempt_id, receipt_id):
+        error = None
+        result = None
+        with self._tx('complete') as db:
+            old = db.execute('SELECT * FROM outcomes WHERE attempt_id=?', (attempt_id,)).fetchone()
+            if old:
+                if old['receipt_id'] != receipt_id or old['check_status'] != 'pass':
+                    raise Conflict('conflicting completion')
+                return dict(old)
+            attempt = self._active(db, attempt_id)
+            if not attempt:
+                self._reject(db, attempt_id, 'stale completion')
+                error = StaleResult('stale Attempt completion')
+            else:
+                receipt = db.execute('SELECT * FROM receipts WHERE id=? AND attempt_id=?', (receipt_id, attempt_id)).fetchone()
+                if receipt is not None and receipt['role'] != 'draft':
+                    error = EvidenceRejected('preview receipt cannot complete')
+                elif receipt is None or receipt['revision'] != attempt['revision'] or receipt['epoch'] != attempt['epoch']:
+                    error = EvidenceRejected('missing or mismatched host receipt')
+                else:
+                    artifact = db.execute('SELECT * FROM artifacts WHERE id=?', (receipt['artifact_id'],)).fetchone()
+                    criteria = json.loads(db.execute('SELECT criteria FROM acceptances WHERE id=?', (attempt['acceptance_id'],)).fetchone()['criteria'])
+                    body = bytes(artifact['body'])
+                    try:
+                        text = body.decode('utf-8', errors='strict')
+                    except UnicodeError:
+                        text = ''
+                    if not text.strip() or '\x00' in text or text.startswith('\ufeff') or len(body) > criteria['max_bytes'] or len(body) != receipt['size'] or hashlib.sha256(body).hexdigest() != receipt['hash']:
+                        error = EvidenceRejected('host artifact readback mismatch')
+                if error:
+                    self._reject(db, attempt_id, str(error))
+                else:
+                    changed = db.execute("UPDATE goals SET state='completed',reason='' WHERE id=? AND state='running' AND revision=? AND epoch=?", (attempt['goal_id'], attempt['revision'], attempt['epoch'])).rowcount
+                    if changed != 1:
+                        raise StaleResult('completion CAS failed')
+                    db.execute("UPDATE attempts SET status='pass' WHERE id=? AND status='running'", (attempt_id,))
+                    db.execute("INSERT INTO outcomes VALUES (?,?,'pass','host_utf8_size_hash_readback')", (attempt_id, receipt_id))
+                    self.fault('complete.mid_transaction')
+                    self._event(db, attempt['goal_id'], 'goal.completed', {'attempt_id': attempt_id, 'receipt_id': receipt_id, 'artifact_id': receipt['artifact_id'], 'check_status': 'pass'})
+                    result = dict(db.execute('SELECT * FROM outcomes WHERE attempt_id=?', (attempt_id,)).fetchone())
+        if error:
+            raise error
+        return result
+
+
+TEMPLATE INTAKE SOURCE:
+"""Conservative host eligibility grammar, never model authority or completeness."""
+import re
+
+
+def allows_preview(specification):
+    cue = re.search(r'\b(?:template|blank form)\b|テンプレート|ひな形|雛形', specification, re.IGNORECASE)
+    marker = re.search(r'\{\{[^{}\r\n]{1,128}\}\}|___|＿＿', specification)
+    return bool(cue and marker)

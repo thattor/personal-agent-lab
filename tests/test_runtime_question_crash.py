@@ -45,8 +45,9 @@ class RuntimeQuestionCrashTests(unittest.TestCase):
                     self.assertTrue(runtime.idle.wait(3))
                     goal=runtime.store.get_goal(goal_id)
                     self.assertEqual(goal['state'],'waiting_input')
-                    runtime.submit('answer','Saturday',goal_id=goal_id,control={
+                    ack=runtime.submit('answer','Saturday',goal_id=goal_id,control={
                         'action':'input','text':'Saturday','question_id':goal['question_id'],'epoch':goal['epoch']})
+                    ack['response'].result(timeout=3)
                     self.assertTrue(runtime.idle.wait(3))
                     state=runtime.store.inspect()
                     self.assertEqual(runtime.store.get_goal(goal_id)['state'],'completed')
@@ -55,6 +56,10 @@ class RuntimeQuestionCrashTests(unittest.TestCase):
                     self.assertEqual(len(state['receipts']),1)
                     self.assertEqual(sum(e['kind']=='goal.waiting_input' for e in state['events']),1)
                     self.assertEqual(sum(e['kind']=='goal.completed' for e in state['events']),1)
+                    # Idle concerns the task lane; the independent reply lane can
+                    # still persist a record. Compare replay snapshots only after
+                    # both lanes are quiescent, preserving the whole-store check.
+                    runtime.close()
                     runtime.store.deliver();before=runtime.store.inspect();runtime.store.deliver()
                     self.assertEqual(runtime.store.inspect(),before)
                 finally:

@@ -12,7 +12,7 @@ from contextlib import contextmanager
 from pathlib import Path
 
 from .sanitize import sanitize
-from .template_intake import allows_preview
+from .template_intake import allows_preview, has_unresolved_markers
 from .draft_envelope import validate_placeholders, EnvelopeRejected
 
 
@@ -693,6 +693,12 @@ class Store:
             if row is None or quote not in row['content']:
                 raise EvidenceRejected('citation quote not in stored sanitized source')
 
+    @staticmethod
+    def _unresolved_template(db, attempt, text):
+        revision = db.execute('SELECT template_preview_allowed FROM revisions WHERE goal_id=? AND revision=?',
+                              (attempt['goal_id'], attempt['revision'])).fetchone()
+        return bool(revision['template_preview_allowed']) and has_unresolved_markers(text)
+
     def write_draft(self, attempt_id, content, citations=()):
         """Host capability: accept bounded text proposal, mint receipt from actual bytes."""
         error = None
@@ -722,6 +728,8 @@ class Store:
                         error = EvidenceRejected('invalid UTF-8 draft')
                     if error is None and len(body) > cap:
                         error = EvidenceRejected('draft exceeds byte bound')
+                    if error is None and self._unresolved_template(db, attempt, body.decode('utf-8')):
+                        error = EvidenceRejected('unresolved eligible template cannot be a completed draft')
                 if error:
                     self._reject(db, attempt_id, str(error))
                 else:
@@ -770,6 +778,8 @@ class Store:
                         text = ''
                     if not text.strip() or '\x00' in text or text.startswith('\ufeff') or len(body) > criteria['max_bytes'] or len(body) != receipt['size'] or hashlib.sha256(body).hexdigest() != receipt['hash']:
                         error = EvidenceRejected('host artifact readback mismatch')
+                    elif self._unresolved_template(db, attempt, text):
+                        error = EvidenceRejected('unresolved eligible template cannot complete')
                 if error:
                     self._reject(db, attempt_id, str(error))
                 else:

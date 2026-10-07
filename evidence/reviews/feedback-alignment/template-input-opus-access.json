@@ -1,0 +1,13 @@
+{
+  "verified_at": 1791369325.4847648,
+  "route": "official Claude Opus tool-free review",
+  "logged_in": true,
+  "auth_method": "claude.ai",
+  "subscription": "pro",
+  "usage_view": "existing official authenticated Chrome tab172832922, observed Pro/session44%/week20%, extra usage switch0, purchased credits0/month0/autoreloadOFF; official usage refresh completed, last updated just now",
+  "existing_account_route": true,
+  "paid_fallback": false,
+  "no_extra_charge": true,
+  "no_identifiers_stored": true,
+  "usage_refresh_completed": true
+}

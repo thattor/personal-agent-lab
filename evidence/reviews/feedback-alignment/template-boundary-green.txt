@@ -1,0 +1,10 @@
+test_correction_uses_new_revision_eligibility (test_template_boundary.TemplateBoundaryTests) ... ok
+test_defensive_complete_gate_and_historical_replay (test_template_boundary.TemplateBoundaryTests) ... ok
+test_eligible_markers_reject_before_bytes_then_preview_remains_valid (test_template_boundary.TemplateBoundaryTests) ... ok
+test_filled_template_and_noneligible_literal_braces_are_unchanged (test_template_boundary.TemplateBoundaryTests) ... ok
+test_runtime_complete_markers_end_visible_without_completion (test_template_boundary.TemplateBoundaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.174s
+
+OK
