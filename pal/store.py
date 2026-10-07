@@ -349,7 +349,9 @@ class Store:
                 self._wait(db, goal['id'], 'retry_budget_exhausted')
                 return None
             revision = db.execute('SELECT * FROM revisions WHERE goal_id=? AND revision=?', (goal['id'], goal['revision'])).fetchone()
-            sources = list(dict.fromkeys(list(manifest) + json.loads(revision['sources'])))
+            questions = self._question_bindings(db, goal['id'], goal['revision'])
+            answer_sources = [q['answer_record_id'] for q in questions if q['available']]
+            sources = list(dict.fromkeys(list(manifest) + json.loads(revision['sources']) + answer_sources))
             if not self._usable(db, sources):
                 self._wait(db, goal['id'], 'reference_stopped')
                 return None
@@ -361,7 +363,32 @@ class Store:
             row = dict(db.execute('SELECT * FROM attempts WHERE id=?', (identity,)).fetchone())
             row['specification'] = revision['specification']
             row['criteria'] = json.loads(revision['criteria'])
+            row['questions'] = questions
+            row['template_preview_allowed'] = bool(revision['template_preview_allowed'])
+            row['sources'] = self._source_contents(db, sources)
             return row
+
+    def _question_bindings(self, db, goal_id, revision):
+        rows = db.execute('SELECT q.*,a.manifest FROM questions q JOIN attempts a ON a.id=q.attempt_id WHERE q.goal_id=? AND q.revision=? ORDER BY q.round DESC LIMIT 10', (goal_id, revision)).fetchall()
+        result = []
+        for row in reversed(rows):
+            source_available = self._usable(db, json.loads(row['manifest']))
+            answer_id = row['answer_record_id']
+            available = bool(source_available and row['status'] == 'answered' and answer_id and self._usable(db, [answer_id]))
+            answer = db.execute('SELECT content FROM records WHERE id=?', (answer_id,)).fetchone() if available else None
+            result.append({k: row[k] for k in ('id','attempt_id','goal_id','revision','epoch','round','status','answer_record_id')})
+            result[-1].update(prompt=row['prompt'] if source_available else None,
+                              answer=answer['content'] if answer else None, available=available)
+        return result
+
+    @staticmethod
+    def _source_contents(db, sources):
+        result = []
+        for source in sources:
+            note = source.startswith('note:')
+            row = db.execute('SELECT content' + ('' if note else ',role') + ' FROM ' + ('notes' if note else 'records') + ' WHERE id=?', (source[5:] if note else source,)).fetchone()
+            result.append({'source_id': source, 'role': 'note' if note else row['role'], 'content': row['content']})
+        return result
 
     def _active(self, db, attempt_id):
         row = db.execute('SELECT * FROM attempts WHERE id=?', (attempt_id,)).fetchone()
@@ -426,24 +453,35 @@ class Store:
             raise StaleResult('stale Attempt result')
         return {'attempt_id': attempt_id, 'receipt_id': None, 'check_status': check_status, 'detail': sanitize(reason)}
 
-    def waiting(self, attempt_id, reason):
+    def waiting(self, attempt_id, reason, citations=()):
         with self._tx('waiting') as db:
-            result, error = self._waiting(db, attempt_id, reason)
+            error = self._citation_gate(db, attempt_id, citations)
+            result = None
+            if not error:
+                result, error = self._waiting(db, attempt_id, reason)
         if error:
             raise error
         return result
 
-    def request_clarification(self, attempt_id, reason):
+    def request_clarification(self, attempt_id, reason, citations=()):
         """Choose question or zero-call terminal preview in one canonical transaction."""
         with self._tx('clarification') as db:
-            old = db.execute('SELECT detail FROM outcomes WHERE attempt_id=?', (attempt_id,)).fetchone()
-            if old and old['detail'] == 'clarification_exhausted':
-                result, error = self._finish_preview(db, attempt_id, 'clarification_exhausted')
-            else:
-                try:
+            error = self._citation_gate(db, attempt_id, citations)
+            result = None
+            if not error:
+                question = db.execute('SELECT 1 FROM questions WHERE attempt_id=?', (attempt_id,)).fetchone()
+                old = db.execute('SELECT detail FROM outcomes WHERE attempt_id=?', (attempt_id,)).fetchone()
+                if question:
                     result, error = self._waiting(db, attempt_id, reason)
-                except QuestionBudgetExhausted:
+                elif old:
+                    if old['detail'] != 'clarification_exhausted':
+                        raise Conflict('conflicting clarification outcome')
                     result, error = self._finish_preview(db, attempt_id, 'clarification_exhausted')
+                else:
+                    try:
+                        result, error = self._waiting(db, attempt_id, reason)
+                    except QuestionBudgetExhausted:
+                        result, error = self._finish_preview(db, attempt_id, 'clarification_exhausted')
         if error:
             raise error
         return result
@@ -618,6 +656,17 @@ class Store:
             result['artifacts'] = [dict(r) for r in db.execute('SELECT id,hash,size FROM artifacts')]
             return result
 
+    def _citation_gate(self, db, attempt_id, citations):
+        attempt = db.execute('SELECT * FROM attempts WHERE id=?', (attempt_id,)).fetchone()
+        if attempt is None:
+            return None  # Existing application gate retains the stale rejection.
+        try:
+            self._verify_citations(db, attempt, citations)
+        except EvidenceRejected as error:
+            self._reject(db, attempt_id, str(error))
+            return error
+        return None
+
     def _verify_citations(self, db, attempt, citations):
         """Literal source floor in the application TX, never semantic proof."""
         if not isinstance(citations, (list, tuple)) or len(citations) > 50:
@@ -752,10 +801,13 @@ class Store:
             return {'role': row['role'], 'reason': row['detail'] if row['role'] == 'preview' else '',
                     'stale': not self._usable(db, json.loads(row['manifest']))}
 
-    def finish_preview(self, attempt_id, reason, content=None, missing=None):
+    def finish_preview(self, attempt_id, reason, content=None, missing=None, citations=()):
         """Host-only terminal proposal: canonical eligibility, never Acceptance PASS."""
         with self._tx('preview') as db:
-            result, error = self._finish_preview(db, attempt_id, reason, content, missing)
+            error = self._citation_gate(db, attempt_id, citations)
+            result = None
+            if not error:
+                result, error = self._finish_preview(db, attempt_id, reason, content, missing)
         if error:
             raise error
         return result

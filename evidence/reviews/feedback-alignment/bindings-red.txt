@@ -1,0 +1,37 @@
+test_claim_preserves_bound_answer_after_recent_context_truncation (tests.test_citations.CitationTests) ... ERROR
+test_exact_record_and_prefixed_note_match_stored_sanitized_text (tests.test_citations.CitationTests) ... ok
+test_forget_between_proposal_and_apply_rejects_with_no_bytes (tests.test_citations.CitationTests) ... ok
+test_forgotten_answer_is_metadata_only_and_never_prompt_source (tests.test_citations.CitationTests) ... ERROR
+test_question_and_preview_validate_before_state_or_bytes (tests.test_citations.CitationTests) ... ERROR
+test_unknown_raw_and_malformed_citations_reject_before_artifact (tests.test_citations.CitationTests) ... ok
+
+======================================================================
+ERROR: test_claim_preserves_bound_answer_after_recent_context_truncation (tests.test_citations.CitationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_citations.py", line 67, in test_claim_preserves_bound_answer_after_recent_context_truncation
+    binding = next_attempt['questions'][0]
+KeyError: 'questions'
+
+======================================================================
+ERROR: test_forgotten_answer_is_metadata_only_and_never_prompt_source (tests.test_citations.CitationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_citations.py", line 79, in test_forgotten_answer_is_metadata_only_and_never_prompt_source
+    binding = next_attempt['questions'][0]
+KeyError: 'questions'
+
+======================================================================
+ERROR: test_question_and_preview_validate_before_state_or_bytes (tests.test_citations.CitationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_citations.py", line 50, in test_question_and_preview_validate_before_state_or_bytes
+    with self.assertRaises(EvidenceRejected): call()
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_citations.py", line 47, in <lambda>
+    for call in (lambda: self.store.waiting(self.attempt['id'], 'What date?', citations=bad),
+TypeError: waiting() got an unexpected keyword argument 'citations'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.190s
+
+FAILED (errors=3)
