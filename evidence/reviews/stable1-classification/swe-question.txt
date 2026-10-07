@@ -1,0 +1,245 @@
+Official SWE-2 High implementation-contract review, private thattor/personal-agent-lab. Text-only: no tools, filesystem reads, commands, edits, network or new model/fallback. Host-only canonical SQLite and existing ingress transactional dedupe/outbox/attempt epoch fencing. Issue3 accepted D-021: natural Japanese/English local-draft request recognition, conversation/quotes/hypothetical/negation/deferral/record-only zero Goals; send-only and combined draft+send explicitly rejected with zero Goals. No new task types/model classification calls/schema/permission. Exact English controls handled separately and unchanged this slice. Later Issue4 addresses target binding.
+Proposed concrete contract: pure classify(text) -> draft / conversation / unsupported, independent of canonical state and provider. Conservative explicit request grammar anchored to utterance/direct clause; scoped request negation/deferral/record-only/quotes and reported or hypothetical speech decline mutation. Do not use broad substring guards: 'meeting later this week' and 'まだ日付は未定だが下書きを作って' still request draft. External effect requested vs explicitly prohibited must be distinguished: do not send, sending not requested, 送信しないで allowed local drafts; requested send/combined rejects whole request. Keep Runtime.intent compatibility returning draft or conversation; unsupported stored as conversation (schema unchanged), host returns bilingual explicit limitation without calling model, deterministic classification recomputed from original sanitized ingress for reply/replay, ingress key payload-conflict detection stays original_request. Conversation remains separate lane, no task for unsupported. No arbitrary URLs/tools/actions from content.
+Precommitted corpus 40cases follows. Challenge holes (especially negation scope, quoted payload vs quoted request, unsupported compound, safe misses and replay), recommend smallest safe implementation and tests. Provide a verdict and concrete corrections. Do not generate implementation code yet.
+[
+  {
+    "id": "R01",
+    "category": "request",
+    "text": "Make a draft invitation for a fictional lunch, do not send it.",
+    "expected": "draft"
+  },
+  {
+    "id": "R02",
+    "category": "request",
+    "text": "Please write a draft thank-you note.",
+    "expected": "draft"
+  },
+  {
+    "id": "R03",
+    "category": "request",
+    "text": "Create a draft for a fictional meeting.",
+    "expected": "draft"
+  },
+  {
+    "id": "R04",
+    "category": "request",
+    "text": "Prepare a draft announcement, keep it local.",
+    "expected": "draft"
+  },
+  {
+    "id": "R05",
+    "category": "request",
+    "text": "Draft a short invitation.",
+    "expected": "draft"
+  },
+  {
+    "id": "R06",
+    "category": "request",
+    "text": "Write a draft mentioning that the meeting is later this week.",
+    "expected": "draft"
+  },
+  {
+    "id": "R07",
+    "category": "request",
+    "text": "Please make a draft without sending it.",
+    "expected": "draft"
+  },
+  {
+    "id": "R08",
+    "category": "request",
+    "text": "Make a draft; sending is not requested.",
+    "expected": "draft"
+  },
+  {
+    "id": "R09",
+    "category": "request",
+    "text": "昼食会への招待文の下書きを作って。送信はしないで。",
+    "expected": "draft"
+  },
+  {
+    "id": "R10",
+    "category": "request",
+    "text": "お礼のメールの下書きをお願いします。",
+    "expected": "draft"
+  },
+  {
+    "id": "R11",
+    "category": "request",
+    "text": "架空の会議の案内を下書きにして。",
+    "expected": "draft"
+  },
+  {
+    "id": "R12",
+    "category": "request",
+    "text": "短い招待文を下書きとして書いてください。",
+    "expected": "draft"
+  },
+  {
+    "id": "R13",
+    "category": "request",
+    "text": "下書きを作成してください。",
+    "expected": "draft"
+  },
+  {
+    "id": "R14",
+    "category": "request",
+    "text": "案内メールを下書きしてください。",
+    "expected": "draft"
+  },
+  {
+    "id": "R15",
+    "category": "request",
+    "text": "まだ日付は決まっていませんが、招待文の下書きを作って。",
+    "expected": "draft"
+  },
+  {
+    "id": "R16",
+    "category": "request",
+    "text": "来週の案内の下書きを用意して。",
+    "expected": "draft"
+  },
+  {
+    "id": "N01",
+    "category": "chatter",
+    "text": "Hello again.",
+    "expected": "conversation"
+  },
+  {
+    "id": "N02",
+    "category": "chatter",
+    "text": "下書きって何ですか？",
+    "expected": "conversation"
+  },
+  {
+    "id": "N03",
+    "category": "chatter",
+    "text": "下書きを作るのは難しいですね。",
+    "expected": "conversation"
+  },
+  {
+    "id": "N04",
+    "category": "quotation",
+    "text": "「下書きを作って」と彼が言いました。",
+    "expected": "conversation"
+  },
+  {
+    "id": "N05",
+    "category": "quotation",
+    "text": "He said: make a draft invitation.",
+    "expected": "conversation"
+  },
+  {
+    "id": "N06",
+    "category": "quotation",
+    "text": "What does \"make a draft\" mean?",
+    "expected": "conversation"
+  },
+  {
+    "id": "N07",
+    "category": "hypothetical",
+    "text": "もし下書きを作ってもらうなら、何が必要ですか？",
+    "expected": "conversation"
+  },
+  {
+    "id": "N08",
+    "category": "hypothetical",
+    "text": "If I asked you to make a draft, what would you need?",
+    "expected": "conversation"
+  },
+  {
+    "id": "N09",
+    "category": "hypothetical",
+    "text": "Would making a draft be useful?",
+    "expected": "conversation"
+  },
+  {
+    "id": "N10",
+    "category": "negation",
+    "text": "下書きは作らないでください。",
+    "expected": "conversation"
+  },
+  {
+    "id": "N11",
+    "category": "negation",
+    "text": "Do not make a draft.",
+    "expected": "conversation"
+  },
+  {
+    "id": "N12",
+    "category": "negation",
+    "text": "Please do not write a draft.",
+    "expected": "conversation"
+  },
+  {
+    "id": "N13",
+    "category": "deferral",
+    "text": "下書きを作ってほしいけど、今はまだ実行しないで。",
+    "expected": "conversation"
+  },
+  {
+    "id": "N14",
+    "category": "deferral",
+    "text": "Not yet: make a draft invitation.",
+    "expected": "conversation"
+  },
+  {
+    "id": "N15",
+    "category": "deferral",
+    "text": "Make a draft later, not now.",
+    "expected": "conversation"
+  },
+  {
+    "id": "N16",
+    "category": "record_only",
+    "text": "記録だけ：下書きを作ってほしいと思っている。",
+    "expected": "conversation"
+  },
+  {
+    "id": "N17",
+    "category": "record_only",
+    "text": "Record only: make a draft invitation.",
+    "expected": "conversation"
+  },
+  {
+    "id": "N18",
+    "category": "record_only",
+    "text": "覚えておいて。下書きを作成する予定です。",
+    "expected": "conversation"
+  },
+  {
+    "id": "N19",
+    "category": "send_only",
+    "text": "このメールを送信してください。",
+    "expected": "unsupported"
+  },
+  {
+    "id": "N20",
+    "category": "send_only",
+    "text": "Send this email now.",
+    "expected": "unsupported"
+  },
+  {
+    "id": "N21",
+    "category": "send_only",
+    "text": "Please send the invitation.",
+    "expected": "unsupported"
+  },
+  {
+    "id": "N22",
+    "category": "combined",
+    "text": "招待文の下書きを作って、そのまま送信して。",
+    "expected": "unsupported"
+  },
+  {
+    "id": "N23",
+    "category": "combined",
+    "text": "Make a draft invitation and send it.",
+    "expected": "unsupported"
+  },
+  {
+    "id": "N24",
+    "category": "combined",
+    "text": "Please write a draft then email it to the recipient.",
+    "expected": "unsupported"
+  }
+]

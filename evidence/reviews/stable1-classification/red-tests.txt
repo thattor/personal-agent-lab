@@ -1,0 +1,236 @@
+test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) ... test_unsupported_reply_replayed_without_provider_or_work (tests.test_ingress_classification.IngressClassificationTests) ... FAIL
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='R06')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 23, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(len(goals), 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='R11')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 23, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(len(goals), 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='R12')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 23, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(len(goals), 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='R14')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 23, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(len(goals), 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='R15')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 23, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(len(goals), 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='R16')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 23, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(len(goals), 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='N04')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 29, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(goals, [])
+AssertionError: Lists differ: [{'seq': 1, 'id': '4871805d88354bfd8902be0[189 chars]: 0}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'seq': 1, 'id': '4871805d88354bfd8902be028a3dcbf9', 'state': 'queued', 'revision': 1, 'acceptance_id': '9651a6953f1b4c14b2ed18bf5f5c2d0f', 'epoch': 0, 'budget': 3, 'total_claims': 0, 'reason': '', 'question_id': None, 'ambiguity': 0}
+
++ []
+- [{'acceptance_id': '9651a6953f1b4c14b2ed18bf5f5c2d0f',
+-   'ambiguity': 0,
+-   'budget': 3,
+-   'epoch': 0,
+-   'id': '4871805d88354bfd8902be028a3dcbf9',
+-   'question_id': None,
+-   'reason': '',
+-   'revision': 1,
+-   'seq': 1,
+-   'state': 'queued',
+-   'total_claims': 0}]
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='N07')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 29, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(goals, [])
+AssertionError: Lists differ: [{'seq': 1, 'id': 'fe43081fe2d441eeb9fe4d8[189 chars]: 0}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'seq': 1, 'id': 'fe43081fe2d441eeb9fe4d86311645f1', 'state': 'queued', 'revision': 1, 'acceptance_id': '14f6ad6ccbc64f598254671777f26d6d', 'epoch': 0, 'budget': 3, 'total_claims': 0, 'reason': '', 'question_id': None, 'ambiguity': 0}
+
++ []
+- [{'acceptance_id': '14f6ad6ccbc64f598254671777f26d6d',
+-   'ambiguity': 0,
+-   'budget': 3,
+-   'epoch': 0,
+-   'id': 'fe43081fe2d441eeb9fe4d86311645f1',
+-   'question_id': None,
+-   'reason': '',
+-   'revision': 1,
+-   'seq': 1,
+-   'state': 'queued',
+-   'total_claims': 0}]
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='N18')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 29, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(goals, [])
+AssertionError: Lists differ: [{'seq': 1, 'id': 'b501beb93f7d4fb2bc64016[192 chars]: 0}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'seq': 1, 'id': 'b501beb93f7d4fb2bc6401600921c925', 'state': 'completed', 'revision': 1, 'acceptance_id': 'ee854bd7f9b1426e88153177355917ca', 'epoch': 1, 'budget': 2, 'total_claims': 1, 'reason': '', 'question_id': None, 'ambiguity': 0}
+
++ []
+- [{'acceptance_id': 'ee854bd7f9b1426e88153177355917ca',
+-   'ambiguity': 0,
+-   'budget': 2,
+-   'epoch': 1,
+-   'id': 'b501beb93f7d4fb2bc6401600921c925',
+-   'question_id': None,
+-   'reason': '',
+-   'revision': 1,
+-   'seq': 1,
+-   'state': 'completed',
+-   'total_claims': 1}]
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='N19')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 32, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertIn('cannot send', reply['content'])
+AssertionError: 'cannot send' not found in 'I have recorded your message. This response uses the mock provider.'
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='N20')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 32, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertIn('cannot send', reply['content'])
+AssertionError: 'cannot send' not found in 'I have recorded your message. This response uses the mock provider.'
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='N21')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 32, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertIn('cannot send', reply['content'])
+AssertionError: 'cannot send' not found in 'I have recorded your message. This response uses the mock provider.'
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='N22')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 29, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(goals, [])
+AssertionError: Lists differ: [{'seq': 1, 'id': '88d95a5e1ce54ebcbce4695[192 chars]: 0}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'seq': 1, 'id': '88d95a5e1ce54ebcbce4695f64ec1fa9', 'state': 'completed', 'revision': 1, 'acceptance_id': 'a78136811ca6439dbdd88f4009944347', 'epoch': 1, 'budget': 2, 'total_claims': 1, 'reason': '', 'question_id': None, 'ambiguity': 0}
+
++ []
+- [{'acceptance_id': 'a78136811ca6439dbdd88f4009944347',
+-   'ambiguity': 0,
+-   'budget': 2,
+-   'epoch': 1,
+-   'id': '88d95a5e1ce54ebcbce4695f64ec1fa9',
+-   'question_id': None,
+-   'reason': '',
+-   'revision': 1,
+-   'seq': 1,
+-   'state': 'completed',
+-   'total_claims': 1}]
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='N23')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 29, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(goals, [])
+AssertionError: Lists differ: [{'seq': 1, 'id': 'f7b9c7e06a8249b1bd0b328[189 chars]: 0}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'seq': 1, 'id': 'f7b9c7e06a8249b1bd0b328c437f9404', 'state': 'queued', 'revision': 1, 'acceptance_id': '666e2574f7d74160a50d4f6db26fdf05', 'epoch': 0, 'budget': 3, 'total_claims': 0, 'reason': '', 'question_id': None, 'ambiguity': 0}
+
++ []
+- [{'acceptance_id': '666e2574f7d74160a50d4f6db26fdf05',
+-   'ambiguity': 0,
+-   'budget': 3,
+-   'epoch': 0,
+-   'id': 'f7b9c7e06a8249b1bd0b328c437f9404',
+-   'question_id': None,
+-   'reason': '',
+-   'revision': 1,
+-   'seq': 1,
+-   'state': 'queued',
+-   'total_claims': 0}]
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='N24')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 29, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(goals, [])
+AssertionError: Lists differ: [{'seq': 1, 'id': '0e46b313cbc54422894d7b7[192 chars]: 0}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'seq': 1, 'id': '0e46b313cbc54422894d7b78b8263f97', 'state': 'completed', 'revision': 1, 'acceptance_id': '3e43a5e05ab94138b85e80b8156500ff', 'epoch': 1, 'budget': 2, 'total_claims': 1, 'reason': '', 'question_id': None, 'ambiguity': 0}
+
++ []
+- [{'acceptance_id': '3e43a5e05ab94138b85e80b8156500ff',
+-   'ambiguity': 0,
+-   'budget': 2,
+-   'epoch': 1,
+-   'id': '0e46b313cbc54422894d7b78b8263f97',
+-   'question_id': None,
+-   'reason': '',
+-   'revision': 1,
+-   'seq': 1,
+-   'state': 'completed',
+-   'total_claims': 1}]
+
+======================================================================
+FAIL: test_unsupported_reply_replayed_without_provider_or_work (tests.test_ingress_classification.IngressClassificationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 47, in test_unsupported_reply_replayed_without_provider_or_work
+    self.assertIn('cannot send', first['content'])
+AssertionError: 'cannot send' not found in 'Work recorded. Current canonical state: failed.'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.469s
+
+FAILED (failures=16)

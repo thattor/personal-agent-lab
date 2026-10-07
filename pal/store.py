@@ -569,10 +569,15 @@ class Store:
                 raise ValueError('unknown artifact')
             return bytes(row['body'])
 
-    def ingress(self, key, content, intent='conversation', goal_id=None, control=None, request=None):
+    def ingress(self, key, content, intent='conversation', goal_id=None, control=None, request=None,
+                classification=None, classifier_version=None):
         content = sanitize(content)
         if intent not in ('conversation', 'draft', 'control', 'forget'):
             raise ValueError('unsupported ingress intent')
+        if classification is not None and (classification not in ('draft', 'conversation', 'unsupported')
+                or intent != ('draft' if classification == 'draft' else 'conversation')
+                or not isinstance(classifier_version, str) or not classifier_version):
+            raise ValueError('invalid host classification')
         with self._tx('ingress') as db:
             digest, old = self._dedupe(db, key, 'ingress', request if request is not None else [content, intent, goal_id, control])
             if old is not None:
@@ -592,6 +597,8 @@ class Store:
                     raise ValueError('control requires Goal and action')
                 goal = self._control(db, 'action:' + key, goal_id, **control)
             result = {'record_id': record_id, 'goal': goal, 'intent': intent}
+            if classification is not None:
+                result.update(classification=classification, classifier_version=classifier_version)
             if intent in ('control','forget'):
                 result['action']='forget' if intent=='forget' else control['action']
             return self._remember(db, key, 'ingress', digest, result)

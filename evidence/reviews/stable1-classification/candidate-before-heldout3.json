@@ -1,0 +1,14 @@
+{
+  "fixed_at": "2026-10-07T04:36:35.011349+00:00",
+  "base": "35c8390",
+  "source_sha256": {
+    "pal/classification.py": "49b6205b369b54121177c02e3dc60413cefd11a4bfa9c72ec102f2027dd76319",
+    "pal/runtime.py": "62945f55510396808ec836b5c2333cc19d0a6dfba0a2c24b17ac7c3a7b6e2878",
+    "pal/store.py": "bed6af8966411d565ac138488db65304a5ceba79a6a8c1921d936791d3c48fc2",
+    "tests/test_ingress_classification.py": "c57648fdbb030769d6c645b59898e254aa9bd651a65fd3a59623aaddb5573ab8",
+    "tests/fixtures/stable1_ingress_v1.json": "38a637bf0c3cd5e848867738525c78b871c38f47a9ab0fd401892ebc6f0bb457",
+    "tests/fixtures/stable1_ingress_edges_v1.json": "db8abfda48a484c769aba02651b1a57f3fb7bd6b2084e80004003fad76544610"
+  },
+  "full_tests": "73 PASS final-full.txt",
+  "heldout_opened": false
+}

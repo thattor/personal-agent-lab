@@ -1,0 +1,16 @@
+```json
+[
+  {"id": "J01", "category": "draft_ja_send_prohibition", "text": "来週の定例会の議事録のたたき台を作ってください。送信はしないでください。", "expected": "draft"},
+  {"id": "J02", "category": "draft_en_user_sends_self", "text": "Please draft a short thank-you note to the facilities team; I'll send it myself later.", "expected": "draft"},
+  {"id": "J03", "category": "draft_ja_polite_request", "text": "取引先への納期延長のお願いメールの下書きを書いてもらえますか。", "expected": "draft"},
+  {"id": "J04", "category": "draft_en_no_share", "text": "Could you write a draft of a one-page project status summary for my manager? Don't send or share it anywhere.", "expected": "draft"},
+  {"id": "J05", "category": "reporting_past", "text": "Yesterday my colleague asked me to draft a budget memo, and I finished it this morning.", "expected": "conversation"},
+  {"id": "J06", "category": "first_person_desire_ja", "text": "そのうち自分で退職届の下書きを書きたいと思っている。", "expected": "conversation"},
+  {"id": "J07", "category": "action_deferral_across_clauses", "text": "I'll need a cover letter draft eventually, but don't write anything yet — I'll tell you when.", "expected": "conversation"},
+  {"id": "J08", "category": "quotation_ja", "text": "上司に『報告書の下書きを作って』と言われたんだけど、どう思う？", "expected": "conversation"},
+  {"id": "J09", "category": "negation_cancel", "text": "Don't draft the apology email; I decided not to send one at all.", "expected": "conversation"},
+  {"id": "J10", "category": "external_effect_compound_en", "text": "Draft an invitation email for Friday's team lunch and send it to everyone on the team.", "expected": "unsupported"},
+  {"id": "J11", "category": "external_effect_compound_ja", "text": "見積書の下書きを作って、そのまま先方にFAXで送っておいて。", "expected": "unsupported"},
+  {"id": "J12", "category": "edit_existing_draft", "text": "In the draft you made earlier, change the second paragraph to sound more formal.", "expected": "conversation"}
+]
+```

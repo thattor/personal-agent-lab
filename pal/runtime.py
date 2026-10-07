@@ -3,13 +3,13 @@ import fcntl
 import json
 import os
 import time
-import re
 import threading
 from concurrent.futures import ThreadPoolExecutor, Future
 from dataclasses import dataclass
 from pathlib import Path
 
 from .sanitize import sanitize
+from .classification import classify, VERSION as CLASSIFIER_VERSION, UNSUPPORTED_REPLY
 from .store import Store, StaleResult, EvidenceRejected
 
 
@@ -91,12 +91,7 @@ class Runtime:
 
     @staticmethod
     def intent(text):
-        lower = text.lower().strip()
-        if any(term in lower for term in ('record only', 'not yet', 'later', 'まだ', '記録だけ')):
-            return 'conversation'
-        if re.match(r'^(?:make|create|write|prepare|please (?:make|create|write|prepare))\b.*\bdraft\b', lower) or lower.startswith('draft ') or ('下書き' in lower and any(term in lower for term in ('作って','作成','お願い'))):
-            return 'draft'
-        return 'conversation'
+        return 'draft' if classify(sanitize(text)) == 'draft' else 'conversation'
 
     def _latest_goal(self):
         goals = self.store.inspect()['goals']
@@ -136,8 +131,10 @@ class Runtime:
             goal_id = self._latest_goal()
             if goal_id:
                 control = {'action':'correct','text':text.partition(':')[2].strip()}
-        intent = 'forget' if forget else ('control' if control is not None else self.intent(text))
-        result = self.store.ingress(key, text, intent, goal_id, control, request=original_request)
+        classification = None if control is not None else classify(text)
+        intent = 'forget' if forget else ('control' if control is not None else ('draft' if classification == 'draft' else 'conversation'))
+        result = self.store.ingress(key, text, intent, goal_id, control, request=original_request,
+                                  classification=classification, classifier_version=CLASSIFIER_VERSION)
         if lower.startswith('remember ') or '覚えて' in text:
             self.store.note('memory:' + key, text, [result['record_id']])
         if result['goal']:
@@ -159,6 +156,8 @@ class Runtime:
             content = 'Reference stopped. Raw history remains available in Inspect.'
         elif ingress['goal']:
             content = 'Work recorded. Current canonical state: ' + self.store.get_goal(ingress['goal']['id'])['state'] + '.'
+        elif ingress.get('classification') == 'unsupported':
+            content = UNSUPPORTED_REPLY
         elif any(term in text.lower() for term in ('what happened','previous thing','work status','進捗','どうなった')) and self._latest_goal():
             current=self.store.get_goal(self._latest_goal())
             content='Current work is '+current['state']+'.'+(' Reason: '+current['reason'] if current['reason'] else '')

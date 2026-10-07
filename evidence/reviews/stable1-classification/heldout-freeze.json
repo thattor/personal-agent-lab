@@ -1,0 +1,10 @@
+{
+  "frozen_at": "2026-10-07T04:27:11.379915+00:00",
+  "reviewer": "official Claude Opus, independent synthetic generation",
+  "count": 12,
+  "sha256": "c8c12587391b7ea38fc6394ae5422f22cc1a0fde5b966743ae43f97f578abb34",
+  "file": "evidence/reviews/stable1-classification/heldout-sealed.json",
+  "opened": true,
+  "candidate": "candidate-before-heldout.json",
+  "opened_at": "2026-10-07T04:32:10.718270+00:00"
+}

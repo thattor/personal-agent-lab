@@ -1,0 +1,48 @@
+test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) ... test_unsupported_reply_replayed_without_provider_or_work (tests.test_ingress_classification.IngressClassificationTests) ... ok
+test_conversation_independent_of_slow_attempt_and_controls_immediate (tests.test_runtime.RuntimeTests) ... ok
+test_default_mock_local_draft_end_to_end (tests.test_runtime.RuntimeTests) ... ok
+test_forgotten_source_excludes_transitive_derived_responses (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_normal_conversation_and_explicit_limits_do_not_create_goals (tests.test_runtime.RuntimeTests) ... ok
+test_second_host_fails_fast_and_recovery_runs_only_at_startup (tests.test_runtime.RuntimeTests) ... ok
+test_secret_canary_is_absent_from_captured_provider_prompts (tests.test_runtime.RuntimeTests) ... ok
+test_status_uses_canonical_state_instead_of_old_handoff_memory (tests.test_runtime.RuntimeTests) ... ok
+test_workorder_has_no_store_path_credentials_or_mutation (tests.test_runtime.RuntimeTests) ... ok
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='E11')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 30, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(goals, [])
+AssertionError: Lists differ: [{'seq': 1, 'id': '18fc63f2f43d4a5599bbc23[192 chars]: 0}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'seq': 1, 'id': '18fc63f2f43d4a5599bbc23ed10e378f', 'state': 'completed', 'revision': 1, 'acceptance_id': '1ba09043b9f04295a64f0dfb50d061c0', 'epoch': 1, 'budget': 2, 'total_claims': 1, 'reason': '', 'question_id': None, 'ambiguity': 0}
+
++ []
+- [{'acceptance_id': '1ba09043b9f04295a64f0dfb50d061c0',
+-   'ambiguity': 0,
+-   'budget': 2,
+-   'epoch': 1,
+-   'id': '18fc63f2f43d4a5599bbc23ed10e378f',
+-   'question_id': None,
+-   'reason': '',
+-   'revision': 1,
+-   'seq': 1,
+-   'state': 'completed',
+-   'total_claims': 1}]
+
+======================================================================
+FAIL: test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) (case='E16')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 24, in test_frozen_corpus_creates_only_requested_local_goals
+    self.assertEqual(len(goals), 1)
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.036s
+
+FAILED (failures=2)

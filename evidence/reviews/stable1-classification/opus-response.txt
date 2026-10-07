@@ -1,0 +1,70 @@
+VERDICT: Approve with required corrections. The contract has the right shape: a pure classify(text) returning draft, conversation or unsupported, with no state or provider dependency, no schema or permission change, unsupported stored as conversation, a fixed bilingual limitation reply with no model call, and ingress dedupe and fencing unchanged. Several holes would let a draft Goal be created wrongly, or let a send request become a draft, unless precedence and scoping are made explicit.
+
+1. PRECEDENCE (required). Define one total, documented order:
+(a) Exact English controls run first and never reach classify. Add a regression test that every control string produces the same result before and after this change.
+(b) Frame-level decline returns conversation. This covers record-only, deferral of the agent action, hypothetical or conditional framing, reported or quoted request, meta-questions about the request, and capability questions.
+(c) Any agent-directed external-effect request returns unsupported. This applies even when the draft request is negated, e.g. 'no draft, just send'.
+(d) An explicit, non-negated, agent-directed draft request returns draft.
+(e) Everything else returns conversation.
+Within this order, a frame decline must win over send, so 'record only: send X' is conversation. Safe-miss policy: when unsure between draft and conversation, pick conversation; when unsure between draft and unsupported, pick unsupported. Never resolve uncertainty toward draft.
+
+2. NEGATION SCOPE (required). Bind negation to the specific verb in its own clause, not to the whole utterance.
+- Local drafting stays allowed with send-prohibitions such as 'do not send', 'without sending', 'sending not requested', '送信しないで', 'まだ送らないで'.
+- A negated draft verb with no other request returns conversation.
+- These still count as send requests and return unsupported: deferred sends ('don't send yet, send it tomorrow'), 'don't forget to send', and conditional sends ('作ったら送って').
+- First-person user sends ('I'll send it myself') are not agent requests. They are allowed with a draft.
+- Japanese: distinguish 〜しないで (prohibition) from 〜しないでおいて followed by a later send imperative.
+- Treat double or ambiguous negation as conversation.
+
+3. QUOTED PAYLOAD vs QUOTED REQUEST (required).
+- A quote whose surrounding frame is a report ('he said', '〜と言いました', 'texted me') or a meta-question ('what does X mean') returns conversation. Any imperative inside such a quote is never executed.
+- A quote that is the content object of an outer agent-directed draft imperative is payload. Send verbs inside it are content, so the result is draft.
+- Send verbs in a third-party complement clause ('a note asking them to send the slides') are payload, not agent requests.
+- Normalize quote forms before parsing: straight quotes, curly quotes, 「」, 『』, and colon-introduced speech.
+- Unbalanced or nested quotes return conversation.
+
+4. UNSUPPORTED LEXICON (required). Do not limit this to the word 'send'. Cover email/mail it, forward, reply-to-recipient, post, publish, share, submit, deliver, upload, schedule-send, cc, and 送信, 送って, 転送, 投稿, 共有, 返信して, メールして, 提出. Include sending to the user's own address.
+- 'Send the draft' or '下書きを送って' is unsupported.
+- Noun uses must not trigger unsupported: 'draft reply', 'a forwardable note'.
+- Non-draft, non-external actions (booking, deleting) stay conversation as today. Flag this as a known gap: the conversation model must not claim to have performed them.
+- Edit, show or revise an existing draft ('下書きを直して') must NOT create a new Goal. Return conversation until Issue4 adds target binding.
+
+5. REQUEST GRAMMAR GAPS (required). Add coverage for:
+- Polite question requests: 'Can/Could you draft…', '〜してもらえますか', 'お願いできますか'. These are draft.
+- Capability questions: '作れますか?', 'are you able to draft'. These are conversation.
+- Desire forms: '〜てほしいです' and "I'd like you to draft" are draft. 'I want to write a draft' (user is the actor) is conversation.
+- Greeting plus request across sentences is draft.
+- Non-document senses of 'draft' (beer, sports draft, airflow) are conversation.
+- Deferral must attach to the agent action, not the payload. 'Draft it tomorrow' and '来月になったら作って' are conversation. 'Draft an invite for tomorrow' and '来週の案内' are draft.
+- Sentence segmentation must handle 。！？ and full-width punctuation.
+
+6. SANITIZATION / DETERMINISM (required).
+- Classify only the sanitized text: NFKC, case-fold, strip zero-width and bidi controls, unify quotes, apply a length cap. Over-length input returns conversation.
+- Put a classifier version constant in the module.
+
+7. REPLAY (required).
+- On replay, the stored outcome is authoritative for mutation. A recomputed draft must never create a Goal when the original transaction created none, and vice versa. The outbox and Goal row decide.
+- Recompute only to rebuild reply text. If the classifier version has changed and the recomputed class differs from the stored effect, emit the stored-effect reply. Do not let reply text claim a draft that does not exist, and do not refuse a draft that does exist.
+- Payload-conflict detection stays on original_request as proposed. Test that whitespace or Unicode variants differing only after sanitization still conflict, or still match, exactly as today.
+
+8. UNSUPPORTED PATH (required).
+- The reply is a fixed bilingual string that does not echo user content, with zero model calls and zero Goals.
+- No URLs, tools or recipients extracted from the content.
+- Must commit atomically with the existing dedupe, outbox and epoch fencing; there must be no path where classification runs after the fence check against different text.
+
+9. SMALLEST SAFE IMPLEMENTATION.
+- One pure module with ordered stages: normalize, segment, then frame-decline detection, agent-directed external-effect detection with clause-scoped negation, and draft detection with clause-scoped negation. Use a fixed lexicon and anchored patterns only. No ML, no model call.
+- Runtime.intent maps unsupported to conversation for storage.
+- One host branch emits the fixed reply.
+
+TESTS:
+- The 40-case corpus as a table test, unchanged.
+- About 15 added cases covering the gaps in sections 2 to 5.
+- Purity test: no IO, monkeypatched provider asserts it is never called.
+- Idempotence and invariance tests: NFKC, full-width, smart-quote, zero-width variants give the same class.
+- Host integration tests: unsupported yields zero Goals, zero model calls and the bilingual reply. Draft yields exactly one Goal. Conversation and negation cases yield zero Goals.
+- Replay test: the same ingress key returns the identical reply with no new Goal, including after a simulated classifier version bump.
+- Control-string regression test.
+- Held-out set evaluated once after the source and test hashes are frozen. Any held-out miss in the draft direction is a release blocker; a miss toward conversation or unsupported is a recorded safe miss.
+
+Corpus note: all 40 expectations are consistent with the precedence above. The corpus under-tests polite questions, payload quotes containing send, first-person send, revise-existing, and noun-sense 'draft'.

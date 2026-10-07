@@ -1,0 +1,165 @@
+## Verdict
+
+**Adopt with corrections.** The architecture is right: a pure `classify(text)`, fail-closed toward zero Goals, host-issued limitation replies, unchanged schema, dedupe/fencing untouched. But the contract as written has five exploitable holes — quote masking must precede *both* detectors, reported speech cannot be quote-dependent, the compound rule is underspecified, polarity/deferral must bind to predicates rather than text spans, and replay-determinism needs a version pin. The 40-case corpus is a good seed but not yet "precommitted": it has zero quoted-payload cases and misses the Japanese desiderative trap, which is the single most likely false-positive in production.
+
+Below: holes, corrections, corpus additions, smallest-safe shape, required tests.
+
+---
+
+## Holes and corrections
+
+### C1 — Quote masking must run before send-detection, not just request grammar
+
+The contract says quotes decline mutation, but does not state when masking happens relative to the *external-effect* detector. If send-detection scans raw text:
+
+```
+下書きに「送信してください」と書いて   → wrongly unsupported
+Write a draft that says "please send it"  → wrongly unsupported
+```
+
+Both are legitimate draft requests with quoted payload. **Correction:** one masking pass, shared by request-grammar and effect-detection. Detectors only see the unmasked skeleton. Quoted spans are payload — opaque, never classified.
+
+Related hole: `"make a draft" is a strange phrase` — request-shaped material exists only inside the mask → conversation. Good, that's the demotion rule you described. State both directions explicitly: *mask demotes quoted requests; mask preserves quoted payload under an outer request.*
+
+### C2 — Reported speech without quotes; quotes without reported speech
+
+N05 (`He said: make a draft invitation.`) has **no quote marks**. A quote-mask-only implementation fails it. The demotion trigger must be the *reporting clause* (said / told me / asked me / 言った・言いました・頼まれた・書いてあった・聞かれた), with or without quotation marks.
+
+Conversely, quotation without a reporting verb is not demotion: `下書きに「来週火曜」と書いて` is a draft request with a quoted title. Rule: demote when the request form is inside a quoted span **or** governed by a reporting predicate; never demote the outer clause because it *contains* a quote.
+
+Also cover reported imperative without quotes: `He said to make a draft` / 「作ってと言われた」 → conversation.
+
+### C3 — Two asymmetric fail directions; make the compound rule explicit
+
+The contract says "conservative" once, but the safe direction differs by axis. State it as:
+
+- **draft vs. conversation:** draft requires a *confident* affirmative addressee-directed request. Any scope ambiguity → conversation (safe miss, user rephrases).
+- **anything vs. unsupported:** any affirmative requested-external-effect clause → unsupported, including ambiguous ones (`Could you send it?`, `send it when I confirm`), even compounded with a valid draft request.
+
+And the compound rule needs one sentence the contract currently lacks: **in any utterance containing an affirmative draft request, every sibling imperative clause must classify as draft-constraint, meta/politeness, or prohibited-effect; otherwise the whole request is unsupported.** This is what makes `make a draft and summarize it` fail honestly instead of silently dropping half the intent. `送信は後で頼む` (deferred send) → unsupported; `後で作って` (deferred draft) → conversation. Deferral outcome depends on which predicate it binds — see C4.
+
+Decide and record the singleton boundary: `Please summarize this` or `Book a flight` — recommend **conversation** (Responder declines naturally; no verb ontology needed beyond a small external-effect whitelist). Only *compounds containing a draft request* fail-closed to unsupported, plus singleton external-effect requests. This keeps the grammar finite.
+
+### C4 — Negation, deferral, and conditionals bind to predicates, not spans
+
+Per-clause polarity is required. The failure modes:
+
+- `Do not make a draft — send it directly` → unsupported (draft negated, send affirmative). Prohibition-detection on `not` proximity fails here.
+- `Don't send it, but do make a draft` → draft. Order-insensitive per-clause polarity handles it.
+- `Make a draft, and send it later` → unsupported. Deferred send is still a requested external effect. Distinguish from N15 (`later` bound to the *draft* verb → conversation).
+- `Don't make a draft unless you send it` → unsupported: `unless` + send = conditional requested effect.
+- `Do not make a draft without telling me` → conversation (draft negated; `tell me` is meta).
+- Japanese is morphologically friendlier — 〜ないで・〜なくて・〜ずに・〜ませんで attach to their own verb — but only if you segment clauses (て/、/が/けど boundaries) and check the *request clause's* polarity, never substring `ない`. `送信しないで、下書きを作って` → draft. `下書きも作らないで` → conversation.
+- Deferral lexicon (`not now`, `not yet`, `later`, `あとで`, `今はまだ`, `まだ〜ない`) must bind to the request predicate. `meeting later this week` (R06) is noun-bound payload → draft. Utterance-initial markers (`Not yet:`, N14) scope the whole utterance. Where binding is genuinely ambiguous (`Write a draft later this week`) → conversation, which coincides with the deferral outcome anyway, so the ambiguity is free.
+- `作らなくていい` / `No need to make a draft` — negative necessity → conversation. Add to the negation inventory explicitly; it's not morphologically a negated imperative.
+
+### C5 — First-person desire is not a request (the biggest Japanese trap)
+
+Corpus has zero cases of this, and it will be the most common real-world false positive:
+
+```
+下書きを作りたいんだけど      → conversation (speaker's desire)
+下書きを作るつもりです        → conversation (speaker's intent)
+下書きを作成する予定です      → conversation (N18 second clause — already covered implicitly)
+I want to make a draft       → conversation
+I'm going to make a draft    → conversation
+```
+
+vs. addressee-directed: 〜て(ください)・〜てほしい・〜てくれる・〜てもらえる・〜をお願い・`make/write/draft` imperative・`I need you to…`. The grammar must distinguish desiderative/plan morphology (〜たい・つもり・予定, first-person `want/plan`) from request morphology. N13's `ほしいけど` works *because* ほしい is addressee-directed desire — but concessive + deferral still declines. Make the subject/mood rule explicit.
+
+Also decide and record: **modal questions as indirect requests.** `Can you make a draft?` → draft; `Could you send this?` → unsupported; `Would making a draft be useful?` (N09) → conversation because it's not addressed as a request to perform. Without an explicit rule, English interrogative requests are a coin flip.
+
+### C6 — Contradiction and self-correction in one utterance
+
+`Make a draft; actually, don't` and `下書きを作って。やっぱりやめて` → conversation. A negated request clause that matches an earlier affirmative request cancels it (zero Goals). This is the within-utterance slice of D-021's correction semantics — worth one line in the contract and two corpus cases.
+
+### C7 — Replay determinism needs a version pin or a persisted result
+
+"Recomputed from original sanitized ingress" is the right integrity property but drifts: if sanitize or grammar changes next month, replay of old ingress yields a different classification. Pick one, record it:
+
+- **Persist** the classification result + `CLASSIFIER_VERSION` on the ingress row in the same transaction (recompute then serves as verification), or
+- Pin `sanitize` and grammar under a version constant and accept that replay across versions is undefined.
+
+Recommend persisting — it also means the unsupported→conversation storage stays honest (the stored enum is conversation, the receipt records the real outcome).
+
+### C8 — Unsupported rejections should emit a host observation/receipt
+
+Storing unsupported as conversation is fine, but then nothing distinguishes an honest limitation from chatter. Emit a host-issued observation/receipt for the rejection — authoritative evidence per AGENTS.md, no schema change. The bilingual limitation reply must be a fixed template (no model), and on replay the recomputed classification (or persisted receipt) must reproduce it — not a conversational answer.
+
+### C9 — Specify sanitize precisely
+
+`classify` is only deterministic if `sanitize` is. Minimum spec: NFKC, zero-width/invisible char stripping, whitespace collapse, English lowercase copy *for matching only* (payload untouched), unification of 「」『』/""/'' into canonical quote markers before masking. Half-width/full-width kana and punctuation normalization are non-optional for Japanese.
+
+### C10 — External-effect verb set is a whitelist; contents are payload
+
+Send/email/forward/deliver/post/publish/share/upload/送信/送る/配信/共有/投稿 — finite list, imperative-or-request mood only, second-person/direct clause only. `I will send it` (first-person declarative) is payload. `Make a draft about sending invitations` — `sending` as gerund/payload → draft. `招待メールを送る予定の話を下書きにして` → draft. Clause-scope + mood + subject, never raw verb presence.
+
+---
+
+## Corpus gaps — add ~16 cases
+
+The corpus has **no quoted-payload cases at all** — the exact hole C1 describes. Add:
+
+| # | text | expected | exercises |
+|---|------|----------|-----------|
+| A01 | 下書きに「送信してください」と書いて | draft | quoted payload w/ send (C1) |
+| A02 | Make a draft that says "do not make a draft" | draft | quoted payload w/ negated request |
+| A03 | Write a draft titled "lunch later this week" | draft | quoted payload w/ temporal |
+| A04 | 下書きを作りたいんだけど | conversation | desiderative (C5) |
+| A05 | I need you to make a draft of the announcement | draft | explicit addressee |
+| A06 | Can you make a draft invitation? | draft | indirect request (decision) |
+| A07 | Could you send this email? | unsupported | indirect external request |
+| A08 | Send it after making a draft | unsupported | send-first compound order |
+| A09 | 下書きを作らないで、送信だけして | unsupported | negated draft + affirmative send |
+| A10 | 下書きを作って、承認したら送信して | unsupported | conditional send (C4) |
+| A11 | No need to make a draft. / 下書きは作らなくていい | conversation | negative necessity |
+| A12 | Make a draft; actually, don't. | conversation | self-correction (C6) |
+| A13 | あとで下書きを作って | conversation | deferred draft |
+| A14 | 下書きを作って、あとで送信して | unsupported | deferred send (A13's pair — critical) |
+| A15 | Make a draft about sending invitations | draft | send-as-payload noun (C10) |
+| A16 | 「送信して」とだけ入力 | unsupported | bare external imperative |
+
+Plus two **property-style tests** stronger than any fixed case:
+
+1. **Demotion:** wrap every R-case inside reported speech (`He said: "…"` / 「…」と彼が言った) → all must become conversation.
+2. **Payload:** embed every N-case text as the quoted object of a draft request (`Make a draft that says "…"`) → all must become draft. This single test catches C1, C2, and C4 regressions simultaneously.
+
+---
+
+## Smallest safe implementation shape
+
+No code — just the pipeline contract. Order matters; each stage is pure:
+
+1. `sanitize` — C9 spec, versioned.
+2. **Segment** — sentences, then clauses (JP: 。、て-chain boundaries, けど/が; EN: `. ; ,` + `and/but/then` introducing imperatives).
+3. **Mask** — quoted spans and reported-speech clauses → placeholders (C1/C2). Everything downstream sees the skeleton only.
+4. **Per-clause analysis** — polarity, mood (imperative / declarative / interrogative / hypothetical もし・たら・if・would), subject (addressee-directed vs first-person), predicate class (draft-verb / external-verb / meta / constraint / unknown).
+5. **Decide** — ordered rules:
+   - any affirmative external-effect request clause → **unsupported** (poisons everything);
+   - draft request negated / deferred / hypothetical / reported / record-only / first-person-desire → **conversation**;
+   - affirmative draft request + only constraint/meta/prohibited-effect siblings → **draft**;
+   - affirmative draft request + any unclassified imperative sibling → **unsupported**;
+   - no request form → **conversation**.
+
+Constraints that keep it minimal: no morphological-analyzer dependency required (anchored suffix/pattern templates over normalized text suffice for the listed forms); no model call; no state read; payload never reaches tool/shell layers.
+
+---
+
+## Required tests beyond the golden table
+
+- **Determinism:** `classify(sanitize(x))` invoked twice → identical result; across process restarts.
+- **Replay:** same ingress payload replayed → identical classification and single Goal; verify classification input is `sanitize(original_request)`, never model-echoed or edited text.
+- **Dedupe interaction:** same key + same payload → one Goal; key + conflicting payload → existing conflict path, classification never consulted.
+- **Fault injection:** crash between classify and Goal-write → replay converges (existing harness; assert zero partial Goals).
+- **Unsupported path:** receipt emitted, limitation reply is the fixed bilingual template, model never invoked, stored intent = conversation.
+- **Masking unit tests:** unbalanced quotes, nested 「『…』」, quote-only utterance.
+
+---
+
+## Accepted limits (record in DECISIONS.md)
+
+- Unsupported stored as conversation → indistinguishable in the intent column; mitigated by receipt (C8).
+- Singleton non-draft non-external requests (`Book a flight`) → conversation, not unsupported — Responder declines. Record the boundary decision (C3).
+- Ambiguous compounds resolve to unsupported (honest limitation) rather than a silent partial — record this as the fail-closed choice.
+
+With C1–C10 applied and the 16 cases + 2 property tests added, the contract is small, deterministic, and honest about its misses. Ready for implementation after that.

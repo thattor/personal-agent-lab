@@ -1,0 +1,119 @@
+{
+  "evaluated_at": "2026-10-07T04:32:10.718270+00:00",
+  "candidate": "candidate-before-heldout.json",
+  "synthetic": true,
+  "results": [
+    {
+      "id": "H01",
+      "expected": "draft",
+      "actual": "unsupported",
+      "goals": 0,
+      "passed": false,
+      "host_record_id": "c5a4c4bde10a418c93a23783355acc18",
+      "reply_record_id": "48c4d77896f348ee971ca1b0aeeb93cc"
+    },
+    {
+      "id": "H02",
+      "expected": "draft",
+      "actual": "conversation",
+      "goals": 0,
+      "passed": false,
+      "host_record_id": "0959f2d89e394ea68569a7de32bdedd0",
+      "reply_record_id": "09706f5f306f41eda4452ef44f32dc48"
+    },
+    {
+      "id": "H03",
+      "expected": "draft",
+      "actual": "draft",
+      "goals": 1,
+      "passed": true,
+      "host_record_id": "d40a930bf7de43eaae753255618e0558",
+      "reply_record_id": "605a5782c45a4723abdc7335a36eac46"
+    },
+    {
+      "id": "H04",
+      "expected": "draft",
+      "actual": "draft",
+      "goals": 1,
+      "passed": true,
+      "host_record_id": "7af2e79212984776a88a5264919b9067",
+      "reply_record_id": "cd5919744e8641a0b219ff923514765b"
+    },
+    {
+      "id": "H05",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goals": 0,
+      "passed": true,
+      "host_record_id": "00807eb4bf9a40a199d324de82c77ab7",
+      "reply_record_id": "3f922f7cfa1a43e7aa0fc06beffe1f11"
+    },
+    {
+      "id": "H06",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goals": 0,
+      "passed": true,
+      "host_record_id": "c0e26cd4e9c444a5b48e7d61f19c97be",
+      "reply_record_id": "8e5452940e9c40ec9196ef8a594ac20f"
+    },
+    {
+      "id": "H07",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goals": 0,
+      "passed": true,
+      "host_record_id": "35a6cecb58f14d068fd5693fca72a4f4",
+      "reply_record_id": "f489e1d574194071bce15ddad4620e2c"
+    },
+    {
+      "id": "H08",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goals": 0,
+      "passed": true,
+      "host_record_id": "561a01532b894703ac15a2f1b3bbc867",
+      "reply_record_id": "52aaddfe642e432d803fac54a17c98a7"
+    },
+    {
+      "id": "H09",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goals": 0,
+      "passed": true,
+      "host_record_id": "a63fe36a08c04bde819e92cbd60e1d36",
+      "reply_record_id": "44c70ffbbd444a85874c5f550cca0fcc"
+    },
+    {
+      "id": "H10",
+      "expected": "unsupported",
+      "actual": "conversation",
+      "goals": 0,
+      "passed": false,
+      "host_record_id": "6571f9bb52fe40afb042f858861d070d",
+      "reply_record_id": "47a1a8ba1dbe45748c6c5f2873b4bd36"
+    },
+    {
+      "id": "H11",
+      "expected": "conversation",
+      "actual": "draft",
+      "goals": 1,
+      "passed": false,
+      "host_record_id": "c9b9804a5f1f4feaa049b34c6a030ed5",
+      "reply_record_id": "2f9964102dde48909a11417af11d94a4"
+    },
+    {
+      "id": "H12",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goals": 0,
+      "passed": true,
+      "host_record_id": "cd30c888fb424edf9e7880349a467f56",
+      "reply_record_id": "9328b12c2d9542db810efa5c3039c401"
+    }
+  ],
+  "false_positive_goals": 1,
+  "request_recall": 2,
+  "request_total": 4,
+  "all_pass": false
+}

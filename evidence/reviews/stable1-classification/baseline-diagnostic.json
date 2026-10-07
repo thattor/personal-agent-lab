@@ -1,0 +1,251 @@
+{
+  "baseline": "35c8390",
+  "kind": "pure baseline classifier diagnostic; not canonical Goal evidence",
+  "request_matches": 10,
+  "request_total": 16,
+  "false_positive_draft": 6,
+  "nonrequest_total": 24,
+  "unsupported_explanation": "Not implemented",
+  "results": [
+    {
+      "id": "R01",
+      "expected": "draft",
+      "actual": "draft",
+      "matches": true
+    },
+    {
+      "id": "R02",
+      "expected": "draft",
+      "actual": "draft",
+      "matches": true
+    },
+    {
+      "id": "R03",
+      "expected": "draft",
+      "actual": "draft",
+      "matches": true
+    },
+    {
+      "id": "R04",
+      "expected": "draft",
+      "actual": "draft",
+      "matches": true
+    },
+    {
+      "id": "R05",
+      "expected": "draft",
+      "actual": "draft",
+      "matches": true
+    },
+    {
+      "id": "R06",
+      "expected": "draft",
+      "actual": "conversation",
+      "matches": false
+    },
+    {
+      "id": "R07",
+      "expected": "draft",
+      "actual": "draft",
+      "matches": true
+    },
+    {
+      "id": "R08",
+      "expected": "draft",
+      "actual": "draft",
+      "matches": true
+    },
+    {
+      "id": "R09",
+      "expected": "draft",
+      "actual": "draft",
+      "matches": true
+    },
+    {
+      "id": "R10",
+      "expected": "draft",
+      "actual": "draft",
+      "matches": true
+    },
+    {
+      "id": "R11",
+      "expected": "draft",
+      "actual": "conversation",
+      "matches": false
+    },
+    {
+      "id": "R12",
+      "expected": "draft",
+      "actual": "conversation",
+      "matches": false
+    },
+    {
+      "id": "R13",
+      "expected": "draft",
+      "actual": "draft",
+      "matches": true
+    },
+    {
+      "id": "R14",
+      "expected": "draft",
+      "actual": "conversation",
+      "matches": false
+    },
+    {
+      "id": "R15",
+      "expected": "draft",
+      "actual": "conversation",
+      "matches": false
+    },
+    {
+      "id": "R16",
+      "expected": "draft",
+      "actual": "conversation",
+      "matches": false
+    },
+    {
+      "id": "N01",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N02",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N03",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N04",
+      "expected": "conversation",
+      "actual": "draft",
+      "matches": false
+    },
+    {
+      "id": "N05",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N06",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N07",
+      "expected": "conversation",
+      "actual": "draft",
+      "matches": false
+    },
+    {
+      "id": "N08",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N09",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N10",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N11",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N12",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N13",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N14",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N15",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N16",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N17",
+      "expected": "conversation",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N18",
+      "expected": "conversation",
+      "actual": "draft",
+      "matches": false
+    },
+    {
+      "id": "N19",
+      "expected": "unsupported",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N20",
+      "expected": "unsupported",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N21",
+      "expected": "unsupported",
+      "actual": "conversation",
+      "matches": true
+    },
+    {
+      "id": "N22",
+      "expected": "unsupported",
+      "actual": "draft",
+      "matches": false
+    },
+    {
+      "id": "N23",
+      "expected": "unsupported",
+      "actual": "draft",
+      "matches": false
+    },
+    {
+      "id": "N24",
+      "expected": "unsupported",
+      "actual": "draft",
+      "matches": false
+    }
+  ]
+}

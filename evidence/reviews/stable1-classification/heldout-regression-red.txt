@@ -1,0 +1,49 @@
+test_first_heldout_failures_remain_regression_cases (tests.test_ingress_classification.IngressClassificationTests) ... 
+======================================================================
+FAIL: test_first_heldout_failures_remain_regression_cases (tests.test_ingress_classification.IngressClassificationTests) (case='H01')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 31, in test_first_heldout_failures_remain_regression_cases
+    self.assertEqual(classify(case['text']), case['expected'])
+AssertionError: 'unsupported' != 'draft'
+- unsupported
++ draft
+
+
+======================================================================
+FAIL: test_first_heldout_failures_remain_regression_cases (tests.test_ingress_classification.IngressClassificationTests) (case='H02')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 31, in test_first_heldout_failures_remain_regression_cases
+    self.assertEqual(classify(case['text']), case['expected'])
+AssertionError: 'conversation' != 'draft'
+- conversation
++ draft
+
+
+======================================================================
+FAIL: test_first_heldout_failures_remain_regression_cases (tests.test_ingress_classification.IngressClassificationTests) (case='H10')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 31, in test_first_heldout_failures_remain_regression_cases
+    self.assertEqual(classify(case['text']), case['expected'])
+AssertionError: 'conversation' != 'unsupported'
+- conversation
++ unsupported
+
+
+======================================================================
+FAIL: test_first_heldout_failures_remain_regression_cases (tests.test_ingress_classification.IngressClassificationTests) (case='H11')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_ingress_classification.py", line 31, in test_first_heldout_failures_remain_regression_cases
+    self.assertEqual(classify(case['text']), case['expected'])
+AssertionError: 'draft' != 'conversation'
+- draft
++ conversation
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+FAILED (failures=4)

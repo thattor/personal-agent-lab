@@ -1,0 +1,9 @@
+{
+  "frozen_at": "2026-10-07T04:23:08.312792+00:00",
+  "file": "tests/fixtures/stable1_ingress_v1.json",
+  "sha256": "38a637bf0c3cd5e848867738525c78b871c38f47a9ab0fd401892ebc6f0bb457",
+  "requests": 16,
+  "nonrequests": 24,
+  "implementation_baseline": "35c839074f18d523e9f3cf0e6fcdeee4c6e14cb7",
+  "heldout": "Not generated yet"
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "H01",
+    "category": "request",
+    "text": "Could you put together a draft reply to my landlord about the broken heater? I'll send it myself.",
+    "expected": "draft"
+  },
+  {
+    "id": "H02",
+    "category": "request",
+    "text": "町内会のお知らせを下書きしてもらえますか。まだ誰にも送らないでください。",
+    "expected": "draft"
+  },
+  {
+    "id": "H03",
+    "category": "request",
+    "text": "Draft a note to the team saying 「資料を明日までに送ってください」.",
+    "expected": "draft"
+  },
+  {
+    "id": "H04",
+    "category": "request",
+    "text": "おはよう！ところで、歓迎会の案内文の下書きをお願いできますか？",
+    "expected": "draft"
+  },
+  {
+    "id": "H05",
+    "category": "quotation",
+    "text": "My sister texted me 'can you draft the toast for Saturday?' and I'm not sure how to answer her.",
+    "expected": "conversation"
+  },
+  {
+    "id": "H06",
+    "category": "negation",
+    "text": "今回は下書きは不要です。内容だけ相談したいです。",
+    "expected": "conversation"
+  },
+  {
+    "id": "H07",
+    "category": "hypothetical",
+    "text": "Suppose you drafted a resignation letter for me, would it be saved anywhere?",
+    "expected": "conversation"
+  },
+  {
+    "id": "H08",
+    "category": "combined",
+    "text": "議事録の下書きを作ったら、そのまま部長に転送しておいて。",
+    "expected": "unsupported"
+  },
+  {
+    "id": "H09",
+    "category": "combined",
+    "text": "Write up a draft newsletter and post it to the club's mailing list.",
+    "expected": "unsupported"
+  },
+  {
+    "id": "H10",
+    "category": "send_only",
+    "text": "No need for a draft, just email the venue and confirm the booking.",
+    "expected": "unsupported"
+  },
+  {
+    "id": "H11",
+    "category": "deferral",
+    "text": "来月になったら、送別会の案内の下書きを作ってください。",
+    "expected": "conversation"
+  },
+  {
+    "id": "H12",
+    "category": "record_only",
+    "text": "Just noting for my journal: I need to draft the grant summary sometime.",
+    "expected": "conversation"
+  }
+]

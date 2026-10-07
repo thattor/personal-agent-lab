@@ -1,0 +1,984 @@
+{
+  "evaluated_at": "2026-10-07T04:38:25.083379+00:00",
+  "kind": "Final canonical regression, previously opened heldout is NOT fresh independent recall",
+  "base": "35c8390",
+  "source_sha256": {
+    "pal/classification.py": "1d6be96691747e37053fcd2de6d1caa95c32b9bdb15dbf5db3036fb36cf4555f",
+    "pal/runtime.py": "62945f55510396808ec836b5c2333cc19d0a6dfba0a2c24b17ac7c3a7b6e2878",
+    "pal/store.py": "bed6af8966411d565ac138488db65304a5ceba79a6a8c1921d936791d3c48fc2",
+    "tests/test_ingress_classification.py": "9a173342629966e25bc3b25e10e7b69bfcaa7b905803c3658ecc25f99ac461df",
+    "tests/fixtures/stable1_ingress_v1.json": "38a637bf0c3cd5e848867738525c78b871c38f47a9ab0fd401892ebc6f0bb457",
+    "tests/fixtures/stable1_ingress_edges_v1.json": "db8abfda48a484c769aba02651b1a57f3fb7bd6b2084e80004003fad76544610",
+    "evidence/reviews/stable1-classification/heldout-sealed.json": "c8c12587391b7ea38fc6394ae5422f22cc1a0fde5b966743ae43f97f578abb34",
+    "evidence/reviews/stable1-classification/heldout2-sealed.json": "e7f8cbe84f66002ba99185ee89490316e99999e7ac42c99570454e65d8c45d2e",
+    "evidence/reviews/stable1-classification/heldout3-sealed.json": "69d799cf0e431c42ab0c16ad104f227194a16babfa6c92de092bdfd8efc6be0e"
+  },
+  "count": 96,
+  "false_positive_goals": 0,
+  "frozen_request_recall": 16,
+  "frozen_nonrequest_goals": 0,
+  "heldout_recall": 11,
+  "heldout_request_total": 12,
+  "results": [
+    {
+      "id": "R01",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "86035db969a14b71901375d0c2ac910f",
+      "reply_record_id": "e46c0659fe0e418f8a07aca5d1940585",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "R02",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "a7327535307046eaa9b6b34a1f419342",
+      "reply_record_id": "b902f529baca4d5b9960b5b6e21343b3",
+      "reply": "Work recorded. Current canonical state: running."
+    },
+    {
+      "id": "R03",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "5c68c196e5604aa4ba940e608993faf8",
+      "reply_record_id": "75aa338a7eda4e67a0685e33e42f6e6f",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "R04",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "90def1c8bf7d450d8f0a9044c3ded0cb",
+      "reply_record_id": "b43206776cad4b1eaf80544caddb651a",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "R05",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "f67337ff86464f44a8c7ec50894be4b3",
+      "reply_record_id": "f187ac85f57145c2990f096e5e025493",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "R06",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "2008d3fdd2264e1694ca2799e75db0ee",
+      "reply_record_id": "6750e354fec14c37a123af0f1cb627a6",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "R07",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "cefd8987aa1d4f97a5f3e6d7eea16e23",
+      "reply_record_id": "07fa0331e298495b8034e474a487e490",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "R08",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "00ee4cd0bbef44baa957205e0bb0eed4",
+      "reply_record_id": "3f879868dfa64cac9e8fecc2356c19fb",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "R09",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "75f19a88af064bd4bb7da3d9f2de9d41",
+      "reply_record_id": "7811f8b0c87a432b9d77996f0e869ea0",
+      "reply": "Work recorded. Current canonical state: running."
+    },
+    {
+      "id": "R10",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "685b1e7923f04969846ec07905e08ee0",
+      "reply_record_id": "10a6bdfcab464c2e98fd6d723292dd10",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "R11",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "dd73e584767c48c48e051c65168a3ba1",
+      "reply_record_id": "d9449e1751264e48b2aafee977207c50",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "R12",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "458c7c63a5394e09aca89a79d1ac12a0",
+      "reply_record_id": "cd6b82e47782423a97722572d513e702",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "R13",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "6078702696704903b130a5ead6e81eb5",
+      "reply_record_id": "a063da65cd6e428e9a16a75919b6fba0",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "R14",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "9b4e44957aea44d3bc442be3565ccca9",
+      "reply_record_id": "b65c82a222e14070afbd2d5bdc5ccabc",
+      "reply": "Work recorded. Current canonical state: running."
+    },
+    {
+      "id": "R15",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "49cec3f61809457f9c15e13bbd807c9e",
+      "reply_record_id": "1a7884d80ce2426ebbb32035be0f703d",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "R16",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "8c7651fb2cae477295df536dff7f4660",
+      "reply_record_id": "d8f7bb435fe244d9b56f87275e5c3ebc",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "N01",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "9c6e0ca2561b4150a4ecd35f5a446e31",
+      "reply_record_id": "55a6e1ec0d064a10926a4a8aadaa7e67",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N02",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "3d4c86b2a24d49c681999b4f25ae5bfb",
+      "reply_record_id": "812a067b655a4ae4a8e3500a76799dce",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N03",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "45668266ed6f4678838f641b11a45279",
+      "reply_record_id": "9502d9d459224532889a4927fd4a6c12",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N04",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "a56ed0d8fca54e10a24986c094669118",
+      "reply_record_id": "782124e2e81340609b87f934a2dbc8fb",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N05",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "137d74b24e2346959b75afbfaecf76ac",
+      "reply_record_id": "90547b2fadab4e1d801c30dfbb45414d",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N06",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "c2875738ba544274bb3eee89f72d9a64",
+      "reply_record_id": "2a1a54d13a874cb1acad0d33eeb54e03",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N07",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "6f5bcc0d7f2845bf8d16d1155f1284cc",
+      "reply_record_id": "b52389c74ed6463b855e91bd77c39f07",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N08",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "1e2fa388a80a4ae998963040c356180b",
+      "reply_record_id": "7ec8b7cc0c09460786db4f0aa9764dc0",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N09",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "9d31bbdc5544473d84476be36bf2279c",
+      "reply_record_id": "fd6b4d7a8b0a4173b873fb9c22a6a7f5",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N10",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "eb28915550654e6f99fcb1f797034039",
+      "reply_record_id": "b5e74ab96674434a8db63d9154019b31",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N11",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "9fc8f237055a434e818da93df56e2838",
+      "reply_record_id": "b3a2cfd71b2f4b2bb8b281df184ad8fc",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N12",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "8bf05bacc27b4d75a035e3b956e3a77e",
+      "reply_record_id": "b801bd819be8480ab2cd583a604debbe",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N13",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "ff060eeafc0b4f42ba39509d21a1e09b",
+      "reply_record_id": "9aece233288a4557b80ac8272f034d05",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N14",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "9f4662d9f52a482a908d358008275396",
+      "reply_record_id": "92c765272d364d26b8b101b2a4d67c68",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N15",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "e8e863dc4ede491a94d552c582e95eb7",
+      "reply_record_id": "7416cbc5d55d461c98515bab8245f6c8",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N16",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "feaa32d2b7d84641b7597fc9d9896e38",
+      "reply_record_id": "cf966db1c8694daf8fb23175615b6a19",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N17",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "a0198b5ebe06400ca09efeb54d9f5ee8",
+      "reply_record_id": "81dc6c4b93704c039c1d71c4dc214f7f",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N18",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "7dd435c221cf4cb4843dee5b6cff155d",
+      "reply_record_id": "11feb50967504cdd86dffbb99e18668c",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "N19",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "dab78a6463cf4586ac28d820af72c497",
+      "reply_record_id": "e05915291a984685b9c58b7a4d175052",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "N20",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "ff3cd30802df42e4b2c0c45eb1cd08b9",
+      "reply_record_id": "6ceb71599db5460e9eafbffe71304210",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "N21",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "88389cda011e4d08909cc617e77097f7",
+      "reply_record_id": "60cb2b973f3d4f8e806db270802c8fe2",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "N22",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "abfbc7c236604425bd409a19b25ad805",
+      "reply_record_id": "7828a1f31f9547e582983378f5de1cbe",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "N23",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "ad4cb5f8235947a99fb9c0b014545b19",
+      "reply_record_id": "92ac933238ba4d75802798628124be62",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "N24",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "8f5eb25c92ee42549eb5ac8215d82518",
+      "reply_record_id": "6531a468b30846afb512b3a1ebee905e",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "E01",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "6d0130123bd043168873aa6ec52c15b6",
+      "reply_record_id": "9b305dfa7d2140fd9e1b3403bbb66e5a",
+      "reply": "Work recorded. Current canonical state: running."
+    },
+    {
+      "id": "E02",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "c90cb3f9e554433794c5ec6a9ba6fa06",
+      "reply_record_id": "374a6af4f93e453885984ab2f98ce87e",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "E03",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "0a35ab28f36d4980acec56f88dbc6584",
+      "reply_record_id": "5a8c56f7a12244d9a8f4f15955afa555",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "E04",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "01e62edb74584cc289783868859d2c8a",
+      "reply_record_id": "6399ecc770554c358fbbd480cce60282",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "E05",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "12e18b1a7f0840f085fa5009643639ab",
+      "reply_record_id": "c7f3d257d3fd4cb3ab8a24f0019cba09",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "E06",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "a3dae2dfb0ab46c68a5e5c6ef803b0a0",
+      "reply_record_id": "9d2755f6154048c3a1fb3537d1412a37",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "E07",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "97e90f3ed7014f23ba8022f871f944c5",
+      "reply_record_id": "cfa1ff4cdab34d13aec6f495ebfa34a7",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "E08",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "b69fe0fc3f394d359cd4f81d4bc91938",
+      "reply_record_id": "58d1ef3136df42d8b1f046dc3f4498f9",
+      "reply": "Work recorded. Current canonical state: completed."
+    },
+    {
+      "id": "E09",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "4587933c954647b9b794dd19604648ab",
+      "reply_record_id": "64d28a930a934e829ba8ace3e4e120f5",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "E10",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "9b236e195b05489dbcae0ddeb11c0851",
+      "reply_record_id": "8065d7d5c642415083fcbea9c257eeab",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "E11",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "8471269270c342d5836da45744809c46",
+      "reply_record_id": "19b04722e2bf4ce69550000742bbb8e4",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "E12",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "761bebfed8734154ac9503229e69521c",
+      "reply_record_id": "72078d29c71b4107b4c5b42805c00886",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "E13",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "7912bc0b263d49f88c98721d7d583c62",
+      "reply_record_id": "d4bd4fb9908d4b2aac28e93b76da2338",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "E14",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "3b8e8b15fd78419b987b7f2599220b1b",
+      "reply_record_id": "fffba96068d34c57bd87f5429f769109",
+      "reply": "Work recorded. Current canonical state: completed."
+    },
+    {
+      "id": "E15",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "082ce684b12e42aa957279e38775323c",
+      "reply_record_id": "031a8d3794c54b3a9a96d601ebfa0f72",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "E16",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "d41b4fba3aca4247a3ca7bd1555a5d2d",
+      "reply_record_id": "c00b37e575c84a10b598e13f0598d0d0",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "E17",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "1a568fb74a8340348a6e08291e39e61e",
+      "reply_record_id": "10608fc080a249e8a01ba2d2626186d7",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "E18",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "e476e5f424034f008b2bada4d5a66237",
+      "reply_record_id": "2230af06e81544158d47a113887075d0",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "E19",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "60379a2772254fbe99df96d75cc3fc64",
+      "reply_record_id": "6e7edb27a8c04a67ac5b694e2169fc25",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "E20",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "c039d6f1986f435fb85cba91d860e82b",
+      "reply_record_id": "877e0202c6134748b29591d84ace02d5",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "H01",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "b4fe26feae624998a79b6d30bbe49aa0",
+      "reply_record_id": "e18f93a648544820838c22ce1ca13089",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "H02",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "c4af1356b4a44799951b76b7d000de86",
+      "reply_record_id": "45a916c6ee8e4a80ab07e93f2ed392d2",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "H03",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "f22669648bb848afbac5545de4b87c5f",
+      "reply_record_id": "3224f75907b148aeadf584916bc18bff",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "H04",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "893d3beadbbc48de8a626789ad7dc3b4",
+      "reply_record_id": "334457a7df014ae7b48e63b78de83302",
+      "reply": "Work recorded. Current canonical state: running."
+    },
+    {
+      "id": "H05",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "47e3aaf0d172468b8bdafd15562d2249",
+      "reply_record_id": "e686969ecda947ccbc28f83772617a3b",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "H06",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "e7b1b7e706c54ce4bbab4372461eba78",
+      "reply_record_id": "a405a844ee044c30a4af7a5ef5d63eda",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "H07",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "bc95d3278be746e4ad9da2a953507729",
+      "reply_record_id": "2c8147208b83460694d0acec89dfe81b",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "H08",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "1ad015512aee482ebbaf0ae615378344",
+      "reply_record_id": "be85c25e2a82450dbc728bd351ae57f7",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "H09",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "b3cb6558905a4338a8c1dbe4495daefb",
+      "reply_record_id": "dee531fb7b084e3da91f40d786dc9eb5",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "H10",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "49e7b20b760a4f6ea769df35beef9efd",
+      "reply_record_id": "25609a245ffa42978d35c62e0fdae36b",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "H11",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "ca0795a427634f25b85c548fd144b672",
+      "reply_record_id": "2a3fdad5fdb8453abee326a9eb413d75",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "H12",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "91abe3f066e348d2b632e1fe59bb5526",
+      "reply_record_id": "9be4cfb8be904f5a8d7a070dc0adbd60",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "J01",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "4a4e49177a644ed59f338081198f302c",
+      "reply_record_id": "933b261e4665478a982427c70f42ea81",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "J02",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "1747682e9e4944d881148b27ded499bc",
+      "reply_record_id": "97c304893e77465c813cf60db1aa1e8f",
+      "reply": "Work recorded. Current canonical state: completed."
+    },
+    {
+      "id": "J03",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "b2269891a6c5494e98de632f5fd4f21d",
+      "reply_record_id": "fc1fc60625344022b0d5d62581361163",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "J04",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "98f21ab5be0240e1a4a19c60bad5ed66",
+      "reply_record_id": "7a4ee11f34184cb5b92c115da073f960",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "J05",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "eeeacaa534ae4996bf47fb0cdb6374b2",
+      "reply_record_id": "aa71d8771eee43eb874663d85a66ce79",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "J06",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "4d46703cb8ac4f0d9e310a2793936fd8",
+      "reply_record_id": "480ec8509500482a82a9230da309bc4d",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "J07",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "4f3d31c445d14872ba3a1e9936de54c6",
+      "reply_record_id": "52cf0ad8c5dd4e9bb8f6698a323e3efa",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "J08",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "ae00c06ad724459b827cc159e28ff000",
+      "reply_record_id": "6b9b9bcac79f4aeab0726e8f4d87ffcd",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "J09",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "925eb9569c3d449299ba28c9a04d0c11",
+      "reply_record_id": "7d4e671ea4744d45af19add6ba46fbdd",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "J10",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "eae0bb3a59134abbb893ce883f74f98d",
+      "reply_record_id": "f9d60da7a0664094bca92a8a5cab31fa",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "J11",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "70d969def48a478c8da1cc559fb7df22",
+      "reply_record_id": "bcb474a1943146a9a547f08d5b780763",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "J12",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "a954f06781e840ba83ddba442d5464fa",
+      "reply_record_id": "7099caf7779e48c6affa500edb8008b3",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "K01",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "4f3b2f15e04e4030815b4b996a29d3ff",
+      "reply_record_id": "df8c5d7258924fe7892db732b5a754e5",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "K02",
+      "expected": "draft",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "93475257f6164b158a4d5eacaf8b474c",
+      "reply_record_id": "fa2aead3381e4d66b79d7b936c0af659",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "K03",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "a9adc40cbf9b4e55b04e0fcb3afa77e0",
+      "reply_record_id": "8601521ad4b341909894fba3b55475fc",
+      "reply": "Work recorded. Current canonical state: completed."
+    },
+    {
+      "id": "K04",
+      "expected": "draft",
+      "actual": "draft",
+      "goal_count": 1,
+      "duplicate_same_record": true,
+      "host_record_id": "f286f696c17b4bdbac1fd8f8ea1ac680",
+      "reply_record_id": "d40891bb4850431fa26961ed84fb50ea",
+      "reply": "Work recorded. Current canonical state: queued."
+    },
+    {
+      "id": "K05",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "b4d97c40a52b484cae6c9689609507c5",
+      "reply_record_id": "2f4d770d7ddb43c9ad5cf5dceff8165d",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "K06",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "0a6c5c7280be4c5999702b0dd5afd0c5",
+      "reply_record_id": "911194eb01a04cab8db2363ebe5f5067",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "K07",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "67bdeb809f634c53916f42bca2763ba7",
+      "reply_record_id": "cb65efe900e840e8aab0d0b745401901",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "K08",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "628172bc3ca341e2b60d45ac25d33339",
+      "reply_record_id": "c4c8154bd83e4004ab0d379bdd34c8ed",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "K09",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "0e56aaeaaccf424087fcaa10622dfda8",
+      "reply_record_id": "9c7a4801b40b445bb71fbeaf1516feb5",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "K10",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "8837af2daab242daa167b05d6a94caa4",
+      "reply_record_id": "a93b0117f93e47388e32ed003ab434d9",
+      "reply": "I have recorded your message. This response uses the mock provider."
+    },
+    {
+      "id": "K11",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "2ba77e3f55e14590b943fcad71872566",
+      "reply_record_id": "fee165ac44d34994869801ad17f73de5",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    },
+    {
+      "id": "K12",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goal_count": 0,
+      "duplicate_same_record": true,
+      "host_record_id": "3a996e0763344c62acd77cb4ec90f779",
+      "reply_record_id": "48750d7ac43c4d6595078db81d7f8a2c",
+      "reply": "I cannot send or perform external actions. No work was started. / 送信などの外部操作には対応していません。作業は開始していません。"
+    }
+  ]
+}

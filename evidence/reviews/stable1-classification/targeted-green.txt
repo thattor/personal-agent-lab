@@ -1,0 +1,10 @@
+test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) ... ok
+test_ingress_fault_does_not_leave_classification_or_partial_work (tests.test_ingress_classification.IngressClassificationTests) ... ok
+test_persisted_classification_dominates_new_grammar_after_reply_gap (tests.test_ingress_classification.IngressClassificationTests) ... ok
+test_typography_report_and_unknown_compound_are_conservative (tests.test_ingress_classification.IngressClassificationTests) ... ok
+test_unsupported_reply_replayed_without_provider_or_work (tests.test_ingress_classification.IngressClassificationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.719s
+
+OK

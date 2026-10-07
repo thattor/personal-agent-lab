@@ -1,0 +1,125 @@
+{
+  "authorship": "Controller-authored synthetic regression cases from official Opus review, not heldout",
+  "cases": [
+    {
+      "id": "E01",
+      "category": "quoted_payload",
+      "text": "「資料を送ってください」という文面の下書きを作って。",
+      "expected": "draft"
+    },
+    {
+      "id": "E02",
+      "category": "quoted_payload",
+      "text": "Write a draft saying \"send me the slides\".",
+      "expected": "draft"
+    },
+    {
+      "id": "E03",
+      "category": "polite_request",
+      "text": "Could you draft a short thank-you note?",
+      "expected": "draft"
+    },
+    {
+      "id": "E04",
+      "category": "polite_request",
+      "text": "招待文の下書きを作ってもらえますか？",
+      "expected": "draft"
+    },
+    {
+      "id": "E05",
+      "category": "capability_question",
+      "text": "Are you able to draft invitations?",
+      "expected": "conversation"
+    },
+    {
+      "id": "E06",
+      "category": "capability_question",
+      "text": "下書きを作れますか？",
+      "expected": "conversation"
+    },
+    {
+      "id": "E07",
+      "category": "user_action",
+      "text": "I want to write a draft myself.",
+      "expected": "conversation"
+    },
+    {
+      "id": "E08",
+      "category": "user_send",
+      "text": "Make a draft invitation. I will send it myself.",
+      "expected": "draft"
+    },
+    {
+      "id": "E09",
+      "category": "deferred_send",
+      "text": "Make a draft. Do not send yet; send it tomorrow.",
+      "expected": "unsupported"
+    },
+    {
+      "id": "E10",
+      "category": "conditional_send",
+      "text": "招待文の下書きを作ったら送って。",
+      "expected": "unsupported"
+    },
+    {
+      "id": "E11",
+      "category": "revision",
+      "text": "下書きを直してください。",
+      "expected": "conversation"
+    },
+    {
+      "id": "E12",
+      "category": "non_document",
+      "text": "Draft beer is nice.",
+      "expected": "conversation"
+    },
+    {
+      "id": "E13",
+      "category": "greeting",
+      "text": "こんにちは。お礼の下書きを作ってください。",
+      "expected": "draft"
+    },
+    {
+      "id": "E14",
+      "category": "desire",
+      "text": "お礼の下書きを作ってほしいです。",
+      "expected": "draft"
+    },
+    {
+      "id": "E15",
+      "category": "action_time",
+      "text": "Draft the invitation tomorrow, not now.",
+      "expected": "conversation"
+    },
+    {
+      "id": "E16",
+      "category": "payload_time",
+      "text": "Draft an invitation for tomorrow.",
+      "expected": "draft"
+    },
+    {
+      "id": "E17",
+      "category": "forward",
+      "text": "Please forward this draft.",
+      "expected": "unsupported"
+    },
+    {
+      "id": "E18",
+      "category": "publish",
+      "text": "Publish this draft.",
+      "expected": "unsupported"
+    },
+    {
+      "id": "E19",
+      "category": "record_send",
+      "text": "Record only: send this email.",
+      "expected": "conversation"
+    },
+    {
+      "id": "E20",
+      "category": "negated_draft_send",
+      "text": "No draft, just send the invitation.",
+      "expected": "unsupported"
+    }
+  ]
+}

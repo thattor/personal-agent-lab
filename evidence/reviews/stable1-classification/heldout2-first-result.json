@@ -1,0 +1,119 @@
+{
+  "evaluated_at": "2026-10-07T04:34:26.801646+00:00",
+  "candidate": "candidate-before-heldout2.json",
+  "synthetic": true,
+  "results": [
+    {
+      "id": "J01",
+      "expected": "draft",
+      "actual": "conversation",
+      "goals": 0,
+      "host_record_id": "a87c8df8180c446e87d14b137de4e38e",
+      "reply_record_id": "66ad22fe5d434010a8f3360413cbc1d6",
+      "limitation": false
+    },
+    {
+      "id": "J02",
+      "expected": "draft",
+      "actual": "draft",
+      "goals": 1,
+      "host_record_id": "6d1a6eb852344f588b9a2eecf18a208e",
+      "reply_record_id": "c308e1bedd16433a9d4fedcf5af3ca32",
+      "limitation": false
+    },
+    {
+      "id": "J03",
+      "expected": "draft",
+      "actual": "draft",
+      "goals": 1,
+      "host_record_id": "d9a6e8ae4c8041df9457a331d3baff89",
+      "reply_record_id": "3e2f818cbccb48d7b7cdc397e9fbb2fc",
+      "limitation": false
+    },
+    {
+      "id": "J04",
+      "expected": "draft",
+      "actual": "unsupported",
+      "goals": 0,
+      "host_record_id": "ba94d2ebce55456d9f451e91331e9667",
+      "reply_record_id": "c75b504b04ad479bb8ea1b717bd0d8bd",
+      "limitation": true
+    },
+    {
+      "id": "J05",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goals": 0,
+      "host_record_id": "c8dbea3153ee4e07956cdfdf33a0d115",
+      "reply_record_id": "6eb0a8c0dd674a1b941c8094402299c9",
+      "limitation": false
+    },
+    {
+      "id": "J06",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goals": 0,
+      "host_record_id": "1ad6683cf0854246af99ae81e0bee5d4",
+      "reply_record_id": "092e25f45cc34ce38ab3c16cce31f40a",
+      "limitation": false
+    },
+    {
+      "id": "J07",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goals": 0,
+      "host_record_id": "c4b154378bbc469bba92b7b97100ff25",
+      "reply_record_id": "6586fe0859684e77a00c6a179cbfb651",
+      "limitation": false
+    },
+    {
+      "id": "J08",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goals": 0,
+      "host_record_id": "3bad7fec19f34e4b81359bd9664811cf",
+      "reply_record_id": "97b46b11030445849cad8d698f641036",
+      "limitation": false
+    },
+    {
+      "id": "J09",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goals": 0,
+      "host_record_id": "e717c4d07f224b7c89a8c6fdc0d1eab4",
+      "reply_record_id": "99e3c080a5ba4bc1935d70fad8708a3c",
+      "limitation": false
+    },
+    {
+      "id": "J10",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goals": 0,
+      "host_record_id": "3dec97771ad646a68e3c413ad163bf82",
+      "reply_record_id": "f2774208737a4307bd380851bdeb4e34",
+      "limitation": true
+    },
+    {
+      "id": "J11",
+      "expected": "unsupported",
+      "actual": "unsupported",
+      "goals": 0,
+      "host_record_id": "275ac45a1065456493c8d99720eeb2eb",
+      "reply_record_id": "b6c46e96a2e34b8f8a8a21f95a637a73",
+      "limitation": true
+    },
+    {
+      "id": "J12",
+      "expected": "conversation",
+      "actual": "conversation",
+      "goals": 0,
+      "host_record_id": "640d325e15234975a6498211b352a77f",
+      "reply_record_id": "cfeff17787c040ab9e2fefd662b406f7",
+      "limitation": false
+    }
+  ],
+  "false_positive_goals": 0,
+  "request_recall": 2,
+  "request_total": 4,
+  "exact_matches": 10
+}
