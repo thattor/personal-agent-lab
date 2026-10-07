@@ -1,0 +1,46 @@
+{
+  "recorded_at": "2026-10-07T21:51:35.902Z",
+  "baseline_head": "40a59c35e56bf23c3c21316c4091177eab95bdd7",
+  "previous_goal_turn": "no progress; authority/response revalidation only",
+  "current_goal_turn": "no progress; same genuine access condition, no independent required slice",
+  "condition": "C045 explicit Codex browser artifact-page block has no confirmed supported clearance. Remaining required actual artifact-dependent UI evidence cannot proceed through an allowed path.",
+  "observations": [
+    {
+      "turn": "C047 exit",
+      "classification": "progress completed; same residual access condition",
+      "evidence": "STATE.md and c047-github-readback.json"
+    },
+    {
+      "turn": "first automatic continuation",
+      "classification": "no progress",
+      "evidence": "runtime/c047-blocked-revalidation-01.json"
+    },
+    {
+      "turn": "second automatic continuation",
+      "classification": "no progress",
+      "evidence": "fresh source, GitHub and human-thread revalidation"
+    }
+  ],
+  "blocked_threshold_met": true,
+  "human_thread": {
+    "id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "status": "idle",
+    "latest_turn": "01a11852-5408-7581-aff5-e7d48a0f1356",
+    "latest_turn_status": "completed",
+    "no_new_human_answer": true
+  },
+  "global_issue": {
+    "number": 6,
+    "state": "open",
+    "updated_at": "2026-10-07T21:43:10Z",
+    "comments": 3
+  },
+  "source_changes_since_268_test_pass": false,
+  "test_evidence": "evidence/reviews/judgment-boundary/c047-full.txt;268PASS24.048s",
+  "specific_live_work_handle": null,
+  "verified_wait": false,
+  "goal_status_returned": "blocked",
+  "goal_objective_unchanged": true,
+  "next_action": "After supported artifact UI access is established, resume frozen affected cases without denied-content workaround or resampling; then one actual current whole-flow usefulness evaluation and final release audit.",
+  "no_new_provider_call_or_auth_or_schedule": true
+}

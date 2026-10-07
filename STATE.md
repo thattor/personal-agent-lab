@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 development continues under D-021/P002 and the latest owner-directed model-led Primary correction D-028/D-029. Reasoning-solvable technical choices are autonomous. C047 supported goal readback is ACTIVE after the user resumed the same overall objective. Earlier BLOCKED and refused UI-control observations remain historical; the controller did not activate the card through an alternate/internal-state workaround. No schedule restarted.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 development continues under D-021/P002 and the latest owner-directed model-led Primary correction D-028/D-029. Reasoning-solvable technical choices are autonomous. C048 supported goal status is BLOCKED after three consecutive observations of the same residual browser-access condition. The full objective and accepted scope are unchanged; C047 active development remains historical progress. Earlier BLOCKED and refused UI-control observations remain historical; the controller did not activate the card through an alternate/internal-state workaround. No schedule restarted.
 
 ## Current phase
 Hierarchy and goal/evaluation loops configured: ACTIVE [milestone1](https://github.com/thattor/personal-agent-lab/milestone/1), parent#2 with actual child Issues#3/#4/#5; global Issue#6 with actual stage children#2/#7–11. Future milestones2–5 are proposed required stages IF P-001 adopted; milestone6 is optional extension, not a required PAL-1.0 gate. Milestone7 is a closed historical Stable-0 record, linked to Issue1 rather than assigned after CLI failure; Issue1 remains closed. [Actual GitHub readback](evidence/reviews/project-plan/github.json).
@@ -24,6 +24,20 @@ Actual official Japanese functional scenarios and controls PASS on runtime basel
 Soak01 retained after reproduced stale UI warning; soak02 retained and intentionally reset for the user's bilingual UI request. Both old DBs/hash chains/receipts stay intact. [Soak02 directly confirmed receipt and reset](evidence/soak/2026-10-07/soak02-human-and-reset.json). No old human counts/time/restart proof transferred. Bilingual UI only changes display text; fixed controls, canonical values, receipts and provider remain English. [55-test full suite](evidence/tests/ui-bilingual-full.txt), [actual refresh recovery probe](evidence/ui/recovery/bilingual-after.txt). Historical runtime/soak-20261007-03 started 2026-10-07T06:14:18.834450+09:00 from clean pushed baseline 1863ef2a3037b335fa6f257a8d6fd95fb44da9dc on port58500, monitor PID3322/app PID3324. [Fresh start and served bilingual UI](evidence/soak/2026-10-07/start-03.json).
 
 ## Exact next action
+
+C048 blocked audit is complete. C047 completed the remaining independent cancellation
+slice; two following automatic continuations found no supported artifact-access clearance
+or independent required work. The human window is idle, latest turn01a11852 completed
+with an agent acknowledgment and no new human answer. GitHub Issue6 and clean main40a59c3
+are unchanged. This is external-condition wait, not a verified running process. Goal tool
+returned BLOCKED; [audit](evidence/operations/c048-blocked-audit.json). Do not ask the owner
+to repeat the resolved Devin trust action or invent an unsupported browser-unlock step.
+
+Resume only after a supported allowed path for the remaining artifact UI is established.
+Preserve the original blocked result; then finish the frozen affected UI cases, one
+current whole-flow usefulness evaluation and final release audit. Current product/tests
+are unchanged since268 PASS24.048s; no redundant suite/provider call or schedule restart.
+Earlier ACTIVE descriptions below are historical and superseded by this audit.
 
 C047 resolves HR-ACCESS-002 using the direct owner reply 「実行した」 and a successful
 134.740s official SWE-2 High Free review with workspace trust respected. No new auth,

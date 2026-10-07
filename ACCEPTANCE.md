@@ -274,3 +274,9 @@ Three slots, two frozen controller inputs, bound stale-artifact rejection, norma
 teardown/exit0 with explicit ECONNREFUSED and PID-exit evidence. No product changes since
 268-test full PASS. This fills one controlled cancellation subproof only; N1-06/10 remain
 PARTIAL, N1-07 usefulness and final release audit remain incomplete.
+
+C048 operational blocked audit: same residual browser artifact-access condition observed
+at C047 exit and two automatic continuations; no new supported clearance/human response
+or independent required slice. Goal BLOCKED with objective unchanged. Existing N1 states
+and268-test evidence remain unchanged; no new test, provider call, PASS or release claim.
+See evidence/operations/c048-blocked-audit.json.
