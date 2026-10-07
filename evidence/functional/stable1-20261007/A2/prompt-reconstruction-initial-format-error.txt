@@ -1,0 +1,4 @@
+DRAFT
+架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。
+Return only the requested draft text, without tool invocations or planning transcript.
+Relevant sanitized context: {"records": [{"seq": 1, "id": "d55694a7e5ee4982a4e6063da010f9ec", "role": "user", "content": "架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。", "usable": 1, "source_event_id": null, "manifest": "[]", "supersedes": null}], "notes": [], "manifest": ["d55694a7e5ee4982a4e6063da010f9ec"]}

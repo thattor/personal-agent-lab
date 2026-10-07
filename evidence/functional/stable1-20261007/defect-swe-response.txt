@@ -1,0 +1,50 @@
+I'll review this as the implementation-design consult. First, invoking the matching skill and reading the source-of-truth docs.Reading the source-of-truth docs and locating the relevant N1-05 / D-025 material.Now reading the D-025 decision record, the frozen v3 contract, and the failed-run evidence.Reading the D-025 decision text, C1 evidence, and locating the prompt formatter.Now locating the actual prompt construction code and checking ACCEPTANCE.md for the N1-05 row.One more check — whether any test asserts the provider command/system prompt contents, which affects the "smallest safe fix" answer.Review complete. I read the frozen v3 contract, D-021/D-025, the C1 evidence (prompt reconstruction, draft bytes, evaluation, run-result), the actual system prompt in `pal/native.py:173`, the candidate/rubric in ACCEPTANCE.md, and confirmed the CLI-contract test asserts only flags, not prompt text. Findings below.
+
+## Diagnosis — confirmed, with one refinement
+
+The FAIL call is correct and correctly classified. `話し合いをスムーズに進めることができました` asserts a causal outcome ("thanks to which we proceeded smoothly") that the supplied record does not contain. It is not VOID (the manifest-backed context was supplied — the prompt reconstruction shows it) and not FLAG (not a question-artifact or counting nuance). Under v3 `result_policy`, output invention with supplied context is FAIL, and the C rubric's "no added date/achievement" covers this.
+
+Refinement worth recording: the model did not invent a new contribution — it invented a *consequence* of the supported one. The current prompt's prohibition list (`pal/native.py:173`) covers {achievements, obstacles, contributions} — entity-type inventions — but does not address inferred effects/results/benefits or causal connective clauses (`XのおかげでY`). Gratitude-letter genre plus a request demanding "具体的な貢献" strongly primes exactly this clause. So the gap is real and prompt-addressable — but treat the repair as probabilistic risk reduction, not proof. A rerun that passes means "no invention in these 6 frozen samples," nothing broader; that matches the finite-corpus limits already disclosed in D-025.
+
+## Smallest safe fix — endorse, tightened slightly
+
+One added sentence inside the existing thank-you clause only, with a positive instruction, not just a prohibition. Shape:
+
+> "Name only contributions stated in the supplied context; thank the person for the stated action itself. Do not add inferred effects, results, benefits, or causal outcomes unless explicitly stated. Omit absent details or use explicit placeholders."
+
+Do not touch the clarification/offer/tool-boundary clauses — every extra delta adds untested surface. Two wording cautions:
+
+- Keep the affirmative "thank for the stated action itself" — pure prohibition risks over-suppression where C loses its required "supported detail," which would trade one FAIL mode for another.
+- Phrase placeholders so they don't invite `〇〇さん` when a name *is* supplied — that would fail "Retain Cedar/Mika."
+
+Regression posture: no test asserts the prompt string (`tests/test_native.py` checks only CLI flags), so the 92-test suite is a genuine regression check, not a snapshot exercise. All frozen scenarios rerun on the new candidate — A/B cannot carry PASS forward across a prompt change even though the clause is thank-you-scoped.
+
+## Scope and boundary
+
+Stays inside accepted N1-05. Explicit basis: D-025 tail ("Minimal demonstrated-invention prompt repair would need required review/recorded candidate") and v3 `authority_boundary` ("Minimal prompt repair for demonstrated invention stays accepted N1-05 only after required reviews/new recorded candidate"). No product-semantics change: the rubric already prohibited this output; the repair enforces an existing criterion rather than changing it — no Opus gate from the consultation list is triggered. Exit condition: if the draft grows beyond grounding (question/answer flow, refusals, new artifact behavior), it leaves this boundary into Stable-1.1 territory requiring Opus + human adoption.
+
+## Instruction conflicts
+
+None introduced. Two pre-existing wrinkles to keep visible, not silently resolve:
+
+- ACCEPTANCE N1-05 row text says placeholders *or a conversational question* are acceptable; v3 marks question-artifact FLAG = non-PASS. The proposal doesn't touch this, but if a future sample emits a question artifact the row cannot PASS under the frozen contract — evaluation must report that honestly, not arbitrate it quietly.
+- The 6-invocations/5-samples arithmetic is consistent: A/B have empty `fresh_context` (1 call each = 4); C1's remember-ingress turn plus draft = 2 → 6. Context grounding via real host ingress costs a generation call; the next run's counters must keep accounting for it the same way.
+
+## Evidence policy for the next run — endorse your proposal, made concrete
+
+- The failed run stands as a complete retained evidence object under candidate `6ee436f`. The unspent slots (C2, FLOW1, FLOW2 — 21 of the 32 cap) die with the stopped run: not a reserve, not a refund, never redistributed.
+- New candidate = new commit + fresh preflight recording exact file hashes (the preflight mechanism already does this) + same frozen v3 scenarios unmodified. Editing the rubric/scenarios now would be the post-hoc greenwashing D-018 explicitly prohibits.
+- Label it run-2 of the suite and disclose cumulative invocation totals (6 + run-2 usage) in run evidence — that's the "no hidden retry/renewal" guarantee made auditable rather than asserted.
+- Fresh one-use D-020 proof per host launch, unchanged. All FAIL/FLAG/VOID outputs still feed the N1-07 human packet.
+
+## Is another bounded cycle within standing authorization?
+
+Yes — within it, with conditions. D-019/D-020 authorize bounded official-provider verification on the existing subscription; D-025 scoped this Issue's defect-fix→verify loop; the dev loop's step 10–11 treats defects as checkpoints, not escalations. A minimal demonstrated-invention repair followed by one rerun of the frozen suite is the normal loop, not new authority.
+
+Conditions that keep it inside:
+
+1. The fresh operator check before each launch must actually re-confirm extra credits OFF and existing auth — that check is the mechanism, not a formality. If it shows credits on/route unavailable, stop and escalate (that's the payment/auth boundary).
+2. Cumulative usage is subscription quota, not metered payment — but record it honestly and keep cycles few.
+3. Guard against tuning-to-the-test: if a *third* candidate fails the same invention class, that is an assumption failure under G-001 step 11 — prompt-only grounding may be insufficient, and the fallback (e.g., host-side unsupported-claim detection on the artifact) is a real design change requiring Opus. Note it in STATE now so the threshold for stopping is decided before the evidence arrives, not after.
+
+Net: proceed — minimal prompt patch, new recorded candidate, full frozen rerun under a separately labeled run with fresh per-launch proofs, failed run retained. No human judgment, new auth, payment, or scope change is required unless the fresh operator check itself fails.

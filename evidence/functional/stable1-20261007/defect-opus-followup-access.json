@@ -1,0 +1,17 @@
+{
+  "time": 1791350347.107531,
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "ui": {
+    "Pro": true,
+    "session": 48,
+    "week": 15,
+    "extra_credits": false,
+    "purchased": "$0",
+    "month_spent": "$0.00",
+    "auto_reload": false
+  }
+}

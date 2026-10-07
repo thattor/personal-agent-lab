@@ -1,0 +1,83 @@
+# PAL D025 / C1 review: critique and minimal recommendation
+
+## 1. Diagnosis
+
+**The FAIL is correct.** The second sentence has two parts:
+
+- **Supported:** 「設計に関する議論を整理していただいた」 restates the supplied action.
+- **Unsupported:** 「おかげで、話し合いをスムーズに進めることができました」 is an invented result and causal claim. The source supplies no outcome.
+
+**This is mostly a non-compliance with the current prompt, not a gap in it.** "Never invent achievements" should already cover an invented result. The real weakness is that the prompt names achievements, obstacles and contributions but not effects, results or benefits. Japanese gratitude often follows the pattern 「〜のおかげで…できました」, which pulls the model toward stating a benefit. Naming that category explicitly is a clarification, not a criteria change.
+
+**Secondary observation, not a new FAIL reason.** 「整理していただいた」 drops the "helped" in "helped organize," so it slightly strengthens Mika's role. The controller did not flag this, and you should not add it as a criterion now. The fix should just avoid encouraging that kind of strengthening.
+
+## 2. Proposed fix: critique and regressions
+
+**Keep:**
+- No effects, results, benefits or causal impact stated as fact unless the source states them explicitly.
+- Thank the supplied action directly.
+
+**Changes needed:**
+
+1. **Remove "placeholders."** Inserting text like `[日付]` into a two-sentence natural message:
+   - risks failing on naturalness, language or sentence count;
+   - is arguably a new product behavior;
+   - comes close to the missing-content workflow you have excluded.
+
+   Use **omit only**. If placeholders were already accepted behavior under N1-05, keep the existing wording rather than adding new wording.
+2. **Scope the ban to "not in the source."** Without that scope, cases where the source does supply an outcome (possibly A or B) could regress by dropping supported content.
+3. **Separate the speaker's feelings from factual claims.** Expressions like 「心より感謝」 or 「ありがとうございます」 must remain allowed. Otherwise outputs become stilted or the model refuses.
+4. **Cover hedged inferences too.** Forms like 「〜できたと思います」 or 「きっと〜」 still invent an outcome. A plain fact-only rule can be gamed by hedging.
+5. **Do not put the C1 text or a Cedar/Mika example in the prompt.** That contaminates the frozen test. If you need an example, describe the pattern generically, for example: "do not add 'thanks to X, Y happened' unless Y is supplied."
+
+**Smallest safe wording** (one added clause):
+
+> "Do not state or imply effects, results, benefits, or causal impact of anyone's actions (including hedged forms) unless explicitly given in the source; thank the supplied action itself. Expressions of the writer's own gratitude are allowed. Omit absent details."
+
+## 3. Instruction conflicts
+
+**No hard conflicts.** Specifically:
+
+- **Two sentences vs. no effects:** compatible. Sentence 1 is overall thanks; sentence 2 is the supplied contribution only.
+- **"Omit absent details" vs. "preserve sentence count":** compatible, as long as omitting details never removes a sentence.
+- **Placeholders:** the only near-conflict, which is why I recommend dropping them.
+
+## 4. Scope (N1-05 / D021, D025)
+
+**Conditionally this stays inside N1-05.** I cannot see the text of D021 or D025, so this is my assessment, not a verification. With the placeholder clause removed, the change only tightens an existing faithfulness constraint in the prompt. It does not:
+
+- change or loosen criteria;
+- add a workflow;
+- change model or Executor authority;
+- change product design.
+
+With "placeholders" included, I would treat it as a possible product-behavior change and send it for human review.
+
+## 5. Evidence policy
+
+I agree with your proposal, plus the following:
+
+**Record the failed run:**
+- Retain the failed run immutably: candidate 6ee436f, runtime ce9aef6, C1 FAIL.
+- Do not reuse its unused slots and do not substitute C1.
+
+**Explain the 6-vs-5 discrepancy first.** Six invocations for five samples needs a written explanation before any new cycle. If it was an undisclosed retry, it is the very "hidden retry" you are trying to rule out. That would be an audit finding on the harness itself, separate from the C1 defect.
+
+**Validate the new candidate cleanly:**
+- Use a new version or commit and rerun the full frozen suite: A, B and C, two samples each.
+- Use a fresh, explicitly stated cap and fail-stop.
+- Carry over nothing. The old A1, A2, B1 and B2 passes do not count, because the prompt change could regress them.
+
+**State the limits honestly.** Two samples per scenario is weak evidence. A pass shows the specific failure was not reproduced; it does not show the defect is eliminated.
+
+## 6. Authorization boundary
+
+**This is not a payment boundary.** Extra credits are off, nothing is paid, and nothing is exposed publicly.
+
+**It may still be a human authorization boundary.** Repeated fix-and-rerun cycles against a small frozen stochastic suite raise the chance of passing by luck, which amounts to test-shopping. My decision rule:
+
+- **Proceed autonomously** only if the standing authorization explicitly allows more than one bounded live-validation cycle per defect, with a stated cap that this cycle stays within.
+- **Otherwise, stop and request a reviewed, bounded authorization for exactly one cycle.** That includes the case where the authorization is silent or was granted for a single run.
+- **In either case,** any further failure after this cycle should go to a human rather than trigger another autonomous attempt.
+
+Given the ambiguity, and the open 6-vs-5 question, the conservative default is to **ask for authorization**.

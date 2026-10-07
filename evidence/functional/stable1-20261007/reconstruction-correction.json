@@ -1,0 +1,95 @@
+{
+  "finding": "Observer serialized Store.context dict instead of WorkOrder.context role/content tuple pairs",
+  "actual_formatter": "pal/runtime.py:221 -> ProviderExecutor.execute at54",
+  "correction": "Retained misformatted reconstruction, regenerate from immutable actual Attempt manifest and current frozen formatter",
+  "raw_wire_capture": false,
+  "no_new_model_calls": true,
+  "semantic_verdict_changed": false,
+  "cases": [
+    {
+      "sample": "A1",
+      "initial_sha256": "605e8ef979bd3221a902ea128b711b670bef86b91158797d2c2a768ca7d20347",
+      "corrected_sha256": "d1c015fc39ed8799ed090e4394e744c82f4f145386e2ca3307685a58ccf5db5e",
+      "order_context": [
+        [
+          "user",
+          "架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。"
+        ]
+      ],
+      "manifest": [
+        "1b30462e6afe488cb8b218ca98879bee"
+      ]
+    },
+    {
+      "sample": "A2",
+      "initial_sha256": "8b00b25e67a20839f6bfaa4b05116809208c402faced7026941f13646b5811be",
+      "corrected_sha256": "d1c015fc39ed8799ed090e4394e744c82f4f145386e2ca3307685a58ccf5db5e",
+      "order_context": [
+        [
+          "user",
+          "架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。"
+        ]
+      ],
+      "manifest": [
+        "d55694a7e5ee4982a4e6063da010f9ec"
+      ]
+    },
+    {
+      "sample": "B1",
+      "initial_sha256": "28f9edd64ed1edd9d89647ac3ceb1e230fe245a7a0b90965881fd9aed6c6c065",
+      "corrected_sha256": "374bbea17ae13c598a1f30337034f4b7200212cc931cd21f54dce018d8ba7ef7",
+      "order_context": [
+        [
+          "user",
+          "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。"
+        ]
+      ],
+      "manifest": [
+        "0702cd2aa05347a384e67a2e13c22c42"
+      ]
+    },
+    {
+      "sample": "B2",
+      "initial_sha256": "8a1b0ddfa8dead00a4eb5d111fd0bbbcc26a4d4e8ee8a4aef432051bd1a697e9",
+      "corrected_sha256": "374bbea17ae13c598a1f30337034f4b7200212cc931cd21f54dce018d8ba7ef7",
+      "order_context": [
+        [
+          "user",
+          "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。"
+        ]
+      ],
+      "manifest": [
+        "262810236c814ad88807278450cb9026"
+      ]
+    },
+    {
+      "sample": "C1",
+      "initial_sha256": "2ba42d4cf666e9a873f640da4a1eb87b5e7c364acbecb605e515006989036e3a",
+      "corrected_sha256": "c3e54232550023c33d22f39e1af576e9bdd7d0656273c1221577ee77ec4f18c5",
+      "order_context": [
+        [
+          "user",
+          "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied."
+        ],
+        [
+          "assistant",
+          "Got it: Cedar is a fictional project, and Mika helped organize its design discussion. No other contributions or dates are included.\n\nIf you'd like, I can draft a thank-you note to Mika based on that."
+        ],
+        [
+          "user",
+          "架空プロジェクトCedarについて、Mikaへのお礼状の下書きを作成してください。日本語で2文、全体への感謝と、提供された具体的な貢献を含めてください。外部には送らないでください。"
+        ],
+        [
+          "note",
+          "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied."
+        ]
+      ],
+      "manifest": [
+        "da6e8aee8caf4c2e8c1547e7d06bd5c2",
+        "10fa0220ef3b442d9ef85bfefb934da8",
+        "f756a0b602c446e79e5c59535d4cb541",
+        "note:4926e802757041b5bc4d79b569478e28"
+      ]
+    }
+  ]
+}

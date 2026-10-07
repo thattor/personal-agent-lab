@@ -1,0 +1,199 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "da6e8aee8caf4c2e8c1547e7d06bd5c2",
+      "role": "user",
+      "content": "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "10fa0220ef3b442d9ef85bfefb934da8",
+      "role": "assistant",
+      "content": "Got it: Cedar is a fictional project, and Mika helped organize its design discussion. No other contributions or dates are included.\n\nIf you'd like, I can draft a thank-you note to Mika based on that.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"da6e8aee8caf4c2e8c1547e7d06bd5c2\",\"note:4926e802757041b5bc4d79b569478e28\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "f756a0b602c446e79e5c59535d4cb541",
+      "role": "user",
+      "content": "架空プロジェクトCedarについて、Mikaへのお礼状の下書きを作成してください。日本語で2文、全体への感謝と、提供された具体的な貢献を含めてください。外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "9845e4ea7afa4060bb251f36f6817e2d",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: running.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"da6e8aee8caf4c2e8c1547e7d06bd5c2\",\"10fa0220ef3b442d9ef85bfefb934da8\",\"f756a0b602c446e79e5c59535d4cb541\",\"note:4926e802757041b5bc4d79b569478e28\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "3e4a5ecea2b24d3aba549d7de83cbacd",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"729d0b0b5af34aa2a82124a9f003feb7\"}",
+      "usable": 1,
+      "source_event_id": "f739c96d4ac24f60bb29464590f18b9f",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "2e42320f781d4afa84e4646a3a10f6f9",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"8435af5e025d4342b3d42b45159d3ddf\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"729d0b0b5af34aa2a82124a9f003feb7\"}",
+      "usable": 1,
+      "source_event_id": "4313a234b8324dfa92e0363e30d012f8",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "7cc8371eeb224867a93e332da01d44af",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"2ccbdd3dff7442e1befcf32d8fc4d499\",\"attempt_id\":\"8435af5e025d4342b3d42b45159d3ddf\",\"check_status\":\"pass\",\"receipt_id\":\"30fc915dc41e4806a09505dc263fac5c\"},\"event\":\"goal.completed\",\"goal_id\":\"729d0b0b5af34aa2a82124a9f003feb7\"}",
+      "usable": 1,
+      "source_event_id": "64936b8ec03b4fc1a1c63c720b72e835",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [
+    {
+      "id": "4926e802757041b5bc4d79b569478e28",
+      "content": "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied.",
+      "sources": "[\"da6e8aee8caf4c2e8c1547e7d06bd5c2\"]",
+      "usable": 1
+    }
+  ],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "729d0b0b5af34aa2a82124a9f003feb7",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "59b1d1a5a4c74ddbb3cf46d2cfd57ab2",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "729d0b0b5af34aa2a82124a9f003feb7",
+      "revision": 1,
+      "acceptance_id": "59b1d1a5a4c74ddbb3cf46d2cfd57ab2",
+      "specification": "架空プロジェクトCedarについて、Mikaへのお礼状の下書きを作成してください。日本語で2文、全体への感謝と、提供された具体的な貢献を含めてください。外部には送らないでください。",
+      "sources": "[\"f756a0b602c446e79e5c59535d4cb541\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "59b1d1a5a4c74ddbb3cf46d2cfd57ab2",
+      "goal_id": "729d0b0b5af34aa2a82124a9f003feb7",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "8435af5e025d4342b3d42b45159d3ddf",
+      "goal_id": "729d0b0b5af34aa2a82124a9f003feb7",
+      "revision": 1,
+      "acceptance_id": "59b1d1a5a4c74ddbb3cf46d2cfd57ab2",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"da6e8aee8caf4c2e8c1547e7d06bd5c2\",\"10fa0220ef3b442d9ef85bfefb934da8\",\"f756a0b602c446e79e5c59535d4cb541\",\"note:4926e802757041b5bc4d79b569478e28\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "30fc915dc41e4806a09505dc263fac5c",
+      "attempt_id": "8435af5e025d4342b3d42b45159d3ddf",
+      "artifact_id": "2ccbdd3dff7442e1befcf32d8fc4d499",
+      "hash": "94d0b569f1d9b172cb33a9bb025beb2e596d0c62ad8d54d58d25a70bf72c1261",
+      "size": 231,
+      "revision": 1,
+      "epoch": 1
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "8435af5e025d4342b3d42b45159d3ddf",
+      "receipt_id": "30fc915dc41e4806a09505dc263fac5c",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "f739c96d4ac24f60bb29464590f18b9f",
+      "goal_id": "729d0b0b5af34aa2a82124a9f003feb7",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "4313a234b8324dfa92e0363e30d012f8",
+      "goal_id": "729d0b0b5af34aa2a82124a9f003feb7",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"8435af5e025d4342b3d42b45159d3ddf\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "64936b8ec03b4fc1a1c63c720b72e835",
+      "goal_id": "729d0b0b5af34aa2a82124a9f003feb7",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"2ccbdd3dff7442e1befcf32d8fc4d499\",\"attempt_id\":\"8435af5e025d4342b3d42b45159d3ddf\",\"check_status\":\"pass\",\"receipt_id\":\"30fc915dc41e4806a09505dc263fac5c\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "artifacts": [
+    {
+      "id": "2ccbdd3dff7442e1befcf32d8fc4d499",
+      "hash": "94d0b569f1d9b172cb33a9bb025beb2e596d0c62ad8d54d58d25a70bf72c1261",
+      "size": 231
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 1,
+    "expires_at": 1791351066.588852,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 66497,
+    "started_at": 1791350166.640523,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

@@ -1,0 +1,69 @@
+# Is this ordinary authorized defect repair within N1-05?
+
+**Yes, conditionally.** This is a text-only model review, not human acceptance. It rests on your description of D025 and of the latest human instruction, which I haven't seen.
+
+## Why this is defect repair, not a plan change
+
+- **Defect scope:** The failure is a demonstrated invention defect under an unchanged criterion. N1-05 forbids fabricated recipient, date or contribution.
+- **Pre-declared path:** D025 already provides for a minimum prompt repair followed by required reviews and a new candidate.
+- **Standing authorization:** The latest human instruction directly authorizes repair, tests, evidence recording, commit and push. That makes this an executed authorized path, not a new plan.
+- **Rubric unchanged:** Existing placeholder outputs stay acceptable. You add no placeholder instruction and do not loosen or tighten the grader.
+- **Bounded:** One cycle, all of A/B/C ×2 plus FLOW, fail-stop, frozen first-run slots and FAIL record, human escalation on any repeat.
+
+## Standing authorization vs. budget ambiguity
+
+**The latest human message settles:**
+- The route: the same official no-extra-credit route.
+- That no payment is authorized.
+- That routine technical steps proceed without asking.
+
+**It does not explicitly approve a call count.** The cap of 32 is your own self-imposed ceiling, not a human grant. That is safe only if two conditions hold:
+- It is derived arithmetically from the frozen per-run plan and recorded before launch, as a limit and not a target.
+- It consumes no paid credit.
+
+So the earlier ambiguity resolves to this: **count is a self-limit, route is human-fixed, and payment is forbidden.** Any quota, credit or auth prompt is a hard stop, not a retry.
+
+## Wording critique (smallest changes)
+
+| Risk | Fix |
+|---|---|
+| "No unsupported effects" could suppress effects the context or request actually states, causing an N1-05 retention regression | Anchor to "not stated in the context or request". Keep the existing "retain context-supported facts and requested constraints" clause verbatim. |
+| Hedged invention ("this may have helped…") | Already covered by "including hedged". Keep it explicit. |
+| "Omit absent details" could push C1 toward dropping remembered context, or toward generic filler | Scope it to missing details only. Do not let it override the C1 remembered-context requirement. |
+| "Thank the supplied action" could be over-elaborated into implied impact | Thank the action as stated, without characterizing its outcome. |
+| A shared prompt affects A/B too | The full rerun covers this. Do not narrow the rerun. |
+
+**Suggested minimal clause:**
+> "Do not state or imply effects, results, benefits, or impact of anyone's action unless stated in the context or request, including hedged forms. Thank the supplied action itself; your own gratitude is fine. Omit details not provided."
+
+## Regression tests (offline, before launch)
+
+- A prompt-text assertion that the clause is present and the retention clause is unchanged.
+- The rubric/checker hash is unchanged from first-run.
+- Fixture checks where:
+  - Placeholder output passes.
+  - Conversational-question output passes.
+  - Context-supported facts present → output retained.
+  - Hedged-impact output → fail.
+- A counter/state check where canonical counts must equal the planned slots and any extra call triggers fail-stop.
+
+## Remaining constraints before launch
+
+1. **D025 text:** Confirm it literally provides for a new candidate run after repair. If it only says the repair "remains accepted," the rerun still fits as testing, but cite the exact text in the before-launch record.
+2. **Required reviews:** Complete the reviews D025 requires and record them as model reviews. This review counts as one model review, not human acceptance.
+3. **N1-07:** Keep the negative feedback visible and linked to the immutable first-run FAIL. Mark it resolved only by linking to the new PASS evidence.
+4. **Pushed evidence:** Contains no credentials or unrelated personal data.
+
+## Minimal human handoff (only if triggered)
+
+Triggers:
+- A repeat failure of the same kind.
+- The cap would be exceeded.
+- The route asks for credit, auth or permission.
+- A fix would require changing the rubric or accepted behavior.
+
+The handoff message:
+
+> "N1-05 corrective candidate [FAIL/STOPPED] at slot X. First-run and corrective records linked, no reuse. Cause: …. No paid or extra route used. Options: (a) adopt the broader missing-content workflow (needs human stage adoption), (b) accept a revised criterion, (c) stop. Awaiting decision."
+
+**Bottom line:** Proceed without new human input once the constraints above are recorded. Escalate on any trigger.

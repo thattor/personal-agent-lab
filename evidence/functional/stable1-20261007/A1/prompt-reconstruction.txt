@@ -1,0 +1,4 @@
+DRAFT
+架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。
+Return only the requested draft text, without tool invocations or planning transcript.
+Relevant sanitized context: [["user", "架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。"]]

@@ -1,0 +1,14 @@
+{
+  "candidate": "6ee436f798b60fd67c8861d739b44becaa82d2be",
+  "requested_model": "opus",
+  "actual_backend_version": "Not exposed by text-only CLI",
+  "claude_cli": "2.1.291 (Claude Code)",
+  "schema": 2,
+  "sqlite": "3.54.0",
+  "proof_policy": "one use900second wall and monotonic",
+  "generation_invocations": 6,
+  "model_failures": 0,
+  "semantic_failures": 1,
+  "raw_stdin_stdout": "Not captured; canonical sanitized prompt reconstruction/artifact only",
+  "CLI_internal_retries_personalization": "Unproven"
+}

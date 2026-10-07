@@ -1,0 +1,5 @@
+Issue5 checkpoint: first actual official UI run on6ee436f retained FAIL. A1/A2/B1/B2 PASS; C1 invented smooth-progress result from source supplying only design-discussion organization.5 fresh DBs,6 calls (C1 memory reply+draft), no retry/old evidence transfer. Existing host/DB unchanged, all temporary hosts exited0. Host receipt/invariant audit PASS cannot override semantic FAIL; C2/FLOW NOT_RUN.
+
+Official Opus + SWE-2 High agree minimum grounding instruction fix within accepted N1-05. D026 recorded before implementation,92 full repair tests PASS. Independent Codex evidence audit caught observer shape mismatch; initial reconstructions retained and corrected to actual WorkOrder pairs, no generation rerun. Next: new committed candidate, exactlyONE capped32 frozen run2 (no prior PASS reuse), fresh no-extra-charge perhost checks, fail-stop/escalate on repeat. Human N1-07 and final N1-08 remain NOT_RUN; Issue5/milestone/project incomplete.
+
+Evidence: evidence/functional/stable1-20261007/README.md and linked actual source/output/hash/manifest/UI/reviews, full repair testlog.

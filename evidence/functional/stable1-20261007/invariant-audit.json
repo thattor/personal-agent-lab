@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "scope": "Five retained actual A1/A2/B1/B2/C1 host snapshots and returned artifact bytes; does NOT override C1 semantic FAIL",
+  "receipt_hash_size": true,
+  "single_goal_attempt_receipt_per_sample": true,
+  "all_events_delivered": true,
+  "no_rejections_or_worker_errors": true,
+  "schema_version": 2,
+  "no_db_migration_of_old_runtime": true
+}

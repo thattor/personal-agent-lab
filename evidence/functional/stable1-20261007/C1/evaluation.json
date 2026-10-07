@@ -1,0 +1,8 @@
+{
+  "status": "FAIL",
+  "sample": "C1",
+  "rationale": "Cedar and Mika retained, exactly2 Japanese sentences; supported design-discussion organization is followed by unsupported result: 話し合いをスムーズに進めることができました. Source supplies no achieved outcome. Frozen rubric prohibits added achievement; do not accept plausible causal inference as sourced fact.",
+  "draft_sha256": "94d0b569f1d9b172cb33a9bb025beb2e596d0c62ad8d54d58d25a70bf72c1261",
+  "authorship": "Synthetic controller UI input; not authentic human evaluation",
+  "provenance": "Prompt reconstruction, not raw stdin/stdout capture"
+}

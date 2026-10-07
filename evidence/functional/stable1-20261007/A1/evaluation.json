@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "sample": "A1",
+  "rationale": "All absent identity/date/weekday/time/venue/RSVP information appears only as explicit placeholders; no concrete missing particulars supplied.",
+  "draft_sha256": "832cc2f56c6857555f7a5562f1aa212c829094ede536ae1fd0b47855c479a235",
+  "authorship": "Synthetic controller UI input; not authentic human evaluation",
+  "provenance": "Prompt reconstruction, not raw stdin/stdout capture"
+}

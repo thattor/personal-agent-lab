@@ -1,0 +1,85 @@
+{
+  "status": "FAIL",
+  "candidate": "6ee436f798b60fd67c8861d739b44becaa82d2be",
+  "reason": "C1 unsupported outcome",
+  "generation_invocations": 6,
+  "allocated_caps_used_hosts": 11,
+  "budget_cap": 32,
+  "completed_samples": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1"
+  ],
+  "not_run": [
+    "C2",
+    "FLOW1",
+    "FLOW2_VOID_ONLY"
+  ],
+  "policy": "FAIL retains evidence, stops this run; no replacement samples, reserve draw, renewal or fallback",
+  "owned_host_stops": [
+    {
+      "slot": "A1",
+      "health": {
+        "pid": 63187,
+        "started_at": 1791349969.6448262,
+        "worker_alive": true,
+        "worker_error": "",
+        "stopping": false
+      },
+      "signal": "SIGTERM",
+      "canonical_repair": false
+    },
+    {
+      "slot": "A2",
+      "health": {
+        "pid": 65015,
+        "started_at": 1791350039.1998699,
+        "worker_alive": true,
+        "worker_error": "",
+        "stopping": false
+      },
+      "signal": "SIGTERM",
+      "canonical_repair": false
+    },
+    {
+      "slot": "B1",
+      "health": {
+        "pid": 65588,
+        "started_at": 1791350082.484134,
+        "worker_alive": true,
+        "worker_error": "",
+        "stopping": false
+      },
+      "signal": "SIGTERM",
+      "canonical_repair": false
+    },
+    {
+      "slot": "B2",
+      "health": {
+        "pid": 66119,
+        "started_at": 1791350128.765131,
+        "worker_alive": true,
+        "worker_error": "",
+        "stopping": false
+      },
+      "signal": "SIGTERM",
+      "canonical_repair": false
+    },
+    {
+      "slot": "C1",
+      "health": {
+        "pid": 66497,
+        "started_at": 1791350166.640523,
+        "worker_alive": true,
+        "worker_error": "",
+        "stopping": false
+      },
+      "signal": "SIGTERM",
+      "canonical_repair": false
+    }
+  ],
+  "stopped_at": 1791350225.3031108,
+  "stops_verified": "All five owned server processes completed exit0 via exec session completion"
+}

@@ -1,0 +1,40 @@
+{
+  "source": "Actual functions.write_stdin completion readbacks in this controller turn; not independently re-observed by Codex audit",
+  "servers": [
+    {
+      "slot": "A1",
+      "exec_session": 69659,
+      "exit_code": 0,
+      "output": "",
+      "termination": "Supported SIGTERM after exact health PID/started_at match"
+    },
+    {
+      "slot": "A2",
+      "exec_session": 15345,
+      "exit_code": 0,
+      "output": "",
+      "termination": "Supported SIGTERM after exact health PID/started_at match"
+    },
+    {
+      "slot": "B1",
+      "exec_session": 99850,
+      "exit_code": 0,
+      "output": "",
+      "termination": "Supported SIGTERM after exact health PID/started_at match"
+    },
+    {
+      "slot": "B2",
+      "exec_session": 24162,
+      "exit_code": 0,
+      "output": "",
+      "termination": "Supported SIGTERM after exact health PID/started_at match"
+    },
+    {
+      "slot": "C1",
+      "exec_session": 27111,
+      "exit_code": 0,
+      "output": "",
+      "termination": "Supported SIGTERM after exact health PID/started_at match"
+    }
+  ]
+}

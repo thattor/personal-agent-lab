@@ -35,3 +35,11 @@ choices stale, requiring a fresh specific request; criteria remain fixed.
 Next work unit Issue5: planted-absence checks, bounded official real-provider UI,
 targeted authentic usefulness judgment and final Stable1 release audit.
 P-001 remains PROPOSED/human-pending; it does not block this independent work.
+
+## C-004 — Issue5 first actual real run exposes unsupported outcome
+
+Goal: frozen absence semantics before target-flow/human evaluation. Candidate6ee436f, synthetic actual UI on five independent official hosts;6 invocations=4 A/B drafts + C1 conversation/remember + C1 draft, not retry. A1/A2/B1/B2 PASS, C1 FAIL; C2/FLOW NOT_RUN. Evidence: evidence/functional/stable1-20261007/README.md; actual receipt/hash/manifest invariant audit PASS, full92-test pre-repair suite PASS. Semantic failure remains FAIL despite host integrity PASS. Five test hosts stopped normally; original58500 unchanged.
+
+Plan assessment: D021/N1-05 remains useful, no criterion or overall plan amendment. The finding calls for minimum existing grounded-draft prompt correction, not operational content-clarification or new model authority. Required official Opus/SWE reviews and proposed finite new-candidate validation policy are pending. Old failed-run32 cap cannot be reassigned or favorable samples replaced. Any new candidate cycle must be explicitly reviewed/bounded and retain all earlier negative evidence; another identical failure requires escalation, not blind retry. P001 remains human-pending independently.
+
+Next: finish official reviews, record adopted/rejected decisions before any runtime instruction change, implement smallest supported correction, run relevant/full regressions, commit/push; then only an authorized fresh finite new-candidate run and authentic version-bound human judgment. Parent milestone and project remain incomplete.

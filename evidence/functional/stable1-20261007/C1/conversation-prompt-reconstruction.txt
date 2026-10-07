@@ -1,0 +1,4 @@
+CONVERSATION
+Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied.
+Relevant sanitized context: [["user", "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied."], ["note", "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied."]]
+Current canonical work (overrides old conversation summaries): []

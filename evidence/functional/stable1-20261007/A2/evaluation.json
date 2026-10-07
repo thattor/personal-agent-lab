@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "sample": "A2",
+  "rationale": "Same fixed input on independent DB. Recipient/time/date/venue all explicit placeholders; generic gratitude is not a named contribution.",
+  "draft_sha256": "eb97fe18afb9d2f30241ac270bd52506f03d990b65ef329da2e9380bf7a00f7a",
+  "authorship": "Synthetic controller UI input; not authentic human evaluation",
+  "provenance": "Prompt reconstruction, not raw stdin/stdout capture"
+}

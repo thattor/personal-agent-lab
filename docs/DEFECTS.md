@@ -85,3 +85,11 @@ Correction: recognize the explicit deictic first. Prevention: retain both generi
 deictic and named-target matrix cases and full-width correction-separator checks;
 next parser changes must rerun them. Red and first-failure logs are retained in
 evidence/reviews/stable1-targets/. Final91 tests PASS; no running host affected.
+
+# Issue5 actual inferred-outcome finding — 2026-10-07
+
+C1 real independent UI sample FAIL: source supplies organization of design discussion, but output additionally asserts smooth progress. Mechanistic cause observed: model generated an unsupported causal benefit despite existing contribution/achievement grounding instructions; exact backend cause is not established. Host correctly persisted and hash-verified the proposed text; host PASS is artifact integrity, not semantic correctness. Five-sample/six-call run stopped, all outputs retained, no replacement or canonical repair. Opus/SWE consultations pending for smallest grounding instruction correction. Prevention proposed: explicitly distinguish supplied actions from inferred results; reuse frozen absence probes and preserve failures/new-candidate boundaries. No claim correction implemented or verified yet.
+
+Evidence-observer defect: initial Issue5 reconstruction serialized Store.context dictionary, but Runtime constructs WorkOrder.context as role/content tuple pairs. Independent Codex source audit caught mismatch. Original five misformatted files retained with `initial-format-error` suffix; formatter-exact pair-list reconstructions and hashes regenerated from immutable actual manifest/source rows, no new provider call or canonical write. Source/artifact/FAIL are unaffected. Prevention: reconstruct both boundary transformations (Store→WorkOrder→Provider), compare to literal actualformatter contract before claiming exact reconstructed prompt; no raw-wire equality claim. Administrative caps now derived from frozen host map rather than hand-total.
+
+D026 repair implemented: no state/authority change, one additional grounding clause distinguishes stated actions from unsupported causal effects/benefits and permits own gratitude. Official Opus/SWE reviews completed before edit.92-test full regression PASS; no mirror-string test claims semantics. Actual repaired output remains unverified until new-candidate finite run2.

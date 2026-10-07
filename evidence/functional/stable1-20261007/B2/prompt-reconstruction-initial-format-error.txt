@@ -1,0 +1,4 @@
+DRAFT
+お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。
+Return only the requested draft text, without tool invocations or planning transcript.
+Relevant sanitized context: {"records": [{"seq": 1, "id": "262810236c814ad88807278450cb9026", "role": "user", "content": "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。", "usable": 1, "source_event_id": null, "manifest": "[]", "supersedes": null}], "notes": [], "manifest": ["262810236c814ad88807278450cb9026"]}
