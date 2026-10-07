@@ -1,0 +1,36 @@
+{
+  "judgment_id": "HR-STABLE1-001 / HR-PLAN-001",
+  "target": "605791e; P-001 v1",
+  "source_thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "human_turns": [
+    {
+      "turn": "01a114e4-04ad-78d0-a404-dbbe0f031218",
+      "message": "01a114e4-05da-7942-acda-d8e62b543d1f",
+      "meaning": "A1 format preferred; both B and C variants acceptable; correction/cancel and cancelled-state reminder acceptable; ordinary interaction likely Primary; correct after draft is acceptable."
+    },
+    {
+      "turn": "01a114e5-19da-7451-a08d-430d9d191cd1",
+      "message": "01a114e5-1aa1-7211-8773-9a1531ee7898",
+      "meaning": "Later clarification: necessary missing information must be asked; A1 format preference does not authorize silent blanks."
+    },
+    {
+      "turn": "01a114eb-3ddc-7b30-96a4-a7be339933f7",
+      "message": "01a114eb-3ed4-74f2-9fff-8a44ca985e60",
+      "meaning": "Natural spoken requests, reversible imperfect drafts may be corrected/discarded after completion; keep state unambiguous; no demand for100 percent intent/content perfection; implementation sequence delegated. Questions about completion scope need concrete explanation."
+    },
+    {
+      "turn": "01a114ef-251a-7112-afc7-377a0b104db7",
+      "message": "01a114ef-25ec-7be2-a399-4650b8fb8e53",
+      "meaning": "Search usable memory/conversation/authorized sources before asking. Primary handles context/routing/preparation; Expert follows defined work, investigates missing/changed conditions within scope; unresolved meanings or material procedure changes return evidence and recommendation to human."
+    }
+  ],
+  "status": "FEEDBACK_RECEIVED_DESIGN_ALIGNMENT_REQUIRED",
+  "not_inferred": [
+    "N1-07 entire PASS despite explicit mismatch",
+    "P001 whole proposal adoption",
+    "new information-source permission",
+    "Projects device authorization",
+    "blanket80percent safety threshold"
+  ],
+  "next": "Controller compare current design, obtain required official Opus review before adopting design/plan changes, prepare concrete minimal delta; keep received answers distinct from new genuinely pending decisions."
+}
