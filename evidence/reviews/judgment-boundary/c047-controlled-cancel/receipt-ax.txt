@@ -1,0 +1,29 @@
+Browser tab: 30, Title: "Personal Agent Lab", URL: "http://127.0.0.1:51157/".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+~		15 button (expanded) Session receipt / 利用記録, Secondary Actions: Collapse
++		30 text Accepted message IDs for the stability test; message text is omitted. Copy this receipt before closing this session. / 安定性テスト用の受付IDです。本文は含みません。ページを閉じる・再読み込みする前に、この記録を保存してください。
++		31 text {
+  "session_id": "e519071b-3088-49a4-a7db-d47d0fa96503",
+  "accepted_turns": 2,
+  "acknowledgements": [
+    {
+      "key": "ui:e519071b-3088-49a4-a7db-d47d0fa96503:1791408819712:4a7951cc-5411-45cf-a340-42f246c60126",
+      "record_id": "4c28e84e0cd94dc4b90ada193744ef8f",
+      "goal_id": "152fee1aaf89433882c7a3ca2e1bd5d2",
+      "intent": "draft",
+      "action": null,
+      "primary_status": "complete",
+      "accepted_at": "2026-10-07T21:33:39.723Z"
+    },
+    {
+      "key": "ui:e519071b-3088-49a4-a7db-d47d0fa96503:1791408874373:2f60bc0f-05f7-419c-a627-aaf3871fbf39",
+      "record_id": "95640b428ea24ac2bfba9335efd83359",
+      "goal_id": "152fee1aaf89433882c7a3ca2e1bd5d2",
+      "intent": "control",
+      "action": "cancel",
+      "primary_status": "complete",
+      "accepted_at": "2026-10-07T21:34:34.394Z"
+    }
+  ]
+}
+The focused UI element is 15 button (expanded) Session receipt / 利用記録, Secondary Actions: Collapse

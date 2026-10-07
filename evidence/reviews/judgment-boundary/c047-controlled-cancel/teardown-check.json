@@ -1,0 +1,12 @@
+{
+  "recorded_at": 1791409153.308644,
+  "loopback_check_permissions": "authorized outside restricted sandbox",
+  "port": 51157,
+  "connect_ex_errno": 61,
+  "errno_name": "ECONNREFUSED",
+  "port_closed": true,
+  "owned_pid": 87198,
+  "process_lookup_exited": true,
+  "controller_terminal_exit_code": 0,
+  "independent_auditor_port_check": "unavailable: sandbox EPERM, not closure evidence"
+}

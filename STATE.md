@@ -39,15 +39,24 @@ verified. Publication/closure race found by independent Astra was fixed before l
 (content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad).
 No actual cancellation PASS follows the fixtures or reviewer verdict.
 
-Next: commit/push this coherent green increment, verify clean exact candidate, obtain
-fresh existing official Claude Pro/extra-usage-OFF proof, then run the separately frozen
-[C047 contract](evidence/reviews/judgment-boundary/c047-controlled-cancel-contract.json)
-on one new owned loopback store. Exact two Maple inputs via actual UI, cap3/wall600s/
-proof900s, no retry/reserve. Hold only delivery after the actual Executor returns;
-release only after canonical cancellation, require the bound `stale artifact` rejection
-and zero artifacts/receipts/outcomes, normal teardown and independent chain/source audit.
-This cannot establish upstream cancellation or natural-race reliability; original
-C035/C045 timing misses stay unchanged. Goal ACTIVE; no schedule restart.
+C047 actual first-attempt controlled cancellation now PASS on pushedc44d3b4: exact two
+UI inputs, three native slots, actual Executor held before apply, same Goal cancelled
+at epoch2, its Attempt fenced, one bound `stale artifact` rejection, zero accepted
+artifacts/receipts/outcomes/questions/approvals. Six-event fsync chain and retained DB
+match; independent Astra audit PASS within this scope. Normal closure200.824s/exit0,
+owned PID gone and port ECONNREFUSED verified with authorized loopback permissions.
+[Actual proof and limitations](evidence/reviews/judgment-boundary/c047-controlled-cancel/README.md).
+This is controlled delivery after model return, not upstream cancellation or natural
+race reliability; historical C035/C045 misses unchanged. Goal ACTIVE. No schedule restart.
+
+Exact next: preserve/push actual evidence and synchronize Issue12/5/2/global6; inform the
+persistent human window that HR-ACCESS-002 is resolved. Remaining actual artifact/UI
+coverage depends on a supported allowed browser path: the explicit C045 client block
+has not been cleared and must not be bypassed. No new model calls, provider proof renewal,
+retry or fallback while that actual access condition remains. Do not invent a technical
+question for the owner or demand another trust action. Resume the frozen affected cases
+only after supported access is established, preserving original NOT_VERIFIED evidence;
+then provide the current complete flow for one genuine usefulness evaluation and audit.
 
 C045 actual partial evidence remains: ABS-A1 and TARGET-A/B PASS; ABS-A2 NOT_VERIFIED
 at explicit browser-client ERR_BLOCKED_BY_CLIENT; RUNNING-CANCEL timing VOID; nine

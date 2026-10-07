@@ -469,3 +469,15 @@ during-final-snapshot regressions prove no PASS journal entry and zero artifacts
 the race. No actual provider run occurred with the faulty harness. Final full268 PASS
 24.048s; script remains frozen during tests/live. Next related audit must check publication
 ordering as well as host correctness, and verify child tests reached their claimed cause.
+
+C047 actual observer: screenshot API returns raw JPEG bytes; a data-URL assumption raised
+before the cancel input. Save returned bytes directly; exactly two planned UI inputs
+still occurred. AX reports a receipt summary as a button but its DOM role lookup matched
+none; fresh observed exact text opened it. No product changes or extra model calls.
+
+More materially, initial controller closure audit used connect_ex!=0 and could mistake
+sandbox EPERM for port closure. Independent auditor identified its own sandbox denial,
+exposing the same limitation. Preserve controller-audit-initial.json, then verify from
+authorized loopback context: exact ECONNREFUSED61 and ProcessLookupError for owned PID,
+plus actual terminal exit0. Corrected report cites teardown-check.json. Next network
+closure audit must record errno and treat permissions/timeouts as unknown, not closed.

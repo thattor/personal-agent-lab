@@ -446,3 +446,12 @@ run uses actual UI and production native/model/host boundaries; no artifact-body
 or model-output replacement. Commit/push then fresh proof and one execution are next.
 Artifact-dependent cases still respect the separate browser-client block. WholeN1,
 usefulness, Qwen and release remain incomplete. No schedule, extra payment or new scope.
+
+C047 execution: first frozen actual run on pushedc44d3b4 PASS for controlled late-result
+fencing. Exact two UI inputs/three real native slots, same Goal/Attempt and fixed criteria,
+epoch+1 cancellation, exact stale-artifact rejection, zero accepted results.200.824s
+normal closure, six-event chain/source/DB audit and independent review. Evidence:
+judgment-boundary/c047-controlled-cancel/. Contribution: one missing cancellation proof
+closed; whole Issue/milestone/project not complete. Original C035/C045 timing outcomes
+unchanged. Artifact-dependent current regressions still need supported browser access;
+no guard bypass or blind retry. Then one current whole-flow usefulness and release audit.

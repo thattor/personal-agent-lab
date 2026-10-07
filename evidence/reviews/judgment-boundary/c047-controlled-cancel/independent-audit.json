@@ -1,0 +1,21 @@
+{
+  "reviewer": "Astra independent read-only audit",
+  "candidate": "c44d3b4d46a68295a3c8d8a5502471a21daa7046",
+  "verdict": "PASS within controlled late-result-fencing scope; no substantiated blocker",
+  "verified": [
+    "six-event fsync chain and current product/harness/contract hashes",
+    "same Goal and Attempt, epoch1 to2, cancelled and fenced, fixed revision/criteria/sources",
+    "exact bound stale artifact rejection; zero accepted artifacts/receipts/outcomes/questions/approvals",
+    "two frozen UI inputs and complete Primary turns, matching UI receipt",
+    "read-only DB integrity and exact final journal snapshot match, unchanged file bytes",
+    "three slots consumed; recorded closure200.824s, stopped worker and no cleanup errors"
+  ],
+  "independent_process_port_check": "Unavailable: sandbox ps and loopback returned EPERM. Not closure evidence. Controller authorized ECONNREFUSED/process-exit proof is separate in teardown-check.json.",
+  "limitations": [
+    "not upstream-generation cancellation",
+    "not natural timing reliability",
+    "not human usefulness or Qwen qualification",
+    "not whole release completion"
+  ],
+  "writes_or_provider_calls": false
+}

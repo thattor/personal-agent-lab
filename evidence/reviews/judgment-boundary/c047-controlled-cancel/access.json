@@ -1,0 +1,16 @@
+{
+  "observed_at": 1791408790.275223,
+  "source": "Fresh official Claude usage UI reload, browser4 tab172832922, and c047-live-cli-preflight.json",
+  "plan": "Pro",
+  "session_used_percent": 25,
+  "week_used_percent": 25,
+  "extra_usage_switch": 0,
+  "usage_credit_balance_shown": "$0",
+  "month_charge_shown": "$0.00",
+  "automatic_reload": "off",
+  "route": "official_claude_pro",
+  "paid_fallback": false,
+  "new_authentication": false,
+  "generation_ceiling": 3,
+  "claim": "Existing included subscription allowance; no extra-charge route enabled. No account identity/credential retained."
+}

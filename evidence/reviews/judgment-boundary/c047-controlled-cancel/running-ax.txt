@@ -1,0 +1,13 @@
+Browser tab: 30, Title: "Personal Agent Lab", URL: "http://127.0.0.1:51157/".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 21
+~		17 text Provider: official_claude_opus_tool_free · local drafts / ローカル下書き · Official live / 公式実モデル · remaining / 残り 1 · Proof valid / 利用証明有効
++			21 container
++				22 text assistant / アシスタント 下書きを受け付けました：Mapleへの招待文の下書きを日本語で作成する。ユーザーが自分で使うためのローカル下書きのみで、外部への送信は行わない。Mapleの種類（イベント、集まり、コミュニティなど）、宛先、日時、場所、目的、差出人名、文体の好みは未指定。これらの詳細を作らず、一般的な表現で相手をMapleに招待する丁寧で自然な文面にする。事実、日程、約束、参加による効果やメリットは追加しない。 / Local draft accepted.
++			23 container
++				24 text Work / 作業: running / 実行中 Mapleへの招待文の下書きを日本語で作成する。ユーザーが自分で使うためのローカル下書きのみで、外部への送信は行わない。Mapleの種類（イベント、集まり、コミュニティなど）、宛先、日時、場所、目的、差出人名、文体の好みは未指定。これらの詳細を作らず、一般的な表現で相手をMapleに招待する丁寧で自然な文面にする。事実、日程、約束、参加による効果やメリットは追加しない。
++				25 button Pause / 一時停止
++				26 button Stop / 中止
++				27 button (collapsed) Correct work / 作業を訂正, Secondary Actions: Expand
++					28 text Correct work / 作業を訂正
+The focused UI element is 0 AXWebArea Personal Agent Lab, URL: 127.0.0.1:51157/

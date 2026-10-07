@@ -1,0 +1,8 @@
+Browser tab: 30, Title: "Personal Agent Lab", URL: "http://127.0.0.1:51157/".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 26-32
++			26 container
++				27 text assistant / アシスタント 作業を中止しました。 / cancel applied.
++			28 container
++				29 text Work / 作業: cancelled / 中止 Mapleへの招待文の下書きを日本語で作成する。ユーザーが自分で使うためのローカル下書きのみで、外部への送信は行わない。Mapleの種類（イベント、集まり、コミュニティなど）、宛先、日時、場所、目的、差出人名、文体の好みは未指定。これらの詳細を作らず、一般的な表現で相手をMapleに招待する丁寧で自然な文面にする。事実、日程、約束、参加による効果やメリットは追加しない。 user cancelled
+The focused UI element is 0 AXWebArea Personal Agent Lab, URL: 127.0.0.1:51157/

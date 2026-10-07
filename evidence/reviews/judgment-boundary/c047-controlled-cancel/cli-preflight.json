@@ -1,0 +1,14 @@
+{
+  "recorded_at": 1791408751.9558442,
+  "candidate": "c44d3b4d46a68295a3c8d8a5502471a21daa7046",
+  "origin_main": "c44d3b4d46a68295a3c8d8a5502471a21daa7046",
+  "clean": true,
+  "existing_auth": true,
+  "auth_method": "claude.ai",
+  "subscription": "pro",
+  "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "claude_cli_version": "2.1.291 (Claude Code)",
+  "route": "official_claude_pro",
+  "model_alias": "opus",
+  "server_revision_exposed": false
+}

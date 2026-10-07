@@ -260,3 +260,10 @@ controlled cancellation is NOT_RUN at this freeze; no acceptance row is promoted
 The exact supplied SWE question retains eight numbered blank source lines with trailing
 spaces; these are unchanged review-input bytes. Diff whitespace validation passes for
 all other changed files; the review evidence is not reformatted.
+
+C047 actual run subsequently PASS in the controlled-delivery scope:
+[c047-controlled-cancel/README.md](c047-controlled-cancel/README.md). Two UI inputs/three
+actual native slots, same-target cancellation, exact stale-artifact rejection/zero
+accepted results, independent journal/source/DB audit and verified owned teardown.
+No whole N1/release or Qwen/human claim. Original frozen NOT_RUN contract stays unchanged;
+the outcome is recorded separately.
