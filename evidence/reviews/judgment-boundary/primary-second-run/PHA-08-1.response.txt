@@ -1,0 +1,1 @@
+{"reply":"展示紹介の文章の作業を保留にしますね。内容はそのまま残るので、続きはいつでも声をかけてください。","action":{"kind":"control","op":"pause","goal_id":"425fff6520804a7baaa080acbf501c9e"}}

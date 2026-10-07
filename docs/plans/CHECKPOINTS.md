@@ -179,3 +179,14 @@ Contribution: trustworthy semantic capability measurement for Issue12/N1-10. Sta
 and whole project remain incomplete; no criteria reduction, scope adoption or human wait.
 
 C031 verification complete:17 targeted and213 full tests PASS18.504s;20 capability-negative observer repetitions PASS. All17 product files still match1a14de9. Small cohort selector independently audited, including fixture feasibility and dynamic target limitation. Exact next: push then execute new frozen cohort with fresh existing no-extra-charge access.
+
+## C032 — Keep semantic evaluation proportional to its fixed contract
+
+Second actual run11PASS/controllerstop/12NOT_RUN; raw159-record chain and12DBs preserved
+and verified. Opus51.043s: no substantiated named-case failure; ordinary signature
+formatting allowed and factual-premise concern possible, not observed artifact damage.
+Product unchanged; no prompt tuning or retroactive PASS. Correct controller evaluation
+method, preserve old results, run only12 unexecuted frozen turns next, then actual
+UI/Expert artifacts and one genuine usefulness evaluation. No project/milestone closure.
+
+C032 verification: full213 tests PASS18.849s, remaining cohort setup/suffix identity verified with no provider invocation. Product remains1a14de9. Exact next: fresh bounded12-turn actual run, then real UI/Expert check.

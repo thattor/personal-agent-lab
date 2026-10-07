@@ -204,3 +204,14 @@ leaving queued/running, then retain their exact completion/failure/receipt asser
 No Runtime or provider change.20 repeated capability-negative tests passed; next full
 suite verifies the corrected observer. Blocking-executor tests keep their explicit
 start/release barriers. This correction is test evidence, not live model qualification.
+
+## 2026-10-07 C032 controller promoted optional format concern into failure
+
+PHA09/2 met its frozen local-only/recipient/content/routing observations. Controller
+stopped over an added sent-materials premise and signature placeholder. Official Opus
+review51.043s distinguishes possible minor premise drift from routine format choice;
+no actual Expert artifact defect was observed. Stop exceeded frozen criteria. Preserve
+all raw evidence/stop labels; annotate the reasoning error, no re-score or resample.
+Do not add hypothetical artifact consequences or formatting preferences to a pass gate.
+Next cases will be judged against exact precommitted observations; actual artifact
+quality is checked in the separate required UI/Expert path. No prompt/product change.

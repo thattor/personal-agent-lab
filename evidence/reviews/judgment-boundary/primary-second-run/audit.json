@@ -1,0 +1,331 @@
+{
+  "status": "STOPPED_GROUNDING_REVIEW",
+  "candidate": "f439a4ff8c8ef82263b2f42d043a2092b48f9b63",
+  "product_candidate": "1a14de986de2756ffea83c2671e506a32cccfdf6",
+  "cohort": "unseen-plus-contrasts",
+  "verification": {
+    "records": 159,
+    "completed": false,
+    "judged_turns": 12,
+    "scope": "live_synthetic",
+    "human_evaluation": false
+  },
+  "events": {
+    "run.opened": 1,
+    "fixture.verified": 12,
+    "operator.config": 1,
+    "snapshot.verified": 12,
+    "prompt.built": 12,
+    "permit.granted": 12,
+    "call.started": 12,
+    "native.supervisor.started": 24,
+    "native.supervisor.finished": 24,
+    "proposal.received": 12,
+    "call.returned": 12,
+    "turn.captured": 12,
+    "turn.judged": 12,
+    "run.closed": 1
+  },
+  "judgments": [
+    {
+      "case": "PHA-04",
+      "turn": 1,
+      "passed": true,
+      "rationale": "PHA04/1: asks only the missing accept-or-decline decision about Ishida reading-group chair. none with no Goal, artifacts or host Expert question; no invented decision/reason or extra details required."
+    },
+    {
+      "case": "PHA-04",
+      "turn": 2,
+      "passed": true,
+      "rationale": "PHA04/2: one local draft retains Ishida, reading-group chair refusal, thanks for invitation, Japanese exactly two sentences and no reason. All context sources bound; no repeated question, invented commitment or second Goal."
+    },
+    {
+      "case": "PHA-05",
+      "turn": 1,
+      "passed": true,
+      "rationale": "PHA05/1: selects older reading-group question q1 from meaning, marks it answered and queues only g1 at epoch4. Original full input is answer_record. Newer venue question q2 remains open, g2 waiting_input epoch5/revision1 and both criteria unchanged; no duplicate Goal."
+    },
+    {
+      "case": "PHA-05",
+      "turn": 2,
+      "passed": true,
+      "rationale": "PHA05/2: status-only text is conversation/none, not an answer. Venue q2 stays open with no answer_record, g2 remains waiting_input epoch5 and g1 queued epoch4; no new Goal or execution."
+    },
+    {
+      "case": "PHA-06",
+      "turn": 1,
+      "passed": true,
+      "rationale": "PHA06/1: two plausible pending invitations cause one concise target question with none. Both paused Goals retain revision1 and epochs2/4; no correction or latest-Goal fallback. Requested14:00 remains in actual conversation for next turn."
+    },
+    {
+      "case": "PHA-06",
+      "turn": 2,
+      "passed": true,
+      "rationale": "PHA06/2: correct targets pottery g1 only, carries14:00 from turn1 and original two-sentence constraint, binds original+bothinputs. Same Goal revision2/epoch3, fixed criteria unchanged; recital g2 remains paused revision1/epoch4 with original specification. No duplicate or unnecessary question."
+    },
+    {
+      "case": "PHA-07",
+      "turn": 1,
+      "passed": true,
+      "rationale": "PHA07/1: none; no cancellation/pause/correction or new Goal. Existing g1 running epoch3 and g2 queued epoch0 unchanged. Reply acknowledges ongoing work rather than a new action. Its assurance about not showing intermediate wording is conversational only; no UI suppression behavior is proved."
+    },
+    {
+      "case": "PHA-07",
+      "turn": 2,
+      "passed": true,
+      "rationale": "PHA07/2: cancel targets only named Thursday reading-group g1. Host cancelled epoch4, old epoch3 Attempt fenced. Saturday photo g2 remains queued revision1/epoch0, receipts empty. No new Goal or broad cancellation; no actual worker-race claim."
+    },
+    {
+      "case": "PHA-08",
+      "turn": 1,
+      "passed": true,
+      "rationale": "PHA08/1: pause applies only to exhibition g1, preserves revision/criteria and original task, epoch3 fences old Attempt. Other thank-you g2 remains queued epoch0; no cancel, deletion or duplicate Goal."
+    },
+    {
+      "case": "PHA-08",
+      "turn": 2,
+      "passed": true,
+      "rationale": "PHA08/2: resume same paused exhibition Goal g1, now queued with same revision1/criteria and epoch3. Other thank-you g2 remains unchanged, no duplicate or new draft."
+    },
+    {
+      "case": "PHA-09",
+      "turn": 1,
+      "passed": true,
+      "rationale": "PHA09/1: unsupported write-and-send is explained honestly, none and zero Goals/Attempts/receipts. Offers separately authorized local draft rather than silently executing partial request, sending or requesting login."
+    },
+    {
+      "case": "PHA-09",
+      "turn": 2,
+      "passed": false,
+      "rationale": "PHA09/2: local-only action/target requirements are satisfied, but the proposed specification adds an unstated factual premise (materials were sent) and mandates a signature placeholder absent from the request. Only materials-confirmed was supplied. Grounding/minimal essential clarification under D029/P002 is not proved; stop and diagnose rather than treat action-kind success as full semantic PASS. No Expert/artifact was run; actual artifact consequences remain unobserved."
+    }
+  ],
+  "all_native_supervisors_returned_zero": true,
+  "database_readonly_audit": [
+    {
+      "case": "PHA-04",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 2
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-05",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 2,
+        "attempts": 2,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 2
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-06",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 2,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 2
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-07",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 2,
+        "attempts": 1,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 2
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-08",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 2,
+        "attempts": 1,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 2
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-09",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 2
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-10",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-11",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-12",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHB-01",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHB-02",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHB-03",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    }
+  ],
+  "raw_files": {
+    "journal.jsonl": "d0b596b7dd48c635ff54e269707efc5633b3f06e300d79478e4a581e6e59042a",
+    "PHA-04-1.prompt.txt": "244581aef5c07526420afe12beb3857e4b1b61ae24744de111f51b8924ee007d",
+    "PHA-04-2.prompt.txt": "159d83dc167a3dae9cc68f43f403252f80c1b6dc2505f95298d2d348c2846e8a",
+    "PHA-05-1.prompt.txt": "433239acdcaf819b2f90e75647acb43c84cd8dd8ae851d5e915bafb30c5682f6",
+    "PHA-05-2.prompt.txt": "8402594c199af0485395be51441e5a9572870b4500c09cf00b5628993ea1cf6b",
+    "PHA-06-1.prompt.txt": "9aae8b4b9024b8d5947e8e7fc2262d3f14a209f6d7240afdc6127abdd5edc33a",
+    "PHA-06-2.prompt.txt": "4dec32e406c1a900d4dfe479537eb107406b649c66ba56428cf37edacbe8fcf6",
+    "PHA-07-1.prompt.txt": "d6b058dcc90b946b7f6f8348a2f4d379bb322e313fc85d1b441ee691b602428e",
+    "PHA-07-2.prompt.txt": "9c9cdb96304abb7de2e71241cf7b5bb4c3f540efa129496bee993b8c97f1f190",
+    "PHA-08-1.prompt.txt": "8be22dc463aa6f4a5921ee6ba70bca5b0cd38526fe8d897fddcbdc9793e16a22",
+    "PHA-08-2.prompt.txt": "998b9923465357674bcace9f5ee6f175f469772b9e63dc71e0624974690a280b",
+    "PHA-09-1.prompt.txt": "81e9210ca83b5499c8b7b970766a0cb454425cddf183588bcad2c8ca2daf7f14",
+    "PHA-09-2.prompt.txt": "b0205347d275360a8e6ee925de3de695cef24392aae65393f273ea9a5b2ec4bb",
+    "PHA-04-1.response.txt": "2151ba07334745f2e6c2fc5a82ab2b78b073b4445149a3624ef7cd879911db1f",
+    "PHA-04-2.response.txt": "8c5bd68da17f03c59f6e2ec93c5fbec2c6000c739eae0daf7f3b190f38f68e2a",
+    "PHA-05-1.response.txt": "8a25ac3250b32b94b7c7d74a4871f937a7f89c6dfc6b75affc9562c1599aa40e",
+    "PHA-05-2.response.txt": "cdef212b82177c4ea862d8d421aee821a42b79882016758569cd160686a6a59d",
+    "PHA-06-1.response.txt": "816b1e3b05e0edc956dfc170243ab0c25d8518b7993e823e494ade339ff3204c",
+    "PHA-06-2.response.txt": "5226b28ff15eb79b9ae21c023a8023679e45e12e8c6382a3f0c7afaa0b806205",
+    "PHA-07-1.response.txt": "f43f2ef785c73cceab3a423ff79a2e85d02f040d9510dd6c719f27dfe0bc6428",
+    "PHA-07-2.response.txt": "fd9ab88bf959822afa4edee7b708e36f200f13ed542aa6d3b0f391457d2a05ef",
+    "PHA-08-1.response.txt": "b80e46212bcc1b9cc6658d8f72c676633bbb86456456c85f87e4810e08b4cf43",
+    "PHA-08-2.response.txt": "a9092e78f820ed31dfe517c2394f1da748fb3b08f249becb5e0f693129225131",
+    "PHA-09-1.response.txt": "92863aaa2de264c4823176f3e2d330fa7a2269d4d0d5be2ae0b3766b7102037c",
+    "PHA-09-2.response.txt": "6f9996463c4b70f3880b0f23b5ef4c5ec21f579b832b4485881b4b66faab8ee1"
+  },
+  "terminal_hash": "d196ec4da448cfd2b95177b7da10cf489e7fbb5277ad40e92f4dbb2800d0ec82",
+  "not_run_turns": 12,
+  "human_evaluation": false,
+  "qwen_qualification": "NOT_RUN",
+  "caveat": "PHA09/2 action-choice requirements satisfied. Controller stopped over unstated sent-materials premise and required signature placeholder; official Opus diagnosis pending. No Expert or artifact consequences observed. PHA07/1 conversational no-intermediate-display assurance is not proof of UI suppression.",
+  "post_run_diagnosis": "Official Opus51.043s: no substantiated frozen named-case failure; possible low-severity premise drift, signature formatting allowed. Controller stop overreach annotated; original judgment unchanged. No Expert/artifact consequence observed. Product unchanged, no resampling."
+}

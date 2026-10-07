@@ -508,3 +508,28 @@ Old PHA03/2 stays NOT_RUN because its assumed no-Goal setup does not match the a
 first turn. Contrast cases cover clear background vs elliptical delegation and same-Goal
 constraint additions. No new quota, policy, capability or human micro-question. Existing
 strict named-case criteria and actual UI/Expert/human usefulness gates are unchanged.
+
+
+D029 C032 second actual measurement:11 turns passed, PHA09/2 was controller-stopped,
+12 turns NOT_RUN. All raw responses and159-record chain retained,24 auth/generation
+supervisors returned0, all12 disposable DBs integrity OK and Primary inputs settled.
+PHA09/2 correctly changed unsupported combined sending to one explicit local draft;
+its specification additionally used a sent-materials premise and signature placeholder.
+
+Official Opus focused review completed51.043s: no substantiated failure against the
+frozen named-case criteria. Signature placeholder is permissible formatting, not a
+factual invention; sent-materials phrase is possible low-severity grounding drift whose
+artifact consequence was not observed. Adopt no product/prompt change. The controller
+stop overreached fixed criteria; original stop remains immutable with this annotation.
+Reject optional prompt tuning from this sample, post-hoc criteria and turning harmless
+format choices into blockers. No reviewer or controller judgment substitutes for actual
+artifact/human usefulness. Universal real authority/target/source safeguards remain.
+
+Prevention before continuing: judge the frozen required observations and actual accepted
+contract, label optional quality concerns separately; do not promote speculative artifact
+consequences or routine formatting to new pass/fail gates. No resampling/re-scoring. A
+new fixed remaining cohort copies only never-executed PHA10–12/PHB01–03 (12turns) exactly;
+same immutable selector,24 maximum slots/deadline/one-use proof, actual12 plannedturns.
+Original product1a14de9 unchanged. Next real UI/Expert artifact check uses the existing
+production server entrypoint, bounded fresh official native mode in a disposable owned
+loopback instance, with actual UI inputs explicitly synthetic and no human attestation.

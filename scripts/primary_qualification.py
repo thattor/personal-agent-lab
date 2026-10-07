@@ -24,6 +24,8 @@ FREEZE = 'evidence/reviews/judgment-boundary/primary-candidate-freeze.json'
 FIXTURE_SHA = '523d6b859e67d9f84162cdf6299e12a835c8ba920724442b68df3b81c9fe62a0'
 COHORTS = {
     'heldout-v1': (FIXTURE, FIXTURE_SHA),
+    'remaining-after-c031': ('evidence/reviews/judgment-boundary/primary-remaining.json',
+                             '34baf6e4969d8e1d0e6fb36bd1fe86721e6364cf958524f556fc3ea3f474351d'),
     'unseen-plus-contrasts': ('evidence/reviews/judgment-boundary/primary-unseen-contrasts.json',
                              '39046068664082dcbd1afb0aace9425b79da44a0a7298ff4e9a501ae28c28608'),
 }

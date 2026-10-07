@@ -1,0 +1,76 @@
+# Review: PHA09/2 Primary spec additions
+
+## 1. Substantiated or possible defect?
+
+**Neither addition is a substantiated defect against the named-case requirements.** The action and routing are correct:
+
+- **Input 1:** `none` plus an explanation is right. Sending is unsupported, and the prompt forbids a silent partial compound request.
+- **Input 2:** `local_draft` is right. It cites the prior turn's record, which establishes 架空 and 田辺さん, and the current record.
+- **The spec guards against fabrication:** it explicitly forbids inventing content, results or plans.
+
+**「送付された資料」 is a possible minor grounding drift, not an observed defect.**
+
+- The user said only 資料を確認した. "Sent by Tanabe" is a premise about the counterparty's action, which is closer to D029's "never invent… facts" than to a harmless format choice.
+- It is also the overwhelmingly natural reading of a confirm-receipt note, and Tanabe is fictional. Under D029's "infer harmless reversible details" and P002's "avoid unnecessary requirements", a reasonable reviewer could accept it.
+- The expert artifact was not run. Whether 「お送りいただいた」 appears, and whether it matters, is unobserved.
+
+**Classification: possible, low severity.**
+
+**The 「［署名］」 placeholder is a format decision, not a grounding defect.**
+
+- It introduces no fact.
+- It is the spec's way of honouring "do not invent the sender name", which is consistent with D029.
+- Host template-eligibility being false only means it is not protected as an explicit blank template. It does not make the placeholder a violation.
+- Treating it as a failure would be style policing.
+
+**Verdict on the stop:** halting on these grounds was controller overreach unless the frozen criteria already named premise additions. Do not retrofit a criterion now.
+
+## 2. Prompt delta: optional, small, general
+
+A change is justifiable only as a clarification of the existing D029 sentence, not as a fix for an observed failure. If adopted, append after "Infer harmless reversible details; never invent personal facts, decisions, dates or commitments.":
+
+> In a draft spec, format choices (subject, greeting, closing, length, sign-off style) are yours to make. Do not add premises about what happened or who did what, or content the request and context do not support; when such a detail is unknown, keep the user's own neutral wording. Treat unknown optional items as format the drafter may omit, not as required content; keep placeholders the user explicitly requests.
+
+Why this shape:
+
+- **No hardcoded names, phrases or regex.** It separates format freedom from premise addition, which is the actual distinction at issue.
+- **Generic and fictional drafts are unaffected.** They still proceed without questions, because the delta restricts only premises, not inference of tone or structure.
+- **Explicit blank templates are unaffected.** Their placeholders remain mandatory.
+- **It does not ban placeholders.** It only stops the Primary from making them a requirement, which avoids new trivial judgments.
+
+**Risk:** over-literal compliance producing stilted specs. That is why it says "keep the user's own neutral wording" rather than "omit".
+
+**Doing nothing is also defensible.** The drafter's system prompt already says to omit unprovided details. This would be a second guard at the spec layer, not a sole fix.
+
+## 3. Protections the delta must not disturb
+
+- **Same-Goal correction:** `control/correct` must still emit a complete corrected spec that carries forward all user-supplied facts from earlier turns. "Keep the user's own wording" must not be read as "drop earlier context".
+- **Source IDs:** multi-turn grounding is correct here. Including `af98…` is required, since it supplies 架空 and the recipient. The delta must not imply citing only the current input.
+- **Unchanged behaviour:** the `none` on Input 1, no claims of sending, and the host's ownership of effects and template eligibility all stay as they are.
+
+## 4. Evidence scoping without relabel or resample
+
+**Retain everything as recorded:**
+- The PHA03 FAIL stays unchanged.
+- PHA09/2 raw output and its stop label stay as recorded.
+- Attach this review as an annotation ("possible grounding drift; named requirements met; no frozen criterion cited") rather than changing the label.
+- Do not re-run PHA09/2 on 1a14de9 to obtain a different sample.
+
+**If no prompt change is made:** the remaining 12 unexecuted turns may continue on 1a14de9 under the unchanged frozen criteria. They remain valid held-out qualification.
+
+**If the delta is adopted:** treat it as a new candidate with its own source hash.
+
+- **Regression set (reported separately, not counted as qualification):**
+  - the 11 passed cases;
+  - PHA09/2;
+  - PHA03, whose expected outcome is unchanged and is not expected to flip;
+  - same-Goal correction cases;
+  - the generic/fictional draft and explicit blank-template contrasts.
+
+  These cases were all observed before the change, so they show "no breakage", not generalisation.
+- **Qualification:** the 12 never-executed turns plus the independent contrasts, run once on the new candidate with the original frozen criteria. They were not seen when the delta was written, so they remain legitimate held-out evidence.
+- **Reporting:** report the old candidate's partial cohort (11 pass, 1 stop, 12 unrun) and the new candidate's results side by side. Do not merge them.
+
+**Unchanged limits:**
+- The Qwen reference remains untested; claim no parity.
+- No semantic-truth validator exists, so premise checks remain reviewer-judged. Record them as such rather than as automated failures.

@@ -115,3 +115,14 @@ Twenty repetitions of the affected capability-negative test passed. Product stay
 no Qwen, actual new cohort, current UI/Expert or human usefulness PASS is inferred.
 
 Final C031 automated verification:17 targeted PASS;213 full PASS18.504s in qualification-cohort-full-final.txt. No product source change; tests are harness/host evidence only.
+
+## C032: second actual result and proportional evaluation correction
+
+[Second run](primary-second-run/README.md):11 first-attempt PASS, one controllerstop,
+12 NOT_RUN.159-record chain/12DB read-only audit/24 supervisors0. Opus51.043s classifies
+signature format as allowed and sent-materials premise as possible minor drift, not a
+substantiated frozen-case failure. Original stop retained; no prompt/product change,
+retroactive PASS or resampling. Scope of findings and artifact consequences stays explicit.
+New remaining cohort copies only the unexecuted suffix unchanged;6cases/12turns, SHA34baf6…351d.
+Its fixture audit constructs exact public-API setup without provider calls; same reviewed
+immutable selector/gate/deadline/proof bounds. Real UI/Expert and human acceptance remain.

@@ -1,0 +1,1 @@
+{"reply":"展示紹介の文章の作業を再開しますね。お礼文はそのままにしておきます。","action":{"kind":"control","op":"resume","goal_id":"425fff6520804a7baaa080acbf501c9e"}}

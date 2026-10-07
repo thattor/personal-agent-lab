@@ -1,0 +1,15 @@
+{
+  "cohort": "remaining-after-c031",
+  "cases": [
+    "PHA-10",
+    "PHA-11",
+    "PHA-12",
+    "PHB-01",
+    "PHB-02",
+    "PHB-03"
+  ],
+  "turns": 12,
+  "source_pinning": "checked",
+  "no_provider_call": true,
+  "content_equal_to_unexecuted_suffix": true
+}

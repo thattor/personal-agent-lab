@@ -25,24 +25,9 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
-C031: first actual Primary-only run on frozen product1a14de9/harness4157642 stopped at
-PHA03/1 after five generations (four prior turns PASS, one frozen-oracle FAIL,19 NOT_RUN).
-Raw responses/prompts,75-record hash chain and read-only12-DB audit retained in
-[evidence](evidence/reviews/judgment-boundary/primary-first-run/README.md). No worker,
-UI, Expert, Qwen or human proof. Independent corpus author and official Opus65.429s
-identify ambiguity in the case; the controller's future-only interpretation overstated
-the text. Original FAIL unchanged. No product/prompt change is justified by this sample.
+C032: current product still1a14de9. First run4PASS/oracle-ambiguous stop; second run11PASS/controller stop at PHA09/2. Official Opus51.043s identifies no substantiated named-case failure; signature formatting is allowed, material-premise drift is possible but actual artifact not observed. Original stops/raw evidence remain immutable; no prompt tuning/resampling. See primary-first-run and primary-second-run evidence.
 
-The immutable new-cohort selector and independent24-turn cohort are frozen and verified.
-Targeted17 and full213 tests PASS18.504s, plus20 repeated capability-negative observer
-tests. Two old observer failures are retained; product remains1a14de9.
-Exact next: push C031, then fresh existing official Pro/extraOFF check and actual new
-bounded measurement on cohort unseen-plus-contrasts in a new owned directory, preserving
-old cohort/run. Use existing24-call/no-resume/one-use proof/deadline contract.
-Do not resample PHA03 or retroactively pass it. Then revised actual UI/Expert proof,
-one end-to-end human usefulness evaluation and final release audit. N1-09/N1-10 PARTIAL;
-Issue12/Stable1/PAL unfinished. No micro-question, old soak/quotas, schedule, new auth,
-payment or original-workspace inspection. Current full213 PASS: evidence/reviews/judgment-boundary/qualification-cohort-full-final.txt.
+Exact next: verify/push the immutable12-turn remaining cohort (PHA10–12/PHB01–03), run it once on fresh existing official Pro/extraOFF proof in a new owned directory, then actual UI+Expert artifact check using the existing bounded production server. Use frozen required observations; optional style concerns are not extra acceptance gates. Retain24-slot cap,12plannedcalls, <=900/proof deadline, no oldrun resume. Product1a14de9 unchanged. N1-09/N1-10 PARTIAL, human usefulness and final release audit incomplete. No new human micro-question, schedule, old quotas, auth/payment or original workspace. Full213 tests PASS18.849s: evidence/reviews/judgment-boundary/qualification-remaining-full.txt. Remaining-cohort fixture audit PASS, no provider invocation.
 The previous post-C026 blocked audit was correct only for its observed earlier idle window. Later authentic human answers and the latest direct model-reasoning instructions supersede that wait; do not repeat it. P003v1 is a withdrawn proposal, not a current adoption gate. Current unchanged production baseline full170 tests PASS15.046s (evidence/reviews/judgment-boundary/baseline-full.txt). This is not proof of the upcoming Primary implementation.
 
 ## Historical continuation records

@@ -1,0 +1,8 @@
+{
+  "fixture": "primary-remaining.json",
+  "sha256": "34baf6e4969d8e1d0e6fb36bd1fe86721e6364cf958524f556fc3ea3f474351d",
+  "cases": 6,
+  "turns": 12,
+  "content_equal_to_prior_unexecuted_suffix": true,
+  "product_unchanged": true
+}
