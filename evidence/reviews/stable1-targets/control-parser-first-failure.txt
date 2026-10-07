@@ -1,0 +1,57 @@
+test_english_baseline_and_original_correction_payload (tests.test_controls.ControlParsingTests) ... FAIL
+test_frozen_target_cases_propose_action_without_resolving_targets (tests.test_controls.ControlParsingTests) ... test_quotes_reports_negation_unsupported_and_empty_do_not_control (tests.test_controls.ControlParsingTests) ... ok
+test_additive_upgrade_preserves_rows_and_reopens (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_fault_rolls_back_schema_and_version_together (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_future_schema_refuses_without_mutation (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_process_kill_before_and_after_commit_is_recoverable (tests.test_schema_migration.SchemaMigrationTests) ... ok
+
+======================================================================
+FAIL: test_english_baseline_and_original_correction_payload (tests.test_controls.ControlParsingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_controls.py", line 27, in test_english_baseline_and_original_correction_payload
+    self.assertEqual(parse_control('その下書きを訂正して： 原文を保持'),
+AssertionError: {'action': 'correct', 'cue': 'そ', 'text': '原文を保持'} != {'action': 'correct', 'cue': None, 'text': '原文を保持'}
+- {'action': 'correct', 'cue': 'そ', 'text': '原文を保持'}
+?                              ^^^
+
++ {'action': 'correct', 'cue': None, 'text': '原文を保持'}
+?                              ^^^^
+
+
+======================================================================
+FAIL: test_frozen_target_cases_propose_action_without_resolving_targets (tests.test_controls.ControlParsingTests) (case='T01')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_controls.py", line 16, in test_frozen_target_cases_propose_action_without_resolving_targets
+    self.assertEqual(proposal['cue'], 'Cedar' if case['id'] in
+AssertionError: 'そ' != None
+
+======================================================================
+FAIL: test_frozen_target_cases_propose_action_without_resolving_targets (tests.test_controls.ControlParsingTests) (case='T02')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_controls.py", line 16, in test_frozen_target_cases_propose_action_without_resolving_targets
+    self.assertEqual(proposal['cue'], 'Cedar' if case['id'] in
+AssertionError: 'そ' != None
+
+======================================================================
+FAIL: test_frozen_target_cases_propose_action_without_resolving_targets (tests.test_controls.ControlParsingTests) (case='T03')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_controls.py", line 16, in test_frozen_target_cases_propose_action_without_resolving_targets
+    self.assertEqual(proposal['cue'], 'Cedar' if case['id'] in
+AssertionError: 'そ' != None
+
+======================================================================
+FAIL: test_frozen_target_cases_propose_action_without_resolving_targets (tests.test_controls.ControlParsingTests) (case='T04')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_controls.py", line 16, in test_frozen_target_cases_propose_action_without_resolving_targets
+    self.assertEqual(proposal['cue'], 'Cedar' if case['id'] in
+AssertionError: 'そ' != None
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.100s
+
+FAILED (failures=5)

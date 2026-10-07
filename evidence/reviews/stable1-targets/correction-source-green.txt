@@ -1,0 +1,7 @@
+test_direct_control_remains_sourceless_and_cannot_forge_ingress_source (tests.test_correction_sources.CorrectionSourceTests) ... ok
+test_ingress_correction_retains_real_source_and_forget_fences (tests.test_correction_sources.CorrectionSourceTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.024s
+
+OK

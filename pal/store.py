@@ -229,19 +229,22 @@ class Store:
             raise ValueError('invalid role')
         content = sanitize(content)
         with self._tx('record') as db:
-            digest, old = self._dedupe(db, key, 'record', [role, content, list(manifest), supersedes])
-            if old is not None:
-                return old
-            if not self._usable(db, manifest):
-                raise StaleResult('reference stopped before reply publication')
-            identity = uid()
-            if supersedes:
-                db.execute('UPDATE records SET usable=0 WHERE id=?', (supersedes,))
-                self._disable_notes(db, supersedes)
-                self._invalidate_source(db, supersedes)
-            db.execute('INSERT INTO records(id,role,content,manifest,supersedes) VALUES (?,?,?,?,?)',
-                       (identity, role, content, encode(list(manifest)), supersedes))
-            return self._remember(db, key, 'record', digest, {'id': identity, 'role': role, 'content': content})
+            return self._record(db, key, role, content, manifest, supersedes)
+
+    def _record(self, db, key, role, content, manifest=(), supersedes=None):
+        digest, old = self._dedupe(db, key, 'record', [role, content, list(manifest), supersedes])
+        if old is not None:
+            return old
+        if not self._usable(db, manifest):
+            raise StaleResult('reference stopped before reply publication')
+        identity = uid()
+        if supersedes:
+            db.execute('UPDATE records SET usable=0 WHERE id=?', (supersedes,))
+            self._disable_notes(db, supersedes)
+            self._invalidate_source(db, supersedes)
+        db.execute('INSERT INTO records(id,role,content,manifest,supersedes) VALUES (?,?,?,?,?)',
+                   (identity, role, content, encode(list(manifest)), supersedes))
+        return self._remember(db, key, 'record', digest, {'id': identity, 'role': role, 'content': content})
 
     def note(self, key, content, sources):
         if not sources:
@@ -403,8 +406,11 @@ class Store:
         with self._tx('control') as db:
             return self._control(db, key, goal_id, action, text, criteria, question_id, epoch)
 
-    def _control(self, db, key, goal_id, action, text=None, criteria=None, question_id=None, epoch=None):
+    def _control(self, db, key, goal_id, action, text=None, criteria=None, question_id=None, epoch=None,
+                 source_record_id=None):
         payload = [goal_id, action, text, criteria, question_id, epoch]
+        if source_record_id is not None:
+            payload.append(source_record_id)
         digest, old = self._dedupe(db, key, 'control', payload)
         if old is not None:
             return old
@@ -424,6 +430,9 @@ class Store:
             db.execute("UPDATE goals SET state='queued',budget=MAX(budget,1),reason='' WHERE id=?", (goal_id,))
             db.execute("INSERT INTO records(id,role,content) VALUES (?,'user',?)", (uid(), sanitize(text)))
         elif action == 'correct' and goal['state'] not in ('completed', 'cancelled', 'unknown') and text:
+            sources = [source_record_id] if source_record_id is not None else []
+            if sources and not self._usable(db, sources):
+                raise StaleResult('correction source unavailable')
             previous = db.execute('SELECT * FROM revisions WHERE goal_id=? AND revision=?', (goal_id, goal['revision'])).fetchone()
             self._fence(db, goal_id)
             acceptance = goal['acceptance_id']
@@ -432,7 +441,7 @@ class Store:
                 acceptance = uid()
                 db.execute('INSERT INTO acceptances VALUES (?,?,?)', (acceptance, goal_id, encode(new_criteria)))
             revision = goal['revision'] + 1
-            db.execute('INSERT INTO revisions VALUES (?,?,?,?,?,?)', (goal_id, revision, acceptance, sanitize(text), '[]', encode(new_criteria)))
+            db.execute('INSERT INTO revisions VALUES (?,?,?,?,?,?)', (goal_id, revision, acceptance, sanitize(text), encode(sources), encode(new_criteria)))
             db.execute("UPDATE goals SET state='queued',revision=?,acceptance_id=?,budget=3,reason='' WHERE id=?", (revision, acceptance, goal_id))
         else:
             raise InvalidTransition('invalid control transition or stale input question')
@@ -610,8 +619,98 @@ class Store:
                 raise ValueError('unknown artifact')
             return bytes(row['body'])
 
+    def _selection_available(self, db, row, proposal):
+        sources = [row['source_record_id']]
+        for choice in proposal['choices']:
+            revision = db.execute('SELECT sources FROM revisions WHERE goal_id=? AND revision=?',
+                                  (choice['goal_id'], choice['revision'])).fetchone()
+            if revision is None:
+                return False
+            sources.extend(json.loads(revision['sources']))
+        return self._usable(db, sources)
+
+    def selections(self):
+        """Guarded current presentation, separate from immutable raw history."""
+        with self._connection() as db:
+            db.execute('BEGIN')
+            result = []
+            for row in db.execute('SELECT * FROM control_selections').fetchall():
+                proposal = json.loads(row['proposal'])
+                status = ('unavailable' if not self._selection_available(db, row, proposal)
+                          else 'already_resolved' if row['consumed_by'] else 'pending')
+                if status == 'pending':
+                    for choice in proposal['choices']:
+                        goal = self._goal(db, choice['goal_id'])
+                        if (any(goal[f] != choice[f] for f in ('revision', 'epoch'))
+                                or goal['state'] in ('completed', 'cancelled')
+                                or (row['action'] == 'correct' and goal['state'] == 'unknown')):
+                            status = 'stale'
+                            break
+                result.append({'selection_id': row['selection_id'], 'source_key': row['source_key'],
+                               'status': status, 'choices': proposal['choices'] if status == 'pending' else []})
+            return result
+
+    def _natural_control(self, db, key, record_id, proposal):
+        from .controls import literal
+        action, cue = proposal['action'], proposal['cue']
+        choices = []
+        for goal in db.execute('SELECT * FROM goals ORDER BY seq').fetchall():
+            if goal['state'] in ('completed', 'cancelled') or (action == 'correct' and goal['state'] == 'unknown'):
+                continue
+            revision = db.execute('SELECT * FROM revisions WHERE goal_id=? AND revision=?',
+                                  (goal['id'], goal['revision'])).fetchone()
+            if not self._usable(db, json.loads(revision['sources'])):
+                continue
+            label = revision['specification']
+            if cue is not None and literal(cue).casefold() not in literal(label).casefold():
+                continue
+            choices.append({'goal_id': goal['id'], 'revision': goal['revision'],
+                            'epoch': goal['epoch'], 'state': goal['state'], 'label': sanitize(label)[:160]})
+        if not choices:
+            return {'goal': None, 'control_status': 'no_target'}
+        if len(choices) == 1:
+            goal = self._control(db, 'action:' + key, choices[0]['goal_id'], action,
+                                 text=proposal.get('text'), source_record_id=record_id)
+            return {'goal': goal, 'control_status': 'applied'}
+        if len(choices) > 3:
+            return {'goal': None, 'control_status': 'more_specific_target_required'}
+        identity = uid()
+        db.execute('INSERT INTO control_selections VALUES (?,?,?,?,?,NULL)',
+                   (identity, record_id, key, action,
+                    encode({'choices': choices, 'text': proposal.get('text')})))
+        self.fault('selection.mid_transaction')
+        return {'goal': None, 'control_status': 'selection_required',
+                'selection_id': identity, 'source_key': key}
+
+    def _select_control(self, db, key, control):
+        if set(control) != {'action', 'selection_id', 'source_key', 'target_id'} or any(
+                not isinstance(control[field], str) for field in control):
+            raise ValueError('invalid selection contract')
+        row = db.execute('SELECT * FROM control_selections WHERE selection_id=?',
+                         (control['selection_id'],)).fetchone()
+        proposal = json.loads(row['proposal']) if row else None
+        chosen = next((c for c in proposal['choices'] if c['goal_id'] == control['target_id']), None) if proposal else None
+        if not row or row['source_key'] != control['source_key'] or chosen is None:
+            return {'goal': None, 'control_status': 'rejected'}
+        if row['consumed_by']:
+            return {'goal': None, 'control_status': 'already_resolved'}
+        status = 'unavailable' if not self._selection_available(db, row, proposal) else 'applied'
+        goal = self._goal(db, chosen['goal_id'])
+        if status == 'applied' and (any(goal[f] != chosen[f] for f in ('revision', 'epoch'))
+                or goal['state'] in ('completed', 'cancelled')
+                or (row['action'] == 'correct' and goal['state'] == 'unknown')):
+            status = 'stale'
+        applied = None
+        if status == 'applied':
+            applied = self._control(db, 'action:' + key, chosen['goal_id'], row['action'],
+                                    text=proposal['text'], source_record_id=row['source_record_id'])
+        db.execute('UPDATE control_selections SET consumed_by=? WHERE selection_id=?',
+                   (key, row['selection_id']))
+        self.fault('selection.mid_transaction')
+        return {'goal': applied, 'control_status': status}
+
     def ingress(self, key, content, intent='conversation', goal_id=None, control=None, request=None,
-                classification=None, classifier_version=None):
+                classification=None, classifier_version=None, natural_control=None):
         content = sanitize(content)
         if intent not in ('conversation', 'draft', 'control', 'forget'):
             raise ValueError('unsupported ingress intent')
@@ -620,13 +719,17 @@ class Store:
                 or not isinstance(classifier_version, str) or not classifier_version):
             raise ValueError('invalid host classification')
         with self._tx('ingress') as db:
-            digest, old = self._dedupe(db, key, 'ingress', request if request is not None else [content, intent, goal_id, control])
+            payload = request if request is not None else [content, intent, goal_id, control]
+            if request is None and natural_control is not None:
+                payload.append(natural_control)
+            digest, old = self._dedupe(db, key, 'ingress', payload)
             if old is not None:
                 return old
             record_id = uid()
             db.execute("INSERT INTO records(id,role,content) VALUES (?,'user',?)", (record_id, content))
             self.fault('ingress.mid_transaction')
             goal = None
+            outcome = None
             if intent == 'draft':
                 goal = self._create_goal(db, 'handoff:' + key, content, {'kind': 'local_draft', 'max_bytes': 4096}, [record_id])
             elif intent == 'forget':
@@ -634,14 +737,43 @@ class Store:
                     raise ValueError('forget requires source ID')
                 self._forget(db, 'action:' + key, control['source_id'])
             elif intent == 'control':
-                if not goal_id or not isinstance(control, dict):
+                if natural_control is not None:
+                    if control is not None or goal_id is not None or not isinstance(natural_control, dict) or natural_control.get('action') not in ('cancel', 'correct'):
+                        raise ValueError('invalid natural control proposal')
+                    from .controls import parse_control
+                    if parse_control(content) != natural_control:
+                        raise ValueError('natural control must match host grammar')
+                    outcome = self._natural_control(db, key, record_id, natural_control)
+                    goal = outcome['goal']
+                elif isinstance(control, dict) and control.get('action') == 'select' and goal_id is None:
+                    outcome = self._select_control(db, key, control)
+                    goal = outcome['goal']
+                elif not goal_id or not isinstance(control, dict):
                     raise ValueError('control requires Goal and action')
-                goal = self._control(db, 'action:' + key, goal_id, **control)
+                else:
+                    if not set(control) <= {'action', 'text', 'criteria', 'question_id', 'epoch'}:
+                        raise ValueError('unsupported control fields')
+                    goal = self._control(db, 'action:' + key, goal_id,
+                                         source_record_id=record_id, **control)
             result = {'record_id': record_id, 'goal': goal, 'intent': intent}
+            if outcome is not None:
+                result.update(outcome)
+                # No copied labels/specifications in replayable reply text.
+                self._record(db, 'response:' + key, 'assistant',
+                             'Target control: ' + outcome['control_status'] + '. / ' + {
+                                 'no_target': '対象の作業が見つかりません。',
+                                 'applied': '対象の作業に操作を適用しました。',
+                                 'selection_required': '操作する対象を選んでください。',
+                                 'more_specific_target_required': '対象をより具体的に指定してください。',
+                                 'rejected': '選択を受け付けられません。対象を再確認してください。',
+                                 'already_resolved': 'この選択は処理済みです。',
+                                 'stale': '作業の状態が変わりました。改めて依頼してください。',
+                                 'unavailable': '元の情報を参照できません。改めて依頼してください。'
+                             }[outcome['control_status']])
             if classification is not None:
                 result.update(classification=classification, classifier_version=classifier_version)
             if intent in ('control','forget'):
-                result['action']='forget' if intent=='forget' else control['action']
+                result['action']='forget' if intent=='forget' else (natural_control['action'] if natural_control is not None else control['action'])
             return self._remember(db, key, 'ingress', digest, result)
 
     def approve(self, key, goal_id, fingerprint):

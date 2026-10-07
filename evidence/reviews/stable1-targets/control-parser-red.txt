@@ -1,0 +1,18 @@
+test_controls (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_controls (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_controls
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_controls.py", line 5, in <module>
+    from pal.controls import parse_control
+ModuleNotFoundError: No module named 'pal.controls'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

@@ -105,9 +105,8 @@ class Runtime:
             raise ValueError('message exceeds input bound')
         original_request={'text':text,'goal_id':goal_id,'control':control}
         lower = text.lower().strip()
-        if control is None and lower in ('stop that', 'cancel that', '止めて', '停止して'):
-            control = {'action':'cancel'}
-            goal_id = self._latest_goal()
+        from .controls import parse_control
+        natural_control = parse_control(text) if control is None and goal_id is None else None
         if control is None and lower in ('pause that','一時停止して'):
             control = {'action':'pause'}
             goal_id = self._latest_goal()
@@ -120,21 +119,18 @@ class Runtime:
             if prior:
                 control = {'source_id':prior[-1]['id']}
                 forget = True
-        if control is None and lower.startswith('answer:'):
+        if control is None and natural_control is None and lower.startswith('answer:'):
             current_id = self._latest_goal()
             if current_id:
                 current = self.store.get_goal(current_id)
                 if current['state']=='waiting_input':
                     goal_id = current_id
                     control = {'action':'input','text':text.partition(':')[2].strip(),'question_id':current['question_id'],'epoch':current['epoch']}
-        if control is None and lower.startswith('correct that:'):
-            goal_id = self._latest_goal()
-            if goal_id:
-                control = {'action':'correct','text':text.partition(':')[2].strip()}
-        classification = None if control is not None else classify(text)
-        intent = 'forget' if forget else ('control' if control is not None else ('draft' if classification == 'draft' else 'conversation'))
+        classification = None if control is not None or natural_control is not None else classify(text)
+        intent = 'forget' if forget else ('control' if control is not None or natural_control is not None else ('draft' if classification == 'draft' else 'conversation'))
         result = self.store.ingress(key, text, intent, goal_id, control, request=original_request,
-                                  classification=classification, classifier_version=CLASSIFIER_VERSION)
+                                  classification=classification, classifier_version=CLASSIFIER_VERSION,
+                                  natural_control=natural_control)
         if lower.startswith('remember ') or '覚えて' in text:
             self.store.note('memory:' + key, text, [result['record_id']])
         if result['goal']:

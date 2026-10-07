@@ -1,0 +1,27 @@
+{
+  "kind": "synthetic_disposable_host_evidence",
+  "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "source_sha256": {
+    "pal/store.py": "989e3ecb7a7e28bd911a7472ce58eb56523696413dfed42d81967b997055533e",
+    "pal/controls.py": "d5eaa8ccfe5ad640c9aca2c6258d58d2b32656d301b334ad35dac64a0e432af4",
+    "pal/runtime.py": "c596cd93a4ce7b691cfe7fdee1a1109b963940932f59dd27f3fe08ecf0be4c71",
+    "pal/server.py": "65ae13c5028202d2031ac3f9b78af44920a1b2f53163d11f1daf5d20cf940a5c",
+    "pal/web/app.js": "e6a64e849724e7ea61f1a67bd0d4ee9b8775001a442b3fd3417369194bd71911",
+    "tests/test_target_selection.py": "4bbd43a1a4ab2952694dc9ef98f7eafae2423887cc01dfa6323df0738e237074",
+    "tests/test_schema_migration.py": "5047b464a486650ef3e78643d72ba78bd15762239800fd3362cbbddf30d94bfb",
+    "tests/test_http.py": "98170d6ce73dfc9f5141a992fb7e4db9dab8bba66ef336c41c1842b79283a0f0",
+    "tests/fixtures/stable1_target_matrix_v1.json": "0dabc52bf07e2b75d4500df592f6d391b81cadc3514215feef1ae8633e43252b"
+  },
+  "full_suite": {
+    "tests": 91,
+    "result": "PASS",
+    "log": "selection-final-full.txt"
+  },
+  "limits": [
+    "No production or historical database migration",
+    "No actual human input or evaluation",
+    "No real provider or live UI proof in this increment",
+    "Strict epoch fencing may require a fresh explicit request after a claim or recovery"
+  ]
+}

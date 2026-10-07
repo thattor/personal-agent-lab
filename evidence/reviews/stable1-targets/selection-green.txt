@@ -1,0 +1,9 @@
+test_claim_invalidates_epoch_and_wrong_source_has_no_oracle (tests.test_target_selection.TargetSelectionTests) ... ok
+test_forget_original_or_target_hides_labels_and_blocks_application (tests.test_target_selection.TargetSelectionTests) ... ok
+test_persistent_bound_choice_once_and_fixed_correction_sources (tests.test_target_selection.TargetSelectionTests) ... ok
+test_unique_and_no_match_never_fall_back (tests.test_target_selection.TargetSelectionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.045s
+
+OK

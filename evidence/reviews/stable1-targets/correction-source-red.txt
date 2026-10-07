@@ -1,0 +1,32 @@
+test_direct_control_remains_sourceless_and_cannot_forge_ingress_source (tests.test_correction_sources.CorrectionSourceTests) ... ERROR
+test_ingress_correction_retains_real_source_and_forget_fences (tests.test_correction_sources.CorrectionSourceTests) ... FAIL
+
+======================================================================
+ERROR: test_direct_control_remains_sourceless_and_cannot_forge_ingress_source (tests.test_correction_sources.CorrectionSourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_correction_sources.py", line 34, in test_direct_control_remains_sourceless_and_cannot_forge_ingress_source
+    self.store.ingress('forged', 'fake', 'control', self.goal['id'],
+  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/store.py", line 639, in ingress
+    goal = self._control(db, 'action:' + key, goal_id, **control)
+TypeError: _control() got an unexpected keyword argument 'source_record_id'
+
+======================================================================
+FAIL: test_ingress_correction_retains_real_source_and_forget_fences (tests.test_correction_sources.CorrectionSourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_correction_sources.py", line 20, in test_ingress_correction_retains_real_source_and_forget_fences
+    self.assertEqual(json.loads(revision['sources']), [result['record_id']])
+AssertionError: Lists differ: [] != ['470b7a8a52fd4662b3a326b076d244f9']
+
+Second list contains 1 additional elements.
+First extra element 0:
+'470b7a8a52fd4662b3a326b076d244f9'
+
+- []
++ ['470b7a8a52fd4662b3a326b076d244f9']
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.022s
+
+FAILED (failures=1, errors=1)

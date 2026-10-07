@@ -1,0 +1,58 @@
+test_claim_invalidates_epoch_and_wrong_source_has_no_oracle (tests.test_target_selection.TargetSelectionTests) ... ERROR
+test_forget_original_or_target_hides_labels_and_blocks_application (tests.test_target_selection.TargetSelectionTests) ... test_persistent_bound_choice_once_and_fixed_correction_sources (tests.test_target_selection.TargetSelectionTests) ... ERROR
+test_unique_and_no_match_never_fall_back (tests.test_target_selection.TargetSelectionTests) ... ERROR
+
+======================================================================
+ERROR: test_claim_invalidates_epoch_and_wrong_source_has_no_oracle (tests.test_target_selection.TargetSelectionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_target_selection.py", line 54, in test_claim_invalidates_epoch_and_wrong_source_has_no_oracle
+    question = self.request('question', 'その下書きを止めて')
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_target_selection.py", line 19, in request
+    return self.store.ingress(key, text, 'control', natural_control=parse_control(text))
+TypeError: ingress() got an unexpected keyword argument 'natural_control'
+
+======================================================================
+ERROR: test_forget_original_or_target_hides_labels_and_blocks_application (tests.test_target_selection.TargetSelectionTests) (forgotten='request')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_target_selection.py", line 67, in test_forget_original_or_target_hides_labels_and_blocks_application
+    question = self.request('question', 'その下書きを止めて')
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_target_selection.py", line 19, in request
+    return self.store.ingress(key, text, 'control', natural_control=parse_control(text))
+TypeError: ingress() got an unexpected keyword argument 'natural_control'
+
+======================================================================
+ERROR: test_forget_original_or_target_hides_labels_and_blocks_application (tests.test_target_selection.TargetSelectionTests) (forgotten='target')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_target_selection.py", line 67, in test_forget_original_or_target_hides_labels_and_blocks_application
+    question = self.request('question', 'その下書きを止めて')
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_target_selection.py", line 19, in request
+    return self.store.ingress(key, text, 'control', natural_control=parse_control(text))
+TypeError: ingress() got an unexpected keyword argument 'natural_control'
+
+======================================================================
+ERROR: test_persistent_bound_choice_once_and_fixed_correction_sources (tests.test_target_selection.TargetSelectionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_target_selection.py", line 37, in test_persistent_bound_choice_once_and_fixed_correction_sources
+    question = self.request('question', 'その下書きを訂正して: Short invitation')
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_target_selection.py", line 19, in request
+    return self.store.ingress(key, text, 'control', natural_control=parse_control(text))
+TypeError: ingress() got an unexpected keyword argument 'natural_control'
+
+======================================================================
+ERROR: test_unique_and_no_match_never_fall_back (tests.test_target_selection.TargetSelectionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_target_selection.py", line 28, in test_unique_and_no_match_never_fall_back
+    result = self.request('missing', 'Cedarの下書きを止めて')
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_target_selection.py", line 19, in request
+    return self.store.ingress(key, text, 'control', natural_control=parse_control(text))
+TypeError: ingress() got an unexpected keyword argument 'natural_control'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.029s
+
+FAILED (errors=5)

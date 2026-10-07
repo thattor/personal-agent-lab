@@ -75,6 +75,32 @@ class HTTPTests(unittest.TestCase):
         self.assertEqual(self.post({'key':'bad','text':'Hello','state':'completed'})[0],400)
         self.assertEqual(self.post({'key':'same','text':'Different'})[0],400)
 
+    def test_host_bound_selection_http_and_guarded_state(self):
+        self.assertTrue(self.runtime.idle.wait(2))
+        goals = []
+        for name in ('Cedar', 'Birch'):
+            result = self.runtime.store.ingress('seed-' + name, name + ' draft', 'draft')
+            goals.append(result['goal']['id'])
+            self.runtime.store.control('pause-' + name, goals[-1], 'pause')
+        status, body, _ = self.post({'key': 'question', 'text': 'その下書きを止めて'})
+        self.assertEqual(status, 202)
+        question = json.loads(body)
+        self.assertEqual(question['control_status'], 'selection_required')
+        state = json.loads(self.request('/api/state')[1])
+        self.assertEqual(len(state['selections'][0]['choices']), 2)
+        payload = {'key': 'choice', 'text': 'Select work target', 'control': {
+            'action': 'select', 'selection_id': question['selection_id'],
+            'source_key': question['source_key'], 'target_id': goals[0]}}
+        first = self.post(payload)
+        self.assertEqual(first[0], 202)
+        self.assertEqual(json.loads(first[1])['control_status'], 'applied')
+        self.assertEqual(json.loads(self.post(payload)[1]), json.loads(first[1]))
+        self.assertEqual(self.runtime.store.get_goal(goals[1])['state'], 'paused')
+        self.assertEqual(json.loads(self.request('/api/state')[1])['selections'][0]['choices'], [])
+        payload['key'] = 'tamper'
+        payload['control']['text'] = 'invented correction'
+        self.assertEqual(self.post(payload)[0], 400)
+
     def test_conversational_remember_and_forget(self):
         self.post({'key':'remember','text':'Remember the fictional project is green'})
         source=self.runtime.store.inspect()['records'][0]

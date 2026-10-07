@@ -69,3 +69,12 @@ Prevention: metadata batches must persist each created identity/readback before 
 Frozen baseline and independent failures are retained in evidence/reviews/stable1-classification. Initial broad substring grammar caused6/24 unwanted classifications and10/16 request recognition. First reviewed candidate lost a draft-action deferral prefix across clauses, creating a wrong Goal; question/comma splitting and narrow request morphology also missed requests/external explanation. Repairs scoped deferral before splitting, separated questions/sibling clauses, masked quoted payload, tied Japanese request verbs to imperative/polite suffixes, and persisted outcome/version atomically with existing ingress. Fixed40,20 edges,36 reviewer regressions and transaction/replay tests now have zero unwanted Goals; final unseen12 recall3/4 with one `草案` safe miss retained. Prevention: freeze before implementation, hash before opening reviewer cases, retain first failures, add regression cases, distinguish regression recall from new independent recall. No canonical rows were repaired. Known finite grammar limits remain subject to actual N1-07 evaluation.
 
 One non-ASCII inline Python heredoc failed source decoding before any edit. Cause is only the reported input-byte decoding failure; terminal encoding origin not established. Retried the small fixture edit through structured apply_patch and verified parsed JSON and tests. Prefer structured patch for this fixture route; no global setting change.
+# Issue4 synthetic parser regression — 2026-10-07
+
+The first bounded-control parser interpreted `その下書き` as cue `そ` plus
+possessive `の`, because the literal-cue regex alternative preceded the explicit
+deictic alternative. Frozen matrix tests exposed five failures before deployment.
+Correction: recognize the explicit deictic first. Prevention: retain both generic
+deictic and named-target matrix cases and full-width correction-separator checks;
+next parser changes must rerun them. Red and first-failure logs are retained in
+evidence/reviews/stable1-targets/. Final91 tests PASS; no running host affected.

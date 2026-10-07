@@ -4,10 +4,27 @@ let previous = '';
 let pending = null;
 const uiSession=crypto.randomUUID();
 const acknowledgements=[];
+const choiceRequests=new Map();
+const choicesInFlight=new Set();
 function receipt(){const target=document.getElementById('session-receipt');if(target)target.textContent=JSON.stringify({session_id:uiSession,accepted_turns:acknowledgements.length,acknowledgements},null,2);}
 receipt();
 function node(tag,text,className){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;}
 function artifactLink(id){const a=node('a','Open local draft / 下書きを開く');a.href='/api/artifact/'+encodeURIComponent(id);a.target='_blank';a.rel='noopener';return a;}
+async function selectWork(selection, choice){
+  if(choicesInFlight.has(selection.selection_id))return;
+  choicesInFlight.add(selection.selection_id);
+  const identity=selection.selection_id+':'+choice.goal_id;
+  if(!choiceRequests.has(identity))choiceRequests.set(identity,{key:'ui:'+uiSession+':'+crypto.randomUUID(),text:'Select work target',control:{action:'select',selection_id:selection.selection_id,source_key:selection.source_key,target_id:choice.goal_id}});
+  const payload=choiceRequests.get(identity);
+  try{
+    const response=await fetch('/api/message',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(!response.ok)throw new Error('Choice rejected');
+    const ack=await response.json();
+    if(!acknowledgements.some(a=>a.key===payload.key))acknowledgements.push({key:payload.key,record_id:ack.record_id,goal_id:ack.goal?ack.goal.id:null,intent:ack.intent,action:ack.action,accepted_at:new Date().toISOString()});
+    receipt();document.getElementById('error').textContent='';await refresh();
+  }catch(error){document.getElementById('error').textContent='Choice not confirmed. Check current state before retrying. / 選択を確認できません。状態を確認してから再試行してください。';}
+  finally{choicesInFlight.delete(selection.selection_id);}
+}
 function render(data){
   const access=data.provider_status||{mode:'mock'};
   document.getElementById('provider').textContent='Provider: '+data.provider+' · local drafts / ローカル下書き'+(access.mode==='mock'?' · Mock / 模擬応答':' · Official live / 公式実モデル · remaining / 残り '+access.calls_remaining+' · '+(access.authorized_now?'Proof valid / 利用証明有効':'Unavailable / 利用不可: '+access.unavailable_reason)+(access.last_error?' · '+access.last_error:''));
@@ -28,6 +45,12 @@ function render(data){
     }
     const work=document.getElementById('work');work.replaceChildren();
     for(const goal of data.goals.slice(-3)){const card=node('article');card.append(node('strong','Work / 作業: '+goal.state+' / '+({queued:'待機中',running:'実行中',waiting_input:'入力待ち',paused:'一時停止',completed:'完了',cancelled:'中止',failed:'失敗',unknown:'結果不明'}[goal.state]||goal.state)),node('p',goal.reason ? goal.reason.replaceAll('_',' ') : ''));work.append(card);}
+    for(const selection of data.selections||[]){
+      const card=node('article');card.append(node('strong','Choose work / 対象を選択: '+selection.status));
+      for(const choice of selection.choices){const button=node('button',choice.label);button.type='button';button.addEventListener('click',()=>selectWork(selection,choice));card.append(button);}
+      if(selection.status==='stale'||selection.status==='unavailable')card.append(node('p','Send a new request with a specific target. / 対象を明示して、改めて依頼してください。'));
+      work.append(card);
+    }
   }
 }
 async function refresh(){try{const response=await fetch('/api/state');if(!response.ok)throw new Error('State unavailable');const data=await response.json();const signature=JSON.stringify(data);const error=document.getElementById('error');if(error.textContent==='State unavailable. Your recorded work is retained. / 状態を取得できません。保存済みの作業は保持されています。')error.textContent='';if(signature!==previous){render(data);previous=signature;}}catch(error){document.getElementById('error').textContent='State unavailable. Your recorded work is retained. / 状態を取得できません。保存済みの作業は保持されています。';}}

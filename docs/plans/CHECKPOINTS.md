@@ -25,3 +25,13 @@ Each coherent unit records its detailed test/change/evidence/commit/result/next 
 - Outcome: contract adopted D-024, implementation and N1-03/04 still NOT_RUN. Both reviewers favor one dedicated table, immutable dedupe, atomic question/control/consumption, host source binding. Actual claim/recover epoch change and single Store conversation facts reconciled by Opus. Soft-forget/FK retention confirmed from actual Store; replay label/source gating is an unimplemented mandatory test gate, not reviewer-proven PASS.
 - Plan impact: within adopted D-021. No future-stage activation, new payment/auth/public exposure, model routing, schedule restart or existing DB migration. Keep user max32 as multi-vendor upper bound; no CO0.3 runtime claim without verified entrypoint.
 - Next: failing durable-selection/source-provenance/migration tests → minimum host implementation → targeted/full/crash verification → evidence/commit/push; then actual bounded UI/provider/human evaluation only after target gate. Prior73 full tests are baseline; new behavior requires its own verification.
+# C-003 — Issue4 host target-selection exit
+
+N1-03/04 PASS with the frozen nine-case mixed-state matrix, source checks,
+concurrent choices, six real process kills, HTTP integration and91 full tests.
+See evidence/reviews/stable1-targets/README.md. Accepted D-024 implemented;
+no broader product scope/plan adoption inferred. Strict epoch changes may make
+choices stale, requiring a fresh specific request; criteria remain fixed.
+Next work unit Issue5: planted-absence checks, bounded official real-provider UI,
+targeted authentic usefulness judgment and final Stable1 release audit.
+P-001 remains PROPOSED/human-pending; it does not block this independent work.

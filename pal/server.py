@@ -61,7 +61,7 @@ def make_server(runtime,port=8765):
             elif route=='/api/health':
                 self.send(200,runtime.health())
             elif route=='/api/state':
-                self.send(200,dict(runtime.store.inspect(),provider=runtime.provider.identity,provider_status=runtime.provider.status() if hasattr(runtime.provider,'status') else {'mode':'mock'},runtime=runtime.health()))
+                self.send(200,dict(runtime.store.inspect(),selections=runtime.store.selections(),provider=runtime.provider.identity,provider_status=runtime.provider.status() if hasattr(runtime.provider,'status') else {'mode':'mock'},runtime=runtime.health()))
             elif route.startswith('/api/artifact/'):
                 try:
                     self.send(200,runtime.store.artifact(route.rsplit('/',1)[-1]),'text/plain; charset=utf-8')
