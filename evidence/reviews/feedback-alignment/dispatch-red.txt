@@ -1,0 +1,23 @@
+test_atomic_dispatch_asks_then_finishes_without_third_question (tests.test_preview.PreviewTests) ... ERROR
+test_atomic_dispatch_kill_at_exhaustion_has_no_stranded_question (tests.test_preview.PreviewTests) ... FAIL
+
+======================================================================
+ERROR: test_atomic_dispatch_asks_then_finishes_without_third_question (tests.test_preview.PreviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_preview.py", line 169, in test_atomic_dispatch_asks_then_finishes_without_third_question
+    self.store.request_clarification(first['id'], 'What date should it use?')
+AttributeError: 'Store' object has no attribute 'request_clarification'
+
+======================================================================
+FAIL: test_atomic_dispatch_kill_at_exhaustion_has_no_stranded_question (tests.test_preview.PreviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_preview.py", line 196, in test_atomic_dispatch_kill_at_exhaustion_has_no_stranded_question
+    self.assertEqual(killed.returncode, -9, killed.stderr)
+AssertionError: 1 != -9 : b'Traceback (most recent call last):\n  File "<string>", line 6, in <module>\nAttributeError: \'Store\' object has no attribute \'request_clarification\'\n'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.068s
+
+FAILED (failures=1, errors=1)

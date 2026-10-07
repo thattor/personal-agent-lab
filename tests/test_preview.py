@@ -163,3 +163,59 @@ s.finish_preview(sys.argv[2],'clarification_exhausted')
         result = self.store.finish_preview(final['id'], 'clarification_exhausted')
         self.assertEqual(result['check_status'], 'unverified')
         self.assertEqual(self.store.inspect()['questions'], [])
+
+    def test_atomic_dispatch_asks_then_finishes_without_third_question(self):
+        first = self.store.claim([self.source['id']])
+        self.store.request_clarification(first['id'], 'What date should it use?')
+        goal = self.store.get_goal(self.goal['id'])
+        self.assertEqual(goal['state'], 'waiting_input')
+        self.assertEqual(len(self.store.inspect()['questions']), 1)
+        before = self.store.inspect()
+        self.store.request_clarification(first['id'], 'What date should it use?')
+        self.assertEqual(self.store.inspect(), before)
+        for index in (1, 2):
+            self.store.control('answer' + str(index), goal['id'], 'input', 'Still undecided',
+                               question_id=goal['question_id'], epoch=goal['epoch'])
+            attempt = self.store.claim([self.source['id']])
+            self.store.request_clarification(attempt['id'], 'What date should it use?')
+            goal = self.store.get_goal(self.goal['id'])
+        self.assertEqual(goal['state'], 'failed')
+        data = self.store.inspect()
+        self.assertEqual(len(data['questions']), 2)
+        self.assertEqual(len(data['receipts']), 1)
+        before = self.store.inspect()
+        self.store.request_clarification(attempt['id'], 'What date should it use?')
+        self.assertEqual(self.store.inspect(), before)
+
+    def test_atomic_dispatch_kill_at_exhaustion_has_no_stranded_question(self):
+        attempt = self.exhausted_attempt()
+        child = "import os,signal,sys\nfrom pal.store import Store\ndef fault(point):\n    if point == 'preview.mid_transaction': os.kill(os.getpid(), signal.SIGKILL)\ns=Store(sys.argv[1],fault=fault)\ns.request_clarification(sys.argv[2],'Another question')\n"
+        before = self.store.inspect()
+        killed = subprocess.run([sys.executable, '-c', child, self.store.path, attempt['id']],
+                                capture_output=True, timeout=15)
+        self.assertEqual(killed.returncode, -9, killed.stderr)
+        self.assertEqual(self.store.inspect(), before)
+        self.store.request_clarification(attempt['id'], 'Another question')
+        self.assertEqual(self.store.get_goal(self.goal['id'])['state'], 'failed')
+        self.assertEqual(len(self.store.inspect()['questions']), 2)
+
+    def test_concurrent_dispatch_is_one_question_or_one_preview(self):
+        from concurrent.futures import ThreadPoolExecutor
+        attempt = self.store.claim([self.source['id']])
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            list(pool.map(lambda _: self.store.request_clarification(attempt['id'], 'What date?'), range(2)))
+        self.assertEqual(len(self.store.inspect()['questions']), 1)
+        goal = self.store.get_goal(self.goal['id'])
+        for index in (1, 2):
+            self.store.control('answer' + str(index), goal['id'], 'input', 'Still undecided',
+                               question_id=goal['question_id'], epoch=goal['epoch'])
+            attempt = self.store.claim([self.source['id']])
+            if index == 1:
+                self.store.request_clarification(attempt['id'], 'What date?')
+                goal = self.store.get_goal(self.goal['id'])
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            list(pool.map(lambda _: self.store.request_clarification(attempt['id'], 'Another question'), range(2)))
+        data = self.store.inspect()
+        self.assertEqual(len(data['questions']), 2)
+        self.assertEqual(len(data['receipts']), 1)
+        self.assertEqual(sum(e['kind'] == 'goal.incomplete_preview' for e in data['events']), 1)

@@ -1,0 +1,26 @@
+test_binding_immutable_and_one_open_question_per_goal (tests.test_questions.QuestionTests) ... ok
+test_changed_question_and_stale_answer_never_rebind (tests.test_questions.QuestionTests) ... ok
+test_closed_question_round_not_reused_after_correction (tests.test_questions.QuestionTests) ... ok
+test_diagnostic_waits_do_not_fabricate_clarification (tests.test_questions.QuestionTests) ... ok
+test_forget_incidental_waiting_context_closes_question (tests.test_questions.QuestionTests) ... ok
+test_preview_receipt_is_not_completion_evidence (tests.test_questions.QuestionTests) ... ok
+test_question_and_answer_process_kill_roll_back_whole_transaction (tests.test_questions.QuestionTests) ... ok
+test_question_answer_restart_and_replay_provenance (tests.test_questions.QuestionTests) ... ok
+test_two_answers_bound_and_third_request_creates_no_question (tests.test_questions.QuestionTests) ... ok
+test_atomic_dispatch_asks_then_finishes_without_third_question (tests.test_preview.PreviewTests) ... ok
+test_atomic_dispatch_kill_at_exhaustion_has_no_stranded_question (tests.test_preview.PreviewTests) ... ok
+test_cancel_and_forget_fence_before_any_preview_bytes (tests.test_preview.PreviewTests) ... ok
+test_early_unauthorized_template_and_nonexhausted_are_rejected (tests.test_preview.PreviewTests) ... ok
+test_exhaustion_fallback_accepts_no_model_content_or_banner_spoof (tests.test_preview.PreviewTests) ... ok
+test_forget_after_preview_retains_bytes_but_marks_reference_stopped (tests.test_preview.PreviewTests) ... ok
+test_forget_before_preview_rejects_all_artifact_writes (tests.test_preview.PreviewTests) ... ok
+test_kill_after_commit_replays_complete_terminal_transaction_once (tests.test_preview.PreviewTests) ... ok
+test_last_claim_eligibility_is_not_a_fabricated_answer (tests.test_preview.PreviewTests) ... ok
+test_process_kill_preview_is_atomic_and_retry_recovers_once (tests.test_preview.PreviewTests) ... ok
+test_template_role_literal_placeholders_bounds_and_conflicting_replay (tests.test_preview.PreviewTests) ... ok
+test_terminal_receipt_is_unverified_and_never_recovered_or_passed (tests.test_preview.PreviewTests) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.561s
+
+OK

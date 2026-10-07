@@ -427,39 +427,58 @@ class Store:
         return {'attempt_id': attempt_id, 'receipt_id': None, 'check_status': check_status, 'detail': sanitize(reason)}
 
     def waiting(self, attempt_id, reason):
+        with self._tx('waiting') as db:
+            result, error = self._waiting(db, attempt_id, reason)
+        if error:
+            raise error
+        return result
+
+    def request_clarification(self, attempt_id, reason):
+        """Choose question or zero-call terminal preview in one canonical transaction."""
+        with self._tx('clarification') as db:
+            old = db.execute('SELECT detail FROM outcomes WHERE attempt_id=?', (attempt_id,)).fetchone()
+            if old and old['detail'] == 'clarification_exhausted':
+                result, error = self._finish_preview(db, attempt_id, 'clarification_exhausted')
+            else:
+                try:
+                    result, error = self._waiting(db, attempt_id, reason)
+                except QuestionBudgetExhausted:
+                    result, error = self._finish_preview(db, attempt_id, 'clarification_exhausted')
+        if error:
+            raise error
+        return result
+
+    def _waiting(self, db, attempt_id, reason):
         if not isinstance(reason, str) or not reason.strip() or len(reason.encode('utf-8')) > 2000:
             raise EvidenceRejected('invalid question text')
         error = None
         result = None
-        with self._tx('waiting') as db:
-            old = db.execute('SELECT * FROM questions WHERE attempt_id=?', (attempt_id,)).fetchone()
-            if old:
-                if old['prompt'] != sanitize(reason):
-                    raise Conflict('conflicting question for Attempt')
-                goal = self._goal(db, old['goal_id'])
-                issued = db.execute('SELECT * FROM attempts WHERE id=?', (attempt_id,)).fetchone()
-                if old['status'] == 'open' and goal['state'] == 'waiting_input' and goal['question_id'] == old['id'] and goal['revision'] == old['revision'] and goal['epoch'] == old['epoch'] and self._usable(db, json.loads(issued['manifest'])):
-                    return goal
-            attempt = self._active(db, attempt_id)
-            if not attempt:
-                self._reject(db, attempt_id, 'stale input request')
-                error = StaleResult('stale input request')
-            else:
-                answered = db.execute("SELECT COUNT(*) FROM questions WHERE goal_id=? AND status='answered'", (attempt['goal_id'],)).fetchone()[0]
-                goal = self._goal(db, attempt['goal_id'])
-                if answered >= self.MAX_ANSWERED_QUESTIONS or goal['budget'] <= 0 or goal['total_claims'] >= self.MAX_TOTAL_CLAIMS:
-                    raise QuestionBudgetExhausted('clarification limit reached')
-                round_number = db.execute('SELECT COALESCE(MAX(round),0)+1 FROM questions WHERE goal_id=?', (attempt['goal_id'],)).fetchone()[0]
-                question = uid()
-                db.execute("INSERT INTO questions(id,goal_id,attempt_id,revision,epoch,round,prompt,status) VALUES (?,?,?,?,?,?,?,'open')", (question, attempt['goal_id'], attempt_id, attempt['revision'], attempt['epoch'], round_number, sanitize(reason)))
-                db.execute("UPDATE attempts SET status='waiting' WHERE id=?", (attempt_id,))
-                db.execute("UPDATE goals SET state='waiting_input',reason=?,question_id=? WHERE id=?", (sanitize(reason), question, attempt['goal_id']))
-                self.fault('question.mid_transaction')
-                self._event(db, attempt['goal_id'], 'goal.waiting_input', {'reason': sanitize(reason), 'question_id': question})
-                result = self._goal(db, attempt['goal_id'])
-        if error:
-            raise error
-        return result
+        old = db.execute('SELECT * FROM questions WHERE attempt_id=?', (attempt_id,)).fetchone()
+        if old:
+            if old['prompt'] != sanitize(reason):
+                raise Conflict('conflicting question for Attempt')
+            goal = self._goal(db, old['goal_id'])
+            issued = db.execute('SELECT * FROM attempts WHERE id=?', (attempt_id,)).fetchone()
+            if old['status'] == 'open' and goal['state'] == 'waiting_input' and goal['question_id'] == old['id'] and goal['revision'] == old['revision'] and goal['epoch'] == old['epoch'] and self._usable(db, json.loads(issued['manifest'])):
+                return goal, None
+        attempt = self._active(db, attempt_id)
+        if not attempt:
+            self._reject(db, attempt_id, 'stale input request')
+            error = StaleResult('stale input request')
+        else:
+            answered = db.execute("SELECT COUNT(*) FROM questions WHERE goal_id=? AND status='answered'", (attempt['goal_id'],)).fetchone()[0]
+            goal = self._goal(db, attempt['goal_id'])
+            if answered >= self.MAX_ANSWERED_QUESTIONS or goal['budget'] <= 0 or goal['total_claims'] >= self.MAX_TOTAL_CLAIMS:
+                raise QuestionBudgetExhausted('clarification limit reached')
+            round_number = db.execute('SELECT COALESCE(MAX(round),0)+1 FROM questions WHERE goal_id=?', (attempt['goal_id'],)).fetchone()[0]
+            question = uid()
+            db.execute("INSERT INTO questions(id,goal_id,attempt_id,revision,epoch,round,prompt,status) VALUES (?,?,?,?,?,?,?,'open')", (question, attempt['goal_id'], attempt_id, attempt['revision'], attempt['epoch'], round_number, sanitize(reason)))
+            db.execute("UPDATE attempts SET status='waiting' WHERE id=?", (attempt_id,))
+            db.execute("UPDATE goals SET state='waiting_input',reason=?,question_id=? WHERE id=?", (sanitize(reason), question, attempt['goal_id']))
+            self.fault('question.mid_transaction')
+            self._event(db, attempt['goal_id'], 'goal.waiting_input', {'reason': sanitize(reason), 'question_id': question})
+            result = self._goal(db, attempt['goal_id'])
+        return result, error
 
     def control(self, key, goal_id, action, text=None, criteria=None, question_id=None, epoch=None):
         with self._tx('control') as db:
@@ -704,66 +723,70 @@ class Store:
 
     def finish_preview(self, attempt_id, reason, content=None, missing=None):
         """Host-only terminal proposal: canonical eligibility, never Acceptance PASS."""
+        with self._tx('preview') as db:
+            result, error = self._finish_preview(db, attempt_id, reason, content, missing)
+        if error:
+            raise error
+        return result
+
+    def _finish_preview(self, db, attempt_id, reason, content=None, missing=None):
         if reason not in ('clarification_exhausted', 'incomplete_template'):
             raise ValueError('invalid preview reason')
         if reason == 'clarification_exhausted' and (content is not None or missing is not None):
             raise EvidenceRejected('host exhaustion summary accepts no model content')
         error = None
         result = None
-        with self._tx('preview') as db:
-            old = db.execute('SELECT * FROM outcomes WHERE attempt_id=?', (attempt_id,)).fetchone()
-            if old:
-                receipt = db.execute('SELECT * FROM receipts WHERE id=?', (old['receipt_id'],)).fetchone()
-                if old['check_status'] != 'unverified' or old['detail'] != reason or receipt is None or receipt['role'] != 'preview':
-                    raise Conflict('conflicting preview outcome')
-                if reason == 'incomplete_template':
-                    candidate = self._preview_body(content, missing)
-                    if hashlib.sha256(candidate).hexdigest() != receipt['hash']:
-                        raise Conflict('conflicting preview content')
-                return dict(old)
-            attempt = self._active(db, attempt_id)
-            if not attempt:
-                self._reject(db, attempt_id, 'stale preview')
-                error = StaleResult('stale preview proposal')
+        old = db.execute('SELECT * FROM outcomes WHERE attempt_id=?', (attempt_id,)).fetchone()
+        if old:
+            receipt = db.execute('SELECT * FROM receipts WHERE id=?', (old['receipt_id'],)).fetchone()
+            if old['check_status'] != 'unverified' or old['detail'] != reason or receipt is None or receipt['role'] != 'preview':
+                raise Conflict('conflicting preview outcome')
+            if reason == 'incomplete_template':
+                candidate = self._preview_body(content, missing)
+                if hashlib.sha256(candidate).hexdigest() != receipt['hash']:
+                    raise Conflict('conflicting preview content')
+            return dict(old), None
+        attempt = self._active(db, attempt_id)
+        if not attempt:
+            self._reject(db, attempt_id, 'stale preview')
+            error = StaleResult('stale preview proposal')
+        else:
+            goal = self._goal(db, attempt['goal_id'])
+            revision = db.execute('SELECT * FROM revisions WHERE goal_id=? AND revision=?', (goal['id'], goal['revision'])).fetchone()
+            answered = db.execute("SELECT COUNT(*) FROM questions WHERE goal_id=? AND status='answered'", (goal['id'],)).fetchone()[0]
+            eligible = (bool(revision['template_preview_allowed']) if reason == 'incomplete_template'
+                        else answered >= self.MAX_ANSWERED_QUESTIONS or goal['budget'] <= 0 or goal['total_claims'] >= self.MAX_TOTAL_CLAIMS)
+            if not eligible:
+                error = EvidenceRejected('ineligible preview reason')
             else:
-                goal = self._goal(db, attempt['goal_id'])
-                revision = db.execute('SELECT * FROM revisions WHERE goal_id=? AND revision=?', (goal['id'], goal['revision'])).fetchone()
-                answered = db.execute("SELECT COUNT(*) FROM questions WHERE goal_id=? AND status='answered'", (goal['id'],)).fetchone()[0]
-                eligible = (bool(revision['template_preview_allowed']) if reason == 'incomplete_template'
-                            else answered >= self.MAX_ANSWERED_QUESTIONS or goal['budget'] <= 0 or goal['total_claims'] >= self.MAX_TOTAL_CLAIMS)
-                if not eligible:
-                    error = EvidenceRejected('ineligible preview reason')
+                if reason == 'clarification_exhausted':
+                    question = db.execute('SELECT prompt FROM questions WHERE goal_id=? ORDER BY round DESC LIMIT 1', (goal['id'],)).fetchone()
+                    text = ('Host-authored missing-information summary. No draft was accepted.\n'
+                            'Last stored question (quoted data):\n' +
+                            (question['prompt'] if question else 'No clarification question was stored.'))
+                    body = (PREVIEW_BANNER + text).encode('utf-8')
                 else:
-                    if reason == 'clarification_exhausted':
-                        question = db.execute('SELECT prompt FROM questions WHERE goal_id=? ORDER BY round DESC LIMIT 1', (goal['id'],)).fetchone()
-                        text = ('Host-authored missing-information summary. No draft was accepted.\n'
-                                'Last stored question (quoted data):\n' +
-                                (question['prompt'] if question else 'No clarification question was stored.'))
-                        body = (PREVIEW_BANNER + text).encode('utf-8')
-                    else:
-                        body = self._preview_body(content, missing)
-                    criteria = json.loads(revision['criteria'])
-                    if len(body) > criteria['max_bytes']:
-                        error = EvidenceRejected('preview exceeds byte bound')
-                if error:
-                    self._reject(db, attempt_id, str(error))
-                else:
-                    if db.execute('SELECT 1 FROM receipts WHERE attempt_id=?', (attempt_id,)).fetchone():
-                        raise Conflict('Attempt already has a receipt')
-                    artifact_id, receipt_id = uid(), uid()
-                    digest = hashlib.sha256(body).hexdigest()
-                    db.execute('INSERT INTO artifacts(id,body,hash,size) VALUES (?,?,?,?)', (artifact_id, body, digest, len(body)))
-                    db.execute("INSERT INTO receipts(id,attempt_id,artifact_id,hash,size,revision,epoch,role) VALUES (?,?,?,?,?,?,?,'preview')", (receipt_id, attempt_id, artifact_id, digest, len(body), attempt['revision'], attempt['epoch']))
-                    db.execute("UPDATE attempts SET status='unverified' WHERE id=?", (attempt_id,))
-                    db.execute("INSERT INTO outcomes(attempt_id,receipt_id,check_status,detail) VALUES (?,?,'unverified',?)", (attempt_id, receipt_id, reason))
-                    db.execute("UPDATE questions SET status='closed' WHERE goal_id=? AND status='open'", (goal['id'],))
-                    db.execute("UPDATE goals SET state='failed',reason=?,question_id=NULL WHERE id=?", (reason, goal['id']))
-                    self.fault('preview.mid_transaction')
-                    self._event(db, goal['id'], 'goal.incomplete_preview', {'attempt_id': attempt_id, 'receipt_id': receipt_id, 'artifact_id': artifact_id, 'reason': reason, 'check_status': 'unverified'})
-                    result = dict(db.execute('SELECT * FROM outcomes WHERE attempt_id=?', (attempt_id,)).fetchone())
-        if error:
-            raise error
-        return result
+                    body = self._preview_body(content, missing)
+                criteria = json.loads(revision['criteria'])
+                if len(body) > criteria['max_bytes']:
+                    error = EvidenceRejected('preview exceeds byte bound')
+            if error:
+                self._reject(db, attempt_id, str(error))
+            else:
+                if db.execute('SELECT 1 FROM receipts WHERE attempt_id=?', (attempt_id,)).fetchone():
+                    raise Conflict('Attempt already has a receipt')
+                artifact_id, receipt_id = uid(), uid()
+                digest = hashlib.sha256(body).hexdigest()
+                db.execute('INSERT INTO artifacts(id,body,hash,size) VALUES (?,?,?,?)', (artifact_id, body, digest, len(body)))
+                db.execute("INSERT INTO receipts(id,attempt_id,artifact_id,hash,size,revision,epoch,role) VALUES (?,?,?,?,?,?,?,'preview')", (receipt_id, attempt_id, artifact_id, digest, len(body), attempt['revision'], attempt['epoch']))
+                db.execute("UPDATE attempts SET status='unverified' WHERE id=?", (attempt_id,))
+                db.execute("INSERT INTO outcomes(attempt_id,receipt_id,check_status,detail) VALUES (?,?,'unverified',?)", (attempt_id, receipt_id, reason))
+                db.execute("UPDATE questions SET status='closed' WHERE goal_id=? AND status='open'", (goal['id'],))
+                db.execute("UPDATE goals SET state='failed',reason=?,question_id=NULL WHERE id=?", (reason, goal['id']))
+                self.fault('preview.mid_transaction')
+                self._event(db, goal['id'], 'goal.incomplete_preview', {'attempt_id': attempt_id, 'receipt_id': receipt_id, 'artifact_id': artifact_id, 'reason': reason, 'check_status': 'unverified'})
+                result = dict(db.execute('SELECT * FROM outcomes WHERE attempt_id=?', (attempt_id,)).fetchone())
+        return result, error
 
     @staticmethod
     def _preview_body(content, missing):
