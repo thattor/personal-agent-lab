@@ -1,0 +1,277 @@
+{
+  "scope": "live_synthetic",
+  "human_evaluation": false,
+  "candidate": "57b4a49cac14fd80c0a47e369412f1303f001da9",
+  "records": 79,
+  "tail_sha256": "273bed57f3092f635719638d720dd2af80df53bda2c61d82e366209b8519d3c5",
+  "journal_sha256": "03f00957752d5d686f39c6ac3f2ecfcc73f0d3b90f98c50f3d10f899839b7fff",
+  "provider_call_attempts": 9,
+  "native_auth_supervisors": 9,
+  "native_generation_supervisors": 9,
+  "all_supervisors_returned_zero": true,
+  "observed_elapsed_seconds": 339.573930978775,
+  "cases": [
+    {
+      "case": "K1",
+      "goal": {
+        "seq": 1,
+        "id": "6ac4064d5e034076ad1c028cc6cbeea2",
+        "state": "completed",
+        "revision": 1,
+        "acceptance_id": "e44d1abdffb94712b14b78b83cbeb448",
+        "epoch": 1,
+        "budget": 2,
+        "total_claims": 1,
+        "reason": "",
+        "question_id": null,
+        "ambiguity": 0
+      },
+      "questions": [],
+      "receipts": [
+        {
+          "id": "4404092af95e46c4a30972f1e79fffde",
+          "attempt_id": "2afbbb3a33474407a7691883e615bdf7",
+          "artifact_id": "7f2ce351d26e4a00bc14932a324140af",
+          "hash": "0fd32e8b340a9f834a54bd4c2cf6bcabf88915f50a72872d315b89955b69128c",
+          "size": 227,
+          "revision": 1,
+          "epoch": 1,
+          "role": "draft"
+        }
+      ],
+      "outcomes": [
+        {
+          "attempt_id": "2afbbb3a33474407a7691883e615bdf7",
+          "receipt_id": "4404092af95e46c4a30972f1e79fffde",
+          "check_status": "pass",
+          "detail": "host_utf8_size_hash_readback"
+        }
+      ]
+    },
+    {
+      "case": "A1",
+      "goal": {
+        "seq": 1,
+        "id": "486af68aa18b4e4db650412c2fd23f90",
+        "state": "completed",
+        "revision": 1,
+        "acceptance_id": "e196f172a9414aba9d2e78a813c14d47",
+        "epoch": 3,
+        "budget": 1,
+        "total_claims": 2,
+        "reason": "",
+        "question_id": null,
+        "ambiguity": 0
+      },
+      "questions": [
+        {
+          "id": "479b92cf5c94480c8b709bf4e9c76bac",
+          "goal_id": "486af68aa18b4e4db650412c2fd23f90",
+          "attempt_id": "99a7f069e3734c08908551d61aa31069",
+          "revision": 1,
+          "epoch": 1,
+          "round": 1,
+          "prompt": "Mikaさんへの招待文に記載する、確定した日時と場所を教えてください。何の集まりかも分かれば、あわせて教えてください。",
+          "status": "answered",
+          "answer_record_id": "cd13924a852f482e9c631511d87ad3dd"
+        }
+      ],
+      "receipts": [
+        {
+          "id": "0a7c7f21f1904c56b75bb04f5ece8df0",
+          "attempt_id": "5050ccfecda6404faeae54dbe52b8e94",
+          "artifact_id": "581b1e7a4d7b498fa5f203053f28d211",
+          "hash": "95e6b240c60fe8b1d1e92cc4e98483c027fc168b746a1f4913ca5076b157cfa1",
+          "size": 302,
+          "revision": 1,
+          "epoch": 3,
+          "role": "draft"
+        }
+      ],
+      "outcomes": [
+        {
+          "attempt_id": "5050ccfecda6404faeae54dbe52b8e94",
+          "receipt_id": "0a7c7f21f1904c56b75bb04f5ece8df0",
+          "check_status": "pass",
+          "detail": "host_utf8_size_hash_readback"
+        }
+      ]
+    },
+    {
+      "case": "G1",
+      "goal": {
+        "seq": 1,
+        "id": "23dcc8c8713a46d2a73b0a008f6d0cdc",
+        "state": "completed",
+        "revision": 1,
+        "acceptance_id": "53359be920984568b1b6b515f137e9cf",
+        "epoch": 1,
+        "budget": 2,
+        "total_claims": 1,
+        "reason": "",
+        "question_id": null,
+        "ambiguity": 0
+      },
+      "questions": [],
+      "receipts": [
+        {
+          "id": "4dc9b3e2c8ed42518a2cd84e95ab81f3",
+          "attempt_id": "9b18b8ef4ecf47a3bdd2f34d3287a885",
+          "artifact_id": "9034fef1a32643e8b0734062d658a334",
+          "hash": "cdf39f2dcacc0199e6840628da0211ac95d8de4e85491f41e6d01556f8cf0572",
+          "size": 770,
+          "revision": 1,
+          "epoch": 1,
+          "role": "draft"
+        }
+      ],
+      "outcomes": [
+        {
+          "attempt_id": "9b18b8ef4ecf47a3bdd2f34d3287a885",
+          "receipt_id": "4dc9b3e2c8ed42518a2cd84e95ab81f3",
+          "check_status": "pass",
+          "detail": "host_utf8_size_hash_readback"
+        }
+      ]
+    },
+    {
+      "case": "T1",
+      "goal": {
+        "seq": 1,
+        "id": "9c8692ea1ffc481da4a04c0544760215",
+        "state": "failed",
+        "revision": 1,
+        "acceptance_id": "accaecc0e47d48f1af3ea87658dc942c",
+        "epoch": 1,
+        "budget": 2,
+        "total_claims": 1,
+        "reason": "incomplete_template",
+        "question_id": null,
+        "ambiguity": 0
+      },
+      "questions": [],
+      "receipts": [
+        {
+          "id": "aa707bf2e16f49f9820a601e82a9ed0e",
+          "attempt_id": "57dc711e760941e6884ddaecf5623ff1",
+          "artifact_id": "8caace2c053341fe89ffba0bfa9eda87",
+          "hash": "73723346334ec277e677d0c4187798b565e27bd3611ef5b23f2f83e48bb88a31",
+          "size": 619,
+          "revision": 1,
+          "epoch": 1,
+          "role": "preview"
+        }
+      ],
+      "outcomes": [
+        {
+          "attempt_id": "57dc711e760941e6884ddaecf5623ff1",
+          "receipt_id": "aa707bf2e16f49f9820a601e82a9ed0e",
+          "check_status": "unverified",
+          "detail": "incomplete_template"
+        }
+      ]
+    },
+    {
+      "case": "P1",
+      "goal": {
+        "seq": 1,
+        "id": "9096fa50efd447c4b1a090d19fd85672",
+        "state": "failed",
+        "revision": 1,
+        "acceptance_id": "f63a5b5a06814ec1b50d5f3565d44936",
+        "epoch": 5,
+        "budget": 0,
+        "total_claims": 3,
+        "reason": "clarification_exhausted",
+        "question_id": null,
+        "ambiguity": 0
+      },
+      "questions": [
+        {
+          "id": "ea5cc91002334e36885c42f5521dfbf8",
+          "goal_id": "9096fa50efd447c4b1a090d19fd85672",
+          "attempt_id": "89f07a07dd9f4f8895b15ed2c965ce6e",
+          "revision": 1,
+          "epoch": 1,
+          "round": 1,
+          "prompt": "Mikaさんへの招待文に入れる、確定した日時と場所を教えてください。あわせて、何の集まりか（食事会、誕生日会など）も分かれば教えてください。",
+          "status": "answered",
+          "answer_record_id": "d8134ae5d1f344f6bb76eb2798ee2c64"
+        },
+        {
+          "id": "8f1d59e335f94b54b650ed0d57ad9f08",
+          "goal_id": "9096fa50efd447c4b1a090d19fd85672",
+          "attempt_id": "45fbdbf2c0ad4221b0d0c80de534374a",
+          "revision": 1,
+          "epoch": 3,
+          "round": 2,
+          "prompt": "日時（10月12日18:00）は確認できました。招待文に必要な場所がまだ未定とのことなので、確定した場所を教えてください。",
+          "status": "answered",
+          "answer_record_id": "a28f644177bb49f08d8b3e494255b228"
+        }
+      ],
+      "receipts": [
+        {
+          "id": "3dc523f9c0d44859963e87b1c72e3387",
+          "attempt_id": "8d70f7c4d28145ec92f61ce0030323c0",
+          "artifact_id": "991776d057ef425f8d17bd6f4a3f95b9",
+          "hash": "550c2d5db8748a34c69586e814768eac714bda77aec4c51f0c88074347d349fa",
+          "size": 311,
+          "revision": 1,
+          "epoch": 5,
+          "role": "preview"
+        }
+      ],
+      "outcomes": [
+        {
+          "attempt_id": "8d70f7c4d28145ec92f61ce0030323c0",
+          "receipt_id": "3dc523f9c0d44859963e87b1c72e3387",
+          "check_status": "unverified",
+          "detail": "clarification_exhausted"
+        }
+      ]
+    },
+    {
+      "case": "F1",
+      "goal": {
+        "seq": 1,
+        "id": "172022905c6d42ee96c6c373014c343a",
+        "state": "waiting_input",
+        "revision": 1,
+        "acceptance_id": "0e8a721dae35429e867c3bb7525ecd5c",
+        "epoch": 1,
+        "budget": 2,
+        "total_claims": 1,
+        "reason": "Mikaさんへの招待の確定した日時と場所を教えてください。何への招待か（例：食事会、誕生日会など）も分かれば、それに合わせて下書きを作ります。",
+        "question_id": "5605e3ceeb6a47a482fa8554f33f089c",
+        "ambiguity": 0
+      },
+      "questions": [
+        {
+          "id": "5605e3ceeb6a47a482fa8554f33f089c",
+          "goal_id": "172022905c6d42ee96c6c373014c343a",
+          "attempt_id": "e6d90bb5e7844efab4d8298ada8d819b",
+          "revision": 1,
+          "epoch": 1,
+          "round": 1,
+          "prompt": "Mikaさんへの招待の確定した日時と場所を教えてください。何への招待か（例：食事会、誕生日会など）も分かれば、それに合わせて下書きを作ります。",
+          "status": "open",
+          "answer_record_id": null
+        }
+      ],
+      "receipts": [],
+      "outcomes": []
+    }
+  ],
+  "limits": "one candidate/one proof/20 max/no resampling/no new auth/payment; synthetic UI controller inputs are not human usefulness",
+  "corrections": [
+    "T1 accept observation prematurely claimed HTTP artifact-status readback; actual attempted hyphen route404. t1-stale-readback.json proves post-teardown read-only DB stale and unchanged bytes; do not count that claim as HTTP evidence."
+  ],
+  "limitations": [
+    "A1/P1/F1 first question includes optional event-kind cue; no extra mandatory round for that cue observed.",
+    "G1 fictional draft adds attendance-flexibility language; no real event policy established.",
+    "Six fixed scenarios are bounded proof, not universal model correctness.",
+    "Bare answer grammar HR-INPUT-001 remains pending; N1-09 overall not PASS until scoped decision/implementation is resolved.",
+    "N1-07 actual human evaluation and N1-08 release audit remain incomplete."
+  ]
+}

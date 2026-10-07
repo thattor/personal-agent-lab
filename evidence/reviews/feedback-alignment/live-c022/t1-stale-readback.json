@@ -1,0 +1,16 @@
+{
+  "scope": "live_synthetic",
+  "human_evaluation": false,
+  "read_only_uri": true,
+  "sources": [
+    {
+      "id": "290aa3d6f4a1424da6b924f3f7567d71",
+      "usable": 0
+    }
+  ],
+  "stale_by_manifest": true,
+  "retained_body_sha256": "73723346334ec277e677d0c4187798b565e27bd3611ef5b23f2f83e48bb88a31",
+  "receipt_hash": "73723346334ec277e677d0c4187798b565e27bd3611ef5b23f2f83e48bb88a31",
+  "retained_body": "INCOMPLETE PREVIEW / 未完成の下書き\n\n件名：ご招待のお知らせ\n\n皆さま\n\nいつもお世話になっております。\nこのたび、下記のとおり集まりを開催する運びとなりましたので、ご案内申し上げます。\nお忙しいところ恐縮ですが、ぜひご参加いただけましたら幸いです。\n\n日時：{{date}}\n場所：{{place}}\n\nご都合をお知らせいただけますと助かります。\n皆さまにお会いできることを楽しみにしております。\n\nどうぞよろしくお願いいたします。\n\nMissing information: {{date}}、{{place}}",
+  "observer_correction": "Earlier controller accept text prematurely claimed HTTP artifact-status readback; attempted hyphen route returned404 (actual route uses underscore). Host had already advanced. This read-only retained DB audit is actual post-teardown proof; old claim not HTTP evidence."
+}

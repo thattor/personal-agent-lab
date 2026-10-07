@@ -1,0 +1,14 @@
+{
+  "source": "existing official Claude usage UI, refresh and existing CLI auth/status",
+  "session_used_percent": 47,
+  "week_used_percent": 20,
+  "extra_usage_switch": 0,
+  "credits_balance": 0,
+  "monthly_spend": 0,
+  "auto_reload": "OFF",
+  "loggedIn": true,
+  "authMethod": "claude.ai",
+  "subscriptionType": "pro",
+  "verified_at": 1791370804.6768482,
+  "no_new_auth_or_payment": true
+}

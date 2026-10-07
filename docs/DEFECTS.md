@@ -137,3 +137,7 @@ Initial observer confused Goal.state and outcome.check_status with question.stat
 
 
 C022 verification: source-frozen runner correctly rejected source drift during the first full167 run because the controller changed the operator entry module while that suite was live. Preserve live-operator-full-final.txt as failed evidence. Cause is verification sequencing, not a product defect; no weakening of pin checks. Subsequent full167 PASS15.806s in live-operator-full-green.txt with no source edits during run. Next source-freeze verification: finish all source edits, then run once, wait for the same handle to terminal before changing or repeating.
+
+
+## C023 premature observation claim
+T1 stale UI was observed, but the controller used a hyphenated artifact-status endpoint rather than the actual underscore endpoint. HTTP404 occurred; an independently sent case.accepted command prematurely claimed HTTP status/hash confirmation and advanced to P1. Original journal kept unchanged. After source route verification, readonly SQLite URI audit confirmed stopped source usable0 and unchanged retained bytes/receipt hash, recorded in live-c022/t1-stale-readback.json. This is DB proof, not retrospective HTTP proof. Next dependent evidence claims must wait for and inspect successful command result before accept/advance; separate observation failures from product failures. No model retry or canonical repair.

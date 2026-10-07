@@ -1,0 +1,50 @@
+[
+  {
+    "case": "K1",
+    "url": "http://127.0.0.1:58468",
+    "loopback_closed": true,
+    "integrity_check": "ok",
+    "unique_attempt_receipts": true,
+    "read_only": true
+  },
+  {
+    "case": "A1",
+    "url": "http://127.0.0.1:58723",
+    "loopback_closed": true,
+    "integrity_check": "ok",
+    "unique_attempt_receipts": true,
+    "read_only": true
+  },
+  {
+    "case": "G1",
+    "url": "http://127.0.0.1:59021",
+    "loopback_closed": true,
+    "integrity_check": "ok",
+    "unique_attempt_receipts": true,
+    "read_only": true
+  },
+  {
+    "case": "T1",
+    "url": "http://127.0.0.1:59227",
+    "loopback_closed": true,
+    "integrity_check": "ok",
+    "unique_attempt_receipts": true,
+    "read_only": true
+  },
+  {
+    "case": "P1",
+    "url": "http://127.0.0.1:59492",
+    "loopback_closed": true,
+    "integrity_check": "ok",
+    "unique_attempt_receipts": true,
+    "read_only": true
+  },
+  {
+    "case": "F1",
+    "url": "http://127.0.0.1:59941",
+    "loopback_closed": true,
+    "integrity_check": "ok",
+    "unique_attempt_receipts": true,
+    "read_only": true
+  }
+]
