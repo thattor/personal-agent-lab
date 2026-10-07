@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-10-07T22:56:25.808Z",
+  "evidence_commit": "4e73d6fa93662db298269db89b93431468266c76",
+  "human_handoff": {
+    "thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "id": "HR-ACCESS-003",
+    "tool_result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"threadId\":\"01a1137a-8de3-7890-b874-cdd0a7125711\"}"
+        }
+      ],
+      "isError": false
+    },
+    "human_answer_received": false
+  },
+  "github_readback": {
+    "url": "https://github.com/thattor/personal-agent-lab/issues/6",
+    "issue_number": 6,
+    "state": "open",
+    "updated_at": "2026-10-07T22:55:29Z",
+    "body_matches_expected": true,
+    "title_preserved": true,
+    "previous_body_preserved": true
+  },
+  "external_support_submitted": false,
+  "permission_changed": false,
+  "source_tests_changed": false
+}

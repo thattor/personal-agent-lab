@@ -39,6 +39,10 @@ Goal card stays BLOCKED; this explicit investigation ran, not an idle wait. Prod
 and N1 statuses unchanged; full268 PASS retained. C048's no-concrete-owner-operation
 statement is historical and superseded by C049.
 
+C049 findings pushed in4e73d6f; global Issue6 updated/read back OPEN with original goal
+preserved. HR-ACCESS-003 delivered to the persistent human window; no owner answer or
+permission inferred. [Delivery/readback](evidence/operations/c049-handoff-readback.json).
+
 Historical C048 checkpoint:
 
 C048 blocked audit is complete. C047 completed the remaining independent cancellation
