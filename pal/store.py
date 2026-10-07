@@ -639,16 +639,21 @@ class Store:
                 status = ('unavailable' if not self._selection_available(db, row, proposal)
                           else 'already_resolved' if row['consumed_by'] else 'pending')
                 if status == 'pending':
-                    for choice in proposal['choices']:
-                        goal = self._goal(db, choice['goal_id'])
-                        if (any(goal[f] != choice[f] for f in ('revision', 'epoch'))
-                                or goal['state'] in ('completed', 'cancelled')
-                                or (row['action'] == 'correct' and goal['state'] == 'unknown')):
-                            status = 'stale'
-                            break
+                    if self._selection_stale(db, row['action'], proposal):
+                        status = 'stale'
                 result.append({'selection_id': row['selection_id'], 'source_key': row['source_key'],
                                'status': status, 'choices': proposal['choices'] if status == 'pending' else []})
             return result
+
+    def _selection_stale(self, db, action, proposal):
+        # The UI and application validate the same entire offered snapshot.
+        for choice in proposal['choices']:
+            goal = self._goal(db, choice['goal_id'])
+            if (any(goal[f] != choice[f] for f in ('revision', 'epoch'))
+                    or goal['state'] in ('completed', 'cancelled')
+                    or (action == 'correct' and goal['state'] == 'unknown')):
+                return True
+        return False
 
     def _natural_control(self, db, key, record_id, proposal):
         from .controls import literal
@@ -695,10 +700,7 @@ class Store:
         if row['consumed_by']:
             return {'goal': None, 'control_status': 'already_resolved'}
         status = 'unavailable' if not self._selection_available(db, row, proposal) else 'applied'
-        goal = self._goal(db, chosen['goal_id'])
-        if status == 'applied' and (any(goal[f] != chosen[f] for f in ('revision', 'epoch'))
-                or goal['state'] in ('completed', 'cancelled')
-                or (row['action'] == 'correct' and goal['state'] == 'unknown')):
+        if status == 'applied' and self._selection_stale(db, row['action'], proposal):
             status = 'stale'
         applied = None
         if status == 'applied':

@@ -71,6 +71,13 @@ Frozen baseline and independent failures are retained in evidence/reviews/stable
 One non-ASCII inline Python heredoc failed source decoding before any edit. Cause is only the reported input-byte decoding failure; terminal encoding origin not established. Retried the small fixture edit through structured apply_patch and verified parsed JSON and tests. Prefer structured patch for this fixture route; no global setting change.
 # Issue4 synthetic parser regression — 2026-10-07
 
+Exit source audit found a projection/application mismatch: the UI hid all choices
+after any offered target's epoch changed, but the application checked only the
+chosen target. Share one full-snapshot stale check for both paths; regression
+claims Cedar then submits Birch and requires stale/no mutation.92 full tests PASS.
+Cause: duplicated binding checks drifted while integrating the projection; next
+selector changes must use/retest the shared predicate. No production UI exposure.
+
 The first bounded-control parser interpreted `その下書き` as cue `そ` plus
 possessive `の`, because the literal-cue regex alternative preceded the explicit
 deictic alternative. Frozen matrix tests exposed five failures before deployment.

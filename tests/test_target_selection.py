@@ -106,6 +106,15 @@ class TargetSelectionTests(unittest.TestCase):
         self.assertEqual(self.choose('stale', question, cedar['id'])['control_status'], 'stale')
         self.assertEqual(self.store.get_goal(cedar['id'])['state'], 'running')
 
+    def test_projection_and_choice_share_entire_snapshot_staleness(self):
+        self.draft('Cedar')
+        birch = self.draft('Birch')['goal']
+        question = self.request('question', 'その下書きを止めて')
+        self.store.claim()  # Cedar changes, even when the click names Birch.
+        self.assertEqual(self.store.selections()[0]['status'], 'stale')
+        self.assertEqual(self.choose('birch', question, birch['id'])['control_status'], 'stale')
+        self.assertEqual(self.store.get_goal(birch['id'])['state'], 'queued')
+
     def test_forget_original_or_target_hides_labels_and_blocks_application(self):
         for forgotten in ('request', 'target'):
             with self.subTest(forgotten=forgotten):

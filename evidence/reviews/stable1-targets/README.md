@@ -1,5 +1,13 @@
 # Durable host target selection — Issue4
 
+Exit audit followup: `selection-snapshot-full.txt`92 tests PASS and
+`snapshot-version.json` bind the small consistency repair after624fc96. Read-only
+code comparison found projection invalidated the entire offered snapshot while
+application checked only the chosen target. Both now use the same whole-snapshot
+check; a claim on Cedar invalidates the question even if a stale click names Birch.
+No relaxation or new behavior scope. Original91-test/version evidence retained.
+GitHub Issue4 CLOSED/COMPLETED readback is `issue4-readback.json`.
+
 Official Opus and SWE-2 High contracts and reconciliation are preserved here;
 fresh auth/no-extra-charge receipts precede each actual consultation. Adopted
 D-024 predates implementation. No paid fallback or additional connection used.

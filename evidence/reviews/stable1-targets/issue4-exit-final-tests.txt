@@ -1,0 +1,22 @@
+test_bound_rejection_more_than_three_and_recovery_fencing (tests.test_target_selection.TargetSelectionTests) ... ok
+test_claim_invalidates_epoch_and_wrong_source_has_no_oracle (tests.test_target_selection.TargetSelectionTests) ... ok
+test_concurrent_choices_apply_exactly_once (tests.test_target_selection.TargetSelectionTests) ... ok
+test_forget_original_or_target_hides_labels_and_blocks_application (tests.test_target_selection.TargetSelectionTests) ... ok
+test_frozen_nine_case_mixed_state_matrix (tests.test_target_selection.TargetSelectionTests) ... ok
+test_persistent_bound_choice_once_and_fixed_correction_sources (tests.test_target_selection.TargetSelectionTests) ... ok
+test_process_kill_selection_create_and_correct_commit_boundaries (tests.test_target_selection.TargetSelectionTests) ... ok
+test_unique_and_no_match_never_fall_back (tests.test_target_selection.TargetSelectionTests) ... ok
+test_english_baseline_and_original_correction_payload (tests.test_controls.ControlParsingTests) ... ok
+test_frozen_target_cases_propose_action_without_resolving_targets (tests.test_controls.ControlParsingTests) ... ok
+test_quotes_reports_negation_unsupported_and_empty_do_not_control (tests.test_controls.ControlParsingTests) ... ok
+test_direct_control_remains_sourceless_and_cannot_forge_ingress_source (tests.test_correction_sources.CorrectionSourceTests) ... ok
+test_ingress_correction_retains_real_source_and_forget_fences (tests.test_correction_sources.CorrectionSourceTests) ... ok
+test_additive_upgrade_preserves_rows_and_reopens (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_fault_rolls_back_schema_and_version_together (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_future_schema_refuses_without_mutation (tests.test_schema_migration.SchemaMigrationTests) ... ok
+test_process_kill_before_and_after_commit_is_recoverable (tests.test_schema_migration.SchemaMigrationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.649s
+
+OK

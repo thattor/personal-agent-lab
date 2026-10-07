@@ -1,0 +1,10 @@
+{
+  "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "full_tests": 92,
+  "result": "PASS",
+  "log": "selection-snapshot-full.txt",
+  "source_sha256": {
+    "pal/store.py": "b6a75691b45e3692daa619032b0ffe4e4aceac355797ffe2686d76f73a355aeb",
+    "tests/test_target_selection.py": "29996ff7df8f51255ec46252f35158c6f8bb7cd570014cdd5557ab5eb9ec271a"
+  }
+}
