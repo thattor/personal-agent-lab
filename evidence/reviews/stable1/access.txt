@@ -1,0 +1,2 @@
+Verified 2026-10-07T03:59:03.761062+00:00
+Official Claude usage UI: Pro, current session29%, week13%; usage credits OFF, monthly spend $0.00, auto reload OFF. No settings changed. Official scrubbed CLI auth status: loggedIn true, authMethod claude.ai, subscriptionType pro. No new auth or paid fallback.

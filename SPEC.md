@@ -1,4 +1,4 @@
-# SPEC.md — Stable-0 product scope
+# SPEC.md — Personal Agent Lab product scope
 
 ## Goal
 Deliver a minimum stable implementation of Personal Agent Lab: one conversational assistant that can remember relevant prior context, accept work, delegate execution, survive interruption, verify outcomes, and report back without requiring the user to manage internal tasks.
@@ -93,3 +93,18 @@ Stable-0 does not promise perfect recall, perfect secret detection, exactly-once
 
 ## Revised completion — D-019
 Stable-0 requires functional real-provider UI acceptance for conversation, remember/recall, context-grounded useful draft content, correction, reference-stop and authoritative work/status controls, in addition to canonical/security/recovery protections. Mock remains default; real-provider UI is explicitly selected and bounded by fresh official no-extra-charge proof. Human evaluates usefulness once for the fixed scenario set. Long-term observation is optional; no long-term stability claim follows these finite scenarios.
+
+## Position and next milestone — D-021
+
+The product destination is an assistant that preserves conversational context, takes on authorized work, prepares reversible results, verifies them, and returns only for results, blockers or genuine human judgments. This is a capability direction, not a promise of every possible task or a completion percentage.
+
+| Stage | User-visible outcome | Current authority/status |
+|---|---|---|
+| Stable-0 | Conversation, remembered context and local drafts with host evidence, control/recovery safeguards and bounded official real-provider proof | Released; required S0/F0 PASS under D-019. Finite personal-use validation, not always-on or long-term reliability proof |
+| Stable-1 | Japanese draft requests are distinguished from conversation/deferral; correction/cancel act on the intended work or ask which one | Next scoped milestone adopted in D-021; implementation and acceptance NOT_RUN |
+| Stable-1.1 candidate | Ask only for essential missing content and resume from the bound answer | Later design candidate; not part of Stable-1 |
+| Later candidates | Better relevant cross-conversation recall and richer reversible preparation, then separately authorized information/action integrations and proactive help | Deferred; each needs concrete value, scope, cost/permission review and acceptance before implementation |
+
+Stable-1 adds no task type beyond a local draft. Combined draft-and-send and send-only requests receive an explicit unsupported-action explanation with no Goal; a subsequent local-only request can create one. Discussion, quotations, hypothetical requests, record-only instructions and negation/deferral must not silently create work. Natural correction/cancel requires unique host-validated targeting; ambiguous references must not mutate an arbitrary latest Goal. Existing single-target English controls remain supported, with fixed criteria and source restrictions preserved. Forget remains explicit and reference-stop semantics remain unchanged.
+
+The existing recent30-record/first20-note context assembly is a known bounded implementation limitation. Stable-1 does not overhaul memory or claim unlimited recall. Official-provider proof freshness, finite invocation budget, mock default and human judgment boundaries remain D-020. No schedule or paused follow-up is restarted by setting this milestone.

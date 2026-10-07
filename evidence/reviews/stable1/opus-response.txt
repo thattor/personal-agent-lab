@@ -1,0 +1,107 @@
+# Stable-1 Scope Review
+
+You asked for a text-only review, so I have not written a plan file or used any tools.
+
+## 1. Where Stable-0 sits against the final vision
+
+Stable-0 proves the **durable core**: canonical state, fencing, recovery, cancel, forget, a bounded real provider, and one real usefulness check. It does **not** prove the **conversational surface**. Today the user still manages internal tasks in three ways:
+
+- They must use trigger phrasing to create a Goal.
+- They must use exact strings to stop or correct one.
+- They must accept that corrections go to the latest Goal.
+
+So the next gap is not capability. It is that the assistant does not reliably understand what the user means or which task they mean. Your Stable-1 direction is correct.
+
+## 2. Should Stable-1 be smaller? Yes. Split off slice 2.
+
+**Recommendation:**
+
+- **Stable-1:** slice 1 (request vs. non-request) plus the targeting part of slice 3 (natural correction and cancel across several Goals, with ambiguity handling).
+- **Stable-1.1:** slice 2 (clarifying missing information).
+
+Reasons:
+
+1. **Dependency.** Binding an answer to the right Goal is the same problem as targeting a correction or cancel. Build and gate target resolution once, then reuse it for answers.
+2. **Different risk type.** Slices 1 and 3-targeting can be mostly host-side and deterministic. Slice 2 depends on the provider deciding that information is "truly missing." That is nondeterministic, uses invocation budget, and can easily violate "ask only genuine questions."
+3. **Budget.** Live proof for three slices under a finite budget with no renewal is tight. Two slices leave margin for a rerun after a failure.
+4. **"Context-grounded draft" is already Stable-0 evidence.** In slice 3, keep only a narrow no-invented-facts gate (G5 below), not a new feature.
+
+If you keep it as one milestone, make slice 2 the **last, separately gated** slice. Stable-1 should be releasable without it.
+
+## 3. Regressions and risks to watch
+
+| Risk | Why it matters |
+|---|---|
+| **More false-positive Goals** | Widening intent detection beyond the regex creates Goals for chatter. This is the main regression: unwanted work plus budget burn. Missing a request is cheap; creating a wrong Goal is not. |
+| **Substring guard is fragile** | Cases that break it: reported speech (「部長が下書き作ってって言ってた」), hypotheticals (「作ってもらうかも」), deferral (「まだ作らないで」「後で頼む」), quoting, and double negation. |
+| **External-send combined requests** | Example: 「下書き作って送っておいて」. The handling must be fixed in advance. Options are a draft-only Goal that explicitly says nothing will be sent, or no Goal plus an explanation. It must never silently drop the "send" part. |
+| **Wrong-target mutation** | "Latest Goal" targeting with natural phrasing silently corrects or cancels the wrong draft. Several queued Goals plus a single Executor slot make "latest" differ from "running" differ from "the one under discussion." |
+| **Natural cancel vs. chatter** | 「やっぱりいいや」 could be a cancel or just conversation. If ambiguous, ask or do nothing; never cancel. |
+| **Forget** | Keep forget **exact/explicit in Stable-1**. Do not make a destructive operation natural-language in this milestone. |
+| **Stale answers and corrections** | An answer or correction that arrives after cancel, completion, or an epoch change must cause no state change. |
+| **Fixed criteria drift** | Correction or clarification text must never change canonical criteria (`kind`, `max_bytes`). It changes only inputs. |
+| **Context window limits** | Context uses the last 30 records plus the first 20 notes. "First 20" means newer notes drop out as notes grow. Record this as a known limitation, keep it out of scope, and make sure no Stable-1 probe silently depends on older context. Forget must still keep re-read note sources from coming back; retain that test. |
+| **Overfitting to the matrix** | A precommitted matrix that the implementation is tuned against proves little. A held-out set is needed (gate G1). |
+
+## 4. Acceptance gates (prospective, all recorded as NOT_RUN)
+
+- **G0 – No regression.** All 20 Stable-0 rows and the existing 66 tests still pass. Fencing, recovery, forget, and security tests are unchanged in meaning. D-020 lease is unchanged. Mock remains the default.
+
+- **G1 – Intent matrix.**
+  - Freeze about 40 Japanese utterances before implementation, in these categories: explicit request paraphrases, chatter about drafts, record-only, negation/deferral, reported speech/hypothetical, external-send-only, external-send combined, and an English baseline.
+  - **Hard gate:** 0 Goals created in any non-request category.
+  - Explicit requests: at least an agreed threshold (for example 90%) create a Goal. Every miss must fail safely (no Goal, or an intent-check question).
+  - A human writes about 15 **held-out** utterances after the freeze. On those, zero false positives is gated; recall is reported only.
+
+- **G2 – Target resolution.**
+  - Run fixtures with 0–3 Goals in mixed states (queued, running, waiting_input, done, cancelled).
+  - Natural correction or cancel either resolves to exactly one Goal or asks a question naming the candidates.
+  - **0 wrong-target mutations.** Stale or cross-Goal operations cause no state change and give a user-visible explanation.
+
+- **G3 – Interruption.** A process kill during a pending ambiguity question and during a correction leads to recovery with bindings intact and no duplicate side effects (dedupe/outbox).
+
+- **G4 – Clarification (Stable-1.1, or the last slice).**
+  - Use a matrix of underspecified vs. sufficient requests.
+  - Sufficient requests: 0 questions, or below an agreed threshold.
+  - Underspecified requests: one minimal question.
+  - The answer binds by `question_id` and epoch.
+  - The criteria hash is unchanged.
+
+- **G5 – No invented facts.** Planted-absence probes, such as an unknown recipient name or date, produce a placeholder or a question, never a made-up value. Check this by marker, not by judgment.
+
+- **G6 – Live proof.** One scripted Japanese session on the official provider covers each slice, within the existing finite budget, with no extra credits, renewal, or fallback. Evidence is archived.
+
+- **G7 – Human usefulness.** One direct evaluation against a rubric written in advance. The result is recorded as observed, including a negative result. This gate does not replace G1–G5.
+
+## 5. Exclusions for Stable-1
+
+Your list stands: no memory retrieval overhaul, no new task or tool types, no proactive topics or time wake, no PublicSearch, vector search, multi-expert, local inference, or external push, and no D-020 change.
+
+Add these:
+
+- No natural-language forget.
+- No change to how context is assembled.
+- No always-on operation.
+- No 72h requirement.
+- No model output writing canonical state directly.
+
+## 6. Planning choices vs. implementation contracts
+
+**Planning choices you can decide now:**
+
+- The Stable-1 / 1.1 split and slice order.
+- Matrix categories, sizes, thresholds, and the freeze/held-out procedure.
+- The policy for external-send combined requests.
+- "Ambiguous means ask or do nothing" for cancel and correction.
+- Forget stays explicit.
+- The exclusions above.
+- Recording acceptance as NOT_RUN, with no retrofit of Stable-0.
+
+**Implementation contracts that need SWE-2 High review before substantial code:**
+
+- Where classification lives: host rules, or a model proposal that the host validates. Either way, model text is never control.
+- Clarification before Goal creation vs. through the existing `waiting_input`.
+- The target-resolution algorithm, how candidates are shown, and how an ambiguity question is bound (`id`/epoch, persistence, recovery).
+- The schema for pending questions and answers, and how the criteria hash is verified.
+- How intent outcomes are logged for evidence without storing content that forget must later remove.
+- The live-proof script and how budget is allocated across slices.

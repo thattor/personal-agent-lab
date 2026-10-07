@@ -1,22 +1,26 @@
 # STATE.md
 
 ## Goal
-Reach Stable-0 as defined in ACCEPTANCE.md. Stable-0 is **complete under D-019**.
+Stable-0 is complete under D-019. Next scoped milestone: **Stable-1 — natural Japanese local delegation**, adopted in D-021 following the user's request to position Stable-0 and set the next milestone. This increment sets scope/tasks, not implementation completion.
 
 ## Current phase
-Stable-0 functional-first complete: all20 required S0/F0 rows PASS, authentic human usefulness evaluation reflected, final66 tests and controller audit PASS, master Issue #1 CLOSED/completed. Version `stable-0`, production baseline ccfba35. [Completion receipt](evidence/final/stable0/completion.json), [proof and limitations](evidence/final/stable0/README.md). Historical S0-13 stays NOT PASS/nonrequired; no long-term reliability claim. Earlier pending/active/blocked descriptions below are historical, superseded by this current completion record.
+Stable-1 scope and prospective N1-01–08 acceptance set; all NOT_RUN. Private [milestone1](https://github.com/thattor/personal-agent-lab/milestone/1), [parent Issue#2](https://github.com/thattor/personal-agent-lab/issues/2), ordered work [#3 ingress](https://github.com/thattor/personal-agent-lab/issues/3) → [#4 targeting](https://github.com/thattor/personal-agent-lab/issues/4) → [#5 real UI/evaluation/release](https://github.com/thattor/personal-agent-lab/issues/5). [Opus review](evidence/reviews/stable1/opus-response.txt), [GitHub readback](evidence/reviews/stable1/github.json), [unchanged66-test baseline PASS](evidence/reviews/stable1/baseline-tests.txt). No runtime changes or product/canonical writes. No pending human decision; no schedule restart.
+
+Stable-0 remains functional-first complete: all20 required S0/F0 rows PASS, authentic human usefulness evaluation reflected, final66 tests and controller audit PASS, master Issue#1 CLOSED/completed. Version `stable-0`, production baseline ccfba35. [Completion receipt](evidence/final/stable0/completion.json), [proof and limitations](evidence/final/stable0/README.md). Historical S0-13 stays NOT PASS/nonrequired; no long-term reliability claim. Earlier pending/active/blocked descriptions below are historical and superseded by current milestone/completion records.
 
 ## Working checkout
 `/private/tmp/personal-agent-lab-stable0-20261006`, same private GitHub repository, remote origin/main. Original supplied untracked workspace preserved. No old implementation/schema was reused; the accidental startup metadata inspection is explicitly recorded in docs/DEFECTS.md. Do not inspect it again.
 
-## Last green increment
+## Historical Stable-0 green increment
 Actual official Japanese functional scenarios and controls PASS on runtime baseline307058d, evidence pushed in52b4ea6. [Functional evidence](evidence/functional/2026-10-07/README.md). Follow-up found a new test observer's unsupported idle-event completion assumption; corrected only that test to inspect terminal canonical Goal state. [66-test full suite](evidence/tests/native-failure-wait-green.txt), [20 repeated failure-case tests](evidence/tests/native-failure-wait-stress.txt), [cause/prevention](docs/DEFECTS.md). No production/runtime/probe changes, accepted-behavior changes or canonical repair. F0-08 still awaits the already-requested direct human usefulness evaluation; do not repeat it.
 
 ## Historical soak (stopped for approved development)
 Soak01 retained after reproduced stale UI warning; soak02 retained and intentionally reset for the user's bilingual UI request. Both old DBs/hash chains/receipts stay intact. [Soak02 directly confirmed receipt and reset](evidence/soak/2026-10-07/soak02-human-and-reset.json). No old human counts/time/restart proof transferred. Bilingual UI only changes display text; fixed controls, canonical values, receipts and provider remain English. [55-test full suite](evidence/tests/ui-bilingual-full.txt), [actual refresh recovery probe](evidence/ui/recovery/bilingual-after.txt). Historical runtime/soak-20261007-03 started 2026-10-07T06:14:18.834450+09:00 from clean pushed baseline 1863ef2a3037b335fa6f257a8d6fd95fb44da9dc on port58500, monitor PID3322/app PID3324. [Fresh start and served bilingual UI](evidence/soak/2026-10-07/start-03.json).
 
 ## Exact next action
-Stable-0 scope has no unfinished required work. The operational50-minute checkpoint is PAUSED, confirmed by app update and saved configuration readback. Private [stable-0 release](https://github.com/thattor/personal-agent-lab/releases/tag/stable-0) and annotated tag verified at `1f80683ae9231ee17b17266e73a3769a05e82b1c`; [release readback](evidence/final/stable0/release.json). No further Stable-0 action remains. Further product work requires a new scope; deferred features are not silently promoted.
+Start Issue#3: freeze40 ingress utterances and expected outcomes for N1-01; obtain12 independent reviewer-held-out cases for N1-02 before implementation. Prepare the concrete classification/host-validation contract and affected tests; verify existing official no-extra-charge/auth conditions and obtain SWE-2 High review before substantial code. Record any resulting semantic decision after required Opus discussion. Then implement the smallest test-first ingress slice, verify host outcomes/full suite, evidence and commit/push. Issue#4 depends on ingress contracts; Issue#5 depends on both features. Human usefulness evaluation is a later genuine judgment, not a fabricated current blocker.
+
+Operational50-minute checkpoint remains PAUSED. Private [stable-0 release](https://github.com/thattor/personal-agent-lab/releases/tag/stable-0) and annotated tag remain at `1f80683ae9231ee17b17266e73a3769a05e82b1c`; [release readback](evidence/final/stable0/release.json). Stable-1.1/later roadmap directions are not silently activated.
 
 ## Continuing development and human-judgment workflow — 2026-10-07
 Latest direct controller instruction adopts this chat as the continuing development flow under D-019. Controller owns code, canonical project documentation, evidence, tests and commit/push. The ongoing read-only human-judgment window is **人間の対応が必要なものチャット**, thread `01a1137a-8de3-7890-b874-cdd0a7125711`; development thread is `01a11113-f829-75c1-b728-3298aa3359b5`. Actual thread readback confirmed the human configured the ongoing window and requested evaluation material/display; direct scoped feedback has now arrived; see the answer evidence and exact next action. This is operational coordination, not a change to PAL's product roles or acceptance/security semantics; no design/implementation review gate is triggered.
@@ -30,7 +34,7 @@ The previously stopped soak follow-up is not restarted. A later direct request s
 The legacy app-goal replacement was previously rejected. Current get_goal now verifies the user-set active objective: wait for the human window result and resume development upon receipt, continuing independent work meanwhile. No fake completion was used.
 
 ## Acceptance status
-S0-01–12 and F0-01–08 PASS; historical S0-13 NOT PASS/nonrequired. Master Issue #1 CLOSED/completed.
+S0-01–12 and F0-01–08 PASS; historical S0-13 NOT PASS/nonrequired. Master Issue#1 CLOSED/completed. Next-release N1-01–08 NOT_RUN; parent Issue#2 OPEN.
 
 ## Human participation requirement
 D-019 supersedes old time/turn/session quotas. Human confirmation of actual usefulness is required once for the fixed real-provider scenario set; scripted outputs are never human attestations. Previous receipts retained as honest historical host/control proof. No routine repeated participation or approval prompts.

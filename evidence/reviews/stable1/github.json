@@ -1,0 +1,110 @@
+{
+  "milestone": {
+    "number": 1,
+    "title": "Stable-1 — Natural Japanese local delegation",
+    "html_url": "https://github.com/thattor/personal-agent-lab/milestone/1",
+    "state": "open",
+    "description": "D-021: local draft request/non-request recognition and safe correction/cancel targeting. Required N1-01–08; bounded official live UI plus one actual human usefulness evaluation. No new tools, external sending, always-on access or72h quotas."
+  },
+  "issues": [
+    {
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "description": "D-021: local draft request/non-request recognition and safe correction/cancel targeting. Required N1-01–08; bounded official live UI plus one actual human usefulness evaluation. No new tools, external sending, always-on access or72h quotas.",
+        "dueOn": null
+      },
+      "number": 2,
+      "state": "OPEN",
+      "title": "Deliver Stable-1: natural Japanese local delegation",
+      "url": "https://github.com/thattor/personal-agent-lab/issues/2"
+    },
+    {
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "description": "D-021: local draft request/non-request recognition and safe correction/cancel targeting. Required N1-01–08; bounded official live UI plus one actual human usefulness evaluation. No new tools, external sending, always-on access or72h quotas.",
+        "dueOn": null
+      },
+      "number": 3,
+      "state": "OPEN",
+      "title": "Stable-1: distinguish local draft requests from conversation and limits",
+      "url": "https://github.com/thattor/personal-agent-lab/issues/3"
+    },
+    {
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "description": "D-021: local draft request/non-request recognition and safe correction/cancel targeting. Required N1-01–08; bounded official live UI plus one actual human usefulness evaluation. No new tools, external sending, always-on access or72h quotas.",
+        "dueOn": null
+      },
+      "number": 4,
+      "state": "OPEN",
+      "title": "Stable-1: resolve correction and cancel to the intended work",
+      "url": "https://github.com/thattor/personal-agent-lab/issues/4"
+    },
+    {
+      "milestone": {
+        "number": 1,
+        "title": "Stable-1 — Natural Japanese local delegation",
+        "description": "D-021: local draft request/non-request recognition and safe correction/cancel targeting. Required N1-01–08; bounded official live UI plus one actual human usefulness evaluation. No new tools, external sending, always-on access or72h quotas.",
+        "dueOn": null
+      },
+      "number": 5,
+      "state": "OPEN",
+      "title": "Stable-1: prove the new flow on real UI and close release acceptance",
+      "url": "https://github.com/thattor/personal-agent-lab/issues/5"
+    }
+  ],
+  "milestone_readback": {
+    "url": "https://api.github.com/repos/thattor/personal-agent-lab/milestones/1",
+    "html_url": "https://github.com/thattor/personal-agent-lab/milestone/1",
+    "labels_url": "https://api.github.com/repos/thattor/personal-agent-lab/milestones/1/labels",
+    "id": 18372934,
+    "node_id": "MI_kwDOU99FDM4BGFlG",
+    "number": 1,
+    "title": "Stable-1 — Natural Japanese local delegation",
+    "description": "D-021: local draft request/non-request recognition and safe correction/cancel targeting. Required N1-01–08; bounded official live UI plus one actual human usefulness evaluation. No new tools, external sending, always-on access or72h quotas.",
+    "creator": {
+      "login": "thattor",
+      "id": 99520591,
+      "node_id": "U_kgDOBe6QTw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/99520591?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/thattor",
+      "html_url": "https://github.com/thattor",
+      "followers_url": "https://api.github.com/users/thattor/followers",
+      "following_url": "https://api.github.com/users/thattor/following{/other_user}",
+      "gists_url": "https://api.github.com/users/thattor/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/thattor/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/thattor/subscriptions",
+      "organizations_url": "https://api.github.com/users/thattor/orgs",
+      "repos_url": "https://api.github.com/users/thattor/repos",
+      "events_url": "https://api.github.com/users/thattor/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/thattor/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "open_issues": 4,
+    "closed_issues": 0,
+    "state": "open",
+    "created_at": "2026-10-07T04:01:27Z",
+    "updated_at": "2026-10-07T04:01:35Z",
+    "due_on": null,
+    "closed_at": null
+  },
+  "parent_readback": {
+    "body": "Stable-0 is released and Issue#1 remains closed. D-021 scopes the next step toward PAL accepting work without the user managing internal tasks.\n\nDeliver natural Japanese local-draft request recognition plus safe correction/cancel targeting. No content-missing clarification feature, new task/tool, memory overhaul, always-on provider, external sending, schedule, payment or public exposure.\n\nAcceptance: all N1-01–08 in ACCEPTANCE.md PASS with actual evidence, one direct human evaluation, final full suite/version/limitations audit and private release. All currently NOT_RUN. Existing S0/F0 safety/functional meaning and D-020 boundaries remain. Historical72h quotas remain nonrequired.\n\nNext action: freeze ingress corpus and reviewer-held-out cases, then official SWE-2 High review concrete implementation contracts before substantial code. Independent work proceeds while genuinely human-dependent work waits in the ongoing human-judgment thread.\n\nThis issue organizes authorized next scope; no implementation is claimed by its creation.\n\nOrdered work:\n- [ ] #3 — ingress intent and independent corpus\n- [ ] #4 — correction/cancel target binding and recovery\n- [ ] #5 — real UI, authentic human evaluation and release audit\n\nSource of truth: SPEC.md positioning, ACCEPTANCE.md N1 rows, DECISIONS.md D-021, STATE.md continuation.\n",
+    "milestone": {
+      "number": 1,
+      "title": "Stable-1 — Natural Japanese local delegation",
+      "description": "D-021: local draft request/non-request recognition and safe correction/cancel targeting. Required N1-01–08; bounded official live UI plus one actual human usefulness evaluation. No new tools, external sending, always-on access or72h quotas.",
+      "dueOn": null
+    },
+    "number": 2,
+    "state": "OPEN",
+    "title": "Deliver Stable-1: natural Japanese local delegation",
+    "url": "https://github.com/thattor/personal-agent-lab/issues/2"
+  }
+}

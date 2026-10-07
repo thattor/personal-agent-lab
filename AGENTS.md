@@ -1,7 +1,7 @@
 # AGENTS.md — Personal Agent Lab
 
 ## Mission
-Build Stable-0, the minimum stable Personal Agent Lab implementation. Continue autonomously until the Stable-0 definition in ACCEPTANCE.md is satisfied with evidence.
+Stable-0 is released under D-019. Resume the currently scoped milestone from STATE.md: Stable-1 under D-021, with prospective N1 acceptance in ACCEPTANCE.md. Continue within that accepted scope; later roadmap candidates remain deferred. Preserve all Stable-0 safeguards and honest evidence. The user requested the next milestone/task setup; this scope-setting increment does not claim new implementation.
 
 This is a greenfield project. Do not search for, read, copy, migrate, or preserve compatibility with any old PAL implementation, schema, workflow, review, P0/P1 list, or codebase.
 
@@ -66,7 +66,7 @@ Before each call, confirm the account is already authenticated and the selected 
 
 ## Development loop
 1. Read source-of-truth docs and git status.
-2. Select the smallest unfinished Stable-0 acceptance slice.
+2. Select the smallest unfinished acceptance slice in the current milestone recorded in STATE.md.
 3. Add or extend a failing deterministic test first when practical.
 4. Consult Opus/SWE-2 High if a gate triggers.
 5. Implement the minimum coherent change.
