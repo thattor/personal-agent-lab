@@ -1,0 +1,18 @@
+{
+  "observed_at": "2026-10-07T09:01:45.084735+00:00",
+  "goal_status": "active",
+  "objective_unchanged": true,
+  "repository_head": "4f9f061",
+  "issue5": "OPEN",
+  "human_scope_adoption": "not observed in latest human-window turns",
+  "handoff_status": "human-window actively reading P-002 proposal in turn01a11597-9283-74f0-b948-144689311a80",
+  "dependent_work": "D027 clarification implementation requires HR-SCOPE-001 authentic adoption and official SWE contract review",
+  "independent_management": "Issue/milestone operations do not depend on Projects authorization",
+  "no_runtime_change": true,
+  "prior_tests": "92 PASS baseline-full.txt; documentation-only increment",
+  "verification": {
+    "sandbox_attempt": "92 ran,8 errors all PermissionError at socket.bind before HTTP test body; preserved resumed-full.txt",
+    "loopback_authorized_run": "92 PASS 7.916s; resumed-full-loopback.txt",
+    "product_changes": false
+  }
+}

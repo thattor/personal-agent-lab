@@ -99,3 +99,7 @@ Corrective run2 finite verification: six fixed real outputs PASS without unsuppo
 
 
 Human-handoff reception defect: the human window received direct responses after the prior terminal presentation readback, while controller later reported the old answer-wait state. No automatic return was configured, so successful handoff/presentation did not imply answer ingestion. Latest targeted thread pagination proves four direct response turns, including later correction; controller now stores source IDs/meaning and supersedes the old wait. Prevention: before describing a human blocker, read current window responses and page back through the presented judgment, applying subsequent clarifications. Distinguish pending human decision from received-feedback/controller reflection work; do not require answer repetition. No fabricated verdict or scope adoption.
+
+## Resumed test environment observation — 2026-10-07
+
+A documentation-only goal-resumption full test attempt reported eight HTTP setup errors, all PermissionError at socket.bind under restricted execution; remaining cases did not report failures. Original log: evidence/reviews/feedback-alignment/resumed-full.txt. Cause established by identical suite passing92/92 with explicitly authorized loopback execution, resumed-full-loopback.txt (7.916s), no source edits. This is an execution environment limitation, not evidence of a product defect. Next HTTP validation should use the authorized loopback test route rather than weakening tests or changing server bind behavior. No live providers or existing DBs involved.
