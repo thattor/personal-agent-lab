@@ -1,0 +1,12 @@
+{
+  "proposal": "P-002 v1",
+  "sha256": "142469f2a0d113ae82358b3e12c3384915b82e11b73a3035f05495ff412a6950",
+  "human_source_turn": "01a11599-7895-7790-9ae6-751c9cd4cf7a",
+  "human_source_message": "01a11599-7974-79f2-93b3-0872f34a6ce8",
+  "scope": "essential local-draft clarification only, within no additional monetary charge",
+  "condition_resolution": "Official SWE-2 High excerpt review feasible; pure stdlib implementation adds no paid dependency. Product live calls still require existing fresh D020 proof/caps; consumes subscription allowance, no unlimited promise.",
+  "status": "ADOPTED_WITH_COST_BOUNDARY",
+  "whole_P001_adoption": false,
+  "product_usefulness_pass": false,
+  "review": "swe-scoped-response.txt; supplied excerpts only"
+}

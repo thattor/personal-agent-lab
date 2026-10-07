@@ -1,0 +1,463 @@
+Official standalone SWE-2 High read-only feasibility and minimal contract review. NO TOOLS: all required current code excerpts supplied below. Do not execute shell/read files/write/network/login/fallback. Respond in at most1400words; no code implementation. Prior source-tool review hit controller300s deadline; this different summary/excerpt-only call addresses capture/latency, not favorable semantic retry. Human direction: realize essential local draft clarification within no extra payment; Opus agrees P002. Whole futureP001 and usefulnessPASS not adopted. No new capability/source/access. Finite subscription allowance may be consumed; never claim unlimited zero-cost access.
+Proposal to challenge (NOT IMPLEMENTED): one JSON envelope per task provider call, kind=complete|needs_input|incomplete_preview; known citations only IDs+literalquotes of already-provided sanitized context (WorkOrder currently lacksIDs); one grouped question with samegoal/question/revision/epoch binding; one outstanding question and at most2 followups plus initialdraft call within existinggoal/providerclaimcaps; normal answers routed only using explicit hostbinding, naturalcontrols first; multipleoutstanding/questions mustnotpicklatest. Samegoal retained aftervalidanswer; correction/cancel/forget invalidatesbinding; insufficientanswerbudget -> visiblyincompletepreview never finalPASS. No DBtransaction whilemodelwaiting. Could persist question binding/sources/roundcount in small dedicated table rather than unversioned reason/dedupeJSON; do not assume no migration. Host literalprovenance is necessary floor notuniversaltruthproof. Preserve mockdefault/English controls/fixedcriteria/recover/outbox/sourceforget.
+Questions: Is minimum functionality possible in current stdlib architecture+existingofficial no-extra-charge provider? What exact holes in proposal/current code? Recommend smallest safe contracts/files/schema/transactions and failing testmatrix including restart/dedupe/stale/partial/unknowncitations/ambiguousanswer/controls. Incompletepreview cannotbecompleted by model; recommendhoststatus/artifactprovenance. Clarify followupcost admission with existingcaps and existingproviderfailures. Give feasibility verdict, no universalmodelcompleteness guarantees. All code is currentrepo atcd23dc6; excerpts below mean your review is supplied-source, not independentfilesysteminspection.
+
+SOURCE pal/runtime.py lines1-58
+1: """Two runtime lanes and data-only model boundary. Mock is always the default."""
+2: import fcntl
+3: import json
+4: import os
+5: import time
+6: import threading
+7: from concurrent.futures import ThreadPoolExecutor, Future
+8: from dataclasses import dataclass
+9: from pathlib import Path
+10: 
+11: from .sanitize import sanitize
+12: from .classification import classify, VERSION as CLASSIFIER_VERSION, UNSUPPORTED_REPLY
+13: from .store import Store, StaleResult, EvidenceRejected
+14: 
+15: 
+16: @dataclass(frozen=True)
+17: class WorkOrder:
+18:     goal_id: str
+19:     attempt_id: str
+20:     epoch: int
+21:     revision: int
+22:     acceptance_id: str
+23:     specification: str
+24:     context: tuple
+25:     max_bytes: int
+26:     capabilities: tuple = ('local_draft',)
+27: 
+28: 
+29: class MockProvider:
+30:     identity = 'mock'
+31: 
+32:     def __init__(self, task_delay=0):
+33:         if not 0 <= task_delay <= 60:
+34:             raise ValueError('mock delay must be bounded')
+35:         self.task_delay=task_delay
+36:         self._stop=threading.Event()
+37: 
+38:     def complete(self, prompt):
+39:         if prompt.startswith('DRAFT\n'):
+40:             self._stop.wait(self.task_delay)
+41:             return 'Local draft (mock): ' + prompt.split('\n', 2)[1]
+42:         return 'I have recorded your message. This response uses the mock provider.'
+43: 
+44:     def stop(self):
+45:         self._stop.set()
+46: 
+47: 
+48: class ProviderExecutor:
+49:     """Text generation only; returns a proposal, never an authoritative receipt."""
+50:     def __init__(self, provider):
+51:         self.provider = provider
+52: 
+53:     def execute(self, order):
+54:         content = self.provider.complete('DRAFT\n' + order.specification + '\nReturn only the requested draft text, without tool invocations or planning transcript.\nRelevant sanitized context: ' + json.dumps(order.context, ensure_ascii=False))
+55:         return {'goal_id': order.goal_id, 'attempt_id': order.attempt_id, 'epoch': order.epoch, 'action': 'local_draft', 'content': content}
+56: 
+57:     def stop(self):
+58:         self.provider.stop()
+
+SOURCE pal/runtime.py lines100-230
+100:     def submit(self, key, text, goal_id=None, control=None):
+101:         if self._closed.is_set():
+102:             raise RuntimeError('runtime is stopping')
+103:         text = sanitize(text)
+104:         if not isinstance(text, str) or len(text) > 12000:
+105:             raise ValueError('message exceeds input bound')
+106:         original_request={'text':text,'goal_id':goal_id,'control':control}
+107:         lower = text.lower().strip()
+108:         from .controls import parse_control
+109:         natural_control = parse_control(text) if control is None and goal_id is None else None
+110:         if control is None and lower in ('pause that','一時停止して'):
+111:             control = {'action':'pause'}
+112:             goal_id = self._latest_goal()
+113:         if control is None and lower in ('resume that','再開して'):
+114:             control = {'action':'resume'}
+115:             goal_id = self._latest_goal()
+116:         forget = False
+117:         if control is None and lower in ('forget that','忘れて'):
+118:             prior = [r for r in self.store.inspect()['records'] if r['role']=='user' and r['usable']]
+119:             if prior:
+120:                 control = {'source_id':prior[-1]['id']}
+121:                 forget = True
+122:         if control is None and natural_control is None and lower.startswith('answer:'):
+123:             current_id = self._latest_goal()
+124:             if current_id:
+125:                 current = self.store.get_goal(current_id)
+126:                 if current['state']=='waiting_input':
+127:                     goal_id = current_id
+128:                     control = {'action':'input','text':text.partition(':')[2].strip(),'question_id':current['question_id'],'epoch':current['epoch']}
+129:         classification = None if control is not None or natural_control is not None else classify(text)
+130:         intent = 'forget' if forget else ('control' if control is not None or natural_control is not None else ('draft' if classification == 'draft' else 'conversation'))
+131:         result = self.store.ingress(key, text, intent, goal_id, control, request=original_request,
+132:                                   classification=classification, classifier_version=CLASSIFIER_VERSION,
+133:                                   natural_control=natural_control)
+134:         if lower.startswith('remember ') or '覚えて' in text:
+135:             self.store.note('memory:' + key, text, [result['record_id']])
+136:         if result['goal']:
+137:             self.idle.clear()
+138:             self._wake.set()
+139:         with self._reply_lock:
+140:             response = self._responses.get(key)
+141:             if response is None:
+142:                 response = self._conversation.submit(self._respond, key, text, result)
+143:                 self._responses[key] = response
+144:         return dict(result, response=response)
+145: 
+146:     def _respond(self, key, text, ingress):
+147:         stored = self.store.stored_reply(key)
+148:         if stored is not None:
+149:             return stored
+150:         context = self.store.context()
+151:         if ingress['intent']=='forget':
+152:             content = 'Reference stopped. Raw history remains available in Inspect.'
+153:         elif ingress['goal']:
+154:             content = 'Work recorded. Current canonical state: ' + self.store.get_goal(ingress['goal']['id'])['state'] + '.'
+155:         elif ingress.get('classification') == 'unsupported':
+156:             content = UNSUPPORTED_REPLY
+157:         elif any(term in text.lower() for term in ('what happened','previous thing','work status','進捗','どうなった')) and self._latest_goal():
+158:             current=self.store.get_goal(self._latest_goal())
+159:             content='Current work is '+current['state']+'.'+(' Reason: '+current['reason'] if current['reason'] else '')
+160:         else:
+161:             try:
+162:                 canonical=[{k:g[k] for k in ('id','state','revision','reason')} for g in self.store.inspect()['goals'][-5:]]
+163:                 content = self.provider.complete('CONVERSATION\n' + text + '\nRelevant sanitized context: ' + json.dumps([(r['role'],r['content']) for r in context['records']] + [('note',n['content']) for n in context['notes']], ensure_ascii=False)+'\nCurrent canonical work (overrides old conversation summaries): '+json.dumps(canonical))
+164:             except Exception as error:
+165:                 content = 'Conversation provider unavailable: ' + type(error).__name__ + '. Your message remains recorded.'
+166:         try:
+167:             return self.store.record('response:' + key, 'assistant', content, context['manifest'])
+168:         except StaleResult:
+169:             return self.store.record('response:' + key, 'assistant', 'Response withheld because its source references changed.')
+170: 
+171:     def _apply(self, order, result):
+172:         if not isinstance(result, dict) or result.get('goal_id') != order.goal_id or result.get('attempt_id') != order.attempt_id or result.get('epoch') != order.epoch:
+173:             self.store.fail(order.attempt_id, 'capability_violation')
+174:             return
+175:         token_fields = {'goal_id','attempt_id','epoch'}
+176:         if result.get('action') == 'local_draft' and set(result) == token_fields | {'action','content'} and isinstance(result['content'], str) and len(result['content']) <= order.max_bytes:
+177:             receipt = self.store.write_draft(order.attempt_id, result['content'])
+178:             self.store.complete(order.attempt_id, receipt['id'])
+179:         elif result.get('status') in ('waiting_input','unverified','error') and set(result) == token_fields | {'status','detail'} and isinstance(result['detail'], str) and len(result['detail']) <= 2000:
+180:             if result['status'] == 'waiting_input':
+181:                 self.store.waiting(order.attempt_id, result['detail'])
+182:             else:
+183:                 self.store.fail(order.attempt_id, result['detail'], result['status'])
+184:         else:
+185:             self.store.fail(order.attempt_id, 'capability_violation')
+186: 
+187:     def _work(self):
+188:         try:
+189:             self._work_loop()
+190:         except Exception as error:
+191:             self._worker_error='worker_error:'+type(error).__name__
+192:             try:
+193:                 for attempt in self.store.inspect()['attempts']:
+194:                     if attempt['status']=='running':
+195:                         self.store.fail(attempt['id'],self._worker_error)
+196:                 self.store.record('host-worker-error','assistant',self._worker_error)
+197:             except Exception:
+198:                 pass  # Read-only health remains available even if canonical storage fails.
+199:             self.idle.set()
+200: 
+201:     def health(self):
+202:         return {'pid':os.getpid(),'started_at':self.started_at,'worker_alive':self._worker.is_alive(),'worker_error':self._worker_error,'stopping':self._closed.is_set()}
+203: 
+204:     def _work_loop(self):
+205:         while not self._closed.is_set():
+206:             self._wake.wait()
+207:             self._wake.clear()
+208:             if self._closed.is_set():
+209:                 break
+210:             while not self._closed.is_set():
+211:                 context = self.store.context()
+212:                 attempt = self.store.claim(context['manifest'])
+213:                 if attempt is None:
+214:                     self.store.deliver()
+215:                     self.idle.set()
+216:                     break
+217:                 self.idle.clear()
+218:                 order = WorkOrder(attempt['goal_id'], attempt['id'], attempt['epoch'], attempt['revision'], attempt['acceptance_id'], attempt['specification'], tuple([(r['role'],r['content']) for r in context['records']] + [('note',n['content']) for n in context['notes']]), attempt['criteria']['max_bytes'])
+219:                 try:
+220:                     result = self.executor.execute(order)
+221:                     self._fault('worker.after_executor_before_apply')
+222:                     if self._closed.is_set():
+223:                         break
+224:                     self._apply(order, result)
+225:                 except StaleResult:
+226:                     # Store has retained rejection; no current-state mutation.
+227:                     pass
+228:                 except EvidenceRejected as error:
+229:                     try:
+230:                         self.store.fail(order.attempt_id, str(error), 'fail')
+
+SOURCE pal/store.py lines262-375
+262:     def context(self):
+263:         with self._connection() as db:
+264:             records = [dict(r) for r in db.execute('SELECT * FROM records WHERE usable=1 AND source_event_id IS NULL ORDER BY seq') if self._usable(db, [r['id']])]
+265:             notes = [dict(r) for r in db.execute('SELECT * FROM notes WHERE usable=1') if self._usable(db, json.loads(r['sources']))]
+266:             # Re-read source rows for selected notes; summaries never replace negation/conditions.
+267:             selected = records[-30:]
+268:             selected_ids = {r['id'] for r in selected}
+269:             for note in notes[:20]:
+270:                 for source in json.loads(note['sources']):
+271:                     if source not in selected_ids:
+272:                         row = db.execute('SELECT * FROM records WHERE id=?', (source,)).fetchone()
+273:                         if row is not None and row['source_event_id'] is None:
+274:                             selected.append(dict(row))
+275:                             selected_ids.add(source)
+276:             selected.sort(key=lambda r: r['seq'])
+277:             # Audit/outbox reports are inspectable, not conversational memory.
+278:             return {'records': selected, 'notes': notes[:20], 'manifest': [r['id'] for r in selected] + ['note:' + n['id'] for n in notes[:20]]}
+279: 
+280:     def _criteria(self, criteria):
+281:         if not isinstance(criteria, dict) or set(criteria) != {'kind', 'max_bytes'}:
+282:             raise ValueError('unsupported acceptance contract')
+283:         if criteria['kind'] != 'local_draft' or type(criteria['max_bytes']) is not int or not 1 <= criteria['max_bytes'] <= 65536:
+284:             raise ValueError('unsupported draft bounds')
+285:         return criteria
+286: 
+287:     def create_goal(self, key, specification, criteria, sources=()):
+288:         with self._tx('create') as db:
+289:             return self._create_goal(db, key, specification, criteria, sources)
+290: 
+291:     def _create_goal(self, db, key, specification, criteria, sources=()):
+292:         criteria = self._criteria(criteria)
+293:         specification = sanitize(specification)
+294:         digest, old = self._dedupe(db, key, 'goal', [specification, criteria, list(sources)])
+295:         if old is not None:
+296:             return old
+297:         if not self._usable(db, sources):
+298:             raise StaleResult('Goal cites unavailable source')
+299:         identity, acceptance = uid(), uid()
+300:         db.execute('INSERT INTO goals(id,state,revision,acceptance_id) VALUES (?,\'queued\',1,?)', (identity, acceptance))
+301:         db.execute('INSERT INTO acceptances VALUES (?,?,?)', (acceptance, identity, encode(criteria)))
+302:         db.execute('INSERT INTO revisions VALUES (?,1,?,?,?,?)', (identity, acceptance, specification, encode(list(sources)), encode(criteria)))
+303:         self.fault('create.mid_transaction')
+304:         self._event(db, identity, 'goal.queued', {'revision': 1})
+305:         return self._remember(db, key, 'goal', digest, self._goal(db, identity))
+306: 
+307: 
+308:     def claim(self, manifest=()):
+309:         with self._tx('claim') as db:
+310:             if db.execute("SELECT 1 FROM attempts WHERE status='running'").fetchone():
+311:                 return None
+312:             goal = db.execute("SELECT * FROM goals WHERE state='queued' ORDER BY seq LIMIT 1").fetchone()
+313:             if not goal:
+314:                 return None
+315:             goal = dict(goal)
+316:             if goal['budget'] <= 0 or goal['total_claims'] >= self.MAX_TOTAL_CLAIMS:
+317:                 self._wait(db, goal['id'], 'retry_budget_exhausted')
+318:                 return None
+319:             revision = db.execute('SELECT * FROM revisions WHERE goal_id=? AND revision=?', (goal['id'], goal['revision'])).fetchone()
+320:             sources = list(dict.fromkeys(list(manifest) + json.loads(revision['sources'])))
+321:             if not self._usable(db, sources):
+322:                 self._wait(db, goal['id'], 'reference_stopped')
+323:                 return None
+324:             identity, epoch = uid(), goal['epoch'] + 1
+325:             db.execute("UPDATE goals SET state='running',epoch=?,budget=budget-1,total_claims=total_claims+1,reason='',question_id=NULL WHERE id=? AND state='queued' AND epoch=?", (epoch, goal['id'], goal['epoch']))
+326:             db.execute("INSERT INTO attempts(id,goal_id,revision,acceptance_id,epoch,status,manifest) VALUES (?,?,?,?,?,'running',?)", (identity, goal['id'], goal['revision'], goal['acceptance_id'], epoch, encode(sources)))
+327:             self.fault('claim.mid_transaction')
+328:             self._event(db, goal['id'], 'attempt.claimed', {'attempt_id': identity, 'epoch': epoch})
+329:             row = dict(db.execute('SELECT * FROM attempts WHERE id=?', (identity,)).fetchone())
+330:             row['specification'] = revision['specification']
+331:             row['criteria'] = json.loads(revision['criteria'])
+332:             return row
+333: 
+334:     def _active(self, db, attempt_id):
+335:         row = db.execute('SELECT * FROM attempts WHERE id=?', (attempt_id,)).fetchone()
+336:         if not row:
+337:             return None
+338:         goal = self._goal(db, row['goal_id'])
+339:         if row['status'] != 'running' or goal['state'] != 'running' or row['epoch'] != goal['epoch'] or row['revision'] != goal['revision'] or not self._usable(db, json.loads(row['manifest'])):
+340:             return None
+341:         return dict(row)
+342: 
+343:     def _reject(self, db, attempt_id, reason):
+344:         db.execute('INSERT OR IGNORE INTO rejections(attempt_id,reason) VALUES (?,?)', (attempt_id, reason))
+345: 
+346:     def _fence(self, db, goal_id):
+347:         db.execute("UPDATE attempts SET status='fenced' WHERE goal_id=? AND status='running'", (goal_id,))
+348:         db.execute('UPDATE approvals SET valid=0 WHERE goal_id=?', (goal_id,))
+349:         db.execute('UPDATE goals SET epoch=epoch+1,question_id=NULL WHERE id=?', (goal_id,))
+350: 
+351:     def _wait(self, db, goal_id, reason):
+352:         question = uid()
+353:         db.execute("UPDATE goals SET state='waiting_input',reason=?,question_id=? WHERE id=?", (sanitize(reason), question, goal_id))
+354:         self._event(db, goal_id, 'goal.waiting_input', {'reason': reason, 'question_id': question})
+355: 
+356:     def fail(self, attempt_id, reason, check_status='error'):
+357:         if check_status not in ('error', 'fail', 'unverified'):
+358:             raise ValueError('invalid outcome')
+359:         rejected = False
+360:         with self._tx('fail') as db:
+361:             old = db.execute('SELECT * FROM outcomes WHERE attempt_id=?', (attempt_id,)).fetchone()
+362:             if old:
+363:                 if old['check_status'] != check_status or old['detail'] != sanitize(reason):
+364:                     raise Conflict('conflicting Attempt outcome')
+365:                 return dict(old)
+366:             attempt = self._active(db, attempt_id)
+367:             if not attempt:
+368:                 self._reject(db, attempt_id, 'stale failure')
+369:                 rejected = True
+370:             else:
+371:                 db.execute('UPDATE attempts SET status=?,error=? WHERE id=? AND status=\'running\'', (check_status, sanitize(reason), attempt_id))
+372:                 db.execute('INSERT INTO outcomes VALUES (?,NULL,?,?)', (attempt_id, check_status, sanitize(reason)))
+373:                 goal = self._goal(db, attempt['goal_id'])
+374:                 # Error/fail do not blindly auto-retry identical failures.
+375:                 if check_status == 'unverified':
+
+SOURCE pal/store.py lines405-460
+405:     def control(self, key, goal_id, action, text=None, criteria=None, question_id=None, epoch=None):
+406:         with self._tx('control') as db:
+407:             return self._control(db, key, goal_id, action, text, criteria, question_id, epoch)
+408: 
+409:     def _control(self, db, key, goal_id, action, text=None, criteria=None, question_id=None, epoch=None,
+410:                  source_record_id=None):
+411:         payload = [goal_id, action, text, criteria, question_id, epoch]
+412:         if source_record_id is not None:
+413:             payload.append(source_record_id)
+414:         digest, old = self._dedupe(db, key, 'control', payload)
+415:         if old is not None:
+416:             return old
+417:         goal = self._goal(db, goal_id)
+418:         if action == 'cancel' and goal['state'] not in ('completed', 'cancelled'):
+419:             self._fence(db, goal_id)
+420:             db.execute("UPDATE goals SET state='cancelled',reason='user_cancelled' WHERE id=?", (goal_id,))
+421:         elif action == 'pause' and goal['state'] in ('queued', 'running'):
+422:             self._fence(db, goal_id)
+423:             db.execute("UPDATE goals SET state='paused',reason='user_paused' WHERE id=?", (goal_id,))
+424:         elif action == 'resume' and goal['state'] == 'paused':
+425:             db.execute("UPDATE goals SET state='queued',reason='' WHERE id=?", (goal_id,))
+426:         elif action == 'input' and goal['state'] == 'waiting_input' and goal['question_id'] == question_id and goal['epoch'] == epoch and text:
+427:             if goal['total_claims'] >= self.MAX_TOTAL_CLAIMS:
+428:                 raise InvalidTransition('global retry cap reached')
+429:             self._fence(db, goal_id)
+430:             db.execute("UPDATE goals SET state='queued',budget=MAX(budget,1),reason='' WHERE id=?", (goal_id,))
+431:             db.execute("INSERT INTO records(id,role,content) VALUES (?,'user',?)", (uid(), sanitize(text)))
+432:         elif action == 'correct' and goal['state'] not in ('completed', 'cancelled', 'unknown') and text:
+433:             sources = [source_record_id] if source_record_id is not None else []
+434:             if sources and not self._usable(db, sources):
+435:                 raise StaleResult('correction source unavailable')
+436:             previous = db.execute('SELECT * FROM revisions WHERE goal_id=? AND revision=?', (goal_id, goal['revision'])).fetchone()
+437:             self._fence(db, goal_id)
+438:             acceptance = goal['acceptance_id']
+439:             new_criteria = self._criteria(criteria) if criteria is not None else json.loads(previous['criteria'])
+440:             if encode(new_criteria) != previous['criteria']:
+441:                 acceptance = uid()
+442:                 db.execute('INSERT INTO acceptances VALUES (?,?,?)', (acceptance, goal_id, encode(new_criteria)))
+443:             revision = goal['revision'] + 1
+444:             db.execute('INSERT INTO revisions VALUES (?,?,?,?,?,?)', (goal_id, revision, acceptance, sanitize(text), encode(sources), encode(new_criteria)))
+445:             db.execute("UPDATE goals SET state='queued',revision=?,acceptance_id=?,budget=3,reason='' WHERE id=?", (revision, acceptance, goal_id))
+446:         else:
+447:             raise InvalidTransition('invalid control transition or stale input question')
+448:         self.fault('control.mid_transaction')
+449:         self._event(db, goal_id, 'goal.' + action, {'revision': self._goal(db, goal_id)['revision']})
+450:         return self._remember(db, key, 'control', digest, self._goal(db, goal_id))
+451: 
+452: 
+453:     def _disable_notes(self, db, source_id):
+454:         for note in db.execute('SELECT * FROM notes WHERE usable=1').fetchall():
+455:             if source_id in json.loads(note['sources']):
+456:                 db.execute('UPDATE notes SET usable=0 WHERE id=?', (note['id'],))
+457: 
+458:     def forget(self, key, source_id):
+459:         with self._tx('forget') as db:
+460:             return self._forget(db, key, source_id)
+
+SOURCE pal/store.py lines570-620
+570:             raise error
+571:         return receipt
+572: 
+573:     def complete(self, attempt_id, receipt_id):
+574:         error = None
+575:         result = None
+576:         with self._tx('complete') as db:
+577:             old = db.execute('SELECT * FROM outcomes WHERE attempt_id=?', (attempt_id,)).fetchone()
+578:             if old:
+579:                 if old['receipt_id'] != receipt_id or old['check_status'] != 'pass':
+580:                     raise Conflict('conflicting completion')
+581:                 return dict(old)
+582:             attempt = self._active(db, attempt_id)
+583:             if not attempt:
+584:                 self._reject(db, attempt_id, 'stale completion')
+585:                 error = StaleResult('stale Attempt completion')
+586:             else:
+587:                 receipt = db.execute('SELECT * FROM receipts WHERE id=? AND attempt_id=?', (receipt_id, attempt_id)).fetchone()
+588:                 if receipt is None or receipt['revision'] != attempt['revision'] or receipt['epoch'] != attempt['epoch']:
+589:                     error = EvidenceRejected('missing or mismatched host receipt')
+590:                 else:
+591:                     artifact = db.execute('SELECT * FROM artifacts WHERE id=?', (receipt['artifact_id'],)).fetchone()
+592:                     criteria = json.loads(db.execute('SELECT criteria FROM acceptances WHERE id=?', (attempt['acceptance_id'],)).fetchone()['criteria'])
+593:                     body = bytes(artifact['body'])
+594:                     try:
+595:                         text = body.decode('utf-8', errors='strict')
+596:                     except UnicodeError:
+597:                         text = ''
+598:                     if not text.strip() or '\x00' in text or text.startswith('\ufeff') or len(body) > criteria['max_bytes'] or len(body) != receipt['size'] or hashlib.sha256(body).hexdigest() != receipt['hash']:
+599:                         error = EvidenceRejected('host artifact readback mismatch')
+600:                 if error:
+601:                     self._reject(db, attempt_id, str(error))
+602:                 else:
+603:                     changed = db.execute("UPDATE goals SET state='completed',reason='' WHERE id=? AND state='running' AND revision=? AND epoch=?", (attempt['goal_id'], attempt['revision'], attempt['epoch'])).rowcount
+604:                     if changed != 1:
+605:                         raise StaleResult('completion CAS failed')
+606:                     db.execute("UPDATE attempts SET status='pass' WHERE id=? AND status='running'", (attempt_id,))
+607:                     db.execute("INSERT INTO outcomes VALUES (?,?,'pass','host_utf8_size_hash_readback')", (attempt_id, receipt_id))
+608:                     self.fault('complete.mid_transaction')
+609:                     self._event(db, attempt['goal_id'], 'goal.completed', {'attempt_id': attempt_id, 'receipt_id': receipt_id, 'artifact_id': receipt['artifact_id'], 'check_status': 'pass'})
+610:                     result = dict(db.execute('SELECT * FROM outcomes WHERE attempt_id=?', (attempt_id,)).fetchone())
+611:         if error:
+612:             raise error
+613:         return result
+614: 
+615:     def artifact(self, artifact_id):
+616:         with self._connection() as db:
+617:             row = db.execute('SELECT body FROM artifacts WHERE id=?', (artifact_id,)).fetchone()
+618:             if not row:
+619:                 raise ValueError('unknown artifact')
+620:             return bytes(row['body'])
+
+SOURCE pal/web/app.js lines35-50
+35:     }
+36:   } else {
+37:     const root=document.getElementById('conversation');root.replaceChildren();
+38:     for(const record of data.records){
+39:       const card=node('article',undefined,record.role);card.append(node('strong',record.role+' / '+(record.role==='user'?'あなた':'アシスタント')+(record.usable?'':' · reference stopped / 参照停止')));
+40:       if(record.source_event_id){
+41:         let event;try{event=JSON.parse(record.content);}catch{event=null;}
+42:         if(event){const labels={'goal.queued':'Work accepted. / 作業を受け付けました。','attempt.claimed':'Preparing your draft… / 下書きを作成中です。','goal.completed':'Your local draft is ready. / 下書きが完成しました。','goal.cancel':'Work stopped. / 作業を中止しました。','goal.pause':'Work paused. / 作業を一時停止しました。','goal.resume':'Work resumed. / 作業を再開しました。','goal.correct':'Your correction was applied. / 訂正を適用しました。','goal.input':'Your answer was accepted. / 回答を受け付けました。','goal.waiting_input':'Your input is needed. / 入力をお待ちしています。','attempt.error':'Work failed. See Inspect for details. / 作業に失敗しました。「状態を見る」で詳細を確認できます。','attempt.fail':'The outcome did not pass its checks. / 結果は検証に合格しませんでした。','attempt.unverified':'The outcome is unverified. / 結果は未検証です。','attempt.abandoned':'Unfinished work recovered after restart. / 再起動後、未完了の作業を復旧しました。','reference.stopped':'Reference stopped. / 履歴のAI参照を停止しました。','goal.reference_stopped':'Work requires fresh context. / 作業には新しい情報が必要です。'};card.append(node('p',labels[event.event]||'Work status updated. / 作業状況を更新しました。'));if(event.detail.artifact_id)card.append(artifactLink(event.detail.artifact_id));}
+43:       }else card.append(node('p',record.content+(record.content==='I have recorded your message. This response uses the mock provider.'?' / メッセージを記録しました。この応答は模擬応答です。':'')));
+44:       root.append(card);
+45:     }
+46:     const work=document.getElementById('work');work.replaceChildren();
+47:     for(const goal of data.goals.slice(-3)){const card=node('article');card.append(node('strong','Work / 作業: '+goal.state+' / '+({queued:'待機中',running:'実行中',waiting_input:'入力待ち',paused:'一時停止',completed:'完了',cancelled:'中止',failed:'失敗',unknown:'結果不明'}[goal.state]||goal.state)),node('p',goal.reason ? goal.reason.replaceAll('_',' ') : ''));work.append(card);}
+48:     for(const selection of data.selections||[]){
+49:       const card=node('article');card.append(node('strong','Choose work / 対象を選択: '+selection.status));
+50:       for(const choice of selection.choices){const button=node('button',choice.label);button.type='button';button.addEventListener('click',()=>selectWork(selection,choice));card.append(button);}
+
+PRODUCT SCOPE
+# P-002 v1 — narrow Stable-1 clarification amendment
+
+Status: PROPOSED; HR-SCOPE-001 awaits authentic human adoption. P-001 v1 stays frozen and unadopted. This is not Stable-1 completion.
+
+## Background and recommendation
+Actual human feedback accepts the finite draft/control results but requires PAL to use available context before asking about essential unknown facts. Current D-021 explicitly defers content clarification. Recommend moving only essential local-draft clarification into unfinished Stable-1; broader Stable-1.1 and future stages remain inactive.
+
+## Product delta
+- Use only already-delivered, sanitized bounded conversation/notes. No new retrieval, calendar, tools or permissions.
+- If those facts suffice, draft without a question. For example, a provided date/place is reused rather than requested again.
+- If essential facts are missing or ambiguous, ask one concise grouped question through host waiting_input, bound to the same work/question/epoch. Resume only on a valid answer. At most one outstanding question; follow-up count is bounded by the implementation contract reviewed by SWE-2 High within existing cost limits.
+- If the user explicitly requests a generic/creative/blank template, draft without clarification and visibly label any unresolved factual placeholders as an incomplete preview. If clarification exhausts its budget, also stop at a visibly incomplete preview; never invent facts or mark unresolved work complete.
+- Host validates any proposed known-fact provenance against usable provided sources. ID metadata must expose no additional content. Forget invalidates source-dependent facts/results visibly. Literal membership is a necessary floor, not proof of semantic truth. Mechanism requires SWE review; citations are omitted if these bounds cannot be met.
+- Primary/Expert/Executor responsibilities stay as accepted: no new agent, autonomous procedure promotion, capability or model canonical-state authority. Defined WorkOrder method and host mediate clarification; question text is sanitized.
+
+## Verification and completion
+Freeze finite known/absent/generic/answered/partial/stale/forgotten/invalid cases before execution; test duplicate handling, recovery and stale rejection with no wrong work resume. Preserve historical N1-05/06 evidence, negative feedback and old failures. Add amendment evidence rather than relabel historical PASS as new proof. N1-07 requires actual direct human re-evaluation after repair; N1-08 final audit remains required. No universal language, grounding or perfect-first-draft guarantee.
+
+## Judgment
+ID: HR-SCOPE-001. Target: P-002 v1 plus proposed D-027, runtime baseline605791e. Evidence: feedback receipt and official Opus initial/follow-up reviews under evidence/reviews/feedback-alignment/. Reason: G-001 requires human finalization to reverse the explicit deferral. Recommendation: adopt only this amendment. Alternative: keep the deferral and record the known mismatch without claiming N1-07 PASS. Adoption unblocks SWE implementation-contract review, then tests/implementation/bounded real proof and human evaluation. Existing ordinary implementation remains autonomous. This is not blanket P-001 adoption or Projects authorization.

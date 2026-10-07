@@ -1,0 +1,20 @@
+test_draft_envelope (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_draft_envelope (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_draft_envelope
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_draft_envelope.py", line 3, in <module>
+    from pal.draft_envelope import decode_draft, EnvelopeRejected
+ModuleNotFoundError: No module named 'pal.draft_envelope'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

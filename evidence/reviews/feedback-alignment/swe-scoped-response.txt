@@ -1,0 +1,51 @@
+# SWE-2 High review — P-002 clarification contract (supplied excerpts only, cd23dc6)
+
+## Verdict
+
+**Feasible** within current stdlib architecture and the existing provider boundary. No new dependency, capability, or second provider is required. The diff is small-to-medium: envelope parsing in `ProviderExecutor`, two new `_apply` branches, one dedicated table (or equivalent persisted fields), one new terminal goal state, and minor control/UI additions. No universal completeness guarantee is possible: a real provider may never emit a well-formed envelope, in which case every attempt degrades to `capability_violation`/incomplete — which is safe but means "usefulness" is unproven until bounded live evidence exists.
+
+## What already works in your favor
+
+- `waiting_input`/`question_id`/`epoch` plumbing exists (store.py:351-354, 426-431); `answer:` control already binds `question_id`+`epoch` — this *is* the "explicit host binding" the proposal wants.
+- `_fence` clears `question_id` and bumps epoch on cancel/pause/correct/input — pending questions auto-invalidate on correction/cancel. Forget propagates via `_usable`/`manifest` checks in `_active`/`claim`.
+- `claim` decrements `budget` and enforces `MAX_TOTAL_CLAIMS` — a natural cap for follow-up calls if each round = one requeue.
+- `unverified` outcome kind exists and does not auto-pass; `outcomes` dedupe/`Conflict` pattern is reusable.
+- Fault-injection points (`claim.mid_transaction`, `control.mid_transaction`, `worker.after_executor_before_apply`) cover most restart/dedupe tests without new hooks.
+
+## Exact holes
+
+1. **WorkOrder carries no source IDs.** `context` is `(role, content)` tuples (runtime.py:218). Citation-by-ID is impossible. Fix: extend `WorkOrder.context` items to include the record/note `id` (the manifest already enumerates IDs), and validate citations host-side in `_apply`: (a) ID ∈ attempt manifest ∪ revision sources, (b) quoted text is a *literal substring* of that source's stored sanitized content, (c) source still `_usable`. Literal membership is the floor; never trust model claims.
+2. **Question state is under-persisted.** `_wait` stores only `reason` (unversioned string) + generated `question_id`. Round count, question text, question-cited sources, and issuing attempt are lost → round caps and stale-question fencing are unenforceable, and a repeated `_wait` silently regenerates `question_id` (orphaning answers). Adopt the proposal's dedicated table; it is cleaner than overloading `reason`. Confirm a migration mechanism exists in `Store` init — not visible in excerpts; if none, add a versioned `CREATE TABLE IF NOT EXISTS` + schema pragma check rather than assuming a fresh DB.
+3. **No terminal "incomplete preview" state.** `complete()` CAS requires `check_status='pass'`; only `completed` delivers an artifact link in the UI. Proposal's incomplete_preview needs: artifact+receipt written by host (existing `write_draft` path, hash/size readback preserved), outcome `check_status='unverified'`, goal terminal state distinct from `completed` (recommend new state e.g. `incomplete`; add app.js label + artifact link). Do **not** pass through `completed`, and do **not** let the model emit the artifact then self-declare complete — host decides.
+4. **Round/cap accounting missing.** No per-goal question counter exists. Count rows in the questions table (or `goals.clarify_round`); enforce cap inside the same tx as the waiting transition. Hole: `claim`'s `budget<=0` path calls `_wait('retry_budget_exhausted')` → sets `waiting_input` again, which invites another `answer:` cycle (budget reset to ≥1, bounded only by `MAX_TOTAL_CLAIMS`). For clarification exhaustion this must go **terminal** (`incomplete`/fail with distinct reason), not back to waiting.
+5. **Ambiguous bare `answer:`.** `submit` binds to `_latest_goal()` (runtime.py:122-128). With ≥2 goals in `waiting_input`, a bare `answer:` silently picks latest — the proposal forbids this. Require explicit disambiguation (selection/explicit control) when >1 goal waits, or reject with a visible response.
+6. **Provider exception kills the worker.** `_work_loop` only catches `StaleResult`/`EvidenceRejected`; a `provider.complete` raise or malformed-JSON parse escapes → `_work` fails *all* running attempts and the worker dies (runtime.py:187-199, 219-230). Wrap executor/parse per-attempt → `fail(attempt,'provider_error'|'capability_violation')`; worker must stay alive.
+7. **Non-idempotent question issue.** If `_apply` crashes mid-`waiting` transition or the attempt is recovered and the model re-returns `needs_input`, you can get a second `question_id`. Make the question insert `INSERT OR IGNORE` keyed on `attempt_id` UNIQUE so re-issue is deduplicated.
+8. **Question sources must join the next manifest.** Answers insert a user `record` (good — becomes context), but sources cited *by the question* must be folded into the requeued attempt's manifest so forget-after-answer still fences correctly.
+9. **Mock default must be preserved.** `MockProvider.complete` returns plain text; existing conversation path and tests depend on it. Add a deterministic envelope mode for the task lane only; do not change `CONVERSATION` semantics.
+10. **Dedupe key for `input`** already includes `question_id`+`epoch` — replay returns the old result; verify a *different* answer text under the same question can't slip through (it can't: key includes `text`, different text = new key but stale `question_id` → `InvalidTransition`. Good; still test it).
+
+## Smallest safe contract
+
+- **Envelope:** `{kind:'complete', content, citations?} | {kind:'needs_input', question, citations?} | {kind:'incomplete_preview', content, missing, citations?}`. Strict key-set validation per kind, size-bounded (`max_bytes` for content, ~2000 for question/missing), `ensure_ascii` round-trip. Unknown kind/extra keys/non-dict → `capability_violation`.
+- **`questions` table:** `(id PK, goal_id, attempt_id UNIQUE, epoch, revision, round INT, text, sources JSON)`. Written atomically with the `waiting_input` transition in one tx (extend `_wait` or new `store.ask()`). No DB tx held across the provider call — current claim→execute→apply already satisfies this.
+- **Terminal preview:** host writes artifact+receipt, outcome `unverified`, goal → `incomplete`, event `goal.incomplete` with `artifact_id`+`reason`. UI: new state label + "preview" badge on the artifact link.
+- **Follow-up admission:** `round = count(questions for goal)`; needs_input accepted only if `round <= 2` *and* `total_claims + 1 < MAX_TOTAL_CLAIMS`; else terminal incomplete. Each follow-up = exactly one provider call on requeue — finite, inside existing caps, zero new cost surface. Provider failures consume claims like any attempt — acceptable; document it.
+
+## Failing test matrix (write before implementing)
+
+- Known-fact case → complete, citations validated, no question.
+- Missing fact → `needs_input` → `waiting_input`, question row persisted; `answer:` resumes same goal, revision unchanged, epoch bumped.
+- Wrong `question_id`/`epoch`, empty answer, answer to cancelled/corrected goal → `InvalidTransition`, no resume.
+- Two waiting goals + bare `answer:` → rejected/requires explicit binding.
+- Round 3 `needs_input` → terminal `incomplete`, never `pass`; budget-exhaustion mid-clarification → same.
+- `incomplete_preview` → artifact retrievable, outcome `unverified`, state `incomplete`, visibly labeled.
+- Restart: fault before/after ask-tx commit → binding survives, no duplicate question, answer post-restart resumes once.
+- `worker.after_executor_before_apply` on each kind → recovery + dedupe, no double-question/double-outcome (`Conflict` on conflicting replay).
+- Unknown citation ID, non-literal quote, forgotten/unusable cited source, malformed JSON, oversized fields → `capability_violation`, attempt failed, no waiting.
+- Provider raise → attempt fails, `worker_alive` still true.
+- Forget during pending question → requeue blocked `reference_stopped`; mock-default and English controls unchanged.
+
+## Caveats
+
+Envelope output from a real model is untrusted text — all binding/provenance enforcement lives host-side; the model can only *propose*. This review covers supplied excerpts only, not the full repo.
