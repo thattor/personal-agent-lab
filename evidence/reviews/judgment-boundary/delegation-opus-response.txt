@@ -1,0 +1,124 @@
+# Design Review: PHA03/1 First-Attempt Mismatch
+
+## Conclusion to record
+
+**Adopted:** This is an oracle ambiguity. A model defect is not shown. Keep the original FAIL unchanged. Make no prompt change from this sample.
+
+**Rejected:**
+- Retroactively passing PHA03/1.
+- Resampling it.
+- Any prompt delta in either direction.
+
+## 1. Defect, ambiguity, or both?
+
+The evidence supports oracle ambiguity. It does not show a model defect, and it cannot rule one out.
+
+**Why the input reads as plausible delegation:**
+- It names a fictional recipient and gives the contribution.
+- 「お礼ではその作業自体に触れたいです」 is a content constraint for a thank-you that the sentence assumes will exist.
+- 「成果や効果の話はしていません」 limits what the draft may say.
+- In Japanese, stating requirements like this is a normal indirect request.
+- Nothing marks it as later, background-only, or "don't write yet."
+
+**Why the current prompt doesn't settle it:**
+- "Generic/fictional draft is requested" allows a draft.
+- "Do not create work for hypothetical… requests" doesn't apply. The recipient is fictional, but the request isn't hypothetical.
+- Owner policy favours autonomous reversible choices. A queued local Goal is reversible and cancellable.
+
+**Why it isn't an exoneration either:**
+- One stochastic sample says nothing about the model's rate on genuinely background-only inputs.
+- The model may have been primed toward drafting. See the confound below.
+
+**What the evidence supports:**
+- The action was supported and grounded.
+- It invented no effects.
+- It had no wrong target.
+- Choosing an action for this input is not a reliable test of user intent.
+
+**Confound to record.** The Claude adapter system prompt has thank-you-specific rules ("For thank-you drafts… never invent achievements…"), and the corpus contains thank-you cases.
+- Those rules may bias Claude toward drafting and toward passing the content checks.
+- The Qwen route won't share that system prompt.
+- So this is both a corpus-validity caveat and a further reason Claude results can't be treated as equivalent to Qwen results.
+
+## 2. Should the generic prompt change?
+
+No prompt change now.
+
+**Tightening** (e.g. "act only on an explicit request verb; otherwise ask"):
+- It would turn elliptical but clear delegations into `none` plus a question. Examples: 「この内容でお礼を」, 「先方へのお礼、さっきの件で」.
+- That is the permission-questionnaire behaviour the owner rejected.
+- It would likely regress the four passing cases' natural-delegation side, and Qwen even more, since smaller models tend to over-generalise prohibitions.
+- It would be fitted to one sample.
+
+**Loosening** (e.g. "treat stated draft preferences as delegation"):
+- It would codify the observed output after the fact.
+- It would raise unwanted-work risk on real background-sharing. Example: a user describing what they plan to write themselves.
+- That risk conflicts with the zero-unwanted-work gate.
+
+**A neutral clarifying sentence** (e.g. "content preferences may be either context or delegation; decide from conversation"):
+- It adds tokens and changes nothing, since that is already what the model does.
+- It would still count as a product change, so the remaining frozen cases would no longer test product 1a14de9.
+
+**Revisit a delta only if** the contrast set below shows a systematic error on clear cases. Draft it then from the failure pattern, not from this case.
+
+## 3. Fair evidence plan
+
+### a. Preserve the record
+- PHA03/1 stays FAIL in the frozen run log, with raw evidence attached.
+- Add the annotation: "oracle ambiguous (author concession, post-run); not evidence of intent violation."
+- Do not re-score it.
+- PHA03/2 is recorded as not run. Its oracle assumed a store state with no Goal, which no longer holds.
+
+### b. Resume the frozen corpus without resampling
+- The unexecuted cases are still unseen. Product 1a14de9 is unchanged under this conclusion.
+- Run the remaining cases (PHA04 onward) on fresh disposable stores, keeping the same stop-on-first-mismatch rule.
+- This is not resampling, because no failed item is re-run. It is the cheapest source of genuinely blind evidence.
+- Any prompt change made first would spend that value. That is a further reason to adopt "no delta."
+- Record the resumption decision before running.
+
+### c. Write gated contrast pairs
+- Use an author who has not seen this output, and freeze the pairs before running.
+- **Background marked, gold `none`:** e.g. "I'll write it myself later; just so you know…"
+- **Elliptical clear delegation, gold `local_draft`:** e.g. "With this, a thank-you please."
+- Spread pairs across domains other than thank-yous, to counter the adapter confound.
+- Keep the oracle strict on these clear cases.
+
+### d. Add a state-carryover case
+- Draft already queued, then the user adds constraints (sentence count, no signature).
+- Gold: `control` / `correct` on the offered pending Goal, or one clear ask if the target is ambiguous.
+- A second duplicate Goal fails.
+- PHA03/2 would have exposed this risk. It is real regardless of how turn 1 is judged.
+
+### e. Handle genuinely ambiguous items separately
+- Exclude them from action-choice gating. Track them as informational.
+- Universal invariants still gate:
+  - no invented facts or effects
+  - no wrong or named target
+  - no completion or external-effect claim in a `none` reply
+  - no duplicate work
+  - unsupported actions are explained, not silently partial
+- This doesn't weaken acceptance. Clear cases stay strict, and ambiguous cases still face every safety gate.
+
+### f. Size and freeze
+- Size the transfer set by the remaining author budget.
+- Freeze it before any prompt revision. If a later revision happens, run a fresh unseen set after that freeze.
+
+## 4. What remains unproven
+
+Unchanged:
+- Required observations on clear cases.
+- Zero wrong targets and zero unwanted work.
+- Real UI and Expert worker execution with an artifact. This run had no workers.
+- Human usefulness judgement of the drafts.
+- Qwen3.8-27B is unrun. Claude passes, including this ambiguity, transfer nothing. Qwen needs its own run on the resumed corpus, the contrast pairs and the carryover case, with the ambiguous-item rate tracked separately.
+
+## Regressions per option
+
+| Option | Main regression |
+|---|---|
+| Accept as-is with no annotation | Overstates model fault. Could later justify a tightening that breaks elliptical delegation. |
+| Retroactive pass or "either OK" for PHA03/1 | Post-hoc weakening. Contaminates the frozen corpus's credibility. |
+| Tightening delta | Permission-seeking, extra turns, likely worse on Qwen. Consumes the frozen corpus. |
+| Loosening delta | Unwanted Goals from background talk. Breaches the zero-unwanted-work gate. |
+| Neutral delta | No benefit. Product change wastes blind cases. |
+| **Adopted** (annotate, resume blind, new contrast/carryover/transfer sets, ambiguous items info-only under invariants) | Slower to reach a verdict. Needs an independent author. Ambiguous-item behaviour stays policy-undetermined until enough data exists. |

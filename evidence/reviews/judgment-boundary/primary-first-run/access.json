@@ -1,0 +1,21 @@
+{
+  "observed_at": 1791381846.802334,
+  "official_page": "https://claude.ai/new#settings/usage",
+  "page_refreshed": "less than one minute ago",
+  "plan": "Pro",
+  "session_used_percent": 16,
+  "week_used_percent": 22,
+  "extra_usage_enabled": false,
+  "purchased_credits": 0,
+  "monthly_usage": 0,
+  "auto_reload_enabled": false,
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "new_auth": false,
+  "paid_fallback": false,
+  "purpose": "C030 frozen synthetic Primary semantic qualification",
+  "human_evaluation": false
+}

@@ -196,6 +196,30 @@ class PrimaryQualificationTests(unittest.TestCase):
                 self.runner_for()
         self.assertEqual(self.provider.stopped,1)
 
+    def test_new_cohort_excludes_observed_cases_and_preserves_untested_cases(self):
+        self.runner = QualificationRunner(ROOT,self.directory,self.provider,
+                                          scope='scripted',candidate='test-only',
+                                          cohort='unseen-plus-contrasts')
+        cases = self.runner.matrix['cases']
+        self.assertEqual(cases[:9],load_matrix(MATRIX)['cases'][3:])
+        self.assertEqual([c['id'] for c in cases[9:]],['PHB-01','PHB-02','PHB-03'])
+        self.assertEqual(len(self.runner.turns),24)
+        self.assertFalse({'PHA-01','PHA-02','PHA-03'} & {c['id'] for c in cases})
+        first = self.runner.run_next()
+        self.assertEqual(first['case'],'PHA-04')
+        self.assertEqual(len(self.provider.prompts),1)
+        opened = verify_journal(self.directory/'journal.jsonl')[0]
+        self.assertEqual(opened['cohort'],'unseen-plus-contrasts')
+        self.assertFalse(opened['resume'])
+
+    def test_unknown_cohort_cannot_invoke_provider_or_create_run(self):
+        with self.assertRaises(ValueError):
+            QualificationRunner(ROOT,self.directory,self.provider,scope='scripted',
+                                candidate='test-only',cohort='arbitrary')
+        self.assertFalse(self.directory.exists())
+        self.assertEqual(self.provider.prompts,[])
+        self.assertEqual(self.provider.stopped,1)
+
 
 class PrimaryGateTests(unittest.TestCase):
     def gate(self, *, clock=time.monotonic, deadline=None):

@@ -1,0 +1,180 @@
+[
+  {
+    "id": "PHB-01",
+    "title": "背景の共有から読書会の案内文を委任する",
+    "setup": {
+      "sources": [],
+      "goals": [],
+      "questions": []
+    },
+    "turns": [
+      {
+        "input_record_ref": "phb01-turn01",
+        "user_text": "先に背景だけ共有します。今はまだ作成を頼んでいるわけではありません。地区の読書会は、10月18日の14時から15時まで、集会室で開きます。参加者は読みかけの本を一冊持参します。申し込みは不要です。",
+        "acceptable_outcome_set": [
+          {
+            "action_kind": "none",
+            "required_observations": [
+              "現在の発話を背景情報の共有として受け取り、noneを選ぶ。",
+              "まだ作成依頼がないため、案内文を作るための確認質問を始めない。"
+            ]
+          }
+        ],
+        "disallowed_effects": [
+          "Goal、Attempt、案内文の成果物を作成する。",
+          "共有された予定を変更したり、掲示・送信・申込みを行ったりする。"
+        ]
+      },
+      {
+        "input_record_ref": "phb01-turn02",
+        "user_text": "では、それで掲示する案内をひとまず下書きして。ここに置いてくれれば大丈夫です。",
+        "acceptable_outcome_set": [
+          {
+            "action_kind": "local_draft",
+            "required_observations": [
+              "「それ」を直前の読書会の共有情報と結び付け、案内文を作るlocal_draftを1件提案する。",
+              "specに10月18日14時から15時、集会室、読みかけの本を一冊持参、申込み不要という共有済みの条件を反映する。",
+              "根拠として、ホストから提示された第1ターンの共有記録と現在の依頼記録のIDをsource_idsに含める。"
+            ]
+          }
+        ],
+        "disallowed_effects": [
+          "既に共有された日時・場所・持ち物・申込みの要否を聞き直したり、下書きを作る許可を再確認したりする。",
+          "参加費、主催者名、連絡先など共有されていない事実を補う。",
+          "実際に掲示・送信するか、複数のGoalを作成する。"
+        ]
+      }
+    ],
+    "interpretation_reason": "第1ターンは作成依頼でないとその場で明示されているため、未来の発話を知らなくてもnoneに決まる。第2ターンは共有済みの事実を指す「それ」と下書きの明確な依頼を組み合わせており、追加情報や再確認を必要としない。"
+  },
+  {
+    "id": "PHB-02",
+    "title": "本棚整理の手順メモを委任し保留中の同じ依頼を修正する",
+    "setup": {
+      "sources": [
+        {
+          "ref": "phb02-background",
+          "role": "user",
+          "content": "土曜日の10時から11時まで、家族で本棚を整理します。机の上で本を「残す」「譲る」に分け、残す本は棚へ、譲る本は箱へ入れます。家族向けの当日の手順メモに使う情報です。",
+          "usable": true
+        }
+      ],
+      "goals": [],
+      "questions": []
+    },
+    "turns": [
+      {
+        "input_record_ref": "phb02-turn01",
+        "user_text": "この段取りで、家族向けの手順メモを下書きして。ここに置く分だけで大丈夫です。",
+        "acceptable_outcome_set": [
+          {
+            "action_kind": "local_draft",
+            "required_observations": [
+              "共有済みの本棚整理の段取りを使い、家族向け手順メモのlocal_draftを1件提案する。",
+              "specに土曜日10時から11時、残す本と譲る本の分類、それぞれ棚と箱へ入れる工程を反映する。",
+              "根拠として、ホストから提示されたphb02-backgroundと現在の依頼記録のIDをsource_idsに含める。"
+            ]
+          }
+        ],
+        "disallowed_effects": [
+          "作成対象や既にある段取りを聞き直す。",
+          "共有されていない廃棄・購入・家族への送信を追加する。",
+          "複数のGoalを作成する。"
+        ]
+      },
+      {
+        "input_record_ref": "phb02-turn02",
+        "user_text": "さっき頼んだ、まだ保留中の手順メモの条件を変えます。時間は10時から10時半までにしてください。本を「残す」「譲る」に分け、譲る本を箱に入れるところまでに絞り、残す本を棚へ戻す工程は外してください。",
+        "acceptable_outcome_set": [
+          {
+            "action_kind": "control",
+            "required_observations": [
+              "control(correct)を選び、このケースの第1ターンで実際に作成された保留中の同一Goalを、ホストが提示したgoal_idで対象にする。",
+              "修正したspecでは時間を10時から10時半にし、分類と譲る本の箱詰めを残し、残す本を棚へ戻す工程を除く。",
+              "土曜日・家族向けの手順メモという変更されていない条件を保ち、元の情報と現在の修正記録の提示済みIDをsource_idsに含める。",
+              "対象Goalのfixed_criteriaはホストが固定したlocal_draft、max_bytes 4096のまま保つ。"
+            ]
+          }
+        ],
+        "disallowed_effects": [
+          "修正用の新しいGoalや重複する別の下書き依頼を作成する。",
+          "ホストに提示されていないgoal_idを使うか、別のGoalを修正する。",
+          "明確に指定された変更について再確認を要求したり、家族への送信を行ったりする。"
+        ]
+      }
+    ],
+    "interpretation_reason": "第1ターンは共有情報に基づく明確な下書き委任である。第2ターンはその実際のGoalが保留中である文脈と「さっき頼んだ」という指示対象を持ち、時間と工程だけを変更する。別の仕事を増やす根拠はなく、固定した成功条件を変える必要もない。"
+  },
+  {
+    "id": "PHB-03",
+    "title": "保留中の感想整理メモを修正したあと無関係な雑談に応じる",
+    "setup": {
+      "sources": [
+        {
+          "ref": "phb03-background",
+          "role": "user",
+          "content": "短編小説を読んだあとの感想を、自分で書き込むための整理メモにしたいです。「印象に残った場面」「そう感じた理由」「次に考えたいこと」の三つの見出しと空欄を持つ下書きを、ここに作ってください。",
+          "usable": true
+        }
+      ],
+      "goals": [
+        {
+          "ref": "phb03-pending-draft",
+          "label": "短編小説を読んだあとの感想整理メモの下書き",
+          "state": "paused",
+          "revision": 1,
+          "epoch": 2,
+          "source_refs": [
+            "phb03-background"
+          ],
+          "fixed_criteria": {
+            "kind": "local_draft",
+            "max_bytes": 4096
+          }
+        }
+      ],
+      "questions": []
+    },
+    "turns": [
+      {
+        "input_record_ref": "phb03-turn01",
+        "user_text": "保留中のその感想メモ、見出しを「心に残った場面」「自分の気持ち」の二つだけに変えて。中身は私が書くので、各欄は空欄のままにしてください。",
+        "acceptable_outcome_set": [
+          {
+            "action_kind": "control",
+            "target_ref": "phb03-pending-draft",
+            "required_observations": [
+              "control(correct)を選び、ホストが提示したphb03-pending-draftの実際のgoal_idを対象にする。",
+              "specを指定された二つの見出しと空欄を持つ感想整理メモに修正し、感想の内容を埋めない。",
+              "元の依頼と現在の修正記録の提示済みIDをsource_idsに含め、fixed_criteriaのlocal_draftとmax_bytes 4096を保つ。"
+            ]
+          }
+        ],
+        "disallowed_effects": [
+          "新しいGoalを作るか、提示されていない別のGoalを修正する。",
+          "小説の題名、作者、筋書き、本人の感想を創作して書き込む。",
+          "明確な二つの見出しや空欄指定について再確認を要求する。"
+        ]
+      },
+      {
+        "input_record_ref": "phb03-turn02",
+        "user_text": "ところで、今日は帰り道の空がきれいだった。少し気分転換になったよ。",
+        "acceptable_outcome_set": [
+          {
+            "action_kind": "none",
+            "required_observations": [
+              "空を見た体験についての普通の雑談として受け取り、noneを選ぶ。",
+              "直前の感想メモを変更する指示とは扱わず、追加作業のための質問を始めない。"
+            ]
+          }
+        ],
+        "disallowed_effects": [
+          "新たなGoal、Attempt、成果物を作成する。",
+          "感想メモのGoalを再修正・再開・取消するか、空についての体験をメモの内容へ挿入する。",
+          "散歩の予定や記録の依頼を推定して追加する。"
+        ]
+      }
+    ],
+    "interpretation_reason": "第1ターンには対象となる保留中Goalが一つ提示され、その見出しと空欄の条件を明確に修正している。第2ターンは話題転換を明示した体験の共有であり、メモへの追記、別の下書き、予定作成を頼んでいない。"
+  }
+]

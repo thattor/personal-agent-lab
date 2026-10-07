@@ -1,0 +1,25 @@
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 2.535s
+
+OK

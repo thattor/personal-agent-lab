@@ -164,3 +164,18 @@ Unit goal met as test infrastructure, not actual model/UI/human proof. No produc
 criteria, model prompt, call-budget renewal or future-plan activation. GitHub hierarchy
 readback synchronized. Next: fresh bounded actual Primary corpus, diagnose first failure,
 then separate real UI/Expert proof and one authentic end-to-end usefulness evaluation.
+
+## C031 — Preserve first actual result and repair an ambiguous measurement
+
+Unit result: original qualification FAIL against frozen oracle, incomplete4/24 accepted;
+first five actual generations preserved,19 NOT_RUN.75-record chain and12 SQLite stores
+verified read-only, no pending Primary, no workers. Evidence: primary-first-run/README.md.
+Corpus author and official Opus65.429s identify oracle ambiguity; controller future-only
+claim corrected. No product/prompt/accepted behavior change. New24-turn cohort consists
+of18 still-unexecuted original turns plus6 independent clear contrast/carryover turns,
+frozen before execution with separate owned directory/proof and no prior-case resampling.
+Existing reviewed bounded harness contract reused; small selector tested before code.
+Contribution: trustworthy semantic capability measurement for Issue12/N1-10. Stable1
+and whole project remain incomplete; no criteria reduction, scope adoption or human wait.
+
+C031 verification complete:17 targeted and213 full tests PASS18.504s;20 capability-negative observer repetitions PASS. All17 product files still match1a14de9. Small cohort selector independently audited, including fixture feasibility and dynamic target limitation. Exact next: push then execute new frozen cohort with fresh existing no-extra-charge access.

@@ -1,0 +1,275 @@
+{
+  "status": "FAIL_FROZEN_ORACLE",
+  "candidate": "41576426d3a1dda02155f07f2a43ddfc81247143",
+  "product_candidate": "1a14de986de2756ffea83c2671e506a32cccfdf6",
+  "corpus_sha256": "523d6b859e67d9f84162cdf6299e12a835c8ba920724442b68df3b81c9fe62a0",
+  "verification": {
+    "records": 75,
+    "completed": false,
+    "judged_turns": 5,
+    "scope": "live_synthetic",
+    "human_evaluation": false
+  },
+  "events": {
+    "run.opened": 1,
+    "fixture.verified": 12,
+    "operator.config": 1,
+    "snapshot.verified": 5,
+    "prompt.built": 5,
+    "permit.granted": 5,
+    "call.started": 5,
+    "native.supervisor.started": 10,
+    "native.supervisor.finished": 10,
+    "proposal.received": 5,
+    "call.returned": 5,
+    "turn.captured": 5,
+    "turn.judged": 5,
+    "run.closed": 1
+  },
+  "judgments": [
+    {
+      "case": "PHA-01",
+      "turn": 1,
+      "passed": true,
+      "rationale": "PHA-01/1: quoted request and explicit non-delegation understood as meeting record; none action, zero Goals/Attempts/receipts/notes, no execution claim."
+    },
+    {
+      "case": "PHA-01",
+      "turn": 2,
+      "passed": true,
+      "rationale": "PHA-01/2: explains decision points in conversation while explicitly preserving no-draft intent; no Goal, Attempt, receipt, note or resumed work."
+    },
+    {
+      "case": "PHA-02",
+      "turn": 1,
+      "passed": true,
+      "rationale": "PHA-02/1: treats quoted request as reported speech; none action and zero Goals/Attempts/receipts/notes. An optional offer to draft is visible, not executed; no send/publication."
+    },
+    {
+      "case": "PHA-02",
+      "turn": 2,
+      "passed": true,
+      "rationale": "PHA-02/2: one queued local draft with prior reported fact and current instruction source IDs. Spec retains tomorrow ten, exactly two Japanese sentences, no invented location or purpose, and no sending. No redundant question or Attempt."
+    },
+    {
+      "case": "PHA-03",
+      "turn": 1,
+      "passed": false,
+      "rationale": "PHA-03/1 FAIL: background facts and a preference for a future thank-you were treated as a present draft delegation. The frozen oracle requires none until turn 2. Actual model proposed local_draft and host created Goal d3e010c5152d4a75a066ae3380c4e09b. First-attempt failure retained; no worker or artifact was executed."
+    }
+  ],
+  "database_readonly_audit": [
+    {
+      "case": "PHA-01",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 2
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-02",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 2
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-03",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 1
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-04",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-05",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 2,
+        "attempts": 2,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-06",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 2,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-07",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 2,
+        "attempts": 1,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-08",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 2,
+        "attempts": 1,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-09",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-10",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-11",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    },
+    {
+      "case": "PHA-12",
+      "integrity": [
+        [
+          "ok"
+        ]
+      ],
+      "counts": {
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "primary_turns": 0
+      },
+      "pending_primary": 0
+    }
+  ],
+  "raw_files": {
+    "journal.jsonl": "f51ad556ffd830e3e0d7f2d5ea633d969f7e82f1441f312f38caef6866d11851",
+    "PHA-01-1.prompt.txt": "057fbd4b53dd8c9fc4b7ad60dfc339e4c6bdadb5f309d4a9b34ab578d27155cd",
+    "PHA-01-2.prompt.txt": "2130284c29a90e5f370ad70a5955cebbfca1c07cb3b5ae65c4333d2dea09565a",
+    "PHA-02-1.prompt.txt": "b9fb7dce2206f92796a103197edffa376e81dd7f3f469316ff8d51d4f17a7312",
+    "PHA-02-2.prompt.txt": "77d4e5e61d4675b919144ced1cd19321fbb6b9539cd05a8a0306f7c2bfd444c5",
+    "PHA-03-1.prompt.txt": "3d1efcdee6d7d64d464a7c74b48b19b618ae1d1c947e98fb27e3fd7bbb0e2e2e",
+    "PHA-01-1.response.txt": "d6eb89c9837b105d244345b18fdd2d7caf6c7543bc660a74ba1f7d8cc8bf4b64",
+    "PHA-01-2.response.txt": "9d14ac88c8a04d49f345c96d2570baf386685dcf4fc7a00980635e8d3da2bb93",
+    "PHA-02-1.response.txt": "d7f7b7b2be5722e20a85e0b76fa3dddeb3a02e0553dab415e265ac8a76316ab0",
+    "PHA-02-2.response.txt": "c03176b0e2ce9ba13bffe3c63737f9f508cd3308d1ba3990144a9e44b2010efa",
+    "PHA-03-1.response.txt": "9a9f5c45a3a270be521915135a04555a06feccf1e3f7d83016a5990d465c66fe"
+  },
+  "terminal_hash": "366e83411bcc94add3d91c71332386845baf6f600b52bca767e204e660c5c7ba",
+  "not_run_turns": 19,
+  "human_evaluation": false,
+  "qwen_qualification": "NOT_RUN",
+  "caveat": "PHA-03/1 wording allows both background-only and implicit drafting readings. The original controller rationale calling it future-only overstates the supplied text; frozen FAIL preserved, product defect not conclusively established. Independent author and official Opus diagnosis in progress. No workers, UI or Expert execution in this run.",
+  "all_native_supervisors_returned_zero": true,
+  "diagnosis": "Official Opus65.429s and independent corpus author agree oracle ambiguous; no conclusive model defect. Original frozen FAIL and controller rationale remain immutable, with this correction. Product/prompt unchanged."
+}

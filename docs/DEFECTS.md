@@ -175,3 +175,32 @@ C029 test integration observations: template fixture incorrectly emitted Expert 
 Observed: qualification-full-initial.txt,211 tests, one failure: after the first partial answer, the envelope test expected waiting_input but read running. Source evidence: Runtime's worker can set idle after an earlier claim found no work while a new wake is already queued; idle is not a per-Goal completion receipt. The test used that unsupported completion assumption. Product outcome failure was not established.
 
 Correction: tests/test_runtime_envelope.py waits for the specific Goal to leave queued/running, then retains all original expected-state/question/receipt assertions. No product, acceptance or frozen Primary prompt change. Verification:20 repetitions of the previously failing two-answer case PASS; final211 full tests PASS18.056s. Previous failing log retained. Prevention applied to this module and the new qualification path: judge committed per-input/per-Goal outcomes, never an idle flag alone. Next related observer work must use the same evidence boundary; this does not prove every older idle-based test is race-free.
+
+## 2026-10-07 C031 ambiguous semantic oracle and overstated controller diagnosis
+
+First actual Primary run queued a draft for PHA03/1 while the frozen oracle expected
+background-only. The controller described it as a future-only preference, although the
+input had no future/defer/background-only signal. Independent corpus author conceded
+implicit drafting is plausible; official Opus agreed65.429s. This establishes an oracle
+ambiguity and reporting overstatement, not a conclusive model defect or exoneration.
+Preserve original FAIL/raw files/DBs/hash chain. Correct the public and written diagnosis
+by annotation, never edit the old judgment or resample it. No product/prompt change.
+
+Prevention: semantic gold cases must be decidable from the offered context at that turn;
+a planned future turn is not available evidence. Use independently frozen contrasts for
+clear background, natural elliptical delegation, and same-Goal additional constraints.
+Retain strict safety/grounding/target gates even on ambiguous cases. Next check verifies
+old cases are excluded from the new cohort and untouched unexecuted cases stay byte-
+equivalent in content; real semantic behavior remains to be measured. No new approval
+question or explicit-command grammar was introduced.
+
+C031 verification also exposed the same idle-event observer assumption in
+`test_runtime.test_negative_capability_and_canonical_mutation_proposals`: an expected
+failed Goal was observed as running. The first213-test output is preserved in
+qualification-cohort-full.txt. Runtime.idle is a worker wake flag, not a per-Goal result;
+startup claim-none/deliver can set it while a new admission wakes work. Reuse the C030
+prevention: the four automatic-work tests in this module now await canonical state
+leaving queued/running, then retain their exact completion/failure/receipt assertions.
+No Runtime or provider change.20 repeated capability-negative tests passed; next full
+suite verifies the corrected observer. Blocking-executor tests keep their explicit
+start/release barriers. This correction is test evidence, not live model qualification.

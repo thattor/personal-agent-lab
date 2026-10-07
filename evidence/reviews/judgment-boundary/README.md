@@ -89,3 +89,29 @@ Candidate product files were frozen at1a14de9 before opening the independent12-c
 No actual provider generation, real UI proof, Qwen qualification or human evaluation occurred in this unit. GitHub Issue12/#2/#5/#6 updated and read back in github-c029-readback.json. The newly supplied entry references docs/PROJECT-DECISIONS.md, absent in this authorized checkout; the existing DECISIONS.md and current project Issue6 were read as project authority, with STATE.md as continuation. No original checkout was inspected to fill that absent path.
 
 Next: clean pushed harness candidate, fresh existing official Claude Pro/extra-OFF proof, one bounded actual12-case/24-turn qualification; stop and diagnose first actual failure. Then separately prove real UI+Expert function and obtain the one authentic end-to-end usefulness evaluation. Primary-only results cannot prove worker races, downstream artifacts, UI or human usefulness. Qwen3.8-27B remains unqualified; actual Claude alias and exposed CLI configuration must be recorded without claiming server revision or equivalence.
+
+## C031: actual first attempt and independent oracle diagnosis
+
+[First run](primary-first-run/README.md) preserves actual4 PASS turns and PHA03/1 FAIL
+against its frozen oracle,19 NOT_RUN.75 chained records and all12 DBs verified read-only.
+Official Opus65.429s plus independent author identify an ambiguous oracle; original FAIL
+unchanged, no prompt or product modification. `delegation-opus-*` preserves question,
+fresh existing Pro/extraOFF proof and conclusion; D029 records adoption/reconciliation.
+
+New independently frozen cohort `primary-unseen-contrasts.json` SHA390460…28608 has18
+unexecuted original turns plus6 separately authored clear contrast/carryover turns.
+`primary-contrast-{cases,freeze}.json` binds independent authorship and unchanged input
+bytes. PHB02 naturally stays queued/pending with no worker; freeze metadata corrected
+before execution, no artificial pause. Old cohort/run/DBs are untouched; a new explicit
+cohort name is required. Existing24-call, proof, deadline, no-resume and stop-first-failure
+contract unchanged. Dynamic-target PHB02/2 additionally requires controller comparison
+to its actual turn1 Goal plus op=correct; action-kind matching alone is insufficient.
+
+New selector tests verify exact unchanged original suffix and exclude every observed
+case, reject unknown cohort before provider/run creation and retain old default.
+The first213 full run exposed another old idle-event observer assumption; original
+failure retained and four automatic-work tests changed only to await Goal state.
+Twenty repetitions of the affected capability-negative test passed. Product stays1a14de9;
+no Qwen, actual new cohort, current UI/Expert or human usefulness PASS is inferred.
+
+Final C031 automated verification:17 targeted PASS;213 full PASS18.504s in qualification-cohort-full-final.txt. No product source change; tests are harness/host evidence only.

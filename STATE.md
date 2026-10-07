@@ -25,9 +25,24 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
-C030: D029 model-led Primary and its Runtime/UI path are implemented (product candidate1a14de9). New separately reviewed Primary-only qualification harness is ready: independent12-case/24-turn corpus, exact production functions, public-API fixtures, prompt-hash-bound24-call limit, remaining-proof deadline, fsynced raw response/prompt and hash chain, no resume/resampling, explicit per-turn controller judgment and read-only verification. Official SWE Free review409.774s and independent source audit completed. Full211 tests PASS18.056s after repairing an older test observer's idle-event assumption (20/20 reproducer stress passes); no product/prompt changes since pre-disclosure freeze. No actual provider/Qwen/UI/human proof from this increment.
+C031: first actual Primary-only run on frozen product1a14de9/harness4157642 stopped at
+PHA03/1 after five generations (four prior turns PASS, one frozen-oracle FAIL,19 NOT_RUN).
+Raw responses/prompts,75-record hash chain and read-only12-DB audit retained in
+[evidence](evidence/reviews/judgment-boundary/primary-first-run/README.md). No worker,
+UI, Expert, Qwen or human proof. Independent corpus author and official Opus65.429s
+identify ambiguity in the case; the controller's future-only interpretation overstated
+the text. Original FAIL unchanged. No product/prompt change is justified by this sample.
 
-Exact next: push coherent C030 harness/evidence, freshly verify already-authorized official Claude Pro with extra usage OFF, then run the frozen actual Primary qualification on a new owned run directory using one consumed proof,24 attempts and <=900/remaining-proof seconds. Stop at first failed semantic observation, provider/setup/evidence failure; preserve raw proposal and classify cause before repair, no favorable resampling. The controller opened the oracle only after candidate freeze. Record actual model/command/limitations, never claim Qwen performance from Claude. After Primary evidence, separately qualify the revised real UI/Expert path, then one end-to-end actual human usefulness evaluation and final release audit. N1-09/N1-10 PARTIAL; Issue12/Stable1/whole PAL unfinished. No micro-question, old soak/quotas, schedule, new auth/payment or original-workspace inspection.
+The immutable new-cohort selector and independent24-turn cohort are frozen and verified.
+Targeted17 and full213 tests PASS18.504s, plus20 repeated capability-negative observer
+tests. Two old observer failures are retained; product remains1a14de9.
+Exact next: push C031, then fresh existing official Pro/extraOFF check and actual new
+bounded measurement on cohort unseen-plus-contrasts in a new owned directory, preserving
+old cohort/run. Use existing24-call/no-resume/one-use proof/deadline contract.
+Do not resample PHA03 or retroactively pass it. Then revised actual UI/Expert proof,
+one end-to-end human usefulness evaluation and final release audit. N1-09/N1-10 PARTIAL;
+Issue12/Stable1/PAL unfinished. No micro-question, old soak/quotas, schedule, new auth,
+payment or original-workspace inspection. Current full213 PASS: evidence/reviews/judgment-boundary/qualification-cohort-full-final.txt.
 The previous post-C026 blocked audit was correct only for its observed earlier idle window. Later authentic human answers and the latest direct model-reasoning instructions supersede that wait; do not repeat it. P003v1 is a withdrawn proposal, not a current adoption gate. Current unchanged production baseline full170 tests PASS15.046s (evidence/reviews/judgment-boundary/baseline-full.txt). This is not proof of the upcoming Primary implementation.
 
 ## Historical continuation records

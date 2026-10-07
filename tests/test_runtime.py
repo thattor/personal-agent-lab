@@ -1,4 +1,4 @@
-from tests.helpers import settled
+from tests.helpers import settled, work_settled
 import dataclasses
 import tempfile
 import threading
@@ -54,7 +54,7 @@ class RuntimeTests(unittest.TestCase):
     def test_default_mock_local_draft_end_to_end(self):
         runtime = self.runtime()
         submitted = settled(runtime, 'draft', 'Make a draft about synthetic apples; do not send')
-        self.assertTrue(runtime.idle.wait(2))
+        work_settled(runtime,submitted['goal']['id'])
         self.assertEqual(runtime.store.get_goal(submitted['goal']['id'])['state'], 'completed')
         self.assertEqual(len(runtime.store.inspect()['receipts']), 1)
         duplicate = settled(runtime, 'draft', 'Make a draft about synthetic apples; do not send')
@@ -70,8 +70,7 @@ class RuntimeTests(unittest.TestCase):
                 runtime = Runtime(Path(temp)/'state.db',executor=BadExecutor())
                 try:
                     submitted = settled(runtime, 'draft','Make a draft')
-                    self.assertTrue(runtime.idle.wait(2))
-                    goal = runtime.store.get_goal(submitted['goal']['id'])
+                    goal = work_settled(runtime,submitted['goal']['id'])
                     self.assertEqual(goal['state'], 'failed')
                     self.assertEqual(goal['reason'], 'capability_violation')
                     self.assertEqual(runtime.store.inspect()['receipts'], [])
@@ -132,15 +131,15 @@ class RuntimeTests(unittest.TestCase):
         runtime=self.runtime(provider=provider)
         canary='sk-'+'TESTPROMPT'+'0123456789ABCDE'
         settled(runtime, 'secret','api_key='+canary)['response'].result(timeout=2)
-        settled(runtime, 'draft','Make a draft. password='+canary)
-        self.assertTrue(runtime.idle.wait(2))
+        submitted = settled(runtime, 'draft','Make a draft. password='+canary)
+        work_settled(runtime,submitted['goal']['id'])
         self.assertNotIn(canary,str(provider.prompts))
         self.assertNotIn(canary,str(runtime.store.inspect()))
 
     def test_status_uses_canonical_state_instead_of_old_handoff_memory(self):
         runtime=self.runtime()
         submitted=settled(runtime, 'draft','Make a draft')
-        self.assertTrue(runtime.idle.wait(2))
+        work_settled(runtime,submitted['goal']['id'])
         reply=settled(runtime, 'status','What happened with the previous thing?')['response'].result(timeout=2)
         self.assertIn('completed',reply['content'])
         self.assertEqual(len(runtime.store.inspect()['goals']),1)

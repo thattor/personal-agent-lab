@@ -22,6 +22,11 @@ from scripts.live_runner import RunRejected, SourcePin
 FIXTURE = 'evidence/reviews/judgment-boundary/primary-heldout.json'
 FREEZE = 'evidence/reviews/judgment-boundary/primary-candidate-freeze.json'
 FIXTURE_SHA = '523d6b859e67d9f84162cdf6299e12a835c8ba920724442b68df3b81c9fe62a0'
+COHORTS = {
+    'heldout-v1': (FIXTURE, FIXTURE_SHA),
+    'unseen-plus-contrasts': ('evidence/reviews/judgment-boundary/primary-unseen-contrasts.json',
+                             '39046068664082dcbd1afb0aace9425b79da44a0a7298ff4e9a501ae28c28608'),
+}
 ORACLE_FIELDS = ('PAL_ORACLE_ONLY','acceptable_outcome_set','required_observations',
                  'disallowed_effects','interpretation_reason','target_ref')
 
@@ -30,9 +35,9 @@ def digest(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
-def load_matrix(path):
+def load_matrix(path, expected_sha=FIXTURE_SHA):
     raw = Path(path).read_bytes()
-    if digest(raw) != FIXTURE_SHA:
+    if digest(raw) != expected_sha:
         raise RunRejected('frozen corpus changed')
     return json.loads(raw)
 
@@ -207,7 +212,7 @@ class PrimaryGate:
 
 
 class QualificationRunner:
-    def __init__(self, root, directory, provider, *, scope, candidate):
+    def __init__(self, root, directory, provider, *, scope, candidate, cohort='heldout-v1'):
         self.root,self.directory = Path(root).resolve(),Path(directory).resolve()
         self.provider,self.scope = provider,scope
         self.journal = self.gate = self.watchdog = None
@@ -217,13 +222,16 @@ class QualificationRunner:
         try:
             if scope not in ('scripted','live_synthetic'):
                 raise ValueError('unsupported qualification scope')
+            if cohort not in COHORTS:
+                raise ValueError('unknown frozen qualification cohort')
             if scope=='live_synthetic':
                 if type(provider) is not AuditedNative or not provider._operator_ready or provider._runner_claimed:
                     raise ValueError('qualification requires one audited official owner')
                 provider.proof.check()
                 provider._runner_claimed = True
-            self.matrix = load_matrix(self.root/FIXTURE)
-            self.pin = QualificationPin(self.root,self.root/FIXTURE)
+            fixture, expected_sha = COHORTS[cohort]
+            self.matrix = load_matrix(self.root/fixture,expected_sha)
+            self.pin = QualificationPin(self.root,self.root/fixture)
             freeze = json.loads((self.root/FREEZE).read_text())
             if any(digest((self.root/p).read_bytes())!=sha for p,sha in freeze['files'].items()):
                 raise RunRejected('product candidate differs from pre-disclosure freeze')
@@ -237,6 +245,7 @@ class QualificationRunner:
             self.watchdog = RunWatchdog(self.gate,self.deadline)
             self.watchdog.start()
             self.journal.append({'event':'run.opened','candidate':candidate,'hashes':self.pin.hashes,
+                                 'cohort':cohort,'fixture':fixture,
                                  'product_candidate':freeze['candidate'],'provider':provider.identity,
                                  'proof_remaining_seconds':remaining,'deadline_monotonic':self.deadline,
                                  'max_attempts':24,'resume':False,'faults_disabled':True,
@@ -399,10 +408,11 @@ def verify_run(directory):
             'scope':records[0]['scope'] if records else None,'human_evaluation':False}
 
 
-def build_live(root, directory, proof_path, candidate):
+def build_live(root, directory, proof_path, candidate, cohort='heldout-v1'):
     root,directory = Path(root).resolve(),Path(directory).resolve()
     directory.relative_to(root/'runtime')
     if directory.exists(): raise FileExistsError(directory)
+    if cohort not in COHORTS: raise ValueError('unknown frozen qualification cohort')
     clean_candidate(root,candidate)
     proof = AccessProof.load(proof_path)
     owner = AuditedNative(proof,max_calls=24)
@@ -414,7 +424,8 @@ def build_live(root, directory, proof_path, candidate):
         if len(version.stdout.encode('utf-8'))>4096: raise ValueError('CLI version bound')
         proof.consume(root/'runtime/native-proof-use')
         owner._operator_ready = True
-        runner = QualificationRunner(root,directory,owner,scope='live_synthetic',candidate=candidate)
+        runner = QualificationRunner(root,directory,owner,scope='live_synthetic',candidate=candidate,
+                                     cohort=cohort)
     except BaseException:
         owner.stop()
         raise
@@ -436,16 +447,17 @@ def main():
     parser.add_argument('--run-directory')
     parser.add_argument('--access-proof')
     parser.add_argument('--candidate')
+    parser.add_argument('--cohort',choices=sorted(COHORTS))
     args = parser.parse_args()
     if args.verify:
-        if args.run_directory or args.access_proof or args.candidate:
+        if args.run_directory or args.access_proof or args.candidate or args.cohort:
             parser.error('verify is read-only and takes no execution arguments')
         print(json.dumps(verify_run(args.verify)),flush=True)
         return
     if not all((args.run_directory,args.access_proof,args.candidate)):
         parser.error('run directory, proof and candidate are required')
     root = Path(__file__).resolve().parents[1]
-    runner = build_live(root,args.run_directory,args.access_proof,args.candidate)
+    runner = build_live(root,args.run_directory,args.access_proof,args.candidate,args.cohort or 'heldout-v1')
     def interrupted(signum, frame):
         raise SystemExit('qualification interrupted')
     signal.signal(signal.SIGTERM,interrupted)

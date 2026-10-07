@@ -1,0 +1,7 @@
+{
+  "started_at": 1791382552.15645,
+  "question_sha256": "85c9fe6328c36c0786a4c5fc2c2a0d464d558edf540422a9ffc83b8151998324",
+  "model": "opus",
+  "timeout_seconds": 180,
+  "paid_fallback": false
+}

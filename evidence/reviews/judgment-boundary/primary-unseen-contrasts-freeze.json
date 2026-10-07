@@ -1,0 +1,9 @@
+{
+  "fixture": "primary-unseen-contrasts.json",
+  "sha256": "39046068664082dcbd1afb0aace9425b79da44a0a7298ff4e9a501ae28c28608",
+  "cases": 12,
+  "turns": 24,
+  "old_unexecuted_cases_content_equal": true,
+  "product_unchanged": true,
+  "scope": "synthetic_definition_only"
+}

@@ -1,0 +1,9 @@
+Independent corpus author post-run diagnosis, 2026-10-07, Astra agent /root/astra_acceptance_review.
+Frozen FAIL retained. PHA03/1 has no explicit future/background-only/not-yet instruction.
+Implicit drafting is also plausible; frozen single-answer oracle is ambiguous under
+D029 model-led inference. Actual observation is one local_draft proposal and one queued
+Goal, no worker/artifact. The controller's future-only rationale overstates the evidence.
+Suggested general principle: distinguish enough facts to draft from current delegation;
+acknowledge mere background without a Goal or permission questionnaire. Clear contextual
+elliptical delegation may proceed. Do not special-case names or words. No edits or live
+calls made by this reviewer. This is review, not actual human usefulness or acceptance.

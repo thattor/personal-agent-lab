@@ -482,3 +482,29 @@ rejection: stage-specific journal records distinguish host/harness faults. No pr
 prompt tuning after opening heldout cases before the first actual measurement. One-use
 proof and watchdog/process behavior already have meaningful existing tests; reuse them
 and add boundary-specific tests instead of duplicating a framework.
+
+
+D029 C031 first actual measurement and oracle diagnosis: official Claude Pro on frozen
+product1a14de9/harness4157642 produced five first attempts. Four passed; PHA03/1 queued
+one supported, grounded local draft where frozen oracle required none. Original FAIL,
+raw response,75-record hash chain and all12 disposable DBs preserved;19 turns NOT_RUN.
+The corpus author conceded its input does not mark background-only or defer work; the
+controller's original future-only rationale overstates the text. No intent violation is
+conclusively established. This caveat never retroactively changes the frozen FAIL.
+
+Official Opus delegation review completed65.429s with fresh existing Pro/extraOFF.
+Adopt BEFORE further work: no prompt/product change from this ambiguous single sample;
+require clear signals in action-choice gold cases, retain all safety/content/target gates.
+Reject tightened explicit-verb/permission rules, loosened preference-as-delegation rule,
+retrospective PASS and repeated sampling of the failed item. Adapter thank-you-specific
+system instructions are a measurement confound; Claude results do not qualify Qwen.
+
+Reconcile Opus's word "resume": never reopen the closed run, renew its proof, reuse its
+DB state or resample PHA03. A new independently frozen measurement cohort may include
+only previously unexecuted PHA04–12 plus three independent contrast/carryover pairs,24
+turns maximum under the already reviewed one-use proof/call/deadline contract. Product
+stays pre-disclosure1a14de9. New cohort/source hashes and owned directory are required.
+Old PHA03/2 stays NOT_RUN because its assumed no-Goal setup does not match the actual
+first turn. Contrast cases cover clear background vs elliptical delegation and same-Goal
+constraint additions. No new quota, policy, capability or human micro-question. Existing
+strict named-case criteria and actual UI/Expert/human usefulness gates are unchanged.
