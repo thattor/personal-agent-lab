@@ -1,3 +1,4 @@
+from tests.helpers import settled
 import dataclasses
 import tempfile
 import threading
@@ -38,12 +39,12 @@ class RuntimeTests(unittest.TestCase):
     def test_conversation_independent_of_slow_attempt_and_controls_immediate(self):
         executor = BlockingExecutor()
         runtime = self.runtime(executor)
-        handoff = runtime.submit('draft', 'Make a draft, do not send it')
+        handoff = settled(runtime, 'draft', 'Make a draft, do not send it')
         self.assertTrue(executor.started.wait(2))
-        reply = runtime.submit('chat', 'How are you?')['response'].result(timeout=2)
+        reply = settled(runtime, 'chat', 'How are you?')['response'].result(timeout=2)
         self.assertTrue(reply['content'])
         self.assertEqual(len(runtime.store.inspect()['goals']), 1)
-        cancelled = runtime.submit('cancel', 'Stop that', goal_id=handoff['goal']['id'], control={'action':'cancel'})
+        cancelled = settled(runtime, 'cancel', 'Stop that', goal_id=handoff['goal']['id'], control={'action':'cancel'})
         self.assertEqual(cancelled['goal']['state'], 'cancelled')
         executor.release.set()
         self.assertTrue(runtime.idle.wait(2))
@@ -52,11 +53,11 @@ class RuntimeTests(unittest.TestCase):
 
     def test_default_mock_local_draft_end_to_end(self):
         runtime = self.runtime()
-        submitted = runtime.submit('draft', 'Make a draft about synthetic apples; do not send')
+        submitted = settled(runtime, 'draft', 'Make a draft about synthetic apples; do not send')
         self.assertTrue(runtime.idle.wait(2))
         self.assertEqual(runtime.store.get_goal(submitted['goal']['id'])['state'], 'completed')
         self.assertEqual(len(runtime.store.inspect()['receipts']), 1)
-        duplicate = runtime.submit('draft', 'Make a draft about synthetic apples; do not send')
+        duplicate = settled(runtime, 'draft', 'Make a draft about synthetic apples; do not send')
         self.assertEqual(duplicate['goal']['id'], submitted['goal']['id'])
         self.assertEqual(len(runtime.store.inspect()['goals']), 1)
 
@@ -68,7 +69,7 @@ class RuntimeTests(unittest.TestCase):
                         return dict(goal_id=order.goal_id, attempt_id=order.attempt_id, epoch=order.epoch, **payload)
                 runtime = Runtime(Path(temp)/'state.db',executor=BadExecutor())
                 try:
-                    submitted = runtime.submit('draft','Make a draft')
+                    submitted = settled(runtime, 'draft','Make a draft')
                     self.assertTrue(runtime.idle.wait(2))
                     goal = runtime.store.get_goal(submitted['goal']['id'])
                     self.assertEqual(goal['state'], 'failed')
@@ -80,7 +81,7 @@ class RuntimeTests(unittest.TestCase):
     def test_second_host_fails_fast_and_recovery_runs_only_at_startup(self):
         executor = BlockingExecutor()
         runtime = self.runtime(executor)
-        runtime.submit('draft', 'Make a draft')
+        settled(runtime, 'draft', 'Make a draft')
         self.assertTrue(executor.started.wait(2))
         with self.assertRaises(RuntimeError):
             Runtime(self.path)
@@ -91,7 +92,7 @@ class RuntimeTests(unittest.TestCase):
     def test_workorder_has_no_store_path_credentials_or_mutation(self):
         executor = BlockingExecutor()
         runtime = self.runtime(executor)
-        runtime.submit('draft', 'Make a draft')
+        settled(runtime, 'draft', 'Make a draft')
         self.assertTrue(executor.started.wait(2))
         order = executor.orders[0]
         self.assertNotIn('store', vars(order))
@@ -114,7 +115,7 @@ class RuntimeTests(unittest.TestCase):
     def test_normal_conversation_and_explicit_limits_do_not_create_goals(self):
         runtime = self.runtime()
         for i,text in enumerate(('Hello','What is a draft?', 'Record only: make a draft later','Not yet: make a draft')):
-            result = runtime.submit(str(i),text)
+            result = settled(runtime, str(i),text)
             result['response'].result(timeout=2)
             self.assertIsNone(result['goal'])
         self.assertEqual(runtime.store.inspect()['goals'], [])
@@ -130,16 +131,16 @@ class RuntimeTests(unittest.TestCase):
         provider=CaptureProvider()
         runtime=self.runtime(provider=provider)
         canary='sk-'+'TESTPROMPT'+'0123456789ABCDE'
-        runtime.submit('secret','api_key='+canary)['response'].result(timeout=2)
-        runtime.submit('draft','Make a draft. password='+canary)
+        settled(runtime, 'secret','api_key='+canary)['response'].result(timeout=2)
+        settled(runtime, 'draft','Make a draft. password='+canary)
         self.assertTrue(runtime.idle.wait(2))
         self.assertNotIn(canary,str(provider.prompts))
         self.assertNotIn(canary,str(runtime.store.inspect()))
 
     def test_status_uses_canonical_state_instead_of_old_handoff_memory(self):
         runtime=self.runtime()
-        submitted=runtime.submit('draft','Make a draft')
+        submitted=settled(runtime, 'draft','Make a draft')
         self.assertTrue(runtime.idle.wait(2))
-        reply=runtime.submit('status','What happened with the previous thing?')['response'].result(timeout=2)
+        reply=settled(runtime, 'status','What happened with the previous thing?')['response'].result(timeout=2)
         self.assertIn('completed',reply['content'])
         self.assertEqual(len(runtime.store.inspect()['goals']),1)

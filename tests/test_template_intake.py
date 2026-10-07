@@ -1,9 +1,10 @@
+from tests.helpers import settled
 import tempfile
 import unittest
 from pathlib import Path
 from pal.store import Store, PREVIEW_BANNER
 from pal.runtime import Runtime
-from test_runtime_envelope import ScriptedProvider
+from tests.test_runtime_envelope import ScriptedProvider
 
 
 class TemplateIntakeTests(unittest.TestCase):
@@ -33,7 +34,7 @@ class TemplateIntakeTests(unittest.TestCase):
             runtime = Runtime(Path(temp)/'state.db',provider=ScriptedProvider([
                 {'kind':'incomplete_preview','content':'Date {{date}}','missing':'{{date}}','citations':[]}]))
             try:
-                goal_id = runtime.submit('g','Make a draft blank template with {{date}}')['goal']['id']
+                goal_id = settled(runtime, 'g','Make a draft blank template with {{date}}')['goal']['id']
                 self.assertTrue(runtime.idle.wait(3))
                 receipt = runtime.store.inspect()['receipts'][0]
                 self.assertEqual(receipt['role'], 'preview')

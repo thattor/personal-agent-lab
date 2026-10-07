@@ -71,6 +71,11 @@ class LiveRunnerTests(unittest.TestCase):
 
     def post(self, runner, text, goal=None):
         payload = {'key':'synthetic:'+runner.case['id']+':'+str(runner.phase),'text':text}
+        if goal is None:
+            # Historical Expert/observer fixture, not D029 conversational intake.
+            result=runner.runtime.store.ingress(payload['key'],text,'draft')
+            runner.runtime._wake_after(result)
+            return result
         if goal is not None:
             payload.update(goal_id=goal['id'],control={'action':'input','text':text,
                            'question_id':goal['question_id'],'epoch':goal['epoch']})
@@ -81,7 +86,7 @@ class LiveRunnerTests(unittest.TestCase):
             self.assertEqual(response.status,202)
             return json.load(response)
 
-    def test_all_frozen_case_shapes_with_seed_forget_and_same_goal_answers(self):
+    def test_historical_expert_fixture_shapes_seed_forget_and_same_goal_answers(self):
         proposals = [complete('Mikaへ。10月12日18:00、架空の青葉会館へどうぞ。'),
                      ask('日時と場所を教えてください。'), complete('Mikaへ。10月12日18:00、架空の青葉会館へどうぞ。'),
                      complete('よろしければ集まりにご参加ください。'),

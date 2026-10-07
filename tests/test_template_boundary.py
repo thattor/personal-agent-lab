@@ -1,3 +1,4 @@
+from tests.helpers import settled
 import tempfile
 import json
 import time
@@ -13,11 +14,12 @@ class TemplateBoundaryTests(unittest.TestCase):
     def test_runtime_complete_markers_end_visible_without_completion(self):
         class InvalidTemplate(MockProvider):
             def complete(self, prompt):
+                if not prompt.startswith('DRAFT\n'): return super().complete(prompt)
                 return json.dumps({'kind':'complete','content':'Date {{date}}', 'citations':[]})
         with tempfile.TemporaryDirectory() as temp:
             runtime = Runtime(Path(temp)/'state.db',provider=InvalidTemplate())
             try:
-                goal_id = runtime.submit('template','Make a draft template with {{date}}')['goal']['id']
+                goal_id = settled(runtime, 'template','Make a draft template with {{date}}')['goal']['id']
                 deadline = time.monotonic()+3
                 while time.monotonic()<deadline:
                     goal = runtime.store.get_goal(goal_id)

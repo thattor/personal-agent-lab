@@ -161,3 +161,10 @@ use latest authentic owner messages; reviewer advice is not a permission source.
 one end-to-end usefulness evaluation after a working candidate. Verification: existing
 HRs reclassified and human window notified; effectiveness at future checkpoints remains
 to be observed. Wrong-target code defect stays open until implementation/tests pass.
+
+
+## C029 cached Primary replay after reference-stop
+
+Independent source review found Runtime reused a completed Future on same-key replay after a source was forgotten. Store's guarded reply correctly withheld content, but cached Future bypassed it. Corrected: share Futures only for pending inference; terminal replay resolves a fresh source-guarded reply with no model/effect. Reproduction test verifies original Friday content disappears from the replay after explicit reference-stop and provider call count stays one. Raw audit rows remain under accepted reference-stop semantics. Next replay-boundary changes must test a source mutation after completion, not only before commit.
+
+C029 test integration observations: template fixture incorrectly emitted Expert JSON for new PRIMARY calls; corrected fixture branches on DRAFT, preserving the same negative Expert assertion. A targeted module import exposed an existing discovery-only import; corrected to package import. Original targeted failure output retained. Full196 final suite passes with source fixed throughout. Historical live harness could not use DRAFT-only permits for new PRIMARY calls; protocol guard now refuses live setup before any auth/proof consumption, and old fixture tests explicitly seed Expert work. This is not new live qualification.

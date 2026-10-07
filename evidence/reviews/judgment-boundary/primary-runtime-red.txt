@@ -1,0 +1,53 @@
+test_concurrent_same_key_is_one_inference_and_immediate_explicit_cancel (tests.test_primary_runtime.PrimaryRuntimeTests) ... FAIL
+test_every_ordinary_input_uses_one_primary_call_without_regex_preemption (tests.test_primary_runtime.PrimaryRuntimeTests) ... FAIL
+test_natural_answer_targets_nonlatest_question_with_original_text (tests.test_primary_runtime.PrimaryRuntimeTests) ... FAIL
+test_primary_clarifies_then_hands_context_to_one_expert (tests.test_primary_runtime.PrimaryRuntimeTests) ... FAIL
+test_provider_failure_is_visible_and_same_key_never_retries_or_creates_goal (tests.test_primary_runtime.PrimaryRuntimeTests) ... FAIL
+
+======================================================================
+FAIL: test_concurrent_same_key_is_one_inference_and_immediate_explicit_cancel (tests.test_primary_runtime.PrimaryRuntimeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_runtime.py", line 73, in test_concurrent_same_key_is_one_inference_and_immediate_explicit_cancel
+    self.assertTrue(provider.started.wait(1))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_every_ordinary_input_uses_one_primary_call_without_regex_preemption (tests.test_primary_runtime.PrimaryRuntimeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_runtime.py", line 58, in test_every_ordinary_input_uses_one_primary_call_without_regex_preemption
+    self.assertIn('primary_status',ack)
+AssertionError: 'primary_status' not found in {'record_id': '963460e1836040e1936e3bd08aaaa468', 'goal': {'seq': 1, 'id': '7d054600d4ab48acb426e7f3b943a105', 'state': 'queued', 'revision': 1, 'acceptance_id': '7396027fbe0a4c86bc71be43279ff1c4', 'epoch': 0, 'budget': 3, 'total_claims': 0, 'reason': '', 'question_id': None, 'ambiguity': 0}, 'intent': 'draft', 'classification': 'draft', 'classifier_version': 'local-draft-1', 'response': <Future at 0x109e39760 state=running>}
+
+======================================================================
+FAIL: test_natural_answer_targets_nonlatest_question_with_original_text (tests.test_primary_runtime.PrimaryRuntimeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_runtime.py", line 115, in test_natural_answer_targets_nonlatest_question_with_original_text
+    self.assertEqual(question['answer_record_id'],ack['record_id'])
+AssertionError: None != 'd1be8e6ecf2e41f2bbb5012ec0965b18'
+
+======================================================================
+FAIL: test_primary_clarifies_then_hands_context_to_one_expert (tests.test_primary_runtime.PrimaryRuntimeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_runtime.py", line 130, in test_primary_clarifies_then_hands_context_to_one_expert
+    self.assertEqual(outcome['intent'],'draft')
+AssertionError: 'conversation' != 'draft'
+- conversation
++ draft
+
+
+======================================================================
+FAIL: test_provider_failure_is_visible_and_same_key_never_retries_or_creates_goal (tests.test_primary_runtime.PrimaryRuntimeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_primary_runtime.py", line 93, in test_provider_failure_is_visible_and_same_key_never_retries_or_creates_goal
+    self.assertIn('反映できません',first['content'])
+AssertionError: '反映できません' not found in 'Work recorded. Current canonical state: queued.'
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.110s
+
+FAILED (failures=5)

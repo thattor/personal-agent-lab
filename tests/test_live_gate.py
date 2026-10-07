@@ -34,6 +34,14 @@ class LiveGateTests(unittest.TestCase):
             gate.grant('K1', 'request', 'DRAFT')
         self.assertEqual(events[-1]['event'], 'run.closed')
 
+    def test_primary_cannot_spend_historical_draft_permit(self):
+        native=FakeNative()
+        gate=GatedProvider(native,lambda e:None,deadline=10,clock=lambda:0)
+        gate.grant('A1','request','DRAFT')
+        with self.assertRaises(ProviderUnavailable):gate.complete('PRIMARY\nrequest')
+        self.assertEqual(native.calls,[])
+        self.assertEqual(native.stops,1)
+
     def test_per_input_permit_is_spent_before_call_and_retry_is_denied(self):
         native = FakeNative(); events = []
         gate = GatedProvider(native, events.append, deadline=10, clock=lambda:0)

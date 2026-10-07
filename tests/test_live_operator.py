@@ -31,7 +31,8 @@ class LiveOperatorTests(unittest.TestCase):
         proof = Mock()
         owner = Mock()
         owner.command.return_value = ['unused-official-cli']
-        with patch('scripts.live_operator.clean_candidate'), \
+        with patch('pal.runtime.Runtime.PRIMARY_PROTOCOL','legacy'), \
+                patch('scripts.live_operator.clean_candidate'), \
                 patch('scripts.live_operator.AccessProof.load', return_value=proof), \
                 patch('scripts.live_operator.AuditedNative', return_value=owner), \
                 patch('scripts.live_operator.subprocess.run', return_value=Mock(stdout='fixture')), \
@@ -39,6 +40,14 @@ class LiveOperatorTests(unittest.TestCase):
             with self.assertRaisesRegex(OSError, 'injected evidence failure'):
                 build_live(root, root/'runtime/unused-failure-fixture', 'unused-proof', 'fixture')
         runner.close.assert_called_once_with()
+
+    def test_old_operator_rejects_primary_before_auth_proof_or_any_process(self):
+        with patch('scripts.live_operator.AccessProof.load') as load, \
+                patch('scripts.live_operator.subprocess.run') as process:
+            with self.assertRaisesRegex(ValueError,'incompatible'):
+                build_live(Path('.'),'unused','unused','unused')
+            load.assert_not_called()
+            process.assert_not_called()
 
     def test_live_owner_cannot_bypass_operator_proof_consumption(self):
         import time

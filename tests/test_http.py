@@ -1,6 +1,7 @@
 import json
 import tempfile
 import threading
+import time
 import unittest
 import urllib.request
 import urllib.error
@@ -40,12 +41,22 @@ class HTTPTests(unittest.TestCase):
     def post(self,body,path='/api/message',origin=None):
         return self.request(path,body,{'Origin':origin or self.base,'Content-Type':'application/json'})
 
+    def outcome(self,key):
+        deadline=time.monotonic()+3
+        while time.monotonic()<deadline:
+            fate=json.loads(self.request('/api/operation/'+key)[1])
+            if fate['status']=='accepted': return fate['result']
+            time.sleep(.005)
+        self.fail('Primary did not reach a terminal outcome')
+
     def test_conversation_draft_and_inspect_artifact(self):
         status,body,_=self.post({'key':'hello','text':'Hello'})
         self.assertEqual(status,202)
         self.assertIsNone(json.loads(body)['goal'])
+        self.outcome('hello')
         status,body,_=self.post({'key':'draft','text':'Make a draft, do not send'})
         self.assertEqual(status,202)
+        self.outcome('draft')
         self.assertTrue(self.runtime.idle.wait(2))
         status,body,_=self.request('/api/state')
         state=json.loads(body)
@@ -69,22 +80,24 @@ class HTTPTests(unittest.TestCase):
     def test_duplicate_client_message_and_invalid_fields(self):
         body={'key':'same','text':'Make a draft'}
         a=self.post(body)
+        result=self.outcome('same')
         b=self.post(body)
-        self.assertEqual(json.loads(a[1]),json.loads(b[1]))
+        self.assertEqual(json.loads(a[1])['record_id'],json.loads(b[1])['record_id'])
+        self.assertEqual(json.loads(b[1]),result)
         self.assertEqual(len(self.runtime.store.inspect()['goals']),1)
         self.assertEqual(self.post({'key':'bad','text':'Hello','state':'completed'})[0],400)
         self.assertEqual(self.post({'key':'same','text':'Different'})[0],400)
 
-    def test_host_bound_selection_http_and_guarded_state(self):
+    def test_historical_bound_selection_http_and_guarded_state(self):
         self.assertTrue(self.runtime.idle.wait(2))
         goals = []
         for name in ('Cedar', 'Birch'):
             result = self.runtime.store.ingress('seed-' + name, name + ' draft', 'draft')
             goals.append(result['goal']['id'])
             self.runtime.store.control('pause-' + name, goals[-1], 'pause')
-        status, body, _ = self.post({'key': 'question', 'text': 'その下書きを止めて'})
-        self.assertEqual(status, 202)
-        question = json.loads(body)
+        # Authored historical selection fixture; new ordinary intake uses Primary.
+        from pal.controls import parse_control
+        question = self.runtime.store.ingress('question','その下書きを止めて','control',natural_control=parse_control('その下書きを止めて'))
         self.assertEqual(question['control_status'], 'selection_required')
         state = json.loads(self.request('/api/state')[1])
         self.assertEqual(len(state['selections'][0]['choices']), 2)
@@ -103,9 +116,11 @@ class HTTPTests(unittest.TestCase):
 
     def test_conversational_remember_and_forget(self):
         self.post({'key':'remember','text':'Remember the fictional project is green'})
+        self.outcome('remember')
         source=self.runtime.store.inspect()['records'][0]
         self.assertEqual(len(self.runtime.store.context()['notes']),1)
         self.assertEqual(self.post({'key':'forget','text':'Forget that'})[0],202)
+        self.outcome('forget')
         self.assertNotIn(source['id'],self.runtime.store.context()['manifest'])
         retained=[r for r in self.runtime.store.inspect()['records'] if r['id']==source['id']][0]
         self.assertEqual(retained['usable'],0)
@@ -159,6 +174,7 @@ class HTTPTests(unittest.TestCase):
 
     def test_lost_ack_fate_can_be_queried_without_duplicate_effect(self):
         self.post({'key':'lost-ack','text':'Make a draft'})
+        self.outcome('lost-ack')
         status,body,_=self.request('/api/operation/lost-ack')
         fate=json.loads(body)
         self.assertEqual(fate['status'],'accepted')
@@ -171,14 +187,36 @@ class HTTPTests(unittest.TestCase):
 
     def test_duplicate_natural_forget_keeps_original_target_binding(self):
         self.post({'key':'remember','text':'Remember the fictional color is green'})
+        self.outcome('remember')
         first=self.post({'key':'forget','text':'Forget that'})
+        outcome=self.outcome('forget')
         state=self.runtime.store.inspect()
         second=self.post({'key':'forget','text':'Forget that'})
         self.assertEqual(first[0],202)
-        self.assertEqual(json.loads(first[1]),json.loads(second[1]))
+        self.assertEqual(json.loads(first[1])['record_id'],json.loads(second[1])['record_id'])
+        self.assertEqual(json.loads(second[1]),outcome)
         references=[e for e in self.runtime.store.inspect()['events'] if e['kind']=='reference.stopped']
         self.assertEqual(len(references),1)
         self.assertEqual(len([r for r in self.runtime.store.inspect()['records'] if r['role']=='user']),len([r for r in state['records'] if r['role']=='user']))
+
+    def test_primary_ambiguity_and_explicit_control_with_stale_epoch(self):
+        self.assertTrue(self.runtime.idle.wait(2))
+        goals=[]
+        for name in ('A','B'):
+            goal=self.runtime.store.create_goal(name,'Draft '+name,{'kind':'local_draft','max_bytes':4096})
+            goals.append(self.runtime.store.control('pause'+name,goal['id'],'pause'))
+        self.assertEqual(self.post({'key':'ambiguous','text':'stop that'})[0],202)
+        outcome=self.outcome('ambiguous')
+        self.assertIsNone(outcome['goal'])
+        self.assertEqual([g['state'] for g in self.runtime.store.inspect()['goals']],['paused','paused'])
+        payload={'key':'exact','text':'cancel','goal_id':goals[0]['id'],'control':{'action':'cancel','epoch':goals[0]['epoch']-1}}
+        self.assertEqual(self.post(payload)[0],400)
+        self.assertEqual(self.runtime.store.get_goal(goals[0]['id'])['state'],'paused')
+        payload['control']['epoch']=goals[0]['epoch']
+        self.assertEqual(self.post(payload)[0],202)
+        self.assertEqual(self.runtime.store.get_goal(goals[0]['id'])['state'],'cancelled')
+        self.assertEqual(self.runtime.store.get_goal(goals[1]['id'])['state'],'paused')
+
 
 
 class ProviderStartupTests(unittest.TestCase):

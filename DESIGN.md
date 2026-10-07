@@ -121,3 +121,12 @@ input is visible and can be reissued by the user. Explicit structured controls c
 while inference runs. No lexical preemption/fallback, additional agent hierarchy, new
 clarification workflow, arbitrary tool, physical forget purge or hidden model retry.
 Substantial implementation details require the pending official SWE source review.
+
+
+## D029 implemented Primary transport
+
+Runtime returns durable asynchronous admission for ordinary messages, then sends one closed PRIMARY JSON request with source-bound conversation, available target/question metadata and recent status snapshots. Primary may reply/clarify with none, propose local_draft, exact answer, cancel/pause/resume/correct, source-backed remember or reference-stop. Store alone validates snapshot membership, live source usability, selected Goal revision/epoch/state, fixed criteria and transitions; one transaction commits effect, authoritative reply and outcome. Answer uses the original user record, not model paraphrase. Model-selected sources plus original ingress bind new specifications. Terminal replay never invokes a provider and rereads source-guarded reply; pending replay shares one inference. Startup marks pending Primary interrupted with input retained.
+
+UI receipts distinguish pending interpretation from committed outcome. Exact per-Goal controls and per-source reference-stop bypass the model lane. UI controls include epoch; stale clicks reject. Correction/answer drafts survive polling. Inspector exposes metadata/outcome, not copied Primary snapshots. Mock contains deterministic fixtures only; real ordinary routing has no lexical preemption/fallback. Historical persisted ingress replay preserves accepted outcomes and does not classify again.
+
+Historical P002 operator permits one DRAFT generation per input and cannot qualify this two-stage route. It rejects live setup before proof consumption; old finite matrix, budgets and historical evidence stay intact. A new candidate requires separately bounded actual-model and actual UI evidence.

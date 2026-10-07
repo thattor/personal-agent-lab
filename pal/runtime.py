@@ -9,8 +9,8 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .sanitize import sanitize
-from .classification import classify, VERSION as CLASSIFIER_VERSION, UNSUPPORTED_REPLY
-from .store import Store, StaleResult, EvidenceRejected
+from .primary import decode_primary, primary_prompt
+from .store import Store, StaleResult, EvidenceRejected, reply_key
 from .draft_envelope import decode_draft
 
 
@@ -40,6 +40,47 @@ class MockProvider:
         self._stop=threading.Event()
 
     def complete(self, prompt):
+        if prompt.startswith('PRIMARY\n'):
+            # Deterministic mock fixture only. The real Runtime has no lexical
+            # routing or fallback; mock outputs are never semantic qualification.
+            from .classification import classify, UNSUPPORTED_REPLY
+            from .controls import parse_control
+            context = json.loads(prompt.split('\nINPUT_JSON\n', 1)[1])
+            current = next(r for r in context['records'] if r['id'] == context['input_record_id'])
+            text = current['content']
+            lower = text.lower().strip()
+            action = {'kind':'none'}
+            reply = 'I have recorded your message. This response uses the mock provider.'
+            natural = parse_control(text)
+            operation = ('pause' if lower in ('pause that','一時停止して') else
+                         'resume' if lower in ('resume that','再開して') else
+                         natural['action'] if natural else None)
+            if operation:
+                candidates = context['goals']
+                if len(candidates) == 1:
+                    action = {'kind':'control','op':operation,'goal_id':candidates[0]['id']}
+                    if operation == 'correct':
+                        action.update(spec=natural['text'],source_ids=[current['id']])
+                else:
+                    reply = 'どの作業ですか？対象を指定してください。 / Which work do you mean? (mock)'
+            elif lower.startswith('answer:'):
+                if len(context['questions']) == 1:
+                    action = {'kind':'answer','question_id':context['questions'][0]['id']}
+                else:
+                    reply = 'どの質問への回答ですか？ / Which question are you answering? (mock)'
+            elif lower.startswith('remember ') or '覚えて' in text:
+                action = {'kind':'remember','source_id':current['id']}
+            elif lower in ('forget that','忘れて'):
+                sources = [r for r in context['records'] if r['role']=='user' and r['id']!=current['id']]
+                if sources:
+                    action = {'kind':'forget','source_id':sources[-1]['id']}
+            elif classify(text) == 'draft':
+                action = {'kind':'local_draft','spec':text,'source_ids':[current['id']]}
+            elif classify(text) == 'unsupported':
+                reply = UNSUPPORTED_REPLY
+            elif any(term in lower for term in ('what happened','previous thing','work status','進捗','どうなった')) and context['recent_work']:
+                reply = 'Current work is ' + context['recent_work'][0]['state'] + '. (mock)'
+            return json.dumps({'reply':reply,'action':action},ensure_ascii=False)
         if prompt.startswith('DRAFT\n'):
             self._stop.wait(self.task_delay)
             return json.dumps({'kind':'complete','content':'Local draft (mock): ' + prompt.split('\n', 2)[1], 'citations':[]}, ensure_ascii=False)
@@ -77,6 +118,7 @@ class ProviderExecutor:
 
 
 class Runtime:
+    PRIMARY_PROTOCOL = 'primary-json-v1'
     def __init__(self, path, provider=None, executor=None, fault=None):
         self.started_at=time.time()
         self._closed = threading.Event()
@@ -107,84 +149,73 @@ class Runtime:
         self._worker.start()
         self._wake.set()
 
-    @staticmethod
-    def intent(text):
-        return 'draft' if classify(sanitize(text)) == 'draft' else 'conversation'
-
-    def _latest_goal(self):
-        goals = self.store.inspect()['goals']
-        return goals[-1]['id'] if goals else None
-
     def submit(self, key, text, goal_id=None, control=None):
         if self._closed.is_set():
             raise RuntimeError('runtime is stopping')
         text = sanitize(text)
-        if not isinstance(text, str) or len(text) > 12000:
-            raise ValueError('message exceeds input bound')
-        original_request={'text':text,'goal_id':goal_id,'control':control}
-        lower = text.lower().strip()
-        from .controls import parse_control
-        natural_control = parse_control(text) if control is None and goal_id is None else None
-        if control is None and lower in ('pause that','一時停止して'):
-            control = {'action':'pause'}
-            goal_id = self._latest_goal()
-        if control is None and lower in ('resume that','再開して'):
-            control = {'action':'resume'}
-            goal_id = self._latest_goal()
-        forget = False
-        if control is None and lower in ('forget that','忘れて'):
-            prior = [r for r in self.store.inspect()['records'] if r['role']=='user' and r['usable']]
-            if prior:
-                control = {'source_id':prior[-1]['id']}
-                forget = True
-        if control is None and natural_control is None and lower.startswith('answer:'):
-            current_id = self._latest_goal()
-            if current_id:
-                current = self.store.get_goal(current_id)
-                if current['state']=='waiting_input':
-                    goal_id = current_id
-                    control = {'action':'input','text':text.partition(':')[2].strip(),'question_id':current['question_id'],'epoch':current['epoch']}
-        classification = None if control is not None or natural_control is not None else classify(text)
-        intent = 'forget' if forget else ('control' if control is not None or natural_control is not None else ('draft' if classification == 'draft' else 'conversation'))
-        result = self.store.ingress(key, text, intent, goal_id, control, request=original_request,
-                                  classification=classification, classifier_version=CLASSIFIER_VERSION,
-                                  natural_control=natural_control)
-        if lower.startswith('remember ') or '覚えて' in text:
-            self.store.note('memory:' + key, text, [result['record_id']])
-        if result['goal']:
+        if not isinstance(text, str) or not text.strip() or len(text) > 12000:
+            raise ValueError('message exceeds input bound or is empty')
+        # Admission and Future publication share a lock; concurrent retries cannot
+        # launch duplicate inference. Explicit controls never queue behind a model.
+        with self._reply_lock:
+            fate = self.store.operation(key) if isinstance(key, str) else {'status':'absent'}
+            if fate.get('kind') == 'ingress' and control is None and goal_id is None:
+                # Replay the accepted historical request only; do not reclassify
+                # it or run a new model against a previously spent client key.
+                result = self.store.ingress(key, text, fate['result']['intent'],
+                    request={'text':text,'goal_id':None,'control':None})
+                response = self._completed_reply(key, result)
+            elif control is not None or goal_id is not None:
+                if not isinstance(control, dict):
+                    raise ValueError('explicit target requires an explicit control')
+                intent = 'forget' if set(control) == {'source_id'} and goal_id is None else 'control'
+                result = self.store.ingress(key, text, intent, goal_id, control,
+                    request={'text':text,'goal_id':goal_id,'control':control})
+                response = self._completed_reply(key, result)
+                self._wake_after(result)
+            else:
+                result = self.store.prepare_primary(key, text)
+                if result['primary_status'] == 'pending':
+                    response = self._responses.get(key)
+                    if response is None:
+                        response = self._conversation.submit(self._run_primary, key)
+                        self._responses[key] = response
+                else:
+                    response = Future()
+                    response.set_result(self.store.stored_reply(key))
+            return dict(result, response=response)
+
+    def _completed_reply(self, key, result):
+        reply = self.store.stored_reply(key)
+        if reply is None:
+            # Historical ACK may precede its old response. Restore a host-only
+            # receipt of that outcome, never regenerate an accepted request.
+            from .classification import UNSUPPORTED_REPLY
+            content = (UNSUPPORTED_REPLY if result.get('classification') == 'unsupported' else
+                       'この入力は受け付け済みです。現在の作業欄を確認してください。 / Input already accepted; see current work.')
+            reply = self.store.record(reply_key(key), 'assistant', content)
+        response = Future()
+        response.set_result(reply)
+        return response
+
+    def _wake_after(self, result):
+        if result.get('goal') or result.get('intent') == 'forget':
             self.idle.clear()
             self._wake.set()
-        with self._reply_lock:
-            response = self._responses.get(key)
-            if response is None:
-                response = self._conversation.submit(self._respond, key, text, result)
-                self._responses[key] = response
-        return dict(result, response=response)
 
-    def _respond(self, key, text, ingress):
-        stored = self.store.stored_reply(key)
-        if stored is not None:
-            return stored
-        context = self.store.context()
-        if ingress['intent']=='forget':
-            content = 'Reference stopped. Raw history remains available in Inspect.'
-        elif ingress['goal']:
-            content = 'Work recorded. Current canonical state: ' + self.store.get_goal(ingress['goal']['id'])['state'] + '.'
-        elif ingress.get('classification') == 'unsupported':
-            content = UNSUPPORTED_REPLY
-        elif any(term in text.lower() for term in ('what happened','previous thing','work status','進捗','どうなった')) and self._latest_goal():
-            current=self.store.get_goal(self._latest_goal())
-            content='Current work is '+current['state']+'.'+(' Reason: '+current['reason'] if current['reason'] else '')
-        else:
-            try:
-                canonical=[{k:g[k] for k in ('id','state','revision','reason')} for g in self.store.inspect()['goals'][-5:]]
-                content = self.provider.complete('CONVERSATION\n' + text + '\nRelevant sanitized context: ' + json.dumps([(r['role'],r['content']) for r in context['records']] + [('note',n['content']) for n in context['notes']], ensure_ascii=False)+'\nCurrent canonical work (overrides old conversation summaries): '+json.dumps(canonical))
-            except Exception as error:
-                content = 'Conversation provider unavailable: ' + type(error).__name__ + '. Your message remains recorded.'
+    def _run_primary(self, key):
         try:
-            return self.store.record('response:' + key, 'assistant', content, context['manifest'])
-        except StaleResult:
-            return self.store.record('response:' + key, 'assistant', 'Response withheld because its source references changed.')
+            context = self.store.primary_context(key)
+            self._fault('primary.before_model')
+            raw = self.provider.complete(primary_prompt(context))
+            self._fault('primary.after_model_before_apply')
+            proposal = decode_primary(raw)
+        except Exception:
+            result = self.store.finish_primary(key, error='provider_or_proposal_unavailable')
+        else:
+            result = self.store.finish_primary(key, proposal)
+        self._wake_after(result)
+        return self.store.stored_reply(key)
 
     def _apply(self, order, result):
         if not isinstance(result, dict) or result.get('goal_id') != order.goal_id or result.get('attempt_id') != order.attempt_id or result.get('epoch') != order.epoch:

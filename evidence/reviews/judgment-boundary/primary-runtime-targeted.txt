@@ -1,0 +1,86 @@
+test_admission_is_durable_and_same_key_conflicts_before_any_effect (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_answer_uses_original_ingress_and_binds_nonlatest_question_once (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_cancel_and_forget_between_prepare_and_finish_reject_stale_result (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_closed_json_rejects_duplicates_authority_and_paraphrased_answer (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_concurrent_admission_and_finish_publish_one_effect_and_reply (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_correct_retains_fixed_criteria_and_source_bindings (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_diagnostic_wait_not_in_snapshot_and_overflow_has_no_partial_target_set (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_draft_commit_reply_and_replay_are_one_atomic_outcome (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_expected_mid_effect_failure_rolls_back_before_rejection_is_saved (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_none_and_fabricated_target_never_fall_back_to_latest_goal (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_primary_snapshot_has_no_content_and_long_keys_have_bounded_internal_keys (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_real_process_deaths_do_not_leave_partial_effects_or_replay_inference (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_recovery_interruption_and_provider_failure_are_terminal_without_retry (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_remember_keeps_original_source_and_forget_stops_reference_without_purge (tests.test_primary.PrimaryBoundaryTests) ... ok
+test_concurrent_same_key_is_one_inference_and_immediate_explicit_cancel (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_every_ordinary_input_uses_one_primary_call_without_regex_preemption (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_natural_answer_targets_nonlatest_question_with_original_text (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_primary_clarifies_then_hands_context_to_one_expert (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_provider_failure_is_visible_and_same_key_never_retries_or_creates_goal (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_conversation_independent_of_slow_attempt_and_controls_immediate (tests.test_runtime.RuntimeTests) ... ok
+test_default_mock_local_draft_end_to_end (tests.test_runtime.RuntimeTests) ... ok
+test_forgotten_source_excludes_transitive_derived_responses (tests.test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (tests.test_runtime.RuntimeTests) ... ok
+test_normal_conversation_and_explicit_limits_do_not_create_goals (tests.test_runtime.RuntimeTests) ... ok
+test_second_host_fails_fast_and_recovery_runs_only_at_startup (tests.test_runtime.RuntimeTests) ... ok
+test_secret_canary_is_absent_from_captured_provider_prompts (tests.test_runtime.RuntimeTests) ... ok
+test_status_uses_canonical_state_instead_of_old_handoff_memory (tests.test_runtime.RuntimeTests) ... ok
+test_workorder_has_no_store_path_credentials_or_mutation (tests.test_runtime.RuntimeTests) ... ok
+test_fabricated_source_and_ineligible_preview_never_complete (tests.test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_malformed_provider_json_is_visible_terminal_error_without_retry (tests.test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_mock_draft_transport_is_json_but_saved_bytes_unchanged (tests.test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_restart_bound_answer_enters_executor_and_completes_same_goal (tests.test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_two_partial_answers_end_in_one_incomplete_preview (tests.test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_untrusted_executor_cannot_bypass_closed_proposal_gate (tests.test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_template_intake (unittest.loader._FailedTest) ... ERROR
+test_correction_uses_new_revision_eligibility (tests.test_template_boundary.TemplateBoundaryTests) ... ok
+test_defensive_complete_gate_and_historical_replay (tests.test_template_boundary.TemplateBoundaryTests) ... ok
+test_eligible_markers_reject_before_bytes_then_preview_remains_valid (tests.test_template_boundary.TemplateBoundaryTests) ... ok
+test_filled_template_and_noneligible_literal_braces_are_unchanged (tests.test_template_boundary.TemplateBoundaryTests) ... ok
+test_runtime_complete_markers_end_visible_without_completion (tests.test_template_boundary.TemplateBoundaryTests) ... ERROR
+test_first_heldout_failures_remain_regression_cases (tests.test_ingress_classification.IngressClassificationTests) ... ok
+test_frozen_corpus_creates_only_requested_local_goals (tests.test_ingress_classification.IngressClassificationTests) ... ok
+test_ingress_fault_does_not_leave_classification_or_partial_work (tests.test_ingress_classification.IngressClassificationTests) ... ok
+test_persisted_classification_dominates_new_grammar_after_reply_gap (tests.test_ingress_classification.IngressClassificationTests) ... ok
+test_second_heldout_safe_misses_remain_regression_cases (tests.test_ingress_classification.IngressClassificationTests) ... ok
+test_typography_report_and_unknown_compound_are_conservative (tests.test_ingress_classification.IngressClassificationTests) ... ok
+test_unsupported_reply_replayed_without_provider_or_work (tests.test_ingress_classification.IngressClassificationTests) ... ok
+test_clock_rewind_cannot_extend_proof_and_status_never_calls_provider (tests.test_native.BoundedNativeTests) ... ok
+test_concurrent_call_budget_counts_failures_and_never_runs_over_limit (tests.test_native.BoundedNativeTests) ... ok
+test_expiry_blocks_auth_subprocess_and_status_is_read_only (tests.test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (tests.test_native.BoundedNativeTests) ... ok
+test_expiry_during_auth_consumes_slot_without_generation (tests.test_native.BoundedNativeTests) ... ok
+test_malformed_proof_never_authorizes (tests.test_native.BoundedNativeTests) ... ok
+test_proof_consumption_is_canonical_and_rejects_unsafe_files (tests.test_native.BoundedNativeTests) ... ok
+test_shutdown_during_auth_kills_owned_child_and_consumes_slot (tests.test_native.BoundedNativeTests) ... ok
+test_wall_jump_and_sleep_expire_without_monotonic_progress (tests.test_native.BoundedNativeTests) ... ok
+test_bounded_text_and_failure_and_timeout (tests.test_native.NativeTests) ... ok
+test_env_keeps_os_identity_but_never_inherits_api_tokens (tests.test_native.NativeTests) ... ok
+test_expired_or_unverified_route_cannot_run (tests.test_native.NativeTests) ... ok
+test_native_cli_contract_has_no_tools_mcp_hooks_fallback_or_persistence (tests.test_native.NativeTests) ... ok
+test_parent_sigkill_stops_provider_group (tests.test_native.NativeTests) ... ok
+
+======================================================================
+ERROR: test_template_intake (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_template_intake
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_template_intake.py", line 7, in <module>
+    from test_runtime_envelope import ScriptedProvider
+ModuleNotFoundError: No module named 'test_runtime_envelope'
+
+
+======================================================================
+ERROR: test_runtime_complete_markers_end_visible_without_completion (tests.test_template_boundary.TemplateBoundaryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_template_boundary.py", line 21, in test_runtime_complete_markers_end_visible_without_completion
+    goal_id = settled(runtime, 'template','Make a draft template with {{date}}')['goal']['id']
+TypeError: 'NoneType' object is not subscriptable
+
+----------------------------------------------------------------------
+Ran 61 tests in 2.447s
+
+FAILED (errors=2)

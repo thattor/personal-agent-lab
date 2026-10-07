@@ -12,6 +12,7 @@ import time
 from pathlib import Path
 
 from pal.native import AccessProof, NativeClaude, native_environment
+from pal.runtime import Runtime
 from scripts.live_runner import MatrixRunner
 
 
@@ -69,6 +70,8 @@ class AuditedNative(NativeClaude):
 
 
 def build_live(root, directory, proof_path, candidate):
+    if Runtime.PRIMARY_PROTOCOL != 'legacy':
+        raise ValueError('historical P002 operator is incompatible with model-led Primary; use a separately frozen D029 run')
     root = Path(root).resolve()
     directory = Path(directory).resolve()
     # Preserve every run. Do not recover/resume an earlier directory.

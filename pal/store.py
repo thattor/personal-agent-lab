@@ -48,6 +48,10 @@ def uid():
     return uuid.uuid4().hex
 
 
+def reply_key(client_key):
+    return 'host-reply:' + hashlib.sha256(client_key.encode()).hexdigest()
+
+
 _SCHEMA = '''
 CREATE TABLE IF NOT EXISTS records (
  seq INTEGER PRIMARY KEY AUTOINCREMENT, id TEXT UNIQUE NOT NULL, role TEXT NOT NULL,
@@ -552,6 +556,8 @@ class Store:
         if old is not None:
             return old
         goal = self._goal(db, goal_id)
+        if action != 'input' and epoch is not None and goal['epoch'] != epoch:
+            raise InvalidTransition('stale control epoch')
         if action == 'cancel' and goal['state'] not in ('completed', 'cancelled'):
             self._fence(db, goal_id)
             db.execute("UPDATE goals SET state='cancelled',reason='user_cancelled' WHERE id=?", (goal_id,))
@@ -976,7 +982,7 @@ class Store:
         if not choices:
             return {'goal': None, 'control_status': 'no_target'}
         if len(choices) == 1:
-            goal = self._control(db, 'action:' + key, choices[0]['goal_id'], action,
+            goal = self._control(db, 'ingress-action:' + hashlib.sha256(key.encode()).hexdigest(), choices[0]['goal_id'], action,
                                  text=proposal.get('text'), source_record_id=record_id)
             return {'goal': goal, 'control_status': 'applied'}
         if len(choices) > 3:
@@ -1006,7 +1012,7 @@ class Store:
             status = 'stale'
         applied = None
         if status == 'applied':
-            applied = self._control(db, 'action:' + key, chosen['goal_id'], row['action'],
+            applied = self._control(db, 'ingress-action:' + hashlib.sha256(key.encode()).hexdigest(), chosen['goal_id'], row['action'],
                                     text=proposal['text'], source_record_id=row['source_record_id'])
         db.execute('UPDATE control_selections SET consumed_by=? WHERE selection_id=?',
                    (key, row['selection_id']))
@@ -1035,11 +1041,11 @@ class Store:
             goal = None
             outcome = None
             if intent == 'draft':
-                goal = self._create_goal(db, 'handoff:' + key, content, {'kind': 'local_draft', 'max_bytes': 4096}, [record_id])
+                goal = self._create_goal(db, 'ingress-goal:' + hashlib.sha256(key.encode()).hexdigest(), content, {'kind': 'local_draft', 'max_bytes': 4096}, [record_id])
             elif intent == 'forget':
                 if not isinstance(control,dict) or set(control) != {'source_id'}:
                     raise ValueError('forget requires source ID')
-                self._forget(db, 'action:' + key, control['source_id'])
+                self._forget(db, 'ingress-action:' + hashlib.sha256(key.encode()).hexdigest(), control['source_id'])
             elif intent == 'control':
                 if natural_control is not None:
                     if control is not None or goal_id is not None or not isinstance(natural_control, dict) or natural_control.get('action') not in ('cancel', 'correct'):
@@ -1057,13 +1063,13 @@ class Store:
                 else:
                     if not set(control) <= {'action', 'text', 'criteria', 'question_id', 'epoch'}:
                         raise ValueError('unsupported control fields')
-                    goal = self._control(db, 'action:' + key, goal_id,
+                    goal = self._control(db, 'ingress-action:' + hashlib.sha256(key.encode()).hexdigest(), goal_id,
                                          source_record_id=record_id, **control)
             result = {'record_id': record_id, 'goal': goal, 'intent': intent}
             if outcome is not None:
                 result.update(outcome)
                 # No copied labels/specifications in replayable reply text.
-                self._record(db, 'response:' + key, 'assistant',
+                self._record(db, reply_key(key), 'assistant',
                              'Target control: ' + outcome['control_status'] + '. / ' + {
                                  'no_target': '対象の作業が見つかりません。',
                                  'applied': '対象の作業に操作を適用しました。',
@@ -1078,6 +1084,9 @@ class Store:
                 result.update(classification=classification, classifier_version=classifier_version)
             if intent in ('control','forget'):
                 result['action']='forget' if intent=='forget' else (natural_control['action'] if natural_control is not None else control['action'])
+                if outcome is None:
+                    self._record(db, reply_key(key), 'assistant',
+                        '参照を停止しました。 / Reference stopped.' if intent == 'forget' else '操作を受け付けました。 / Control accepted.')
             return self._remember(db, key, 'ingress', digest, result)
 
     def prepare_primary(self, key, text):
@@ -1104,6 +1113,7 @@ class Store:
             overflow = len(goals) > 10
             goals = [] if overflow else goals
             visible_goals, questions = [], []
+            recent_work = []
             manifest = list(context['manifest'])
             for goal in goals:
                 revision = db.execute('SELECT sources FROM revisions WHERE goal_id=? AND revision=?', (goal['id'], goal['revision'])).fetchone()
@@ -1120,8 +1130,14 @@ class Store:
                         if self._usable(db, issued_sources):
                             questions.append({field: question[field] for field in ('id','goal_id','revision','epoch','round')})
                             manifest.extend(issued_sources)
+            for goal in db.execute('SELECT id,state,revision,epoch FROM goals ORDER BY seq DESC LIMIT 5'):
+                revision = db.execute('SELECT sources FROM revisions WHERE goal_id=? AND revision=?', (goal['id'], goal['revision'])).fetchone()
+                sources = json.loads(revision['sources'])
+                if self._usable(db, sources):
+                    recent_work.append(dict(goal))
+                    manifest.extend(sources)
             snapshot = {'manifest': list(dict.fromkeys(manifest)), 'goals': visible_goals,
-                        'questions': questions, 'goals_overflow': overflow}
+                        'questions': questions, 'goals_overflow': overflow, 'recent_work':recent_work}
             db.execute("INSERT INTO primary_turns VALUES (?,?,?,'pending',?,NULL)",
                        (key, digest, record_id, encode(snapshot)))
             return {'record_id': record_id, 'goal': None, 'intent': 'conversation', 'primary_status': 'pending'}
@@ -1145,9 +1161,12 @@ class Store:
             records.sort(key=lambda r: r['seq'])
             goals = []
             for bound in snapshot['goals']:
-                self._primary_target(db, snapshot, bound['id'])
                 revision = db.execute('SELECT specification,sources FROM revisions WHERE goal_id=? AND revision=?', (bound['id'], bound['revision'])).fetchone()
                 goals.append(dict(bound, specification=revision['specification'], source_ids=json.loads(revision['sources'])))
+            recent_work = []
+            for bound in snapshot.get('recent_work', []):
+                revision = db.execute('SELECT specification FROM revisions WHERE goal_id=? AND revision=?', (bound['id'],bound['revision'])).fetchone()
+                recent_work.append(dict(bound, specification=revision['specification']))
             questions = []
             for bound in snapshot['questions']:
                 row = db.execute('SELECT prompt,status FROM questions WHERE id=?', (bound['id'],)).fetchone()
@@ -1155,7 +1174,7 @@ class Store:
                     raise StaleResult('Primary question unavailable')
                 questions.append(dict(bound, prompt=row['prompt']))
             return dict(snapshot, records=records, notes=notes, goals=goals,
-                        questions=questions, input_record_id=turn['record_id'])
+                        questions=questions, recent_work=recent_work, input_record_id=turn['record_id'])
 
     def _primary_target(self, db, snapshot, goal_id):
         bound = next((g for g in snapshot['goals'] if g['id'] == goal_id), None)
@@ -1276,6 +1295,8 @@ class Store:
                     return dict(row)
                 return {'id':outcome['response_id'], 'role':'assistant', 'content':'参照を停止した情報を含むため、この応答は表示できません。 / Reply unavailable after reference stop.'}
             row = db.execute("SELECT result FROM dedupe WHERE key=? AND kind='record'", ('response:' + client_key,)).fetchone()
+            if row is None:
+                row = db.execute("SELECT result FROM dedupe WHERE key=? AND kind='record'", (reply_key(client_key),)).fetchone()
             return json.loads(row['result']) if row else None
 
     def operation(self, key):

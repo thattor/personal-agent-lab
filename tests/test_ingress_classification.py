@@ -1,3 +1,4 @@
+from tests.helpers import settled
 import json
 import tempfile
 import unittest
@@ -49,10 +50,10 @@ class IngressClassificationTests(unittest.TestCase):
             old = store.ingress('gap', text, request=original,
                                 classification='unsupported', classifier_version=VERSION)
             self.assertEqual(old['classification'], 'unsupported')
-            with patch('pal.runtime.classify', return_value='draft'):
+            with patch.object(MockProvider, 'complete', side_effect=AssertionError('historical replay must not infer')):
                 runtime = Runtime(path)
                 try:
-                    result = runtime.submit('gap', text)
+                    result = settled(runtime, 'gap', text)
                     self.assertIsNone(result['goal'])
                     self.assertEqual(result['classifier_version'], VERSION)
                     self.assertEqual(result['response'].result(timeout=2)['content'], UNSUPPORTED_REPLY)
@@ -90,13 +91,13 @@ class IngressClassificationTests(unittest.TestCase):
             with self.subTest(case=case['id']), tempfile.TemporaryDirectory() as temp:
                 runtime = Runtime(Path(temp) / 'state.db')
                 try:
-                    result = runtime.submit(case['id'], case['text'])
+                    result = settled(runtime, case['id'], case['text'])
                     reply = result['response'].result(timeout=2)
                     goals = runtime.store.inspect()['goals']
                     if case['expected'] == 'draft':
                         self.assertEqual(len(goals), 1)
                         self.assertEqual(result['goal']['id'], goals[0]['id'])
-                        duplicate = runtime.submit(case['id'], case['text'])
+                        duplicate = settled(runtime, case['id'], case['text'])
                         self.assertEqual(duplicate['goal']['id'], goals[0]['id'])
                         self.assertEqual(len(runtime.store.inspect()['goals']), 1)
                     else:
@@ -110,21 +111,25 @@ class IngressClassificationTests(unittest.TestCase):
 
     def test_unsupported_reply_replayed_without_provider_or_work(self):
         class NoProvider(MockProvider):
+            calls=0
             def complete(self, prompt):
-                raise AssertionError('unsupported request must not call provider')
+                self.calls+=1
+                if self.calls>1: raise AssertionError('replay must not call provider')
+                return super().complete(prompt)
+        provider=NoProvider()
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / 'state.db'
             text = 'Make a draft invitation and send it.'
-            runtime = Runtime(path, provider=NoProvider())
+            runtime = Runtime(path, provider=provider)
             try:
-                first = runtime.submit('send', text)['response'].result(timeout=2)
+                first = settled(runtime, 'send', text)['response'].result(timeout=2)
                 self.assertIn('cannot send', first['content'])
                 self.assertEqual(runtime.store.inspect()['goals'], [])
             finally:
                 runtime.close()
-            runtime = Runtime(path, provider=NoProvider())
+            runtime = Runtime(path, provider=provider)
             try:
-                second = runtime.submit('send', text)['response'].result(timeout=2)
+                second = settled(runtime, 'send', text)['response'].result(timeout=2)
                 self.assertEqual(first['id'], second['id'])
                 self.assertEqual(runtime.store.inspect()['goals'], [])
             finally:

@@ -42,6 +42,8 @@ class MatrixRunner:
         if scope not in ('scripted','live_synthetic'):
             raise ValueError('unsupported evidence scope')
         if scope=='live_synthetic':
+            if Runtime.PRIMARY_PROTOCOL != 'legacy':
+                raise ValueError('historical P002 matrix cannot qualify model-led Primary')
             # Only the operator-created audited owner may create live records.
             from scripts.live_operator import AuditedNative
             if (type(provider) is not AuditedNative or not provider._operator_ready

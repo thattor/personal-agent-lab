@@ -26,14 +26,14 @@ vm.createContext(context);vm.runInContext(fs.readFileSync('pal/web/app.js','utf8
 function all(root,tag){return [...(root.tag===tag?[root]:[]),...root.children.flatMap(c=>all(c,tag))];}
 (async()=>{
  await context.refresh();
- let forms=all(elements.work,'form');assert.equal(forms.length,5,'all waiting questions, not last3; no phantom form');
+ let forms=all(elements.work,'form').filter(f=>f.className==='answer-form');assert.equal(forms.length,5,'all waiting questions, not last3; no phantom form');
  let input=all(forms[0],'textarea')[0];input.value='Saturday';input.listeners.input();
- context.render(state);forms=all(elements.work,'form');input=all(forms[0],'textarea')[0];
+ context.render(state);forms=all(elements.work,'form').filter(f=>f.className==='answer-form');input=all(forms[0],'textarea')[0];
  assert.equal(input.value,'Saturday','polling preserves answer draft');
  await forms[0].listeners.submit({preventDefault(){}});
  assert.equal(posts.length,1);
  assert.equal(posts[0].goal_id,'g0');assert.equal(posts[0].control.question_id,'q0');assert.equal(posts[0].control.epoch,2);assert.equal(posts[0].control.text,'Saturday');
- state.questions[0].epoch=99;context.render(state);assert.equal(all(elements.work,'form').length,4,'stale binding has no answer form');
+ state.questions[0].epoch=99;context.render(state);assert.equal(all(elements.work,'form').filter(f=>f.className==='answer-form').length,4,'stale binding has no answer form');
  const link=context.artifactLink('artifact');await new Promise(resolve=>setImmediate(resolve));
  assert.match(link.textContent,/preview|未完成/i);assert.match(link.textContent,/stopped|参照停止/i);
  console.log('PASS: shipped UI renders five bound questions, tolerates diagnostic wait, preserves drafts, posts exact binding and labels stale preview.');

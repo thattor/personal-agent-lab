@@ -447,3 +447,8 @@ not activate incomplete model routing; all replacement actions/explicit controls
 be ready before switching Runtime. Review's claim of no shortcut test coverage applied
 only to its supplied subset, not the full suite, and is not adopted. Existing named-case
 behavior is retested. No new user approval required for these implementation choices.
+
+
+D029 integration reconciliation C029: asynchronous admission requires clients/tests to await operation fate instead of assuming a Goal exists at HTTP202. This is admission timing, not lower acceptance. Explicit controls commit host reply in their existing transaction with bounded digest keys; stale optional epoch rejects. Recent-work metadata provides status context without granting target authority. Frozen target snapshots may become stale during inference; application validates selected target, while unrelated work progress does not prevent ordinary conversation. Historical accepted ingress replay is preserved without new classification/inference. Mock-only lexical fixtures do not qualify reasoning semantics.
+
+Independent compatibility review found legacy P002 one-DRAFT-per-input permit incompatible with PRIMARY→DRAFT. Adopt fail-closed protocol guard before proof consumption, retain old matrices/budgets/evidence and keep old scripted tests scoped to Expert/observer only. New actual harness needs a separately reviewed/frozen contract; no silent call-budget increase or old PASS transfer. Independent integration audit found cached terminal Future bypassing source-stop reply projection; terminal replay now resolves a fresh guarded reply and never regenerates. This is a boundary correction within the reviewed design, not a new human approval gate.

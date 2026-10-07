@@ -1,0 +1,10 @@
+test_concurrent_same_key_is_one_inference_and_immediate_explicit_cancel (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_every_ordinary_input_uses_one_primary_call_without_regex_preemption (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_natural_answer_targets_nonlatest_question_with_original_text (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_primary_clarifies_then_hands_context_to_one_expert (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+test_provider_failure_is_visible_and_same_key_never_retries_or_creates_goal (tests.test_primary_runtime.PrimaryRuntimeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.114s
+
+OK
