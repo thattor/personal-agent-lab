@@ -1,0 +1,15 @@
+{
+  "judgment_id": "HR-INPUT-001",
+  "target": "P-003-v1",
+  "commit": "5ad9919",
+  "sha256": "79859419dbf29b3579cfe6e2ac3452c64246d30c71bf74f79a507c4e63258bfd",
+  "sent_at": 1791369771.5786262,
+  "thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "thread_title": "人間の対応が必要なものチャット",
+  "handoff_tool_confirmed": true,
+  "human_response": null,
+  "status": "awaiting_direct_human_decision",
+  "issue_evidence": "https://github.com/thattor/personal-agent-lab/issues/5#issuecomment-6036234846",
+  "dependent_work": "bare-answer grammar and associated release acceptance",
+  "independent_work": "reviewed bounded live harness/tests, candidate freeze and explicit question-form validation"
+}
