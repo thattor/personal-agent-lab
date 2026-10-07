@@ -137,3 +137,27 @@ C034 [actual production UI/Expert proof](ui-production-run/README.md) completed 
 fixed cases on a1ba755/product1a14de9; six official slots, four synthetic UI inputs,
 two completed artifacts with matched receipts. Full213 PASS18.510s. Actual human
 usefulness and final release audit remain; Qwen3.8-27B still unqualified.
+
+
+## C038 — general drafting before optional personalization
+
+Old product1a14de9 fails fixed40 after R02/R10 unnecessary clarification. R03–08 first
+attempts pass10 turns; R09 passes2. Original failed/stopped evidence is immutable.
+Opus76.764s adopts only the Primary asking-threshold correction before implementation.
+Native/Expert, validator and host are unchanged; source audit records the exact delta.
+
+SWE-2 High Free712.120s endorses per-cohort immutable product freeze, exact manifest
+checks before proof consumption, version-bound journal verification and isolated real-
+hash scripted tests. New product content identity7c284733… was frozen before the new
+independent12 were opened. Corpus author independence/limitations and timestamps are in
+primary-clarification-heldout-freeze.json and clarification-heldout-disclosure.json.
+No product/prompt edit follows disclosure.
+
+Tests:25 current host/runtime PASS1.425s;48 qualification PASS2.894s;247 full PASS20.114s.
+All six historical hash chains verify without rewriting; pre-cohort schema compatibility
+and missing-field binding findings were corrected and recorded. See clarification-*
+review/test/audit files. No official revised-generation or human/Qwen PASS yet.
+
+Next: four explicit new cohort names use new freeze, first attempt only at fixed
+16/16/24/16 caps; old cohort names refuse changed product. Actual UI/Expert named cases
+and one version-bound whole-flow human usefulness remain release requirements.

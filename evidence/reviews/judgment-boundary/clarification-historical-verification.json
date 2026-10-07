@@ -1,0 +1,61 @@
+{
+  "initial_verifier_regression": "First historical run predates cohort metadata and was rejected; original hash-bound pre-cohort compatibility restored, no journal changed.",
+  "runs": {
+    "primary-first-run": {
+      "records": 75,
+      "completed": false,
+      "judged_turns": 5,
+      "skipped_turns": 0,
+      "covered_cases": 0,
+      "scope": "live_synthetic",
+      "human_evaluation": false
+    },
+    "primary-second-run": {
+      "records": 159,
+      "completed": false,
+      "judged_turns": 12,
+      "skipped_turns": 0,
+      "covered_cases": 0,
+      "scope": "live_synthetic",
+      "human_evaluation": false
+    },
+    "primary-third-run": {
+      "records": 154,
+      "completed": true,
+      "judged_turns": 12,
+      "skipped_turns": 0,
+      "covered_cases": 6,
+      "scope": "live_synthetic",
+      "human_evaluation": false
+    },
+    "recognition-run-r01-r08": {
+      "records": 35,
+      "completed": false,
+      "judged_turns": 2,
+      "skipped_turns": 0,
+      "covered_cases": 0,
+      "scope": "live_synthetic",
+      "human_evaluation": false
+    },
+    "recognition-run-r03-r08": {
+      "records": 130,
+      "completed": true,
+      "judged_turns": 10,
+      "skipped_turns": 0,
+      "covered_cases": 6,
+      "scope": "live_synthetic",
+      "human_evaluation": false
+    },
+    "recognition-run-r09-r16": {
+      "records": 47,
+      "completed": false,
+      "judged_turns": 3,
+      "skipped_turns": 0,
+      "covered_cases": 0,
+      "scope": "live_synthetic",
+      "human_evaluation": false
+    }
+  },
+  "read_only": true,
+  "model_calls": 0
+}

@@ -1,0 +1,1 @@
+{"reply":"Happy to draft that. What's the announcement about, and who's it for (team, customers, friends)? Share any key details like dates or names you want included, and I'll write it up.","action":{"kind":"none"}}

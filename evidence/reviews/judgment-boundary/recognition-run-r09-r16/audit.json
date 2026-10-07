@@ -1,0 +1,100 @@
+{
+  "verification": {
+    "records": 47,
+    "completed": false,
+    "judged_turns": 3,
+    "skipped_turns": 0,
+    "covered_cases": 0,
+    "scope": "live_synthetic",
+    "human_evaluation": false
+  },
+  "candidate": "5073ceb68faf6bf492baf949db5cd47f1c3f21c9",
+  "product_candidate": "1a14de986de2756ffea83c2671e506a32cccfdf6",
+  "status": "STOPPED_ON_R10_MISS",
+  "passed_cases": [
+    "R09"
+  ],
+  "misses": [
+    "R10"
+  ],
+  "not_run_cases": [
+    "R11",
+    "R12",
+    "R13",
+    "R14",
+    "R15",
+    "R16"
+  ],
+  "actual_attempts": 3,
+  "max_attempts": 16,
+  "native_supervisor_count": 6,
+  "native_returncodes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "process_exit_code": 0,
+  "databases": [
+    {
+      "file": "R09.sqlite",
+      "integrity": "ok",
+      "goals": 1,
+      "pending_primary": 0,
+      "artifacts": 0
+    },
+    {
+      "file": "R10.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "pending_primary": 0,
+      "artifacts": 0
+    },
+    {
+      "file": "R11.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "pending_primary": 0,
+      "artifacts": 0
+    },
+    {
+      "file": "R12.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "pending_primary": 0,
+      "artifacts": 0
+    },
+    {
+      "file": "R13.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "pending_primary": 0,
+      "artifacts": 0
+    },
+    {
+      "file": "R14.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "pending_primary": 0,
+      "artifacts": 0
+    },
+    {
+      "file": "R15.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "pending_primary": 0,
+      "artifacts": 0
+    },
+    {
+      "file": "R16.sqlite",
+      "integrity": "ok",
+      "goals": 0,
+      "pending_primary": 0,
+      "artifacts": 0
+    }
+  ],
+  "human_evaluation": false,
+  "qwen_qualification": false
+}

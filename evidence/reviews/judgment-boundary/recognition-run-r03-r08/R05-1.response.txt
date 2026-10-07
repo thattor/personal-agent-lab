@@ -1,0 +1,1 @@
+{"reply":"Happy to draft it. What's the invitation for, and who's it going to? Include any details you want in it, such as the date, time, place, or RSVP, and I'll keep it short.","action":{"kind":"none"}}

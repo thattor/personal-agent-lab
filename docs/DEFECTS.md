@@ -295,3 +295,38 @@ raised PermissionError at socket.bind, with no assertion failure. Preserve
 recognition-suffix-full.txt as environment-limited. Same source under the approved
 local-HTTP test execution scope passes234 tests in21.970s. Use that scope for later
 full suites; do not edit product code, omit HTTP tests or call the restricted run green.
+
+
+## C038 — optional personalization blocked a sufficient draft request
+
+Observed English R02 and Japanese R10 on unchanged product1a14de9 both return a
+recipient/contribution question without creating work; frozen generic-request oracles
+require delegation. Original first attempts and stopped runs remain in judgment-boundary
+recognition-run-r01-r08/ and recognition-run-r09-r16/. Two misses fail15-of-16.
+Opus identifies the ambiguous threshold: optional details do materially change wording,
+and the explicit-generic cue can read as necessary. This is a supported contract-wording
+diagnosis, not proof of statistical model behavior from two translated cases.
+
+Correction adopted before implementation: change only the Primary threshold to useful
+general output vs essential unavailable purpose/user-owned choice; carry unspecified
+values explicitly and preserve no-invention/nonrequest/authority rules. Existing native
+Expert instructions remain unchanged. Prevent recurrence by measuring unseen clear-purpose
+requests, genuinely missing choices and nonrequests fixed before edit, alongside fixed40
+regression; no regex patch or changed expected result. Current25 host/runtime tests PASS;
+actual revised-model behavior and affected artifacts remain NOT_RUN until bounded runs.
+
+
+C038 qualification implementation review also found subset-only/empty product freeze
+acceptance and validation after one-use proof consumption. Exact product-set comparison
+and pre-proof/pre-owner-claim validation close these measurement holes; old manifests
+remain unchanged. The first verifier update rejected the original pre-cohort journal
+because it lacks even cohort metadata. Readback identified its original corpus/manifest
+hashes; exact hash-bound legacy validation restored all six historical runs without
+rewriting them. An independent code review also caught paired missing fields comparing
+None == None in new bindings; required hash/identity presence and fixture binding now
+reject these. Focused regressions and full suite must pass before any actual run.
+
+A standalone py_compile command hit macOS's configured bytecode-cache write boundary
+outside this checkout. AST parsing succeeded, and subsequent checks use python3 -B; no
+source repair or broader cache permission is needed. This was tooling environment, not
+a syntax/product failure.

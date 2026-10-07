@@ -276,3 +276,26 @@ latest readback has no actual owner answer, no repeated question. Next: commit/p
 suffix/harness, fresh official proof and first-attempt R03–08 max10, then precommitted
 R09–16/N01–24 if no further miss. R02 consumes the only allowed request miss. No schedule,
 Qwen qualification, proof renewal, canonical repair or old runtime restart.
+
+
+## C038 — diagnose repeated unnecessary clarification and repair the product
+
+Unit goal: a known draft purpose should lead to useful reversible preparation; ask only
+for essential unknowns. Old candidate1a14de9 fails frozen recognition40 after R02/R10
+misses; R03–08/R09 first attempts pass, rest remain unexecuted. Full failure evidence
+retained. Opus76.764s agrees Primary-only threshold correction before adoption; no
+native/Expert/host/security or acceptance change. New independent12 fixed before edit,
+withheld until candidate freeze. Prompt changed;25 host/runtime tests PASS1.425s, no
+semantic PASS yet. SWE Free version-anchor review in progress before harness change.
+
+Contributes to Issue12/Stable1, does not finish them. Plan scope unchanged; no human
+technical decision is needed. Exact next: reviewed immutable version binding, new source
+freeze, full suite/commit/push, once-only original40 + independent12 and affected real
+UI/Expert evidence; one updated whole-flow human evaluation and final release audit.
+
+C038 green verification: official SWE712.120s reviewed version binding before adoption;
+48 focused tests PASS2.894s, full247 PASS20.114s. New content-addressed product freeze
+7c284733… precedes heldout disclosure; native/validator/host unchanged. Old manifest and
+all six historical journals verify unchanged. Only product prompt and test/evidence
+version selection changed. Exact next is clean pushed new-candidate once-only regression
+and affected actual UI/Expert evidence; no current semantic PASS claimed yet.

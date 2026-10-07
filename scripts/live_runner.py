@@ -20,12 +20,25 @@ class RunRejected(RuntimeError):
     pass
 
 
+def product_rel_paths(root):
+    root = Path(root).resolve()
+    if (root/'pal').is_symlink():
+        raise RunRejected('product source is a symlink')
+    paths = set(root.joinpath('pal').rglob('*.py')) | set(root.joinpath('pal/web').rglob('*'))
+    files = set()
+    for path in paths:
+        if path.is_symlink() or not path.resolve().is_relative_to(root):
+            raise RunRejected('product source leaves checkout')
+        if path.is_file():
+            files.add(str(path.relative_to(root)))
+    return files
+
+
 class SourcePin:
     def __init__(self, root, matrix):
         self.root = root
         self.matrix = matrix
-        paths = sorted(set(root.joinpath('pal').rglob('*.py')) |
-                       set(root.joinpath('pal/web').rglob('*')) |
+        paths = sorted({root/p for p in product_rel_paths(root)} |
                        set(root.joinpath('scripts').glob('live_*.py')) | {matrix})
         self.hashes = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
                        for p in paths if p.is_file()}

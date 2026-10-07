@@ -1,0 +1,106 @@
+# Review: cohort→freeze version binding for the clarification candidate
+
+Verdict up front: the contract is sound and the content-addressed identity is the right answer to the self-referential SHA problem. But the *current* freeze check has three concrete holes that the contract only partially names, the ordering fix must go slightly further than stated, and the verifier needs a backward-compat rule. Details below.
+
+## 1. Holes in the current source that the contract must close
+
+**H1 — The freeze check is subset-only, and an empty manifest passes.**
+```python
+if any(digest((self.root/p).read_bytes())!=sha for p,sha in freeze['files'].items()):
+```
+This iterates *manifest keys*, never the product tree. Consequences:
+
+- `files: {}` → `any([])` is `False` → **empty manifest trivially qualifies**. Your "reject malformed/empty manifests" is not a nicety; it closes a live hole.
+- A manifest that omits `pal/backdoor.py` passes even though the shipped product differs from the frozen candidate. The check must be **exact set equality in both directions**: `set(manifest['files']) == enumerated_product_set`, where the enumeration is the same product scope `SourcePin` already uses (`pal/**/*.py` ∪ `pal/web/*` files).
+- Manifest-supplied paths are passed straight to `read_bytes()`. `'../../x'` or absolute keys would be resolved and hashed. Do the set-equality check *before any manifest-path IO* — then traversal keys are rejected as a set mismatch and you never touch a caller-supplied path. This is cheaper than per-path validation and strictly stronger.
+
+**H2 — Ordering: proof is already burned before the freeze check runs.**
+In `build_live`, `proof.consume()` executes *before* `QualificationRunner` is constructed, and the freeze check lives inside `Runner.__init__`. So today a version mismatch consumes the proof. Your fix (validate before `AccessProof.load`) is correct, but also note inside the runner: `provider._runner_claimed = True` is set **before** the freeze check, so a mismatch leaves the owner claimed. Runner order should be: `cohort_matrix` → `validate_freeze` → live provider checks/claim → `pin` → `mkdir`. Residual TOCTOU between `build_live`'s check and the runner's re-check is milliseconds and fails safe (proof burned, no evidence produced) — acceptable; don't restructure `consume` to eliminate it.
+
+**H3 — Missing/malformed freeze produces raw `FileNotFoundError`/`JSONDecodeError`/`KeyError`, not `RunRejected`.**
+"Old-cohort cannot silently choose newfreeze" will concretely mean "old freeze file absent" — that must surface as `RunRejected` before dir creation, which means wrapping the read/parse/shape checks.
+
+**H4 — Non-`str`/non-hex `files` values and missing `candidate` field.** `digest(raw) != 5` rejects correctly by accident, but validate explicitly: values are 64-char hex strings; `candidate` is a non-empty string (needed by `run.opened`).
+
+**H5 — `verify_run` doesn't know the binding.** A journal could record `cohort: 'heldout-v1'` with `freeze: <new path>` and verify cleanly. Since `run.opened` will now carry the freeze path, add a cheap independent check — with legacy tolerance, because all existing journals lack the field and old evidence is immutable:
+
+- `cohort` is a new cohort → `freeze` field required and must equal the mapped path.
+- `freeze` present with any known cohort → must equal that cohort's mapping.
+- Old cohort + no `freeze` field → accept (legacy journal).
+
+## 2. Contract points that hold up — and two that need sharpening
+
+**Old vs new evidence semantics are correct.** Binding the *cohort name* to a *freeze path* and the freeze *content* to product bytes makes cohort×product a closed Cartesian product: old name + new content fails (old freeze is immutable bytes), new name + old content fails (hash mismatch). The three `clarification-r*`/`n*` cohorts reusing old corpus files/SHAs is fine — corpus identity is the SHA, and `run.opened.cohort` disambiguates which measurement the journal belongs to. One consequence worth stating in DECISIONS: **after the prompt edit, all old-named cohorts become un-runnable forever** (their freeze can never match the tree again). That's intended closure of old measurements — not a bug — but it means `main()`'s default `heldout-v1` becomes a loud failure. Keep it; forgetting `--cohort` should fail loudly, not silently run the wrong measurement.
+
+**"Checks reconstruct the SAME selector"** — implement by deriving the freeze path from the cohort in exactly one place (the `COHORTS` table), and passing the *resolved relative path* into `QualificationPin` so `pin.check()` rebuilds with the identical selector. Do not let pin rediscover the freeze via globals. Note the un-selected freeze file is deliberately unpinned — a midrun edit to it doesn't affect this run's recorded `freeze_sha256`. Correct.
+
+**Item 6 — yes, content-addressed identity is sufficient, without self-referential git SHA.** The `files` map already *is* the identity; a derived `sha256(json.dumps(files, sort_keys=True, separators=(',',':')))` is just a compact name for it. The git binding enters evidence at run time: `--candidate` + `clean_candidate` asserts the checkout is exactly that clean commit, and the freeze check asserts the tree equals the manifest — transitively, commit X's product content = manifest content. Two requirements:
+
+- **Do not put the parent commit in `candidate`.** A bare SHA there falsely claims the parent is the measured product. Minimal honest schema: `"candidate": "content:sha256:<derived-id>"` (prefixed, can't be confused with git SHA, keeps `freeze['candidate']` single-path) plus `"base_commit": "<parent sha>"` marked informational-only (no verification — verifying ancestry adds git calls for nothing).
+- Carry `heldout_sha256: "44e3…"` and `heldout_contents_opened_before_freeze: false` in the new manifest for semantic parity — it records which corpus was closed at freeze time.
+- This enables the owner's preference: **one coherent green commit** — prompt edit + harness + generated freeze + tests — since the freeze references content, not its own commit.
+- Caveat I can't verify from supplied source: confirm `clean_candidate` actually asserts `candidate == HEAD` *and* clean tree (and pushed, if that's what the old flow established). If it only checks cleanliness, the content binding still holds but the git identity in `run.opened` is weaker — flag it in DECISIONS if so.
+
+**One mechanical trap:** changing `COHORTS` values to 3-tuples breaks `path,sha=COHORTS['recognition-r03-r08']` in the existing test. Fine since tests are being rewritten — but grep for every unpack site, don't assume it's the only one.
+
+## 3. `validate_freeze` — smallest correct shape
+
+```python
+def product_rel_paths(root):  # shared with SourcePin — single definition of "product"
+    return {str(p.relative_to(root)) for p in
+            set(root.joinpath('pal').rglob('*.py')) |
+            set(root.joinpath('pal/web').rglob('*')) if p.is_file()}
+
+def validate_freeze(root, freeze_rel):
+    try:
+        manifest = json.loads((root/freeze_rel).read_text())
+    except (OSError, ValueError):
+        raise RunRejected('product freeze unreadable')
+    files = manifest.get('files') if type(manifest) is dict else None
+    if type(files) is not dict or not files or set(files) != product_rel_paths(root):
+        raise RunRejected('product freeze file set mismatch')
+    if any(type(s) is not str or len(s) != 64 or
+           any(c not in '0123456789abcdef' for c in s) for s in files.values()):
+        raise RunRejected('malformed product freeze hash')
+    if any(digest((root/p).read_bytes()) != s for p, s in files.items()):
+        raise RunRejected('product candidate differs from pre-disclosure freeze')
+    if type(manifest.get('candidate')) is not str or not manifest['candidate'].strip():
+        raise RunRejected('product freeze lacks candidate identity')
+    return manifest
+```
+
+Set equality before hashing any manifest path kills H1 entirely — missing files, extra product files, extra manifest keys, and traversal are all one rejection. Factor `product_rel_paths` so `SourcePin` and the validator can't diverge on what "the product" is — but do **not** change what SourcePin pins (it must keep covering `scripts/live_*.py` + matrix + freeze).
+
+`run.opened` additions: `freeze` (rel path), `freeze_sha256` (reuse `self.pin.hashes[freeze_rel]` — zero extra IO), `product_identity` (= `freeze['candidate']`), `cohort_sha256` (from the table). Old manifests stay byte-identical, schema-compatible.
+
+## 4. Test-root approach — endorsed, with four guards
+
+The isolated root (copied `pal/`, needed `scripts/`, copied public fixtures, synthetic `NEW_FREEZE` written from copied content, scripted providers) is the right call and is not a bypass — `scope='scripted'` already disclaims live proof, and `QualificationRunner` taking a `root` parameter is pre-existing design. Necessary guards:
+
+1. **Copy by allowlist, never the whole `evidence/` tree** — the withheld corpus must not be readable even if it exists in this checkout. Tests never select `clarification-heldout`; add one test asserting that cohort fails in the test root (missing corpus) rather than silently passing.
+2. **Two repo-root integrity tests** so the real tree stays honest without running cohorts: (a) `validate_freeze(ROOT, 'clarification-r01-r08')` succeeds — committed freeze matches committed product; (b) hardcoded SHA of `OLD_FREEZE` bytes — proves the historical freeze wasn't touched; and (c) `validate_freeze(ROOT, 'heldout-v1')` raises `RunRejected` — codifies that old cohorts are closed.
+3. **A boundary test comparing old and new manifest dicts**: same key set, differing keys `== {'pal/primary.py'}`. This mechanically proves the Opus constraint (prompt-only change; host/native/validator byte-identical) rather than asserting it by review.
+4. **`clarification-heldout` corpus must satisfy `validate_matrix`** — cap ∈ {10,16,24}, unique IDs, worst-case turns ≤ cap, and *if it uses `only_if_prior_action` it must carry `recognition_regression: true`* (`not recognition` in the conditional check rejects otherwise). All of this fails inside `cohort_matrix`, i.e., before proof load — safe direction — but flag it to the corpus author since you can't open the file.
+
+## 5. Focused necessary tests
+
+- Happy path: `clarification-r01-r08` on test root → run completes; `run.opened` carries `freeze`/`freeze_sha256`/`product_identity`/`cohort_sha256`; `verify_run` accepts.
+- Old cohort (`heldout-v1`) on test root where only NEW_FREEZE exists → `RunRejected`, no run dir, `provider.prompts == []`, `provider.stopped == 1`, and (live path) `AccessProof.load`/`consume`/`AuditedNative` never called — mirror `test_invalid_matrix_precedes_live_provider_and_proof_construction`.
+- Freeze file absent at the mapped path for the selected cohort → `RunRejected` (not `FileNotFoundError`), before mkdir.
+- Malformed manifests (each in subTests): missing `files`, `{}`, non-dict, bad hex, missing `candidate`, manifest key not in product set, product file added post-freeze (incomplete set), traversal key `../x` (rejected via set mismatch — and assert the outside file is never opened).
+- Drift: edit a copied `pal/` file after runner init → next `run_next` raises via `pin.check()`; edit the *selected freeze file* midrun → same. Edit the *unselected* freeze file midrun → no rejection (documented semantics).
+- Runner-level re-check: construct `QualificationRunner` directly with a mismatched freeze → raises before `mkdir`, and on the live path before `_runner_claimed`.
+- Verifier: new-cohort journal with correct `freeze` verifies; tampered `freeze` field rejects; new-cohort journal *without* `freeze` rejects; old-cohort journal without `freeze` still verifies (legacy compat — reuse `rewritten_evidence`).
+- Cohort map completeness: `COHORTS` keys and freeze mapping are total and closed.
+
+## 6. Smallest patch shape
+
+1. `scripts/live_runner.py`: extract `product_rel_paths(root)`; `SourcePin` uses it (pinned set unchanged).
+2. `scripts/primary_qualification.py`: `OLD_FREEZE`/`NEW_FREEZE` constants; `COHORTS` → 3-tuples + 4 new entries; `cohort_matrix` returns `(fixture, freeze_rel, matrix, max_calls)`; `QualificationPin(root, matrix, freeze_rel)`; `validate_freeze`; runner ordering per §1-H2; `run.opened` fields; `build_live` calls `validate_freeze` right after `cohort_matrix` (before `clean_candidate`, `AccessProof.load`, owner, consume); `verify_run` cohort↔freeze check with legacy tolerance.
+3. `pal/primary.py`: prompt asking-threshold change only.
+4. `evidence/.../primary-clarification-candidate-freeze.json`: generated from staged content, `candidate: "content:sha256:<id>"`, `base_commit`, same other fields, `heldout_sha256: "44e3…"`.
+5. Tests: `make_test_root()` helper + migration + the §5 additions.
+
+One commit, suite green via test roots. Don't create `clarification-r03-r08`-style suffix cohorts preemptively — they only get defined if a partial new measurement actually exists.
+
+Bottom line: adopt the contract with the exact-set check before manifest-path IO, `RunRejected`-wrapped freeze failures, freeze-before-provider-claim ordering in the runner, and the legacy-tolerant verifier binding. Everything else in the proposal is minimal and correct as stated.

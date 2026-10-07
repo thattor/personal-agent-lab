@@ -626,3 +626,77 @@ Routine local parameter/test changes use that completed implementation review. A
 quotas, human micro-approval, retrospective PASS and independent-evidence claims from
 repeat attempts are rejected. Current UI ambiguous-target/cancel and Primary target/crash
 coverage remain separate release obligations. Product baseline stays1a14de9.
+
+
+### D029 C038 — useful general drafts before optional personalization
+
+Official Opus review completed76.764s with fresh existing official Pro/extraOFF:
+clarification-policy-opus-{question,response,access,completion} in judgment-boundary/.
+The old product1a14de9 now FAILS fixed40: R02 and R10 unnecessarily asked recipient/
+contribution instead of delegating the sufficient general thank-you request. R03–08
+passed all10 turns and R09 passed2 turns; R11–16/N01–24 remain NOT_RUN. These are two
+languages of one failure pattern, not statistically independent proof of generality.
+The old runs, raw proposals, chains and read-only DB audits remain immutable.
+
+Adopt BEFORE implementation: replace only the Primary draft-clarification paragraph.
+Use existing context; when the purpose is clear and general wording serves it, delegate
+without requiring an explicit generic cue. Mark unspecified details as unspecified in
+spec, do not invent them; offer optional personalization without blocking work. Ask one
+grouped question only when an unavailable user-owned fact/choice makes a general draft
+wrong or unusable, including unknown purpose, accept/decline or ambiguous subject matter.
+Target resolution, quoted/hypothetical/negated non-action, host authority, fixed criteria,
+source binding and all capability limits stay unchanged. The native system prompt and
+Expert instructions stay byte-identical; their existing general-thanks rule is not absent.
+Reject special thank-you keyword routing, a native-layer change without evidence, and
+retrospective rescoring. Root-cause evidence supports an ambiguous asking threshold: the
+old materially-change wording can treat optional personalization as a required fact.
+
+Before product edit an independent author froze6 pairs/12 unseen utterances, cap16,
+SHA44e3328d7ea28291d626dd8d9cfc5d2c3bd7a0a5e6d1e41a97a37611d659fc4b at
+2026-10-07T17:04:51.767738+00:00. The author knows old design/cases but has not seen the
+new implementation; the controller must not open contents until new product freeze.
+Keep fixed40 inputs/gold/answers/15-of-16/zero-of-24 unchanged. R02/R10 repeats on a changed
+candidate are regression, not independent qualification. Use new closed runs and fresh
+one-use proofs at existing16/16/24 caps, one attempt and stop on failure. Retain the
+previously fixed request-then-nonrequest order rather than adopting optional reordering.
+Run the independent12 once, revalidate affected current UI/Expert and one whole-flow
+human evaluation on the changed candidate. No16-artifact quota or human micro-approval.
+No additional model endpoint/local installation/cost is authorized by Qwen reference.
+
+The harness hardcodes the old product freeze; do not overwrite it or bypass verification.
+Official SWE-2 High Free review of a small cohort-bound version selector and isolated
+scripted-test source roots is in progress; no implementation design from that review is
+yet adopted. Independent Astra review supports explicit per-cohort immutable freeze paths
+and real checks in temporary scripted roots. Product prompt edit itself is one reviewed
+wording correction, not a host/runtime or provider architecture change.
+
+
+C038 implementation review completed: official standalone SWE-2 High Free712.120s,
+clarification-freeze-swe-{question,response,access,completion}. Adopt BEFORE harness
+implementation: closed cohort tuples include fixture/hash/exact product-freeze path.
+Old names/old manifest remain immutable and now reject changed product; four explicit
+clarification aliases use a new manifest. No arbitrary freeze override or scripted bypass.
+Extract the existing product path set once, require nonempty exact manifest set equality
+before any manifest-key file IO, validate hashes/candidate, reject missing/malformed
+freeze as RunRejected. Validate before proof load/owner construction and again in Runner
+before owner claim/run directory. Preserve fail-closed proof burn on a later race. Pin
+the selected freeze consistently at construction/recheck. Journal selected freeze hash,
+cohort hash and product identity. Read-only verifier requires binding for new names and
+validates it when present; old journals without the new field stay readable.
+
+Use content:sha256:<canonical-files-map-digest> as new product identity, informational
+base_commit separately. clean_candidate verifies exact clean HEAD and a clean tree; it does not check the
+remote. The controller separately verifies push/origin before each actual run, and the
+runtime journal binds the exact local commit to product hashes. A self-referential
+Git SHA is unnecessary and the parent must not be mislabeled as changed product.
+Scripted tests use isolated allowlisted source/known-fixture copies with explicitly
+synthetic manifests, real hash checks and no withheld corpus copy. Preserve dedicated
+repo-root old-manifest integrity/current-freeze/only-primary-change checks. Test absent,
+empty/partial/extra/traversal/bad manifest, proof-before-rejection ordering, selected
+source/freeze drift, new-journal binding and legacy verification. No product authority
+change, new quota, provider generation, resume or preferred-output retry follows this
+review. Corpus author already validated12-turn matrix/setup without disclosing contents.
+
+Reviewer qualification: old-named cohorts fail in this changed checkout, rather than
+being universally un-runnable forever; a historical checkout could still match old
+hashes, but no old closed run may resume. Reusing unexecuted suffixes is not preauthorized.

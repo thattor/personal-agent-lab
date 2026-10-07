@@ -1,0 +1,11 @@
+{
+  "opened_after_product_freeze_at": 1791394024.5545049,
+  "candidate_frozen_at": 1791393949.2524102,
+  "candidate_identity": "content:sha256:7c2847336e2ba32d062e5210021270e549d3b6c6f13424d07d456000d24cba57",
+  "heldout_sha256": "44e3328d7ea28291d626dd8d9cfc5d2c3bd7a0a5e6d1e41a97a37611d659fc4b",
+  "cases": 6,
+  "turns": 12,
+  "cap": 16,
+  "model_calls": 0,
+  "semantic_status": "NOT_RUN"
+}

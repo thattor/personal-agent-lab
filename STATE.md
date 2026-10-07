@@ -10,7 +10,7 @@ Hierarchy and goal/evaluation loops configured: ACTIVE [milestone1](https://gith
 
 D-028 withdraws HR-INPUT-001/P003v1 form-only/wording approval, preserving the wrong-target defect for development. HR-STABLE1-001 is one actual end-to-end usefulness evaluation after a working candidate, not an implementation blocker. No pending micro-question. The persistent human window received the correction. D-029 assigns semantic intent/target selection/essential clarification to the Primary model, with host canonical/security/dedupe checks. Owner reference model is Qwen3.8-27B; model identity verified, actual PAL qualification NOT_RUN, no new connection installed. See [cause, authentic sources and reviews](evidence/reviews/judgment-boundary/README.md).
 
-Historical Issue3 recognition under D-023 passed N1-01/N1-02 with [fixed corpus, original failures and independent evaluations](evidence/reviews/stable1-classification/README.md): frozen16/16 requests, zero unwanted Goals; final unseen12 zero false-positive Goals and3/4 request recall. Known safe miss: `草案` request remained conversation. [73-test full suite PASS](evidence/reviews/stable1-classification/final-full.txt), [96-case actual host/dedupe audit](evidence/reviews/stable1-classification/final-host-audit.json). These lexical results do not qualify current D-029 Primary recognition: N1-01/D029 PARTIAL and N1-02/D029 PASS (independent Goal recognition only). Checkpoint C-001 in docs/plans/CHECKPOINTS.md. Issue4 D-024 implements schema2, bounded natural controls, durable target selections/source gates and UI buttons; N1-03/N1-04 PASS with [synthetic host/crash/HTTP evidence](evidence/reviews/stable1-targets/README.md), [91 full tests PASS](evidence/reviews/stable1-targets/selection-final-full.txt). N1-05/06 PASS, N1-07 FEEDBACK_RECEIVED, N1-08 NOT_RUN. Latest actual-provider evidence and remaining gates are recorded below.
+Historical Issue3 recognition under D-023 passed N1-01/N1-02 with [fixed corpus, original failures and independent evaluations](evidence/reviews/stable1-classification/README.md): frozen16/16 requests, zero unwanted Goals; final unseen12 zero false-positive Goals and3/4 request recall. Known safe miss: `草案` request remained conversation. [73-test full suite PASS](evidence/reviews/stable1-classification/final-full.txt), [96-case actual host/dedupe audit](evidence/reviews/stable1-classification/final-host-audit.json). These lexical results do not qualify current D-029 Primary recognition: N1-01/D029 old candidate FAIL and new-candidate revalidation pending; N1-02 old-candidate independent Goal recognition PASS, new-candidate revalidation pending. Checkpoint C-001 in docs/plans/CHECKPOINTS.md. Issue4 D-024 implements schema2, bounded natural controls, durable target selections/source gates and UI buttons; N1-03/N1-04 PASS with [synthetic host/crash/HTTP evidence](evidence/reviews/stable1-targets/README.md), [91 full tests PASS](evidence/reviews/stable1-targets/selection-final-full.txt). N1-05/06 PASS, N1-07 FEEDBACK_RECEIVED, N1-08 NOT_RUN. Latest actual-provider evidence and remaining gates are recorded below.
 
 Stable-0 remains functional-first complete: all20 required S0/F0 rows PASS, authentic human usefulness evaluation reflected, final66 tests and controller audit PASS, master Issue#1 CLOSED/completed. Version `stable-0`, production baseline ccfba35. [Completion receipt](evidence/final/stable0/completion.json), [proof and limitations](evidence/final/stable0/README.md). Historical S0-13 stays NOT PASS/nonrequired; no long-term reliability claim. Earlier pending/active/blocked descriptions below are historical and superseded by current milestone/completion records.
 
@@ -29,28 +29,45 @@ C035: actual main-textbox answer to a declared persisted question resumes the sa
 
 C034 real two-case conversation/Primary/Expert outputs plus C035 actual correction are assembled in evidence/reviews/judgment-boundary/ui-production-run/human-material.md and delivered once to the authorized persistent window for HR-STABLE1-001 whole-flow evaluation; receipt evidence/operations/c035-human-handoff.json, evidence commit2d65c73 pushed/remote verified. No current-candidate human verdict yet. Saved outputs can be evaluated without new provider calls. Do not ask internal routing, wording, model selection or old usage quotas.
 
-C036 actual first cohort stopped after R01 PASS/R02 MISS (generic thank-you prompted an
-unnecessary who/what question, no Goal). R03–08 NOT_RUN. Two calls,35-record chain and
-eight read-only healthy DBs preserved in recognition-run-r01-r08/. No same-case retry,
-rescue answer or product tuning. Official Opus37.596s adopts C037 before implementation:
-freeze exact unexecuted R03–08 suffix with lower10-call cap, validate11th-call rejection,
-then measure first attempts. R02 consumes the only allowed miss under15/16; any further
-request miss fails the aggregate and triggers diagnosis. R09–16/N01–24 retain16/24caps.
-Product/prompt remains1a14de9. C036 harness/evidence commitcb8e394 is already pushed.
+C038: actual old-candidate R03–08 passed6 cases/10 turns under its10-slot cap; R09
+passed2 turns. R10 asked unnecessary recipient/contribution/relationship questions,
+matching R02's English failure. Thus fixed40 on product1a14de9 FAILS (at least2 misses
+of16); R11–16 and N01–24 NOT_RUN. Closed runs/audits are preserved in
+recognition-run-r03-r08/ and recognition-run-r09-r16/. No rescue answer, resampling,
+rewritten old freeze or canonical repair.
 
-Independent N1-04 current Primary ambiguous-target/correction SIGKILL and replay tests
-pass25 targeted cases; product unchanged. The small cap amendment is implemented:35 focused PASS,234 full PASS21.970s; initial
-sandbox-only run retained14 loopback bind PermissionErrors, resolved by the approved
-local-HTTP execution scope without code changes. Record/freeze/commit/push, then execute
-the new suffix. Its exact SHA is6a3b9d45b1c3e9e83b998031a34bc5cd97913498dcd6a05e0da03498669bd815.
-Historical N1-03/05/06 PASS no longer stands for affected current D029 paths: current
-mixed-target, planted-absence and actual UI ambiguity/cancel coverage remains explicit.
-N1-04 current host/runtime recovery PASS; N1-02 independent Goal-recognition PASS from
-original preimplementation PHA04–12,18 utterances/zero false-positive Goals,17 original
-full semantic PASS plus one retained stop. No PHB or rescore is needed. Qwen3.8-27B
-is the reference; its actual PAL qualification remains NOT_RUN.
+Official Opus76.764s completed before adoption: replace only the Primary asking
+threshold; clear-purpose useful general drafts proceed, unknown essential purpose or
+user-owned choice still asks. Native/Expert/validator/host unchanged. Independent12
+utterances were frozen before edit and disclosed only after new product freeze
+1791393949.2524102. Product identity is
+content:sha256:7c2847336e2ba32d062e5210021270e549d3b6c6f13424d07d456000d24cba57.
+No product/prompt changes after disclosure.
 
-Receive the delivered whole-flow evaluation from the persistent human window while independent regression continues; do not repeat it. Apply only actual feedback. N1-07 FEEDBACK_RECEIVED awaiting this current-candidate evaluation, N1-01/D029 PARTIAL, N1-02/D029 PASS (independent Goal recognition only), N1-09/N1-10 PARTIAL, N1-08 NOT_RUN; Stable1/wholePAL incomplete, Stable0 stays released. No schedule, new auth/payment/public exposure, old quotas or original workspace. Final acceptance/versions/full suite/Issue audit remain necessary before closing #12/#5/#2.
+Official SWE-2 High Free712.120s completed; immutable per-cohort product binding, exact
+manifest set/hash checks, rejection before proof consumption/owner claim and read-only
+legacy-compatible evidence validation implemented. Independent Astra reviewed/tests:
+48 focused PASS2.894s; full247 PASS20.114s;25 host/runtime PASS1.425s. Old journals verify
+unchanged. Evidence: clarification-policy-full-green.txt, clarification-freeze-tests-01.txt,
+clarification-historical-verification.json. No revised actual model outcome yet.
+
+Exact next: commit/push coherent green C038, verify clean pushed HEAD, then execute
+clarification-r01-r08/r09-r16/n01-n24 in that frozen order at16/16/24 caps with new
+unique directories and fresh bounded official extraOFF proofs. Then clarification-heldout
+at cap16 (12 planned inputs). One first attempt, fail-stop/diagnose without resampling.
+Revalidate affected actual UI/Expert named cases and updated whole-flow usefulness.
+Existing six A/B/C fresh-context absence samples and running-cancel/late-result probe
+remain named requirements, not replaced by waiting cancel or seeded correction. Use
+exact previously frozen inputs/caps; no extra arbitrary artifacts or human questions.
+N1-01/02/03/05/06/09/10 current semantic revalidation remains; N1-04 host/recovery
+implementation unchanged and covered by current full suite.
+
+Receive actual version-bound whole-flow usefulness in the persistent human window;
+prior packet remains old-candidate material and requires an updated affected flow, not
+repeated micro-questions. N1-07 FEEDBACK_RECEIVED, N1-08 NOT_RUN. Stable1/wholePAL
+incomplete; Stable0 stays released. Qwen3.8-27B is the reference, actual qualification
+NOT_RUN. No schedule, new auth/payment/public exposure or old quotas. Final full suite,
+version/limitations and Issue#12/#5/#2 audit/closure remain before release.
 
 ## Historical continuation records
 

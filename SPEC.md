@@ -104,7 +104,7 @@ The product destination is an assistant that preserves conversational context, t
 | Stage | User-visible outcome | Current authority/status |
 |---|---|---|
 | Stable-0 | Conversation, remembered context and local drafts with host evidence, control/recovery safeguards and bounded official real-provider proof | Released; required S0/F0 PASS under D-019. Finite personal-use validation, not always-on or long-term reliability proof |
-| Stable-1 | Japanese draft requests are distinguished from conversation/deferral; correction/cancel act on the intended work or ask which one | Scoped milestone adopted in D-021; N1-01 through N1-06 PASS, new-flow human usefulness and final release audit pending |
+| Stable-1 | Japanese draft requests are distinguished from conversation/deferral; correction/cancel act on the intended work or ask which one | Scoped milestone adopted in D-021; current D029/C038 model-led behavior requires affected semantic revalidation, one whole-flow human usefulness evaluation and final release audit |
 | Stable-1 clarification amendment P002 | Use existing bounded context first; ask essential missing content and resume from bound answers, with bounded incomplete-preview fallback | Adopted within no-extra-cost condition; implementation/real proof N1-09 unfinished. Broader clarification workflow still deferred |
 | Later candidates | Better relevant cross-conversation recall and richer reversible preparation, then separately authorized information/action integrations and proactive help | Deferred; each needs concrete value, scope, cost/permission review and acceptance before implementation |
 

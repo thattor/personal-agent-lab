@@ -1,0 +1,20 @@
+{
+  "checked_at": 1791391253.449323,
+  "authentication": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "apiProvider": "firstParty",
+    "subscriptionType": "pro"
+  },
+  "usage_ui": {
+    "plan": "Pro",
+    "session_used_percent": 34,
+    "week_used_percent": 23,
+    "extra_usage": false,
+    "purchased_credits_usd": 0,
+    "auto_reload": false,
+    "observed_directly": true
+  },
+  "new_auth": false,
+  "paid_fallback": false
+}

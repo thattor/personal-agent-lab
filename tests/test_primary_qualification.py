@@ -1,5 +1,7 @@
 import json
 import copy
+import hashlib
+import shutil
 import tempfile
 import time
 import unittest
@@ -10,12 +12,49 @@ from pal.native import ProviderUnavailable
 from pal.primary import primary_prompt
 from pal.store import Store
 from scripts.live_evidence import EvidenceJournal, verify_journal
-from scripts.live_runner import RunRejected
+from scripts.live_runner import RunRejected, product_rel_paths
 from scripts.primary_qualification import (PrimaryGate, QualificationRunner, load_matrix,
-                                           seed_case, verify_run, verify_snapshot, build_live, COHORTS)
+                                           seed_case, verify_run, verify_snapshot, build_live, COHORTS,
+                                           FREEZE, NEW_FREEZE, validate_freeze, cohort_matrix, QualificationPin)
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT/'evidence/reviews/judgment-boundary/primary-heldout.json'
+
+OLD_FREEZE_SHA = '1736095ccbee1f221f0ff062b59593cae4139de739cfd88c93586d0e694be2e2'
+# Explicit old-corpus allowlist: never discover or copy the withheld clarification corpus.
+KNOWN_FIXTURES = (
+    'primary-heldout.json', 'primary-remaining.json', 'primary-unseen-contrasts.json',
+    'recognition-r01-r08.json', 'recognition-r03-r08.json',
+    'recognition-r09-r16.json', 'recognition-n01-n24.json',
+)
+
+
+def synthetic_freeze(root, relative):
+    files = {name: hashlib.sha256((root/name).read_bytes()).hexdigest()
+             for name in sorted(product_rel_paths(root))}
+    identity = hashlib.sha256(json.dumps(files, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    manifest = {'candidate': 'content:sha256:'+identity, 'files': files,
+                'scope': 'SCRIPTED_TEST_ONLY', 'human_evaluation': False}
+    path = root/relative
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(manifest, sort_keys=True))
+    return manifest
+
+
+def isolated_test_root(destination):
+    destination.mkdir()
+    paths = set(product_rel_paths(ROOT))
+    paths.update(str(p.relative_to(ROOT)) for pattern in ('live_*.py', 'primary_*.py')
+                 for p in (ROOT/'scripts').glob(pattern))
+    paths.update('evidence/reviews/judgment-boundary/'+name for name in KNOWN_FIXTURES)
+    for relative in sorted(paths):
+        target = destination/relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT/relative, target)
+    (destination/'runtime').mkdir()
+    for relative in (FREEZE, NEW_FREEZE):
+        synthetic_freeze(destination, relative)
+    return destination
 
 
 class Scripted:
@@ -37,6 +76,7 @@ class Scripted:
 class PrimaryQualificationTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
+        self.root = isolated_test_root(Path(self.temp.name)/'source')
         self.directory = Path(self.temp.name)/'run'
         self.provider = Scripted()
         self.runner = None
@@ -47,7 +87,7 @@ class PrimaryQualificationTests(unittest.TestCase):
         self.temp.cleanup()
 
     def runner_for(self, provider=None):
-        self.runner = QualificationRunner(ROOT,self.directory,provider or self.provider,
+        self.runner = QualificationRunner(self.root,self.directory,provider or self.provider,
                                           scope='scripted',candidate='test-only')
         return self.runner
 
@@ -116,7 +156,7 @@ class PrimaryQualificationTests(unittest.TestCase):
             raise ProviderUnavailable('scripted failure')
         for label,response in [('decode',lambda _:'not json'),('provider',fail)]:
             with self.subTest(label=label):
-                runner = QualificationRunner(ROOT,Path(self.temp.name)/label,Scripted(response),
+                runner = QualificationRunner(self.root,Path(self.temp.name)/label,Scripted(response),
                                              scope='scripted',candidate='test-only')
                 try:
                     with self.assertRaises(Exception):
@@ -188,7 +228,7 @@ class PrimaryQualificationTests(unittest.TestCase):
         self.assertFalse(result['completed'])
         self.assertEqual(raw,(self.directory/'journal.jsonl').read_bytes())
         with self.assertRaises(FileExistsError):
-            QualificationRunner(ROOT,self.directory,Scripted(),scope='scripted',candidate='test-only')
+            QualificationRunner(self.root,self.directory,Scripted(),scope='scripted',candidate='test-only')
         self.assertEqual(len(self.provider.prompts),1)
 
     def test_initial_journal_failure_still_stops_owned_provider(self):
@@ -198,7 +238,7 @@ class PrimaryQualificationTests(unittest.TestCase):
         self.assertEqual(self.provider.stopped,1)
 
     def test_new_cohort_excludes_observed_cases_and_preserves_untested_cases(self):
-        self.runner = QualificationRunner(ROOT,self.directory,self.provider,
+        self.runner = QualificationRunner(self.root,self.directory,self.provider,
                                           scope='scripted',candidate='test-only',
                                           cohort='unseen-plus-contrasts')
         cases = self.runner.matrix['cases']
@@ -215,7 +255,7 @@ class PrimaryQualificationTests(unittest.TestCase):
 
     def test_unknown_cohort_cannot_invoke_provider_or_create_run(self):
         with self.assertRaises(ValueError):
-            QualificationRunner(ROOT,self.directory,self.provider,scope='scripted',
+            QualificationRunner(self.root,self.directory,self.provider,scope='scripted',
                                 candidate='test-only',cohort='arbitrary')
         self.assertFalse(self.directory.exists())
         self.assertEqual(self.provider.prompts,[])
@@ -289,11 +329,11 @@ class RecognitionQualificationTests(unittest.TestCase):
                  'only_if_prior_action':'none',
                  'acceptable_outcome_set':[{'action_kind':'local_draft','goal_count':1}]}]}]}
 
-    def recognition_runner(self, matrix=None, response=None):
+    def recognition_runner(self, matrix=None, response=None, cohort='heldout-v1'):
         self.provider = Scripted(response)
         with patch('scripts.primary_qualification.load_matrix',return_value=matrix or self.matrix()):
-            self.runner = QualificationRunner(ROOT,self.directory,self.provider,
-                                              scope='scripted',candidate='test-only')
+            self.runner = QualificationRunner(self.root,self.directory,self.provider,
+                                              scope='scripted',candidate='test-only',cohort=cohort)
         return self.runner
 
     def delegate(self, _):
@@ -389,7 +429,7 @@ class RecognitionQualificationTests(unittest.TestCase):
              patch('scripts.primary_qualification.clean_candidate'), \
              patch('scripts.primary_qualification.AccessProof.load',side_effect=AssertionError('proof touched')):
             with self.assertRaises(RunRejected):
-                build_live(ROOT,ROOT/'runtime/nonexistent-recognition-test','unused','test-only')
+                build_live(self.root,self.root/'runtime/nonexistent-recognition-test','unused','test-only')
 
     def test_live_native_owner_and_record_use_cohort_bound(self):
         for max_calls in (16,10):
@@ -404,7 +444,7 @@ class RecognitionQualificationTests(unittest.TestCase):
                      patch('scripts.primary_qualification.AuditedNative',return_value=owner) as native, \
                      patch('scripts.primary_qualification.subprocess.run',return_value=Mock(stdout='test version')), \
                      patch('scripts.primary_qualification.QualificationRunner',return_value=result):
-                    build_live(ROOT,ROOT/'runtime/nonexistent-recognition-test','unused','test-only')
+                    build_live(self.root,self.root/'runtime/nonexistent-recognition-test','unused','test-only')
                 native.assert_called_once_with(proof,max_calls=max_calls)
                 self.assertEqual(result.journal.append.call_args.args[0]['native_slots'],max_calls)
                 owner.complete.assert_not_called()
@@ -433,8 +473,7 @@ class RecognitionQualificationTests(unittest.TestCase):
         with self.assertRaises(RunRejected):verify_run(self.directory)
 
     def rewritten_evidence(self, records):
-        directory=Path(self.temp.name)/'rewritten'
-        directory.mkdir()
+        directory=Path(tempfile.mkdtemp(prefix='rewritten-',dir=self.temp.name))
         for path in self.directory.glob('*.txt'):
             (directory/path.name).write_bytes(path.read_bytes())
         with EvidenceJournal(directory/'journal.jsonl','scripted') as journal:
@@ -493,9 +532,9 @@ class RecognitionQualificationTests(unittest.TestCase):
         self.assertEqual(self.provider.prompts,[])
 
     def test_frozen_suffix_is_exact_unexecuted_cases_and_smaller_owner(self):
-        path,sha=COHORTS['recognition-r03-r08']
+        path,sha,_=COHORTS['recognition-r03-r08']
         suffix=load_matrix(ROOT/path,sha)
-        original_path,original_sha=COHORTS['recognition-r01-r08']
+        original_path,original_sha,_=COHORTS['recognition-r01-r08']
         original=load_matrix(ROOT/original_path,original_sha)
         self.assertEqual(suffix['cases'],original['cases'][2:])
         self.assertEqual([c['id'] for c in suffix['cases']],['R03','R04','R05','R06','R07','R08'])
@@ -504,13 +543,198 @@ class RecognitionQualificationTests(unittest.TestCase):
         self.assertEqual(suffix['retained_measurement']['results'],{'R01':'PASS','R02':'MISS'})
         self.assertEqual(suffix['retained_measurement']['further_request_misses_allowed'],0)
         self.assertLessEqual(2+suffix['max_primary_calls'],16)
-        self.runner=QualificationRunner(ROOT,self.directory,self.provider,scope='scripted',
+        self.runner=QualificationRunner(self.root,self.directory,self.provider,scope='scripted',
                                         candidate='test-only',cohort='recognition-r03-r08')
         self.assertEqual(self.runner.gate.max_calls,10)
         opened=verify_journal(self.directory/'journal.jsonl')[0]
         self.assertEqual(opened['max_attempts'],10)
         self.assertEqual(opened['hashes'][path],sha)
         self.assertFalse(self.provider.prompts)
+
+
+class FreezeQualificationTests(unittest.TestCase):
+    setUp = PrimaryQualificationTests.setUp
+    tearDown = PrimaryQualificationTests.tearDown
+    matrix = RecognitionQualificationTests.matrix
+    recognition_runner = RecognitionQualificationTests.recognition_runner
+    delegate = RecognitionQualificationTests.delegate
+    rewritten_evidence = RecognitionQualificationTests.rewritten_evidence
+
+    def test_isolated_root_has_only_known_corpora_and_real_hash_checks(self):
+        evidence = self.root/'evidence/reviews/judgment-boundary'
+        self.assertEqual({p.name for p in evidence.iterdir()},
+                         set(KNOWN_FIXTURES) | {Path(FREEZE).name, Path(NEW_FREEZE).name})
+        self.assertFalse((evidence/'primary-clarification-heldout.json').exists())
+        with self.assertRaises((FileNotFoundError, RunRejected)):
+            cohort_matrix(self.root, 'clarification-heldout')
+        for relative in (FREEZE, NEW_FREEZE):
+            self.assertEqual(validate_freeze(self.root, relative)['scope'], 'SCRIPTED_TEST_ONLY')
+        source = self.root/'pal/primary.py'
+        source.write_bytes(source.read_bytes()+b'\n# scripted drift\n')
+        for relative in (FREEZE, NEW_FREEZE):
+            with self.assertRaises(RunRejected):
+                validate_freeze(self.root, relative)
+
+    def test_closed_cohort_mapping_preserves_old_bindings(self):
+        old = {'heldout-v1', 'remaining-after-c031', 'unseen-plus-contrasts',
+               'recognition-r01-r08', 'recognition-r03-r08',
+               'recognition-r09-r16', 'recognition-n01-n24'}
+        new = {'clarification-r01-r08', 'clarification-r09-r16',
+               'clarification-n01-n24', 'clarification-heldout'}
+        self.assertEqual(set(COHORTS), old | new)
+        for name in old:
+            self.assertEqual(COHORTS[name][2], FREEZE)
+        for name in new:
+            self.assertEqual(COHORTS[name][2], NEW_FREEZE)
+        for suffix in ('r01-r08', 'r09-r16', 'n01-n24'):
+            self.assertEqual(COHORTS['clarification-'+suffix][:2],
+                             COHORTS['recognition-'+suffix][:2])
+            fixture, freeze, matrix, maximum = cohort_matrix(self.root, 'clarification-'+suffix)
+            self.assertEqual((fixture, freeze), (COHORTS['clarification-'+suffix][0], NEW_FREEZE))
+            self.assertEqual(maximum, 24 if suffix=='n01-n24' else 16)
+            self.assertTrue(matrix['cases'])
+
+    def test_freeze_rejects_malformed_missing_and_inexact_manifests(self):
+        valid = synthetic_freeze(self.root, NEW_FREEZE)
+        path = self.root/NEW_FREEZE
+        variants = [None, [], {}, {'files': {}}, dict(valid, files=[]),
+                    dict(valid, candidate=''), dict(valid, candidate=3),
+                    dict(valid, candidate='content:sha256:'+'0'*64)]
+        for replacement in ('', 'f'*63, 'F'*64, 'x'*64, 123):
+            files = dict(valid['files']);files['pal/primary.py'] = replacement
+            variants.append(dict(valid, files=files))
+        files = dict(valid['files']);files.pop('pal/primary.py')
+        variants.append(dict(valid, files=files))
+        for extra in ('pal/not-real.py', '../outside.py', '/absolute.py'):
+            variants.append(dict(valid, files=dict(valid['files'], **{extra:'0'*64})))
+        for index, value in enumerate(variants):
+            with self.subTest(index=index):
+                path.write_text(json.dumps(value))
+                with self.assertRaises(RunRejected):validate_freeze(self.root, NEW_FREEZE)
+        path.write_text('{invalid')
+        with self.assertRaises(RunRejected):validate_freeze(self.root, NEW_FREEZE)
+        path.unlink()
+        with self.assertRaises(RunRejected):validate_freeze(self.root, NEW_FREEZE)
+
+    def test_untrusted_manifest_paths_are_rejected_before_file_reads(self):
+        manifest = synthetic_freeze(self.root, NEW_FREEZE)
+        # Same-size map defeats count-only validation and attempts to escape the test root.
+        manifest['files'].pop('pal/primary.py')
+        manifest['files']['../outside.py'] = '0'*64
+        (self.root/NEW_FREEZE).write_text(json.dumps(manifest))
+        with patch.object(Path, 'read_bytes', side_effect=AssertionError('manifest path was read')):
+            with self.assertRaises(RunRejected):validate_freeze(self.root, NEW_FREEZE)
+
+    def test_added_removed_web_and_symlink_product_files_fail_closed(self):
+        added = self.root/'pal/new_component.py'
+        added.write_text('# new product file')
+        with self.assertRaises(RunRejected):validate_freeze(self.root, NEW_FREEZE)
+        added.unlink()
+        web = self.root/'pal/web/new-resource.txt'
+        web.write_text('new web resource')
+        with self.assertRaises(RunRejected):validate_freeze(self.root, NEW_FREEZE)
+        web.unlink()
+        existing = self.root/'pal/web/style.css'
+        original = existing.read_bytes();existing.unlink()
+        with self.assertRaises(RunRejected):validate_freeze(self.root, NEW_FREEZE)
+        existing.write_bytes(original)
+        added.symlink_to(self.root/'pal/primary.py')
+        with self.assertRaises(RunRejected):validate_freeze(self.root, NEW_FREEZE)
+
+    def test_historical_freeze_fails_current_product_while_new_match_succeeds(self):
+        (self.root/FREEZE).write_bytes((ROOT/FREEZE).read_bytes())
+        with self.assertRaises(RunRejected):validate_freeze(self.root, FREEZE)
+        manifest = validate_freeze(self.root, NEW_FREEZE)
+        self.assertTrue(manifest['candidate'].startswith('content:sha256:'))
+
+    def test_live_mismatch_precedes_clean_proof_and_owner_construction(self):
+        (self.root/NEW_FREEZE).write_text('{}')
+        with patch('scripts.primary_qualification.clean_candidate', side_effect=AssertionError('clean called')), \
+             patch('scripts.primary_qualification.AccessProof.load', side_effect=AssertionError('proof loaded')), \
+             patch('scripts.primary_qualification.AuditedNative', side_effect=AssertionError('owner created')):
+            with self.assertRaises(RunRejected):
+                build_live(self.root, self.root/'runtime/preflight', 'unused', 'test-only',
+                           cohort='clarification-r01-r08')
+        self.assertFalse((self.root/'runtime/preflight').exists())
+
+    def test_runner_mismatch_precedes_owner_claim_and_run_directory(self):
+        (self.root/NEW_FREEZE).write_text('{}')
+        owner = Mock();owner._runner_claimed = False
+        with self.assertRaises(RunRejected):
+            QualificationRunner(self.root, self.directory, owner, scope='live_synthetic',
+                                candidate='test-only', cohort='clarification-r01-r08')
+        self.assertFalse(owner._runner_claimed)
+        self.assertFalse(self.directory.exists())
+        owner.complete.assert_not_called();owner.proof.check.assert_not_called()
+        owner.stop.assert_called_once()
+
+    def test_pin_tracks_selected_freeze_and_current_product_only(self):
+        fixture = self.root/COHORTS['clarification-r01-r08'][0]
+        pin = QualificationPin(self.root, fixture, NEW_FREEZE)
+        old = self.root/FREEZE;old.write_bytes(old.read_bytes()+b'\n')
+        pin.check()
+        selected = self.root/NEW_FREEZE;selected.write_bytes(selected.read_bytes()+b'\n')
+        with self.assertRaises(RunRejected):pin.check()
+        pin = QualificationPin(self.root, fixture, NEW_FREEZE)
+        product = self.root/'pal/primary.py';product.write_bytes(product.read_bytes()+b'\n')
+        with self.assertRaises(RunRejected):pin.check()
+
+    def test_source_drift_stops_runner_before_provider_invocation(self):
+        runner = self.recognition_runner(response=self.delegate, cohort='clarification-r01-r08')
+        product = self.root/'pal/primary.py';product.write_bytes(product.read_bytes()+b'\n')
+        with self.assertRaises(RunRejected):runner.run_next()
+        self.assertFalse(self.provider.prompts)
+
+    def test_new_opened_record_binds_selected_freeze_and_verifier_rejects_tampering(self):
+        runner = self.recognition_runner(response=self.delegate, cohort='clarification-r01-r08')
+        runner.run_next();runner.judge(True, 'Scripted delegation.');runner.finish()
+        records = verify_journal(self.directory/'journal.jsonl')
+        opened = records[0]
+        self.assertEqual(opened['freeze'], NEW_FREEZE)
+        self.assertEqual(opened['freeze_sha256'], hashlib.sha256((self.root/NEW_FREEZE).read_bytes()).hexdigest())
+        self.assertEqual(opened['product_identity'], validate_freeze(self.root, NEW_FREEZE)['candidate'])
+        self.assertEqual(opened['cohort_sha256'], COHORTS['clarification-r01-r08'][1])
+        self.assertTrue(verify_run(self.directory)['completed'])
+        for mutation in ('old_freeze', 'missing_freeze', 'freeze_hash', 'identity', 'cohort_hash',
+                         'missing_hash_pair', 'missing_identity_pair', 'fixture_hash', 'missing_cohort'):
+            with self.subTest(mutation=mutation):
+                changed = copy.deepcopy(records);record = changed[0]
+                if mutation=='old_freeze':record['freeze']=FREEZE
+                elif mutation=='missing_freeze':record.pop('freeze')
+                elif mutation=='freeze_hash':record['freeze_sha256']='0'*64
+                elif mutation=='identity':record['product_identity']='other'
+                elif mutation=='cohort_hash':record['cohort_sha256']='0'*64
+                elif mutation=='missing_hash_pair':
+                    record.pop('freeze_sha256');record['hashes'].pop(NEW_FREEZE)
+                elif mutation=='missing_identity_pair':
+                    record.pop('product_identity');record.pop('product_candidate')
+                elif mutation=='fixture_hash':record['hashes'][record['fixture']]='0'*64
+                elif mutation=='missing_cohort':record.pop('cohort')
+                with self.assertRaises(RunRejected):verify_run(self.rewritten_evidence(changed))
+
+    def test_legacy_old_cohort_record_remains_verifiable_without_new_fields(self):
+        runner = self.recognition_runner(response=self.delegate)
+        runner.run_next();runner.judge(True, 'Scripted delegation.');runner.finish()
+        records = verify_journal(self.directory/'journal.jsonl')
+        for field in ('freeze', 'freeze_sha256', 'product_identity', 'cohort_sha256'):
+            records[0].pop(field)
+        directory = self.rewritten_evidence(records)
+        before = (directory/'journal.jsonl').read_bytes()
+        self.assertTrue(verify_run(directory)['completed'])
+        self.assertEqual(before, (directory/'journal.jsonl').read_bytes())
+
+
+class RepositoryFreezeTests(unittest.TestCase):
+    def test_immutable_old_manifest_and_real_new_freeze_have_only_primary_change(self):
+        self.assertEqual(hashlib.sha256((ROOT/FREEZE).read_bytes()).hexdigest(), OLD_FREEZE_SHA)
+        old = json.loads((ROOT/FREEZE).read_text())
+        new = validate_freeze(ROOT, NEW_FREEZE)
+        self.assertEqual(set(old['files']), set(new['files']))
+        self.assertEqual({path for path in old['files'] if old['files'][path]!=new['files'][path]},
+                         {'pal/primary.py'})
+        self.assertEqual(new['heldout_sha256'], COHORTS['clarification-heldout'][1])
+        self.assertFalse(new['heldout_contents_opened_before_freeze'])
+        with self.assertRaises(RunRejected):validate_freeze(ROOT, FREEZE)
 
 
 if __name__=='__main__':

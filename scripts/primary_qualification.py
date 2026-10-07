@@ -17,25 +17,35 @@ from pal.sanitize import sanitize
 from pal.store import Store
 from scripts.live_evidence import EvidenceJournal, RunWatchdog, verify_journal
 from scripts.live_operator import AuditedNative, clean_candidate
-from scripts.live_runner import RunRejected, SourcePin
+from scripts.live_runner import RunRejected, SourcePin, product_rel_paths
 
 FIXTURE = 'evidence/reviews/judgment-boundary/primary-heldout.json'
 FREEZE = 'evidence/reviews/judgment-boundary/primary-candidate-freeze.json'
+LEGACY_FREEZE_SHA = '1736095ccbee1f221f0ff062b59593cae4139de739cfd88c93586d0e694be2e2'
+NEW_FREEZE = 'evidence/reviews/judgment-boundary/primary-clarification-candidate-freeze.json'
 FIXTURE_SHA = '523d6b859e67d9f84162cdf6299e12a835c8ba920724442b68df3b81c9fe62a0'
 COHORTS = {
-    'heldout-v1': (FIXTURE, FIXTURE_SHA),
+    'heldout-v1': (FIXTURE, FIXTURE_SHA, FREEZE),
     'remaining-after-c031': ('evidence/reviews/judgment-boundary/primary-remaining.json',
-                             '34baf6e4969d8e1d0e6fb36bd1fe86721e6364cf958524f556fc3ea3f474351d'),
+                             '34baf6e4969d8e1d0e6fb36bd1fe86721e6364cf958524f556fc3ea3f474351d', FREEZE),
     'unseen-plus-contrasts': ('evidence/reviews/judgment-boundary/primary-unseen-contrasts.json',
-                             '39046068664082dcbd1afb0aace9425b79da44a0a7298ff4e9a501ae28c28608'),
+                             '39046068664082dcbd1afb0aace9425b79da44a0a7298ff4e9a501ae28c28608', FREEZE),
     'recognition-r01-r08': ('evidence/reviews/judgment-boundary/recognition-r01-r08.json',
-                           'ffc83ef138739495bf31ba37991b43ddd226d3f1429f854b46c2885d15f16e23'),
+                           'ffc83ef138739495bf31ba37991b43ddd226d3f1429f854b46c2885d15f16e23', FREEZE),
     'recognition-r03-r08': ('evidence/reviews/judgment-boundary/recognition-r03-r08.json',
-                           '6a3b9d45b1c3e9e83b998031a34bc5cd97913498dcd6a05e0da03498669bd815'),
+                           '6a3b9d45b1c3e9e83b998031a34bc5cd97913498dcd6a05e0da03498669bd815', FREEZE),
     'recognition-r09-r16': ('evidence/reviews/judgment-boundary/recognition-r09-r16.json',
-                           'fea4c3df865c9a32e9f2c37cb3286d65c152b07a8317170d8c79379c2ec05e91'),
+                           'fea4c3df865c9a32e9f2c37cb3286d65c152b07a8317170d8c79379c2ec05e91', FREEZE),
     'recognition-n01-n24': ('evidence/reviews/judgment-boundary/recognition-n01-n24.json',
-                           '9ae4c340caf6d2795b75565a530704885b9a7fe1fd72be5e9e07919d7650138a'),
+                           '9ae4c340caf6d2795b75565a530704885b9a7fe1fd72be5e9e07919d7650138a', FREEZE),
+    'clarification-r01-r08': ('evidence/reviews/judgment-boundary/recognition-r01-r08.json',
+                             'ffc83ef138739495bf31ba37991b43ddd226d3f1429f854b46c2885d15f16e23', NEW_FREEZE),
+    'clarification-r09-r16': ('evidence/reviews/judgment-boundary/recognition-r09-r16.json',
+                             'fea4c3df865c9a32e9f2c37cb3286d65c152b07a8317170d8c79379c2ec05e91', NEW_FREEZE),
+    'clarification-n01-n24': ('evidence/reviews/judgment-boundary/recognition-n01-n24.json',
+                             '9ae4c340caf6d2795b75565a530704885b9a7fe1fd72be5e9e07919d7650138a', NEW_FREEZE),
+    'clarification-heldout': ('evidence/reviews/judgment-boundary/primary-clarification-heldout.json',
+                             '44e3328d7ea28291d626dd8d9cfc5d2c3bd7a0a5e6d1e41a97a37611d659fc4b', NEW_FREEZE),
 }
 ORACLE_FIELDS = ('PAL_ORACLE_ONLY','acceptable_outcome_set','required_observations',
                  'disallowed_effects','interpretation_reason','target_ref','only_if_prior_action')
@@ -46,7 +56,10 @@ def digest(raw):
 
 
 def load_matrix(path, expected_sha=FIXTURE_SHA):
-    raw = Path(path).read_bytes()
+    try:
+        raw = Path(path).read_bytes()
+    except OSError as error:
+        raise RunRejected('frozen corpus unreadable') from error
     if digest(raw) != expected_sha:
         raise RunRejected('frozen corpus changed')
     return json.loads(raw)
@@ -89,20 +102,43 @@ def validate_matrix(matrix):
 def cohort_matrix(root, cohort):
     if cohort not in COHORTS:
         raise ValueError('unknown frozen qualification cohort')
-    fixture, expected_sha = COHORTS[cohort]
+    fixture, expected_sha, freeze_rel = COHORTS[cohort]
     matrix = load_matrix(root/fixture,expected_sha)
-    return fixture,matrix,validate_matrix(matrix)
+    return fixture,freeze_rel,matrix,validate_matrix(matrix)
+
+
+def validate_freeze(root, freeze_rel):
+    try:
+        manifest = json.loads((root/freeze_rel).read_text())
+        files = manifest.get('files') if type(manifest) is dict else None
+        if type(files) is not dict or not files or set(files)!=product_rel_paths(root):
+            raise RunRejected('product freeze file set mismatch')
+        if any(type(sha) is not str or len(sha)!=64 or
+               any(c not in '0123456789abcdef' for c in sha) for sha in files.values()):
+            raise RunRejected('malformed product freeze hash')
+        if type(manifest.get('candidate')) is not str or not manifest['candidate'].strip():
+            raise RunRejected('product freeze lacks candidate identity')
+        if manifest['candidate'].startswith('content:'):
+            identity = 'content:sha256:'+digest(json.dumps(files,sort_keys=True,separators=(',',':')).encode())
+            if manifest['candidate']!=identity:
+                raise RunRejected('product content identity mismatch')
+        if any(digest((root/path).read_bytes())!=sha for path,sha in files.items()):
+            raise RunRejected('product candidate differs from pre-disclosure freeze')
+        return manifest
+    except (OSError, ValueError) as error:
+        raise RunRejected('product freeze unreadable') from error
 
 
 class QualificationPin(SourcePin):
-    def __init__(self, root, matrix):
+    def __init__(self, root, matrix, freeze_rel=FREEZE):
         super().__init__(root,matrix)
+        self.freeze_rel = freeze_rel
         for path in sorted((root/'scripts').glob('primary_*.py')):
             self.hashes[str(path.relative_to(root))] = digest(path.read_bytes())
-        self.hashes[FREEZE] = digest((root/FREEZE).read_bytes())
+        self.hashes[freeze_rel] = digest((root/freeze_rel).read_bytes())
 
     def check(self):
-        if QualificationPin(self.root,self.matrix).hashes != self.hashes:
+        if QualificationPin(self.root,self.matrix,self.freeze_rel).hashes != self.hashes:
             raise RunRejected('qualification source drift')
 
 
@@ -278,7 +314,8 @@ class QualificationRunner:
         try:
             if scope not in ('scripted','live_synthetic'):
                 raise ValueError('unsupported qualification scope')
-            fixture,self.matrix,self.max_calls = cohort_matrix(self.root,cohort)
+            fixture,freeze_rel,self.matrix,self.max_calls = cohort_matrix(self.root,cohort)
+            freeze = validate_freeze(self.root,freeze_rel)
             if scope=='live_synthetic':
                 if type(provider) is not AuditedNative or not provider._operator_ready or provider._runner_claimed:
                     raise ValueError('qualification requires one audited official owner')
@@ -286,10 +323,7 @@ class QualificationRunner:
                     raise RunRejected('native owner differs from cohort bound')
                 provider.proof.check()
                 provider._runner_claimed = True
-            self.pin = QualificationPin(self.root,self.root/fixture)
-            freeze = json.loads((self.root/FREEZE).read_text())
-            if any(digest((self.root/p).read_bytes())!=sha for p,sha in freeze['files'].items()):
-                raise RunRejected('product candidate differs from pre-disclosure freeze')
+            self.pin = QualificationPin(self.root,self.root/fixture,freeze_rel)
             self.directory.mkdir(mode=0o700,parents=False,exist_ok=False)
             self.journal = EvidenceJournal(self.directory/'journal.jsonl',scope)
             remaining = 900 if scope=='scripted' else 900-(time.time()-provider.proof.verified_at)
@@ -301,6 +335,9 @@ class QualificationRunner:
             self.watchdog.start()
             self.journal.append({'event':'run.opened','candidate':candidate,'hashes':self.pin.hashes,
                                  'cohort':cohort,'fixture':fixture,
+                                 'cohort_sha256':COHORTS[cohort][1],
+                                 'freeze':freeze_rel,'freeze_sha256':self.pin.hashes[freeze_rel],
+                                 'product_identity':freeze['candidate'],
                                  'product_candidate':freeze['candidate'],'provider':provider.identity,
                                  'proof_remaining_seconds':remaining,'deadline_monotonic':self.deadline,
                                  'max_attempts':self.max_calls,'resume':False,'faults_disabled':True,
@@ -476,6 +513,31 @@ class QualificationRunner:
 def verify_run(directory):
     directory = Path(directory)
     records = verify_journal(directory/'journal.jsonl')
+    if records:
+        opened = records[0]
+        cohort = opened.get('cohort')
+        if ('cohort' not in opened and 'freeze' not in opened and
+                opened.get('hashes',{}).get(FREEZE)==LEGACY_FREEZE_SHA and
+                opened.get('hashes',{}).get(FIXTURE)==FIXTURE_SHA):
+            cohort = 'heldout-v1'
+        if cohort not in COHORTS:
+            raise RunRejected('unknown qualification cohort in journal')
+        fixture,fixture_sha,freeze_rel = COHORTS[cohort]
+        if 'freeze' in opened:
+            freeze_sha = opened.get('freeze_sha256')
+            identity = opened.get('product_identity')
+            hashes = opened.get('hashes')
+            if (opened['freeze']!=freeze_rel or opened.get('fixture')!=fixture or
+                    opened.get('cohort_sha256')!=fixture_sha or
+                    type(hashes) is not dict or hashes.get(fixture)!=fixture_sha or
+                    type(freeze_sha) is not str or len(freeze_sha)!=64 or
+                    any(c not in '0123456789abcdef' for c in freeze_sha) or
+                    freeze_sha!=hashes.get(freeze_rel) or
+                    type(identity) is not str or not identity.strip() or
+                    identity!=opened.get('product_candidate')):
+                raise RunRejected('qualification version binding mismatch')
+        elif freeze_rel!=FREEZE:
+            raise RunRejected('qualification version binding missing')
     for record in records:
         blob = record.get('blob')
         if blob is None: continue
@@ -572,7 +634,8 @@ def build_live(root, directory, proof_path, candidate, cohort='heldout-v1'):
     root,directory = Path(root).resolve(),Path(directory).resolve()
     directory.relative_to(root/'runtime')
     if directory.exists(): raise FileExistsError(directory)
-    _,_,max_calls = cohort_matrix(root,cohort)
+    _,freeze_rel,_,max_calls = cohort_matrix(root,cohort)
+    validate_freeze(root,freeze_rel)
     clean_candidate(root,candidate)
     proof = AccessProof.load(proof_path)
     owner = AuditedNative(proof,max_calls=max_calls)

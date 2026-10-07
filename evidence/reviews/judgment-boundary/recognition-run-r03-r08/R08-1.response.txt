@@ -1,0 +1,1 @@
+{"reply":"Sure, I can draft something without sending it. What should it be, and who's it for? For example, an email, a note, or a message. Also tell me any key points you want included.","action":{"kind":"none"}}

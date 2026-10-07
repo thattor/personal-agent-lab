@@ -1,0 +1,53 @@
+{
+  "author": {
+    "agent": "/root/semantic_contrasts",
+    "implementation_role_for_new_fix": "none",
+    "kind": "independent Codex synthetic case author",
+    "parent_disclosure": "No case text, setup facts, case-specific gold or interpretation has been sent to the parent before the candidate freeze."
+  },
+  "authority_change": false,
+  "byte_count": 17319,
+  "case_count": 6,
+  "execution_precondition": "Use existing Primary-only qualification owner/gate, no worker. Any dynamically delegated Goal naturally stays queued; no pause action is added. Only twelve planned turns; the sixteen-call gate supplies no retries, resampling or extra cases.",
+  "fixture_id": "PAL-PRIMARY-CLARIFICATION-HELDOUT-JA-v1",
+  "frozen_at_utc": "2026-10-07T17:04:51.767738+00:00",
+  "human_attestation": false,
+  "limitations": [
+    "Synthetic author cases, not human-authored or human usefulness evidence.",
+    "Not independent of all prior design/prompt/corpus knowledge; independence applies to authoring and withholding before the new fix implementation and candidate freeze.",
+    "Setup validation proves fixture compatibility only, not semantic model behavior or host security/recovery correctness.",
+    "No actual model/provider performance, Qwen qualification, UI, Expert or artifact proof.",
+    "No retrospective rescore or replacement of earlier failures; no claim of general accuracy beyond the finite observations if later executed."
+  ],
+  "max_primary_calls": 16,
+  "models_or_network_run": false,
+  "new_quota": false,
+  "parent_read_policy": "Do not open primary-clarification-heldout.json until the next candidate product/prompt source freeze is recorded. Register the exact frozen corpus hash through the existing cohort path only after that boundary; no new harness is required.",
+  "path": "evidence/reviews/judgment-boundary/primary-clarification-heldout.json",
+  "planned_primary_calls": 12,
+  "schema_version": 1,
+  "serialization": "UTF-8, ensure_ascii=false, sort_keys=true, indent=2, trailing LF; SHA256 covers exact file bytes.",
+  "setup_contract_validation": {
+    "cohort_registered": false,
+    "harness_path": "scripts/primary_qualification.py",
+    "harness_sha256_at_validation": "71e7dc074ce8fc57d33eb547623aea92d7622921f37b2734025e7ab9aec4f13c",
+    "live_adoption": false,
+    "provider_auth_or_model_calls": 0,
+    "runner_started": false,
+    "seed_case": "PASS for all six cases using unchanged scripts.primary_qualification.seed_case and public Store APIs in disposable runtime databases; temporary validation databases removed.",
+    "shape": "Exactly six cases, two fixed turns each, twelve unique input_record_ref values, one clear acceptable action per turn and three essential observations per outcome.",
+    "validate_matrix": "PASS using unchanged scripts.primary_qualification.validate_matrix; accepted gate bound 16."
+  },
+  "sha256": "44e3328d7ea28291d626dd8d9cfc5d2c3bd7a0a5e6d1e41a97a37611d659fc4b",
+  "status": "FROZEN_NOT_RUN",
+  "timing_and_independence": {
+    "basis": "Commissioned by the controller before the contemplated general clarification-policy change was implemented; authored and frozen before receiving or inspecting any new prompt or product implementation for that change.",
+    "candidate_freeze_requirement": "The parent must record the next product/prompt source freeze after this timestamp and before opening this corpus. Metadata alone is safe to inspect before then.",
+    "future_model_outputs_inspected": false,
+    "method": "Fresh fixed Japanese cases and gold authored from the accepted meaning/essential-clarification boundary; no R02/R10 text clones and no tuning against any future candidate response.",
+    "new_cases_executed_against_model": false,
+    "new_prompt_or_implementation_inspected": false,
+    "prior_familiarity": "Author knows the existing D029 design, existing product prompt and harness, earlier heldout/review cases, original fixed regression corpus and reported R02/R10 unnecessary-question failures from prior work. This is not a claim of blindness to the old implementation or known failure class."
+  },
+  "turn_count": 12
+}

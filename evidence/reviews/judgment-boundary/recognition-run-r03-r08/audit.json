@@ -1,0 +1,89 @@
+{
+  "verification": {
+    "records": 130,
+    "completed": true,
+    "judged_turns": 10,
+    "skipped_turns": 0,
+    "covered_cases": 6,
+    "scope": "live_synthetic",
+    "human_evaluation": false
+  },
+  "candidate": "5073ceb68faf6bf492baf949db5cd47f1c3f21c9",
+  "product_candidate": "1a14de986de2756ffea83c2671e506a32cccfdf6",
+  "status": "SIX_CASES_CONTROLLER_PASS",
+  "actual_attempts": 10,
+  "max_attempts": 10,
+  "elapsed_seconds": 650.7635750770569,
+  "native_supervisor_count": 20,
+  "native_supervisor_returncodes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "databases": [
+    {
+      "file": "R03.sqlite",
+      "integrity": "ok",
+      "goals": 1,
+      "artifacts": 0,
+      "pending_primary": 0
+    },
+    {
+      "file": "R04.sqlite",
+      "integrity": "ok",
+      "goals": 1,
+      "artifacts": 0,
+      "pending_primary": 0
+    },
+    {
+      "file": "R05.sqlite",
+      "integrity": "ok",
+      "goals": 1,
+      "artifacts": 0,
+      "pending_primary": 0
+    },
+    {
+      "file": "R06.sqlite",
+      "integrity": "ok",
+      "goals": 1,
+      "artifacts": 0,
+      "pending_primary": 0
+    },
+    {
+      "file": "R07.sqlite",
+      "integrity": "ok",
+      "goals": 1,
+      "artifacts": 0,
+      "pending_primary": 0
+    },
+    {
+      "file": "R08.sqlite",
+      "integrity": "ok",
+      "goals": 1,
+      "artifacts": 0,
+      "pending_primary": 0
+    }
+  ],
+  "process_exit_code": 0,
+  "product_hashes_unchanged": true,
+  "old_R02": "MISS retained; not retried",
+  "human_evaluation": false,
+  "qwen_qualification": false
+}

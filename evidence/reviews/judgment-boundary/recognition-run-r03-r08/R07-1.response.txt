@@ -1,0 +1,1 @@
+{"reply":"Happy to put together a draft, and I won't send anything. What should it be, and who's it for? For example, an email to a colleague or a thank-you note, plus the main point you want it to make.","action":{"kind":"none"}}

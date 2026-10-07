@@ -1,0 +1,83 @@
+I've kept this as a text-only review, as you asked. I wrote no plan file and used no tools.
+
+# Verdict
+
+**Make one targeted change to the Primary prompt only. Leave the native system prompt unchanged.** Candidate `1a14de9` stays **FAIL**, and nothing here marks acceptance PASS.
+
+**Is recurrence a sufficient reason?** Yes, but not because two misses are statistically meaningful. They aren't: R02 and R10 are the same request in two languages, run on one frozen product. The fix is justified for two other reasons:
+- `1a14de9` already fails the frozen fixed40 gate (15/16 can no longer be reached), so some product change is needed anyway.
+- Both misses follow from one ambiguous sentence in the contract, so this is a wording defect, not a random failure.
+
+**Root cause.** The current prompt says "Ask only missing facts that materially change the result." A recipient name *does* change the result. Read literally, the model is following the contract when it asks. The other trigger, "a generic/fictional draft is requested," gives no permission when the user didn't say "generic." Meetings work today because nothing in a meeting request suggests personalization. Thank-you notes do. The problem is the threshold for asking, not a missing rule about thank-you notes.
+
+**Why not change the native system prompt?**
+- It contains nothing that tells the model to ask questions about drafts. Its thank-you sentence governs content and is already correct. Its "personal project" clarification sentence is scoped to projects, not drafts.
+- The Expert also uses the native prompt. Editing it would change Expert generation everywhere, invalidate more of the existing absence evidence, and widen re-verification for no identified benefit.
+- If the Primary-only change still misses on the new hash, that is a separate finding and a separate change. Don't pre-empt it.
+
+**Safe miss vs. unacceptable false positive.** Both current misses were `none` with no effect, so the host stayed safe; they are usability failures. This change deliberately trades those safe misses for false-positive risk:
+- delegating on hypothetical, quoted or negated requests;
+- delegating when accept/decline or the actual purpose is unknown;
+- the Expert inventing details once less context reaches it.
+
+Zero false positives therefore stays the gate that cannot be bent. Delegation recall comes second.
+
+# Problems with your proposed wording
+
+1. **Too many clauses.** Long conjunctive rules are applied inconsistently. Replace the existing sentences instead of appending to them, or the old "materially change the result" wording will compete with the new rule.
+2. **"Intended target" / "ambiguous target" doesn't belong here.** Goal-target resolution already has its own rules in the prompt. Restricting the drafting clause to the *subject matter* of the draft avoids mixing the two.
+3. **"Explicit blanks" may push the model to insert blanks everywhere.** R10's gold asks for useful general thanks. Put blank placeholders only where a blank template was explicitly requested (the existing sentence already covers this).
+4. **Missing: how the spec should record unspecified values.** The Expert only sees the spec. If the Primary doesn't write "recipient and contribution unspecified; keep general," the native absence rule may not trigger reliably.
+5. **Missing: a non-blocking personalization offer.** Allowing one keeps the user experience the owner wants without blocking the draft.
+6. **R09 interaction.** The new rule may make R09 delegate immediately instead of asking its logistics question. Before freezing, check that R09's gold accepts both outcomes. If it requires the question, that conflicts with this policy and must be resolved now, not after the rerun.
+
+# Exact recommended change (`primary_prompt` only)
+
+Replace this span:
+
+> `For an actual local draft request, use available context and memory first; use local_draft when enough information exists or a generic/fictional draft is requested. Ask only missing facts that materially change the result.`
+
+with:
+
+> `For an actual local draft request, use available context and memory first. If its purpose is clear and a draft with general wording would still serve that purpose, use local_draft now even if the user did not ask for a generic draft; state unspecified details in spec as unspecified and never fill them in. Missing names, personal details, exact logistics or style are not by themselves reasons to ask; your reply may offer optional later personalization. Ask only when a fact or choice that only the user can supply, such as the actual purpose, whether to accept or decline, or which of several plausible subjects is meant, would make any general draft wrong or unusable.`
+
+Everything else stays byte-identical:
+- the clarification-form sentence and the "Infer harmless…; never invent…" and placeholder sentences;
+- the hypothetical/reported/negated rule;
+- all target, memory and authority rules;
+- the validator, the host, and the native `--system-prompt` (verify its hash is unchanged).
+
+# Regressions to watch
+
+- **False positives (unacceptable):** a hypothetical ("if I needed a thank-you note…"), a quotation, a negation ("don't draft anything yet"), or reported speech becoming `local_draft`.
+- **Unknown choice:** a reply to an invitation where accept/decline is unknown gets delegated instead of asked.
+- **Invented details:** the Expert adds a recipient, contribution or benefit because the spec omitted the "unspecified" markers.
+- **Behavior shift:** R03–08 and R09 change behavior. Purpose-absent meetings must still produce exactly one grouped question.
+- **Compound requests:** partial silent execution of a compound request.
+- **Acknowledgements:** a `local_draft` acknowledgement implies the draft is finished. The host replaces it, but the wording is still graded.
+
+# Smallest affected verification plan
+
+1. **Retain old evidence.** Keep all `1a14de9` evidence as recorded: R02 and R10 as MISS, fixed40 as FAIL, R11–16 and N01–24 as NOT_RUN. Do not repair or rescore anything.
+2. **Freeze 12 new utterances first.** Have someone independent of the prompt edit author and hash them, with gold labels and a pre-declared threshold, before implementing the change. Withhold them from the controller. Use the existing 16-cap path. Spread them across:
+   - **Delegate:** other personalization-heavy genres (apology, congratulations, farewell, general announcement) in English and Japanese, with no "generic" cue.
+   - **Ask:** accept/decline unknown, purpose absent, several plausible subjects.
+   - **None:** hypothetical, quoted or negated requests that contain draft words.
+
+   Zero false positives on the None items. R02 and R10 are now design-contaminated: passing them again is necessary but weak evidence, and these 12 are the real generalization check.
+3. **Implement.** Apply the prompt-only diff, record the new product hash, confirm the native and validator hashes are unchanged, and run the existing deterministic tests. They should be unaffected.
+4. **Rerun fixed40 once** on the new hash: first attempt only, with unchanged classification, answers, 15/16 and zero-of-24 rules, and the existing 16/16/24 cohort bounds. Stop at the first actual failure, with no retry. If the cohort order is not frozen, run N01–24 first so an unacceptable false positive fails fast.
+5. **Run the withheld 12 once**, under the same stop rules.
+6. **Revalidate UI and Expert behavior on the new hash.** All Primary-turn evidence (PHA06–08, the C034/C035 Primary turns, target selection) becomes evidence about the old candidate only.
+   - The seven-call supplemental can be reused if re-pinned to the new hash.
+   - Its Phase C2 ("no additional question about names") now directly tests this policy, but it is a seeded correction case, not fresh-context recognition.
+   - Any original gate it doesn't cover stays open.
+7. **Human evaluation:** one version-bound re-evaluation of the changed behavior. No micro-approvals and no artifact-per-request quota.
+
+# What remains unproven, even if everything above is green
+
+- Generalization beyond these roughly 52 samples, and run-to-run stability (each is one first-attempt sample).
+- Qwen3.8-27B qualification.
+- The current real-provider observation of running-cancel and late results; the original A/B fresh-context absence matrix; raw-model `source_ids` emission (only the host binding is proven).
+- Human judgment of usefulness on the new version.
+- Whether a native-layer change would ever be needed. That question stays open and would require its own prior bounded contract.
