@@ -1,0 +1,8 @@
+{
+  "status": "VOID",
+  "reason": "Actual Maple completed before cancel ingress; no_target accurately explained. Earlier running snapshot alone does not prove unfinished cancellation.",
+  "reserve": "ExactlyONE predeclared FLOW2_VOID_ONLY for timing VOID",
+  "goal_id": "c7c140a22479410287843a7caa903a5f",
+  "completion_seq": 29,
+  "cancel_input_seq": 30
+}

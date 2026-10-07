@@ -1,0 +1,4 @@
+DRAFT
+Birchのお礼状の下書きを作成してください。外部には送らないでください。
+Return only the requested draft text, without tool invocations or planning transcript.
+Relevant sanitized context: [["user", "Cedarの招待文の下書きを作成してください。外部には送らないでください。"], ["assistant", "Work recorded. Current canonical state: queued."], ["user", "一時停止して"], ["assistant", "Work recorded. Current canonical state: paused."], ["user", "Birchのお礼状の下書きを作成してください。外部には送らないでください。"]]

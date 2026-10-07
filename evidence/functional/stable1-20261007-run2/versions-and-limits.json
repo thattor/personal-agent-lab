@@ -1,0 +1,16 @@
+{
+  "candidate": "605791e723df31df454ad082423d3b5a7205c0e7",
+  "python": "3.9.6",
+  "sqlite": "3.54.0",
+  "fixture_sha256": "0429cd7005a4779061a84860b46ae38eb9b71b4391996e340e1004891aeaa689",
+  "requested_model": "opus",
+  "backend_alias_version": "unproven",
+  "raw_wire_capture": false,
+  "limits": [
+    "Finite conservative grammar; not arbitrary natural-language coverage",
+    "Two independent samples per absence family; no universal hallucination guarantee",
+    "CLI internal retries and personalization unproven",
+    "No existing production/old DB migration or Stable1 host adoption",
+    "Human usefulness pending; final release audit not complete"
+  ]
+}

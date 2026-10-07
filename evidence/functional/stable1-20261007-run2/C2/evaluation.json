@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "sample": "C2",
+  "rationale": "Cedar/Mika retained, exactly2 Japanese sentences; supplied discussion organization thanked directly, no invented outcome/date. これまで is generic past cooperation already supplied, not an added meeting date/deadline or future relative schedule.",
+  "draft_sha256": "42cb06dffb3f859a32da984515aa549a778bd937528e7d81a1a76f4a945cf2c7",
+  "input": "Controller synthetic actual UI; not human authored/evaluated",
+  "scope": "Finite frozen sample only; not hallucination elimination guarantee"
+}

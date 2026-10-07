@@ -1,0 +1,4 @@
+CONVERSATION
+こんにちは。今日は会話だけです。
+Relevant sanitized context: [["user", "Mapleの招待文の下書きを作成してください。外部には送らないでください。"], ["assistant", "Work recorded. Current canonical state: running."], ["user", "Mapleの下書きを止めて"], ["assistant", "Target control: applied. / 対象の作業に操作を適用しました。"], ["user", "こんにちは。今日は会話だけです。"]]
+Current canonical work (overrides old conversation summaries): [{"id": "4e8b83e204b9486ebf795e49d53cdef2", "state": "cancelled", "revision": 1, "reason": "user_cancelled"}]

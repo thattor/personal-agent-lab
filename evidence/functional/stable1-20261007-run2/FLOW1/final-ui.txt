@@ -1,0 +1,125 @@
+- main:
+  - link "Personal Agent Lab":
+    - /url: /
+  - link "Inspect / 状態を見る":
+    - /url: /inspect
+  - paragraph: "Provider: official_claude_opus_tool_free · local drafts / ローカル下書き · Official live / 公式実モデル · remaining / 残り 8 · Proof valid / 利用証明有効"
+  - heading "What’s on your mind? / 何をお手伝いしましょうか？" [level=1]
+  - paragraph: Talk, remember something, or ask for a draft. Drafts stay local. / 会話・記憶・下書きの依頼ができます。下書きはローカルに保存されます。
+  - region "Conversation":
+    - article:
+      - strong: user / あなた
+      - paragraph: Cedarの招待文の下書きを作成してください。外部には送らないでください。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: "Work recorded. Current canonical state: queued."
+    - article:
+      - strong: user / あなた
+      - paragraph: 一時停止して
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: "Work recorded. Current canonical state: paused."
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Work accepted. / 作業を受け付けました。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Preparing your draft… / 下書きを作成中です。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Work paused. / 作業を一時停止しました。
+    - article:
+      - strong: user / あなた
+      - paragraph: Birchのお礼状の下書きを作成してください。外部には送らないでください。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: "Work recorded. Current canonical state: queued."
+    - article:
+      - strong: user / あなた
+      - paragraph: 一時停止して
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: "Work recorded. Current canonical state: paused."
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Work accepted. / 作業を受け付けました。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Preparing your draft… / 下書きを作成中です。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Work paused. / 作業を一時停止しました。
+    - article:
+      - strong: user / あなた
+      - paragraph: "その下書きを訂正して: 架空の昼食会の短い招待文を、日本語で2文にしてください。"
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: "Target control: selection_required. / 操作する対象を選んでください。"
+    - article:
+      - strong: user / あなた
+      - paragraph: Select work target
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: "Target control: applied. / 対象の作業に操作を適用しました。"
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Your correction was applied. / 訂正を適用しました。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Preparing your draft… / 下書きを作成中です。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Your local draft is ready. / 下書きが完成しました。
+      - link "Open local draft / 下書きを開く":
+        - /url: /api/artifact/aec12d9f5cac4d5bbf106f9504b95fb3
+    - article:
+      - strong: user / あなた
+      - paragraph: Birchの下書きを止めて
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: "Target control: applied. / 対象の作業に操作を適用しました。"
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Work stopped. / 作業を中止しました。
+    - article:
+      - strong: user / あなた
+      - paragraph: Mapleの招待文の下書きを作成してください。外部には送らないでください。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: "Work recorded. Current canonical state: queued."
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Work accepted. / 作業を受け付けました。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Preparing your draft… / 下書きを作成中です。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Your local draft is ready. / 下書きが完成しました。
+      - link "Open local draft / 下書きを開く":
+        - /url: /api/artifact/e29deecbd97249a782e23e89130299ab
+    - article:
+      - strong: user / あなた
+      - paragraph: Mapleの下書きを止めて
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: "Target control: no_target. / 対象の作業が見つかりません。"
+  - alert
+  - generic: Your message / メッセージ
+  - textbox "Your message / メッセージ":
+    - /placeholder: Make a draft, do not send it. / 下書きを作成（外部には送りません）
+  - button "Send / 入力を送信"
+  - region "Current work":
+    - article:
+      - strong: "Work / 作業: completed / 完了"
+      - paragraph
+    - article:
+      - strong: "Work / 作業: cancelled / 中止"
+      - paragraph: user cancelled
+    - article:
+      - strong: "Work / 作業: completed / 完了"
+      - paragraph
+    - article:
+      - strong: "Choose work / 対象を選択: already_resolved"
+  - paragraph: "Controls / 操作（英語で入力）: “stop that”＝中止、 “pause that”＝一時停止、 “resume that”＝再開、 “correct that: …”＝訂正、 “answer: …”＝回答、 “forget that”＝参照停止。"
+  - generic "Session receipt / 利用記録"

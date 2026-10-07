@@ -1,0 +1,4 @@
+DRAFT
+架空プロジェクトCedarについて、Mikaへのお礼状の下書きを作成してください。日本語で2文、全体への感謝と、提供された具体的な貢献を含めてください。外部には送らないでください。
+Return only the requested draft text, without tool invocations or planning transcript.
+Relevant sanitized context: [["user", "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied."], ["assistant", "Got it. Cedar is a fictional project, and Mika helped organize its design discussion. No other contributions or dates are noted. If this context is included in later requests, I can use it, for example to draft a thank-you note to Mika."], ["user", "架空プロジェクトCedarについて、Mikaへのお礼状の下書きを作成してください。日本語で2文、全体への感謝と、提供された具体的な貢献を含めてください。外部には送らないでください。"], ["note", "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied."]]

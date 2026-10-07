@@ -1,0 +1,172 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "a2dfcdfe50d04e43b51fb643931d8d29",
+      "role": "user",
+      "content": "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "1dd15f338597450a912f594e357265e5",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: queued.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"a2dfcdfe50d04e43b51fb643931d8d29\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "f061b6c091404454844674123c0a0d45",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"2c2f39426ca9405f800fef94bcd52057\"}",
+      "usable": 1,
+      "source_event_id": "63b533c1e7c04ef08ecb0d5038d56703",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "3bf848538e104af8bd494dcc3970bb48",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"32d9c126828d436b90442b80d1c7d56a\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"2c2f39426ca9405f800fef94bcd52057\"}",
+      "usable": 1,
+      "source_event_id": "fc595a254e5b4666bb86d6795579771d",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "7d8c36259ecb4d83a2cc130fd95604cb",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"eb9c880d63ec432399e86d22a9dc07f8\",\"attempt_id\":\"32d9c126828d436b90442b80d1c7d56a\",\"check_status\":\"pass\",\"receipt_id\":\"470fc75daa8741808ac8958c2fa459f9\"},\"event\":\"goal.completed\",\"goal_id\":\"2c2f39426ca9405f800fef94bcd52057\"}",
+      "usable": 1,
+      "source_event_id": "0b06311e966f469eaa80c3ac21772097",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "2c2f39426ca9405f800fef94bcd52057",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "2160c4922af042168e8581167c09f5bb",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "2c2f39426ca9405f800fef94bcd52057",
+      "revision": 1,
+      "acceptance_id": "2160c4922af042168e8581167c09f5bb",
+      "specification": "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。",
+      "sources": "[\"a2dfcdfe50d04e43b51fb643931d8d29\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "2160c4922af042168e8581167c09f5bb",
+      "goal_id": "2c2f39426ca9405f800fef94bcd52057",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "32d9c126828d436b90442b80d1c7d56a",
+      "goal_id": "2c2f39426ca9405f800fef94bcd52057",
+      "revision": 1,
+      "acceptance_id": "2160c4922af042168e8581167c09f5bb",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"a2dfcdfe50d04e43b51fb643931d8d29\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "470fc75daa8741808ac8958c2fa459f9",
+      "attempt_id": "32d9c126828d436b90442b80d1c7d56a",
+      "artifact_id": "eb9c880d63ec432399e86d22a9dc07f8",
+      "hash": "dc11ba5dad0a8144f671aa7c22d64e79f672492d40b25de4cb3aed7b5fe2e135",
+      "size": 147,
+      "revision": 1,
+      "epoch": 1
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "32d9c126828d436b90442b80d1c7d56a",
+      "receipt_id": "470fc75daa8741808ac8958c2fa459f9",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "63b533c1e7c04ef08ecb0d5038d56703",
+      "goal_id": "2c2f39426ca9405f800fef94bcd52057",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "fc595a254e5b4666bb86d6795579771d",
+      "goal_id": "2c2f39426ca9405f800fef94bcd52057",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"32d9c126828d436b90442b80d1c7d56a\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "0b06311e966f469eaa80c3ac21772097",
+      "goal_id": "2c2f39426ca9405f800fef94bcd52057",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"eb9c880d63ec432399e86d22a9dc07f8\",\"attempt_id\":\"32d9c126828d436b90442b80d1c7d56a\",\"check_status\":\"pass\",\"receipt_id\":\"470fc75daa8741808ac8958c2fa459f9\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "artifacts": [
+    {
+      "id": "eb9c880d63ec432399e86d22a9dc07f8",
+      "hash": "dc11ba5dad0a8144f671aa7c22d64e79f672492d40b25de4cb3aed7b5fe2e135",
+      "size": 147
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 1,
+    "expires_at": 1791351525.645353,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 73618,
+    "started_at": 1791350625.699882,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

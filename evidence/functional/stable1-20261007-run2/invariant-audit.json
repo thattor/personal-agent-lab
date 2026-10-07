@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "scope": "Exact new-candidate frozen real samples and FLOW1+VOID-only-reserve, not N1-07 or whole project completion",
+  "checks": [
+    {
+      "slot": "A1",
+      "host_invariants": "PASS",
+      "calls_remaining": 1,
+      "receipts": 1,
+      "expected_stale_rejections": []
+    },
+    {
+      "slot": "A2",
+      "host_invariants": "PASS",
+      "calls_remaining": 1,
+      "receipts": 1,
+      "expected_stale_rejections": []
+    },
+    {
+      "slot": "B1",
+      "host_invariants": "PASS",
+      "calls_remaining": 1,
+      "receipts": 1,
+      "expected_stale_rejections": []
+    },
+    {
+      "slot": "B2",
+      "host_invariants": "PASS",
+      "calls_remaining": 1,
+      "receipts": 1,
+      "expected_stale_rejections": []
+    },
+    {
+      "slot": "C1",
+      "host_invariants": "PASS",
+      "calls_remaining": 1,
+      "receipts": 1,
+      "expected_stale_rejections": []
+    },
+    {
+      "slot": "C2",
+      "host_invariants": "PASS",
+      "calls_remaining": 1,
+      "receipts": 1,
+      "expected_stale_rejections": []
+    },
+    {
+      "slot": "FLOW1",
+      "host_invariants": "PASS",
+      "calls_remaining": 8,
+      "receipts": 2,
+      "expected_stale_rejections": [
+        {
+          "seq": 1,
+          "attempt_id": "1c2b5e11204343aeb6782aa38587d07c",
+          "reason": "stale artifact"
+        },
+        {
+          "seq": 2,
+          "attempt_id": "6ba5bb19547049fdb297addd9b0d25ac",
+          "reason": "stale artifact"
+        }
+      ]
+    },
+    {
+      "slot": "FLOW2_VOID_ONLY",
+      "host_invariants": "PASS",
+      "calls_remaining": 4,
+      "receipts": 0,
+      "expected_stale_rejections": [
+        {
+          "seq": 1,
+          "attempt_id": "e05634cb571348e39241e9693d985594",
+          "reason": "stale artifact"
+        }
+      ]
+    }
+  ],
+  "selected_ack_epoch_before_claim": 3,
+  "receipt_epoch_after_claim": 4,
+  "criteria_unchanged": true,
+  "old_db_write": false,
+  "manual_canonical_repair": false
+}

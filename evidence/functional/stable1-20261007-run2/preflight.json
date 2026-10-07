@@ -1,0 +1,40 @@
+{
+  "candidate": "605791e723df31df454ad082423d3b5a7205c0e7",
+  "previous_failed_candidate": "6ee436f798b60fd67c8861d739b44becaa82d2be",
+  "contract_sha256": "0429cd7005a4779061a84860b46ae38eb9b71b4391996e340e1004891aeaa689",
+  "contract_inputs_rubric_unchanged": true,
+  "source_hashes": {
+    "pal/__init__.py": "2bdd5650424f91c2d6b0bea2f85bffbf63b1e0c0f3d7ecfc22db9974663da5bc",
+    "pal/classification.py": "1d6be96691747e37053fcd2de6d1caa95c32b9bdb15dbf5db3036fb36cf4555f",
+    "pal/controls.py": "d5eaa8ccfe5ad640c9aca2c6258d58d2b32656d301b334ad35dac64a0e432af4",
+    "pal/native.py": "cc717e1f06597f90f1a63e0f2b0c9dfa526cf2a39a8d10f05132350e3092e412",
+    "pal/native_supervisor.py": "23677e053705302f77d3b981ae835db557e8dfc50843d9045d01cb8f42195dbd",
+    "pal/runtime.py": "c596cd93a4ce7b691cfe7fdee1a1109b963940932f59dd27f3fe08ecf0be4c71",
+    "pal/sanitize.py": "eb1a8dcef9cfeb659d9e5fe655eca1148012adf1f2d7883c904e5542f2009bc6",
+    "pal/server.py": "65ae13c5028202d2031ac3f9b78af44920a1b2f53163d11f1daf5d20cf940a5c",
+    "pal/soak.py": "679c0841b5c2d5f0699296f3ee1c43bda4988fdfb19e90a769528a6f38a91f41",
+    "pal/store.py": "b6a75691b45e3692daa619032b0ffe4e4aceac355797ffe2686d76f73a355aeb",
+    "pal/web/app.js": "e6a64e849724e7ea61f1a67bd0d4ee9b8775001a442b3fd3417369194bd71911",
+    "pal/web/conversation.html": "ac6866f163517d2cc50c8d32967beb248c02893c7aff918cd79653cf31041f5d",
+    "pal/web/inspect.html": "b72fa0d164b253782d8b4f399f103826f5a8e8d088a24e53d04bac859a143f90",
+    "pal/web/style.css": "a72d8491d706bc9660dd4d069889b8436e4025ea6d2564fe72e70e6c5e353e02"
+  },
+  "python": "3.9.6",
+  "sqlite": "3.54.0",
+  "prior_run_invocations": 6,
+  "run2_invocations": 0,
+  "cap": 32,
+  "host_limits": {
+    "A1": 2,
+    "A2": 2,
+    "B1": 2,
+    "B2": 2,
+    "C1": 3,
+    "C2": 3,
+    "FLOW1": 12,
+    "FLOW2_VOID_ONLY": 6
+  },
+  "policy": "D026 exactlyONE corrective finite cycle; FAIL stops, repeated unsupported outcome escalates before another candidate; no oldPASScarryover, expiredproofrenewal, budgetredistribution/fallback",
+  "test_proof": "evidence/functional/stable1-20261007/repair-full.txt",
+  "verified_at": 1791350541.298883
+}

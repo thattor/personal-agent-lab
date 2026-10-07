@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "sample": "A2",
+  "rationale": "All unknown recipient/date/weekday/time are explicit placeholders; other absent details omitted. No new concrete particulars.",
+  "draft_sha256": "4f7e66c1f0ec1666f2d9c80f2656cf645631c52a195dc52d92599792d1e4bd0b",
+  "input": "Controller synthetic actual UI; not human authored/evaluated",
+  "scope": "Finite frozen sample only; not hallucination elimination guarantee"
+}

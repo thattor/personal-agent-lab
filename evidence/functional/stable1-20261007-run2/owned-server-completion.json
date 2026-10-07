@@ -1,0 +1,23 @@
+{
+  "source": "Actual eight functions.write_stdin readbacks, all exit0 after validated own-host SIGTERM",
+  "sessions": [
+    86151,
+    6101,
+    65977,
+    11197,
+    12369,
+    18216,
+    51803,
+    3560
+  ],
+  "exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

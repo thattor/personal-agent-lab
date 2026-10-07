@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "running_attempt": "e05634cb571348e39241e9693d985594",
+  "cancelled_goal": "4e8b83e204b9486ebf795e49d53cdef2",
+  "late_result": "Actual stale artifact rejection binds observed Attempt; zero receipt/artifact",
+  "conversation": "Japanese ordinary conversation actual reply, zero additional Goal",
+  "authorship": "Synthetic controller UI, not human input/evaluation",
+  "scope": "One actual successful reserve timing case; initial FLOW1 completion-race VOID retained"
+}

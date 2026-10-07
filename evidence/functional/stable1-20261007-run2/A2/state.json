@@ -1,0 +1,172 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "2c5b0f781af74cc7bc1c733743dcaffd",
+      "role": "user",
+      "content": "架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "9dd10f837a994e08943299943b32a65c",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: queued.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"2c5b0f781af74cc7bc1c733743dcaffd\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "b6fa611cc3044860ade7efb05e1ea6bb",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"4cf17f6d27ae48bba33e1caca22ebb1d\"}",
+      "usable": 1,
+      "source_event_id": "7443357f4e884012b115fc60c5aae9e6",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "b917f106e7ed46488409d2c9172e72ab",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"3303149f89004ad68b402950c295a69f\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"4cf17f6d27ae48bba33e1caca22ebb1d\"}",
+      "usable": 1,
+      "source_event_id": "56a16de75b394aa5a6318505ae48dc20",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "b58498261bb748008305114b3d2eb52a",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"b9f8bbb717324170b8787d869d245294\",\"attempt_id\":\"3303149f89004ad68b402950c295a69f\",\"check_status\":\"pass\",\"receipt_id\":\"e86ddf23c4c9473d8d700c3759a8f275\"},\"event\":\"goal.completed\",\"goal_id\":\"4cf17f6d27ae48bba33e1caca22ebb1d\"}",
+      "usable": 1,
+      "source_event_id": "c569b65685fa47a5bb4808e449a5e1a5",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "4cf17f6d27ae48bba33e1caca22ebb1d",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "01b045b2e9ea440f93c766100e7b475e",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "4cf17f6d27ae48bba33e1caca22ebb1d",
+      "revision": 1,
+      "acceptance_id": "01b045b2e9ea440f93c766100e7b475e",
+      "specification": "架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。",
+      "sources": "[\"2c5b0f781af74cc7bc1c733743dcaffd\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "01b045b2e9ea440f93c766100e7b475e",
+      "goal_id": "4cf17f6d27ae48bba33e1caca22ebb1d",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "3303149f89004ad68b402950c295a69f",
+      "goal_id": "4cf17f6d27ae48bba33e1caca22ebb1d",
+      "revision": 1,
+      "acceptance_id": "01b045b2e9ea440f93c766100e7b475e",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"2c5b0f781af74cc7bc1c733743dcaffd\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "e86ddf23c4c9473d8d700c3759a8f275",
+      "attempt_id": "3303149f89004ad68b402950c295a69f",
+      "artifact_id": "b9f8bbb717324170b8787d869d245294",
+      "hash": "4f7e66c1f0ec1666f2d9c80f2656cf645631c52a195dc52d92599792d1e4bd0b",
+      "size": 383,
+      "revision": 1,
+      "epoch": 1
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "3303149f89004ad68b402950c295a69f",
+      "receipt_id": "e86ddf23c4c9473d8d700c3759a8f275",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "7443357f4e884012b115fc60c5aae9e6",
+      "goal_id": "4cf17f6d27ae48bba33e1caca22ebb1d",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "56a16de75b394aa5a6318505ae48dc20",
+      "goal_id": "4cf17f6d27ae48bba33e1caca22ebb1d",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"3303149f89004ad68b402950c295a69f\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "c569b65685fa47a5bb4808e449a5e1a5",
+      "goal_id": "4cf17f6d27ae48bba33e1caca22ebb1d",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"b9f8bbb717324170b8787d869d245294\",\"attempt_id\":\"3303149f89004ad68b402950c295a69f\",\"check_status\":\"pass\",\"receipt_id\":\"e86ddf23c4c9473d8d700c3759a8f275\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "artifacts": [
+    {
+      "id": "b9f8bbb717324170b8787d869d245294",
+      "hash": "4f7e66c1f0ec1666f2d9c80f2656cf645631c52a195dc52d92599792d1e4bd0b",
+      "size": 383
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 1,
+    "expires_at": 1791351491.19354,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 72973,
+    "started_at": 1791350591.246003,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

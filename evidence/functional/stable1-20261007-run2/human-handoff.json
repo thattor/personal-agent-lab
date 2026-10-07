@@ -1,0 +1,20 @@
+{
+  "judgment_id": "HR-STABLE1-001",
+  "status": "HUMAN_PENDING",
+  "candidate": "605791e723df31df454ad082423d3b5a7205c0e7",
+  "material": "human-material.md",
+  "material_sha256": "8f037bc648d39a8852654c3ce415dd0064dad9ac8e4724c7a7ffbe76093ca4bb",
+  "rubric_source": "tests/fixtures/stable1_real_ui_v3.json",
+  "rubric_sha256": "0429cd7005a4779061a84860b46ae38eb9b71b4391996e340e1004891aeaa689",
+  "reason": "Authentic personal usefulness cannot be substituted by controller/model/test",
+  "recommendation": "Evaluate all retained new texts and finite actual target flow against frozen four aspects; return specific mismatch",
+  "release_condition": "Direct authentic version-bound answer; negative findings diagnosed/retested beforePASS",
+  "dependencies": [
+    "N1-07",
+    "N1-08 final audit/release"
+  ],
+  "separate_pending": [
+    "P001 futureplanadoption",
+    "Projects authorization"
+  ]
+}

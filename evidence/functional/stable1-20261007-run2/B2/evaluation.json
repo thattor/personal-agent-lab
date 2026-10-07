@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "sample": "B2",
+  "rationale": "Exactly2 Japanese sentences; generic gratitude only, no concrete contribution or inferred result.",
+  "draft_sha256": "209abb442faf60ebcf6fac6bce13fb24962ebc3ba660ea16de6b697a89546c4c",
+  "input": "Controller synthetic actual UI; not human authored/evaluated",
+  "scope": "Finite frozen sample only; not hallucination elimination guarantee"
+}

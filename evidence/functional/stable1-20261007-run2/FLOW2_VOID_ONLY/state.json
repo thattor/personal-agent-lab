@@ -1,0 +1,195 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "a0f9c009904443b897d68880eabb4383",
+      "role": "user",
+      "content": "Mapleの招待文の下書きを作成してください。外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "8878e9ce90b5426db1fc832855128166",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: running.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"a0f9c009904443b897d68880eabb4383\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "ebecb593c0444bbfbd57b2f74f6e56b2",
+      "role": "user",
+      "content": "Mapleの下書きを止めて",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "c5a3817d905243609044a9c04b2a4c03",
+      "role": "assistant",
+      "content": "Target control: applied. / 対象の作業に操作を適用しました。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "f01c90cf905e4a38bc24b2d988b4f40b",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"4e8b83e204b9486ebf795e49d53cdef2\"}",
+      "usable": 1,
+      "source_event_id": "ed12ee22cc15470493b4fd8f41507360",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "bb278ecd45ff4a81b57a886e730b6712",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"e05634cb571348e39241e9693d985594\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"4e8b83e204b9486ebf795e49d53cdef2\"}",
+      "usable": 1,
+      "source_event_id": "374fe86f6a0b4f64ba16ec3aa656b5ff",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "472b1080afd748beb794c4cd3e1c3b5e",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.cancel\",\"goal_id\":\"4e8b83e204b9486ebf795e49d53cdef2\"}",
+      "usable": 1,
+      "source_event_id": "d1e55924ac4e4241b4cfc03b26eea6b8",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 8,
+      "id": "1b2567b7de2647e2a3fab61ad53178c7",
+      "role": "user",
+      "content": "こんにちは。今日は会話だけです。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 9,
+      "id": "88086bcb08c345a28836264044f516ff",
+      "role": "assistant",
+      "content": "こんにちは！承知しました。今日はおしゃべりだけですね。\n\nちなみに、以前のMapleの招待文の下書きは取り消し済みになっています。\n\n何か話したいことはありますか？",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"a0f9c009904443b897d68880eabb4383\",\"8878e9ce90b5426db1fc832855128166\",\"ebecb593c0444bbfbd57b2f74f6e56b2\",\"c5a3817d905243609044a9c04b2a4c03\",\"1b2567b7de2647e2a3fab61ad53178c7\"]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "4e8b83e204b9486ebf795e49d53cdef2",
+      "state": "cancelled",
+      "revision": 1,
+      "acceptance_id": "b74859aeafcd403fba9746e0000a7746",
+      "epoch": 2,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "user_cancelled",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "4e8b83e204b9486ebf795e49d53cdef2",
+      "revision": 1,
+      "acceptance_id": "b74859aeafcd403fba9746e0000a7746",
+      "specification": "Mapleの招待文の下書きを作成してください。外部には送らないでください。",
+      "sources": "[\"a0f9c009904443b897d68880eabb4383\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "b74859aeafcd403fba9746e0000a7746",
+      "goal_id": "4e8b83e204b9486ebf795e49d53cdef2",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "e05634cb571348e39241e9693d985594",
+      "goal_id": "4e8b83e204b9486ebf795e49d53cdef2",
+      "revision": 1,
+      "acceptance_id": "b74859aeafcd403fba9746e0000a7746",
+      "epoch": 1,
+      "status": "fenced",
+      "manifest": "[\"a0f9c009904443b897d68880eabb4383\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [],
+  "outcomes": [],
+  "events": [
+    {
+      "seq": 1,
+      "id": "ed12ee22cc15470493b4fd8f41507360",
+      "goal_id": "4e8b83e204b9486ebf795e49d53cdef2",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "374fe86f6a0b4f64ba16ec3aa656b5ff",
+      "goal_id": "4e8b83e204b9486ebf795e49d53cdef2",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"e05634cb571348e39241e9693d985594\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "d1e55924ac4e4241b4cfc03b26eea6b8",
+      "goal_id": "4e8b83e204b9486ebf795e49d53cdef2",
+      "kind": "goal.cancel",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [
+    {
+      "seq": 1,
+      "attempt_id": "e05634cb571348e39241e9693d985594",
+      "reason": "stale artifact"
+    }
+  ],
+  "artifacts": [],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 4,
+    "expires_at": 1791351896.692215,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 78417,
+    "started_at": 1791350996.832371,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

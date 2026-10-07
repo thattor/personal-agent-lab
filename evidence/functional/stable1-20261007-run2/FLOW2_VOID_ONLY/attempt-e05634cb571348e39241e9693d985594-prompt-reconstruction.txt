@@ -1,0 +1,4 @@
+DRAFT
+Mapleの招待文の下書きを作成してください。外部には送らないでください。
+Return only the requested draft text, without tool invocations or planning transcript.
+Relevant sanitized context: [["user", "Mapleの招待文の下書きを作成してください。外部には送らないでください。"]]

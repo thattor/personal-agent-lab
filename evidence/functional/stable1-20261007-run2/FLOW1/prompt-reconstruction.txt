@@ -1,0 +1,4 @@
+DRAFT
+架空の昼食会の短い招待文を、日本語で2文にしてください。
+Return only the requested draft text, without tool invocations or planning transcript.
+Relevant sanitized context: [["user", "Cedarの招待文の下書きを作成してください。外部には送らないでください。"], ["assistant", "Work recorded. Current canonical state: queued."], ["user", "一時停止して"], ["assistant", "Work recorded. Current canonical state: paused."], ["user", "Birchのお礼状の下書きを作成してください。外部には送らないでください。"], ["assistant", "Work recorded. Current canonical state: queued."], ["user", "一時停止して"], ["assistant", "Work recorded. Current canonical state: paused."], ["user", "その下書きを訂正して: 架空の昼食会の短い招待文を、日本語で2文にしてください。"], ["assistant", "Target control: selection_required. / 操作する対象を選んでください。"], ["user", "Select work target"], ["assistant", "Target control: applied. / 対象の作業に操作を適用しました。"]]

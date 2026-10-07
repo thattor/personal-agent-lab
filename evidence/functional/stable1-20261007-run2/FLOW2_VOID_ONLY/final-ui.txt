@@ -1,0 +1,47 @@
+- main:
+  - link "Personal Agent Lab":
+    - /url: /
+  - link "Inspect / 状態を見る":
+    - /url: /inspect
+  - paragraph: "Provider: official_claude_opus_tool_free · local drafts / ローカル下書き · Official live / 公式実モデル · remaining / 残り 4 · Proof valid / 利用証明有効"
+  - heading "What’s on your mind? / 何をお手伝いしましょうか？" [level=1]
+  - paragraph: Talk, remember something, or ask for a draft. Drafts stay local. / 会話・記憶・下書きの依頼ができます。下書きはローカルに保存されます。
+  - region "Conversation":
+    - article:
+      - strong: user / あなた
+      - paragraph: Mapleの招待文の下書きを作成してください。外部には送らないでください。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: "Work recorded. Current canonical state: running."
+    - article:
+      - strong: user / あなた
+      - paragraph: Mapleの下書きを止めて
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: "Target control: applied. / 対象の作業に操作を適用しました。"
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Work accepted. / 作業を受け付けました。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Preparing your draft… / 下書きを作成中です。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: Work stopped. / 作業を中止しました。
+    - article:
+      - strong: user / あなた
+      - paragraph: こんにちは。今日は会話だけです。
+    - article:
+      - strong: assistant / アシスタント
+      - paragraph: こんにちは！承知しました。今日はおしゃべりだけですね。 ちなみに、以前のMapleの招待文の下書きは取り消し済みになっています。 何か話したいことはありますか？
+  - alert
+  - generic: Your message / メッセージ
+  - textbox "Your message / メッセージ":
+    - /placeholder: Make a draft, do not send it. / 下書きを作成（外部には送りません）
+  - button "Send / 入力を送信"
+  - region "Current work":
+    - article:
+      - strong: "Work / 作業: cancelled / 中止"
+      - paragraph: user cancelled
+  - paragraph: "Controls / 操作（英語で入力）: “stop that”＝中止、 “pause that”＝一時停止、 “resume that”＝再開、 “correct that: …”＝訂正、 “answer: …”＝回答、 “forget that”＝参照停止。"
+  - generic "Session receipt / 利用記録"

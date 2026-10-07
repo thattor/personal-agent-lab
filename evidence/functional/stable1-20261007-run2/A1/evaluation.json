@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "sample": "A1",
+  "rationale": "All unknown recipient/date/weekday/time/venue are explicit placeholders; no invented concrete timing or identity. Japanese invitation local only.",
+  "draft_sha256": "473c05486f6f179824ffe65a89258adf8847026052977af0aa37d150280db5e8",
+  "input": "Controller synthetic actual UI; not human authored/evaluated",
+  "scope": "Finite frozen sample only; not hallucination elimination guarantee"
+}

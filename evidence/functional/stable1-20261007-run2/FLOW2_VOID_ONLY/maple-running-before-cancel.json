@@ -1,0 +1,111 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "a0f9c009904443b897d68880eabb4383",
+      "role": "user",
+      "content": "Mapleの招待文の下書きを作成してください。外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "8878e9ce90b5426db1fc832855128166",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: running.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"a0f9c009904443b897d68880eabb4383\"]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "4e8b83e204b9486ebf795e49d53cdef2",
+      "state": "running",
+      "revision": 1,
+      "acceptance_id": "b74859aeafcd403fba9746e0000a7746",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "4e8b83e204b9486ebf795e49d53cdef2",
+      "revision": 1,
+      "acceptance_id": "b74859aeafcd403fba9746e0000a7746",
+      "specification": "Mapleの招待文の下書きを作成してください。外部には送らないでください。",
+      "sources": "[\"a0f9c009904443b897d68880eabb4383\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "b74859aeafcd403fba9746e0000a7746",
+      "goal_id": "4e8b83e204b9486ebf795e49d53cdef2",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "e05634cb571348e39241e9693d985594",
+      "goal_id": "4e8b83e204b9486ebf795e49d53cdef2",
+      "revision": 1,
+      "acceptance_id": "b74859aeafcd403fba9746e0000a7746",
+      "epoch": 1,
+      "status": "running",
+      "manifest": "[\"a0f9c009904443b897d68880eabb4383\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [],
+  "outcomes": [],
+  "events": [
+    {
+      "seq": 1,
+      "id": "ed12ee22cc15470493b4fd8f41507360",
+      "goal_id": "4e8b83e204b9486ebf795e49d53cdef2",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 0
+    },
+    {
+      "seq": 2,
+      "id": "374fe86f6a0b4f64ba16ec3aa656b5ff",
+      "goal_id": "4e8b83e204b9486ebf795e49d53cdef2",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"e05634cb571348e39241e9693d985594\",\"epoch\":1}",
+      "delivered": 0
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "artifacts": [],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 5,
+    "expires_at": 1791351896.692215,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 78417,
+    "started_at": 1791350996.832371,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

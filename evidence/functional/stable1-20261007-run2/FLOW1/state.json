@@ -1,0 +1,646 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "e89204eaa74b4a9eb4a268197b937ff2",
+      "role": "user",
+      "content": "Cedarの招待文の下書きを作成してください。外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "f75976985e7d41a0a33e20eb73944343",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: queued.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"e89204eaa74b4a9eb4a268197b937ff2\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "266db323efa740338d1c366c2a981c46",
+      "role": "user",
+      "content": "一時停止して",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "f52c33e9387a4bc58b9ade2271bc44b5",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: paused.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"e89204eaa74b4a9eb4a268197b937ff2\",\"f75976985e7d41a0a33e20eb73944343\",\"266db323efa740338d1c366c2a981c46\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "42a56c053425435b86330051c00806b4",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"f56de1dd61b047c598fa9603e63afdde\"}",
+      "usable": 1,
+      "source_event_id": "d924448c94d14419afb25803d120d20c",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "cc4585ab99cb44fd8dfc02199d5e6696",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"1c2b5e11204343aeb6782aa38587d07c\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"f56de1dd61b047c598fa9603e63afdde\"}",
+      "usable": 1,
+      "source_event_id": "e2837754c899455ebb0fca7d5a736041",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "e4f31dbabeca4ed3a53c9d47d7bc12b4",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.pause\",\"goal_id\":\"f56de1dd61b047c598fa9603e63afdde\"}",
+      "usable": 1,
+      "source_event_id": "47cb51eca142415cad17ad65bd81041f",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 8,
+      "id": "994a9512fbf5450ca6d3d73bc2202bc4",
+      "role": "user",
+      "content": "Birchのお礼状の下書きを作成してください。外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 9,
+      "id": "0b0617dc111b4f88a846799eeba9b218",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: queued.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"e89204eaa74b4a9eb4a268197b937ff2\",\"f75976985e7d41a0a33e20eb73944343\",\"266db323efa740338d1c366c2a981c46\",\"f52c33e9387a4bc58b9ade2271bc44b5\",\"994a9512fbf5450ca6d3d73bc2202bc4\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 10,
+      "id": "ff1b4279b95547b19a86db1703dad134",
+      "role": "user",
+      "content": "一時停止して",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 11,
+      "id": "8b81e2f714674c92979860c3cd998564",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: paused.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"e89204eaa74b4a9eb4a268197b937ff2\",\"f75976985e7d41a0a33e20eb73944343\",\"266db323efa740338d1c366c2a981c46\",\"f52c33e9387a4bc58b9ade2271bc44b5\",\"994a9512fbf5450ca6d3d73bc2202bc4\",\"0b0617dc111b4f88a846799eeba9b218\",\"ff1b4279b95547b19a86db1703dad134\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 12,
+      "id": "fbc4b43c351b4e8da9e34956de30d529",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"ada379c6b0f4411da05b6547b5b33e21\"}",
+      "usable": 1,
+      "source_event_id": "50173e3b7d1f47cb8382c87646099340",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 13,
+      "id": "9c48cafa72fb48dfa23fcc15800262ea",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"6ba5bb19547049fdb297addd9b0d25ac\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"ada379c6b0f4411da05b6547b5b33e21\"}",
+      "usable": 1,
+      "source_event_id": "90478db3527c4a9f83054d46b094742b",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 14,
+      "id": "0b32a30dde414d01a2c424cf4b4b8260",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.pause\",\"goal_id\":\"ada379c6b0f4411da05b6547b5b33e21\"}",
+      "usable": 1,
+      "source_event_id": "38d67c0497224872aa0fa09ebc8b18f2",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 15,
+      "id": "187742db238a448db33deea7d1c29913",
+      "role": "user",
+      "content": "その下書きを訂正して: 架空の昼食会の短い招待文を、日本語で2文にしてください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 16,
+      "id": "33aa762dafa2465fb2bcb77611d48487",
+      "role": "assistant",
+      "content": "Target control: selection_required. / 操作する対象を選んでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 17,
+      "id": "bdde3a40358049e0be8e58e2a6b761ef",
+      "role": "user",
+      "content": "Select work target",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 18,
+      "id": "96f65b1aa43a4073ab9d6100f5bd4322",
+      "role": "assistant",
+      "content": "Target control: applied. / 対象の作業に操作を適用しました。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 19,
+      "id": "8f223af3a167465dada6a777adc508b2",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":2},\"event\":\"goal.correct\",\"goal_id\":\"f56de1dd61b047c598fa9603e63afdde\"}",
+      "usable": 1,
+      "source_event_id": "2d32b8cc3ca148e99dfeb7c0d8e834d6",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 20,
+      "id": "aac95ae338724fedbc167e7ffe984602",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"206786187f564603bcf5c0f81bb41c92\",\"epoch\":4},\"event\":\"attempt.claimed\",\"goal_id\":\"f56de1dd61b047c598fa9603e63afdde\"}",
+      "usable": 1,
+      "source_event_id": "ffd1b4cc250b45b2b044857fc799c41d",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 21,
+      "id": "096de91cd0cc4cbcad0e93dafe49a694",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"aec12d9f5cac4d5bbf106f9504b95fb3\",\"attempt_id\":\"206786187f564603bcf5c0f81bb41c92\",\"check_status\":\"pass\",\"receipt_id\":\"d193a68e0cd34a919b84b5023d0417ee\"},\"event\":\"goal.completed\",\"goal_id\":\"f56de1dd61b047c598fa9603e63afdde\"}",
+      "usable": 1,
+      "source_event_id": "40d573c49bd34bec94ad3643bb9be800",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 22,
+      "id": "ebbd245e86c3412fa0aa4354470cc790",
+      "role": "user",
+      "content": "Birchの下書きを止めて",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 23,
+      "id": "dc307750b85e47dd9a0407089c3532e8",
+      "role": "assistant",
+      "content": "Target control: applied. / 対象の作業に操作を適用しました。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 24,
+      "id": "9801d26781e64e94916520120057a26c",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.cancel\",\"goal_id\":\"ada379c6b0f4411da05b6547b5b33e21\"}",
+      "usable": 1,
+      "source_event_id": "08ccfb67a6054fbdb434fdac81752c01",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 25,
+      "id": "0d20de8753984c2bacbf86be151976b0",
+      "role": "user",
+      "content": "Mapleの招待文の下書きを作成してください。外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 26,
+      "id": "f65a583b6f9f487c91b532c87339c551",
+      "role": "assistant",
+      "content": "Work recorded. Current canonical state: queued.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"e89204eaa74b4a9eb4a268197b937ff2\",\"f75976985e7d41a0a33e20eb73944343\",\"266db323efa740338d1c366c2a981c46\",\"f52c33e9387a4bc58b9ade2271bc44b5\",\"994a9512fbf5450ca6d3d73bc2202bc4\",\"0b0617dc111b4f88a846799eeba9b218\",\"ff1b4279b95547b19a86db1703dad134\",\"8b81e2f714674c92979860c3cd998564\",\"187742db238a448db33deea7d1c29913\",\"33aa762dafa2465fb2bcb77611d48487\",\"bdde3a40358049e0be8e58e2a6b761ef\",\"96f65b1aa43a4073ab9d6100f5bd4322\",\"ebbd245e86c3412fa0aa4354470cc790\",\"dc307750b85e47dd9a0407089c3532e8\",\"0d20de8753984c2bacbf86be151976b0\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 27,
+      "id": "b99ee4f911274cb7bfb87cb753f59eba",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"c7c140a22479410287843a7caa903a5f\"}",
+      "usable": 1,
+      "source_event_id": "65fb38cdddfb4dd9a02db344e9c2b4b2",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 28,
+      "id": "f7a94ec82cf843028d09593cca9db756",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"79dcc9b06a3749108b9ff0c422742463\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"c7c140a22479410287843a7caa903a5f\"}",
+      "usable": 1,
+      "source_event_id": "d085c438052b4af8a4f67a04af672c07",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 29,
+      "id": "e058da5b04c444efa9d6b67abd95327a",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"e29deecbd97249a782e23e89130299ab\",\"attempt_id\":\"79dcc9b06a3749108b9ff0c422742463\",\"check_status\":\"pass\",\"receipt_id\":\"af99bba2ebf6463daedb12ba06641f8b\"},\"event\":\"goal.completed\",\"goal_id\":\"c7c140a22479410287843a7caa903a5f\"}",
+      "usable": 1,
+      "source_event_id": "802584c3b53f412f8a295f2610ab3ba5",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 30,
+      "id": "c27944474f7143d79f7ed80e877641ad",
+      "role": "user",
+      "content": "Mapleの下書きを止めて",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 31,
+      "id": "70af7054487e46fba91ad7a506d9c30f",
+      "role": "assistant",
+      "content": "Target control: no_target. / 対象の作業が見つかりません。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "f56de1dd61b047c598fa9603e63afdde",
+      "state": "completed",
+      "revision": 2,
+      "acceptance_id": "e86dcf9662ce40598c0653ff51246a81",
+      "epoch": 4,
+      "budget": 2,
+      "total_claims": 2,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    {
+      "seq": 2,
+      "id": "ada379c6b0f4411da05b6547b5b33e21",
+      "state": "cancelled",
+      "revision": 1,
+      "acceptance_id": "6ed908521b114dddbf8152fabd248b73",
+      "epoch": 3,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "user_cancelled",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    {
+      "seq": 3,
+      "id": "c7c140a22479410287843a7caa903a5f",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "3d6de13ed9474bd585f4ee7075116bfa",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "f56de1dd61b047c598fa9603e63afdde",
+      "revision": 1,
+      "acceptance_id": "e86dcf9662ce40598c0653ff51246a81",
+      "specification": "Cedarの招待文の下書きを作成してください。外部には送らないでください。",
+      "sources": "[\"e89204eaa74b4a9eb4a268197b937ff2\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "goal_id": "ada379c6b0f4411da05b6547b5b33e21",
+      "revision": 1,
+      "acceptance_id": "6ed908521b114dddbf8152fabd248b73",
+      "specification": "Birchのお礼状の下書きを作成してください。外部には送らないでください。",
+      "sources": "[\"994a9512fbf5450ca6d3d73bc2202bc4\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "goal_id": "f56de1dd61b047c598fa9603e63afdde",
+      "revision": 2,
+      "acceptance_id": "e86dcf9662ce40598c0653ff51246a81",
+      "specification": "架空の昼食会の短い招待文を、日本語で2文にしてください。",
+      "sources": "[\"187742db238a448db33deea7d1c29913\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "goal_id": "c7c140a22479410287843a7caa903a5f",
+      "revision": 1,
+      "acceptance_id": "3d6de13ed9474bd585f4ee7075116bfa",
+      "specification": "Mapleの招待文の下書きを作成してください。外部には送らないでください。",
+      "sources": "[\"0d20de8753984c2bacbf86be151976b0\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "e86dcf9662ce40598c0653ff51246a81",
+      "goal_id": "f56de1dd61b047c598fa9603e63afdde",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "id": "6ed908521b114dddbf8152fabd248b73",
+      "goal_id": "ada379c6b0f4411da05b6547b5b33e21",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "id": "3d6de13ed9474bd585f4ee7075116bfa",
+      "goal_id": "c7c140a22479410287843a7caa903a5f",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "1c2b5e11204343aeb6782aa38587d07c",
+      "goal_id": "f56de1dd61b047c598fa9603e63afdde",
+      "revision": 1,
+      "acceptance_id": "e86dcf9662ce40598c0653ff51246a81",
+      "epoch": 1,
+      "status": "fenced",
+      "manifest": "[\"e89204eaa74b4a9eb4a268197b937ff2\",\"f75976985e7d41a0a33e20eb73944343\"]",
+      "error": "",
+      "external_intent": 0
+    },
+    {
+      "seq": 2,
+      "id": "6ba5bb19547049fdb297addd9b0d25ac",
+      "goal_id": "ada379c6b0f4411da05b6547b5b33e21",
+      "revision": 1,
+      "acceptance_id": "6ed908521b114dddbf8152fabd248b73",
+      "epoch": 1,
+      "status": "fenced",
+      "manifest": "[\"e89204eaa74b4a9eb4a268197b937ff2\",\"f75976985e7d41a0a33e20eb73944343\",\"266db323efa740338d1c366c2a981c46\",\"f52c33e9387a4bc58b9ade2271bc44b5\",\"994a9512fbf5450ca6d3d73bc2202bc4\"]",
+      "error": "",
+      "external_intent": 0
+    },
+    {
+      "seq": 3,
+      "id": "206786187f564603bcf5c0f81bb41c92",
+      "goal_id": "f56de1dd61b047c598fa9603e63afdde",
+      "revision": 2,
+      "acceptance_id": "e86dcf9662ce40598c0653ff51246a81",
+      "epoch": 4,
+      "status": "pass",
+      "manifest": "[\"e89204eaa74b4a9eb4a268197b937ff2\",\"f75976985e7d41a0a33e20eb73944343\",\"266db323efa740338d1c366c2a981c46\",\"f52c33e9387a4bc58b9ade2271bc44b5\",\"994a9512fbf5450ca6d3d73bc2202bc4\",\"0b0617dc111b4f88a846799eeba9b218\",\"ff1b4279b95547b19a86db1703dad134\",\"8b81e2f714674c92979860c3cd998564\",\"187742db238a448db33deea7d1c29913\",\"33aa762dafa2465fb2bcb77611d48487\",\"bdde3a40358049e0be8e58e2a6b761ef\",\"96f65b1aa43a4073ab9d6100f5bd4322\"]",
+      "error": "",
+      "external_intent": 0
+    },
+    {
+      "seq": 4,
+      "id": "79dcc9b06a3749108b9ff0c422742463",
+      "goal_id": "c7c140a22479410287843a7caa903a5f",
+      "revision": 1,
+      "acceptance_id": "3d6de13ed9474bd585f4ee7075116bfa",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"e89204eaa74b4a9eb4a268197b937ff2\",\"f75976985e7d41a0a33e20eb73944343\",\"266db323efa740338d1c366c2a981c46\",\"f52c33e9387a4bc58b9ade2271bc44b5\",\"994a9512fbf5450ca6d3d73bc2202bc4\",\"0b0617dc111b4f88a846799eeba9b218\",\"ff1b4279b95547b19a86db1703dad134\",\"8b81e2f714674c92979860c3cd998564\",\"187742db238a448db33deea7d1c29913\",\"33aa762dafa2465fb2bcb77611d48487\",\"bdde3a40358049e0be8e58e2a6b761ef\",\"96f65b1aa43a4073ab9d6100f5bd4322\",\"ebbd245e86c3412fa0aa4354470cc790\",\"dc307750b85e47dd9a0407089c3532e8\",\"0d20de8753984c2bacbf86be151976b0\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "d193a68e0cd34a919b84b5023d0417ee",
+      "attempt_id": "206786187f564603bcf5c0f81bb41c92",
+      "artifact_id": "aec12d9f5cac4d5bbf106f9504b95fb3",
+      "hash": "9f0efc98e789d10df778783da93c0c28f8cdb3eaeb7572412de37f20de79f192",
+      "size": 213,
+      "revision": 2,
+      "epoch": 4
+    },
+    {
+      "id": "af99bba2ebf6463daedb12ba06641f8b",
+      "attempt_id": "79dcc9b06a3749108b9ff0c422742463",
+      "artifact_id": "e29deecbd97249a782e23e89130299ab",
+      "hash": "38b54c160ab53587fae613d7403759efa3b2dcf2c51c8764807662aa8d87e59d",
+      "size": 416,
+      "revision": 1,
+      "epoch": 1
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "206786187f564603bcf5c0f81bb41c92",
+      "receipt_id": "d193a68e0cd34a919b84b5023d0417ee",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    },
+    {
+      "attempt_id": "79dcc9b06a3749108b9ff0c422742463",
+      "receipt_id": "af99bba2ebf6463daedb12ba06641f8b",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "d924448c94d14419afb25803d120d20c",
+      "goal_id": "f56de1dd61b047c598fa9603e63afdde",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "e2837754c899455ebb0fca7d5a736041",
+      "goal_id": "f56de1dd61b047c598fa9603e63afdde",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"1c2b5e11204343aeb6782aa38587d07c\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "47cb51eca142415cad17ad65bd81041f",
+      "goal_id": "f56de1dd61b047c598fa9603e63afdde",
+      "kind": "goal.pause",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 4,
+      "id": "50173e3b7d1f47cb8382c87646099340",
+      "goal_id": "ada379c6b0f4411da05b6547b5b33e21",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 5,
+      "id": "90478db3527c4a9f83054d46b094742b",
+      "goal_id": "ada379c6b0f4411da05b6547b5b33e21",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"6ba5bb19547049fdb297addd9b0d25ac\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 6,
+      "id": "38d67c0497224872aa0fa09ebc8b18f2",
+      "goal_id": "ada379c6b0f4411da05b6547b5b33e21",
+      "kind": "goal.pause",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 7,
+      "id": "2d32b8cc3ca148e99dfeb7c0d8e834d6",
+      "goal_id": "f56de1dd61b047c598fa9603e63afdde",
+      "kind": "goal.correct",
+      "payload": "{\"revision\":2}",
+      "delivered": 1
+    },
+    {
+      "seq": 8,
+      "id": "ffd1b4cc250b45b2b044857fc799c41d",
+      "goal_id": "f56de1dd61b047c598fa9603e63afdde",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"206786187f564603bcf5c0f81bb41c92\",\"epoch\":4}",
+      "delivered": 1
+    },
+    {
+      "seq": 9,
+      "id": "40d573c49bd34bec94ad3643bb9be800",
+      "goal_id": "f56de1dd61b047c598fa9603e63afdde",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"aec12d9f5cac4d5bbf106f9504b95fb3\",\"attempt_id\":\"206786187f564603bcf5c0f81bb41c92\",\"check_status\":\"pass\",\"receipt_id\":\"d193a68e0cd34a919b84b5023d0417ee\"}",
+      "delivered": 1
+    },
+    {
+      "seq": 10,
+      "id": "08ccfb67a6054fbdb434fdac81752c01",
+      "goal_id": "ada379c6b0f4411da05b6547b5b33e21",
+      "kind": "goal.cancel",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 11,
+      "id": "65fb38cdddfb4dd9a02db344e9c2b4b2",
+      "goal_id": "c7c140a22479410287843a7caa903a5f",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 12,
+      "id": "d085c438052b4af8a4f67a04af672c07",
+      "goal_id": "c7c140a22479410287843a7caa903a5f",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"79dcc9b06a3749108b9ff0c422742463\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 13,
+      "id": "802584c3b53f412f8a295f2610ab3ba5",
+      "goal_id": "c7c140a22479410287843a7caa903a5f",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"e29deecbd97249a782e23e89130299ab\",\"attempt_id\":\"79dcc9b06a3749108b9ff0c422742463\",\"check_status\":\"pass\",\"receipt_id\":\"af99bba2ebf6463daedb12ba06641f8b\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [
+    {
+      "seq": 1,
+      "attempt_id": "1c2b5e11204343aeb6782aa38587d07c",
+      "reason": "stale artifact"
+    },
+    {
+      "seq": 2,
+      "attempt_id": "6ba5bb19547049fdb297addd9b0d25ac",
+      "reason": "stale artifact"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "aec12d9f5cac4d5bbf106f9504b95fb3",
+      "hash": "9f0efc98e789d10df778783da93c0c28f8cdb3eaeb7572412de37f20de79f192",
+      "size": 213
+    },
+    {
+      "id": "e29deecbd97249a782e23e89130299ab",
+      "hash": "38b54c160ab53587fae613d7403759efa3b2dcf2c51c8764807662aa8d87e59d",
+      "size": 416
+    }
+  ],
+  "selections": [
+    {
+      "selection_id": "838e86fb16bb4a2db37691b0c34a5925",
+      "source_key": "ui:37593d33-d466-4fa2-a6a4-6b3e37651278:1791350840723:7d47fc49-0cea-4e6a-b879-2cad428cc0f0",
+      "status": "already_resolved",
+      "choices": []
+    }
+  ],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 8,
+    "expires_at": 1791351693.1837518,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 76032,
+    "started_at": 1791350793.239907,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

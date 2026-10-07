@@ -1,0 +1,194 @@
+{
+  "candidate": "605791e723df31df454ad082423d3b5a7205c0e7",
+  "absence_controller_result": "PASS6/6",
+  "real_target_flow_result": "PASS",
+  "historical_first_run_status": "FAIL retained",
+  "run2_calls": 14,
+  "prior_calls": 6,
+  "cumulative_generation_calls": 20,
+  "cap": 32,
+  "timing_VOID": "FLOW1 Maple completion before cancellation; actual FLOW2 reserved onecase running->cancelled->stale artifact zero receipt PASS",
+  "human_result": "HUMAN_PENDING",
+  "release": "NOT_COMPLETE",
+  "cases": [
+    {
+      "slot": "A1",
+      "port": 52714,
+      "health": {
+        "pid": 72575,
+        "started_at": 1791350553.319285,
+        "worker_alive": true,
+        "worker_error": "",
+        "stopping": false
+      },
+      "cap": 2,
+      "calls_consumed": 1,
+      "final_provider_status": {
+        "mode": "official_claude_pro",
+        "calls_remaining": 1,
+        "expires_at": 1791351453.267273,
+        "authorized_now": true,
+        "unavailable_reason": "",
+        "last_error": ""
+      },
+      "stop": "SIGTERM requested after actual identity capture"
+    },
+    {
+      "slot": "A2",
+      "port": 53138,
+      "health": {
+        "pid": 72973,
+        "started_at": 1791350591.246003,
+        "worker_alive": true,
+        "worker_error": "",
+        "stopping": false
+      },
+      "cap": 2,
+      "calls_consumed": 1,
+      "final_provider_status": {
+        "mode": "official_claude_pro",
+        "calls_remaining": 1,
+        "expires_at": 1791351491.19354,
+        "authorized_now": true,
+        "unavailable_reason": "",
+        "last_error": ""
+      },
+      "stop": "SIGTERM requested after actual identity capture"
+    },
+    {
+      "slot": "B1",
+      "port": 53548,
+      "health": {
+        "pid": 73618,
+        "started_at": 1791350625.699882,
+        "worker_alive": true,
+        "worker_error": "",
+        "stopping": false
+      },
+      "cap": 2,
+      "calls_consumed": 1,
+      "final_provider_status": {
+        "mode": "official_claude_pro",
+        "calls_remaining": 1,
+        "expires_at": 1791351525.645353,
+        "authorized_now": true,
+        "unavailable_reason": "",
+        "last_error": ""
+      },
+      "stop": "SIGTERM requested after actual identity capture"
+    },
+    {
+      "slot": "B2",
+      "port": 54102,
+      "health": {
+        "pid": 74214,
+        "started_at": 1791350669.111305,
+        "worker_alive": true,
+        "worker_error": "",
+        "stopping": false
+      },
+      "cap": 2,
+      "calls_consumed": 1,
+      "final_provider_status": {
+        "mode": "official_claude_pro",
+        "calls_remaining": 1,
+        "expires_at": 1791351569.056148,
+        "authorized_now": true,
+        "unavailable_reason": "",
+        "last_error": ""
+      },
+      "stop": "SIGTERM requested after actual identity capture"
+    },
+    {
+      "slot": "C1",
+      "port": 54609,
+      "health": {
+        "pid": 74776,
+        "started_at": 1791350702.848191,
+        "worker_alive": true,
+        "worker_error": "",
+        "stopping": false
+      },
+      "cap": 3,
+      "calls_consumed": 2,
+      "final_provider_status": {
+        "mode": "official_claude_pro",
+        "calls_remaining": 1,
+        "expires_at": 1791351602.793227,
+        "authorized_now": true,
+        "unavailable_reason": "",
+        "last_error": ""
+      },
+      "stop": "SIGTERM requested after actual identity capture"
+    },
+    {
+      "slot": "C2",
+      "port": 55219,
+      "health": {
+        "pid": 75233,
+        "started_at": 1791350747.7781591,
+        "worker_alive": true,
+        "worker_error": "",
+        "stopping": false
+      },
+      "cap": 3,
+      "calls_consumed": 2,
+      "final_provider_status": {
+        "mode": "official_claude_pro",
+        "calls_remaining": 1,
+        "expires_at": 1791351647.725357,
+        "authorized_now": true,
+        "unavailable_reason": "",
+        "last_error": ""
+      },
+      "stop": "SIGTERM requested after actual identity capture"
+    },
+    {
+      "slot": "FLOW1",
+      "port": 55969,
+      "health": {
+        "pid": 76032,
+        "started_at": 1791350793.239907,
+        "worker_alive": true,
+        "worker_error": "",
+        "stopping": false
+      },
+      "cap": 12,
+      "calls_consumed": 4,
+      "final_provider_status": {
+        "mode": "official_claude_pro",
+        "calls_remaining": 8,
+        "expires_at": 1791351693.1837518,
+        "authorized_now": true,
+        "unavailable_reason": "",
+        "last_error": ""
+      },
+      "stop": "SIGTERM requested after actual identity capture"
+    },
+    {
+      "slot": "FLOW2_VOID_ONLY",
+      "port": 59877,
+      "health": {
+        "pid": 78417,
+        "started_at": 1791350996.832371,
+        "worker_alive": true,
+        "worker_error": "",
+        "stopping": false
+      },
+      "cap": 6,
+      "calls_consumed": 2,
+      "final_provider_status": {
+        "mode": "official_claude_pro",
+        "calls_remaining": 4,
+        "expires_at": 1791351896.692215,
+        "authorized_now": true,
+        "unavailable_reason": "",
+        "last_error": ""
+      },
+      "stop": "SIGTERM requested after actual identity capture"
+    }
+  ],
+  "finished_at": 1791351117.6939101,
+  "raw_capture": false,
+  "provenance": "Deterministic pair-list prompt reconstruction from immutable manifest, not wire capture"
+}

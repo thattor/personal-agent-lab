@@ -1,0 +1,30 @@
+{
+  "selector": {
+    "selection_id": "838e86fb16bb4a2db37691b0c34a5925",
+    "source_record_id": "187742db238a448db33deea7d1c29913",
+    "source_key": "ui:37593d33-d466-4fa2-a6a4-6b3e37651278:1791350840723:7d47fc49-0cea-4e6a-b879-2cad428cc0f0",
+    "action": "correct",
+    "proposal": "{\"choices\":[{\"epoch\":2,\"goal_id\":\"f56de1dd61b047c598fa9603e63afdde\",\"label\":\"Cedarの招待文の下書きを作成してください。外部には送らないでください。\",\"revision\":1,\"state\":\"paused\"},{\"epoch\":2,\"goal_id\":\"ada379c6b0f4411da05b6547b5b33e21\",\"label\":\"Birchのお礼状の下書きを作成してください。外部には送らないでください。\",\"revision\":1,\"state\":\"paused\"}],\"text\":\"架空の昼食会の短い招待文を、日本語で2文にしてください。\"}",
+    "consumed_by": "ui:37593d33-d466-4fa2-a6a4-6b3e37651278:3f770d7e-fe03-489a-a311-d4e1264e86ad"
+  },
+  "consuming_dedupe_result": {
+    "action": "select",
+    "control_status": "applied",
+    "goal": {
+      "acceptance_id": "e86dcf9662ce40598c0653ff51246a81",
+      "ambiguity": 0,
+      "budget": 3,
+      "epoch": 3,
+      "id": "f56de1dd61b047c598fa9603e63afdde",
+      "question_id": null,
+      "reason": "",
+      "revision": 2,
+      "seq": 1,
+      "state": "queued",
+      "total_claims": 1
+    },
+    "intent": "control",
+    "record_id": "bdde3a40358049e0be8e58e2a6b761ef"
+  },
+  "read_only_sqlite": true
+}
