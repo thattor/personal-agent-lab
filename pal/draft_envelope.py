@@ -4,10 +4,23 @@ Passing this decoder proves syntax and bounds only, never usefulness, provenance
 or Goal completion. Runtime integration is a separate reviewed boundary.
 """
 import json
+import re
 
 
 class EnvelopeRejected(ValueError):
     pass
+
+
+def validate_placeholders(content, missing):
+    """Literal token consistency only, never semantic completeness."""
+    def tokens(text):
+        matches = set(re.findall(r'\{\{[^{}\r\n]{1,128}\}\}', text))
+        remainder = re.sub(r'\{\{[^{}\r\n]{1,128}\}\}', '', text)
+        if '{{' in remainder or '}}' in remainder:
+            raise EnvelopeRejected('malformed placeholder')
+        return matches
+    if tokens(content) != tokens(missing):
+        raise EnvelopeRejected('placeholder declaration mismatch')
 
 
 def _pairs(pairs):

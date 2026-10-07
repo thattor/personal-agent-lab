@@ -1,0 +1,11 @@
+test_cancel_and_forget_fence_before_any_preview_bytes (tests.test_preview.PreviewTests) ... ok
+test_early_unauthorized_template_and_nonexhausted_are_rejected (tests.test_preview.PreviewTests) ... ok
+test_exhaustion_fallback_accepts_no_model_content_or_banner_spoof (tests.test_preview.PreviewTests) ... ok
+test_forget_after_preview_retains_bytes_but_marks_reference_stopped (tests.test_preview.PreviewTests) ... ok
+test_process_kill_preview_is_atomic_and_retry_recovers_once (tests.test_preview.PreviewTests) ... ok
+test_terminal_receipt_is_unverified_and_never_recovered_or_passed (tests.test_preview.PreviewTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.186s
+
+OK

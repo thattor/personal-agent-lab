@@ -1,0 +1,53 @@
+The minimum safe contract is sound, with the conditions below. One item is a possible true product choice (forget versus readable preview bytes, item 6). The rest are implementation details that existing decisions can settle.
+
+This review rests only on the facts you supplied. I did not inspect source, and this opinion is not product evidence. Note also: this session was invoked in plan mode, but you asked for plain text with no tools, so I'm answering directly.
+
+**1. Host-minted missing-information summary, no model call: AGREE.**
+Conditions:
+- Restrict `content=None` to the `clarification_exhausted` path only. Any other `needs_input` without a draft keeps the existing handling.
+- The summary is host-authored and visibly labelled as such.
+  - It uses a fixed banner.
+  - It quotes the stored latest question verbatim, as data and never as instructions.
+  - It has empty citations and no invented draft text.
+  - It never borrows template eligibility from the model path.
+- Build it inside the same transaction that records the terminal decision, so a crash cannot leave a half-minted preview.
+- A cap of 3 claims (initial claim plus 2 answers) is acceptable.
+- Ordinary model-provided previews stay gated only by host template eligibility (item 5).
+
+**2. `{{...}}` bidirectional consistency: AGREE. This is already about the simplest safe floor.**
+Pin down these details:
+- **Exact grammar.** For example, `{{` + 1–N characters excluding `{`, `}` and newline + `}}`. No nesting, no escapes.
+- **Malformed sequences.** A body containing a token-like sequence that doesn't match the grammar (a lone `{{` or an unclosed token) should fail closed. Rejecting it is safer than treating it as text.
+- **Matching rule.** Match by literal substring. Compare token sets, not counts or order.
+- **Zero tokens.** Zero tokens on both sides is consistent, provided `missing` is still non-empty for `incomplete_preview`.
+- **On failure.** Reject the proposal through the existing invalid-proposal path. The host must never repair, insert, or strip tokens.
+- **Host summary.** The item 1 host summary has no body tokens, so it is trivially exempt. Say so explicitly in tests.
+
+Rejecting a separate placeholder field is correct. The check guarantees syntax only, so document that it gives no semantic completeness guarantee.
+
+**3. Budget eligibility: AGREE**, with two clarifications:
+- **Canonical inputs only.** "answered>=2" and "Goal budget<=0" must come from host canonical state, never from model-reported values. State the scope of "answered": per Goal across Attempts, or per Attempt. I recommend per Goal canonical answered questions. This matters because correction or recovery can start new Attempts, and a per-Attempt count would let the question loop restart.
+- **Separate source from eligibility.** Budget exhaustion from legacy recovery, correction or diagnostic paths makes a Goal eligible, but must never be counted as a user answer.
+- **Dispatch.** I agree that dispatch only handles `needs_input` or incomplete proposals. A complete proposal arriving on the last claim stays complete or fails through its normal path.
+
+**4. Leave `_wait` diagnostic/global-cap semantics unchanged: AGREE.**
+- Evaluate eligibility in the same transaction as any question insert. The rule is: if budget<=0 or `total_claims>=9`, mint the preview, else open the question. Doing both in one transaction removes the race that could create a new stranded wait.
+- Keep the SWE "record answer then terminal-failed" suggestion as unadopted. Record the existing historical stranding behaviour in STATE.md and ACCEPTANCE.md as a known limitation, not as fixed.
+- No owner question is needed.
+
+**5. Template eligibility: AGREE.**
+- It is immutable per revision and set only by host intake. It is a visible flag that defaults to false and fails closed.
+- Specify what an ineligible model preview becomes. I recommend it is not shown as a template preview and follows the normal incomplete or clarification path. It must never silently become "complete".
+- Leaving the classification source to implementation review is fine, as long as the default stays fail-closed.
+
+**6. No artifact reuse capability, stale projection after forget: AGREE on mechanics. This is the one possible true product choice.**
+- If a preview's bytes include material later covered by forget or reference-stop, "historical bytes remain readable" may conflict with accepted forget semantics.
+- Minimum safe floor:
+  - A stale preview is never rendered as current content.
+  - It is never fed into any later prompt or Attempt.
+  - Reads go only through read-only receipt → Attempt manifest metadata.
+- Whether the stale bytes can be displayed to the user at all after forget should be checked against the existing forget decision in DECISIONS.md. If that decision already says forget stops reference but keeps the audit record, no human choice is needed. If it is silent on displaying stale artifacts, that is the one item to raise under G-001.
+
+**Remaining true product choices:**
+- **(a)** Item 6, the visibility of forgotten-content preview bytes, only if DECISIONS.md does not already cover it.
+- Nothing else needs a human decision. The scope of "answered" (item 3) and the fallback for ineligible previews (item 5) can be settled with the recommended defaults above and recorded as implementation decisions.
