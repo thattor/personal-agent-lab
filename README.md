@@ -32,7 +32,7 @@ Python standard library only; no dependency install required.
 python3 -m unittest discover -s tests -v
 ```
 
-The host canonical store is in `pal/store.py`. It is not an Executor capability. Draft bytes are bounded SQLite blobs and host receipts are verified by readback. The loopback UI defaults to mock. The explicit official live smoke is evidenced separately; Stable-0 remains incomplete until the fixed real-provider functional scenarios and human usefulness evaluation pass. See STATE.md for exact continuation.
+The host canonical store is in `pal/store.py`. It is not an Executor capability. Draft bytes are bounded SQLite blobs and host receipts are verified by readback. The loopback UI defaults to mock. The explicit official live functionality and direct human evaluation are recorded in evidence/final/stable0/audit.json. See STATE.md for the current release state and completion record.
 
 ## Local conversation and inspect
 

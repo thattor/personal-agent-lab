@@ -331,5 +331,12 @@
     "Proof marker per checkout relies on trusted operator; CLI internal HTTP retries and exact backend version not independently observed.",
     "Bound input-resume proven by deterministic fault tests; no natural live waiting-input generation capability claimed.",
     "External send/shell capabilities absent; PublicSearch, scheduled wake, proactive suggestions, Dreaming, multi-Expert, vector DB, local inference, automatic procedure updates and external push optimization deferred."
-  ]
+  ],
+  "forget_prompt_reconstruction_digest": {
+    "status": "PASS",
+    "format": "Export adds one terminal newline; digest binds runtime prompt before export newline, not export file bytes.",
+    "prompt_sha256": "bb36bc1c31e0edc382577122fded2052805934ded3bb5e193a75476e8dc11339",
+    "export_sha256": "86b26b5a6fc967aa3763eb00aeaaf4318399ee5ebc74d486d86a5aa0af7a4a1c"
+  },
+  "original_active_correction_fixed_criteria_and_revision_fence": "PASS"
 }
