@@ -1,0 +1,22 @@
+{
+  "baseline": "874f3f4",
+  "kind": "controller read-only source findings; integration NOT implemented",
+  "source_hashes": {
+    "pal/runtime.py": "c596cd93a4ce7b691cfe7fdee1a1109b963940932f59dd27f3fe08ecf0be4c71",
+    "pal/store.py": "2bd9fcc51048a398f2636d80801e0e6bb4fa2f68ec302878bd721ccd9d9d7f95",
+    "pal/draft_envelope.py": "c3e8ad491b7ed6aca41be668f039b76de681e5ee686314609c8031b0a097d23e",
+    "pal/server.py": "65ae13c5028202d2031ac3f9b78af44920a1b2f53163d11f1daf5d20cf940a5c",
+    "pal/web/app.js": "e6a64e849724e7ea61f1a67bd0d4ee9b8775001a442b3fd3417369194bd71911"
+  },
+  "findings": [
+    "Runtime answer: shortcut selects latest Goal, which is insufficient for multiple waiting Goals; explicit question/Goal/epoch UI binding is required.",
+    "Runtime WorkOrder context currently only role/content pairs; genuine source IDs and usable citation checks remain absent.",
+    "Store.context selects latest30 records and notes; older answered question records may be absent after unrelated conversation. Required same-Goal bounded answer inclusion/provenance must be tested.",
+    "Store.waiting budget guard and Store.finish_preview are separate transactions; they do not implement atomic question-or-preview dispatch.",
+    "Existing UI only renders last3 Goals and does not include question answer forms or incomplete-preview event/status labels. All waiting questions must remain discoverable without wrong-target routing.",
+    "Current read-only artifact endpoint returns retained bytes only; artifact_status metadata is not yet exposed and UI lacks reference-stale preview display.",
+    "decode_draft fixed max_bytes ceiling12000 differs from Store accepted65536; integration must preserve accepted fixed criteria and cannot silently tighten or enlarge them."
+  ],
+  "existing_runtime_mutation": false,
+  "provider_generation_calls": 0
+}
