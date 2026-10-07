@@ -1,0 +1,16 @@
+{
+  "status": "VOID",
+  "unfinished_cancel_status": "NOT_VERIFIED",
+  "reason": "First bounded metadata observation found the actual Goal already completed. No running Attempt observed and no cancellation input sent; timing setup not achieved.",
+  "native_slots_consumed": 2,
+  "ceiling": 6,
+  "attempts": 1,
+  "reserve": 0,
+  "goal_id": "b2e3070d4e5e4e94966967dbc1b5c247",
+  "attempt_id": "7d58953d208741e8b34f0435327a1469",
+  "artifact_body_accessed": false,
+  "human_evaluation": false,
+  "qwen_qualification": false,
+  "followup": "Diagnose timing and obtain required implementation review for any predeclared test arrangement; no blind retry or product-state repair.",
+  "recorded_at": 1791405174.475307
+}

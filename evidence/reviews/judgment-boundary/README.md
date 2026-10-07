@@ -222,3 +222,15 @@ and [independent12](intent-limits-run-heldout/README.md). Fixed40:16/16 requests
 [Post-live full249](intent-limits-c043-full-after-live.txt) PASS20.244s. N1-01/02 current finite
 Primary/host gates PASS; no UI/Expert/human/Qwen or whole-release claim. Historical C039/C041
 failures remain unchanged. Current affected end-to-end verification is the next work unit.
+
+### C044 correction and C045 partial UI results
+
+[Original Expert promise failure](ui-c044-absence-failure/README.md) retained; official
+Opus and independent Astra supported the one-sentence grounding correction on814638d.
+[Independent source audit](c044-independent-diff-audit.json) confirms no other product
+change. [Corrected-candidate actual UI](ui-c045-partial/README.md): ABS-A1 and TARGET-A/B
+PASS; ABS-A2 browser-client block NOT_VERIFIED; running-cancel timing VOID; nine hosts
+NOT_RUN. Ten native slots, all five owned hosts closed within600s, full249 PASS20.122s.
+Current affected acceptance remains partial; no Qwen/human/release claim. Next required
+review concerns controlled delivery at the existing fault seam, not another blind timing
+attempt. Blocked artifact contents remain inaccessible through alternate routes.

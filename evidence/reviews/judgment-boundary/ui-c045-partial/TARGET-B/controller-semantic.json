@@ -1,0 +1,53 @@
+{
+  "scope": "actual official provider via synthetic browser inputs; not human evaluation or Qwen qualification",
+  "candidate": "814638db3e8742e68b2fe675c6abc41632d21a5e",
+  "status": "PASS",
+  "recorded_at": 1791404947.689239,
+  "cases": {
+    "B1": "PASS: missing named work explains absence and makes no work mutation",
+    "B2": "PASS: completed work correction rejected without new draft or mutation",
+    "B3": "PASS: only named waiting work cancelled and its Attempt fenced/question closed; unrelated work unchanged"
+  },
+  "native_slots_consumed": 3,
+  "new_goals": 0,
+  "new_attempts": 0,
+  "new_receipts": 0,
+  "new_artifacts": 0,
+  "new_events": [
+    {
+      "seq": 9,
+      "id": "033c993855a74fa19abac61c51c7cb64",
+      "goal_id": "64613818869240ab8522d5098ac60edb",
+      "kind": "goal.cancel",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    }
+  ],
+  "database_repair": false,
+  "evidence_sha256": {
+    "before.json": "1036e3ed882a10a186a366924d90c52160b951ead914bdcdb71cb178c7458cba",
+    "b2-ui.png": "bf4d3c5c21070ff2d5df78688aeba91bb553825b85aaa7725d6014761009dc35",
+    "b2.json": "a3ab5e0d36a26197039b2c90705e5bf78546fd8c1fac442886ed6a17309f7115",
+    "after.json": "3bd13b475e587aec959d9c3a05df6a18e3372d90e5e60c7e5b7ee63ccc5b3bb1",
+    "b1.json": "3ea97503cdfea0fc0032c16402cdce4dd0de762f08d7b744a076389b72722e32",
+    "conversation-ui.png": "e8fa6a9c11e73e3b2fa7699534d4dfaab607e8b5e4d89883faa17cfe98b8bd14",
+    "seed-audit.json": "30a5ce8c182d0705eb40b341d3c16960a4da05cfb4667c579784d80f45090229",
+    "b1-ui.png": "e5c02b6cecad30a9e6fba0cd5e96efb13577b27e39fe762bd473ec1d3d651d0c",
+    "teardown.json": "60a7a50401b4685ce8c15275fa39f58638012007d2f0965f285b97f733f93ba1"
+  },
+  "teardown": {
+    "closed_at": 1791404847.185069,
+    "port": 54967,
+    "port_closed": true,
+    "session_exit_code": 0,
+    "within_deadline": true,
+    "scope": "controller verified owned process; no manual canonical repair"
+  },
+  "observer_correction": {
+    "initial_error": "AssertionError: attempts",
+    "cause": "Read-only observer incorrectly demanded all Attempts unchanged after targeted cancellation.",
+    "evidence": "Only targeted waiting Attempt became fenced, as Store._fence lines428-432 and cancel lines561-563 require.",
+    "fix": "Assert exact expected target transition and byte-identical unrelated Attempt; no input retry or canonical writes.",
+    "prevention": "Derive allowed same-target state transitions from existing Store contract before asserting whole-table immutability."
+  }
+}

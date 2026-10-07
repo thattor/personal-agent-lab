@@ -419,3 +419,25 @@ before creating the file; the controller mistakenly continued a separate prompt 
 No live call happened. The fixture was then saved/validated via apply_patch, honestly
 recorded as post-edit/pre-live disclosed regression, not pre-edit unseen evidence. Use
 UTF-8 file tooling and verify successful dependent preparation before continuing.
+
+## C045 - observation boundaries and unfinished-cancel timing
+
+ABS-A1 read-only summary assumed a Goal specification field; actual specifications are
+in revisions. Corrected observer after KeyError; no additional input or model call.
+TARGET-B audit initially expected every Attempt unchanged after cancel, but the targeted
+waiting Attempt must become fenced (Store._fence428-432, cancel561-563). Corrected exact
+expected transition and verified unrelated rows unchanged. Next audit must derive
+permitted target transitions from existing contracts before whole-table comparisons.
+The independent audit also corrected an input-only manifest assumption: usable prior
+context may accompany the original input. Original snapshots/DBs were not edited.
+
+ABS-A2 artifact navigation reported ERR_BLOCKED_BY_CLIENT and displayed ChatGPT blocking.
+Cause is not established; source-only inspection found no artifact-route change. No
+product repair or semantic verdict follows this environment finding. Retain screenshot,
+stop owned host, and leave NOT_VERIFIED without alternate content access.
+
+RUNNING-CANCEL completed before the first post-input metadata observation. Like the
+historical C035 timing miss, this cannot prove unfinished cancellation. No cancel was
+submitted after completion, no artifact body inspected and no retry made. Next change
+must be a reviewer-checked, predeclared test scheduling arrangement using an existing
+fault seam, with unchanged real model data and host rules; it is not verified yet.

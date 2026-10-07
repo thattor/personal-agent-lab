@@ -1,0 +1,8 @@
+{
+  "status": "NOT_VERIFIED",
+  "generation_status": "Actual UI displayed completed Goal and artifact link, calls_remaining0 after2slots.",
+  "block": "Artifact navigation in existing IAB tab returned net::ERR_BLOCKED_BY_CLIENT, then visible ChatGPT blocked page. No reload, browser switch, alternate endpoint/content access or resampling.",
+  "scope": "No artifact-semantic or UI-artifact PASS; no product defect inferred.",
+  "human_evaluation": false,
+  "qwen_qualification": false
+}

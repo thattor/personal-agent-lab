@@ -1,0 +1,125 @@
+{
+  "schema": "pal-ui-independent-closed-host-audit-v1",
+  "host": "TARGET-B",
+  "audited_at": 1791405012.143219,
+  "candidate": "814638db3e8742e68b2fe675c6abc41632d21a5e",
+  "product_identity": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+  "binding_verdict": "PASS",
+  "semantic_verdict": "PASS",
+  "semantic_reasons": {
+    "B1": "Explicitly explains named mountain-photo exhibition is unavailable; identifies waiting work as context without cancelling it or falling back.",
+    "B2": "Explains completed 星見会 cannot be corrected and honors no-new-draft constraint. Future offer is conversational, no effect.",
+    "B3": "Authoritative acknowledgement and canonical event cancel only waiting 青空会, with unchanged fixed acceptance/revision/source. Other terminal work and seeded artifact remain unchanged."
+  },
+  "checks": {
+    "candidate_and_contract": true,
+    "source17": true,
+    "adopted_before_launch": true,
+    "seed_states": true,
+    "three_exact_inputs": true,
+    "one_call_each_cap3": true,
+    "all_primary_complete": true,
+    "B1_B2_none": true,
+    "B1_B2_no_work_changes": true,
+    "B3_exact_cancel_outcome": true,
+    "B3_only_goal_delta": true,
+    "question_closed_binding_unchanged": true,
+    "existing_waiting_attempt_fenced_only": true,
+    "no_new_goal_attempt_receipt_artifact": true,
+    "revisions_criteria_receipts_artifacts_unchanged": true,
+    "one_new_target_cancel_event": true,
+    "no_rejections_or_external_approval": true,
+    "reply_source_bindings": true,
+    "db_integrity": true,
+    "public_snapshot_matches_db": true,
+    "db_unchanged": true,
+    "owned_teardown_record": true
+  },
+  "findings": [],
+  "inputs": [
+    "山の写真展の案内の作成を取りやめてください。",
+    "完了済みの『星見会のお知らせ』の作業を、日本語二文になるよう訂正して。新しい下書きは作らないでください。",
+    "返答待ちの『青空会の案内』の作成を取りやめてください。完了した『星見会のお知らせ』と中止済みの『河原の散策案内』はそのままにしてください。"
+  ],
+  "replies": [
+    "「山の写真展の案内」に当たる作業は、現在取りやめ可能な一覧に見当たりません。いま対象にできるのは「青空会の案内」（会場の回答待ち）だけです。別の作業を指していた場合は教えてください。",
+    "『星見会のお知らせ』はすでに完了しているため、訂正はできません。新しい下書きも作らないとのことなので、今回は何も進めません。日本語二文の版が必要になったら、新しい下書きとしてお作りできます。",
+    "作業を中止しました。 / cancel applied."
+  ],
+  "cancelled_goal_id": "64613818869240ab8522d5098ac60edb",
+  "question_transition": {
+    "before": {
+      "id": "9e585a34b6114534a21a8299e99a4413",
+      "goal_id": "64613818869240ab8522d5098ac60edb",
+      "attempt_id": "16b96f47f8c24bfb937bc0c257bf55cd",
+      "revision": 1,
+      "epoch": 1,
+      "round": 1,
+      "prompt": "青空会の会場はどこですか？",
+      "status": "open",
+      "answer_record_id": null
+    },
+    "after": {
+      "id": "9e585a34b6114534a21a8299e99a4413",
+      "goal_id": "64613818869240ab8522d5098ac60edb",
+      "attempt_id": "16b96f47f8c24bfb937bc0c257bf55cd",
+      "revision": 1,
+      "epoch": 1,
+      "round": 1,
+      "prompt": "青空会の会場はどこですか？",
+      "status": "closed",
+      "answer_record_id": null
+    }
+  },
+  "legitimate_attempt_delta": "Existing waiting Attempt becomes fenced on cancellation; no new Attempt and no other Attempt changes. This expected fence is not an unchanged-entire-attempt-table claim.",
+  "db_integrity_check": [
+    "ok"
+  ],
+  "db_mode": "mode=ro&immutable=1; WAL verified empty",
+  "db_hashes_before": {
+    "state.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "state.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "state.sqlite": "f6c84196ad973847b18663b682bc5b5d04b644c4daa90553541207bdd701c73e",
+    "state.sqlite.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "db_hashes_after": {
+    "state.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "state.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "state.sqlite": "f6c84196ad973847b18663b682bc5b5d04b644c4daa90553541207bdd701c73e",
+    "state.sqlite.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "original_file_sha256": {
+    "before.json": "1036e3ed882a10a186a366924d90c52160b951ead914bdcdb71cb178c7458cba",
+    "owner.json": "dbcd9d82d15fb512f4f332cfeef9fb3e3869b89983822ff3ece0a7823314dc27",
+    "b2-ui.png": "bf4d3c5c21070ff2d5df78688aeba91bb553825b85aaa7725d6014761009dc35",
+    "auth-scrubbed.json": "dd8442d429aa07a7a0029a9ec9cd5d3d05f2f5ce534cb410e52522e5aa5762b0",
+    "state.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "b2.json": "a3ab5e0d36a26197039b2c90705e5bf78546fd8c1fac442886ed6a17309f7115",
+    "after.json": "3bd13b475e587aec959d9c3a05df6a18e3372d90e5e60c7e5b7ee63ccc5b3bb1",
+    "state.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "b1.json": "3ea97503cdfea0fc0032c16402cdce4dd0de762f08d7b744a076389b72722e32",
+    "state.sqlite": "f6c84196ad973847b18663b682bc5b5d04b644c4daa90553541207bdd701c73e",
+    "conversation-ui.png": "e8fa6a9c11e73e3b2fa7699534d4dfaab607e8b5e4d89883faa17cfe98b8bd14",
+    "access-observation.json": "9dfecf3bab199de14f128e9021b756b327e8d1c7a499e6575738dad7c8f38da6",
+    "controller-semantic.json": "afbcea3d559400d164a896d924310512f9f4a06ae1856eafb3c647fb0626aaa8",
+    "state.sqlite.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "seed-audit.json": "30a5ce8c182d0705eb40b341d3c16960a4da05cfb4667c579784d80f45090229",
+    "b1-ui.png": "e5c02b6cecad30a9e6fba0cd5e96efb13577b27e39fe762bd473ec1d3d651d0c",
+    "teardown.json": "60a7a50401b4685ce8c15275fa39f58638012007d2f0965f285b97f733f93ba1"
+  },
+  "scope": {
+    "synthetic_controller_input": true,
+    "human_evaluation": false,
+    "qwen_qualification": false,
+    "screenshots_independently_inspected": false,
+    "live_browser_process_observation": "Inherited controller evidence; this audit independently checks retained canonical snapshots/DB/replies only.",
+    "running_cancel_late_result_proof": false,
+    "seeded_artifact": "Existing synthetic fixture metadata retained unchanged, not live Expert output.",
+    "provider_auth_ui_network_calls": 0,
+    "db_writes": false,
+    "tracked_tree_writes": false,
+    "ABS_A2": "Off limits; no artifact/body/HTTP/DB/alternate-browser access performed."
+  },
+  "reply_manifest_note": "Primary replies cite the usable offered conversation/context manifest including their original input, not only that input. Initial singleton-manifest observer assumption corrected after checking Store._finish_primary_outcome and actual retained records; no evidence defect.",
+  "attempt_fence_source": "pal/store.py:428-432 _fence updates running/waiting Attempts to fenced and closes open questions; cancel invokes it at561-563. Observed exactly the intended waiting Attempt status transition, all other Attempt rows unchanged."
+}

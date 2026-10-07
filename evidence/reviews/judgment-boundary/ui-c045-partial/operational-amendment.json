@@ -1,0 +1,18 @@
+{
+  "recorded_at": 1791404276.6335208,
+  "reason": "Browser-side artifact access blocked for ABS-A2; no security bypass. Root inspected existing server source only; text/plain route unchanged, cause not established.",
+  "preserve": "Original contract/result/DB intact; A1 PASS, A2 NOT_VERIFIED, all others NOT_RUN at this point.",
+  "independent_next": [
+    "TARGET-A",
+    "TARGET-B"
+  ],
+  "why": "These frozen ordinary-conversation cases require no access to blocked artifact pages; no model response-dependent new inputs, criteria, route or caps. Same relative target order, one first attempt, cap1 and3 respectively.",
+  "dependent_cases": "Pause artifact-dependent cases pending allowed browser access, without new proof/provider retries or content-access workaround.",
+  "no_change": [
+    "Product/runtime",
+    "Acceptance criteria",
+    "Costs/permissions",
+    "Final whole-flow usefulness requirement",
+    "No automatic qualification/release"
+  ]
+}

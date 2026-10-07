@@ -1,0 +1,25 @@
+{
+  "candidate": "814638db3e8742e68b2fe675c6abc41632d21a5e",
+  "contract_sha256": "638ccb6404ecd6547c8f41c6b7d12c6491d1aa3f251ee385d1148f9e25986c13",
+  "pid": 46369,
+  "started_before": 1791404014.5465028,
+  "deadline": 1791404614.5465028,
+  "cap": 2,
+  "scope": "live_synthetic_not_human",
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "-B",
+    "-m",
+    "pal.server",
+    "--db",
+    "runtime/c045-ui-current/ABS-A2/state.sqlite",
+    "--port",
+    "0",
+    "--provider",
+    "official_claude_pro",
+    "--access-proof",
+    "runtime/c045-ui-current/ABS-A2/proof.json",
+    "--native-call-limit",
+    "2"
+  ]
+}

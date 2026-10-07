@@ -1,0 +1,13 @@
+{
+  "recorded_at": 1791405016.605068,
+  "prior": "operational-amendment.json",
+  "independent_next": "RUNNING-CANCEL",
+  "reason": "This already-frozen negative-effect case is independently measurable through ordinary UI and canonical metadata; success requires no artifact/receipt and a bound late-result rejection, not artifact-content access.",
+  "constraints": [
+    "Preserve unchanged original input, cap6/expected3, max_attempts1/reserve0, existing fresh-proof/600s host bound.",
+    "Observe actual running Attempt before natural cancel; missing setup or no bound late result is NOT_VERIFIED/VOID, no retry/rescue.",
+    "Metadata-only API observations. If a terminal artifact appears before cancel or otherwise, do not open/fetch its content; preserve incomplete/failed result.",
+    "ABS-A2 remains NOT_VERIFIED and untouched. No security-setting/browser/endpoint workaround.",
+    "No product, acceptance, authority or cost change; artifact-dependent cases remain paused."
+  ]
+}

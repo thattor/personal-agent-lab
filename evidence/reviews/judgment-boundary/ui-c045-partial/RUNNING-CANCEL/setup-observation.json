@@ -1,0 +1,186 @@
+{
+  "observed_at": 1791405090.761856,
+  "state": {
+    "records": [
+      {
+        "seq": 1,
+        "id": "1e713cf78cf142fea59c1f2dcc0fbaa1",
+        "role": "user",
+        "content": "Mapleの招待文の下書きを作成してください。外部には送らないでください。",
+        "usable": 1,
+        "source_event_id": null,
+        "manifest": "[]",
+        "supersedes": null
+      },
+      {
+        "seq": 2,
+        "id": "2ca35881a4b142a988ed53dc824bb6d8",
+        "role": "assistant",
+        "content": "下書きを受け付けました：日本語で「Maple」への招待文の下書きを作成する。ローカルの下書きのみとし、外部への送信は一切行わない。Mapleが何か（イベント、集まり、サービス、コミュニティなど）は未指定のため、特定の種類を断定せず、「Maple」への参加を丁寧に呼びかける汎用的な文面にする。日時、場所、内容、主催者名、宛先、参加方法、返信期限はすべて未指定であり、事実を補わず［日時］［場所］［主催者名］などのプレースホルダーで示す。丁寧で温かみのある招待の文体にする。 / Local draft accepted.",
+        "usable": 1,
+        "source_event_id": null,
+        "manifest": "[\"1e713cf78cf142fea59c1f2dcc0fbaa1\"]",
+        "supersedes": null
+      },
+      {
+        "seq": 3,
+        "id": "69d9aa69c2f34f628e79ccae81c5f060",
+        "role": "assistant",
+        "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"b2e3070d4e5e4e94966967dbc1b5c247\"}",
+        "usable": 1,
+        "source_event_id": "06acc9ebaef14062bad1bad07bac93d8",
+        "manifest": "[]",
+        "supersedes": null
+      },
+      {
+        "seq": 4,
+        "id": "37861c28d90e42f995ab73bf3c48dbe2",
+        "role": "assistant",
+        "content": "{\"detail\":{\"attempt_id\":\"7d58953d208741e8b34f0435327a1469\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"b2e3070d4e5e4e94966967dbc1b5c247\"}",
+        "usable": 1,
+        "source_event_id": "e896205731ba4790b519f74c8e534b9a",
+        "manifest": "[]",
+        "supersedes": null
+      },
+      {
+        "seq": 5,
+        "id": "3bdeaf8a46b447d39f5fd4eed17e49fc",
+        "role": "assistant",
+        "content": "{\"detail\":{\"artifact_id\":\"de3e7cc7586941ebb45352e18a09ba1c\",\"attempt_id\":\"7d58953d208741e8b34f0435327a1469\",\"check_status\":\"pass\",\"receipt_id\":\"d766c94d2a964928913e476af6bf746b\"},\"event\":\"goal.completed\",\"goal_id\":\"b2e3070d4e5e4e94966967dbc1b5c247\"}",
+        "usable": 1,
+        "source_event_id": "07d1a00a0a644b1a8cb819b3a0eb5aba",
+        "manifest": "[]",
+        "supersedes": null
+      }
+    ],
+    "notes": [],
+    "goals": [
+      {
+        "seq": 1,
+        "id": "b2e3070d4e5e4e94966967dbc1b5c247",
+        "state": "completed",
+        "revision": 1,
+        "acceptance_id": "7b511f97b2e84272b2323085ccc4da96",
+        "epoch": 1,
+        "budget": 2,
+        "total_claims": 1,
+        "reason": "",
+        "question_id": null,
+        "ambiguity": 0
+      }
+    ],
+    "revisions": [
+      {
+        "goal_id": "b2e3070d4e5e4e94966967dbc1b5c247",
+        "revision": 1,
+        "acceptance_id": "7b511f97b2e84272b2323085ccc4da96",
+        "specification": "日本語で「Maple」への招待文の下書きを作成する。ローカルの下書きのみとし、外部への送信は一切行わない。Mapleが何か（イベント、集まり、サービス、コミュニティなど）は未指定のため、特定の種類を断定せず、「Maple」への参加を丁寧に呼びかける汎用的な文面にする。日時、場所、内容、主催者名、宛先、参加方法、返信期限はすべて未指定であり、事実を補わず［日時］［場所］［主催者名］などのプレースホルダーで示す。丁寧で温かみのある招待の文体にする。",
+        "sources": "[\"1e713cf78cf142fea59c1f2dcc0fbaa1\"]",
+        "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+        "template_preview_allowed": 0
+      }
+    ],
+    "acceptances": [
+      {
+        "id": "7b511f97b2e84272b2323085ccc4da96",
+        "goal_id": "b2e3070d4e5e4e94966967dbc1b5c247",
+        "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+      }
+    ],
+    "attempts": [
+      {
+        "seq": 1,
+        "id": "7d58953d208741e8b34f0435327a1469",
+        "goal_id": "b2e3070d4e5e4e94966967dbc1b5c247",
+        "revision": 1,
+        "acceptance_id": "7b511f97b2e84272b2323085ccc4da96",
+        "epoch": 1,
+        "status": "pass",
+        "manifest": "[\"1e713cf78cf142fea59c1f2dcc0fbaa1\",\"2ca35881a4b142a988ed53dc824bb6d8\"]",
+        "error": "",
+        "external_intent": 0
+      }
+    ],
+    "receipts": [
+      {
+        "id": "d766c94d2a964928913e476af6bf746b",
+        "attempt_id": "7d58953d208741e8b34f0435327a1469",
+        "artifact_id": "de3e7cc7586941ebb45352e18a09ba1c",
+        "hash": "4190e6bb93c295cad5ab53ed1ef9bc07d7853644ba4e3ea06902a46d01755bd5",
+        "size": 610,
+        "revision": 1,
+        "epoch": 1,
+        "role": "draft"
+      }
+    ],
+    "outcomes": [
+      {
+        "attempt_id": "7d58953d208741e8b34f0435327a1469",
+        "receipt_id": "d766c94d2a964928913e476af6bf746b",
+        "check_status": "pass",
+        "detail": "host_utf8_size_hash_readback"
+      }
+    ],
+    "events": [
+      {
+        "seq": 1,
+        "id": "06acc9ebaef14062bad1bad07bac93d8",
+        "goal_id": "b2e3070d4e5e4e94966967dbc1b5c247",
+        "kind": "goal.queued",
+        "payload": "{\"revision\":1}",
+        "delivered": 1
+      },
+      {
+        "seq": 2,
+        "id": "e896205731ba4790b519f74c8e534b9a",
+        "goal_id": "b2e3070d4e5e4e94966967dbc1b5c247",
+        "kind": "attempt.claimed",
+        "payload": "{\"attempt_id\":\"7d58953d208741e8b34f0435327a1469\",\"epoch\":1}",
+        "delivered": 1
+      },
+      {
+        "seq": 3,
+        "id": "07d1a00a0a644b1a8cb819b3a0eb5aba",
+        "goal_id": "b2e3070d4e5e4e94966967dbc1b5c247",
+        "kind": "goal.completed",
+        "payload": "{\"artifact_id\":\"de3e7cc7586941ebb45352e18a09ba1c\",\"attempt_id\":\"7d58953d208741e8b34f0435327a1469\",\"check_status\":\"pass\",\"receipt_id\":\"d766c94d2a964928913e476af6bf746b\"}",
+        "delivered": 1
+      }
+    ],
+    "approvals": [],
+    "rejections": [],
+    "questions": [],
+    "artifacts": [
+      {
+        "id": "de3e7cc7586941ebb45352e18a09ba1c",
+        "hash": "4190e6bb93c295cad5ab53ed1ef9bc07d7853644ba4e3ea06902a46d01755bd5",
+        "size": 610
+      }
+    ],
+    "primary_turns": [
+      {
+        "client_key": "ui:257f5c79-b581-4dd2-a531-5936e84606f4:1791405072764:f7e3f0f0-5c7e-4d55-9e67-38dac88cfe60",
+        "record_id": "1e713cf78cf142fea59c1f2dcc0fbaa1",
+        "status": "complete",
+        "outcome": "{\"goal\":{\"acceptance_id\":\"7b511f97b2e84272b2323085ccc4da96\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"b2e3070d4e5e4e94966967dbc1b5c247\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":0},\"intent\":\"draft\",\"primary_status\":\"complete\",\"record_id\":\"1e713cf78cf142fea59c1f2dcc0fbaa1\",\"response_id\":\"2ca35881a4b142a988ed53dc824bb6d8\"}"
+      }
+    ],
+    "selections": [],
+    "provider": "official_claude_opus_tool_free",
+    "provider_status": {
+      "mode": "official_claude_pro",
+      "calls_remaining": 4,
+      "expires_at": 1791405950.006482,
+      "authorized_now": true,
+      "unavailable_reason": "",
+      "last_error": ""
+    },
+    "runtime": {
+      "pid": 53797,
+      "started_at": 1791405050.063252,
+      "worker_alive": true,
+      "worker_error": "",
+      "stopping": false
+    }
+  }
+}

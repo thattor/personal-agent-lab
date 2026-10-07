@@ -1,0 +1,111 @@
+{
+  "recorded_at": 1791405287.245449,
+  "candidate": "814638db3e8742e68b2fe675c6abc41632d21a5e",
+  "product_identity": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+  "scope": "controller synthetic actual official Claude Pro UI inputs; not Qwen or human evaluation",
+  "rows": [
+    {
+      "id": "ABS-A1",
+      "status": "PASS",
+      "native_slots_consumed": 2,
+      "independent_cap": 2
+    },
+    {
+      "id": "ABS-A2",
+      "status": "NOT_VERIFIED",
+      "native_slots_consumed": 2,
+      "independent_cap": 2
+    },
+    {
+      "id": "ABS-B1",
+      "status": "NOT_RUN",
+      "native_slots_consumed": 0,
+      "independent_cap": 2
+    },
+    {
+      "id": "ABS-B2",
+      "status": "NOT_RUN",
+      "native_slots_consumed": 0,
+      "independent_cap": 2
+    },
+    {
+      "id": "ABS-C1",
+      "status": "NOT_RUN",
+      "native_slots_consumed": 0,
+      "independent_cap": 3
+    },
+    {
+      "id": "ABS-C2",
+      "status": "NOT_RUN",
+      "native_slots_consumed": 0,
+      "independent_cap": 3
+    },
+    {
+      "id": "UI-CLARIFY",
+      "status": "NOT_RUN",
+      "native_slots_consumed": 0,
+      "independent_cap": 3
+    },
+    {
+      "id": "TARGET-A",
+      "status": "PASS",
+      "native_slots_consumed": 1,
+      "independent_cap": 1
+    },
+    {
+      "id": "TARGET-B",
+      "status": "PASS",
+      "native_slots_consumed": 3,
+      "independent_cap": 3
+    },
+    {
+      "id": "TARGET-C",
+      "status": "NOT_RUN",
+      "native_slots_consumed": 0,
+      "independent_cap": 3
+    },
+    {
+      "id": "RUNNING-CANCEL",
+      "status": "VOID",
+      "native_slots_consumed": 2,
+      "independent_cap": 6
+    },
+    {
+      "id": "COMPOUND-LOCAL-CONTINUATION",
+      "status": "NOT_RUN",
+      "native_slots_consumed": 0,
+      "independent_cap": 3
+    },
+    {
+      "id": "CREATIVE-PARTICULARS",
+      "status": "NOT_RUN",
+      "native_slots_consumed": 0,
+      "independent_cap": 2
+    },
+    {
+      "id": "SUPPLIED-FOLLOWUP",
+      "status": "NOT_RUN",
+      "native_slots_consumed": 0,
+      "independent_cap": 2
+    }
+  ],
+  "total_native_slots_consumed": 10,
+  "original_total_ceiling": 37,
+  "providers_stopped": true,
+  "all_launched_hosts_closed_before_600s": true,
+  "all17_product_files_unchanged": true,
+  "browser_block": "ABS-A2: ERR_BLOCKED_BY_CLIENT and visible ChatGPT blocked page. No artifact content obtained through another route; no product cause established.",
+  "remaining": "9 unexecuted artifact-dependent hosts; ABS-A2 unverified; running-cancel timing VOID, needs reviewed predeclared test arrangement, no blind retry.",
+  "full_suite": {
+    "tests": 249,
+    "seconds": 20.122,
+    "status": "PASS",
+    "path": "full-after-live.txt",
+    "timing": "after TARGET-B, before later unchanged-source RUNNING-CANCEL metadata probe"
+  },
+  "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "git": "git version 2.54.0 (Apple Git-157)",
+  "human_evaluation": false,
+  "qwen_qualification": "NOT_RUN",
+  "stable1_complete": false
+}

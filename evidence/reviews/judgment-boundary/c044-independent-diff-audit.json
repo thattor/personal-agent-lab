@@ -1,0 +1,39 @@
+{
+  "schema": "pal-independent-source-review-v1",
+  "verdict": "NO_SUBSTANTIATED_BLOCKER",
+  "reviewed_commit": "814638db3e8742e68b2fe675c6abc41632d21a5e",
+  "base_commit": "3d5387806473e52640f3ef553272784ac9253024",
+  "product_identity": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+  "checks": {
+    "all_17_product_bytes_match_new_freeze": true,
+    "same_product_file_set": true,
+    "only_runtime_product_hash_changed": true,
+    "runtime_ast_unchanged_except_one_instruction_sentence": true,
+    "new_content_identity_valid": true,
+    "historical_intent_manifest_bytes_preserved": true
+  },
+  "scope": [
+    "Expert DRAFT instruction addition",
+    "historical and new freeze test diff",
+    "product manifest exact bytes and runtime AST",
+    "disclosed creative and supplied-commitment regression definitions"
+  ],
+  "findings": [],
+  "assessment": {
+    "minimality": "One Expert instruction sentence implements the adopted grounding contract. Primary, native, Store, server, source/context construction, decoder and all other product files remain unchanged. Runtime AST becomes identical after removing that one added string sentence.",
+    "exceptions": "The supplied-details and explicit-invention exceptions preserve requested creative particulars and supplied promises in the instruction contract. Existing no-essential-question guidance remains. Actual behavioral preservation still requires bounded live evidence.",
+    "tests": "Historical freezes retain fixed hash assertions and reject the current product through validate_freeze; the new Expert freeze validates current source and permits only runtime.py to differ. Reading the historical manifest for comparison does not bypass a live validation path.",
+    "portability": "C043 measurements remain bound to c55cab29 and their original commit/runs. Byte-identical Primary/native/Store/context plus unchanged runtime logic support component-level reuse only. They are not measurements of this new product, Expert content, Qwen, or human usefulness.",
+    "historical_failure": "Original C044 ABS-A1 semantic FAIL is preserved; no rubric relaxation or human micro-approval gate is introduced.",
+    "counterexample_disclosure": "The saved counterexamples hash matches the freeze note. They were disclosed known regressions saved after product edit, as the note states; no unseen or independent heldout status is claimed. Save-before-edit chronology is not reconstructed as success.",
+    "causal_limit": "Prompt coverage gap is a plausible explanation of the original artifact, not a proven stochastic-model cause; source review does not prove the correction works."
+  },
+  "validation_scope": "Read-only exact-source/hash/AST review; no tests, provider, auth or UI calls made for this audit. Controller reports focused 65 and full 249 PASS; those are not independent executions by this reviewer.",
+  "references": {
+    "new_manifest_sha256": "1bf45e0fe170d05433570026d7131b5f454e7a85075a554787a85d0e06e13691",
+    "regression_cases_sha256": "94da3d3cee6c9edf6a053024b09b5e3626a9d8899915fa9c7026511e729aeaa7",
+    "regression_note": "runtime/c044-regression-freeze-note.json",
+    "runtime_instruction": "pal/runtime.py:105",
+    "freeze_tests": "tests/test_primary_qualification.py:759"
+  }
+}

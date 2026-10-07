@@ -1,0 +1,281 @@
+{
+  "source_root": "runtime/c045-ui-current",
+  "exact_copies": [
+    {
+      "path": "ABS-A1/access-observation.json",
+      "sha256": "cab6151315e35b0ce13b3e8f537229ee108486a80b38422c8fd0b55f817ef02f",
+      "bytes": 454
+    },
+    {
+      "path": "ABS-A1/after.json",
+      "sha256": "c075708ed8acbda150f42998b53a07c29c26f533d2bbc8b691bb4f345f0f1eb3",
+      "bytes": 6349
+    },
+    {
+      "path": "ABS-A1/artifact-caf9a0d9899c43229e1b0c96a97d1c4a.txt",
+      "sha256": "08726f3c87cdf213a5f0dfb9fd2871b5269374336f81f37cb5295d218c2622c4",
+      "bytes": 357
+    },
+    {
+      "path": "ABS-A1/artifact-ui.png",
+      "sha256": "45782c2b9b9c99fc969195125c6958d0f8a58349bce6319b5f0f62b804fa661b",
+      "bytes": 18784
+    },
+    {
+      "path": "ABS-A1/auth-scrubbed.json",
+      "sha256": "dd8442d429aa07a7a0029a9ec9cd5d3d05f2f5ce534cb410e52522e5aa5762b0",
+      "bytes": 112
+    },
+    {
+      "path": "ABS-A1/before.json",
+      "sha256": "39645e181e04603e86bfe220bb238ee1f2a9d3f03f3dce1efc3118b533b20798",
+      "bytes": 590
+    },
+    {
+      "path": "ABS-A1/controller-semantic.json",
+      "sha256": "63b52163d0aa5c157a5193bd1285fab334460f4fc08cd7342076cee05072d997",
+      "bytes": 570
+    },
+    {
+      "path": "ABS-A1/conversation-ui.png",
+      "sha256": "11870f897c5d5401dfe159dab867e7eece83070f88b5a73fc94950e831b9405d",
+      "bytes": 84255
+    },
+    {
+      "path": "ABS-A1/independent-audit.json",
+      "sha256": "9aee3155ce32aa6b1cc4158b3645cd0b4413823704d90370a69b82dbd7e816eb",
+      "bytes": 7147
+    },
+    {
+      "path": "ABS-A1/observation.json",
+      "sha256": "c075708ed8acbda150f42998b53a07c29c26f533d2bbc8b691bb4f345f0f1eb3",
+      "bytes": 6349
+    },
+    {
+      "path": "ABS-A1/owner.json",
+      "sha256": "2e1157c9cd447295a2b2a19f0abbaa1abdabf8f1b375288b973f95e3a30faa88",
+      "bytes": 651
+    },
+    {
+      "path": "ABS-A1/teardown.json",
+      "sha256": "ba74c07af016670a03834a262a40054f44741a6b2a8c2b842d7bd862f06bae12",
+      "bytes": 207
+    },
+    {
+      "path": "ABS-A2/access-observation.json",
+      "sha256": "c9e4d7b7550795f889b95aef21ee0c92946281e0571e07b5889c57602ffa2bdb",
+      "bytes": 444
+    },
+    {
+      "path": "ABS-A2/artifact-browser-block.png",
+      "sha256": "0fef27c0efb6d74e474dd075590e4d94d02dfb9723ad80ef0d98de19046be2e7",
+      "bytes": 14459
+    },
+    {
+      "path": "ABS-A2/auth-scrubbed.json",
+      "sha256": "dd8442d429aa07a7a0029a9ec9cd5d3d05f2f5ce534cb410e52522e5aa5762b0",
+      "bytes": 112
+    },
+    {
+      "path": "ABS-A2/before.json",
+      "sha256": "b5f8d9cf429f7e8c2c468836632f638755844305f5a1740a0573d3723deb5455",
+      "bytes": 590
+    },
+    {
+      "path": "ABS-A2/controller-semantic.json",
+      "sha256": "0884fa6ded2c054d859bec2d5886a4995b29bba936b4790e52fff34ee01c581c",
+      "bytes": 487
+    },
+    {
+      "path": "ABS-A2/conversation-ui.png",
+      "sha256": "aa3e4fdf19dda4eb405ed58bd86f55a4606d175a0b8598f3a3e7aecfa79c7b2b",
+      "bytes": 78139
+    },
+    {
+      "path": "ABS-A2/owner.json",
+      "sha256": "0ba19f85f95059861268797af330f35e9ea2a265bbd61c17c91fbf37b54af624",
+      "bytes": 653
+    },
+    {
+      "path": "ABS-A2/teardown.json",
+      "sha256": "c6799d12b39709293368ff48d6d884ba3d28f981c0462ddda29cd03f6ce229dc",
+      "bytes": 207
+    },
+    {
+      "path": "RUNNING-CANCEL/access-observation.json",
+      "sha256": "9d361d4f23704b7d65f05f878916a745a18dc6873885c33fd819346370d5fb6d",
+      "bytes": 451
+    },
+    {
+      "path": "RUNNING-CANCEL/auth-scrubbed.json",
+      "sha256": "dd8442d429aa07a7a0029a9ec9cd5d3d05f2f5ce534cb410e52522e5aa5762b0",
+      "bytes": 112
+    },
+    {
+      "path": "RUNNING-CANCEL/before.json",
+      "sha256": "14c151876f63306688c1ab6c3603332b5e9da4e63ff6ec8fff6f40aaef006f53",
+      "bytes": 589
+    },
+    {
+      "path": "RUNNING-CANCEL/controller-semantic.json",
+      "sha256": "f85a4ca5d2395077a6f3ab756f3bf3d8c21ce85c186ad9a41690df3027c3cd80",
+      "bytes": 711
+    },
+    {
+      "path": "RUNNING-CANCEL/conversation-ui.png",
+      "sha256": "58d701580389d6d7feff521187fadd9b73f3f02ec6879462515855fdbd50b60e",
+      "bytes": 82908
+    },
+    {
+      "path": "RUNNING-CANCEL/independent-audit.json",
+      "sha256": "8fd44ff873bb39c6ca0f00249d66e48a2669165b626d36ff46d429c9fe167f26",
+      "bytes": 3245
+    },
+    {
+      "path": "RUNNING-CANCEL/owner.json",
+      "sha256": "294c0726a5bb9a638b33d6af7838049fdd3c473ab1bbac4b37d32769a6c7c070",
+      "bytes": 667
+    },
+    {
+      "path": "RUNNING-CANCEL/setup-observation.json",
+      "sha256": "084bdb16f2e65864329683398a58a15432dc0913ef0fa58fd0dd52eee8a2965f",
+      "bytes": 7777
+    },
+    {
+      "path": "RUNNING-CANCEL/teardown.json",
+      "sha256": "c6f584c253d49b433f0997f1019dbb7d6466fa8c352f681d8eb942c546268e78",
+      "bytes": 206
+    },
+    {
+      "path": "TARGET-A/access-observation.json",
+      "sha256": "4f6eb378f2c2c8d1ca41652901fc68e36db3c0d2b834ca118afe144c28bd6dd2",
+      "bytes": 445
+    },
+    {
+      "path": "TARGET-A/after.json",
+      "sha256": "6892096bd16f7bb09c4988b115c9cb1c60d482c02853df93f49751cf52176d5f",
+      "bytes": 1598
+    },
+    {
+      "path": "TARGET-A/auth-scrubbed.json",
+      "sha256": "dd8442d429aa07a7a0029a9ec9cd5d3d05f2f5ce534cb410e52522e5aa5762b0",
+      "bytes": 112
+    },
+    {
+      "path": "TARGET-A/before.json",
+      "sha256": "1abeee607d61271e29f37634b26b94c0be7d1532bd686eb67765421b9629cfd8",
+      "bytes": 589
+    },
+    {
+      "path": "TARGET-A/controller-semantic.json",
+      "sha256": "bba3d4897e8cfa159bd4606471a9a381b6983e2a2edd8f3bb1b2a89d6bd1039f",
+      "bytes": 307
+    },
+    {
+      "path": "TARGET-A/conversation-ui.png",
+      "sha256": "8a70fed9e357797f5a0799e17ac4954a20e0da80708b3cca829f79232a913c51",
+      "bytes": 62391
+    },
+    {
+      "path": "TARGET-A/independent-audit.json",
+      "sha256": "1a13516a14b758e644eb24f6ed7aa91a356017aea1221a69722cfa8bb132fa75",
+      "bytes": 3904
+    },
+    {
+      "path": "TARGET-A/owner.json",
+      "sha256": "bc630430d847ada52fb3081501767ae44ce8ef6e8bd7c75f67422639e3b940c5",
+      "bytes": 655
+    },
+    {
+      "path": "TARGET-A/teardown.json",
+      "sha256": "1562bdf97c76d17f7b90006029099a7d6363cc3332b557e68cba4b6bb450f2aa",
+      "bytes": 206
+    },
+    {
+      "path": "TARGET-B/access-observation.json",
+      "sha256": "9dfecf3bab199de14f128e9021b756b327e8d1c7a499e6575738dad7c8f38da6",
+      "bytes": 445
+    },
+    {
+      "path": "TARGET-B/after.json",
+      "sha256": "3bd13b475e587aec959d9c3a05df6a18e3372d90e5e60c7e5b7ee63ccc5b3bb1",
+      "bytes": 14192
+    },
+    {
+      "path": "TARGET-B/auth-scrubbed.json",
+      "sha256": "dd8442d429aa07a7a0029a9ec9cd5d3d05f2f5ce534cb410e52522e5aa5762b0",
+      "bytes": 112
+    },
+    {
+      "path": "TARGET-B/b1-ui.png",
+      "sha256": "e5c02b6cecad30a9e6fba0cd5e96efb13577b27e39fe762bd473ec1d3d651d0c",
+      "bytes": 53750
+    },
+    {
+      "path": "TARGET-B/b1.json",
+      "sha256": "3ea97503cdfea0fc0032c16402cdce4dd0de762f08d7b744a076389b72722e32",
+      "bytes": 10868
+    },
+    {
+      "path": "TARGET-B/b2-ui.png",
+      "sha256": "bf4d3c5c21070ff2d5df78688aeba91bb553825b85aaa7725d6014761009dc35",
+      "bytes": 65105
+    },
+    {
+      "path": "TARGET-B/b2.json",
+      "sha256": "a3ab5e0d36a26197039b2c90705e5bf78546fd8c1fac442886ed6a17309f7115",
+      "bytes": 12234
+    },
+    {
+      "path": "TARGET-B/before.json",
+      "sha256": "1036e3ed882a10a186a366924d90c52160b951ead914bdcdb71cb178c7458cba",
+      "bytes": 9680
+    },
+    {
+      "path": "TARGET-B/controller-semantic.json",
+      "sha256": "afbcea3d559400d164a896d924310512f9f4a06ae1856eafb3c647fb0626aaa8",
+      "bytes": 2536
+    },
+    {
+      "path": "TARGET-B/conversation-ui.png",
+      "sha256": "e8fa6a9c11e73e3b2fa7699534d4dfaab607e8b5e4d89883faa17cfe98b8bd14",
+      "bytes": 58164
+    },
+    {
+      "path": "TARGET-B/independent-audit.json",
+      "sha256": "11b09d13eff4b27203671b1a08383d793f8ccb38f420fc1f3a22f54f5ecaa793",
+      "bytes": 7481
+    },
+    {
+      "path": "TARGET-B/owner.json",
+      "sha256": "dbcd9d82d15fb512f4f332cfeef9fb3e3869b89983822ff3ece0a7823314dc27",
+      "bytes": 655
+    },
+    {
+      "path": "TARGET-B/seed-audit.json",
+      "sha256": "30a5ce8c182d0705eb40b341d3c16960a4da05cfb4667c579784d80f45090229",
+      "bytes": 9491
+    },
+    {
+      "path": "TARGET-B/teardown.json",
+      "sha256": "60a7a50401b4685ce8c15275fa39f58638012007d2f0965f285b97f733f93ba1",
+      "bytes": 206
+    },
+    {
+      "path": "contract.json",
+      "sha256": "638ccb6404ecd6547c8f41c6b7d12c6491d1aa3f251ee385d1148f9e25986c13",
+      "bytes": 54863
+    },
+    {
+      "path": "operational-amendment-02.json",
+      "sha256": "41123c672ed5b68c4e3b988519a328ce3d734fb35f9bb14500764742e344cd7c",
+      "bytes": 990
+    },
+    {
+      "path": "operational-amendment.json",
+      "sha256": "f987103d44bbc10eaddd4eb9813a5c07193fc8b252087f880fe65045b54e10b9",
+      "bytes": 963
+    }
+  ],
+  "excluded": "AccessProof files, canonical DB/WAL/SHM/locks and blocked or unviewed artifact bodies excluded; runtime originals retained."
+}

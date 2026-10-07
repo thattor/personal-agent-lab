@@ -1,0 +1,17 @@
+{
+  "observed_at": 1791404539.929746,
+  "usage_url": "https://claude.ai/new#settings/usage",
+  "plan": "Pro",
+  "session_used_percent": 21,
+  "week_used_percent": 25,
+  "extra_usage_enabled": false,
+  "usage_credit_balance": "$0",
+  "auto_reload_enabled": false,
+  "cli_auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "apiProvider": "firstParty",
+    "subscriptionType": "pro"
+  },
+  "purpose": "C045 TARGET-B first attempt"
+}

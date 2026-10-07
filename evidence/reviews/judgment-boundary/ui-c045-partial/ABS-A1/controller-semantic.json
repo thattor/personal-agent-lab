@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "reason": "Unspecified recipient/date/time appear as visible placeholders; generic invitation courtesy and no unsupported future follow-up or concrete logistics. One local artifact; exactly two slots.",
+  "input_source": "actual UI synthetic controller input",
+  "human_evaluation": false,
+  "qwen_qualification": false,
+  "observer_note": "Initial read-only summary tried non-existent goal.specification and raised KeyError after GET, before result save. Corrected observer reads actual schema; no input/provider retry or canonical mutation."
+}

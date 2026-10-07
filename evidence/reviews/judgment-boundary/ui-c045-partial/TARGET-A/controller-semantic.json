@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "reason": "Actual visible reply accurately says there is no active cancellable work and starts none; zero canonical Goals/Attempts/artifacts/receipts/rejections.",
+  "input_source": "actual UI synthetic controller input",
+  "human_evaluation": false,
+  "qwen_qualification": false
+}

@@ -42,13 +42,25 @@ C043 fixed40 and independent12 retain PASS as exact unchanged-component evidence
 not new-candidate measurements:59 calls, all four independent audits. Qwen remains
 an owner capability reference, actual PAL qualification NOT_RUN.
 
-Next: commit/push this coherent correction/evidence, bind exact clean pushed HEAD and
-execute expert-commitment-ui-contract.json once: existing12hosts33slots plus two targeted
-supplied/creative-content counterexamples (14 independent hosts/max37 slots). Inputs,
-oracles and order frozen before live execution. Fresh existing official Pro/extraOFF
-one-use proof per bounded600s host; no extra charge, new auth, retry, rescue answer,
-proof renewal, cap transfer or edits during measurement. Counterexamples are disclosed
-regression, not independent unseen data. Original ABS-A1 failure stays unchanged.
+C044 correction pushed as814638d. C045 actual first attempts on that exact candidate:
+ABS-A1 PASS with independently bound actual artifact/UI/receipt, TARGET-A and TARGET-B
+PASS including no wrong-target mutation. ABS-A2 NOT_VERIFIED because the IAB artifact
+page explicitly reported ChatGPT blocking/ERR_BLOCKED_BY_CLIENT; no alternate content
+access, new permission or product-cause assumption. RUNNING-CANCEL timing VOID: first
+metadata observation already terminal, no cancellation input or artifact access. Nine
+artifact-dependent hosts NOT_RUN. Ten native slots across five hosts; all exited0 with
+ports closed inside600s, sources unchanged. [Retained evidence and limits](evidence/reviews/judgment-boundary/ui-c045-partial/README.md).
+[249 full tests PASS20.122s](evidence/reviews/judgment-boundary/ui-c045-partial/full-after-live.txt).
+No whole-row semantic, human or Qwen qualification from these partial results.
+
+Exact next: obtain required official reviews for the smallest predeclared test-only
+scheduling arrangement at existing worker.after_executor_before_apply, so natural
+cancel and actual stale-result rejection can be observed without racing the UI. Preserve
+both historical timing misses; no blind retry, model-output substitution or product
+change. Artifact-dependent cases remain paused until an allowed browser path is
+available; do not bypass the client block or restart a completed measurement/proof.
+Existing frozen14-host37-slot allocation is retained; no unused cap transfer. Technical
+test design remains autonomous, not a new human micro-question.
 
 Then receive one authentic version-bound whole-flow usefulness evaluation in the
 persistent human window once current output is ready; earlier C035 material is older

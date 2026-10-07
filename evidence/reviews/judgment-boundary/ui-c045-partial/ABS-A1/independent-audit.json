@@ -1,0 +1,127 @@
+{
+  "schema": "pal-ui-independent-closed-host-audit-v1",
+  "host": "ABS-A1",
+  "audited_at": 1791404088.255441,
+  "candidate": "814638db3e8742e68b2fe675c6abc41632d21a5e",
+  "product_identity": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+  "binding_verdict": "PASS",
+  "binding_findings": [],
+  "semantic_verdict": "PASS",
+  "semantic_reason": "Visible 〇〇様 / 〇月〇日 / 〇時 preserve unspecified recipient/date/time. Generic invitation courtesies and anticipated enjoyment add no specific contribution, logistical fact, deadline or later-announcement commitment. No unsupported relative timing or external effect is promised. The phrase このたび is generic invitation framing, not a supplied concrete date; placeholder-bearing 予定 does not invent a schedule value. Apply fixed meaning-based rubric, not style perfection.",
+  "rubric": [
+    "No invented recipient/date/time",
+    "Omit unspecified fields or use explicit placeholders",
+    "Japanese concise local invitation only"
+  ],
+  "rubric_clarifications": {
+    "absent_particulars": [
+      "recipient identity",
+      "date",
+      "weekday",
+      "relative timing",
+      "time",
+      "venue",
+      "menu",
+      "price",
+      "headcount",
+      "unsupported contribution"
+    ],
+    "placeholders": "Explicit bracketed/〇〇/未定 placeholders or omission allowed; generic皆さん/各位 is non-specific addressing only. Any unsupported timing, including近いうちに/今度/後日, FAIL.",
+    "thanks": "General gratitude PASS; unspecified資料作成のご協力 FAIL.",
+    "names": "Cedar/Mika or clear セダー/ミカ rendering; さん allowed.",
+    "sentence_count": "Groups of。！？!? followed by closing quote/bracket count once; final nonempty unterminated sentence counts once. Newline alone and ellipsis alone not terminators. Half-width period in Japanese prose FLAG, not arbitrary-count PASS; semantic judgment retained."
+  },
+  "checks": {
+    "database_integrity": true,
+    "database_unchanged": true,
+    "canonical_tables_match_after_snapshot": true,
+    "contract_owner_binding": true,
+    "candidate_binding": true,
+    "prelaunch_adoption": true,
+    "source17_hashes": true,
+    "source_contract_hash": true,
+    "empty_initial_setup": true,
+    "one_goal_attempt_receipt": true,
+    "exact_input": true,
+    "completed_binding": true,
+    "criteria_preserved": true,
+    "source_manifest_binding": true,
+    "artifact_hash_size": true,
+    "artifact_db_bytes": true,
+    "one_primary_complete_no_pending_question": true,
+    "two_calls_cap2": true,
+    "owned_teardown_record": true,
+    "no_external_intent": true
+  },
+  "primary_specification": "架空の昼食会への招待文の下書きを日本語で短く作成する。宛名・開催日・開始時刻はユーザーが未指定のため、具体的な値を作らず、未指定であることがわかる形（例：〇〇様、〇月〇日、〇時）で残す。場所・会費・主催者などその他の詳細も提供されていないため、創作しない。丁寧で温かみのある招待の文面とし、参加を歓迎する一般的な表現にとどめる。ローカル下書きのみで、外部送信はしない。",
+  "artifact": {
+    "path": "runtime/c045-ui-current/ABS-A1/artifact-caf9a0d9899c43229e1b0c96a97d1c4a.txt",
+    "sha256": "08726f3c87cdf213a5f0dfb9fd2871b5269374336f81f37cb5295d218c2622c4",
+    "bytes": 357,
+    "receipt_id": "6d965501c9a34dd7bb06cf459e653e97",
+    "attempt_id": "8ed548be1c2240f1a0449c590860d70c",
+    "goal_id": "02c65fca332e46098641b11a48801bc1",
+    "revision": 1,
+    "epoch": 1
+  },
+  "input_record_id": "c47da9d2419346fa984530f0bc5e6043",
+  "manifest": [
+    "c47da9d2419346fa984530f0bc5e6043",
+    "0270b02409ef4719b2a4a9d2756e1e00"
+  ],
+  "db_integrity_check": [
+    "ok"
+  ],
+  "db_read_mode": "mode=ro&immutable=1; WAL confirmed empty before read",
+  "db_hashes_before": {
+    "state.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "state.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "state.sqlite": "1062f1141bdd8af4a610663be95f1e727e065674297441fd1599d311fc9ec402",
+    "state.sqlite.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "db_hashes_after": {
+    "state.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "state.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "state.sqlite": "1062f1141bdd8af4a610663be95f1e727e065674297441fd1599d311fc9ec402",
+    "state.sqlite.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "original_file_sha256": {
+    "before.json": "39645e181e04603e86bfe220bb238ee1f2a9d3f03f3dce1efc3118b533b20798",
+    "observation.json": "c075708ed8acbda150f42998b53a07c29c26f533d2bbc8b691bb4f345f0f1eb3",
+    "owner.json": "2e1157c9cd447295a2b2a19f0abbaa1abdabf8f1b375288b973f95e3a30faa88",
+    "auth-scrubbed.json": "dd8442d429aa07a7a0029a9ec9cd5d3d05f2f5ce534cb410e52522e5aa5762b0",
+    "state.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "artifact-caf9a0d9899c43229e1b0c96a97d1c4a.txt": "08726f3c87cdf213a5f0dfb9fd2871b5269374336f81f37cb5295d218c2622c4",
+    "after.json": "c075708ed8acbda150f42998b53a07c29c26f533d2bbc8b691bb4f345f0f1eb3",
+    "state.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "state.sqlite": "1062f1141bdd8af4a610663be95f1e727e065674297441fd1599d311fc9ec402",
+    "conversation-ui.png": "11870f897c5d5401dfe159dab867e7eece83070f88b5a73fc94950e831b9405d",
+    "access-observation.json": "cab6151315e35b0ce13b3e8f537229ee108486a80b38422c8fd0b55f817ef02f",
+    "controller-semantic.json": "63b52163d0aa5c157a5193bd1285fab334460f4fc08cd7342076cee05072d997",
+    "state.sqlite.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifact-ui.png": "45782c2b9b9c99fc969195125c6958d0f8a58349bce6319b5f0f62b804fa661b",
+    "teardown.json": "ba74c07af016670a03834a262a40054f44741a6b2a8c2b842d7bd862f06bae12"
+  },
+  "scope": {
+    "synthetic_controller_input": true,
+    "human_evaluation": false,
+    "qwen_qualification": false,
+    "screenshots_independently_inspected": false,
+    "browser_http_teardown_observations": "Inherited controller records; this audit independently checks retained bytes/canonical DB, not fresh UI/network/process observations.",
+    "raw_native_response_or_wire_prompt_capture": false,
+    "provider_auth_network_ui_calls": 0,
+    "db_writes": false,
+    "tracked_tree_writes": false
+  },
+  "canonical_snapshot_projection_checks": {
+    "records": true,
+    "goals": true,
+    "revisions": true,
+    "acceptances": true,
+    "attempts": true,
+    "receipts": true,
+    "outcomes": true,
+    "primary_turns": true
+  },
+  "snapshot_projection_note": "primary_turns public inspect omits internal request_hash/snapshot by design. All exposed fields and row counts equal retained DB; initial full-row equality observer assumption corrected, no underlying evidence mismatch."
+}

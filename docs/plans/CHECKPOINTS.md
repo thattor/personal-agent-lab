@@ -396,3 +396,20 @@ original12/33 and two directly affected creative/supplied-content counterexample
 not a new acceptance quota. No new scope, authority, cost, schedule or human question.
 Next: clean pushed candidate, first-attempt actual UI/Expert revalidation then one whole
 flow usefulness evaluation and final audit. Issue12/5/2, Stable1 and overallPAL incomplete.
+
+## C045 - corrected output and precise target selection, remaining proof explicit
+
+Unit goal: observe the reviewed Expert correction and current natural controls without
+manufacturing artifact or human evidence. On814638d/product53a616, ABS-A1 and TARGET-A/B
+PASS with independent audits. ABS-A2 NOT_VERIFIED after browser-client artifact block.
+RUNNING-CANCEL first observation already completed, hence VOID/no cancel/no fencing proof.
+Nine hosts NOT_RUN. Five bounded hosts stopped normally;10 native slots consumed. Full249
+PASS20.122s; original failures and timing misses stay immutable. Evidence:
+evidence/reviews/judgment-boundary/ui-c045-partial/README.md.
+
+Plan evaluation: useful autonomous progress continued on artifact-independent checks;
+do not send model-solvable test design to the owner. Next investigate the existing
+worker-after-Executor fault seam with required Opus/SWE review, then a separately frozen
+controlled-delivery cancellation probe. Artifact-dependent work stays paused at the
+actual browser access boundary; no endpoint/content workaround. Current partial proof
+does not close Issue12/5/2, Stable1 or project, or qualify Qwen. No scope/acceptance change.

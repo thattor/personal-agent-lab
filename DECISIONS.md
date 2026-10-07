@@ -849,3 +849,22 @@ no budget transfer, rescue answers, retry or proof renewal. These directly test 
 requested-content retention, not new acceptance criteria, sample quotas or human
 approval. Record all FAIL/FLAG/VOID/NOT_RUN. Qwen remains unqualified. One authentic
 whole-flow usefulness evaluation and final release audit remain separate obligations.
+
+### D029 C045 — preserve partial actual results and blocked access
+
+First corrected-candidate UI attempts preserve the frozen inputs/oracles. ABS-A1 and
+TARGET-A/B PASS in their finite scopes. ABS-A2 artifact navigation is explicitly
+browser-client blocked, hence NOT_VERIFIED; do not obtain its body by another route or
+infer a PAL defect. Recorded operational amendments allow only already-frozen independent
+metadata/ordinary-UI cases, with unchanged caps and no source or criterion edits.
+RUNNING-CANCEL observed completion before cancellation could be submitted: VOID, not
+fencing proof, no retry. Five owned hosts closed,10 slots consumed,9 hosts NOT_RUN.
+
+Next technical investigation: existing Runtime fault seam after real Executor return
+and before host apply may permit a bounded, declared delivery hold while the independent
+Primary processes natural cancel. This is a proposed test arrangement, NOT yet adopted,
+implemented or live-verified. Obtain official Opus scope challenge and SWE-2 High
+implementation review before implementation. Keep real returned data unchanged, no
+canonical writes by the controller, no changed acceptance, source-freeze and teardown
+proof. Historical natural-timing misses stay visible. No human technical approval is
+needed for designing this within accepted safety/recovery evidence scope.

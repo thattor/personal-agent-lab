@@ -1,0 +1,25 @@
+{
+  "candidate": "814638db3e8742e68b2fe675c6abc41632d21a5e",
+  "contract_sha256": "638ccb6404ecd6547c8f41c6b7d12c6491d1aa3f251ee385d1148f9e25986c13",
+  "pid": 53797,
+  "started_before": 1791405050.006482,
+  "deadline": 1791405650.006482,
+  "cap": 6,
+  "scope": "live_synthetic_not_human",
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "-B",
+    "-m",
+    "pal.server",
+    "--db",
+    "runtime/c045-ui-current/RUNNING-CANCEL/state.sqlite",
+    "--port",
+    "0",
+    "--provider",
+    "official_claude_pro",
+    "--access-proof",
+    "runtime/c045-ui-current/RUNNING-CANCEL/proof.json",
+    "--native-call-limit",
+    "6"
+  ]
+}
