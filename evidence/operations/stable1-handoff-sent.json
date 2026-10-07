@@ -1,0 +1,14 @@
+{
+  "judgment_id": "HR-STABLE1-001",
+  "target_thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "presentation_turn": "01a114dd-bcc3-7240-a102-0049a118720f",
+  "candidate": "605791e723df31df454ad082423d3b5a7205c0e7",
+  "evidence_commit": "e6c246a1b2e1400987f3de148fc10fdf7afea819",
+  "material_sha256": "8f037bc648d39a8852654c3ce415dd0064dad9ac8e4724c7a7ffbe76093ca4bb",
+  "issue_checkpoint": "https://github.com/thattor/personal-agent-lab/issues/5#issuecomment-6031714057",
+  "issue_state": "OPEN",
+  "milestone": 1,
+  "human_answer": "NOT_RECEIVED",
+  "scope": "Handoff proves delivery/presentation only, not authentic usefulness or plan adoption",
+  "test": "92 post-live tests PASS; handoff-only docs since then, no runtime changes"
+}
