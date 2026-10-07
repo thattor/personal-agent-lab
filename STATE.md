@@ -1,10 +1,10 @@
 # STATE.md
 
 ## Goal
-Reach Stable-0 as defined in ACCEPTANCE.md. Stable-0 is **incomplete**.
+Reach Stable-0 as defined in ACCEPTANCE.md. Stable-0 is **complete under D-019**.
 
 ## Current phase
-All20 required S0/F0 rows PASS after direct revised usefulness answer was verified and recorded. Final66 tests PASS; final source/version/artifact/canonical/history audit PASS. Stable-0 declaration awaits master Issue closure and final repository completion recording.
+Stable-0 functional-first complete: all20 required S0/F0 rows PASS, authentic human usefulness evaluation reflected, final66 tests and controller audit PASS, master Issue #1 CLOSED/completed. Version `stable-0`, production baseline ccfba35. [Completion receipt](evidence/final/stable0/completion.json), [proof and limitations](evidence/final/stable0/README.md). Historical S0-13 stays NOT PASS/nonrequired; no long-term reliability claim. Earlier pending/active/blocked descriptions below are historical, superseded by this current completion record.
 
 ## Working checkout
 `/private/tmp/personal-agent-lab-stable0-20261006`, same private GitHub repository, remote origin/main. Original supplied untracked workspace preserved. No old implementation/schema was reused; the accidental startup metadata inspection is explicitly recorded in docs/DEFECTS.md. Do not inspect it again.
@@ -16,7 +16,7 @@ Actual official Japanese functional scenarios and controls PASS on runtime basel
 Soak01 retained after reproduced stale UI warning; soak02 retained and intentionally reset for the user's bilingual UI request. Both old DBs/hash chains/receipts stay intact. [Soak02 directly confirmed receipt and reset](evidence/soak/2026-10-07/soak02-human-and-reset.json). No old human counts/time/restart proof transferred. Bilingual UI only changes display text; fixed controls, canonical values, receipts and provider remain English. [55-test full suite](evidence/tests/ui-bilingual-full.txt), [actual refresh recovery probe](evidence/ui/recovery/bilingual-after.txt). Historical runtime/soak-20261007-03 started 2026-10-07T06:14:18.834450+09:00 from clean pushed baseline 1863ef2a3037b335fa6f257a8d6fd95fb44da9dc on port58500, monitor PID3322/app PID3324. [Fresh start and served bilingual UI](evidence/soak/2026-10-07/start-03.json).
 
 ## Exact next action
-Complete private master Issue #1 audit/update/closure, then record Stable-0 completion and version on main. [Final controller audit](evidence/final/stable0/audit.json), [direct human answer](evidence/final/stable0/human-evaluation.json), [final66 tests](evidence/tests/stable0-final-full.txt). Earlier evaluation waits are historical and released; no new human question is pending. Production source unchanged since ccfba35; no new provider call/proof renewal/canonical write or repair.
+Stable-0 scope has no unfinished required work. The operational50-minute checkpoint is PAUSED, confirmed by app update and saved configuration readback. Publish the private `stable-0` version marker from this completion commit. Further product work requires a new scope; deferred features are not silently promoted.
 
 ## Continuing development and human-judgment workflow — 2026-10-07
 Latest direct controller instruction adopts this chat as the continuing development flow under D-019. Controller owns code, canonical project documentation, evidence, tests and commit/push. The ongoing read-only human-judgment window is **人間の対応が必要なものチャット**, thread `01a1137a-8de3-7890-b874-cdd0a7125711`; development thread is `01a11113-f829-75c1-b728-3298aa3359b5`. Actual thread readback confirmed the human configured the ongoing window and requested evaluation material/display; direct scoped feedback has now arrived; see the answer evidence and exact next action. This is operational coordination, not a change to PAL's product roles or acceptance/security semantics; no design/implementation review gate is triggered.
@@ -30,7 +30,7 @@ The previously stopped soak follow-up is not restarted. A later direct request s
 The legacy app-goal replacement was previously rejected. Current get_goal now verifies the user-set active objective: wait for the human window result and resume development upon receipt, continuing independent work meanwhile. No fake completion was used.
 
 ## Acceptance status
-S0-01–12 and F0-01–08 PASS; historical S0-13 NOT PASS/nonrequired. Master Issue #1 completion recording is next.
+S0-01–12 and F0-01–08 PASS; historical S0-13 NOT PASS/nonrequired. Master Issue #1 CLOSED/completed.
 
 ## Human participation requirement
 D-019 supersedes old time/turn/session quotas. Human confirmation of actual usefulness is required once for the fixed real-provider scenario set; scripted outputs are never human attestations. Previous receipts retained as honest historical host/control proof. No routine repeated participation or approval prompts.

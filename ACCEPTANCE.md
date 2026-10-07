@@ -157,3 +157,5 @@ Revised evaluation blocked audit: F0-08 remains human_pending, with no direct re
 
 ## Final functional-first audit — 2026-10-07
 All20 currently required S0/F0 rows PASS. [Controller audit, versions, source hashes, live artifacts/host bindings, read-only canonical invariants and historical chains](evidence/final/stable0/audit.json). [Final66-test full suite PASS](evidence/tests/stable0-final-full.txt). Direct human message `01a11475-3bd0-76c1-b980-806ec8cc8842` says 「合ってる」 about presented ccfba35 revised conversation/Cedar/Birch drafts, combined with prior recall/no-change and scoped answers. Historical pending notes above describe past checkpoints and are superseded. Historical S0-13 remains unmet/nonrequired; no long-term stability claim. Final Issue/repository completion recording follows this audit.
+
+Stable-0 controller completion: all required rows PASS, final66 tests PASS, version/limitations recorded, [master Issue CLOSED/completed](https://github.com/thattor/personal-agent-lab/issues/1). [Completion receipt](evidence/final/stable0/completion.json). Stable-0 declared under D-019; no historical soak promotion.

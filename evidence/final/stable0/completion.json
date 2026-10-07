@@ -1,0 +1,25 @@
+{
+  "completed_at": "2026-10-07T03:54:26.573794+00:00",
+  "definition": "D-019 functional-first Stable-0",
+  "required_rows": "S0-01–12 and F0-01–08 PASS",
+  "release_version": "stable-0",
+  "runtime_baseline": "ccfba35dd0623e16e87a4d6e3798266a4cda42e5",
+  "final_audit_commit": "de3f26591c532692cadf3643f87893138f15bda2",
+  "master_issue": {
+    "state": "CLOSED",
+    "url": "https://github.com/thattor/personal-agent-lab/issues/1",
+    "closedAt": "2026-10-07T03:54:04Z"
+  },
+  "final_full_suite": "evidence/tests/stable0-final-full.txt,66 PASS",
+  "human_evaluation": "evidence/final/stable0/human-evaluation.json",
+  "controller_completion": "PASS",
+  "historical_S0-13": "NOT PASS; optional D-019",
+  "manual_canonical_repairs": 0,
+  "runtime_source_changes_after_final_test": false,
+  "operational_checkpoint": {
+    "id": "pal-stable-0-soak-audit",
+    "status": "PAUSED",
+    "reason": "Verified Stable-0 completion; stop condition in authorized checkpoint prompt",
+    "saved_configuration_readback": true
+  }
+}

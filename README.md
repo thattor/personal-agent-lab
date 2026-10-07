@@ -8,7 +8,7 @@ Private greenfield development repository for an open-sourceable personal AI ass
 - evidence-based finish and restart-safe continuation.
 
 ## Current goal
-Reach **Stable-0**, the minimum stable implementation defined in ACCEPTANCE.md.
+**Stable-0 complete** under the D-019 functional-first definition. Version `stable-0`; [completion evidence and limits](evidence/final/stable0/README.md). All20 required acceptance rows and final66 tests PASS; master Issue #1 closed.
 
 ## Start here
 - AGENTS.md — rules for Codex, Opus, and SWE-2 High collaboration
