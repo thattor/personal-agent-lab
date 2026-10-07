@@ -256,3 +256,5 @@ from deterministic tests or reviewers. New product manifest, unchanged-component
 and bounded affected UI contract are in judgment-boundary/expert-commitment-*.json.
 
 C045: corrected-candidate actual partial UI evidence archived in ui-c045-partial/. Three host cases PASS, one NOT_VERIFIED, one VOID, nine NOT_RUN;10 slots, five normal bounded teardowns. Full249 PASS20.122s. No whole-row/human/Qwen or release promotion. Next independent work is reviewed deterministic scheduling at the existing fault seam for actual cancellation proof; no blind timing retry or browser-block workaround.
+
+C046: official Opus87.439s reviewed a possible existing-fault-seam controlled-delivery probe, preserving natural-timing VOID results. Required official SWE-2 High implementation review could not start: authenticated Free model verified, but CLI refused the untrusted workspace. HR-ACCESS-002 records the exact owner action/release condition; no bypass or implementation. No acceptance row promoted;249-test green and17 product hashes unchanged.

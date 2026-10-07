@@ -868,3 +868,35 @@ implementation review before implementation. Keep real returned data unchanged, 
 canonical writes by the controller, no changed acceptance, source-freeze and teardown
 proof. Historical natural-timing misses stay visible. No human technical approval is
 needed for designing this within accepted safety/recovery evidence scope.
+
+### D029 C046 — reviewed scheduling scope; implementation review unavailable
+
+Official Opus87.439s completed with fresh existing Pro/extraOFF proof; see
+judgment-boundary/c046-{review-question,opus-response,opus-access,opus-completion}.
+The existing fault seam can prove controlled late-result fencing with actual model
+data, without a product change. Adopt the scope clarification: canonical Attempt is
+running while the already-completed Expert result is held before host apply. This is
+not upstream provider cancellation or natural-timing reliability; C035/C045 stay VOID.
+The production classes with a test scheduling callback are not an unmodified CLI launch.
+
+Required safeguards before any implementation: callback handles only the first worker
+seam, performs no I/O and never blocks Primary; metadata binds exactly one running
+Attempt/Goal; premature/cross-target release rejected; on failure Runtime stopping must
+be observed BEFORE releasing the hold; success waits for exact matching stale rejection
+before shutdown. No wrapper to inspect/replace model data. Reconcile review's loose
+'not running or epoch advanced' release language to actual cancel invariant: same Goal
+cancelled, bound Attempt fenced, unchanged revision/criteria/sources, no new Attempt.
+Store source733-780 rejects stale draft before persistence; preview/input have distinct
+paths. Only exact matching stale-artifact rejection can support the complete-result
+claim; no general rejection PASS. Mandatory SWE implementation review is still pending.
+
+Fresh official Devin status authenticated; exact SWE-2 High listed Free. One invocation
+with sandbox/read-only permissions refused the authorized checkout as untrusted in0.237s.
+No reviewer response or substantive implementation exists. This is the official CLI's
+workspace-trust boundary, not a shell automatic-approval rejection. Do not pass a trust
+override, disable the check or silently change permissions. HR-ACCESS-002 asks the owner
+to trust only the named checkout through official interactive UI if acceptable. It is
+an actual environment permission action, not a design preference or routine question.
+No new login/payment/public exposure requested. Existing browser-client artifact block
+remains separately unresolved; no security bypass. Record authentic outcome and fresh
+Free/auth proof before completing the required SWE review and dependent implementation.

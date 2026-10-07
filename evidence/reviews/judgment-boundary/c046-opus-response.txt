@@ -1,0 +1,131 @@
+# Review: controlled-delivery cancellation probe
+
+## Verdict
+
+The arrangement can produce **valid, narrowly scoped evidence** under the unchanged host fencing contract. It does not weaken an accepted criterion, provided the run uses the corrections below and the claim stays scoped. As drafted, it has three blockers: teardown ordering, binding, and hold-thread side effects. Each is fixable in the test script alone, with no product change.
+
+## 1. Validity and unsupported claims
+
+**What the run genuinely adds over the deterministic fixtures:**
+- The real Primary interprets the fixed natural Maple cancel against a canonically running Goal.
+- A real, decoded Expert proposal goes through the unchanged `_apply` path and is fenced by the Store.
+
+The host fence is the accepted criterion. The fault seam sits before `_apply`, so the fence is not bypassed.
+
+**Exact claims the supplied text does not support:**
+
+1. **"While an actual Expert Attempt remains running."** This is true only canonically: Attempt status is `running` and host apply has not happened. By the time `worker.after_executor_before_apply` fires, `ProviderExecutor.execute` has already returned, so the upstream call is complete.
+   - Evidence wording must be "canonical Attempt running, provider result held before host apply."
+   - If the original contract text defines "running" as provider-in-flight, this run does not satisfy that row. It satisfies only the late-result-fencing row.
+   - Check the frozen contract wording before scoring, not after.
+2. **"Exact late stale-artifact rejection."** `Store` is not supplied. From this source I can only see that `_apply` calls `write_draft`/`complete` and that `StaleResult` is swallowed on the assumption that "Store has retained rejection." Two things therefore rest on the existing Store fixtures, not on this review:
+   - that `write_draft` checks the fence before persisting any receipt, and
+   - that the retained rejection names the Attempt and the proposal kind.
+   State that dependency explicitly in the evidence.
+3. **"Production main / normal launch."** `main()` never passes `fault`. The script must reproduce `main` wiring with a non-default callback. The accurate claim is "production `Runtime`/`make_server`/`build_provider` with a test-only scheduling callback." It is not "unmodified product launch."
+4. **"Real result."** The data is real, but its delivery time is chosen by the harness. That fits your "controlled delivery scheduling" claim. It is not evidence of natural race behavior, and C035/C045 must stay VOID.
+
+## 2. Reusing the seam: holes that matter
+
+The seam suffices. No Executor or provider wrapper, DB mutation or product change is needed. These are the holes:
+
+**A. Teardown can apply the held result or deadlock (blocker).**
+After the fault returns, the worker checks `_closed` and then calls `_apply`. The proposed order "release the worker, then stop/close" is wrong:
+- If you release before `_closed` is set, a not-yet-cancelled complete result becomes an accepted artifact.
+- If you call `runtime.close()` while still held, `_worker.join(5)` times out and close raises with the process lock retained.
+
+Required failure-path order:
+1. Start `runtime.close()` in a thread.
+2. Wait, bounded, for `health()['stopping']` (that is, `_closed` set).
+3. Set release.
+4. Join the close thread.
+5. Then `server.shutdown()`/`server_close()`.
+
+**Invariant:** the hold callback returns only when either (a) release was granted after cancel verification, or (b) the runtime is stopping. It must never return on its own timeout, because returning means "apply." Its backstop wait loop should recheck `stopping`, not return.
+
+**B. The callback cannot see `order` or `result` (blocker for "binding").**
+`self._fault(point)` receives only the point string. "Hold only this first worker" therefore means **first firing of that exact point, one-shot, with pass-through afterwards**. The `primary.*` points must pass through immediately, or the cancel Primary deadlocks against your own hold.
+
+Binding must come from canonical metadata at hold time. Require, in the fresh DB:
+- exactly one Goal, and
+- exactly one `running` Attempt.
+
+Record its Goal, Attempt, revision and epoch. Anything else is FAIL: no binding and no guess.
+
+**C. No I/O inside the callback (blocker).**
+Any exception raised by the callback, such as a journal write failure, is caught by `except Exception` and becomes `store.fail(attempt, 'executor_error:…')`. That is a canonical mutation with a misleading label. The callback should only:
+- set `held`, and
+- wait on the release event or the stopping condition.
+
+All journal and stdout writes happen on the operator thread.
+
+**D. Result kind is unobservable before cancel.**
+Since the callback cannot see the proposal, you cannot skip the cancel when the Expert asked a question. Classify after the fact from the retained rejection kind:
+- **Stale draft/receipt:** eligible.
+- **Clarification/preview:** NOT_VERIFIED.
+
+This is acceptable given one attempt and no resample. Do not add a result-peeking wrapper.
+
+**E. Hold never fires.**
+If decoding fails or `execute` raises, the worker calls `store.fail` and never reaches the seam. The operator must treat "Attempt left `running` without a hold" as NOT_VERIFIED immediately, not wait for the deadline.
+
+**F. Primary misinterprets the cancel.**
+If the Primary emits `correct`, `pause` or no action, a later claim could start a second Expert call. `native_call_limit=3` caps that, but the run is already FAIL. Do not release into a possible new claim. Take the failure-path teardown (A) instead.
+
+**G. Success-path ordering.**
+After release, wait (bounded) for the canonical stale rejection of the bound Attempt **before** calling `close()`. Otherwise `_closed` can win, the worker breaks without `_apply`, and no rejection is ever produced. That outcome is NOT_VERIFIED, not a pass.
+
+**H. In-process reads.**
+`store.inspect()` is already called from server handler threads, so in-process operator reads are consistent with existing usage. Either that or loopback `GET /api/state` is fine. Never use `/api/artifact/<id>`; `/api/artifact_status/` metadata is enough. This keeps the ABS-A2/IAB boundary intact.
+
+## 3. Indispensable tests
+
+Run these with `MockProvider` plus a test-only executor where needed, so no proof is consumed. Each asserts an outcome, not internal call order.
+
+1. **Point filtering:** the `primary.*` points never block. The worker point holds once; a second firing passes through.
+2. **Premature release is rejected:** a stdin release before canonical shows the bound Goal cancelled and the bound Attempt fenced is refused and journaled, and the hold persists.
+3. **Binding refusal:** with two Goals or two running Attempts at hold time, the run refuses to bind and ends FAIL with zero artifacts.
+4. **Teardown while held:** for each of deadline (watchdog `close_run`), stdin EOF and SIGINT:
+   - close completes within bound,
+   - zero accepted artifacts (the held complete result was not applied),
+   - the DB lock is released, so a fresh `Runtime` on the same path opens.
+5. **Happy path:** cancel, verify, release. Expect a retained stale rejection for the bound Attempt, zero accepted receipts/artifacts, and source/criteria identity unchanged.
+6. **Outcome classification:** a test executor returning `needs_input` under the same flow gives NOT_VERIFIED, not PASS.
+7. **Preflight refusal:** the run refuses to start on any of:
+   - an existing DB path,
+   - a mismatch with the dirty tree, candidate/product hash or script hash,
+   - `native_call_limit≠3`,
+   - an already-consumed proof marker.
+   It must consume the proof only after these checks pass. Note that `build_provider` consumes on construction, so call it last before `Runtime`.
+
+No new quotas or reliability sampling are needed.
+
+## 4. Smallest safe design (changes to the proposal)
+
+Keep everything in the proposal, with these changes:
+
+1. **Wiring.** The script reproduces `main()`:
+   - `build_provider(Namespace(provider='official_claude_pro', access_proof=…, native_call_limit=3, mock_task_delay=0), marker_dir=<frozen absolute path>)`
+   - `Runtime(fresh_db, provider, fault=hold)`, where `hold` reaches the runtime through a late-bound holder
+   - `make_server`, with `serve_forever` in a thread
+   Freeze an absolute `marker_dir`; the default is cwd-relative.
+2. **Hold callback.** Pass-through for every point except the first `worker.after_executor_before_apply`. That call sets `held`, then loops `release.wait(1)` until release is set or `runtime.health()['stopping']`. No I/O, no exceptions, no timeout-return.
+3. **Operator thread** (not the callback). On `held`:
+   - read canonical metadata,
+   - bind the single Goal/Attempt/revision/epoch or FAIL,
+   - journal `ready` and print it.
+4. **Controller** enters the fixed Maple cancel in the normal UI.
+5. **Release.** The operator accepts a stdin `release` only if canonical shows:
+   - the same Goal cancelled,
+   - the bound Attempt no longer `running` or with its epoch advanced,
+   - no new Attempt claimed.
+   Otherwise it journals a refusal.
+6. **Post-release.** Bounded wait for the retained stale rejection of the bound Attempt. Then record:
+   - rejection kind,
+   - zero accepted artifacts,
+   - source/criteria identity,
+   - native call count ≤3.
+7. **Teardown (all paths).** Use the ordered close from §2A, with release only after `stopping`. Then do the server shutdown and `watchdog.close()`. A failed journal write ends the run as failed; do not repair it.
+8. **Evidence label.** "Actual Primary/Expert via Pro (extra usage OFF), controlled delivery of a completed Expert result before host apply. Host fenced it as stale." State the Store-fixture dependency for fence-before-persist. Make no upstream-cancellation or timing-reliability claim, do not rescore, do not qualify Qwen, and do not close Stable1.
+
+With these changes, existing mechanisms suffice: the fault seam, `RunWatchdog`, `EvidenceJournal`, `build_provider` and `make_server`. No wrapper, harness generalization or product edit is needed.

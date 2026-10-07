@@ -1,0 +1,24 @@
+{
+  "recorded_at": 1791405892.266173,
+  "decision_id": "HR-ACCESS-002",
+  "candidate": "814638db3e8742e68b2fe675c6abc41632d21a5e",
+  "checkpoint_commit": "3dd7dd81dea78a2e13cfafab0977a2832b090a53",
+  "repository": "thattor/personal-agent-lab",
+  "workspace": "/private/tmp/personal-agent-lab-stable0-20261006",
+  "action_blocked": "One required official SWE-2 High supplied-source review; CLI refused this untrusted workspace before producing a review.",
+  "auth": "Existing authenticated Devin route; exact SWE-2 High advertised Free immediately before attempted invocation.",
+  "required_action": "Owner may approve only this exact workspace in official Devin interactive trust UI, then report completion; keep sandbox, read-only permission mode and no-paid-fallback boundaries.",
+  "recommended": "Trust only the authorized PAL checkout if acceptable; do not disable the trust check globally or use an override to bypass it.",
+  "scope_not_requested": [
+    "No broader filesystem authority",
+    "No new auth or credentials",
+    "No payment",
+    "No public exposure",
+    "No default permission-mode change"
+  ],
+  "release_condition": "A supported official review invocation in this workspace succeeds with fresh same-account Free-model/auth checks; a claimed approval alone is not execution proof.",
+  "dependent_work": "Substantial implementation of the controlled-delivery cancellation probe awaits mandatory SWE review.",
+  "browser_limit": "ABS-A2 artifact browser-client block remains separately unverified; no workaround or request to disable browser security.",
+  "independent_completed": "Opus scope review complete,249 deterministic tests pass, C045 evidence committed/pushed, no product edit under pending implementation review.",
+  "status": "OWNER_ACTION_REQUIRED_NOT_COMPLETED"
+}

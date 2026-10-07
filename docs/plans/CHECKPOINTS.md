@@ -413,3 +413,17 @@ worker-after-Executor fault seam with required Opus/SWE review, then a separatel
 controlled-delivery cancellation probe. Artifact-dependent work stays paused at the
 actual browser access boundary; no endpoint/content workaround. Current partial proof
 does not close Issue12/5/2, Stable1 or project, or qualify Qwen. No scope/acceptance change.
+
+## C046 - controlled scheduling reviewed; exact access dependency retained
+
+Opus87.439s supports the existing fault seam only as actual-model controlled late-result
+fencing, with stop-before-release teardown, one-shot worker-only/no-I/O callback and
+strict canonical bindings. No natural provider-in-flight cancellation claim or old VOID
+rescore. SWE-2 High currently advertised Free and authenticated, but official CLI refused
+this exact checkout as untrusted before reviewing. No trust override or implementation.
+HR-ACCESS-002 concerns only that real workspace permission; no routine design question.
+Evidence: c046-* in judgment-boundary and operations/c046-access-handoff.json.
+Next: supported owner trust action, fresh Free/auth check, required SWE review, then
+reviewed test/implementation/freeze/probe. Artifact access remains independently blocked;
+no browser security workaround. Source unchanged;249-test green retained. Stable1 and
+globalPAL incomplete, no new scope/cost/provider/Qwen qualification or schedule.

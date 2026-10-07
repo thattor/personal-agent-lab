@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 development continues under D-021/P002 and the latest owner-directed model-led Primary correction D-028/D-029. Reasoning-solvable technical choices are autonomous. Current work is implementation, not human-approval wait. The app goal card was read back as BLOCKED (historical post-C026 state); its objective remains valid and this directly authorized turn continues. Supported tools cannot set it active; the attempted Codex UI read/control was refused by the computer-use safety boundary. No alternate/internal-state workaround was attempted; do not claim the card was resumed. No schedule restarted.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 development continues under D-021/P002 and the latest owner-directed model-led Primary correction D-028/D-029. Reasoning-solvable technical choices are autonomous. Current technical decisions remain autonomous; the exact-next-action section records genuine access dependencies. The app goal card was read back as BLOCKED (historical post-C026 state); its objective remains valid and this directly authorized turn continues. Supported tools cannot set it active; the attempted Codex UI read/control was refused by the computer-use safety boundary. No alternate/internal-state workaround was attempted; do not claim the card was resumed. No schedule restarted.
 
 ## Current phase
 Hierarchy and goal/evaluation loops configured: ACTIVE [milestone1](https://github.com/thattor/personal-agent-lab/milestone/1), parent#2 with actual child Issues#3/#4/#5; global Issue#6 with actual stage children#2/#7–11. Future milestones2–5 are proposed required stages IF P-001 adopted; milestone6 is optional extension, not a required PAL-1.0 gate. Milestone7 is a closed historical Stable-0 record, linked to Issue1 rather than assigned after CLI failure; Issue1 remains closed. [Actual GitHub readback](evidence/reviews/project-plan/github.json).
@@ -53,14 +53,22 @@ ports closed inside600s, sources unchanged. [Retained evidence and limits](evide
 [249 full tests PASS20.122s](evidence/reviews/judgment-boundary/ui-c045-partial/full-after-live.txt).
 No whole-row semantic, human or Qwen qualification from these partial results.
 
-Exact next: obtain required official reviews for the smallest predeclared test-only
-scheduling arrangement at existing worker.after_executor_before_apply, so natural
-cancel and actual stale-result rejection can be observed without racing the UI. Preserve
-both historical timing misses; no blind retry, model-output substitution or product
-change. Artifact-dependent cases remain paused until an allowed browser path is
-available; do not bypass the client block or restart a completed measurement/proof.
-Existing frozen14-host37-slot allocation is retained; no unused cap transfer. Technical
-test design remains autonomous, not a new human micro-question.
+Exact next: HR-ACCESS-002 owner action on the official Devin workspace-trust UI for only
+this checkout, then fresh authenticated SWE-2 High Free check and the required supplied-
+source implementation review. One invocation refused the untrusted workspace before
+review; no override or global trust/permission change was attempted. [Scoped handoff](evidence/operations/c046-access-handoff.json).
+Official Opus87.439s completed; C046 in DECISIONS records the controlled-delivery scope
+and lifecycle/binding safeguards. No probe implementation yet. After SWE review, test
+and implement the smallest existing-fault-seam arrangement, separately freeze it and
+run one bounded controlled cancellation proof. Preserve both natural timing misses;
+no blind retry, output substitution or canonical repair. This is a genuine environment
+permission dependency, not human approval of technical design.
+
+Artifact-dependent cases remain paused at the separate explicit browser-client block;
+do not bypass it or restart completed measurement/proof. Existing frozen14-host37-slot
+allocation remains historical/current partial evidence; no unused cap transfer. Current
+independent source/metadata audits and249 full tests are complete; do not manufacture
+extra work or repeat model calls while only these dependencies remain.
 
 Then receive one authentic version-bound whole-flow usefulness evaluation in the
 persistent human window once current output is ready; earlier C035 material is older

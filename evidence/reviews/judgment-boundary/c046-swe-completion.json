@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "returncode": 1,
+  "elapsed_seconds": 0.30065202713012695,
+  "model": "swe-2-high",
+  "paid_fallback": false,
+  "prompt_delivery": "documented --prompt-file"
+}
