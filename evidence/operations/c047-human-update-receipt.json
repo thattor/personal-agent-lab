@@ -1,0 +1,17 @@
+{
+  "recorded_at": "2026-10-07T21:43:57.525Z",
+  "target_thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "kind": "informational_resolution_no_new_question",
+  "decision_id": "HR-ACCESS-002",
+  "evidence_commit": "22418b983d91012760244f6bd3575170417b6da4",
+  "meaning": "Official trusted-workspace SWE review and C047 actual fencing evidence complete; access trust resolved. Browser artifact restriction independently unresolved. No human evaluation or approval inferred.",
+  "tool_receipt": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"threadId\":\"01a1137a-8de3-7890-b874-cdd0a7125711\"}"
+      }
+    ],
+    "isError": false
+  }
+}

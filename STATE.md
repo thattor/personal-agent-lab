@@ -49,14 +49,19 @@ owned PID gone and port ECONNREFUSED verified with authorized loopback permissio
 This is controlled delivery after model return, not upstream cancellation or natural
 race reliability; historical C035/C045 misses unchanged. Goal ACTIVE. No schedule restart.
 
-Exact next: preserve/push actual evidence and synchronize Issue12/5/2/global6; inform the
-persistent human window that HR-ACCESS-002 is resolved. Remaining actual artifact/UI
-coverage depends on a supported allowed browser path: the explicit C045 client block
+Actual evidence is pushed in22418b9. Issue12/5/2/global6 and milestone1 are synchronized
+and remain OPEN; [readback](evidence/operations/c047-github-readback.json). The persistent
+human window received the HR-ACCESS-002 resolution and progress without a new question;
+[tool receipt](evidence/operations/c047-human-update-receipt.json), no new human answer inferred.
+Exact next: remaining actual artifact/UI coverage requires a supported allowed browser
+path. The explicit C045 client block
 has not been cleared and must not be bypassed. No new model calls, provider proof renewal,
 retry or fallback while that actual access condition remains. Do not invent a technical
 question for the owner or demand another trust action. Resume the frozen affected cases
 only after supported access is established, preserving original NOT_VERIFIED evidence;
 then provide the current complete flow for one genuine usefulness evaluation and audit.
+No further independent required slice is identified at this checkpoint; do not create
+extra work or rerun unchanged tests/calls to avoid the actual access dependency.
 
 C045 actual partial evidence remains: ABS-A1 and TARGET-A/B PASS; ABS-A2 NOT_VERIFIED
 at explicit browser-client ERR_BLOCKED_BY_CLIENT; RUNNING-CANCEL timing VOID; nine

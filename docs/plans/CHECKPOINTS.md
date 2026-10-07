@@ -455,3 +455,10 @@ judgment-boundary/c047-controlled-cancel/. Contribution: one missing cancellatio
 closed; whole Issue/milestone/project not complete. Original C035/C045 timing outcomes
 unchanged. Artifact-dependent current regressions still need supported browser access;
 no guard bypass or blind retry. Then one current whole-flow usefulness and release audit.
+
+C047 handoff complete: actual evidence22418b9 pushed; Issue2/5/6/12 and milestone1
+updated/read back OPEN. Persistent human window informed HR-ACCESS-002 is resolved;
+no new question or human response assumed. Access to remaining artifact UI is the exact
+external dependency; no other independent required slice identified. Next supported
+access → frozen affected UI proof → one current whole-flow usefulness → final release
+audit. Goal remains ACTIVE after this material unit; no completed-project claim.
