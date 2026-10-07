@@ -1,0 +1,7 @@
+{
+  "checked_at": 1791349269.61991,
+  "loggedIn": true,
+  "authMethod": "claude.ai",
+  "subscriptionType": "pro",
+  "official_usage_ui": "Pro;43% session;15% week; extra credits switch aria-checked=false; credits$0; monthly$0; auto reload OFF freshly observed"
+}

@@ -1,0 +1,6 @@
+{
+  "status": "NOT_RUN_REVIEW_PENDING",
+  "sha256": "40ffcb7e03b46f08b8946e069590f4865a028f0e3f1b95ca19debf7277de6bf2",
+  "supersedes_test_contract": "v1 retained unchanged",
+  "no_live_generation": true
+}

@@ -1,0 +1,7 @@
+{
+  "checked_at": 1791349101.286922,
+  "loggedIn": true,
+  "authMethod": "claude.ai",
+  "subscriptionType": "pro",
+  "official_usage_ui": "Pro; session41%; week15%; extra-usage switch OFF; purchased credits $0; monthly usage $0; auto reload OFF; observed freshly via browser"
+}

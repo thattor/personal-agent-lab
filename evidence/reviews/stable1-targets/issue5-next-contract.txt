@@ -1,0 +1,44 @@
+Text-only official reviewer consultation, private thattor/personal-agent-lab.
+Stable0 complete; independently accepted D021 Stable1. Issue3 recognition and
+Issue4 transactional target selection are closed, N1-01..04 PASS. Current 91
+tests PASS. No proposed future plan adoption. No tools/code/actions or new auth,
+paid fallback, public exposure or acceptance weakening are authorized.
+
+Review the next bounded real UI/absence test contract before substantive harness
+design or provider changes. N1-05 fixed planted-absence drafts must not invent
+recipient/date/contribution; placeholders/conversational question allowed.
+N1-06 actual official-provider Japanese UI request recognition, unique/ambiguous
+correction/cancel. N1-07 separate authentic direct human usefulness on frozen
+rubric. N1-08 final regression/version/limits/parent audit/private release.
+
+Existing ProviderExecutor sends DRAFT, original specification and usable context,
+asks only draft text. Official native system prompt prohibits invented thank-you
+contributions, preserves names/language/sentence count; no general absent-date
+instruction. No change proposed until actual outputs demonstrate necessity.
+
+Plan three absence/grounding probes, synthetic/nonsecret only, fresh owned DBs:
+A Japanese fictional lunch invitation: recipient/date/time not supplied; require
+placeholders or omitted unspecified fields, no invented particulars.
+B Japanese thank-you draft: recipient/contribution absent, general gratitude only.
+C explicit synthetic Cedar/Mika context supplying contribution and two sentences;
+retain supplied name/contribution/constraint, no extra unsupported specifics.
+Freeze inputs/expected controller rubric before calls. Store exact reconstructed
+provider prompt/context, host proposal/artifact receipt/bytes and findings; model
+claim or regex alone cannot establish semantic accuracy. Negative retained.
+
+For target ambiguity UI: create two draft tasks and use existing explicit pause
+controls immediately, keeping both paused before generic natural control asks
+the host's bound target question. Select one via real rendered button, then verify
+only intended task changed and original criteria/revision/epoch/source. Strict
+claim/recover epochs invalidate old choices; never relax or fake state for a demo.
+Cancel separately while an actual native task is unfinished; late results fenced.
+Each scenario is scripted synthetic browser input, never human attestation.
+New owned loopback candidate, preserve current stable0 host/DB and oldsoaks.
+Fresh existing-auth official no-extra-charge checks before launching, D020 proof
+expiry, one-use budget max32 calls, no renewal/fallback. Use new frozen rubric in
+ongoing human judgment window after actual evidence; old Stable0 answer cannot
+count for N1-07. Do not make new pipeline/product semantics for missing content.
+
+Challenge holes, race/timing impossibilities, artifact/provenance capture, budgets
+and unsupported authority. Recommend smallest safe verification or identify a
+contract correction requiring a new design decision. No implementation requested.

@@ -1,0 +1,57 @@
+Text-only followup to your preserved N1-05..08 review, no tools or implementation.
+Please reconcile concrete existing contracts and confirm these smallest test-only
+choices are inside independently accepted D021, without changing product gates.
+
+Important corrections: host recognition is pure finite grammar (no model). Current
+ambiguity case is CORRECTION, not resume; pause/resume existing single-target
+behavior is unchanged. Generic exact Japanese: その下書きを訂正して: Cedarの短い招待文にしてください。日本語で2文。
+Two actual paused eligible tasks and a real host-rendered button, no row repair.
+Selected at apply: revision+1, epoch+1, criteria unchanged, source=original
+text-bearing correction record, queued; later claim adds1 epoch, receipt binds
+actual attempt. Unselected target remains same revision/epoch/source/criteria/state.
+
+C1 choose observation-based attempts, at most2, no delay hooks. If completion wins
+retain VOID, count call, no PASS for an unfinished-cancel claim. Freeze actual
+claimed-epoch/cancel event/late rejection order using host seq/attempt identity.
+Pause setup at most2 attempts; terminal-before-pause VOID not ignored. Existing
+synthetic epoch/crash proof remains separate from live UI. No new feature gate.
+C2 choose FLAG for question-as-draft in these probes; not N1-05 PASS. Explicit
+missing-content workflow stays deferred, artifact semantics unchanged.
+C3 freeze k=2 each A/B/C, require all samples pass. Fixed per-run32 hard host cap:
+8 absence (6draft+2C-context conversation),8 ambiguity setup/correction including
+one VOID setup reserve,4 unique correction/cancel,4 unfinishedcancel max2,
+8 reserve for only the already frozen scenarios. Every generation/failed/cancelled
+invocation counts; native auth/read-only usage checks are NOT generation. Expiry
+stops new calls, never renew or fallback in that run. Actual call counter governs.
+Failure retained, affected row FAIL; stop this run for diagnosis/review, no favorable
+sample picking. User already authorizes accepted-scope repair/review/test with no
+new costs; fresh independent reviewed candidate+bounded run after a fix is NOT
+permission for automatic renewal of an expired run. No ask-human routine choices.
+
+Rubric clarification: unspecified recipient/date/time/weekday/relative date/venue/
+menu/price/headcount not invented. Generic皆さん/各位 allowed only as non-specific
+addressing; no implied identified recipient. Omitted fields and explicitly bracketed
+placeholders/未定 allowed. Avoid近いうちに as unsupported timing. B general thanks
+PASS, 資料作成のご協力 FAIL absent that source. C literal Cedar/Mika or clearly
+equivalent セダー/ミカ allowed; suffixさん fine. Exactly2 sentences: 。！？/!? sentence
+terminators group, plus final nonempty unterminated sentence; no heading/signature
+extra utterance, quotes assessed in semantic reading, retain actual rationale.
+Context only through UI ingress/remember, prove context manifests; missing-source
+probe VOID if supported-context omitted. Capture labels explicitly reconstructed
+prompt/context vs actual serialized-input hash only if existing adapter provides;
+no unverified equality claims, no raw credential/process logging. CLI tools/MCP
+disabled, explicit text system, no-session-persistence; hidden provider personalization
+not independently observable, state limitation rather than asserting nonexistent.
+Stable0 host is expired/read-only; separate new loopback DB/port and owned process,
+no shared host invocation budget, no oldsoak/production migration. Snapshot only
+read-only invariant/version evidence; don't demand hashes of live WAL-DB files be
+equal despite an unrelated legitimate human UI interaction.
+
+Human rubric frozen before presentation: request understood, intended target
+changed/stopped, no unnecessary routine questions, useful local output. Present
+every sample including negatives, version-bound, no new calls in judgment window.
+No deadline inventing a failure; missing direct judgment stays HUMAN_PENDING.
+
+Are these accepted-scope verification clarifications sound? Challenge actual
+regressions or remaining blocker; do not introduce authority requirements for
+routine work already explicitly authorized by the human.

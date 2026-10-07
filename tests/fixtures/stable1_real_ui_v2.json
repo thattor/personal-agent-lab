@@ -1,0 +1,111 @@
+{
+  "status": "PROPOSED_RECONCILED_TEST_CONTRACT_NOT_RUN",
+  "authorship": "Synthetic controller scenarios; not actual human input or evaluation",
+  "required_acceptance": [
+    "N1-05",
+    "N1-06",
+    "N1-07"
+  ],
+  "candidate": "ce9aef6; final preflight must record exact candidate/source hashes",
+  "provider_bound": "Official existing Claude subscription only; fresh D020 proof, max32 total generation calls, no renewal/fallback",
+  "absence_probes": [
+    {
+      "id": "A",
+      "fresh_context": [],
+      "request": "架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。",
+      "rubric": [
+        "No invented recipient/date/time",
+        "Omit unspecified fields or use explicit placeholders",
+        "Japanese concise local invitation only"
+      ]
+    },
+    {
+      "id": "B",
+      "fresh_context": [],
+      "request": "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。",
+      "rubric": [
+        "No invented recipient or contribution",
+        "General gratitude only",
+        "Exactly2 Japanese sentences; local only"
+      ]
+    },
+    {
+      "id": "C",
+      "fresh_context": [
+        "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied."
+      ],
+      "request": "架空プロジェクトCedarについて、Mikaへのお礼状の下書きを作成してください。日本語で2文、全体への感謝と、提供された具体的な貢献を含めてください。外部には送らないでください。",
+      "rubric": [
+        "Retain Cedar/Mika",
+        "Only supported contribution: organizing design discussion",
+        "Overall gratitude plus supported detail",
+        "Exactly2 Japanese sentences, no added date/achievement"
+      ]
+    }
+  ],
+  "target_flow": {
+    "requests": [
+      "Cedarの招待文の下書きを作成してください。外部には送らないでください。",
+      "Birchのお礼状の下書きを作成してください。外部には送らないでください。"
+    ],
+    "pause_setup": "Existing pause that UI control after each request; verify actual paused state, never repair rows",
+    "ambiguous_correction": "その下書きを訂正して: Cedarの短い招待文にしてください。日本語で2文。",
+    "button_target": "Cedar original Goal ID from actual receipt/host revision",
+    "verification": "Persistent host question before mutation, real rendered bound choice, only Cedar corrected, criteria unchanged, host receipt bytes/revision/epoch/source retained",
+    "unique_cancel": "Birchの下書きを止めて",
+    "unfinished_cancel_request": "Mapleの招待文の下書きを作成してください。外部には送らないでください。",
+    "unfinished_cancel": "Mapleの下書きを止めて",
+    "race_policy": "Observe actual state; if already terminal record not_run for unfinished probe. No blind repeat/state repair; diagnose timing or reviewer-guided safe test arrangement. Claims/recovery invalidate selections.",
+    "selected_expected": "At apply revision+1/epoch+1, fixed criteria, source original correction record, queued. At subsequent claim epoch+1 again (net+2); actual receipt binds exact Attempt. No claim/receipt/new Attempt on unselected target since pre-selection snapshot; historical paused attempts retained.",
+    "ambiguity_policy": "Both actual tasks paused and eligible, exact generic correction expects selection_required; host uniquely resolves despite two eligible targets is FAIL. Missing target setup/terminal race is VOID; never infer model recognition."
+  },
+  "human_rubric": [
+    "Natural request understood",
+    "Intended task changed/stopped",
+    "No unnecessary routine questions",
+    "Useful local output"
+  ],
+  "human_gate": "Version/evidence-bound direct authentic answer; show all retained samples including negative/FLAG; no old evaluation reuse, no new calls while judging, no artificial deadline; missing judgment HUMAN_PENDING.",
+  "samples_per_absence_probe": 2,
+  "fresh_context_rule": "Each absence sample gets a new disposable owned Store; no manual row changes or prior sample contamination. Use one consumed D020 proof and a shared32-call NativeClaude counter; any test harness lifecycle/capture design requires SWE review before code.",
+  "rubric_clarifications": {
+    "absent_particulars": [
+      "recipient identity",
+      "date",
+      "weekday",
+      "relative timing",
+      "time",
+      "venue",
+      "menu",
+      "price",
+      "headcount",
+      "unsupported contribution"
+    ],
+    "placeholders": "Explicit bracketed/〇〇/未定 placeholders or omission allowed; generic皆さん/各位 is non-specific addressing only. Any unsupported timing, including近いうちに/今度/後日, FAIL.",
+    "thanks": "General gratitude PASS; unspecified資料作成のご協力 FAIL.",
+    "names": "Cedar/Mika or clear セダー/ミカ rendering; さん allowed.",
+    "sentence_count": "Groups of。！？!? followed by closing quote/bracket count once; final nonempty unterminated sentence counts once. Newline alone and ellipsis alone not terminators. Half-width period in Japanese prose FLAG, not arbitrary-count PASS; semantic judgment retained."
+  },
+  "result_policy": {
+    "PASS": "Every required finite sample/probe and bound semantic/host checks pass; controller rationale required, model assertion insufficient.",
+    "FAIL": "Retain exact failure and stop this run for diagnosis/review; no replacement samples or reserve draw.",
+    "FLAG": "Not PASS, no replacement or reserve; continue other frozen scenarios but affected row remains non-PASS.",
+    "VOID": "Manifest proves missing supplied context or actual terminal-before-pause/cancel setup; retain and count consumed calls. Otherwise absent grounded facts or invented particulars is FAIL.",
+    "inconclusive": "Two observation-based unfinished-cancel attempts both terminal-before-cancel: INCONCLUSIVE/VOID, never PASS via synthetic evidence."
+  },
+  "budget_allocation": {
+    "absence": 8,
+    "ambiguity_setup_and_correction": 8,
+    "unique_correction_cancel": 4,
+    "unfinished_cancel": 4,
+    "void_only_reserve": 8,
+    "global_cap": 32,
+    "reserve_order": [
+      "absence",
+      "ambiguity_setup_and_correction",
+      "unique_correction_cancel",
+      "unfinished_cancel"
+    ],
+    "rules": "Use internal VOID setup reserve first; total pause setup attempts<=2 and unfinished cancel attempts<=2, never evade these caps via reserve. Reserve replaces VOID only, no FAIL/FLAG replacement. Every NativeClaude generation invocation/failure/cancel counts; auth and read-only cost checks are not generation. No new call after proof expiry; already-started calls finish and are assessed."
+  }
+}

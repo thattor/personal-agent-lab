@@ -1,0 +1,66 @@
+# Reconciliation of the N1-05..08 test-only clarifications against D021
+
+**Limitation:** I don't have the earlier N1-05..08 review or the D021 text in this context. I'm reconciling against the contracts as you've restated them here. "Inside D021" below means consistent with those restated contracts, not checked against the source.
+
+## Verdict
+
+The clarifications are sound and stay test-only. None of them changes a product gate, adds a feature gate, or needs new authority. Routine repair, review and testing are already authorized, and I'm not adding approval steps.
+
+I found no regression. I found one real gap (C2 vs. C3) and a few ambiguities that should be fixed in writing before the run starts. Each one could otherwise be decided after seeing results.
+
+## Confirmed as consistent
+
+- **Ambiguity scope:**
+  - The case is CORRECTION by pure finite grammar.
+  - The exact Japanese input is fixed.
+  - The setup has two real paused eligible tasks and a real host-rendered button, with no row repair.
+  - Pause/resume single-target behavior is untouched.
+- **Selected-target transition:**
+  - At apply: revision+1, epoch+1, criteria unchanged, source set to the correction record that carries the text, state queued.
+  - At claim: epoch+1 again, and the receipt binds the actual attempt.
+  - This matches the restated contract. Expected net epoch change from pre-apply to claim is **+2**; state that number so nobody reads "+1" as the total.
+- **Unselected target:** same revision, epoch, source, criteria and state. Also assert **no claim, no attempt and no receipt** for it. Field equality alone can miss a stray claim that was later rolled back.
+- **C1:**
+  - Observation-based attempts, at most 2, no delay hooks.
+  - If completion wins, the attempt is VOID and counted, never PASS.
+  - Event order is frozen by host sequence number and attempt identity.
+  - Terminal-before-pause is VOID and counted.
+  - The synthetic epoch/crash proof stays separate and does not stand in for the live UI result.
+- **Budget arithmetic:** 8 + 8 + 4 + 4 + 8 = 32. Auth and read-only checks are excluded, every invocation counts, and the actual call counter governs.
+- **Host isolation and snapshots:** new loopback DB and port, owned process, no shared budget, no migration, read-only invariant snapshots, and no WAL hash equality demanded.
+- **Human judgment:** rubric frozen before presentation, all samples shown including negatives, version-bound, and missing judgment stays HUMAN_PENDING.
+
+## Gap to close (the only near-blocker)
+
+**C2 FLAG vs. C3 "all samples pass" is undefined.** Freeze these four points:
+1. FLAG is **not pass**. Any FLAG means that row is not PASS.
+2. FLAG **does not** draw from the reserve or trigger a replacement sample. Replacing it would be favorable sample picking.
+3. Decide whether FLAG stops the run the way FAIL does. The smallest consistent choice is: FLAG does not stop the run, the remaining frozen scenarios continue, and the row records FLAG.
+4. FLAG never upgrades to N1-05 PASS.
+
+## Ambiguities to freeze before the run
+
+1. **Reserve draw rule:**
+   - The 8 reserve calls replace VOID outcomes only, never FAIL or FLAG.
+   - Draws happen in a pre-declared scenario order.
+   - Bucket caps and the 32 global cap are both hard. When a bucket's own cap is exhausted, the global reserve may refill it only for VOID.
+   - Say explicitly whether the ambiguity bucket's internal VOID reserve is used before the global reserve. I'd recommend that order.
+2. **Unfinished-cancel outcome:**
+   - If both attempts end with completion winning, the live row is **INCONCLUSIVE/VOID**, not PASS and not FAIL.
+   - The synthetic proof does not convert it to PASS.
+   - This is already implied, but write it into the row result vocabulary.
+3. **Expiry with a call in flight:** decide now. Recommended: let the in-flight call finish, count it, and judge it; no new calls after expiry.
+4. **Sentence counting edge cases:**
+   - Terminators followed by closing brackets (`。」`, `！）`) count as one terminator.
+   - Ellipsis (`…`) is not a terminator unless it is followed by one.
+   - A half-width `.` is not in the group. Decide whether it counts as a terminator in Japanese output or makes the sample FAIL.
+   - A newline without a terminator does not end a sentence, except for the final unterminated sentence already allowed.
+5. **Unsupported timing:**
+   - State whether 近いうちに is FAIL or FLAG.
+   - State the principle as "any unsupported timing" and keep 近いうちに as an example only. Otherwise 今度 or 後日 could be judged inconsistently after the fact.
+6. **Context VOID vs. FAIL:** "Missing-source probe VOID if supported context omitted" should apply only when the **manifest proves** the context was missing. If the manifest shows the context was present and the output still invents details, that is FAIL.
+7. **Correction outcome on a non-ambiguous path:** if the grammar resolves to a single target and no button appears, the ambiguity setup did not happen. Record that as setup VOID, not as a correction FAIL, so the two failure types aren't conflated.
+
+## No other objections
+
+The provenance labeling is honest: reconstructed prompt vs. adapter-provided hash, no equality claims, and the personalization limitation stated rather than denied. The constraints on renewal and reruns are also correct: a fixed, reviewed candidate gets a new bounded run, and an expired run is never auto-renewed. With the C2/C3 rule and items 1–7 frozen, I see no remaining blocker.

@@ -1,0 +1,12 @@
+Independent Codex read-only audit /root/stable1_target_audit.
+Reviewed canonical six documents, five implementation files, three test files and
+target evidence at624fc96 plus the full-snapshot helper/test subsequently committed
+as ce9aef6. No writes, provider calls or rerun of tests by reviewer.
+
+Verdict: no blocking defect found within bounded audit. Transactional consumption,
+immutable ingress replay, source checks, correction provenance, claim/recovery
+epoch fencing and generic foreign-binding rejection align with D024. Shared helper
+closes projection/application mismatch when an unselected target changes.
+Reviewer inspected92-test PASS log. Historical version.json/91-test Issue4 exit
+stay at624fc96; updated snapshot-version.json and snapshot full suite bind helper.
+This is not official Opus/SWE substitute, real-provider proof or human evaluation.

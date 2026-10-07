@@ -1,0 +1,8 @@
+{
+  "status": "NOT_RUN",
+  "sha256": "0429cd7005a4779061a84860b46ae38eb9b71b4391996e340e1004891aeaa689",
+  "supersedes": "v1/v2 preserved; official Opus/SWE refinements adopted D025",
+  "classification_control_preflight": "PASS",
+  "sum_host_call_caps": 32,
+  "no_live_generation": true
+}

@@ -1,0 +1,8 @@
+{
+  "checked_at": 1791349112.127764,
+  "auth_exit": 0,
+  "authenticated": true,
+  "model_lines": [
+    "swe-2-high                                                               SWE-2 High  [262K context, Free]"
+  ]
+}

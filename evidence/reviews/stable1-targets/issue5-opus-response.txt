@@ -1,0 +1,158 @@
+# Review: N1-05..N1-08 bounded real UI/absence test contract
+
+**Verdict:** The contract is mostly sound, but it is **not ready to freeze**. Three gaps need a decision before any provider call:
+
+- **C1.** Fencing during an in-flight cancel may be impossible to demonstrate without new harness hooks.
+- **C2.** "Conversational question allowed" conflicts with an executor that asks only for draft text.
+- **C3.** The contract has no budget allocation and no failure or remediation rule, so a failed A probe has no defined outcome.
+
+Everything else can be fixed by tightening the frozen documents, not by changing the design.
+
+---
+
+## 1. N1-05 absence/grounding probes
+
+### Rubric holes to close before freezing
+1. **Define "invented particular" by category.** For A, list what counts as invented:
+   - absolute dates and weekdays
+   - relative days (明日, 来週, 今週末)
+   - times and meal-time words that imply a slot
+   - venue or restaurant
+   - recipient or organizer name, title or honorific target
+   - menu, price, headcount
+
+   Decide now whether a generic collective addressee (皆さん, 各位) is PASS, FLAG or FAIL. It is an inference about the audience and will otherwise be argued after the fact.
+2. **Define "placeholder."** Accept forms such as 〇〇, ［日付］, {date} and explicit 未定. Decide whether "omitted entirely" and "placeholder" are both PASS. Decide whether a vague phrase like 近いうちに is acceptable non-specificity or evasive filler.
+3. **Probe B.** A thank-you that names a type of help ("資料作成のご協力") is an invented contribution, even if it sounds generic. Only content-free gratitude should pass. Write this boundary down with one PASS and one FAIL example.
+4. **Probe C, name rendering.** Japanese output may render Cedar/Mika as セダー/ミカ, or with or without さん. Freeze which renderings count as "retained."
+5. **Probe C, sentence count.** Fix the counting rule: 。！？ terminators, how a final sentence without a terminator counts, and how quoted or parenthetical clauses count. "Two sentences" will otherwise be scored inconsistently.
+6. **Probe C, context path.** The Cedar/Mika context must enter through the existing ingestion path, not through rows written by hand into the database. The receipt must show that the "usable context" filter actually included it. If the context was filtered out, the probe is **VOID**, not FAIL or PASS.
+7. **Sample size.** One call per probe is n=1 against a nondeterministic model. Freeze k per probe (for example k=2 or 3) and require **all k** to pass. Retain every sample. Without this, a passing result can be picked from several tries.
+
+### C2: Conversational question vs. draft-only executor (decision needed)
+The executor requests draft text only. A returned question would be stored and presented as a *draft artifact*. Calling that a pass silently introduces a new product meaning, which the contract forbids. Choose one, in writing:
+- **(a)** A question-as-draft-text is scored PASS for the absence criterion only, and is recorded as "artifact semantics unchanged; output is a question." No product claim is made.
+- **(b)** It is scored FLAG and does not count toward N1-05 PASS.
+
+Do not add any handling for missing content in the pipeline either way.
+
+### C3a: Failure rule for A (decision needed)
+Probe A is the one probe with **no** supporting system-prompt instruction, so failure is plausible. Pre-commit to the following:
+- A failure is retained, and N1-05 is recorded as FAIL.
+- Any change to the prompt or executor requires a new design decision, a new version and **new authorization and budget**.
+- The same budget cannot be used for "fix and re-run." The no-renewal rule already implies this; state it explicitly so N1-05 does not quietly turn into prompt tuning.
+
+### Provenance
+- "Exact reconstructed provider prompt" is a **reconstruction**, not a capture of what was sent. Label it as such. If a hash of the actual serialized request body can be recorded at the client boundary with auth headers removed, store that hash next to the reconstruction and record whether they match. If not, say plainly that equivalence is assumed.
+- **Hidden provider-side context.** Existing-auth official accounts may add account memory, custom instructions or personalization that the host cannot see. That could inject a recipient name and corrupt the absence test. Before the run, record the account setting state, or record that it cannot be observed. An injected name traced to account memory makes the probe VOID, not FAIL.
+- Each finding should record:
+  - input hash
+  - reconstruction hash
+  - host proposal ID
+  - artifact receipt and its exact bytes
+  - an advisory regex/heuristic result
+  - the **controller's semantic judgment** with its rationale
+
+  The regex output and any self-assessment by the model are advisory only, as the contract already says.
+
+---
+
+## 2. N1-06 Japanese UI recognition, ambiguity, correction, cancel
+
+### Race: "create two drafts and pause immediately"
+Creating a draft may dispatch a provider call right away. A pause issued afterwards can lose the race:
+- the call has already started and is counted against the budget, or
+- the task completes before the pause commits and is then not pausable.
+
+The contract cannot guarantee "both paused." Required rule:
+- After pausing, read the host's state and confirm **both tasks are paused with their expected epochs** before the natural-language control is sent.
+- If either task finished, the setup is **VOID**. Retain it and count its calls. Retry only within a pre-set cap.
+- Never force the state to paused.
+
+### Ambiguity must come from the host, not the model
+- Freeze the exact utterance in Japanese (for example a generic 再開して). For that verb, both paused tasks must be eligible targets in the host's binding logic, so the bound target question is deterministic.
+- If provider recognition maps the utterance to a single task without asking, record that as an observed outcome, not a harness error. Decide in advance whether it is FAIL or VOID.
+
+### Expected changes for the selected and unselected tasks
+"Verify original criteria/revision/epoch/source" is only correct for the **unselected** task. The selected task's state and epoch are *supposed* to change when it is resumed.
+
+Freeze an expected-change table:
+
+| Task | Criteria | Revision | Epoch | Source | State |
+|---|---|---|---|---|---|
+| Unselected | unchanged | unchanged | unchanged | unchanged | unchanged |
+| Selected | unchanged | unchanged | exact expected new value | unchanged | resumed |
+
+Resuming the selected task will also make a provider call. Count it.
+
+### Stale choices and replays (needs concrete cases)
+1. **Stale button.** Cause a legitimate epoch change only through real UI actions, for example an explicit pause/resume on the target between the question and the click. Then click the old rendered button. Expect rejection and no state change.
+2. **Double-click / two tabs.** The same choice submitted twice must have exactly one effect.
+3. **Correction.** Freeze both correction utterances, the unique case and the ambiguous case, and their expected bindings.
+
+### Real rendered button
+The scripted click must go through the rendered DOM element. A direct POST to the endpoint does not count. Capture:
+- a DOM snapshot or screenshot hash of the question and its choices
+- the resulting request log entry
+
+Label all of it as scripted synthetic input, as the contract already does.
+
+### C1: Fencing during an in-flight cancel (decision needed)
+Provider latency is uncontrolled. Cancelling while the native task is truly in flight, and then seeing a *late* result fenced, depends on a timing race the harness cannot force without a delay or test hook. That hook would be new code or semantics. The possible outcomes:
+- The result arrives before the cancel commits. This proves nothing about fencing and is VOID.
+- The cancel lands first and the late response arrives later. This is the only valid PASS. The evidence needs a **host-side monotonic sequence**, not wall clocks across processes, showing in order: cancel committed at epoch E, then late result received carrying epoch E−1 or the old claim, then rejected, then no artifact committed and no state change.
+
+Decision options:
+- **(a)** Allow up to N observation-based attempts within the budget. If none produces the valid ordering, record "fencing not demonstrated" and leave N1-06 incomplete.
+- **(b)** Accept cancelling a *paused* task as the only cancel evidence. This does not exercise late-result fencing, so the claim must be narrowed to say so explicitly.
+- **(c)** Authorize a test-only delay hook as a separate design decision.
+
+Do not pick a default silently. Also, a cancelled in-flight request probably still counts as a provider call (and possibly as provider usage), so count it.
+
+---
+
+## 3. N1-07 human usefulness
+- **Freeze the rubric before the human sees any N1-05/06 output.** Record a hash of the rubric with a timestamp.
+- **Use only the artifacts N1-05/06 already produced, with no new calls.** The judgment window may outlast the D020 proof, and new calls would have no authority. Present every retained artifact, including the negative ones. The controller must not pre-select favorable outputs.
+- **The judgment record must come from the human through their own channel.** No agent-written, scripted or synthetic text may count as the human's judgment. Stable0's earlier answer is excluded, as the contract says.
+- **Define the window's start and end.** If the window closes without a judgment, N1-07 is incomplete, not passed.
+
+## 4. N1-08 regression, release and isolation
+- **Parent audit.** Record the commit of the accepted D021 Stable1 and the candidate's commit. Confirm the diff is empty or covers only authorized files. The 91 tests should still pass with no code changes. Any harness code that is added is an implementation step needing its own authorization.
+- **Stable0 preservation.** Before and after the run, record a hash or size+mtime of the stable0 database and the oldsoaks artifacts, and show they did not change. Use a distinct loopback port, data directory and config. Check that both hosts do not share **auth session state**. If the stable0 host is running and makes provider calls with the same credential, those calls would mix with the budget and the provenance.
+- **Private release.** Bind to loopback only and do not enable any listener on a non-loopback interface. Checking the actual listening interfaces after startup is cheap and should be part of the evidence.
+
+## 5. Budget and authority
+- **Define what counts as a call:** every outbound provider request, including retries, transport failures, streaming requests, recognition calls, cancelled in-flight requests, and the no-extra-charge preflight if it hits the provider.
+- **Enforce the 32-call cap in the host counter** as a hard stop, not only in the plan.
+- **Freeze an allocation table before the first call.** Illustrative example:
+
+| Item | Calls |
+|---|---|
+| N1-05 (3 probes × k=2) | 6 |
+| N1-06 setup (2 draft creations, plus a VOID reserve) | 4 |
+| N1-06 recognition and correction | about 4 |
+| N1-06 resume | 1 |
+| N1-06 cancel attempts | about 6 |
+| N1-08 regression with live calls, if any | defined |
+| Unallocated reserve | remainder |
+
+- **When the budget runs out:** stop, retain everything, and do not renew or fall back.
+- **D020 expiry:** check it before launch *and* before each phase. If it expires mid-run, stop immediately, even if budget remains.
+- **No authority is implied** for prompt changes, harness hooks, new auth, a paid fallback or a re-run after failure. Each of those needs its own decision.
+
+---
+
+## 6. Smallest safe next step
+1. **Make the decisions on C1, C2 and C3/C3a** (in-flight cancel/fencing, question-as-draft, budget allocation and failure rule) and record them.
+2. **Freeze the documents before any call.** These are:
+   - the rubrics with PASS/FAIL examples and the counting rules
+   - the exact Japanese inputs and utterances
+   - the expected-change table
+   - the call definition and allocation table
+   - the VOID/FAIL/PASS rules
+
+   Hash all of them.
+3. **Run the zero-call preflight:** parent/commit audit, 91 tests, stable0 isolation hashes, loopback check, account-memory state, D020 proof and no-extra-charge check.
+4. **Run N1-05 first.** It is cheap and independent of the UI races. Stop for review after it. If A fails, the run ends there under the pre-committed rule.
+5. **Run N1-06 only after the N1-05 review**, then N1-07 on the frozen artifacts, then N1-08.

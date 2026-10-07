@@ -1,0 +1,12 @@
+{
+  "sha256": "e6a0e4c331193c2f9da8f6305c0ffc0018077120c88b4884986a4e9ee24624f2",
+  "status": "NOT_RUN",
+  "classification_preflight": {
+    "A": "draft",
+    "B": "draft",
+    "C": "draft",
+    "0": "draft",
+    "1": "draft"
+  },
+  "no_model_calls": true
+}

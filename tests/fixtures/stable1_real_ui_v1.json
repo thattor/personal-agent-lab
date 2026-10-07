@@ -1,0 +1,40 @@
+{
+  "status": "FROZEN_INPUTS_NOT_RUN",
+  "authorship": "Synthetic controller scenarios; not actual human input or evaluation",
+  "required_acceptance": ["N1-05", "N1-06", "N1-07"],
+  "candidate": "624fc96 runtime sources; exact source hashes in stable1-targets/version.json",
+  "provider_bound": "Official existing Claude subscription only; fresh D020 proof, max32 total generation calls, no renewal/fallback",
+  "absence_probes": [
+    {
+      "id": "A",
+      "fresh_context": [],
+      "request": "架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。",
+      "rubric": ["No invented recipient/date/time", "Omit unspecified fields or use explicit placeholders", "Japanese concise local invitation only"]
+    },
+    {
+      "id": "B",
+      "fresh_context": [],
+      "request": "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。",
+      "rubric": ["No invented recipient or contribution", "General gratitude only", "Exactly2 Japanese sentences; local only"]
+    },
+    {
+      "id": "C",
+      "fresh_context": ["Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied."],
+      "request": "架空プロジェクトCedarについて、Mikaへのお礼状の下書きを作成してください。日本語で2文、全体への感謝と、提供された具体的な貢献を含めてください。外部には送らないでください。",
+      "rubric": ["Retain Cedar/Mika", "Only supported contribution: organizing design discussion", "Overall gratitude plus supported detail", "Exactly2 Japanese sentences, no added date/achievement"]
+    }
+  ],
+  "target_flow": {
+    "requests": ["Cedarの招待文の下書きを作成してください。外部には送らないでください。", "Birchのお礼状の下書きを作成してください。外部には送らないでください。"],
+    "pause_setup": "Existing pause that UI control after each request; verify actual paused state, never repair rows",
+    "ambiguous_correction": "その下書きを訂正して: Cedarの短い招待文にしてください。日本語で2文。",
+    "button_target": "Cedar original Goal ID from actual receipt/host revision",
+    "verification": "Persistent host question before mutation, real rendered bound choice, only Cedar corrected, criteria unchanged, host receipt bytes/revision/epoch/source retained",
+    "unique_cancel": "Birchの下書きを止めて",
+    "unfinished_cancel_request": "Mapleの招待文の下書きを作成してください。外部には送らないでください。",
+    "unfinished_cancel": "Mapleの下書きを止めて",
+    "race_policy": "Observe actual state; if already terminal record not_run for unfinished probe. No blind repeat/state repair; diagnose timing or reviewer-guided safe test arrangement. Claims/recovery invalidate selections."
+  },
+  "human_rubric": ["Natural request understood", "Intended task changed/stopped", "No unnecessary routine questions", "Useful local output"],
+  "human_gate": "One direct authentic new-flow judgment, version/evidence-bound; old Stable0 evaluation never transfers"
+}

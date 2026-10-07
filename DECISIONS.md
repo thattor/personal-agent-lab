@@ -217,3 +217,62 @@ Actual claim/recover DO increment epoch. Strict same revision/epoch/current elig
 Opus blockers reconciled before code: A is a mandatory replay/display/apply test gate — gate source and every target revision's sources via _usable; never emit copied labels/correction text unchecked. Keep ingress/dedupe result free of correction text and prefer selector IDs only; fixed question has no copied task text; live choices are a guarded projection. B/C actual Store._forget at lines412–422 only sets usable=0, disables derived notes and fences affected work; it does NOT DELETE/scrub rows. Therefore retained raw proposal is inert after source forget and FK without cascade does not obstruct current soft-forget; no stronger retention claim. A implementation proof remains NOT_RUN, not closed by review opinion.
 Correction provenance conformance: current _control writes revisions.sources=[]; natural/selected corrections must cite the original text-bearing user control record. Explicit host ingress adds its real user record; direct Store.control remains sourceless unless genuine source supplied. No fabricated source or expanded retrieval; criteria unchanged. This makes existing forget/reference-stop effective for corrected specifications. Additive schema1->2 startup transaction retains old rows and refuses unknown future versions; v1 binary refuses v2 database, so preserve v1 data for rollback. Do not migrate original/soak/live DB now; exercise disposable fixtures before controlled candidate UI.
 [Nine semantic fixture cases](tests/fixtures/stable1_target_matrix_v1.json) frozen, NOT_RUN. Must additionally prove concurrent double-click, wrong-source/target/key conflicts, forgotten source/label projection, deterministic claim race, selector replay after consumption, process kill before/after selector and correction commit, source-tracked forget and schema migration before N1-03/04 PASS. No material plan change; D-021 authorized, P-001 still human_pending.
+## Operational collaborator ceiling — direct human steering, 2026-10-07
+
+Human explicitly authorized up to32 parallel workers across vendors using the
+CO0.3 stable workflow, naming Codex/Claude/Devin/AGY. This is an overall upper
+bound, not32 native Codex slots or authority for paid fallback/new authentication.
+Actual official Opus and SWE-2 High text reviews ran concurrently; Codex separately
+performed a bounded read-only target exit audit. Controller remains sole writer.
+The installed `co` entrypoint advertises a Codex launcher; stable multivendor worker
+control was not verified, so no CO runtime/AGY execution is claimed. Existing AGY
+no-extra-charge proof is absent, so it was not invoked. Accepted project scope,
+cost/security and human judgment boundaries remain unchanged. This operational
+allocation does not change product roles or enable multi-Expert behavior in PAL.
+## D-025 — Stable1 Issue5 bounded real verification contract (adopted, NOT_RUN)
+
+Question: challenge fixed planted-absence and actual Japanese target UI tests,
+budget/provenance/races and independent human usefulness under existing D021.
+Official Opus initial/followup and official SWE-2 High source-contract reviews:
+evidence/reviews/stable1-targets/issue5-*-response.txt with fresh auth/cost proofs.
+Opus followup confirms test-only clarification, explicitly limited to restated
+D021 rather than independently reading prior context. SWE independently read the
+current relevant source and approves with eight concrete corrections. Controller
+checked against canonical D021; no product completion gate changes, new authority,
+missing-content engine or P001 adoption.
+
+Adopt frozen tests/fixtures/stable1_real_ui_v3.json/hash in issue5-v3-freeze.json;
+v1/v2 retained. Two actual finite A/B/C samples each in separate disposable DBs.
+Omitted fields/placeholders permitted; invented particulars FAIL, question-artifact
+FLAG/notPASS, no favorable resampling. Grounded context only through genuine host
+ingress; missing manifest VOID, output invention with supplied context FAIL.
+All negative/FLAG/VOID retained; human rubric frozen and authentic evaluation
+required on the new evidence/version, never the Stable0 answer.
+
+Prefer existing pal.server, not a new shared-provider/capture harness. Eight frozen
+host slots: A1/A2/B1/B2 each2, C1/C2 each3, FLOW1=12 and FLOW2_VOID_ONLY=6;
+existing per-host enforced invocation ceilings sum32 suite-global. Each launch
+requires a fresh existing-subscription operator check and new one-use D020 proof;
+these are distinct frozen DB scenarios, not automatic renewal of an expired host.
+No extra hosts/proofs or redistributed cap; no paid fallback. FLOW2 only replaces
+a timing-VOID setup within max2 attempts, never FAIL/FLAG/expiry/error. Already
+started calls may finish after expiry; no new admission then. Retain actual counters.
+
+Interleave actual UI create→typed pause→create→typed pause; confirm paused/epochs.
+Neutral self-contained correction payload does not misleadingly name its target;
+host asks persistent selection and actual rendered button applies to chosen Goal.
+Selected revision+1/epoch+1, unchanged criteria/source original correction record;
+subsequent claim adds1 epoch (net+2). Unselected has no new claim/Attempt/receipt
+since pre-selection snapshot, preserving legitimate historical fenced attempts.
+Maple must actually be running before unfinished cancel; late rejection ordering
+bound to host event/Attempt, otherwise honest incomplete/VOID/unverified. No delay
+hooks or DB repair. Duplicate/stale safety remains separately deterministic-tested.
+
+Exact manifest-bound prompt reconstruction is sufficient; label reconstruction
+and sanitized returned artifact bytes honestly, no raw stdin/stdout capture or
+wire claim. New loopback ports/DBs, preserve Stable0 process/DB and all oldsoaks.
+Known limits include finite language corpus, strict stale-heavy selections,
+per-proof guardrails, unknown actual alias model version/provider internal retries
+and hidden personalization. Minimal demonstrated-invention prompt repair would
+need required review/recorded candidate; missing-content operational flow is
+deferred Stable1.1 and needs actual adopted scope. No human routine-choice ask.
