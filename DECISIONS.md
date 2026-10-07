@@ -805,3 +805,47 @@ New closed aliases reuse the C038 SWE-reviewed mechanism, immutable historical m
 with binding tests. No ablation/retry, extra artifact quota, human micro-question, or Qwen
 qualification claim. Existing actual UI/Expert/target/absence/running-cancel and one human
 whole-flow evaluation remain separate unfinished release obligations.
+
+### D029 C044 — omit unknowns without inventing sender commitments
+
+Actual first UI absence sample ABS-A1 on3d53878/productc55cab29 generated a later
+announcement promise although the request supplies no such follow-up. The actual
+Primary specification correctly preserves unspecified facts. The host/receipt/artifact
+binding passes; semantic absence rubric FAILS. Preserve runtime/c044-ui-current and
+tracked ui-c044-absence-failure evidence, other11 hosts NOT_RUN, no replacement sample.
+
+Official Opus54.829s and independent Astra agree under the EXISTING pre-frozen rule:
+'any unsupported timing' includes a conditional future notification. General fictional
+invitation courtesy is not a separate failure. The artifact is local/reversible, so
+severity is limited; FAIL cannot be relabelled FLAG/PASS. Actual model internal cause
+is unknown. Expert's never-invent-facts wording omits the explicit commitment/status
+constraint and omission guidance; this is a plausible source gap, not proven causality.
+Question, response, fresh existing Pro/extraOFF and completion are archived as
+c044-opus-{question,response,access,completion} in judgment-boundary/.
+
+Adopt BEFORE implementation: one general Expert DRAFT formatter sentence: leave
+unspecified particulars omitted or plainly unspecified; never replace them with
+invented status, schedules, follow-up promises or other sender commitments, while
+preserving supplied or explicitly requested creative content. Keep Primary/native/
+decoder/host/schema/criteria/capabilities unchanged; no phrase filter or forced question.
+This is an ordinary prompt correction under the existing reviewed Executor contract,
+not substantial architecture/code generation requiring another SWE review.
+
+Reviewer reconciliation: the actual formatter restricts unresolved markers in
+host-eligible templates, not every complete artifact. No placeholder-policy change is
+needed. C043 recognition remains immutable component-level evidence, bound to its old
+candidate; verify identical Primary/native/Store/context code and all Runtime code
+outside ProviderExecutor.execute. Do not claim new-candidate recognition measurements
+or rerun59 unchanged calls solely for a different product hash. The old manifests must
+continue rejecting live use on changed product. A new manifest pins the Expert-only
+candidate; full deterministic suite and affected actual UI/Expert checks are required.
+
+Revalidate the existing12-host/33-slot contract once on the corrected candidate, same
+inputs/oracles/order/first-attempt stop rules. ABS-A1 in that suite is the one regression,
+not a separate extra retry. Add two small targeted counterexamples for the changed
+exception (explicit creative particulars; supplied follow-up commitment), frozen before
+execution, two separate2-slot UI hosts. Total ceiling37 across14 independent hosts;
+no budget transfer, rescue answers, retry or proof renewal. These directly test existing
+requested-content retention, not new acceptance criteria, sample quotas or human
+approval. Record all FAIL/FLAG/VOID/NOT_RUN. Qwen remains unqualified. One authentic
+whole-flow usefulness evaluation and final release audit remain separate obligations.

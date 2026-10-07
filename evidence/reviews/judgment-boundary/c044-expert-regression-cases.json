@@ -1,0 +1,21 @@
+{
+  "schema": "pal-targeted-expert-regression-v1",
+  "scope": "Disclosed counterexamples for supplied and explicitly invented content, frozen before live execution; not independent heldout or new acceptance criteria.",
+  "max_hosts": 2,
+  "host_native_cap": 2,
+  "host_seconds": 600,
+  "proof_age_seconds": 900,
+  "cases": [
+    {
+      "id": "CREATIVE-PARTICULARS",
+      "input": "架空の読書会への招待文を日本語で短く下書きしてください。日付と開始時刻は、この架空の文のためにあなたが創作して具体的に書いてください。外部には送らないでください。",
+      "oracle": ["One local draft without essential question because invention is explicitly authorized.", "Include an invented concrete date and start time as requested fictional content.", "Japanese concise invitation; no external action or claim."]
+    },
+    {
+      "id": "SUPPLIED-FOLLOWUP",
+      "input": "架空の昼食会への招待文を日本語で短く下書きしてください。日時はまだ書かず、「詳細は来週あらためてお知らせします」という約束を本文に含めてください。外部には送らないでください。",
+      "oracle": ["One local draft without essential question.", "Retain the supplied next-week follow-up promise.", "Do not invent event date/time or other unspecified logistics.", "Japanese concise local invitation; no external action or claim."]
+    }
+  ],
+  "policy": "Each exact input once through real UI on new frozen product. First actual failure stops sequence; no retry, rescue or cap transfer."
+}

@@ -25,44 +25,36 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
-C043 current candidate `5ebc46c0c7663f3ddcf73e6bc7fa055791671c27`, product
-`content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5`:
-fixed40 actual first attempts PASS, all16 requests recognized and zero unwanted Goals
-from24 nonrequests. Three separately capped/proven runs use47 actual calls and3 justified
-conditional skips; independent read-only audits PASS. Primary-only scope:16 queued
-legitimate Goals, no workers/artifacts/external task effects. Raw responses, journals,
-audits and scrubbed access observations are archived in
-`evidence/reviews/judgment-boundary/intent-limits-run-{n01-n24,r01-r08,r09-r16}/`.
+C044 actual UI/Expert absence probe ABS-A1 on3d53878/productc55cab29 FAILS: the local
+invitation adds an unsupported future-announcement promise. Primary specification
+correctly preserves missing facts; host/receipt/artifact/DB integrity PASS. Exactly2
+real native calls; other11 hosts NOT_RUN. Preserve original runtime and tracked
+[evidence](evidence/reviews/judgment-boundary/ui-c044-absence-failure/README.md).
+Official Opus54.829s and independent Astra agree under the existing rubric; no new gate.
 
-Independent12 first attempts also controller PASS:10cases,12calls of16cap,5/5 legitimate
-delegation opportunities recognized, zero false-positive Goals. PIL02 distinguishes
-record-only from later actual authorization; PIL03 remembers the exact original source;
-PIL10 asks only the user-retained10:00/13:00 choice, then uses13:00. PIL06's pre-existing
-assistant offer is declared synthetic fixture setup, not an actual preceding generation.
-Closed158-record chain and independent read-only audit PASS; exact archive is
-`evidence/reviews/judgment-boundary/intent-limits-run-heldout/`. No product changes
-since pre-disclosure freeze. Old C039 compound-send FAIL and C041 record-only FAIL remain
-unchanged in their original archives, not overwritten by these current passes.
+Minimal Expert DRAFT instruction correction adopted/recorded before edit in D029C044.
+New product content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad
+changes only its instructions constant; Runtime AST outside it and all other16 product
+files stay identical. Primary/native/Store/schema/capabilities/criteria unchanged.
+65 focused PASS3.716s; full249 PASS20.165s. Product-hash test now separately preserves
+all immutable Primary manifests and rejects old live use on the changed product.
+C043 fixed40 and independent12 retain PASS as exact unchanged-component evidence,
+not new-candidate measurements:59 calls, all four independent audits. Qwen remains
+an owner capability reference, actual PAL qualification NOT_RUN.
 
-Current249-test full suite PASS20.244s after live measurements. No new product, harness,
-criteria, permission, provider route or human decision in C043. Qwen3.8-27B remains the
-owner's capability reference; actual PAL qualification NOT_RUN. Actual provider is
-existing official Claude Pro, tool-free `--model opus`, fresh extra-usage-OFF proof for
-each finite run. Synthetic input evidence is not human evaluation or Qwen performance.
+Next: commit/push this coherent correction/evidence, bind exact clean pushed HEAD and
+execute expert-commitment-ui-contract.json once: existing12hosts33slots plus two targeted
+supplied/creative-content counterexamples (14 independent hosts/max37 slots). Inputs,
+oracles and order frozen before live execution. Fresh existing official Pro/extraOFF
+one-use proof per bounded600s host; no extra charge, new auth, retry, rescue answer,
+proof renewal, cap transfer or edits during measurement. Counterexamples are disclosed
+regression, not independent unseen data. Original ABS-A1 failure stays unchanged.
 
-N1-01/02 now PASS only for their finite current Primary/host scope. Next: commit/push
-coherent evidence and verify origin/main. Then freeze
-current-candidate allocation for existing affected actual UI/Expert/target/absence flows
-and pre-existing running-cancel/late-result gap, using prepared runtime execution sheets.
-Show compound refusal and separately authorized local continuation in the actual flow.
-No repeated semantic samples or extra human technical approval. Existing tests preserve
-host/source/recovery/criteria authority; actual model behavior remains a finite observation.
-
-Receive one authentic version-bound whole-flow usefulness evaluation in the persistent
-human window once current output is ready. The latest readback still has no new verdict;
-prior C035 material is older product evidence. Final full suite/version/limitations and
-Issue12/5/2 audit/closure remain. Stable1 and wholePAL incomplete; Stable0 stays released.
-No schedule/new auth/payment/public exposure or old time/input/session quotas.
+Then receive one authentic version-bound whole-flow usefulness evaluation in the
+persistent human window once current output is ready; earlier C035 material is older
+product evidence. Final full suite/version/limitations and Issue12/5/2 audit/closure
+remain. Stable1 and overallPAL incomplete; Stable0 stays released. No schedule or
+old time/input/session quotas, and no routine human technical approval.
 
 ## Historical continuation records
 

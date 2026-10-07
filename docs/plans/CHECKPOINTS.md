@@ -381,3 +381,18 @@ new quota, micro-approval, provider connection, paid fallback, auth or schedule.
 
 Evidence: evidence/reviews/judgment-boundary/intent-limits-c043-summary.json and
 intent-limits-run-*/README.md. Issue12/milestone1/project remain incomplete; Stable0 released.
+
+
+## C044 - preserve artifact failure and correct Expert grounding
+
+Unit goal: a useful local draft must not turn unspecified details into sender promises.
+First actual UI ABS-A1 on3d53878/productc55cab29 FAIL, source/receipt integrity PASS,
+2calls, other11hosts NOT_RUN. Opus54.829s and independent Astra confirm existing rubric.
+One Expert instruction constant changed under adopted D029C044; all other product
+behavior unchanged, product53a616.65focused PASS3.716s,249full PASS20.165s.
+C043 recognition evidence retained with its exact old binding and unchanged-component
+scope; no automatic current semantic PASS. New affected14host37slot contract includes
+original12/33 and two directly affected creative/supplied-content counterexamples,
+not a new acceptance quota. No new scope, authority, cost, schedule or human question.
+Next: clean pushed candidate, first-attempt actual UI/Expert revalidation then one whole
+flow usefulness evaluation and final audit. Issue12/5/2, Stable1 and overallPAL incomplete.

@@ -1,0 +1,37 @@
+{
+  "schema": "pal-ui-c044-readonly-archive-audit-v1",
+  "scope": "retained closed ABS-A1 only; no provider/UI/network/canonical writes",
+  "database_not_archived": true,
+  "proof_not_archived": true,
+  "raw_credentials_not_archived": true,
+  "db_mode": "SQLite URI mode=ro&immutable=1; existing WAL verified empty",
+  "integrity_check": [
+    "ok"
+  ],
+  "retained_closed_audit_hashes_match": true,
+  "db_hashes_before": {
+    "state.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "state.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "state.sqlite": "bdcaad15a0e73b3d17360d156a89ef569a2f19ddf1c1f250bf5d693f50f1ca28",
+    "state.sqlite.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "db_hashes_after": {
+    "state.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "state.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "state.sqlite": "bdcaad15a0e73b3d17360d156a89ef569a2f19ddf1c1f250bf5d693f50f1ca28",
+    "state.sqlite.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "unchanged_database_files": true,
+  "receipt_rows_equal_captured_after": true,
+  "artifact_receipt_hash_size_match": true,
+  "contract_hash_matches_owner": true,
+  "owner_candidate": "3d5387806473e52640f3ef553272784ac9253024",
+  "product_identity": "content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5",
+  "actual_calls": 2,
+  "cap": 2,
+  "remaining_hosts_status": "11 NOT_RUN, inherited stopped-run controller/independent audit records, not relaunched or queried",
+  "semantic_verdict": "FAIL",
+  "host_byte_receipt_integrity": "PASS",
+  "existing_closed_audit_semantic_status": "REVIEW_PENDING historical snapshot; later independent audit supplies FAIL; original file unchanged",
+  "archive_byte_copies": 12
+}

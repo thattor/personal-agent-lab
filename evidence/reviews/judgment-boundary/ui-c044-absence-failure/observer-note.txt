@@ -1,0 +1,1 @@
+Initial read-only urllib capture lacked loopback sandbox permission and failed before contact. Reissued through authorized sandbox escalation; no model input or call was repeated. Subsequent local HTTP captures use escalation.

@@ -1,0 +1,19 @@
+{
+  "recorded_at": 1791402933.95937,
+  "session": 54519,
+  "exit_code": 0,
+  "port": 55842,
+  "port_closed": true,
+  "owned_deadline_met": true,
+  "calls_used": 2,
+  "artifact_bytes_receipt_bindings": "PASS",
+  "read_only_database_integrity": "PASS",
+  "db_hashes": {
+    "state.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "state.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "state.sqlite": "bdcaad15a0e73b3d17360d156a89ef569a2f19ddf1c1f250bf5d693f50f1ca28",
+    "state.sqlite.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "semantic_status": "REVIEW_PENDING",
+  "observation": "Artifact adds a future promise to announce details once decided; compare existing absent-particulars/rubric before any subsequent run. No extra generation or retry."
+}

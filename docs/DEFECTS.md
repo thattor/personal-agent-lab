@@ -397,3 +397,25 @@ An earlier command referenced nonexistent tests.test_primary_crash and is retain
 intent-limits-targeted-command-error.txt. Actual module discovery identified
 tests.test_primary_runtime; only its subsequent successful run counts. Verify existing
 module names before composing a targeted test command.
+
+
+## C044 - missing details became an unsupported future promise
+
+Actual UI ABS-A1 first attempt adds a promise to announce details later. The original
+request and actual Primary spec contain no such commitment. Artifact/HTTP/receipt bytes
+match, so this is semantic output failure, not persistence or transport corruption.
+Official Opus and independent Astra apply the existing unsupported-timing rubric: FAIL.
+The missing explicit Expert prohibition on invented commitments/status and omission
+guidance is a plausible cause; model internal causality remains unproven.
+
+Correct only the Expert instructions constant; preserve supplied and explicitly requested
+creative content. No keyword filter, extra user question, criteria change or canonical
+repair. Original evidence ui-c044-absence-failure/ is retained. Prevention verification:
+new-candidate original absence cases plus two disclosed supplied/creative counterexamples,
+one attempt each; current65 focused and249 full tests PASS but real semantics NOT_RUN.
+
+The first Unicode fixture-save shell command failed with Python Non-UTF-8 SyntaxError
+before creating the file; the controller mistakenly continued a separate prompt patch.
+No live call happened. The fixture was then saved/validated via apply_patch, honestly
+recorded as post-edit/pre-live disclosed regression, not pre-edit unseen evidence. Use
+UTF-8 file tooling and verify successful dependent preparation before continuing.

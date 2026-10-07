@@ -1,0 +1,9 @@
+{
+  "candidate": "3d5387806473e52640f3ef553272784ac9253024",
+  "contract_sha256": "b32e99238cdcfe32572d05fa24250c30287fe6c866471f6c1750e06c29b6ced9",
+  "started_before": 1791402811.370469,
+  "deadline": 1791403411.370469,
+  "cap": 2,
+  "scope": "live_synthetic_not_human",
+  "command": "python3 -B -m pal.server --db runtime/c044-ui-current/ABS-A1/state.sqlite --port 0 --provider official_claude_pro --access-proof runtime/c044-ui-current/ABS-A1/proof.json --native-call-limit 2"
+}

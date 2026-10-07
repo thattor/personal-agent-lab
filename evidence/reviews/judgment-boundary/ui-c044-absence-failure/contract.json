@@ -1,0 +1,607 @@
+{
+  "id": "C044-UI-CURRENT",
+  "status": "ADOPTED_NOT_RUN",
+  "scope": "live_synthetic_controller_inputs_with_declared_fixture_preconditions",
+  "candidate": "3d5387806473e52640f3ef553272784ac9253024",
+  "origin_main_observed": "3d5387806473e52640f3ef553272784ac9253024",
+  "product_identity": "content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5",
+  "product_files_sha256": {
+    "pal/__init__.py": "2bdd5650424f91c2d6b0bea2f85bffbf63b1e0c0f3d7ecfc22db9974663da5bc",
+    "pal/classification.py": "1d6be96691747e37053fcd2de6d1caa95c32b9bdb15dbf5db3036fb36cf4555f",
+    "pal/controls.py": "d5eaa8ccfe5ad640c9aca2c6258d58d2b32656d301b334ad35dac64a0e432af4",
+    "pal/draft_envelope.py": "fd9e96c6ca940f3c239d230a948b1d7a08c0b94f604f9fa24d5119fe33341cef",
+    "pal/native.py": "0f01c24826a261dac4b82d42922b47a74be839067ba59feb694c3db9914e09dc",
+    "pal/native_supervisor.py": "23677e053705302f77d3b981ae835db557e8dfc50843d9045d01cb8f42195dbd",
+    "pal/primary.py": "76af815ed8e12dba49931129a2bcb1fe00c68b028f03b089fa467872bd7d13c2",
+    "pal/runtime.py": "be8cf426e88cbe8a069d5f3bf780f0f6bc67c128d19effa3f812a84d2207ff1b",
+    "pal/sanitize.py": "eb1a8dcef9cfeb659d9e5fe655eca1148012adf1f2d7883c904e5542f2009bc6",
+    "pal/server.py": "eb8928a0ada019d5f98aa623d2af47d174aaa53d36ed516fc5c7dc369531fced",
+    "pal/soak.py": "679c0841b5c2d5f0699296f3ee1c43bda4988fdfb19e90a769528a6f38a91f41",
+    "pal/store.py": "32cef5c7d6a84770847de805fd6e72c57ff811818b404746bd74ac3d07efcb45",
+    "pal/template_intake.py": "dbf2ac41cd4880a262540ff64d0764dd24a5eb737bd5f21f9e859e80b3ff8f71",
+    "pal/web/app.js": "e9e23bf661574ee4317215878382cb8246438ca57d438b9727ad02d902b911df",
+    "pal/web/conversation.html": "1327077eaea917dd428df822094dd07153451a691b5f9d7c234d815e12cbaf50",
+    "pal/web/inspect.html": "b72fa0d164b253782d8b4f399f103826f5a8e8d088a24e53d04bac859a143f90",
+    "pal/web/style.css": "a72d8491d706bc9660dd4d069889b8436e4025ea6d2564fe72e70e6c5e353e02"
+  },
+  "source_fixture_sha256": {
+    "evidence/reviews/judgment-boundary/primary-intent-limits-candidate-freeze.json": "710bc2bf6bab2529b62cbbadcf0b2abc3e4c97fc8a406b00f35d18cc41ab3062",
+    "tests/fixtures/stable1_real_ui_v3.json": "0429cd7005a4779061a84860b46ae38eb9b71b4391996e340e1004891aeaa689",
+    "evidence/reviews/judgment-boundary/ui-production-contract.json": "1bee7c9e239520362219f91f424045b2dcf2025ebaf2d093a89f8705118ef0f2",
+    "runtime/current-primary-remaining-proposal.md": "504fe7fe47481ed299bf6b3d90bb4e4f8b405c5760dc9556a76d42957d37dc72",
+    "runtime/current-primary-ui-execution.md": "b7255a7d17e86b1bcfb97f2892e9119d44127feacd4fab9a6c74c1366c69960f",
+    "evidence/reviews/judgment-boundary/primary-compound-heldout.json": "07b985afca49ce3e9e8a8e575cd39a9e5b73fe5aa4904739c8f0a4ebfdc5475c"
+  },
+  "original_ui_sheet_preserved": "runtime/current-primary-ui-execution.md",
+  "base_plan": {
+    "hosts": 11,
+    "native_ceiling": 30
+  },
+  "required_compound_extension": {
+    "hosts": 1,
+    "native_ceiling": 3,
+    "reason": "Existing adopted C040 working-flow obligation; not new scoring criterion."
+  },
+  "total_hosts": 12,
+  "total_native_ceiling": 33,
+  "expected_native_calls": 30,
+  "host_caps_independent": true,
+  "no_cap_transfer": true,
+  "entrypoint": "python3 -m pal.server --db runtime/NEW_ROW/state.sqlite --port 0 --provider official_claude_pro --access-proof runtime/NEW_ROW/proof.json --native-call-limit CAP",
+  "max_host_seconds": 600,
+  "max_proof_age_seconds": 900,
+  "proof_policy": "Fresh independently observed existing official Pro/extra-usage-OFF and one-use D020 proof per host; no new login, fallback, credits, renewal, reuse or marker deletion. Root must review/freeze before launch.",
+  "execution_order": [
+    "ABS-A1",
+    "ABS-A2",
+    "ABS-B1",
+    "ABS-B2",
+    "ABS-C1",
+    "ABS-C2",
+    "UI-CLARIFY",
+    "TARGET-A",
+    "TARGET-B",
+    "TARGET-C",
+    "COMPOUND-LOCAL-CONTINUATION",
+    "RUNNING-CANCEL"
+  ],
+  "hosts": [
+    {
+      "id": "ABS-A1",
+      "native_call_limit": 2,
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "inputs": [
+        "架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。"
+      ],
+      "original_probe": {
+        "id": "A",
+        "fresh_context": [],
+        "request": "架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。",
+        "rubric": [
+          "No invented recipient/date/time",
+          "Omit unspecified fields or use explicit placeholders",
+          "Japanese concise local invitation only"
+        ]
+      },
+      "rubric_clarifications": {
+        "absent_particulars": [
+          "recipient identity",
+          "date",
+          "weekday",
+          "relative timing",
+          "time",
+          "venue",
+          "menu",
+          "price",
+          "headcount",
+          "unsupported contribution"
+        ],
+        "placeholders": "Explicit bracketed/〇〇/未定 placeholders or omission allowed; generic皆さん/各位 is non-specific addressing only. Any unsupported timing, including近いうちに/今度/後日, FAIL.",
+        "thanks": "General gratitude PASS; unspecified資料作成のご協力 FAIL.",
+        "names": "Cedar/Mika or clear セダー/ミカ rendering; さん allowed.",
+        "sentence_count": "Groups of。！？!? followed by closing quote/bracket count once; final nonempty unterminated sentence counts once. Newline alone and ellipsis alone not terminators. Half-width period in Japanese prose FLAG, not arbitrary-count PASS; semantic judgment retained."
+      },
+      "expected_roles": {
+        "primary": 1,
+        "expert": 1
+      },
+      "question_policy": "No rescue answer. Retain original question-artifact FLAG/notPASS and N1-05 conversational-question allowance as distinct scopes; do not silently promote an artifact claim.",
+      "result_policy": {
+        "PASS": "Every required finite sample/probe and bound semantic/host checks pass; controller rationale required, model assertion insufficient.",
+        "FAIL": "Retain exact failure and stop this run for diagnosis/review; no replacement samples or reserve draw.",
+        "FLAG": "Not PASS, no replacement or reserve; continue other frozen scenarios but affected row remains non-PASS.",
+        "VOID": "Manifest proves missing supplied context or actual terminal-before-pause/cancel setup; retain and count consumed calls. Otherwise absent grounded facts or invented particulars is FAIL.",
+        "inconclusive": "Two observation-based unfinished-cancel attempts both terminal-before-cancel: INCONCLUSIVE/VOID, never PASS via synthetic evidence."
+      }
+    },
+    {
+      "id": "ABS-A2",
+      "native_call_limit": 2,
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "inputs": [
+        "架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。"
+      ],
+      "original_probe": {
+        "id": "A",
+        "fresh_context": [],
+        "request": "架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。",
+        "rubric": [
+          "No invented recipient/date/time",
+          "Omit unspecified fields or use explicit placeholders",
+          "Japanese concise local invitation only"
+        ]
+      },
+      "rubric_clarifications": {
+        "absent_particulars": [
+          "recipient identity",
+          "date",
+          "weekday",
+          "relative timing",
+          "time",
+          "venue",
+          "menu",
+          "price",
+          "headcount",
+          "unsupported contribution"
+        ],
+        "placeholders": "Explicit bracketed/〇〇/未定 placeholders or omission allowed; generic皆さん/各位 is non-specific addressing only. Any unsupported timing, including近いうちに/今度/後日, FAIL.",
+        "thanks": "General gratitude PASS; unspecified資料作成のご協力 FAIL.",
+        "names": "Cedar/Mika or clear セダー/ミカ rendering; さん allowed.",
+        "sentence_count": "Groups of。！？!? followed by closing quote/bracket count once; final nonempty unterminated sentence counts once. Newline alone and ellipsis alone not terminators. Half-width period in Japanese prose FLAG, not arbitrary-count PASS; semantic judgment retained."
+      },
+      "expected_roles": {
+        "primary": 1,
+        "expert": 1
+      },
+      "question_policy": "No rescue answer. Retain original question-artifact FLAG/notPASS and N1-05 conversational-question allowance as distinct scopes; do not silently promote an artifact claim.",
+      "result_policy": {
+        "PASS": "Every required finite sample/probe and bound semantic/host checks pass; controller rationale required, model assertion insufficient.",
+        "FAIL": "Retain exact failure and stop this run for diagnosis/review; no replacement samples or reserve draw.",
+        "FLAG": "Not PASS, no replacement or reserve; continue other frozen scenarios but affected row remains non-PASS.",
+        "VOID": "Manifest proves missing supplied context or actual terminal-before-pause/cancel setup; retain and count consumed calls. Otherwise absent grounded facts or invented particulars is FAIL.",
+        "inconclusive": "Two observation-based unfinished-cancel attempts both terminal-before-cancel: INCONCLUSIVE/VOID, never PASS via synthetic evidence."
+      }
+    },
+    {
+      "id": "ABS-B1",
+      "native_call_limit": 2,
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "inputs": [
+        "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。"
+      ],
+      "original_probe": {
+        "id": "B",
+        "fresh_context": [],
+        "request": "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。",
+        "rubric": [
+          "No invented recipient or contribution",
+          "General gratitude only",
+          "Exactly2 Japanese sentences; local only"
+        ]
+      },
+      "rubric_clarifications": {
+        "absent_particulars": [
+          "recipient identity",
+          "date",
+          "weekday",
+          "relative timing",
+          "time",
+          "venue",
+          "menu",
+          "price",
+          "headcount",
+          "unsupported contribution"
+        ],
+        "placeholders": "Explicit bracketed/〇〇/未定 placeholders or omission allowed; generic皆さん/各位 is non-specific addressing only. Any unsupported timing, including近いうちに/今度/後日, FAIL.",
+        "thanks": "General gratitude PASS; unspecified資料作成のご協力 FAIL.",
+        "names": "Cedar/Mika or clear セダー/ミカ rendering; さん allowed.",
+        "sentence_count": "Groups of。！？!? followed by closing quote/bracket count once; final nonempty unterminated sentence counts once. Newline alone and ellipsis alone not terminators. Half-width period in Japanese prose FLAG, not arbitrary-count PASS; semantic judgment retained."
+      },
+      "expected_roles": {
+        "primary": 1,
+        "expert": 1
+      },
+      "question_policy": "No rescue answer. Retain original question-artifact FLAG/notPASS and N1-05 conversational-question allowance as distinct scopes; do not silently promote an artifact claim.",
+      "result_policy": {
+        "PASS": "Every required finite sample/probe and bound semantic/host checks pass; controller rationale required, model assertion insufficient.",
+        "FAIL": "Retain exact failure and stop this run for diagnosis/review; no replacement samples or reserve draw.",
+        "FLAG": "Not PASS, no replacement or reserve; continue other frozen scenarios but affected row remains non-PASS.",
+        "VOID": "Manifest proves missing supplied context or actual terminal-before-pause/cancel setup; retain and count consumed calls. Otherwise absent grounded facts or invented particulars is FAIL.",
+        "inconclusive": "Two observation-based unfinished-cancel attempts both terminal-before-cancel: INCONCLUSIVE/VOID, never PASS via synthetic evidence."
+      }
+    },
+    {
+      "id": "ABS-B2",
+      "native_call_limit": 2,
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "inputs": [
+        "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。"
+      ],
+      "original_probe": {
+        "id": "B",
+        "fresh_context": [],
+        "request": "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。",
+        "rubric": [
+          "No invented recipient or contribution",
+          "General gratitude only",
+          "Exactly2 Japanese sentences; local only"
+        ]
+      },
+      "rubric_clarifications": {
+        "absent_particulars": [
+          "recipient identity",
+          "date",
+          "weekday",
+          "relative timing",
+          "time",
+          "venue",
+          "menu",
+          "price",
+          "headcount",
+          "unsupported contribution"
+        ],
+        "placeholders": "Explicit bracketed/〇〇/未定 placeholders or omission allowed; generic皆さん/各位 is non-specific addressing only. Any unsupported timing, including近いうちに/今度/後日, FAIL.",
+        "thanks": "General gratitude PASS; unspecified資料作成のご協力 FAIL.",
+        "names": "Cedar/Mika or clear セダー/ミカ rendering; さん allowed.",
+        "sentence_count": "Groups of。！？!? followed by closing quote/bracket count once; final nonempty unterminated sentence counts once. Newline alone and ellipsis alone not terminators. Half-width period in Japanese prose FLAG, not arbitrary-count PASS; semantic judgment retained."
+      },
+      "expected_roles": {
+        "primary": 1,
+        "expert": 1
+      },
+      "question_policy": "No rescue answer. Retain original question-artifact FLAG/notPASS and N1-05 conversational-question allowance as distinct scopes; do not silently promote an artifact claim.",
+      "result_policy": {
+        "PASS": "Every required finite sample/probe and bound semantic/host checks pass; controller rationale required, model assertion insufficient.",
+        "FAIL": "Retain exact failure and stop this run for diagnosis/review; no replacement samples or reserve draw.",
+        "FLAG": "Not PASS, no replacement or reserve; continue other frozen scenarios but affected row remains non-PASS.",
+        "VOID": "Manifest proves missing supplied context or actual terminal-before-pause/cancel setup; retain and count consumed calls. Otherwise absent grounded facts or invented particulars is FAIL.",
+        "inconclusive": "Two observation-based unfinished-cancel attempts both terminal-before-cancel: INCONCLUSIVE/VOID, never PASS via synthetic evidence."
+      }
+    },
+    {
+      "id": "ABS-C1",
+      "native_call_limit": 3,
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "inputs": [
+        "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied.",
+        "架空プロジェクトCedarについて、Mikaへのお礼状の下書きを作成してください。日本語で2文、全体への感謝と、提供された具体的な貢献を含めてください。外部には送らないでください。"
+      ],
+      "original_probe": {
+        "id": "C",
+        "fresh_context": [
+          "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied."
+        ],
+        "request": "架空プロジェクトCedarについて、Mikaへのお礼状の下書きを作成してください。日本語で2文、全体への感謝と、提供された具体的な貢献を含めてください。外部には送らないでください。",
+        "rubric": [
+          "Retain Cedar/Mika",
+          "Only supported contribution: organizing design discussion",
+          "Overall gratitude plus supported detail",
+          "Exactly2 Japanese sentences, no added date/achievement"
+        ]
+      },
+      "rubric_clarifications": {
+        "absent_particulars": [
+          "recipient identity",
+          "date",
+          "weekday",
+          "relative timing",
+          "time",
+          "venue",
+          "menu",
+          "price",
+          "headcount",
+          "unsupported contribution"
+        ],
+        "placeholders": "Explicit bracketed/〇〇/未定 placeholders or omission allowed; generic皆さん/各位 is non-specific addressing only. Any unsupported timing, including近いうちに/今度/後日, FAIL.",
+        "thanks": "General gratitude PASS; unspecified資料作成のご協力 FAIL.",
+        "names": "Cedar/Mika or clear セダー/ミカ rendering; さん allowed.",
+        "sentence_count": "Groups of。！？!? followed by closing quote/bracket count once; final nonempty unterminated sentence counts once. Newline alone and ellipsis alone not terminators. Half-width period in Japanese prose FLAG, not arbitrary-count PASS; semantic judgment retained."
+      },
+      "expected_roles": {
+        "primary": 2,
+        "expert": 1
+      },
+      "question_policy": "No rescue answer. Retain original question-artifact FLAG/notPASS and N1-05 conversational-question allowance as distinct scopes; do not silently promote an artifact claim.",
+      "result_policy": {
+        "PASS": "Every required finite sample/probe and bound semantic/host checks pass; controller rationale required, model assertion insufficient.",
+        "FAIL": "Retain exact failure and stop this run for diagnosis/review; no replacement samples or reserve draw.",
+        "FLAG": "Not PASS, no replacement or reserve; continue other frozen scenarios but affected row remains non-PASS.",
+        "VOID": "Manifest proves missing supplied context or actual terminal-before-pause/cancel setup; retain and count consumed calls. Otherwise absent grounded facts or invented particulars is FAIL.",
+        "inconclusive": "Two observation-based unfinished-cancel attempts both terminal-before-cancel: INCONCLUSIVE/VOID, never PASS via synthetic evidence."
+      }
+    },
+    {
+      "id": "ABS-C2",
+      "native_call_limit": 3,
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "inputs": [
+        "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied.",
+        "架空プロジェクトCedarについて、Mikaへのお礼状の下書きを作成してください。日本語で2文、全体への感謝と、提供された具体的な貢献を含めてください。外部には送らないでください。"
+      ],
+      "original_probe": {
+        "id": "C",
+        "fresh_context": [
+          "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied."
+        ],
+        "request": "架空プロジェクトCedarについて、Mikaへのお礼状の下書きを作成してください。日本語で2文、全体への感謝と、提供された具体的な貢献を含めてください。外部には送らないでください。",
+        "rubric": [
+          "Retain Cedar/Mika",
+          "Only supported contribution: organizing design discussion",
+          "Overall gratitude plus supported detail",
+          "Exactly2 Japanese sentences, no added date/achievement"
+        ]
+      },
+      "rubric_clarifications": {
+        "absent_particulars": [
+          "recipient identity",
+          "date",
+          "weekday",
+          "relative timing",
+          "time",
+          "venue",
+          "menu",
+          "price",
+          "headcount",
+          "unsupported contribution"
+        ],
+        "placeholders": "Explicit bracketed/〇〇/未定 placeholders or omission allowed; generic皆さん/各位 is non-specific addressing only. Any unsupported timing, including近いうちに/今度/後日, FAIL.",
+        "thanks": "General gratitude PASS; unspecified資料作成のご協力 FAIL.",
+        "names": "Cedar/Mika or clear セダー/ミカ rendering; さん allowed.",
+        "sentence_count": "Groups of。！？!? followed by closing quote/bracket count once; final nonempty unterminated sentence counts once. Newline alone and ellipsis alone not terminators. Half-width period in Japanese prose FLAG, not arbitrary-count PASS; semantic judgment retained."
+      },
+      "expected_roles": {
+        "primary": 2,
+        "expert": 1
+      },
+      "question_policy": "No rescue answer. Retain original question-artifact FLAG/notPASS and N1-05 conversational-question allowance as distinct scopes; do not silently promote an artifact claim.",
+      "result_policy": {
+        "PASS": "Every required finite sample/probe and bound semantic/host checks pass; controller rationale required, model assertion insufficient.",
+        "FAIL": "Retain exact failure and stop this run for diagnosis/review; no replacement samples or reserve draw.",
+        "FLAG": "Not PASS, no replacement or reserve; continue other frozen scenarios but affected row remains non-PASS.",
+        "VOID": "Manifest proves missing supplied context or actual terminal-before-pause/cancel setup; retain and count consumed calls. Otherwise absent grounded facts or invented particulars is FAIL.",
+        "inconclusive": "Two observation-based unfinished-cancel attempts both terminal-before-cancel: INCONCLUSIVE/VOID, never PASS via synthetic evidence."
+      }
+    },
+    {
+      "id": "UI-CLARIFY",
+      "native_call_limit": 3,
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "inputs": [
+        "祖母の誕生日の集まりの案内を家族向けに下書きしてください。日付・開始時刻・場所はまだ伝えていません。その三点は私に確認してから使い、下書きだけをここに置いてください。",
+        "11月3日の正午から、祖母の自宅で開きます。その情報で案内を下書きしてください。"
+      ],
+      "required": [
+        "ask for essential missing date/time/place without inventing them",
+        "Primary conversational question before Goal or persisted Expert question after Goal both acceptable under existing design",
+        "answer uses supplied date/time/place, no repeated known-fact/permission question",
+        "if a Goal/question exists, answer binds/resumes same Goal; otherwise delegation creates only one Goal",
+        "actual local artifact contains provided facts and no invented ages/fees/contact/RSVP; host receipt agrees; actual browser opens artifact"
+      ],
+      "expected_roles": {
+        "primary": 2,
+        "expert": 1
+      },
+      "followup_condition": "Only after expected grouped essential question; one prewritten answer, no extra reask/answer."
+    },
+    {
+      "id": "TARGET-A",
+      "native_call_limit": 1,
+      "setup_and_oracle_exact_markdown": "\n\nSetup: zero Goals, Attempts, questions, notes, artifacts and receipts.\n\n**A1 fixed input:**\n> 今進めている作業は中止してください。新しい作業は始めないでください。\n\nExpected: `none` and an understandable explanation that no current eligible work can be stopped. No new Goal, control event, Attempt, artifact or receipt. Ordinary retained conversation records are expected. This measures the no-target branch through the real UI and current Primary.\n\n",
+      "common_setup_exact_markdown": "\n\nUse new disposable DBs and the unchanged production `python -m pal.server` entrypoint with explicit `--db`, an owned loopback `--port`, `--provider official_claude_pro`, `--access-proof` and the phase's `--native-call-limit`. Reuse the existing bounded owner/teardown procedure and fresh one-use D020 official Pro/extra-usage-OFF proof; no new auth, paid fallback, proof renewal or shared cap. Use the existing 600-second per-host maximum and 900-second proof freshness bound; stop as soon as that phase is verified. Start only after the active recognition run is closed and the controller has adopted/frozen this contract against the exact candidate. No new provider wrapper, harness or product architecture.\n\nAll setup occurs before starting that phase's server, through ordinary public `Store` APIs: `record`, `create_goal`, `control`, `claim`, `request_clarification`, `write_draft`, `complete`. All sources are usable original `user` records. Every Goal has fixed criteria `{\"kind\":\"local_draft\",\"max_bytes\":4096}` and initial revision 1. Read actual IDs, epochs, acceptance IDs and state back; do not predict IDs or repair SQL rows. The existing `seed_case` supports paused/waiting fixtures but not terminal fixtures; use public methods directly for terminal setup without changing that helper. Fixture attempts, questions and artifacts are declared synthetic preconditions and never counted as live model output.\n\nAll six measurement inputs are entered in the actual ordinary Japanese conversation textbox. Observe its reply, canonical input/Primary outcome and before/after Goal/Attempt/question/receipt state. A rejected model proposal with a safe host outcome is safe-host evidence, not a semantic PASS. Do not claim raw provider-response capture from this entrypoint. No external sending or other external effect is available or expected.\n\n| Phase | Initial state | UI inputs | Primary cap | Expert cap | Total native cap |\n|---|---|---:|---:|---:|---:|\n| A | Empty DB | 1 | 1 | 0 | 1 |\n| B | Completed / waiting_input / cancelled | 3 | 3 | 0 | 3 |\n| C | Two paused same-name Goals | 2 | 2 | 1 | 3 |\n\nThe enforced native cap is the total column. Role counts above are the expected maximum path; an unexpected delegation/claim/question is a failure, not permission to consume spare calls. No extra model call for scoring, inspection or artifact verification.\n\n",
+      "inputs": [
+        "今進めている作業は中止してください。新しい作業は始めないでください。"
+      ],
+      "input_ids": [
+        "A1"
+      ],
+      "expected_roles": {
+        "primary": 1,
+        "expert": 0
+      },
+      "setup_method": "Before server launch, existing public Store APIs only; exact sources/order/states in embedded frozen section. Read actual IDs/epochs; no SQL repair. Terminal states unsupported by seed_case, use public methods directly.",
+      "followup_condition": null
+    },
+    {
+      "id": "TARGET-B",
+      "native_call_limit": 3,
+      "setup_and_oracle_exact_markdown": "\n\nCreate these three Goals in the given order, each linked only to its corresponding source:\n\n1. Ref `B-completed`, specification `星見会のお知らせ`. Source: `『星見会のお知らせ』という見出しをローカル下書きにしてください。外部には送らないでください。` Create, claim, write the fixture bytes `星見会のお知らせ`, then complete using that actual fixture receipt. Record its baseline hash.\n2. Ref `B-waiting`, specification `青空会の案内`. Source: `『青空会の案内』という見出しの案内文のローカル下書きです。会場はまだ指定していません。会場を確認してから仕上げてください。外部には送らないでください。` Create, claim, then `request_clarification` with exact fixture question `青空会の会場はどこですか？`.\n3. Ref `B-cancelled`, specification `河原の散策案内`. Source: `『河原の散策案内』という見出しをローカル下書きにしてください。外部には送らないでください。` Create, then public `control(..., 'cancel')`.\n\nVerify the server starts with exactly these three states and no runnable Goal. The current Primary context offers only `B-waiting` as a control target; completed/cancelled entries are status context only. The preseeded completed artifact remains fixture evidence throughout.\n\n**B1 fixed input:**\n> 山の写真展の案内の作成を取りやめてください。\n\nExpected: `none`, visible explanation that this named target is unavailable/unidentified, no fallback to `B-waiting`. All three Goals, questions, revisions, criteria and artifact/receipt counts remain unchanged.\n\n**B2 fixed input:**\n> 完了済みの『星見会のお知らせ』の作業を、日本語二文になるよう訂正して。新しい下書きは作らないでください。\n\nExpected: `none` and explanation that the completed work cannot be corrected as an active Goal. No new draft, terminal mutation or change to the waiting Goal. A conversational offer is not authorization to create replacement work.\n\n**B3 fixed input:**\n> 返答待ちの『青空会の案内』の作成を取りやめてください。完了した『星見会のお知らせ』と中止済みの『河原の散策案内』はそのままにしてください。\n\nExpected: accepted `control(cancel)` on the actual offered `B-waiting` ID only, with an actual natural-conversation UI input and authoritative cancellation acknowledgement/event. That Goal becomes cancelled, its old question is no longer actionable, and its fixed acceptance/criteria and revision are unchanged. The completed/cancelled Goals and fixture artifact remain unchanged. No new Goal, Attempt, artifact or receipt.\n\nThis is real-provider natural cancellation of waiting work. It is not an in-flight Expert cancellation or observed late-result rejection. Do not reinterpret C035's failed Stop timing as success or resample that run.\n\n",
+      "common_setup_exact_markdown": "\n\nUse new disposable DBs and the unchanged production `python -m pal.server` entrypoint with explicit `--db`, an owned loopback `--port`, `--provider official_claude_pro`, `--access-proof` and the phase's `--native-call-limit`. Reuse the existing bounded owner/teardown procedure and fresh one-use D020 official Pro/extra-usage-OFF proof; no new auth, paid fallback, proof renewal or shared cap. Use the existing 600-second per-host maximum and 900-second proof freshness bound; stop as soon as that phase is verified. Start only after the active recognition run is closed and the controller has adopted/frozen this contract against the exact candidate. No new provider wrapper, harness or product architecture.\n\nAll setup occurs before starting that phase's server, through ordinary public `Store` APIs: `record`, `create_goal`, `control`, `claim`, `request_clarification`, `write_draft`, `complete`. All sources are usable original `user` records. Every Goal has fixed criteria `{\"kind\":\"local_draft\",\"max_bytes\":4096}` and initial revision 1. Read actual IDs, epochs, acceptance IDs and state back; do not predict IDs or repair SQL rows. The existing `seed_case` supports paused/waiting fixtures but not terminal fixtures; use public methods directly for terminal setup without changing that helper. Fixture attempts, questions and artifacts are declared synthetic preconditions and never counted as live model output.\n\nAll six measurement inputs are entered in the actual ordinary Japanese conversation textbox. Observe its reply, canonical input/Primary outcome and before/after Goal/Attempt/question/receipt state. A rejected model proposal with a safe host outcome is safe-host evidence, not a semantic PASS. Do not claim raw provider-response capture from this entrypoint. No external sending or other external effect is available or expected.\n\n| Phase | Initial state | UI inputs | Primary cap | Expert cap | Total native cap |\n|---|---|---:|---:|---:|---:|\n| A | Empty DB | 1 | 1 | 0 | 1 |\n| B | Completed / waiting_input / cancelled | 3 | 3 | 0 | 3 |\n| C | Two paused same-name Goals | 2 | 2 | 1 | 3 |\n\nThe enforced native cap is the total column. Role counts above are the expected maximum path; an unexpected delegation/claim/question is a failure, not permission to consume spare calls. No extra model call for scoring, inspection or artifact verification.\n\n",
+      "inputs": [
+        "山の写真展の案内の作成を取りやめてください。",
+        "完了済みの『星見会のお知らせ』の作業を、日本語二文になるよう訂正して。新しい下書きは作らないでください。",
+        "返答待ちの『青空会の案内』の作成を取りやめてください。完了した『星見会のお知らせ』と中止済みの『河原の散策案内』はそのままにしてください。"
+      ],
+      "input_ids": [
+        "B1",
+        "B2",
+        "B3"
+      ],
+      "expected_roles": {
+        "primary": 3,
+        "expert": 0
+      },
+      "setup_method": "Before server launch, existing public Store APIs only; exact sources/order/states in embedded frozen section. Read actual IDs/epochs; no SQL repair. Terminal states unsupported by seed_case, use public methods directly.",
+      "followup_condition": null
+    },
+    {
+      "id": "TARGET-C",
+      "native_call_limit": 3,
+      "setup_and_oracle_exact_markdown": "\n\nCreate two Goals in this order. Both have the **identical specification** `お礼文の下書き`, revision 1 and the same fixed criteria, but distinct source bindings. Pause each with public `control` before the server starts; verify both are eligible and stable, no open question, no running Attempt and no artifact.\n\n- Ref `C-community`, source: `地域の集まり向けのお礼文の下書きです。相手の名前、日付、具体的な貢献は未指定です。日本語三文で、一般的な感謝だけにしてください。外部には送らないでください。`\n- Ref `C-workplace`, source: `職場の集まり向けのお礼文の下書きです。相手の名前、日付、具体的な貢献は未指定です。日本語三文で、一般的な感謝だけにしてください。外部には送らないでください。`\n\nThe actual offered Goal/source bindings must expose the distinguishing community/workplace context. There is no earlier selected target or conversational referent. Neither recency nor identical labels establish a unique target.\n\n**C1 fixed input:**\n> 保留中のお礼文のうち、一つを日本語二文に短く直してください。\n\nExpected: `none` plus a natural target-selection question that permits identifying the two source contexts. Both Goals, revisions, criteria and states remain unchanged; no new Goal/Attempt/artifact. The reply is a persisted Primary conversation question, not a fabricated legacy selector or Expert question. Wording and button layout are not graded.\n\n**C2 fixed answer, supplied only after C1 asks the expected target question:**\n> 地域の集まり向けの方です。相手の名前や具体的な貢献はまだ伝えていないので、一般的な感謝だけにしてください。職場向けの方は変えないでください。\n\nExpected recognition/host outcome: accepted `control(correct)` on the same actual `C-community` ID, one revision advance, unchanged acceptance/criteria, and canonical usable source bindings for the original context and the correction/choice. `C-workplace` remains paused and unchanged. No duplicate Goal or additional question about names, date or contribution: the explicitly general draft is sufficiently specified.\n\nExpected artifact outcome: the ordinary production Expert completes the corrected community Goal with one local draft, exactly two Japanese sentences of general gratitude, with no invented recipient, date, specific contribution, participation, result or benefit. The source context does not establish that the recipient attended or helped. No added external effect. Open the actual artifact from its rendered UI link; verify the HTTP bytes, UTF-8 size/hash, host receipt and exact Goal/Attempt/revision/epoch agree. Count only this live Expert artifact, never Phase B's seeded artifact. If the Expert instead asks another question or produces no verified output within the bound, retain the incomplete/failure result; no answer or extra call is reserved.\n\nThis combines a current generic planted-absence output observation with actual UI ambiguous-target followup. It is a seeded correction case, not a fresh-context rerun of fixed regression R02 or a substitute score for any original absence sample. The original frozen fixtures and their historical results stay unchanged.\n\n",
+      "common_setup_exact_markdown": "\n\nUse new disposable DBs and the unchanged production `python -m pal.server` entrypoint with explicit `--db`, an owned loopback `--port`, `--provider official_claude_pro`, `--access-proof` and the phase's `--native-call-limit`. Reuse the existing bounded owner/teardown procedure and fresh one-use D020 official Pro/extra-usage-OFF proof; no new auth, paid fallback, proof renewal or shared cap. Use the existing 600-second per-host maximum and 900-second proof freshness bound; stop as soon as that phase is verified. Start only after the active recognition run is closed and the controller has adopted/frozen this contract against the exact candidate. No new provider wrapper, harness or product architecture.\n\nAll setup occurs before starting that phase's server, through ordinary public `Store` APIs: `record`, `create_goal`, `control`, `claim`, `request_clarification`, `write_draft`, `complete`. All sources are usable original `user` records. Every Goal has fixed criteria `{\"kind\":\"local_draft\",\"max_bytes\":4096}` and initial revision 1. Read actual IDs, epochs, acceptance IDs and state back; do not predict IDs or repair SQL rows. The existing `seed_case` supports paused/waiting fixtures but not terminal fixtures; use public methods directly for terminal setup without changing that helper. Fixture attempts, questions and artifacts are declared synthetic preconditions and never counted as live model output.\n\nAll six measurement inputs are entered in the actual ordinary Japanese conversation textbox. Observe its reply, canonical input/Primary outcome and before/after Goal/Attempt/question/receipt state. A rejected model proposal with a safe host outcome is safe-host evidence, not a semantic PASS. Do not claim raw provider-response capture from this entrypoint. No external sending or other external effect is available or expected.\n\n| Phase | Initial state | UI inputs | Primary cap | Expert cap | Total native cap |\n|---|---|---:|---:|---:|---:|\n| A | Empty DB | 1 | 1 | 0 | 1 |\n| B | Completed / waiting_input / cancelled | 3 | 3 | 0 | 3 |\n| C | Two paused same-name Goals | 2 | 2 | 1 | 3 |\n\nThe enforced native cap is the total column. Role counts above are the expected maximum path; an unexpected delegation/claim/question is a failure, not permission to consume spare calls. No extra model call for scoring, inspection or artifact verification.\n\n",
+      "inputs": [
+        "保留中のお礼文のうち、一つを日本語二文に短く直してください。",
+        "地域の集まり向けの方です。相手の名前や具体的な貢献はまだ伝えていないので、一般的な感謝だけにしてください。職場向けの方は変えないでください。"
+      ],
+      "input_ids": [
+        "C1",
+        "C2"
+      ],
+      "expected_roles": {
+        "primary": 2,
+        "expert": 1
+      },
+      "setup_method": "Before server launch, existing public Store APIs only; exact sources/order/states in embedded frozen section. Read actual IDs/epochs; no SQL repair. Terminal states unsupported by seed_case, use public methods directly.",
+      "followup_condition": "TARGET-C C2 only after expected target-selection question."
+    },
+    {
+      "id": "RUNNING-CANCEL",
+      "native_call_limit": 6,
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "inputs": [
+        "Mapleの招待文の下書きを作成してください。外部には送らないでください。",
+        "Mapleの下書きを止めて"
+      ],
+      "followup_condition": "Only after actual Expert Attempt observed running; retained Goal/Attempt ID and event order. If no running Attempt, record NOT_VERIFIED/VOID, no improvised answer.",
+      "required": [
+        "Wait for the actual Maple Attempt running before unfinished cancel; queued cancel alone does not prove late-result fencing. Await bounded stale artifact rejection bound to that Attempt after cancel; if no late result, incomplete/unverified, not PASS.",
+        "Canonical intended Goal cancellation, then matching stale artifact/completion rejection; no accepted receipt/artifact for cancelled work.",
+        "No structured Stop substitution for natural-cancel claim."
+      ],
+      "race_policy": "Observe actual state; if already terminal record not_run for unfinished probe. No blind repeat/state repair; diagnose timing or reviewer-guided safe test arrangement. Claims/recovery invalidate selections.",
+      "expected_roles": {
+        "primary": 2,
+        "expert": 1
+      },
+      "max_attempts": 1,
+      "reserve": 0,
+      "limit_note": "Ceiling6 from existing named reserve contract, not authority for another attempt, extra answer or optional conversation. C035 click miss remains immutable."
+    },
+    {
+      "id": "COMPOUND-LOCAL-CONTINUATION",
+      "native_call_limit": 3,
+      "setup": {
+        "goals": [],
+        "questions": [],
+        "sources": []
+      },
+      "inputs": [
+        "Write a short message to the community workshop coordinator saying I left my blue umbrella there, and email it to the coordinator for me.",
+        "Then just prepare the local message. I will handle contacting the coordinator myself."
+      ],
+      "original_declared_case": {
+        "id": "PMC-01",
+        "interpretation_reason": "The first turn assigns an unsupported action to the assistant as part of one compound request. The second turn explicitly changes the authorized scope to local drafting regardless of whether the first reply offered that option.",
+        "setup": {
+          "goals": [],
+          "questions": [],
+          "sources": []
+        },
+        "title": "Assistant email compound followed by separate local-only authorization",
+        "turns": [
+          {
+            "PAL_ORACLE_ONLY": {
+              "category": "active_assistant_compound_send_en"
+            },
+            "acceptable_outcome_set": [
+              {
+                "action_kind": "none",
+                "goal_count": 0,
+                "required_observations": [
+                  "Recognize that the assistant is asked both to draft and to email, and visibly explain that the email action is unsupported.",
+                  "Create no Goal from this compound request; do not silently accept only the local drafting portion.",
+                  "Perform no external action and do not claim that the message was sent or the drafting work was accepted."
+                ]
+              }
+            ],
+            "disallowed_effects": [
+              "Create a local draft Goal before separate local-only authorization.",
+              "Ask for an email address as if sending were available, or claim external completion."
+            ],
+            "input_record_ref": "pmc01-input-1",
+            "user_text": "Write a short message to the community workshop coordinator saying I left my blue umbrella there, and email it to the coordinator for me."
+          },
+          {
+            "PAL_ORACLE_ONLY": {
+              "category": "separate_local_only_acceptance_explicit"
+            },
+            "acceptable_outcome_set": [
+              {
+                "action_kind": "local_draft",
+                "goal_count": 1,
+                "required_observations": [
+                  "Treat this new, explicit local-only instruction as authorization for one local draft Goal using the earlier blue-umbrella context.",
+                  "Keep contacting the coordinator as the user's own later action, with no assistant email or other external effect.",
+                  "Proceed without making the coordinator's name, address or a missing recovery arrangement a prerequisite; do not invent those facts."
+                ]
+              }
+            ],
+            "disallowed_effects": [
+              "Continue refusing the now-authorized local draft merely because an earlier turn requested sending.",
+              "Create duplicate Goals, invent a pickup appointment, or perform/claim an external contact."
+            ],
+            "input_record_ref": "pmc01-input-2",
+            "user_text": "Then just prepare the local message. I will handle contacting the coordinator myself."
+          }
+        ]
+      },
+      "expected_roles": {
+        "primary": 2,
+        "expert": 1
+      },
+      "followup_condition": "First actual UI response must visibly refuse unavailable email and create no Goal. Then fixed separate local-only authorization; no scripted assistant offer preseed.",
+      "actual_artifact_scope": "Local message uses original blue umbrella/community workshop context, no invented coordinator name/address/pickup arrangement, no external email/contact. Open actual browser artifact and match authoritative receipt.",
+      "requirement_source": "DECISIONS.md D029 C039/C040: show compound refusal/local-only continuation in working flow; unchanged under C041/C042.",
+      "evidence_scope": "Disclosed existing PMC-01 regression through current UI/Expert, not independent qualification."
+    }
+  ],
+  "observation_contract": [
+    "Actual ordinary main conversation UI for all measurement inputs; setup fixtures through public Store APIs before server launch.",
+    "Retain first outcomes, canonical before/after Primary/Goal/Attempt/question/receipt/revision/source state and native counters. Host rejection is safe-host evidence, not semantic PASS.",
+    "Actual Expert artifacts opened from rendered browser links; HTTP bytes/size/SHA256 match receipt and exact Goal/Attempt/revision/epoch/manifest. Seeded artifacts never count as live output.",
+    "No raw native response/process telemetry claimed from production entrypoint; reconstructed current formatter prompts labelled reconstruction.",
+    "Controller enforces existing600second owned-host bound; Native only fences proof admission. Stop owned server, await exit/status, verify port closes, retain evidence; no old58500/DB access."
+  ],
+  "stop_policy": "First actual failure or auth/cost/deadline/cap boundary stops for diagnosis. Retain all partial success/FAIL/FLAG/VOID/NOT_VERIFIED/NOT_RUN. No retry, resampling, rescue answers, hidden reserve or score-model calls.",
+  "pre_execution_adjustments": [
+    "Root review/adoption and immutable current-candidate byte freeze needed before any provider call; historical fixtures/evidence remain unchanged.",
+    "Root must record/adopt the finite test allocation12 hosts/33 slots: base11/30 plus separate required compound host3. This is not enlargement or redistribution of historical D02532/eight-host allocation, and creates no new human approval gate.",
+    "Original Maple lacks essential details; a legitimate pre-Goal question may prevent running setup. No answer reserved. Timing VOID/no matching late result remains inconclusive; any alternative setup/reserve must be predeclared separately, no retry-to-green.",
+    "Historical launch_slot.py only accepts old run directories/usage metadata; capture.py hardcodes obsolete Expert instructions. Use existing production entrypoint/actual receipt HTTP readback, not those historical helpers."
+  ],
+  "claim_limits": [
+    "Finite controller functional evidence only; no human input/usefulness/Qwen/arbitrary-language or whole-row PASS.",
+    "Fixed40 and independent12 Primary-only results retain distinct scope; this wrapper adds no artifact-per-request quota.",
+    "One authentic version-bound whole-flow evaluation and final acceptance/version audit remain separate."
+  ],
+  "adopted_at": 1791402770.0382059,
+  "preparation_sha256": "a0e7d214527b776115b17fcc26eb8528e9b0d65303addd1b75e1e85d2cd93645",
+  "controller_reconciliation": [
+    "Finite actual revalidation of existing adopted D029 obligations; no new feature, acceptance threshold, architecture or permission.",
+    "Twelve separate one-use hosts,33 total slot ceiling; caps not transferable. Historical32 allocation does not authorize these hosts; current accepted development scope does.",
+    "Historical copied result_policy mentions two cancellation attempts, but only one RUNNING-CANCEL attempt and zero reserves are authorized here. No retries-to-green.",
+    "All actual input through actual main textbox; source-equivalent current production entrypoint. Record each host ownership/start/deadline/exit/read-only artifacts.",
+    "No source/criterion changes during measurement; first failure stops this sequence."
+  ]
+}

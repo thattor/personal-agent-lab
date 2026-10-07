@@ -1,0 +1,7 @@
+{
+  "frozen_at": 1791403492.141866,
+  "cases_sha256": "94da3d3cee6c9edf6a053024b09b5e3626a9d8899915fa9c7026511e729aeaa7",
+  "disclosure": "Known counterexamples, saved after prompt edit and before any new-candidate live call. Not unseen evidence.",
+  "initial_save_failure": "Python stdin Japanese-literal command failed with Non-UTF-8 SyntaxError before creating file; controller erroneously continued independent apply_patch after failure. No provider call occurred; no claim that file existed before product edit.",
+  "prevention": "Use apply_patch for Unicode fixtures and verify save success before dependent mutations."
+}

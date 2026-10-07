@@ -1,0 +1,98 @@
+{
+  "algorithm": "SHA256",
+  "copies": [
+    {
+      "source": "runtime/c044-ui-current/contract.json",
+      "archive": "evidence/reviews/judgment-boundary/ui-c044-absence-failure/contract.json",
+      "sha256": "b32e99238cdcfe32572d05fa24250c30287fe6c866471f6c1750e06c29b6ced9",
+      "bytes": 50039,
+      "byte_copy_verified": true
+    },
+    {
+      "source": "runtime/c044-ui-current/ABS-A1/before.json",
+      "archive": "evidence/reviews/judgment-boundary/ui-c044-absence-failure/before.json",
+      "sha256": "adcfd1a224cb7aaffeee8101ebec09d164581c8322730e8afa681e49573b3583",
+      "bytes": 589,
+      "byte_copy_verified": true
+    },
+    {
+      "source": "runtime/c044-ui-current/ABS-A1/after.json",
+      "archive": "evidence/reviews/judgment-boundary/ui-c044-absence-failure/after.json",
+      "sha256": "f2f00a8c09d0c01eb9906a9064fdca76d43aa833044839a2101df23bbccfbf20",
+      "bytes": 5934,
+      "byte_copy_verified": true
+    },
+    {
+      "source": "runtime/c044-ui-current/ABS-A1/artifact-025940d937494baf913ade4b4eb591e6.txt",
+      "archive": "evidence/reviews/judgment-boundary/ui-c044-absence-failure/artifact-025940d937494baf913ade4b4eb591e6.txt",
+      "sha256": "372dde022d0a6e7683599fc030c6ba33d0bf7e7b6d2edfe2876e108d4aaaeae9",
+      "bytes": 356,
+      "byte_copy_verified": true
+    },
+    {
+      "source": "runtime/c044-ui-current/ABS-A1/artifact-ui.png",
+      "archive": "evidence/reviews/judgment-boundary/ui-c044-absence-failure/artifact-ui.png",
+      "sha256": "ccd878fb1111eccdbc6617cc7ff691a41996494e59df95d3aab8f6cc5e3f6b3f",
+      "bytes": 19648,
+      "byte_copy_verified": true
+    },
+    {
+      "source": "runtime/c044-ui-current/ABS-A1/conversation-ui.png",
+      "archive": "evidence/reviews/judgment-boundary/ui-c044-absence-failure/conversation-ui.png",
+      "sha256": "6fc59cb5d38545b9392cff25721a70e616c60e84bfe795a54d007d7e334ad791",
+      "bytes": 59813,
+      "byte_copy_verified": true
+    },
+    {
+      "source": "runtime/c044-ui-current/ABS-A1/auth-scrubbed.json",
+      "archive": "evidence/reviews/judgment-boundary/ui-c044-absence-failure/auth-scrubbed.json",
+      "sha256": "7e050c6190deb262a4d5c1be9a94b515850f42f03ad9c2cb9cb4baf4e7911b48",
+      "bytes": 102,
+      "byte_copy_verified": true
+    },
+    {
+      "source": "runtime/c044-ui-current/ABS-A1/access-observation.json",
+      "archive": "evidence/reviews/judgment-boundary/ui-c044-absence-failure/access-observation.json",
+      "sha256": "ca4e6f36e16c275b2e447acc14dd6549a9928eeaeb615829a759e54ca9f6a94e",
+      "bytes": 469,
+      "byte_copy_verified": true
+    },
+    {
+      "source": "runtime/c044-ui-current/ABS-A1/owner.json",
+      "archive": "evidence/reviews/judgment-boundary/ui-c044-absence-failure/owner.json",
+      "sha256": "db567263a9c0d892794746d8ccc957aab46c314be785e7b17ca96b8558c25add",
+      "bytes": 483,
+      "byte_copy_verified": true
+    },
+    {
+      "source": "runtime/c044-ui-current/ABS-A1/closed-audit.json",
+      "archive": "evidence/reviews/judgment-boundary/ui-c044-absence-failure/closed-audit.json",
+      "sha256": "579a325a4eb7502463bde2f9884d542a2de0e64ba00f99206259db9ccea3cab2",
+      "bytes": 862,
+      "byte_copy_verified": true
+    },
+    {
+      "source": "runtime/c044-ui-current/ABS-A1/observer-note.txt",
+      "archive": "evidence/reviews/judgment-boundary/ui-c044-absence-failure/observer-note.txt",
+      "sha256": "3b30a30321541522734546a2a88fb70d5b9b098fd18d903bcdbee8e026476e23",
+      "bytes": 227,
+      "byte_copy_verified": true
+    },
+    {
+      "source": "runtime/c044-ui-current/ABS-A1/independent-semantic-audit.json",
+      "archive": "evidence/reviews/judgment-boundary/ui-c044-absence-failure/independent-semantic-audit.json",
+      "sha256": "c9622dc0e48762076523961a07f6d3a3c53e347dc3887d5a32811037d823372f",
+      "bytes": 7923,
+      "byte_copy_verified": true
+    }
+  ],
+  "excluded": [
+    "proof.json",
+    "state.sqlite",
+    "state.sqlite-wal",
+    "state.sqlite-shm",
+    "state.sqlite.lock",
+    "raw credentials"
+  ],
+  "original_runtime_unchanged": true
+}

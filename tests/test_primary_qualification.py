@@ -756,7 +756,7 @@ class FreezeQualificationTests(unittest.TestCase):
 
 
 class RepositoryFreezeTests(unittest.TestCase):
-    def test_immutable_old_manifest_and_real_new_freeze_have_only_primary_change(self):
+    def test_historical_primary_freezes_and_current_expert_freeze_are_distinct(self):
         self.assertEqual(hashlib.sha256((ROOT/FREEZE).read_bytes()).hexdigest(), OLD_FREEZE_SHA)
         old = json.loads((ROOT/FREEZE).read_text())
         clarification_path = ROOT/NEW_FREEZE
@@ -767,7 +767,10 @@ class RepositoryFreezeTests(unittest.TestCase):
         self.assertEqual(hashlib.sha256(compound_path.read_bytes()).hexdigest(),
                          'edf9f17986c783c83dba718ecdfdd705c99024c6d0e0882f619cf37609c377b2')
         compound = json.loads(compound_path.read_text())
-        new = validate_freeze(ROOT, INTENT_LIMITS_FREEZE)
+        intent_path = ROOT/INTENT_LIMITS_FREEZE
+        self.assertEqual(hashlib.sha256(intent_path.read_bytes()).hexdigest(),
+                         '710bc2bf6bab2529b62cbbadcf0b2abc3e4c97fc8a406b00f35d18cc41ab3062')
+        new = json.loads(intent_path.read_text())
         self.assertEqual(set(compound['files']), set(new['files']))
         self.assertEqual({path for path in new['files'] if new['files'][path]!=compound['files'][path]},
                          {'pal/primary.py'})
@@ -779,9 +782,15 @@ class RepositoryFreezeTests(unittest.TestCase):
                          {'pal/primary.py'})
         self.assertEqual(new['heldout_sha256'], COHORTS['intent-limits-heldout'][1])
         self.assertFalse(new['heldout_contents_opened_before_freeze'])
+        expert = validate_freeze(ROOT,
+            'evidence/reviews/judgment-boundary/expert-commitment-candidate-freeze.json')
+        self.assertEqual(set(expert['files']), set(new['files']))
+        self.assertEqual({path for path in new['files'] if new['files'][path]!=expert['files'][path]},
+                         {'pal/runtime.py'})
         with self.assertRaises(RunRejected):validate_freeze(ROOT, FREEZE)
         with self.assertRaises(RunRejected):validate_freeze(ROOT, NEW_FREEZE)
         with self.assertRaises(RunRejected):validate_freeze(ROOT, COMPOUND_FREEZE)
+        with self.assertRaises(RunRejected):validate_freeze(ROOT, INTENT_LIMITS_FREEZE)
 
 
 if __name__=='__main__':

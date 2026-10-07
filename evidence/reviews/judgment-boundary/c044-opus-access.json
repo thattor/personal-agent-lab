@@ -1,0 +1,21 @@
+{
+  "observed_at": 1791403276.122027,
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "apiProvider": "firstParty",
+    "subscriptionType": "pro"
+  },
+  "official_usage_ui": {
+    "url": "https://claude.ai/new#settings/usage",
+    "plan": "Pro",
+    "session_used_percent": 20,
+    "week_used_percent": 25,
+    "extra_usage_enabled": false,
+    "balance_usd": 0,
+    "auto_reload_enabled": false
+  },
+  "new_auth": false,
+  "paid_fallback": false,
+  "review_scope": "one tool-free Opus supplied-source design review; timeout180, output65536"
+}

@@ -1,0 +1,83 @@
+# Design Review: C044 ABS-A1, Expert deferral sentence
+
+I followed the text-only scope. I used no tools, files, or plan artifact, and the judgment rests only on the source you supplied.
+
+## 1. Existing-oracle verdict: **FAIL**, a narrow one with a minor defect class
+
+The sentence 「日時などの詳細は、決まり次第あらためてお知らせいたします」 fails the frozen rubric and the accepted Primary contract. It is not a stylistic issue.
+
+**Evidence.** The sentence does three things. Only the first is permitted.
+
+| Clause | What it does | Under existing criteria |
+|---|---|---|
+| 日時などの詳細は | Acknowledges that the date and time are absent | Permitted ("explicitly unspecified") |
+| 決まり次第 | Asserts that the details are *undecided in the world* | Unsupported fact. The input says 未指定 (not given to the drafter), not 未定 (not yet decided). The user may already know the date and intend to fill it in. |
+| あらためてお知らせいたします | Commits the sender to a future follow-up notification | Unsupported timing and commitment. The rubric says "**any** unsupported timing, **including** 近いうちに/今度/後日". That list is illustrative, not exhaustive. 「あらためてお知らせ」 is semantically equivalent to 「後日お知らせ」, which would plainly FAIL. The Primary contract also says "never invent … commitments." |
+
+**This is applying the oracle, not changing it.** The rubric was pre-registered with "any" and "including". Reading it by meaning rather than by keyword is the only reading consistent with "no keyword filters." The controller should record the decision as applying the existing "unsupported timing" clause together with the Primary "commitments" clause. It should not be logged as a new criterion.
+
+**Harmless fictional language vs. sender obligation.**
+- 「ささやかな昼食会を開くことになりました」 and 「ゆっくりお話しできれば」 are harmless. They are the fictional premise the user explicitly requested, and they carry no logistics and no future duty.
+- 「ご都合がよろしければ、ぜひご参加ください」 is also harmless. It is the invitation's own speech act, not a separate obligation.
+- 「決まり次第あらためてお知らせいたします」 is a defect. It puts a concrete future action, and a claim about planning status, in the user's mouth. The user would be sending a promise they never made.
+
+**Severity.** The defect is low-harm and reversible: the output is local and nothing was sent. It is still a substantive contract miss, so FLAG is too weak. The rest of the artifact passes: no invented recipient, date, time, venue, menu, price, or headcount; it is Japanese, concise, and local.
+
+## 2. Attribution and uncertainty
+
+**Most likely source gap: the Expert DRAFT formatter.**
+- "never invent facts" covers facts only. It does not name commitments, schedules, or follow-up promises, while the Primary contract does. The Expert sees a narrower prohibition than the one the product promises.
+- The closed forms steer the model away from placeholders. `complete` with unresolved markers is forbidden, and `incomplete_preview` requires template eligibility. When preview isn't allowed, the model is pushed to "handle" the missing date in prose. A deferral sentence is the natural invitation-genre filler. Nothing in the prompt says that plain omission is the preferred answer.
+- The Primary specification is correct as written (「具体的な値を補わず未指定のまま扱う」). I do not attribute the defect to Primary.
+
+**Uncertainty.**
+- This is one sample from a stochastic model. The gap is a plausible cause, not a proven one.
+- The fix lowers the probability of this failure. It cannot guarantee zero.
+- I can't assess whether the Qwen3.8-27B reference would behave the same way, since it is untested. Plain, short instruction wording is the safer choice for weaker models.
+
+## 3. Challenged alternatives and regressions
+
+**Alternatives I reject:**
+- **Calling it neutral omission or FLAG.** This would only hold if "unsupported timing" meant event timing alone. The rubric's "any" and the Primary "commitments" clause both rule that reading out.
+- **Changing Primary, the decoder, the schema, or the host; adding keyword filters; forcing `needs_input`.** All are out of scope. A question is not essential here, because the request explicitly says the fields are unspecified, so the correct behavior is to omit them and complete.
+- **Requiring the draft to say nothing at all about the date.** This would overcorrect. A neutral statement such as 「日時は未記載です」 or 「日時：（未定）」 written as a visible blank satisfies "explicitly unspecified." Watch the wording, though: 「未定」 itself asserts status. Omission is the cleanest option.
+
+**Regression analysis for the proposed instruction:**
+- **Explicitly requested fictional or creative content** (for example, "架空の日付も入れて"). A rule saying "do not invent" could suppress requested invention. The fix is an explicit carve-out for details the request asks to be created.
+- **Supplied commitments** (for example, "詳細は来週連絡すると書いて"). These must survive. The fix is an explicit carve-out for supplied content.
+- **Template previews.** These are unaffected. The instruction concerns `complete` prose and doesn't touch the placeholder path.
+- **Ordinary courtesy phrases** (ぜひご参加ください, お待ちしております). These are not logistics or obligations and should not be stripped. The wording below targets logistics and follow-ups only.
+
+## 4. Minimal recommendation
+
+**Adopt the one-sentence Expert formatter addition.** Suggested wording, placed right after "never invent facts":
+
+> `'Leave unspecified particulars (recipients, dates, times, places, costs) omitted or plainly marked unspecified; do not replace them with invented status, schedules, follow-up promises or other sender commitments, unless supplied or explicitly requested as creative content. '`
+
+This is a prompt-only change, so it counts as ordinary implementation under the existing contract. No refactor is needed: schema, decoder, closed forms, and host are untouched.
+
+**Coverage.** Use three counterexamples rather than a long list:
+1. **ABS-A1 itself**, with the same frozen input and rubric, run once on the new candidate.
+2. **Creative carve-out:** a request for a fictional invitation that explicitly asks for an invented date and time. The draft must contain them.
+3. **Supplied commitment:** a request that supplies a follow-up promise ("詳細は追って連絡すると書いてください"). The draft must keep it.
+
+## 5. Evidence validity after the change
+
+**What stays valid.** C043 Primary and host recognition evidence remains valid as evidence about those exact components, provided every hash for Primary, native, host, and source-context code is byte-identical and only the DRAFT formatter string changes. That evidence covers routing, delegation, unwanted-request rate, and the four independent audits. It stays bound to c55cab29 / 5ebc46c / 3d53878. Because the new product identity carries those hashes unchanged, citing the evidence as component-level support is legitimate. Do not relabel it as new-candidate results.
+
+**What does not transfer:**
+- Any C043 or earlier check whose pass depended on Expert draft content.
+- The 249-full suite, as far as it exercised Expert output.
+- ABS-A1.
+
+The original ABS-A1 FAIL stays recorded against c55cab29, alongside the preserved earlier record-only and compound-send failures. Nothing is overwritten.
+
+**Revalidation.**
+- Mint a new product identity.
+- Run first-attempt ABS-A1 plus the two counterexamples.
+- Run the bounded existing 12-host, 33-slot suite once, with no retries-to-green. Any FAIL is reported as a FAIL.
+- The 11 NOT_RUN hosts should run on the corrected candidate, not on c55cab29, so that no effort is spent validating a known-defective draft path.
+
+**If the correction were not adopted:** under the existing criterion ABS-A1 stays FAIL, and the sequence could not claim ABS-A1 PASS. Resampling ABS-A1 to obtain a pass would be retry-to-green, so I do not recommend it.
+
+This is technical diagnosis within the authorized scope. It is not approval of a new user plan.

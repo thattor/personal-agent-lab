@@ -1,0 +1,31 @@
+{
+  "candidate": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+  "base_commit": "3d5387806473e52640f3ef553272784ac9253024",
+  "frozen_at": 1791403492.140882,
+  "files": {
+    "pal/__init__.py": "2bdd5650424f91c2d6b0bea2f85bffbf63b1e0c0f3d7ecfc22db9974663da5bc",
+    "pal/classification.py": "1d6be96691747e37053fcd2de6d1caa95c32b9bdb15dbf5db3036fb36cf4555f",
+    "pal/controls.py": "d5eaa8ccfe5ad640c9aca2c6258d58d2b32656d301b334ad35dac64a0e432af4",
+    "pal/draft_envelope.py": "fd9e96c6ca940f3c239d230a948b1d7a08c0b94f604f9fa24d5119fe33341cef",
+    "pal/native.py": "0f01c24826a261dac4b82d42922b47a74be839067ba59feb694c3db9914e09dc",
+    "pal/native_supervisor.py": "23677e053705302f77d3b981ae835db557e8dfc50843d9045d01cb8f42195dbd",
+    "pal/primary.py": "76af815ed8e12dba49931129a2bcb1fe00c68b028f03b089fa467872bd7d13c2",
+    "pal/runtime.py": "0aa4e54380a2fe29a0becd8b4eeb815ff56d2c0f065bbb43fd99e108fb978f3e",
+    "pal/sanitize.py": "eb1a8dcef9cfeb659d9e5fe655eca1148012adf1f2d7883c904e5542f2009bc6",
+    "pal/server.py": "eb8928a0ada019d5f98aa623d2af47d174aaa53d36ed516fc5c7dc369531fced",
+    "pal/soak.py": "679c0841b5c2d5f0699296f3ee1c43bda4988fdfb19e90a769528a6f38a91f41",
+    "pal/store.py": "32cef5c7d6a84770847de805fd6e72c57ff811818b404746bd74ac3d07efcb45",
+    "pal/template_intake.py": "dbf2ac41cd4880a262540ff64d0764dd24a5eb737bd5f21f9e859e80b3ff8f71",
+    "pal/web/app.js": "e9e23bf661574ee4317215878382cb8246438ca57d438b9727ad02d902b911df",
+    "pal/web/conversation.html": "1327077eaea917dd428df822094dd07153451a691b5f9d7c234d815e12cbaf50",
+    "pal/web/inspect.html": "b72fa0d164b253782d8b4f399f103826f5a8e8d088a24e53d04bac859a143f90",
+    "pal/web/style.css": "a72d8491d706bc9660dd4d069889b8436e4025ea6d2564fe72e70e6c5e353e02"
+  },
+  "previous_freeze": "evidence/reviews/judgment-boundary/primary-intent-limits-candidate-freeze.json",
+  "previous_freeze_sha256": "710bc2bf6bab2529b62cbbadcf0b2abc3e4c97fc8a406b00f35d18cc41ab3062",
+  "changed_paths": [
+    "pal/runtime.py"
+  ],
+  "runtime_ast_outside_expert_instructions_unchanged": true,
+  "qualification_scope": "C043 is preserved old-candidate component evidence; Expert-dependent actual behavior requires new first attempts. No new heldout claim."
+}

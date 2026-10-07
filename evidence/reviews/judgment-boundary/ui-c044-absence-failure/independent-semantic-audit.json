@@ -1,0 +1,108 @@
+{
+  "schema": "pal-ui-independent-semantic-adjudication-v1",
+  "audited_at": 1791403150.4033852,
+  "run": "runtime/c044-ui-current/ABS-A1",
+  "candidate": "3d5387806473e52640f3ef553272784ac9253024",
+  "product_identity": "content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5",
+  "verdict": "FAIL",
+  "evidence_binding_status": "PASS",
+  "evidence_binding_findings": [],
+  "checks": {
+    "contract_hash_matches_prelaunch_owner": true,
+    "adopted_contract_precedes_owned_launch": true,
+    "historical_rubric_fixture_hash_preserved": true,
+    "timing_rule_preexisting_exact": true,
+    "decisive_sentence_exists": true,
+    "wal_empty_for_immutable_read": true,
+    "artifact_matches_db_and_receipt_bytes": true,
+    "artifact_goal_attempt_revision_binding": true,
+    "exact_frozen_input_present": true,
+    "revision_matches_captured_after_state": true,
+    "future_announcement_not_supplied": true,
+    "primary_preserves_unspecified_details": true,
+    "owned_close_and_budget_metadata": true,
+    "source_files_match_frozen_product": true,
+    "original_run_files_unchanged": true
+  },
+  "criterion_source": {
+    "contract_sha256": "b32e99238cdcfe32572d05fa24250c30287fe6c866471f6c1750e06c29b6ced9",
+    "existing_fixture": "tests/fixtures/stable1_real_ui_v3.json",
+    "frozen_input": "架空の昼食会の招待文の下書きを作成してください。宛名・開催日・開始時刻は未指定です。日本語で短く、外部には送らないでください。",
+    "original_rubric": [
+      "No invented recipient/date/time",
+      "Omit unspecified fields or use explicit placeholders",
+      "Japanese concise local invitation only"
+    ],
+    "preexisting_timing_rule": "Explicit bracketed/〇〇/未定 placeholders or omission allowed; generic皆さん/各位 is non-specific addressing only. Any unsupported timing, including近いうちに/今度/後日, FAIL."
+  },
+  "decisive_finding": {
+    "artifact_sentence": "日時などの詳細は、決まり次第あらためてお知らせいたします。",
+    "classification": "Unsupported conditional future timing and sender announcement commitment.",
+    "reason": "The draft promises another announcement after details are decided. Neither that future action nor its timing condition was provided. It is substantive added content, not omission or an explicit placeholder; the already-frozen any-unsupported-timing rule assigns FAIL.",
+    "why_not_flag": "This is not an undecidable sentence-boundary case, a question artifact, or missing-observation ambiguity. The artifact and rule are available and directly comparable.",
+    "why_not_void": "The exact input and its absence constraints reached the persisted Goal specification. No evidence of omitted supplied context or invalid setup.",
+    "fiction_scope": "The explicit fictional lunch permits a fictional invitation; it does not cancel the more specific frozen requirement to omit or placeholder unspecified particulars and unsupported timing.",
+    "not_added_as_failure_grounds": [
+      "General invitation politeness or stylistic perfection.",
+      "The phrase このたび by itself, which need not be resolved because the later-announcement sentence is decisive.",
+      "A hypothetical requirement for a particular template or exact prose."
+    ]
+  },
+  "attribution": {
+    "primary_observed": "Persisted Primary-created specification preserves the missing-recipient/date/time constraints, disallows invented other details, and contains no future-announcement promise. No substantiated Primary invented-commitment defect in this sample.",
+    "primary_specification": "架空の昼食会への招待文の下書きを日本語で短く作成する。宛名・開催日・開始時刻は未指定のため、具体的な値を補わず未指定のまま扱う。場所・会費などその他の詳細も指定がないため創作しない。ローカルの下書きのみで、外部への送信は行わない。",
+    "expert_observed": "The unsupported sentence is present in the actual completed Expert artifact, bound to the host receipt. This is an artifact-grounding failure, while byte/receipt/transaction completion succeeded.",
+    "prompt_evidence_limits": "Production entrypoint does not retain raw native responses or actual wire prompts. Current source supplies Expert never-invent-facts/generic-creative guidance; reading that source is reconstruction, not captured model-input telemetry.",
+    "plausible_not_proven": "Generic/creative invitation conventions may have supplied a stock promise to announce details later. The text proves unsupported output, not the internal causal path or deterministic prompt insufficiency.",
+    "host_scope": "Host syntax/source/receipt checks are not a full semantic verifier. Canonical check_status pass does not override this frozen semantic FAIL.",
+    "next_diagnostic_direction": "Review the Expert grounding instruction for unsupported relative timing and sender promises using this retained specimen; preserve Primary success scope, explicit supplied future plans, existing rubric and prior failures. Any correction remains an accepted-scope technical review, not a human micro-approval."
+  },
+  "artifact": {
+    "path": "runtime/c044-ui-current/ABS-A1/artifact-025940d937494baf913ade4b4eb591e6.txt",
+    "sha256": "372dde022d0a6e7683599fc030c6ba33d0bf7e7b6d2edfe2876e108d4aaaeae9",
+    "bytes": 356,
+    "receipt_id": "61f35ca232d84506aef33405e5417c95",
+    "attempt_id": "dd41e28909874008b0c87b17eac7c589",
+    "goal_id": "16a60f68bbeb4626a678b1aba6b5aa1c",
+    "revision": 1,
+    "epoch": 1,
+    "canonical_goal_state": "completed"
+  },
+  "preservation": {
+    "prior_outcome_not_rescored": true,
+    "no_replacement_or_reserve": true,
+    "subsequent_11_hosts": "NOT_RUN per controller stopped sequence; not independently launched or queried by this audit",
+    "original_run_file_sha256": {
+      "before.json": "adcfd1a224cb7aaffeee8101ebec09d164581c8322730e8afa681e49573b3583",
+      "artifact-025940d937494baf913ade4b4eb591e6.txt": "372dde022d0a6e7683599fc030c6ba33d0bf7e7b6d2edfe2876e108d4aaaeae9",
+      "owner.json": "db567263a9c0d892794746d8ccc957aab46c314be785e7b17ca96b8558c25add",
+      "auth-scrubbed.json": "7e050c6190deb262a4d5c1be9a94b515850f42f03ad9c2cb9cb4baf4e7911b48",
+      "state.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+      "after.json": "f2f00a8c09d0c01eb9906a9064fdca76d43aa833044839a2101df23bbccfbf20",
+      "state.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observer-note.txt": "3b30a30321541522734546a2a88fb70d5b9b098fd18d903bcdbee8e026476e23",
+      "state.sqlite": "bdcaad15a0e73b3d17360d156a89ef569a2f19ddf1c1f250bf5d693f50f1ca28",
+      "conversation-ui.png": "6fc59cb5d38545b9392cff25721a70e616c60e84bfe795a54d007d7e334ad791",
+      "access-observation.json": "ca4e6f36e16c275b2e447acc14dd6549a9928eeaeb615829a759e54ca9f6a94e",
+      "closed-audit.json": "579a325a4eb7502463bde2f9884d542a2de0e64ba00f99206259db9ccea3cab2",
+      "state.sqlite.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifact-ui.png": "ccd878fb1111eccdbc6617cc7ff691a41996494e59df95d3aab8f6cc5e3f6b3f",
+      "proof.json": "e248da41b55cf164eab9b9ee7af338c1ea5c4dbe816f4b9c8d880e723013053c"
+    }
+  },
+  "scope": {
+    "actual_artifact_semantics": true,
+    "synthetic_controller_input": true,
+    "human_evaluation": false,
+    "qwen_qualification": false,
+    "new_provider_calls": 0,
+    "new_tests": 0,
+    "production_edits": false,
+    "db_writes": false,
+    "ui_screenshots_independently_inspected": false,
+    "limitations": [
+      "This adjudication verifies artifact semantics and receipt binding, not fresh browser observation or full host lifecycle independently.",
+      "Account/auth/browser/provider were not queried."
+    ]
+  }
+}
