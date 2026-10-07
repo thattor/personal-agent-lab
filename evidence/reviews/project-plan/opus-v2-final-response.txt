@@ -1,0 +1,97 @@
+# Opus design challenge: P001v2 final delta and D027 bare-answer semantics
+
+I'm answering in plain text, as you asked. I made no tool calls and wrote no files. Nothing here is adopted for the human.
+
+## 1. P001v2 final delta review
+
+**Verdict:** Agreed that P001v2 is ready to freeze as a versioned human proposal, after one wording fix (B1 below). It does not need another Opus round after that fix.
+
+**How C1–C8 were applied:**
+- **C1, done.** G-P01 to G-P04 are kept as the Project completion conditions. PAL-1.0 scope is left to a later versioned proposal and human decision. The text says three things:
+  - the first usable release is not overall completion;
+  - Issue 6 stays open;
+  - context retention is not to be treated as done.
+- **C2, done.** "最初の利用可能版" is used throughout, including in F.
+- **C3, done.** P002 adoption is cited to the D027 activation and scope-activation.json, plus the human source record. Frozen P002 v1's "PROPOSED" is labelled as history.
+- **C4, done.** v1 Stable-1.1 absorbs only the essential draft clarification. Broader clarification, Stable-2 and 3a become candidates. GitHub items are relabelled with history kept, not deleted, and not auto-activated.
+- **C5, done.** The desktop-local sufficiency evaluation is in F.
+- **C6, done.** The A–F to N1 mapping is present. A–F are stated to be work units, not a parallel acceptance system. Unit PASSes do not auto-pass F.
+- **C7, done.** The B script is fixed. C is limited to same-conversation bounded context, with a forget/reference-stop negative case that goes to D. D has one outstanding question, follow-ups within the SWE cap, and the difficulties listed. Numeric limits for C–E are fixed before execution and not loosened.
+- **C8, done.** Existing memory, reference-stop, recovery and cost bounds are kept. Only new cross-session retrieval and new kinds of preparation are deferred.
+- **Safeguards:** all preserved:
+  - mock as default;
+  - the D020 pre-run proofs, deadline and call caps;
+  - host-only canonical writes;
+  - fixed acceptance;
+  - correction, cancel, forget, recovery, duplicate protection and failure display;
+  - the paused schedule staying paused;
+  - no automatic addition of public search, timers, Dreaming, vector DB, multi-Expert, local inference or external send;
+  - new auth, permission, cost or publication needing a separate decision.
+
+**Remaining blocker (one, wording only):**
+
+- **B1. Reuse of old PASS is ambiguous.** "A/Bは既存証拠付き実装を再利用して評価" and "既存Issue3の証拠は保持" could be read as letting historical PASS count toward F. P002 explicitly forbids that.
+  - **Fix:** add one sentence: 「既存PASS・否定的フィードバック・過去の失敗は履歴として保持し、新しい証拠として再ラベルしない。FとG-P01は提示対象版での新しい証拠を要する」.
+  - **Why it matters:** this matters most for C (N1-05), where negative feedback exists.
+
+**Non-blocking nits (optional):**
+- In C3, cite the D-027 decision ID or hash in DECISIONS.md, not only the evidence files.
+- State that B's yes/no check for the human is fixed before execution, like the C–E limits.
+- D's exit criterion "本人に内部管理を要求しない" depends on the Question 2 decision. Reference that decision once it is recorded.
+
+**No quiet redefinition found.** Full completion still requires integrated scenarios, integrated safety, the human's overall evaluation and the final audit, applied to a scope adopted later.
+
+## 2. D027 bare `answer:` semantics
+
+**The current behavior is a regression against P002.** P002 requires an answer to be bound to the same work, question and epoch, and to resume only on a valid answer. The latest-Goal heuristic breaks that in two ways:
+- It can pick the wrong Goal when several Goals exist.
+- It fails silently when the latest Goal is not the one waiting.
+
+Now that the explicit bound UI exists, the two answer paths also follow different rules. Keeping the legacy shortcut is not acceptable.
+
+**Removing bare grammar entirely is also unsafe.** `answer: x` would then reach the Primary as ordinary conversation. That invites new unintended work, or a model guess at the target. It also drops the convenience the human accepted.
+
+**Recommended behavior:** your proposed minimal change, with the conditions below.
+
+1. **When a bare answer may route.** Route only when all of these hold:
+   - there is exactly one CURRENT open, persisted, host-bound question row, where "current" means:
+     - not superseded by a correction;
+     - epoch current;
+     - Goal not cancelled;
+     - not invalidated by forget;
+     - question cap not exhausted;
+   - and there are zero legacy diagnostic waits anywhere.
+
+   A legacy wait counts toward ambiguity but can never be a route target. This avoids attaching input to a phantom ID, and avoids hijacking a diagnostic the user may have meant.
+2. **Freshness guard (the main remaining wrong-target risk).** Bare text carries no epoch. If a correction replaced Q1 with a new question Q2 on the same Goal, an answer written for Q1 would route to Q2 as the single match. So route only if:
+   - that question's id and epoch were shown in the most recent host-delivered output;
+   - and the set of open questions has not changed since that output.
+
+   Otherwise give a clarification. After a restart, the bare path requires the question to be shown again; explicit bound answers still work immediately.
+3. **One validation path.** The host resolves the binding atomically, capturing the epoch at that moment. It then calls the exact same handler as the explicit bound answer, with the same rejection rules for late, duplicate, cancelled, forgotten and restarted cases. A routed answer counts toward the two-ANSWERED cap. The cap is never reset.
+4. **When it does not route.** With zero or multiple matches, or a failed freshness check:
+   - show a visible notice listing the explicit answer forms, and the candidate questions when there are several;
+   - make no control or state change, no persisted answer and no model or cost call;
+   - do not reinterpret the input as an ordinary request.
+
+   A duplicate bare answer after a question is answered hits zero matches, so it is harmless.
+5. **Legacy diagnostic wait.** Its existing explicit or diagnostic semantics stay unchanged. One user-visible change remains: a bare answer no longer resumes a diagnostic wait. The notice should point to the diagnostic form.
+6. **Out of scope.** No automatic question for an ineligible template (that case simply has zero matches). No new task type, retrieval, provider, multi-Expert or memory work.
+
+**Tests to freeze before code:**
+- 0, 1 and 2 open questions;
+- 1 open question plus a legacy wait;
+- the question set changed since the last output;
+- an answer after a correction or a cancel;
+- a duplicate answer;
+- a restart while waiting;
+- the cap exhausted;
+- a forgotten source;
+- an ineligible template;
+- explicit bound answers still preferred and unaffected.
+
+**Process:** this implements an adopted binding requirement rather than adding scope. It still changes accepted user-visible grammar, including dropping bare resume for diagnostic waits. So:
+1. Record it as a D-027 input-semantics decision.
+2. Have SWE-2 High review the contract.
+3. Get the human's direct confirmation.
+4. Only then change code.

@@ -1,0 +1,10 @@
+{
+  "proposal": "P-001 v2",
+  "status": "PROPOSED_NOT_ADOPTED",
+  "sha256": "d7b931b06246a9a56be0f22234e309a99e2d4b4e90da25f6ac66226ddfcd5397",
+  "previous_version_sha256": "6c1a733769b29557fe0f162957989981e5b4ad9cb7d0a01767c883dde1a8eb21",
+  "review": "opus-v2-final-response.txt",
+  "review_conclusion": "Ready after specified B1 wording fix, applied; no additional review required",
+  "human_adoption": false,
+  "future_stage_activation": false
+}

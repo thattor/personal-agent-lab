@@ -1,0 +1,72 @@
+{
+  "id": "P002-LIVE-v1",
+  "status": "FROZEN_NOT_RUN",
+  "acceptance": "N1-09 with affected N1-05/06 and later direct N1-07",
+  "scope": "Disposable owned loopback UI/HTTP hosts; synthetic fictional inputs are never human attestation. Existing production hosts/DBs unchanged.",
+  "provider": "explicit official_claude_pro, current same-account extra-usage-OFF proof, existing D020 freshness/one-use marker",
+  "limits": {
+    "total_provider_generations": 20,
+    "answered_questions_per_goal": 2,
+    "wall_seconds": 900,
+    "blind_retry": false,
+    "stop_on_first_real_failure": true,
+    "fallback": false
+  },
+  "candidate": "freeze exact source revision after remaining code corrections; historical PASS does not transfer",
+  "cases": [
+    {
+      "id": "K1",
+      "given": "Mika向け。日時は10月12日18:00、場所は架空の青葉会館。",
+      "request": "Mikaへの短い招待文の下書きを作って。日時と場所を記載し、送らないで。",
+      "expected": "one completed Goal; no question; contains supplied Mika/date/time/place, no unsupported factual additions"
+    },
+    {
+      "id": "A1",
+      "request": "Mikaへの招待文の下書きを作って。確定した日時と場所を必ず記載したい。不明な場合は確認して。送らないで。",
+      "answer": "日時は10月12日18:00、場所は架空の青葉会館です。",
+      "expected": "one grouped persisted essential question; explicit bound answer; same Goal completes with supplied facts, one receipt"
+    },
+    {
+      "id": "G1",
+      "request": "架空の集まりへの汎用的な招待文の下書きを作って。日時・場所・相手の固有名は不要。送らないで。",
+      "expected": "complete generic draft without essential-question round, no invented concrete date/place/name"
+    },
+    {
+      "id": "T1",
+      "request": "招待文の下書き用テンプレートを作って。日時は{{date}}、場所は{{place}}の空欄にし、送らないで。",
+      "expected": "eligible incomplete preview with literal placeholders/missing declaration, preview receipt, Goal not completed and no PASS outcome"
+    },
+    {
+      "id": "P1",
+      "request": "Mikaへの招待文の下書きを作って。確定した日時と場所が不可欠です。不明なら確認して。送らないで。",
+      "answers": [
+        "日時は10月12日18:00です。場所は未定です。",
+        "場所はまだ答えられません。"
+      ],
+      "expected": "grouped first question then bounded follow-up; <=2 answered; if still insufficient terminate clarification_exhausted with exactly one host unverified preview, no invented place or third open question"
+    },
+    {
+      "id": "F1",
+      "given": "Mika向け。日時は10月12日18:00、場所は架空の青葉会館。",
+      "before_request": "reference-stop the given record through supported host API",
+      "request": "Mikaへの招待文の下書きを作って。確定した日時と場所が不可欠です。不明なら確認して。送らないで。",
+      "expected": "forgotten facts absent from claimed usable sources/provider prompt, request asks essential unknowns without reuse; raw history inspectable, no false completion"
+    }
+  ],
+  "evidence_requirements": [
+    "exact source/version and frozen matrix hash",
+    "auth/cost proof with no identifiers/credentials",
+    "host pid/start identity, ACK/Goal/Attempt/question/revision/epoch bindings",
+    "provider invocation accounting including conversation calls",
+    "actual artifact bytes/hash/receipt/outcome and source manifests",
+    "actual visible UI question/answer/preview and read-only stale status",
+    "negative failures preserved; no model done as proof",
+    "direct human usefulness judgment requested only after fixed outputs available"
+  ],
+  "remaining_before_execution": [
+    "required SWE review of concrete harness contracts",
+    "fresh provider proof at invocation time",
+    "bind candidate after any semantic correction",
+    "controller audit coverage of tests versus actual cases"
+  ]
+}

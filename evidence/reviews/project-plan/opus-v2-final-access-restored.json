@@ -1,0 +1,19 @@
+{
+  "verified_at": 1791368022.98503,
+  "route": "official_claude_pro",
+  "loggedIn": true,
+  "authMethod": "claude.ai",
+  "subscriptionType": "pro",
+  "same_visible_organization": true,
+  "account_match_method": "Visible account organization ID matched current CLI orgId; identifiers omitted",
+  "session_used_percent": 43,
+  "weekly_used_percent": 20,
+  "extra_usage_enabled": false,
+  "purchased_credits": 0,
+  "monthly_extra_usage": 0,
+  "auto_reload": false,
+  "new_auth": false,
+  "paid_fallback": false,
+  "source": "Current official Chrome usage/account UI plus current native-environment claude auth status exit0",
+  "prior_handoff_turn": "01a115cc-75f7-7b41-b686-89d86c0525d3"
+}

@@ -1,0 +1,6 @@
+test_question_commit_and_rollback_resume_same_goal_after_process_death (test_runtime_question_crash.RuntimeQuestionCrashTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.232s
+
+OK

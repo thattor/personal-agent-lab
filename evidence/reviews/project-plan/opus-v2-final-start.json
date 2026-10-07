@@ -1,0 +1,8 @@
+{
+  "started_at": 1791368045.183435,
+  "timeout_seconds": 180,
+  "route": "official_claude_pro",
+  "tools": [],
+  "paid_fallback": false,
+  "auth_check_exit": 0
+}
