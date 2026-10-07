@@ -209,3 +209,16 @@ are retained. Product code was not changed by this test correction. No human/Qwe
 
 [Independent source/binding audit](intent-limits-independent-audit.json): no substantiated
 blocker; static conformance is separate from forthcoming actual semantic evidence.
+
+
+### C043 actual first-attempt qualification
+
+Current5ebc46c/productc55cab29 passes [fixed24 nonrequests](intent-limits-run-n01-n24/README.md),
+[English8 requests](intent-limits-run-r01-r08/README.md), [Japanese8 requests](intent-limits-run-r09-r16/README.md),
+and [independent12](intent-limits-run-heldout/README.md). Fixed40:16/16 requests, zero unwanted Goals;
+47calls+3 justified conditional skips. Heldout:5/5 legitimate delegations, zero false positives,
+12calls. All four independent audits PASS. [Summary](intent-limits-c043-summary.json).
+
+[Post-live full249](intent-limits-c043-full-after-live.txt) PASS20.244s. N1-01/02 current finite
+Primary/host gates PASS; no UI/Expert/human/Qwen or whole-release claim. Historical C039/C041
+failures remain unchanged. Current affected end-to-end verification is the next work unit.

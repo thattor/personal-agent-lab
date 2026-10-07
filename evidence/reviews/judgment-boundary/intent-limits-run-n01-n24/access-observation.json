@@ -1,0 +1,19 @@
+{
+  "observed_at": 1791400577.828894,
+  "source": "fresh official Claude usage UI and scrubbed CLI auth status",
+  "usage_url": "https://claude.ai/new#settings/usage",
+  "plan": "Pro",
+  "session_used_percent": 12,
+  "week_used_percent": 24,
+  "extra_usage_enabled": false,
+  "usage_credit_balance": "$0",
+  "auto_reload_enabled": false,
+  "cli_auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "apiProvider": "firstParty",
+    "subscriptionType": "pro"
+  },
+  "paid_fallback": false,
+  "purpose": "fixed intent-limits-n01-n24 first attempt,24 maximum Primary calls"
+}

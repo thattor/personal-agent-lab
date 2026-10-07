@@ -1,0 +1,1 @@
+{"reply":"Mostly just what the draft is for — the purpose, and who it's going to. Anything else is optional: names, key details, tone, length, or language. If something's missing, I can keep the wording general and leave it easy to personalize later. Want to try one?","action":{"kind":"none"}}

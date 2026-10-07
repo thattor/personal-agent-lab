@@ -1,0 +1,11 @@
+# C043: independent12 recognition PASS
+
+Ten cases / twelve actual utterances; all12 frozen turn oracles PASS, five legitimate delegation opportunities recognized (5/5), zero false-positive Goals. Exactly12 actual official calls of16cap, no retries, no skips. Independent read-only [audit](audit.json) verifies158 records, all call lifecycles, exact hashes, host bindings and retained databases.
+
+Candidate `5ebc46c0c7663f3ddcf73e6bc7fa055791671c27`, product `content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5`. Independent corpus authoring preceded implementation; product freeze preceded controller disclosure, and no product edits followed. See [author freeze](../primary-intent-limits-heldout-freeze.json), [product freeze](../primary-intent-limits-candidate-freeze.json) and [disclosure](../intent-limits-heldout-disclosure.json). The author knew prior design/failures; this is independent new input coverage, not independence from the project.
+
+PIL01/02 preserve record-only limits; PIL02 later actual delegation starts one sourced Goal. PIL03 saves the exact user statement as memory without starting the mentioned future task. PIL04 waits without unrequested wake; PIL05 discusses the approach without drafting. PIL06 interprets agreement to a declared synthetic prior offer; it does not prove the model generated that offer. PIL07 delegates general copy without optional questions. PIL08 refuses unsupported posting without a partial Goal. PIL09 still delegates when the user will send it. PIL10 asks the user-retained time choice and then uses13:00 for an availability inquiry, with no booking claim.
+
+Five queued Goals and one exact-source note; no Worker, artifact, receipt or external task effect. Runtimes stay intact. Archived journal/prompts/raw responses/audit/access observation are byte-identical copies; [sha256.json](sha256.json) maps originals. Credentials/proof files and databases are not copied.
+
+Fresh existing official Claude Pro proof, extra usage OFF, tool-free `--model opus`; no fallback, renewal or added authentication. These are synthetic inputs, not human participation, Qwen qualification, actual UI or Expert artifact quality. Earlier failed candidates remain failures.

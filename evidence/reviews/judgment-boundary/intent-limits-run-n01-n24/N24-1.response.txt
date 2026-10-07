@@ -1,0 +1,1 @@
+{"reply":"I can't send emails, so I won't start any part of this. If it helps, I can write a local draft that you send yourself. Just let me know what it's about and who it's for.","action":{"kind":"none"}}

@@ -1,0 +1,1 @@
+{"reply":"It could be! What would the draft be for? Tell me the purpose, like who it's for and what you want it to say, and I can put one together.","action":{"kind":"none"}}

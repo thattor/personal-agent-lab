@@ -362,3 +362,22 @@ qualification or completion. Next: independent source audit, clean commit/push, 
 N-first24→English16→Japanese16→independent12/cap16 once-only actual runs and existing
 affected UI/Expert/one human whole-flow evaluation/release audit. No new scope, quota,
 human technical decision, Qwen qualification, provider endpoint, cost or schedule.
+
+
+## C043 — current reasoning-model recognition verified
+
+Goal: qualify C042 current-authorized-scope prompt without changing thresholds, samples
+or host authority. Candidate5ebc46c/productc55cab29 first attempts: fixed40 PASS16/16
+requests, zero unwanted Goals/24nonrequests;47 actual calls,3 conditional skips. New
+independent12 PASS,5/5 legitimate delegation opportunities and zero false-positive Goals;
+12calls. All four independent read-only audits PASS, raw byte copies and DB hashes retained.
+Full249 PASS20.244s after live runs. No source edits after heldout disclosure.
+
+N1-01 and N1-02 achieved in their finite Primary/host scope. No Worker/UI artifact, human
+or Qwen proof is inferred. C039/C041 FAILs remain immutable; this is a new candidate, not
+resampling. Plan still useful: move from recognized intent to existing actual UI/Expert
+contract, then one whole-flow human usefulness and final audit. No plan/scope change,
+new quota, micro-approval, provider connection, paid fallback, auth or schedule.
+
+Evidence: evidence/reviews/judgment-boundary/intent-limits-c043-summary.json and
+intent-limits-run-*/README.md. Issue12/milestone1/project remain incomplete; Stable0 released.

@@ -1,0 +1,786 @@
+{
+  "schema": "pal-closed-primary-run-audit-v1",
+  "audited_at": 1791402197.327515,
+  "run": "runtime/intent-limits-c043-r09-r16",
+  "auditor": "Astra independent artifact audit",
+  "status": "PASS",
+  "findings": [],
+  "verifier": {
+    "records": 158,
+    "completed": true,
+    "judged_turns": 12,
+    "skipped_turns": 2,
+    "covered_cases": 8,
+    "scope": "live_synthetic",
+    "human_evaluation": false
+  },
+  "candidate": "5ebc46c0c7663f3ddcf73e6bc7fa055791671c27",
+  "product_identity": "content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5",
+  "summary": {
+    "accepted_cases": 8,
+    "actual_calls": 12,
+    "cap": 16,
+    "conditional_skips": 2,
+    "queued_goals": 8,
+    "worker_attempts": 0,
+    "artifacts": 0,
+    "receipts": 0,
+    "external_task_effects_observed": 0
+  },
+  "checks": {
+    "exact_candidate_cohort": true,
+    "completed_eight_cases_twelve_turns_two_skips": true,
+    "all_pass_no_failures": true,
+    "first_attempt_within_cap": true,
+    "official_tool_free_route": true,
+    "access_observation_bound": true,
+    "human_qwen_not_claimed": true,
+    "all_pinned_source_fixture_freeze_hashes": true,
+    "canonical_product_identity": true,
+    "monotonic_deadline": true,
+    "wall_proof_window": true,
+    "supervisor_1": true,
+    "supervisor_2": true,
+    "supervisor_3": true,
+    "supervisor_4": true,
+    "supervisor_5": true,
+    "supervisor_6": true,
+    "supervisor_7": true,
+    "supervisor_8": true,
+    "supervisor_9": true,
+    "supervisor_10": true,
+    "supervisor_11": true,
+    "supervisor_12": true,
+    "no_extra_supervisors": true,
+    "only_expected_skips": true,
+    "R09_empty_wal": true,
+    "R09_db_integrity": true,
+    "R09_settled_actual_turns": true,
+    "R09_one_queued_unclaimed_goal": true,
+    "R09_no_workers_artifacts_external_task_effects": true,
+    "R09-1_input_prompt": true,
+    "R09-1_no_oracle_fields": true,
+    "R09-1_proposal_host_outcome_reply": true,
+    "R09-1_snapshot": true,
+    "R09-1_frozen_action_goal_oracle": true,
+    "R09-1_spec_source_binding": true,
+    "R09_justified_skip": true,
+    "R09_skip_no_input_call_blob": true,
+    "R10_empty_wal": true,
+    "R10_db_integrity": true,
+    "R10_settled_actual_turns": true,
+    "R10_one_queued_unclaimed_goal": true,
+    "R10_no_workers_artifacts_external_task_effects": true,
+    "R10-1_input_prompt": true,
+    "R10-1_no_oracle_fields": true,
+    "R10-1_proposal_host_outcome_reply": true,
+    "R10-1_snapshot": true,
+    "R10-1_frozen_action_goal_oracle": true,
+    "R10-1_spec_source_binding": true,
+    "R11_empty_wal": true,
+    "R11_db_integrity": true,
+    "R11_settled_actual_turns": true,
+    "R11_one_queued_unclaimed_goal": true,
+    "R11_no_workers_artifacts_external_task_effects": true,
+    "R11-1_input_prompt": true,
+    "R11-1_no_oracle_fields": true,
+    "R11-1_proposal_host_outcome_reply": true,
+    "R11-1_snapshot": true,
+    "R11-1_frozen_action_goal_oracle": true,
+    "R11-1_spec_source_binding": true,
+    "R12_empty_wal": true,
+    "R12_db_integrity": true,
+    "R12_settled_actual_turns": true,
+    "R12_one_queued_unclaimed_goal": true,
+    "R12_no_workers_artifacts_external_task_effects": true,
+    "R12-1_input_prompt": true,
+    "R12-1_no_oracle_fields": true,
+    "R12-1_proposal_host_outcome_reply": true,
+    "R12-1_snapshot": true,
+    "R12-1_frozen_action_goal_oracle": true,
+    "R12-1_spec_source_binding": true,
+    "R12_justified_skip": true,
+    "R12_skip_no_input_call_blob": true,
+    "R13_empty_wal": true,
+    "R13_db_integrity": true,
+    "R13_settled_actual_turns": true,
+    "R13_one_queued_unclaimed_goal": true,
+    "R13_no_workers_artifacts_external_task_effects": true,
+    "R13-1_input_prompt": true,
+    "R13-1_no_oracle_fields": true,
+    "R13-1_proposal_host_outcome_reply": true,
+    "R13-1_snapshot": true,
+    "R13-1_frozen_action_goal_oracle": true,
+    "R13-2_input_prompt": true,
+    "R13-2_no_oracle_fields": true,
+    "R13-2_proposal_host_outcome_reply": true,
+    "R13-2_snapshot": true,
+    "R13-2_frozen_action_goal_oracle": true,
+    "R13-2_spec_source_binding": true,
+    "R13-2_actual_prior_question": true,
+    "R14_empty_wal": true,
+    "R14_db_integrity": true,
+    "R14_settled_actual_turns": true,
+    "R14_one_queued_unclaimed_goal": true,
+    "R14_no_workers_artifacts_external_task_effects": true,
+    "R14-1_input_prompt": true,
+    "R14-1_no_oracle_fields": true,
+    "R14-1_proposal_host_outcome_reply": true,
+    "R14-1_snapshot": true,
+    "R14-1_frozen_action_goal_oracle": true,
+    "R14-2_input_prompt": true,
+    "R14-2_no_oracle_fields": true,
+    "R14-2_proposal_host_outcome_reply": true,
+    "R14-2_snapshot": true,
+    "R14-2_frozen_action_goal_oracle": true,
+    "R14-2_spec_source_binding": true,
+    "R14-2_actual_prior_question": true,
+    "R15_empty_wal": true,
+    "R15_db_integrity": true,
+    "R15_settled_actual_turns": true,
+    "R15_one_queued_unclaimed_goal": true,
+    "R15_no_workers_artifacts_external_task_effects": true,
+    "R15-1_input_prompt": true,
+    "R15-1_no_oracle_fields": true,
+    "R15-1_proposal_host_outcome_reply": true,
+    "R15-1_snapshot": true,
+    "R15-1_frozen_action_goal_oracle": true,
+    "R15-2_input_prompt": true,
+    "R15-2_no_oracle_fields": true,
+    "R15-2_proposal_host_outcome_reply": true,
+    "R15-2_snapshot": true,
+    "R15-2_frozen_action_goal_oracle": true,
+    "R15-2_spec_source_binding": true,
+    "R15-2_actual_prior_question": true,
+    "R16_empty_wal": true,
+    "R16_db_integrity": true,
+    "R16_settled_actual_turns": true,
+    "R16_one_queued_unclaimed_goal": true,
+    "R16_no_workers_artifacts_external_task_effects": true,
+    "R16-1_input_prompt": true,
+    "R16-1_no_oracle_fields": true,
+    "R16-1_proposal_host_outcome_reply": true,
+    "R16-1_snapshot": true,
+    "R16-1_frozen_action_goal_oracle": true,
+    "R16-2_input_prompt": true,
+    "R16-2_no_oracle_fields": true,
+    "R16-2_proposal_host_outcome_reply": true,
+    "R16-2_snapshot": true,
+    "R16-2_frozen_action_goal_oracle": true,
+    "R16-2_spec_source_binding": true,
+    "R16-2_actual_prior_question": true,
+    "all_run_files_unchanged": true
+  },
+  "event_counts": {
+    "run.opened": 1,
+    "fixture.verified": 8,
+    "operator.config": 1,
+    "snapshot.verified": 12,
+    "prompt.built": 12,
+    "permit.granted": 12,
+    "call.started": 12,
+    "native.supervisor.started": 24,
+    "native.supervisor.finished": 24,
+    "proposal.received": 12,
+    "call.returned": 12,
+    "turn.captured": 12,
+    "turn.judged": 12,
+    "turn.skipped": 2,
+    "qualification.finished": 1,
+    "run.closed": 1
+  },
+  "databases": [
+    {
+      "case": "R09",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R10",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R11",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R12",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R13",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R14",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R15",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R16",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    }
+  ],
+  "turns": [
+    {
+      "case": "R09",
+      "turn": 1,
+      "action": "local_draft",
+      "goals_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "a328b0512b7e54488acce58b9b474bbd680e7f86fc866fc5483fcbcdc0c673ca",
+      "response_sha256": "042ed055f7631104c04aee2a61a43a2759a80159fd233dd4d2de2d5c80c7de4e",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R10",
+      "turn": 1,
+      "action": "local_draft",
+      "goals_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "312bbb260a06436ce3e90cc6f80ff430fecb7c42920bfdce1d38413fa3fd0e4d",
+      "response_sha256": "9368f327f2cf626029d893ba25cafaa016b26d21fce6aa17258536c058586972",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R11",
+      "turn": 1,
+      "action": "local_draft",
+      "goals_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "4f59670bf5ddeeb3db8e201f131eeee24457ffff40f3cf99021ed1e783f0b347",
+      "response_sha256": "135283658620a0a3006c6cdb97667115cb4c60bc5a6d10dc734b3c116425858a",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R12",
+      "turn": 1,
+      "action": "local_draft",
+      "goals_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "02cb028f5d628ac6bb7ff11c8d72ee6baf25aa81abbf21a472747432130287c3",
+      "response_sha256": "b03be7ab30b2b20ad8e1b57500482eb764861717ef890d79cbb7cc55dea9abe7",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R13",
+      "turn": 1,
+      "action": "none",
+      "goals_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "ba807b543387fd59010c1013edbc2c4a8957f18de539c7a434f61c3ca40f1464",
+      "response_sha256": "32b934428661ea08aa604abe400ca48a60b739488881f8456bd127ac2ce9ca75",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "R13",
+      "turn": 2,
+      "action": "local_draft",
+      "goals_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "c6cd14607f5ea7a29d73916c13924dc6d83072e04d8e4546a818373fbc465b23",
+      "response_sha256": "757cd492fa3e297dc4a5432a7d5834da29093c3fb35e75ae3c498cf607cef93f",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R14",
+      "turn": 1,
+      "action": "none",
+      "goals_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "d2fe526251201ced5f98e8ad21d8bedf7c1c27ed44f026dc4b30ebc308d55dea",
+      "response_sha256": "8f734ef1809c6494e70496976adfdf445ff32750738118d23540e35ceaac8679",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "R14",
+      "turn": 2,
+      "action": "local_draft",
+      "goals_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "ddeaf87a0e73840a6e50f4c356bf708a7bcda0eddd4151c5987c17fb821596fa",
+      "response_sha256": "d060b71d7840d94ef21ee74d0f3e48134f02a299a042b5b887989b441881f784",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R15",
+      "turn": 1,
+      "action": "none",
+      "goals_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "0cbd20ed7b2431ce41a1f9be4a4d4283c88606b55d3ddc605fda7e215b7d8cf6",
+      "response_sha256": "6bc80e8f4114899ce95dfb5cc8e3fb815ba0805bc32a98d3c4e065027a718b07",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "R15",
+      "turn": 2,
+      "action": "local_draft",
+      "goals_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "68cd78bbaa98508f29d180a120e33901cae83b5aab896169053c669ab83e20fc",
+      "response_sha256": "f5839cdaf2d2ee96a68618f586261be0b955d9a22994736911e73a915af25408",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R16",
+      "turn": 1,
+      "action": "none",
+      "goals_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "188fa17503fe53cba6ec3573e96f1d9fd3ef9b6e3b347f21a747c5530f4d7400",
+      "response_sha256": "2ddd2fd30c59e5711674542604d4efe8dc5cd5564938723cf8742b83d650ab33",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "R16",
+      "turn": 2,
+      "action": "local_draft",
+      "goals_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "ad06d01cf9f60be7241fccdcee14ee55b1e0b2257b0d24641e523edcb6a4fb8b",
+      "response_sha256": "3505ac876aebb6e5dac4311369a9522dcd17bce1a085a764a70ccc4b02b0c6e7",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    }
+  ],
+  "conditional_skips": [
+    {
+      "case": "R09",
+      "turn": 2,
+      "no_input_record": true,
+      "no_primary_entry": true,
+      "no_call_events": true,
+      "no_prompt_response_files": true
+    },
+    {
+      "case": "R12",
+      "turn": 2,
+      "no_input_record": true,
+      "no_primary_entry": true,
+      "no_call_events": true,
+      "no_prompt_response_files": true
+    }
+  ],
+  "supervisor_lifecycles": [
+    {
+      "case": "R09",
+      "turn": 1,
+      "slot": 1,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R10",
+      "turn": 1,
+      "slot": 2,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R11",
+      "turn": 1,
+      "slot": 3,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R12",
+      "turn": 1,
+      "slot": 4,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R13",
+      "turn": 1,
+      "slot": 5,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R13",
+      "turn": 2,
+      "slot": 6,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R14",
+      "turn": 1,
+      "slot": 7,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R14",
+      "turn": 2,
+      "slot": 8,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R15",
+      "turn": 1,
+      "slot": 9,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R15",
+      "turn": 2,
+      "slot": 10,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R16",
+      "turn": 1,
+      "slot": 11,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R16",
+      "turn": 2,
+      "slot": 12,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    }
+  ],
+  "deadline": {
+    "proof_verified_at": 1791401690.9027221,
+    "proof_expiry_wall": 1791402590.9027221,
+    "closed_at": 1791401935.8127491,
+    "close_margin_seconds": 655.0899729728699,
+    "deadline_monotonic": 899.9836623048398,
+    "last_supervisor_monotonic": 232.126487833
+  },
+  "semantic_review": {
+    "outcome": "No substantiated frozen-oracle mismatch in the saved Japanese request responses.",
+    "observations": [
+      "R10 delegates general thanks without a recipient/contribution prerequisite and does not invent concrete facts or impact.",
+      "R09/R12 take the allowed generic delegation path; conditional follow-ups are not supplied.",
+      "R11 explicitly authorizes fictional meeting content and requires clear fiction/placeholders, not invented real commitments.",
+      "R13-R16 clarify purpose once and then retain supplied facts without further required questions; R15 keeps date/time/location blank.",
+      "All eight local_draft proposed conversational replies are replaced by authoritative host acceptance replies. No Expert draft has been completed."
+    ]
+  },
+  "run_file_sha256": {
+    "R14-2.response.txt": "d060b71d7840d94ef21ee74d0f3e48134f02a299a042b5b887989b441881f784",
+    "R13.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R10.sqlite": "e752f0645b73f87989dcf75db28151b1327b93945d8147fdf309629a6a9a4092",
+    "R09-1.prompt.txt": "a328b0512b7e54488acce58b9b474bbd680e7f86fc866fc5483fcbcdc0c673ca",
+    "R13-2.response.txt": "757cd492fa3e297dc4a5432a7d5834da29093c3fb35e75ae3c498cf607cef93f",
+    "R13.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R12.sqlite": "929e1efc6dbd9d0a69e5c0b741d5a7f0567bec46abe3e9eb05acb29d3bbdd479",
+    "R16.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R16.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R15-2.response.txt": "f5839cdaf2d2ee96a68618f586261be0b955d9a22994736911e73a915af25408",
+    "R15-2.prompt.txt": "68cd78bbaa98508f29d180a120e33901cae83b5aab896169053c669ab83e20fc",
+    "R11.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R16.sqlite": "2b5ad87bd0aa7a3ef24cfd89143bb839e3f47ceb0738b5c0f2aa0590229171c6",
+    "R10-1.prompt.txt": "312bbb260a06436ce3e90cc6f80ff430fecb7c42920bfdce1d38413fa3fd0e4d",
+    "R11.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R11-1.prompt.txt": "4f59670bf5ddeeb3db8e201f131eeee24457ffff40f3cf99021ed1e783f0b347",
+    "R16-1.prompt.txt": "188fa17503fe53cba6ec3573e96f1d9fd3ef9b6e3b347f21a747c5530f4d7400",
+    "R14.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R14-2.prompt.txt": "ddeaf87a0e73840a6e50f4c356bf708a7bcda0eddd4151c5987c17fb821596fa",
+    "R13-2.prompt.txt": "c6cd14607f5ea7a29d73916c13924dc6d83072e04d8e4546a818373fbc465b23",
+    "R14.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R16-2.response.txt": "3505ac876aebb6e5dac4311369a9522dcd17bce1a085a764a70ccc4b02b0c6e7",
+    "R14.sqlite": "7a7935c36f37e9ab1e241d16c6eab9deae7445cf237eb77e1f10d20383d7f887",
+    "R14-1.prompt.txt": "d2fe526251201ced5f98e8ad21d8bedf7c1c27ed44f026dc4b30ebc308d55dea",
+    "R13-1.prompt.txt": "ba807b543387fd59010c1013edbc2c4a8957f18de539c7a434f61c3ca40f1464",
+    "R11.sqlite": "79895500f69e5dcdebdfa56528f8f68c34bd6d7402b6d99d29c5c1063583cb08",
+    "R16-2.prompt.txt": "ad06d01cf9f60be7241fccdcee14ee55b1e0b2257b0d24641e523edcb6a4fb8b",
+    "R10-1.response.txt": "9368f327f2cf626029d893ba25cafaa016b26d21fce6aa17258536c058586972",
+    "journal.jsonl": "e0e657578a26c1dfc32c1b6f8d65d7bca470aad228fe0099d19de66001252864",
+    "R12.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R12-1.prompt.txt": "02cb028f5d628ac6bb7ff11c8d72ee6baf25aa81abbf21a472747432130287c3",
+    "R11-1.response.txt": "135283658620a0a3006c6cdb97667115cb4c60bc5a6d10dc734b3c116425858a",
+    "R15-1.prompt.txt": "0cbd20ed7b2431ce41a1f9be4a4d4283c88606b55d3ddc605fda7e215b7d8cf6",
+    "R13.sqlite": "2d5227fabae8f52946f7d49aca4a9d02ab9fa118cd39b89f0187aba350e5954c",
+    "R12.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R16-1.response.txt": "2ddd2fd30c59e5711674542604d4efe8dc5cd5564938723cf8742b83d650ab33",
+    "R15.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R09-1.response.txt": "042ed055f7631104c04aee2a61a43a2759a80159fd233dd4d2de2d5c80c7de4e",
+    "R14-1.response.txt": "8f734ef1809c6494e70496976adfdf445ff32750738118d23540e35ceaac8679",
+    "R09.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R09.sqlite": "9fab722d056bf4129df61442b3efac1e1ba196a610a5d27ad99022831850b98b",
+    "R15.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R13-1.response.txt": "32b934428661ea08aa604abe400ca48a60b739488881f8456bd127ac2ce9ca75",
+    "R09.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R10.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R12-1.response.txt": "b03be7ab30b2b20ad8e1b57500482eb764861717ef890d79cbb7cc55dea9abe7",
+    "R15.sqlite": "4aed7db640c8b91bec4fea3d46c7d16f32578f0a631aa78eca262b259ad1b9e7",
+    "R15-1.response.txt": "6bc80e8f4114899ce95dfb5cc8e3fb815ba0805bc32a98d3c4e065027a718b07",
+    "R10.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "access_observation": {
+    "path": "runtime/intent-limits-c043-r09-r16-access-observation.json",
+    "sha256": "fa76051b053c690c14763f86f6c0a0ba199e02f999feb3a5f2ff77cac033531e",
+    "metadata_only": true
+  },
+  "scope": {
+    "actual_official_primary_calls": 12,
+    "synthetic_inputs": true,
+    "human_evaluation": false,
+    "qwen_qualification": false,
+    "ui_validation": false,
+    "expert_execution": false,
+    "new_provider_calls_by_audit": 0,
+    "limitations": [
+      "No new provider/auth/browser contact or test rerun.",
+      "Per-run first-attempt evidence is one call per actual input and no resume; other runs were not searched.",
+      "Request recognition PASS is not draft usefulness, UI proof, heldout qualification or milestone completion.",
+      "Previous candidate failures remain retained."
+    ]
+  },
+  "read_only_method": "SQLite mode=ro&immutable=1 after empty-WAL checks; no Store construction; complete run-file hashes unchanged."
+}

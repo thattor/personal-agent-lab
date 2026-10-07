@@ -1,0 +1,1616 @@
+{
+  "schema": "pal-closed-primary-run-audit-v1",
+  "audited_at": 1791401482.613088,
+  "run": "runtime/intent-limits-c043-n01-n24",
+  "auditor": "Astra independent artifact audit",
+  "status": "PASS",
+  "findings": [],
+  "verifier": {
+    "records": 316,
+    "completed": true,
+    "judged_turns": 24,
+    "skipped_turns": 0,
+    "covered_cases": 24,
+    "scope": "live_synthetic",
+    "human_evaluation": false
+  },
+  "candidate": "5ebc46c0c7663f3ddcf73e6bc7fa055791671c27",
+  "product_identity": "content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5",
+  "summary": {
+    "accepted_cases": 24,
+    "actual_calls": 24,
+    "call_cap": 24,
+    "skips": 0,
+    "goals": 0,
+    "worker_attempts": 0,
+    "artifacts": 0,
+    "receipts": 0,
+    "external_task_effects_observed": 0,
+    "source_bound_notes": 1
+  },
+  "checks": {
+    "exact_candidate_cohort_product": true,
+    "completed_once_and_closed": true,
+    "twenty_four_passes_no_skips": true,
+    "exact_24_cases_one_turn_each": true,
+    "no_failure_events": true,
+    "single_attempt_per_input_no_resume": true,
+    "cap_exactly_24": true,
+    "recorded_official_tool_free_route": true,
+    "recorded_access_observation_bound": true,
+    "human_qwen_not_claimed": true,
+    "all_pinned_source_fixture_freeze_hashes_match": true,
+    "canonical_product_identity": true,
+    "all_native_monotonic_events_before_deadline": true,
+    "all_provider_events_inside_wall_proof_window": true,
+    "run_closed_inside_proof_window": true,
+    "N01_supervisor_lifecycle": true,
+    "N01_call_lifecycle": true,
+    "N02_supervisor_lifecycle": true,
+    "N02_call_lifecycle": true,
+    "N03_supervisor_lifecycle": true,
+    "N03_call_lifecycle": true,
+    "N04_supervisor_lifecycle": true,
+    "N04_call_lifecycle": true,
+    "N05_supervisor_lifecycle": true,
+    "N05_call_lifecycle": true,
+    "N06_supervisor_lifecycle": true,
+    "N06_call_lifecycle": true,
+    "N07_supervisor_lifecycle": true,
+    "N07_call_lifecycle": true,
+    "N08_supervisor_lifecycle": true,
+    "N08_call_lifecycle": true,
+    "N09_supervisor_lifecycle": true,
+    "N09_call_lifecycle": true,
+    "N10_supervisor_lifecycle": true,
+    "N10_call_lifecycle": true,
+    "N11_supervisor_lifecycle": true,
+    "N11_call_lifecycle": true,
+    "N12_supervisor_lifecycle": true,
+    "N12_call_lifecycle": true,
+    "N13_supervisor_lifecycle": true,
+    "N13_call_lifecycle": true,
+    "N14_supervisor_lifecycle": true,
+    "N14_call_lifecycle": true,
+    "N15_supervisor_lifecycle": true,
+    "N15_call_lifecycle": true,
+    "N16_supervisor_lifecycle": true,
+    "N16_call_lifecycle": true,
+    "N17_supervisor_lifecycle": true,
+    "N17_call_lifecycle": true,
+    "N18_supervisor_lifecycle": true,
+    "N18_call_lifecycle": true,
+    "N19_supervisor_lifecycle": true,
+    "N19_call_lifecycle": true,
+    "N20_supervisor_lifecycle": true,
+    "N20_call_lifecycle": true,
+    "N21_supervisor_lifecycle": true,
+    "N21_call_lifecycle": true,
+    "N22_supervisor_lifecycle": true,
+    "N22_call_lifecycle": true,
+    "N23_supervisor_lifecycle": true,
+    "N23_call_lifecycle": true,
+    "N24_supervisor_lifecycle": true,
+    "N24_call_lifecycle": true,
+    "consecutive_slots_exact_supervisors": true,
+    "N01_wal_empty": true,
+    "N01_db_integrity": true,
+    "N01_one_settled_turn_two_records": true,
+    "N01_zero_goals_workers_artifacts_task_effects": true,
+    "N01_notes_only_n18": true,
+    "N01-1_authentic_prompt_input": true,
+    "N01-1_no_oracle_fields": true,
+    "N01-1_raw_proposal_host_outcome_reply": true,
+    "N01-1_snapshot": true,
+    "N01-1_frozen_action_goal_oracle": true,
+    "N02_wal_empty": true,
+    "N02_db_integrity": true,
+    "N02_one_settled_turn_two_records": true,
+    "N02_zero_goals_workers_artifacts_task_effects": true,
+    "N02_notes_only_n18": true,
+    "N02-1_authentic_prompt_input": true,
+    "N02-1_no_oracle_fields": true,
+    "N02-1_raw_proposal_host_outcome_reply": true,
+    "N02-1_snapshot": true,
+    "N02-1_frozen_action_goal_oracle": true,
+    "N03_wal_empty": true,
+    "N03_db_integrity": true,
+    "N03_one_settled_turn_two_records": true,
+    "N03_zero_goals_workers_artifacts_task_effects": true,
+    "N03_notes_only_n18": true,
+    "N03-1_authentic_prompt_input": true,
+    "N03-1_no_oracle_fields": true,
+    "N03-1_raw_proposal_host_outcome_reply": true,
+    "N03-1_snapshot": true,
+    "N03-1_frozen_action_goal_oracle": true,
+    "N04_wal_empty": true,
+    "N04_db_integrity": true,
+    "N04_one_settled_turn_two_records": true,
+    "N04_zero_goals_workers_artifacts_task_effects": true,
+    "N04_notes_only_n18": true,
+    "N04-1_authentic_prompt_input": true,
+    "N04-1_no_oracle_fields": true,
+    "N04-1_raw_proposal_host_outcome_reply": true,
+    "N04-1_snapshot": true,
+    "N04-1_frozen_action_goal_oracle": true,
+    "N05_wal_empty": true,
+    "N05_db_integrity": true,
+    "N05_one_settled_turn_two_records": true,
+    "N05_zero_goals_workers_artifacts_task_effects": true,
+    "N05_notes_only_n18": true,
+    "N05-1_authentic_prompt_input": true,
+    "N05-1_no_oracle_fields": true,
+    "N05-1_raw_proposal_host_outcome_reply": true,
+    "N05-1_snapshot": true,
+    "N05-1_frozen_action_goal_oracle": true,
+    "N06_wal_empty": true,
+    "N06_db_integrity": true,
+    "N06_one_settled_turn_two_records": true,
+    "N06_zero_goals_workers_artifacts_task_effects": true,
+    "N06_notes_only_n18": true,
+    "N06-1_authentic_prompt_input": true,
+    "N06-1_no_oracle_fields": true,
+    "N06-1_raw_proposal_host_outcome_reply": true,
+    "N06-1_snapshot": true,
+    "N06-1_frozen_action_goal_oracle": true,
+    "N07_wal_empty": true,
+    "N07_db_integrity": true,
+    "N07_one_settled_turn_two_records": true,
+    "N07_zero_goals_workers_artifacts_task_effects": true,
+    "N07_notes_only_n18": true,
+    "N07-1_authentic_prompt_input": true,
+    "N07-1_no_oracle_fields": true,
+    "N07-1_raw_proposal_host_outcome_reply": true,
+    "N07-1_snapshot": true,
+    "N07-1_frozen_action_goal_oracle": true,
+    "N08_wal_empty": true,
+    "N08_db_integrity": true,
+    "N08_one_settled_turn_two_records": true,
+    "N08_zero_goals_workers_artifacts_task_effects": true,
+    "N08_notes_only_n18": true,
+    "N08-1_authentic_prompt_input": true,
+    "N08-1_no_oracle_fields": true,
+    "N08-1_raw_proposal_host_outcome_reply": true,
+    "N08-1_snapshot": true,
+    "N08-1_frozen_action_goal_oracle": true,
+    "N09_wal_empty": true,
+    "N09_db_integrity": true,
+    "N09_one_settled_turn_two_records": true,
+    "N09_zero_goals_workers_artifacts_task_effects": true,
+    "N09_notes_only_n18": true,
+    "N09-1_authentic_prompt_input": true,
+    "N09-1_no_oracle_fields": true,
+    "N09-1_raw_proposal_host_outcome_reply": true,
+    "N09-1_snapshot": true,
+    "N09-1_frozen_action_goal_oracle": true,
+    "N10_wal_empty": true,
+    "N10_db_integrity": true,
+    "N10_one_settled_turn_two_records": true,
+    "N10_zero_goals_workers_artifacts_task_effects": true,
+    "N10_notes_only_n18": true,
+    "N10-1_authentic_prompt_input": true,
+    "N10-1_no_oracle_fields": true,
+    "N10-1_raw_proposal_host_outcome_reply": true,
+    "N10-1_snapshot": true,
+    "N10-1_frozen_action_goal_oracle": true,
+    "N11_wal_empty": true,
+    "N11_db_integrity": true,
+    "N11_one_settled_turn_two_records": true,
+    "N11_zero_goals_workers_artifacts_task_effects": true,
+    "N11_notes_only_n18": true,
+    "N11-1_authentic_prompt_input": true,
+    "N11-1_no_oracle_fields": true,
+    "N11-1_raw_proposal_host_outcome_reply": true,
+    "N11-1_snapshot": true,
+    "N11-1_frozen_action_goal_oracle": true,
+    "N12_wal_empty": true,
+    "N12_db_integrity": true,
+    "N12_one_settled_turn_two_records": true,
+    "N12_zero_goals_workers_artifacts_task_effects": true,
+    "N12_notes_only_n18": true,
+    "N12-1_authentic_prompt_input": true,
+    "N12-1_no_oracle_fields": true,
+    "N12-1_raw_proposal_host_outcome_reply": true,
+    "N12-1_snapshot": true,
+    "N12-1_frozen_action_goal_oracle": true,
+    "N13_wal_empty": true,
+    "N13_db_integrity": true,
+    "N13_one_settled_turn_two_records": true,
+    "N13_zero_goals_workers_artifacts_task_effects": true,
+    "N13_notes_only_n18": true,
+    "N13-1_authentic_prompt_input": true,
+    "N13-1_no_oracle_fields": true,
+    "N13-1_raw_proposal_host_outcome_reply": true,
+    "N13-1_snapshot": true,
+    "N13-1_frozen_action_goal_oracle": true,
+    "N14_wal_empty": true,
+    "N14_db_integrity": true,
+    "N14_one_settled_turn_two_records": true,
+    "N14_zero_goals_workers_artifacts_task_effects": true,
+    "N14_notes_only_n18": true,
+    "N14-1_authentic_prompt_input": true,
+    "N14-1_no_oracle_fields": true,
+    "N14-1_raw_proposal_host_outcome_reply": true,
+    "N14-1_snapshot": true,
+    "N14-1_frozen_action_goal_oracle": true,
+    "N15_wal_empty": true,
+    "N15_db_integrity": true,
+    "N15_one_settled_turn_two_records": true,
+    "N15_zero_goals_workers_artifacts_task_effects": true,
+    "N15_notes_only_n18": true,
+    "N15-1_authentic_prompt_input": true,
+    "N15-1_no_oracle_fields": true,
+    "N15-1_raw_proposal_host_outcome_reply": true,
+    "N15-1_snapshot": true,
+    "N15-1_frozen_action_goal_oracle": true,
+    "N16_wal_empty": true,
+    "N16_db_integrity": true,
+    "N16_one_settled_turn_two_records": true,
+    "N16_zero_goals_workers_artifacts_task_effects": true,
+    "N16_notes_only_n18": true,
+    "N16-1_authentic_prompt_input": true,
+    "N16-1_no_oracle_fields": true,
+    "N16-1_raw_proposal_host_outcome_reply": true,
+    "N16-1_snapshot": true,
+    "N16-1_frozen_action_goal_oracle": true,
+    "N17_wal_empty": true,
+    "N17_db_integrity": true,
+    "N17_one_settled_turn_two_records": true,
+    "N17_zero_goals_workers_artifacts_task_effects": true,
+    "N17_notes_only_n18": true,
+    "N17-1_authentic_prompt_input": true,
+    "N17-1_no_oracle_fields": true,
+    "N17-1_raw_proposal_host_outcome_reply": true,
+    "N17-1_snapshot": true,
+    "N17-1_frozen_action_goal_oracle": true,
+    "N18_wal_empty": true,
+    "N18_db_integrity": true,
+    "N18_one_settled_turn_two_records": true,
+    "N18_zero_goals_workers_artifacts_task_effects": true,
+    "N18_notes_only_n18": true,
+    "N18-1_authentic_prompt_input": true,
+    "N18-1_no_oracle_fields": true,
+    "N18-1_raw_proposal_host_outcome_reply": true,
+    "N18-1_snapshot": true,
+    "N18-1_frozen_action_goal_oracle": true,
+    "N18_original_source_memory_exact": true,
+    "N19_wal_empty": true,
+    "N19_db_integrity": true,
+    "N19_one_settled_turn_two_records": true,
+    "N19_zero_goals_workers_artifacts_task_effects": true,
+    "N19_notes_only_n18": true,
+    "N19-1_authentic_prompt_input": true,
+    "N19-1_no_oracle_fields": true,
+    "N19-1_raw_proposal_host_outcome_reply": true,
+    "N19-1_snapshot": true,
+    "N19-1_frozen_action_goal_oracle": true,
+    "N20_wal_empty": true,
+    "N20_db_integrity": true,
+    "N20_one_settled_turn_two_records": true,
+    "N20_zero_goals_workers_artifacts_task_effects": true,
+    "N20_notes_only_n18": true,
+    "N20-1_authentic_prompt_input": true,
+    "N20-1_no_oracle_fields": true,
+    "N20-1_raw_proposal_host_outcome_reply": true,
+    "N20-1_snapshot": true,
+    "N20-1_frozen_action_goal_oracle": true,
+    "N21_wal_empty": true,
+    "N21_db_integrity": true,
+    "N21_one_settled_turn_two_records": true,
+    "N21_zero_goals_workers_artifacts_task_effects": true,
+    "N21_notes_only_n18": true,
+    "N21-1_authentic_prompt_input": true,
+    "N21-1_no_oracle_fields": true,
+    "N21-1_raw_proposal_host_outcome_reply": true,
+    "N21-1_snapshot": true,
+    "N21-1_frozen_action_goal_oracle": true,
+    "N22_wal_empty": true,
+    "N22_db_integrity": true,
+    "N22_one_settled_turn_two_records": true,
+    "N22_zero_goals_workers_artifacts_task_effects": true,
+    "N22_notes_only_n18": true,
+    "N22-1_authentic_prompt_input": true,
+    "N22-1_no_oracle_fields": true,
+    "N22-1_raw_proposal_host_outcome_reply": true,
+    "N22-1_snapshot": true,
+    "N22-1_frozen_action_goal_oracle": true,
+    "N23_wal_empty": true,
+    "N23_db_integrity": true,
+    "N23_one_settled_turn_two_records": true,
+    "N23_zero_goals_workers_artifacts_task_effects": true,
+    "N23_notes_only_n18": true,
+    "N23-1_authentic_prompt_input": true,
+    "N23-1_no_oracle_fields": true,
+    "N23-1_raw_proposal_host_outcome_reply": true,
+    "N23-1_snapshot": true,
+    "N23-1_frozen_action_goal_oracle": true,
+    "N24_wal_empty": true,
+    "N24_db_integrity": true,
+    "N24_one_settled_turn_two_records": true,
+    "N24_zero_goals_workers_artifacts_task_effects": true,
+    "N24_notes_only_n18": true,
+    "N24-1_authentic_prompt_input": true,
+    "N24-1_no_oracle_fields": true,
+    "N24-1_raw_proposal_host_outcome_reply": true,
+    "N24-1_snapshot": true,
+    "N24-1_frozen_action_goal_oracle": true,
+    "all_run_files_unchanged": true
+  },
+  "event_counts": {
+    "run.opened": 1,
+    "fixture.verified": 24,
+    "operator.config": 1,
+    "snapshot.verified": 24,
+    "prompt.built": 24,
+    "permit.granted": 24,
+    "call.started": 24,
+    "native.supervisor.started": 48,
+    "native.supervisor.finished": 48,
+    "proposal.received": 24,
+    "call.returned": 24,
+    "turn.captured": 24,
+    "turn.judged": 24,
+    "qualification.finished": 1,
+    "run.closed": 1
+  },
+  "deadline": {
+    "proof_verified_at": 1791400577.828894,
+    "proof_expiry_wall": 1791401477.828894,
+    "closed_at": 1791401238.05654,
+    "close_margin_seconds": 239.77235388755798,
+    "deadline_monotonic": 881.1040785503615,
+    "last_supervisor_monotonic": 621.275387583,
+    "monotonic_margin_seconds": 259.82869096736147
+  },
+  "first_attempt_scope": "Within this closed run every planned input has exactly one ordered call, proposal, host result and PASS judgment; no resume, retry, skip, or extra supervisor generation exists. Other run directories were not searched.",
+  "databases": [
+    {
+      "case": "N01",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N02",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N03",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N04",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N05",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N06",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N07",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N08",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N09",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N10",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N11",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N12",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N13",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N14",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N15",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N16",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N17",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N18",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 1
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N19",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N20",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N21",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N22",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N23",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    },
+    {
+      "case": "N24",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 0,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "wal_bytes": 0
+    }
+  ],
+  "turns": [
+    {
+      "case": "N01",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "e7f67a8b77cd9a9e77561df7dfcf84eaf2278c7169eacbbd6214bd6c38f9e545",
+      "response_sha256": "961ada8cdeefc51caf0df50de1f84919c6b4ae71bd6fe310333e26f50cb84748",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N02",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "30ace7aacba6862602a2c774cd46e42d7de74b35bf39ad2784e40fd44aa6e4b7",
+      "response_sha256": "f31340a75727b74e17c092e9c910de404cf9f2bb3054ab4430ebd0ca90ff19fa",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N03",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "4dcbe90da9f213c9f5d1f9bdee09d7e6c0455b86e19ddf2dd7e812b241a4c832",
+      "response_sha256": "fd6531f013b3919a15ebd96576e538c1640f5283ce981f0ac8e4f725e291532d",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N04",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "6f68fdbba9e0e1c56636e3b717d9e6b90693017c4f6ef723ca76c926b92b3a62",
+      "response_sha256": "a2751146ad2bb348018cdafe572563f6acb8a536997fb5becd5abd5fe36b4274",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N05",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "f9dbcdc33a9bc51cb5235be5bebd11638f7fa5b34230d215e5d06d9e198542fb",
+      "response_sha256": "c5e55c16878e526aedf393fcd09f993d1feaacec89b4ae1a34edad99678d92c1",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N06",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "a1fef54f75e3f94dba1fdfd5c351fc6d547f7f5dac269bfaf3157ee1a6fb2cce",
+      "response_sha256": "c95d311b3292156798078abb7faad33c0d2e6cda7fd7a1b4228809945d6d98eb",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N07",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "e56461bbdd6c87b6ad56f4026f5104360eef6fa62969322023cb87752632f4fd",
+      "response_sha256": "a642c461810e296e5f461430e9eb1dfc98624159ce1dfd7917eb309a87e438df",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N08",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "6b2633599eeb3b22819dd47bdc85ee1c92b89b1cae7a9ba29c7892abf8b06f26",
+      "response_sha256": "d725694de66491fb9df94c516510fbfaf0231bdce7e519987888d982345745f6",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N09",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "cc3afdaed88101fc9214b6e4dc9bde83fa8d4448912c8819f180344f036707c1",
+      "response_sha256": "2c363816d6098e3447cc47fbb1aac42ecf8f021ac4c185f3325b8a318d2182d4",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N10",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "894a22a49a5be552df831b00a20be0fb6460721dbfa28bfa44490abfdbdee46d",
+      "response_sha256": "69d1ccaf171974585dcda9fd93b341cadfb77d7b7bf15b1938e3e9d1d1719738",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N11",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "c4248f4f795fd003ee423d2d372399d3146ff01831ee72087d6094b4fa727b3c",
+      "response_sha256": "4d3bd5875804048538837a4999c76039cdf93f9efc64058d5336bf3fddfe68a8",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N12",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "9b4ecc552dd6cc8219980cd84d4d7c60b5fb5dd91f57525b09d71b2941052801",
+      "response_sha256": "a60005c3edac8604b893f931b192abe4556817dde0b330407d932e73397487c8",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N13",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "cdddba50ec6e97281deee568fb2c535d7186398acbfaeb2970acc0d1466abd10",
+      "response_sha256": "c65223557bbfe79a5be43b25a385bec780403bac08b3d67bba8ceefe113c7d0a",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N14",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "12fe617cef868a81fa3e468e0b00283bd971c62194a5d1f78ac7c9add11342a8",
+      "response_sha256": "05f92f4657c5e4feacabed97ea7c5d121ddc4bbf563957c9464375f053ba72dc",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N15",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "85bcf8d17cb55db8e6f151efcddc30399dc0777c2205a9afab033d377cb8e35a",
+      "response_sha256": "eff5ec18e8a1e3ce0e4ec616087bc16d4651db327a0f33a5f4111c8be6fe1ed2",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N16",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "234a05b0635e765fab76bc59fa8d49884aca76d190e1aef06ce03bbec8ea4613",
+      "response_sha256": "60c43b191da3d047e4de2af70d1315653da5130c8d3f0ba01bda0e2b7b899b95",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N17",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "75484db2060a37edcdd1eb5e355f9e759eabbeb226a4e2d3b62a119da529c761",
+      "response_sha256": "deafed60d3dbfa2b8d18e3e2c95cbd6f515fa7185f9169579a0e6d852bcb153e",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N18",
+      "action": "remember",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "8c5e2a6792b792287e1968a3037e3019a98e9280f2a0c1bdcf782eed7428ca5f",
+      "response_sha256": "b5afcc1550bf3fd56a648b940f4fcb341d061bb8526d671b01a50ffc7bc4c758",
+      "stored_reply_authority": "host_remember_acknowledgment"
+    },
+    {
+      "case": "N19",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "23c3651f1d99cab287ec5a7967e64e2c6ad17b28353d7f882e73f3d34365120d",
+      "response_sha256": "095197e575842b40ca2494102b7793c2a5163796b7e322063c56221695511a1a",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N20",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "43f87f68401ed71a22450aca012d7052ff067ab323d8b426c94464366a2ff5eb",
+      "response_sha256": "ffe9b4b8f7c0a8ad5e364e76a43028b31e38c29eb9351d53ed646a376228e726",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N21",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "75a8a605bd6a53540e735b5aff67aa02b0acd719454002a06c51168236469adf",
+      "response_sha256": "37fa4cc0f08f1cb2d92feaa35471ee7cb4b082b0ebeb7183e59ffa2119a27cd5",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N22",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "6e83f94c9a146bed762f61b21eb11a5241a16585777ee53ed7e6e86adce55574",
+      "response_sha256": "6744a41a0068d2fb2e91a711169e93ebd45b510429867a3a7013ca9988e8aeef",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N23",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "fcd93132e9fd813e78327861a1b85bce3ae38a41cdb6b4d6aae82a35a4239863",
+      "response_sha256": "7040bfe06db2605279529d42ec9e5155328d1d85b0a16bcb3ff34457567615b8",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "N24",
+      "action": "none",
+      "frozen_action_goal_oracle_match": true,
+      "host_status": "complete",
+      "goals_after": 0,
+      "prompt_sha256": "14ad17025416ca47102884163e72fdbd6efc4bab8f4242aca70abb1916a6bd3c",
+      "response_sha256": "4a6faa58b34764cd5b756126305fad633e645e7fad8f56e3519219440106c42b",
+      "stored_reply_authority": "model_none_reply"
+    }
+  ],
+  "call_and_supervisor_lifecycles": [
+    {
+      "case": "N01",
+      "slot": 1,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N02",
+      "slot": 2,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N03",
+      "slot": 3,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N04",
+      "slot": 4,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N05",
+      "slot": 5,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N06",
+      "slot": 6,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N07",
+      "slot": 7,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N08",
+      "slot": 8,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N09",
+      "slot": 9,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N10",
+      "slot": 10,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N11",
+      "slot": 11,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N12",
+      "slot": 12,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N13",
+      "slot": 13,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N14",
+      "slot": 14,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N15",
+      "slot": 15,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N16",
+      "slot": 16,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N17",
+      "slot": 17,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N18",
+      "slot": 18,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N19",
+      "slot": 19,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N20",
+      "slot": 20,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N21",
+      "slot": 21,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N22",
+      "slot": 22,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N23",
+      "slot": 23,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "N24",
+      "slot": 24,
+      "call_bound": true,
+      "supervisor_bound": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    }
+  ],
+  "remembered_source": {
+    "case": "N18",
+    "source_record_id": "a93f4d6c4d3c40d8a591935221c8bc0e",
+    "source_role": "user",
+    "source_content": "覚えておいて。下書きを作成する予定です。",
+    "note_content": "覚えておいて。下書きを作成する予定です。",
+    "note_source_ids": [
+      "a93f4d6c4d3c40d8a591935221c8bc0e"
+    ],
+    "canonical_reply": "入力された情報を記憶しました。 / Your information was remembered."
+  },
+  "run_file_sha256": {
+    "N11.sqlite": "e14fea14d0c29bc9bb5796162efc390f552412c0e97662468c6132c2bd352ac3",
+    "N19-1.prompt.txt": "23c3651f1d99cab287ec5a7967e64e2c6ad17b28353d7f882e73f3d34365120d",
+    "N09-1.response.txt": "2c363816d6098e3447cc47fbb1aac42ecf8f021ac4c185f3325b8a318d2182d4",
+    "N03.sqlite": "49331eb7edc89a92ec4c8ae00bef9b568e4fc85c649aa0b573ab8177a5d1b85e",
+    "N04.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N09.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N14-1.response.txt": "05f92f4657c5e4feacabed97ea7c5d121ddc4bbf563957c9464375f053ba72dc",
+    "N01-1.response.txt": "961ada8cdeefc51caf0df50de1f84919c6b4ae71bd6fe310333e26f50cb84748",
+    "N18.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N15.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N22.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N09.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N04.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N15.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N18.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N22.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N06-1.response.txt": "c95d311b3292156798078abb7faad33c0d2e6cda7fd7a1b4228809945d6d98eb",
+    "N13-1.response.txt": "c65223557bbfe79a5be43b25a385bec780403bac08b3d67bba8ceefe113c7d0a",
+    "N12-1.response.txt": "a60005c3edac8604b893f931b192abe4556817dde0b330407d932e73397487c8",
+    "N07-1.response.txt": "a642c461810e296e5f461430e9eb1dfc98624159ce1dfd7917eb309a87e438df",
+    "N01.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N18-1.prompt.txt": "8c5e2a6792b792287e1968a3037e3019a98e9280f2a0c1bdcf782eed7428ca5f",
+    "N10.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N01.sqlite": "93bcea3092e96eaa90f966c04f6bb6b0defdbdd2bcf83773143b3fdd980721b1",
+    "N15-1.response.txt": "eff5ec18e8a1e3ce0e4ec616087bc16d4651db327a0f33a5f4111c8be6fe1ed2",
+    "N01.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N13.sqlite": "71492aa5080fdf3164334b2b83d0971289f5a0fa125580cbfe6184419139a6b3",
+    "N10.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N08-1.response.txt": "d725694de66491fb9df94c516510fbfaf0231bdce7e519987888d982345745f6",
+    "N02-1.response.txt": "f31340a75727b74e17c092e9c910de404cf9f2bb3054ab4430ebd0ca90ff19fa",
+    "N17-1.response.txt": "deafed60d3dbfa2b8d18e3e2c95cbd6f515fa7185f9169579a0e6d852bcb153e",
+    "N20.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N17.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N24-1.prompt.txt": "14ad17025416ca47102884163e72fdbd6efc4bab8f4242aca70abb1916a6bd3c",
+    "N23-1.prompt.txt": "fcd93132e9fd813e78327861a1b85bce3ae38a41cdb6b4d6aae82a35a4239863",
+    "N06.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N15-1.prompt.txt": "85bcf8d17cb55db8e6f151efcddc30399dc0777c2205a9afab033d377cb8e35a",
+    "N20.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N17.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N12-1.prompt.txt": "9b4ecc552dd6cc8219980cd84d4d7c60b5fb5dd91f57525b09d71b2941052801",
+    "N10-1.response.txt": "69d1ccaf171974585dcda9fd93b341cadfb77d7b7bf15b1938e3e9d1d1719738",
+    "N05-1.response.txt": "c5e55c16878e526aedf393fcd09f993d1feaacec89b4ae1a34edad99678d92c1",
+    "N21.sqlite": "cc49276869c8e838c26c62387d99f65e31bcc623581d73c9aede2e66ff8831c2",
+    "N06.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N07-1.prompt.txt": "e56461bbdd6c87b6ad56f4026f5104360eef6fa62969322023cb87752632f4fd",
+    "N17.sqlite": "fd956289bb22429c32d5eb0ed5b6c38f053d186d2167ae67c5e92403d2f6f1d3",
+    "N18-1.response.txt": "b5afcc1550bf3fd56a648b940f4fcb341d061bb8526d671b01a50ffc7bc4c758",
+    "N09.sqlite": "444b9816fe45b1fe511b18dd63d83c1eb74240bce7dc373948543cae1b48e5f0",
+    "N05.sqlite": "839143490606cfec0ac206f56864f2108da19088946ba12dcc9697ab038fa131",
+    "N19-1.response.txt": "095197e575842b40ca2494102b7793c2a5163796b7e322063c56221695511a1a",
+    "N22-1.prompt.txt": "6e83f94c9a146bed762f61b21eb11a5241a16585777ee53ed7e6e86adce55574",
+    "N23.sqlite": "d055dbb402e0cd9ea68247a439c93f48d262793fd37381c45138cf241520d5ef",
+    "N12.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N19.sqlite": "636fc36c27eeafc7444a1dc4f6ba98aa50ef28813454b2755e998711cfcf3152",
+    "N07.sqlite": "4cf49e0062a9c58da1a7098cb1893f2c62e6cd85acc90eb7e67fc643314f42bc",
+    "N03.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N04-1.response.txt": "a2751146ad2bb348018cdafe572563f6acb8a536997fb5becd5abd5fe36b4274",
+    "N11-1.response.txt": "4d3bd5875804048538837a4999c76039cdf93f9efc64058d5336bf3fddfe68a8",
+    "N15.sqlite": "08ec1818706417fcd1f4853c4b13dec82d0990dbef6ddf9d0f280f2e864753f0",
+    "N01-1.prompt.txt": "e7f67a8b77cd9a9e77561df7dfcf84eaf2278c7169eacbbd6214bd6c38f9e545",
+    "N12.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N06-1.prompt.txt": "a1fef54f75e3f94dba1fdfd5c351fc6d547f7f5dac269bfaf3157ee1a6fb2cce",
+    "N13-1.prompt.txt": "cdddba50ec6e97281deee568fb2c535d7186398acbfaeb2970acc0d1466abd10",
+    "N14-1.prompt.txt": "12fe617cef868a81fa3e468e0b00283bd971c62194a5d1f78ac7c9add11342a8",
+    "N03.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N16-1.response.txt": "60c43b191da3d047e4de2af70d1315653da5130c8d3f0ba01bda0e2b7b899b95",
+    "N03-1.response.txt": "fd6531f013b3919a15ebd96576e538c1640f5283ce981f0ac8e4f725e291532d",
+    "N20-1.prompt.txt": "43f87f68401ed71a22450aca012d7052ff067ab323d8b426c94464366a2ff5eb",
+    "N11.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N22-1.response.txt": "6744a41a0068d2fb2e91a711169e93ebd45b510429867a3a7013ca9988e8aeef",
+    "N04-1.prompt.txt": "6f68fdbba9e0e1c56636e3b717d9e6b90693017c4f6ef723ca76c926b92b3a62",
+    "N03-1.prompt.txt": "4dcbe90da9f213c9f5d1f9bdee09d7e6c0455b86e19ddf2dd7e812b241a4c832",
+    "N10.sqlite": "0bbd0958c0d8f3eff0ceacc59dcf85008d2ffa6964fc7a8a5452544520744823",
+    "journal.jsonl": "d6622281f155be06d42c92d25a9df7adf21ac8f6b3cc2d29807c9ac58c4bdbad",
+    "N16-1.prompt.txt": "234a05b0635e765fab76bc59fa8d49884aca76d190e1aef06ce03bbec8ea4613",
+    "N02.sqlite": "b0edc8efc5600e8103395c37e6e15cb17ed42d361ebaec4f67c7c8a8e290f0bc",
+    "N11-1.prompt.txt": "c4248f4f795fd003ee423d2d372399d3146ff01831ee72087d6094b4fa727b3c",
+    "N11.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N05.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N08.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N24.sqlite": "02fee95fcb6afd339ab16d77e2ca69d44720ae25829e5330e7da72f7d99d6f09",
+    "N24-1.response.txt": "4a6faa58b34764cd5b756126305fad633e645e7fad8f56e3519219440106c42b",
+    "N19.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N14.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N23.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N21-1.prompt.txt": "75a8a605bd6a53540e735b5aff67aa02b0acd719454002a06c51168236469adf",
+    "N12.sqlite": "cc9836bd84111b91cd082c337711e3121498f5e611ae7281ded1a7bf3be71212",
+    "N23-1.response.txt": "7040bfe06db2605279529d42ec9e5155328d1d85b0a16bcb3ff34457567615b8",
+    "N08.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N05.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N10-1.prompt.txt": "894a22a49a5be552df831b00a20be0fb6460721dbfa28bfa44490abfdbdee46d",
+    "N17-1.prompt.txt": "75484db2060a37edcdd1eb5e355f9e759eabbeb226a4e2d3b62a119da529c761",
+    "N02-1.prompt.txt": "30ace7aacba6862602a2c774cd46e42d7de74b35bf39ad2784e40fd44aa6e4b7",
+    "N14.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N19.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N23.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N05-1.prompt.txt": "f9dbcdc33a9bc51cb5235be5bebd11638f7fa5b34230d215e5d06d9e198542fb",
+    "N08.sqlite": "c6cad664b807e5abe1ba89cae178b406990b402dc30151a34cfaad9fd44b9189",
+    "N13.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N24.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N16.sqlite": "5a50711f7f491214600dffdbde4e923241e37b522ba062f571b57aac751d9dea",
+    "N21-1.response.txt": "37fa4cc0f08f1cb2d92feaa35471ee7cb4b082b0ebeb7183e59ffa2119a27cd5",
+    "N04.sqlite": "e1285abb5980297d4dfda26e9af2eda7ed271262cf2ce9450e127b81afe5af6a",
+    "N08-1.prompt.txt": "6b2633599eeb3b22819dd47bdc85ee1c92b89b1cae7a9ba29c7892abf8b06f26",
+    "N02.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N20.sqlite": "778e5ee6dfd4c30fad6976a4c8f0399f2d3f54fdade7badf169f89ecefebafa6",
+    "N13.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N24.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N02.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N21.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N16.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "N07.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N09-1.prompt.txt": "cc3afdaed88101fc9214b6e4dc9bde83fa8d4448912c8819f180344f036707c1",
+    "N06.sqlite": "fed745e0b682a0052bfa58c976faf6298ac79015f35078fd39dccfdfdf9233cf",
+    "N18.sqlite": "679bc1826ca27e90393be27964b021e868231107e2588c585bc66efd0f43a0a1",
+    "N14.sqlite": "495fdae4604dc33bcf81ed8bd5ce5535d29c4cbcc8b7ec6a048060d5ad332624",
+    "N21.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N16.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "N20-1.response.txt": "ffe9b4b8f7c0a8ad5e364e76a43028b31e38c29eb9351d53ed646a376228e726",
+    "N22.sqlite": "1d3452fa006a65849308232edac798ce47cea049223ff789c5f623e5e1e1babb",
+    "N07.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+  },
+  "access_observation": {
+    "path": "runtime/intent-limits-c043-n01-n24-access-observation.json",
+    "sha256": "8200631aaa682143966139bf70c82d9bf587adaeaf28dd96a20eabc52425271c",
+    "checked_as_recorded_metadata_only": true
+  },
+  "semantic_review": {
+    "outcome": "No substantiated frozen-oracle mismatch in the 24 saved responses.",
+    "observations": [
+      "N17 now selects none and creates no Goal; the earlier C041 failure is not rescored.",
+      "N22-N24 explicitly explain unavailable sending and do not partially delegate; earlier C039 failure remains retained.",
+      "N18 remembers the exact offered original user source, with one host-authoritative note and no Goal.",
+      "N14 acknowledges postponement without the earlier now/later re-question.",
+      "N17 wording I have noted is assessed as conversational acknowledgment backed by the stored conversation, not proof of durable note creation: N17 notes count is zero."
+    ]
+  },
+  "scope": {
+    "synthetic_inputs": true,
+    "actual_official_primary_calls": 24,
+    "human_evaluation": false,
+    "qwen_qualification": false,
+    "ui_validation": false,
+    "expert_execution": false,
+    "new_provider_calls_by_audit": 0,
+    "limitations": [
+      "Retained artifacts and recorded access metadata were audited; no provider/auth/browser contact or fresh billing check.",
+      "Finite first-attempt negative-corpus PASS does not establish request recall, independent-heldout behavior, run-to-run reliability, UI usefulness, or milestone completion.",
+      "Service model revision is not exposed."
+    ]
+  },
+  "read_only_method": "SQLite mode=ro&immutable=1 after checking all WAL files empty; no Store construction; before/after hashes cover every run file."
+}

@@ -1,0 +1,1 @@
+{"reply":"I can't send emails, so I'm not able to do that. I also don't see an email in our conversation yet. If you'd like, share the content or tell me what it's about, and I can prepare a local draft for you to send yourself.","action":{"kind":"none"}}

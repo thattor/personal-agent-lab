@@ -1,0 +1,1 @@
+{"reply":"Got it, I'll hold off on the invitation draft for now. Just let me know when you'd like me to put it together.","action":{"kind":"none"}}

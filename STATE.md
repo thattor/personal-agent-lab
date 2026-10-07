@@ -10,7 +10,7 @@ Hierarchy and goal/evaluation loops configured: ACTIVE [milestone1](https://gith
 
 D-028 withdraws HR-INPUT-001/P003v1 form-only/wording approval, preserving the wrong-target defect for development. HR-STABLE1-001 is one actual end-to-end usefulness evaluation after a working candidate, not an implementation blocker. No pending micro-question. The persistent human window received the correction. D-029 assigns semantic intent/target selection/essential clarification to the Primary model, with host canonical/security/dedupe checks. Owner reference model is Qwen3.8-27B; model identity verified, actual PAL qualification NOT_RUN, no new connection installed. See [cause, authentic sources and reviews](evidence/reviews/judgment-boundary/README.md).
 
-Historical Issue3 recognition under D-023 passed N1-01/N1-02 with [fixed corpus, original failures and independent evaluations](evidence/reviews/stable1-classification/README.md): frozen16/16 requests, zero unwanted Goals; final unseen12 zero false-positive Goals and3/4 request recall. Known safe miss: `草案` request remained conversation. [73-test full suite PASS](evidence/reviews/stable1-classification/final-full.txt), [96-case actual host/dedupe audit](evidence/reviews/stable1-classification/final-host-audit.json). These lexical results do not qualify current D-029 Primary recognition: N1-01/D029 predecessor candidates FAIL and C042 revalidation pending; N1-02 old-candidate independent Goal recognition PASS, new-candidate revalidation pending. Checkpoint C-001 in docs/plans/CHECKPOINTS.md. Issue4 D-024 implements schema2, bounded natural controls, durable target selections/source gates and UI buttons; N1-03/N1-04 PASS with [synthetic host/crash/HTTP evidence](evidence/reviews/stable1-targets/README.md), [91 full tests PASS](evidence/reviews/stable1-targets/selection-final-full.txt). N1-05/06 PASS, N1-07 FEEDBACK_RECEIVED, N1-08 NOT_RUN. Latest actual-provider evidence and remaining gates are recorded below.
+Historical Issue3 recognition under D-023 passed N1-01/N1-02 with [fixed corpus, original failures and independent evaluations](evidence/reviews/stable1-classification/README.md): frozen16/16 requests, zero unwanted Goals; final unseen12 zero false-positive Goals and3/4 request recall. Known safe miss: `草案` request remained conversation. [73-test full suite PASS](evidence/reviews/stable1-classification/final-full.txt), [96-case actual host/dedupe audit](evidence/reviews/stable1-classification/final-host-audit.json). These lexical results do not qualify current D-029 Primary recognition: N1-01/D029 current fixed40 first attempts PASS after retained predecessor FAILs; N1-02 current independent12 PASS with independent audit. Checkpoint C-001 in docs/plans/CHECKPOINTS.md. Issue4 D-024 implements schema2, bounded natural controls, durable target selections/source gates and UI buttons; N1-03/N1-04 PASS with [synthetic host/crash/HTTP evidence](evidence/reviews/stable1-targets/README.md), [91 full tests PASS](evidence/reviews/stable1-targets/selection-final-full.txt). N1-05/06 PASS, N1-07 FEEDBACK_RECEIVED, N1-08 NOT_RUN. Latest actual-provider evidence and remaining gates are recorded below.
 
 Stable-0 remains functional-first complete: all20 required S0/F0 rows PASS, authentic human usefulness evaluation reflected, final66 tests and controller audit PASS, master Issue#1 CLOSED/completed. Version `stable-0`, production baseline ccfba35. [Completion receipt](evidence/final/stable0/completion.json), [proof and limitations](evidence/final/stable0/README.md). Historical S0-13 stays NOT PASS/nonrequired; no long-term reliability claim. Earlier pending/active/blocked descriptions below are historical and superseded by current milestone/completion records.
 
@@ -25,63 +25,44 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
-C039 actual first attempts on pushed4a5ec27/product7c284733: R01–16 recognized16/16,
-24 actual calls and2 conditional skips; N01–21 PASS, N22 FAIL, N23–24 NOT_RUN. N22
-created one queued local Goal from a draft-and-send request that required none/zero Goals.
-No worker/artifact/external task effect occurred. Independent read-only audits and raw
-journals retained in evidence/reviews/judgment-boundary/clarification-run-*/. C038 independent12
-and affected UI/Expert NOT_RUN. No resampling, old source/DB repair or criterion weakening.
+C043 current candidate `5ebc46c0c7663f3ddcf73e6bc7fa055791671c27`, product
+`content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5`:
+fixed40 actual first attempts PASS, all16 requests recognized and zero unwanted Goals
+from24 nonrequests. Three separately capped/proven runs use47 actual calls and3 justified
+conditional skips; independent read-only audits PASS. Primary-only scope:16 queued
+legitimate Goals, no workers/artifacts/external task effects. Raw responses, journals,
+audits and scrubbed access observations are archived in
+`evidence/reviews/judgment-boundary/intent-limits-run-{n01-n24,r01-r08,r09-r16}/`.
 
-C040 official Opus89.16s reviewed Primary-only whole-request capability correction;
-DECISIONS records adoption and rejects extra human threshold/automatic escalation gates.
-Independent author froze12 new utterances before edit; product fixed before disclosure:
-content:sha256:60df1d0e919ff7f45dc527581bae897ecd3750858b96dd104804ecd83c87eba2.
-Only pal/primary.py changed; native/Expert/validator/host are byte-identical. Four appended
-cohort aliases reuse the C038 SWE-reviewed immutable version binding; old aliases/manifests
-unchanged. New deterministic alias test failed before aliases and passes afterward;
-74 focused tests PASS4.316s; full248 PASS19.987s. Independent diff audit found no blocker,
-verified unchanged historical mappings/manifests and pre-edit independent freeze ordering.
+Independent12 first attempts also controller PASS:10cases,12calls of16cap,5/5 legitimate
+delegation opportunities recognized, zero false-positive Goals. PIL02 distinguishes
+record-only from later actual authorization; PIL03 remembers the exact original source;
+PIL10 asks only the user-retained10:00/13:00 choice, then uses13:00. PIL06's pre-existing
+assistant offer is declared synthetic fixture setup, not an actual preceding generation.
+Closed158-record chain and independent read-only audit PASS; exact archive is
+`evidence/reviews/judgment-boundary/intent-limits-run-heldout/`. No product changes
+since pre-disclosure freeze. Old C039 compound-send FAIL and C041 record-only FAIL remain
+unchanged in their original archives, not overwritten by these current passes.
 
-C040 pushed as158bd48, remote verified. C041 first actual negative cohort now FAILS:
-N01–16 PASS, N17 'Record only' incorrectly creates one queued Goal; N18–24 NOT_RUN.
-Seventeen calls, no workers/artifacts/external effects. Raw journal and independent
-read-only audit: evidence/reviews/judgment-boundary/compound-run-n01-n24/. C040's N22
-fix is not yet observed because the run stopped earlier. R01–16 and independent12 are
-NOT_RUN on this candidate; no transfer of C039 PASS. Source remains60df1d0e.
+Current249-test full suite PASS20.244s after live measurements. No new product, harness,
+criteria, permission, provider route or human decision in C043. Qwen3.8-27B remains the
+owner's capability reference; actual PAL qualification NOT_RUN. Actual provider is
+existing official Claude Pro, tool-free `--model opus`, fresh extra-usage-OFF proof for
+each finite run. Synthetic input evidence is not human evaluation or Qwen performance.
 
-C042 official Opus86.848s completed and adoption was recorded before edit. Primary now
-applies the current authorized scope before embedded task wording; recording/discussion/
-not-yet does not delegate the described task, while a local-only request or later actual
-delegation remains available. Product17-file identity is
-content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5.
-Only pal/primary.py differs from C040. Independent12 froze before edit; product freeze
-1791399601.320172 precedes controller disclosure1791400270.803322. No product change
-followed disclosure. Four appended aliases preserve all old inputs/manifests/bindings.
+N1-01/02 now PASS only for their finite current Primary/host scope. Next: commit/push
+coherent evidence and verify origin/main. Then freeze
+current-candidate allocation for existing affected actual UI/Expert/target/absence flows
+and pre-existing running-cancel/late-result gap, using prepared runtime execution sheets.
+Show compound refusal and separately authorized local continuation in the actual flow.
+No repeated semantic samples or extra human technical approval. Existing tests preserve
+host/source/recovery/criteria authority; actual model behavior remains a finite observation.
 
-75 focused tests PASS4.497s, full249 PASS19.421s. A test-only SIGKILL callback could return
-before process termination and cross the intended before-model boundary; original failure
-retained, callback now waits after requesting the real kill. Both actual kill/restart
-assertions remain;30 repeated tests/60 kills PASS2.709s. Scheduler cause is supported but
-not directly traced. No production/runtime recovery change or weaker criterion.
-
-Independent C042 source/binding audit found no substantiated blocker; all historical
-aliases/manifests and unchanged host paths verified. Evidence: intent-limits-independent-audit.json.
-
-Exact next: commit/push coherent green work and verify clean origin/main/HEAD. Then run new intent-limits-n01-n24 first (cap24),
-intent-limits-r01-r08/r09-r16 (cap16 each), and intent-limits-heldout (12 planned/cap16),
-each with a new closed directory and fresh existing official no-extra-charge one-use
-proof. First attempts only; fail-stop and diagnose any mismatch. All C042 actual model
-semantics currently NOT_RUN, C041 FAIL unchanged. No old PASS transfer, same-source retry,
-criterion relaxation, keyword filter, model endpoint or automatic human-approval gate.
-
-After semantic qualification, revalidate existing affected actual UI/Expert/target/absence
-flows and pre-existing running-cancel/late-result gap; show compound refusal and separate
-local-only continuation in the actual flow. Prepared runtime/current-primary-ui-execution.md
-is a draft execution sheet, not actual proof. Receive one authentic version-bound whole-flow
-usefulness evaluation in the persistent human window. Prior C035 packet is older product
-material, not new approval; no repeated micro-questions. Final full suite/version/limitations
-and Issue12/5/2 audit/closure remain. Stable1/globalPAL incomplete; Stable0 stays released.
-Qwen3.8-27B reference qualification NOT_RUN. No schedule/new auth/payment/public exposure.
+Receive one authentic version-bound whole-flow usefulness evaluation in the persistent
+human window once current output is ready. The latest readback still has no new verdict;
+prior C035 material is older product evidence. Final full suite/version/limitations and
+Issue12/5/2 audit/closure remain. Stable1 and wholePAL incomplete; Stable0 stays released.
+No schedule/new auth/payment/public exposure or old time/input/session quotas.
 
 ## Historical continuation records
 

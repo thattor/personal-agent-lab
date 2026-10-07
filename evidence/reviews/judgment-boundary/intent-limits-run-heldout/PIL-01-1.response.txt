@@ -1,0 +1,1 @@
+{"reply":"Understood. I'll treat the label maker quick-start guide as a note only and won't start on it. Just say the word if you'd like a draft later.","action":{"kind":"none"}}

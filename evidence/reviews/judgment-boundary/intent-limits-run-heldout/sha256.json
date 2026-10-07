@@ -1,0 +1,114 @@
+{
+  "files": {
+    "journal.jsonl": {
+      "original": "runtime/intent-limits-c043-heldout/journal.jsonl",
+      "sha256": "938a02e3f787ca72808733268c77f966f5be05532dcc037508ffe8011124d00a"
+    },
+    "PIL-01-1.prompt.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-01-1.prompt.txt",
+      "sha256": "33acdb108139dbefbc6f439d757835949aa142180f846bae3d48754858ae562e"
+    },
+    "PIL-02-1.prompt.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-02-1.prompt.txt",
+      "sha256": "24513490b537cf5e21480abd0c45e66492027d8dc755092321b18e5ed77c9cc7"
+    },
+    "PIL-02-2.prompt.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-02-2.prompt.txt",
+      "sha256": "ee32acf532c2a51041462e97d513868ead8a21d8d62e097c9be6ee49ae3f7106"
+    },
+    "PIL-03-1.prompt.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-03-1.prompt.txt",
+      "sha256": "8013b741ca7e466ab5a59effb5a5eb5132acb582e7944e8d4be5af932923dcc2"
+    },
+    "PIL-04-1.prompt.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-04-1.prompt.txt",
+      "sha256": "cae2189e01ea71d57267cea0a295adabf6aad7e131ab0d322098e9c8e72db40c"
+    },
+    "PIL-05-1.prompt.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-05-1.prompt.txt",
+      "sha256": "dacf11565c0287cad7d6389111bf64fa80be1fe342e67b2917f5da4f83ae364a"
+    },
+    "PIL-06-1.prompt.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-06-1.prompt.txt",
+      "sha256": "fd0ebe89d4e44383e58e19b9403298892a5fd38f23877ea1fefa708ff010a9da"
+    },
+    "PIL-07-1.prompt.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-07-1.prompt.txt",
+      "sha256": "58a1452890c85b27c3704c74af97fa24c3c8d7f45236f4744f3d90bf17928f53"
+    },
+    "PIL-08-1.prompt.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-08-1.prompt.txt",
+      "sha256": "379fde75fe18a38d51f79ab743664880d925456c1f07566cb9b97876ed128ce7"
+    },
+    "PIL-09-1.prompt.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-09-1.prompt.txt",
+      "sha256": "62e8c48b2400ff74feed01ce134baf2407ad1c72541ace5e00485ff748483d91"
+    },
+    "PIL-10-1.prompt.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-10-1.prompt.txt",
+      "sha256": "8cb08e1b8d98c302127dc8cbc322d30e4e0811f7a76c57e18fb135c58561a572"
+    },
+    "PIL-10-2.prompt.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-10-2.prompt.txt",
+      "sha256": "d651a39b2d6294700c486a33063cb9cf57228f93d65dd36425609b94f0070682"
+    },
+    "PIL-01-1.response.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-01-1.response.txt",
+      "sha256": "0b567d909fe468794d72c8f43302a2c8535ccb988acea0c949bb6321dd35e3de"
+    },
+    "PIL-02-1.response.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-02-1.response.txt",
+      "sha256": "383179355123130b9b6e3d0d5833109840a072c49a889b28f6fccd1387ff091f"
+    },
+    "PIL-02-2.response.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-02-2.response.txt",
+      "sha256": "45332148478d1c7239968b44beebe386de41e1f62e3499d3c716aa122eefbe4e"
+    },
+    "PIL-03-1.response.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-03-1.response.txt",
+      "sha256": "87a3e745b145be57052a659d652ac283c4b114a7eb89c8c4642ffe380299ff33"
+    },
+    "PIL-04-1.response.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-04-1.response.txt",
+      "sha256": "fb7946d9dceaa24a028fabdcedef8317944b430626a5ac9303b8117245fd9e7f"
+    },
+    "PIL-05-1.response.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-05-1.response.txt",
+      "sha256": "7e69c0fd03919ccdae34c5a5a28c6f565cfc5764e7a7685e2e9029a9c02411fa"
+    },
+    "PIL-06-1.response.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-06-1.response.txt",
+      "sha256": "49a93c0b3ddbaeeaf1a3ce517422fb54e224f9749c0ed06e60c6be120ec8064b"
+    },
+    "PIL-07-1.response.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-07-1.response.txt",
+      "sha256": "ba15c37dc3f53f0f8be4661417dfc0ce7b0e3202e0825dcecc4eccd3a79ebf63"
+    },
+    "PIL-08-1.response.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-08-1.response.txt",
+      "sha256": "f39b14a851b479bef58f3642e97e5ec197775f1a969a7e83278f42f16c4bdef7"
+    },
+    "PIL-09-1.response.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-09-1.response.txt",
+      "sha256": "0616a3535514bc29f855f1fe79ad27d40d543bcc1f7624ef754a4afffe0e191b"
+    },
+    "PIL-10-1.response.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-10-1.response.txt",
+      "sha256": "4ece56ce3dd9e6c236b5d0d2a065811d788acc395cb08aa97c0ae8ddd3d0a61e"
+    },
+    "PIL-10-2.response.txt": {
+      "original": "runtime/intent-limits-c043-heldout/PIL-10-2.response.txt",
+      "sha256": "d6787fff835dbe97a3b625204fdcadfe1104e124f46236b692208d5af1607051"
+    },
+    "access-observation.json": {
+      "original": "runtime/intent-limits-c043-heldout-access-observation.json",
+      "sha256": "5078533fe9d508341e7460d65cfc585d161a792f469e289023a76861886ef0e6"
+    },
+    "audit.json": {
+      "original": "runtime/intent-limits-c043-heldout-audit.json",
+      "sha256": "b68a8cdede8ad23ae97db9b88fb1db7366548b4767fd2705ea95bcbfd0d19747"
+    }
+  },
+  "databases": "retained in original ignored runtime only",
+  "credential_or_proof_files_copied": false
+}

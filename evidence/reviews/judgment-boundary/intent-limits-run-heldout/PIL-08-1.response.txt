@@ -1,0 +1,1 @@
+{"reply":"I can't post to the club's group chat, so I haven't started on this. If you'd like, I can write a local draft of the announcement that you can post yourself. Just let me know.","action":{"kind":"none"}}

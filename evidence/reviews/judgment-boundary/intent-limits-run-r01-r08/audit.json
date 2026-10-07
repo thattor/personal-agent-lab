@@ -1,0 +1,751 @@
+{
+  "schema": "pal-closed-primary-run-audit-v1",
+  "audited_at": 1791402001.1300118,
+  "run": "runtime/intent-limits-c043-r01-r08",
+  "auditor": "Astra independent artifact audit",
+  "status": "PASS",
+  "findings": [],
+  "verifier": {
+    "records": 145,
+    "completed": true,
+    "judged_turns": 11,
+    "skipped_turns": 1,
+    "covered_cases": 8,
+    "scope": "live_synthetic",
+    "human_evaluation": false
+  },
+  "candidate": "5ebc46c0c7663f3ddcf73e6bc7fa055791671c27",
+  "product_identity": "content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5",
+  "summary": {
+    "accepted_cases": 8,
+    "actual_calls": 11,
+    "cap": 16,
+    "skipped_turns": 1,
+    "queued_goals": 8,
+    "worker_attempts": 0,
+    "artifacts": 0,
+    "receipts": 0,
+    "external_task_effects_observed": 0
+  },
+  "checks": {
+    "exact_candidate_cohort": true,
+    "complete_eight_cases_eleven_turns_one_skip": true,
+    "all_judgments_pass_no_failed_events": true,
+    "first_attempt_no_resume_one_call_per_actual_turn": true,
+    "sixteen_cap_eleven_used": true,
+    "recorded_official_tool_free_route": true,
+    "access_time_and_extra_off_bound": true,
+    "human_qwen_not_claimed": true,
+    "all_pinned_hashes_match": true,
+    "canonical_product_identity": true,
+    "monotonic_before_deadline": true,
+    "wall_proof_window": true,
+    "supervisor_1": true,
+    "supervisor_2": true,
+    "supervisor_3": true,
+    "supervisor_4": true,
+    "supervisor_5": true,
+    "supervisor_6": true,
+    "supervisor_7": true,
+    "supervisor_8": true,
+    "supervisor_9": true,
+    "supervisor_10": true,
+    "supervisor_11": true,
+    "no_extra_supervisors": true,
+    "only_r05_second_turn_skipped": true,
+    "R01_empty_wal": true,
+    "R01_integrity": true,
+    "R01_settled_actual_turns": true,
+    "R01_one_queued_unclaimed_goal": true,
+    "R01_no_workers_artifacts_task_external_effects": true,
+    "R01-1_authentic_prompt_input": true,
+    "R01-1_oracle_excluded": true,
+    "R01-1_proposal_host_outcome_actual_reply": true,
+    "R01-1_snapshot": true,
+    "R01-1_frozen_action_goal_oracle": true,
+    "R01-1_spec_and_sources_grounded": true,
+    "R02_empty_wal": true,
+    "R02_integrity": true,
+    "R02_settled_actual_turns": true,
+    "R02_one_queued_unclaimed_goal": true,
+    "R02_no_workers_artifacts_task_external_effects": true,
+    "R02-1_authentic_prompt_input": true,
+    "R02-1_oracle_excluded": true,
+    "R02-1_proposal_host_outcome_actual_reply": true,
+    "R02-1_snapshot": true,
+    "R02-1_frozen_action_goal_oracle": true,
+    "R02-1_spec_and_sources_grounded": true,
+    "R03_empty_wal": true,
+    "R03_integrity": true,
+    "R03_settled_actual_turns": true,
+    "R03_one_queued_unclaimed_goal": true,
+    "R03_no_workers_artifacts_task_external_effects": true,
+    "R03-1_authentic_prompt_input": true,
+    "R03-1_oracle_excluded": true,
+    "R03-1_proposal_host_outcome_actual_reply": true,
+    "R03-1_snapshot": true,
+    "R03-1_frozen_action_goal_oracle": true,
+    "R03-1_spec_and_sources_grounded": true,
+    "R04_empty_wal": true,
+    "R04_integrity": true,
+    "R04_settled_actual_turns": true,
+    "R04_one_queued_unclaimed_goal": true,
+    "R04_no_workers_artifacts_task_external_effects": true,
+    "R04-1_authentic_prompt_input": true,
+    "R04-1_oracle_excluded": true,
+    "R04-1_proposal_host_outcome_actual_reply": true,
+    "R04-1_snapshot": true,
+    "R04-1_frozen_action_goal_oracle": true,
+    "R04-2_authentic_prompt_input": true,
+    "R04-2_oracle_excluded": true,
+    "R04-2_proposal_host_outcome_actual_reply": true,
+    "R04-2_snapshot": true,
+    "R04-2_frozen_action_goal_oracle": true,
+    "R04-2_spec_and_sources_grounded": true,
+    "R04-2_actual_prior_question_in_context": true,
+    "R05_empty_wal": true,
+    "R05_integrity": true,
+    "R05_settled_actual_turns": true,
+    "R05_one_queued_unclaimed_goal": true,
+    "R05_no_workers_artifacts_task_external_effects": true,
+    "R05-1_authentic_prompt_input": true,
+    "R05-1_oracle_excluded": true,
+    "R05-1_proposal_host_outcome_actual_reply": true,
+    "R05-1_snapshot": true,
+    "R05-1_frozen_action_goal_oracle": true,
+    "R05-1_spec_and_sources_grounded": true,
+    "R05_justified_skip": true,
+    "R05_skip_no_input_call_blob": true,
+    "R06_empty_wal": true,
+    "R06_integrity": true,
+    "R06_settled_actual_turns": true,
+    "R06_one_queued_unclaimed_goal": true,
+    "R06_no_workers_artifacts_task_external_effects": true,
+    "R06-1_authentic_prompt_input": true,
+    "R06-1_oracle_excluded": true,
+    "R06-1_proposal_host_outcome_actual_reply": true,
+    "R06-1_snapshot": true,
+    "R06-1_frozen_action_goal_oracle": true,
+    "R06-1_spec_and_sources_grounded": true,
+    "R07_empty_wal": true,
+    "R07_integrity": true,
+    "R07_settled_actual_turns": true,
+    "R07_one_queued_unclaimed_goal": true,
+    "R07_no_workers_artifacts_task_external_effects": true,
+    "R07-1_authentic_prompt_input": true,
+    "R07-1_oracle_excluded": true,
+    "R07-1_proposal_host_outcome_actual_reply": true,
+    "R07-1_snapshot": true,
+    "R07-1_frozen_action_goal_oracle": true,
+    "R07-2_authentic_prompt_input": true,
+    "R07-2_oracle_excluded": true,
+    "R07-2_proposal_host_outcome_actual_reply": true,
+    "R07-2_snapshot": true,
+    "R07-2_frozen_action_goal_oracle": true,
+    "R07-2_spec_and_sources_grounded": true,
+    "R07-2_actual_prior_question_in_context": true,
+    "R08_empty_wal": true,
+    "R08_integrity": true,
+    "R08_settled_actual_turns": true,
+    "R08_one_queued_unclaimed_goal": true,
+    "R08_no_workers_artifacts_task_external_effects": true,
+    "R08-1_authentic_prompt_input": true,
+    "R08-1_oracle_excluded": true,
+    "R08-1_proposal_host_outcome_actual_reply": true,
+    "R08-1_snapshot": true,
+    "R08-1_frozen_action_goal_oracle": true,
+    "R08-2_authentic_prompt_input": true,
+    "R08-2_oracle_excluded": true,
+    "R08-2_proposal_host_outcome_actual_reply": true,
+    "R08-2_snapshot": true,
+    "R08-2_frozen_action_goal_oracle": true,
+    "R08-2_spec_and_sources_grounded": true,
+    "R08-2_actual_prior_question_in_context": true,
+    "all_run_files_unchanged": true
+  },
+  "event_counts": {
+    "run.opened": 1,
+    "fixture.verified": 8,
+    "operator.config": 1,
+    "snapshot.verified": 11,
+    "prompt.built": 11,
+    "permit.granted": 11,
+    "call.started": 11,
+    "native.supervisor.started": 22,
+    "native.supervisor.finished": 22,
+    "proposal.received": 11,
+    "call.returned": 11,
+    "turn.captured": 11,
+    "turn.judged": 11,
+    "turn.skipped": 1,
+    "qualification.finished": 1,
+    "run.closed": 1
+  },
+  "databases": [
+    {
+      "case": "R01",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R02",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R03",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R04",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R05",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R06",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 2,
+        "primary_turns": 1,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 1
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R07",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    },
+    {
+      "case": "R08",
+      "integrity": [
+        "ok"
+      ],
+      "foreign_key_violations": [],
+      "counts": {
+        "records": 4,
+        "primary_turns": 2,
+        "goals": 1,
+        "attempts": 0,
+        "receipts": 0,
+        "artifacts": 0,
+        "questions": 0,
+        "notes": 0
+      },
+      "primary_status_counts": {
+        "complete": 2
+      },
+      "goal_states": [
+        "queued"
+      ],
+      "wal_bytes": 0
+    }
+  ],
+  "turns": [
+    {
+      "case": "R01",
+      "turn": 1,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "c5e47737ebc089623009ff6efc99e3411541beb23d664c939ec58b96cde324c8",
+      "response_sha256": "3b52ad7b090c47d3e7254f6c78ffdd3fd3920a941a351c3fe2f455f0fbe375ca",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R02",
+      "turn": 1,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "ef2485cbfad8819f6d8f54303fd49c0017e131dac08edf975f549d36d9817192",
+      "response_sha256": "9fbae6a929ef9412e0a9cc5b79aaacb2f1fbb6a4ae04cff9aa79454fba11932d",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R03",
+      "turn": 1,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "2b8128415c9aeb6d971cae53ce65251db4621f09af5774d07306ee69324f282b",
+      "response_sha256": "7693077360c5fa0a2b367f06efd4c1badb442788e753c928fd6439f37e8daf6c",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R04",
+      "turn": 1,
+      "action": "none",
+      "goal_count_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "a2f8a74293a4f77f475603cb0451ccd4232c3d2b4b6d178df2bed9faba0bab4d",
+      "response_sha256": "0d246d841f2b2b749981c81be8da21f2ea8b33a9d095260a788d28eeb64c851a",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "R04",
+      "turn": 2,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "362ac36e0a7dde2cb664874b229ca08d5f5a1aa2c014d5344dc746797cd99799",
+      "response_sha256": "bea3d11ada0a628f2446577ebe5d80f9388d3ffec8ce7805347af29b79931c05",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R05",
+      "turn": 1,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "770982ac4d1da97c4fb2a323b46b55b42afdeb1d2ad6f95384dc992bb4759eb5",
+      "response_sha256": "4d515e9ff73dcd4b6e4d0851a271b4c559f82bfd42871fd64b31fcd4eb2c13f6",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R06",
+      "turn": 1,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "4cac411f8d9a6654978d66df426590ef997ebcfe8f533f9c77bcf396ff67467b",
+      "response_sha256": "6d520f93543b8d2e418b04d0221d8e304babac2a499de9ee7a846fc606e98537",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R07",
+      "turn": 1,
+      "action": "none",
+      "goal_count_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "2bcea00ab57f1d4d236a48853b220c5ea073188988dd1c045fdb37d1cc752ce9",
+      "response_sha256": "5b224c712e1581344a7d1212e2640e2415febdb3895d0ab1bccffac4e8d021e3",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "R07",
+      "turn": 2,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "bffa333f863c796e2948c4ed1d0afbb57c4cc09e14e17a3409201554676082d5",
+      "response_sha256": "a1f6dc27f2f28069a9c334e91570c22bbe32bab53aaf67a47794ee81a6f58d7f",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    },
+    {
+      "case": "R08",
+      "turn": 1,
+      "action": "none",
+      "goal_count_after": 0,
+      "host_status": "complete",
+      "prompt_sha256": "871d06794f558857bda38b0990924adef79f2e03f93f929d49605e0e7ded627f",
+      "response_sha256": "7a669b82b74d5cd8786312064ac9d642034d1b805d7c66773be8c12319b99bf7",
+      "stored_reply_authority": "model_none_reply"
+    },
+    {
+      "case": "R08",
+      "turn": 2,
+      "action": "local_draft",
+      "goal_count_after": 1,
+      "host_status": "complete",
+      "prompt_sha256": "340103c9020f8803c8dee5f86104a77e7c49356b9132eb0edb99124f0b448e20",
+      "response_sha256": "ff46a8f9e5eaf3e899391baf04e8a5a15e746fb0ea52a78dc0c7426e8a18b32b",
+      "stored_reply_authority": "host_local_draft_acknowledgment"
+    }
+  ],
+  "conditional_skips": [
+    {
+      "case": "R05",
+      "turn": 2,
+      "no_input_record": true,
+      "no_primary_entry": true,
+      "no_call_events": true,
+      "no_prompt_response_files": true
+    }
+  ],
+  "supervisor_lifecycles": [
+    {
+      "case": "R01",
+      "turn": 1,
+      "slot": 1,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R02",
+      "turn": 1,
+      "slot": 2,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R03",
+      "turn": 1,
+      "slot": 3,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R04",
+      "turn": 1,
+      "slot": 4,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R04",
+      "turn": 2,
+      "slot": 5,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R05",
+      "turn": 1,
+      "slot": 6,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R06",
+      "turn": 1,
+      "slot": 7,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R07",
+      "turn": 1,
+      "slot": 8,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R07",
+      "turn": 2,
+      "slot": 9,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R08",
+      "turn": 1,
+      "slot": 10,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    },
+    {
+      "case": "R08",
+      "turn": 2,
+      "slot": 11,
+      "valid": true,
+      "phases": [
+        "auth",
+        "generation"
+      ],
+      "returncodes": [
+        0,
+        0
+      ]
+    }
+  ],
+  "deadline": {
+    "proof_verified_at": 1791401325.339821,
+    "proof_expiry_wall": 1791402225.339821,
+    "closed_at": 1791401646.548138,
+    "close_margin_seconds": 578.7916831970215,
+    "deadline_monotonic": 899.985090284927,
+    "last_supervisor_monotonic": 289.5512725
+  },
+  "r05_proposed_vs_host_reply": {
+    "proposed_reply": "Here's a short, general invitation. Tell me the occasion, date, place or recipients if you'd like me to tailor it.",
+    "actual_stored_reply": "下書きを受け付けました：Write a short, friendly invitation in English. The event type, host name, recipients, date, time, location and RSVP details are unspecified: keep the wording general and do not invent any of them. Keep it brief, a few sentences, warmly inviting the reader to join and expressing that their presence would be welcome. / Local draft accepted.",
+    "goal_state": "queued",
+    "artifact_count": 0,
+    "interpretation": "Raw Here is wording is premature presentation language. It is not an artifact or completion receipt and is not the canonical reply: the host stores an acceptance acknowledgment. Retain as a proposed-reply quality limitation, not proof of finished work."
+  },
+  "semantic_review": {
+    "outcome": "No substantiated frozen-oracle mismatch; all eight request cases recognized using allowed delegation/clarification paths.",
+    "observations": [
+      "R02 delegates a general thank-you immediately. Missing recipient/contribution details remain unspecified; optional personalization does not block the Goal.",
+      "R01/R03 clearly fictional/general drafting uses explicit placeholders, not invented real commitments.",
+      "R04/R07/R08 use the actual first clarification response plus fixed user answer, preserve supplied facts, and do not ask again.",
+      "R05 follows the allowed immediate generic-delegation path; its conditional follow-up was not supplied. Raw premature presentation wording is separately retained and not counted as completed output.",
+      "All specifications match their persisted revisions and use only host-offered source IDs plus the current input."
+    ]
+  },
+  "run_file_sha256": {
+    "R02.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R02.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R02.sqlite": "4f46ab8d4ba8b9f88fd2aef65d8fb0c7723f71cf03254f38a4fcd5626ef39ccc",
+    "R07.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R07-2.response.txt": "a1f6dc27f2f28069a9c334e91570c22bbe32bab53aaf67a47794ee81a6f58d7f",
+    "R08-2.response.txt": "ff46a8f9e5eaf3e899391baf04e8a5a15e746fb0ea52a78dc0c7426e8a18b32b",
+    "R07.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R08-1.prompt.txt": "871d06794f558857bda38b0990924adef79f2e03f93f929d49605e0e7ded627f",
+    "R05-1.prompt.txt": "770982ac4d1da97c4fb2a323b46b55b42afdeb1d2ad6f95384dc992bb4759eb5",
+    "R02-1.prompt.txt": "ef2485cbfad8819f6d8f54303fd49c0017e131dac08edf975f549d36d9817192",
+    "R08.sqlite": "5ab43726c40d781f2ceb089d9ccbd3a654aca89d1413f3c41847ec3d1c6cb5eb",
+    "R07-2.prompt.txt": "bffa333f863c796e2948c4ed1d0afbb57c4cc09e14e17a3409201554676082d5",
+    "R04.sqlite": "6e8f1b54d4b6cdf49871fe80b3660b5036506831d2537c97523aefc78c2e6a05",
+    "R04-2.response.txt": "bea3d11ada0a628f2446577ebe5d80f9388d3ffec8ce7805347af29b79931c05",
+    "R03-1.prompt.txt": "2b8128415c9aeb6d971cae53ce65251db4621f09af5774d07306ee69324f282b",
+    "R04-1.prompt.txt": "a2f8a74293a4f77f475603cb0451ccd4232c3d2b4b6d178df2bed9faba0bab4d",
+    "R08.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R05.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R06.sqlite": "d9f170e74b51d46aee7b6ca5e8272bdce9507543d911cd24baa8ea98fc082b67",
+    "R05.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R08.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R06.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R02-1.response.txt": "9fbae6a929ef9412e0a9cc5b79aaacb2f1fbb6a4ae04cff9aa79454fba11932d",
+    "R04-2.prompt.txt": "362ac36e0a7dde2cb664874b229ca08d5f5a1aa2c014d5344dc746797cd99799",
+    "R06-1.prompt.txt": "4cac411f8d9a6654978d66df426590ef997ebcfe8f533f9c77bcf396ff67467b",
+    "R03.sqlite": "883a1c4867a4414bca385bd857be82baae870d03877018133f546736f478d909",
+    "R01-1.prompt.txt": "c5e47737ebc089623009ff6efc99e3411541beb23d664c939ec58b96cde324c8",
+    "R06.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R05-1.response.txt": "4d515e9ff73dcd4b6e4d0851a271b4c559f82bfd42871fd64b31fcd4eb2c13f6",
+    "journal.jsonl": "88f607ca4ea26412eae78d3bc678d9c2c1a2dce37d6a05ce5c77fa401dc78a9c",
+    "R03.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R07-1.prompt.txt": "2bcea00ab57f1d4d236a48853b220c5ea073188988dd1c045fdb37d1cc752ce9",
+    "R04-1.response.txt": "0d246d841f2b2b749981c81be8da21f2ea8b33a9d095260a788d28eeb64c851a",
+    "R03.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R01.sqlite": "7fd05fc55a604c0a1027b5b0d461226e244cb118a6568ace32670b69b67d2f9e",
+    "R03-1.response.txt": "7693077360c5fa0a2b367f06efd4c1badb442788e753c928fd6439f37e8daf6c",
+    "R01-1.response.txt": "3b52ad7b090c47d3e7254f6c78ffdd3fd3920a941a351c3fe2f455f0fbe375ca",
+    "R04.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "R08-2.prompt.txt": "340103c9020f8803c8dee5f86104a77e7c49356b9132eb0edb99124f0b448e20",
+    "R05.sqlite": "b5a979ff0d0b60609e02160b9d3799d3682d066b48a0ba0ad6e67440d8c330a1",
+    "R06-1.response.txt": "6d520f93543b8d2e418b04d0221d8e304babac2a499de9ee7a846fc606e98537",
+    "R04.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R07-1.response.txt": "5b224c712e1581344a7d1212e2640e2415febdb3895d0ab1bccffac4e8d021e3",
+    "R07.sqlite": "b42e9597576cd3aaa22188a2bc5701279cea85bf82e75a9060d9af629e161c0a",
+    "R01.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "R08-1.response.txt": "7a669b82b74d5cd8786312064ac9d642034d1b805d7c66773be8c12319b99bf7",
+    "R01.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+  },
+  "access_observation": {
+    "path": "runtime/intent-limits-c043-r01-r08-access-observation.json",
+    "sha256": "47eeebae83a0d9eb0b9c4fe69b45ea8e75fef42b48e7f0a876bfcef2c2a3f8f9",
+    "metadata_only": true
+  },
+  "scope": {
+    "actual_official_primary_calls": 11,
+    "synthetic_inputs": true,
+    "human_evaluation": false,
+    "qwen_qualification": false,
+    "ui_validation": false,
+    "expert_execution": false,
+    "new_provider_calls_by_audit": 0,
+    "limitations": [
+      "No new provider/auth/browser contact; access and billing information are recorded observations.",
+      "This is request recognition and host application, not actual Expert draft completion or user usefulness.",
+      "Prior failed candidates remain failures; finite regression PASS is not general reliability proof.",
+      "No other run directories were searched for first-attempt claims; within this closed run each actual input has one call and no resume."
+    ]
+  },
+  "read_only_method": "SQLite mode=ro&immutable=1 only after empty-WAL checks; no Store construction; all run files hashed before and after."
+}

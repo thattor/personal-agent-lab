@@ -1,0 +1,37 @@
+{
+  "checkpoint": "C043",
+  "candidate": "5ebc46c0c7663f3ddcf73e6bc7fa055791671c27",
+  "product": "content:sha256:c55cab29e61bc024ad67f1f5b6b6bd0f07c140b9a6190ec6f8d57202dabf71b5",
+  "fixed40": {
+    "requests_recognized": 16,
+    "requests": 16,
+    "nonrequests": 24,
+    "unwanted_goals": 0,
+    "actual_calls": 47,
+    "conditional_skips": 3,
+    "scope": "Primary semantics and host application"
+  },
+  "independent12": {
+    "cases": 10,
+    "utterances": 12,
+    "actual_calls": 12,
+    "legitimate_delegations": 5,
+    "delegation_opportunities": 5,
+    "unwanted_goals": 0
+  },
+  "all_actual_calls": 59,
+  "independent_audits": "PASS all four closed runs",
+  "full_suite": {
+    "tests": 249,
+    "seconds": 20.244,
+    "status": "PASS"
+  },
+  "earlier_failures_retained": [
+    "C039 N22",
+    "C041 N17"
+  ],
+  "qwen_qualification": "NOT_RUN",
+  "human_evaluation": false,
+  "worker_or_ui_proof": false,
+  "next": "Current affected actual UI/Expert/target/absence/running-cancel and whole-flow human usefulness, then release audit"
+}
