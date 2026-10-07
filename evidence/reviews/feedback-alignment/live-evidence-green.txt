@@ -1,0 +1,12 @@
+test_existing_or_symlink_journal_cannot_be_overwritten (test_live_evidence.LiveEvidenceTests) ... ok
+test_invalid_payload_never_writes_partial_evidence (test_live_evidence.LiveEvidenceTests) ... ok
+test_sigkill_keeps_fsynced_chain_and_kills_owned_native_fixture (test_live_evidence.LiveEvidenceTests) ... ok
+test_tamper_truncation_duplicate_keys_and_unsupported_scope_are_rejected (test_live_evidence.LiveEvidenceTests) ... ok
+test_threaded_append_is_chained_and_secret_patterns_are_sanitized (test_live_evidence.LiveEvidenceTests) ... ok
+test_watchdog_closes_owner_once_and_cancellation_does_not_stop_it (test_live_evidence.LiveEvidenceTests) ... ok
+test_watchdog_stops_inflight_native_fixture_and_retains_failure_chain (test_live_evidence.LiveEvidenceTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.322s
+
+OK

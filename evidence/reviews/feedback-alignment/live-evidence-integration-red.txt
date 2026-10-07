@@ -1,0 +1,50 @@
+test_existing_or_symlink_journal_cannot_be_overwritten (test_live_evidence.LiveEvidenceTests) ... ok
+test_invalid_payload_never_writes_partial_evidence (test_live_evidence.LiveEvidenceTests) ... ok
+test_sigkill_keeps_fsynced_chain_and_kills_owned_native_fixture (test_live_evidence.LiveEvidenceTests) ... FAIL
+test_tamper_truncation_duplicate_keys_and_unsupported_scope_are_rejected (test_live_evidence.LiveEvidenceTests) ... ok
+test_threaded_append_is_chained_and_secret_patterns_are_sanitized (test_live_evidence.LiveEvidenceTests) ... ok
+test_watchdog_closes_owner_once_and_cancellation_does_not_stop_it (test_live_evidence.LiveEvidenceTests) ... ok
+test_watchdog_stops_inflight_native_fixture_and_retains_failure_chain (test_live_evidence.LiveEvidenceTests) ... Exception in thread Thread-21:
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_gate.py", line 87, in complete
+    self.sink(dict(event, event='call.started', prompt=safe_prompt,
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_evidence.py", line 53, in append
+    raise ValueError('reserved metadata or missing event')
+ValueError: reserved metadata or missing event
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/threading.py", line 973, in _bootstrap_inner
+    self.run()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/threading.py", line 910, in run
+    self._target(*self._args, **self._kwargs)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_evidence.py", line 128, in call
+    try: gate.complete('DRAFT\nsynthetic process fixture')
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_gate.py", line 103, in complete
+    self.sink(dict(event, event='call.failed', error_type=type(error).__name__,
+  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_evidence.py", line 53, in append
+    raise ValueError('reserved metadata or missing event')
+ValueError: reserved metadata or missing event
+FAIL
+
+======================================================================
+FAIL: test_sigkill_keeps_fsynced_chain_and_kills_owned_native_fixture (test_live_evidence.LiveEvidenceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_evidence.py", line 98, in test_sigkill_keeps_fsynced_chain_and_kills_owned_native_fixture
+    self.assertTrue(pidfile.exists())
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_watchdog_stops_inflight_native_fixture_and_retains_failure_chain (test_live_evidence.LiveEvidenceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_evidence.py", line 135, in test_watchdog_stops_inflight_native_fixture_and_retains_failure_chain
+    self.assertTrue(pidfile.exists())
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 7 tests in 10.048s
+
+FAILED (failures=2)

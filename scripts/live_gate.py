@@ -80,7 +80,7 @@ class GatedProvider:
             raise ProviderUnavailable('live generation gate closed')
         started = self.clock()
         event = {'case':permit[0], 'phase':permit[1], 'kind':permit[2],
-                 'sequence':sequence, 'monotonic':started}
+                 'call_sequence':sequence, 'monotonic':started}
         try:
             safe_prompt = sanitize(prompt)
             raw = safe_prompt.encode('utf-8', errors='strict')

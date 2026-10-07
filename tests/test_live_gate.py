@@ -45,6 +45,7 @@ class LiveGateTests(unittest.TestCase):
         self.assertEqual(gate.attempts, 1)
         started = next(e for e in events if e['event']=='call.started')
         self.assertEqual((started['case'], started['phase']), ('A1','request'))
+        self.assertEqual(started['call_sequence'], 1)
         self.assertEqual(len(started['prompt_sha256']), 64)
 
     def test_deadline_and_failure_stop_without_rearming(self):
