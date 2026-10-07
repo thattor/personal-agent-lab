@@ -1,0 +1,60 @@
+test_fabricated_source_and_ineligible_preview_never_complete (test_runtime_envelope.RuntimeEnvelopeTests) ... test_mock_draft_transport_is_json_but_saved_bytes_unchanged (test_runtime_envelope.RuntimeEnvelopeTests) ... ERROR
+test_restart_bound_answer_enters_executor_and_completes_same_goal (test_runtime_envelope.RuntimeEnvelopeTests) ... FAIL
+test_two_partial_answers_end_in_one_incomplete_preview (test_runtime_envelope.RuntimeEnvelopeTests) ... FAIL
+
+======================================================================
+ERROR: test_mock_draft_transport_is_json_but_saved_bytes_unchanged (test_runtime_envelope.RuntimeEnvelopeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_runtime_envelope.py", line 86, in test_mock_draft_transport_is_json_but_saved_bytes_unchanged
+    data = json.loads(raw)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+FAIL: test_fabricated_source_and_ineligible_preview_never_complete (test_runtime_envelope.RuntimeEnvelopeTests) (payload={'kind': 'complete', 'content': 'Fabricated Friday', 'citations': [{'source_id': 'invented', 'quote': 'Friday'}]})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_runtime_envelope.py", line 78, in test_fabricated_source_and_ineligible_preview_never_complete
+    self.assertNotEqual(runtime.store.get_goal(goal_id)['state'], 'completed')
+AssertionError: 'completed' == 'completed'
+
+======================================================================
+FAIL: test_fabricated_source_and_ineligible_preview_never_complete (test_runtime_envelope.RuntimeEnvelopeTests) (payload={'kind': 'incomplete_preview', 'content': 'Dear {{name}}', 'missing': '{{name}}', 'citations': []})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_runtime_envelope.py", line 78, in test_fabricated_source_and_ineligible_preview_never_complete
+    self.assertNotEqual(runtime.store.get_goal(goal_id)['state'], 'completed')
+AssertionError: 'completed' == 'completed'
+
+======================================================================
+FAIL: test_restart_bound_answer_enters_executor_and_completes_same_goal (test_runtime_envelope.RuntimeEnvelopeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_runtime_envelope.py", line 42, in test_restart_bound_answer_enters_executor_and_completes_same_goal
+    self.assertEqual(runtime.store.get_goal(goal_id)['state'], 'waiting_input')
+AssertionError: 'completed' != 'waiting_input'
+- completed
++ waiting_input
+
+
+======================================================================
+FAIL: test_two_partial_answers_end_in_one_incomplete_preview (test_runtime_envelope.RuntimeEnvelopeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_runtime_envelope.py", line 58, in test_two_partial_answers_end_in_one_incomplete_preview
+    self.assertEqual(runtime.store.get_goal(goal_id)['state'], 'waiting_input')
+AssertionError: 'completed' != 'waiting_input'
+- completed
++ waiting_input
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.068s
+
+FAILED (failures=4, errors=1)

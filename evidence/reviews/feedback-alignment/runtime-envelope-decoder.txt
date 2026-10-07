@@ -1,0 +1,12 @@
+test_citations_syntax_only_and_not_canonical_tokens (test_draft_envelope.DraftEnvelopeTests) ... ok
+test_existing_large_fixed_criteria_are_not_narrowed (test_draft_envelope.DraftEnvelopeTests) ... ok
+test_json_ambiguity_and_non_json_rejected (test_draft_envelope.DraftEnvelopeTests) ... ok
+test_question_and_preview_limits (test_draft_envelope.DraftEnvelopeTests) ... ok
+test_three_proposals_are_data_not_completion (test_draft_envelope.DraftEnvelopeTests) ... ok
+test_unknown_authority_fields_and_wrong_types_rejected (test_draft_envelope.DraftEnvelopeTests) ... ok
+test_utf8_bound_and_invalid_unicode (test_draft_envelope.DraftEnvelopeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK

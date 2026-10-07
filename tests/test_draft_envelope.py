@@ -51,6 +51,12 @@ class DraftEnvelopeTests(unittest.TestCase):
         with self.assertRaises(EnvelopeRejected):
             self.decode(dict(payload,citations=payload['citations']*51))
 
+    def test_existing_large_fixed_criteria_are_not_narrowed(self):
+        payload = {"kind":"complete", "content":"x"*65536, "citations":[]}
+        self.assertEqual(self.decode(payload,65536),payload)
+        with self.assertRaises(EnvelopeRejected): self.decode(payload,65535)
+        with self.assertRaises(ValueError): self.decode(payload,65537)
+
     def test_question_and_preview_limits(self):
         for payload in [{"kind":"needs_input","question":" ","citations":[]},
                         {"kind":"needs_input","question":"x"*2001,"citations":[]},

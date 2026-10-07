@@ -1,0 +1,18 @@
+test_conversation_independent_of_slow_attempt_and_controls_immediate (test_runtime.RuntimeTests) ... ok
+test_default_mock_local_draft_end_to_end (test_runtime.RuntimeTests) ... ok
+test_forgotten_source_excludes_transitive_derived_responses (test_runtime.RuntimeTests) ... ok
+test_negative_capability_and_canonical_mutation_proposals (test_runtime.RuntimeTests) ... ok
+test_normal_conversation_and_explicit_limits_do_not_create_goals (test_runtime.RuntimeTests) ... ok
+test_second_host_fails_fast_and_recovery_runs_only_at_startup (test_runtime.RuntimeTests) ... ok
+test_secret_canary_is_absent_from_captured_provider_prompts (test_runtime.RuntimeTests) ... ok
+test_status_uses_canonical_state_instead_of_old_handoff_memory (test_runtime.RuntimeTests) ... ok
+test_workorder_has_no_store_path_credentials_or_mutation (test_runtime.RuntimeTests) ... ok
+test_fabricated_source_and_ineligible_preview_never_complete (test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_mock_draft_transport_is_json_but_saved_bytes_unchanged (test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_restart_bound_answer_enters_executor_and_completes_same_goal (test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+test_two_partial_answers_end_in_one_incomplete_preview (test_runtime_envelope.RuntimeEnvelopeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.353s
+
+OK

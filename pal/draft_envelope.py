@@ -49,12 +49,13 @@ def _text(value, limit):
 
 def decode_draft(raw, max_bytes):
     """Return data for host validation, with no I/O or canonical authority."""
-    if type(max_bytes) is not int or not 1 <= max_bytes <= 12000:
+    if type(max_bytes) is not int or not 1 <= max_bytes <= 65536:
         raise ValueError('invalid draft byte bound')
     if not isinstance(raw, str):
         raise EnvelopeRejected('envelope must be JSON text')
     try:
-        if len(raw.encode('utf-8', errors='strict')) > 40000:
+        transport_limit = 40000 if max_bytes <= 12000 else 40000 + 6 * max_bytes
+        if len(raw.encode('utf-8', errors='strict')) > transport_limit:
             raise EnvelopeRejected('envelope exceeds bound')
         data = json.loads(raw, object_pairs_hook=_pairs, parse_constant=_constant)
     except (UnicodeError, json.JSONDecodeError, RecursionError):
