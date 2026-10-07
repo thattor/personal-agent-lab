@@ -1,0 +1,256 @@
+{
+  "goals": [
+    {
+      "seq": 1,
+      "id": "6f6d5cd5815e4ae5a4315a161341b1ce",
+      "state": "cancelled",
+      "revision": 1,
+      "acceptance_id": "5e3914fbf21841638beb70177b4236a4",
+      "epoch": 2,
+      "budget": 3,
+      "total_claims": 0,
+      "reason": "user_cancelled",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    {
+      "seq": 2,
+      "id": "43fd4008f40548098be04fa011e22d2e",
+      "state": "paused",
+      "revision": 1,
+      "acceptance_id": "5456d793e2424226b795075d9f2e44e3",
+      "epoch": 1,
+      "budget": 3,
+      "total_claims": 0,
+      "reason": "user_paused",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "6f6d5cd5815e4ae5a4315a161341b1ce",
+      "revision": 1,
+      "acceptance_id": "5e3914fbf21841638beb70177b4236a4",
+      "specification": "Fictional picnic draft",
+      "sources": "[\"92b881d4c98541989aaaa40198fc3155\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    },
+    {
+      "goal_id": "43fd4008f40548098be04fa011e22d2e",
+      "revision": 1,
+      "acceptance_id": "5456d793e2424226b795075d9f2e44e3",
+      "specification": "Fictional library notice",
+      "sources": "[\"cadfbf3dcc364e058b8254283e0855fd\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "5e3914fbf21841638beb70177b4236a4",
+      "goal_id": "6f6d5cd5815e4ae5a4315a161341b1ce",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "id": "5456d793e2424226b795075d9f2e44e3",
+      "goal_id": "43fd4008f40548098be04fa011e22d2e",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "primary_turns": [],
+  "attempts": [],
+  "artifacts": [],
+  "receipts": [],
+  "records": [
+    {
+      "seq": 1,
+      "id": "92b881d4c98541989aaaa40198fc3155",
+      "role": "user",
+      "content": "Create a local fictional picnic draft.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "cadfbf3dcc364e058b8254283e0855fd",
+      "role": "user",
+      "content": "Create a local fictional library notice.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "c30d4d9e34e74850bfb3d65c68ca6ec8",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"6f6d5cd5815e4ae5a4315a161341b1ce\"}",
+      "usable": 1,
+      "source_event_id": "08f11065c76046968bfd4efc1787f9af",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "73eac8762b1f45db89ab918fc9a3f76e",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.pause\",\"goal_id\":\"6f6d5cd5815e4ae5a4315a161341b1ce\"}",
+      "usable": 1,
+      "source_event_id": "8f9a0dde75c64daf96190037ee98498a",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "ee732a82015844668b6bf388d8f62b4e",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"43fd4008f40548098be04fa011e22d2e\"}",
+      "usable": 1,
+      "source_event_id": "daee9740c21f45d38eac5cdf623ecfa6",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "4e5da716a96e4a97ad5258a9080c4c1e",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.pause\",\"goal_id\":\"43fd4008f40548098be04fa011e22d2e\"}",
+      "usable": 1,
+      "source_event_id": "e077f044eadb48b4907f227bb5913c14",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "19b455ab96584ab6be8c0bd6b23491e8",
+      "role": "user",
+      "content": "cancel",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 8,
+      "id": "2bc12d9c2b8e4abcb7836ec8b5a65a57",
+      "role": "assistant",
+      "content": "操作を受け付けました。 / Control accepted.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 9,
+      "id": "74345ec95ff34f37bd8c5ef4d9902097",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.cancel\",\"goal_id\":\"6f6d5cd5815e4ae5a4315a161341b1ce\"}",
+      "usable": 1,
+      "source_event_id": "e519dfb6a79745f2b0a6308f72b7cec5",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "dedupe": [
+    {
+      "key": "first-source",
+      "kind": "record",
+      "hash": "9ab125c9b9bc389b6f207864ca78609f5cfd673f5d013a4e427ba36d47992b05",
+      "result": "{\"content\":\"Create a local fictional picnic draft.\",\"id\":\"92b881d4c98541989aaaa40198fc3155\",\"role\":\"user\"}"
+    },
+    {
+      "key": "other-source",
+      "kind": "record",
+      "hash": "22dfc2a4b3369e57cc6ab803560feba843e4117622d50b966691fce1a0ce2f50",
+      "result": "{\"content\":\"Create a local fictional library notice.\",\"id\":\"cadfbf3dcc364e058b8254283e0855fd\",\"role\":\"user\"}"
+    },
+    {
+      "key": "first-goal",
+      "kind": "goal",
+      "hash": "aa8d3bf131a253afb8ee73415b2b4970df75f2cee74cf5470ed5f27c355a326a",
+      "result": "{\"acceptance_id\":\"5e3914fbf21841638beb70177b4236a4\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"6f6d5cd5815e4ae5a4315a161341b1ce\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":0}"
+    },
+    {
+      "key": "first-goal:paused",
+      "kind": "control",
+      "hash": "f24b817eab7c02aaeab3cccdb2766d711e7012313102635aed3ffbf744a7825d",
+      "result": "{\"acceptance_id\":\"5e3914fbf21841638beb70177b4236a4\",\"ambiguity\":0,\"budget\":3,\"epoch\":1,\"id\":\"6f6d5cd5815e4ae5a4315a161341b1ce\",\"question_id\":null,\"reason\":\"user_paused\",\"revision\":1,\"seq\":1,\"state\":\"paused\",\"total_claims\":0}"
+    },
+    {
+      "key": "other-goal",
+      "kind": "goal",
+      "hash": "980fb8fa4b47de433ba667475c25166768729e0f14055979f1b16e01dfb03d75",
+      "result": "{\"acceptance_id\":\"5456d793e2424226b795075d9f2e44e3\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"43fd4008f40548098be04fa011e22d2e\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":2,\"state\":\"queued\",\"total_claims\":0}"
+    },
+    {
+      "key": "other-goal:paused",
+      "kind": "control",
+      "hash": "ddb19a2770362808815566171181dacb2d446b8b28873be4a89c5961d1724320",
+      "result": "{\"acceptance_id\":\"5456d793e2424226b795075d9f2e44e3\",\"ambiguity\":0,\"budget\":3,\"epoch\":1,\"id\":\"43fd4008f40548098be04fa011e22d2e\",\"question_id\":null,\"reason\":\"user_paused\",\"revision\":1,\"seq\":2,\"state\":\"paused\",\"total_claims\":0}"
+    },
+    {
+      "key": "ingress-action:58133f7ee7ca46a3b05ba739d6966de41444278215e0a00665ba06344640f762",
+      "kind": "control",
+      "hash": "ba05eac09576c28220ee372a79ee71c3985d923d2f2092c8c47d504a620f3885",
+      "result": "{\"acceptance_id\":\"5e3914fbf21841638beb70177b4236a4\",\"ambiguity\":0,\"budget\":3,\"epoch\":2,\"id\":\"6f6d5cd5815e4ae5a4315a161341b1ce\",\"question_id\":null,\"reason\":\"user_cancelled\",\"revision\":1,\"seq\":1,\"state\":\"cancelled\",\"total_claims\":0}"
+    },
+    {
+      "key": "host-reply:58133f7ee7ca46a3b05ba739d6966de41444278215e0a00665ba06344640f762",
+      "kind": "record",
+      "hash": "d455ce093b1811e9f807fd87fae6928e78ea00a6999ea076251cbb52996b2cb4",
+      "result": "{\"content\":\"操作を受け付けました。 / Control accepted.\",\"id\":\"2bc12d9c2b8e4abcb7836ec8b5a65a57\",\"role\":\"assistant\"}"
+    },
+    {
+      "key": "ui:dfb6ab68-fd6a-489b-b916-d33efa94d227:d99caff5-a8bd-4567-b06e-b6d0cdc86040",
+      "kind": "ingress",
+      "hash": "89d87bcddc27011ebba535db42b25153f0ee040ba2de48c2bd952d65e87ff07a",
+      "result": "{\"action\":\"cancel\",\"goal\":{\"acceptance_id\":\"5e3914fbf21841638beb70177b4236a4\",\"ambiguity\":0,\"budget\":3,\"epoch\":2,\"id\":\"6f6d5cd5815e4ae5a4315a161341b1ce\",\"question_id\":null,\"reason\":\"user_cancelled\",\"revision\":1,\"seq\":1,\"state\":\"cancelled\",\"total_claims\":0},\"intent\":\"control\",\"record_id\":\"19b455ab96584ab6be8c0bd6b23491e8\"}"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "08f11065c76046968bfd4efc1787f9af",
+      "goal_id": "6f6d5cd5815e4ae5a4315a161341b1ce",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "8f9a0dde75c64daf96190037ee98498a",
+      "goal_id": "6f6d5cd5815e4ae5a4315a161341b1ce",
+      "kind": "goal.pause",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "daee9740c21f45d38eac5cdf623ecfa6",
+      "goal_id": "43fd4008f40548098be04fa011e22d2e",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 4,
+      "id": "e077f044eadb48b4907f227bb5913c14",
+      "goal_id": "43fd4008f40548098be04fa011e22d2e",
+      "kind": "goal.pause",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 5,
+      "id": "e519dfb6a79745f2b0a6308f72b7cec5",
+      "goal_id": "6f6d5cd5815e4ae5a4315a161341b1ce",
+      "kind": "goal.cancel",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    }
+  ]
+}

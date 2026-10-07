@@ -1,0 +1,65 @@
+{
+  "scope": "live_synthetic_with_fixture_preconditions",
+  "candidate": "f4aa60f7bdfb57f39685e52f04a8d7d74557ed17",
+  "product_baseline": "1a14de9",
+  "source_unchanged": true,
+  "fixture_questions_not_model_generated": true,
+  "human_evaluation": false,
+  "qwen_qualification": false,
+  "native_slots_used": 5,
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 3,
+    "expires_at": 1791387941.130168,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "case_results": [
+    {
+      "case": "answer",
+      "status": "controller_PASS",
+      "http_receipt_match": true,
+      "receipt": {
+        "id": "e2023a21bbd7406ca15f427aaf001df6",
+        "attempt_id": "2888f7d3716144a58ae8e378736d76ab",
+        "artifact_id": "f3701902d7b74e8b9e9a7eafb0cc6adb",
+        "hash": "1a4ec7baf4ca5fe679097d4755bdaed5ed1a8e4774f305f307ccb9ae83fb1763",
+        "size": 200,
+        "revision": 1,
+        "epoch": 3,
+        "role": "draft"
+      }
+    },
+    {
+      "case": "correct",
+      "status": "controller_PASS",
+      "http_receipt_match": true,
+      "receipt": {
+        "id": "a2f2b2ade40d4e78842d78d50d33c0f3",
+        "attempt_id": "b1fb9bae761f466d92ba8ec05bf09485",
+        "artifact_id": "c85099b0f33f43ae973c451659be7176",
+        "hash": "063edb4f3183a4d99b10637262220d88b5014f6db81e1c23d367a623d51e1b81",
+        "size": 295,
+        "revision": 2,
+        "epoch": 3,
+        "role": "draft"
+      }
+    },
+    {
+      "case": "cancel",
+      "status": "NOT_VERIFIED",
+      "reason": "UI observed running, Stop click target disappeared; subsequent UI and canonical state completed. No cancel ingress or cancel event. No rerun."
+    }
+  ],
+  "server_exit_code": 0,
+  "owned_port_closed": true,
+  "database_integrity": "ok",
+  "pending_primary": 0,
+  "max_run_seconds": 600,
+  "end_observed_at": 1791387536.615285,
+  "duration_to_final_read_seconds": 495.48511695861816,
+  "raw_native_outputs_retained": false,
+  "canonical_repairs": 0,
+  "audit_at": 1791387712.854029
+}

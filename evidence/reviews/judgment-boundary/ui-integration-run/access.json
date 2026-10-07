@@ -1,0 +1,15 @@
+{
+  "verified_at": 1791387041.130168,
+  "no_extra_charge": true,
+  "route": "official_claude_pro",
+  "loggedIn": true,
+  "authMethod": "claude.ai",
+  "subscriptionType": "pro",
+  "ui_pro": true,
+  "session_used_percent": 30,
+  "week_used_percent": 23,
+  "extra_usage_enabled": false,
+  "purchased_credits": 0,
+  "auto_reload_enabled": false,
+  "paid_fallback": false
+}

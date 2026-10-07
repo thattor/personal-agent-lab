@@ -1,0 +1,8 @@
+{
+  "status": "completed",
+  "elapsed_seconds": 213.73,
+  "model": "swe-2-high",
+  "paid_fallback": false,
+  "scope": "supplied-source implementation review",
+  "prompt_delivery": "documented --prompt-file; initial -p stdin attempt failed before verdict"
+}

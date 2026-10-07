@@ -1,0 +1,5 @@
+{
+  "status": "failed",
+  "elapsed_seconds": 0.182,
+  "error": "native provider failed, stopped, or exceeded bound"
+}

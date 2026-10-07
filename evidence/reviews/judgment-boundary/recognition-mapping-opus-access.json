@@ -1,0 +1,14 @@
+{
+  "at": 1791387973.929256,
+  "route": "official_claude_pro",
+  "model": "opus",
+  "loggedIn": true,
+  "authMethod": "claude.ai",
+  "subscriptionType": "pro",
+  "session_used_percent": 31,
+  "week_used_percent": 23,
+  "extra_usage_enabled": false,
+  "purchased_credits": 0,
+  "auto_reload_enabled": false,
+  "paid_fallback": false
+}

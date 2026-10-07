@@ -1,0 +1,213 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "f7d2cadac83a41249afe855de63831b9",
+      "role": "user",
+      "content": "地域の星空観察会のお知らせを日本語で下書きしてください。日付は10月20日、開始は18時です。会場だけ未定なので確認してから使い、他の詳細は加えず、送信はしません。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "817ae86fa47e41c7a83933d407fd555d",
+      "role": "user",
+      "content": "家族向けに、土曜日10時から11時まで本棚を整理する手順メモを下書きしてください。机で本を「残す」「譲る」に分け、残す本は棚へ、譲る本は箱へ入れます。送信はしません。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "8239d97a55ec45f4953ba3a35320237a",
+      "role": "user",
+      "content": "10月25日10時から青葉公園を散策する家族向けの案内を300字以内で下書きしてください。この情報だけを使い、送信はしません。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "627be9ef91a445d7abf72e1ece45253e",
+      "state": "waiting_input",
+      "revision": 1,
+      "acceptance_id": "92683fdf05a9450f84b4742b44e33ac5",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "星空観察会の会場はどこですか？",
+      "question_id": "8d926859acb94fa4b3fda32c4f292140",
+      "ambiguity": 0
+    },
+    {
+      "seq": 2,
+      "id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "state": "paused",
+      "revision": 1,
+      "acceptance_id": "04bee1109656407e9237ed8b3185fb63",
+      "epoch": 1,
+      "budget": 3,
+      "total_claims": 0,
+      "reason": "user_paused",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    {
+      "seq": 3,
+      "id": "d012156d32fa4dff9a287973f356039b",
+      "state": "paused",
+      "revision": 1,
+      "acceptance_id": "870cc834cc9b48928dc9370ab285e396",
+      "epoch": 1,
+      "budget": 3,
+      "total_claims": 0,
+      "reason": "user_paused",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "revision": 1,
+      "acceptance_id": "92683fdf05a9450f84b4742b44e33ac5",
+      "specification": "地域の星空観察会の案内を下書きする。10月20日18時開始。会場は確認してから使用し、他の事実を追加しない。",
+      "sources": "[\"f7d2cadac83a41249afe855de63831b9\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    },
+    {
+      "goal_id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "revision": 1,
+      "acceptance_id": "04bee1109656407e9237ed8b3185fb63",
+      "specification": "家族向けに土曜日10時から11時まで本棚整理する手順メモ。机で残す本と譲る本に分け、残す本は棚へ、譲る本は箱へ。",
+      "sources": "[\"817ae86fa47e41c7a83933d407fd555d\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    },
+    {
+      "goal_id": "d012156d32fa4dff9a287973f356039b",
+      "revision": 1,
+      "acceptance_id": "870cc834cc9b48928dc9370ab285e396",
+      "specification": "10月25日10時から青葉公園を散策する家族向けの案内を300字以内で下書きする。この事実以外を追加しない。",
+      "sources": "[\"8239d97a55ec45f4953ba3a35320237a\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "92683fdf05a9450f84b4742b44e33ac5",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "id": "04bee1109656407e9237ed8b3185fb63",
+      "goal_id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "id": "870cc834cc9b48928dc9370ab285e396",
+      "goal_id": "d012156d32fa4dff9a287973f356039b",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "7c8f73a7443a4e6dbb246e9cfaa76946",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "revision": 1,
+      "acceptance_id": "92683fdf05a9450f84b4742b44e33ac5",
+      "epoch": 1,
+      "status": "waiting",
+      "manifest": "[\"f7d2cadac83a41249afe855de63831b9\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [],
+  "outcomes": [],
+  "events": [
+    {
+      "seq": 1,
+      "id": "e97d4d19225f427cb20df3b97657079c",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 0
+    },
+    {
+      "seq": 2,
+      "id": "a92bb1df1f4744e8b080930edc50d95d",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"7c8f73a7443a4e6dbb246e9cfaa76946\",\"epoch\":1}",
+      "delivered": 0
+    },
+    {
+      "seq": 3,
+      "id": "719865ed2d6a40339cb91fa0dd8b7c9f",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "kind": "goal.waiting_input",
+      "payload": "{\"question_id\":\"8d926859acb94fa4b3fda32c4f292140\",\"reason\":\"星空観察会の会場はどこですか？\"}",
+      "delivered": 0
+    },
+    {
+      "seq": 4,
+      "id": "47268c0aacd64ff1b5423a22e6d73f89",
+      "goal_id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 0
+    },
+    {
+      "seq": 5,
+      "id": "d9722a2057064fee98c7f861287c6431",
+      "goal_id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "kind": "goal.pause",
+      "payload": "{\"revision\":1}",
+      "delivered": 0
+    },
+    {
+      "seq": 6,
+      "id": "e13827e658064015bcd9c816ede7a090",
+      "goal_id": "d012156d32fa4dff9a287973f356039b",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 0
+    },
+    {
+      "seq": 7,
+      "id": "45a92fd80c034c0090ff9f21fcbdfec6",
+      "goal_id": "d012156d32fa4dff9a287973f356039b",
+      "kind": "goal.pause",
+      "payload": "{\"revision\":1}",
+      "delivered": 0
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "questions": [
+    {
+      "id": "8d926859acb94fa4b3fda32c4f292140",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "attempt_id": "7c8f73a7443a4e6dbb246e9cfaa76946",
+      "revision": 1,
+      "epoch": 1,
+      "round": 1,
+      "prompt": "星空観察会の会場はどこですか？",
+      "status": "open",
+      "answer_record_id": null
+    }
+  ],
+  "artifacts": [],
+  "primary_turns": []
+}

@@ -214,3 +214,25 @@ PASS18.510s. Source unchanged; no new design/harness or old-matrix guard bypass.
 Contribution: working end-to-end evaluation candidate for #5; #12/#2/PAL remain open.
 Next: one meaningful HR-STABLE1-001 evaluation packet, affected release-coverage audit;
 apply actual feedback, then final release audit. No human micro-approval or Qwen claim.
+
+## C035 — Same-work answer/correction and bounded UI cancellation evidence
+
+Candidatef4aa60f/product1a14de9: actual ordinary textbox answer to a declared persisted
+fixture question resumes the same Goal and produces the grounded200-byte artifact.
+Natural correction selects only shelf work, revision1→2 with unchanged criteria, then
+actual295-byte revised artifact. Browser/HTTP/receipt bytes match. Five official slots;
+final capture495.485seconds, owned serverexit0/portclosed, source/DB checks clean.
+UI running-cancel timing remains NOT_VERIFIED: click failed before any cancel ingress.
+Separate actual-browser paused-Goal Stop transport proves correct target/no extra work
+with zero generations, explicitly mock/synthetic, never real-provider/late-result proof.
+Evidence: ui-integration-run/ and ui-cancel-transport/ under judgment-boundary.
+Current unchanged213-test full suite remains green. Product code unchanged.
+
+Release audit also caught historical lexical PASS being insufficient for current Primary
+recognition. Official Opus74.493s agrees versioned N1-01/D029 mapping to the owner's already
+accepted essential pre-Goal questions, preserving15/16,zero24/unwantedEffects and old evidence.
+No new human technical question. Next: reviewed conditional-answer regression over exact40
+inputs, one whole-flow human evaluation using actual saved outputs, then release audit.
+SWE-2 High Free implementation review completed213.730s; conditional-answer/budget/
+accounting contracts were adopted in DECISIONS.md before the test-only C036 extension.
+No current-regression execution or result is claimed yet.

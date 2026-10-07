@@ -533,3 +533,68 @@ same immutable selector,24 maximum slots/deadline/one-use proof, actual12 planne
 Original product1a14de9 unchanged. Next real UI/Expert artifact check uses the existing
 production server entrypoint, bounded fresh official native mode in a disposable owned
 loopback instance, with actual UI inputs explicitly synthetic and no human attestation.
+
+D029 C035 evidence: unchanged production UI proves natural main-textbox answer to a
+declared fixture question and same-Goal real Expert artifact, plus exact-target natural
+correction and revised real artifact. Five official slots, source/receipt/DB audit clean.
+Cancel timing observation has no accepted cancel input and remains NOT_VERIFIED, not a
+product failure. Separate direct Stop on a paused fixture proves actual UI/control
+transport with zero model generations; it cannot be called real-model or late-result
+proof. Current deterministic fencing evidence remains distinct. No product design change.
+
+### D029 measurement amendment — N1-01/D029, before regression execution
+
+Official Opus question/conclusion: recognition-mapping-opus-{question,response}.txt,
+completed74.493s with fresh existing Pro/extra usage OFF. The historical immediate-Goal
+metric conflicts with the owner's adopted pre-Goal essential clarification for inputs
+that contain no draft purpose/content. This is measurement alignment to that direct
+instruction, not a new scope proposal or human technical-approval question.
+
+Adopt before any new case execution: retain original40 inputs/order/IDs and original
+candidate results. The old lexical immediate-Goal PASS stays historical, never current
+Primary proof. At least15/16 requests must be correctly recognized: a sufficient/generic
+request delegates exactly one Goal; an allowed essential question must be grouped and
+followed by exactly one Goal after one prewritten natural answer. Freeze DELEGATE/ASK/
+EITHER, factual exclusions and unnecessary-question exclusions per case before running.
+Always asking is not acceptable: questions on DELEGATE cases are misses. Preserve zero
+Goals on24 nonrequests, explicit unsupported-send explanation, zero unsupported/external
+effects and all host authority/source/criteria gates. Source-backed remember is allowed
+where explicitly requested; it is not a Goal. Report delegation, clarification, misses
+and unexecuted cases separately. Do not rescore old failures or tune product from these
+new observations. Qwen reference is still unqualified; this measures official Claude.
+
+Controller reconciliation: the review's per-request real-artifact suggestion would add
+a new16-artifact quota to the recognition row and cannot be supplied by the reviewed
+Primary-only evaluator. Do not adopt that new quota. Existing N1-05/06/09/10 still require
+actual grounded UI/Expert artifacts separately, now observed in C034/C035; recognition
+success alone cannot satisfy them or genuine human usefulness. Preserve all existing
+quality/security gates. N1-02's independent pre-disclosure mechanism remains required;
+report D029 heldout/contrast evidence and its retained ambiguities instead of inheriting
+the lexical PASS. No entire-row PASS is granted by this reconciliation.
+
+Precommit three regression cohorts in original order: R01–08 and R09–16, each up to16
+Primary attempts including conditional answers, and N01–24 up to24 attempts. Each uses
+the existing <=24-slot/<=900second/no-resume/no-renewal envelope and a fresh independent
+one-use access proof. No call redistribution or retries. Proposed conditional-answer
+skip implementation is awaiting official SWE-2 High review; no code adopted from an
+in-progress review. Freeze all oracle/answer texts and exact cohorts before live use.
+
+D029 C036 official standalone SWE-2 High Free review completed213.730s, supplied source
+only, recognition-swe-response-02.txt. Adopt BEFORE test-only extension: validated
+cohort-specific16/16/24 bounds enforced by both PrimaryGate and native owner, load-time
+worst-case turn count, closed second-turn-only condition, oracle-field exclusion, actual
+stored reply presence, mechanical Goal counts, explicit skipped events separated from
+accepted calls, and complete justified sequence accounting. Keep code inside the pinned
+primary_qualification.py. No public arbitrary skip, retry, proof renewal or product change.
+
+Reconciliations: local_draft already exists and proposes a new Goal specification; it
+does not carry an existing goal_id. Confirm against frozen pal/primary.py/Store rather
+than altering product vocabulary or inventing target fields. A nonempty reply alone does
+not establish an essential question; the controller still judges the actual reply against
+the frozen semantic oracle before allowing the answer. Existing prior-reply-context tests
+apply. Optional verifier skip checks are proportionate because skipped calls affect the
+reported denominator; verify their link to prior successful judgment and absence of calls.
+Initial reviewer invocation failed before any verdict because stdin delivery was not the
+documented CLI interface; preserve it, then use documented --prompt-file. CLI models
+requires list subcommand; fresh authenticated standalone Free metadata was verified before
+the completed review. No reviewer text is human approval or product evidence.

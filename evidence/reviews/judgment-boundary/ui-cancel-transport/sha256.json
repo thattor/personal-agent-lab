@@ -1,0 +1,11 @@
+{
+  "after.json": "21a40c61849a697c280de98000f1add122ef2d9583bde3f76094630fb03c874e",
+  "audit.json": "2c942a0277abd7e4b1f0a157544db4e2255120bddf1a21dc61aa9f59460e7062",
+  "before.json": "035a608832d3adec60b75339810ea3e200e96f33d8782a746f9550df9c72dbc5",
+  "bindings.json": "e936c79f3b20ca358bfaf9845f4ecdf5fc6fd7663729e2846ca6c0283360aab8",
+  "cancel-ui.jpg": "eb9ba4aebb863838372ae60c44e39347bbb04c0d2139899f27eb8e01f8289d43",
+  "cancel-ui.txt": "132b92d96dea1a9bfa72a4f8ed011b44647999711743d3cbf27aca567f6fafeb",
+  "contract.json": "4f242ec6e8401dff6e8e219b41bc1c072a66e3eb11bd198eb3c4ae71584c3f7a",
+  "freeze.json": "6a069b1af9e35ec2bdf5a67ac9951396a40180bce74d874437215dd77bfdcf10",
+  "prior-setup-error.json": "ab695a02e203f1d164e416ead4c50fd8596339e38e5c2b7a37763e585a03e1ce"
+}

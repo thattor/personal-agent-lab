@@ -1,0 +1,13 @@
+{
+  "observed_at": 1791388340.736574,
+  "route": "installed_official_devin",
+  "selected_model": "swe-2-high",
+  "authenticated": true,
+  "auth_command_exit": 0,
+  "model_command_exit": 0,
+  "standalone_free_model_line": [
+    "swe-2-high                                                               SWE-2 High  [262K context, Free]"
+  ],
+  "paid_fallback": false,
+  "diagnosis": "Previous models call omitted required list subcommand; no generation occurred."
+}

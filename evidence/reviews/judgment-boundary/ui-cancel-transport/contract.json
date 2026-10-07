@@ -1,0 +1,62 @@
+{
+  "id": "D029-UI-CANCEL-TRANSPORT-04",
+  "scope": "actual_browser_synthetic_fixture_zero_generations",
+  "provider": "default_mock",
+  "product_baseline": "1a14de9",
+  "max_generations": 0,
+  "setup": {
+    "sources": [
+      {
+        "ref": "first-source",
+        "role": "user",
+        "content": "Create a local fictional picnic draft.",
+        "usable": true
+      },
+      {
+        "ref": "other-source",
+        "role": "user",
+        "content": "Create a local fictional library notice.",
+        "usable": true
+      }
+    ],
+    "goals": [
+      {
+        "ref": "first-goal",
+        "label": "Fictional picnic draft",
+        "state": "paused",
+        "revision": 1,
+        "epoch": 1,
+        "source_refs": [
+          "first-source"
+        ],
+        "fixed_criteria": {
+          "kind": "local_draft",
+          "max_bytes": 4096
+        }
+      },
+      {
+        "ref": "other-goal",
+        "label": "Fictional library notice",
+        "state": "paused",
+        "revision": 1,
+        "epoch": 1,
+        "source_refs": [
+          "other-source"
+        ],
+        "fixed_criteria": {
+          "kind": "local_draft",
+          "max_bytes": 4096
+        }
+      }
+    ],
+    "questions": []
+  },
+  "action": "Click already-present Stop for first-goal without Resume; observe current target immediately before click.",
+  "required": [
+    "first-goal becomes cancelled with accepted UI control input",
+    "other-goal unchanged",
+    "zero Primary turns, attempts, artifacts or receipts",
+    "no model inference"
+  ],
+  "limits": "UI/control transport only; no actual provider generation or running late-result proof; previous timing NOT_VERIFIED retained."
+}

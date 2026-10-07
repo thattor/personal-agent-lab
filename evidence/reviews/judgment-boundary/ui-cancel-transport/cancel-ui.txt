@@ -1,0 +1,49 @@
+Browser tab: 25, Title: "Personal Agent Lab", URL: "http://127.0.0.1:59208/".
+0 AXWebArea Personal Agent Lab, URL: 127.0.0.1:59208/
+	1 container
+		2 link Description: Personal Agent Lab, Value: 127.0.0.1:59208/
+		3 link Description: Inspect / 状態を見る, Value: 127.0.0.1:59208/inspect
+		43 text Provider: mock · local drafts / ローカル下書き · Mock / 模擬応答
+		5 heading What’s on your mind? / 何をお手伝いしましょうか？, Value: 1
+			6 text What’s on your mind? / 何をお手伝いしましょうか？
+		7 text Talk, remember something, or ask for a draft. Drafts stay local. / 会話・記憶・下書きの依頼ができます。下書きはローカルに保存されます。
+		8 container Description: Conversation, ID: conversation
+			44 container
+				45 text user / あなた Create a local fictional picnic draft.
+				46 button Stop AI reference / AI参照を停止
+			47 container
+				48 text user / あなた Create a local fictional library notice.
+				49 button Stop AI reference / AI参照を停止
+			50 container
+				51 text assistant / アシスタント Work accepted. / 作業を受け付けました。
+			52 container
+				53 text assistant / アシスタント Work paused. / 作業を一時停止しました。
+			54 container
+				55 text assistant / アシスタント Work accepted. / 作業を受け付けました。
+			56 container
+				57 text assistant / アシスタント Work paused. / 作業を一時停止しました。
+			58 container
+				59 text user / あなた cancel
+				60 button Stop AI reference / AI参照を停止
+			61 container
+				62 text assistant / アシスタント 操作を受け付けました。 / Control accepted.
+			63 container
+				64 text assistant / アシスタント Work stopped. / 作業を中止しました。
+		23 container message
+			24 text Your message / メッセージ
+			25 text entry area (settable) Your message / メッセージ, ID: text
+			26 button Send / 入力を送信
+		27 container Description: Current work, ID: work
+			65 container
+				66 text Work / 作業: cancelled / 中止 Fictional picnic draft user cancelled
+			67 container
+				68 text Work / 作業: paused / 一時停止 Fictional library notice user paused
+				69 button Resume / 再開
+				70 button Stop / 中止
+				71 button (collapsed) Correct work / 作業を訂正, Secondary Actions: Expand
+					72 text Correct work / 作業を訂正
+		40 text Talk naturally in English or Japanese. Work buttons act directly while a reply is pending. / 日本語・英語で自然に話しかけてください。返答待ちでも、作業欄のボタンで直接操作できます。
+		41 button (collapsed) Session receipt / 利用記録, Secondary Actions: Expand
+			42 text Session receipt / 利用記録
+
+The focused UI element is 0 AXWebArea Personal Agent Lab, URL: 127.0.0.1:59208/

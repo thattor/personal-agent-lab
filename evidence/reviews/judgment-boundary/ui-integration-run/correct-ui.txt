@@ -1,0 +1,77 @@
+Browser tab: 22, Title: "Personal Agent Lab", URL: "http://127.0.0.1:51168/".
+0 AXWebArea Personal Agent Lab, URL: 127.0.0.1:51168/
+	1 container
+		2 link Description: Personal Agent Lab, Value: 127.0.0.1:51168/
+		3 link Description: Inspect / 状態を見る, Value: 127.0.0.1:51168/inspect
+		61 text Provider: official_claude_opus_tool_free · local drafts / ローカル下書き · Official live / 公式実モデル · remaining / 残り 4 · Proof valid / 利用証明有効
+		5 heading What’s on your mind? / 何をお手伝いしましょうか？, Value: 1
+			6 text What’s on your mind? / 何をお手伝いしましょうか？
+		7 text Talk, remember something, or ask for a draft. Drafts stay local. / 会話・記憶・下書きの依頼ができます。下書きはローカルに保存されます。
+		8 container Description: Conversation, ID: conversation
+			62 container
+				63 text user / あなた 地域の星空観察会のお知らせを日本語で下書きしてください。日付は10月20日、開始は18時です。会場だけ未定なので確認してから使い、他の詳細は加えず、送信はしません。
+				64 button Stop AI reference / AI参照を停止
+			65 container
+				66 text user / あなた 家族向けに、土曜日10時から11時まで本棚を整理する手順メモを下書きしてください。机で本を「残す」「譲る」に分け、残す本は棚へ、譲る本は箱へ入れます。送信はしません。
+				67 button Stop AI reference / AI参照を停止
+			68 container
+				69 text user / あなた 10月25日10時から青葉公園を散策する家族向けの案内を300字以内で下書きしてください。この情報だけを使い、送信はしません。
+				70 button Stop AI reference / AI参照を停止
+			71 container
+				72 text assistant / アシスタント Work accepted. / 作業を受け付けました。
+			73 container
+				74 text assistant / アシスタント Preparing your draft… / 下書きを作成中です。
+			75 container
+				76 text assistant / アシスタント Your input is needed. / 入力をお待ちしています。
+			77 container
+				78 text assistant / アシスタント Work accepted. / 作業を受け付けました。
+			79 container
+				80 text assistant / アシスタント Work paused. / 作業を一時停止しました。
+			81 container
+				82 text assistant / アシスタント Work accepted. / 作業を受け付けました。
+			83 container
+				84 text assistant / アシスタント Work paused. / 作業を一時停止しました。
+			85 container
+				86 text user / あなた 会場は青葉集会室です。18時開始で、星空観察会の案内文の下書きを仕上げてください。
+				87 button Stop AI reference / AI参照を停止
+			88 container
+				89 text assistant / アシスタント 回答を記録し、下書き作成を再開しました。 / Answer recorded; work resumed.
+			90 container
+				91 text assistant / アシスタント Your answer was accepted. / 回答を受け付けました。
+			92 container
+				93 text assistant / アシスタント Preparing your draft… / 下書きを作成中です。
+			94 container
+				95 text assistant / アシスタント Your local draft is ready. / 下書きが完成しました。
+				96 link Description: Open local draft / 下書きを開く, Value: 127.0.0.1:51168/api/artifact/f3701902d7b74e8b9e9a7eafb0cc6adb
+			97 container
+				98 text user / あなた 保留中の本棚整理メモは、時間を土曜日10時から10時半に変えて。本を「残す」「譲る」に分け、譲る本を箱に入れるところまでにしてください。残す本を棚に戻す工程は外してください。
+				99 button Stop AI reference / AI参照を停止
+			100 container
+				101 text assistant / アシスタント 訂正を適用しました：家族向けに土曜日10時から10時半まで本棚を整理する手順メモを下書きする。机で本を「残す」「譲る」に分け、譲る本を箱に入れるところまでとする。残す本を棚に戻す工程は含めない。送信はしない。 / correct applied.
+			102 container
+				103 text assistant / アシスタント Your correction was applied. / 訂正を適用しました。
+			104 container
+				105 text assistant / アシスタント Preparing your draft… / 下書きを作成中です。
+			106 container
+				107 text assistant / アシスタント Your local draft is ready. / 下書きが完成しました。
+				108 link Description: Open local draft / 下書きを開く, Value: 127.0.0.1:51168/api/artifact/c85099b0f33f43ae973c451659be7176
+		32 container message
+			33 text Your message / メッセージ
+			34 text entry area (settable) Your message / メッセージ, ID: text
+			35 button Send / 入力を送信
+		36 container Description: Current work, ID: work
+			109 container
+				110 text Work / 作業: completed / 完了 地域の星空観察会の案内を下書きする。10月20日18時開始。会場は確認してから使用し、他の事実を追加しない。
+			111 container
+				112 text Work / 作業: completed / 完了 家族向けに土曜日10時から10時半まで本棚を整理する手順メモを下書きする。机で本を「残す」「譲る」に分け、譲る本を箱に入れるところまでとする。残す本を棚に戻す工程は含めない。送信はしない。
+			113 container
+				114 text Work / 作業: paused / 一時停止 10月25日10時から青葉公園を散策する家族向けの案内を300字以内で下書きする。この事実以外を追加しない。 user paused
+				115 button Resume / 再開
+				116 button Stop / 中止
+				117 button (collapsed) Correct work / 作業を訂正, Secondary Actions: Expand
+					118 text Correct work / 作業を訂正
+		58 text Talk naturally in English or Japanese. Work buttons act directly while a reply is pending. / 日本語・英語で自然に話しかけてください。返答待ちでも、作業欄のボタンで直接操作できます。
+		59 button (collapsed) Session receipt / 利用記録, Secondary Actions: Expand
+			60 text Session receipt / 利用記録
+
+The focused UI element is 0 AXWebArea Personal Agent Lab, URL: 127.0.0.1:51168/

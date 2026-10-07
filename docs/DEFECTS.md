@@ -234,3 +234,24 @@ batch nevertheless committed the already-green evidence without that intended up
 Correct the missing metadata in a subsequent commit, retain history, and stop dependent
 mutations on any nonzero command result. Use explicit UTF-8 source encoding or structured
 patches for non-ASCII text. This did not change product code or any runtime database.
+
+## C035 observer timing and fixture schema
+
+The actual UI cancel probe observed running, then the AX target disappeared before the
+Stop click could be dispatched. Final canonical records contain resume/claim/completion
+but no cancel input/event. Preserve NOT_VERIFIED; do not infer a cancellation product
+defect or rerun until a favorable timing result. Independent review recommends a direct
+Stop on an already-paused fixture for UI/control transport, with current deterministic
+barriers proving in-flight fencing separately. That scoped zero-generation UI check
+passed: only the chosen Goal cancelled, other Goal unchanged, zero attempts/receipts.
+
+Initial transport-only fixture omitted the helper's required empty questions list;
+setup failed before server start or any provider call. The partial DB is retained in
+runtime/primary-ui-cancel-c035-03. Inspect the existing helper's schema before constructing
+the replacement; the complete contract was fixed before new Store creation in04. No
+SQL repair/reuse of the failed setup. This is an observer/setup mistake, not model proof.
+
+An initial read-only database export encountered artifact BLOB values unsupported by
+JSON. No file or canonical write occurred. The next export explicitly records UTF-8,
+size and SHA256 for each BLOB, then independently matches HTTP bytes to host receipts.
+Do not stringify byte objects or silently omit artifacts from evidence.

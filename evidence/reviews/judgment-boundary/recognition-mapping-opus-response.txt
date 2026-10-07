@@ -1,0 +1,80 @@
+Per your instruction (supplied context only, no tools or files), I have not written the plan file or called any tools. This is a design answer only. Nothing has been executed or certified.
+
+# N1-01 reconciliation under D029
+
+## 1. Compatibility and decision class
+
+**Are they incompatible?** Yes, but only for underspecified requests. The old N1-01 metric scored "recognized request" as "exactly one Goal on turn 1." D029, which follows the owner's direct instruction, makes asking an essential question before creating a Goal the correct behavior when content is missing. Take "Please make a draft without sending it." It has no purpose, no recipient and no facts. The literal metric would reward creating a Goal with no content, which the owner explicitly replaced. For sufficiently specified requests the two agree: both require one Goal.
+
+**Classification.** This is reconciling measurement to behavior the owner already accepted, not a new product acceptance change. Three conditions apply:
+- It is recorded as a **versioned amendment** (for example N1-01/D029). The old row stays as a historical PASS, labeled "lexical path, immediate-Goal semantics, superseded by D029, not current Primary proof." It is never relabeled.
+- No safety or fixed criterion becomes weaker. The 15/16 threshold, zero Goals on the 24 nonrequests, and the explicit explanation for unsupported sending all stay. Each is tightened where needed (see section 2).
+- Expected outcomes for each case are derived from the owner's stated principle and frozen before any run.
+
+**Noninferable human judgment.** None is needed to adopt the mapping. The behavior choice (clarify instead of creating an empty Goal) is the owner's own D029 instruction. The only real judgment is the boundary between essential and inferable for a few borderline cases. Handle this without a human gate: wherever the owner's principle doesn't decide a case, freeze the expected class as "either acceptable" rather than asking anyone. The one human judgment that does remain is N1-09's genuine-usefulness evaluation. It already exists and is still outstanding. It is not created by this reconciliation and must not be implied by it.
+
+**Challenge.** The main regression risk under D029 is that "essential question" becomes an escape hatch. A model that always asks would score 16/16 on recognition while delegating nothing. The mapping must close this hole, not just permit questions.
+
+## 2. Smallest defensible mapping
+
+Keep the 40 original inputs and the old candidate results unchanged. Before the run, freeze for each of the 16 requests:
+
+- **Expected class:**
+  - `DELEGATE`: sufficient or generic draft is possible. A question here counts as a miss.
+  - `ASK`: no draftable content exists.
+  - `EITHER`: the principle doesn't decide.
+- **Facts that must not be invented.** For example, in 「まだ日付は決まっていませんが、招待文の下書きを作って。」 the user says the date is deliberately undecided:
+  - Asking for the date is a miss.
+  - A fabricated date is a miss.
+  - The allowed outcomes are a Goal with a date placeholder, or a question about other missing essentials (such as the event) that does not ask for the date.
+- **Questions that count as non-essential.** Under D028, approval questions such as "Shall I draft this?" or confirmation of facts already given are misses.
+
+**Scoring for each request**, reported in three separate buckets (delegated, clarified, miss):
+- **Delegated:** exactly one Goal on turn 1, in an allowed class, plus a real artifact grounded in the supplied facts with no invented specifics.
+- **Clarified:** zero Goals on turn 1 and one grouped, essential question, in an allowed class. Then, after the frozen natural answer, exactly one Goal in the same conversation and a grounded real artifact. A question with no successful follow-through counts as a **miss**, not as recognition.
+- **Miss:** anything else, including errors, timeouts, refusals, wrong Goal counts, non-essential or approval questions, fabricated facts, and unsupported effects.
+
+**Thresholds:**
+- Requests: at least 15/16 delegated or clarified. This keeps the original threshold.
+- Nonrequests: zero Goals across all turns. Unsupported sending must be explicitly explained, and no turn may imply sending is supported.
+- All 40: zero unsupported or external effects. Host validation of IDs, snapshots, revision and epoch must hold for every commit.
+
+"Grounded useful downstream output" is limited to checks a machine can verify: supplied facts are present, no fabricated specifics, and the artifact is real. Genuine usefulness stays under N1-09's human evaluation and is not claimed here.
+
+N1-02 needs no remapping. The independently frozen D029 heldout12 two-turn run is the current-Primary evidence for it. The lexical PASS stays historical.
+
+## 3. Finite actual-model regression
+
+**Scope:** exactly the 40 frozen inputs, plus one frozen natural answer turn for each request case. The answer is used only if the model asks. Nothing else is added.
+
+**Frozen before the run, then hashed and recorded:**
+- Product commit `1a14de9`, the prompt and validator hashes, the model path (official Claude Pro Primary, labeled as such and not as Qwen evidence), and the oracle and scoring code.
+- The expected class for each case, the no-invention facts, and the non-essential question list.
+- The answer texts. These are written before any question is seen, as natural replies that supply the plausible missing facts regardless of how the question is phrased.
+- Cohort assignment by fixed corpus order.
+
+**Cohorts:** stay inside the existing limit of at most 24 first attempts and 900 seconds per cohort. Count answer turns as calls, so the budget isn't expanded silently.
+- R1: requests 1–8, with at most 8 answer turns, for at most 16 calls.
+- R2: requests 9–16, with at most 8 answer turns, for at most 16 calls.
+- N1 and N2: nonrequests split 12 and 12. Use a single N cohort of 24 only if prior measured latency comfortably fits 900 seconds. Make this decision before the run, not after.
+
+**Run rules:**
+- One attempt per case. No retries, resampling, or prompt changes.
+- Errors and timeouts count as misses.
+- All raw outputs and discrepancies between the oracle and expectations are retained.
+- Existing evidence stays immutable.
+- If the run fails, the report says so. Neither the criteria nor the expected classes may be edited afterward.
+
+**Limits:**
+- Freeze40 is disclosed and possibly saw development contact, so this run is regression evidence, not generalization. Heldout12 carries generalization.
+- Mocks and deterministic host tests prove validation and fencing only, not model semantics.
+
+## Recommendation: adopt
+
+Adopt the versioned N1-01/D029 amendment with the escape-hatch protections above, and keep the old lexical PASS as historical. No new owner decision is required for the mapping, because it implements the owner's D029 instruction and weakens no fixed criterion. The amendment and its trace to D029 should be visible in the release record so the owner can reject it at release review.
+
+**Explicit limits:**
+- This would provide evidence only for the official Claude Pro Primary. Qwen3.8-27B is unqualified.
+- Human usefulness (N1-09) is still pending.
+- UI cancellation is still NOT_VERIFIED, and the separate zero-generation cancel transport check is still the next minimum step.
+- None of this amounts to Stable1, and this answer does not certify a release.

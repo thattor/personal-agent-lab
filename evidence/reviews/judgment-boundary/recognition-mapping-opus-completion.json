@@ -1,0 +1,7 @@
+{
+  "status": "completed",
+  "elapsed_seconds": 74.493,
+  "model": "opus",
+  "tools": false,
+  "paid_fallback": false
+}

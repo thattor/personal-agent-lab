@@ -1,0 +1,611 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "f7d2cadac83a41249afe855de63831b9",
+      "role": "user",
+      "content": "地域の星空観察会のお知らせを日本語で下書きしてください。日付は10月20日、開始は18時です。会場だけ未定なので確認してから使い、他の詳細は加えず、送信はしません。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "817ae86fa47e41c7a83933d407fd555d",
+      "role": "user",
+      "content": "家族向けに、土曜日10時から11時まで本棚を整理する手順メモを下書きしてください。机で本を「残す」「譲る」に分け、残す本は棚へ、譲る本は箱へ入れます。送信はしません。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "8239d97a55ec45f4953ba3a35320237a",
+      "role": "user",
+      "content": "10月25日10時から青葉公園を散策する家族向けの案内を300字以内で下書きしてください。この情報だけを使い、送信はしません。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "468701538c9242aa80c1c55593011c1d",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"627be9ef91a445d7abf72e1ece45253e\"}",
+      "usable": 1,
+      "source_event_id": "e97d4d19225f427cb20df3b97657079c",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "b8acbb46c994461cbbf848d4b7afc33e",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"7c8f73a7443a4e6dbb246e9cfaa76946\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"627be9ef91a445d7abf72e1ece45253e\"}",
+      "usable": 1,
+      "source_event_id": "a92bb1df1f4744e8b080930edc50d95d",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "c23e86cde675487999878b87ac2812dd",
+      "role": "assistant",
+      "content": "{\"detail\":{\"question_id\":\"8d926859acb94fa4b3fda32c4f292140\",\"reason\":\"星空観察会の会場はどこですか？\"},\"event\":\"goal.waiting_input\",\"goal_id\":\"627be9ef91a445d7abf72e1ece45253e\"}",
+      "usable": 1,
+      "source_event_id": "719865ed2d6a40339cb91fa0dd8b7c9f",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "e041e9b6b9da4f919d33f9c405144d8d",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"acfb4459eded43e9a283cd08f0ca7c48\"}",
+      "usable": 1,
+      "source_event_id": "47268c0aacd64ff1b5423a22e6d73f89",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 8,
+      "id": "3419f09ccf5c424aa934f8b2c22611cf",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.pause\",\"goal_id\":\"acfb4459eded43e9a283cd08f0ca7c48\"}",
+      "usable": 1,
+      "source_event_id": "d9722a2057064fee98c7f861287c6431",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 9,
+      "id": "9669925f7f3a40bbad943683e0893589",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"d012156d32fa4dff9a287973f356039b\"}",
+      "usable": 1,
+      "source_event_id": "e13827e658064015bcd9c816ede7a090",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 10,
+      "id": "c63cbcfee6e648099f3e5094c86af1e5",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.pause\",\"goal_id\":\"d012156d32fa4dff9a287973f356039b\"}",
+      "usable": 1,
+      "source_event_id": "45a92fd80c034c0090ff9f21fcbdfec6",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 11,
+      "id": "e978c7f1165947619d39261b37a7afaf",
+      "role": "user",
+      "content": "会場は青葉集会室です。18時開始で、星空観察会の案内文の下書きを仕上げてください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 12,
+      "id": "58b03230b3b245ebb7313164e104f1a9",
+      "role": "assistant",
+      "content": "回答を記録し、下書き作成を再開しました。 / Answer recorded; work resumed.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"f7d2cadac83a41249afe855de63831b9\",\"817ae86fa47e41c7a83933d407fd555d\",\"8239d97a55ec45f4953ba3a35320237a\",\"e978c7f1165947619d39261b37a7afaf\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 13,
+      "id": "7e81ca5892d2450d813040f7594d6c8a",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.input\",\"goal_id\":\"627be9ef91a445d7abf72e1ece45253e\"}",
+      "usable": 1,
+      "source_event_id": "467337fd7f6a4e30b51e74173b9cfa53",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 14,
+      "id": "7c6a96558617462d87d6142c14a4cdbd",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"2888f7d3716144a58ae8e378736d76ab\",\"epoch\":3},\"event\":\"attempt.claimed\",\"goal_id\":\"627be9ef91a445d7abf72e1ece45253e\"}",
+      "usable": 1,
+      "source_event_id": "ccc98ad9e50b469a936f6c51912cef04",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 15,
+      "id": "b70ff5c28cf5479584aef1b7a3a056c6",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"f3701902d7b74e8b9e9a7eafb0cc6adb\",\"attempt_id\":\"2888f7d3716144a58ae8e378736d76ab\",\"check_status\":\"pass\",\"receipt_id\":\"e2023a21bbd7406ca15f427aaf001df6\"},\"event\":\"goal.completed\",\"goal_id\":\"627be9ef91a445d7abf72e1ece45253e\"}",
+      "usable": 1,
+      "source_event_id": "2975e36e819548d9ae6a3e05306260d8",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 16,
+      "id": "32a26494c1804c25a9ad9105ae0a418a",
+      "role": "user",
+      "content": "保留中の本棚整理メモは、時間を土曜日10時から10時半に変えて。本を「残す」「譲る」に分け、譲る本を箱に入れるところまでにしてください。残す本を棚に戻す工程は外してください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 17,
+      "id": "d169f6f592374eb69402cae6edd4176a",
+      "role": "assistant",
+      "content": "訂正を適用しました：家族向けに土曜日10時から10時半まで本棚を整理する手順メモを下書きする。机で本を「残す」「譲る」に分け、譲る本を箱に入れるところまでとする。残す本を棚に戻す工程は含めない。送信はしない。 / correct applied.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"f7d2cadac83a41249afe855de63831b9\",\"817ae86fa47e41c7a83933d407fd555d\",\"8239d97a55ec45f4953ba3a35320237a\",\"e978c7f1165947619d39261b37a7afaf\",\"58b03230b3b245ebb7313164e104f1a9\",\"32a26494c1804c25a9ad9105ae0a418a\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 18,
+      "id": "76e04d1f9ade4d8dbc101579e5559ef2",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":2},\"event\":\"goal.correct\",\"goal_id\":\"acfb4459eded43e9a283cd08f0ca7c48\"}",
+      "usable": 1,
+      "source_event_id": "8323bde7d005448292f250da48d96a71",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 19,
+      "id": "87739af6379e49209eecc43110165b15",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"b1fb9bae761f466d92ba8ec05bf09485\",\"epoch\":3},\"event\":\"attempt.claimed\",\"goal_id\":\"acfb4459eded43e9a283cd08f0ca7c48\"}",
+      "usable": 1,
+      "source_event_id": "4e5ce73d7550449eba59c38b408c1916",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 20,
+      "id": "35e914a662544bada3990e539fded86e",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"c85099b0f33f43ae973c451659be7176\",\"attempt_id\":\"b1fb9bae761f466d92ba8ec05bf09485\",\"check_status\":\"pass\",\"receipt_id\":\"a2f2b2ade40d4e78842d78d50d33c0f3\"},\"event\":\"goal.completed\",\"goal_id\":\"acfb4459eded43e9a283cd08f0ca7c48\"}",
+      "usable": 1,
+      "source_event_id": "5a59d692743f4163971a91218c7ae215",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "627be9ef91a445d7abf72e1ece45253e",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "92683fdf05a9450f84b4742b44e33ac5",
+      "epoch": 3,
+      "budget": 1,
+      "total_claims": 2,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    {
+      "seq": 2,
+      "id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "state": "completed",
+      "revision": 2,
+      "acceptance_id": "04bee1109656407e9237ed8b3185fb63",
+      "epoch": 3,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    {
+      "seq": 3,
+      "id": "d012156d32fa4dff9a287973f356039b",
+      "state": "paused",
+      "revision": 1,
+      "acceptance_id": "870cc834cc9b48928dc9370ab285e396",
+      "epoch": 1,
+      "budget": 3,
+      "total_claims": 0,
+      "reason": "user_paused",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "92683fdf05a9450f84b4742b44e33ac5",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "id": "04bee1109656407e9237ed8b3185fb63",
+      "goal_id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "id": "870cc834cc9b48928dc9370ab285e396",
+      "goal_id": "d012156d32fa4dff9a287973f356039b",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "revision": 1,
+      "acceptance_id": "92683fdf05a9450f84b4742b44e33ac5",
+      "specification": "地域の星空観察会の案内を下書きする。10月20日18時開始。会場は確認してから使用し、他の事実を追加しない。",
+      "sources": "[\"f7d2cadac83a41249afe855de63831b9\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    },
+    {
+      "goal_id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "revision": 1,
+      "acceptance_id": "04bee1109656407e9237ed8b3185fb63",
+      "specification": "家族向けに土曜日10時から11時まで本棚整理する手順メモ。机で残す本と譲る本に分け、残す本は棚へ、譲る本は箱へ。",
+      "sources": "[\"817ae86fa47e41c7a83933d407fd555d\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    },
+    {
+      "goal_id": "d012156d32fa4dff9a287973f356039b",
+      "revision": 1,
+      "acceptance_id": "870cc834cc9b48928dc9370ab285e396",
+      "specification": "10月25日10時から青葉公園を散策する家族向けの案内を300字以内で下書きする。この事実以外を追加しない。",
+      "sources": "[\"8239d97a55ec45f4953ba3a35320237a\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    },
+    {
+      "goal_id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "revision": 2,
+      "acceptance_id": "04bee1109656407e9237ed8b3185fb63",
+      "specification": "家族向けに土曜日10時から10時半まで本棚を整理する手順メモを下書きする。机で本を「残す」「譲る」に分け、譲る本を箱に入れるところまでとする。残す本を棚に戻す工程は含めない。送信はしない。",
+      "sources": "[\"32a26494c1804c25a9ad9105ae0a418a\",\"817ae86fa47e41c7a83933d407fd555d\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "7c8f73a7443a4e6dbb246e9cfaa76946",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "revision": 1,
+      "acceptance_id": "92683fdf05a9450f84b4742b44e33ac5",
+      "epoch": 1,
+      "status": "fenced",
+      "manifest": "[\"f7d2cadac83a41249afe855de63831b9\"]",
+      "error": "",
+      "external_intent": 0
+    },
+    {
+      "seq": 2,
+      "id": "2888f7d3716144a58ae8e378736d76ab",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "revision": 1,
+      "acceptance_id": "92683fdf05a9450f84b4742b44e33ac5",
+      "epoch": 3,
+      "status": "pass",
+      "manifest": "[\"f7d2cadac83a41249afe855de63831b9\",\"817ae86fa47e41c7a83933d407fd555d\",\"8239d97a55ec45f4953ba3a35320237a\",\"e978c7f1165947619d39261b37a7afaf\",\"58b03230b3b245ebb7313164e104f1a9\"]",
+      "error": "",
+      "external_intent": 0
+    },
+    {
+      "seq": 3,
+      "id": "b1fb9bae761f466d92ba8ec05bf09485",
+      "goal_id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "revision": 2,
+      "acceptance_id": "04bee1109656407e9237ed8b3185fb63",
+      "epoch": 3,
+      "status": "pass",
+      "manifest": "[\"f7d2cadac83a41249afe855de63831b9\",\"817ae86fa47e41c7a83933d407fd555d\",\"8239d97a55ec45f4953ba3a35320237a\",\"e978c7f1165947619d39261b37a7afaf\",\"58b03230b3b245ebb7313164e104f1a9\",\"32a26494c1804c25a9ad9105ae0a418a\",\"d169f6f592374eb69402cae6edd4176a\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "f3701902d7b74e8b9e9a7eafb0cc6adb",
+      "body": {
+        "utf8": "地域の星空観察会のお知らせ\n\n地域の星空観察会を開催します。\n\n日時：10月20日 18時開始\n会場：青葉集会室\n\nみなさまのご参加をお待ちしています。",
+        "sha256": "1a4ec7baf4ca5fe679097d4755bdaed5ed1a8e4774f305f307ccb9ae83fb1763",
+        "size": 200
+      },
+      "hash": "1a4ec7baf4ca5fe679097d4755bdaed5ed1a8e4774f305f307ccb9ae83fb1763",
+      "size": 200
+    },
+    {
+      "id": "c85099b0f33f43ae973c451659be7176",
+      "body": {
+        "utf8": "本棚整理の手順メモ（家族向け）\n\n日時：土曜日 10:00〜10:30\n\n1. 本棚から本を取り出し、机に運びます。\n2. 机の上で、本を「残す」と「譲る」に分けます。\n3. 「譲る」に分けた本を箱に入れます。\n\n今回はここまでです。",
+        "sha256": "063edb4f3183a4d99b10637262220d88b5014f6db81e1c23d367a623d51e1b81",
+        "size": 295
+      },
+      "hash": "063edb4f3183a4d99b10637262220d88b5014f6db81e1c23d367a623d51e1b81",
+      "size": 295
+    }
+  ],
+  "receipts": [
+    {
+      "id": "e2023a21bbd7406ca15f427aaf001df6",
+      "attempt_id": "2888f7d3716144a58ae8e378736d76ab",
+      "artifact_id": "f3701902d7b74e8b9e9a7eafb0cc6adb",
+      "hash": "1a4ec7baf4ca5fe679097d4755bdaed5ed1a8e4774f305f307ccb9ae83fb1763",
+      "size": 200,
+      "revision": 1,
+      "epoch": 3,
+      "role": "draft"
+    },
+    {
+      "id": "a2f2b2ade40d4e78842d78d50d33c0f3",
+      "attempt_id": "b1fb9bae761f466d92ba8ec05bf09485",
+      "artifact_id": "c85099b0f33f43ae973c451659be7176",
+      "hash": "063edb4f3183a4d99b10637262220d88b5014f6db81e1c23d367a623d51e1b81",
+      "size": 295,
+      "revision": 2,
+      "epoch": 3,
+      "role": "draft"
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "2888f7d3716144a58ae8e378736d76ab",
+      "receipt_id": "e2023a21bbd7406ca15f427aaf001df6",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    },
+    {
+      "attempt_id": "b1fb9bae761f466d92ba8ec05bf09485",
+      "receipt_id": "a2f2b2ade40d4e78842d78d50d33c0f3",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "e97d4d19225f427cb20df3b97657079c",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "a92bb1df1f4744e8b080930edc50d95d",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"7c8f73a7443a4e6dbb246e9cfaa76946\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "719865ed2d6a40339cb91fa0dd8b7c9f",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "kind": "goal.waiting_input",
+      "payload": "{\"question_id\":\"8d926859acb94fa4b3fda32c4f292140\",\"reason\":\"星空観察会の会場はどこですか？\"}",
+      "delivered": 1
+    },
+    {
+      "seq": 4,
+      "id": "47268c0aacd64ff1b5423a22e6d73f89",
+      "goal_id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 5,
+      "id": "d9722a2057064fee98c7f861287c6431",
+      "goal_id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "kind": "goal.pause",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 6,
+      "id": "e13827e658064015bcd9c816ede7a090",
+      "goal_id": "d012156d32fa4dff9a287973f356039b",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 7,
+      "id": "45a92fd80c034c0090ff9f21fcbdfec6",
+      "goal_id": "d012156d32fa4dff9a287973f356039b",
+      "kind": "goal.pause",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 8,
+      "id": "467337fd7f6a4e30b51e74173b9cfa53",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "kind": "goal.input",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 9,
+      "id": "ccc98ad9e50b469a936f6c51912cef04",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"2888f7d3716144a58ae8e378736d76ab\",\"epoch\":3}",
+      "delivered": 1
+    },
+    {
+      "seq": 10,
+      "id": "2975e36e819548d9ae6a3e05306260d8",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"f3701902d7b74e8b9e9a7eafb0cc6adb\",\"attempt_id\":\"2888f7d3716144a58ae8e378736d76ab\",\"check_status\":\"pass\",\"receipt_id\":\"e2023a21bbd7406ca15f427aaf001df6\"}",
+      "delivered": 1
+    },
+    {
+      "seq": 11,
+      "id": "8323bde7d005448292f250da48d96a71",
+      "goal_id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "kind": "goal.correct",
+      "payload": "{\"revision\":2}",
+      "delivered": 1
+    },
+    {
+      "seq": 12,
+      "id": "4e5ce73d7550449eba59c38b408c1916",
+      "goal_id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"b1fb9bae761f466d92ba8ec05bf09485\",\"epoch\":3}",
+      "delivered": 1
+    },
+    {
+      "seq": 13,
+      "id": "5a59d692743f4163971a91218c7ae215",
+      "goal_id": "acfb4459eded43e9a283cd08f0ca7c48",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"c85099b0f33f43ae973c451659be7176\",\"attempt_id\":\"b1fb9bae761f466d92ba8ec05bf09485\",\"check_status\":\"pass\",\"receipt_id\":\"a2f2b2ade40d4e78842d78d50d33c0f3\"}",
+      "delivered": 1
+    }
+  ],
+  "dedupe": [
+    {
+      "key": "meeting-source",
+      "kind": "record",
+      "hash": "0cb8f8369e51af4e2543fc35d88e6e9f204c33e8fa97efce98ec512dedc6e886",
+      "result": "{\"content\":\"地域の星空観察会のお知らせを日本語で下書きしてください。日付は10月20日、開始は18時です。会場だけ未定なので確認してから使い、他の詳細は加えず、送信はしません。\",\"id\":\"f7d2cadac83a41249afe855de63831b9\",\"role\":\"user\"}"
+    },
+    {
+      "key": "shelf-source",
+      "kind": "record",
+      "hash": "a63e1e82a013c2383be55a212b54ef2385e21db14723705262c1914af3837fcb",
+      "result": "{\"content\":\"家族向けに、土曜日10時から11時まで本棚を整理する手順メモを下書きしてください。机で本を「残す」「譲る」に分け、残す本は棚へ、譲る本は箱へ入れます。送信はしません。\",\"id\":\"817ae86fa47e41c7a83933d407fd555d\",\"role\":\"user\"}"
+    },
+    {
+      "key": "walk-source",
+      "kind": "record",
+      "hash": "1ad64501e656c950360cc7a6425c9de56dd3eca2e0a01ceebb2ebad47724e4af",
+      "result": "{\"content\":\"10月25日10時から青葉公園を散策する家族向けの案内を300字以内で下書きしてください。この情報だけを使い、送信はしません。\",\"id\":\"8239d97a55ec45f4953ba3a35320237a\",\"role\":\"user\"}"
+    },
+    {
+      "key": "meeting-goal",
+      "kind": "goal",
+      "hash": "ac748fe69efa220de840861f8f7bb1abe7600b7582061b33f7054386a9094e7b",
+      "result": "{\"acceptance_id\":\"92683fdf05a9450f84b4742b44e33ac5\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"627be9ef91a445d7abf72e1ece45253e\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":0}"
+    },
+    {
+      "key": "shelf-goal",
+      "kind": "goal",
+      "hash": "bad865449de678b06e3556db2be99d3c5562f3701f7c811f83267c1297984f26",
+      "result": "{\"acceptance_id\":\"04bee1109656407e9237ed8b3185fb63\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"acfb4459eded43e9a283cd08f0ca7c48\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":2,\"state\":\"queued\",\"total_claims\":0}"
+    },
+    {
+      "key": "shelf-goal:paused",
+      "kind": "control",
+      "hash": "0032341263d11760ad8371ab1ef77c428d3c3d04feaadf37e324ee37189c29c8",
+      "result": "{\"acceptance_id\":\"04bee1109656407e9237ed8b3185fb63\",\"ambiguity\":0,\"budget\":3,\"epoch\":1,\"id\":\"acfb4459eded43e9a283cd08f0ca7c48\",\"question_id\":null,\"reason\":\"user_paused\",\"revision\":1,\"seq\":2,\"state\":\"paused\",\"total_claims\":0}"
+    },
+    {
+      "key": "walk-goal",
+      "kind": "goal",
+      "hash": "876ad0cf325b086a1610ed58d732eb7c6a6359cfeddd4bfd3a5f99319c51aaf1",
+      "result": "{\"acceptance_id\":\"870cc834cc9b48928dc9370ab285e396\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"d012156d32fa4dff9a287973f356039b\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":3,\"state\":\"queued\",\"total_claims\":0}"
+    },
+    {
+      "key": "walk-goal:paused",
+      "kind": "control",
+      "hash": "ca018a74bc637fef4e655b85caadcd95f8096dfe73c3be1d544320c9a819067c",
+      "result": "{\"acceptance_id\":\"870cc834cc9b48928dc9370ab285e396\",\"ambiguity\":0,\"budget\":3,\"epoch\":1,\"id\":\"d012156d32fa4dff9a287973f356039b\",\"question_id\":null,\"reason\":\"user_paused\",\"revision\":1,\"seq\":3,\"state\":\"paused\",\"total_claims\":0}"
+    },
+    {
+      "key": "primary-effect:ee640947c1a8b9da818686ad1cee38b353e364020cbada77a9c9b885293663b9",
+      "kind": "control",
+      "hash": "8baeddb33e5bcbb6a9927243c845612e5557faec175d119ed5db6c3a07bb9948",
+      "result": "{\"acceptance_id\":\"92683fdf05a9450f84b4742b44e33ac5\",\"ambiguity\":0,\"budget\":2,\"epoch\":2,\"id\":\"627be9ef91a445d7abf72e1ece45253e\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":1}"
+    },
+    {
+      "key": "ui:71bd8b35-58e8-44f3-bb86-9107190658fc:1791387074494:a7c30710-e5c5-4f2e-af44-171f2fd4a680",
+      "kind": "primary",
+      "hash": "48cff0b7e36cfd575097de87b6dbe52945eda13e892515d5bfce61aa1277da07",
+      "result": "{\"action\":\"input\",\"goal\":{\"acceptance_id\":\"92683fdf05a9450f84b4742b44e33ac5\",\"ambiguity\":0,\"budget\":2,\"epoch\":2,\"id\":\"627be9ef91a445d7abf72e1ece45253e\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":1},\"intent\":\"control\",\"primary_status\":\"complete\",\"record_id\":\"e978c7f1165947619d39261b37a7afaf\",\"response_id\":\"58b03230b3b245ebb7313164e104f1a9\"}"
+    },
+    {
+      "key": "primary-effect:919760eab9a79865355b065a881af10210e956917c14a78ceb8505537eb49b62",
+      "kind": "control",
+      "hash": "2f58100e79e4e10d3608429cfef8079a1e594394db4c170839af86ce49684689",
+      "result": "{\"acceptance_id\":\"04bee1109656407e9237ed8b3185fb63\",\"ambiguity\":0,\"budget\":3,\"epoch\":2,\"id\":\"acfb4459eded43e9a283cd08f0ca7c48\",\"question_id\":null,\"reason\":\"\",\"revision\":2,\"seq\":2,\"state\":\"queued\",\"total_claims\":0}"
+    },
+    {
+      "key": "ui:71bd8b35-58e8-44f3-bb86-9107190658fc:1791387398251:6914d802-27f0-4a4f-9f80-0b6be44b4b09",
+      "kind": "primary",
+      "hash": "00522cc6862d76392ed452eda6ddeca15828d074e1d638f18b77ef5ce67f3ffd",
+      "result": "{\"action\":\"correct\",\"goal\":{\"acceptance_id\":\"04bee1109656407e9237ed8b3185fb63\",\"ambiguity\":0,\"budget\":3,\"epoch\":2,\"id\":\"acfb4459eded43e9a283cd08f0ca7c48\",\"question_id\":null,\"reason\":\"\",\"revision\":2,\"seq\":2,\"state\":\"queued\",\"total_claims\":0},\"intent\":\"control\",\"primary_status\":\"complete\",\"record_id\":\"32a26494c1804c25a9ad9105ae0a418a\",\"response_id\":\"d169f6f592374eb69402cae6edd4176a\"}"
+    }
+  ],
+  "rejections": [],
+  "approvals": [],
+  "control_selections": [],
+  "questions": [
+    {
+      "id": "8d926859acb94fa4b3fda32c4f292140",
+      "goal_id": "627be9ef91a445d7abf72e1ece45253e",
+      "attempt_id": "7c8f73a7443a4e6dbb246e9cfaa76946",
+      "revision": 1,
+      "epoch": 1,
+      "round": 1,
+      "prompt": "星空観察会の会場はどこですか？",
+      "status": "answered",
+      "answer_record_id": "e978c7f1165947619d39261b37a7afaf"
+    }
+  ],
+  "primary_turns": [
+    {
+      "client_key": "ui:71bd8b35-58e8-44f3-bb86-9107190658fc:1791387074494:a7c30710-e5c5-4f2e-af44-171f2fd4a680",
+      "request_hash": "48cff0b7e36cfd575097de87b6dbe52945eda13e892515d5bfce61aa1277da07",
+      "record_id": "e978c7f1165947619d39261b37a7afaf",
+      "status": "complete",
+      "snapshot": "{\"goals\":[{\"epoch\":1,\"id\":\"d012156d32fa4dff9a287973f356039b\",\"question_id\":null,\"revision\":1,\"state\":\"paused\"},{\"epoch\":1,\"id\":\"acfb4459eded43e9a283cd08f0ca7c48\",\"question_id\":null,\"revision\":1,\"state\":\"paused\"},{\"epoch\":1,\"id\":\"627be9ef91a445d7abf72e1ece45253e\",\"question_id\":\"8d926859acb94fa4b3fda32c4f292140\",\"revision\":1,\"state\":\"waiting_input\"}],\"goals_overflow\":false,\"manifest\":[\"f7d2cadac83a41249afe855de63831b9\",\"817ae86fa47e41c7a83933d407fd555d\",\"8239d97a55ec45f4953ba3a35320237a\",\"e978c7f1165947619d39261b37a7afaf\"],\"questions\":[{\"epoch\":1,\"goal_id\":\"627be9ef91a445d7abf72e1ece45253e\",\"id\":\"8d926859acb94fa4b3fda32c4f292140\",\"revision\":1,\"round\":1}],\"recent_work\":[{\"epoch\":1,\"id\":\"d012156d32fa4dff9a287973f356039b\",\"revision\":1,\"state\":\"paused\"},{\"epoch\":1,\"id\":\"acfb4459eded43e9a283cd08f0ca7c48\",\"revision\":1,\"state\":\"paused\"},{\"epoch\":1,\"id\":\"627be9ef91a445d7abf72e1ece45253e\",\"revision\":1,\"state\":\"waiting_input\"}]}",
+      "outcome": "{\"action\":\"input\",\"goal\":{\"acceptance_id\":\"92683fdf05a9450f84b4742b44e33ac5\",\"ambiguity\":0,\"budget\":2,\"epoch\":2,\"id\":\"627be9ef91a445d7abf72e1ece45253e\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":1},\"intent\":\"control\",\"primary_status\":\"complete\",\"record_id\":\"e978c7f1165947619d39261b37a7afaf\",\"response_id\":\"58b03230b3b245ebb7313164e104f1a9\"}"
+    },
+    {
+      "client_key": "ui:71bd8b35-58e8-44f3-bb86-9107190658fc:1791387398251:6914d802-27f0-4a4f-9f80-0b6be44b4b09",
+      "request_hash": "00522cc6862d76392ed452eda6ddeca15828d074e1d638f18b77ef5ce67f3ffd",
+      "record_id": "32a26494c1804c25a9ad9105ae0a418a",
+      "status": "complete",
+      "snapshot": "{\"goals\":[{\"epoch\":1,\"id\":\"d012156d32fa4dff9a287973f356039b\",\"question_id\":null,\"revision\":1,\"state\":\"paused\"},{\"epoch\":1,\"id\":\"acfb4459eded43e9a283cd08f0ca7c48\",\"question_id\":null,\"revision\":1,\"state\":\"paused\"}],\"goals_overflow\":false,\"manifest\":[\"f7d2cadac83a41249afe855de63831b9\",\"817ae86fa47e41c7a83933d407fd555d\",\"8239d97a55ec45f4953ba3a35320237a\",\"e978c7f1165947619d39261b37a7afaf\",\"58b03230b3b245ebb7313164e104f1a9\",\"32a26494c1804c25a9ad9105ae0a418a\"],\"questions\":[],\"recent_work\":[{\"epoch\":1,\"id\":\"d012156d32fa4dff9a287973f356039b\",\"revision\":1,\"state\":\"paused\"},{\"epoch\":1,\"id\":\"acfb4459eded43e9a283cd08f0ca7c48\",\"revision\":1,\"state\":\"paused\"},{\"epoch\":3,\"id\":\"627be9ef91a445d7abf72e1ece45253e\",\"revision\":1,\"state\":\"completed\"}]}",
+      "outcome": "{\"action\":\"correct\",\"goal\":{\"acceptance_id\":\"04bee1109656407e9237ed8b3185fb63\",\"ambiguity\":0,\"budget\":3,\"epoch\":2,\"id\":\"acfb4459eded43e9a283cd08f0ca7c48\",\"question_id\":null,\"reason\":\"\",\"revision\":2,\"seq\":2,\"state\":\"queued\",\"total_claims\":0},\"intent\":\"control\",\"primary_status\":\"complete\",\"record_id\":\"32a26494c1804c25a9ad9105ae0a418a\",\"response_id\":\"d169f6f592374eb69402cae6edd4176a\"}"
+    }
+  ]
+}

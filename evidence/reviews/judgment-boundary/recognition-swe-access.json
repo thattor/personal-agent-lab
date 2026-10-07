@@ -1,0 +1,10 @@
+{
+  "auth_command_exit": 0,
+  "authenticated": true,
+  "model_command_exit": 2,
+  "standalone_free_model_line": [],
+  "observed_at": 1791388266.46151,
+  "route": "installed_official_devin",
+  "selected_model": "swe-2-high",
+  "paid_fallback": false
+}

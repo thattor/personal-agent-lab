@@ -1,0 +1,55 @@
+# Contract review: conditional second-turn extension
+
+Scope note: review of the supplied `primary_qualification.py` plus the proposed extension text only. Not approval, not certification. One naming caveat up front — the proposal is ambiguous about what `none` and `local_draft` mean as action kinds. The only internally consistent reading is: `none` = "reply without creating a Goal" (the ask path — the stored reply carries the essential question) and `local_draft` = "locally drafted/committed the Goal" (delegate path). Under that reading, `only_if_prior_action=none`, "skip on local_draft, send on none", and "second requires local_draft … one Goal total" all cohere. If that is not the intended mapping, the spec contradicts itself and must be fixed before anything else. I review assuming this reading.
+
+## Blockers
+
+**1. Per-cohort call budget is unenforceable as specified.**
+`PrimaryGate` hard-codes `self.attempts >= 24` in both `grant` and `complete`, `build_live` hard-codes `AuditedNative(proof, max_calls=24)`, and the journal hard-codes `'max_attempts':24` / `'native_slots':24`. The contract claims ≤16 calls for R01–08 and R09–16. As written, a defective skip path could legally burn 24 calls inside a "16-call" envelope and nothing would reject it. Required: plumb a per-cohort `max_calls` through `COHORTS` → `build_live`/`QualificationRunner` → `PrimaryGate` → `AuditedNative`, and stamp the actual bound in `run.opened` and `operator.config`.
+
+**2. Load-time bound check missing.**
+With conditional turns, worst-case calls = `len(self.turns)` (skips only reduce). Validate at fixture load that `len(turns) <= cohort_budget` and reject otherwise — before directory creation and any provider call. Cheap, and converts a budget overrun into a fixture rejection rather than a mid-run gate kill.
+
+**3. Oracle-field leak.**
+`ORACLE_FIELDS` is the only mechanical check that oracle metadata never reaches the prompt. `only_if_prior_action` must be added to that tuple. Note the check is substring-based, so the new field name must not collide with legitimate prompt text — fine given frozen fixtures, but the name should stay distinctive.
+
+**4. Ask-path needs a reply invariant.**
+`judge()` verifies only `action.kind`, target, and `primary_status=='complete'`. A model returning action `none` with an empty/non-question reply on a conditional case would satisfy the acceptable set, get sent the frozen natural answer it never asked for, and could produce a Goal → false recognized credit. Mechanical fix: the conditional turn may execute only when the judged prior action equals the condition value **and** `store.stored_reply(key1)` is non-empty (the actual model reply, not a fixture-declared one). Absent reply → `RunRejected`, not a skip — a skip would launder the defect into a recognized case.
+
+**5. Skip-fabrication guards must be mechanical, not discretionary.**
+The proposal mostly covers this; to be concrete, the skip must fire only when *all* hold, inside `judge()` after a verified pass:
+- `turns[self.index + 1]` exists and is `(same case, ti + 1)`;
+- that frozen turn carries `only_if_prior_action` with a value in the closed set;
+- the judged action ≠ condition value (any other passing action → skip; equal → must send; a judged failure already closed the run).
+`turn.skipped` must cite case id, skipped turn index, judged action, and the frozen condition; skips tracked in `self.skipped` separate from `self.accepted`; `finish` requires `len(accepted) + len(skipped) == len(turns)`; skipped turns never enter `accepted`. Anything looser is a skip-fabrication hole.
+
+**6. Fixture schema validation is underspecified — make it exhaustive at load.**
+Reject, before any provider call: a condition on any turn other than index 1 of an exactly-2-turn case; any condition value outside `{none}`; a 3+ turn case; a conditional case whose turn-1 acceptable set is not ⊆ `{none, local_draft}`; a conditional turn-2 acceptable set that still admits `none`/ask outcomes (that's the always-ask loophole — turn-2 must require the Goal); any condition in the N-cohort. Without the turn-1 restriction, a third passing action kind would hit the undefined "no conditional omission for any other action" territory.
+
+**7. "One Goal total" needs a mechanical check.**
+Currently only the action-kind match protects it. For conditional cases, assert post-judge that goals created across the case ≤ 1 (diff `pending['before']`/`pending['after']` or the fixture snapshot). Same cheap diff gives "zero Goals" for the N-cohort beyond what the acceptable set already implies — N18's remember is handled by the existing `source_id` target match, but a goal-creating action there can't pass anyway.
+
+**8. Pin coverage for new code.**
+`QualificationPin` only hashes `scripts/primary_*.py`. Keep the extension inside `primary_qualification.py` or widen the glob; a new unpinned helper module would be a silent source-drift hole.
+
+**9. Unverifiable prerequisite — product action vocabulary.**
+From this source I cannot confirm that `local_draft` (or whatever id key it uses) already exists in the frozen product's `decode_primary`/`finish_primary`. Two consequences: (a) if the extension requires a new product action kind, it's a product change and out of scope — Product1a14de9 is frozen; (b) the judge's target match is `action.get('goal_id', action.get('question_id', action.get('source_id')))` — if `local_draft` carries its target under a different key, matching silently fails and every conditional case fail-stops. Confirm the id key or extend the getter. Also verify once (via the journaled prompt blob) that `primary_context` actually echoes the stored turn-1 reply into turn-2's prompt — if it doesn't, every ASK case degenerates.
+
+## Non-blocking improvements
+
+- **Simpler equivalent placement:** instead of the lookahead living in `judge()`, record `self.judged_actions[ci] = action` on pass and evaluate the condition at the head of `run_next`: if the turn carries `only_if_prior_action` and the recorded judged action ≠ value → emit `turn.skipped`, `index += 1`, loop/recurse (bounded). This keeps `judge()` byte-identical and confines all conditional logic to one site. Neither is stronger; pick whichever reads smaller.
+- **`verify_run` hardening:** count `turn.skipped` events and assert each is preceded by a `turn.judged` pass for the prior turn of the same case with a mismatching action, and that no `permit.granted`/`call.*` exists for skipped `(case, turn)` pairs. Cheap post-hoc fabrication check on evidence.
+- **Report shape:** `finish` already returns `attempts`; add `skips` and derive recognized *cases* (distinct case ids over accepted turns + justified skips) so the 15/16 threshold maps to cases, not turns — a skipped turn-2 must not inflate the denominator.
+- **Test additions beyond your list:** oracle-field leak (prompt contains no `only_if_prior_action`); 17th call denied on an R cohort; `none`-with-empty-reply does not reach turn-2; turn-2 acceptable set cannot admit a second question (load-time reject).
+- **Naming:** `send_only_if_prior_action` (or a documented comment) — the current name reads as if `none` means "did nothing," which is exactly the misreading that makes the skip rule look backwards.
+
+## Answers to the posed questions
+
+- **Permission hole:** none new — skip never calls `grant`, leaves gate/watchdog untouched, and can't free a stale permit.
+- **Call-budget hole:** yes, blocker #1/#2 — the ≤16 claim is currently unbacked.
+- **Oracle-leak hole:** yes, blocker #3 — new field absent from `ORACLE_FIELDS`.
+- **Skip-fabrication hole:** closed if #5 is implemented mechanically; the load-time restrictions in #6 remove the undefined-action gap.
+- **Cleanup hole:** none — a skipped turn allocates nothing (no key, record, or operation), so the existing fail-stop/close path needs no change.
+- **Adequacy:** the extension is about the smallest safe increment. The conditional-in-case design is forced (original order/IDs plus reply continuity require the same Store), and a pure `should_send(turn, judged_action)` predicate plus a journal event is minimal. What's missing is plumbing (budget) and three mechanical invariants (oracle field, reply presence, goal-count), not structure.
+
+No new human technical or wording approval needed for any of this. As stated: this reviews the evaluator contract only — artifact quality and the human usefulness assessment remain separately owed, and recognized-case counts from this runner don't infer them.
