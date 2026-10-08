@@ -1,0 +1,16 @@
+{
+  "disclosed_at_utc": "2026-10-08T09:28:36.794458+00:00",
+  "matrix_sha256": "6f7248a7b8b03386fcefde06c9128067a47a4526c5abfc169794a6cb51090c5b",
+  "candidate": "content:sha256:8f0f5b75c9b5c1e6fe6d4ee488c6c3aa8c1bae6fb46f79f1d1f6c28b65664bcb",
+  "candidate_freeze_file": "evidence/reviews/judgment-boundary/primary-ask-first-candidate-freeze.json",
+  "candidate_freeze_sha256": "3ed3c7d7e32b080313695d3bcfa4c5d3163251c05ba481ff74bb312af522145e",
+  "files_match_current": 17,
+  "changed_product_files": [
+    "pal/primary.py"
+  ],
+  "basis": "Development sent this fixed candidate hash after receiving heldout SHA; controller verified all file hashes before disclosing path.",
+  "old_corpus_modified": false,
+  "provider_calls_by_design_chat": 0,
+  "matrix_execution_by_design_chat": false,
+  "retention": "Development to import immutable matrix/freeze/disclosure into private repo before qualification."
+}

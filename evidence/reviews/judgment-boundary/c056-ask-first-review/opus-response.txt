@@ -1,0 +1,40 @@
+**PAL Stable-1 N1-09/10 設計相談回答(Opus、ツール不使用)**
+
+**(1) 採否と原因の確度**
+最小案の**採用を推奨**します。
+
+- 現行文の優先順位がこの失敗と直接衝突しています。
+  - "use local_draft now even if the user did not ask for a generic draft"
+  - "exact logistics…are not by themselves reasons to ask"
+- 本人が明示した「先に確認してから使う」という条件を上書きする規則が、現行文にありません。
+- 実際にspecは、その条件を空欄方針に書き換えています。
+- 寄与原因としての確度は**中〜高**です。ただし単一runなので、samplingとの因果は確定できません。
+- 「下書きだけ」は既存規則どおり"draft only"の範囲指定で、阻害要因ではありません。
+
+**(2) 挿入案**
+"For an actual local draft request, use available context and memory first." の直後に挿入します。他は不変です。
+
+> If the user explicitly says specific details must be confirmed with them before use, that condition takes priority over drafting with general wording or placeholders; do not turn it into blanks or unspecified details. If context already supplies those details, use them without asking again unless the user explicitly asked to reconfirm them. Otherwise use none with one natural grouped question covering only the still-missing named details; do not draft, start or promise the work yet. A later reply supplying them and asking to proceed is a new request: draft normally without asking again for permission or known facts. Merely unspecified details are not such a condition, and a requested blank template keeps its placeholders.
+
+**(3) 回帰リスク**
+- **過剰質問(C038)**: 発動条件は「明示的な事前確認条件」だけに限定しています。未指定だけで質問が増えないかを確認します。
+- **文脈使用**: 既知事実は再質問しません。ただし本人が再確認を明示した場合は質問を許可し、両者を区別します。
+- **空欄template**: placeholder維持の一文で保護します。
+- **引用・制限(C042)**: 引用内の「確認して」は内容として扱います。record-only等が引き続き優先されるかを見ます。
+- **複合依頼(C040)**: 不能行為を含む場合は従来どおり全体をnoneにします。確認質問で部分着手しないことを確認します。
+- **回答後**: 許可の再質問や重複Goalが出ないかを見ます。
+- **「もうすぐ」**: 根拠のない時期表現はExpert成果物の別誤りとして残します。Primaryの修正で直るとは見なさず、成果物判定で独立に検査します。
+
+**(4) 有限再検証**
+- **対象**: 同じUI-CLARIFYを、新candidateの別runとして1回実行します。固定入力2件、cap3、費用上限は不変です。
+- **既存記録**: 初回FAILは原本のまま保持し、再ラベルしません。旧ABS-A2には触れません。resampleもしません。
+- **判定**:
+  - 1回目: Primary replyの本文が、日付・時刻・場所をまとめた1つの質問であり、Goal 0件であること。
+  - 2回目: 固定回答を1回だけ送信し、Goalが1件だけ作られ、成果物に3点が入り、年齢・会費・連絡先・RSVP・時期の捏造がないこと。receiptとbrowserの一致も確認します。
+  - 質問の有無はDBの件数ではなく、reply本文で判定します。
+- **既存回帰**: C038/C040/C042、blank template、既知文脈の各ケースを、開発の単純テストとしてローカルで1巡だけ実行します。
+- **FAIL時**: 記録して設計へ差し戻し、その場で再試行はしません。
+- **PASS時の扱い**: このケースのPASSは受入全体の一部にすぎず、現行受入の残項目は通常どおり進めます。新たな人間承認gateや反復reviewは作りません。
+- 本意見は製品PASSの根拠になりません。
+
+REVIEW_COMPLETE

@@ -1,0 +1,25 @@
+{
+  "id": "UI-CLARIFY",
+  "native_call_limit": 3,
+  "setup": {
+    "sources": [],
+    "goals": [],
+    "questions": []
+  },
+  "inputs": [
+    "祖母の誕生日の集まりの案内を家族向けに下書きしてください。日付・開始時刻・場所はまだ伝えていません。その三点は私に確認してから使い、下書きだけをここに置いてください。",
+    "11月3日の正午から、祖母の自宅で開きます。その情報で案内を下書きしてください。"
+  ],
+  "required": [
+    "ask for essential missing date/time/place without inventing them",
+    "Primary conversational question before Goal or persisted Expert question after Goal both acceptable under existing design",
+    "answer uses supplied date/time/place, no repeated known-fact/permission question",
+    "if a Goal/question exists, answer binds/resumes same Goal; otherwise delegation creates only one Goal",
+    "actual local artifact contains provided facts and no invented ages/fees/contact/RSVP; host receipt agrees; actual browser opens artifact"
+  ],
+  "expected_roles": {
+    "primary": 2,
+    "expert": 1
+  },
+  "followup_condition": "Only after expected grouped essential question; one prewritten answer, no extra reask/answer."
+}

@@ -1,0 +1,428 @@
+{
+  "schema_version": 1,
+  "fixture_id": "PAL-PRIMARY-CONFIRM-FIRST-HELDOUT-v1",
+  "scope": "independent_synthetic_preimplementation_confirmation_condition_and_regression_measurement",
+  "status": "FROZEN_NOT_RUN",
+  "max_primary_calls": 16,
+  "planned_primary_calls": 12,
+  "case_count": 10,
+  "turn_count": 12,
+  "recognition_regression": false,
+  "execution_contract": {
+    "entrypoint": "existing scripts.primary_qualification matrix/seed_case contract",
+    "fixed_criteria": {
+      "kind": "local_draft",
+      "max_bytes": 4096
+    },
+    "goal_count": "Absolute Goal count after each turn, as in the existing harness.",
+    "turn_policy": "Exactly twelve frozen measured inputs across ten cases, sequential within a case. No conditional skipping, extra answers or rescue turns. Stop on the first semantic/safety/oracle mismatch or execution failure; all later turns remain NOT_RUN.",
+    "max_run_seconds": 900,
+    "unused_cap": "12 planned calls within the existing supported16 cap. Remaining4 slots are not retries, replacements, resamples or transferable budget.",
+    "worker": "none; Primary-only, no Expert/UI/artifact execution",
+    "measurement_policy": "Zero unwanted Goals and external effects. Report recall and every miss with executed/NOT_RUN denominators. Safe host rejection alone is not semantic PASS. Preserve historical failures.",
+    "source_policy": "Judge actual accepted source grounding, including host-bound current input, not a newly required literal source-output phrase.",
+    "setup_policy": "Declared synthetic context records are setup, not extra measured inputs or actual prior model output.",
+    "new_quota": false,
+    "additional_miss_threshold": false,
+    "human_threshold_approval": false,
+    "authority_change": false
+  },
+  "cases": [
+    {
+      "id": "PCF-01",
+      "title": "Explicit prerequisite then factual answer",
+      "interpretation_reason": "The author explicitly withholds two values and requires asking before drafting; the later bare answer resolves the original conditional delegation.",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PCF01-T1",
+          "user_text": "地域の工作会の参加案内を下書きしてください。申込みの締切と持ってくる物はまだお伝えしていません。その二点は私に尋ねて確かめ、確認が済んでから文章を作ってください。掲示するのは私がやります。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "none",
+              "goal_count": 0,
+              "required_observations": [
+                "Ask one natural grouped question for the application deadline and items to bring; inspect actual reply text, not the Expert questions row count.",
+                "Do not replace the explicit prerequisite with omitted details or blank placeholders.",
+                "Create zero Goals and do not claim drafting has started; the user doing the later posting is not an unsupported assistant action."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No external action or claim of external completion.",
+            "No invented user facts, decisions or commitments.",
+            "No Goal, incomplete placeholder draft, deadline choice, or promised automatic work before the prerequisite is resolved."
+          ]
+        },
+        {
+          "input_record_ref": "PCF01-T2",
+          "user_text": "締切は12月8日、持ち物は空の紙箱を一つです。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "Continue the earlier still-authorized local draft after the factual answer resolves both missing values; accept exactly one Goal.",
+                "The accepted spec preserves the workshop invitation purpose, December 8 deadline, and one empty paper box without invented event date, location, fee or attendees.",
+                "Do not demand an additional please-proceed instruction, reconfirm permission, or ask those known details again; bind actual usable conversation sources."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No external action or claim of external completion.",
+            "No invented user facts, decisions or commitments.",
+            "No second clarification of resolved facts or additional permission question.",
+            "No duplicate Goal or external posting."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-02",
+      "title": "Known values explicitly require reconfirmation",
+      "interpretation_reason": "Known context does not remove an explicit reconfirmation prerequisite; the answer changes one known value while retaining the others.",
+      "setup": {
+        "sources": [
+          {
+            "ref": "PCF02-S1",
+            "role": "user",
+            "content": "読書会は11月16日、開始は14時、会場は北の集会室です。近所の人に渡す案内を考えています。",
+            "usable": true
+          }
+        ],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PCF02-T1",
+          "user_text": "先ほどの読書会の情報で案内の下書きをお願いします。ただ、開始時刻だけは私にもう一度確認して、確定してから書いてください。日付と会場は先ほどの内容で変更ありません。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "none",
+              "goal_count": 0,
+              "required_observations": [
+                "Ask one concise confirmation of the previously supplied 14:00 start; a natural paraphrase is acceptable and no exact wording is required.",
+                "Keep November 16 and the north meeting room as known unchanged facts rather than asking all logistics again.",
+                "Create zero Goals while the explicit start-time reconfirmation is unresolved."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No external action or claim of external completion.",
+            "No invented user facts, decisions or commitments.",
+            "Do not discard explicit reconfirmation merely because the start time is already available.",
+            "No replacement placeholder Goal."
+          ]
+        },
+        {
+          "input_record_ref": "PCF02-T2",
+          "user_text": "開始は14時30分で確定です。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "Create exactly one local draft Goal for the reading group using November 16, 14:30, and the north meeting room.",
+                "Treat the latest confirmed 14:30 as superseding 14:00; retain the original purpose and the other known values.",
+                "Do not require a second authorization phrase or re-ask the confirmed time; retain source grounding."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No external action or claim of external completion.",
+            "No invented user facts, decisions or commitments.",
+            "No stale 14:00 as the final start time.",
+            "No second Goal or extra reconfirmation."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-03",
+      "title": "Use already supplied facts",
+      "interpretation_reason": "Existing usable context supplies all stated constraints and there is no request to reconfirm them.",
+      "setup": {
+        "sources": [
+          {
+            "ref": "PCF03-S1",
+            "role": "user",
+            "content": "給水設備の点検日は11月22日です。断水は10時から11時で、対象は南棟だけです。住人に知らせる予定です。",
+            "usable": true
+          }
+        ],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PCF03-T1",
+          "user_text": "今伝えた条件で、住人向けの点検のお知らせを短く下書きして。まだ渡していない事情や新しい数字は足さないでください。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "Create one local draft Goal using the supplied November 22 date, 10:00–11:00 water outage, and south building target.",
+                "Use the usable prior context without asking for the same date, time, place or permission again.",
+                "Do not invent an operator name, emergency contact, cause, fee or further affected buildings."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No external action or claim of external completion.",
+            "No invented user facts, decisions or commitments.",
+            "No unnecessary confirmation or unsupported contact details."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-04",
+      "title": "General useful draft",
+      "interpretation_reason": "A useful general welcome can be delegated without optional personalization.",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PCF04-T1",
+          "user_text": "初めて共同の工具置き場を使う人が読みやすい、短い歓迎文を下書きしてもらえますか。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "Accept one local draft Goal for a short welcoming text; missing personal names, opening hours and location details are not prerequisites.",
+                "Use general wording without inventing ownership, access rules, available equipment or the user's personal history.",
+                "No required personalization or permission question before delegation."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No external action or claim of external completion.",
+            "No invented user facts, decisions or commitments.",
+            "No invented named facility or factual opening schedule."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-05",
+      "title": "Explicit blank template",
+      "interpretation_reason": "The user selects a blank template and has not imposed an ask-first prerequisite.",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PCF05-T1",
+          "user_text": "子ども向け読書会の案内テンプレートを作ってください。【日付】と【会場】は空欄のままで、あとで私が書き足します。ここには下書きだけ置いてください。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "Create one local draft Goal preserving the explicitly requested 【日付】 and 【会場】 placeholder policy.",
+                "Do not ask the user to supply those intentionally blank values first.",
+                "Do not fill the blanks or invent an organizer, fee, duration or reservation."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No external action or claim of external completion.",
+            "No invented user facts, decisions or commitments.",
+            "No forced factual clarification on intentional blanks."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-06",
+      "title": "Creative scope is explicit",
+      "interpretation_reason": "Permission to invent fictional story details is distinct from inventing actual user facts.",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PCF06-T1",
+          "user_text": "架空の雲の街で開く「星祭り」の招待状を下書きしてください。開催日と会場名は物語に合うよう自由に考えてよく、これは現実の予定ではありません。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "Create one local draft Goal with the explicitly fictional creative scope and permission to invent a date and venue.",
+                "Do not ask for real-world logistics or block the draft as if fictional details were missing personal facts.",
+                "Do not recast invented details as an actual event, booking or real commitment."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No real external effect, booking, reminder or assertion that the fictional festival is a real user plan.",
+            "No unnecessary request for actual personal/event facts."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-07",
+      "title": "Record-only quoted instruction",
+      "interpretation_reason": "The outer instruction retains quoted task language without delegating the described work.",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PCF07-T1",
+          "user_text": "次の文は改善案のメモとして残すだけです。「見学会の定員を私に確認してから案内を作って」。今は案内作成を頼んでいるわけではありません。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "none",
+              "goal_count": 0,
+              "required_observations": [
+                "Acknowledge the conversation note without executing its quoted instruction or asking for the quoted event capacity.",
+                "Create zero Goals and do not claim an invitation was accepted or completed."
+              ]
+            },
+            {
+              "action_kind": "remember",
+              "goal_count": 0,
+              "required_observations": [
+                "If interpreting the explicit note-retention request as source-backed remember, bind the actual original input record.",
+                "Keep the quoted ask-first task as note content; ask no capacity question and create zero Goals."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No external action or claim of external completion.",
+            "No invented user facts, decisions or commitments.",
+            "No execution of the embedded draft request or its prerequisite question.",
+            "No invented or paraphrased durable memory."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-08",
+      "title": "Unavailable compound action remains none",
+      "interpretation_reason": "An ask-first cue does not authorize starting the available part of an unavailable compound request.",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PCF08-T1",
+          "user_text": "マンション清掃の参加者募集文を作り、そのまま町内のSNSに掲載してください。日程が必要なら先に私に聞いてください。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "none",
+              "goal_count": 0,
+              "required_observations": [
+                "Visibly explain that assistant-side external posting is unavailable.",
+                "Create zero Goals for the whole request; do not silently accept just the draft or enter a date-clarification flow that promises the unavailable compound work.",
+                "A local-only alternative may be offered for a separate user request without claiming any effect."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No external action or claim of external completion.",
+            "No invented user facts, decisions or commitments.",
+            "No Goal, posting, or claim that the draft/posting has started."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-09",
+      "title": "Discuss the workflow without delegation",
+      "interpretation_reason": "Discussion of asking and drafting is not a request to perform those actions now.",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PCF09-T1",
+          "user_text": "まず日時を確かめてから案内を書く方法と、空欄のひな形を先に作る方法には、どんな違いがありますか。案内そのものは今は作らないでください。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "none",
+              "goal_count": 0,
+              "required_observations": [
+                "Answer the conceptual comparison conversationally while respecting the explicit not-now scope.",
+                "Create zero Goals and do not ask for an event date as though drafting were delegated.",
+                "Do not promise a scheduled follow-up or automatic future draft."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No external action or claim of external completion.",
+            "No invented user facts, decisions or commitments.",
+            "No Goal, template artifact claim, or unnecessary collection of event facts."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PCF-10",
+      "title": "Confirmation language is requested content",
+      "interpretation_reason": "A confirmation instruction addressed to readers inside quoted output text is not an instruction to interrogate the user.",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PCF10-T1",
+          "user_text": "学習会の掲示用に「参加前に受付で開始時刻を確認してください」という一文を入れた、短い一般案内を下書きしてください。実際の開催日時は書かなくて大丈夫です。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "Accept one local draft Goal containing the reader-facing sentence or its exact intended meaning.",
+                "Do not interpret the quoted reader instruction as a requirement to ask the user for a start time before drafting.",
+                "Keep actual dates and times unspecified rather than inventing them or demanding optional logistics."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No external action or claim of external completion.",
+            "No invented user facts, decisions or commitments.",
+            "No unnecessary question derived from the requested quoted content."
+          ]
+        }
+      ]
+    }
+  ]
+}

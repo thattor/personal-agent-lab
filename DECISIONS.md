@@ -1097,3 +1097,40 @@ Stable2/P001 adoption or current N1 gate. Close only MM0 after repository retent
 actual GitHub readback; parent and MM1–4 stay DEFERRED. All30 product cases remain
 NOT_RUN. Review/fixture/physical-usefulness proof remain distinct; no new implementation,
 model connection, authentication, payment, public exposure or owner micro-question.
+
+### D029/C056 — preserve explicit ask-first constraints in Primary
+
+Question before implementation: why did UI-CLARIFY on46bd418 convert the user's
+explicit ask-first logistics into a completed placeholder draft, and what is the
+smallest repair without restoring unnecessary clarification? The original C055 FAIL
+and unsupported relative-time wording remain preserved. Official Opus challenge via
+PAL設計 completed in33.236s, one tool-free turn, fresh existing Pro/extra usageOFF;
+[original response and bounded access](evidence/reviews/judgment-boundary/c056-ask-first-review/opus-response.txt).
+No extra review call, paid fallback, new auth or owner micro-question.
+
+Adopt the proposed prompt-only precedence immediately after context/memory use:
+an explicit confirm-before-use condition cannot be replaced by generic text/blanks.
+Resolve from available context first; ask only unresolved named facts, grouped once.
+If the owner actually requires reconfirming known values, present those values in one
+question. A satisfying answer continues the original delegated request under current
+intent, with no invented additional approval requirement. Mere absence still permits
+useful generic drafting; requested templates retain placeholders; creative permission,
+record-only/quoted/not-yet and whole-request unavailable-action limits remain intact.
+
+Narrow two reviewer suggestions: a pre-Goal none/question is the intended repair path,
+not a replacement for the frozen oracle that also accepts a valid existing Expert
+question. Do not require a fresh explicit permission after a sufficient answer.
+The unsupported “soon” artifact claim is a separate observed error; prompt repair
+alone is not proof that it is fixed. No new state/schema/router/provider/worker/tool
+boundary, or relaxation of accepted behavior. This small instruction repair and
+existing-harness cohort registration are routine fixes; no substantial implementation
+or new harness logic requires a new SWE consultation.
+
+Before implementation, retain a newly independent12-utterance freeze without reading
+its content. After source is immutable, disclose it and use the existing qualification
+runner plus unchanged fixed40 inputs with new candidate aliases. Retain old results,
+never transfer their PASS to changed Primary. Also rerun the original UI-CLARIFY once
+on the new frozen candidate (two fixed inputs only after valid question, cap3/600s),
+then remaining approved UI flows if green. No resampling, hidden followup, invented
+owner evaluation, original ABS-A2 access or acceptance change. The finite runs are
+technical validation under existing scope, not unlimited usage permission.

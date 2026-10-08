@@ -514,3 +514,11 @@ and creative permission so the repair does not restore unnecessary questions.
 No keyword detection, host schema or new owner gate is justified by this defect.
 The unsupported “soon” phrasing is retained in the failed artifact, not omitted from
 quality assessment. Repair and new-candidate proof are still pending at this checkpoint.
+
+Additional retained observation: C054 ABS-C2's Primary specification, also displayed
+in its acceptance acknowledgement, uses “her help” for Mika although gender was not
+provided. The final Japanese artifact contains no gender claim and still passes its
+frozen artifact-only oracle. This does not qualify the acknowledgement/specification
+as grounded. The original after.json already preserves the exact text. Track the
+unsupported inference under the existing no-invented-personal-facts boundary; do not
+hide it or expand the current ask-first repair into a new feature/rule system.

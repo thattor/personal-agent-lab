@@ -25,6 +25,7 @@ LEGACY_FREEZE_SHA = '1736095ccbee1f221f0ff062b59593cae4139de739cfd88c93586d0e694
 NEW_FREEZE = 'evidence/reviews/judgment-boundary/primary-clarification-candidate-freeze.json'
 COMPOUND_FREEZE = 'evidence/reviews/judgment-boundary/primary-compound-candidate-freeze.json'
 INTENT_LIMITS_FREEZE = 'evidence/reviews/judgment-boundary/primary-intent-limits-candidate-freeze.json'
+ASK_FIRST_FREEZE = 'evidence/reviews/judgment-boundary/primary-ask-first-candidate-freeze.json'
 FIXTURE_SHA = '523d6b859e67d9f84162cdf6299e12a835c8ba920724442b68df3b81c9fe62a0'
 COHORTS = {
     'heldout-v1': (FIXTURE, FIXTURE_SHA, FREEZE),
@@ -64,6 +65,14 @@ COHORTS = {
                              'fea4c3df865c9a32e9f2c37cb3286d65c152b07a8317170d8c79379c2ec05e91', INTENT_LIMITS_FREEZE),
     'intent-limits-heldout': ('evidence/reviews/judgment-boundary/primary-intent-limits-heldout.json',
                              '8aa8be82dc5444c3349790b180f24f2aa9591c814cf3fdd24aa283eeaf0de13f', INTENT_LIMITS_FREEZE),
+    'ask-first-n01-n24': ('evidence/reviews/judgment-boundary/recognition-n01-n24.json',
+                            '9ae4c340caf6d2795b75565a530704885b9a7fe1fd72be5e9e07919d7650138a', ASK_FIRST_FREEZE),
+    'ask-first-r01-r08': ('evidence/reviews/judgment-boundary/recognition-r01-r08.json',
+                            'ffc83ef138739495bf31ba37991b43ddd226d3f1429f854b46c2885d15f16e23', ASK_FIRST_FREEZE),
+    'ask-first-r09-r16': ('evidence/reviews/judgment-boundary/recognition-r09-r16.json',
+                            'fea4c3df865c9a32e9f2c37cb3286d65c152b07a8317170d8c79379c2ec05e91', ASK_FIRST_FREEZE),
+    'ask-first-heldout': ('evidence/reviews/judgment-boundary/primary-ask-first-heldout.json',
+                           '6f7248a7b8b03386fcefde06c9128067a47a4526c5abfc169794a6cb51090c5b', ASK_FIRST_FREEZE),
 }
 ORACLE_FIELDS = ('PAL_ORACLE_ONLY','acceptable_outcome_set','required_observations',
                  'disallowed_effects','interpretation_reason','target_ref','only_if_prior_action')

@@ -1,0 +1,9 @@
+{
+  "number": 1,
+  "title": "Stable-1 \u2014 Natural Japanese local delegation",
+  "state": "open",
+  "description": "STATUS: ACTIVE under D-021/D-029, independent of proposed P-001. Project goal#6. Natural Japanese model-led local delegation, grounded drafts and safe correction/cancel targeting. Every currently required N1 row plus affected S0/F0 regression, one actual whole-flow usefulness evaluation and final version/limits audit. Historical Issues3/4; active12 then5; parent2. No new tools/cost/public exposure or old72h quota. C053/C054: six actual UI cases PASS,268 tests green. C055: explicit ask-first condition violated; N1-09/10 FAIL on46bd418, original evidence retained. Development is applying reviewed minimal Primary repair before new-candidate finite qualification; no owner technical-test request. TARGET-C/COMPOUND and release proof remain open; original ABS-A2 refusal remains untouched. Current release is text-only; next-version multimodal planning is separate milestone8. Stable1 and whole project incomplete.",
+  "html_url": "https://github.com/thattor/personal-agent-lab/milestone/1",
+  "open_issues": 3,
+  "closed_issues": 2
+}

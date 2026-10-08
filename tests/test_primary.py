@@ -87,6 +87,35 @@ class PrimaryBoundaryTests(unittest.TestCase):
         self.assertNotIn('記録済みです',self.store.stored_reply('fabricated')['content'])
         self.assertEqual(self.store.get_goal(goal['id'])['state'],'waiting_input')
 
+    def test_pre_goal_question_survives_reopen_and_answer_delegates_once_with_original_sources(self):
+        request = '集まりの案内を下書きして。日付と場所は確認してから使って。'
+        question = '日付と場所を教えてください。'
+        initial = self.prepare('ask-first', request)
+        asked = self.finish('ask-first', proposal(reply=question))
+        self.assertFalse(self.store.inspect()['goals'])
+        self.assertFalse(self.store.inspect()['questions'])
+
+        reopened = Store(self.path)
+        reopened.recover()
+        self.assertEqual(reopened.stored_reply('ask-first')['content'], question)
+        self.assertEqual(reopened.finish_primary('ask-first',
+            proposal('local_draft', spec='must not execute', source_ids=[])), asked)
+        answer = reopened.prepare_primary('details', '11月3日、地域センターです。')
+        context = reopened.primary_context('details')
+        contents = [record['content'] for record in context['records']]
+        self.assertIn(request, contents)
+        self.assertIn(question, contents)
+        self.assertIn('11月3日、地域センターです。', contents)
+        self.assertFalse(context['questions'])
+        value = proposal('local_draft', spec='11月3日、地域センターでの集まりの案内。',
+                         source_ids=[initial['record_id']])
+        result = reopened.finish_primary('details', value)
+        self.assertEqual(reopened.finish_primary('details', value), result)
+        state = reopened.inspect()
+        self.assertEqual(len(state['goals']), 1)
+        self.assertEqual(set(json.loads(state['revisions'][0]['sources'])),
+                         {initial['record_id'], answer['record_id']})
+
     def test_answer_uses_original_ingress_and_binds_nonlatest_question_once(self):
         first = self.pending_question('A')
         second = self.pending_question('B')

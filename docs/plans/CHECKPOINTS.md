@@ -619,3 +619,16 @@ Contribution: exposes a real user-control violation before human usefulness eval
 Next: focused official Opus challenge already requested, then smallest semantic prompt
 repair and new frozen verification. Other pending UI cases stop on this candidate;
 no extra human gate or interpretation of completion as success. Future work stays deferred.
+
+## C056 — minimal ask-first repair, actual verification pending
+
+Official Opus33.236s challenge completed; D029/C056 records adopted priority and
+narrowed suggestions before implementation. New independent12 frozen before edit,
+disclosed only after product8f0f5b75 freeze;17 product files differ solely in Primary
+instruction text. Four data-only cohort aliases reuse the existing runner/functions.
+One host test confirms durable pre-Goal question/answer, original sources and dedupe.
+77 focused and270 full tests PASS; the initial omitted synthetic-freeze-list failure
+is retained and corrected. [Implementation/limits](../../evidence/reviews/judgment-boundary/c056-ask-first-review/IMPLEMENTATION.md).
+Contribution: explicit user question order is represented without fixed semantic
+routing or added permission state. Next actual UI/finite qualification remains NOT_RUN;
+oldC055 FAIL and original ABS-A2 gap persist. No release or owner usefulness claim.

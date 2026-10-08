@@ -1,0 +1,30 @@
+[
+  {
+    "number": 2,
+    "url": "https://github.com/thattor/personal-agent-lab/issues/2",
+    "state": "open",
+    "body_readback_match": true,
+    "updated_at": "2026-10-08T09:14:24Z"
+  },
+  {
+    "number": 5,
+    "url": "https://github.com/thattor/personal-agent-lab/issues/5",
+    "state": "open",
+    "body_readback_match": true,
+    "updated_at": "2026-10-08T09:14:26Z"
+  },
+  {
+    "number": 6,
+    "url": "https://github.com/thattor/personal-agent-lab/issues/6",
+    "state": "open",
+    "body_readback_match": true,
+    "updated_at": "2026-10-08T09:14:28Z"
+  },
+  {
+    "number": 12,
+    "url": "https://github.com/thattor/personal-agent-lab/issues/12",
+    "state": "open",
+    "body_readback_match": true,
+    "updated_at": "2026-10-08T09:14:30Z"
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "schema": "pal-clarify-first-review-packet-v1",
+  "scope": "one Opus design consultation; no shared repo or product modification",
+  "files": {
+    "RECOMMENDATION.md": {
+      "bytes": 7055,
+      "sha256": "8d5b1fa66597725d678dbcbc8df79a84a448f6ef0f08c8490ad6c605b47a45e0"
+    },
+    "VALIDATION.json": {
+      "bytes": 384,
+      "sha256": "1b51cbc648c86a91bb31f815dee23d35c6e738a06f4f5ae2b11f5b69d223c8a8"
+    },
+    "access.json": {
+      "bytes": 755,
+      "sha256": "9940106bcfbd47ad8a9f1aa749680770e600fc9d3945d669df980b7e7acff374"
+    },
+    "completion.json": {
+      "bytes": 344,
+      "sha256": "508e8f5e16f652a74e76b4f1d21ebcff7a061f0a1987e11ae24f48d85cfbd584"
+    },
+    "fixed-ui-clarify.json": {
+      "bytes": 1266,
+      "sha256": "2f0282d87abbdceb742930318dfcee00ace78750c010b0465caed872e5d5778a"
+    },
+    "input-freeze.json": {
+      "bytes": 1658,
+      "sha256": "9463f0f1c30f1af29aaa61b1b009410bab949df16d65a396a57eb7c5d5ff6cd9"
+    },
+    "observed-evidence.json": {
+      "bytes": 5769,
+      "sha256": "981577ef5778a4aee021cacba0030dc5dbf5e34e1ecadb42f393ec533b4bb04b"
+    },
+    "opus-response.txt": {
+      "bytes": 4036,
+      "sha256": "687231e5afd035a5748eef2a412ae9da11fc39118bf4f54bf033965ccbac7138"
+    },
+    "opus-stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "primary-prompt-source.py.txt": {
+      "bytes": 5955,
+      "sha256": "e1f74dd0b0a166e6a65af35cf1e1fdf79fdafcef10a2b4b06ccc32c63b962e28"
+    },
+    "question.txt": {
+      "bytes": 16946,
+      "sha256": "1ff1bda0b55154a95dc3d245cf54bdd4a5d9f2d92dadfa55ea6e628609e7a67f"
+    },
+    "run-review.py": {
+      "bytes": 3333,
+      "sha256": "c057152286d44f6b0cd570578f22583feb62a5bbfcb438528cb1ad27f01c453b"
+    },
+    "start.json": {
+      "bytes": 150,
+      "sha256": "bf44c377c5b78ff6a8c985f1f08a0b76ba34d3bfc6c98ba7249d88d634726c40"
+    }
+  }
+}

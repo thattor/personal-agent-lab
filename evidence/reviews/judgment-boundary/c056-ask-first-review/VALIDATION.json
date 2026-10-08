@@ -1,0 +1,11 @@
+{
+  "artifact_receipt_bytes_hash_match": true,
+  "host_mechanical_completion": true,
+  "semantic_failure_preserved": true,
+  "developer_input_not_human_usefulness": true,
+  "recorded_normal_shutdown_confirmed": true,
+  "live_host_restarted": false,
+  "original_input_files_unchanged": true,
+  "code_changed_by_design_chat": false,
+  "tests_or_provider_proof_runs_by_design_chat": 0
+}

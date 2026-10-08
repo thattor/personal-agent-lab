@@ -28,3 +28,11 @@ repair before editing, preserve the ask-first constraint in Primary's semantic
 contract, then freeze and verify a new candidate. Reuse existing host safeguards;
 no keyword router, new schema, review-created owner gate or weakened acceptance.
 C053 full268 PASS applies to the unchanged pre-repair code, not to a future repair.
+
+Additional retained observation: C054 ABS-C2's Primary specification, also displayed
+in its acceptance acknowledgement, uses “her help” for Mika although gender was not
+provided. The final Japanese artifact contains no gender claim and still passes its
+frozen artifact-only oracle. This does not qualify the acknowledgement/specification
+as grounded. The original after.json already preserves the exact text. Track the
+unsupported inference under the existing no-invented-personal-facts boundary; do not
+hide it or expand the current ask-first repair into a new feature/rule system.

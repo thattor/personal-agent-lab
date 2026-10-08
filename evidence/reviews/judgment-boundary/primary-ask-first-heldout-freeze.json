@@ -1,0 +1,13 @@
+{
+  "reviewer_thread": "01a11837-e1e3-71f0-8ff8-bbaf8dc14527",
+  "frozen_at": "2026-10-08T18:24:04.735585+09:00",
+  "sha256": "6f7248a7b8b03386fcefde06c9128067a47a4526c5abfc169794a6cb51090c5b",
+  "utterances": 12,
+  "max_primary_calls": 16,
+  "worst_case_calls": 12,
+  "max_seconds": 900,
+  "contents_disclosed": false,
+  "product_before_edit": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+  "reviewer_format_validation": "PASS",
+  "additional_model_calls": 0
+}

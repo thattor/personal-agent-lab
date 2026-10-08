@@ -1,0 +1,41 @@
+{
+  "checked_at": "2026-10-08T09:10:45.974979+00:00",
+  "candidate": "46bd418c9e5ed96d2c17fd0b7ec1808f7fc89ffc",
+  "files": {
+    "pal/primary.py": {
+      "sha256": "76af815ed8e12dba49931129a2bcb1fe00c68b028f03b089fa467872bd7d13c2",
+      "bytes": 8583
+    },
+    "evidence/reviews/judgment-boundary/expert-commitment-ui-contract.json": {
+      "sha256": "7e2e007e08fa2d61c5d1cbfb679584b36d0d873aa3b01a31bd1c1fce4b18d0f6",
+      "bytes": 53037
+    },
+    "runtime/c054-ui-chrome/UI-CLARIFY/start.json": {
+      "sha256": "5eb0de59fcd3428ea24d8eca05d3601b1af54c436309296cd76c5c230599c799",
+      "bytes": 2210
+    },
+    "runtime/c054-ui-chrome/UI-CLARIFY/question.json": {
+      "sha256": "de1e8da79f3df084f18e6e865f578f10f66fe871668d6223384bd92d829ce2d7",
+      "bytes": 5340
+    },
+    "runtime/c054-ui-chrome/UI-CLARIFY/after.json": {
+      "sha256": "90de43ce4fec94f9731964b0d4024d8ab21b37259240774270f85951705bf6ee",
+      "bytes": 7730
+    },
+    "runtime/c054-ui-chrome/UI-CLARIFY/artifact-binding.json": {
+      "sha256": "134aa258510909251feddba4ed41fb89427f226232ae9c7c7cd515ae8ff0b75d",
+      "bytes": 2118
+    },
+    "runtime/c054-ui-chrome/UI-CLARIFY/stop.json": {
+      "sha256": "a04f5d2403ab43c8b01284d8f87283981ace71854dacad6199db8a948bd37fda",
+      "bytes": 275
+    },
+    "runtime/c054-ui-chrome/UI-CLARIFY/artifact.txt": {
+      "sha256": "44b326d7ce415c2a544846abebac3f428cb042ba71059e9499dc3d0623a82acf",
+      "bytes": 710
+    }
+  },
+  "prompt_bytes": 16946,
+  "prompt_sha256": "1ff1bda0b55154a95dc3d245cf54bdd4a5d9f2d92dadfa55ea6e628609e7a67f",
+  "scope": "one supplied-material official Opus consultation; shared repo read-only"
+}
