@@ -739,3 +739,12 @@ trial can cover at least2 hours from readiness without enlarging calls or author
 Next: commit/push, fresh official access checks, explicit same-DB/URL restart with actual
 remaining cap and8100, real UI/readiness proof and one whole-flow owner-use evaluation.
 No Stable-1/project completion yet; final release audit remains dependent on that evaluation.
+
+C063 delivered: implementationa433787/product04f30387 pushed. Fresh actual official Pro/
+extraOFF, same DB inode/URL, oldPID80016 gone/portclosed, newPID20002 healthy. Actual UI
+shows16 inherited calls and2026-10-08 23:37:26 JST admission deadline;8007 seconds remained
+at owner handoff. Evidence/operations/c063-preview-launch.json and c063-preview.jpg.
+No synthetic inputs/model generation/automatic renewal/canonical repair. The two-hour
+readiness objective is achieved; it is not2-hour elapsed reliability evidence. Next is
+actual owner whole-flow usefulness, then final release audit. Development awaits that
+external owner experience; product trial is running. No milestone/project completion.

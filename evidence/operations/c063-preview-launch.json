@@ -1,0 +1,95 @@
+{
+  "work_unit": "C063",
+  "decision": "D-032",
+  "candidate_commit": "a433787ebbd1d9ee64187d640f2437aa42e85246",
+  "product": "content:sha256:04f30387694a8202689b06673c18ec1fb7822b7ba88f83679132bdfb0b0291a5",
+  "started_at": 1791462146.5000908,
+  "pid": 20002,
+  "url": "http://127.0.0.1:59684/",
+  "db": "runtime/stable1-owner-c061/state.sqlite",
+  "db_inode_before": 153416179,
+  "session_seconds": 8100,
+  "proof_expires_at": 1791470246.5000908,
+  "native_call_limit": 16,
+  "previous_pid": 80016,
+  "previous_pid_gone_and_port_closed": true,
+  "previous_provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 16,
+    "expires_at": 1791460295.755386,
+    "authorized_now": false,
+    "unavailable_reason": "proof_expired",
+    "last_error": ""
+  },
+  "existing_db_counts_before_restart": {
+    "records": 0,
+    "goals": 0,
+    "attempts": 0,
+    "artifacts": 0,
+    "primary_turns": 0
+  },
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "auth_checked_at": 1791462146.0722182,
+  "official_usage_observation": {
+    "actual_UI": true,
+    "chrome_tab": "172833208",
+    "session_used_percent": 4,
+    "week_used_percent": 31,
+    "credits_enabled": false,
+    "auto_reload_enabled": false,
+    "observed_before_this_launch": true
+  },
+  "generation_calls_by_controller": 0,
+  "synthetic_owner_inputs": 0,
+  "human_usefulness_evaluation": false,
+  "automatic_renewal": false,
+  "schedule_restarted": false,
+  "http_ready_at": 1791462146.61812,
+  "health": {
+    "pid": 20002,
+    "started_at": 1791462146.566205,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  },
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 16,
+    "expires_at": 1791470246.5000908,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "same_database_inode_preserved": true,
+  "existing_db_counts_after_restart": {
+    "records": 0,
+    "goals": 0,
+    "attempts": 0,
+    "artifacts": 0,
+    "primary_turns": 0
+  },
+  "expires_at_jst": "2026-10-08T23:37:26.500091+09:00",
+  "ui_verified_at": 1791462239.020895,
+  "actual_Chrome_UI": {
+    "tab_id": "172833190",
+    "url": "http://127.0.0.1:59684/",
+    "proof_valid_visible": true,
+    "remaining_visible": 16,
+    "absolute_deadline_visible": "2026/10/8 23:37:26 JST",
+    "matches_HTTP_expiry": true,
+    "marked_handoff": true,
+    "unsent_text_empty_before_reload": true,
+    "screenshot": {
+      "path": "evidence/operations/c063-preview.jpg",
+      "sha256": "ad2ce458c08d5afc1370c4002292db6d5f17a0a03f24be9f9010be870497ad09",
+      "bytes": 64258
+    }
+  },
+  "ready_handoff_remaining_seconds": 8007.479195833206,
+  "ready_for_owner": true,
+  "new_handoff_sent": true
+}

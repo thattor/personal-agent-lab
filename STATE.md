@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 is released; text-only Stable-1 remains the immediate authorized delivery goal. D031 ends further conversation/prose-quality tuning, tests and reviews; minor editable prose is a known limitation, never a retroactive PASS. C060/C061 retain finite actual Primary/function/artifact evidence. C063 implements the directly requested trial extension under D032: fresh startup900 seconds, explicit finite admission up to8100 seconds, same budget and visible deadline. Product04f30387;34 focused/277 full tests PASS25.467s. Same-DB/URL extended trial is ready to launch after fresh official auth/extraOFF checks. Existing PID80016 is readable but expired, last observed16 unused calls. Remaining: real whole-flow owner usefulness and final audit/release. Goal card remains BLOCKED; this explicit development turn is active. Old schedules remain paused; the conditional noninterrupting50-minute checkpoint remains NOT_CONFIGURED.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 is released; text-only Stable-1 remains the immediate authorized delivery goal. D031 ends further conversation/prose-quality tuning, tests and reviews; minor editable prose is a known limitation, never a retroactive PASS. C060/C061 retain finite actual Primary/function/artifact evidence. C063 implements the directly requested trial extension under D032: fresh startup900 seconds, explicit finite admission up to8100 seconds, same budget and visible deadline. Product04f30387;34 focused/277 full tests PASS25.467s. Same-DB/URL trial now runs on owned PID20002 with fresh official Pro/extraOFF,16 inherited calls, actual UI deadline2026-10-08 23:37:26 JST;8007 seconds remained at the readiness handoff. No owner input/evaluation claimed. Remaining: real whole-flow owner usefulness and final audit/release. Goal card remains BLOCKED; this explicit development turn is active. Old schedules remain paused; the conditional noninterrupting50-minute checkpoint remains NOT_CONFIGURED.
 
 ## Current operating authority — 2026-10-08
 
@@ -51,27 +51,31 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
-C063/D032: after the direct owner request for at least2 hours, official Opus and SWE-2 High
-reviewed the minimal finite duration change. [Authority](evidence/operations/c063-owner-extension.json),
-[reviews](evidence/reviews/two-hour-trial/DISPOSITION.md),
-[277-test/source audit](evidence/reviews/two-hour-trial/validation.json). Startup proof is
-still fresh900; default admission900, explicitly8100 for this trial. Native/server/UI
-are the only changed product files. Primary/Expert/host/canonical behavior is unchanged;
-C060/C061 actual proof retains its original version and is scoped by the changed-file audit.
+C063/D032 is implemented and pushed as a433787/product04f30387. [277-test/source audit](evidence/reviews/two-hour-trial/validation.json).
+Only native duration, startup option and displayed deadline changed; Primary/Expert/
+context/Store/runtime source remains unchanged. Historical actual-model proofs retain
+original versions; no prose-quality sweep or resampling was performed.
 
-Next: commit/push this green increment, freshly check existing official Pro/extra usage OFF,
-then read actual remaining budget and verify no running work on expired PID80016. Stop
-only that owned host, confirm PID/port closure, restart SAME runtime/stable1-owner-c061 DB
-and URL http://127.0.0.1:59684/ with explicit8100 seconds and the SAME remaining count.
-Do not reset0 to16. Verify actual Chrome deadline and >=7200 seconds at owner handoff.
-No synthetic owner input, extra generation, new login/payment or automatic renewal.
+[Actual requested extension](evidence/operations/c063-preview-launch.json): fresh existing
+Pro/extraOFF, expired PID80016 closed before replacementPID20002, same DB inode/URL and
+actual remaining16 calls. The Chrome page shows proof valid, remaining16 and the absolute
+new-call deadline2026-10-08 23:37:26 JST. At the readiness handoff8007 seconds remained,
+above the requested7200. No synthetic owner input, model generation or DB repair here.
+This Mac's URL is http://127.0.0.1:59684/; read-only history remains after proof expiry.
+No renewal, call-budget reset, new login/payment/public exposure or schedule was added.
 
-Then receive one actual whole-flow usefulness evaluation through HR-STABLE1-001 in
-PAL人間判断. Current owner use/evaluation is unconfirmed; no quality quotas or repeated
-wording review. N1-07, N1-09 human component and final N1-08 remain incomplete. Issue12 is
-CLOSED/completed/Project Done; release#5, parent#2, milestone1 and overall project#6 stay
-OPEN. Stable-1 is not whole-project completion; future P001/multimodal and old schedules
-stay inactive. The new50-minute checkpoint remains NOT_CONFIGURED.
+Next: receive actual whole-flow owner use/evaluation through the existing HR-STABLE1-001
+in PAL人間判断. The working trial is running; development is now waiting for that owner
+experience, not autonomously monitoring or generating. On receipt, re-read current state
+and actual runtime, reflect the evaluation, diagnose any material functional blocker,
+then finish final full-suite/version/limitations/Issue audit and release if all required
+rows pass. If the session expires, report generation unavailable; do not silently renew.
+The Goal card is still BLOCKED; it cannot be resumed through the available goal-status tool.
+
+N1-07, N1-09 human component and final N1-08 remain incomplete. Issue12 is CLOSED/completed/
+Project Done; release#5, parent#2, milestone1 and overall project#6 stay OPEN. Stable-1 is
+not whole-project completion; future P001/multimodal and old schedules stay inactive.
+The conditional new50-minute noninterrupting checkpoint remains NOT_CONFIGURED.
 
 ## Historical access preparation C050–C052 (superseded next actions)
 
