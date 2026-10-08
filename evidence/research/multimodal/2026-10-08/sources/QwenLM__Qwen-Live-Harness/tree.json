@@ -1,0 +1,3910 @@
+{
+  "sha": "b6ce544ebbcd7417e37e0314ec946466c49c615c",
+  "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/b6ce544ebbcd7417e37e0314ec946466c49c615c",
+  "tree": [
+    {
+      "path": ".github",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b8126aeb93191d2c5f0e92c8327a01c64490bd33",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/b8126aeb93191d2c5f0e92c8327a01c64490bd33"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "f5e4af1bb6e49ab20313ec4b2e7d53f4657079ac",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/f5e4af1bb6e49ab20313ec4b2e7d53f4657079ac"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "74a1c5f1da7ea349a6b152f1a45cf4881eaa183b",
+      "size": 2827,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/74a1c5f1da7ea349a6b152f1a45cf4881eaa183b"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b92a4478a2c73122bb5a3c6282005d15af6eca1a",
+      "size": 1095,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b92a4478a2c73122bb5a3c6282005d15af6eca1a"
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "38709398e3cf29785ef669d226c2d6392c0a5df2",
+      "size": 2689,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/38709398e3cf29785ef669d226c2d6392c0a5df2"
+    },
+    {
+      "path": ".github/workflows",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "74ce4de8632b842edaec8eb6c080bd2ccaa5401d",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/74ce4de8632b842edaec8eb6c080bd2ccaa5401d"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3311247440bb666f61a6052e03312f021493445f",
+      "size": 896,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/3311247440bb666f61a6052e03312f021493445f"
+    },
+    {
+      "path": ".github/workflows/qwen-live-harness-host-release.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3181fe1b7200d26613af373b57ef624fefbfb4cb",
+      "size": 22008,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/3181fe1b7200d26613af373b57ef624fefbfb4cb"
+    },
+    {
+      "path": ".github/workflows/qwen-live-harness-host.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9bc72af64b0c41b8d25449b5306ece5d8092930c",
+      "size": 7350,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9bc72af64b0c41b8d25449b5306ece5d8092930c"
+    },
+    {
+      "path": ".github/workflows/sync-qwen-live-harness-host-to-oss.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e9d2b0b681ef284a3c9f8cd7b77e639ad096127",
+      "size": 10965,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/2e9d2b0b681ef284a3c9f8cd7b77e639ad096127"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "98e9e475b35e192e38220a23ca3191d48c35fcb5",
+      "size": 108,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/98e9e475b35e192e38220a23ca3191d48c35fcb5"
+    },
+    {
+      "path": ".npmrc",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "214c29d1395919ce175f26d140526368127981ba",
+      "size": 37,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/214c29d1395919ce175f26d140526368127981ba"
+    },
+    {
+      "path": ".nvmrc",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2bd5a0a98a36cc08ada88b804d3be047e6aa5b8a",
+      "size": 3,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/2bd5a0a98a36cc08ada88b804d3be047e6aa5b8a"
+    },
+    {
+      "path": ".prettierignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3aebc2602b1e32d7f4f6db5d5621b0bc94368564",
+      "size": 304,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/3aebc2602b1e32d7f4f6db5d5621b0bc94368564"
+    },
+    {
+      "path": ".prettierrc.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fa9699b89547ae888102d600ba1723323542cd5f",
+      "size": 105,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/fa9699b89547ae888102d600ba1723323542cd5f"
+    },
+    {
+      "path": "AGENTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0b061c337f527b5120565a2fcd47cd67cd26a6ae",
+      "size": 5973,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0b061c337f527b5120565a2fcd47cd67cd26a6ae"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "941649d2ee5c7e9f3acad95bba30c5fbc72d9ad8",
+      "size": 11333,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/941649d2ee5c7e9f3acad95bba30c5fbc72d9ad8"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9ecaa3e883742f63d55acf22076c879c5a947ed0",
+      "size": 14006,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9ecaa3e883742f63d55acf22076c879c5a947ed0"
+    },
+    {
+      "path": "README_ZH.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cbc386bd9b9cffc2fea8a9c3c5da53be636ff7f5",
+      "size": 13078,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/cbc386bd9b9cffc2fea8a9c3c5da53be636ff7f5"
+    },
+    {
+      "path": "docs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "6572f638d848d3a4c48d825fc29ce42629615fea",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/6572f638d848d3a4c48d825fc29ce42629615fea"
+    },
+    {
+      "path": "docs/configuration.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e8ac27be5091d208b62d166a7113c80803d83c58",
+      "size": 26582,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e8ac27be5091d208b62d166a7113c80803d83c58"
+    },
+    {
+      "path": "docs/configuration_ZH.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2b972183598808ab48833c271c5669db2460a04",
+      "size": 24604,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f2b972183598808ab48833c271c5669db2460a04"
+    },
+    {
+      "path": "eslint.config.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "693e2c0fe313657c363466755995f9d3d925d63c",
+      "size": 930,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/693e2c0fe313657c363466755995f9d3d925d63c"
+    },
+    {
+      "path": "integration-tests",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "7f8bce65d27d91b8427500a57dff8acf210a958c",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/7f8bce65d27d91b8427500a57dff8acf210a958c"
+    },
+    {
+      "path": "integration-tests/fake-dashscope-server.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a75c7c5fea64c21cda3e5dfcfee532d78d5ff64",
+      "size": 29052,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/8a75c7c5fea64c21cda3e5dfcfee532d78d5ff64"
+    },
+    {
+      "path": "integration-tests/fake-openai-server.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "71c95db76b46517c50faac904609401833c4f8f8",
+      "size": 11397,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/71c95db76b46517c50faac904609401833c4f8f8"
+    },
+    {
+      "path": "integration-tests/qwen-backend-harness.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d15e92c008e7e554a10fcf9b6ce5e7c198b5fb9",
+      "size": 3546,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0d15e92c008e7e554a10fcf9b6ce5e7c198b5fb9"
+    },
+    {
+      "path": "integration-tests/qwen-live-harness-m1-call.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92277aed0ed59c050311cdeef61a8b2d879baeb3",
+      "size": 11134,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/92277aed0ed59c050311cdeef61a8b2d879baeb3"
+    },
+    {
+      "path": "integration-tests/qwen-live-harness-m2-inject.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f6623faa31aa997407dd8f421b9966bc72cdc044",
+      "size": 10133,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f6623faa31aa997407dd8f421b9966bc72cdc044"
+    },
+    {
+      "path": "integration-tests/qwen-live-harness-m2-permission.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a23ce899adc55f55511789f0a82f3ab26386a20",
+      "size": 7770,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/2a23ce899adc55f55511789f0a82f3ab26386a20"
+    },
+    {
+      "path": "integration-tests/qwen-live-harness-m2-steering.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "26622382a2f42815b03af56daa3da8844e4abda8",
+      "size": 7809,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/26622382a2f42815b03af56daa3da8844e4abda8"
+    },
+    {
+      "path": "integration-tests/qwen-live-harness-m3-discovery.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "152f28ea7cf1462b3514a5c40e4421e2ceacb635",
+      "size": 9604,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/152f28ea7cf1462b3514a5c40e4421e2ceacb635"
+    },
+    {
+      "path": "integration-tests/qwen-live-harness-m4-acp-call.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ae847d37dbe7aaebf7d6ab03a5fa56772a18f9c1",
+      "size": 3942,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/ae847d37dbe7aaebf7d6ab03a5fa56772a18f9c1"
+    },
+    {
+      "path": "integration-tests/qwen-live-harness-m4-acp-multibackend.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d88543ccbe68fa66818333ffc002aa6e56dab5d7",
+      "size": 5176,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/d88543ccbe68fa66818333ffc002aa6e56dab5d7"
+    },
+    {
+      "path": "integration-tests/qwen-live-harness-m4-acp-permission.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c188bc7fd30b16fefe2dc666c413e33e371e6c6",
+      "size": 5335,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1c188bc7fd30b16fefe2dc666c413e33e371e6c6"
+    },
+    {
+      "path": "integration-tests/qwen-live-harness-m4-acp-session-mode.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "73f36cd936dd516087f20248bc3a642665598c30",
+      "size": 7983,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/73f36cd936dd516087f20248bc3a642665598c30"
+    },
+    {
+      "path": "integration-tests/qwen-live-harness-m4-acp-steering.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4f6a6c64140c9954c2234566b5d6628297cf2ca1",
+      "size": 7015,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/4f6a6c64140c9954c2234566b5d6628297cf2ca1"
+    },
+    {
+      "path": "integration-tests/qwen-live-harness.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5e6328dcf22736d707298ccf2df075f639ccf1b8",
+      "size": 42901,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/5e6328dcf22736d707298ccf2df075f639ccf1b8"
+    },
+    {
+      "path": "integration-tests/qwen-peer-instructions.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ca8126fce1fb330d4138578eabb95069bc7b8279",
+      "size": 22699,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/ca8126fce1fb330d4138578eabb95069bc7b8279"
+    },
+    {
+      "path": "integration-tests/qwen-peer-reports.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "09abe8a64597c94b45e12aa5c89ccee78f8ffbd4",
+      "size": 26330,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/09abe8a64597c94b45e12aa5c89ccee78f8ffbd4"
+    },
+    {
+      "path": "integration-tests/qwen-peer-setup.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "756148f0a3930a03b00164772bf5cb533aeb993a",
+      "size": 16077,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/756148f0a3930a03b00164772bf5cb533aeb993a"
+    },
+    {
+      "path": "integration-tests/standalone-acp.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8e11dc78801e71c3878b417906b930a73bd77573",
+      "size": 9667,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/8e11dc78801e71c3878b417906b930a73bd77573"
+    },
+    {
+      "path": "integration-tests/standalone-failures.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f148c26bc917db7f6784f44da38b2b5b89681f4a",
+      "size": 2100,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f148c26bc917db7f6784f44da38b2b5b89681f4a"
+    },
+    {
+      "path": "integration-tests/standalone-managed-serve.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0578fd9c64b2079bc38454b738b28ff599a2743e",
+      "size": 5178,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0578fd9c64b2079bc38454b738b28ff599a2743e"
+    },
+    {
+      "path": "integration-tests/standalone-model-serving-recovery.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a9e82d4f2c3abb041ca5ca5c599123d2bcb2f70",
+      "size": 9575,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/2a9e82d4f2c3abb041ca5ca5c599123d2bcb2f70"
+    },
+    {
+      "path": "integration-tests/standalone-no-backend.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "916c310f13fa89e8ce556fe9afab6fdab4a28c00",
+      "size": 12341,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/916c310f13fa89e8ce556fe9afab6fdab4a28c00"
+    },
+    {
+      "path": "integration-tests/standalone-output-audio.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f80cf2a92e39ca5e7f048bba2dbd703776760fd7",
+      "size": 2397,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f80cf2a92e39ca5e7f048bba2dbd703776760fd7"
+    },
+    {
+      "path": "integration-tests/standalone-peers-coexistence.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1ba1e5f091597dbe6f1be137f16ac9f4c56ad379",
+      "size": 15265,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1ba1e5f091597dbe6f1be137f16ac9f4c56ad379"
+    },
+    {
+      "path": "integration-tests/standalone-permission-mode.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d38733268e41f5688f56e3fd9317657609dd74e3",
+      "size": 6621,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/d38733268e41f5688f56e3fd9317657609dd74e3"
+    },
+    {
+      "path": "integration-tests/standalone-proactive-fallback.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cabcd7084a5e84cb2e1058c8ab6b066dd2c75e83",
+      "size": 13359,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/cabcd7084a5e84cb2e1058c8ab6b066dd2c75e83"
+    },
+    {
+      "path": "integration-tests/standalone-response-recovery.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "34448c87d43251b4c8129f132333c55e86c8dec2",
+      "size": 7929,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/34448c87d43251b4c8129f132333c55e86c8dec2"
+    },
+    {
+      "path": "integration-tests/standalone-session-mode.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e9d066fad6fe0206db92aca27f6edc4a5a828049",
+      "size": 6266,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e9d066fad6fe0206db92aca27f6edc4a5a828049"
+    },
+    {
+      "path": "integration-tests/standalone-speech-fixture.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c5a581c0e4276bbed61f4d7a1f8e3ec0fc2b66c",
+      "size": 12014,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/3c5a581c0e4276bbed61f4d7a1f8e3ec0fc2b66c"
+    },
+    {
+      "path": "integration-tests/standalone-startup.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "474834fedac6b648f8ee7e0d8a1cdb2eaf502655",
+      "size": 5414,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/474834fedac6b648f8ee7e0d8a1cdb2eaf502655"
+    },
+    {
+      "path": "integration-tests/standalone-steering.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b091def9f053627a22f5965834ad1be972d0f25",
+      "size": 5684,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/4b091def9f053627a22f5965834ad1be972d0f25"
+    },
+    {
+      "path": "integration-tests/standalone-task-rejection.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8bca89185e88244a617d9a8a3ebd1750b729b195",
+      "size": 9040,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/8bca89185e88244a617d9a8a3ebd1750b729b195"
+    },
+    {
+      "path": "integration-tests/standalone-visual-analysis.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a10bbe91d6c0a2a89f0954588d383918764fa778",
+      "size": 20136,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/a10bbe91d6c0a2a89f0954588d383918764fa778"
+    },
+    {
+      "path": "integration-tests/standalone-voice-cloning.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "64bf085d7d89abd907337a9fc059c1eb7d16095f",
+      "size": 6545,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/64bf085d7d89abd907337a9fc059c1eb7d16095f"
+    },
+    {
+      "path": "integration-tests/standalone-voice-settings.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "20d73fca57ed062848211166da0fef7dc2e505a2",
+      "size": 4960,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/20d73fca57ed062848211166da0fef7dc2e505a2"
+    },
+    {
+      "path": "integration-tests/standalone-web-search.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ac087c8bcad32230af33adb72a0b059c0d1e4880",
+      "size": 33641,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/ac087c8bcad32230af33adb72a0b059c0d1e4880"
+    },
+    {
+      "path": "integration-tests/test-fixtures",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d234f519fd2c7e21f8a2e06c29431f7d2e29ec4d",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/d234f519fd2c7e21f8a2e06c29431f7d2e29ec4d"
+    },
+    {
+      "path": "integration-tests/test-fixtures/qwen-tui-pty.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "84fe7ed0260974a213a903adebf6780db4e71a7c",
+      "size": 1453,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/84fe7ed0260974a213a903adebf6780db4e71a7c"
+    },
+    {
+      "path": "integration-tests/tsconfig.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "17da1f1c588ef68fb79b9ee3f26d48f94dae3b77",
+      "size": 161,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/17da1f1c588ef68fb79b9ee3f26d48f94dae3b77"
+    },
+    {
+      "path": "integration-tests/vitest.backends.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "05be138c9bcb3a47b6535c76e56e0ff54bf43c00",
+      "size": 365,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/05be138c9bcb3a47b6535c76e56e0ff54bf43c00"
+    },
+    {
+      "path": "integration-tests/vitest.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cd86833569af60278b3bf83885dd2ae9caf42ee8",
+      "size": 294,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/cd86833569af60278b3bf83885dd2ae9caf42ee8"
+    },
+    {
+      "path": "package-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "585493dafe2124e236081e9e25c8b87071a5723e",
+      "size": 175515,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/585493dafe2124e236081e9e25c8b87071a5723e"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9b6aa4e5604928703bb6de6c5800ab89aa178676",
+      "size": 2310,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9b6aa4e5604928703bb6de6c5800ab89aa178676"
+    },
+    {
+      "path": "packages",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b19d8fdef9fa9d758ae8702c37f42d8cece006a0",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/b19d8fdef9fa9d758ae8702c37f42d8cece006a0"
+    },
+    {
+      "path": "packages/qwen-live-harness-host",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0ec017fabeeb3e146600a9aa5e27b94c00916139",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/0ec017fabeeb3e146600a9aa5e27b94c00916139"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/.gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7da9f1f80bfd3538aa430c9c4610d0c896e7056e",
+      "size": 32,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7da9f1f80bfd3538aa430c9c4610d0c896e7056e"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7eca65f35c5fcdd754bd04da7c61d18e3d446cc6",
+      "size": 15769,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7eca65f35c5fcdd754bd04da7c61d18e3d446cc6"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/README_ZH.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "756083f92f811728930fd99231d0976e2d38fcc2",
+      "size": 14706,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/756083f92f811728930fd99231d0976e2d38fcc2"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/build",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "dcaff3d60f1ae19bebf3cd9dbc2fe28a2dea83e9",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/dcaff3d60f1ae19bebf3cd9dbc2fe28a2dea83e9"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/build/entitlements.mac.plist",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b57e37283b44f081b3c4a8435b2ceb733128a146",
+      "size": 458,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b57e37283b44f081b3c4a8435b2ceb733128a146"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/electron-builder.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f65b4a6cc357f36c99b7a5f82f16cf62546a5676",
+      "size": 2332,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f65b4a6cc357f36c99b7a5f82f16cf62546a5676"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/package-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2cdff623be889a0a6e9a914acc0ff9ba2ef09375",
+      "size": 208900,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/2cdff623be889a0a6e9a914acc0ff9ba2ef09375"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "68f489cee9a3b59204d9a8f16867dc9f8db79b69",
+      "size": 1106,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/68f489cee9a3b59204d9a8f16867dc9f8db79b69"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/resources",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a64d2032ed5594da66104134a32e4910cc57ea94",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/a64d2032ed5594da66104134a32e4910cc57ea94"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/resources/audio-input-worklet.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d154bd62dce0086ffe25ddb9465a218477aa1113",
+      "size": 2004,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/d154bd62dce0086ffe25ddb9465a218477aa1113"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/resources/icon.icns",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4ef481b3611c031dafdd28d7ea1b2497bfa71cc9",
+      "size": 177828,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/4ef481b3611c031dafdd28d7ea1b2497bfa71cc9"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/resources/icon.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e17a46ce5271b5f0207d14bbbd47cac0168d11e",
+      "size": 76589,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/4e17a46ce5271b5f0207d14bbbd47cac0168d11e"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/resources/localizations",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "086260a9f3bb0925db8e82f9a1f40f3de79b90ab",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/086260a9f3bb0925db8e82f9a1f40f3de79b90ab"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/resources/localizations/en.lproj",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3476de185c50eeae2898634a80f63bad826716e6",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/3476de185c50eeae2898634a80f63bad826716e6"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/resources/localizations/en.lproj/InfoPlist.strings",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c36d22799d28b50958093f8e32a858e074fc1990",
+      "size": 305,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c36d22799d28b50958093f8e32a858e074fc1990"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/resources/localizations/zh-Hans.lproj",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2b3ce88af2fa684e2f0d77fde93a77a534c2c4cc",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/2b3ce88af2fa684e2f0d77fde93a77a534c2c4cc"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/resources/localizations/zh-Hans.lproj/InfoPlist.strings",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7b75bad0c42e59d28127fee7577463b33e177dbd",
+      "size": 301,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7b75bad0c42e59d28127fee7577463b33e177dbd"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/scripts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "9d29ab4813c100cc60834b45fdd29fc126cae15b",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/9d29ab4813c100cc60834b45fdd29fc126cae15b"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/scripts/after-pack.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5733d9952e383dc8525a8f3769f1c91e616ab8dc",
+      "size": 3192,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/5733d9952e383dc8525a8f3769f1c91e616ab8dc"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/scripts/build.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "23a6f470278574e822bed478eb14977ef618ddab",
+      "size": 3928,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/23a6f470278574e822bed478eb14977ef618ddab"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/scripts/create-release-manifest.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1dfb3510028e9de79738deced10cece2d3854acc",
+      "size": 1406,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1dfb3510028e9de79738deced10cece2d3854acc"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/scripts/process-boundary.d.mts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "462b7bafcd08e0f40178eca615b5c73485c28080",
+      "size": 176,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/462b7bafcd08e0f40178eca615b5c73485c28080"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/scripts/process-boundary.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "12d70e3b24879b92c1819ec76a97318b01e6565a",
+      "size": 2411,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/12d70e3b24879b92c1819ec76a97318b01e6565a"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "8e821fbb867bc0827ffaf1760bd39a7d92e186f9",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/8e821fbb867bc0827ffaf1760bd39a7d92e186f9"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "8fea4cf2093b8a83e27728dd94bd4f82f205f123",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/8fea4cf2093b8a83e27728dd94bd4f82f205f123"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "95e3b3bc928c386cf5e3a8204233af387a159142",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/95e3b3bc928c386cf5e3a8204233af387a159142"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/appshot-architecture.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e9bfb7572d422ca84d592ee06dd6bcd6f3ac0329",
+      "size": 6307,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e9bfb7572d422ca84d592ee06dd6bcd6f3ac0329"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/appshot-capture.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "db5432fd8ffadd97901e5d0ac412637b0b85c086",
+      "size": 13380,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/db5432fd8ffadd97901e5d0ac412637b0b85c086"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/appshot-readiness.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "170f3e12e204c378a53b691f21294c726cf87609",
+      "size": 4850,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/170f3e12e204c378a53b691f21294c726cf87609"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/audio-architecture.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f708519098e36a4d41b0e8dc66713cb60c09544",
+      "size": 6326,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7f708519098e36a4d41b0e8dc66713cb60c09544"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/audio-engine.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cdb5a625f4bfff4e09520f2249334e238198c7e4",
+      "size": 32556,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/cdb5a625f4bfff4e09520f2249334e238198c7e4"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/audio-errors.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9420119a9b9ca517d0edcb3f00b2bf131ac7403d",
+      "size": 1660,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9420119a9b9ca517d0edcb3f00b2bf131ac7403d"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/audio-input-policy.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f2e93c44aaa6279c270247a4daf6362514a081c",
+      "size": 1652,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7f2e93c44aaa6279c270247a4daf6362514a081c"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/audio-lifecycle.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6fbbeb2e508fc49ab8b9c5445e0df730b59b8f87",
+      "size": 1717,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/6fbbeb2e508fc49ab8b9c5445e0df730b59b8f87"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/audio-output-queue.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f07d2da2948c12a41421a98d9112c33eec9f1bc",
+      "size": 5460,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0f07d2da2948c12a41421a98d9112c33eec9f1bc"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/audio-output-resampler.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "523595dc3cd833b61e0d632a59467918c3e8a62a",
+      "size": 3567,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/523595dc3cd833b61e0d632a59467918c3e8a62a"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/audio-recovery.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b2360d1ba22f5d615bf659c123374f6dcfb3e6f5",
+      "size": 11898,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b2360d1ba22f5d615bf659c123374f6dcfb3e6f5"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/camera-architecture.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "68112a98cab1fd5aeb9630f5c4e1c61cfa9f184c",
+      "size": 5160,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/68112a98cab1fd5aeb9630f5c4e1c61cfa9f184c"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/camera-engine.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b057be3d8738a8eab80e143914338f2e833b8185",
+      "size": 20544,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b057be3d8738a8eab80e143914338f2e833b8185"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/capture-placement.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f95860198ab5427fb1ada4b6a8d00054e95c3f84",
+      "size": 19070,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f95860198ab5427fb1ada4b6a8d00054e95c3f84"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/capture-readiness.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f03793662837946ec431bdc381930f5edab3ec92",
+      "size": 2579,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f03793662837946ec431bdc381930f5edab3ec92"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/config-file-native.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "293c2882630017b0718e7701debca4cd77a4de8a",
+      "size": 6962,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/293c2882630017b0718e7701debca4cd77a4de8a"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/control-frame-limit.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eaf86c1f67464a606c97a89b3f34d0d46b4109a6",
+      "size": 4355,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/eaf86c1f67464a606c97a89b3f34d0d46b4109a6"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/daemon-bootstrap.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "836db39cb27ea5f1da795e2390128577b6076c8d",
+      "size": 8250,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/836db39cb27ea5f1da795e2390128577b6076c8d"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/daemon-connection.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "69c506696c5cda0ff4c94fb594b9175edfcc4cf2",
+      "size": 23801,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/69c506696c5cda0ff4c94fb594b9175edfcc4cf2"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/daemon-launch-ui.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1468638e4737be026127b5f05dabbb669baea464",
+      "size": 11465,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1468638e4737be026127b5f05dabbb669baea464"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/daemon-lifecycle.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "706e1078793241fa157389db5ada31fea215ed14",
+      "size": 15213,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/706e1078793241fa157389db5ada31fea215ed14"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/diagnostics.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a0d1619ad6d9f278b51453797921618f5913fb01",
+      "size": 1350,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/a0d1619ad6d9f278b51453797921618f5913fb01"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/discovery.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6e1169991b479ca43aaf33ea8ec58945bb48bad3",
+      "size": 8206,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/6e1169991b479ca43aaf33ea8ec58945bb48bad3"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/display-capture-connection.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e620913e316f217239429ad8bd857e7ddf647daf",
+      "size": 10784,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e620913e316f217239429ad8bd857e7ddf647daf"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/display-capture-routing.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d0ef6f4df4df169c6d11be8f19329c1d1470a369",
+      "size": 11838,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/d0ef6f4df4df169c6d11be8f19329c1d1470a369"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/display-events.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "da476cf2d6b09d66a4db7ff972677828948d796c",
+      "size": 15564,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/da476cf2d6b09d66a4db7ff972677828948d796c"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/global-shortcut.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "474c38c3008c227f1e3a5e4f906785f2ca3c1ab4",
+      "size": 4233,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/474c38c3008c227f1e3a5e4f906785f2ca3c1ab4"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/host-diagnostics.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "079dc25c6b742a89513357cf850785cc630c529d",
+      "size": 12411,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/079dc25c6b742a89513357cf850785cc630c529d"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/identity-contract.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5dff81ae97ce05271571b48385462c21dc0c436a",
+      "size": 2791,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/5dff81ae97ce05271571b48385462c21dc0c436a"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/language-connection.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "485069335e4f823604936cda87bb73667b68a49d",
+      "size": 7584,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/485069335e4f823604936cda87bb73667b68a49d"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/language-store.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "979f89707965b77c9e0bd3fb08193562e355b9ed",
+      "size": 1063,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/979f89707965b77c9e0bd3fb08193562e355b9ed"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/live-state-policy.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d73987c094fafbe5a1560c7d95282f010bdb49c3",
+      "size": 5570,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/d73987c094fafbe5a1560c7d95282f010bdb49c3"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/live-view.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d38e38489ee70e183be3b2fcfac1d183d028f5bc",
+      "size": 49428,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/d38e38489ee70e183be3b2fcfac1d183d028f5bc"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/memory-connection.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc877470168a5363fffbfd3bc2dfd6ec6579d6be",
+      "size": 6870,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/cc877470168a5363fffbfd3bc2dfd6ec6579d6be"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/memory-panel.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb588c803aed97e0827dcaa6106f9e1405db0fbb",
+      "size": 8985,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/eb588c803aed97e0827dcaa6106f9e1405db0fbb"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/memory-protocol.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "39c7927dfa50525f915db08ef6de7c9a30126605",
+      "size": 3925,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/39c7927dfa50525f915db08ef6de7c9a30126605"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/native-service-policy.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b1634512f3e65005b670658b1154c848663b10d1",
+      "size": 920,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b1634512f3e65005b670658b1154c848663b10d1"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/overlay-drag.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70b5841341a47e0431ed7c1aeacf86b1181b7ac5",
+      "size": 7760,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/70b5841341a47e0431ed7c1aeacf86b1181b7ac5"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/overlay-native-lifecycle.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "80bcd48556b3bdcb380479e832624664c03183db",
+      "size": 50512,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/80bcd48556b3bdcb380479e832624664c03183db"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/overlay-pointer.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "adf05e3ec518f08d99c26a3c466f80ef5cb40cd2",
+      "size": 2363,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/adf05e3ec518f08d99c26a3c466f80ef5cb40cd2"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/overlay-position-store.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9f2b6696b72f85de14f30d2320549b58b6e501d6",
+      "size": 1904,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9f2b6696b72f85de14f30d2320549b58b6e501d6"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/overlay-position.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e43d0c33843ef4443b98be1b94475601b99f2e1e",
+      "size": 9868,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e43d0c33843ef4443b98be1b94475601b99f2e1e"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/overlay-presentation.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "09c6f3a3db5cec8260b637bf7515f8f49eb5a316",
+      "size": 6066,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/09c6f3a3db5cec8260b637bf7515f8f49eb5a316"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/overlay-recovery.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cf5f2bd1391c9812e065ffb42f8a71e86e5c185e",
+      "size": 2629,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/cf5f2bd1391c9812e065ffb42f8a71e86e5c185e"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/package-manager.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "91664418f9e5187221eab25e41ad3fbec4b20ef7",
+      "size": 705,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/91664418f9e5187221eab25e41ad3fbec4b20ef7"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/packaging-contents.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "edf4ac227721dc34c67ed9c92aaddf3c273c6eff",
+      "size": 7704,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/edf4ac227721dc34c67ed9c92aaddf3c273c6eff"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/pebble-style.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4561a3993499e428d9763b855f5fed2c90f967b5",
+      "size": 5241,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/4561a3993499e428d9763b855f5fed2c90f967b5"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/permission-localizations.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2627e12297365da704ee9b1aed5b0d75ce4fe3c5",
+      "size": 2403,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/2627e12297365da704ee9b1aed5b0d75ce4fe3c5"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/permission-mode-connection.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8484f5239d61fe1858157e234c1b502e86f5f86c",
+      "size": 8115,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/8484f5239d61fe1858157e234c1b502e86f5f86c"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/pointer-interactivity.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a878b0d82700d35d7a9b939055e1291b414fb6b",
+      "size": 5049,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/8a878b0d82700d35d7a9b939055e1291b414fb6b"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/preload-diagnostics.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "df2305dba9edade335344cf42c7cd8d963df4d91",
+      "size": 4022,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/df2305dba9edade335344cf42c7cd8d963df4d91"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/process-boundary.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4614513aad7016761000a90cf05f76f0ac26aa01",
+      "size": 6164,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/4614513aad7016761000a90cf05f76f0ac26aa01"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/protocol.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9b827cc872bbe8cec1df90c9b3f0cd350ebd8a51",
+      "size": 28314,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9b827cc872bbe8cec1df90c9b3f0cd350ebd8a51"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/quit-connection.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "efaed724c2da30e3bdbed75f3db7ed48002ef4f9",
+      "size": 11083,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/efaed724c2da30e3bdbed75f3db7ed48002ef4f9"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/reconnect-policy.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9b31dc51fdc89eee576ea64f75183dc4571e6a3a",
+      "size": 1094,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9b31dc51fdc89eee576ea64f75183dc4571e6a3a"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/release-architecture.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c4d68996b7508947eb08d3827d83402e58cb98c3",
+      "size": 843,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c4d68996b7508947eb08d3827d83402e58cb98c3"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/review-packaging-guard.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "39a4e5af2911a72076406e89e741da2154dff59d",
+      "size": 2524,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/39a4e5af2911a72076406e89e741da2154dff59d"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/review-quit-recovery.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04f3ab0c58ec6bdce337eada75dc028c6d84f6c6",
+      "size": 15066,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/04f3ab0c58ec6bdce337eada75dc028c6d84f6c6"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/review-visual-readiness.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "52811c3e607c43dd38ccbde59a17f372588841cd",
+      "size": 8265,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/52811c3e607c43dd38ccbde59a17f372588841cd"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/startup-interaction.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc4b8a025163debb94526034a9a10f658dbeb76c",
+      "size": 3842,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/fc4b8a025163debb94526034a9a10f658dbeb76c"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/subagents-broadcast.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb43c799828463ff02c820039c7325b357987e74",
+      "size": 2417,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/eb43c799828463ff02c820039c7325b357987e74"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/subagents-connection.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "66d0757bffef3ffca298c41add2bd90717e5572f",
+      "size": 7829,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/66d0757bffef3ffca298c41add2bd90717e5572f"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/subagents-control-connection.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f851a1939b5a8e6088e56ab8c838c97a18a35df6",
+      "size": 12163,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f851a1939b5a8e6088e56ab8c838c97a18a35df6"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/subagents-position.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "444e01b8c15361afd7a078ebaa82c89e428525ca",
+      "size": 4104,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/444e01b8c15361afd7a078ebaa82c89e428525ca"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/subagents-surface.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "30d8b09566f559e5cd375c3f69ba65d889e66f44",
+      "size": 4271,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/30d8b09566f559e5cd375c3f69ba65d889e66f44"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/subagents-view.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f6974036210bd766cd105f11341a3cb4970ce15a",
+      "size": 63556,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f6974036210bd766cd105f11341a3cb4970ce15a"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/subagents-windows.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "187c1690c70781b02461574a60d00ca4f2c61103",
+      "size": 30567,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/187c1690c70781b02461574a60d00ca4f2c61103"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/theme-native.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "46d69915e0d700d8259e3f5f473a312bd195cac9",
+      "size": 20334,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/46d69915e0d700d8259e3f5f473a312bd195cac9"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/theme-settings.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "790e9403f58cd9d6578b5be7eaff8d93a551901a",
+      "size": 27600,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/790e9403f58cd9d6578b5be7eaff8d93a551901a"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/theme-store.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e6433677cfc056ebec659c0fa556ee95972f3f70",
+      "size": 13272,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e6433677cfc056ebec659c0fa556ee95972f3f70"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/ui-text.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a10a2d1cdc4f51d993d39b5635a62fb8a5bf255",
+      "size": 4856,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1a10a2d1cdc4f51d993d39b5635a62fb8a5bf255"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/voice-connection.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "35b31c6c5cd1e14ab7e79e14cd1681289bf69620",
+      "size": 11394,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/35b31c6c5cd1e14ab7e79e14cd1681289bf69620"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/voice-creation.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ceaba7ec2db5ac1e1911d2e9a46e14e77eed896d",
+      "size": 5618,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/ceaba7ec2db5ac1e1911d2e9a46e14e77eed896d"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/voice-sample.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b906f59b3b9f7dd6330953bd54fe35534bd2e063",
+      "size": 5795,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b906f59b3b9f7dd6330953bd54fe35534bd2e063"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/__tests__/window-diagnostics.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "35aa7d3b1dc21000a224cf1d79756fe37b0a0347",
+      "size": 5973,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/35aa7d3b1dc21000a224cf1d79756fe37b0a0347"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/appshot-capture.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "54c14ddbfce7d35c50d6f6dcc28d60d4da9acd95",
+      "size": 10304,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/54c14ddbfce7d35c50d6f6dcc28d60d4da9acd95"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/appshot-readiness.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "02d44b7aac761a6ccf2cf87d77ca0835a2b18142",
+      "size": 1976,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/02d44b7aac761a6ccf2cf87d77ca0835a2b18142"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/capture-placement.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe2f004ae3db34b2aa3efa49a550fdda90806d8a",
+      "size": 12860,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/fe2f004ae3db34b2aa3efa49a550fdda90806d8a"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/capture-readiness.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "967dd983124ccd820e0d49d4a322671e8e81b5ac",
+      "size": 2319,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/967dd983124ccd820e0d49d4a322671e8e81b5ac"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/daemon-bootstrap.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b91e3f5e779f815d78f76e8fdeab9bf0fd86577d",
+      "size": 3101,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b91e3f5e779f815d78f76e8fdeab9bf0fd86577d"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/daemon-connection.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b225bea9d7b908b0d1cbacc2d0fbe1b328341486",
+      "size": 59211,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b225bea9d7b908b0d1cbacc2d0fbe1b328341486"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/daemon-lifecycle.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a9a5638bb1dc184f6c82a1e73de49a0924cec919",
+      "size": 5589,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/a9a5638bb1dc184f6c82a1e73de49a0924cec919"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/discovery.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f2637b12eefc0ea528fb3504e17012bb0e88fed",
+      "size": 7372,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0f2637b12eefc0ea528fb3504e17012bb0e88fed"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/global-shortcut.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c9bc4345d9075bc7d0c0e37a91c0ad4978394561",
+      "size": 2356,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c9bc4345d9075bc7d0c0e37a91c0ad4978394561"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/host-diagnostics.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3bf1a2937d5c5cbf3afca73d61d04c974b2ca31a",
+      "size": 9412,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/3bf1a2937d5c5cbf3afca73d61d04c974b2ca31a"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/index.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70bc042392c874e6cf696588c5ec832b9123b85d",
+      "size": 109937,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/70bc042392c874e6cf696588c5ec832b9123b85d"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/language-store.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9ea83d4f8f09c5b40f8e5b5b1c49986fd020d180",
+      "size": 1279,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9ea83d4f8f09c5b40f8e5b5b1c49986fd020d180"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/live-state-policy.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8f64b9342965c457b9de8b267832548279f77111",
+      "size": 2746,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/8f64b9342965c457b9de8b267832548279f77111"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/native-appshot.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9fc4a8276efe3ee7dcf93a03518c24acd3ffbace",
+      "size": 1704,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9fc4a8276efe3ee7dcf93a03518c24acd3ffbace"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/native-service-policy.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "16f9ad884d1049337b6afac7d4d186d805a154fe",
+      "size": 358,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/16f9ad884d1049337b6afac7d4d186d805a154fe"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/overlay-position-store.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5f6e1e59d58a309b16c703519a4abb296f955ef4",
+      "size": 1189,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/5f6e1e59d58a309b16c703519a4abb296f955ef4"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/overlay-position.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "42045b1f709afe03528c29c21cc66cc94123f5a3",
+      "size": 2497,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/42045b1f709afe03528c29c21cc66cc94123f5a3"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/overlay-recovery.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8aeb3c77fb535d8e0035767a248fad8390a9921c",
+      "size": 1559,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/8aeb3c77fb535d8e0035767a248fad8390a9921c"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/reconnect-policy.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c2355be49023864bf792d8ad3d244f0116b4ca75",
+      "size": 694,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c2355be49023864bf792d8ad3d244f0116b4ca75"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/startup-interaction.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "258e76b954bf99b78dc32651e5c10a6e51b61832",
+      "size": 855,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/258e76b954bf99b78dc32651e5c10a6e51b61832"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/subagents-position.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "26b9f0aa859e0931a7d1e68c1ba69d6f830826be",
+      "size": 2149,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/26b9f0aa859e0931a7d1e68c1ba69d6f830826be"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/subagents-windows.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c5d01c32fb37c53bf432a1fd76ce800b779618d5",
+      "size": 18452,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c5d01c32fb37c53bf432a1fd76ce800b779618d5"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/theme-store.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ae37bfd3e33f0a9f0b03180be53160c9b0914ce3",
+      "size": 9009,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/ae37bfd3e33f0a9f0b03180be53160c9b0914ce3"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/voice-audio-file.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f52f8d0d42bd83e4aac59eae8d35eaaf58b999e",
+      "size": 1125,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7f52f8d0d42bd83e4aac59eae8d35eaaf58b999e"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/main/window-diagnostics.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99dea722457c9899764165f49cf911dd1505ae55",
+      "size": 5385,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/99dea722457c9899764165f49cf911dd1505ae55"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/native",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c40fb137dd4f682292cd66ada8c2bd9e4cc867fd",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/c40fb137dd4f682292cd66ada8c2bd9e4cc867fd"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/native/appshot.mm",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "636178b28d7ec63858883bd8d6ab40f4b109f3d1",
+      "size": 35574,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/636178b28d7ec63858883bd8d6ab40f4b109f3d1"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/preload",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "59a62d8608549a1f9c43e0eceeb33ace99c48932",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/59a62d8608549a1f9c43e0eceeb33ace99c48932"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/preload/audio-engine.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "14df7ee341e172facbb55bcc19bddee261fad39d",
+      "size": 30993,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/14df7ee341e172facbb55bcc19bddee261fad39d"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/preload/audio-errors.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "864b23931286d037396cd758f599e7768c7accd8",
+      "size": 1326,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/864b23931286d037396cd758f599e7768c7accd8"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/preload/audio-input-policy.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "383b3f39f372684f8b56001771e4f4df20c0efa1",
+      "size": 744,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/383b3f39f372684f8b56001771e4f4df20c0efa1"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/preload/audio-lifecycle.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a49d3e8c10755f58fe107fc5ee46c04430eff17e",
+      "size": 940,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/a49d3e8c10755f58fe107fc5ee46c04430eff17e"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/preload/audio-operation.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1735c030beca777466b0314330d7a4c4b0967ae0",
+      "size": 2812,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1735c030beca777466b0314330d7a4c4b0967ae0"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/preload/audio-output-queue.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f01b67e9dc887a6931789921e66227ea9c0a114b",
+      "size": 3798,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f01b67e9dc887a6931789921e66227ea9c0a114b"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/preload/audio-output-resampler.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "51ed3d3ca4610a627455e0719261e34fab398868",
+      "size": 3613,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/51ed3d3ca4610a627455e0719261e34fab398868"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/preload/camera-engine.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c42a0b72ce58c01144c62e81a41bd773ddc2d10e",
+      "size": 20057,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c42a0b72ce58c01144c62e81a41bd773ddc2d10e"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/preload/index.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c12d31eba5d8d260d2fcc751cf4f9c1a041476cb",
+      "size": 12578,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c12d31eba5d8d260d2fcc751cf4f9c1a041476cb"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/preload/subagents.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c3824a2de26d5daffcd38505e7187822ba94fde5",
+      "size": 1358,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c3824a2de26d5daffcd38505e7187822ba94fde5"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/preload/voice-sample.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8f2b58f95c0da0fdac345fe3b5e5e991ffe5399",
+      "size": 5081,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/d8f2b58f95c0da0fdac345fe3b5e5e991ffe5399"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "edbc7847bf93ef5ce0799705a4bde39e009afb9d",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/edbc7847bf93ef5ce0799705a4bde39e009afb9d"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2aee35e3686c3331a53248313b65a058b0641450",
+      "size": 553,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/2aee35e3686c3331a53248313b65a058b0641450"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/live-view.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a684e0a14b043d2862f63913fa0429337f2e737",
+      "size": 27509,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/2a684e0a14b043d2862f63913fa0429337f2e737"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/main.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb3b755e625475337370c8b05e7c69738f97073d",
+      "size": 909,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/bb3b755e625475337370c8b05e7c69738f97073d"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/memory-panel.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a4a178661034aa6268c1f3faa5b41d5527e6279",
+      "size": 10661,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1a4a178661034aa6268c1f3faa5b41d5527e6279"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/overlay-drag.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1d8932ec7eb079f633bb9428a743ea32727b50da",
+      "size": 4651,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1d8932ec7eb079f633bb9428a743ea32727b50da"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/settings-panel.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "087bf3b9d23b3d800fa52ac8af7e296e76cd285d",
+      "size": 29392,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/087bf3b9d23b3d800fa52ac8af7e296e76cd285d"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/style.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "48973d8019f723d23e6999001c56fd6cbccb60ce",
+      "size": 22419,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/48973d8019f723d23e6999001c56fd6cbccb60ce"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/subagents-main.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1e6207ef5eacbb1767abf09c30cc4bc61945ee21",
+      "size": 848,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1e6207ef5eacbb1767abf09c30cc4bc61945ee21"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/subagents-view.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "10497ac4a9a424aa312bc7bc962504f9ba1ad2f4",
+      "size": 57194,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/10497ac4a9a424aa312bc7bc962504f9ba1ad2f4"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/subagents.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7dffca4340e94b0fa5b05a85ee9f150c3e0df5dd",
+      "size": 20169,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7dffca4340e94b0fa5b05a85ee9f150c3e0df5dd"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/subagents.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e30e6334b9c61c7836516a78e0b80684b616451",
+      "size": 550,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/2e30e6334b9c61c7836516a78e0b80684b616451"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/theme.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fae5ee3202567e5640c354971cd53aee48975626",
+      "size": 12398,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/fae5ee3202567e5640c354971cd53aee48975626"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/theme.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c263cc1e768ed6213c81561c1947620188f2b46",
+      "size": 444,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7c263cc1e768ed6213c81561c1947620188f2b46"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/ui-icons.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "523cc48ebd09d15d8bcef83368675fd421a014e0",
+      "size": 2871,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/523cc48ebd09d15d8bcef83368675fd421a014e0"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/ui-text.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eeea5d107d3b59863a539ce70e7c0bd2bda10503",
+      "size": 1783,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/eeea5d107d3b59863a539ce70e7c0bd2bda10503"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/renderer/voice-creation.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "41be4806afb563228f516ec30285a5a225b05de6",
+      "size": 8191,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/41be4806afb563228f516ec30285a5a225b05de6"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/shared",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "fc6969f38ed706971692ba147ee21a7758c2c173",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/fc6969f38ed706971692ba147ee21a7758c2c173"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/shared/diagnostics.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2b9468164cfce3693c626d0fe8fbd64b01dd067b",
+      "size": 317,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/2b9468164cfce3693c626d0fe8fbd64b01dd067b"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/shared/host-api.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99a2e26e06173906d024cbf7276d517280765658",
+      "size": 3819,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/99a2e26e06173906d024cbf7276d517280765658"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/shared/overlay-geometry.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "52581acf0e9fda084f24fd3d4008240e9c0847ff",
+      "size": 1396,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/52581acf0e9fda084f24fd3d4008240e9c0847ff"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/shared/protocol.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dea7b866c999728b05d29554b87f0250a2abca97",
+      "size": 40562,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/dea7b866c999728b05d29554b87f0250a2abca97"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/shared/subagents-api.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c772c52fb22b6361fa3027f37604de8b13846bcd",
+      "size": 1251,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c772c52fb22b6361fa3027f37604de8b13846bcd"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/shared/subagents-geometry.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "967f603176c8088922fbe894233848484dd41470",
+      "size": 380,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/967f603176c8088922fbe894233848484dd41470"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/src/shared/theme.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06db5a75e0ed7b310d4eecf1f2dacac59f8f6589",
+      "size": 673,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/06db5a75e0ed7b310d4eecf1f2dacac59f8f6589"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/tsconfig.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5f15e233cbf5a911781ffb96b416cf6ff521f50e",
+      "size": 1026,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/5f15e233cbf5a911781ffb96b416cf6ff521f50e"
+    },
+    {
+      "path": "packages/qwen-live-harness-host/vite.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c637d156fb048dd142a31562673623e29aaf1d55",
+      "size": 1055,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c637d156fb048dd142a31562673623e29aaf1d55"
+    },
+    {
+      "path": "packages/qwen-live-harness",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "236664d56c39817766bcf2a87f51fcaf8428c9c7",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/236664d56c39817766bcf2a87f51fcaf8428c9c7"
+    },
+    {
+      "path": "packages/qwen-live-harness/.gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4bf7b955a97e0bc677df7b52e0acd745fc943a37",
+      "size": 20,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/4bf7b955a97e0bc677df7b52e0acd745fc943a37"
+    },
+    {
+      "path": "packages/qwen-live-harness/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70543c0850e50e9968aed387970324fd67d8323a",
+      "size": 73478,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/70543c0850e50e9968aed387970324fd67d8323a"
+    },
+    {
+      "path": "packages/qwen-live-harness/README_ZH.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "40d04d879a5f89c5f4a9cf0e9bf9265d4d4eadf9",
+      "size": 62974,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/40d04d879a5f89c5f4a9cf0e9bf9265d4d4eadf9"
+    },
+    {
+      "path": "packages/qwen-live-harness/build.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f6641c6fd95c1a50142b9dba9cceecccc1e5e2d1",
+      "size": 4858,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f6641c6fd95c1a50142b9dba9cceecccc1e5e2d1"
+    },
+    {
+      "path": "packages/qwen-live-harness/package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a007d81896a420e66e87562d10774bd314f0e7be",
+      "size": 2375,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/a007d81896a420e66e87562d10774bd314f0e7be"
+    },
+    {
+      "path": "packages/qwen-live-harness/src",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "50d99cd80f82c1b23b1bd6910e37891a922aea92",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/50d99cd80f82c1b23b1bd6910e37891a922aea92"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5b676464bdbad0a8f55dfd5546a370942a8414c7",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/5b676464bdbad0a8f55dfd5546a370942a8414c7"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/acp-adaptor.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7bc0c6951a19fbc6f0cb5f853819f149a9ee1779",
+      "size": 39765,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7bc0c6951a19fbc6f0cb5f853819f149a9ee1779"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/acp-adaptor.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce63330b7a743c0dd4a01d9f441d6e3e6def70b9",
+      "size": 40320,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/ce63330b7a743c0dd4a01d9f441d6e3e6def70b9"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/acp-permission-mode.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3bb8aca4dbfecea0a30228e2807bb1a907e82e39",
+      "size": 5988,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/3bb8aca4dbfecea0a30228e2807bb1a907e82e39"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/adaptor-utils.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5bc7e7607cc508b11889d42461d440e62a226039",
+      "size": 7500,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/5bc7e7607cc508b11889d42461d440e62a226039"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/adaptor-utils.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3d46020654310ea90742535878e528dda3c29490",
+      "size": 16601,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/3d46020654310ea90742535878e528dda3c29490"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/async-event-queue.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4333dca54bbc9822a752c0cbb32cf6953e50d147",
+      "size": 4415,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/4333dca54bbc9822a752c0cbb32cf6953e50d147"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/managed-qwen-serve.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6f456fa970eb3e05a3b9d9d095942b73f469afa8",
+      "size": 12645,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/6f456fa970eb3e05a3b9d9d095942b73f469afa8"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/managed-qwen-serve.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9e55450b39260d670baa236d25abca2d31c84d6d",
+      "size": 7105,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9e55450b39260d670baa236d25abca2d31c84d6d"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/public-activity.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e134b7e0c119f7c11dd0397499272a3357efc776",
+      "size": 3035,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e134b7e0c119f7c11dd0397499272a3357efc776"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/public-activity.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c3b2c15021226dbf33ae24619afbacffb7a6cd5",
+      "size": 2942,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1c3b2c15021226dbf33ae24619afbacffb7a6cd5"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/qwen-code-adaptor.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dc596680e08923daab8122f33d84b35d9bc310ce",
+      "size": 59923,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/dc596680e08923daab8122f33d84b35d9bc310ce"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/qwen-code-adaptor.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c742321b1d84418ce769c67fa9e088504122bcbc",
+      "size": 37455,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c742321b1d84418ce769c67fa9e088504122bcbc"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/qwen-peer-controller.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d53532d3a68559406ba6a09dab2e98de1d60c66e",
+      "size": 13574,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/d53532d3a68559406ba6a09dab2e98de1d60c66e"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/qwen-peer-controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3e2585693089bf23a9824f67b3bd71b6dfafbd88",
+      "size": 11742,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/3e2585693089bf23a9824f67b3bd71b6dfafbd88"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/qwen-peer-discovery.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb45cf91aaf616f07bf23a9d7a1fae6a16219b77",
+      "size": 14773,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/eb45cf91aaf616f07bf23a9d7a1fae6a16219b77"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/qwen-peer-discovery.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b60500861295a96e1bfcba107071184285b4e792",
+      "size": 7966,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b60500861295a96e1bfcba107071184285b4e792"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/qwen-peer-reports.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a69e9ceed13ca4f154c0b0ed6db5d3dc90e63f2f",
+      "size": 21386,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/a69e9ceed13ca4f154c0b0ed6db5d3dc90e63f2f"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/qwen-peer-reports.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aff7a94c74cb5abc610666a18d8b5b62a515e58c",
+      "size": 16529,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/aff7a94c74cb5abc610666a18d8b5b62a515e58c"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/registry.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "31afad9b0ad2332cded749ca25955617900cdd05",
+      "size": 6721,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/31afad9b0ad2332cded749ca25955617900cdd05"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/registry.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc345ba6d63940d7073ecff26bbf20935e4e276e",
+      "size": 6175,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/cc345ba6d63940d7073ecff26bbf20935e4e276e"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/adaptor/types.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "72536782dc70a0ca83fcc8dbf7e9b66277fe1bbd",
+      "size": 8915,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/72536782dc70a0ca83fcc8dbf7e9b66277fe1bbd"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/agent-detector.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7efde573fe74f79422c7716372a893bbe0e99d81",
+      "size": 4976,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7efde573fe74f79422c7716372a893bbe0e99d81"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/cli-args.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "93666073d479141f0af48adca6eefc09ab9eabef",
+      "size": 3382,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/93666073d479141f0af48adca6eefc09ab9eabef"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/cli-args.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5eadf53a2bb9b4053e70d9307d141424fa01650e",
+      "size": 1861,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/5eadf53a2bb9b4053e70d9307d141424fa01650e"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/cli-startup.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "24c3a157ad440b83a4af2fbeba81a8c857a7336d",
+      "size": 9379,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/24c3a157ad440b83a4af2fbeba81a8c857a7336d"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/cli-startup.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4cc5428a991ab776de38d1725224075b653fa8ee",
+      "size": 6194,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/4cc5428a991ab776de38d1725224075b653fa8ee"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/config-namespace.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "061a8950929a06f12f8577c983e4e5b7617756b2",
+      "size": 4271,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/061a8950929a06f12f8577c983e4e5b7617756b2"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/config.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6cb39ae4288a72bdf92ed22068e4e3eb5093e9d9",
+      "size": 35073,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/6cb39ae4288a72bdf92ed22068e4e3eb5093e9d9"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c98498508d02efe81d94a8bc039ddc833bbe9049",
+      "size": 34766,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c98498508d02efe81d94a8bc039ddc833bbe9049"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/configuration-error.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f93e8c62bf6cac343e02bbc69d2a4b147f895c3d",
+      "size": 4482,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f93e8c62bf6cac343e02bbc69d2a4b147f895c3d"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/configuration-error.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7418c70f4b593c5384a9cd79dae48cfbd809c3f",
+      "size": 1107,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e7418c70f4b593c5384a9cd79dae48cfbd809c3f"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/daemon.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5f472434f49974697e7ad66d4237268030854492",
+      "size": 44058,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/5f472434f49974697e7ad66d4237268030854492"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/daemon.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "22b543876d59d2d386498ae8d52fdd743c9e0430",
+      "size": 42788,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/22b543876d59d2d386498ae8d52fdd743c9e0430"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/host",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c8d5e6ce1cbc7371b6cbf18e5b6b7f60bec1c0df",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/c8d5e6ce1cbc7371b6cbf18e5b6b7f60bec1c0df"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/host/discovery.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "53456315e0632fb1d1a3856772476164e5ebb94d",
+      "size": 12466,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/53456315e0632fb1d1a3856772476164e5ebb94d"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/host/discovery.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe426d2a7419d2a8c65e8bce4d09a182542341fc",
+      "size": 18096,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/fe426d2a7419d2a8c65e8bce4d09a182542341fc"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/host/qwen-live-harness-host-coordinator.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f5020aea12b59d1b0196bef5b775949865d89e7b",
+      "size": 113152,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f5020aea12b59d1b0196bef5b775949865d89e7b"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/host/qwen-live-harness-host-coordinator.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "181cddaf4f83a2f1d3c9fc563009edd8c0567b31",
+      "size": 92728,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/181cddaf4f83a2f1d3c9fc563009edd8c0567b31"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/host/qwen-live-harness-host-installer.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bd13c6a19e7ffc9e547b10f8c0298fbed58ffb50",
+      "size": 32309,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/bd13c6a19e7ffc9e547b10f8c0298fbed58ffb50"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/host/qwen-live-harness-host-installer.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9483852bf219c104f99b8033028d914f718db6cf",
+      "size": 22106,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9483852bf219c104f99b8033028d914f718db6cf"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/host/screen-display.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc81a444aac13e78b374cc443173e62ecb19bb0f",
+      "size": 371,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/cc81a444aac13e78b374cc443173e62ecb19bb0f"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/host/types.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b0b254cd1ac6fdf84036aa9c65c500ab58a52d45",
+      "size": 10236,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b0b254cd1ac6fdf84036aa9c65c500ab58a52d45"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/i18n",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "48c708d6e0419704652f9e8ca3e2c051a7bd2ba0",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/48c708d6e0419704652f9e8ca3e2c051a7bd2ba0"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/i18n/catalog-integrity.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c35c7e3d15fad4fc786bfa604b12b7ce061a14c1",
+      "size": 6017,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c35c7e3d15fad4fc786bfa604b12b7ce061a14c1"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/i18n/messages.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6acee4cc59b7eab4573ffbc959e8c905d1945fac",
+      "size": 6911,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/6acee4cc59b7eab4573ffbc959e8c905d1945fac"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/i18n/messages.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "13e0008b0a89442730293fed0cd9eba3d0d5fa5f",
+      "size": 136500,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/13e0008b0a89442730293fed0cd9eba3d0d5fa5f"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/index.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "db13e7115fe95d9da1e3de28a3153b1be570f4b0",
+      "size": 8245,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/db13e7115fe95d9da1e3de28a3153b1be570f4b0"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/init.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "187dd962adeb83f66212b373d4ab2b6ac4e53a48",
+      "size": 52407,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/187dd962adeb83f66212b373d4ab2b6ac4e53a48"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/init.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aa55bd76401b96cce348d4900b6dc595644316bc",
+      "size": 20736,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/aa55bd76401b96cce348d4900b6dc595644316bc"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/language-preferences.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e9fed58fb399c15c279d0e32c8cd8fffc4df3372",
+      "size": 3045,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e9fed58fb399c15c279d0e32c8cd8fffc4df3372"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/language-preferences.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e35ac84a632a79bce9817c6b67819087fc4e9bee",
+      "size": 2350,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e35ac84a632a79bce9817c6b67819087fc4e9bee"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/lifecycle.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "81dcd55845a27c378b531bb75581df681a32c52d",
+      "size": 10671,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/81dcd55845a27c378b531bb75581df681a32c52d"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/lifecycle.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9462ed2a4d28cba1425917c868ba906aa099b211",
+      "size": 9935,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9462ed2a4d28cba1425917c868ba906aa099b211"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/log",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "f7c37bb320f5117875c5653eb746fc2b65ff3ed5",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/f7c37bb320f5117875c5653eb746fc2b65ff3ed5"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/log/build-info.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "363c237eda9af49c26e4c544536c3ab5cc7607fe",
+      "size": 723,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/363c237eda9af49c26e4c544536c3ab5cc7607fe"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/log/debug-archive.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c5e0690520500a9e07655e83df81a79b0c0939ea",
+      "size": 21545,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c5e0690520500a9e07655e83df81a79b0c0939ea"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/log/debug-archive.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "61af7c448b109d3d691f93f22d7d76fc1b6a711a",
+      "size": 31445,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/61af7c448b109d3d691f93f22d7d76fc1b6a711a"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/log/debug-control.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "20d090bc1784cba44370d34791533177b868cb76",
+      "size": 4019,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/20d090bc1784cba44370d34791533177b868cb76"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/log/debug-control.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6ceee74ae266d0e2bb9fb349509703b1a3f5b6de",
+      "size": 3574,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/6ceee74ae266d0e2bb9fb349509703b1a3f5b6de"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/log/debug-socket-callers.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a60a4001adae6650515e39496283cd1a04459ba9",
+      "size": 12494,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/a60a4001adae6650515e39496283cd1a04459ba9"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/log/debug-socket.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a32c214809f2ad8e9aceb2314bfb4fa8e1c596d8",
+      "size": 8785,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/a32c214809f2ad8e9aceb2314bfb4fa8e1c596d8"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/log/debug-socket.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ddedd7fc9cb36f8a130df1b07a71787e6bcfa246",
+      "size": 7658,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/ddedd7fc9cb36f8a130df1b07a71787e6bcfa246"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/log/runtime-failure.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f4294687dbae2690782493a621acf6d6be8be7d7",
+      "size": 3938,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f4294687dbae2690782493a621acf6d6be8be7d7"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/log/runtime-failure.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4d4927c7217a229be0d0761a4ff11cbdde88bead",
+      "size": 7717,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/4d4927c7217a229be0d0761a4ff11cbdde88bead"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/log/session-log.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b15c66b04e9eb3ac3602bee78029f5ee21da132a",
+      "size": 6859,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b15c66b04e9eb3ac3602bee78029f5ee21da132a"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/log/session-log.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f33d0b1f947aa9c948c76253d7600c6177e4a66",
+      "size": 4548,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0f33d0b1f947aa9c948c76253d7600c6177e4a66"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/logger.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7682f86ce94f8b79084fd5e0c32c998cffe4374f",
+      "size": 1665,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7682f86ce94f8b79084fd5e0c32c998cffe4374f"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/logger.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d35e98de0d2d742b84541f6a7631bc0e2a75100",
+      "size": 1270,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0d35e98de0d2d742b84541f6a7631bc0e2a75100"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/manual",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "6446cc48716f1132562b9ddca6e111316cf9e754",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/6446cc48716f1132562b9ddca6e111316cf9e754"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/manual/qodercli-acp.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "597c60f59437fa17bfc14013d4fc6a8dc37a4bcf",
+      "size": 3854,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/597c60f59437fa17bfc14013d4fc6a8dc37a4bcf"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d5f4c3f6870db0e948799f40faf651e84ff52c80",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/d5f4c3f6870db0e948799f40faf651e84ff52c80"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/completion.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "da57b4e79c603a5230a04dfb6e06f5d3dd5ec6e3",
+      "size": 3249,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/da57b4e79c603a5230a04dfb6e06f5d3dd5ec6e3"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/config.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "542cc9a2aebbcd60301ca55d4b63672bb7844418",
+      "size": 8138,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/542cc9a2aebbcd60301ca55d4b63672bb7844418"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d5013ddf93de6191177eacaee93d293fbaf5c26a",
+      "size": 10531,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/d5013ddf93de6191177eacaee93d293fbaf5c26a"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/contents.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "81f20deaa7b6b428d277ee8c3a11a95ddc7b6950",
+      "size": 2163,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/81f20deaa7b6b428d277ee8c3a11a95ddc7b6950"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/dialogue.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "254aa83bd7400960caff0a1219c0dbbaae5cd332",
+      "size": 11259,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/254aa83bd7400960caff0a1219c0dbbaae5cd332"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/dialogue.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e4ac4af607d99dfa795cb4e737390df4eb796b1b",
+      "size": 3732,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e4ac4af607d99dfa795cb4e737390df4eb796b1b"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/embed.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9eafd1dfd274fecbf389c4ab2fa0df3c82c6bc10",
+      "size": 6963,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9eafd1dfd274fecbf389c4ab2fa0df3c82c6bc10"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/embed.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7af2b1225aec05bcc6187e9a26d005fcd3f96d55",
+      "size": 9693,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7af2b1225aec05bcc6187e9a26d005fcd3f96d55"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/observer.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d959b4154f8187f8e03b2172adba2dd6b3a6fc9d",
+      "size": 4818,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/d959b4154f8187f8e03b2172adba2dd6b3a6fc9d"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/observer.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c531697bbd1d9ce6cce15117e7a9ac8d6bddeb5e",
+      "size": 6497,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c531697bbd1d9ce6cce15117e7a9ac8d6bddeb5e"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/preload.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1dabeb358a700f9f0e0edc16204d674eae0c47b8",
+      "size": 8948,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1dabeb358a700f9f0e0edc16204d674eae0c47b8"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/preload.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0c00d2df0be182a78531efd87bf5e41299676605",
+      "size": 8251,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0c00d2df0be182a78531efd87bf5e41299676605"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/prompts.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f9b7eff4ca0e899997508188c56b7dedf15c22e",
+      "size": 9234,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1f9b7eff4ca0e899997508188c56b7dedf15c22e"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/recorder.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4dc1fd6004a96d9666de1f59e2f0b8cabacf6441",
+      "size": 3942,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/4dc1fd6004a96d9666de1f59e2f0b8cabacf6441"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/recorder.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "93947f40180f502f998634d3216dbf5af9f63698",
+      "size": 4139,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/93947f40180f502f998634d3216dbf5af9f63698"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/render.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "41ae04ec77a63f55d69b7db46e23b32565e51e1b",
+      "size": 6224,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/41ae04ec77a63f55d69b7db46e23b32565e51e1b"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/retrieval.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1ab06ec39a12f03571a9fa1eca16674deca7c46c",
+      "size": 10601,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1ab06ec39a12f03571a9fa1eca16674deca7c46c"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/retrieval.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2460d2996dbf89aea7b214882ca3af677f1d4747",
+      "size": 11699,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/2460d2996dbf89aea7b214882ca3af677f1d4747"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/schema.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "791e7c0f6b904a6cc1a8864b949311a230249700",
+      "size": 4712,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/791e7c0f6b904a6cc1a8864b949311a230249700"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/service.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9a6ddb9802c1519fd7cc6afe5d0a6e2f7c3371a4",
+      "size": 18766,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9a6ddb9802c1519fd7cc6afe5d0a6e2f7c3371a4"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3a5bce4a11ac1a43d68bae1d9b7697389e729722",
+      "size": 10469,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/3a5bce4a11ac1a43d68bae1d9b7697389e729722"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/session.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ddd31f2158a1038333bbd9add566afd5f02faa34",
+      "size": 16123,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/ddd31f2158a1038333bbd9add566afd5f02faa34"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/session.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0648661b8b0fe2384e350687935fad88895c210e",
+      "size": 20262,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0648661b8b0fe2384e350687935fad88895c210e"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/store.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb0525d61c25efbfbfb85664435e78b7b250c37f",
+      "size": 12160,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/fb0525d61c25efbfbfb85664435e78b7b250c37f"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/store.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85b07899e30057b547b419fc198a16a302ee6466",
+      "size": 17953,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/85b07899e30057b547b419fc198a16a302ee6466"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/tokenize.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c7055cac2ce1b486cd5b7a2c03dc4195aba88dd9",
+      "size": 1290,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c7055cac2ce1b486cd5b7a2c03dc4195aba88dd9"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/tools.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a38c904452d7416bef44fd8dc9a8f06036e589b",
+      "size": 5555,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/6a38c904452d7416bef44fd8dc9a8f06036e589b"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/tools.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "12976d2531bcba421f371dcf897e7136a13f36b4",
+      "size": 7807,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/12976d2531bcba421f371dcf897e7136a13f36b4"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/updater.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0dcf04abfcc0aea10f95a03db9d3c89d380b87cc",
+      "size": 14952,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0dcf04abfcc0aea10f95a03db9d3c89d380b87cc"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/updater.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ffcea6361b6d55b12e7dec42b29ed00d866fa4a8",
+      "size": 19928,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/ffcea6361b6d55b12e7dec42b29ed00d866fa4a8"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/wm.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8fd85ab2023f4caf7d287a4cb5dc744debcb6815",
+      "size": 2187,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/8fd85ab2023f4caf7d287a4cb5dc744debcb6815"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/memory/wm.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b04ea6a3e5879265cb07187d410ca02a23a2c528",
+      "size": 4544,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b04ea6a3e5879265cb07187d410ca02a23a2c528"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "cfbf9c8209b8988a9e5f2c9a7c0dbeed2a8b062f",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/cfbf9c8209b8988a9e5f2c9a7c0dbeed2a8b062f"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator/conversation-language.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "60a9f1d261535ab6662794843fbe8c8985fc179a",
+      "size": 4178,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/60a9f1d261535ab6662794843fbe8c8985fc179a"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator/conversation-language.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ff5b1e2a1a1de51aaa11ed56a5fac4cd252ad183",
+      "size": 2804,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/ff5b1e2a1a1de51aaa11ed56a5fac4cd252ad183"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator/injector.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "804bdf6a6a09db95971ae796f451e7568b33fb14",
+      "size": 46370,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/804bdf6a6a09db95971ae796f451e7568b33fb14"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator/injector.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aa2608ac1aa4445335a06a656d95f6c84358c0a9",
+      "size": 31368,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/aa2608ac1aa4445335a06a656d95f6c84358c0a9"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator/live-session.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "424315469484c6cc035d5fb7c1c0fb4c3e432997",
+      "size": 451603,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/424315469484c6cc035d5fb7c1c0fb4c3e432997"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator/live-session.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a8266b2b9760d658e6847fc7692d840fad69e05",
+      "size": 284408,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1a8266b2b9760d658e6847fc7692d840fad69e05"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator/permission-delivery.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f8d81dd13592c1b5bf76e510a97fe25ecc35d992",
+      "size": 28484,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f8d81dd13592c1b5bf76e510a97fe25ecc35d992"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator/proactive-delivery.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "222afd838c27df5f8745c5d15f21dc95fe4b4ea7",
+      "size": 6077,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/222afd838c27df5f8745c5d15f21dc95fe4b4ea7"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator/result-speech.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cd24b0d4f2fd0d3d64896284ef2d05c3a07c94f6",
+      "size": 22093,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/cd24b0d4f2fd0d3d64896284ef2d05c3a07c94f6"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator/review-proactive-diagnostics.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9cefc479ed2ba837f2563a32019e875dd0d6b5f8",
+      "size": 11236,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9cefc479ed2ba837f2563a32019e875dd0d6b5f8"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator/session-reports.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb585331df99bd298f5f822d1d5505b1d61019cc",
+      "size": 3652,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/eb585331df99bd298f5f822d1d5505b1d61019cc"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator/session-reports.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b9c36138f1309f585bf414cf6816838195922c6d",
+      "size": 3691,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b9c36138f1309f585bf414cf6816838195922c6d"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/orchestrator/task-boundaries.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "357a266de847c9dcc673e9bfd3f53e99855cd0b7",
+      "size": 39431,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/357a266de847c9dcc673e9bfd3f53e99855cd0b7"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/paths.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "655da7280c3b5c3bcf82de9e55115a25ef87959a",
+      "size": 2222,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/655da7280c3b5c3bcf82de9e55115a25ef87959a"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/paths.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11a7b1bcce47522a5ef1d81dc6b5400dc27fa2cb",
+      "size": 1429,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/11a7b1bcce47522a5ef1d81dc6b5400dc27fa2cb"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/peer-diagnostics.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bcf5b9c365316500b87f894e1676d456f7bd4804",
+      "size": 22827,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/bcf5b9c365316500b87f894e1676d456f7bd4804"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/peer-diagnostics.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "270537de0b4311c913e28062b034cb0406a64cdc",
+      "size": 24133,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/270537de0b4311c913e28062b034cb0406a64cdc"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/peer-setup.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6c9e011af78bdc43d7f7e138b4c3330fe66ff2cd",
+      "size": 15236,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/6c9e011af78bdc43d7f7e138b4c3330fe66ff2cd"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/peer-setup.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "77dc2b66f8fe17422f15e784b04c0acb5872d805",
+      "size": 12941,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/77dc2b66f8fe17422f15e784b04c0acb5872d805"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/permission-preferences.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5212b1d4fffc9a8b0e53ad81e9d1950125b41824",
+      "size": 12668,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/5212b1d4fffc9a8b0e53ad81e9d1950125b41824"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/permission-preferences.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f79a144cf626c7da31daf9f7e65b671a78739761",
+      "size": 3287,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f79a144cf626c7da31daf9f7e65b671a78739761"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/permissions",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0b0fca7a2848263b8fe1105be83580d013cd1416",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/0b0fca7a2848263b8fe1105be83580d013cd1416"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/permissions/approval-announcement.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5f4a122e5d03f93d5d77852c1158bdaf76e6d7a5",
+      "size": 10233,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/5f4a122e5d03f93d5d77852c1158bdaf76e6d7a5"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/permissions/approval-announcement.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "96fb1806c5080718223a49335d3e9350a9d100d6",
+      "size": 7062,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/96fb1806c5080718223a49335d3e9350a9d100d6"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/permissions/important-operation.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c8201cf5a3225bd116bbb54c5ec29700e31bba82",
+      "size": 1755,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c8201cf5a3225bd116bbb54c5ec29700e31bba82"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/permissions/important-operation.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4632d4b95110263e2680689aff1941cf349516cf",
+      "size": 1636,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/4632d4b95110263e2680689aff1941cf349516cf"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/permissions/permission-broker.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "63870224b36b1c2bdffe28555cf8bcc01651419c",
+      "size": 17561,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/63870224b36b1c2bdffe28555cf8bcc01651419c"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/permissions/permission-broker.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "926f412117109ed304c3e52c24c41ce880504771",
+      "size": 12256,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/926f412117109ed304c3e52c24c41ce880504771"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e41b485e6dfcf6cf83aa84aa309ea0a54604ac66",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/e41b485e6dfcf6cf83aa84aa309ea0a54604ac66"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/media-cadence.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8358d87fd3481309e15e30347606956ab5690d71",
+      "size": 259,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/8358d87fd3481309e15e30347606956ab5690d71"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/monitor-debug-store.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "efb6dee636f3ea11768651604e2da1160d2b1bb2",
+      "size": 29893,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/efb6dee636f3ea11768651604e2da1160d2b1bb2"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/monitor-debug-store.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "32cafb8bdcda9152814d69e382368864503a0ed1",
+      "size": 19684,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/32cafb8bdcda9152814d69e382368864503a0ed1"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/monitor-protocol.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "830f9cc44b7f322dcb2fa3f560b1aa69cc084d45",
+      "size": 5573,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/830f9cc44b7f322dcb2fa3f560b1aa69cc084d45"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/monitor-protocol.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a65848ef40cb0d2b0f4d43fcdfca132bfe406c3d",
+      "size": 10669,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/a65848ef40cb0d2b0f4d43fcdfca132bfe406c3d"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/realtime-monitor.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ffbbcd280444b78fa9194bfe2638f028c45a2cb3",
+      "size": 57412,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/ffbbcd280444b78fa9194bfe2638f028c45a2cb3"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/realtime-monitor.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "08c3849eb47f43e2c605ae706a3eb4b63ba04ee6",
+      "size": 48998,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/08c3849eb47f43e2c605ae706a3eb4b63ba04ee6"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/review-monitor-contracts.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "836ffabe0721e8ae8980453d393ef33fa30c375c",
+      "size": 8219,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/836ffabe0721e8ae8980453d393ef33fa30c375c"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/review-vision-continuity.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "573743e49d02cb467dacc8e4862af833c9190636",
+      "size": 2084,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/573743e49d02cb467dacc8e4862af833c9190636"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/review-vision-warmup.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "29ab30c3037584178225ef7bcaed4692a9667d8b",
+      "size": 3413,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/29ab30c3037584178225ef7bcaed4692a9667d8b"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/scheduler.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b283c16a31724effb4cedeb5bef52353fd5d7437",
+      "size": 74872,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b283c16a31724effb4cedeb5bef52353fd5d7437"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/scheduler.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "72c7274a1d6cafa523ff14e33beca7d890a26765",
+      "size": 42159,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/72c7274a1d6cafa523ff14e33beca7d890a26765"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/task-manager.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e6ed45e7bb9b101d3b26b406262be67e4fb2be1e",
+      "size": 9575,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e6ed45e7bb9b101d3b26b406262be67e4fb2be1e"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/task-manager.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "56f76d2136b4c559543fcf41509f08c50f7e4830",
+      "size": 16887,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/56f76d2136b4c559543fcf41509f08c50f7e4830"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/tool-receipt.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "373cc6d696f9366960a768ef7b38b89f75a164ed",
+      "size": 11840,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/373cc6d696f9366960a768ef7b38b89f75a164ed"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/proactive/tool-receipt.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9e7ede561704b6ff3aafd85793fe42f20e8b2dc9",
+      "size": 19325,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/9e7ede561704b6ff3aafd85793fe42f20e8b2dc9"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2857a052a4aff6c9a8404fcead775b4c898a77eb",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/2857a052a4aff6c9a8404fcead775b4c898a77eb"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/instructions.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "34604c5101ff54436edc2b80c17d1086a7c88a1e",
+      "size": 23135,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/34604c5101ff54436edc2b80c17d1086a7c88a1e"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/instructions.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "536291f7b6e2d90ca387e7483ddced6e0fd2fa09",
+      "size": 33330,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/536291f7b6e2d90ca387e7483ddced6e0fd2fa09"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/memory-protocol.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "31018fead1d7c55bb8f044835d5286d501522d09",
+      "size": 20717,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/31018fead1d7c55bb8f044835d5286d501522d09"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/mute-heartbeat.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e0edde22c965e91d55f2015b9c068da75e5c5afe",
+      "size": 6616,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e0edde22c965e91d55f2015b9c068da75e5c5afe"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/notification-context.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f34146726bbd8ee38536a5f4d16e7a8a082a2b5",
+      "size": 5275,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0f34146726bbd8ee38536a5f4d16e7a8a082a2b5"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/notification-context.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7295f48e8e074a2c2ac3ecda25d10e36523532fb",
+      "size": 7229,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7295f48e8e074a2c2ac3ecda25d10e36523532fb"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/notification-speech.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5ca84d5a522dea165740262a06eac8ad27597b5a",
+      "size": 44551,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/5ca84d5a522dea165740262a06eac8ad27597b5a"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/notification-speech.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "47151e05828bcdfd566d233c4a8c5f840f327cd6",
+      "size": 33113,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/47151e05828bcdfd566d233c4a8c5f840f327cd6"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/permission-response.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7a9d3e21970cee36e51c02dc9e17f382ceca9bbc",
+      "size": 12227,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7a9d3e21970cee36e51c02dc9e17f382ceca9bbc"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/quota-errors.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e20c4a00353a1dc94b34f9e29a711a4a6c614d1c",
+      "size": 4049,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e20c4a00353a1dc94b34f9e29a711a4a6c614d1c"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/realtime-session.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "76454d5f117926f24591c6108f8c54165ed72b82",
+      "size": 221194,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/76454d5f117926f24591c6108f8c54165ed72b82"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/realtime-session.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "09ef12bac36d101b570506a96f3233f12e6e2ba6",
+      "size": 183561,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/09ef12bac36d101b570506a96f3233f12e6e2ba6"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/recovering-session.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7658c84b3bbb4ca94ad77b22ef27c79727e6d0ff",
+      "size": 34634,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7658c84b3bbb4ca94ad77b22ef27c79727e6d0ff"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/recovering-session.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "74660b000c8ab90b27dda9d788f444cdd4c98e33",
+      "size": 16685,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/74660b000c8ab90b27dda9d788f444cdd4c98e33"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/recovery-input.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ccd444cf586c29664a5feae3c1dadba131c8e6fe",
+      "size": 3349,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/ccd444cf586c29664a5feae3c1dadba131c8e6fe"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/sanitize.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c43783b2236462d235b5a6a8f8d17ad970678b65",
+      "size": 1024,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c43783b2236462d235b5a6a8f8d17ad970678b65"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/sanitize.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "526de991f7e213c9649d1e1418e50f7a308348ac",
+      "size": 732,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/526de991f7e213c9649d1e1418e50f7a308348ac"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/semantic-vad.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d02db18fe4c737f4b6e39e6326c5295ecc8e8c10",
+      "size": 16601,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/d02db18fe4c737f4b6e39e6326c5295ecc8e8c10"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/socket.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e259b1c29c1aadabb937c2ca6aed922579f29589",
+      "size": 1210,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e259b1c29c1aadabb937c2ca6aed922579f29589"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/task-confirmation.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "07cfebf136f3a13140cef61bd72ee4a50f27b2a6",
+      "size": 49188,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/07cfebf136f3a13140cef61bd72ee4a50f27b2a6"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/task-result-response.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "40f989c0b243a5ff0d50c019af42b9cccd0d7556",
+      "size": 10210,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/40f989c0b243a5ff0d50c019af42b9cccd0d7556"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/tool-confirmation.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b0e17aebf832b556b97e03a7ebb3395328e4cc09",
+      "size": 11570,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b0e17aebf832b556b97e03a7ebb3395328e4cc09"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/tool-confirmation.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "84dc64e4f3f45227070672008616bab7ba104f90",
+      "size": 5095,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/84dc64e4f3f45227070672008616bab7ba104f90"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/visual-analysis.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3ddddc0462000f4db78ce619e699e85aa4aa2cc0",
+      "size": 36079,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/3ddddc0462000f4db78ce619e699e85aa4aa2cc0"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/visual-analysis.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ea36a4f93235c5a5b7a7f4a2969f6f9db0ee25d",
+      "size": 26851,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7ea36a4f93235c5a5b7a7f4a2969f6f9db0ee25d"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/web-search.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1092a494673f1a5d68486da9b23d9cfbac6006c5",
+      "size": 20197,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1092a494673f1a5d68486da9b23d9cfbac6006c5"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/realtime/web-search.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "09ed1078273be89abc589acee82c483cccab289b",
+      "size": 13937,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/09ed1078273be89abc589acee82c483cccab289b"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/review-daemon-runtime.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "37539aa393f0e417c63aafa6ad6ba7c233caf1f1",
+      "size": 5928,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/37539aa393f0e417c63aafa6ad6ba7c233caf1f1"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/startup-lock.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3d5e6809c7948ae91e592526f7484690b24c5f3d",
+      "size": 2417,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/3d5e6809c7948ae91e592526f7484690b24c5f3d"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/startup-registration.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f569e19d1995d9d3f9a5c2aa80ab58c84bb32b10",
+      "size": 897,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f569e19d1995d9d3f9a5c2aa80ab58c84bb32b10"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/startup.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bd34cee338c9e2f7fe68e4d3127b768c6e208394",
+      "size": 23071,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/bd34cee338c9e2f7fe68e4d3127b768c6e208394"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/startup.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "207a4febad71aeb5e2008ae4868d6124006ccb37",
+      "size": 24421,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/207a4febad71aeb5e2008ae4868d6124006ccb37"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/subagents",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e3b463c1909f00df966fb6767a27d09f0c8652bf",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/e3b463c1909f00df966fb6767a27d09f0c8652bf"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/subagents/display-text.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb751873ae3db27c049bc2aaf3f7f069348945a4",
+      "size": 5100,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/cb751873ae3db27c049bc2aaf3f7f069348945a4"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/subagents/display-text.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ff4038cb361031a58cce606f4c947986f5dac75a",
+      "size": 5633,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/ff4038cb361031a58cce606f4c947986f5dac75a"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/subagents/ledger.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b423f33ab82095fb36c94296da789dabbca237e1",
+      "size": 16780,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b423f33ab82095fb36c94296da789dabbca237e1"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/subagents/ledger.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "de32ac9175c3fb569e45cdf9d7725eccca0ecf04",
+      "size": 10632,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/de32ac9175c3fb569e45cdf9d7725eccca0ecf04"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/subagents/types.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0feb2845cb649b2539916c1da84218dbecc15543",
+      "size": 18545,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0feb2845cb649b2539916c1da84218dbecc15543"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/subagents/types.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a0f56f2d001d5166a0a636448f91414ebc24eec6",
+      "size": 18382,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/a0f56f2d001d5166a0a636448f91414ebc24eec6"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/test-fixtures",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "96f7f941e4a49f567350a74799eb8b2bbb72e6b6",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/96f7f941e4a49f567350a74799eb8b2bbb72e6b6"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/test-fixtures/startup-child.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "02aaee344168ea6b366da13bd8f2dfc4ef039221",
+      "size": 3128,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/02aaee344168ea6b366da13bd8f2dfc4ef039221"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/tools",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ebecc4bc27023d8eee3a4589b6742a4a46e5cefd",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/ebecc4bc27023d8eee3a4589b6742a4a46e5cefd"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/tools/definitions.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b2e211a33f359c1445f09d4f0ebdb6be300e16a0",
+      "size": 17377,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b2e211a33f359c1445f09d4f0ebdb6be300e16a0"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/tools/definitions.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f40fa16448be774813e2b90f6ec146523d773158",
+      "size": 26758,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f40fa16448be774813e2b90f6ec146523d773158"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/tools/dispatcher.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "918c46ca0a491e653882ccf1417d978b95ddc9b2",
+      "size": 18261,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/918c46ca0a491e653882ccf1417d978b95ddc9b2"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/tools/dispatcher.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99d89cc86315c3b4f9f06639a17a5558e930f98e",
+      "size": 7749,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/99d89cc86315c3b4f9f06639a17a5558e930f98e"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/tools/handles.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8521b07b59bba31bb4d1e4f78dc3f1563d21e9fd",
+      "size": 12592,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/8521b07b59bba31bb4d1e4f78dc3f1563d21e9fd"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/tools/handles.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "52931b4ddf989d790181c21f80a681d1bdcd12bd",
+      "size": 8711,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/52931b4ddf989d790181c21f80a681d1bdcd12bd"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a56d40c326ea98bd4cf0410b6dd615d1768d8a3f",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/a56d40c326ea98bd4cf0410b6dd615d1768d8a3f"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a6660636a53597680e16070e48efe5e70a661350",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/a6660636a53597680e16070e48efe5e70a661350"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer/LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d4f1fee82272cbad5f22394dc064e621f668aac",
+      "size": 11361,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/2d4f1fee82272cbad5f22394dc064e621f668aac"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dca61614732f394eec41fc459b21c26a404a1353",
+      "size": 1739,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/dca61614732f394eec41fc459b21c26a404a1353"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer/client.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1304d60edd4dff29070dea73e16b126d646ad974",
+      "size": 6806,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1304d60edd4dff29070dea73e16b126d646ad974"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer/directory.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a1c8779f7b821dbdf3f2b970f3fb2d7a833d5ac",
+      "size": 6225,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/6a1c8779f7b821dbdf3f2b970f3fb2d7a833d5ac"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer/endpoint.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "caf6a5bb5c419053f8ff1e39798549b08cdc7a0a",
+      "size": 28681,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/caf6a5bb5c419053f8ff1e39798549b08cdc7a0a"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer/errors.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a6dbc6b5a90d41a83bf24905ee43a835339ece03",
+      "size": 1441,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/a6dbc6b5a90d41a83bf24905ee43a835339ece03"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer/frames.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "26a369c16d1ab2c93da0d1d99996939508ba67e9",
+      "size": 11371,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/26a369c16d1ab2c93da0d1d99996939508ba67e9"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer/identity.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "779e89f2f50496dce556e1c19472e643bd094da9",
+      "size": 4595,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/779e89f2f50496dce556e1c19472e643bd094da9"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer/inbox.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f3d03401c30b91b7e6cceeb763e9a630dd49f8f",
+      "size": 13116,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/3f3d03401c30b91b7e6cceeb763e9a630dd49f8f"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer/index.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1d5a1e21f0941cb0be57327e1a7c66d5ea7b6cbd",
+      "size": 2716,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1d5a1e21f0941cb0be57327e1a7c66d5ea7b6cbd"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer/label.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e61bb6b4e821961af1375679705e2a95afb9345",
+      "size": 2991,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/2e61bb6b4e821961af1375679705e2a95afb9345"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer/registry.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "609e664d0b5cd6f4a773dc9273d2a56b76550702",
+      "size": 13837,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/609e664d0b5cd6f4a773dc9273d2a56b76550702"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/vendor/qwen-code-peer/upstream.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aab613cdbacd9298d11976a754b9cd0b12c560c3",
+      "size": 2081,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/aab613cdbacd9298d11976a754b9cd0b12c560c3"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/version.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5fb91161936e4ccefab53ed105eb2ade1a1ace4d",
+      "size": 357,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/5fb91161936e4ccefab53ed105eb2ade1a1ace4d"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/visual-preferences.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0ed5d38a000d3e70e06949ffcc86cfa16bb55403",
+      "size": 2409,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0ed5d38a000d3e70e06949ffcc86cfa16bb55403"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/visual-preferences.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f6f7c67d628b2a7452fcb99ecc9e76cfa476774",
+      "size": 1716,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7f6f7c67d628b2a7452fcb99ecc9e76cfa476774"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/voice-catalog.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6c937b841eab6d2089175ec48a4632a6ab66c2af",
+      "size": 4545,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/6c937b841eab6d2089175ec48a4632a6ab66c2af"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/voice-cloning.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b7897be6f0f62c561a85f2801894e5a2f70643d9",
+      "size": 5912,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b7897be6f0f62c561a85f2801894e5a2f70643d9"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/voice-cloning.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "29dbbfa7394a87cfc456cc43f0ebeb93c5b1db7d",
+      "size": 5201,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/29dbbfa7394a87cfc456cc43f0ebeb93c5b1db7d"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/voice-preferences.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7189a1288d72a5d8ed8336061e3773baf432ee10",
+      "size": 2838,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/7189a1288d72a5d8ed8336061e3773baf432ee10"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/voice-sample.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e6c3843f7a4bed7164b3c725a4c761b4fd48ad52",
+      "size": 3932,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/e6c3843f7a4bed7164b3c725a4c761b4fd48ad52"
+    },
+    {
+      "path": "packages/qwen-live-harness/src/voice-settings.test.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5332232f229a88619d91cc2a7f9b46e1cdb5b594",
+      "size": 6034,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/5332232f229a88619d91cc2a7f9b46e1cdb5b594"
+    },
+    {
+      "path": "packages/qwen-live-harness/test-fixtures",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "cb99752ce0d891aed170b5a4e00c6dc3806568a1",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/cb99752ce0d891aed170b5a4e00c6dc3806568a1"
+    },
+    {
+      "path": "packages/qwen-live-harness/test-fixtures/fake-acp-agent.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a95d0f13207c43a8050704769d85480d881de657",
+      "size": 7850,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/a95d0f13207c43a8050704769d85480d881de657"
+    },
+    {
+      "path": "packages/qwen-live-harness/tsconfig.build.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "82c353663256803e93ab91593b28d7eb2f3acf49",
+      "size": 247,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/82c353663256803e93ab91593b28d7eb2f3acf49"
+    },
+    {
+      "path": "packages/qwen-live-harness/tsconfig.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "399d1d1e8da2204902f83adfabc5c3e8c5cb1038",
+      "size": 243,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/399d1d1e8da2204902f83adfabc5c3e8c5cb1038"
+    },
+    {
+      "path": "packages/qwen-live-harness/vitest.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "19169caa6a47d3d9e34fce72f76246b78a9f0850",
+      "size": 448,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/19169caa6a47d3d9e34fce72f76246b78a9f0850"
+    },
+    {
+      "path": "scripts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d1f32eb79b883886a6cd5ab41664b78ad819b1fd",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/d1f32eb79b883886a6cd5ab41664b78ad819b1fd"
+    },
+    {
+      "path": "scripts/check-package.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0c3d8c701fb1930467a69da5ad28fb22a07a1b7b",
+      "size": 7016,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/0c3d8c701fb1930467a69da5ad28fb22a07a1b7b"
+    },
+    {
+      "path": "scripts/check-repository-boundaries.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8ff71b2ad34a71bd6448b52544d0423557215c15",
+      "size": 3998,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/8ff71b2ad34a71bd6448b52544d0423557215c15"
+    },
+    {
+      "path": "scripts/qwen-code-peer-source.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eafcaddc7249917e93a759fb52998fd9931c6621",
+      "size": 3416,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/eafcaddc7249917e93a759fb52998fd9931c6621"
+    },
+    {
+      "path": "scripts/release-script-utils.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a574915dbaea8a836384f488f5a0468702c953a0",
+      "size": 3448,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/a574915dbaea8a836384f488f5a0468702c953a0"
+    },
+    {
+      "path": "scripts/replay-live-debug.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "013e9d581d33d4b4b6c50c6f24644cf734ad79a9",
+      "size": 27787,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/013e9d581d33d4b4b6c50c6f24644cf734ad79a9"
+    },
+    {
+      "path": "scripts/start-dev.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "269edc80d46996db1b9feac2113d4a08da804d1b",
+      "size": 12690,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/269edc80d46996db1b9feac2113d4a08da804d1b"
+    },
+    {
+      "path": "scripts/tests",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "cf469e5bd74a0c29aa8e23bbe611af47f9388738",
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/trees/cf469e5bd74a0c29aa8e23bbe611af47f9388738"
+    },
+    {
+      "path": "scripts/tests/engineering-checks.test.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b55400bda9560f7e0bf6cb32bff09a9a88b96581",
+      "size": 2928,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/b55400bda9560f7e0bf6cb32bff09a9a88b96581"
+    },
+    {
+      "path": "scripts/tests/github-templates.test.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3516ebefa56c4e3ce79cc11338f8c5e09ee4d4f6",
+      "size": 2400,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/3516ebefa56c4e3ce79cc11338f8c5e09ee4d4f6"
+    },
+    {
+      "path": "scripts/tests/harness-branding.test.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4781c89e643524c1d2cb14d4401dbd7dec3d8345",
+      "size": 3866,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/4781c89e643524c1d2cb14d4401dbd7dec3d8345"
+    },
+    {
+      "path": "scripts/tests/package-contents.test.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67e3baa99db89996427cb4b8762042be0934abd6",
+      "size": 6302,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/67e3baa99db89996427cb4b8762042be0934abd6"
+    },
+    {
+      "path": "scripts/tests/qwen-code-peer.test.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f1ce30a83ae2ca706cb805dafecaf05bcc579732",
+      "size": 2818,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/f1ce30a83ae2ca706cb805dafecaf05bcc579732"
+    },
+    {
+      "path": "scripts/tests/qwen-live-harness-host-oss-workflow.test.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "405fade2070bcd861aeef8f0e2179ae0ca78fba7",
+      "size": 9756,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/405fade2070bcd861aeef8f0e2179ae0ca78fba7"
+    },
+    {
+      "path": "scripts/tests/replay-live-debug.test.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1fa723f616ec3a4d08cab9ed3e259a6953b08061",
+      "size": 27516,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/1fa723f616ec3a4d08cab9ed3e259a6953b08061"
+    },
+    {
+      "path": "scripts/tests/standalone-release.test.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cdc2a14688693ca45df36beb4c86ad980330174d",
+      "size": 5025,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/cdc2a14688693ca45df36beb4c86ad980330174d"
+    },
+    {
+      "path": "scripts/tests/start-dev.test.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "37f079c19d5f3393c95fa2e65e153a4eaa11a2b9",
+      "size": 11002,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/37f079c19d5f3393c95fa2e65e153a4eaa11a2b9"
+    },
+    {
+      "path": "scripts/tests/upload-aliyun-oss-assets.test.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8afd47f9c116555ce90cd6bfbafa83977bf9ef82",
+      "size": 8925,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/8afd47f9c116555ce90cd6bfbafa83977bf9ef82"
+    },
+    {
+      "path": "scripts/tests/vitest.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "404262d733d5c14a2100060cbdc78005de478e85",
+      "size": 185,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/404262d733d5c14a2100060cbdc78005de478e85"
+    },
+    {
+      "path": "scripts/tests/workflow-helpers.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11b3ae2789fa8ddbedddc55a9868217aa65c4b9e",
+      "size": 919,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/11b3ae2789fa8ddbedddc55a9868217aa65c4b9e"
+    },
+    {
+      "path": "scripts/upload-aliyun-oss-assets.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "145673ae725d5cba981af1f92a784774af9190c4",
+      "size": 5285,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/145673ae725d5cba981af1f92a784774af9190c4"
+    },
+    {
+      "path": "tsconfig.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c4542cc83374e00f0fd5e3a5510202ceff7be7f5",
+      "size": 860,
+      "url": "https://api.github.com/repos/QwenLM/Qwen-Live-Harness/git/blobs/c4542cc83374e00f0fd5e3a5510202ceff7be7f5"
+    }
+  ],
+  "truncated": false
+}

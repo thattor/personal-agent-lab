@@ -18,6 +18,7 @@ Private greenfield development repository for an open-sourceable personal AI ass
 - ACCEPTANCE.md — definition of done and evidence gates
 - DECISIONS.md — durable decisions and reviewer conclusions
 - STATE.md — current implementation state and next action
+- [Future image/audio design and research](docs/design/multimodal-qwen38-v1.md) — Qwen3.8-27B handoff candidate and retained evidence; not implemented
 
 ## Important
 This repository is greenfield. Old PAL implementations and compatibility constraints are explicitly out of scope.

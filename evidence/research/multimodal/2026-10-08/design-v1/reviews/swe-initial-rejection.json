@@ -1,0 +1,11 @@
+{
+  "status": "NOT_STARTED",
+  "source": "automatic_approval_review",
+  "reason": "実リポジトリを作業場所として自動権限モードで起動すると、設計レビューを超えるコード変更や外部サービス実行を招く可能性。今回の明示承認なし。",
+  "same_action_retried": false,
+  "narrower_alternative": "追加の一時設定で全てのファイル読取・変更・shell・fetch・MCP・subagentを禁止。既存設定の保護は保持し、永久設定は変更しない。",
+  "official_docs": [
+    "https://docs.devin.ai/cli/reference/permissions",
+    "https://docs.devin.ai/cli/reference/configuration/config-file"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "recorded_at": "2026-10-08T00:34:57.563704+00:00",
+  "route": "installed_official_cli",
+  "paid_fallback": false,
+  "new_authentication": false,
+  "prompt_sha256": "a808e4cb8c763b0490c9740509bb666ce75d8fddf4138bf880557602882ec144",
+  "model": "opus",
+  "native_auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "apiProvider": "firstParty",
+    "subscriptionType": "pro"
+  },
+  "native_org_matches_previously_verified_org": true,
+  "ui_proof": "ui-observation.json"
+}

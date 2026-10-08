@@ -1,0 +1,15 @@
+{
+  "repo": "QwenLM/Qwen-MM-Plugins",
+  "sha": "e469e92dcd662ab0c4adc798fc50a094c832bfc0",
+  "commit_date": "2026-10-07T16:14:35Z",
+  "retrieved_at": "2026-10-07T21:50:52.244788+00:00",
+  "license": {
+    "key": "apache-2.0",
+    "name": "Apache License 2.0",
+    "spdx_id": "Apache-2.0",
+    "url": "https://api.github.com/licenses/apache-2.0",
+    "node_id": "MDc6TGljZW5zZTI="
+  },
+  "default_branch": "main",
+  "tree_truncated": false
+}

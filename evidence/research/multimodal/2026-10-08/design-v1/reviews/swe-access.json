@@ -1,0 +1,26 @@
+{
+  "recorded_at": "2026-10-08T00:59:01.106874+00:00",
+  "route": "installed_official_cli",
+  "paid_fallback": false,
+  "new_authentication": false,
+  "prompt_sha256": "b66d7063b53e0c108bae5f4e16dc33098e9c82795b0929c35dd8627310c7f596",
+  "model": "swe-2-high",
+  "authenticated": true,
+  "exact_model_line": "  swe-2-high                                                                SWE-2 High  [262K context, Free]",
+  "trust_check": "respected; no override",
+  "all_agent_tools_denied": [
+    "read",
+    "grep",
+    "glob",
+    "edit",
+    "write",
+    "exec",
+    "fetch",
+    "Read(/**)",
+    "Write(/**)",
+    "Fetch(*)",
+    "mcp__*"
+  ],
+  "subagents_enabled": false,
+  "temporary_config_sha256": "0e98e61a82391eaa7237d1ce62c7c5cfc8ef02f41f452dde2af2aaea2ede8dfc"
+}

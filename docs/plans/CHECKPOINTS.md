@@ -493,3 +493,28 @@ Unit result: supported diagnostic/support handoff ready; access unresolved. Next
 actual Browse/site-rule facts, diagnose observed rule or formal vendor remedy. Permission
 change or support submission needs its own authorization. Resume frozen affected cases
 only after allowed access; original NOT_VERIFIED and remaining release gates preserved.
+
+## C050 — consume the actual answer and advance formal resolution
+
+Unit purpose: reconcile the owner's three-chat authority, consume answered HR-ACCESS-003
+without repetition, prepare the supported next step and check conditional scheduling.
+Settings image agrees with the authorized human-window handoff: default Browse allows,
+target exception absent, no visible blocking/lock indicator. C045 cause still UNKNOWN.
+HR-ACCESS-004 prepares a minimal private-support text and requests only its external-send
+authority in the existing human lane. No source/output access bypass or actual submission.
+
+New 50-minute checkpoint remains NOT_CONFIGURED: official docs/exposed tool contract do
+not establish noninterrupting active-turn delivery; both old PAL schedules remain PAUSED.
+No Goal/heartbeat semantics conflation or alternate cron. Completion of this operational
+unit is not product/acceptance completion. Source unchanged since full268 PASS; narrow
+evidence/hash/link/source checks are appropriate, no redundant full suite or model calls.
+See evidence/operations/c050-access-and-continuation.md. Exact next: scoped support
+authority → vendor diagnosis/allowed path → remaining fixed UI/Expert proof → one actual
+current usefulness evaluation → final Stable1 audit/release. Future plan not activated.
+
+Concurrent design retention was reconciled under D-030. The existing design chat's
+role and owner's save instructions were verified; development alone integrates the
+canonical records and commit/push. Original archive hashes and NOT_RUN/partial outcomes
+are preserved. No future implementation or completion criterion was adopted. A premature
+aggregate validation claim and the in-progress missing-link check were corrected before
+commit; final validation is emitted only after the archive and document checks succeed.

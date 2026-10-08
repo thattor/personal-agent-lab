@@ -1,0 +1,194 @@
+[
+  {
+    "repo": "QwenLM/Qwen-Live-Harness",
+    "sha": "b6ce544ebbcd7417e37e0314ec946466c49c615c",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/QwenLM/Qwen-Live-Harness/b6ce544ebbcd7417e37e0314ec946466c49c615c/LICENSE",
+    "sha256": "45a078c64e8708098219d1f0ccd3d90b56d784f14eb2966e663430000c4fc8ec",
+    "bytes": 11333
+  },
+  {
+    "repo": "QwenLM/Qwen-Live-Harness",
+    "sha": "b6ce544ebbcd7417e37e0314ec946466c49c615c",
+    "path": "packages/qwen-live-harness/README.md",
+    "url": "https://raw.githubusercontent.com/QwenLM/Qwen-Live-Harness/b6ce544ebbcd7417e37e0314ec946466c49c615c/packages/qwen-live-harness/README.md",
+    "sha256": "f1b29c0dff01af0d10d6c90f92c0bd40bbcdac100a68bb7913522bd6b6dbcc58",
+    "bytes": 73478
+  },
+  {
+    "repo": "QwenLM/Qwen-Live-Harness",
+    "sha": "b6ce544ebbcd7417e37e0314ec946466c49c615c",
+    "path": "packages/qwen-live-harness/src/orchestrator/live-session.ts",
+    "url": "https://raw.githubusercontent.com/QwenLM/Qwen-Live-Harness/b6ce544ebbcd7417e37e0314ec946466c49c615c/packages/qwen-live-harness/src/orchestrator/live-session.ts",
+    "sha256": "4472cdcc34d601daeb5c9b3b260a0feb0f57cecaac9238cf09a7a6fc1400ae02",
+    "bytes": 284408
+  },
+  {
+    "repo": "QwenLM/Qwen-Live-Harness",
+    "sha": "b6ce544ebbcd7417e37e0314ec946466c49c615c",
+    "path": "packages/qwen-live-harness/src/realtime/realtime-session.ts",
+    "url": "https://raw.githubusercontent.com/QwenLM/Qwen-Live-Harness/b6ce544ebbcd7417e37e0314ec946466c49c615c/packages/qwen-live-harness/src/realtime/realtime-session.ts",
+    "sha256": "ce11d810ec2fcaa7efd291526b55ae1940fd811775ae572814756f639b6d9747",
+    "bytes": 183561
+  },
+  {
+    "repo": "QwenLM/Qwen-Live-Harness",
+    "sha": "b6ce544ebbcd7417e37e0314ec946466c49c615c",
+    "path": "packages/qwen-live-harness/src/memory/schema.ts",
+    "url": "https://raw.githubusercontent.com/QwenLM/Qwen-Live-Harness/b6ce544ebbcd7417e37e0314ec946466c49c615c/packages/qwen-live-harness/src/memory/schema.ts",
+    "sha256": "805d8efc6ae53f50bd380b792f00459289efbe1bd5c605489cdb87d93d8edddc",
+    "bytes": 4712
+  },
+  {
+    "repo": "QwenLM/Qwen-Live-Harness",
+    "sha": "b6ce544ebbcd7417e37e0314ec946466c49c615c",
+    "path": "packages/qwen-live-harness-host/src/preload/audio-output-queue.ts",
+    "url": "https://raw.githubusercontent.com/QwenLM/Qwen-Live-Harness/b6ce544ebbcd7417e37e0314ec946466c49c615c/packages/qwen-live-harness-host/src/preload/audio-output-queue.ts",
+    "sha256": "ad566555ea23730dc9d0ed56e4aa62431554aad6042437a58329091b29b7d3a1",
+    "bytes": 3798
+  },
+  {
+    "repo": "QwenLM/Qwen-MM-Plugins",
+    "sha": "e469e92dcd662ab0c4adc798fc50a094c832bfc0",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/QwenLM/Qwen-MM-Plugins/e469e92dcd662ab0c4adc798fc50a094c832bfc0/LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "repo": "QwenLM/Qwen-MM-Plugins",
+    "sha": "e469e92dcd662ab0c4adc798fc50a094c832bfc0",
+    "path": "src/capabilities/core/qwen_mm_plugins_core/readers/image.py",
+    "url": "https://raw.githubusercontent.com/QwenLM/Qwen-MM-Plugins/e469e92dcd662ab0c4adc798fc50a094c832bfc0/src/capabilities/core/qwen_mm_plugins_core/readers/image.py",
+    "sha256": "42b620f93f669a0c6a4e1d36f44f8f59f662ec602fbb75085de044220ed2cb3b",
+    "bytes": 1609
+  },
+  {
+    "repo": "QwenLM/Qwen-MM-Plugins",
+    "sha": "e469e92dcd662ab0c4adc798fc50a094c832bfc0",
+    "path": "src/capabilities/core/qwen_mm_plugins_core/readers/video.py",
+    "url": "https://raw.githubusercontent.com/QwenLM/Qwen-MM-Plugins/e469e92dcd662ab0c4adc798fc50a094c832bfc0/src/capabilities/core/qwen_mm_plugins_core/readers/video.py",
+    "sha256": "8e28fa2bc9e0953fbb1c8eff9aed71be37835296f511f2be70073b4f5ed57df3",
+    "bytes": 6391
+  },
+  {
+    "repo": "QwenLM/Qwen-MM-Plugins",
+    "sha": "e469e92dcd662ab0c4adc798fc50a094c832bfc0",
+    "path": "src/capabilities/omni-memory/skill/script/build_memory/storage.py",
+    "url": "https://raw.githubusercontent.com/QwenLM/Qwen-MM-Plugins/e469e92dcd662ab0c4adc798fc50a094c832bfc0/src/capabilities/omni-memory/skill/script/build_memory/storage.py",
+    "sha256": "1a6297bc14f262d2b1ae52b754d5a4c7de8e717d5a6fb2825503152527297f8e",
+    "bytes": 4437
+  },
+  {
+    "repo": "QwenLM/Qwen-MM-Plugins",
+    "sha": "e469e92dcd662ab0c4adc798fc50a094c832bfc0",
+    "path": "src/capabilities/omni-memory/qwen_mm_plugins_omni_memory/tools/get_moment.py",
+    "url": "https://raw.githubusercontent.com/QwenLM/Qwen-MM-Plugins/e469e92dcd662ab0c4adc798fc50a094c832bfc0/src/capabilities/omni-memory/qwen_mm_plugins_omni_memory/tools/get_moment.py",
+    "sha256": "0905ec65cb782eb11bbd75ab44b1e6a3f02b8cf454967f50621085c18dfb7687",
+    "bytes": 4382
+  },
+  {
+    "repo": "open-webui/open-webui",
+    "sha": "8bd8b4fac5e059578ac0c74b3c18d11139f88b7d",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/open-webui/open-webui/8bd8b4fac5e059578ac0c74b3c18d11139f88b7d/LICENSE",
+    "sha256": "5f1bd74c48bf13ab0f82e177ad9e637313b92533d20ead2593d49347a47fc232",
+    "bytes": 2819
+  },
+  {
+    "repo": "open-webui/open-webui",
+    "sha": "8bd8b4fac5e059578ac0c74b3c18d11139f88b7d",
+    "path": "backend/open_webui/routers/audio.py",
+    "url": "https://raw.githubusercontent.com/open-webui/open-webui/8bd8b4fac5e059578ac0c74b3c18d11139f88b7d/backend/open_webui/routers/audio.py",
+    "sha256": "ccd7f1af684f011501868e43a519b8e613bd179c06718a9f5a5b4035499939dd",
+    "bytes": 57096
+  },
+  {
+    "repo": "open-webui/open-webui",
+    "sha": "8bd8b4fac5e059578ac0c74b3c18d11139f88b7d",
+    "path": "backend/open_webui/models/files.py",
+    "url": "https://raw.githubusercontent.com/open-webui/open-webui/8bd8b4fac5e059578ac0c74b3c18d11139f88b7d/backend/open_webui/models/files.py",
+    "sha256": "e0770c88528e5f95f64ee56fd11f1e662065ba269a7bf44688fa6d5ce224cb6d",
+    "bytes": 17156
+  },
+  {
+    "repo": "open-webui/open-webui",
+    "sha": "8bd8b4fac5e059578ac0c74b3c18d11139f88b7d",
+    "path": "src/lib/components/chat/MessageInput/CallOverlay.svelte",
+    "url": "https://raw.githubusercontent.com/open-webui/open-webui/8bd8b4fac5e059578ac0c74b3c18d11139f88b7d/src/lib/components/chat/MessageInput/CallOverlay.svelte",
+    "sha256": "25021328d523d030f07a2dfbf7cd099a6f06773fe0a8e16fbe2c7de4378db90d",
+    "bytes": 30976
+  },
+  {
+    "repo": "livekit/agents",
+    "sha": "bcdf90771c38fbbc275fd835a6dafa7ae5200685",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/livekit/agents/bcdf90771c38fbbc275fd835a6dafa7ae5200685/LICENSE",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "bytes": 11357
+  },
+  {
+    "repo": "livekit/agents",
+    "sha": "bcdf90771c38fbbc275fd835a6dafa7ae5200685",
+    "path": "livekit-agents/livekit/agents/llm/chat_context.py",
+    "url": "https://raw.githubusercontent.com/livekit/agents/bcdf90771c38fbbc275fd835a6dafa7ae5200685/livekit-agents/livekit/agents/llm/chat_context.py",
+    "sha256": "8b50c60bcd55dcc600c2ee34adb367ca2852dd889c64c695365f815fc5767a3f",
+    "bytes": 39856
+  },
+  {
+    "repo": "livekit/agents",
+    "sha": "bcdf90771c38fbbc275fd835a6dafa7ae5200685",
+    "path": "livekit-agents/livekit/agents/voice/speech_handle.py",
+    "url": "https://raw.githubusercontent.com/livekit/agents/bcdf90771c38fbbc275fd835a6dafa7ae5200685/livekit-agents/livekit/agents/voice/speech_handle.py",
+    "sha256": "627612bcfe739d510302d8ea1869ea7076dfd45348436423282b1f72f7f80b26",
+    "bytes": 17201
+  },
+  {
+    "repo": "livekit/agents",
+    "sha": "bcdf90771c38fbbc275fd835a6dafa7ae5200685",
+    "path": "livekit-agents/livekit/agents/voice/agent_activity.py",
+    "url": "https://raw.githubusercontent.com/livekit/agents/bcdf90771c38fbbc275fd835a6dafa7ae5200685/livekit-agents/livekit/agents/voice/agent_activity.py",
+    "sha256": "dc82e2fd253c0d0c75947fcf00600fea475bfb8abcc15233098a5712d3d32003",
+    "bytes": 224839
+  },
+  {
+    "repo": "immich-app/immich",
+    "sha": "003670d013b78f266de1ce9212ced00e34c22714",
+    "path": "LICENSE",
+    "url": "https://raw.githubusercontent.com/immich-app/immich/003670d013b78f266de1ce9212ced00e34c22714/LICENSE",
+    "sha256": "a3bad629f67f442b23b5224419e49edafc32e6b9c876b89464f7aafe6091ccde",
+    "bytes": 32388
+  },
+  {
+    "repo": "immich-app/immich",
+    "sha": "003670d013b78f266de1ce9212ced00e34c22714",
+    "path": "server/src/schema/tables/asset.table.ts",
+    "url": "https://raw.githubusercontent.com/immich-app/immich/003670d013b78f266de1ce9212ced00e34c22714/server/src/schema/tables/asset.table.ts",
+    "sha256": "2daaa601ab3973abf6b3781dc8605a919c4cf612f6a78f2ad12d8cc04855737f",
+    "bytes": 4369
+  },
+  {
+    "repo": "immich-app/immich",
+    "sha": "003670d013b78f266de1ce9212ced00e34c22714",
+    "path": "server/src/schema/tables/smart-search.table.ts",
+    "url": "https://raw.githubusercontent.com/immich-app/immich/003670d013b78f266de1ce9212ced00e34c22714/server/src/schema/tables/smart-search.table.ts",
+    "sha256": "b8d3704bd2479f880b0b477aeac21f65a6ad7965a5acdb505fa937df4b210381",
+    "bytes": 571
+  },
+  {
+    "repo": "immich-app/immich",
+    "sha": "003670d013b78f266de1ce9212ced00e34c22714",
+    "path": "server/src/services/ocr.service.ts",
+    "url": "https://raw.githubusercontent.com/immich-app/immich/003670d013b78f266de1ce9212ced00e34c22714/server/src/services/ocr.service.ts",
+    "sha256": "59dd48b89e9095a5b9b776f27673892a404ee9d1d156591f82682869b96cd7f8",
+    "bytes": 2877
+  },
+  {
+    "repo": "immich-app/immich",
+    "sha": "003670d013b78f266de1ce9212ced00e34c22714",
+    "path": "machine-learning/immich_ml/models/clip/visual.py",
+    "url": "https://raw.githubusercontent.com/immich-app/immich/003670d013b78f266de1ce9212ced00e34c22714/machine-learning/immich_ml/models/clip/visual.py",
+    "sha256": "052acc7bcaa9942186ac27abf42a4ebebdb9545d67e0eb0d14f29edfb45af02b",
+    "bytes": 3521
+  }
+]

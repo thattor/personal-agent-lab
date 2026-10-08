@@ -1,0 +1,25 @@
+{
+  "repo_head": "5e7c76c24dd8bf700d2811c7188739cdc77d9aa8",
+  "worktree_clean": true,
+  "source_file": "pal/store.py",
+  "source_sha256": "32cef5c7d6a84770847de805fd6e72c57ff811818b404746bd74ac3d07efcb45",
+  "method": "read-only source comparison; not execution of proposed changes",
+  "observations": [
+    {
+      "lines": "234-245; 1228-1240",
+      "finding": "_remember inserts one dedupe row; media reservation must use a separate table until terminal primary outcome"
+    },
+    {
+      "lines": "1092-1105",
+      "finding": "prepare_primary may return existing turn before _dedupe; media-kind guard must precede this path"
+    },
+    {
+      "lines": "648-667",
+      "finding": "recover finalizes pending Primary via _finish_primary_outcome"
+    },
+    {
+      "lines": "670-675",
+      "finding": "deliver creates audit Record with source_event_id and default empty manifest; excluded from proposed v1 TTS"
+    }
+  ]
+}

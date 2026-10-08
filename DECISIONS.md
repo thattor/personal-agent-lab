@@ -940,3 +940,50 @@ after a timing miss; it requires canonically running unfinished work and retaine
 rejection, not termination of an upstream generation. This is a separate controlled-
 delivery proof, never a rescore of C035/C045 or a natural-timing reliability claim.
 No actual live PASS, Qwen qualification, usefulness or release result follows review.
+
+### C050 — direct owner three-chat operating instruction and answered access check
+
+2026-10-08 direct owner instruction in development chat01a11113 establishes development
+as sole product/canonical writer, persistent human chat01a1137a for indispensable owner
+facts/authority/usefulness, and the existing design-change chat01a11837 for material
+proposals (its owner's stated role and preservation requests were verified). Necessary
+inter-chat messages are authorized; external support is not.
+Stable1 is the immediate delivery milestone, not whole PAL completion. Existing
+acceptance, reviews, cost/security boundaries and dormant future-plan status remain.
+This is direct operating authority, not a new product design adoption; no Opus/SWE
+design/code gate is triggered by recording it.
+
+HR-ACCESS-003 is answered via the owner-authorized handoff retained in the human window
+(turn01a118df-d5a2-7502-84b7-7008eb4683cc); its settings screenshot was independently
+viewed. Browse default is Always allow; original origin has no displayed exception;
+no visible explicit block/management lock, CDP full access off. This does not identify
+the winning rule or clear C045. Do not repeat the settings question. HR-ACCESS-004 is
+solely a scoped private-support submission decision for the concrete prepared text,
+not a technical preference or an inferred permission. No submission performed.
+
+The owner separately requests a NEW50-minute development checkpoint conditional on
+noninterrupting delivery, and forbids reviving stopped schedules. Existing PAL schedules
+are read back PAUSED. Official scheduled-task docs establish in-chat minute intervals,
+but neither those docs nor exposed tool contracts establish active-turn delivery behavior.
+Do not substitute a prompt instruction for a scheduler guarantee or transfer Goal idle
+semantics to heartbeat scheduling. New schedule remains NOT_CONFIGURED pending supported
+confirmation. No cron workaround, speculative busy-run experiment or old schedule change.
+Evidence, exact requested prompt and next operations: [C050](evidence/operations/c050-access-and-continuation.md).
+
+## D-030 — Retain multimodal research and design materials, 2026-10-08
+
+Owner source: design chat `01a11837-e1e3-71f0-8ff8-bbaf8dc14527`, 「マルチモーダル対応設計を確認」. The owner requested:
+
+> 再利用するようなファイルや記録やデータはプライベートレポジトリのパーソナルエージェントラボのレポジトリに適切に格納しておいてください。
+
+> 今まで保存されてなかった情報があるのであれば、それも今回一緒に上げておいてください。
+
+Adopt the retention instruction. Store reusable PAL research, design records and data in this private repository, with provenance, original outcomes and verification limits. Do not leave the only reusable copy in a temporary directory or chat artifact. Retain local originals; do not import credentials, unnecessary account data, or one-off machine/approval configuration as reusable settings.
+
+The [portable design entrypoint](docs/design/multimodal-qwen38-v1.md) leads to the [dated evidence archive](evidence/research/multimodal/2026-10-08/README.md). The archive preserves 63 existing chat-export files plus 17 previously uncollected reusable files: public-source inventory/metadata and capture helper, selection list, review access/diagnostic records and official CLI reference material. [IMPORT.json](evidence/research/multimodal/2026-10-08/IMPORT.json) accounts for all 142 file occurrences across the three task-related source locations, including 59 identical duplicates and three excluded one-off launch/config files. [Archive validation](evidence/research/multimodal/2026-10-08/ARCHIVE-VALIDATION.json) records hash and structure checks. Third-party source is retained with its license as research evidence, not a product dependency.
+
+Earlier owner direction in that chat remains the scope of the design candidate: continue existing development independently; clarify future image understanding, audio input and audio output, with video as a later extension; use Qwen3.8-27B as the fixed reasoning/vision baseline instead of widening model exploration; specify handoff and evaluation despite unavailable physical hardware. The candidate uses original images and a separate ASR → PAL → saved-response TTS flow. It is not adopted product behavior.
+
+Opus initial research and initial design reviews completed. A separately, explicitly authorized single SWE-2 High call returned only a partial response before the 600.016-second timeout. Received findings were reconciled with the frozen source and addressed in the candidate; revised text was not independently re-reviewed. Preserve the partial result, original denied attempts and later scoped approval as history. These records are not continuing authority for another model call, new access, payment, public exposure or implementation.
+
+All 30 candidate product evaluations remain NOT_RUN; actual Qwen/PAL capability and physical-device quality/speed are unverified. Development received the archive and verified its retained hashes, then integrated the shared-document updates after the design chat relinquished stage/commit/push. This adopts retention, not product behavior, and does not change Stable-1 completion criteria or release status. Historical handoff drafts remain unchanged; they are not current delivery receipts. Future implementation must reconcile the candidate with the then-current source and project decisions. The current development continuation and C050 access wait remain STATE.md.

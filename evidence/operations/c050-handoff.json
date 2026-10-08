@@ -1,0 +1,30 @@
+{
+  "schema": "pal-operational-handoff-v1",
+  "development_thread": "01a11113-f829-75c1-b728-3298aa3359b5",
+  "human_thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "judgment": "HR-ACCESS-004",
+  "dispatch_tool_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"threadId\":\"01a1137a-8de3-7890-b874-cdd0a7125711\"}"
+      }
+    ],
+    "isError": false
+  },
+  "presentation": {
+    "turn": "01a119d3-2264-77e2-a473-5dcf7fc9b71a",
+    "message": "msg_0e8607be08e8fc0c016ac71f90346081919fc43f7638c393cc",
+    "status": "PRESENTED_PENDING_OWNER",
+    "not_owner_approval": true
+  },
+  "design_thread": "01a11837-e1e3-71f0-8ff8-bbaf8dc14527",
+  "design_handoff_observed": {
+    "turn": "01a119c7-efdd-74e0-a4f7-3725d8a56364",
+    "message": "msg_05b465739a3b95e8016ac71fe620808191add52dccace4203a",
+    "archive_validation": "evidence/research/multimodal/2026-10-08/ARCHIVE-VALIDATION.json",
+    "stage_commit_push_by_design": false
+  },
+  "support_submission": "NOT_SENT",
+  "no_product_scope_adoption": true
+}

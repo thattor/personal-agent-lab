@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-08",
+  "purpose": "PALの将来マルチモーダル要件に対する設計比較",
+  "status": "research_only_not_product_adoption",
+  "strength_scope": "PALへの適用判断の根拠。公開コードの存在とPAL実機での再現を区別する。",
+  "items": [
+    {
+      "subject": "Qwen3.8-27B",
+      "summary": "公式カードは画像・動画入力を示す。",
+      "novelty": "現在のPALのテキスト専用接続より広い入力能力を持つモデル候補。",
+      "core_idea": "画像と質問を同じ推論経路へ渡す。",
+      "evidence": [{"url": "https://huggingface.co/Qwen/Qwen3.8-27B", "supports": "native vision-languageの明記、画像と動画のAPI入力例"}],
+      "limitations": ["PALの実行経路・量子化・日本語画像理解は未検証", "公式カードに音声能力の記載を確認できない"],
+      "evidence_strength": "moderate",
+      "applicability": "推論担当と画像理解を同じモデルへまとめる案を先に評価できる。",
+      "next_sources": ["実際に採るエンジンと量子化版の仕様、およびPALからの画像入力プローブ"],
+      "action": "investigate"
+    },
+    {
+      "subject": "Qwen-Live-Harness",
+      "summary": "Realtime音声映像の会話とバックグラウンド作業を分離する公開実装。",
+      "novelty": "PALの継続会話・作業管理に近いマルチモーダル窓口がある。新規性の学術評価ではない。",
+      "core_idea": "会話窓口、調整、委任先、再生の責務を分ける。",
+      "evidence": [{"repo": "QwenLM/Qwen-Live-Harness", "sha": "b6ce544ebbcd7417e37e0314ec946466c49c615c", "supports": "live-session.ts、realtime-session.ts、memory/schema.tsの会話・委任・イベント管理", "receipts": "source-receipts.json"}],
+      "limitations": ["PALで再現していない", "現経路にはDashScope APIが必要", "同じ記憶・権限設計を無条件に移植できない"],
+      "evidence_strength": "moderate",
+      "applicability": "Realtime窓口からPALへ仕事を委任する拡張の比較対象。",
+      "next_sources": ["PALの権限・記憶を窓口側へ複製しない最小接続契約"],
+      "action": "investigate"
+    },
+    {
+      "subject": "Open WebUI / LiveKit Agents / Pipecat",
+      "summary": "音声認識・推論・読み上げを組み合わせ、発話終了や割込みを管理する。",
+      "novelty": "音声モデルの対応表に加え、会話の制御を具体化できる。",
+      "core_idea": "分離型を比較の基準とし、Realtime型との差を遅延・訂正・制御で評価する。",
+      "evidence": [
+        {"repo": "open-webui/open-webui", "sha": "8bd8b4fac5e059578ac0c74b3c18d11139f88b7d", "supports": "audio.pyとCallOverlay.svelteのSTT/TTS・録音・カメラ画像添付", "receipts": "source-receipts.json"},
+        {"repo": "livekit/agents", "sha": "bcdf90771c38fbbc275fd835a6dafa7ae5200685", "supports": "chat_context.pyとspeech_handle.pyの型付きメディア・中断・再生状態", "receipts": "source-receipts.json"},
+        {"url": "https://docs.livekit.io/agents/models/pipelines/", "supports": "分離型・Realtime型・混合方式の比較"},
+        {"url": "https://github.com/pipecat-ai/docs/blob/main/pipecat/learn/speech-to-text.mdx", "supports": "STTを含む処理順。資料のみ確認"}
+      ],
+      "limitations": ["PALの音声実測はしていない", "静止画付き通話は動画全体の理解とは異なる", "フレームワーク全体の導入は未判断", "Open WebUIは独自ライセンス条項を持つ"],
+      "evidence_strength": "moderate",
+      "applicability": "短い録音→文字起こし→既存推論→読み上げを最小候補とする根拠。",
+      "next_sources": ["対象端末での日本語・固有名詞・訂正・初回音声遅延・メモリ消費の実測"],
+      "action": "investigate"
+    },
+    {
+      "subject": "Qwen-MM-Plugins",
+      "summary": "画像読取と、時間・解像度・枚数を制限した動画読取を提供する。",
+      "novelty": "タグや要約だけに変換する案に対し、元画像・元クリップへ戻れる。",
+      "core_idea": "必要範囲の実画像と時刻を渡し、詳しい確認を段階的に行う。",
+      "evidence": [{"repo": "QwenLM/Qwen-MM-Plugins", "sha": "e469e92dcd662ab0c4adc798fc50a094c832bfc0", "supports": "readers/image.py、video.py、get_moment.pyの実画像・時刻・元クリップ参照", "receipts": "source-receipts.json"}],
+      "limitations": ["依存・API・アップロード動作をPALへ採用したわけではない", "間引きによる見落としがある", "長時間動画記憶は初期PALには過大な可能性", "動画音声の同期精度はPALで未検証"],
+      "evidence_strength": "moderate",
+      "applicability": "原本・領域・時刻の対応と、未観測範囲の扱いを設計する参考。",
+      "next_sources": ["短区間動画の音声・映像を元時刻へ戻す評価素材と実測"],
+      "action": "hold"
+    },
+    {
+      "subject": "Immich / LibreChat",
+      "summary": "原本と検索用情報の分離、および接続先能力に応じた添付の扱いが参考になる。",
+      "novelty": "タグだけを永続記憶にする案より、原本確認と検索を分けられる。",
+      "core_idea": "原本、OCRや説明、検索索引、PALが受理した内容の責務を区別する。",
+      "evidence": [
+        {"repo": "immich-app/immich", "sha": "003670d013b78f266de1ce9212ced00e34c22714", "supports": "asset.table.ts、smart-search.table.ts、ocr.service.tsの原本・検索・OCR領域", "receipts": "source-receipts.json"},
+        {"url": "https://www.librechat.ai/docs/features/upload_as_text", "supports": "添付の直接入力とテキスト抽出の区別。資料のみ確認"}
+      ],
+      "limitations": ["写真管理とPALの仕事管理は用途が異なる", "CLIP検索は質問への正確な画像回答の保証ではない", "LibreChatのテキスト抽出経路は原本保持の証拠ではない", "PALの参照停止は独自に維持する必要がある"],
+      "evidence_strength": "moderate",
+      "applicability": "最初は原本と小さな文章索引。検索量が必要になった時にベクトル索引を評価する。",
+      "next_sources": ["PAL既存のsource依存・参照停止をメディア派生物へ伸ばす最小契約"],
+      "action": "investigate"
+    }
+  ]
+}

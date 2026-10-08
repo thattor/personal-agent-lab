@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-10-08T01:13:34.443096+00:00",
+  "review_status": "PARTIAL_RESPONSE_TIMEOUT",
+  "completion": {
+    "status": "timeout",
+    "model": "swe-2-high",
+    "elapsed_seconds": 600.016,
+    "response_bytes": 4601,
+    "paid_fallback": false
+  },
+  "input_bytes": 89959,
+  "received_blockers": [
+    "B1 reservation storage vs dedupe INSERT",
+    "B2 media replay through prepare_primary text path"
+  ],
+  "received_blockers_resolution": "addressed in proposed design after current-source inspection; not runtime verification",
+  "original_response_preserved": true,
+  "additional_review_calls": 0,
+  "runtime_tests": "NOT_RUN",
+  "no_repository_edits": true,
+  "remaining_limit": "Full reviewer conclusion/evaluation section not received; revised documents not independently re-reviewed."
+}

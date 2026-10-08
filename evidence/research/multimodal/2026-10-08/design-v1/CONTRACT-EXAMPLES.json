@@ -1,0 +1,163 @@
+{
+  "schema": "pal-mm-v1-design-examples",
+  "status": "design_examples_not_implemented_or_executed",
+  "note": "DESIGN.mdに提案する閉じたHTTP形式と内部契約の例。実装・テーブル定義・adapter適合の証拠ではない。base64とhashは説明用の仮値であり実メディアとして検証していない。asset bytesはhostだけが解決する。",
+  "image_request": {
+    "protocol": "pal-mm-v1",
+    "request_id": "example-image-primary-01",
+    "purpose": "primary",
+    "model_id": "Qwen/Qwen3.8-27B",
+    "input_record_id": "example-record-image-01",
+    "parts": [
+      {
+        "type": "text",
+        "source_id": "example-record-image-01",
+        "text": "この案内の日時を教えてください"
+      },
+      {
+        "type": "image",
+        "source_id": "example-record-image-01",
+        "asset_id": "example-original-01",
+        "view_id": "example-view-01",
+        "view_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ],
+    "expected_output": "primary-json-v1",
+    "allowed_action_kinds": [
+      "none",
+      "local_draft",
+      "answer",
+      "control",
+      "remember",
+      "forget"
+    ],
+    "budget": {
+      "timeout_seconds": 180,
+      "max_response_utf8_bytes": 65536,
+      "max_reply_utf8_bytes": 8192
+    }
+  },
+  "asr_request": {
+    "protocol": "pal-asr-v1",
+    "operation_id": "example-voice-key",
+    "asset_id": "example-audio-01",
+    "asset_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "language": "ja",
+    "max_seconds": 60
+  },
+  "asr_result": {
+    "operation_id": "example-voice-key",
+    "kind": "final",
+    "text": "会場Aで10月17日に開催する案内の下書きを作ってください。",
+    "producer": {
+      "model_id": "Qwen/Qwen3-ASR-0.6B",
+      "model_revision": "must_be_recorded_at_run",
+      "adapter_version": "must_be_recorded_at_run"
+    }
+  },
+  "accepted_voice_record_metadata": {
+    "record_id": "example-record-voice-01",
+    "input_kind": "voice_transcript",
+    "media_operation_id": "example-voice-key",
+    "asset_id": "example-audio-01",
+    "interpretation_status": "asr_final_not_human_verified",
+    "primary_request_key": "example-voice-key",
+    "primary_request_hash": "media-v1:7821f599b87f458344702043399b6d320e425c3dee0fb3c4d6624d51097b63bc",
+    "media_request_hash": "media-v1:7821f599b87f458344702043399b6d320e425c3dee0fb3c4d6624d51097b63bc"
+  },
+  "tts_request": {
+    "protocol": "pal-tts-v1",
+    "playback_id": "example-playback-01",
+    "session_id": "example-session-01",
+    "session_epoch": 2,
+    "response_id": "example-committed-reply-01",
+    "response_text_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "segment": {
+      "index": 0,
+      "start_codepoint": 0,
+      "end_codepoint": 12,
+      "text": "下書きを受け付けました。"
+    },
+    "language": "ja",
+    "voice_profile": "qwen-customvoice-ono-anna-v1",
+    "boot_id": "example-boot-01"
+  },
+  "error_codes": [
+    "unsupported_modality",
+    "invalid_media",
+    "media_too_large",
+    "source_unavailable",
+    "request_conflict",
+    "input_cancelled",
+    "input_interrupted",
+    "empty_transcript",
+    "provider_unavailable",
+    "provider_timeout",
+    "stale_media_result",
+    "stale_playback",
+    "too_late_to_cancel_input",
+    "media_quota_exceeded",
+    "media_busy",
+    "tts_ineligible_record",
+    "tts_segment_failed"
+  ],
+  "http_examples": [
+    {
+      "key": "example-image-key",
+      "kind": "image",
+      "text": "日時を教えてください",
+      "media": {
+        "mime": "image/png",
+        "data_base64": "SCHEMATIC_ONLY_NOT_REAL_IMAGE_BYTES"
+      }
+    },
+    {
+      "key": "example-voice-key",
+      "kind": "voice",
+      "media": {
+        "mime": "audio/wav",
+        "data_base64": "SCHEMATIC_ONLY_NOT_REAL_AUDIO_BYTES"
+      },
+      "image_source_id": "example-record-image-01"
+    },
+    {
+      "key": "example-image-reference-key",
+      "kind": "image_ref",
+      "text": "右下の注意書きも読んでください",
+      "image_source_id": "example-record-image-01",
+      "region": {
+        "x": 1000,
+        "y": 700,
+        "width": 400,
+        "height": 200
+      }
+    }
+  ],
+  "host_requirements": {
+    "tts_authority": "Primary outcomeに結び付くresponse_idだけを対象とし、生成と区間引渡し直前にmanifestを再帰検査。source_event_id付き監査通知はv1対象外。",
+    "media_admission": "mediaのoperation_idと内部Primaryのkeyを一致させる。予約はmedia_inputsに保存し、private admissionだけが引き継ぐ。dedupeのprimary行は_finish_primary_outcomeだけが書く。",
+    "example_placeholders": "例示のbase64は実データではなく、そのまま送信すればinvalid_mediaとなる。hashも例示値である。",
+    "text_replay": "prepare_primaryは既存primary_turnsによる早期returnより前にMediaInput予約を検査し、別種別の再送を拒否する。"
+  },
+  "media_request_identity": {
+    "canonical_fields": {
+      "kind": "voice",
+      "text": null,
+      "mime": "audio/wav",
+      "asset_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "image_source_id": "example-record-image-01",
+      "region": null
+    },
+    "stored_request_hash": "media-v1:7821f599b87f458344702043399b6d320e425c3dee0fb3c4d6624d51097b63bc",
+    "note": "受付時に一度決定する。ASR確定文は後から加えない。ASR確定文hashは派生情報へ保存する。"
+  },
+  "image_result": {
+    "request_id": "example-image-primary-01",
+    "final": {
+      "reply": "例示用の返答です。",
+      "action": {
+        "kind": "none"
+      }
+    }
+  }
+}

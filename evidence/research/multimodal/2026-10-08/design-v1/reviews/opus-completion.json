@@ -1,0 +1,8 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "model": "opus",
+  "elapsed_seconds": 201.001,
+  "response_bytes": 16721,
+  "paid_fallback": false
+}

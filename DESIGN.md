@@ -2,6 +2,10 @@
 
 Status: accepted baseline. Design changes require Opus review before adoption.
 
+## Future design reference — D-030
+
+[Image/audio design v1](docs/design/multimodal-qwen38-v1.md) records a Qwen3.8-27B handoff candidate, interface examples and 30 NOT_RUN evaluation cases. D-030 adopts retention of these materials only; it does not adopt their product behavior or add a Stable-1 completion gate. The entrypoint distinguishes initial research, reviewed inputs, subsequent revisions and the incomplete SWE response.
+
 ## Architecture
 PAL uses 2 operational bots / 4 logical responsibilities:
 - Primary Bot = Primary + Responder

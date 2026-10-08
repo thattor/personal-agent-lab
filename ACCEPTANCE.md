@@ -286,3 +286,11 @@ reviewed. Cause UNKNOWN; native-settings and chrome://policy reads refused, no b
 HR-ACCESS-003 asks only for visible Browse permission values; private support draft
 prepared, not sent. No new model run, code/test change, acceptance promotion or access
 clearance. [Investigation](evidence/operations/c049-browser-block-investigation.md).
+
+C050 operational reconciliation: HR-ACCESS-003 answered and source image checked;
+default Browse allows access but the original client block remains unexplained.
+[Recorded response, three-chat authority and formal support handoff](evidence/operations/c050-access-and-continuation.md).
+No model/UI rerun, canonical database write, product/test change, access clearance or acceptance
+promotion. New 50-minute checkpoint NOT_CONFIGURED until noninterrupting delivery is
+established; old schedules remain PAUSED. Existing 268-test green evidence remains bound
+to unchanged source. Stable1 real functional/usefulness/final-release gates remain open.

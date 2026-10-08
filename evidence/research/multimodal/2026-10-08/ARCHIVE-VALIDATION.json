@@ -1,0 +1,202 @@
+{
+  "schema": "pal-archive-validation-v1",
+  "checked_at": "2026-10-08T04:45:10.550669+00:00",
+  "status": "ARCHIVE_CHECKS_PASS",
+  "scope": "documentation_and_evidence_retention_only_not_product_validation",
+  "research_and_import_base_head": "5e7c76c24dd8bf700d2811c7188739cdc77d9aa8",
+  "checks": {
+    "source_directory_coverage": {
+      "status": "PASS",
+      "directories": 3,
+      "file_occurrences": 142,
+      "dispositions": {
+        "preserved_exact": 63,
+        "identical_existing_copy": 59,
+        "supplement_preserved_exact": 17,
+        "excluded_one_off_execution_configuration": 3
+      },
+      "preserved_distinct_original_files": 80,
+      "source_copies_retained": true
+    },
+    "historical_manifests": [
+      {
+        "manifest": "validation.json",
+        "files_verified": 30
+      },
+      {
+        "manifest": "design-v1/VALIDATION.json",
+        "files_verified": 31
+      }
+    ],
+    "frozen_review_inputs_and_prompts": "PASS",
+    "public_sources": {
+      "status": "PASS",
+      "repositories": 5,
+      "files": 24,
+      "checks": [
+        "sha256",
+        "byte_count",
+        "pinned_url",
+        "metadata_commit",
+        "git_tree_blob_sha1",
+        "license_presence"
+      ]
+    },
+    "json_parsed_excluding_this_receipt": 37,
+    "new_entrypoint_relative_links": 54,
+    "new_entrypoint_heading_anchors": "PASS",
+    "historical_relative_links": 21,
+    "historical_absolute_links_preserved_not_rewritten": 0,
+    "candidate_acceptance": {
+      "cases": 30,
+      "status": "ALL_NOT_RUN"
+    },
+    "swe_review": {
+      "status": "PARTIAL_TIMEOUT",
+      "seconds": 600.016,
+      "response_bytes": 4601,
+      "new_calls_in_this_import": 0
+    },
+    "credential_pattern_scan": {
+      "status": "NO_MATCH",
+      "patterns": [
+        "private_key",
+        "github_token",
+        "model_api_key",
+        "aws_access_key",
+        "jwt"
+      ],
+      "limitation": "bounded pattern scan, not proof of complete secret detection"
+    },
+    "authored_archive_and_entrypoint_whitespace": "PASS",
+    "historical_whitespace_preserved": [
+      {
+        "file": "design-v1/reviews/question.txt",
+        "diagnostic_lines": 64,
+        "reason": "exact historical bytes retained"
+      },
+      {
+        "file": "design-v1/reviews/swe-question.txt",
+        "diagnostic_lines": 64,
+        "reason": "exact historical bytes retained"
+      },
+      {
+        "file": "sources/immich-app__immich/files/LICENSE",
+        "diagnostic_lines": 1,
+        "reason": "exact historical bytes retained"
+      }
+    ]
+  },
+  "validation_observer_corrections": [
+    {
+      "mistake": "initial current-state comparison falsely failed",
+      "cause_and_evidence": "git-show helper stripped final newline while Path.read_text retained it; raw source comparison matched",
+      "correction": "use raw file content, strip only scalar command results; no source rewrite",
+      "verification": "raw Goal and Exact next action matched before independent C050 development began"
+    },
+    {
+      "mistake": "whitespace checker wrapper treated no-index return code 3 as an execution error",
+      "cause_and_evidence": "git diff --no-index --check reports both difference and whitespace flags; captured stderr was empty and stdout contained original-file whitespace diagnostics",
+      "correction": "inspect diagnostics and keep exact historical bytes; new authored material must have no whitespace diagnostics",
+      "verification": "all diagnostics belong to original historical files, none to new entrypoints"
+    }
+  ],
+  "concurrent_development": {
+    "observation": "C050 edits began in shared checkout during archive verification",
+    "action": "final validation covers owned archive and entrypoint; development owns shared canonical-document integration and commit/push",
+    "no_current_state_claim": "archive does not roll back or certify the active C050 state",
+    "stage_commit_push_by_this_design_chat": false
+  },
+  "product_tests": "NOT_RUN: archival documentation/evidence only; product behavior not changed by this task",
+  "downloaded_code_executed": false,
+  "new_model_calls": 0,
+  "validation_self_hash": "excluded to avoid self-reference; retained by Git commit",
+  "entrypoint_files_sha256_at_import": {
+    "docs/design/multimodal-qwen38-v1.md": "6bf731e5df7d667f31ab58481d96335fdd67bce2aedfe427cd19c4ccb3fdafac"
+  },
+  "files_sha256": {
+    "EXECUTION.md": "0a129032a4573b3f7941a7057731b71315dce4c27811cec06d4a414c5840923f",
+    "IMPORT.json": "54fcfe1fce1dc69d6cad69a581177dacaab57640048fd9fe4b6fb567db176415",
+    "README.md": "bc0209a2d3acf4b3cdb2a68497c90d9a1092e0c22dc4b34f1f0b4f06bbd8d5ce",
+    "REPORT.md": "7913623e0f509f7110eac8eafd670104c04ba610b6ae0d51b49a04ca958b309b",
+    "design-v1/ACCEPTANCE.json": "ebf7d3352b8f0e6a01cae3984f96c54c60cb6df070b33be633fb99bd89ee1b4b",
+    "design-v1/CONTRACT-EXAMPLES.json": "4b5a8dc8aa34a61438e35615333b9fb6fee5e7018436147c4b9143e1bb40522c",
+    "design-v1/DESIGN.md": "e209d3cd431131aab7d238a0bbe51bb078b33d2f4368de5bafcc4792cfa6ae77",
+    "design-v1/HANDOFF.md": "495ac382c58980b8f31d6d069f94112397a7654281d67770992f349ac1f98784",
+    "design-v1/README.md": "d392620f54c3f2bc029f64b6282bf346ac33897ca5cde48880a656949ed1b04f",
+    "design-v1/REVIEW.md": "3a699c27e8f6bf7aa17d31855294bcf6b68dfe80d45c62eb08e7a592ba18ea8e",
+    "design-v1/VALIDATION.json": "5b9b07dbe4023b0575368e987e7b95172e1695cb11e4a4a310f1e72fc7463d41",
+    "design-v1/reviews/devin-cli-docs.txt": "029538e88b5d1fcc326993a8072ae159b16f3fd941f065e386a4247fe3bf9aa2",
+    "design-v1/reviews/devin-desktop-index.txt": "f5b2afd18ac10779f91522f2e214f7b7d981608c10c1f8ebc951037a863f89d8",
+    "design-v1/reviews/input-freeze.json": "789cc94d39393aab938577ca17ec85811124babc3ca8f942db9c6c2b3a734ace",
+    "design-v1/reviews/opus-access.json": "7813551b57adb314f9cedcb468efcbd3d13b845a285965e06706dbfe9a56763a",
+    "design-v1/reviews/opus-completion.json": "7d8ec8540abff2a23a600155b1c260ebf1580393108fe1af38af7095f482956a",
+    "design-v1/reviews/opus-response.txt": "f57e6fcba452ec8d1713afe924254196e12d193b0201a2e0db6e8ee4a6f2c820",
+    "design-v1/reviews/opus-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "design-v1/reviews/packet-before-swe-VALIDATION.json": "024209ccc5ed84e0b8fe1c83579bdfa10a7ee6cd1a77770454ba3080c50b9a8d",
+    "design-v1/reviews/question.txt": "a808e4cb8c763b0490c9740509bb666ce75d8fddf4138bf880557602882ec144",
+    "design-v1/reviews/reviewed-ACCEPTANCE.json": "94ff23034423c06c2ba88d3ff61db65a4a9acb9071cf09f3d31c20ee466512d4",
+    "design-v1/reviews/reviewed-CONTRACT-EXAMPLES.json": "79d4cb6dbb02ae3b5d81f7a5b92b08962e21ea83c446cc4b8bc74f1ef72dd3fc",
+    "design-v1/reviews/reviewed-DESIGN.md": "9825982daad950148115b613507a925b0077e4c54ec01dac6dba3657093be72d",
+    "design-v1/reviews/swe-access.json": "e93e453db27b7c57385be8b76a50d0ac351e1b55cd5a17fd2cfe428ae235e0db",
+    "design-v1/reviews/swe-attempt-started.json": "3f7e5ce9da80111b1d8c4d2fd456289fd70906d14a099b4c76a546b94558aa6d",
+    "design-v1/reviews/swe-authorized-input.json": "3e3c12d668fa3654d76f281540dc6588516f25ed90e4e9701bd1b04556758055",
+    "design-v1/reviews/swe-completion.json": "4e02e316f97bf5bad5a4501b6f4f2ebc1954af99c3cc21d98d9d256e6e782097",
+    "design-v1/reviews/swe-controller-resolution.json": "604596b840d865ffc0048fd0162f69b242e13d71d25a7ac1c70e016fd4d1f06d",
+    "design-v1/reviews/swe-initial-rejection.json": "dff377cdd82f0658a7695c45aaf501491f4ec799a0758cf5d2aff8f66bcf5c79",
+    "design-v1/reviews/swe-question.txt": "b66d7063b53e0c108bae5f4e16dc33098e9c82795b0929c35dd8627310c7f596",
+    "design-v1/reviews/swe-response.txt": "2b37dda4370df51aebfeddca697ee1a3f61f09cb96ea28dcc32ff91e69817e01",
+    "design-v1/reviews/swe-restricted-rejection.json": "be84e1931735802f6add7a7bf495615b4e310be5791e0d3fecec49d34982c89a",
+    "design-v1/reviews/swe-reviewed-ACCEPTANCE.json": "1954381ad56c5f6dd7e974f51718b3be0de313321de67ca15a2dc46488691e1b",
+    "design-v1/reviews/swe-reviewed-CONTRACT-EXAMPLES.json": "277ba1e86a1139eb5019653a88f28cc011b2a71ca021435e4c0571d51f1c8042",
+    "design-v1/reviews/swe-reviewed-DESIGN.md": "558d6a63062e3ef7c1b03c411d9a358c40a9db1692093cedb6a66e472e48c95d",
+    "design-v1/reviews/swe-reviewed-REVIEW.md": "96274cb9569b83347251c97577fe431c2869b7beab1ac1613e2b7b54489e2079",
+    "design-v1/reviews/swe-source-check.json": "dbfd72cf20fbd97f4f53825fc6900c5eaf0a484ab2ec5ad38559698590344438",
+    "design-v1/reviews/swe-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "design-v1/reviews/ui-observation.json": "5ca49b19571d009ed4870152a8834a36676dc3f740d9882f474ef5bde7040b56",
+    "fetch_sources.py": "2cba8867608cd2e69882f56ac41775dfeea7eae91dcfd3530758e62c82c60f77",
+    "opus-review-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "opus-review.txt": "801fad5e2f2a658d44b7c6956dc02fd8df61109480e030d9c64b85823466bb18",
+    "research-matrix.json": "aaf95861e8bbf50568e31b1c4b981c81332473feb906ebe08eedeef069d551d3",
+    "review-access.json": "c89afb18f70777cde5f53b52857925419fc750adcb157c7e52832612cda51480",
+    "review-completion.json": "ac7bb38ab7c4d51901b36b1dd8bb7ba8e9b65e2eb718fac5cd98778c7362c30d",
+    "review-question.txt": "c1faf24f406cd51de9ba77529745c50f54f20b7fa3928355fc99d4ca5968bc98",
+    "selected-files.json": "e291f742c1ddc9855be086df75e504b430a402c74a2f5f6cca4b6a9f2f67c00b",
+    "source-receipts.json": "17013146685f8711747800ea8549829385b6f7bfba047931fb783944a52bf1d2",
+    "sources/QwenLM__Qwen-Live-Harness/files/LICENSE": "45a078c64e8708098219d1f0ccd3d90b56d784f14eb2966e663430000c4fc8ec",
+    "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/README.md": "f1b29c0dff01af0d10d6c90f92c0bd40bbcdac100a68bb7913522bd6b6dbcc58",
+    "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/memory/schema.ts": "805d8efc6ae53f50bd380b792f00459289efbe1bd5c605489cdb87d93d8edddc",
+    "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/orchestrator/live-session.ts": "4472cdcc34d601daeb5c9b3b260a0feb0f57cecaac9238cf09a7a6fc1400ae02",
+    "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/realtime/realtime-session.ts": "ce11d810ec2fcaa7efd291526b55ae1940fd811775ae572814756f639b6d9747",
+    "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness-host/src/preload/audio-output-queue.ts": "ad566555ea23730dc9d0ed56e4aa62431554aad6042437a58329091b29b7d3a1",
+    "sources/QwenLM__Qwen-Live-Harness/metadata.json": "67b34782f64bd65ec48911e57ea4c46db1ded05dc18153f703aafd331b8192dd",
+    "sources/QwenLM__Qwen-Live-Harness/tree.json": "7f2360666f42c9e1b417e630d0fb3f4135532425850de7a2f0e6a113500c2ef8",
+    "sources/QwenLM__Qwen-MM-Plugins/files/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/core/qwen_mm_plugins_core/readers/image.py": "42b620f93f669a0c6a4e1d36f44f8f59f662ec602fbb75085de044220ed2cb3b",
+    "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/core/qwen_mm_plugins_core/readers/video.py": "8e28fa2bc9e0953fbb1c8eff9aed71be37835296f511f2be70073b4f5ed57df3",
+    "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/omni-memory/qwen_mm_plugins_omni_memory/tools/get_moment.py": "0905ec65cb782eb11bbd75ab44b1e6a3f02b8cf454967f50621085c18dfb7687",
+    "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/omni-memory/skill/script/build_memory/storage.py": "1a6297bc14f262d2b1ae52b754d5a4c7de8e717d5a6fb2825503152527297f8e",
+    "sources/QwenLM__Qwen-MM-Plugins/metadata.json": "9f04491cc1e6ff616774eed8933a49e17906eebf5e9ba327b1a36d89aa6ab9b6",
+    "sources/QwenLM__Qwen-MM-Plugins/tree.json": "d6258040af36cab3170350cb4c991c0e31c2fc421a94388d7facee5c6c665a83",
+    "sources/immich-app__immich/files/LICENSE": "a3bad629f67f442b23b5224419e49edafc32e6b9c876b89464f7aafe6091ccde",
+    "sources/immich-app__immich/files/machine-learning/immich_ml/models/clip/visual.py": "052acc7bcaa9942186ac27abf42a4ebebdb9545d67e0eb0d14f29edfb45af02b",
+    "sources/immich-app__immich/files/server/src/schema/tables/asset.table.ts": "2daaa601ab3973abf6b3781dc8605a919c4cf612f6a78f2ad12d8cc04855737f",
+    "sources/immich-app__immich/files/server/src/schema/tables/smart-search.table.ts": "b8d3704bd2479f880b0b477aeac21f65a6ad7965a5acdb505fa937df4b210381",
+    "sources/immich-app__immich/files/server/src/services/ocr.service.ts": "59dd48b89e9095a5b9b776f27673892a404ee9d1d156591f82682869b96cd7f8",
+    "sources/immich-app__immich/metadata.json": "adf775bcaea1814f9cc924182f615744f97226a2388bd71421c29700f322902b",
+    "sources/immich-app__immich/tree.json": "cb5dda4cd972785034f510ddc44c138ed85aa713116dacdd406f58d61ad14b06",
+    "sources/livekit__agents/files/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "sources/livekit__agents/files/livekit-agents/livekit/agents/llm/chat_context.py": "8b50c60bcd55dcc600c2ee34adb367ca2852dd889c64c695365f815fc5767a3f",
+    "sources/livekit__agents/files/livekit-agents/livekit/agents/voice/agent_activity.py": "dc82e2fd253c0d0c75947fcf00600fea475bfb8abcc15233098a5712d3d32003",
+    "sources/livekit__agents/files/livekit-agents/livekit/agents/voice/speech_handle.py": "627612bcfe739d510302d8ea1869ea7076dfd45348436423282b1f72f7f80b26",
+    "sources/livekit__agents/metadata.json": "a86621e6d67c22297e20a1b5a2e59b30ed0186199e62fd2163056f06486e52a9",
+    "sources/livekit__agents/tree.json": "e8da5c3113a7bb70a9e73218b280863865e4b3c006e2de3924885beb2577ec8b",
+    "sources/open-webui__open-webui/files/LICENSE": "5f1bd74c48bf13ab0f82e177ad9e637313b92533d20ead2593d49347a47fc232",
+    "sources/open-webui__open-webui/files/backend/open_webui/models/files.py": "e0770c88528e5f95f64ee56fd11f1e662065ba269a7bf44688fa6d5ce224cb6d",
+    "sources/open-webui__open-webui/files/backend/open_webui/routers/audio.py": "ccd7f1af684f011501868e43a519b8e613bd179c06718a9f5a5b4035499939dd",
+    "sources/open-webui__open-webui/files/src/lib/components/chat/MessageInput/CallOverlay.svelte": "25021328d523d030f07a2dfbf7cd099a6f06773fe0a8e16fbe2c7de4378db90d",
+    "sources/open-webui__open-webui/metadata.json": "405d78e25610846746fef32205fb7fd8ba126c7b2dba927bb6fe84dedc415cc7",
+    "sources/open-webui__open-webui/tree.json": "2f24ee0946949ce495e1f07592f5cd95d19282c61e99ed3dd1610793cabf42dc",
+    "validation.json": "1873dfe40d6074f352e106032379cb59c988993b6daaa9f8a60c4560024663f0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "observed_at_epoch": 1791419691.826686,
+  "url": "https://claude.ai/settings/usage",
+  "plan": "Pro",
+  "session_used_percent": 6,
+  "weekly_used_percent": 26,
+  "extra_usage_enabled": false,
+  "automatic_reload_enabled": false,
+  "visible_profile_matches_prior_verified_account": true,
+  "current_org_clipboard": "UNAVAILABLE: browser clipboard returned empty; not claimed freshly verified",
+  "native_organization_check": "matches previously verified organization"
+}

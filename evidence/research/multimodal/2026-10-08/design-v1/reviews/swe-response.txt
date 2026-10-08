@@ -1,0 +1,31 @@
+# 引継ぎ判定
+
+**条件付き引継ぎ可能（設計完成度としての判定）。** ホスト権限・原子的保存・manifest経由の参照停止・dedupeの骨格は現行 `Store`/`Runtime` の機構と整合しており、構造的な作り直しは不要。ただし、実装を誤ると確実に壊れる仕様穴が2件残っている。一文ずつの追記で解消可能。
+
+実行資格（実Qwen品質・音声実機能・端末再生・速度）は引き続き全件 NOT_RUN であり、本判定とは別軸。設計引継ぎ可でも製品PASSには一切寄与しない。
+
+## ブロッカー
+
+**B1. §5「入力の状態とキー」— client_key予約の物理配置が未定義**
+
+現行 `dedupe` テーブルはkey一意であり、`finish_primary`→`_remember` は `INSERT INTO dedupe VALUES (?, 'primary', ...)` を実行する（store.py:245, 1240）。予約を dedupe 行（kind='media'等）として作ると、admit 後の finish で主キー衝突し、**全メディア入力が pending のまま永遠に終了不能**になる。逆に予約を media_inputs のみに置き、検査を `prepare_primary` だけに追加すると、`ingress`（制御操作）経路での同キー横取りが防げず「別のtext/制御操作による横取りを拒否」に違反する。
+
+最小修正（同節へ3文）: 「予約は media_inputs.client_key に置き、dedupe行にはしない。`_dedupe` は media_inputs を参照し、media系以外のkindで同キーを検出したら Conflict（record/note/ingress/prepare_primary の全経路をカバー）。`admit_media` のみが同一トランザクション内で MediaInput→admitted・user Record・primary_turns を作成し、dedupe の 'primary' 行は finish_primary だけが書く」
+
+**B2. §5 同上 — primary_turns.request_hash に格納する値が未指定**
+
+`prepare_primary` は `request_hash == sha256(sanitize(text))` なら保存済み outcome をそのまま返す（store.py:1100-1105）。admit 時に平文 digest を格納すると、同キー＋同じ認識文テキストでの `POST /api/message` が media turn の outcome を取得でき、チャネル混同＝横取り拒否の実質破壊になる。
+
+最小修正： 「primary_turns.request_hash には MediaInput の合成入力hash（sanitize済み文＋asset hash＋source＋region）をそのまま格納し、`sha256(sanitize(content))` と同一になりえないことを保証する」を追記。
+
+## 重要な非ブロッキング実装ノート
+
+1. **§5 JSON受付**: Python の `json.loads` はキー重複を黙って後勝ちする。「キー重複拒否」には `primary.py` の `_object` 相当の `object_pairs_hook` が必須。
+2. **§5 選択画像の経路**: `/api/message` には `image_source_id` 欄がない。「選択画像付きの文字入力は kind=image_ref（region=null）で `/api/media-input` に送る」と明記しないと、テキストAPI拡張という誤実装を招く。
+3. **§4 MediaAsset**: 同一bytesの二入力（MM-S11）は権限を共有しないが、BLOB物理保管をhash dedupeするか未指定。最も単純にはasset行ごとに複製保管；dedupeする場合もasset行と権限は独立に。
+4. **§5 CAS**: 各claim/取消しは「期待状態でのUPDATE件数==1」を確認する形に（SQLiteはwriter直列化されるため、負けた側は0件で検出可能）。「一度だけ」の実装方法を明記。
+5. **§6**: ASR結果は `operation_id` のみechoするため、「元バイト列の一致」の具体化として、送出時に記録したasset hashとの照合をホスト側手順として明記。`pal-mm-v1` の `request_id` もadapter応答にechoさせstale判定に使う。
+6. **§7 完了通知のTTS**: `_usable([response_id])` は response_id が manifest 付き Record である前提。現行の完了通知が Record でない場合ゲート不能。実装前に完了通知の表現を確認し、manifest 付き assistant Record か同等の依存情報に統一する。
+7. **§7 区間失敗**: 「60秒超区間はその区間を失敗」だが、残区間を続行するか当該再生全体をfailedにするか未指定。固定する（例：その区間で当該 playback を failed 終了）。
+8. **§8 画像検査**: ピクセル上限はヘッダ申告ではなく実デコード結果で判定。decompression bomb は段階decode/decoder側制限で防ぐ。
+9. **§8 枠枯渇**: 「終了を確認できない処理枠は再利用しない」に加え、枠枯渇時の新規入力は `

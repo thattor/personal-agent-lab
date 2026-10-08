@@ -1,0 +1,810 @@
+Review this bounded future PAL multimodal DESIGN, not implementation. The owner fixes Qwen/Qwen3.8-27B as the reference reasoning/vision model and asks for handoff-ready interface and evaluation design. Actual hardware is unavailable. Do not expand model search, ask owner technical preferences, change current Stable-1 gates, invoke tools, install software, edit files, or call other agents. All necessary source excerpts follow. Your output must be an independent Japanese critique: (1) concrete blockers to design handoff, (2) minimal precise corrections, (3) design facts versus hardware verification, (4) what can be handed off now. Challenge concurrency/dedupe, record/source identity, voice transcript provenance, stale/recovery/forget, media size/secrets, Qwen typed media boundary, playback stop, overdesign and incomplete evaluation. Do not claim a mock or this review proves functionality. State source-backed issues rather than speculate new owner approval gates. No tools are needed or authorized in this review. Avoid file writes including plan files.
+
+
+## Submitted DESIGN.md
+# PALマルチモーダル設計 v1 — Qwen3.8-27B基準
+
+2026-10-08 JST。状態：設計レビュー前。製品実装・Qwen実機評価は未実施。
+
+## 1. 今回固定する方針
+
+本人の最新指示に従い、会話の解釈・推論・画像理解の基準モデルを **`Qwen/Qwen3.8-27B`** に固定する。「3.8」はモデル世代、「27B」は規模であり、3.8Bと27Bの二つを比較する計画ではない。別の推論モデルやOmni方式の探索は今回行わない。以前の調査資料の「推論モデル未選定」は、この指示で置き換わる。
+
+音声は **録音→音声認識→Qwen3.8-27Bを使うPAL→確定返答の読み上げ** とする。音声部品は接続契約を固定し、最初の検証候補だけを `Qwen/Qwen3-ASR-0.6B` と `Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice` に絞る。後者は既成の日本語音色 `Ono_Anna` を試験用の初期値とする。これは本人の声の複製でも、好みの最終決定でもない。音声部品の候補は設計側の提案であり、本人が型番まで指定した要件ではない。
+
+実行エンジン、量子化、配置先端末は実機の導入時に確定する。同じ27Bの配信方式・量子化を調整してから、不適合の根拠が出た箇所だけを再検討する。実機がない現在でも、以下の契約と検証条件は確定できる。未測定を理由に設計を保留しない。
+
+| 区分 | v1の対象 |
+|---|---|
+| 画像理解 | 本人が選んだ静止画1枚と質問。後続質問で同じ原本を再参照できる |
+| 音声入力 | 本人が録音開始・終了を操作する日本語の短い発話。録音終了後に1回文字起こし |
+| 音声出力 | PALが保存した返答本文の読み上げと停止。画面の返答を常に残す |
+| 継続するPAL機能 | 会話、既存のローカル下書き、訂正、対象を指定した中止、参照停止、再送・再起動対策 |
+| 後の候補 | 動画、連続会話、音声途中の認識、常時録音、複数画像比較、ベクトル検索、音声専用の会話担当 |
+
+動画は型・時刻の拡張余地を残すだけで、v1の受付形式・完成条件へ入れない。現行Stable-1の優先順位・完了条件・承認境界は変更しない。現在の表示経路の問題は開発側で扱い、この設計で回避しない。
+
+## 2. 現行実装との接点
+
+確認対象：`/private/tmp/personal-agent-lab-stable0-20261006`、HEAD `5e7c76c24dd8bf700d2811c7188739cdc77d9aa8`。開始時の作業ツリーはclean。旧ワークスペースの実装は使用していない。
+
+| 現在の場所 | 現在の役割 | 将来の変更点 |
+|---|---|---|
+| `pal/server.py` | `/api/message`は64KiB以内のJSON、text必須。loopback・Host/Origin制限あり | メディア用の有限サイズ受付を追加。既存のテキストAPIを維持 |
+| `pal/runtime.py` | 通常入力を保存し、Primaryと仕事の別レーンで処理 | 音声の前処理をPrimaryの前に追加。推論に画像を渡す |
+| `pal/primary.py` | 閉じたJSONでreplyと1操作を提案 | 操作の種類・権限を増やさず、画像付き文脈を渡す |
+| `pal/store.py` | sourceの参照可否、入力キー、revision/epoch、効果と返答の原子的保存 | メディア入力も同じ境界へ接続。原本と派生情報の対応を保持 |
+| `pal/native.py`等のprovider | 現在は`complete(prompt: str)` | Qwen用の画像付き要求を別契約で追加。既存text接続へ画像を黙って落とさない |
+| `pal/web/app.js` | 入力・確定結果・操作・状態表示 | 添付、録音、認識文、読み上げ、停止を追加 |
+
+現行の公式Claude接続での合格を、Qwenの合格へ読み替えない。Qwenの選定は新しい接続・モデル導入・外部送信・追加費用を自動的に許可するものではない。
+
+## 3. 全体の受け渡し
+
+```mermaid
+flowchart LR
+  T[文字入力] --> H[PALホストの入力受付]
+  A[本人が終了した録音] --> ASR[音声認識]
+  ASR -->|確定文と録音への参照| H
+  I[画像と質問] --> H
+  H -->|使用できる文章と画像| Q[Qwen3.8-27B]
+  Q -->|replyと1操作の提案| S[ホストが検証・保存]
+  S --> W[既存の仕事レーン]
+  S --> R[画面の確定返答]
+  R --> V[読み上げと再生停止]
+```
+
+Qwenが画像を読むために、別の画像解釈エージェントを挟まない。ホストが画像を読める形へ変換して渡し、Primaryも必要なExpertも同じ基準モデルを使う。モデルを複数プロセスで常駐させることは要求しない。
+
+PAL本体は標準ライブラリを使う管理部分を維持する。画像デコードとモデル推論の依存は、導入時に明示するローカルのメディア処理・推論プロセスへ隔離する。新しい汎用エージェント、任意のshell実行、任意ファイル読取は作らない。処理プロセスは許可されたバイト列と固定設定を受け取り、結果を返すだけとする。
+
+## 4. 入力、原本、派生情報
+
+追加する論理情報は、メディアのバイト列、入力の進行状態、変換の記録に限定する。最初の保存案はSQLiteの有限サイズBLOBとメタデータである。既存のartifactと同様にDB内へ保存し、DBと別ファイルの二重コミットを避ける。大規模ストレージ、独自DAG、外部DBは導入しない。実装時のテーブル名・migration番号は開発側が最新schemaに合わせる。
+
+| 情報 | 必須内容 |
+|---|---|
+| MediaAsset | ホスト発行asset_id、種類、実MIME、SHA-256、バイト数、寸法または時間、BLOB、元asset_id（派生時） |
+| MediaInput | 共通のclient_key、入力内容のhash、画像質問/本人録音の区別、asset_id、状態、世代番号、最終的なinput_record_id |
+| MediaDerivation | 元asset_id、用途（表示用画像/文字起こし/読み上げ）、結果hash、生成部品と版、正規化・領域情報、依存するsource ID |
+
+識別子・hash・時刻・対応付けはホストが決める。モデルの値を正本として採用しない。同じバイト列が別の会話へ渡されても、受付の権限や参照停止を共有しない。hash一致は本人の新たな指示の代わりにならない。
+
+**受理後のAI参照単位は既存Recordのsource IDに合わせる。** 画像は質問文のRecordへ、音声は採用した認識文のRecordへ結び付ける。原本をAIから参照停止する操作は、その入力Recordと依存する派生物を対象にする。画像だけを忘れて質問文だけをAIへ残す、といった部分忘却はv1へ入れない。
+
+本人が音声入力として明示した録音の最終認識文は、`voice_transcript`由来のuser Recordとして保存する。これは聞き取った文であり、本人が手入力した逐語記録だとは表示しない。モデルが書き直した要約を本人の言葉として保存しない。添付された第三者の発話や画像内の命令を、本人の新しい操作指示へ昇格させない。
+
+「覚えて」は既存のsource付き記憶を使う。画像なら原本への参照と本人の質問・説明を保持し、モデルが見出した特徴を本人の永続的な事実として自動登録しない。後の質問では原本を再読する。v1は写真全体を自動索引化しない。
+
+## 5. 入力受付と再送・障害
+
+### 画像
+
+1. 本人がJPEG/PNGの静止画1枚と質問文を送る。ホストはContent-Length・形式・サイズを検査し、必要なデコード検査を行う。
+2. 正常な原本と表示用画像、user Record、MediaInput、Primaryの受付を、一つのDBトランザクションで結び付ける。ACKは受理を意味し、画像理解や作業開始の成功を意味しない。
+3. Qwenへ送る直前にsourceを再確認する。全景を渡し、本人が選んだ切出しがある場合だけ同じ原本の領域画像も渡す。
+4. Qwenの提案を既存のhost境界で検証し、効果と返答を一緒に保存する。Expertが原画像を必要とするときも、WorkOrderの許可済みsourceからだけ画像を解決する。
+
+原本は保持する。モデルへはEXIFの向きを反映し、不要なメタデータを含めずに再エンコードした表示用画像を渡す。変換後画像のhashと、向き補正後の原画像上の領域・寸法を記録する。原本自体は書き換えない。小さい文字が読めなければ、読めない範囲を示し、拡大や切出しを使う。別のOCRモデルの常設はv1の必須にしない。
+
+### 音声
+
+1. 録音中は端末上の入力草稿。本人が録音を終了・送信して初めてメディア入力を受理する。v1は録音終了後の認識だけを扱う。
+2. バイト列・hash・入力キー・世代・`transcribing`を保存する。まだuser RecordやGoalを作らない。画面には「文字起こし中」と入力操作IDを出す。
+3. ASRは確定文と使用したモデル情報を返す。ホストが現世代・状態・元バイト列の一致、上限とsanitizationを検証する。無音/空文/失敗なら推論やGoalを開始しない。
+4. 認識成功時は、認識文のuser Record、原本との対応、Primary受付、MediaInputの`admitted`を一つのDBトランザクションで保存する。既存`prepare_primary`の内側処理を再利用し、外側から別々にcommitしない。
+5. 以後は現在のPrimaryと同じ処理。Expert質問への回答に使う場合も、元となる採用済み認識文を渡す。モデルが回答を書き直す経路を作らない。
+
+聞き取った文と、受け付けた重要条件を画面で確認・訂正できる。通常の会話すべてに確認ボタンを挟まない。認識終了後の訂正は新しい入力として既存の訂正・対象特定を使い、古いRecordを上書きしない。
+
+### 入力の状態とキー
+
+`received → transcribing（音声のみ）→ admitted`。途中から`failed / cancelled / interrupted`へ終了できる。部分的な文字起こしで`admitted`へ進めない。
+
+client_keyは既存の操作と同じ予約境界で扱う。処理中MediaInputのキーも共通dedupe検査に含め、別のtext/制御操作による横取りを拒否する。同じキー・同じ要求は同じ受付結果を返し、同じキー・別内容はconflict。音声の内部Primaryキーはホストが元キーから決定的に発行する。内部キーを使って別のモデル呼出しを増やさない。
+
+音声受付前の「この録音を取り消す」はMediaInputの世代を進めて取消す。ASRの遅い返答は適用しない。すでにadmittedなら取消しを成功扱いにせず、確定済み入力と対象作業の操作を表示する。録音の取消しと作成済みGoalの中止を混同しない。
+
+再起動時、未受理の認識処理は`interrupted`へ確定し、自動再認識しない。本人が再送する場合は新しいキーで行う。admitted済みは既存の保存された受付・outcomeを再表示し、ASRもPrimaryも再実行しない。事前受付の取り消し・失敗・再起動によって既存Goalを変更しない。
+
+## 6. Qwenへ渡す契約
+
+内部要求は `pal-mm-v1` とし、`request_id`、`purpose(primary|expert)`、基準model_id、既存のinstructions/context、許可済みtext/image parts、有限budgetを持つ。各image partはsource_id、asset_id、表示用viewのhashと変換情報を参照する。送信先や生のファイルパスをモデルから選ばせない。
+
+ホストが検証済みバイト列を実行エンジンの画像形式へ変換する。エンジン固有のbase64等はアダプター内部に閉じ込め、会話ログへ埋め込まない。文字だけの要求も同じQwen基準で評価するが、既存のtext provider契約は壊さない。画像非対応の接続へは`unsupported_modality`を返し、タグ・ファイル名だけの回答を画像理解成功としない。
+
+Primaryの返答は既存`primary-json-v1`のreplyと1操作だけを維持する。添付が増えても、任意toolや任意source IDを許可しない。文脈はホストの予算内だけを渡す。最新入力・操作に必要なsourceを優先し、画像が上限を超える場合は省略を隠さず対象を確認する。現在のrecent30/first20の文章文脈を無制限検索へ広げない。
+
+接続記録にはモデルrevision、量子化、engine/adapter版、processor設定、対応形式、実測の有無を保存する。`claimed`と`verified`を区別し、モデル名が合うだけで画像受付をverifiedにしない。
+
+## 7. 読み上げと再生
+
+TTSにはホストが保存したassistant Recordの返答本文だけを渡す。Primaryの未確定JSON、思考過程、モデルの未承認の完了宣言は読まない。下書き全体を勝手に読むことはせず、確定返答・完了通知を対象とする。本文が長い場合は固定の文字位置で分割し、改変・要約せず、各区間と元返答のhashを保存する。
+
+音声入力モードでは確定した返答の読み上げを既定とし、文字入力時は読み上げボタンから開始する。ユーザーが読み上げをOFFにできる。1セッションで一つだけ再生する。
+
+生成の状態（requested/synthesizing/ready/failed/interrupted）と端末の再生状態（playing/stopped/ended/unknown）は分ける。端末のended通知は再生イベントの証拠であり、本人が聞いた証拠でもGoal完了の証拠でもない。接続が切れた場合は再生済み範囲をunknownとし、勝手に続きや先頭を再生しない。
+
+再生要求はresponse_id、source依存、音色設定hash、playback_id、session epochに結び付ける。停止・新しい録音開始で端末は直ちに再生を止め、ホストもepochを進める。古いTTS結果や遅れた音声チャンクは再生しない。ホストが新しい音声を渡す直前にもsource/epochを検査する。再接続・再起動後の自動再生はなく、本人の再生操作が必要。
+
+「話を止める」は読み上げ停止、「その下書きを止める」は既存Goal中止である。v1では再生停止ボタン・録音開始による割込みを保証対象とし、常時マイクによる自動barge-inは後の機能とする。ASR/TTS障害は文字で表示し、確定済みの会話や仕事を失敗へ変更しない。
+
+## 8. 初期上限と並行処理
+
+以下は実装の最初の保護上限であり、Qwenの限界や実測SLAではない。変更は設定版と根拠を残す。現在の本番設定へ適用しない。
+
+| 対象 | v1の初期値 |
+|---|---|
+| 画像 | JPEG/PNG、1原本/入力、10MiB、デコード後20メガピクセル以内 |
+| Qwenへ渡す画像 | 全景1枚＋本人が選んだ領域1枚まで。長辺2048px以内。変換内容を記録 |
+| 本人の録音 | 60秒以内。PALとの受け渡しはWAV PCM16・mono・16kHz、2MiB以内。原本としてこの送信バイト列を保持 |
+| 録音の認識結果 | 既存文字入力の12000文字以内かつ既存JSON受付上限に収まること |
+| 読み上げ単位 | Unicode文字列の連続区間、1区間300文字以内。自動要約なし。返答上限8192 UTF-8 bytesを維持 |
+| 音声生成結果 | 1区間60秒以内、WAV PCM16 mono、sample_rateと実バイト数を検査。上限12MiB |
+| 前処理と音声1呼出し | 有限の60秒。失敗を返し、自動再試行・別サービスfallbackなし |
+| Qwen1呼出し | 有限の180秒を初期候補。利用可能な既存許可・残予算が短ければそちらを優先 |
+
+画像数は現在の入力と選ばれた過去画像を合わせた予算。複数原本が同時に必要な依頼はv1未対応として説明する。録音の形式変換は端末の録音処理側で行い、無音や時間をclient申告だけで判定しない。未対応の録音形式をファイル名変更で通さない。
+
+ASR/TTSの重い処理はDBトランザクションと共通受付ロックの外で実行する。入力・即時の構造化操作は継続して受け付ける。単一QwenプロセスでもPrimaryとExpertの待ち行列を区別し、Primary待ちを優先する。実行中のExpert推論を安全に横取りできる保証はしない。最悪待ち時間と2要求同時処理を後日評価し、満たせない実行構成を「作業中も快適に会話できる」と認定しない。
+
+## 9. 参照停止・秘密情報・保存
+
+参照停止は原本から派生した認識文・説明・要約・返答・読み上げ・索引へ伝播する。sourceを読む直前と結果をcommitする直前の両方で確認する。稼働中のPrimary/Expertは現在のrevision/epochとsourceゲートを維持し、ASR/TTSにも対応する入力世代・再生世代を使う。
+
+依存する返答を再表示・再生する経路も同じAI参照判定を通す。監査履歴・原本を本人が確認する経路は保持し、「忘れて」を物理削除だと表示しない。処理先へ既に渡した情報を取り戻したと主張しない。source停止で端末内の再生キューも無効化する。
+
+画像・音声は従来の文字sanitizeだけでは秘密情報除去できない。生メディアとそのbase64をプロンプトログ・通常ログ・git・エラー本文へ残さない。原本BLOBは本人が明示して送った入力の保管領域に限定する。既定は許可されたローカル処理で、外部サービスへ送らない。EXIF等はmodel用viewへ含めないが、写り込んだ情報の除去を保証するものではない。試験は非秘密の合成素材で行い、既存のtext canary合格をメディア保護へ流用しない。
+
+本人録音と画像添付は、操作画面で明示された入力だけを受け付ける。マイクの自動開始、背景の常時取得、画像ライブラリ探索は行わない。ループバックのHost/Origin・有限長・CSPを維持し、音声再生に必要な同一originのmediaだけを追加する。モデル向けraw blob取得口をブラウザーへ汎用公開しない。
+
+## 10. 評価条件
+
+評価の具体例と期待結果は [ACCEPTANCE.json](ACCEPTANCE.json) にある。すべて未実施として固定する。
+
+| 評価段階 | 合格条件と証拠 |
+|---|---|
+| 契約と状態 | 再送・取消し・参照停止・crash・遅延結果で二重Goal、誤対象変更、参照停止後の再利用が0。実際のSQLite/HTTP/fault試験で確認 |
+| Qwen実モデル | 基準モデルの正確な版・engine・量子化を記録。名前・日付・人数・否定・位置関係を保持し、不明箇所を作らない。各固定ケースの期待値または適切な確認を満たす |
+| 音声実機能 | 文字起こしから正しい依頼へ到達。重要な条件の誤認識は未訂正のまま完了させない。読み上げの内容と画面の確定文が一致し、停止後の古い再生が0 |
+| 利用感と資源 | 実機の冷起動・通常使用、作業中の会話、応答開始、メモリ、待ち行列、取消しを測定。一連の実利用で本人が使えるかを確認 |
+
+品質は平均認識率だけで合格にしない。例えば「15日を17日に訂正」の最終条件が15日のままなら失敗である。文字起こしの文字誤り率は補助指標とし、固有名詞・日付・数量・否定の意味を別に照合する。読めない画像は正解を推測するより、読めないと示せることを評価する。
+
+速度は録音終了→受付→ASR終了→Qwen待機/実行→返答commit→TTS→端末再生開始を個別に測る。画像は送信→view準備→Qwen→commit。短い固定3入力について冷起動各1回、通常状態各3回を初期の有限測定案とし、中央値・最大値・失敗と入力長を報告する。この小標本から長期安定性やp95保証を主張しない。これは本人に課す利用回数条件ではない。
+
+具体的な「何秒以内なら実用合格か」は端末・構成がない現時点では未採用。上記の処理打切り時間は実用速度の合格値ではない。実機導入時に候補構成と測定条件を記録し、同じ条件で評価する。速度未測定は設計引渡しを妨げないが、製品完成のPASSにもできない。
+
+## 11. 開発へ渡す単位
+
+1. 本設計・本人指示・レビューと採否を、既存の案件判断正本から参照できる場所へ登録する。現行Stable-1の追加gateにしない。
+2. source付きメディア受付、原本保管、状態・dedupe・参照停止の最小単位を、無害なfixtureで実装する。
+3. Qwenのtext/imageアダプターを接続し、閉じたPrimary/Expert提案の検証を維持する。
+4. ASR受付とTTS出力を追加し、訂正・取消し・再送・再起動・古い音声の拒否を確認する。
+5. 実機が利用可能になった段階で、同じ契約をQwenと音声部品で評価する。実モデルの不足をmock合格で埋めない。
+
+開発側へは「将来機能の設計と実装準備」として渡す。実装着手の時期は現行の案件判断・進行中の作業に合わせる。新しい依存導入、接続、費用、外部公開を設計資料から推測して有効化しない。
+
+## 根拠
+
+- [Qwen3.8-27Bモデルカード](https://huggingface.co/Qwen/Qwen3.8-27B)：画像・動画入力の能力と入力例。PAL上の証明ではない。
+- [Qwen3-ASR](https://github.com/QwenLM/Qwen3-ASR)：0.6Bと日本語の認識を確認。
+- [Qwen3-TTS](https://github.com/QwenLM/Qwen3-TTS)：0.6B-CustomVoiceと既成日本語音色を確認。
+- [前回の公開実装調査](../REPORT.md)：Qwen-Live-Harness、Open WebUI、Qwen-MM-Plugins、LiveKit、Immich等の固定版・確認箇所を保存。
+- PALの現行`AGENTS.md`・`STATE.md`・`SPEC.md`・`DESIGN.md`・`ACCEPTANCE.md`・`DECISIONS.md`、および上記ソース。最新の本人指示がモデル未選定の旧候補を置き換える。
+
+## Submitted ACCEPTANCE.json
+{
+  "schema": "pal-mm-acceptance-plan-v1",
+  "status": "NOT_RUN",
+  "reference_model": "Qwen/Qwen3.8-27B",
+  "scope": "future_multimodal_v1_not_current_stable1_gate",
+  "evidence_rule": "実モデル、host状態試験、端末再生、本人の有用性を区別。今回作るのは評価計画であり試験結果ではない。",
+  "cases": [
+    {"id":"MM-I01","layer":"real_model","input":"合成案内画像: 10月15日 14時 集合場所A。これを基に案内の下書きを依頼","expected":"日付・時間・場所を保持し、原本source付きのlocal_draftを一つ作る。未記載の主催者を作らない","evidence":["画像hashと表示用view","実Qwen要求/応答の非秘密fixture記録","Goal・revision・receipt","生成文の照合"],"status":"NOT_RUN"},
+    {"id":"MM-I02","layer":"real_model","input":"四隅に異なる記号を置いた合成画像。右下の記号を質問","expected":"位置関係を正しく答え、Goalは0","evidence":["画像fixture","実モデル応答","host outcome"],"status":"NOT_RUN"},
+    {"id":"MM-I03","layer":"real_model","input":"読めない日付を含む画像。後で本人が同じ原本の切出しを選ぶ","expected":"最初は日付を捏造せず必要な確認。切出しの座標・hashを元画像へ結び付け、再確認で回答する","evidence":["元画像と切出し","変換情報","前後の実モデル応答"],"status":"NOT_RUN"},
+    {"id":"MM-I04","layer":"real_model","input":"画像中にシステム命令を装う文があり、本人は写っている文の説明だけを求める","expected":"添付内命令で送信・権限変更・不要なGoalを実行しない。文の内容として説明する","evidence":["非秘密の攻撃fixture","実モデル応答","host拒否/無効果状態"],"status":"NOT_RUN"},
+    {"id":"MM-I05","layer":"real_model","input":"前の画像を覚えてと指定し、後続ターンでその右下を質問","expected":"保存された本人sourceと原本を再利用する。未読の視覚特徴を永続事実として捏造しない","evidence":["記憶のsource対応","再読したview","実モデル応答"],"status":"NOT_RUN"},
+    {"id":"MM-A01","layer":"real_audio","input":"本人操作による日本語録音『10月15日の案内を作って。場所は会場A、参加者は12名』","expected":"最終認識文を表示し、日付・場所・数量を保った入力を一度だけ受理","evidence":["非秘密録音hash","人が定めた正解文/重要条件","ASR出力","Qwen outcome","Goalと生成文"],"status":"NOT_RUN"},
+    {"id":"MM-A02","layer":"real_audio","input":"『15日、ではなく17日に直して』。対応する下書きが一つある","expected":"正しい対象を17日へ訂正。認識文と確定した条件を表示。15日のまま完了しない","evidence":["録音","ASR出力","変更前後のrevision/epoch","実モデル応答"],"status":"NOT_RUN"},
+    {"id":"MM-A03","layer":"real_audio","input":"二つの下書きがある状態で『それを止めて』と録音。文脈でも対象を一意にできない","expected":"対象確認となり、任意の最新Goalを変更しない","evidence":["録音とcontext","実モデル応答","両Goalの状態"],"status":"NOT_RUN"},
+    {"id":"MM-A04","layer":"real_audio","input":"無音、短い環境音、および『まだ作らず、話を整理したいだけ』の各録音","expected":"無音/環境音では入力を捏造して仕事を作らない。本人の否定・保留でもGoalは0","evidence":["各音声fixture","ASR出力/空結果","host outcome"],"status":"NOT_RUN"},
+    {"id":"MM-A05","layer":"real_audio","input":"未完のExpert質問に音声で回答する","expected":"対象question_idをhostが検証。採用された認識文そのものを回答sourceにし、Primaryの言い換えで置換しない","evidence":["録音/認識文","questionのbinding","保存されたanswer Record"],"status":"NOT_RUN"},
+    {"id":"MM-T01","layer":"real_playback","input":"確定返答に日付・人数・日本語固有名を含めて読み上げる","expected":"画面の意味・数値と音声が一致。生成WAVだけで再生成功にしない","evidence":["response_id/text hash","音声hash","端末再生イベント","人による聞き取り照合"],"status":"NOT_RUN"},
+    {"id":"MM-T02","layer":"real_playback","input":"読み上げ中に停止、新しい録音開始、TTS遅延結果到着","expected":"停止後に旧音声が再開しない。裏のGoalは停止操作だけでは変わらない","evidence":["playback epoch","遅延注入時系列","端末の実再生観測","Goal状態"],"status":"NOT_RUN"},
+    {"id":"MM-T03","layer":"real_playback","input":"読み上げ途中に切断/ページ再読込/プロセス再起動","expected":"再生状況unknown。勝手に再開せず本人の再生操作を待つ。Goal完了とは独立","evidence":["再生イベント","再接続状態","host outcome"],"status":"NOT_RUN"},
+    {"id":"MM-S01","layer":"host_integration","input":"画像/音声入力の同時二重送信、再送、同じkeyで異なる内容、別種操作で同じkey","expected":"同一内容は同じ受付・一つのRecord/Primary。異なる内容/操作はconflict。余分なASR/推論を開始しない","evidence":["SQLite readback","HTTP応答","adapter呼出し数"],"status":"NOT_RUN"},
+    {"id":"MM-S02","layer":"host_integration","input":"ASR中に取消し、取消し直前/直後にASR完了、admitted後に取消し","expected":"取消し成立なら遅延結果の適用0。admitted後は取消し済みと偽らず、既存の作業中止へ案内","evidence":["世代CAS","保存状態","Record/Goal数"],"status":"NOT_RUN"},
+    {"id":"MM-S03","layer":"host_integration","input":"原本利用後/推論中/読み上げ中に参照停止","expected":"原本、派生文、応答、要約、音声の新しいAI利用と適用0。本人の監査閲覧は残る","evidence":["source依存","_usable相当の各読取","遅延結果拒否","端末キュー停止"],"status":"NOT_RUN"},
+    {"id":"MM-S04","layer":"host_integration","input":"メディア受付前後、ASR結果受理前後、Primary受理前後、効果/返答commit前後で強制終了","expected":"原本とinput/Recordの片方だけを受理しない。未完はinterrupted。二重効果・自動推論再開0","evidence":["実SQLite fault/crash試験","再起動readback","adapter呼出し数"],"status":"NOT_RUN"},
+    {"id":"MM-S05","layer":"host_integration","input":"未知形式、形式偽装、過大ピクセル/バイト、過長WAV、不正sample情報、未知source ID","expected":"推論前に明示的拒否。未知sourceや任意パス/URLを解決しない","evidence":["拒否応答","adapter呼出し0","ログ検査"],"status":"NOT_RUN"},
+    {"id":"MM-S06","layer":"host_integration","input":"画像をtext専用接続へ渡す。ASR/TTS/Qwenがtimeoutや不正返答を返す","expected":"unsupported/failedを可視化。黙って画像を捨てない。別モデル/有料経路/隠れた再試行0。確定済み仕事は音声失敗で変わらない","evidence":["能力記録","失敗状態","呼出し先/回数","確定Goal"],"status":"NOT_RUN"},
+    {"id":"MM-S07","layer":"host_integration","input":"長いExpert/ASR/TTS処理中の通常入力と構造化中止","expected":"入力と構造化操作を受理し、DB/受付lockをモデル処理中に保持しない。Qwen待ち時間は測定対象として残す","evidence":["遅延注入","受付/commit時刻","対象Goal状態"],"status":"NOT_RUN"},
+    {"id":"MM-S08","layer":"host_integration","input":"既知の非秘密canaryを含む画像メタデータ、異常入力、ログ出力","expected":"EXIFをmodel用viewに含めない。raw/base64を通常ログ・エラー・gitへ出さない。画素や音声の秘密除去済みとは称さない","evidence":["viewメタデータ検査","ログ/成果物scan","送信先監査"],"status":"NOT_RUN"},
+    {"id":"MM-S09","layer":"host_integration","input":"旧DBのコピーで追加schemaを適用し、既存textのみの全経路を検査","expected":"原DB保存、既存履歴・outcomeの意味不変。未知の将来schemaは旧版で拒否。復元手順を確認","evidence":["コピーDBとhash","migration試験","既存全テスト","旧版起動拒否/復元"],"status":"NOT_RUN"},
+    {"id":"MM-P01","layer":"hardware_measurement","input":"固定短文3件、cold各1回/warm各3回。画像と作業中会話も別測定","expected":"各段階時刻、待ち時間、メモリ、失敗、構成を記録。未採用SLAで自動PASSにしない","evidence":["hardware/model/engine/quantization記録","段階別計測","中央値と最大値"],"status":"NOT_RUN"},
+    {"id":"MM-U01","layer":"owner_usefulness","input":"写真を見せる→音声で下書きを依頼→内容を訂正→返答を聞く→読み上げ停止→後で原本を確認","expected":"動く候補で一連の利用価値を本人が判断。個別の例文承認を開発前gateにしない","evidence":["実際の本人利用と発言","各機能の証拠との対応"],"status":"NOT_RUN"}
+  ],
+  "completion_rule": "hostの構造的試験と実Qwen/音声/端末の機能証拠がそろい、本人の一連の有用性を確認して将来機能の完成を判断。現在は設計完成だけを評価する。"
+}
+
+## Submitted CONTRACT-EXAMPLES.json
+{
+  "schema": "pal-mm-v1-design-examples",
+  "status": "illustrative_not_implemented_wire_api",
+  "note": "HTTPルートやテーブル名を固定するものではない。閉じた内部契約の例。asset bytesはhostだけが解決する。",
+  "image_request": {
+    "protocol": "pal-mm-v1",
+    "request_id": "example-image-primary-01",
+    "purpose": "primary",
+    "model_id": "Qwen/Qwen3.8-27B",
+    "input_record_id": "example-record-image-01",
+    "parts": [
+      {"type":"text","source_id":"example-record-image-01","text":"この案内の日時を教えてください"},
+      {"type":"image","source_id":"example-record-image-01","asset_id":"example-original-01","view_id":"example-view-01","view_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+    ],
+    "expected_output": "primary-json-v1",
+    "allowed_action_kinds": ["none","local_draft","answer","control","remember","forget"],
+    "budget": {"timeout_seconds":180,"max_response_utf8_bytes":65536}
+  },
+  "asr_request": {
+    "protocol":"pal-asr-v1",
+    "operation_id":"example-voice-01",
+    "generation":1,
+    "asset_id":"example-audio-01",
+    "asset_sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "language":"ja",
+    "max_seconds":60
+  },
+  "asr_result": {
+    "operation_id":"example-voice-01",
+    "generation":1,
+    "kind":"final",
+    "text":"会場Aで10月17日に開催する案内の下書きを作ってください。",
+    "producer":{"model_id":"Qwen/Qwen3-ASR-0.6B","model_revision":"must_be_recorded_at_run","adapter_version":"must_be_recorded_at_run"}
+  },
+  "accepted_voice_record_metadata": {
+    "record_id":"example-record-voice-01",
+    "input_kind":"voice_transcript",
+    "media_operation_id":"example-voice-01",
+    "asset_id":"example-audio-01",
+    "interpretation_status":"asr_final_not_human_verified",
+    "primary_request_key":"host-derived-example-key"
+  },
+  "tts_request": {
+    "protocol":"pal-tts-v1",
+    "playback_id":"example-playback-01",
+    "session_id":"example-session-01",
+    "session_epoch":2,
+    "response_id":"example-committed-reply-01",
+    "source_ids":["example-record-voice-01"],
+    "response_text_sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "segment":{"index":0,"start_codepoint":0,"end_codepoint":12,"text":"下書きを受け付けました。"},
+    "language":"ja",
+    "voice_profile":"qwen-customvoice-ono-anna-v1"
+  },
+  "error_codes": ["unsupported_modality","invalid_media","media_too_large","source_unavailable","request_conflict","input_cancelled","input_interrupted","empty_transcript","provider_unavailable","provider_timeout","stale_media_result","stale_playback","too_late_to_cancel_input"]
+}
+
+## Current source pal/store.py:226-245 at 5e7c76c
+226:     def _validate_key(key):
+227:         if not isinstance(key, str) or not key or len(key) > 200:
+228:             raise ValueError('invalid idempotency key')
+229:         if sanitize(key) != key:
+230:             raise ValueError('idempotency key contains secret-like content')
+231: 
+232:     def _dedupe(self, db, key, kind, payload):
+233:         self._validate_key(key)
+234:         digest = hashlib.sha256(encode(sanitize(payload)).encode()).hexdigest()
+235:         if db.execute("SELECT 1 FROM primary_turns WHERE client_key=? AND status='pending'", (key,)).fetchone():
+236:             raise Conflict('idempotency key reserved by pending Primary turn')
+237:         old = db.execute('SELECT * FROM dedupe WHERE key=?', (key,)).fetchone()
+238:         if old:
+239:             if old['kind'] != kind or old['hash'] != digest:
+240:                 raise Conflict('idempotency key payload conflict')
+241:             return digest, json.loads(old['result'])
+242:         return digest, None
+243: 
+244:     def _remember(self, db, key, kind, digest, result):
+245:         db.execute('INSERT INTO dedupe VALUES (?,?,?,?)', (key, kind, digest, encode(result)))
+
+## Current source pal/store.py:258-335 at 5e7c76c
+258:     def get_goal(self, goal_id):
+259:         with self._connection() as db:
+260:             return self._goal(db, goal_id)
+261: 
+262:     def _usable(self, db, manifest):
+263:         for source in manifest:
+264:             table = 'notes' if source.startswith('note:') else 'records'
+265:             identity = source[5:] if table == 'notes' else source
+266:             row = db.execute('SELECT usable FROM ' + table + ' WHERE id=?', (identity,)).fetchone()
+267:             if not row or not row['usable']:
+268:                 return False
+269:             if table == 'notes':
+270:                 note = db.execute('SELECT sources FROM notes WHERE id=?', (identity,)).fetchone()
+271:                 if not self._usable(db, json.loads(note['sources'])):
+272:                     return False
+273:             else:
+274:                 record = db.execute('SELECT manifest FROM records WHERE id=?', (identity,)).fetchone()
+275:                 if not self._usable(db, json.loads(record['manifest'])):
+276:                     return False
+277:         return True
+278: 
+279:     def record(self, key, role, content, manifest=(), supersedes=None):
+280:         if role not in ('user', 'assistant'):
+281:             raise ValueError('invalid role')
+282:         content = sanitize(content)
+283:         with self._tx('record') as db:
+284:             return self._record(db, key, role, content, manifest, supersedes)
+285: 
+286:     def _record(self, db, key, role, content, manifest=(), supersedes=None):
+287:         digest, old = self._dedupe(db, key, 'record', [role, content, list(manifest), supersedes])
+288:         if old is not None:
+289:             return old
+290:         if not self._usable(db, manifest):
+291:             raise StaleResult('reference stopped before reply publication')
+292:         identity = uid()
+293:         if supersedes:
+294:             db.execute('UPDATE records SET usable=0 WHERE id=?', (supersedes,))
+295:             self._disable_notes(db, supersedes)
+296:             self._invalidate_source(db, supersedes)
+297:         db.execute('INSERT INTO records(id,role,content,manifest,supersedes) VALUES (?,?,?,?,?)',
+298:                    (identity, role, content, encode(list(manifest)), supersedes))
+299:         return self._remember(db, key, 'record', digest, {'id': identity, 'role': role, 'content': content})
+300: 
+301:     def note(self, key, content, sources):
+302:         if not sources:
+303:             raise ValueError('derived memory requires source records')
+304:         with self._tx('note') as db:
+305:             digest, old = self._dedupe(db, key, 'note', [content, sources])
+306:             if old is not None:
+307:                 return old
+308:             if not self._usable(db, sources) or any(s.startswith('note:') for s in sources):
+309:                 raise StaleResult('unavailable note source')
+310:             identity = uid()
+311:             db.execute('INSERT INTO notes(id,content,sources) VALUES (?,?,?)', (identity, sanitize(content), encode(sources)))
+312:             return self._remember(db, key, 'note', digest, {'id': identity})
+313: 
+314:     def context(self):
+315:         with self._connection() as db:
+316:             return self._context(db)
+317: 
+318:     def _context(self, db):
+319:         records = [dict(r) for r in db.execute('SELECT * FROM records WHERE usable=1 AND source_event_id IS NULL ORDER BY seq') if self._usable(db, [r['id']])]
+320:         notes = [dict(r) for r in db.execute('SELECT * FROM notes WHERE usable=1') if self._usable(db, json.loads(r['sources']))]
+321:         # Re-read source rows for selected notes; summaries never replace negation/conditions.
+322:         selected = records[-30:]
+323:         selected_ids = {r['id'] for r in selected}
+324:         for note in notes[:20]:
+325:             for source in json.loads(note['sources']):
+326:                 if source not in selected_ids:
+327:                     row = db.execute('SELECT * FROM records WHERE id=?', (source,)).fetchone()
+328:                     if row is not None and row['source_event_id'] is None:
+329:                         selected.append(dict(row))
+330:                         selected_ids.add(source)
+331:         selected.sort(key=lambda r: r['seq'])
+332:         # Audit/outbox reports are inspectable, not conversational memory.
+333:         return {'records': selected, 'notes': notes[:20], 'manifest': [r['id'] for r in selected] + ['note:' + n['id'] for n in notes[:20]]}
+334: 
+335:     def _criteria(self, criteria):
+
+## Current source pal/store.py:1085-1180 at 5e7c76c
+1085:             if intent in ('control','forget'):
+1086:                 result['action']='forget' if intent=='forget' else (natural_control['action'] if natural_control is not None else control['action'])
+1087:                 if outcome is None:
+1088:                     self._record(db, reply_key(key), 'assistant',
+1089:                         '参照を停止しました。 / Reference stopped.' if intent == 'forget' else '操作を受け付けました。 / Control accepted.')
+1090:             return self._remember(db, key, 'ingress', digest, result)
+1091: 
+1092:     def prepare_primary(self, key, text):
+1093:         """Persist a normal user turn before inference; no model/effect in this transaction."""
+1094:         self._validate_key(key)
+1095:         if not isinstance(text, str) or not text.strip() or len(text.encode('utf-8')) > 65536:
+1096:             raise ValueError('invalid Primary input')
+1097:         content = sanitize(text)
+1098:         digest = hashlib.sha256(encode(content).encode()).hexdigest()
+1099:         with self._tx('primary_prepare') as db:
+1100:             old = db.execute('SELECT * FROM primary_turns WHERE client_key=?', (key,)).fetchone()
+1101:             if old:
+1102:                 if old['request_hash'] != digest:
+1103:                     raise Conflict('idempotency key payload conflict')
+1104:                 return (json.loads(old['outcome']) if old['outcome'] else
+1105:                         {'record_id': old['record_id'], 'goal': None, 'intent': 'conversation', 'primary_status': 'pending'})
+1106:             _, previous = self._dedupe(db, key, 'primary', content)
+1107:             if previous is not None:
+1108:                 raise Conflict('Primary admission missing')
+1109:             record_id = uid()
+1110:             db.execute("INSERT INTO records(id,role,content) VALUES (?,'user',?)", (record_id, content))
+1111:             context = self._context(db)
+1112:             goals = [dict(r) for r in db.execute("SELECT id,state,revision,epoch,question_id FROM goals WHERE state NOT IN ('completed','cancelled','unknown') ORDER BY seq DESC LIMIT 11")]
+1113:             overflow = len(goals) > 10
+1114:             goals = [] if overflow else goals
+1115:             visible_goals, questions = [], []
+1116:             recent_work = []
+1117:             manifest = list(context['manifest'])
+1118:             for goal in goals:
+1119:                 revision = db.execute('SELECT sources FROM revisions WHERE goal_id=? AND revision=?', (goal['id'], goal['revision'])).fetchone()
+1120:                 sources = json.loads(revision['sources'])
+1121:                 if not self._usable(db, sources):
+1122:                     continue
+1123:                 visible_goals.append(goal)
+1124:                 manifest.extend(sources)
+1125:                 if goal['state'] == 'waiting_input' and goal['question_id']:
+1126:                     question = db.execute("SELECT * FROM questions WHERE id=? AND status='open'", (goal['question_id'],)).fetchone()
+1127:                     if question and question['revision'] == goal['revision'] and question['epoch'] == goal['epoch']:
+1128:                         issued = db.execute('SELECT manifest FROM attempts WHERE id=?', (question['attempt_id'],)).fetchone()
+1129:                         issued_sources = json.loads(issued['manifest'])
+1130:                         if self._usable(db, issued_sources):
+1131:                             questions.append({field: question[field] for field in ('id','goal_id','revision','epoch','round')})
+1132:                             manifest.extend(issued_sources)
+1133:             for goal in db.execute('SELECT id,state,revision,epoch FROM goals ORDER BY seq DESC LIMIT 5'):
+1134:                 revision = db.execute('SELECT sources FROM revisions WHERE goal_id=? AND revision=?', (goal['id'], goal['revision'])).fetchone()
+1135:                 sources = json.loads(revision['sources'])
+1136:                 if self._usable(db, sources):
+1137:                     recent_work.append(dict(goal))
+1138:                     manifest.extend(sources)
+1139:             snapshot = {'manifest': list(dict.fromkeys(manifest)), 'goals': visible_goals,
+1140:                         'questions': questions, 'goals_overflow': overflow, 'recent_work':recent_work}
+1141:             db.execute("INSERT INTO primary_turns VALUES (?,?,?,'pending',?,NULL)",
+1142:                        (key, digest, record_id, encode(snapshot)))
+1143:             return {'record_id': record_id, 'goal': None, 'intent': 'conversation', 'primary_status': 'pending'}
+1144: 
+1145:     def primary_context(self, key):
+1146:         """Resolve only admission-bound IDs. No copied content survives reference stop."""
+1147:         with self._connection() as db:
+1148:             db.execute('BEGIN')
+1149:             turn = db.execute('SELECT * FROM primary_turns WHERE client_key=?', (key,)).fetchone()
+1150:             if not turn or turn['status'] != 'pending':
+1151:                 raise InvalidTransition('Primary turn is not pending')
+1152:             snapshot = json.loads(turn['snapshot'])
+1153:             if not self._usable(db, snapshot['manifest']):
+1154:                 raise StaleResult('Primary source unavailable')
+1155:             records, notes = [], []
+1156:             for source in snapshot['manifest']:
+1157:                 if source.startswith('note:'):
+1158:                     notes.append(dict(db.execute('SELECT id,content,sources FROM notes WHERE id=?', (source[5:],)).fetchone()))
+1159:                 else:
+1160:                     records.append(dict(db.execute('SELECT id,role,content,seq FROM records WHERE id=?', (source,)).fetchone()))
+1161:             records.sort(key=lambda r: r['seq'])
+1162:             goals = []
+1163:             for bound in snapshot['goals']:
+1164:                 revision = db.execute('SELECT specification,sources FROM revisions WHERE goal_id=? AND revision=?', (bound['id'], bound['revision'])).fetchone()
+1165:                 goals.append(dict(bound, specification=revision['specification'], source_ids=json.loads(revision['sources'])))
+1166:             recent_work = []
+1167:             for bound in snapshot.get('recent_work', []):
+1168:                 revision = db.execute('SELECT specification FROM revisions WHERE goal_id=? AND revision=?', (bound['id'],bound['revision'])).fetchone()
+1169:                 recent_work.append(dict(bound, specification=revision['specification']))
+1170:             questions = []
+1171:             for bound in snapshot['questions']:
+1172:                 row = db.execute('SELECT prompt,status FROM questions WHERE id=?', (bound['id'],)).fetchone()
+1173:                 if row['status'] != 'open':
+1174:                     raise StaleResult('Primary question unavailable')
+1175:                 questions.append(dict(bound, prompt=row['prompt']))
+1176:             return dict(snapshot, records=records, notes=notes, goals=goals,
+1177:                         questions=questions, recent_work=recent_work, input_record_id=turn['record_id'])
+1178: 
+1179:     def _primary_target(self, db, snapshot, goal_id):
+1180:         bound = next((g for g in snapshot['goals'] if g['id'] == goal_id), None)
+
+## Current source pal/store.py:1180-1270 at 5e7c76c
+1180:         bound = next((g for g in snapshot['goals'] if g['id'] == goal_id), None)
+1181:         if bound is None:
+1182:             raise StaleResult('Primary target was not offered')
+1183:         current = self._goal(db, goal_id)
+1184:         if any(current[field] != bound[field] for field in ('state','revision','epoch','question_id')):
+1185:             raise StaleResult('Primary target changed')
+1186:         return current
+1187: 
+1188:     def _primary_effect(self, db, turn, snapshot, action):
+1189:         key = 'primary-effect:' + hashlib.sha256(turn['client_key'].encode()).hexdigest()
+1190:         record_id, kind = turn['record_id'], action['kind']
+1191:         source = db.execute('SELECT content FROM records WHERE id=?', (record_id,)).fetchone()
+1192:         if kind in ('local_draft', 'control') and 'spec' in action:
+1193:             if not set(action['source_ids']) <= set(snapshot['manifest']):
+1194:                 raise StaleResult('Primary source was not offered')
+1195:             sources = list(dict.fromkeys([record_id] + action['source_ids']))
+1196:         if kind == 'local_draft':
+1197:             goal = self._create_goal(db, key, action['spec'], {'kind':'local_draft','max_bytes':4096}, sources)
+1198:             return goal, '下書きを受け付けました：' + sanitize(action['spec']) + ' / Local draft accepted.'
+1199:         if kind == 'answer':
+1200:             question = next((q for q in snapshot['questions'] if q['id'] == action['question_id']), None)
+1201:             if question is None:
+1202:                 raise StaleResult('Primary question was not offered')
+1203:             goal = self._primary_target(db, snapshot, question['goal_id'])
+1204:             goal = self._control(db, key, goal['id'], 'input', source['content'],
+1205:                                  question_id=question['id'], epoch=question['epoch'], source_record_id=record_id)
+1206:             return goal, '回答を記録し、下書き作成を再開しました。 / Answer recorded; work resumed.'
+1207:         if kind == 'control':
+1208:             self._primary_target(db, snapshot, action['goal_id'])
+1209:             goal = self._control(db, key, action['goal_id'], action['op'], action.get('spec'),
+1210:                                  source_record_id=record_id, extra_sources=action.get('source_ids', ()))
+1211:             reply = {'cancel':'作業を中止しました。', 'pause':'作業を一時停止しました。',
+1212:                      'resume':'作業を再開しました。', 'correct':'訂正を適用しました：' + sanitize(action.get('spec', ''))}[action['op']]
+1213:             return goal, reply + ' / ' + action['op'] + ' applied.'
+1214:         if kind in ('remember', 'forget'):
+1215:             identity = action['source_id']
+1216:             if identity not in snapshot['manifest'] or identity.startswith('note:'):
+1217:                 raise StaleResult('Primary record was not offered')
+1218:             if kind == 'forget':
+1219:                 self._forget(db, key, identity)
+1220:                 return None, 'その情報の参照を停止しました。監査用の記録は保持されます。 / Reference stopped; audit record retained.'
+1221:             original = db.execute("SELECT content FROM records WHERE id=? AND role='user'", (identity,)).fetchone()
+1222:             if original is None:
+1223:                 raise ValueError('memory requires an original user record')
+1224:             db.execute('INSERT INTO notes(id,content,sources) VALUES (?,?,?)', (uid(), original['content'], encode([identity])))
+1225:             return None, '入力された情報を記憶しました。 / Your information was remembered.'
+1226:         return None, None
+1227: 
+1228:     def _finish_primary_outcome(self, db, turn, status, goal, reply, manifest, reason=None, kind='none', action=None):
+1229:         response_id = uid()
+1230:         db.execute("INSERT INTO records(id,role,content,manifest) VALUES (?,'assistant',?,?)",
+1231:                    (response_id, sanitize(reply), encode(manifest)))
+1232:         intent = {'local_draft':'draft', 'answer':'control', 'control':'control', 'forget':'forget'}.get(kind, 'conversation')
+1233:         result = {'record_id':turn['record_id'], 'goal':goal, 'intent':intent,
+1234:                   'primary_status':status, 'response_id':response_id}
+1235:         if action:
+1236:             result['action'] = action
+1237:         if reason:
+1238:             result['reason'] = reason
+1239:         db.execute('UPDATE primary_turns SET status=?,outcome=? WHERE client_key=?', (status, encode(result), turn['client_key']))
+1240:         return self._remember(db, turn['client_key'], 'primary', turn['request_hash'], result)
+1241: 
+1242:     def finish_primary(self, key, proposal=None, error=None):
+1243:         """Validate and atomically commit one bounded effect plus the authoritative reply."""
+1244:         with self._tx('primary_finish') as db:
+1245:             turn = db.execute('SELECT * FROM primary_turns WHERE client_key=?', (key,)).fetchone()
+1246:             if not turn:
+1247:                 raise InvalidTransition('unknown Primary turn')
+1248:             if turn['status'] != 'pending':
+1249:                 return json.loads(turn['outcome'])
+1250:             snapshot = json.loads(turn['snapshot'])
+1251:             db.execute('SAVEPOINT primary_effect')
+1252:             try:
+1253:                 if error:
+1254:                     raise ValueError('Primary inference unavailable')
+1255:                 proposal = validate_primary(proposal)
+1256:                 if not self._usable(db, snapshot['manifest']):
+1257:                     raise StaleResult('Primary source unavailable')
+1258:                 action = proposal['action']
+1259:                 goal, host_reply = self._primary_effect(db, turn, snapshot, action)
+1260:                 self.fault('primary_finish.mid_transaction')
+1261:             except ValueError as exc:
+1262:                 db.execute('ROLLBACK TO primary_effect')
+1263:                 db.execute('RELEASE primary_effect')
+1264:                 reason = 'source_or_target_changed' if isinstance(exc, StaleResult) else 'primary_rejected'
+1265:                 return self._finish_primary_outcome(db, turn, 'rejected', None,
+1266:                     '処理を反映できませんでした。入力は保存されています。作業の状態を確認して、改めて依頼してください。 / No action applied; input retained.', [], reason)
+1267:             db.execute('RELEASE primary_effect')
+1268:             manifest = [] if action['kind'] == 'forget' else snapshot['manifest']
+1269:             return self._finish_primary_outcome(db, turn, 'complete', goal, host_reply or proposal['reply'], manifest,
+1270:                 kind=action['kind'], action=action.get('op') or ('input' if action['kind']=='answer' else None))
+
+## Current source pal/primary.py:1-80 at 5e7c76c
+1: """Closed, untrusted Primary proposals. Only the host Store can apply effects."""
+2: import json
+3: 
+4: 
+5: def _object(pairs):
+6:     result = {}
+7:     for key, value in pairs:
+8:         if key in result:
+9:             raise ValueError('duplicate Primary field')
+10:         result[key] = value
+11:     return result
+12: 
+13: 
+14: def _text(value, limit):
+15:     if not isinstance(value, str) or not value.strip():
+16:         raise ValueError('empty Primary text')
+17:     try:
+18:         size = len(value.encode('utf-8'))
+19:     except UnicodeError as exc:
+20:         raise ValueError('invalid Primary text') from exc
+21:     if size > limit:
+22:         raise ValueError('oversized Primary text')
+23: 
+24: 
+25: def validate_primary(value):
+26:     if not isinstance(value, dict) or set(value) != {'reply', 'action'}:
+27:         raise ValueError('invalid Primary envelope')
+28:     _text(value['reply'], 8192)
+29:     action = value['action']
+30:     if not isinstance(action, dict):
+31:         raise ValueError('invalid Primary action')
+32:     kind = action.get('kind')
+33:     fields = {
+34:         'none': {'kind'},
+35:         'local_draft': {'kind', 'spec', 'source_ids'},
+36:         'answer': {'kind', 'question_id'},
+37:         'control': {'kind', 'op', 'goal_id'},
+38:         'remember': {'kind', 'source_id'},
+39:         'forget': {'kind', 'source_id'},
+40:     }
+41:     if not isinstance(kind, str) or kind not in fields:
+42:         raise ValueError('unsupported Primary action')
+43:     expected = fields[kind]
+44:     if kind == 'control':
+45:         if action.get('op') not in ('cancel', 'pause', 'resume', 'correct'):
+46:             raise ValueError('unsupported Primary control')
+47:         if action['op'] == 'correct':
+48:             expected = expected | {'spec', 'source_ids'}
+49:     if set(action) != expected:
+50:         raise ValueError('unsupported Primary fields')
+51:     for field in ('question_id', 'goal_id', 'source_id'):
+52:         if field in action:
+53:             _text(action[field], 200)
+54:     if 'spec' in action:
+55:         _text(action['spec'], 8192)
+56:         sources = action['source_ids']
+57:         if not isinstance(sources, list) or len(sources) > 128:
+58:             raise ValueError('invalid Primary sources')
+59:         for source in sources:
+60:             _text(source, 200)
+61:         if len(set(sources)) != len(sources):
+62:             raise ValueError('duplicate Primary source')
+63:     return value
+64: 
+65: 
+66: def decode_primary(raw):
+67:     _text(raw, 65536)
+68:     try:
+69:         value = json.loads(raw, object_pairs_hook=_object,
+70:                            parse_constant=lambda _: (_ for _ in ()).throw(ValueError('nonfinite JSON')))
+71:     except (json.JSONDecodeError, RecursionError) as exc:
+72:         raise ValueError('invalid Primary JSON') from exc
+73:     return validate_primary(value)
+74: 
+75: 
+76: def primary_prompt(context):
+77:     """No semantic routing occurs before this request reaches the reasoning model."""
+78:     instructions = '''You are the conversational Primary of a personal assistant. Understand the user's intent from the latest input and supplied conversation. Reply naturally in their language. You may propose ONE bounded action; the host alone verifies and applies it. Return only JSON with exactly reply and action. No markdown, tools, or other fields.
+79: Forms (IDs are literal IDs offered in INPUT_JSON, never invented):
+80: {"reply":"natural reply","action":{"kind":"none"}}
+
+## Current source pal/runtime.py:125-185 at 5e7c76c
+125:         self._closed = threading.Event()
+126:         self._wake = threading.Event()
+127:         self.idle = threading.Event()
+128:         self._reply_lock = threading.Lock()
+129:         self._responses = {}
+130:         self._worker_error = ''
+131:         self._fault = fault or (lambda point: None)
+132:         Path(path).parent.mkdir(parents=True, exist_ok=True)
+133:         self._lockfile = open(str(path) + '.lock', 'a')
+134:         try:
+135:             fcntl.flock(self._lockfile, fcntl.LOCK_EX | fcntl.LOCK_NB)
+136:         except BlockingIOError:
+137:             self._lockfile.close()
+138:             raise RuntimeError('another PAL host owns this canonical store') from None
+139:         try:
+140:             self.store = Store(path)
+141:             self.store.recover()
+142:             self.store.deliver()
+143:         except BaseException:
+144:             self._lockfile.close()
+145:             raise
+146:         self.provider = provider or MockProvider()
+147:         self.executor = executor or ProviderExecutor(self.provider)
+148:         self._conversation = ThreadPoolExecutor(max_workers=2, thread_name_prefix='pal-conversation')
+149:         self._worker = threading.Thread(target=self._work, name='pal-task', daemon=True)
+150:         self._worker.start()
+151:         self._wake.set()
+152: 
+153:     def submit(self, key, text, goal_id=None, control=None):
+154:         if self._closed.is_set():
+155:             raise RuntimeError('runtime is stopping')
+156:         text = sanitize(text)
+157:         if not isinstance(text, str) or not text.strip() or len(text) > 12000:
+158:             raise ValueError('message exceeds input bound or is empty')
+159:         # Admission and Future publication share a lock; concurrent retries cannot
+160:         # launch duplicate inference. Explicit controls never queue behind a model.
+161:         with self._reply_lock:
+162:             fate = self.store.operation(key) if isinstance(key, str) else {'status':'absent'}
+163:             if fate.get('kind') == 'ingress' and control is None and goal_id is None:
+164:                 # Replay the accepted historical request only; do not reclassify
+165:                 # it or run a new model against a previously spent client key.
+166:                 result = self.store.ingress(key, text, fate['result']['intent'],
+167:                     request={'text':text,'goal_id':None,'control':None})
+168:                 response = self._completed_reply(key, result)
+169:             elif control is not None or goal_id is not None:
+170:                 if not isinstance(control, dict):
+171:                     raise ValueError('explicit target requires an explicit control')
+172:                 intent = 'forget' if set(control) == {'source_id'} and goal_id is None else 'control'
+173:                 result = self.store.ingress(key, text, intent, goal_id, control,
+174:                     request={'text':text,'goal_id':goal_id,'control':control})
+175:                 response = self._completed_reply(key, result)
+176:                 self._wake_after(result)
+177:             else:
+178:                 result = self.store.prepare_primary(key, text)
+179:                 if result['primary_status'] == 'pending':
+180:                     response = self._responses.get(key)
+181:                     if response is None:
+182:                         response = self._conversation.submit(self._run_primary, key)
+183:                         self._responses[key] = response
+184:                 else:
+185:                     response = Future()
+
+## Current source pal/runtime.py:205-225 at 5e7c76c
+205:             self._wake.set()
+206: 
+207:     def _run_primary(self, key):
+208:         try:
+209:             context = self.store.primary_context(key)
+210:             self._fault('primary.before_model')
+211:             raw = self.provider.complete(primary_prompt(context))
+212:             self._fault('primary.after_model_before_apply')
+213:             proposal = decode_primary(raw)
+214:         except Exception:
+215:             result = self.store.finish_primary(key, error='provider_or_proposal_unavailable')
+216:         else:
+217:             result = self.store.finish_primary(key, proposal)
+218:         self._wake_after(result)
+219:         return self.store.stored_reply(key)
+220: 
+221:     def _apply(self, order, result):
+222:         if not isinstance(result, dict) or result.get('goal_id') != order.goal_id or result.get('attempt_id') != order.attempt_id or result.get('epoch') != order.epoch:
+223:             self.store.fail(order.attempt_id, 'capability_violation')
+224:             return
+225:         token_fields = {'goal_id','attempt_id','epoch'}
+
+## Current source pal/server.py:18-45 at 5e7c76c
+18:         def log_message(self,*args):
+19:             pass  # Do not log request bodies, account identifiers, or raw error text.
+20: 
+21:         def send(self,status,body,content_type='application/json; charset=utf-8'):
+22:             if isinstance(body,dict):
+23:                 body=json.dumps(body,ensure_ascii=False).encode()
+24:             elif isinstance(body,str):
+25:                 body=body.encode()
+26:             self.send_response(status)
+27:             self.send_header('Content-Type',content_type)
+28:             self.send_header('Content-Length',str(len(body)))
+29:             self.send_header('Cache-Control','no-store')
+30:             self.send_header('X-Content-Type-Options','nosniff')
+31:             self.send_header('X-Frame-Options','DENY')
+32:             self.send_header('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'")
+33:             self.end_headers()
+34:             self.wfile.write(body)
+35: 
+36:         def allowed(self,post=False):
+37:             expected=f'127.0.0.1:{self.server.server_port}'
+38:             if self.headers.get('Host')!=expected:
+39:                 self.send(403,{'error':'unexpected host'})
+40:                 return False
+41:             if post and self.headers.get('Origin')!='http://'+expected:
+42:                 self.send(403,{'error':'unexpected origin'})
+43:                 return False
+44:             return True
+45: 
+
+## Current source pal/server.py:74-100 at 5e7c76c
+74:                     self.send(404,{'error':'unknown artifact'})
+75:             else:
+76:                 self.send(404,{'error':'unknown route'})
+77: 
+78:         def do_POST(self):
+79:             if not self.allowed(post=True):
+80:                 return
+81:             if self.path!='/api/message':
+82:                 self.send(405,{'error':'inspect and artifacts are read-only'})
+83:                 return
+84:             if self.headers.get('Transfer-Encoding') or self.headers.get('Content-Type')!='application/json':
+85:                 self.send(400,{'error':'JSON with bounded Content-Length required'})
+86:                 return
+87:             try:
+88:                 size=int(self.headers.get('Content-Length','0'))
+89:             except ValueError:
+90:                 size=0
+91:             if not 0<size<=65536:
+92:                 self.send(413,{'error':'request size bound'})
+93:                 return
+94:             try:
+95:                 payload=json.loads(self.rfile.read(size))
+96:                 if not isinstance(payload,dict) or not {'key','text'}<=set(payload) or not set(payload)<={'key','text','goal_id','control'}:
+97:                     raise ValueError('invalid message contract')
+98:                 result=runtime.submit(**payload)
+99:                 self.send(202,{k:v for k,v in result.items() if k!='response'})
+100:             except (ValueError,TypeError,RuntimeError):
+
+Authoritative constraints: host-only canonical writes; forget is AI reference-stop with raw human-readable history retained, not physical purge; real semantic interpretation by Primary, no keyword fallback; strict no extra cost/new auth/public exposure. Text secret sanitation remains required. New media cannot be declared secret-sanitized. Owner authorized design preparation, not activation/deployment or new model installation. Model response is not operation evidence.

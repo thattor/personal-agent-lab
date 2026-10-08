@@ -1,0 +1,98 @@
+[
+  {
+    "repo": "QwenLM/Qwen-Live-Harness",
+    "path": "LICENSE"
+  },
+  {
+    "repo": "QwenLM/Qwen-Live-Harness",
+    "path": "packages/qwen-live-harness/README.md"
+  },
+  {
+    "repo": "QwenLM/Qwen-Live-Harness",
+    "path": "packages/qwen-live-harness/src/orchestrator/live-session.ts"
+  },
+  {
+    "repo": "QwenLM/Qwen-Live-Harness",
+    "path": "packages/qwen-live-harness/src/realtime/realtime-session.ts"
+  },
+  {
+    "repo": "QwenLM/Qwen-Live-Harness",
+    "path": "packages/qwen-live-harness/src/memory/schema.ts"
+  },
+  {
+    "repo": "QwenLM/Qwen-Live-Harness",
+    "path": "packages/qwen-live-harness-host/src/preload/audio-output-queue.ts"
+  },
+  {
+    "repo": "QwenLM/Qwen-MM-Plugins",
+    "path": "LICENSE"
+  },
+  {
+    "repo": "QwenLM/Qwen-MM-Plugins",
+    "path": "src/capabilities/core/qwen_mm_plugins_core/readers/image.py"
+  },
+  {
+    "repo": "QwenLM/Qwen-MM-Plugins",
+    "path": "src/capabilities/core/qwen_mm_plugins_core/readers/video.py"
+  },
+  {
+    "repo": "QwenLM/Qwen-MM-Plugins",
+    "path": "src/capabilities/omni-memory/skill/script/build_memory/storage.py"
+  },
+  {
+    "repo": "QwenLM/Qwen-MM-Plugins",
+    "path": "src/capabilities/omni-memory/qwen_mm_plugins_omni_memory/tools/get_moment.py"
+  },
+  {
+    "repo": "open-webui/open-webui",
+    "path": "LICENSE"
+  },
+  {
+    "repo": "open-webui/open-webui",
+    "path": "backend/open_webui/routers/audio.py"
+  },
+  {
+    "repo": "open-webui/open-webui",
+    "path": "backend/open_webui/models/files.py"
+  },
+  {
+    "repo": "open-webui/open-webui",
+    "path": "src/lib/components/chat/MessageInput/CallOverlay.svelte"
+  },
+  {
+    "repo": "livekit/agents",
+    "path": "LICENSE"
+  },
+  {
+    "repo": "livekit/agents",
+    "path": "livekit-agents/livekit/agents/llm/chat_context.py"
+  },
+  {
+    "repo": "livekit/agents",
+    "path": "livekit-agents/livekit/agents/voice/speech_handle.py"
+  },
+  {
+    "repo": "livekit/agents",
+    "path": "livekit-agents/livekit/agents/voice/agent_activity.py"
+  },
+  {
+    "repo": "immich-app/immich",
+    "path": "LICENSE"
+  },
+  {
+    "repo": "immich-app/immich",
+    "path": "server/src/schema/tables/asset.table.ts"
+  },
+  {
+    "repo": "immich-app/immich",
+    "path": "server/src/schema/tables/smart-search.table.ts"
+  },
+  {
+    "repo": "immich-app/immich",
+    "path": "server/src/services/ocr.service.ts"
+  },
+  {
+    "repo": "immich-app/immich",
+    "path": "machine-learning/immich_ml/models/clip/visual.py"
+  }
+]

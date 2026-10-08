@@ -1,0 +1,15 @@
+{
+  "repo": "livekit/agents",
+  "sha": "bcdf90771c38fbbc275fd835a6dafa7ae5200685",
+  "commit_date": "2026-10-07T20:27:58Z",
+  "retrieved_at": "2026-10-07T21:50:52.037596+00:00",
+  "license": {
+    "key": "apache-2.0",
+    "name": "Apache License 2.0",
+    "spdx_id": "Apache-2.0",
+    "url": "https://api.github.com/licenses/apache-2.0",
+    "node_id": "MDc6TGljZW5zZTI="
+  },
+  "default_branch": "main",
+  "tree_truncated": false
+}

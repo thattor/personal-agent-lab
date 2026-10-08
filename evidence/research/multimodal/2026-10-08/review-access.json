@@ -1,0 +1,20 @@
+{
+  "observed_at": "2026-10-07T21:54:45.371321+00:00",
+  "official_usage_ui": "https://claude.ai/settings/usage",
+  "ui_observation": {
+    "plan": "Pro",
+    "session_used_percent": 26,
+    "week_used_percent": 25,
+    "extra_usage_enabled": false,
+    "automatic_reload_enabled": false
+  },
+  "native_auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "apiProvider": "firstParty",
+    "subscriptionType": "pro"
+  },
+  "same_organization": true,
+  "calls_authorized": 1,
+  "purpose": "Supplied-source multimodal design research review"
+}

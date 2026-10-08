@@ -1,0 +1,56 @@
+{
+  "schema": "pal-mm-v1-design-examples",
+  "status": "illustrative_not_implemented_wire_api",
+  "note": "HTTPルートやテーブル名を固定するものではない。閉じた内部契約の例。asset bytesはhostだけが解決する。",
+  "image_request": {
+    "protocol": "pal-mm-v1",
+    "request_id": "example-image-primary-01",
+    "purpose": "primary",
+    "model_id": "Qwen/Qwen3.8-27B",
+    "input_record_id": "example-record-image-01",
+    "parts": [
+      {"type":"text","source_id":"example-record-image-01","text":"この案内の日時を教えてください"},
+      {"type":"image","source_id":"example-record-image-01","asset_id":"example-original-01","view_id":"example-view-01","view_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+    ],
+    "expected_output": "primary-json-v1",
+    "allowed_action_kinds": ["none","local_draft","answer","control","remember","forget"],
+    "budget": {"timeout_seconds":180,"max_response_utf8_bytes":65536}
+  },
+  "asr_request": {
+    "protocol":"pal-asr-v1",
+    "operation_id":"example-voice-01",
+    "generation":1,
+    "asset_id":"example-audio-01",
+    "asset_sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "language":"ja",
+    "max_seconds":60
+  },
+  "asr_result": {
+    "operation_id":"example-voice-01",
+    "generation":1,
+    "kind":"final",
+    "text":"会場Aで10月17日に開催する案内の下書きを作ってください。",
+    "producer":{"model_id":"Qwen/Qwen3-ASR-0.6B","model_revision":"must_be_recorded_at_run","adapter_version":"must_be_recorded_at_run"}
+  },
+  "accepted_voice_record_metadata": {
+    "record_id":"example-record-voice-01",
+    "input_kind":"voice_transcript",
+    "media_operation_id":"example-voice-01",
+    "asset_id":"example-audio-01",
+    "interpretation_status":"asr_final_not_human_verified",
+    "primary_request_key":"host-derived-example-key"
+  },
+  "tts_request": {
+    "protocol":"pal-tts-v1",
+    "playback_id":"example-playback-01",
+    "session_id":"example-session-01",
+    "session_epoch":2,
+    "response_id":"example-committed-reply-01",
+    "source_ids":["example-record-voice-01"],
+    "response_text_sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "segment":{"index":0,"start_codepoint":0,"end_codepoint":12,"text":"下書きを受け付けました。"},
+    "language":"ja",
+    "voice_profile":"qwen-customvoice-ono-anna-v1"
+  },
+  "error_codes": ["unsupported_modality","invalid_media","media_too_large","source_unavailable","request_conflict","input_cancelled","input_interrupted","empty_transcript","provider_unavailable","provider_timeout","stale_media_result","stale_playback","too_late_to_cancel_input"]
+}

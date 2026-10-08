@@ -1,0 +1,15 @@
+{
+  "repo": "open-webui/open-webui",
+  "sha": "8bd8b4fac5e059578ac0c74b3c18d11139f88b7d",
+  "commit_date": "2026-09-21T19:25:06Z",
+  "retrieved_at": "2026-10-07T21:50:52.332963+00:00",
+  "license": {
+    "key": "other",
+    "name": "Other",
+    "spdx_id": "NOASSERTION",
+    "url": null,
+    "node_id": "MDc6TGljZW5zZTA="
+  },
+  "default_branch": "main",
+  "tree_truncated": false
+}

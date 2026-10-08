@@ -1,0 +1,7 @@
+{
+  "status": "timeout",
+  "model": "swe-2-high",
+  "elapsed_seconds": 600.016,
+  "response_bytes": 4601,
+  "paid_fallback": false
+}

@@ -16,12 +16,21 @@ Read at the start of every work session:
 
 If documents conflict, later explicit decisions in DECISIONS.md win. Never silently weaken accepted product behavior to make tests pass.
 
+Keep reusable PAL research, design records and data in this private repository with provenance and verification limits (D-030). Temporary folders and chat artifacts are staging copies, not the only retained copy. Historical access receipts and one-time approvals do not grant new execution authority.
+
 ## Roles
 - Codex: controller and implementer. Own project/milestone/Issue loops, coding, tests, commits, evidence, checkpoints and continuation within the current adopted plan.
 - Opus: independent design partner. Consult before adopting a design change.
 - Devin SWE-2 High: implementation-design and code-generation partner. Consult for substantial implementation architecture, concurrency, persistence, recovery, idempotency, test harnesses, provider/tool boundaries, or uncertain substantial code generation.
 
 Codex remains responsible for integration and evidence.
+
+Latest owner operating instruction (2026-10-08): this development chat is the sole
+writer of product code and canonical records. Use the persistent human-judgment chat
+for noninferable owner facts, authority and actual usefulness; use the existing design-change
+chat for material proposals. Current IDs, scope and waiting conditions
+live in STATE.md. Necessary messages between those chats are authorized; external
+support submission is not. Pending future proposals do not block accepted work.
 
 ## Consultation gates
 

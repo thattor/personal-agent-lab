@@ -1,0 +1,193 @@
+# Devin Docs: English Desktop
+
+## Desktop
+
+### Devin Desktop
+
+- [Devin Local Agent](https://docs.devin.ai/desktop/devin-local.md): Use the Devin Local agent in Devin Desktop: the Devin CLI agent harness with subagents, sandboxing, plan mode, worktrees, and permissions.
+
+#### Editor
+
+- [AI Models](https://docs.devin.ai/desktop/models.md): Available AI models in Devin Desktop including SWE-2, Claude, and GPT. Compare model capabilities, pricing, credit costs, and performance.
+- [Adaptive](https://docs.devin.ai/desktop/adaptive.md): Adaptive is Cognition's intelligent model router that automatically selects the best AI model for each task.
+- [Fusion in Devin Desktop](https://docs.devin.ai/desktop/fusion.md): Fusion pairs a frontier lead model with a cost-efficient sidekick, delivering frontier intelligence at a lower cost in Devin Desktop.
+- [Quick Review](https://docs.devin.ai/desktop/quick-review.md): Quick Review runs an agentic code review on your local Devin Desktop changes. Covers review models, pricing, and enterprise admin controls.
+- [Devin Desktop Tab](https://docs.devin.ai/desktop/tab/overview.md): Devin Desktop Tab provides AI-powered code suggestions with Tab to Jump, Tab to Import, and inline suggestions, powered by our custom model.
+- [Command](https://docs.devin.ai/desktop/command/windsurf-overview.md): Use Devin Desktop Command (Cmd/Ctrl+I) for inline code generation and edits with natural language. No premium credits required.
+- [Terminal](https://docs.devin.ai/desktop/terminal.md): Use Devin Desktop's enhanced terminal with Command mode, agent integration, Turbo mode for auto-execution, and allow/deny lists for command control.
+- [Devin Desktop Previews](https://docs.devin.ai/desktop/previews.md): Preview your web app locally in Devin Desktop IDE or browser with element selection, error capture, and direct integration with the agent for rapid iteration.
+- [AI Commit Messages](https://docs.devin.ai/desktop/ai-commit-message.md): Generate meaningful git commit messages automatically with AI by analyzing your code changes with a single click in Devin Desktop.
+- [DeepWiki](https://docs.devin.ai/desktop/deepwiki.md): Get AI-powered explanations of code symbols with DeepWiki. Hover over functions, variables, and classes to understand unfamiliar code in your codebase.
+- [Codemaps](https://docs.devin.ai/desktop/codemaps.md): Create shareable hierarchical maps of your codebase to visualize code execution flow and component relationships. Navigate and share with teammates.
+- [Advanced Configuration](https://docs.devin.ai/desktop/advanced.md): Advanced Devin Desktop configurations including SSH support, Dev Containers, WSL, extension marketplace settings, diff zones, and gitignore access for Cascade.
+
+##### Getting Started
+
+- [Introducing Devin Desktop](https://docs.devin.ai/desktop/introducing-devin-desktop.md): A video tour of Devin Desktop, the AI IDE with Devin Local, Agent Command Center, and cloud delegation built in. Watch before you set up.
+- [Welcome to Devin Desktop](https://docs.devin.ai/desktop/getting-started.md): Download and install Devin Desktop IDE for Mac, Windows, or Linux. Import VS Code or Cursor settings, configure themes, and start coding with AI assistance.
+- [Install Devin Desktop](https://docs.devin.ai/desktop/install.md): Install Devin Desktop on Mac, Windows, or Linux, including apt and yum package repositories for Debian, Ubuntu, Fedora, and RHEL.
+- [Devin Desktop FAQ](https://docs.devin.ai/desktop/devin-desktop-faq.md): Frequently asked questions about the transition from Windsurf to Devin Desktop: pricing, plans, Cascade, plugins, and JetBrains.
+
+###### Recommended Extensions
+
+- [Recommended Extensions](https://docs.devin.ai/desktop/recommended-extensions.md): Popular Open VSX extensions for Devin Desktop including Python, Java, C#, GitLens, and more. Replicate familiar IDE experiences from VS Code, Eclipse, or Visual Studio.
+- [C#, .NET, and CPP](https://docs.devin.ai/desktop/csharp-cpp.md): Setup guide for C#, .NET Core, .NET Framework (Mono), and C++ development in Devin Desktop using open-source tooling like OmniSharp, clangd, and LLDB.
+
+#### Cascade
+
+- [Cascade Overview](https://docs.devin.ai/desktop/cascade/cascade.md): Cascade is Devin Desktop's agentic AI assistant with Code/Chat modes, tool calling, voice input, checkpoints, real-time awareness, and linter integration.
+- [Arena Mode](https://docs.devin.ai/desktop/cascade/arena.md): Run multiple Cascade instances in parallel using arena mode to explore different approaches simultaneously.
+- [Cascade Modes](https://docs.devin.ai/desktop/cascade/modes.md): Devin Desktop offers multiple distinct agent modes, each optimized for different types of tasks.
+- [App Deploys](https://docs.devin.ai/desktop/cascade/app-deploys.md): Deploy web applications directly from Devin Desktop to Netlify with public URLs, automatic builds, and project claiming for Next.js, React, Vue, and Svelte.
+- [Cascade Web and Docs Search](https://docs.devin.ai/desktop/cascade/web-search.md): Search the web and documentation directly from Cascade using @web and @docs mentions, URL parsing, and real-time context from web pages.
+- [Memories & Rules](https://docs.devin.ai/desktop/cascade/memories.md): Persist context across Cascade conversations with auto-generated memories and user-defined rules at global, workspace, and system levels for enterprise teams.
+- [Skills](https://docs.devin.ai/desktop/cascade/skills.md): Create Cascade skills in Devin Desktop: bundle SKILL.md instructions with scripts and templates in .devin/skills for consistent multi-step tasks.
+- [AGENTS.md](https://docs.devin.ai/desktop/cascade/agents-md.md): Create AGENTS.md files to provide directory-scoped instructions to Cascade. Instructions automatically apply based on file location in your project.
+- [Cascade workflows](https://docs.devin.ai/desktop/cascade/workflows.md): Automate repetitive tasks in Cascade with reusable workflows defined as markdown files. Create PR review, deployment, testing, and code formatting workflows.
+- [Worktrees](https://docs.devin.ai/desktop/cascade/worktrees.md): Run parallel Cascade tasks in isolated git worktrees in Devin Desktop, with setup hooks, automatic cleanup, and Source Control panel visibility.
+- [Cascade MCP Configuration](https://docs.devin.ai/desktop/cascade/mcp.md): Configure MCP servers for the legacy Cascade agent in mcp_config.json to access tools like GitHub and databases, with admin controls for Teams.
+- [Cascade Hooks](https://docs.devin.ai/desktop/cascade/hooks.md): Execute custom shell commands at key points in Cascade's workflow for logging, security controls, validation, and enterprise governance with pre and post hooks.
+
+#### Context Awareness
+
+- [Context Awareness for Devin Desktop](https://docs.devin.ai/desktop/context-awareness/windsurf-overview.md): Devin Desktop's RAG-based context engine indexes your codebase for intelligent code suggestions. Supports remote repositories for Teams and Enterprise.
+- [Fast Context](https://docs.devin.ai/desktop/context-awareness/fast-context.md): Fast Context is a specialized subagent that retrieves relevant code from your codebase up to 20x faster using SWE-grep models for rapid code retrieval.
+- [Devin Desktop .devinignore](https://docs.devin.ai/desktop/context-awareness/devin-ignore.md): Use a .devinignore file to control which files and directories Devin Desktop excludes from indexing and agent access, with gitignore-style syntax.
+
+#### Troubleshooting
+
+- [Common Devin Desktop Issues](https://docs.devin.ai/desktop/troubleshooting/windsurf-common-issues.md): Troubleshoot common Devin Desktop Editor issues including rate limiting, MacOS security warnings, Windows updates, Linux crashes, and terminal problems.
+- [Proxy Configuration in Devin Desktop Editor](https://docs.devin.ai/desktop/troubleshooting/windsurf-proxy-configuration.md): Configure HTTP/HTTPS proxy settings for Devin Desktop Editor in corporate networks. Includes auto-detect, manual configuration, and SSH remote proxy setup.
+- [TLS / SSL Inspection Issues in Devin Desktop](https://docs.devin.ai/desktop/troubleshooting/windsurf-ssl-inspection.md): Configure enterprise environments where SSL inspection (e.g., Zscaler) causes TLS certificate validation or protocol negotiation failures. Includes how to capture Console errors and what to request from IT/security.
+- [Language Server Fails with 'No Space Left on Device' on Linux](https://docs.devin.ai/desktop/troubleshooting/windsurf-inotify-limits.md): Resolve Linux language server startup failures caused by exhausted inotify watch/instance limits (ENOSPC). Includes symptoms, diagnosis commands, and sysctl fixes.
+- [WSL Known Issues](https://docs.devin.ai/desktop/troubleshooting/windsurf-wsl-performance.md): Troubleshoot known Devin Desktop issues in WSL: slow performance from 9P filesystem saturation and connection failures caused by VPN or zero-trust software.
+- [Gathering Devin Desktop Logs](https://docs.devin.ai/desktop/troubleshooting/logs.md): How to download diagnostic logs from Devin Desktop Editor using the Command Palette or Cascade panel for troubleshooting support.
+
+### Agent Command Center
+
+- [Agent Command Center](https://docs.devin.ai/desktop/agent-command-center.md): Manage all of your Devin Desktop agents — local and cloud — from a single Kanban-style view inside Devin Desktop.
+- [Spaces](https://docs.devin.ai/desktop/spaces.md): Spaces group all of the agent sessions, PRs, files, and context for a task or project into a single view in the Agent Command Center.
+- [Devin in Devin Desktop](https://docs.devin.ai/desktop/devin.md): Delegate work to Devin, an autonomous cloud agent, directly from Devin Desktop — and review its PRs without leaving your editor.
+- [Agent Client Protocol](https://docs.devin.ai/desktop/acp.md): Run third-party agents inside the Devin Desktop Agent Command Center via ACP.
+- [Building a custom ACP agent](https://docs.devin.ai/desktop/acp-custom.md): Build a custom agent that runs inside Devin Desktop via the Agent Client Protocol.
+
+### Releases
+
+- [Devin Desktop changelog](https://docs.devin.ai/desktop/changelog.md): Release notes for every Devin Desktop (Windsurf) stable release: new features, improvements, and fixes in each version of the agent-native editor.
+- [Changelog (Next)](https://docs.devin.ai/desktop/changelog-next.md): Release notes for Devin Desktop (Windsurf) Next builds: preview features, improvements, and fixes shipped to the beta channel ahead of stable releases.
+- [Releases](https://docs.devin.ai/desktop/releases.md): Download Devin Desktop (Windsurf) stable releases for macOS, Windows, and Linux, with direct installer links for every published version.
+- [Releases (Next)](https://docs.devin.ai/desktop/releases-next.md): Download Devin Desktop (Windsurf) Next builds for macOS, Windows, and Linux: beta releases with early access to upcoming editor features.
+
+### Windsurf Plugins
+
+#### Changelog
+
+- [Changelog](https://docs.devin.ai/windsurf/plugins/changelog.md): Stable release notes for the Windsurf JetBrains plugin, including Cascade updates, bug fixes, and improvements in each version.
+- [Changelog (Pre-release)](https://docs.devin.ai/windsurf/plugins/changelog-next.md): Preview release notes for the Windsurf JetBrains plugin, including Cascade updates, bug fixes, and improvements for upcoming builds.
+
+#### Get Started
+
+- [Welcome to Windsurf Plugins](https://docs.devin.ai/windsurf/plugins/getting-started.md): Install and set up Windsurf Plugins for JetBrains, VS Code, Visual Studio, Vim, NeoVim, Jupyter, Chrome, and other IDEs with AI-powered coding assistance.
+- [IDE Compatibility](https://docs.devin.ai/windsurf/plugins/compatibility.md): Supported IDEs and version requirements for Windsurf Plugins including VS Code, JetBrains, Visual Studio, NeoVim, Vim, Emacs, Xcode, Sublime Text, and Eclipse.
+- [Windsurf Plugins Guide for Admins](https://docs.devin.ai/windsurf/plugins/guide-for-admins.md): Enterprise admin guide for deploying Windsurf at scale. Configure SSO, SCIM, RBAC, analytics, and team management for large organizations.
+
+#### Features
+
+##### Autocomplete
+
+- [Autocomplete Overview](https://docs.devin.ai/desktop/autocomplete/overview.md): AI-powered code autocomplete in Devin Desktop with single-line and multi-line suggestions, keyboard shortcuts, and completion mode settings.
+- [Autocomplete Tips](https://docs.devin.ai/desktop/autocomplete/tips.md): Tips for getting the most out of Devin Desktop Autocomplete including inline comments, Fill In The Middle (FIM), and snooze functionality.
+
+##### Chat
+
+- [Chat Overview](https://docs.devin.ai/desktop/chat/overview.md): Chat with your codebase using Devin Desktop Chat in VS Code and JetBrains. Use @-mentions, persistent context, pinned files, and inline citations.
+- [Chat Models](https://docs.devin.ai/desktop/chat/models.md): Available AI models for Devin Desktop Chat, including SWE-2, SWE-1.6, Claude, and GPT, with plan availability and costs.
+
+##### Command
+
+- [Command Overview](https://docs.devin.ai/desktop/command/plugins-overview.md): Use Devin Desktop Command for AI-powered inline code edits in VS Code and JetBrains. Generate or edit code with natural language prompts using Cmd/Ctrl+I.
+- [Refactors, Docstrings, and More](https://docs.devin.ai/desktop/command/related-features.md): Use Command-powered features like code lenses for refactoring, docstring generation, and Smart Paste for cross-language code translation.
+
+#### Cascade (JetBrains)
+
+- [Cascade Overview for JetBrains](https://docs.devin.ai/windsurf/plugins/cascade/cascade-overview.md): Cascade brings agentic AI coding to JetBrains with Write/Chat modes, voice input, tool access, turbo mode, and real-time collaboration.
+- [Cascade Models](https://docs.devin.ai/windsurf/plugins/cascade/models.md): Available AI models in Cascade, including SWE-2, Claude, and GPT, with per-model credit costs.
+- [Web and Docs Search in Windsurf Plugins](https://docs.devin.ai/windsurf/plugins/cascade/web-search.md): Enable Cascade to search the web and read documentation pages in real-time using @web and @docs mentions for up-to-date context.
+- [Memories & Rules](https://docs.devin.ai/windsurf/plugins/cascade/memories.md): Configure Cascade memories and rules to persist context across conversations with global rules, workspace rules, and system-level rules for enterprise.
+- [Windsurf Cascade MCP configuration](https://docs.devin.ai/windsurf/plugins/cascade/mcp.md): Configure MCP servers to extend Cascade with custom tools and services using stdio, HTTP, or SSE transports with admin controls for Teams and Enterprise.
+- [Workflows](https://docs.devin.ai/windsurf/plugins/cascade/workflows.md): Create reusable Cascade workflows as markdown files to automate repetitive tasks like deployments, PR reviews, and code formatting with slash commands.
+
+#### Context Awareness
+
+- [Context Awareness Overview](https://docs.devin.ai/desktop/context-awareness/overview.md): Devin Desktop's RAG-based context engine indexes your codebase for intelligent suggestions. Learn about default context, context pinning, and M-Query retrieval.
+- [Fast Context](https://docs.devin.ai/desktop/context-awareness/fast-context.md): Fast Context is a specialized subagent that retrieves relevant code from your codebase up to 20x faster using SWE-grep models for rapid code retrieval.
+- [Devin Desktop .devinignore](https://docs.devin.ai/desktop/context-awareness/devin-ignore.md): Use a .devinignore file to control which files and directories Devin Desktop excludes from indexing and agent access, with gitignore-style syntax.
+- [Remote Indexing](https://docs.devin.ai/desktop/context-awareness/remote-indexing.md): Index remote repositories from GitHub, GitLab, Bitbucket, and Azure DevOps for enterprise teams without storing code locally.
+
+#### Best Practices
+
+- [Prompt Engineering](https://docs.devin.ai/desktop/best-practices/prompt-engineering.md): Best practices for crafting effective prompts to get high-quality code from Devin Desktop, including clear objectives, context, and constraints.
+- [Common Use Cases](https://docs.devin.ai/desktop/best-practices/use-cases.md): Common use cases for Devin Desktop including code generation, unit test generation, code documentation, API integration, and code refactoring.
+
+#### Troubleshooting
+
+- [Gathering Plugin Logs](https://docs.devin.ai/desktop/troubleshooting/plugins-gathering-logs.md): How to collect diagnostic logs from JetBrains, VS Code, Eclipse, Visual Studio, and NeoVim for troubleshooting Devin Desktop plugin issues.
+- [General Issues](https://docs.devin.ai/desktop/troubleshooting/plugins-common-issues.md): Common Devin Desktop plugin issues including subscription problems, cancellation, telemetry settings, account deletion, and chat panel troubleshooting.
+
+##### Enterprise
+
+- [JetBrains Troubleshooting](https://docs.devin.ai/desktop/troubleshooting/plugins-enterprise/jetbrains.md): Troubleshoot JetBrains plugin issues including JCEF errors, certificate problems, custom workspaces, and extension diagnostics.
+- [Proxy Configuration for Devin Desktop in JetBrains IDEs](https://docs.devin.ai/desktop/troubleshooting/plugins-enterprise/jetbrains-proxy.md): Configure HTTP/HTTPS proxy settings for Devin Desktop plugin in JetBrains IDEs including remote development and Gateway environments.
+- [Visual Studio Code (VSCode) Troubleshooting](https://docs.devin.ai/desktop/troubleshooting/plugins-enterprise/vscode.md): Troubleshoot VS Code extension issues including proxy settings, certificate errors, API server configuration, and chat response problems.
+- [Eclipse Troubleshooting](https://docs.devin.ai/desktop/troubleshooting/plugins-enterprise/eclipse.md): Troubleshoot Eclipse plugin issues including startup problems, empty chat screen, WebView2, and certificate errors with Java keystore solutions.
+- [Visual Studio Troubleshooting](https://docs.devin.ai/desktop/troubleshooting/plugins-enterprise/visualstudio.md): Troubleshoot Visual Studio plugin issues including IntelliCode conflicts, Tab key bindings, and marketplace visibility problems.
+
+### Accounts
+
+- [Plans and Usage](https://docs.devin.ai/desktop/accounts/usage.md): Understand Devin Desktop pricing plans, usage tracking, and how to upgrade from Free to Pro, Teams, or Enterprise.
+- [Quota-Based Usage](https://docs.devin.ai/desktop/accounts/quota.md): Learn how Devin Desktop's quota-based usage system works, including daily and weekly allowances, extra usage, and migration details for existing subscribers.
+
+#### Teams & Enterprise
+
+- [Role Based Access & Management](https://docs.devin.ai/desktop/accounts/rbac-role-management.md): Configure RBAC permissions, create custom roles, and manage user access for Devin Desktop Enterprise plans.
+- [Setting up SSO & SCIM](https://docs.devin.ai/desktop/accounts/sso-scim.md): Configure Single Sign-On (SSO) and SCIM provisioning for your organization using Google Workspace, Microsoft Entra ID, Okta, or other SAML identity providers.
+- [Domain Verification](https://docs.devin.ai/desktop/accounts/domain-verification.md): Verify your organization's domain ownership with DNS TXT records to enable SSO, user management, and automatic team invitations in Devin Desktop.
+- [Devin Desktop admin controls reference](https://docs.devin.ai/desktop/controls.md): Every Devin Desktop setting admins can enforce for their organization: team settings, organization overrides, MDM device policies, and system-level files.
+- [Enterprise Policies](https://docs.devin.ai/desktop/enterprise-policies.md): Centrally manage Devin Desktop with enterprise policies: configure extension allowlists and update modes on Windows, macOS, and Linux via group policy.
+
+##### Getting Started
+
+- [Devin Desktop Teams and Enterprise setup](https://docs.devin.ai/desktop/accounts/teams-getting-started.md): Set up Devin Desktop Teams and Enterprise plans with team management, SSO, analytics, user groups, and priority support for your organization.
+- [Devin Desktop Guide for Admins](https://docs.devin.ai/desktop/guide-for-admins.md): Enterprise admin guide for deploying Devin Desktop at scale. Configure SSO, SCIM, RBAC, analytics, and team management for large organizations.
+
+##### API Reference
+
+- [API Reference](https://docs.devin.ai/desktop/accounts/api-reference/api-introduction.md): Enterprise API for querying Devin Desktop usage data and managing configurations with service key authentication.
+- [List Devin Desktop Models and Pricing](https://docs.devin.ai/desktop/accounts/api-reference/list-models.md): List the Devin Desktop models available to your account with their model UIDs, names, and the per-token or per-message prices your team is charged.
+
+###### Analytics API
+
+- [Analytics API](https://docs.devin.ai/desktop/accounts/api-reference/analytics-api-introduction.md): Enterprise analytics API for querying Devin Desktop usage data including autocomplete, chat, command, and Cascade metrics.
+- [Get User Page Analytics](https://docs.devin.ai/desktop/accounts/api-reference/user-page-analytics.md): Retrieve user activity statistics including names, emails, last activity times, active days, and prompt credits used from the teams page.
+- [Get Cascade Analytics](https://docs.devin.ai/desktop/accounts/api-reference/cascade-analytics.md): Query Cascade-specific usage metrics including lines suggested/accepted, model usage, credit consumption, and tool usage statistics.
+- [Custom Analytics Query](https://docs.devin.ai/desktop/accounts/api-reference/custom-analytics.md): Flexible analytics querying with custom selections, filters, and aggregations for autocomplete, chat, command, and PCW data.
+- [Analytics API v2](https://docs.devin.ai/desktop/accounts/api-reference/analytics-v2-introduction.md): Next-generation analytics API for querying consumption data with Bearer-token authentication, flexible grouping, and cursor-based pagination.
+- [Get Consumption](https://docs.devin.ai/desktop/accounts/api-reference/get-consumption.md): Query credit or ACU consumption analytics with flexible filtering, grouping, and pagination.
+- [Get Active Users](https://docs.devin.ai/desktop/accounts/api-reference/get-active-users.md): Query the number of distinct active users for your team, with optional time granularity and per-user grouping.
+- [Get Agent Output (Lines of Code)](https://docs.devin.ai/desktop/accounts/api-reference/get-output.md): Query lines of code inserted and deleted by the agent and accepted by your team in Devin Desktop and the Devin CLI, with filtering, grouping, and pagination.
+- [Error Handling](https://docs.devin.ai/desktop/accounts/api-reference/errors.md): Common error messages and debugging tips for the Analytics API including authentication, query structure, and rate limiting errors.
+
+###### Usage API
+
+- [Set Usage Configuration](https://docs.devin.ai/desktop/accounts/api-reference/usage-config.md): Set or clear per-user add-on credit caps, with the ability to apply them across a team, group, or individual user for enterprise billing management.
+- [Get Usage Configuration](https://docs.devin.ai/desktop/accounts/api-reference/get-usage-config.md): Retrieve the effective per-user add-on credit cap for a team, group, or individual user, including caps inherited from broader scopes.
+- [Get Team Credit Balance](https://docs.devin.ai/desktop/accounts/api-reference/get-team-credit-balance.md): Retrieve the current credit balance for your team, including prompt credits per seat, add-on credits, and billing cycle information.
+
+### Security
+
+- [FedRAMP Security Admin Guide](https://docs.devin.ai/desktop/security/security-admin-guide.md): Devin Desktop FedRAMP security admin guide for setting up, operating, and decommissioning administrative accounts and security settings.
+- [Reporting Security Concerns](https://docs.devin.ai/desktop/security/reporting.md): Report security vulnerabilities to Devin Desktop securely via email with GPG encryption. Learn about our coordinated disclosure policy and safe harbor.
+
+## OpenAPI Specs
+
+- [analytics-v2-openapi](/desktop/accounts/api-reference/analytics-v2-openapi.yaml)

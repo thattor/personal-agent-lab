@@ -1,0 +1,69 @@
+{
+  "schema": "pal-design-packet-validation-v1",
+  "checked_at": "2026-10-08T00:54:57.506053+00:00",
+  "scope": "document_consistency_only_not_product_tests",
+  "status": "PASS_WITH_REVIEW_PENDING",
+  "checks": {
+    "json_parse": "PASS",
+    "acceptance_unique_ids": 30,
+    "all_product_cases": "NOT_RUN",
+    "case_counts": {
+      "real_model": 5,
+      "real_audio": 5,
+      "real_playback": 3,
+      "host_integration": 15,
+      "hardware_measurement": 1,
+      "owner_usefulness": 1
+    },
+    "required_expectations_and_evidence": "PASS",
+    "model_id_consistency": "PASS",
+    "single_media_primary_key_example": "PASS",
+    "tts_example_codepoint_range": "PASS",
+    "http_example_field_sets": "PASS",
+    "source_review_freeze_hashes": "PASS",
+    "local_document_links": 10,
+    "original_report_unchanged": true,
+    "repo_head": "5e7c76c24dd8bf700d2811c7188739cdc77d9aa8",
+    "repo_worktree_clean": true,
+    "runtime_or_hardware_executed": false
+  },
+  "limit_arithmetic": {
+    "voice_pcm_60_seconds_16khz_mono_16bit_bytes": 1920000,
+    "image_10mib_base64_bytes": 13981016,
+    "note": "バイト上限の算術のみ。JSON同時処理のメモリや録音・デコード・モデル品質を測定していない。"
+  },
+  "review_status": {
+    "opus_initial": "completed; controller revisions recorded; revised text not independently re-reviewed",
+    "swe": "NOT_STARTED; explicit permission for scoped Devin transfer pending"
+  },
+  "handoff_status": "DRAFT_NOT_SENT",
+  "implementation_status": "NO_REPOSITORY_CHANGES",
+  "files": {
+    "ACCEPTANCE.json": "1954381ad56c5f6dd7e974f51718b3be0de313321de67ca15a2dc46488691e1b",
+    "CONTRACT-EXAMPLES.json": "277ba1e86a1139eb5019653a88f28cc011b2a71ca021435e4c0571d51f1c8042",
+    "DESIGN.md": "558d6a63062e3ef7c1b03c411d9a358c40a9db1692093cedb6a66e472e48c95d",
+    "HANDOFF.md": "517c08acc75e500e9799cec94bf511d3657675e5ff0cce9783de26f7fbbb4d1d",
+    "README.md": "60255cd2074929415c43acb637483d4ea7b50d23b39dcc9e22d8463349050097",
+    "REVIEW.md": "96274cb9569b83347251c97577fe431c2869b7beab1ac1613e2b7b54489e2079",
+    "reviews/input-freeze.json": "789cc94d39393aab938577ca17ec85811124babc3ca8f942db9c6c2b3a734ace",
+    "reviews/opus-access.json": "7813551b57adb314f9cedcb468efcbd3d13b845a285965e06706dbfe9a56763a",
+    "reviews/opus-completion.json": "7d8ec8540abff2a23a600155b1c260ebf1580393108fe1af38af7095f482956a",
+    "reviews/opus-response.txt": "f57e6fcba452ec8d1713afe924254196e12d193b0201a2e0db6e8ee4a6f2c820",
+    "reviews/question.txt": "a808e4cb8c763b0490c9740509bb666ce75d8fddf4138bf880557602882ec144",
+    "reviews/reviewed-ACCEPTANCE.json": "94ff23034423c06c2ba88d3ff61db65a4a9acb9071cf09f3d31c20ee466512d4",
+    "reviews/reviewed-CONTRACT-EXAMPLES.json": "79d4cb6dbb02ae3b5d81f7a5b92b08962e21ea83c446cc4b8bc74f1ef72dd3fc",
+    "reviews/reviewed-DESIGN.md": "9825982daad950148115b613507a925b0077e4c54ec01dac6dba3657093be72d",
+    "reviews/swe-initial-rejection.json": "dff377cdd82f0658a7695c45aaf501491f4ec799a0758cf5d2aff8f66bcf5c79",
+    "reviews/swe-restricted-rejection.json": "be84e1931735802f6add7a7bf495615b4e310be5791e0d3fecec49d34982c89a",
+    "reviews/ui-observation.json": "5ca49b19571d009ed4870152a8834a36676dc3f740d9882f474ef5bde7040b56"
+  },
+  "authoring_corrections": [
+    {
+      "issue": "一度の資料読込でcwdをリポジトリと取り違えたため、二つの資料を読めなかった。",
+      "cause": "二つの独立したread呼出しのworkdir指定の取り違え。",
+      "correction": "資料ディレクトリを指定して再読した。",
+      "prevention": "最終コピーと検証は絶対パスのsrc/destを用い、リンク先の実在を検査。",
+      "verification": "最終パケットの全対象ファイルとリンクを検査済み。"
+    }
+  ]
+}

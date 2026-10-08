@@ -1,0 +1,15 @@
+{
+  "recorded_at": "2026-10-08T00:58:33.210049+00:00",
+  "source_thread": "01a11837-e1e3-71f0-8ff8-bbaf8dc14527",
+  "owner_verbatim": "明示的に承認いたします。",
+  "approved_scope": "今回の設計・評価資料とPALソースの必要部分を既存Devin公式SWE-2 High Freeへ一度送信。ファイル変更・コマンド実行・MCP・追加課金は禁止。",
+  "scope_excludes": "実装、別の宛先、複数回送信、開発スケジュール変更、恒久設定変更。",
+  "repo_head": "5e7c76c24dd8bf700d2811c7188739cdc77d9aa8",
+  "prompt_sha256": "b66d7063b53e0c108bae5f4e16dc33098e9c82795b0929c35dd8627310c7f596",
+  "files": {
+    "DESIGN.md": "558d6a63062e3ef7c1b03c411d9a358c40a9db1692093cedb6a66e472e48c95d",
+    "ACCEPTANCE.json": "1954381ad56c5f6dd7e974f51718b3be0de313321de67ca15a2dc46488691e1b",
+    "CONTRACT-EXAMPLES.json": "277ba1e86a1139eb5019653a88f28cc011b2a71ca021435e4c0571d51f1c8042",
+    "REVIEW.md": "96274cb9569b83347251c97577fe431c2869b7beab1ac1613e2b7b54489e2079"
+  }
+}

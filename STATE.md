@@ -1,7 +1,29 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 development continues under D-021/P002 and the latest owner-directed model-led Primary correction D-028/D-029. Reasoning-solvable technical choices are autonomous. C048 supported goal status is BLOCKED after three consecutive observations of the same residual browser-access condition. The full objective and accepted scope are unchanged; C047 active development remains historical progress. Earlier BLOCKED and refused UI-control observations remain historical; the controller did not activate the card through an alternate/internal-state workaround. No schedule restarted.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized delivery goal under D-021/P002 and the owner-directed model-led Primary correction D-028/D-029. Reasoning-solvable technical choices are autonomous. Latest C050 consumes the answered HR-ACCESS-003 and prepares formal support escalation. The goal card still reports BLOCKED; this explicitly requested operational work ran. Remaining real-provider artifact/UI verification is not running. No completed-product or automatic-resume claim. No schedule restarted.
+
+## Current operating authority — 2026-10-08
+
+Latest direct owner instruction in development chat `01a11113-f829-75c1-b728-3298aa3359b5`
+establishes three continuing lanes. This chat alone implements and writes canonical
+records. Human judgment is `01a1137a-8de3-7890-b874-cdd0a7125711` (PAL人間判断):
+noninferable facts, real usefulness and authority beyond existing permissions only.
+The existing design/function-change chat is `01a11837-e1e3-71f0-8ff8-bbaf8dc14527`
+(マルチモーダル対応設計を確認), confirmed against its owner's stated role and retention
+instructions. Its current proposals remain unadopted. Necessary requests/replies/reflection messages between these lanes are
+explicitly authorized; outside support/email sending is not. No duplicate owner questions.
+STATE.md and Issue6 remain the existing project continuation/decision entry points.
+
+Stable-1 delivers the adopted natural conversation/context/local-draft/control slice.
+It is not the entire personal-assistant destination. Preserve existing N1/S0/F0 gates,
+one current whole-flow human usefulness evaluation, final regression/version/limitations
+audit and Issue closure. Future P001 proposals remain dormant. Latest owner instruction
+also requests a NEW 50-minute development checkpoint only if delivery does not interrupt
+running work; old paused schedules must remain paused. C050 status: NOT_CONFIGURED,
+because available official documentation/tool metadata do not establish that behavior.
+The exact requested prompt and activation/stop conditions are preserved in
+[C050 evidence](evidence/operations/c050-access-and-continuation.md), not an active schedule.
 
 ## Current phase
 Hierarchy and goal/evaluation loops configured: ACTIVE [milestone1](https://github.com/thattor/personal-agent-lab/milestone/1), parent#2 with actual child Issues#3/#4/#5; global Issue#6 with actual stage children#2/#7–11. Future milestones2–5 are proposed required stages IF P-001 adopted; milestone6 is optional extension, not a required PAL-1.0 gate. Milestone7 is a closed historical Stable-0 record, linked to Issue1 rather than assigned after CLI failure; Issue1 remains closed. [Actual GitHub readback](evidence/reviews/project-plan/github.json).
@@ -14,6 +36,10 @@ Historical Issue3 recognition under D-023 passed N1-01/N1-02 with [fixed corpus,
 
 Stable-0 remains functional-first complete: all20 required S0/F0 rows PASS, authentic human usefulness evaluation reflected, final66 tests and controller audit PASS, master Issue#1 CLOSED/completed. Version `stable-0`, production baseline ccfba35. [Completion receipt](evidence/final/stable0/completion.json), [proof and limitations](evidence/final/stable0/README.md). Historical S0-13 stays NOT PASS/nonrequired; no long-term reliability claim. Earlier pending/active/blocked descriptions below are historical and superseded by current milestone/completion records.
 
+## Retained future design materials — D-030
+
+The owner requested reusable PAL materials be stored in this private repository, including previously unsaved material from the design chat. [Image/audio design v1](docs/design/multimodal-qwen38-v1.md) links the fixed-model handoff candidate, original research, source snapshots, review history and import verification. Development received the archive and integrates the shared records under the single-writer instruction. This adopts retention only: 30 product cases remain NOT_RUN and SWE review is partial. Stable-1 scope and acceptance are unchanged; the current operational wait is C050 below.
+
 ## Working checkout
 `/private/tmp/personal-agent-lab-stable0-20261006`, same private GitHub repository, remote origin/main. Original supplied untracked workspace preserved. No old implementation/schema was reused; the accidental startup metadata inspection is explicitly recorded in docs/DEFECTS.md. Do not inspect it again.
 
@@ -25,7 +51,32 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
-Latest C049: owner explicitly requested supported browser-block diagnosis through the
+Latest C050: HR-ACCESS-003 is ANSWERED / observation complete. The human window's
+authorized handoff and its supplied settings image agree: Browse default Always allow,
+no displayed original port49957 exception, no visible Block/managed-lock indicator,
+CDP full access off. No setting changed. A stopped-URL ERR_CONNECTION_REFUSED is a
+different observation and does not clear the original ERR_BLOCKED_BY_CLIENT.
+[Evidence and scoped support request HR-ACCESS-004](evidence/operations/c050-access-and-continuation.md).
+
+Next owner-dependent action belongs only in PAL人間判断: authorize the prepared minimal
+private OpenAI Support submission, or submit that same text personally and return its
+ticket/reply. [Exact unsent draft](evidence/operations/c050-support-draft.txt) includes the
+answered settings facts and asks for an official diagnostic/remedy; no repository source,
+conversation history, credentials, screenshot attachment or global permission change.
+No external submission is authorized yet. Native settings/policy tool refusals stay in
+force; do not retry blocked pages or obtain artifact bytes elsewhere. A support report
+alone is not access clearance.
+
+After a supported allowed path is established, re-read current decisions/source, freeze
+the remaining approved affected UI cases with fresh bounded no-extra-charge proof, then
+one actual current-version whole-flow usefulness evaluation and final release audit.
+No model or provider-proof calls while the artifact-access dependency remains. No other
+independent required product slice is identified; do not create work to fill the wait.
+The concurrently prepared research archive is now reconciled with its owner's retention
+instruction and preserved under D-030. No imported design or source is a product dependency.
+Product/scripts/tests remain identical to the C047 full268-test green source.
+
+Historical C049 (settings question superseded by the answer above): owner explicitly requested supported browser-block diagnosis through the
 persistent human window; source turn01a1188d verified. Investigation completed within
 scope; [findings and HR-ACCESS-003](evidence/operations/c049-browser-block-investigation.md).
 Client restriction confirmed, exact winning rule/cause UNKNOWN. Native Codex settings

@@ -1,0 +1,12 @@
+{
+  "status": "NOT_STARTED",
+  "source": "automatic_approval_review",
+  "sequence": 2,
+  "attempted_scope": "一時設定で全てのファイル読取・変更・shell・fetch・MCP・subagentを禁止したSWE-2 High設計レビュー",
+  "reason": "一時deny設定でローカル操作を絞っても、非承認のDevinへプライベートリポジトリの設計資料とソース抜粋を送るレビューであり、第三者宛ての機密データ送信を具体的に許可されていないため。",
+  "prompt_sent": false,
+  "review_process_started": false,
+  "owner_question": "今回の設計・評価資料と必要なPALソース抜粋を、既存のDevin公式SWE-2 High Freeへ、ツールなし・追加課金なしで一度送信する承認",
+  "owner_answer": "PENDING",
+  "next_action": "承認なしに送信しない。既存PAL開発を止める条件へ転用しない。"
+}

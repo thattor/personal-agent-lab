@@ -1,0 +1,1027 @@
+{
+  "schema": "pal-reusable-material-import-v1",
+  "recorded_at": "2026-10-08T04:35:28.000316+00:00",
+  "base_head": "5e7c76c24dd8bf700d2811c7188739cdc77d9aa8",
+  "destination_repository": "thattor/personal-agent-lab",
+  "repository_visibility_verified": "private",
+  "source_thread": "01a11837-e1e3-71f0-8ff8-bbaf8dc14527",
+  "owner_instructions": [
+    {
+      "text": "再利用するようなファイルや記録やデータはプライベートレポジトリのパーソナルエージェントラボのレポジトリに適切に格納しておいてください。",
+      "scope": "store reusable PAL project materials in the private repository"
+    },
+    {
+      "text": "今まで保存されてなかった情報があるのであれば、それも今回一緒に上げておいてください。",
+      "scope": "include previously uncommitted reusable material from this investigation"
+    }
+  ],
+  "source_roots": {
+    "chat_export": "this design chat artifact export: pal-multimodal-research-20261008",
+    "research_working": "/private/tmp/pal-multimodal-research-20261008",
+    "design_working": "/private/tmp/pal-mm-design-v1-20261008"
+  },
+  "copy_policy": "exact bytes for historical research, selected source snapshots and review evidence; duplicates identified by sha256; original local copies retained",
+  "authority": "Historical review receipts and one-time approvals are evidence of past actions, not authorization to repeat them. No model call or product adoption in this import.",
+  "counts": {
+    "preserved_exact": 63,
+    "identical_existing_copy": 59,
+    "supplement_preserved_exact": 17,
+    "excluded_one_off_execution_configuration": 3
+  },
+  "coverage": [
+    {
+      "source": "chat_export",
+      "source_path": "REPORT.md",
+      "sha256": "7913623e0f509f7110eac8eafd670104c04ba610b6ae0d51b49a04ca958b309b",
+      "disposition": "preserved_exact",
+      "archive_path": "REPORT.md"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/ACCEPTANCE.json",
+      "sha256": "ebf7d3352b8f0e6a01cae3984f96c54c60cb6df070b33be633fb99bd89ee1b4b",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/ACCEPTANCE.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/CONTRACT-EXAMPLES.json",
+      "sha256": "4b5a8dc8aa34a61438e35615333b9fb6fee5e7018436147c4b9143e1bb40522c",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/CONTRACT-EXAMPLES.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/DESIGN.md",
+      "sha256": "e209d3cd431131aab7d238a0bbe51bb078b33d2f4368de5bafcc4792cfa6ae77",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/DESIGN.md"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/HANDOFF.md",
+      "sha256": "495ac382c58980b8f31d6d069f94112397a7654281d67770992f349ac1f98784",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/HANDOFF.md"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/README.md",
+      "sha256": "d392620f54c3f2bc029f64b6282bf346ac33897ca5cde48880a656949ed1b04f",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/README.md"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/REVIEW.md",
+      "sha256": "3a699c27e8f6bf7aa17d31855294bcf6b68dfe80d45c62eb08e7a592ba18ea8e",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/REVIEW.md"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/VALIDATION.json",
+      "sha256": "5b9b07dbe4023b0575368e987e7b95172e1695cb11e4a4a310f1e72fc7463d41",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/VALIDATION.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/input-freeze.json",
+      "sha256": "789cc94d39393aab938577ca17ec85811124babc3ca8f942db9c6c2b3a734ace",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/input-freeze.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/opus-access.json",
+      "sha256": "7813551b57adb314f9cedcb468efcbd3d13b845a285965e06706dbfe9a56763a",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/opus-access.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/opus-completion.json",
+      "sha256": "7d8ec8540abff2a23a600155b1c260ebf1580393108fe1af38af7095f482956a",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/opus-completion.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/opus-response.txt",
+      "sha256": "f57e6fcba452ec8d1713afe924254196e12d193b0201a2e0db6e8ee4a6f2c820",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/opus-response.txt"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/packet-before-swe-VALIDATION.json",
+      "sha256": "024209ccc5ed84e0b8fe1c83579bdfa10a7ee6cd1a77770454ba3080c50b9a8d",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/packet-before-swe-VALIDATION.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/question.txt",
+      "sha256": "a808e4cb8c763b0490c9740509bb666ce75d8fddf4138bf880557602882ec144",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/question.txt"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/reviewed-ACCEPTANCE.json",
+      "sha256": "94ff23034423c06c2ba88d3ff61db65a4a9acb9071cf09f3d31c20ee466512d4",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/reviewed-ACCEPTANCE.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/reviewed-CONTRACT-EXAMPLES.json",
+      "sha256": "79d4cb6dbb02ae3b5d81f7a5b92b08962e21ea83c446cc4b8bc74f1ef72dd3fc",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/reviewed-CONTRACT-EXAMPLES.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/reviewed-DESIGN.md",
+      "sha256": "9825982daad950148115b613507a925b0077e4c54ec01dac6dba3657093be72d",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/reviewed-DESIGN.md"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-access.json",
+      "sha256": "e93e453db27b7c57385be8b76a50d0ac351e1b55cd5a17fd2cfe428ae235e0db",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-access.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-attempt-started.json",
+      "sha256": "3f7e5ce9da80111b1d8c4d2fd456289fd70906d14a099b4c76a546b94558aa6d",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-attempt-started.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-authorized-input.json",
+      "sha256": "3e3c12d668fa3654d76f281540dc6588516f25ed90e4e9701bd1b04556758055",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-authorized-input.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-completion.json",
+      "sha256": "4e02e316f97bf5bad5a4501b6f4f2ebc1954af99c3cc21d98d9d256e6e782097",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-completion.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-controller-resolution.json",
+      "sha256": "604596b840d865ffc0048fd0162f69b242e13d71d25a7ac1c70e016fd4d1f06d",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-controller-resolution.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-initial-rejection.json",
+      "sha256": "dff377cdd82f0658a7695c45aaf501491f4ec799a0758cf5d2aff8f66bcf5c79",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-initial-rejection.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-question.txt",
+      "sha256": "b66d7063b53e0c108bae5f4e16dc33098e9c82795b0929c35dd8627310c7f596",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-question.txt"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-response.txt",
+      "sha256": "2b37dda4370df51aebfeddca697ee1a3f61f09cb96ea28dcc32ff91e69817e01",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-response.txt"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-restricted-rejection.json",
+      "sha256": "be84e1931735802f6add7a7bf495615b4e310be5791e0d3fecec49d34982c89a",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-restricted-rejection.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-reviewed-ACCEPTANCE.json",
+      "sha256": "1954381ad56c5f6dd7e974f51718b3be0de313321de67ca15a2dc46488691e1b",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-reviewed-ACCEPTANCE.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-reviewed-CONTRACT-EXAMPLES.json",
+      "sha256": "277ba1e86a1139eb5019653a88f28cc011b2a71ca021435e4c0571d51f1c8042",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-reviewed-CONTRACT-EXAMPLES.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-reviewed-DESIGN.md",
+      "sha256": "558d6a63062e3ef7c1b03c411d9a358c40a9db1692093cedb6a66e472e48c95d",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-reviewed-DESIGN.md"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-reviewed-REVIEW.md",
+      "sha256": "96274cb9569b83347251c97577fe431c2869b7beab1ac1613e2b7b54489e2079",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-reviewed-REVIEW.md"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-source-check.json",
+      "sha256": "dbfd72cf20fbd97f4f53825fc6900c5eaf0a484ab2ec5ad38559698590344438",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-source-check.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/swe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/swe-stderr.txt"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "design-v1/reviews/ui-observation.json",
+      "sha256": "5ca49b19571d009ed4870152a8834a36676dc3f740d9882f474ef5bde7040b56",
+      "disposition": "preserved_exact",
+      "archive_path": "design-v1/reviews/ui-observation.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "opus-review.txt",
+      "sha256": "801fad5e2f2a658d44b7c6956dc02fd8df61109480e030d9c64b85823466bb18",
+      "disposition": "preserved_exact",
+      "archive_path": "opus-review.txt"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "research-matrix.json",
+      "sha256": "aaf95861e8bbf50568e31b1c4b981c81332473feb906ebe08eedeef069d551d3",
+      "disposition": "preserved_exact",
+      "archive_path": "research-matrix.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "review-completion.json",
+      "sha256": "ac7bb38ab7c4d51901b36b1dd8bb7ba8e9b65e2eb718fac5cd98778c7362c30d",
+      "disposition": "preserved_exact",
+      "archive_path": "review-completion.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "review-question.txt",
+      "sha256": "c1faf24f406cd51de9ba77529745c50f54f20b7fa3928355fc99d4ca5968bc98",
+      "disposition": "preserved_exact",
+      "archive_path": "review-question.txt"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "source-receipts.json",
+      "sha256": "17013146685f8711747800ea8549829385b6f7bfba047931fb783944a52bf1d2",
+      "disposition": "preserved_exact",
+      "archive_path": "source-receipts.json"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/files/LICENSE",
+      "sha256": "45a078c64e8708098219d1f0ccd3d90b56d784f14eb2966e663430000c4fc8ec",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/files/LICENSE"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/README.md",
+      "sha256": "f1b29c0dff01af0d10d6c90f92c0bd40bbcdac100a68bb7913522bd6b6dbcc58",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/README.md"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/memory/schema.ts",
+      "sha256": "805d8efc6ae53f50bd380b792f00459289efbe1bd5c605489cdb87d93d8edddc",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/memory/schema.ts"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/orchestrator/live-session.ts",
+      "sha256": "4472cdcc34d601daeb5c9b3b260a0feb0f57cecaac9238cf09a7a6fc1400ae02",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/orchestrator/live-session.ts"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/realtime/realtime-session.ts",
+      "sha256": "ce11d810ec2fcaa7efd291526b55ae1940fd811775ae572814756f639b6d9747",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/realtime/realtime-session.ts"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness-host/src/preload/audio-output-queue.ts",
+      "sha256": "ad566555ea23730dc9d0ed56e4aa62431554aad6042437a58329091b29b7d3a1",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness-host/src/preload/audio-output-queue.ts"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/QwenLM__Qwen-MM-Plugins/files/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-MM-Plugins/files/LICENSE"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/core/qwen_mm_plugins_core/readers/image.py",
+      "sha256": "42b620f93f669a0c6a4e1d36f44f8f59f662ec602fbb75085de044220ed2cb3b",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/core/qwen_mm_plugins_core/readers/image.py"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/core/qwen_mm_plugins_core/readers/video.py",
+      "sha256": "8e28fa2bc9e0953fbb1c8eff9aed71be37835296f511f2be70073b4f5ed57df3",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/core/qwen_mm_plugins_core/readers/video.py"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/omni-memory/qwen_mm_plugins_omni_memory/tools/get_moment.py",
+      "sha256": "0905ec65cb782eb11bbd75ab44b1e6a3f02b8cf454967f50621085c18dfb7687",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/omni-memory/qwen_mm_plugins_omni_memory/tools/get_moment.py"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/omni-memory/skill/script/build_memory/storage.py",
+      "sha256": "1a6297bc14f262d2b1ae52b754d5a4c7de8e717d5a6fb2825503152527297f8e",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/omni-memory/skill/script/build_memory/storage.py"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/immich-app__immich/files/LICENSE",
+      "sha256": "a3bad629f67f442b23b5224419e49edafc32e6b9c876b89464f7aafe6091ccde",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/immich-app__immich/files/LICENSE"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/immich-app__immich/files/machine-learning/immich_ml/models/clip/visual.py",
+      "sha256": "052acc7bcaa9942186ac27abf42a4ebebdb9545d67e0eb0d14f29edfb45af02b",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/immich-app__immich/files/machine-learning/immich_ml/models/clip/visual.py"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/immich-app__immich/files/server/src/schema/tables/asset.table.ts",
+      "sha256": "2daaa601ab3973abf6b3781dc8605a919c4cf612f6a78f2ad12d8cc04855737f",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/immich-app__immich/files/server/src/schema/tables/asset.table.ts"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/immich-app__immich/files/server/src/schema/tables/smart-search.table.ts",
+      "sha256": "b8d3704bd2479f880b0b477aeac21f65a6ad7965a5acdb505fa937df4b210381",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/immich-app__immich/files/server/src/schema/tables/smart-search.table.ts"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/immich-app__immich/files/server/src/services/ocr.service.ts",
+      "sha256": "59dd48b89e9095a5b9b776f27673892a404ee9d1d156591f82682869b96cd7f8",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/immich-app__immich/files/server/src/services/ocr.service.ts"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/livekit__agents/files/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/livekit__agents/files/LICENSE"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/livekit__agents/files/livekit-agents/livekit/agents/llm/chat_context.py",
+      "sha256": "8b50c60bcd55dcc600c2ee34adb367ca2852dd889c64c695365f815fc5767a3f",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/livekit__agents/files/livekit-agents/livekit/agents/llm/chat_context.py"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/livekit__agents/files/livekit-agents/livekit/agents/voice/agent_activity.py",
+      "sha256": "dc82e2fd253c0d0c75947fcf00600fea475bfb8abcc15233098a5712d3d32003",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/livekit__agents/files/livekit-agents/livekit/agents/voice/agent_activity.py"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/livekit__agents/files/livekit-agents/livekit/agents/voice/speech_handle.py",
+      "sha256": "627612bcfe739d510302d8ea1869ea7076dfd45348436423282b1f72f7f80b26",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/livekit__agents/files/livekit-agents/livekit/agents/voice/speech_handle.py"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/open-webui__open-webui/files/LICENSE",
+      "sha256": "5f1bd74c48bf13ab0f82e177ad9e637313b92533d20ead2593d49347a47fc232",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/open-webui__open-webui/files/LICENSE"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/open-webui__open-webui/files/backend/open_webui/models/files.py",
+      "sha256": "e0770c88528e5f95f64ee56fd11f1e662065ba269a7bf44688fa6d5ce224cb6d",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/open-webui__open-webui/files/backend/open_webui/models/files.py"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/open-webui__open-webui/files/backend/open_webui/routers/audio.py",
+      "sha256": "ccd7f1af684f011501868e43a519b8e613bd179c06718a9f5a5b4035499939dd",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/open-webui__open-webui/files/backend/open_webui/routers/audio.py"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "sources/open-webui__open-webui/files/src/lib/components/chat/MessageInput/CallOverlay.svelte",
+      "sha256": "25021328d523d030f07a2dfbf7cd099a6f06773fe0a8e16fbe2c7de4378db90d",
+      "disposition": "preserved_exact",
+      "archive_path": "sources/open-webui__open-webui/files/src/lib/components/chat/MessageInput/CallOverlay.svelte"
+    },
+    {
+      "source": "chat_export",
+      "source_path": "validation.json",
+      "sha256": "1873dfe40d6074f352e106032379cb59c988993b6daaa9f8a60c4560024663f0",
+      "disposition": "preserved_exact",
+      "archive_path": "validation.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "REPORT.md",
+      "sha256": "7913623e0f509f7110eac8eafd670104c04ba610b6ae0d51b49a04ca958b309b",
+      "disposition": "identical_existing_copy",
+      "archive_path": "REPORT.md"
+    },
+    {
+      "source": "research_working",
+      "source_path": "fetch_sources.py",
+      "sha256": "2cba8867608cd2e69882f56ac41775dfeea7eae91dcfd3530758e62c82c60f77",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "fetch_sources.py"
+    },
+    {
+      "source": "research_working",
+      "source_path": "opus-review-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "opus-review-stderr.txt"
+    },
+    {
+      "source": "research_working",
+      "source_path": "opus-review.txt",
+      "sha256": "801fad5e2f2a658d44b7c6956dc02fd8df61109480e030d9c64b85823466bb18",
+      "disposition": "identical_existing_copy",
+      "archive_path": "opus-review.txt"
+    },
+    {
+      "source": "research_working",
+      "source_path": "research-matrix.json",
+      "sha256": "aaf95861e8bbf50568e31b1c4b981c81332473feb906ebe08eedeef069d551d3",
+      "disposition": "identical_existing_copy",
+      "archive_path": "research-matrix.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "review-access.json",
+      "sha256": "c89afb18f70777cde5f53b52857925419fc750adcb157c7e52832612cda51480",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "review-access.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "review-completion.json",
+      "sha256": "ac7bb38ab7c4d51901b36b1dd8bb7ba8e9b65e2eb718fac5cd98778c7362c30d",
+      "disposition": "identical_existing_copy",
+      "archive_path": "review-completion.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "review-question.txt",
+      "sha256": "c1faf24f406cd51de9ba77529745c50f54f20b7fa3928355fc99d4ca5968bc98",
+      "disposition": "identical_existing_copy",
+      "archive_path": "review-question.txt"
+    },
+    {
+      "source": "research_working",
+      "source_path": "run_review.py",
+      "sha256": "dd58dbdaf1f03addd5a0357c209d63063256151ee51d9f7d0a5413972355613d",
+      "disposition": "excluded_one_off_execution_configuration",
+      "reason": "one-off review launcher with account binding; reusable execution facts preserved in EXECUTION.md and review-access.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "selected-files.json",
+      "sha256": "e291f742c1ddc9855be086df75e504b430a402c74a2f5f6cca4b6a9f2f67c00b",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "selected-files.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "source-receipts.json",
+      "sha256": "17013146685f8711747800ea8549829385b6f7bfba047931fb783944a52bf1d2",
+      "disposition": "identical_existing_copy",
+      "archive_path": "source-receipts.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/files/LICENSE",
+      "sha256": "45a078c64e8708098219d1f0ccd3d90b56d784f14eb2966e663430000c4fc8ec",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/files/LICENSE"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/README.md",
+      "sha256": "f1b29c0dff01af0d10d6c90f92c0bd40bbcdac100a68bb7913522bd6b6dbcc58",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/README.md"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/memory/schema.ts",
+      "sha256": "805d8efc6ae53f50bd380b792f00459289efbe1bd5c605489cdb87d93d8edddc",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/memory/schema.ts"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/orchestrator/live-session.ts",
+      "sha256": "4472cdcc34d601daeb5c9b3b260a0feb0f57cecaac9238cf09a7a6fc1400ae02",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/orchestrator/live-session.ts"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/realtime/realtime-session.ts",
+      "sha256": "ce11d810ec2fcaa7efd291526b55ae1940fd811775ae572814756f639b6d9747",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness/src/realtime/realtime-session.ts"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness-host/src/preload/audio-output-queue.ts",
+      "sha256": "ad566555ea23730dc9d0ed56e4aa62431554aad6042437a58329091b29b7d3a1",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/files/packages/qwen-live-harness-host/src/preload/audio-output-queue.ts"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/metadata.json",
+      "sha256": "67b34782f64bd65ec48911e57ea4c46db1ded05dc18153f703aafd331b8192dd",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/metadata.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-Live-Harness/tree.json",
+      "sha256": "7f2360666f42c9e1b417e630d0fb3f4135532425850de7a2f0e6a113500c2ef8",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-Live-Harness/tree.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-MM-Plugins/files/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/QwenLM__Qwen-MM-Plugins/files/LICENSE"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/core/qwen_mm_plugins_core/readers/image.py",
+      "sha256": "42b620f93f669a0c6a4e1d36f44f8f59f662ec602fbb75085de044220ed2cb3b",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/core/qwen_mm_plugins_core/readers/image.py"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/core/qwen_mm_plugins_core/readers/video.py",
+      "sha256": "8e28fa2bc9e0953fbb1c8eff9aed71be37835296f511f2be70073b4f5ed57df3",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/core/qwen_mm_plugins_core/readers/video.py"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/omni-memory/qwen_mm_plugins_omni_memory/tools/get_moment.py",
+      "sha256": "0905ec65cb782eb11bbd75ab44b1e6a3f02b8cf454967f50621085c18dfb7687",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/omni-memory/qwen_mm_plugins_omni_memory/tools/get_moment.py"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/omni-memory/skill/script/build_memory/storage.py",
+      "sha256": "1a6297bc14f262d2b1ae52b754d5a4c7de8e717d5a6fb2825503152527297f8e",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/QwenLM__Qwen-MM-Plugins/files/src/capabilities/omni-memory/skill/script/build_memory/storage.py"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-MM-Plugins/metadata.json",
+      "sha256": "9f04491cc1e6ff616774eed8933a49e17906eebf5e9ba327b1a36d89aa6ab9b6",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-MM-Plugins/metadata.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/QwenLM__Qwen-MM-Plugins/tree.json",
+      "sha256": "d6258040af36cab3170350cb4c991c0e31c2fc421a94388d7facee5c6c665a83",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "sources/QwenLM__Qwen-MM-Plugins/tree.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/immich-app__immich/files/LICENSE",
+      "sha256": "a3bad629f67f442b23b5224419e49edafc32e6b9c876b89464f7aafe6091ccde",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/immich-app__immich/files/LICENSE"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/immich-app__immich/files/machine-learning/immich_ml/models/clip/visual.py",
+      "sha256": "052acc7bcaa9942186ac27abf42a4ebebdb9545d67e0eb0d14f29edfb45af02b",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/immich-app__immich/files/machine-learning/immich_ml/models/clip/visual.py"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/immich-app__immich/files/server/src/schema/tables/asset.table.ts",
+      "sha256": "2daaa601ab3973abf6b3781dc8605a919c4cf612f6a78f2ad12d8cc04855737f",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/immich-app__immich/files/server/src/schema/tables/asset.table.ts"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/immich-app__immich/files/server/src/schema/tables/smart-search.table.ts",
+      "sha256": "b8d3704bd2479f880b0b477aeac21f65a6ad7965a5acdb505fa937df4b210381",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/immich-app__immich/files/server/src/schema/tables/smart-search.table.ts"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/immich-app__immich/files/server/src/services/ocr.service.ts",
+      "sha256": "59dd48b89e9095a5b9b776f27673892a404ee9d1d156591f82682869b96cd7f8",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/immich-app__immich/files/server/src/services/ocr.service.ts"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/immich-app__immich/metadata.json",
+      "sha256": "adf775bcaea1814f9cc924182f615744f97226a2388bd71421c29700f322902b",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "sources/immich-app__immich/metadata.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/immich-app__immich/tree.json",
+      "sha256": "cb5dda4cd972785034f510ddc44c138ed85aa713116dacdd406f58d61ad14b06",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "sources/immich-app__immich/tree.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/livekit__agents/files/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/livekit__agents/files/LICENSE"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/livekit__agents/files/livekit-agents/livekit/agents/llm/chat_context.py",
+      "sha256": "8b50c60bcd55dcc600c2ee34adb367ca2852dd889c64c695365f815fc5767a3f",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/livekit__agents/files/livekit-agents/livekit/agents/llm/chat_context.py"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/livekit__agents/files/livekit-agents/livekit/agents/voice/agent_activity.py",
+      "sha256": "dc82e2fd253c0d0c75947fcf00600fea475bfb8abcc15233098a5712d3d32003",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/livekit__agents/files/livekit-agents/livekit/agents/voice/agent_activity.py"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/livekit__agents/files/livekit-agents/livekit/agents/voice/speech_handle.py",
+      "sha256": "627612bcfe739d510302d8ea1869ea7076dfd45348436423282b1f72f7f80b26",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/livekit__agents/files/livekit-agents/livekit/agents/voice/speech_handle.py"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/livekit__agents/metadata.json",
+      "sha256": "a86621e6d67c22297e20a1b5a2e59b30ed0186199e62fd2163056f06486e52a9",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "sources/livekit__agents/metadata.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/livekit__agents/tree.json",
+      "sha256": "e8da5c3113a7bb70a9e73218b280863865e4b3c006e2de3924885beb2577ec8b",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "sources/livekit__agents/tree.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/open-webui__open-webui/files/LICENSE",
+      "sha256": "5f1bd74c48bf13ab0f82e177ad9e637313b92533d20ead2593d49347a47fc232",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/open-webui__open-webui/files/LICENSE"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/open-webui__open-webui/files/backend/open_webui/models/files.py",
+      "sha256": "e0770c88528e5f95f64ee56fd11f1e662065ba269a7bf44688fa6d5ce224cb6d",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/open-webui__open-webui/files/backend/open_webui/models/files.py"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/open-webui__open-webui/files/backend/open_webui/routers/audio.py",
+      "sha256": "ccd7f1af684f011501868e43a519b8e613bd179c06718a9f5a5b4035499939dd",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/open-webui__open-webui/files/backend/open_webui/routers/audio.py"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/open-webui__open-webui/files/src/lib/components/chat/MessageInput/CallOverlay.svelte",
+      "sha256": "25021328d523d030f07a2dfbf7cd099a6f06773fe0a8e16fbe2c7de4378db90d",
+      "disposition": "identical_existing_copy",
+      "archive_path": "sources/open-webui__open-webui/files/src/lib/components/chat/MessageInput/CallOverlay.svelte"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/open-webui__open-webui/metadata.json",
+      "sha256": "405d78e25610846746fef32205fb7fd8ba126c7b2dba927bb6fe84dedc415cc7",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "sources/open-webui__open-webui/metadata.json"
+    },
+    {
+      "source": "research_working",
+      "source_path": "sources/open-webui__open-webui/tree.json",
+      "sha256": "2f24ee0946949ce495e1f07592f5cd95d19282c61e99ed3dd1610793cabf42dc",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "sources/open-webui__open-webui/tree.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "ACCEPTANCE.json",
+      "sha256": "ebf7d3352b8f0e6a01cae3984f96c54c60cb6df070b33be633fb99bd89ee1b4b",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/ACCEPTANCE.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "CONTRACT-EXAMPLES.json",
+      "sha256": "4b5a8dc8aa34a61438e35615333b9fb6fee5e7018436147c4b9143e1bb40522c",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/CONTRACT-EXAMPLES.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "DESIGN.md",
+      "sha256": "e209d3cd431131aab7d238a0bbe51bb078b33d2f4368de5bafcc4792cfa6ae77",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/DESIGN.md"
+    },
+    {
+      "source": "design_working",
+      "source_path": "HANDOFF.md",
+      "sha256": "495ac382c58980b8f31d6d069f94112397a7654281d67770992f349ac1f98784",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/HANDOFF.md"
+    },
+    {
+      "source": "design_working",
+      "source_path": "README.md",
+      "sha256": "d392620f54c3f2bc029f64b6282bf346ac33897ca5cde48880a656949ed1b04f",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/README.md"
+    },
+    {
+      "source": "design_working",
+      "source_path": "REVIEW.md",
+      "sha256": "3a699c27e8f6bf7aa17d31855294bcf6b68dfe80d45c62eb08e7a592ba18ea8e",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/REVIEW.md"
+    },
+    {
+      "source": "design_working",
+      "source_path": "review_runner.py",
+      "sha256": "d115a22bab0d6c913e8ae26963e7b118db25504f7ebd6d44037faeafc7caa55f",
+      "disposition": "excluded_one_off_execution_configuration",
+      "reason": "one-off launcher with account binding and single-use owner-approval guard; historical authorization/receipts retained, launcher not persisted as reusable authority"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/devin-cli-docs.txt",
+      "sha256": "029538e88b5d1fcc326993a8072ae159b16f3fd941f065e386a4247fe3bf9aa2",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "design-v1/reviews/devin-cli-docs.txt"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/devin-desktop-index.txt",
+      "sha256": "f5b2afd18ac10779f91522f2e214f7b7d981608c10c1f8ebc951037a863f89d8",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "design-v1/reviews/devin-desktop-index.txt"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/input-freeze.json",
+      "sha256": "789cc94d39393aab938577ca17ec85811124babc3ca8f942db9c6c2b3a734ace",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/input-freeze.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/opus-access.json",
+      "sha256": "7813551b57adb314f9cedcb468efcbd3d13b845a285965e06706dbfe9a56763a",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/opus-access.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/opus-completion.json",
+      "sha256": "7d8ec8540abff2a23a600155b1c260ebf1580393108fe1af38af7095f482956a",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/opus-completion.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/opus-response.txt",
+      "sha256": "f57e6fcba452ec8d1713afe924254196e12d193b0201a2e0db6e8ee4a6f2c820",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/opus-response.txt"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/opus-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "disposition": "supplement_preserved_exact",
+      "archive_path": "design-v1/reviews/opus-stderr.txt"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/question.txt",
+      "sha256": "a808e4cb8c763b0490c9740509bb666ce75d8fddf4138bf880557602882ec144",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/question.txt"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/reviewed-ACCEPTANCE.json",
+      "sha256": "94ff23034423c06c2ba88d3ff61db65a4a9acb9071cf09f3d31c20ee466512d4",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/reviewed-ACCEPTANCE.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/reviewed-CONTRACT-EXAMPLES.json",
+      "sha256": "79d4cb6dbb02ae3b5d81f7a5b92b08962e21ea83c446cc4b8bc74f1ef72dd3fc",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/reviewed-CONTRACT-EXAMPLES.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/reviewed-DESIGN.md",
+      "sha256": "9825982daad950148115b613507a925b0077e4c54ec01dac6dba3657093be72d",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/reviewed-DESIGN.md"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-access.json",
+      "sha256": "e93e453db27b7c57385be8b76a50d0ac351e1b55cd5a17fd2cfe428ae235e0db",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-access.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-attempt-started.json",
+      "sha256": "3f7e5ce9da80111b1d8c4d2fd456289fd70906d14a099b4c76a546b94558aa6d",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-attempt-started.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-authorized-input.json",
+      "sha256": "3e3c12d668fa3654d76f281540dc6588516f25ed90e4e9701bd1b04556758055",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-authorized-input.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-completion.json",
+      "sha256": "4e02e316f97bf5bad5a4501b6f4f2ebc1954af99c3cc21d98d9d256e6e782097",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-completion.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-controller-resolution.json",
+      "sha256": "604596b840d865ffc0048fd0162f69b242e13d71d25a7ac1c70e016fd4d1f06d",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-controller-resolution.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-initial-rejection.json",
+      "sha256": "dff377cdd82f0658a7695c45aaf501491f4ec799a0758cf5d2aff8f66bcf5c79",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-initial-rejection.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-question.txt",
+      "sha256": "b66d7063b53e0c108bae5f4e16dc33098e9c82795b0929c35dd8627310c7f596",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-question.txt"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-response.txt",
+      "sha256": "2b37dda4370df51aebfeddca697ee1a3f61f09cb96ea28dcc32ff91e69817e01",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-response.txt"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-restricted-rejection.json",
+      "sha256": "be84e1931735802f6add7a7bf495615b4e310be5791e0d3fecec49d34982c89a",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-restricted-rejection.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-reviewed-ACCEPTANCE.json",
+      "sha256": "1954381ad56c5f6dd7e974f51718b3be0de313321de67ca15a2dc46488691e1b",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-reviewed-ACCEPTANCE.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-reviewed-CONTRACT-EXAMPLES.json",
+      "sha256": "277ba1e86a1139eb5019653a88f28cc011b2a71ca021435e4c0571d51f1c8042",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-reviewed-CONTRACT-EXAMPLES.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-reviewed-DESIGN.md",
+      "sha256": "558d6a63062e3ef7c1b03c411d9a358c40a9db1692093cedb6a66e472e48c95d",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-reviewed-DESIGN.md"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-reviewed-REVIEW.md",
+      "sha256": "96274cb9569b83347251c97577fe431c2869b7beab1ac1613e2b7b54489e2079",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-reviewed-REVIEW.md"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/swe-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/swe-stderr.txt"
+    },
+    {
+      "source": "design_working",
+      "source_path": "reviews/ui-observation.json",
+      "sha256": "5ca49b19571d009ed4870152a8834a36676dc3f740d9882f474ef5bde7040b56",
+      "disposition": "identical_existing_copy",
+      "archive_path": "design-v1/reviews/ui-observation.json"
+    },
+    {
+      "source": "design_working",
+      "source_path": "swe-review-only-config.json",
+      "sha256": "0e98e61a82391eaa7237d1ce62c7c5cfc8ef02f41f452dde2af2aaea2ede8dfc",
+      "disposition": "excluded_one_off_execution_configuration",
+      "reason": "temporary copy of per-machine agent/hook configuration; effective restrictions preserved in swe-access.json, no permanent agent configuration imported"
+    }
+  ]
+}

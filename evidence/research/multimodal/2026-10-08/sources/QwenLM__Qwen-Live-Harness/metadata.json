@@ -1,0 +1,15 @@
+{
+  "repo": "QwenLM/Qwen-Live-Harness",
+  "sha": "b6ce544ebbcd7417e37e0314ec946466c49c615c",
+  "commit_date": "2026-09-28T08:41:18Z",
+  "retrieved_at": "2026-10-07T21:50:52.091586+00:00",
+  "license": {
+    "key": "apache-2.0",
+    "name": "Apache License 2.0",
+    "spdx_id": "Apache-2.0",
+    "url": "https://api.github.com/licenses/apache-2.0",
+    "node_id": "MDc6TGljZW5zZTI="
+  },
+  "default_branch": "main",
+  "tree_truncated": false
+}
