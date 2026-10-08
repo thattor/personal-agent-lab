@@ -1,0 +1,22 @@
+{
+  "checked_at": 1791462498.755119,
+  "issue": {
+    "number": 5,
+    "title": "Stable-1: prove the new flow on real UI and close release acceptance",
+    "state": "OPEN",
+    "updatedAt": "2026-10-08T12:28:17Z",
+    "url": "https://github.com/thattor/personal-agent-lab/issues/5"
+  },
+  "body_exact_readback": true,
+  "version": "fa2994092cad15894c3f58b38e1a26c90c35e59e",
+  "owner_window_delivery": {
+    "thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "turn_id": "01a11b78-74db-7c70-a005-308159958bc6",
+    "message_id": "msg_0e8607be08e8fc0c016ac78b6528e08191994f11b736f6871b",
+    "verified_by": "read_thread",
+    "deadline_presented": "2026-10-08 23:37 JST",
+    "remaining_count_presented": 16
+  },
+  "owner_evaluation_received": false,
+  "stable1_complete": false
+}
