@@ -34,17 +34,17 @@ test_question_and_preview_limits (test_draft_envelope.DraftEnvelopeTests) ... ok
 test_three_proposals_are_data_not_completion (test_draft_envelope.DraftEnvelopeTests) ... ok
 test_unknown_authority_fields_and_wrong_types_rejected (test_draft_envelope.DraftEnvelopeTests) ... ok
 test_utf8_bound_and_invalid_unicode (test_draft_envelope.DraftEnvelopeTests) ... ok
-test_artifact_status_readonly_and_forget_stale (test_http.HTTPTests) ... ERROR
-test_conversation_draft_and_inspect_artifact (test_http.HTTPTests) ... ERROR
-test_conversational_remember_and_forget (test_http.HTTPTests) ... ERROR
-test_duplicate_client_message_and_invalid_fields (test_http.HTTPTests) ... ERROR
-test_duplicate_natural_forget_keeps_original_target_binding (test_http.HTTPTests) ... ERROR
-test_explicit_question_answer_http_rejects_wrong_binding (test_http.HTTPTests) ... ERROR
-test_historical_bound_selection_http_and_guarded_state (test_http.HTTPTests) ... ERROR
-test_inspect_is_read_only_and_cross_origin_cannot_mutate (test_http.HTTPTests) ... ERROR
-test_lost_ack_fate_can_be_queried_without_duplicate_effect (test_http.HTTPTests) ... ERROR
-test_primary_ambiguity_and_explicit_control_with_stale_epoch (test_http.HTTPTests) ... ERROR
-test_ui_csp_no_inline_model_html_and_request_bounds (test_http.HTTPTests) ... ERROR
+test_artifact_status_readonly_and_forget_stale (test_http.HTTPTests) ... ok
+test_conversation_draft_and_inspect_artifact (test_http.HTTPTests) ... ok
+test_conversational_remember_and_forget (test_http.HTTPTests) ... ok
+test_duplicate_client_message_and_invalid_fields (test_http.HTTPTests) ... ok
+test_duplicate_natural_forget_keeps_original_target_binding (test_http.HTTPTests) ... ok
+test_explicit_question_answer_http_rejects_wrong_binding (test_http.HTTPTests) ... ok
+test_historical_bound_selection_http_and_guarded_state (test_http.HTTPTests) ... ok
+test_inspect_is_read_only_and_cross_origin_cannot_mutate (test_http.HTTPTests) ... ok
+test_lost_ack_fate_can_be_queried_without_duplicate_effect (test_http.HTTPTests) ... ok
+test_primary_ambiguity_and_explicit_control_with_stale_epoch (test_http.HTTPTests) ... ok
+test_ui_csp_no_inline_model_html_and_request_bounds (test_http.HTTPTests) ... ok
 test_default_is_mock_and_live_options_do_not_create_store (test_http.ProviderStartupTests) ... ok
 test_live_startup_requires_valid_proof_before_runtime (test_http.ProviderStartupTests) ... ok
 test_first_heldout_failures_remain_regression_cases (test_ingress_classification.IngressClassificationTests) ... ok
@@ -59,46 +59,21 @@ test_consumed_proof_marker_refused_before_runtime_without_native_call (test_live
 test_existing_run_refused_before_proof_use (test_live_cancel_probe.CancelProbePreflightTests) ... ok
 test_wrong_candidate_and_dirty_source_refused_before_proof_use (test_live_cancel_probe.CancelProbePreflightTests) ... ok
 test_wrong_script_hash_product_identity_and_cap_refused (test_live_cancel_probe.CancelProbePreflightTests) ... ok
-test_binding_refuses_two_goals_instead_of_guessing_running_target (test_live_cancel_probe.CancelProbeTests) ... ERROR
-test_cancel_then_release_retains_exact_stale_artifact_without_receipt (test_live_cancel_probe.CancelProbeTests) ... ERROR
-test_close_while_held_never_applies_result_and_releases_host_lock (test_live_cancel_probe.CancelProbeTests) ... ERROR
-test_close_wins_after_stale_observation_before_pass_publication (test_live_cancel_probe.CancelProbeTests) ... ERROR
-test_evidence_failure_while_held_still_cleans_up_without_apply (test_live_cancel_probe.CancelProbeTests) ... ERROR
-test_expiry_during_final_snapshot_never_publishes_pass (test_live_cancel_probe.CancelProbeTests) ... ERROR
+test_binding_refuses_two_goals_instead_of_guessing_running_target (test_live_cancel_probe.CancelProbeTests) ... ok
+test_cancel_then_release_retains_exact_stale_artifact_without_receipt (test_live_cancel_probe.CancelProbeTests) ... ok
+test_close_while_held_never_applies_result_and_releases_host_lock (test_live_cancel_probe.CancelProbeTests) ... ok
+test_close_wins_after_stale_observation_before_pass_publication (test_live_cancel_probe.CancelProbeTests) ... ok
+test_evidence_failure_while_held_still_cleans_up_without_apply (test_live_cancel_probe.CancelProbeTests) ... {"event": "operator.ready", "url": "http://127.0.0.1:50475"}
+ok
+test_expiry_during_final_snapshot_never_publishes_pass (test_live_cancel_probe.CancelProbeTests) ... ok
 test_hold_filters_primary_and_only_blocks_first_worker_point (test_live_cancel_probe.CancelProbeTests) ... ok
 test_live_invalid_preflight_never_constructs_native_owner (test_live_cancel_probe.CancelProbeTests) ... ok
-test_needs_input_is_not_complete_result_pass (test_live_cancel_probe.CancelProbeTests) ... ERROR
-test_pause_cannot_satisfy_cancel_release_gate (test_live_cancel_probe.CancelProbeTests) ... ERROR
-test_premature_release_leaves_result_held_and_no_artifact (test_live_cancel_probe.CancelProbeTests) ... ERROR
-test_stale_cancel_is_rejected_and_cannot_release_result (test_live_cancel_probe.CancelProbeTests) ... ERROR
-test_subprocess_eof_sigint_and_deadline_while_held_release_lock (test_live_cancel_probe.CancelProbeTests) ... /private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py:291: ResourceWarning: unclosed file <_io.TextIOWrapper name=5 encoding='UTF-8'>
-  child = subprocess.Popen([sys.executable, '-u', '-c', child_code, temp, mode],
-ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py:291: ResourceWarning: unclosed file <_io.TextIOWrapper name=6 encoding='UTF-8'>
-  child = subprocess.Popen([sys.executable, '-u', '-c', child_code, temp, mode],
-ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py:291: ResourceWarning: unclosed file <_io.TextIOWrapper name=8 encoding='UTF-8'>
-  child = subprocess.Popen([sys.executable, '-u', '-c', child_code, temp, mode],
-ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py:291: ResourceWarning: unclosed file <_io.TextIOWrapper name=7 encoding='UTF-8'>
-  child = subprocess.Popen([sys.executable, '-u', '-c', child_code, temp, mode],
-ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py:291: ResourceWarning: unclosed file <_io.TextIOWrapper name=9 encoding='UTF-8'>
-  child = subprocess.Popen([sys.executable, '-u', '-c', child_code, temp, mode],
-ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py:291: ResourceWarning: unclosed file <_io.TextIOWrapper name=11 encoding='UTF-8'>
-  child = subprocess.Popen([sys.executable, '-u', '-c', child_code, temp, mode],
-ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/case.py:621: ResourceWarning: unclosed file <_io.TextIOWrapper name=5 encoding='UTF-8'>
-  outcome.errors.clear()
-ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/case.py:621: ResourceWarning: unclosed file <_io.TextIOWrapper name=6 encoding='UTF-8'>
-  outcome.errors.clear()
-ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/unittest/case.py:621: ResourceWarning: unclosed file <_io.TextIOWrapper name=10 encoding='UTF-8'>
-  outcome.errors.clear()
-ResourceWarning: Enable tracemalloc to get the object allocation traceback
-test_wrong_target_cancel_cannot_release_bound_attempt (test_live_cancel_probe.CancelProbeTests) ... ERROR
+test_needs_input_is_not_complete_result_pass (test_live_cancel_probe.CancelProbeTests) ... ok
+test_pause_cannot_satisfy_cancel_release_gate (test_live_cancel_probe.CancelProbeTests) ... ok
+test_premature_release_leaves_result_held_and_no_artifact (test_live_cancel_probe.CancelProbeTests) ... ok
+test_stale_cancel_is_rejected_and_cannot_release_result (test_live_cancel_probe.CancelProbeTests) ... ok
+test_subprocess_eof_sigint_and_deadline_while_held_release_lock (test_live_cancel_probe.CancelProbeTests) ... ok
+test_wrong_target_cancel_cannot_release_bound_attempt (test_live_cancel_probe.CancelProbeTests) ... ok
 test_existing_or_symlink_journal_cannot_be_overwritten (test_live_evidence.LiveEvidenceTests) ... ok
 test_invalid_payload_never_writes_partial_evidence (test_live_evidence.LiveEvidenceTests) ... ok
 test_sigkill_keeps_fsynced_chain_and_kills_owned_native_fixture (test_live_evidence.LiveEvidenceTests) ... ok
@@ -120,12 +95,12 @@ test_live_owner_cannot_bypass_operator_proof_consumption (test_live_operator.Liv
 test_old_operator_rejects_primary_before_auth_proof_or_any_process (test_live_operator.LiveOperatorTests) ... ok
 test_runner_teardown_continues_when_terminal_evidence_fails (test_live_operator.LiveOperatorTests) ... ok
 test_supervisor_lifecycle_is_observation_not_cli_pid_or_human_proof (test_live_operator.LiveOperatorTests) ... ok
-test_case_cannot_advance_without_capture_and_controller_observation (test_live_runner.LiveRunnerTests) ... ERROR
+test_case_cannot_advance_without_capture_and_controller_observation (test_live_runner.LiveRunnerTests) ... ok
 test_fixture_assembly_cannot_claim_live_scope (test_live_runner.LiveRunnerTests) ... ok
-test_historical_expert_fixture_shapes_seed_forget_and_same_goal_answers (test_live_runner.LiveRunnerTests) ... ERROR
+test_historical_expert_fixture_shapes_seed_forget_and_same_goal_answers (test_live_runner.LiveRunnerTests) ... ok
 test_initial_evidence_failure_closes_real_watchdog_and_journal (test_live_runner.LiveRunnerTests) ... ok
 test_source_drift_is_detected_before_next_case (test_live_runner.LiveRunnerTests) ... ok
-test_unexpected_case_shape_stops_without_another_generation (test_live_runner.LiveRunnerTests) ... ERROR
+test_unexpected_case_shape_stops_without_another_generation (test_live_runner.LiveRunnerTests) ... ok
 test_clock_rewind_cannot_extend_proof_and_status_never_calls_provider (test_native.BoundedNativeTests) ... ok
 test_concurrent_call_budget_counts_failures_and_never_runs_over_limit (test_native.BoundedNativeTests) ... ok
 test_expiry_blocks_auth_subprocess_and_status_is_read_only (test_native.BoundedNativeTests) ... ok
@@ -293,488 +268,7 @@ test_explicit_template_only_and_correct_revision_eligibility (test_template_inta
 test_explicit_template_runtime_preview_is_never_completed (test_template_intake.TemplateIntakeTests) ... ok
 test_generic_and_unmarked_template_requests_do_not_enable_preview (test_template_intake.TemplateIntakeTests) ... ok
 
-======================================================================
-ERROR: test_artifact_status_readonly_and_forget_stale (test_http.HTTPTests)
 ----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
-    self.server=make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
+Ran 268 tests in 26.020s
 
-======================================================================
-ERROR: test_conversation_draft_and_inspect_artifact (test_http.HTTPTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
-    self.server=make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_conversational_remember_and_forget (test_http.HTTPTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
-    self.server=make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_duplicate_client_message_and_invalid_fields (test_http.HTTPTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
-    self.server=make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_duplicate_natural_forget_keeps_original_target_binding (test_http.HTTPTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
-    self.server=make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_explicit_question_answer_http_rejects_wrong_binding (test_http.HTTPTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
-    self.server=make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_historical_bound_selection_http_and_guarded_state (test_http.HTTPTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
-    self.server=make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_inspect_is_read_only_and_cross_origin_cannot_mutate (test_http.HTTPTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
-    self.server=make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_lost_ack_fate_can_be_queried_without_duplicate_effect (test_http.HTTPTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
-    self.server=make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_primary_ambiguity_and_explicit_control_with_stale_epoch (test_http.HTTPTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
-    self.server=make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_ui_csp_no_inline_model_html_and_request_bounds (test_http.HTTPTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 19, in setUp
-    self.server=make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_binding_refuses_two_goals_instead_of_guessing_running_target (test_live_cancel_probe.CancelProbeTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 103, in test_binding_refuses_two_goals_instead_of_guessing_running_target
-    probe = self.start()
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 50, in start
-    probe = CancelProbe(self.root / 'run', MockProvider(),
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_cancel_probe.py", line 78, in __init__
-    self.server = make_server(self.runtime, 0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_cancel_then_release_retains_exact_stale_artifact_without_receipt (test_live_cancel_probe.CancelProbeTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 112, in test_cancel_then_release_retains_exact_stale_artifact_without_receipt
-    probe = self.start()
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 50, in start
-    probe = CancelProbe(self.root / 'run', MockProvider(),
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_cancel_probe.py", line 78, in __init__
-    self.server = make_server(self.runtime, 0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_close_while_held_never_applies_result_and_releases_host_lock (test_live_cancel_probe.CancelProbeTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 237, in test_close_while_held_never_applies_result_and_releases_host_lock
-    probe = self.start()
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 50, in start
-    probe = CancelProbe(self.root / 'run', MockProvider(),
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_cancel_probe.py", line 78, in __init__
-    self.server = make_server(self.runtime, 0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_close_wins_after_stale_observation_before_pass_publication (test_live_cancel_probe.CancelProbeTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 158, in test_close_wins_after_stale_observation_before_pass_publication
-    probe = self.stale_ready()
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 141, in stale_ready
-    probe = self.start()
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 50, in start
-    probe = CancelProbe(self.root / 'run', MockProvider(),
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_cancel_probe.py", line 78, in __init__
-    self.server = make_server(self.runtime, 0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_evidence_failure_while_held_still_cleans_up_without_apply (test_live_cancel_probe.CancelProbeTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 246, in test_evidence_failure_while_held_still_cleans_up_without_apply
-    probe = self.start(cleanup=False)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 50, in start
-    probe = CancelProbe(self.root / 'run', MockProvider(),
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_cancel_probe.py", line 78, in __init__
-    self.server = make_server(self.runtime, 0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_expiry_during_final_snapshot_never_publishes_pass (test_live_cancel_probe.CancelProbeTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 177, in test_expiry_during_final_snapshot_never_publishes_pass
-    probe = self.stale_ready()
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 141, in stale_ready
-    probe = self.start()
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 50, in start
-    probe = CancelProbe(self.root / 'run', MockProvider(),
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_cancel_probe.py", line 78, in __init__
-    self.server = make_server(self.runtime, 0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_needs_input_is_not_complete_result_pass (test_live_cancel_probe.CancelProbeTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 131, in test_needs_input_is_not_complete_result_pass
-    probe = self.start(QuestionExecutor())
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 50, in start
-    probe = CancelProbe(self.root / 'run', MockProvider(),
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_cancel_probe.py", line 78, in __init__
-    self.server = make_server(self.runtime, 0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_pause_cannot_satisfy_cancel_release_gate (test_live_cancel_probe.CancelProbeTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 194, in test_pause_cannot_satisfy_cancel_release_gate
-    probe = self.start()
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 50, in start
-    probe = CancelProbe(self.root / 'run', MockProvider(),
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_cancel_probe.py", line 78, in __init__
-    self.server = make_server(self.runtime, 0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_premature_release_leaves_result_held_and_no_artifact (test_live_cancel_probe.CancelProbeTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 93, in test_premature_release_leaves_result_held_and_no_artifact
-    probe = self.start()
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 50, in start
-    probe = CancelProbe(self.root / 'run', MockProvider(),
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_cancel_probe.py", line 78, in __init__
-    self.server = make_server(self.runtime, 0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_stale_cancel_is_rejected_and_cannot_release_result (test_live_cancel_probe.CancelProbeTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 226, in test_stale_cancel_is_rejected_and_cannot_release_result
-    probe = self.start()
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 50, in start
-    probe = CancelProbe(self.root / 'run', MockProvider(),
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_cancel_probe.py", line 78, in __init__
-    self.server = make_server(self.runtime, 0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_wrong_target_cancel_cannot_release_bound_attempt (test_live_cancel_probe.CancelProbeTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 205, in test_wrong_target_cancel_cannot_release_bound_attempt
-    probe = self.start()
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 50, in start
-    probe = CancelProbe(self.root / 'run', MockProvider(),
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_cancel_probe.py", line 78, in __init__
-    self.server = make_server(self.runtime, 0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_case_cannot_advance_without_capture_and_controller_observation (test_live_runner.LiveRunnerTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_runner.py", line 139, in test_case_cannot_advance_without_capture_and_controller_observation
-    runner.start_next(); self.post(runner,runner.case['request'])
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_runner.py", line 138, in start_next
-    self.server = make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_historical_expert_fixture_shapes_seed_forget_and_same_goal_answers (test_live_runner.LiveRunnerTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_runner.py", line 100, in test_historical_expert_fixture_shapes_seed_forget_and_same_goal_answers
-    info = runner.start_next(); self.assertEqual(info['case'],case_id); seen.append(case_id)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_runner.py", line 138, in start_next
-    self.server = make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-ERROR: test_unexpected_case_shape_stops_without_another_generation (test_live_runner.LiveRunnerTests)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_runner.py", line 124, in test_unexpected_case_shape_stops_without_another_generation
-    runner.start_next(); self.post(runner,runner.case['request'])
-  File "/private/tmp/personal-agent-lab-stable0-20261006/scripts/live_runner.py", line 138, in start_next
-    self.server = make_server(self.runtime,0)
-  File "/private/tmp/personal-agent-lab-stable0-20261006/pal/server.py", line 108, in make_server
-    server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
-    self.server_bind()
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
-    socketserver.TCPServer.server_bind(self)
-  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
-    self.socket.bind(self.server_address)
-PermissionError: [Errno 1] Operation not permitted
-
-======================================================================
-FAIL: test_subprocess_eof_sigint_and_deadline_while_held_release_lock (test_live_cancel_probe.CancelProbeTests) (mode='eof')
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 296, in test_subprocess_eof_sigint_and_deadline_while_held_release_lock
-    self.assertEqual(child.stdout.readline().strip(), 'CHILD_HELD')
-AssertionError: '' != 'CHILD_HELD'
-+ CHILD_HELD
-
-======================================================================
-FAIL: test_subprocess_eof_sigint_and_deadline_while_held_release_lock (test_live_cancel_probe.CancelProbeTests) (mode='sigint')
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 296, in test_subprocess_eof_sigint_and_deadline_while_held_release_lock
-    self.assertEqual(child.stdout.readline().strip(), 'CHILD_HELD')
-AssertionError: '' != 'CHILD_HELD'
-+ CHILD_HELD
-
-======================================================================
-FAIL: test_subprocess_eof_sigint_and_deadline_while_held_release_lock (test_live_cancel_probe.CancelProbeTests) (mode='deadline')
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_live_cancel_probe.py", line 296, in test_subprocess_eof_sigint_and_deadline_while_held_release_lock
-    self.assertEqual(child.stdout.readline().strip(), 'CHILD_HELD')
-AssertionError: '' != 'CHILD_HELD'
-+ CHILD_HELD
-
-----------------------------------------------------------------------
-Ran 268 tests in 11.678s
-
-FAILED (failures=3, errors=25)
+OK
