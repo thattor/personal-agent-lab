@@ -1507,3 +1507,23 @@ belongs to later EXE01. This is not a blanket project approval wait. Original13
 records remain byte-identical, original DB/services are not changed, trials and
 schedules remain stopped. Update PR19 with this exact preparation scope and send
 completion evidence to the existing human window; no public release or Issue closure.
+
+
+### D035 / owner parallelism question and next independent batch
+
+Independently read PAL人間判断 turn01a11d9c-c641-7fd1-8a66-5fcca4a9b044, actual
+userMessage01a11d9c-c6bb-7051-be79-bd7f23d31425: asks whether2 parallel meant no
+more work, a blocker, or a choice. [Exact source/selection](evidence/operations/co-update-045-batch2-20261009/selection.json).
+SOL chose a two-module initial runtime pilot; no third concurrent send/rejection
+occurred. The third prior run was dependent review. This was not a global shortage
+of independent work or a two-call runtime cap. The earlier report omitted this
+selection rationale; explain it to the human window without another approval.
+
+Continue within original development authority, using
+[parallel scope2](docs/design/contracts-v5/PARALLEL-SCOPE-2.md): small file-response
+codec, bounded byte accumulator and host-metadata byte-integrity check. They have
+settled local interfaces and disjoint files, no shared types/DB/capability activation.
+These are needed read/storage/verification boundaries, not dummy capacity tests.
+Launch three actual independent tasks under the same qualified state and declared
+caps; independent model reviews and SOL integration remain required. UnknownINT00
+is not repeated; service/provider/whole-product acceptance remains unmet.

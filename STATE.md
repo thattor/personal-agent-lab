@@ -3,7 +3,7 @@
 ## Goal
 Current owner instruction in chat 01a11c78-a3bc-76e1-b4ee-2451d5c0f1c2 (2026-10-09): SOL coordination, explicit CO delegation for PAL implementation/research/review, existing-route private development material use, isolated writes, host verification and staged independent reviews. This resumes scoped development preparation after the prior stop; no new authentication, paid fallback, publication or stopped schedules. See D-034.
 
-Current work: INT00 remains deferred; independent EXE02-request/1 and ART01-content/1 preparation uses branch codex/pal-v5-co, checkout /private/tmp/pal-v5-co-20261009. See D035 and docs/design/contracts-v5/PARALLEL-SCOPE-1.md.
+Current work: first preparation slice MET; INT00 remains deferred. Next three independent scopes EXE02-file/1, EXE02-bytes/1, VER01-integrity/1 use branch codex/pal-v5-co, checkout /private/tmp/pal-v5-co-20261009. See D035 and docs/design/contracts-v5/PARALLEL-SCOPE-2.md.
 Candidate v5 is imported byte-for-byte with provenance under docs/design/contracts-v5.
 Actual Opus common-wire design is complete; SWE implementation timed out at900seconds
 with unknown result/process outcome. CO task is awaiting_decision, not verified.
@@ -103,7 +103,10 @@ Review/source: bf1759fdc6bcaac0b8f112ca61f0f35aafc2a1b1 plus linked final hashes
 [Opus milestone review](evidence/operations/co-update-045-20261009/milestone-review.md).
 Root records added after the review do not change source or retest product behavior.
 
-Next dependent implementation is INT00's shared WorkRef/Ref/Action/Result types.
+Next independent implementation is the three settled byte-processing scopes in
+PARALLEL-SCOPE-2; actual3-way execution is not yet measured. SOL selected the prior
+two-task pilot, not a discovered two-task ceiling. Next dependent implementation
+is INT00's shared WorkRef/Ref/Action/Result types.
 Keep its old unknown request deferred: actual status still has no retry/switch;
 no substitute common implementation is sent. Later EXE01 owns Operation/ledger and
 ART01 owns saved IDs/source availability/transactional fencing. Current helpers
