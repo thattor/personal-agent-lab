@@ -522,3 +522,22 @@ frozen artifact-only oracle. This does not qualify the acknowledgement/specifica
 as grounded. The original after.json already preserves the exact text. Track the
 unsupported inference under the existing no-invented-personal-facts boundary; do not
 hide it or expand the current ask-first repair into a new feature/rule system.
+
+## C058 — unsupported future plan entered the Primary specification
+
+R15 asks for an invitation with an undecided date. Actual Primary adds an instruction
+to promise later contact, without source support. Generic useful drafting was correctly
+chosen but the model supplied a sender commitment as conventional prose. Host source/
+Goal checks cannot certify every semantic claim in spec. This is the C044 commitment
+class one boundary earlier, not a need for lexical routing or owner approval. Preserve
+first FAIL and review the smallest Primary grounding clarification before implementation;
+verify explicit promises, fiction, unknown facts, generic drafts and ask-first contrasts.
+The C054 unprovided gender observation remains part of the same grounding boundary.
+
+Operator findings: an interactive CLI launched from a stdin heredoc closed immediately
+with zero generations. Preserve it; use python -c/retained PTY and confirm a live session
+ID before submitting the first input. The corrected launch reached actual cases, verifying
+that correction. Its900s watchdog later closed after N23 capture but before judgment.
+Do not extend/resume or mark the run complete. N23 is a separately cited post-run audit;
+N24 is uncalled. Keep per-run wall bounds and avoid unrelated work during active windows.
+A proposed suffix was not executed after the later R15 product failure.

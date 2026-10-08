@@ -643,3 +643,15 @@ Contribution: the explicit user ordering is respected in the actual product. Nex
 unchanged fixed40 and new independent12 recognition, then TARGET-C/COMPOUND, current
 whole-flow usefulness and final audit. The original C055 failure/ABS-A2 gap remain;
 this sample alone does not complete any N1 row or Stable1.
+
+## C058 — preserve Primary revalidation findings before repair
+
+Purpose: check that explicit ask-first priority preserves normal recognition and safety.
+English8 completed; N cohort stopped at the900s limit after23 captures, with22 in-run
+PASS and separate independent N23 audit. Japanese R15 then exposed unsupported future
+contact in the specification; first FAIL stopped execution.43 unique actual calls, no
+Expert/artifact. [Evidence](../../evidence/reviews/judgment-boundary/c058-primary-revalidation/README.md).
+Contribution: catches user commitments introduced before Expert, despite correct intent
+and host integrity. Next: one official Opus review, minimal prompt repair, new frozen
+candidate/independent corpus and affected real validation. No new owner question or
+acceptance weakening; old failures, runtime DBs and original ABS-A2 gap retained.

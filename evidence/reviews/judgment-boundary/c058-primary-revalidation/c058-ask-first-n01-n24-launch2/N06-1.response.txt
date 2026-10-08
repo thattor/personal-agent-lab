@@ -1,0 +1,1 @@
+{"reply":"\"Make a draft\" means I write a first version of something for you, like an email, message, note, or thank-you, that you can review, edit, and then use or send yourself. I only prepare the text locally; I don't send or post anything. If you'd like one, just tell me what it's for and who it's to.","action":{"kind":"none"}}

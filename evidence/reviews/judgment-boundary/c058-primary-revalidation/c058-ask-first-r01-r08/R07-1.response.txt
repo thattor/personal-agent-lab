@@ -1,0 +1,1 @@
+{"reply":"Sure, I'll keep it as a draft and won't send anything. What should it be about? Tell me who it's for and what you want to say, and I'll put it together.","action":{"kind":"none"}}

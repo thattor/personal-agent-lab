@@ -1,0 +1,986 @@
+{
+  "c058-ask-first-n01-n24": {
+    "verification": {
+      "records": 27,
+      "completed": false,
+      "judged_turns": 0,
+      "skipped_turns": 0,
+      "covered_cases": 0,
+      "scope": "live_synthetic",
+      "human_evaluation": false
+    },
+    "calls": 0,
+    "captures": 0,
+    "pass": 0,
+    "fail": 0,
+    "closed": {
+      "attempts": 0,
+      "event": "run.closed",
+      "previous_sha256": "ecb85ce8afb4b052a1a6e36d749b7b59a3f53f76564706e7057d817a7b23dc2b",
+      "reason": "operator_closed",
+      "recorded_at": 1791452264.2879071,
+      "scope": "live_synthetic",
+      "sequence": 27,
+      "sha256": "560de5dd4d0107c6a472c97d217acb2373db31d7c476b6832d8d76adf3629be6"
+    },
+    "possibly_live_native_pids": [],
+    "runtime_retained_files": {
+      "N11.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N03.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N04.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N18.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N09.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N15.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N22.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N10.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N01.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N01.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N13.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N06.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N20.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N17.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N21.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N17.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N09.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N05.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N23.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N12.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N19.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N07.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N15.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N03.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N11.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N10.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "journal.jsonl": {
+        "bytes": 19537,
+        "sha256": "9ccf3a0d01747f5e33dcfb4b211634e2d1d8e450bd3138c1c3feca18a52670fc"
+      },
+      "N02.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N05.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N24.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N19.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N12.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N08.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N14.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N23.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N08.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N13.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N24.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N16.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N04.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N20.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N02.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N07.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N06.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N18.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N14.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N21.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N16.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N22.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      }
+    }
+  },
+  "c058-ask-first-n01-n24-launch2": {
+    "verification": {
+      "records": 302,
+      "completed": false,
+      "judged_turns": 22,
+      "skipped_turns": 0,
+      "covered_cases": 0,
+      "scope": "live_synthetic",
+      "human_evaluation": false
+    },
+    "calls": 23,
+    "captures": 23,
+    "pass": 22,
+    "fail": 0,
+    "closed": {
+      "attempts": 23,
+      "event": "run.closed",
+      "previous_sha256": "defcf8b4c8dcfbe06350c8ae2c18fcd81363e6a84963e4b43f2c2af8949649e8",
+      "reason": "wall_deadline",
+      "recorded_at": 1791453244.702552,
+      "scope": "live_synthetic",
+      "sequence": 302,
+      "sha256": "f5c1453b3a62f0380586a2ae724809686e55c8398081574bd14e1e7cfb446f76"
+    },
+    "possibly_live_native_pids": [],
+    "runtime_retained_files": {
+      "N11.sqlite": {
+        "bytes": 172032,
+        "sha256": "559155852ecf0537eff583d295c22a54ce3d71029c4c412c9045c45b9e4fd13f"
+      },
+      "N19-1.prompt.txt": {
+        "bytes": 7015,
+        "sha256": "05c76205d005b66db800344e7c721d424eb0e1d74a6984715e61c61538257251"
+      },
+      "N09-1.response.txt": {
+        "bytes": 171,
+        "sha256": "7f39dbfccddc9a3484a937fbd8841410df4dd35330b8175a9e52dfac9f47562d"
+      },
+      "N03.sqlite": {
+        "bytes": 172032,
+        "sha256": "fbe963c0a3397472073bc8b647ce66d0b9623b4c214d813a3ea9d368a02fec3f"
+      },
+      "N04.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N14-1.response.txt": {
+        "bytes": 134,
+        "sha256": "419fa0068fdb6d52b5fed355070aac8e963400e27a7342284e74147316dbc470"
+      },
+      "N01-1.response.txt": {
+        "bytes": 86,
+        "sha256": "9ae7201f222375ca123fbe766cb695076774138d2b7d461fa16e2400ddb5d5c2"
+      },
+      "N18.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N09.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N15.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N22.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N06-1.response.txt": {
+        "bytes": 334,
+        "sha256": "fa79c6a805e20d3b645b327af6798387282e6bd3aa2fac1ccebf2dfe7cb8f753"
+      },
+      "N13-1.response.txt": {
+        "bytes": 196,
+        "sha256": "9d92c406fa6c0416c655ca664c9d208b21428c3e476ad949eaf5a65615a7ff39"
+      },
+      "N12-1.response.txt": {
+        "bytes": 132,
+        "sha256": "63d532dbc792b5ac14710f9a6a2f7d6d80c531f1e60bbc514ed84cd14401a356"
+      },
+      "N07-1.response.txt": {
+        "bytes": 526,
+        "sha256": "21a793712d9c87ed7564159ee23fd3a6ff2134ec39827bade8e4111e2e04e79a"
+      },
+      "N18-1.prompt.txt": {
+        "bytes": 7030,
+        "sha256": "75b02f85722522079eff84c49c72e16af1e0baa6a12b1663c743a38e9c837752"
+      },
+      "N10.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N01.sqlite": {
+        "bytes": 172032,
+        "sha256": "2adfb8be1f347d9fc729d9565df913e271dd8573bb0ea243d7059c0e181ac87e"
+      },
+      "N15-1.response.txt": {
+        "bytes": 126,
+        "sha256": "8be525d796e16863e918a972a0f4920659029ed90c78e55333e3ace8b3dd805d"
+      },
+      "N01.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N13.sqlite": {
+        "bytes": 172032,
+        "sha256": "8b83b942f4e30757ef75aba8cf38376d874724c4239a8ce93fc0791ec50d70ef"
+      },
+      "N08-1.response.txt": {
+        "bytes": 427,
+        "sha256": "bca40eac1ae801dbbdfdd9c188723ca46e9231308c887d2a9794c5ef5a42f978"
+      },
+      "N02-1.response.txt": {
+        "bytes": 559,
+        "sha256": "9849bdd3c5d0ff7d356d0f39fbbc5880fc993293ca697b7dbd86f74a8d530644"
+      },
+      "N17-1.response.txt": {
+        "bytes": 167,
+        "sha256": "037cc9f655c796225f6cff762da9c544b642461935517468184d7225b4f1cdec"
+      },
+      "N23-1.prompt.txt": {
+        "bytes": 7006,
+        "sha256": "31656a1954dca4780a0cafce7926c92f769a19227848a79691db37d3b0d9ab75"
+      },
+      "N06.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N15-1.prompt.txt": {
+        "bytes": 6998,
+        "sha256": "c5380dc9ce4232d9e5925a29e6db69c423881e962cb7cc5ba3bbf4760e63d53f"
+      },
+      "N20.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N17.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N12-1.prompt.txt": {
+        "bytes": 6998,
+        "sha256": "f70692b1e8facdb48ee3a4474f0fc3060abd99bacce552b7c0f642607dc92220"
+      },
+      "N10-1.response.txt": {
+        "bytes": 151,
+        "sha256": "01c3ebc55da4cb9382a626d0bf61f220a16fd8dd60a9efa0485a94b68ae7d19b"
+      },
+      "N05-1.response.txt": {
+        "bytes": 142,
+        "sha256": "363c00960be5e8d822c55813de65dcc370c7651f624adb5f0d48478483b01d69"
+      },
+      "N21.sqlite": {
+        "bytes": 172032,
+        "sha256": "40ec054e6ab33918a750fc5730f2522992b9956473d0058d0ad2cb8ac4f9a90a"
+      },
+      "N07-1.prompt.txt": {
+        "bytes": 7039,
+        "sha256": "a18cdb02d601bc8a10b054344ae33dc4693a0d1d0a7bb919d94ff31ae3dc002d"
+      },
+      "N17.sqlite": {
+        "bytes": 172032,
+        "sha256": "0a781d2e90e39844caafb00d1d89dd272e6ba36c99c86e99c436d4275dfa02e0"
+      },
+      "N18-1.response.txt": {
+        "bytes": 277,
+        "sha256": "57736dea1d08498436a4b8da509128c0004695c2df141df7b512d3e923d8363a"
+      },
+      "N09.sqlite": {
+        "bytes": 172032,
+        "sha256": "fed0cbaab33aa8a12460cb156f7c18ef9124a24915f197c02a101092ef58db1f"
+      },
+      "N05.sqlite": {
+        "bytes": 172032,
+        "sha256": "875c90238fc1da85e4b80b47b518470015e04eaf7a6bd19929503871319b4bdd"
+      },
+      "N19-1.response.txt": {
+        "bytes": 355,
+        "sha256": "f00b4f5fd8e494a4775e8186e86510a1018e03ed4142135217fa3eeefbb39103"
+      },
+      "N22-1.prompt.txt": {
+        "bytes": 7033,
+        "sha256": "6fcaf267bed84af2980849629498defa734a6c7754aa3641144b56fb1bf06556"
+      },
+      "N23.sqlite": {
+        "bytes": 172032,
+        "sha256": "b579d764a195c20279c40b6673161d9248b1abc0d62b8e7d5b73023e37a6d0c1"
+      },
+      "N12.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N19.sqlite": {
+        "bytes": 172032,
+        "sha256": "f5162d35b4a9142b10ee5daa1bee08d8a9f0e263358f8b48f218aac65226dd11"
+      },
+      "N07.sqlite": {
+        "bytes": 172032,
+        "sha256": "9c6c3be427cf1f4a0a8b997afe6078c20c77695aba03fa54d8536dd05a699ed7"
+      },
+      "N04-1.response.txt": {
+        "bytes": 208,
+        "sha256": "bcfe3ccfe5b9700bb10c67d3f0869d1c1107c7c3e12acaa1a7e3eebd80f9b08d"
+      },
+      "N11-1.response.txt": {
+        "bytes": 104,
+        "sha256": "8ffb8a0c5b0d0bbcfa047e68c51ec1bef9df17a90afd559e968a79443df382d6"
+      },
+      "N15.sqlite": {
+        "bytes": 172032,
+        "sha256": "625db3172ffe82e685dbb70cf8e2a5c693c714f7b908f4a2cf368708a08ba38a"
+      },
+      "N01-1.prompt.txt": {
+        "bytes": 6982,
+        "sha256": "f18985ee9023f5472e4a77e319a2548ae9f8784161e7ad278547788369a387f9"
+      },
+      "N06-1.prompt.txt": {
+        "bytes": 7002,
+        "sha256": "c51305b18e7f77a05c53f873d84a9d22bfc4a93a0298b2bd0936a54a10f3d636"
+      },
+      "N13-1.prompt.txt": {
+        "bytes": 7042,
+        "sha256": "639bff0459066beabd184a42f5097f18a2cfa932feb57207c4ff17f147287ec6"
+      },
+      "N14-1.prompt.txt": {
+        "bytes": 7003,
+        "sha256": "539db470122b0b5d9acf6c888e1d2a6ae1c5dcb1ece2a9969d3e8c5e8f017814"
+      },
+      "N03.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N16-1.response.txt": {
+        "bytes": 277,
+        "sha256": "f38e921b410f75b90cda5261c3a34caff99f9944af4f624e156898194ffd87db"
+      },
+      "N03-1.response.txt": {
+        "bytes": 220,
+        "sha256": "47ccb4050973e440b3fbf52f8986a89eff640fc91d89402aa5a22ec83060a64d"
+      },
+      "N20-1.prompt.txt": {
+        "bytes": 6990,
+        "sha256": "6ce8fd95412b49602c4b8299c71182da2125f76794251abb07f455cf3bc71f1e"
+      },
+      "N11.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N22-1.response.txt": {
+        "bytes": 295,
+        "sha256": "02a62de69f4afffdd9bb687282c155e5c4ff03148d0482b104d3532e2b8b0951"
+      },
+      "N04-1.prompt.txt": {
+        "bytes": 7024,
+        "sha256": "56a2fdc854a20dbaee8b646cb07fd4c4e014b37d50d1be9989f82c2dc6788c18"
+      },
+      "N03-1.prompt.txt": {
+        "bytes": 7015,
+        "sha256": "6e68c35b85b1124e455f4fae12bb8bbf2021213b3db71766a82ff6ef7e94189d"
+      },
+      "N10.sqlite": {
+        "bytes": 172032,
+        "sha256": "854c05042cee12301c5bcfe2923f7415d3d77e88af5cb02d026149126d9badc6"
+      },
+      "journal.jsonl": {
+        "bytes": 173172,
+        "sha256": "492f6629b29f3de0ace76269b52b1c811b6c78eebd7a2ae577899729a0651589"
+      },
+      "N16-1.prompt.txt": {
+        "bytes": 7036,
+        "sha256": "6271bde0bba2494aed09a6f7d663ffc75cb3117df38d3c783ef69fee225f4881"
+      },
+      "N02.sqlite": {
+        "bytes": 172032,
+        "sha256": "a0f0378e3ee1201d1d22a317140db56cc03c57e10c4d7e18b39c8d1deae81a27"
+      },
+      "N11-1.prompt.txt": {
+        "bytes": 6990,
+        "sha256": "fb57c54cf053044ecb7ba197b593923008741b6b5a9f01e2d0515516061936c5"
+      },
+      "N05.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N24.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "N19.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N21-1.prompt.txt": {
+        "bytes": 6997,
+        "sha256": "5de239ed482af58eaaeb99e9af104d16988ebc480e284ae23890b68ab44a6e38"
+      },
+      "N12.sqlite": {
+        "bytes": 172032,
+        "sha256": "570a63ab7c7dc883f41b8b7b4a0454ac93db41cd88db71e1eb9cee5b0ea13384"
+      },
+      "N23-1.response.txt": {
+        "bytes": 203,
+        "sha256": "96bb34e45eb94dd60a319c727c8b0a7ccd26ec37939b945974cfbc5d6b76598e"
+      },
+      "N08.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N10-1.prompt.txt": {
+        "bytes": 7012,
+        "sha256": "2b05cfb441a54b0340bcae0e1dd9fc19df910374eefdf2aadee71fe887726bb0"
+      },
+      "N17-1.prompt.txt": {
+        "bytes": 7007,
+        "sha256": "74af0c8e304e7f52b2fda93f1859c4fe8207ba71fa3d1b407d9f183a42cd7d68"
+      },
+      "N02-1.prompt.txt": {
+        "bytes": 7000,
+        "sha256": "226556e8eb6c21b02b430f65ae85df6293e7256a2d4f7571bf392bd04e4678f3"
+      },
+      "N14.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N23.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N05-1.prompt.txt": {
+        "bytes": 7003,
+        "sha256": "5dced87922a7158be19cfc8931d5633b5360fcbee83f09d71f3e9d15bc204bcd"
+      },
+      "N08.sqlite": {
+        "bytes": 172032,
+        "sha256": "37caa18252fc4793f69da9d3f886b69ef3c8cb6fccbd70a0dacb06f071492d40"
+      },
+      "N13.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N24.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N16.sqlite": {
+        "bytes": 172032,
+        "sha256": "aa60eb2416b56c4c945a5af1458f59dc5aeb9dfdd1e8bbf165398215edde2bb5"
+      },
+      "N21-1.response.txt": {
+        "bytes": 163,
+        "sha256": "1fe75acb73304e7a611c748f97e95f740cbdeba535dce2264e53b3a1418306bd"
+      },
+      "N04.sqlite": {
+        "bytes": 172032,
+        "sha256": "aa539d9e553905b157fc237d58e80aa904f08db3b1dbf7ef63e34b5c1430b8bf"
+      },
+      "N08-1.prompt.txt": {
+        "bytes": 7022,
+        "sha256": "018489ea79811e25758b078d39e847f5bc330afe91aea3e6a90b2aa59df4794e"
+      },
+      "N20.sqlite": {
+        "bytes": 172032,
+        "sha256": "c73b3eeb366ddb16a2233b47310d26dce5ff373010b963c1419d5a4663593464"
+      },
+      "N02.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N07.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N09-1.prompt.txt": {
+        "bytes": 7001,
+        "sha256": "4f400e5de6bdbd993157173edb53c6e1401add42de8495ff10db81b516b52e32"
+      },
+      "N06.sqlite": {
+        "bytes": 172032,
+        "sha256": "b8b1ad2b035fbcf2631f2785a3b1057719d8db19d40282e9a090b1c166c0cb80"
+      },
+      "N18.sqlite": {
+        "bytes": 172032,
+        "sha256": "df29e425ca6cbe4c2609e5420015edf0e07e85e8e161f6dd952961e8aaccbe19"
+      },
+      "N14.sqlite": {
+        "bytes": 172032,
+        "sha256": "60bd99b7527b4737d0328f32199ed933c0db5942d3935821959e2a40ce8edd05"
+      },
+      "N21.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N16.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "N20-1.response.txt": {
+        "bytes": 197,
+        "sha256": "6e0c856aedead87a2496862ddbe5ef3056f71767a3b97e18b5dc370de553465c"
+      },
+      "N22.sqlite": {
+        "bytes": 172032,
+        "sha256": "e5ea291076a38796635ec56926897aead0c2360af7cb9c824e511cc2bd481d9d"
+      }
+    }
+  },
+  "c058-ask-first-r01-r08": {
+    "verification": {
+      "records": 145,
+      "completed": true,
+      "judged_turns": 11,
+      "skipped_turns": 1,
+      "covered_cases": 8,
+      "scope": "live_synthetic",
+      "human_evaluation": false
+    },
+    "calls": 11,
+    "captures": 11,
+    "pass": 11,
+    "fail": 0,
+    "closed": {
+      "attempts": 11,
+      "event": "run.closed",
+      "previous_sha256": "fa0ac9e7eb650cf5156f963b08bd6d006115f8011f97a40f6d964eea7900477e",
+      "reason": "operator_closed",
+      "recorded_at": 1791453651.881668,
+      "scope": "live_synthetic",
+      "sequence": 145,
+      "sha256": "098df0bff587c4a1ee9faf5add1b6eeb6f27c093f42b3652c83fc98af5f07a42"
+    },
+    "possibly_live_native_pids": [],
+    "runtime_retained_files": {
+      "R02.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R02.sqlite": {
+        "bytes": 172032,
+        "sha256": "750b363f92537c7cb14dd320bceb0ab1b43fdb9e574ed49858e3a58125cca72f"
+      },
+      "R07-2.response.txt": {
+        "bytes": 769,
+        "sha256": "397f869f71d0a9aa51a1a7ac795714a346790bbbeb2f9bada681f7103e297a49"
+      },
+      "R08-2.response.txt": {
+        "bytes": 669,
+        "sha256": "38956935620307533aec0635268aeb20a59b0a85b058f3cc63a640ac1c13f484"
+      },
+      "R07.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R08-1.prompt.txt": {
+        "bytes": 7009,
+        "sha256": "c9073a27813cdda954a9aaec1ae99151fad281bb30ae11afcfeadaa2cbd05fd0"
+      },
+      "R05-1.prompt.txt": {
+        "bytes": 6995,
+        "sha256": "45c59e0255344869e4cd4f504a65506dd10a0895bb748cf9c017e3f8ab34ee93"
+      },
+      "R02-1.prompt.txt": {
+        "bytes": 7006,
+        "sha256": "1f4c4cf808e9fccb01e8105be7d59f782400b63e2b0bcc2ae6b6abce2c226884"
+      },
+      "R08.sqlite": {
+        "bytes": 172032,
+        "sha256": "07c49e13ce98001113c41c964e8c1062746a01ac66e16f5076b4a7b85f49b6a8"
+      },
+      "R07-2.prompt.txt": {
+        "bytes": 7578,
+        "sha256": "db143599360be0bcc1c32584de3d7835c763d9876f9e259839bae1b7641c4cf5"
+      },
+      "R04.sqlite": {
+        "bytes": 172032,
+        "sha256": "219a95ff9d7cd37746b7695c5252bc502bf234fd7d7858a05da38f96f94a6ff2"
+      },
+      "R04-2.response.txt": {
+        "bytes": 821,
+        "sha256": "b0a663f65959392c747d0a88f30920086faecb52c528c903f324b64158ad804f"
+      },
+      "R03-1.prompt.txt": {
+        "bytes": 7009,
+        "sha256": "2592663956c271f2a172bcc2b543db1a4ab117d30dc0b1331158b3d59eea0c0e"
+      },
+      "R04-1.prompt.txt": {
+        "bytes": 7014,
+        "sha256": "b0af97870ecdb007aaa7f6156c2529fbfd6543d25a97a8d15b224a9175b2a064"
+      },
+      "R08.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R06.sqlite": {
+        "bytes": 172032,
+        "sha256": "69ec8872ff256a6a5097d5b63f2770c1cfc2cd7eff6f8068ef443e4a74f0b708"
+      },
+      "R05.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R02-1.response.txt": {
+        "bytes": 664,
+        "sha256": "9d8d6edc1c66b695d2134a6a8cecb1569d89503c14b6e909861e285710a5604f"
+      },
+      "R04-2.prompt.txt": {
+        "bytes": 7538,
+        "sha256": "f70bd6014792ca42160b69de9d25595fdda5cc2d4e5d1fcb0f32acc89001b5df"
+      },
+      "R06-1.prompt.txt": {
+        "bytes": 7031,
+        "sha256": "187cb155f45e802824e73bfb54263163868eeb95728b6d98f9978acebb03350e"
+      },
+      "R03.sqlite": {
+        "bytes": 172032,
+        "sha256": "2660ca38a351d2899a03e9bc0d4abc9ff3bae32e0bb0a898973eeb1973dcb323"
+      },
+      "R01-1.prompt.txt": {
+        "bytes": 7032,
+        "sha256": "7dc15d6f72ef1825b8181bcd94bf4807b70781f4e270d144bd877e46d82ce841"
+      },
+      "R06.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R05-1.response.txt": {
+        "bytes": 620,
+        "sha256": "708202809ab5624448a5cb06cf5fff7034de6cda64a451fc32503e79d9956d53"
+      },
+      "journal.jsonl": {
+        "bytes": 113880,
+        "sha256": "6948c441b10fc95b904ce086eca90caf37e2d608723020ce3a9293e02be49fe9"
+      },
+      "R03.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R07-1.prompt.txt": {
+        "bytes": 7009,
+        "sha256": "c47d5b875fb2d8c6ed53759f944cc6e7a0fa24a104eb222d1b03fc19f67ef0f6"
+      },
+      "R04-1.response.txt": {
+        "bytes": 155,
+        "sha256": "7a25a6545ff715851d8c27fca8bd471f86e8ad2fada43d1fcd51fa45d7a7f4f0"
+      },
+      "R01.sqlite": {
+        "bytes": 172032,
+        "sha256": "130ee8d98d98064774ddeeb446dba2b77b01fb65ce9831c9f1aa607a913f0c3d"
+      },
+      "R03-1.response.txt": {
+        "bytes": 961,
+        "sha256": "28dd6c92325779ee801eeca1876dc87573765acc292b6f4d136fe104054285dd"
+      },
+      "R01-1.response.txt": {
+        "bytes": 510,
+        "sha256": "2587e8df8b64d223bf5380e05db575f91dd5ea789c100486ef4d01002a0af524"
+      },
+      "R08-2.prompt.txt": {
+        "bytes": 7542,
+        "sha256": "0fe5b26bc77db498f2820a64d5d6d28adf95bd9f9d333bafa3c6dfa152880059"
+      },
+      "R05.sqlite": {
+        "bytes": 172032,
+        "sha256": "307e1b3491a07051922ae747172d6030ec541f858edc7f7e87a18bbf29710d03"
+      },
+      "R06-1.response.txt": {
+        "bytes": 696,
+        "sha256": "b602f112475b41345346299b3ed6236bc1c3e947ea130d66f50fea48d7866ba5"
+      },
+      "R04.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R07-1.response.txt": {
+        "bytes": 189,
+        "sha256": "1aa180ebe73f195e4aefc4ca51ffb5b3144efa51273a06f65d8f0446ce59a94a"
+      },
+      "R07.sqlite": {
+        "bytes": 172032,
+        "sha256": "38bb5e360807f5b19dbaeeac1bfcde1cb20069da68aa6347a797d102e2bbf35e"
+      },
+      "R01.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R08-1.response.txt": {
+        "bytes": 155,
+        "sha256": "a989d54ab2165394117fe93d166359949d8569b576f4422b6a757d9933f95802"
+      }
+    }
+  },
+  "c058-ask-first-r09-r16": {
+    "verification": {
+      "records": 121,
+      "completed": false,
+      "judged_turns": 9,
+      "skipped_turns": 2,
+      "covered_cases": 0,
+      "scope": "live_synthetic",
+      "human_evaluation": false
+    },
+    "calls": 9,
+    "captures": 9,
+    "pass": 8,
+    "fail": 1,
+    "closed": {
+      "attempts": 9,
+      "event": "run.closed",
+      "previous_sha256": "a4d14bc109e15efc8962bbc0f4bbda4a68e68197ebe385f4cd03b1bf1c7f3cdc",
+      "reason": "operator_closed",
+      "recorded_at": 1791453905.322371,
+      "scope": "live_synthetic",
+      "sequence": 121,
+      "sha256": "3f9abe096adc3bab9ffa2b8ea1c4e48e0ed14d15b758fed2e8a1a21f37b46b35"
+    },
+    "possibly_live_native_pids": [],
+    "runtime_retained_files": {
+      "R14-2.response.txt": {
+        "bytes": 860,
+        "sha256": "7559ddff7c3e2c2ce9d217b42e7c5a0a77806ef609136e3c3e3e405a0453d443"
+      },
+      "R10.sqlite": {
+        "bytes": 172032,
+        "sha256": "195bf410f3f7476f10c380999276a5386ca4e5efea12569b41f3ccdba5b6214e"
+      },
+      "R09-1.prompt.txt": {
+        "bytes": 7045,
+        "sha256": "0281b893073adb9177e2d8d0a88e8b2ec7391c2b875a5616ebea18d2440d15d6"
+      },
+      "R13-2.response.txt": {
+        "bytes": 804,
+        "sha256": "411377b2a0b7b92f8405ca3384d7f4dbb61326e24f0c4e5ca41d700522cc188c"
+      },
+      "R13.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R12.sqlite": {
+        "bytes": 172032,
+        "sha256": "07decc0410aea967d66de4c3c80d54f1dd11ef6d16704417d0540aec3c1072ea"
+      },
+      "R16.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R16.sqlite": {
+        "bytes": 172032,
+        "sha256": "792743b4d9ebdce4a7d9b2c7ba253d795d2e202856842d0e3ad0e21f3c46b888"
+      },
+      "R10-1.prompt.txt": {
+        "bytes": 7024,
+        "sha256": "152116b87f1cf74f3e529e3e2d571f110e4527d1c2ff3a112db8f54104a0f5c6"
+      },
+      "R11.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R11-1.prompt.txt": {
+        "bytes": 7018,
+        "sha256": "64635a5c5c2a3a76bfc55b8e836827d925e26cf23efeb0c5d7311b729f203b3f"
+      },
+      "R14.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R14-2.prompt.txt": {
+        "bytes": 7766,
+        "sha256": "998709798211f873349b3ba2247651a0f90a775da74c3e0ea0d7f877d82f949a"
+      },
+      "R13-2.prompt.txt": {
+        "bytes": 7736,
+        "sha256": "0a04fd6acb055b2d1991d88fcd94f7a66b68c9f4cb1c74b4b0fde5150e859cbf"
+      },
+      "R14.sqlite": {
+        "bytes": 172032,
+        "sha256": "99f1505308a974cdda048af1a3891e81720c9ec75e0f023fe8d0bc001026d710"
+      },
+      "R14-1.prompt.txt": {
+        "bytes": 7018,
+        "sha256": "589138fa43115ca30a5263bb697887c13c7baecb4b9279f7825744cf60c763ca"
+      },
+      "R13-1.prompt.txt": {
+        "bytes": 7009,
+        "sha256": "0e951e1bd6ad4e1a5a353699cae7c45588c1311f2713b1e76eb5328edec70034"
+      },
+      "R11.sqlite": {
+        "bytes": 172032,
+        "sha256": "8292e734577a5698d8e0f8e994c91cf850716c54c381c447041b30c2ac950425"
+      },
+      "R10-1.response.txt": {
+        "bytes": 983,
+        "sha256": "7d4258bb6e643586aec59674e98df81f372cec3fc6f61c9cca1e5f9ba01248ce"
+      },
+      "journal.jsonl": {
+        "bytes": 99905,
+        "sha256": "61c275874195902ce68fa6c2e157eb4b6cc8ca8b4d7d396e195257c81ee60f9e"
+      },
+      "R12-1.prompt.txt": {
+        "bytes": 7030,
+        "sha256": "1e13fd7248892798a8b6e4892a805a3372c174adbfcb4b173d32187ca297e457"
+      },
+      "R11-1.response.txt": {
+        "bytes": 677,
+        "sha256": "24713a736389c21f2039f885d4041840afaf97b49825f7c0b651b5271e63bfcd"
+      },
+      "R15-1.prompt.txt": {
+        "bytes": 7051,
+        "sha256": "e315e585859485cf96f776f92e613b7d116f17b90eac454061fdd929d7304391"
+      },
+      "R13.sqlite": {
+        "bytes": 172032,
+        "sha256": "40c258605e66426914adae78915d42280e1c5dfccdaa1d525cd5e1022a87c5a9"
+      },
+      "R12.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R15.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R09-1.response.txt": {
+        "bytes": 761,
+        "sha256": "544982095c22b1e62c26a8e8590dc8ed6b659e1bef598ac0d7a05706ca373e6f"
+      },
+      "R14-1.response.txt": {
+        "bytes": 331,
+        "sha256": "ab4bdafb540c462793d1fbd872279be86e582ba43f5da8dfd82db4188b98cf8b"
+      },
+      "R09.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "R09.sqlite": {
+        "bytes": 172032,
+        "sha256": "860b939e7bf070520d1adf8eb9f5a26ff51070070fdfb369cc42f1bae5281f9a"
+      },
+      "R13-1.response.txt": {
+        "bytes": 259,
+        "sha256": "dbf9cdfcc2913740eeb573bebee981cfcffbe72709af6c96b9f50228365b8705"
+      },
+      "R12-1.response.txt": {
+        "bytes": 686,
+        "sha256": "1f70073ff4cfa4280a3467e632edc26db036970b16dad8ef128989734d679add"
+      },
+      "R15.sqlite": {
+        "bytes": 172032,
+        "sha256": "5a1d3102a48ff8abc9e0207cf900ba753cc1760fde58b49140676061064b8fb6"
+      },
+      "R15-1.response.txt": {
+        "bytes": 791,
+        "sha256": "1cc11a23055eed910c06245776c7e1eaaf9221bed1fe2f32a61119b190c123fb"
+      },
+      "R10.sqlite-wal": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  }
+}

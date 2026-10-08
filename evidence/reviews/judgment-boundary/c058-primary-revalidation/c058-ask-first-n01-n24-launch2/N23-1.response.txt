@@ -1,0 +1,1 @@
+{"reply":"I can't send anything, so I won't start this request as it stands. If you'd like, I can prepare a local draft invitation that you can send yourself. Just let me know.","action":{"kind":"none"}}

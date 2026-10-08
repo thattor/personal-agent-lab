@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized text-only delivery goal under D-021/P002 and D-028/D-029. C053/C054 completed six real-model/UI first cases with artifact/receipt binding. C055 then found a real UI-CLARIFY failure: an explicit ask-first request was replaced with a completed placeholder draft. The failed run is stopped and evidence preserved; the reviewed prompt-only repair is frozen as product8f0f5b75 with270 tests green, with the repaired UI-CLARIFY first attempt now PASS; broader semantic qualification remains, not owner judgment. TARGET-C and COMPOUND remain NOT_RUN, plus the original second A-sample evidence gap, one whole-flow owner usefulness evaluation and final audit. Development owns technical testing; HR-UI-001 is withdrawn. No product host/model is running at this checkpoint. Goal card remains BLOCKED; authorized development is continuing in this user turn. No schedule restarted.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized text-only delivery goal under D-021/P002 and D-028/D-029. C057 proves the repaired ask-first UI scenario. C058 then found an unsupported future-contact commitment in Primary's draft specification; the failed first attempt is preserved and all qualification processes stopped. A focused official Opus repair review is underway. Independent12, remaining target/compound UI, the original second A-sample evidence gap, one whole-flow owner usefulness evaluation and final audit remain. Development owns technical tests; no owner micro-question is pending. No product/model process is running in this checkout. Goal card remains BLOCKED; authorized development continues in this explicit user turn. No schedule restarted.
 
 ## Current operating authority — 2026-10-08
 
@@ -51,23 +51,26 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
-D029/C056 records the completed official Opus review and smallest Primary instruction
-repair. New immutable product8f0f5b75 changes only pal/primary.py; independent12 was
-frozen before the edit and disclosed after the17-file candidate freeze.77 targeted
-and270 full tests PASS. [C057 actual UI-CLARIFY](evidence/reviews/judgment-boundary/c057-ask-first-ui/README.md) now PASSes: one grouped question before any Goal, fixed answer then one grounded artifact/receipt;3slots and normal139.987s closure.
+[C058 first-attempt evidence](evidence/reviews/judgment-boundary/c058-primary-revalidation/README.md)
+preserves43 actual Primary calls on f00f3dc/product8f0f5b75. English8 complete; N01–22
+in-run PASS and N23 independent post-run PASS before900s closure, N24 uncalled. Japanese
+R09–14 PASS, R15 correctly delegates but invents a future sender follow-up in spec;
+FAIL recorded and processes stopped. R16/new independent12/remaining UI NOT_RUN.
+Original N run stays PARTIAL; no N24 suffix, proof renewal or failed-sample retry.
 
-Run the new [fixed UI contract](evidence/reviews/judgment-boundary/ask-first-ui-contract.json)
-continuing with unchanged fixed40 recognition inputs and new independent12 through
-the existing bounded runner (separate frozen24/16/16/16caps, max900s per run and fresh
-existing Pro/extra usageOFF proof), then the remaining TARGET-C/COMPOUND UI flows.
-The completed UI-CLARIFY uses3/9 total UI slots; do not repeat it. No extra inputs,
-sample retries or proof renewal. Record first failure and stop for diagnosis. The
-C055 FAIL remains immutable; C043/six other UI passes remain old-version evidence,
-not new Primary PASS. Original ABS-A2 must not be accessed/retried/replaced.
+Receive the one focused official Opus challenge via PAL設計, record its adopted/rejected
+conclusions before the smallest source-grounding instruction repair. Preserve explicitly
+supplied commitments/creative permission/generic drafts/ask-first and host safeguards.
+Freeze a new independently authored12 before editing, then freeze the new product and
+qualify affected actual behavior with bounded existing official no-extra-charge access.
+Do not offload routine technical testing or interpretation to the owner.
 
-No product/model host currently runs and no owner technical-test request is pending.
-One actual working-version whole-flow usefulness evaluation and final release audit
-remain. Future milestone8/13/15–18 stays deferred, with only MM0/14 completed.
+C055 ask-first FAIL/C044 promise FAIL and original ABS-A2 access gap stay visible.
+Do not access, retry or replace the originally refused sample. After a working current
+candidate: remaining TARGET-C/COMPOUND and other affected proof, one actual whole-flow
+owner usefulness evaluation, full release audit/version/constraints and GitHub closure.
+Future milestone8/13/15–18 remains deferred; only MM0/14 completed. Current no-code-change
+C058 evidence uses C056 full270 PASS; chain/blob verification passes all retained runs.
 
 ## Historical access preparation C050–C052 (superseded next actions)
 

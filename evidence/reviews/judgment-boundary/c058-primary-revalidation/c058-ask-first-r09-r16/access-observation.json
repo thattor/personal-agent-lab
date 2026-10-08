@@ -1,0 +1,18 @@
+{
+  "cohort": "ask-first-r09-r16",
+  "checked_at": 1791453679.152399,
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "official_ui_extra_usage": false,
+  "auto_reload": "OFF",
+  "candidate": "f00f3dcbecc6ed5fb85e912530259ea4025ff30c",
+  "max_slots": 16,
+  "max_seconds": 900,
+  "additional_authentication": false,
+  "fallback": false,
+  "proof_renewal": false,
+  "stdin": "interactive terminal retained through python -c exec, no heredoc"
+}
