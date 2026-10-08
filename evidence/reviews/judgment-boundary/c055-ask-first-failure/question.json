@@ -1,0 +1,121 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "54ce2bb5ab994f39973f9864c80e7f26",
+      "role": "user",
+      "content": "祖母の誕生日の集まりの案内を家族向けに下書きしてください。日付・開始時刻・場所はまだ伝えていません。その三点は私に確認してから使い、下書きだけをここに置いてください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "b240de7b7e994b80b798cbff0d60e70c",
+      "role": "assistant",
+      "content": "下書きを受け付けました：日本語で、祖母の誕生日の集まりについて家族向けの案内文の下書きを作成する。親しみのある温かい口調で、祖母の誕生日を家族で一緒にお祝いしようと呼びかける内容にする。日付・開始時刻・場所はユーザーがまだ伝えておらず未指定のため、推測や仮の値を入れず、それぞれ【日付】【開始時刻】【場所】のような明示的な空欄プレースホルダーのままにする。祖母の名前・年齢、参加者、持ち物、出欠の返事方法、料理や会費などの詳細も未指定のため、作り上げずに一般的な表現にとどめるか省略する。送信は行わず、下書きのみをここに置く。 / Local draft accepted.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"54ce2bb5ab994f39973f9864c80e7f26\"]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "6c2a5ee25544456d92676b15175ee36b",
+      "state": "running",
+      "revision": 1,
+      "acceptance_id": "60a7a561f4f546c2960fdde45a52cd58",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "6c2a5ee25544456d92676b15175ee36b",
+      "revision": 1,
+      "acceptance_id": "60a7a561f4f546c2960fdde45a52cd58",
+      "specification": "日本語で、祖母の誕生日の集まりについて家族向けの案内文の下書きを作成する。親しみのある温かい口調で、祖母の誕生日を家族で一緒にお祝いしようと呼びかける内容にする。日付・開始時刻・場所はユーザーがまだ伝えておらず未指定のため、推測や仮の値を入れず、それぞれ【日付】【開始時刻】【場所】のような明示的な空欄プレースホルダーのままにする。祖母の名前・年齢、参加者、持ち物、出欠の返事方法、料理や会費などの詳細も未指定のため、作り上げずに一般的な表現にとどめるか省略する。送信は行わず、下書きのみをここに置く。",
+      "sources": "[\"54ce2bb5ab994f39973f9864c80e7f26\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "60a7a561f4f546c2960fdde45a52cd58",
+      "goal_id": "6c2a5ee25544456d92676b15175ee36b",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "0ca61c586cd646cd9b97a1418bec89c0",
+      "goal_id": "6c2a5ee25544456d92676b15175ee36b",
+      "revision": 1,
+      "acceptance_id": "60a7a561f4f546c2960fdde45a52cd58",
+      "epoch": 1,
+      "status": "running",
+      "manifest": "[\"54ce2bb5ab994f39973f9864c80e7f26\",\"b240de7b7e994b80b798cbff0d60e70c\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [],
+  "outcomes": [],
+  "events": [
+    {
+      "seq": 1,
+      "id": "0eb73dc798c9499e9ceafd0bbefd9ba2",
+      "goal_id": "6c2a5ee25544456d92676b15175ee36b",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 0
+    },
+    {
+      "seq": 2,
+      "id": "6f29224fab804dc9ac0b04e7a8ab26d6",
+      "goal_id": "6c2a5ee25544456d92676b15175ee36b",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"0ca61c586cd646cd9b97a1418bec89c0\",\"epoch\":1}",
+      "delivered": 0
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "questions": [],
+  "artifacts": [],
+  "primary_turns": [
+    {
+      "client_key": "ui:03108ecf-2f7a-4487-83d8-8b738be372ae:1791450228479:c5c98786-6bde-472e-9adb-697271fd0a33",
+      "record_id": "54ce2bb5ab994f39973f9864c80e7f26",
+      "status": "complete",
+      "outcome": "{\"goal\":{\"acceptance_id\":\"60a7a561f4f546c2960fdde45a52cd58\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"6c2a5ee25544456d92676b15175ee36b\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":0},\"intent\":\"draft\",\"primary_status\":\"complete\",\"record_id\":\"54ce2bb5ab994f39973f9864c80e7f26\",\"response_id\":\"b240de7b7e994b80b798cbff0d60e70c\"}"
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 1,
+    "expires_at": 1791451096.4739,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 42293,
+    "started_at": 1791450196.531329,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

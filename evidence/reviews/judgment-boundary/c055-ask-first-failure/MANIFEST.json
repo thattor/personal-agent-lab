@@ -1,0 +1,36 @@
+{
+  "source": "runtime/c054-ui-chrome/UI-CLARIFY",
+  "files": {
+    "start.json": {
+      "bytes": 2210,
+      "sha256": "5eb0de59fcd3428ea24d8eca05d3601b1af54c436309296cd76c5c230599c799"
+    },
+    "before.json": {
+      "bytes": 678,
+      "sha256": "a1c7ba67a88b29a471f0786df60980ceae798e88e183ce2f87e9971ed3d32509"
+    },
+    "question.json": {
+      "bytes": 5340,
+      "sha256": "de1e8da79f3df084f18e6e865f578f10f66fe871668d6223384bd92d829ce2d7"
+    },
+    "after.json": {
+      "bytes": 7730,
+      "sha256": "90de43ce4fec94f9731964b0d4024d8ab21b37259240774270f85951705bf6ee"
+    },
+    "artifact.txt": {
+      "bytes": 710,
+      "sha256": "44b326d7ce415c2a544846abebac3f428cb042ba71059e9499dc3d0623a82acf"
+    },
+    "artifact-binding.json": {
+      "bytes": 2118,
+      "sha256": "134aa258510909251feddba4ed41fb89427f226232ae9c7c7cd515ae8ff0b75d"
+    },
+    "stop.json": {
+      "bytes": 275,
+      "sha256": "a04f5d2403ab43c8b01284d8f87283981ace71854dacad6199db8a948bd37fda"
+    }
+  },
+  "status": "FAIL",
+  "retained_originals": true,
+  "human_evaluation": false
+}

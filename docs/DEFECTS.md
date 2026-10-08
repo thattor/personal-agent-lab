@@ -500,3 +500,17 @@ Next access incident: distinguish a prohibited content retry/bypass from indepen
 safe diagnosis; complete available documented diagnosis and give the exact remaining
 observation or support route before describing only passive wait. Current correction is
 verified as an actionable handoff, not as browser-access resolution or release PASS.
+
+## C055 — generic drafting overrode the explicit question order
+
+Actual first-attempt UI evidence on46bd418 shows Primary converted “ask me for these
+three facts before using them” into “leave them blank.” Expert then generated a saved
+artifact; the host correctly recorded bytes but cannot prove semantic task adherence.
+Cause is the conflicting Primary generic-now / ask-only-if-unusable preference;
+it needs an explicit ordering for a user-imposed ask-first requirement. Preserve the
+failure and obtain the focused review before changing that prompt. Verification must
+cover ask-first plus normal generic drafting, known context, requested placeholders
+and creative permission so the repair does not restore unnecessary questions.
+No keyword detection, host schema or new owner gate is justified by this defect.
+The unsupported “soon” phrasing is retained in the failed artifact, not omitted from
+quality assessment. Repair and new-candidate proof are still pending at this checkpoint.

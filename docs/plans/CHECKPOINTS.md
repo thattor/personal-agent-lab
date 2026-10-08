@@ -607,3 +607,15 @@ Contribution: current grounding instruction preserves both useful content and ab
 fact restraint. No product change, model grading, human input or release claim.
 Next: three remaining UI flows, preserve original ABS-A2 gap, then whole-flow usefulness
 and final audit. C053 full268 tests remain applicable to identical source.
+
+## C055 — preserve a real ask-first violation before repairing
+
+UI-CLARIFY first attempt failed on46bd418/product53a616: Primary converted an explicit
+request to ask three missing logistics into placeholder drafting; one artifact was
+completed without the required question. Its bytes/receipt bind, but semantics FAIL.
+[Original evidence](../../evidence/reviews/judgment-boundary/c055-ask-first-failure/README.md).
+The fixed second answer was not sent, host stopped in148.173s with2/3slots, no repair.
+Contribution: exposes a real user-control violation before human usefulness evaluation.
+Next: focused official Opus challenge already requested, then smallest semantic prompt
+repair and new frozen verification. Other pending UI cases stop on this candidate;
+no extra human gate or interpretation of completion as success. Future work stays deferred.

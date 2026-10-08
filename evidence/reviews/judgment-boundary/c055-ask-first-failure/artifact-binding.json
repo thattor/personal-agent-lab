@@ -1,0 +1,56 @@
+{
+  "url": "http://127.0.0.1:58608/api/artifact/8741bc71b18d44e1a80defb27134bcca",
+  "http_status": 200,
+  "redirect": false,
+  "content_type": "text/plain; charset=utf-8",
+  "size": 710,
+  "sha256": "44b326d7ce415c2a544846abebac3f428cb042ba71059e9499dc3d0623a82acf",
+  "goal": {
+    "seq": 1,
+    "id": "6c2a5ee25544456d92676b15175ee36b",
+    "state": "completed",
+    "revision": 1,
+    "acceptance_id": "60a7a561f4f546c2960fdde45a52cd58",
+    "epoch": 1,
+    "budget": 2,
+    "total_claims": 1,
+    "reason": "",
+    "question_id": null,
+    "ambiguity": 0
+  },
+  "attempt": {
+    "seq": 1,
+    "id": "0ca61c586cd646cd9b97a1418bec89c0",
+    "goal_id": "6c2a5ee25544456d92676b15175ee36b",
+    "revision": 1,
+    "acceptance_id": "60a7a561f4f546c2960fdde45a52cd58",
+    "epoch": 1,
+    "status": "pass",
+    "manifest": "[\"54ce2bb5ab994f39973f9864c80e7f26\",\"b240de7b7e994b80b798cbff0d60e70c\"]",
+    "error": "",
+    "external_intent": 0
+  },
+  "receipt": {
+    "id": "ab430df891a9421fa04c13826e0c315e",
+    "attempt_id": "0ca61c586cd646cd9b97a1418bec89c0",
+    "artifact_id": "8741bc71b18d44e1a80defb27134bcca",
+    "hash": "44b326d7ce415c2a544846abebac3f428cb042ba71059e9499dc3d0623a82acf",
+    "size": 710,
+    "revision": 1,
+    "epoch": 1,
+    "role": "draft"
+  },
+  "artifact": {
+    "id": "8741bc71b18d44e1a80defb27134bcca",
+    "hash": "44b326d7ce415c2a544846abebac3f428cb042ba71059e9499dc3d0623a82acf",
+    "size": 710
+  },
+  "browser_link_clicked": true,
+  "browser_body_observed": true,
+  "body_hash_receipt_match": true,
+  "semantic_status": "FAIL",
+  "semantic_rationale": "FAIL: explicit ask-for-date/time/place-first condition was rewritten to placeholder drafting. No grouped question was asked; a Goal and completed placeholder artifact were produced before the permitted answer. Artifact also says birthday is soon without supplied timing. Host byte receipt PASS is not semantic PASS. Fixed second input was not sent; one remaining slot unused; no resample.",
+  "controller_observed": true,
+  "human_usefulness_evaluation": false,
+  "screenshot": "actual CUA tool image, no saved file claimed"
+}
