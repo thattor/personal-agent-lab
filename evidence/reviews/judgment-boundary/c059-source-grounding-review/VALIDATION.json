@@ -1,0 +1,16 @@
+{
+  "verified_at": "2026-10-08T10:20:01.604567+00:00",
+  "review_response_sha256_matches": true,
+  "review_terminal_complete": true,
+  "official_calls": 1,
+  "retries": 0,
+  "fallback": false,
+  "current_primary_unchanged_from_preparation": true,
+  "product_identity": "content:sha256:8f0f5b75c9b5c1e6fe6d4ee488c6c3aa8c1bae6fb46f79f1d1f6c28b65664bcb",
+  "current_git_head": "6f8e5b7ddc56f383dfbc9fe01b65a68c65a807ab",
+  "working_tree_status": "?? evidence/reviews/judgment-boundary/primary-grounding-heldout-freeze.json\n",
+  "review_factual_misread_disposition": "C054 impact assertion rejected; full original prohibition retained in RECOMMENDATION.md; unsupported her remains an observation",
+  "shared_product_and_canonical_writes_by_design_chat": 0,
+  "independent_corpus_contents_in_packet": false,
+  "limits": "Review and structural evidence only; no repair implementation or new candidate behavior proof."
+}

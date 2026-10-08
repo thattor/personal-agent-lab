@@ -16,7 +16,7 @@ from scripts.live_runner import RunRejected, product_rel_paths
 from scripts.primary_qualification import (PrimaryGate, QualificationRunner, load_matrix,
                                            seed_case, verify_run, verify_snapshot, build_live, COHORTS,
                                            FREEZE, NEW_FREEZE, COMPOUND_FREEZE, INTENT_LIMITS_FREEZE,
-                                           ASK_FIRST_FREEZE,
+                                           ASK_FIRST_FREEZE, GROUNDING_FREEZE,
                                            validate_freeze, cohort_matrix, QualificationPin)
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,7 +54,7 @@ def isolated_test_root(destination):
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT/relative, target)
     (destination/'runtime').mkdir()
-    for relative in (FREEZE, NEW_FREEZE, COMPOUND_FREEZE, INTENT_LIMITS_FREEZE, ASK_FIRST_FREEZE):
+    for relative in (FREEZE, NEW_FREEZE, COMPOUND_FREEZE, INTENT_LIMITS_FREEZE, ASK_FIRST_FREEZE, GROUNDING_FREEZE):
         synthetic_freeze(destination, relative)
     return destination
 
@@ -566,15 +566,15 @@ class FreezeQualificationTests(unittest.TestCase):
         evidence = self.root/'evidence/reviews/judgment-boundary'
         self.assertEqual({p.name for p in evidence.iterdir()},
                          set(KNOWN_FIXTURES) | {Path(p).name for p in
-                             (FREEZE, NEW_FREEZE, COMPOUND_FREEZE, INTENT_LIMITS_FREEZE, ASK_FIRST_FREEZE)})
+                             (FREEZE, NEW_FREEZE, COMPOUND_FREEZE, INTENT_LIMITS_FREEZE, ASK_FIRST_FREEZE, GROUNDING_FREEZE)})
         self.assertFalse((evidence/'primary-clarification-heldout.json').exists())
         with self.assertRaises((FileNotFoundError, RunRejected)):
             cohort_matrix(self.root, 'clarification-heldout')
-        for relative in (FREEZE, NEW_FREEZE, COMPOUND_FREEZE, INTENT_LIMITS_FREEZE, ASK_FIRST_FREEZE):
+        for relative in (FREEZE, NEW_FREEZE, COMPOUND_FREEZE, INTENT_LIMITS_FREEZE, ASK_FIRST_FREEZE, GROUNDING_FREEZE):
             self.assertEqual(validate_freeze(self.root, relative)['scope'], 'SCRIPTED_TEST_ONLY')
         source = self.root/'pal/primary.py'
         source.write_bytes(source.read_bytes()+b'\n# scripted drift\n')
-        for relative in (FREEZE, NEW_FREEZE, COMPOUND_FREEZE, INTENT_LIMITS_FREEZE, ASK_FIRST_FREEZE):
+        for relative in (FREEZE, NEW_FREEZE, COMPOUND_FREEZE, INTENT_LIMITS_FREEZE, ASK_FIRST_FREEZE, GROUNDING_FREEZE):
             with self.assertRaises(RunRejected):
                 validate_freeze(self.root, relative)
 
@@ -589,7 +589,11 @@ class FreezeQualificationTests(unittest.TestCase):
                          'intent-limits-r09-r16', 'intent-limits-heldout'}
         ask_first = {'ask-first-n01-n24', 'ask-first-r01-r08',
                      'ask-first-r09-r16', 'ask-first-heldout'}
-        self.assertEqual(set(COHORTS), old | new | compound | intent_limits | ask_first)
+        grounding = {'grounding-n01-n24', 'grounding-r01-r08',
+                     'grounding-r09-r16', 'grounding-heldout'}
+        self.assertEqual(set(COHORTS), old | new | compound | intent_limits | ask_first | grounding)
+        for name in grounding:
+            self.assertEqual(COHORTS[name][2], GROUNDING_FREEZE)
         for name in ask_first:
             self.assertEqual(COHORTS[name][2], ASK_FIRST_FREEZE)
         for name in intent_limits:
@@ -652,16 +656,17 @@ class FreezeQualificationTests(unittest.TestCase):
         path.unlink()
         with self.assertRaises(RunRejected):validate_freeze(self.root, NEW_FREEZE)
 
-    def test_ask_first_uses_original_recognition_inputs_and_keeps_heldout_isolated(self):
-        for suffix in ('n01-n24', 'r01-r08', 'r09-r16'):
-            self.assertEqual(COHORTS['ask-first-'+suffix][:2],
-                             COHORTS['recognition-'+suffix][:2])
-            _, freeze, matrix, maximum = cohort_matrix(self.root, 'ask-first-'+suffix)
-            self.assertEqual(freeze, ASK_FIRST_FREEZE)
-            self.assertEqual(maximum, 24 if suffix=='n01-n24' else 16)
-            self.assertTrue(matrix['cases'])
-        self.assertFalse((self.root/'evidence/reviews/judgment-boundary/primary-ask-first-heldout.json').exists())
-        with self.assertRaises(RunRejected):cohort_matrix(self.root, 'ask-first-heldout')
+    def test_new_candidates_keep_original_recognition_inputs_and_heldout_isolated(self):
+        for prefix, expected_freeze in (('ask-first', ASK_FIRST_FREEZE), ('grounding', GROUNDING_FREEZE)):
+            for suffix in ('n01-n24', 'r01-r08', 'r09-r16'):
+                self.assertEqual(COHORTS[prefix+'-'+suffix][:2],
+                                 COHORTS['recognition-'+suffix][:2])
+                _, freeze, matrix, maximum = cohort_matrix(self.root, prefix+'-'+suffix)
+                self.assertEqual(freeze, expected_freeze)
+                self.assertEqual(maximum, 24 if suffix=='n01-n24' else 16)
+                self.assertTrue(matrix['cases'])
+            self.assertFalse((self.root/('evidence/reviews/judgment-boundary/primary-'+prefix+'-heldout.json')).exists())
+            with self.assertRaises(RunRejected):cohort_matrix(self.root, prefix+'-heldout')
 
     def test_untrusted_manifest_paths_are_rejected_before_file_reads(self):
         manifest = synthetic_freeze(self.root, NEW_FREEZE)
@@ -772,7 +777,7 @@ class FreezeQualificationTests(unittest.TestCase):
 
 
 class RepositoryFreezeTests(unittest.TestCase):
-    def test_historical_primary_expert_and_current_ask_first_freezes_are_distinct(self):
+    def test_historical_primary_expert_and_current_grounding_freezes_are_distinct(self):
         self.assertEqual(hashlib.sha256((ROOT/FREEZE).read_bytes()).hexdigest(), OLD_FREEZE_SHA)
         old = json.loads((ROOT/FREEZE).read_text())
         clarification_path = ROOT/NEW_FREEZE
@@ -805,12 +810,21 @@ class RepositoryFreezeTests(unittest.TestCase):
         self.assertEqual(set(expert['files']), set(new['files']))
         self.assertEqual({path for path in new['files'] if new['files'][path]!=expert['files'][path]},
                          {'pal/runtime.py'})
-        current = validate_freeze(ROOT, ASK_FIRST_FREEZE)
+        self.assertEqual(hashlib.sha256((ROOT/ASK_FIRST_FREEZE).read_bytes()).hexdigest(),
+                         '3ed3c7d7e32b080313695d3bcfa4c5d3163251c05ba481ff74bb312af522145e')
+        current = json.loads((ROOT/ASK_FIRST_FREEZE).read_text())
         self.assertEqual(set(current['files']), set(expert['files']))
         self.assertEqual({path for path in current['files']
                           if current['files'][path]!=expert['files'][path]}, {'pal/primary.py'})
         self.assertEqual(current['heldout_sha256'], COHORTS['ask-first-heldout'][1])
         self.assertFalse(current['heldout_contents_opened_before_freeze'])
+        grounding = validate_freeze(ROOT, GROUNDING_FREEZE)
+        self.assertEqual(set(grounding['files']), set(current['files']))
+        self.assertEqual({path for path in grounding['files']
+                          if grounding['files'][path]!=current['files'][path]}, {'pal/primary.py'})
+        self.assertEqual(grounding['heldout_sha256'], COHORTS['grounding-heldout'][1])
+        self.assertFalse(grounding['heldout_contents_opened_before_freeze'])
+        with self.assertRaises(RunRejected):validate_freeze(ROOT, ASK_FIRST_FREEZE)
         with self.assertRaises(RunRejected):validate_freeze(ROOT, expert_path)
         with self.assertRaises(RunRejected):validate_freeze(ROOT, FREEZE)
         with self.assertRaises(RunRejected):validate_freeze(ROOT, NEW_FREEZE)

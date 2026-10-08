@@ -1,0 +1,15 @@
+{
+  "prepared_at": "2026-10-08T10:24:51.295975+00:00",
+  "recipient_thread": "01a11113-f829-75c1-b728-3298aa3359b5",
+  "matrix_sha256": "bad30605e8d54cca5c2affa25dbf3c46daa71c029b8a6195418d677bb8475618",
+  "product_identity": "content:sha256:e851cae0183a2f4a0f7998f34a413ee2c2064ea01c74eeee8ce3ca390045fa59",
+  "product_freeze_path": "evidence/reviews/judgment-boundary/primary-grounding-candidate-freeze.json",
+  "product_freeze_sha256": "0161c50a0d80dc0aed8b7d69b7dbcef266e530344d5d545c1029bc8ab80a1e29",
+  "primary_sha256": "514d91e69a043e6e6d0844c51472f80c074ddf877a19e1600cefc2783d95d010",
+  "verified_files": 17,
+  "unchanged_other_product_files": 16,
+  "prior_freeze_verified": true,
+  "content_previously_disclosed": false,
+  "actual_model_calls": 0,
+  "scope": "Release already frozen12 utterances only after matching product source; no added tests, altered criteria, or product edits."
+}

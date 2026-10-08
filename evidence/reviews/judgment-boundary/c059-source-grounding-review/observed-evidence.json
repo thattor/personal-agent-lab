@@ -1,0 +1,414 @@
+{
+  "candidate": "f00f3dcbecc6ed5fb85e912530259ea4025ff30c",
+  "product_identity": "content:sha256:8f0f5b75c9b5c1e6fe6d4ee488c6c3aa8c1bae6fb46f79f1d1f6c28b65664bcb",
+  "primary_sha256": "5933beaa66216d035d2f830e80845dc78d913eca60c666534ee788bfa740a3f4",
+  "r15_journal_sha256": "61c275874195902ce68fa6c2e157eb4b6cc8ca8b4d7d396e195257c81ee60f9e",
+  "r15_original_capture": {
+    "after": {
+      "acceptances": [
+        {
+          "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+          "goal_id": "6bd3f7fad88542b8af339f54928fb042",
+          "id": "1eaf4a3bf4774d149bfdd2beb79b711d"
+        }
+      ],
+      "approvals": [],
+      "artifacts": [],
+      "attempts": [],
+      "events": [
+        {
+          "delivered": 0,
+          "goal_id": "6bd3f7fad88542b8af339f54928fb042",
+          "id": "7efc0e825d4b438fb406caedb548b5c3",
+          "kind": "goal.queued",
+          "payload": "{\"revision\":1}",
+          "seq": 1
+        }
+      ],
+      "goals": [
+        {
+          "acceptance_id": "1eaf4a3bf4774d149bfdd2beb79b711d",
+          "ambiguity": 0,
+          "budget": 3,
+          "epoch": 0,
+          "id": "6bd3f7fad88542b8af339f54928fb042",
+          "question_id": null,
+          "reason": "",
+          "revision": 1,
+          "seq": 1,
+          "state": "queued",
+          "total_claims": 0
+        }
+      ],
+      "notes": [],
+      "outcomes": [],
+      "primary_turns": [
+        {
+          "client_key": "qualification:R15-input",
+          "outcome": "{\"goal\":{\"acceptance_id\":\"1eaf4a3bf4774d149bfdd2beb79b711d\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"6bd3f7fad88542b8af339f54928fb042\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":0},\"intent\":\"draft\",\"primary_status\":\"complete\",\"record_id\":\"7dc3f6ff56fa4005997f7f1176200d48\",\"response_id\":\"bf753d79c89743b3bf0d4ce9ec1f0f7f\"}",
+          "record_id": "7dc3f6ff56fa4005997f7f1176200d48",
+          "status": "complete"
+        }
+      ],
+      "questions": [],
+      "receipts": [],
+      "records": [
+        {
+          "content": "まだ日付は決まっていませんが、招待文の下書きを作って。",
+          "id": "7dc3f6ff56fa4005997f7f1176200d48",
+          "manifest": "[]",
+          "role": "user",
+          "seq": 1,
+          "source_event_id": null,
+          "supersedes": null,
+          "usable": 1
+        },
+        {
+          "content": "下書きを受け付けました：日本語で招待文の下書きを作成する。日付は未定であることを明記し、後日あらためて連絡する旨を自然に伝える（日付は埋めない）。イベントの種類・名称、場所、宛先、差出人名は指定されていないため、一般的な表現にとどめ、具体的な内容を創作しない。丁寧で温かみのある文体で、参加をお願いする一文と、都合や参加意向を気軽に知らせてほしい旨を含める。 / Local draft accepted.",
+          "id": "bf753d79c89743b3bf0d4ce9ec1f0f7f",
+          "manifest": "[\"7dc3f6ff56fa4005997f7f1176200d48\"]",
+          "role": "assistant",
+          "seq": 2,
+          "source_event_id": null,
+          "supersedes": null,
+          "usable": 1
+        }
+      ],
+      "rejections": [],
+      "revisions": [
+        {
+          "acceptance_id": "1eaf4a3bf4774d149bfdd2beb79b711d",
+          "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+          "goal_id": "6bd3f7fad88542b8af339f54928fb042",
+          "revision": 1,
+          "sources": "[\"7dc3f6ff56fa4005997f7f1176200d48\"]",
+          "specification": "日本語で招待文の下書きを作成する。日付は未定であることを明記し、後日あらためて連絡する旨を自然に伝える（日付は埋めない）。イベントの種類・名称、場所、宛先、差出人名は指定されていないため、一般的な表現にとどめ、具体的な内容を創作しない。丁寧で温かみのある文体で、参加をお願いする一文と、都合や参加意向を気軽に知らせてほしい旨を含める。",
+          "template_preview_allowed": 0
+        }
+      ]
+    },
+    "bindings": {
+      "R15-input": "7dc3f6ff56fa4005997f7f1176200d48"
+    },
+    "case": "R15",
+    "event": "turn.captured",
+    "input": "まだ日付は決まっていませんが、招待文の下書きを作って。",
+    "key": "qualification:R15-input",
+    "outcome": {
+      "goal": {
+        "acceptance_id": "1eaf4a3bf4774d149bfdd2beb79b711d",
+        "ambiguity": 0,
+        "budget": 3,
+        "epoch": 0,
+        "id": "6bd3f7fad88542b8af339f54928fb042",
+        "question_id": null,
+        "reason": "",
+        "revision": 1,
+        "seq": 1,
+        "state": "queued",
+        "total_claims": 0
+      },
+      "intent": "draft",
+      "primary_status": "complete",
+      "record_id": "7dc3f6ff56fa4005997f7f1176200d48",
+      "response_id": "bf753d79c89743b3bf0d4ce9ec1f0f7f"
+    },
+    "previous_sha256": "5e224f494aa26d7edc5e68cf67365afcef1d6e3bdceedb9823c91a4c05548323",
+    "proposal": {
+      "action": {
+        "kind": "local_draft",
+        "source_ids": [
+          "7dc3f6ff56fa4005997f7f1176200d48"
+        ],
+        "spec": "日本語で招待文の下書きを作成する。日付は未定であることを明記し、後日あらためて連絡する旨を自然に伝える（日付は埋めない）。イベントの種類・名称、場所、宛先、差出人名は指定されていないため、一般的な表現にとどめ、具体的な内容を創作しない。丁寧で温かみのある文体で、参加をお願いする一文と、都合や参加意向を気軽に知らせてほしい旨を含める。"
+      },
+      "reply": "承知しました。日付は未定のまま、招待文の下書きを作ります。イベントの内容や相手が決まっていれば、あとで合わせて調整できます。"
+    },
+    "recorded_at": 1791453860.165524,
+    "reply": {
+      "content": "下書きを受け付けました：日本語で招待文の下書きを作成する。日付は未定であることを明記し、後日あらためて連絡する旨を自然に伝える（日付は埋めない）。イベントの種類・名称、場所、宛先、差出人名は指定されていないため、一般的な表現にとどめ、具体的な内容を創作しない。丁寧で温かみのある文体で、参加をお願いする一文と、都合や参加意向を気軽に知らせてほしい旨を含める。 / Local draft accepted.",
+      "id": "bf753d79c89743b3bf0d4ce9ec1f0f7f",
+      "role": "assistant"
+    },
+    "scope": "live_synthetic",
+    "sequence": 119,
+    "sha256": "3fe0484bd4e5bcdb58eb70b0287588c7b73e6c089c38cafaa1062cbe0891f787",
+    "turn": 1
+  },
+  "r15_frozen_case": {
+    "id": "R15",
+    "setup": {
+      "sources": [],
+      "goals": [],
+      "questions": []
+    },
+    "turns": [
+      {
+        "input_record_ref": "R15-input",
+        "user_text": "まだ日付は決まっていませんが、招待文の下書きを作って。",
+        "acceptable_outcome_set": [
+          {
+            "action_kind": "local_draft",
+            "goal_count": 1
+          },
+          {
+            "action_kind": "none",
+            "goal_count": 0
+          }
+        ],
+        "PAL_ORACLE_ONLY": {
+          "classification": "EITHER",
+          "rationale": "日付未定は欠落ではなく明示された条件なので、日付を聞いてはいけない。日付未定の招待文を委任するか、招待する行事など別の未提示の本質情報を尋ねることを許容する。",
+          "essential_clarification_scope": [
+            "何への招待か。文面に必要なら招待相手の範囲も同じ問いにまとめる。日付は質問対象に含めない。"
+          ],
+          "invented_fact_exclusions": [
+            "明示的に未定の日付を創作・推定・確定しない。",
+            "未提示の行事、相手、場所、時刻を確定事項として足さない。"
+          ],
+          "nonessential_question_exclusions": [
+            "日付を尋ねる、日付確定を待たせる、仮の日付を決めてよいかを尋ねる。",
+            "日付未定という既知の条件や下書き作成の許可を再確認する。"
+          ],
+          "unsupported_sending_scope": null,
+          "remember_scope": null
+        }
+      },
+      {
+        "input_record_ref": "R15-answer",
+        "user_text": "職場の同僚を誘う昼食会です。気軽で短い案内にしてください。日付は未定のままにし、時間と場所も空欄で大丈夫です。",
+        "only_if_prior_action": "none",
+        "acceptable_outcome_set": [
+          {
+            "action_kind": "local_draft",
+            "goal_count": 1
+          }
+        ],
+        "PAL_ORACLE_ONLY": {
+          "required_observations": [
+            "Use actual prior question and original request context; one Goal from supported facts",
+            "No another clarification, repeated permission, hidden effects or invented facts"
+          ]
+        }
+      }
+    ]
+  },
+  "mika_after_sha256": "e6f57d04342ee359ad499ff8953cf7f13add031f8d5901adebbe94e570fe9a01",
+  "mika_after": {
+    "records": [
+      {
+        "seq": 1,
+        "id": "538f383eb652423f9bda51461ccc99e3",
+        "role": "user",
+        "content": "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied.",
+        "usable": 1,
+        "source_event_id": null,
+        "manifest": "[]",
+        "supersedes": null
+      },
+      {
+        "seq": 2,
+        "id": "bb2863bb43eb406cb767f88d450de630",
+        "role": "assistant",
+        "content": "入力された情報を記憶しました。 / Your information was remembered.",
+        "usable": 1,
+        "source_event_id": null,
+        "manifest": "[\"538f383eb652423f9bda51461ccc99e3\"]",
+        "supersedes": null
+      },
+      {
+        "seq": 3,
+        "id": "dfe89b25af694d6e957322df634b2e5e",
+        "role": "user",
+        "content": "架空プロジェクトCedarについて、Mikaへのお礼状の下書きを作成してください。日本語で2文、全体への感謝と、提供された具体的な貢献を含めてください。外部には送らないでください。",
+        "usable": 1,
+        "source_event_id": null,
+        "manifest": "[]",
+        "supersedes": null
+      },
+      {
+        "seq": 4,
+        "id": "8010073040414c58814fdcc74bc06638",
+        "role": "assistant",
+        "content": "下書きを受け付けました：Write a thank-you note draft in Japanese, exactly 2 sentences, addressed to Mika, regarding the fictional project Cedar. Sentence 1: express overall gratitude to Mika for her help with the Cedar project. Sentence 2: thank Mika specifically for helping organize Cedar's design discussion. Do not mention any other contributions, dates, results, benefits, or impact of her help, including hedged forms; none are supplied. Sender name and signature are unspecified; do not invent them. Local draft only; do not send externally. / Local draft accepted.",
+        "usable": 1,
+        "source_event_id": null,
+        "manifest": "[\"538f383eb652423f9bda51461ccc99e3\",\"bb2863bb43eb406cb767f88d450de630\",\"dfe89b25af694d6e957322df634b2e5e\",\"note:b62fa84fede94a748d558b50dac89d82\"]",
+        "supersedes": null
+      },
+      {
+        "seq": 5,
+        "id": "4e38cb45c9574b22b011ec656e23be09",
+        "role": "assistant",
+        "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"be2514c7d55443b8a40af349129d3ed8\"}",
+        "usable": 1,
+        "source_event_id": "416a9c17a9bd468ea2719680d03c77e9",
+        "manifest": "[]",
+        "supersedes": null
+      },
+      {
+        "seq": 6,
+        "id": "36ef6d07315e418abd21f0e462d69357",
+        "role": "assistant",
+        "content": "{\"detail\":{\"attempt_id\":\"04f2d6247fab44f78abb3117d01b4906\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"be2514c7d55443b8a40af349129d3ed8\"}",
+        "usable": 1,
+        "source_event_id": "f0d512a17dd24802a6bd182020545932",
+        "manifest": "[]",
+        "supersedes": null
+      },
+      {
+        "seq": 7,
+        "id": "366957ae6bae4ed5bbd7bba4c3bcb51a",
+        "role": "assistant",
+        "content": "{\"detail\":{\"artifact_id\":\"183b8cf9a6784248a8e2fba0a575d3d5\",\"attempt_id\":\"04f2d6247fab44f78abb3117d01b4906\",\"check_status\":\"pass\",\"receipt_id\":\"d22121fae7f340e3a0148583ba86339a\"},\"event\":\"goal.completed\",\"goal_id\":\"be2514c7d55443b8a40af349129d3ed8\"}",
+        "usable": 1,
+        "source_event_id": "85cc34ecb292487c90514d038781c388",
+        "manifest": "[]",
+        "supersedes": null
+      }
+    ],
+    "notes": [
+      {
+        "id": "b62fa84fede94a748d558b50dac89d82",
+        "content": "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied.",
+        "sources": "[\"538f383eb652423f9bda51461ccc99e3\"]",
+        "usable": 1
+      }
+    ],
+    "goals": [
+      {
+        "seq": 1,
+        "id": "be2514c7d55443b8a40af349129d3ed8",
+        "state": "completed",
+        "revision": 1,
+        "acceptance_id": "a952b968bebc40ccafa137c4434e519e",
+        "epoch": 1,
+        "budget": 2,
+        "total_claims": 1,
+        "reason": "",
+        "question_id": null,
+        "ambiguity": 0
+      }
+    ],
+    "revisions": [
+      {
+        "goal_id": "be2514c7d55443b8a40af349129d3ed8",
+        "revision": 1,
+        "acceptance_id": "a952b968bebc40ccafa137c4434e519e",
+        "specification": "Write a thank-you note draft in Japanese, exactly 2 sentences, addressed to Mika, regarding the fictional project Cedar. Sentence 1: express overall gratitude to Mika for her help with the Cedar project. Sentence 2: thank Mika specifically for helping organize Cedar's design discussion. Do not mention any other contributions, dates, results, benefits, or impact of her help, including hedged forms; none are supplied. Sender name and signature are unspecified; do not invent them. Local draft only; do not send externally.",
+        "sources": "[\"dfe89b25af694d6e957322df634b2e5e\",\"538f383eb652423f9bda51461ccc99e3\",\"note:b62fa84fede94a748d558b50dac89d82\"]",
+        "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+        "template_preview_allowed": 0
+      }
+    ],
+    "acceptances": [
+      {
+        "id": "a952b968bebc40ccafa137c4434e519e",
+        "goal_id": "be2514c7d55443b8a40af349129d3ed8",
+        "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+      }
+    ],
+    "attempts": [
+      {
+        "seq": 1,
+        "id": "04f2d6247fab44f78abb3117d01b4906",
+        "goal_id": "be2514c7d55443b8a40af349129d3ed8",
+        "revision": 1,
+        "acceptance_id": "a952b968bebc40ccafa137c4434e519e",
+        "epoch": 1,
+        "status": "pass",
+        "manifest": "[\"538f383eb652423f9bda51461ccc99e3\",\"bb2863bb43eb406cb767f88d450de630\",\"dfe89b25af694d6e957322df634b2e5e\",\"8010073040414c58814fdcc74bc06638\",\"note:b62fa84fede94a748d558b50dac89d82\"]",
+        "error": "",
+        "external_intent": 0
+      }
+    ],
+    "receipts": [
+      {
+        "id": "d22121fae7f340e3a0148583ba86339a",
+        "attempt_id": "04f2d6247fab44f78abb3117d01b4906",
+        "artifact_id": "183b8cf9a6784248a8e2fba0a575d3d5",
+        "hash": "4698dd1877567be3a5b7910318f1f72eededcc80bc16eef040281c2cced29387",
+        "size": 203,
+        "revision": 1,
+        "epoch": 1,
+        "role": "draft"
+      }
+    ],
+    "outcomes": [
+      {
+        "attempt_id": "04f2d6247fab44f78abb3117d01b4906",
+        "receipt_id": "d22121fae7f340e3a0148583ba86339a",
+        "check_status": "pass",
+        "detail": "host_utf8_size_hash_readback"
+      }
+    ],
+    "events": [
+      {
+        "seq": 1,
+        "id": "416a9c17a9bd468ea2719680d03c77e9",
+        "goal_id": "be2514c7d55443b8a40af349129d3ed8",
+        "kind": "goal.queued",
+        "payload": "{\"revision\":1}",
+        "delivered": 1
+      },
+      {
+        "seq": 2,
+        "id": "f0d512a17dd24802a6bd182020545932",
+        "goal_id": "be2514c7d55443b8a40af349129d3ed8",
+        "kind": "attempt.claimed",
+        "payload": "{\"attempt_id\":\"04f2d6247fab44f78abb3117d01b4906\",\"epoch\":1}",
+        "delivered": 1
+      },
+      {
+        "seq": 3,
+        "id": "85cc34ecb292487c90514d038781c388",
+        "goal_id": "be2514c7d55443b8a40af349129d3ed8",
+        "kind": "goal.completed",
+        "payload": "{\"artifact_id\":\"183b8cf9a6784248a8e2fba0a575d3d5\",\"attempt_id\":\"04f2d6247fab44f78abb3117d01b4906\",\"check_status\":\"pass\",\"receipt_id\":\"d22121fae7f340e3a0148583ba86339a\"}",
+        "delivered": 1
+      }
+    ],
+    "approvals": [],
+    "rejections": [],
+    "questions": [],
+    "artifacts": [
+      {
+        "id": "183b8cf9a6784248a8e2fba0a575d3d5",
+        "hash": "4698dd1877567be3a5b7910318f1f72eededcc80bc16eef040281c2cced29387",
+        "size": 203
+      }
+    ],
+    "primary_turns": [
+      {
+        "client_key": "ui:35333c0f-d0b0-4cea-8493-b25f15b9bcad:1791449946946:86bcc20d-63ed-43ef-aa06-c68a4666f0f5",
+        "record_id": "538f383eb652423f9bda51461ccc99e3",
+        "status": "complete",
+        "outcome": "{\"goal\":null,\"intent\":\"conversation\",\"primary_status\":\"complete\",\"record_id\":\"538f383eb652423f9bda51461ccc99e3\",\"response_id\":\"bb2863bb43eb406cb767f88d450de630\"}"
+      },
+      {
+        "client_key": "ui:35333c0f-d0b0-4cea-8493-b25f15b9bcad:1791449966680:f169804f-7d70-4d8e-b452-fb3c6ae43431",
+        "record_id": "dfe89b25af694d6e957322df634b2e5e",
+        "status": "complete",
+        "outcome": "{\"goal\":{\"acceptance_id\":\"a952b968bebc40ccafa137c4434e519e\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"be2514c7d55443b8a40af349129d3ed8\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":0},\"intent\":\"draft\",\"primary_status\":\"complete\",\"record_id\":\"dfe89b25af694d6e957322df634b2e5e\",\"response_id\":\"8010073040414c58814fdcc74bc06638\"}"
+      }
+    ],
+    "selections": [],
+    "provider": "official_claude_opus_tool_free",
+    "provider_status": {
+      "mode": "official_claude_pro",
+      "calls_remaining": 0,
+      "expires_at": 1791450813.77677,
+      "authorized_now": false,
+      "unavailable_reason": "budget_exhausted",
+      "last_error": ""
+    },
+    "runtime": {
+      "pid": 37789,
+      "started_at": 1791449913.831946,
+      "worker_alive": true,
+      "worker_error": "",
+      "stopping": false
+    }
+  },
+  "limits": "Synthetic first observations; R15 stopped FAIL. No worker/Expert/artifact in R15. C054 artifact verdict remains historical; the newly noted pronoun assumption is in Primary spec, not claimed to appear in the Japanese artifact."
+}

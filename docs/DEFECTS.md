@@ -541,3 +541,9 @@ that correction. Its900s watchdog later closed after N23 capture but before judg
 Do not extend/resume or mark the run complete. N23 is a separately cited post-run audit;
 N24 is uncalled. Keep per-run wall bounds and avoid unrelated work during active windows.
 A proposed suffix was not executed after the later R15 product failure.
+
+C059 review preparation quoted a fragment of C054's negative instruction; Opus then
+misread it as requiring impact. Actual full clause forbids results/benefits/impact.
+Keep original packet, append the full clause/disposition and reject that unsupported
+claim. Next reviewer briefing preserves complete negation/modality; current response
+was checked against the source before adoption, with no extra review call.

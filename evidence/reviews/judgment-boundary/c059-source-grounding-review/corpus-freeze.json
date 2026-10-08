@@ -1,0 +1,16 @@
+{
+  "frozen_at": "2026-10-08T10:16:16.133977+00:00",
+  "sha256": "bad30605e8d54cca5c2affa25dbf3c46daa71c029b8a6195418d677bb8475618",
+  "case_count": 11,
+  "utterance_count": 12,
+  "planned_primary_calls": 12,
+  "max_primary_calls": 16,
+  "max_run_seconds": 900,
+  "conditional_skips": 0,
+  "model_calls_to_create": 0,
+  "status": "FROZEN_NOT_RUN_WITHHELD",
+  "preimplementation_primary_sha256": "5933beaa66216d035d2f830e80845dc78d913eca60c666534ee788bfa740a3f4",
+  "preimplementation_product_identity": "content:sha256:8f0f5b75c9b5c1e6fe6d4ee488c6c3aa8c1bae6fb46f79f1d1f6c28b65664bcb",
+  "disclosure_condition": "After development provides immutable post-repair17-file product freeze and actual source hash; compare exact source before releasing content.",
+  "independence": "New author-generated corpus; no model used, contents/oracles not disclosed to implementer or Opus reviewer before code freeze. Known prior corpus/failures may inform boundary coverage; not claimed blind to defect class."
+}

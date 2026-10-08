@@ -1,0 +1,72 @@
+{
+  "checks": [
+    {
+      "case": "PGF-01",
+      "seed_and_first_context_valid": true,
+      "oracle_fields_in_prompt": false,
+      "model_calls": 0
+    },
+    {
+      "case": "PGF-02",
+      "seed_and_first_context_valid": true,
+      "oracle_fields_in_prompt": false,
+      "model_calls": 0
+    },
+    {
+      "case": "PGF-03",
+      "seed_and_first_context_valid": true,
+      "oracle_fields_in_prompt": false,
+      "model_calls": 0
+    },
+    {
+      "case": "PGF-04",
+      "seed_and_first_context_valid": true,
+      "oracle_fields_in_prompt": false,
+      "model_calls": 0
+    },
+    {
+      "case": "PGF-05",
+      "seed_and_first_context_valid": true,
+      "oracle_fields_in_prompt": false,
+      "model_calls": 0
+    },
+    {
+      "case": "PGF-06",
+      "seed_and_first_context_valid": true,
+      "oracle_fields_in_prompt": false,
+      "model_calls": 0
+    },
+    {
+      "case": "PGF-07",
+      "seed_and_first_context_valid": true,
+      "oracle_fields_in_prompt": false,
+      "model_calls": 0
+    },
+    {
+      "case": "PGF-08",
+      "seed_and_first_context_valid": true,
+      "oracle_fields_in_prompt": false,
+      "model_calls": 0
+    },
+    {
+      "case": "PGF-09",
+      "seed_and_first_context_valid": true,
+      "oracle_fields_in_prompt": false,
+      "model_calls": 0
+    },
+    {
+      "case": "PGF-10",
+      "seed_and_first_context_valid": true,
+      "oracle_fields_in_prompt": false,
+      "model_calls": 0
+    },
+    {
+      "case": "PGF-11",
+      "seed_and_first_context_valid": true,
+      "oracle_fields_in_prompt": false,
+      "model_calls": 0
+    }
+  ],
+  "all_pass": true,
+  "limits": "Structure and first-context only; no synthetic response or real semantic/model behavior executed."
+}

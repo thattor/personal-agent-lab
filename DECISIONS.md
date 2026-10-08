@@ -1134,3 +1134,43 @@ on the new frozen candidate (two fixed inputs only after valid question, cap3/60
 then remaining approved UI flows if green. No resampling, hidden followup, invented
 owner evaluation, original ABS-A2 access or acceptance change. The finite runs are
 technical validation under existing scope, not unlimited usage permission.
+
+### D029/C059 — prevent invented facts and promises in Primary specifications
+
+Before implementation: C058 R15 correctly recognized a local draft but added a sender
+commitment to contact later without source support. C054 separately retained unsupported
+Mika→her in spec/acknowledgement. Question: what minimum repair preserves useful generic
+drafting, real supplied facts/promises, creative permission and ask-first, without new
+host semantics or an owner gate? Official Opus completed one49.935s tool-free review
+with fresh existing Pro/extra usageOFF, exit0/REVIEW_COMPLETE, no fallback or retry.
+[Original review and disposition](evidence/reviews/judgment-boundary/c059-source-grounding-review/RECOMMENDATION.md).
+
+Adopt a single replacement of the existing no-invention sentence in Primary: apply
+source grounding to reply and draft/correct spec, including customary future-contact
+promises, personal attributes and outcomes; generated assertions do not become user
+facts merely by appearing in earlier conversation. Unknown/undecided values stay so
+or are omitted, without a new question gate. Keep user-supplied promises/attributes,
+neutral references, ordinary courtesy, supported conditional local help and explicitly
+authorized fictional invention within its scope. Narrow the review's fictional-label
+parenthesis: a fictional project label cannot authorize attributes/actions of a named
+person, while an explicit fictional-meeting/creative request still permits its fictional
+settings. Do not ban pronouns, future tense, recipient requests or polite phrasing.
+Existing ask-first, templates, context, whole-request unsupported boundaries and Expert
+prompt stay unchanged. No schema/router/provider/state/authority/acceptance change.
+
+Reject the review's claim that C054 instructed unsupported impact: the complete source
+clause prohibits mentioning results/benefits/impact. Only unsupported her is observed.
+Keep original question/response intact and preserve the quotation correction; no second
+review or new artifact FAIL. Review preparation had omitted the surrounding prohibition
+in one excerpt; retain complete negation/modality next time and verify reviewer claims.
+
+New independent12 was frozen before code modification, contents not yet disclosed.
+[Hash/count receipt](evidence/reviews/judgment-boundary/primary-grounding-heldout-freeze.json).
+Freeze the17 product files after the one-paragraph edit, then disclose/retain the corpus.
+Use existing bounded fixed40 and independent12 with fresh no-extra-charge proof, one
+first attempt per new candidate; retain all old failures. R15 keeps EITHER, not forced
+DELEGATE. Revalidate affected Primary→Expert→actual artifact paths and remaining required
+UI cases; one or two review examples cannot waive existing rows or original ABS-A2 gap.
+Static/host tests are infrastructure proof, not semantic proof. New alias constants
+only reuse the existing runner; this small prompt/data repair does not require new
+substantial implementation/SWE review. Reassess that gate if scope grows.

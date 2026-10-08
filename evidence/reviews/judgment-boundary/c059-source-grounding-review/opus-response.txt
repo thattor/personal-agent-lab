@@ -1,0 +1,83 @@
+## 判定
+
+**提案は妥当な最小修正です。** 既存規則「never invent … commitments」の適用範囲を明確化するもので、新しい挙動ではありません。受入基準・権限の変更も不要です。ただし文言が広すぎると副作用が出るので、範囲を絞った置換を推奨します。
+
+## 証拠として言えること/言えないこと
+
+**観測された事実**
+- R15 の Primary spec に、source にない送信者の将来行為「後日あらためて連絡する旨を…伝える」が含まれていた。これは既存の no-invention 規則への違反で、spec-grounding FAIL として扱うのが正当です。
+- 委任判断と Goal 数は正しかった。したがって request-recognition miss ではありません。
+- C054 では、代名詞の指定がないのに spec が「her」を使い、さらに未提供の「impact of her help」を指示していた。成果物は PASS のままです。これは中間 spec の source-grounding 上の前提であって、新たに証明された成果物の不合格ではありません。
+
+**もっともらしいが未証明のこと**
+- 「慣習的な丁寧表現を commitment と見なさなかった」という原因の説明。
+- 「spec 内の断定を Expert が "supplied" と誤認する」という伝播経路。R15 では worker が走っていないため、未観測です。
+- いずれも各 1 件の観測であり、一般化や因果の証明にはなりません。
+
+## 過剰適用のリスク
+
+- **将来行為の全面禁止**:「I'll send it myself」や「日付は後で私が連絡します」のような、ユーザーが自ら述べた commitment まで消えてしまいます。
+- **性別・代名詞の全面禁止**:ユーザーが「彼女」と書いた場合のような既知の属性まで消えてしまいます。
+- **区別すべきもの**:受信者への依頼(「ご都合をお聞かせください」)や、アシスタント自身の条件付き提案(「日付が決まれば差し込みます」)は、送信者の約束とは別物です。これらは残すべきです。
+- **「fictional」というラベル**:データの性質を述べているだけで、創作の許可ではありません。架空プロジェクトであっても、実名の人物の性別・貢献・影響を作る根拠にはなりません。明示的な創作依頼は、その依頼が述べた範囲内でのみ有効です。
+- **「absent なら質問」への逆流**:禁止を強めることで、欠けている情報を質問する方向に流れる恐れがあります。既存の「質問不要」方針を明記して防ぎます。
+
+## 推奨 English prompt delta
+
+次の既存文を置換します。
+
+> Infer harmless reversible details; never invent personal facts, decisions, dates or commitments.
+
+置換後の文言:
+
+```
+Infer only harmless reversible details. In reply and spec, never invent personal facts or attributes (including gender or pronouns), decisions, dates, outcomes, or sender/user commitments, including customary promises to contact, reply, announce or arrange later; keep unknown or undecided details unknown, undecided or omitted, and do not ask merely because they are absent. Ground such facts and commitments in user-supplied context; an earlier generated reply or spec does not by itself make an assertion user-supplied. Keep commitments and attributes the user states, invention the user explicitly authorizes within its stated scope (a fictional label alone is not such authorization), ordinary courtesy, and conditional offers of local help you can provide.
+```
+
+**避けるべき文言**
+- 「never mention future actions」
+- 「do not use pronouns」
+- 「only facts explicitly stated」:無害な推論や丁寧表現まで殺します。
+- 「ask when … missing」
+- 日本語の定型句リストや regex による禁止
+
+ask-first、汎用ドラフト、placeholder の保持、原文の使用、全体 none の各段落には触れません。Expert prompt も変更しません。
+
+## Provenance の限界
+
+- 生成された spec と user source を機械的に区別する仕組みは、今回は追加しません(新 schema・分類器・hard gate なし)。
+- そのため、correct 操作や会話文脈から過去の生成物の断定が再流入する可能性は、prompt 遵守に依存します。
+- host 側の source_ids binding は、どの ID が使われたかを示すだけです。spec 内の各断定の出所は保証しません。
+
+## 残存リスク
+
+- 「日付は未定です」と「決まり次第ご連絡します」の境界は、モデルの判断が揺れやすい箇所です。
+- 指示が長くなることで、他の段落の遵守率が下がる可能性があります。
+- C054 型の「impact」のような曖昧な評価語は、完全には防げません。
+- 英語 spec では、名前の繰り返しや they の使用によって文が不自然になることがあります(品質のみの問題)。
+
+## 再検証スコープ(新規 product freeze 後)
+
+1. **影響を受けた first attempt**
+   - R15:元の EITHER oracle のまま。DELEGATE-only に厳格化しない。
+   - R16:前回 NOT_RUN。
+   - controller の停止規則も同一とする。
+2. **frozen regressions**:ask-first(確認/再確認)、汎用ドラフト、blank template、全体 none、correct、remember を対象とする。
+3. **独立 12 発話**:実装前に、別モデルを使わずローカルで作成する。軸の例:
+   - 日付未定で、ユーザーの約束あり/なし
+   - 代名詞の指定あり/なし
+   - 明示的な創作依頼/fictional ラベルのみ
+   - 「自分で送る」
+   - 受信者への依頼を含むお礼文
+   - 過去 spec に未裏付けの断定がある状態での correct
+   - placeholder template
+4. **原 UI/Expert 経路**:修正後の spec を Expert が受け取り、成果物が生成される end-to-end を最低 1〜2 件。
+5. **除外**:旧候補 f00f3dc の再サンプリング、旧 PASS の流用、fresh-template retry は行わない。旧 FAIL を含む原記録はすべて保持する。
+
+## 権限・受入変更の要否
+
+**なし。** 既存の禁止規則と Expert 側の保護の範囲内での明確化です。R15 を DELEGATE-only に変える、あるいは慣習的な締めの句を一律に FAIL とする oracle 変更は受入変更にあたるため、採用しません。
+
+(注:ご指示に従い、ツール・計画ファイル・確認質問は使用していません。)
+
+REVIEW_COMPLETE

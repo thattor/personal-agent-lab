@@ -655,3 +655,14 @@ Contribution: catches user commitments introduced before Expert, despite correct
 and host integrity. Next: one official Opus review, minimal prompt repair, new frozen
 candidate/independent corpus and affected real validation. No new owner question or
 acceptance weakening; old failures, runtime DBs and original ABS-A2 gap retained.
+
+## C059 — reviewed minimum Primary grounding repair
+
+One official Opus review completed49.935s, no extra auth/cost/fallback. The unsupported
+impact inference was rejected against the full original prohibition. D029 records
+all adoption before one no-invention sentence change. Producte851cae0 is frozen before
+new independent12 disclosure; runner logic remains unchanged.77 focused/270 full tests
+PASS. Contribution: reinforces source fidelity at the Primary→Expert boundary without
+new host state, semantic rules or questions. Next: bounded actual Japanese regression,
+independent12, remaining fixed corpus, affected UI/artifact evidence and existing final
+usefulness/release gates. No model/owner PASS follows unit tests.

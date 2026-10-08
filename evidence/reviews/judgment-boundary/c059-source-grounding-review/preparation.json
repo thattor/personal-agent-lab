@@ -1,0 +1,10 @@
+{
+  "prepared_at": "2026-10-08T10:11:23.543671+00:00",
+  "question_sha256": "0513ae66103102836c23db34bc77196a0e3a51ebf6d31260f5049a4caad7c39e",
+  "primary_sha256": "5933beaa66216d035d2f830e80845dc78d913eca60c666534ee788bfa740a3f4",
+  "one_call_only": true,
+  "source_unchanged": true,
+  "mika_included_before_send": true,
+  "product_execution": false,
+  "authority": "Current owner-authorized PAL design/development consultation lane; development request C058 R15"
+}

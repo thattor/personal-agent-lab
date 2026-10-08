@@ -1,0 +1,18 @@
+{
+  "source_thread": "01a11837-e1e3-71f0-8ff8-bbaf8dc14527",
+  "authorship": "Independent design-lane reviewer; no additional model generation",
+  "frozen_at": "2026-10-08T10:16:16.133977+00:00",
+  "sha256": "bad30605e8d54cca5c2affa25dbf3c46daa71c029b8a6195418d677bb8475618",
+  "cases": 11,
+  "utterances": 12,
+  "planned_calls": 12,
+  "max_primary_calls": 16,
+  "max_seconds": 900,
+  "conditional_skips": false,
+  "pre_edit_primary_sha256": "5933beaa66216d035d2f830e80845dc78d913eca60c666534ee788bfa740a3f4",
+  "pre_edit_product": "content:sha256:8f0f5b75c9b5c1e6fe6d4ee488c6c3aa8c1bae6fb46f79f1d1f6c28b65664bcb",
+  "contents_disclosed_before_implementation": false,
+  "disclosure_condition": "Reviewer verifies the new immutable 17-file product identity and Primary SHA before returning contents",
+  "status": "NOT_RUN",
+  "human_evaluation": false
+}

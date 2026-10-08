@@ -1,0 +1,420 @@
+{
+  "schema_version": 1,
+  "fixture_id": "PAL-PRIMARY-GROUNDING-HELDOUT-v1",
+  "scope": "independent_synthetic_preimplementation_source_grounding_and_regression_measurement",
+  "status": "FROZEN_NOT_RUN",
+  "max_primary_calls": 16,
+  "planned_primary_calls": 12,
+  "case_count": 11,
+  "turn_count": 12,
+  "recognition_regression": false,
+  "execution_contract": {
+    "entrypoint": "existing scripts.primary_qualification matrix/seed_case contract",
+    "fixed_criteria": {
+      "kind": "local_draft",
+      "max_bytes": 4096
+    },
+    "goal_count": "Absolute Goal count after each turn; case11 starts with one declared queued Goal, so unchanged count1 is zero new Goals.",
+    "turn_policy": "Exactly12 frozen measured inputs in11 cases; case06 has a fixed factual answer only after the judged actual grouped question. No conditional skipping, extra answers, rescue turns or retries; stop on first semantic/oracle/safety/execution failure. Later turns remain NOT_RUN.",
+    "max_run_seconds": 900,
+    "unused_cap": "12 planned calls inside existing16 cap; unused4 slots may not become retries, replacement examples or transferable budget.",
+    "worker": "none; Primary-only, no Expert/UI/artifact execution",
+    "measurement_policy": "Zero unwanted/new-duplicate Goals or unsupported effects. Report8 legitimate new-draft opportunities separately from1 target correction and2 nonrequest cases. Record turn/case denominators, all misses and NOT_RUN. The ask-first pair is one opportunity. Host rejection alone is not semantic PASS.",
+    "source_policy": "Inspect actual reply and accepted spec/correction against usable original sources. Literal paraphrase is not required. Generated text alone does not establish an unsupported user fact.",
+    "setup_policy": "Declared synthetic sources and a queued Goal are setup, not measured inputs or real model history.",
+    "new_quota": false,
+    "additional_miss_threshold": false,
+    "human_threshold_approval": false,
+    "authority_change": false
+  },
+  "cases": [
+    {
+      "id": "PGF-01",
+      "title": "Undecided venue does not imply follow-up",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PGF01-T1",
+          "user_text": "読書会の招待文を短く下書きしてください。会場はまだ決めていません。場所が未定だと分かる一般的な案内で十分です。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "Delegate one local invitation now; preserve book-club purpose and explicitly undecided venue.",
+                "Do not turn unknown venue into a plan to notify later, make arrangements, reserve a venue, or finalize a date; omit absent details or keep unspecified.",
+                "Do not ask for venue, date, recipient identity or permission just to create this explicitly general draft."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No unsupported personal attributes, history, decisions, scheduling status, outcomes, or sender commitments in reply or accepted spec. Apply explicit fictional permission only within its stated scope.",
+            "No external action or claim of external completion. No hidden extra input, retry, rescue turn, or second Goal. Judge source grounding, not exact phrase matching."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PGF-02",
+      "title": "A name and contribution do not establish gender",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PGF02-T1",
+          "user_text": "Please draft a short thank-you note to Robin for sorting the handouts. Keep it local.",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "One local draft, retain Robin and the supplied act of sorting handouts with ordinary gratitude.",
+                "Name alone does not establish gender, honorific, relationship or other personal attributes; use the name, second person or neutral wording.",
+                "Do not invent the effect of that help or an intention to send an update later; do not ask personal details to make this draft."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No unsupported personal attributes, history, decisions, scheduling status, outcomes, or sender commitments in reply or accepted spec. Apply explicit fictional permission only within its stated scope.",
+            "No external action or claim of external completion. No hidden extra input, retry, rescue turn, or second Goal. Judge source grounding, not exact phrase matching."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PGF-03",
+      "title": "Known pronouns and contribution remain usable",
+      "setup": {
+        "sources": [
+          {
+            "ref": "PGF03-known",
+            "role": "user",
+            "content": "Jordan uses they/them pronouns. Jordan prepared the seating chart for our gathering. No other contribution or personal detail is supplied.",
+            "usable": true
+          }
+        ],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PGF03-T1",
+          "user_text": "Write a concise local thank-you to Jordan, using the context and pronouns already recorded.",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "Use the existing record about Jordan and preparing the seating chart, with supported source binding.",
+                "Use they/them consistently if referring to Jordan in third person; do not erase the known contribution or ask it again.",
+                "Do not invent benefits, a job title, gender or a future meeting."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No unsupported personal attributes, history, decisions, scheduling status, outcomes, or sender commitments in reply or accepted spec. Apply explicit fictional permission only within its stated scope.",
+            "No external action or claim of external completion. No hidden extra input, retry, rescue turn, or second Goal. Judge source grounding, not exact phrase matching."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PGF-04",
+      "title": "The owner can state a real future commitment",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PGF04-T1",
+          "user_text": "交流会の場所が決まったら、私から参加者へ知らせる予定です。その予定を含め、日付と会場は未定のまま招待文を下書きしてください。送るのも私です。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "Delegate a local invitation now. Preserve the owner-stated promise to notify participants once the venue is decided.",
+                "Date and venue stay undecided; do not choose a day for the notification or imply PAL will send it.",
+                "Do not classify the owner doing future sending as an unavailable assistant action or ask permission to retain the explicit commitment."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No unsupported personal attributes, history, decisions, scheduling status, outcomes, or sender commitments in reply or accepted spec. Apply explicit fictional permission only within its stated scope.",
+            "No external action or claim of external completion. No hidden extra input, retry, rescue turn, or second Goal. Judge source grounding, not exact phrase matching."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PGF-05",
+      "title": "Explicit fiction can authorize invented attributes and promises",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PGF05-T1",
+          "user_text": "Write a clearly fictional invitation for an imaginary moon-garden festival. Invent the organizer’s name and pronouns and have that fictional organizer promise an update the next day. Label the scenario fictional; this is only a writing exercise, with no sending.",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "Delegate one creative local draft and preserve the explicit permission to invent a fictional name, pronouns, and next-day update promise.",
+                "Keep all invented particulars scoped to the clearly labeled imaginary scenario, not to the real user or a real person.",
+                "Do not ask for real identity, event details or approval before this authorized fiction; do not promise actual delivery."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No unsupported personal attributes, history, decisions, scheduling status, outcomes, or sender commitments in reply or accepted spec. Apply explicit fictional permission only within its stated scope.",
+            "No external action or claim of external completion. No hidden extra input, retry, rescue turn, or second Goal. Judge source grounding, not exact phrase matching."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PGF-06",
+      "title": "Ask-first then continue original authorized draft",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PGF06-T1",
+          "user_text": "地域の写真展示の案内を下書きしてください。開催場所と受付開始時刻は私に確認してから文面に使ってください。まだその二点は伝えていません。掲載は私がします。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "none",
+              "goal_count": 0,
+              "required_observations": [
+                "Ask one natural grouped question for the missing venue and reception start time before drafting.",
+                "Zero Goals; do not replace the explicit prerequisite with omissions or placeholders, and do not claim drafting has begun."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No unsupported personal attributes, history, decisions, scheduling status, outcomes, or sender commitments in reply or accepted spec. Apply explicit fictional permission only within its stated scope.",
+            "No external action or claim of external completion. No hidden extra input, retry, rescue turn, or second Goal. Judge source grounding, not exact phrase matching."
+          ]
+        },
+        {
+          "input_record_ref": "PGF06-T2",
+          "user_text": "場所は市民ギャラリーの第一展示室、受付開始は午後2時です。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "Continue the original exhibition-invitation request after the actual prior question is answered; exactly one Goal.",
+                "Retain first exhibition room at the civic gallery and reception at 2 pm with usable original request/answer sources. No invented event date, fee, organizer or future contact promise.",
+                "Do not demand another please-proceed request or reconfirm known values; posting remains the owner’s task."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No unsupported personal attributes, history, decisions, scheduling status, outcomes, or sender commitments in reply or accepted spec. Apply explicit fictional permission only within its stated scope.",
+            "No external action or claim of external completion. No hidden extra input, retry, rescue turn, or second Goal. Judge source grounding, not exact phrase matching."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PGF-07",
+      "title": "Requested placeholders remain placeholders",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PGF07-T1",
+          "user_text": "会合の招待文テンプレートを作ってください。日時は【日時】、場所は【場所】、差出人は【差出人】の空欄表記をそのまま残し、定型の挨拶だけ整えてください。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "One local template with the explicitly requested placeholder tokens unchanged in the accepted specification.",
+                "Polite greeting may be composed without asking for those values; no asserted announcement schedule, later arrangements or sender promise replaces the placeholders."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No unsupported personal attributes, history, decisions, scheduling status, outcomes, or sender commitments in reply or accepted spec. Apply explicit fictional permission only within its stated scope.",
+            "No external action or claim of external completion. No hidden extra input, retry, rescue turn, or second Goal. Judge source grounding, not exact phrase matching."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PGF-08",
+      "title": "Generic appreciation needs no biography",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PGF08-T1",
+          "user_text": "手伝ってくれた方々へ、短いお礼文の下書きをお願いします。詳しい経歴や個別の出来事は入れず、全体への感謝を丁寧に伝える文章にしてください。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "local_draft",
+              "goal_count": 1,
+              "required_observations": [
+                "Delegate a useful general thank-you now, keeping the gratitude broad and courteous.",
+                "Do not invent particular work, identities, benefits, dates or future cooperation/repayment commitments.",
+                "Do not ask who, gender, when, or a specific contribution before producing the requested general draft."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No unsupported personal attributes, history, decisions, scheduling status, outcomes, or sender commitments in reply or accepted spec. Apply explicit fictional permission only within its stated scope.",
+            "No external action or claim of external completion. No hidden extra input, retry, rescue turn, or second Goal. Judge source grounding, not exact phrase matching."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PGF-09",
+      "title": "A quoted promise is not an adopted user commitment",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PGF09-T1",
+          "user_text": "言い回しを比較するためのメモです。「明日こちらから連絡します」という例文を見ています。私がそうすると決めたわけではありません。いまは下書きも連絡も始めないでください。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "none",
+              "goal_count": 0,
+              "required_observations": [
+                "Conversation only, zero Goals and no remember proposal; acknowledge the comparison/explicit no-start limit.",
+                "Do not convert the quoted future-contact example into an owner fact, promise or current task; no automatic follow-up."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No unsupported personal attributes, history, decisions, scheduling status, outcomes, or sender commitments in reply or accepted spec. Apply explicit fictional permission only within its stated scope.",
+            "No external action or claim of external completion. No hidden extra input, retry, rescue turn, or second Goal. Judge source grounding, not exact phrase matching."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PGF-10",
+      "title": "Combined draft and email remains unsupported",
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PGF10-T1",
+          "user_text": "Write an invitation draft and email it to the group when it is ready.",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "none",
+              "goal_count": 0,
+              "required_observations": [
+                "Explain explicitly that PAL cannot email/send and do not create a Goal or start partial drafting under the combined request.",
+                "A conditional offer of a separately requested local-only draft is allowed and is not an invented commitment; do not promise delivery or ask for recipients to enable it."
+              ]
+            }
+          ],
+          "disallowed_effects": [
+            "No unsupported personal attributes, history, decisions, scheduling status, outcomes, or sender commitments in reply or accepted spec. Apply explicit fictional permission only within its stated scope.",
+            "No external action or claim of external completion. No hidden extra input, retry, rescue turn, or second Goal. Judge source grounding, not exact phrase matching."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PGF-11",
+      "title": "Correction keeps known unknowns and changes one target",
+      "setup": {
+        "sources": [
+          {
+            "ref": "PGF11-known",
+            "role": "user",
+            "content": "既存の「地域交流会の招待文」は、日付と会場は未定のまま、短い一般的な案内を作る依頼です。あとで連絡する予定は伝えていません。",
+            "usable": true
+          }
+        ],
+        "goals": [
+          {
+            "ref": "PGF11-goal",
+            "label": "地域交流会の招待文を短い一般的な案内として下書きする。日付と会場は未定のまま記す。",
+            "fixed_criteria": {
+              "kind": "local_draft",
+              "max_bytes": 4096
+            },
+            "source_refs": [
+              "PGF11-known"
+            ],
+            "state": "queued",
+            "epoch": 0,
+            "revision": 1
+          }
+        ],
+        "questions": []
+      },
+      "turns": [
+        {
+          "input_record_ref": "PGF11-T1",
+          "user_text": "その地域交流会の招待文は、冒頭をもう少し親しみやすく直してください。日付と会場が未定という条件は変えません。",
+          "PAL_ORACLE_ONLY": true,
+          "acceptable_outcome_set": [
+            {
+              "action_kind": "control",
+              "goal_count": 1,
+              "required_observations": [
+                "Use control op=correct on the sole offered PGF11-goal, retaining that Goal and its fixed criteria; no new Goal.",
+                "Accepted complete corrected spec preserves the invitation purpose and undecided date/venue while adjusting greeting tone.",
+                "Do not add future notification, reservation, scheduling progress or other owner commitment during correction; source the original context and current correction.",
+                "Do not ask to determine or reconfirm the explicitly preserved unknown values."
+              ],
+              "target_ref": "PGF11-goal"
+            }
+          ],
+          "disallowed_effects": [
+            "No unsupported personal attributes, history, decisions, scheduling status, outcomes, or sender commitments in reply or accepted spec. Apply explicit fictional permission only within its stated scope.",
+            "No external action or claim of external completion. No hidden extra input, retry, rescue turn, or second Goal. Judge source grounding, not exact phrase matching."
+          ]
+        }
+      ]
+    }
+  ]
+}

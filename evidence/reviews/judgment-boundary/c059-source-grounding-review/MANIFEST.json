@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "purpose": "Reusable C058 R15 official review packet; originals plus controller disposition; sealed corpus excluded",
+  "files": {
+    "RECOMMENDATION.md": {
+      "sha256": "1cccfbb3c47e492f31a833b425e8989c30717d74eff82faf027317b2a5fd2d4a",
+      "bytes": 7616
+    },
+    "VALIDATION.json": {
+      "sha256": "b410d709d4b2ac393610399863df80b3b20b7987f9d21d0fd0a8ae77006ea657",
+      "bytes": 915
+    },
+    "access.json": {
+      "sha256": "b0e81f09b9cd11ad803b90d2aa9897b32d38ef5380c214c50ddb4e0c77fdf5a2",
+      "bytes": 755
+    },
+    "completion.json": {
+      "sha256": "f9764e705430bb807153cd9b7e07adf6e8fded2a55f5acae8e8f50a97a0a1066",
+      "bytes": 344
+    },
+    "independent-freeze.json": {
+      "sha256": "d0e9c86756a5fb2ac6e49f4f85c3631588ebd6df6693fc08aed87b5aefd3f96c",
+      "bytes": 999
+    },
+    "observed-evidence.json": {
+      "sha256": "864a0f58785ca8b4edee343d6980782429a0274d8cf6642fba49405efb0bc2ba",
+      "bytes": 19082
+    },
+    "opus-response.txt": {
+      "sha256": "73d8e4443202820b018075be9864c456749396226c137b5bcd4f9ba2ac36359d",
+      "bytes": 6639
+    },
+    "opus-stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "preparation.json": {
+      "sha256": "9a0b3bf92c5e0dc79dbf5ecb2ebe0b2d3766f68769ae92edcea61608a95d0058",
+      "bytes": 467
+    },
+    "primary-prompt-source.py.txt": {
+      "sha256": "5933beaa66216d035d2f830e80845dc78d913eca60c666534ee788bfa740a3f4",
+      "bytes": 9528
+    },
+    "question.txt": {
+      "sha256": "0513ae66103102836c23db34bc77196a0e3a51ebf6d31260f5049a4caad7c39e",
+      "bytes": 15168
+    },
+    "run-review.py": {
+      "sha256": "6c86bf13967c83c5888e259c56f5b32c986bb38cd41d743aeea22db41bb9c5c7",
+      "bytes": 3333
+    },
+    "start.json": {
+      "sha256": "32254c8980f13610948033f388baf37d0a21f544f08b0c78d71526bcd5db0159",
+      "bytes": 150
+    }
+  }
+}
