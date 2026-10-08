@@ -815,3 +815,9 @@ outcome or a supported resolution before repeating that implementation. Do not t
 this into blanket project approval wait or report30 concurrent workers. Dependent
 INT00 implementation, C01–C15 service binding, real connector, E2E01–09 and human
 usefulness remain incomplete. Project/Issue/milestone closure is not claimed.
+
+Subsequent authentic owner response directs continuing independent work until CO0.4
+parallel support is released, then updating and using the supported version. Original
+userMessage was independently read; D034 records exact source, scope and preservation
+conditions. The milestone's official release check found only formal0.4.4, so no update
+was performed. No cancellation/retry/switch choice or new monitor is inferred.

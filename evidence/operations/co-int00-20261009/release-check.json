@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-08T17:50:20.441394+00:00",
+  "method": "Official GitHub REST releases via existing gh login, per_page=5",
+  "repository": "thattor/common-orchestration",
+  "returned_releases": [
+    {
+      "tag": "common-orchestration-v0.4.4",
+      "name": "Common Orchestration0.4.4",
+      "published_at": "2026-10-08T15:40:28Z",
+      "draft": false,
+      "prerelease": false,
+      "url": "https://github.com/thattor/common-orchestration/releases/tag/common-orchestration-v0.4.4",
+      "source_commit_in_release_notes": "1a78fb267cd534ded5761c21f157887cdc485ac5"
+    }
+  ],
+  "later_formal_version_observed": false,
+  "conclusion": "No later formal parallel-capable0.4 version was observed at this checkpoint. Existing runtime remains0.4.4. Do not equate a development HEAD advance with a new release or parallel qualification.",
+  "next_check": "At a normal development milestone/re-entry, inspect official release/migration instructions. Preserve existing state and unknown task; use only supported update, then measure actual routes/capacity and report to human lane.",
+  "monitor_created": false,
+  "runtime_changed": false
+}

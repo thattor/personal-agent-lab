@@ -1412,3 +1412,25 @@ Opus design and SOL wire binding, [five shared synthetic expectations](docs/desi
 original13-record integrity and full277-test baseline PASS. Documentation validation
 is not a CT/E2E implementation PASS. INT00 implementation and later dependent modules
 remain incomplete; no product source, live DB/service, model configuration or CO changed.
+
+### D034 / owner continuation and later parallel-runtime update
+
+Independently read a real userMessage in PAL人間判断, turn
+`01a11c9f-6db9-7f92-ba4a-96ed1ad16b07`: the owner states CO0.3 already has parallel
+implementation, CO0.4 parallel support is in progress, and directs continuing possible
+work until a parallel-capable0.4 version is available, then updating and using it.
+[Original text and source](evidence/operations/co-int00-20261009/continuation-policy.json).
+The0.3 capability/progress statement is owner-provided context, not this task's measured
+CO0.3 performance, and is not an instruction to downgrade or modify CO implementation.
+
+Adopt this continuation/update authority with existing cost/auth/data/public boundaries.
+At normal work milestones or re-entry, inspect the official release and migration
+instructions; preserve current state and the unknown task, use a supported update,
+measure actual parallel/routes/capacity, then report evidence to the human window.
+Do not create a recurring monitor or resume old schedules. The owner did not select
+cancellation, retry or switch for the unknown SWE request; no decide is authorized.
+
+Current official GitHub release check returned only `common-orchestration-v0.4.4`
+(2026-10-08T15:40:28Z), no later formal release at this checkpoint. [Release observation](evidence/operations/co-int00-20261009/release-check.json).
+The existing runtime remains0.4.4. A development HEAD advance is not a published
+parallel-capable version or qualification. No update was performed from this check.

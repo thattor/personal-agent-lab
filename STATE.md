@@ -18,6 +18,14 @@ Ownership: SOL for shared contracts, DB integration, original-canonical merge an
 
 Historical C064 stopped development and preserved the trial DB/records. That stop remains recorded below but is superseded for the current scoped CO preparation by the direct owner instruction; old trial/schedules remain stopped.
 
+Latest continuing owner policy was independently read in PAL人間判断, turn
+01a11c9f-6db9-7f92-ba4a-96ed1ad16b07: continue possible independent work, then update
+and use an official CO0.4 parallel-capable version when available. D034 records the
+source and limits. The normal milestone release check saw only formal0.4.4 and no
+later version; no update/monitor was started. Preserve state/unknown task and use
+supported migration, then validate actual parallelism/routes before reporting it.
+This instruction does not cancel/retry/switch the SWE call or revert to CO0.3.
+
 ## Prior operating record — 2026-10-08 (current CO lane is C065/D034)
 
 Latest direct owner instruction in development chat `01a11113-f829-75c1-b728-3298aa3359b5`
