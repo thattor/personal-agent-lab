@@ -1,5 +1,21 @@
 # Defects and prevention
 
+## 2026-10-09 — milestone note lost source attribution while shortening
+
+Task G's first note exceeded the declared500-token limit and blurred the full399
+root suite with the122-test verifier subset. Independent Opus requested bounded
+wording and accurate Mock/lambda description. The allowed repair fixed those, but
+grouped the overlap count/time under verification.json, whereas those detailed
+numbers come from three-way-proof.json. Re-review caught the missing source;
+G ends failed/review_unresolved, verified=false. Source code has no blocking finding.
+
+Preserve both reviews and the475-token candidate. H owns only the explicit source
+line correction with its own independent review and document verifier. No code
+implementation or unknown task is resent. Next assessment: leave margin below
+the word limit, count markdown tokens locally and keep source attribution when
+shortening. Verify the exact requested edit and report a failed CO task honestly;
+do not convert successful tests into review approval. Closure remains pending.
+
 ## 2026-10-09 — decoder test helper forwarded an assertion keyword
 
 The first SWE EXE02-file/1 test run failed with TypeError: its assert_error helper

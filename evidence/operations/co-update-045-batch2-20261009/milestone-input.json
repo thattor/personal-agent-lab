@@ -1,0 +1,27 @@
+{
+  "base": "4ebab5a29e3c4c1b0dac939aa4d9a60364974bef",
+  "reads": [
+    "SPEC.md",
+    "docs/design/contracts-v5/PAL-contracts-v5.md",
+    "docs/design/contracts-v5/PARALLEL-SCOPE-2.md",
+    "pal/__init__.py",
+    "pal/artifact_content_v5.py",
+    "pal/artifact_integrity_v5.py",
+    "pal/bounded_payload_v5.py",
+    "pal/github_file_payload_v5.py",
+    "pal/github_read_request_v5.py",
+    "tests/test_artifact_content_v5.py",
+    "tests/test_artifact_integrity_v5.py",
+    "tests/test_bounded_payload_v5.py",
+    "tests/test_github_file_payload_v5.py",
+    "tests/test_github_read_request_v5.py",
+    "tests/test_v5_read_content_pipeline.py",
+    "evidence/operations/co-update-045-batch2-20261009/verification.json",
+    "evidence/operations/co-update-045-batch2-20261009/three-way-proof.json",
+    "evidence/operations/co-update-045-batch2-20261009/product.diff"
+  ],
+  "input_bytes": 212052,
+  "single_file_max_bytes": 55298,
+  "source_hashes_confirmed": 11,
+  "raw_log_whitespace": "Original unittest subtest failure line has trailing whitespace, retained verbatim; code/docs whitespace checked separately."
+}
