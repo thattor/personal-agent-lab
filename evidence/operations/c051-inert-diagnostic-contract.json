@@ -1,0 +1,49 @@
+{
+  "schema": "pal-inert-browser-diagnostic-v1",
+  "checkpoint": "C051",
+  "frozen_at": "2026-10-08T07:33:38.286849+00:00",
+  "status": "NOT_RUN",
+  "purpose": "Characterize current permitted IAB navigation on known static data only; no product acceptance claim",
+  "files_sha256": {
+    "index.html": "b239f7e0a13d743889beedde8a324edf99b95e0e2e592b4c67e607b9740bcbe8",
+    "known.txt": "65c8bfd1d298126b670a3cda43dcdb6a69d7728dae668c794f4a7a32243ca775"
+  },
+  "server": {
+    "implementation": "Python standard library http.server, no custom handler",
+    "bind": "127.0.0.1",
+    "port": 0,
+    "document_root": "evidence/operations/c051-browser-fixture",
+    "max_seconds": 180,
+    "instances": 1,
+    "request_log": "standard http.server method/path/status lines; no request or response bodies",
+    "headers": "unchanged standard http.server defaults; not PAL headers; not a security-header experiment"
+  },
+  "precondition": "HR-ACCESS-005 actual operation followed by one IAB inventory and public-page connection check; no new permission/auth; no PAL page or refused content",
+  "steps": [
+    {
+      "id": "A1",
+      "operation": "Open fixture index.html in IAB",
+      "expected": "Known static fixture heading and two fixed links visible; GET200 on owned server"
+    },
+    {
+      "id": "A2",
+      "operation": "Click Open known text in this tab",
+      "expected": "Exact known.txt text visible in same tab and successful owned-server GET; then ordinary Back to already viewed index for A3"
+    },
+    {
+      "id": "A3",
+      "operation": "Click Open known text in a new tab",
+      "expected": "New tab for same fixed known.txt, exact text visible and successful owned-server GET"
+    }
+  ],
+  "stop": "First refusal/mismatch/unavailable/deadline: stop and close owned server, retain partial outcome; no retry, parameter/header/path/port change or alternate browser",
+  "teardown": "Stop only owned child, await exit and verify listener gone; close only diagnostic tabs",
+  "limits": [
+    "No product/provider import or call",
+    "No canonical DB, real conversation or artifact file access",
+    "No old host/port49957/DB/URL or /api/artifact route",
+    "No case replacement/resampling/cap transfer",
+    "Success characterizes only fixture, not original cause/permission or N1 proof"
+  ],
+  "next_after_success": "Reconcile recorded allowed IAB operation and permission scope before any independent previously NOT_RUN production case; keep C045 ABS-A2 NOT_VERIFIED and unseen"
+}

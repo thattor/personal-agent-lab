@@ -1,0 +1,95 @@
+PAL private repositoryの設計パートナーとして、以下の「ブラウザー観測が止まった実機能検証」の最小代替案を一度だけchallengeしてください。ツール、ファイル参照、shell、Web、追加モデル、subagentは利用禁止。下記同封の事実だけを根拠とし、未知を明示してください。日本語、1500〜2500字程度、指摘を具体的に。実装は不要。
+
+対象と権限: current main 2abe339、product53a616（17製品ファイルを今回照合）。Stable-1の受入条件を下げない。設計側は共有コード/正本/Git/DBへ書かず、開発側が採否を記録する。本人はSupport送信案に「いや、それを送っても状況は改善しません。他の方法考えなきゃいけないです。」と回答。送信・権限変更・再試験の新規承認とは解釈しない。既存の公式Pro経路・追加料金なしの相談のみ。
+
+観測事実:
+1. C045 ABS-A2はIAB画面にERR_BLOCKED_BY_CLIENTとChatGPTによるblockを表示。PAL UIは完了とリンクを示したが、成果物本文は未読でNOT_VERIFIED。ABS-A1は先行する別の所有portで通った。localhost一律禁止も、全port許可も証明していない。原画像と結果は固定。
+2. 当時host port49957は停止済み。元URL/host/DB/artifact本文は再アクセスしない。新しいポート/別browser/URL/DB/ファイル/本人による転記等を使って、拒否された本文を取得するのは禁止。tool拒否されたnative Codex設定とchrome://policyも迂回禁止。原因・winning policyはunknown。
+3. 本人設定画像の事実: Browse既定Always allow、元origin表示例外なし、visible managed lockなし、CDP off。設定を変えておらず、これで実際のアクセス許可確定とはしない。
+4. C051で開発側がIAB取得を試みると Browser is not available: iab、browser inventoryはChrome拡張だけ。公式open_in_codexで公開のbrowser説明ページを当該開発チャットに開くとqueued。ツール契約ではhidden threadなら表示時に開く。これは接続/表示成功の証拠でなく、original blockとは別の状態。hiddenが原因とは未確定。設計側の独立再観測ではなく、開発側の直近tool報告。
+5. 残り9hostは未実行かつartifact依存。元ABS-A2は試行済み未検証なので9件とは別。C047の独立したcontrolled cancellation証明は完了。Stable1は未完了。一つの本物の総合有用性評価と最終監査も必要。過去結果を消さず、同じ拒否試験をresamplingしない。
+6. product code: server.pyは通常応答にContent-Type/Content-Length/no-store/nosniff/X-Frame-Options DENY/CSP default-src selfなどを返す。artifactはtext/plain。web/app.js artifactLinkは相対/api/artifact/<id>、target=_blank、rel=noopener。host mismatchはJSON403。ChatGPT block画面の直接原因はコードから特定できず、request log無効なのでサーバー到達も未確認。安全header削除やtarget変更のproduct patchは根拠不足。
+
+公式ドキュメントを今回取得して確認した範囲:
+- https://learn.chatgpt.com/docs/browser : desktopのlocal previewと通常の手動/自動ページ操作、agent permissions、管理制限の可能性を説明。queuedの処理成功や特定originの許可を保証しない。
+- https://help.openai.com/en/articles/20001277-using-the-built-in-browser-in-the-chatgpt-desktop-app : 当該チャットでbrowserを開き、通常permission promptへ従う手順。managed restrictionは個人設定で解除できない。
+- learnのblocked時take over文はクラウドcomputerの節。local IAB拒否を他操作へ迂回する権限には使わない。これらは本文の簡潔な要約であり、当該環境の実効許可の証明ではない。
+
+検討案:
+A0. まず公式IAB接続を、既にqueuedの公開docsページ/正規inventoryで一度確認。利用可能なIABと具体的tab/表示が確認できるまでfixture hostもproduct providerも起動しない。queuedやChromeだけの列挙を成功としない。native設定、CDP、別browserへのPAL接続は使わない。本人だけができる前景表示が本当に必要なら、根拠を示した最小1操作に限る（原因未確認で権限変更を要求しない）。
+A. 接続があれば、拒否内容/モデル/旧DBを一切使わない単一の使い捨てloopback fixtureで、公開済みの短い固定文字列を表示。普通のtop-level HTML→同一tabのrendered link→new-tabのrendered linkを事前固定。製品の応答種別/安全header/link属性を比較材料にするが製品codeは変えない。zero provider、zero canonical DB、bind127.0.0.1:0を一度、有限時間、明示allowlistの静的routes、bodyを含まないaccess記録。最初の拒否/権限要求/不明転送で全体を止め、portやrouteを変えて再試行しない。成功しても、このknown fixtureの経路成立という範囲だけ。元のABS-A2解除やN1 PASSへ転用しない。
+B. 観測者と受入条件を分離する必要があるなら、実model→通常UI→本物artifactの対応/bytes/hash/receipt、元の未検証例、総合有用性をどう保つか。単なる別browser切替、拒否本文の本人中継、本人へテスト全部を丸投げ、fixtureをrealに代用する案は禁止。新しい人間試用は元の拒否取得を代行させる目的にしない。正式な許可経路が無ければ受入証明の穴は残る。
+C. A/Bより小さく、既存権限内で進められる実行可能な方法があれば提案。停止原因が未確定でも調査と無関係な新規許可範囲を混同しない。ただし新規サンプル/別portを、拒否された試験の置換・retry-to-greenに使わない。
+
+回答事項:
+(1) 推奨案と致命的な穴。Aは本当に独立診断か、どの条件で迂回になるか。
+(2) IAB未接続/queued段階で次に実行できる最小操作。原因を決めつけず、誰の操作が必要か。
+(3) A成功後/失敗後に言えることと言えないこと。新しい未実行9件の通常初回試験を認める根拠と、元ABS-A2の扱いを分ける。
+(4) Bの証拠同等性。現時点で採用できるか。特定toolが契約に無いことだけで切替を正当化しない。
+(5) 受入条件または観測契約の変更が本当に必要か。単なる技術判断を人間承認gateにしない。必要なら本人だけが決める差分を特定。
+(6) 実行してよい次操作/してはいけない操作、残るproof gap。追加モデル/レビュー回数/手順書を目的にしない。
+
+受入条件（現行本文から条件欄と状態のみ抽出）:
+[
+  {
+    "id": "N1-05",
+    "required": "yes",
+    "condition": "Fixed planted-absence draft probes contain no fabricated recipient/date/contribution; explicit placeholders or a conversational question are acceptable. Context-supported facts and requested constraints retained",
+    "status": "PARTIAL (corrected candidate); C044 FAIL retained"
+  },
+  {
+    "id": "N1-06",
+    "required": "yes",
+    "condition": "Actual Japanese UI flow covers request recognition, unambiguous and ambiguous target resolution, correction and cancellation on an official real provider within fresh D-020 proof/budget; actual host/artifact evidence, no extra credits/renewal/fallback or model self-attestation",
+    "status": "PARTIAL (current D029 revalidation)"
+  },
+  {
+    "id": "N1-07",
+    "required": "yes",
+    "condition": "One direct human usefulness evaluation of the new flow against a frozen rubric: natural request understood, intended task changed/stopped, no unnecessary routine questions, useful local output. Negative feedback remains visible and is resolved/retested before PASS",
+    "status": "FEEDBACK_RECEIVED"
+  },
+  {
+    "id": "N1-09",
+    "required": "yes",
+    "condition": "P002 essential local-draft clarification: use existing sanitized bounded context first; sufficient facts and explicit generic/creative requests need no unnecessary question. Essential unknowns ask one grouped, persisted host-bound question; valid answer resumes same Goal, ambiguous/stale/forgotten answers do not resume wrong work. Bounded follow-up ends visibly incomplete without invented completion. Preserve fixed criteria, source/reference-stop, dedupe/recovery and existing cost limits. Freeze finite scenarios before live proof; actual human re-evaluation required",
+    "status": "PARTIAL"
+  },
+  {
+    "id": "N1-10",
+    "required": "yes",
+    "condition": "D029 model-led Primary: ordinary conversation intent, local draft delegation, target/answer selection, correction, memory and reference-stop proposals come from the reasoning model, with natural clarification for essential uncertainty. No regex preemption or silent fallback. Host verifies closed action, snapshot/source/revision/epoch, unchanged criteria, idempotent atomic effects and authoritative outcome; structured controls remain immediate. Original answers/source memory preserved. Qualify actual model behavior against frozen finite cases; Qwen3.8-27B is the owner's reference, not a claimed tested capability",
+    "status": "PARTIAL"
+  },
+  {
+    "id": "N1-08",
+    "required": "yes",
+    "condition": "Full regression and affected S0/F0 behaviors revalidated on the release candidate, no weakened criteria/security/forget/lease semantics; final version/limits/evidence audit, next milestone parent Issue closure and private release record",
+    "status": "NOT_RUN"
+  }
+]
+
+固定観測契約の抜粋（原本の条件を保つ）:
+{
+  "id": "C044-EXPERT-COMMITMENT-REVALIDATION",
+  "product_identity": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+  "total_hosts": 14,
+  "total_native_ceiling": 37,
+  "host_caps_independent": true,
+  "no_cap_transfer": true,
+  "max_host_seconds": 600,
+  "max_proof_age_seconds": 900,
+  "observation_contract": [
+    "Actual ordinary main conversation UI for all measurement inputs; setup fixtures through public Store APIs before server launch.",
+    "Retain first outcomes, canonical before/after Primary/Goal/Attempt/question/receipt/revision/source state and native counters. Host rejection is safe-host evidence, not semantic PASS.",
+    "Actual Expert artifacts opened from rendered browser links; HTTP bytes/size/SHA256 match receipt and exact Goal/Attempt/revision/epoch/manifest. Seeded artifacts never count as live output.",
+    "No raw native response/process telemetry claimed from production entrypoint; reconstructed current formatter prompts labelled reconstruction.",
+    "Controller enforces existing600second owned-host bound; Native only fences proof admission. Stop owned server, await exit/status, verify port closes, retain evidence; no old58500/DB access."
+  ],
+  "stop_policy": "First actual failure or auth/cost/deadline/cap boundary stops for diagnosis. Retain all partial success/FAIL/FLAG/VOID/NOT_VERIFIED/NOT_RUN. No retry, resampling, rescue answers, hidden reserve or score-model calls.",
+  "claim_limits": [
+    "Finite controller functional evidence only; no human input/usefulness/Qwen/arbitrary-language or whole-row PASS.",
+    "Fixed40 and independent12 Primary-only results retain distinct scope; this wrapper adds no artifact-per-request quota.",
+    "One authentic version-bound whole-flow evaluation and final acceptance/version audit remain separate."
+  ]
+}

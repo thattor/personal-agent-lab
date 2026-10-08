@@ -1,0 +1,67 @@
+{
+  "source_thread": "01a11837-e1e3-71f0-8ff8-bbaf8dc14527",
+  "source_turn": "01a11a5f-6cae-77d3-841e-7b80cca16330",
+  "method": "read_thread command-output JSON envelopes; no original external work directory read",
+  "files": [
+    {
+      "file": "question.txt",
+      "bytes": 11611,
+      "sha256": "988073671c4d8c1fe5d86591c81e5ebb0183c03f5ad96ee4bd6fa56449c38883",
+      "source_item": "exec-39ddccc6-04b1-47c2-88e1-41d99ed450f9"
+    },
+    {
+      "file": "access.json",
+      "bytes": 1226,
+      "sha256": "2c953e1b05fab20fb6a5b4c7ddc2e5d519ce0be0e0adeeb17807a94346397f76",
+      "source_item": "exec-39ddccc6-04b1-47c2-88e1-41d99ed450f9"
+    },
+    {
+      "file": "attempt.json",
+      "bytes": 159,
+      "sha256": "a91fa0929be4f07b4647da95c174858f65457d184c128231daf46be882eec264",
+      "source_item": "exec-39ddccc6-04b1-47c2-88e1-41d99ed450f9"
+    },
+    {
+      "file": "completion.json",
+      "bytes": 265,
+      "sha256": "64f783276991453432173dc4d41963ef0a852d89e894b666d33cc626088b6163",
+      "source_item": "exec-39ddccc6-04b1-47c2-88e1-41d99ed450f9"
+    },
+    {
+      "file": "opus-response.txt",
+      "bytes": 6199,
+      "sha256": "879ef8d25f85ecc8d32acac6b4977dc3242020088ab54905d9169c50ee9094c2",
+      "source_item": "exec-4d8c4559-4405-4202-a5b0-2e08c52f03dc"
+    },
+    {
+      "file": "opus-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_item": "exec-4d8c4559-4405-4202-a5b0-2e08c52f03dc"
+    },
+    {
+      "file": "PROPOSAL.md",
+      "bytes": 6295,
+      "sha256": "f9b6d8757e0f60a14f2b41eb911b12871d80455cd6cac0db5e7a0662feb68916",
+      "source_item": "exec-4d8c4559-4405-4202-a5b0-2e08c52f03dc"
+    },
+    {
+      "file": "baseline.json",
+      "bytes": 2617,
+      "sha256": "a383c30d6b47325ee00a936f3e0c5cbb98c016b980553a8361cf02bc88c282d2",
+      "source_item": "exec-4d8c4559-4405-4202-a5b0-2e08c52f03dc"
+    },
+    {
+      "file": "sources-and-updates.json",
+      "bytes": 2799,
+      "sha256": "e7ef95854d7445890b46e771b633e25bd4d2023480e6e4c3b722a2ed3a73e119",
+      "source_item": "exec-4d8c4559-4405-4202-a5b0-2e08c52f03dc"
+    },
+    {
+      "file": "VALIDATION.json",
+      "bytes": 2308,
+      "sha256": "90582d7890f24a7149e0b813ee9210ef6013857f307e176dc9cfd4bc0d1764ee",
+      "source_item": "exec-4d8c4559-4405-4202-a5b0-2e08c52f03dc"
+    }
+  ]
+}

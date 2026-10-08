@@ -1,0 +1,35 @@
+{
+  "schema": "pal-human-operation-answer-v1",
+  "recorded_at": "2026-10-08T07:44:30.800914+00:00",
+  "judgment_id": "HR-ACCESS-005",
+  "status": "ANSWERED_OPERATION_OBSERVED",
+  "source_thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "source_turn": "01a11a72-f302-7262-a97f-f58a0c821993",
+  "source_user_message": "01a11a72-f51c-7042-bcd1-c36818306a23",
+  "verbatim": "表示している内容",
+  "screenshot": {
+    "name": "codex-clipboard-78016496-d216-429c-8d91-68224f6ef307.png",
+    "sha256": "37f19cc081d530f41c887fae238480987c6438ea972ad954d01e15b99cba978b",
+    "viewed_by_development": true,
+    "observed": "PAL開発 selected; official built-in browser help page visible in in-app pane",
+    "copied_to_repository": false
+  },
+  "scope": "Actual public-page display only; no reported new login/permission/setting change",
+  "post_answer_check": {
+    "tool": "cua.listBrowsers",
+    "attempts": 1,
+    "observed_connections": [
+      {
+        "name": "Chrome",
+        "type": "extension"
+      }
+    ],
+    "iab_present": false,
+    "outcome": "IAB_CONNECTION_NOT_ESTABLISHED"
+  },
+  "diagnostic_server": "NOT_STARTED",
+  "product_provider_calls": 0,
+  "original_c045_clearance": false,
+  "repeat_owner_display_request": false,
+  "next": "Design lane is specifying observer equivalence for independent previously unrun cases; no other-browser/old-content retrieval or live execution authorized by this observation alone"
+}

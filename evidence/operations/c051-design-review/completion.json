@@ -1,0 +1,13 @@
+{
+  "status": "completed",
+  "exit_code": 0,
+  "elapsed_seconds": 71.46,
+  "model": "opus",
+  "response_bytes": 6199,
+  "stderr_bytes": 0,
+  "generation_invocations": 1,
+  "max_turns": 1,
+  "tools_enabled": false,
+  "paid_fallback": false,
+  "child_exited": true
+}

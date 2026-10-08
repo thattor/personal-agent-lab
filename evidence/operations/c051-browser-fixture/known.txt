@@ -1,0 +1,2 @@
+PAL C051 KNOWN STATIC TEXT
+This is a browser diagnostic fixture, not a model result.

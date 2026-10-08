@@ -970,6 +970,50 @@ semantics to heartbeat scheduling. New schedule remains NOT_CONFIGURED pending s
 confirmation. No cron workaround, speculative busy-run experiment or old schedule change.
 Evidence, exact requested prompt and next operations: [C050](evidence/operations/c050-access-and-continuation.md).
 
+### C051 — HR-ACCESS-004 answered; review an alternative observation method
+
+Direct owner message in PAL人間判断 turn01a11a54-c55d-7d50-b0ab-58b77ec3e237,
+message01a11a54-c63f-7ca1-bf90-9f1eac70dded: 「いや、それを送っても状況は改善しません。他の方法考えなきゃいけないです。」
+Adopt the operational direction: do not send Support, repeat the approval question or
+treat submission/ticket waiting as the next step. HR003 remains answered. This is not
+permission to bypass a refusal, weaken acceptance or activate a new provider/schedule.
+
+The required N1 evidence is not tied to a named automation browser, but the frozen
+contract still requires actual main UI, actual artifact observation and host receipt
+binding. A current tool check additionally finds IAB unavailable; an official public
+help-page open is queued, not displayed or cleared. Development requested the design
+lane's bounded official Opus challenge of a no-model/no-data fixed-text diagnostic
+and, only if needed, an explicitly scoped alternative observer method. No material
+method or product change was adopted at request time.
+[C051 facts and evidence map](evidence/operations/c051-alternative-validation.md).
+
+Official Opus completed one tool-free one-turn review in71.46s after fresh official Pro
+auth and credits/auto-reload OFF proof. Question: challenge the inert-fixture diagnosis,
+evidence equivalence and smallest permitted path without bypassing ABS-A2. Conclusion:
+first restore the intended browser connection (A0); only then a fixed three-step known-
+text diagnostic; previously NOT_RUN independent cases are not ABS-A2 replacements.
+Adopt that bounded technical preparation, no acceptance/behavior change. Static files
+and contract are prepared; no diagnostic host or product provider has run. Require
+case-specific permitted access before live calls; fixture success is not blanket clearance.
+
+Reject the review's categorical ban on human observation: the cited contract limits
+claims that synthetic inputs count as human input/usefulness, not observer identity.
+No alternative observation method is established or adopted, and no new human gate is
+created by this advice. Original cause remains currently unknown, not proven permanently
+unknown. Queued semantics are documented, display is unverified. HR005 already asks
+only the indispensable screen operation; no duplicate approval question. Original
+ABS-A2 NOT_VERIFIED and its uncovered second A-sample remain, even if nine other first
+cases pass. Do not lower that gate or resample it. [Raw review](evidence/operations/c051-design-review/opus-response.txt),
+[bounded diagnostic contract](evidence/operations/c051-inert-diagnostic-contract.json).
+No substantial implementation or nontrivial harness is introduced; SWE gate not triggered.
+
+HR005 subsequently answered with the actual public-page screenshot. Development viewed
+it and checked inventory once: IAB remains absent. The requested owner operation is
+complete, no repeat question. A0 tool connection remains unestablished, so the fixture
+is NOT_RUN. Design is specifying the manual-observer alternative for future independent
+cases, not adopting an evidence waiver or retrieving ABS-A2. This post-review fact and
+prospective method are not presented as part of the completed original Opus response.
+
 ## D-030 — Retain multimodal research and design materials, 2026-10-08
 
 Owner source: design chat `01a11837-e1e3-71f0-8ff8-bbaf8dc14527`, 「マルチモーダル対応設計を確認」. The owner requested:

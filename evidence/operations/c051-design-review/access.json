@@ -1,0 +1,48 @@
+{
+  "observed_at": "2026-10-08T07:28:51.987200+00:00",
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "apiProvider": "firstParty",
+    "subscriptionType": "pro"
+  },
+  "usage_ui": {
+    "url": "https://claude.ai/new#settings/usage",
+    "observed_via": "official page current AX after refresh",
+    "plan": "Pro",
+    "session_used_percent": 5,
+    "weekly_used_percent": 27,
+    "usage_credits_enabled": false,
+    "usage_credit_balance_usd": 0,
+    "automatic_reload_enabled": false,
+    "last_updated_label": "たった今"
+  },
+  "scope": "one supplied-source tool-free design consultation",
+  "model": "opus",
+  "max_turns": 1,
+  "max_seconds": 240,
+  "max_response_bytes": 65536,
+  "new_auth": false,
+  "paid_fallback": false,
+  "api_provider_overrides_removed_for_child": true,
+  "prompt_sha256": "988073671c4d8c1fe5d86591c81e5ebb0183c03f5ad96ee4bd6fa56449c38883",
+  "command": [
+    "claude",
+    "-p",
+    "--model",
+    "opus",
+    "--permission-mode",
+    "plan",
+    "--tools",
+    "",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "{\"mcpServers\":{}}",
+    "--disable-slash-commands",
+    "--max-turns",
+    "1",
+    "--no-session-persistence",
+    "--output-format",
+    "text"
+  ]
+}

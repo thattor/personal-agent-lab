@@ -1,0 +1,56 @@
+{
+  "checked_at": "2026-10-08T07:30:34.799684+00:00",
+  "scope": "design investigation only; no fixture implementation or PAL/browser retry",
+  "official_sources": [
+    {
+      "url": "https://learn.chatgpt.com/docs/browser",
+      "sections": [
+        "Computer Use in the browser",
+        "Preview a page",
+        "How ChatGPT Work’s computer works"
+      ],
+      "supports": "Desktop local previews and normal page operations are supported subject to permissions. Cloud take-over guidance is not local-denial override authority.",
+      "limits": "Does not establish effective policy on this machine or explain the original block."
+    },
+    {
+      "url": "https://help.openai.com/en/articles/20001277-using-the-built-in-browser-in-the-chatgpt-desktop-app",
+      "sections": [
+        "Open the browser",
+        "Manage website access safely",
+        "How is the built-in browser different from cloud browser?"
+      ],
+      "supports": "Open the browser in the relevant chat through the normal toolbar/shortcut and respect prompts. Personal settings do not remove applicable workspace restrictions.",
+      "limits": "Does not prove a queued panel is connected or permit alternate retrieval of denied content."
+    }
+  ],
+  "current_development_observations": [
+    {
+      "source": "PAL開発 delegated C051 tool report",
+      "independently_reexecuted_here": false,
+      "facts": [
+        "getBrowser(iab) unavailable",
+        "inventory contains Chrome extension only",
+        "open_in_codex public documentation page queued, not connected",
+        "createBrowserTab(iab, public documentation URL, visible false) also unavailable; no further retries"
+      ]
+    },
+    {
+      "source": "PAL開発 follow-up after review prompt was frozen",
+      "facts": [
+        "HR-ACCESS-005 already sent to PAL人間判断",
+        "owner operation is display PAL開発 and use normal toolbar/shortcut to open public docs only",
+        "no duplicate owner question; no permission/login/old-artifact action"
+      ],
+      "reviewer_prompt_limit": "The review prompt includes initial IAB unavailable/queued facts, but the later HR-ACCESS-005 delivery was received after the single review started."
+    }
+  ],
+  "auth_preflight_observations": {
+    "sandbox_default": "CLI status exit1 loggedIn false, authMethod none",
+    "normal_official_cli": "read-only escalated auth check and immediate same-environment pre-generation check both loggedIn true, claude.ai, firstParty, pro",
+    "interpretation": "Access-context difference observed; no credential file read or new login, and no claim about exact underlying cause."
+  },
+  "external_support_sent": false,
+  "PAL_content_or_DB_accessed": false,
+  "new_model_generation_calls": 1,
+  "shared_repo_writes_by_design_chat": false
+}

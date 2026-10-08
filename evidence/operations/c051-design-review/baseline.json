@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-10-08T07:26:50.058268+00:00",
+  "repo": "/private/tmp/personal-agent-lab-stable0-20261006",
+  "head": "2abe33909b5a8a8a63cf62f2be18e97eaa049a75",
+  "git_status": " M ACCEPTANCE.md\n M DECISIONS.md\n M STATE.md\n M docs/plans/CHECKPOINTS.md\n?? evidence/operations/c051-alternative-validation.md\n?? evidence/operations/c051-design-request.json\n?? evidence/operations/c051-design-transport-update.json\n?? evidence/operations/c051-transport-observations.json\n",
+  "source_sha256": {
+    "AGENTS.md": "23aefb6d34e6d05cff642db8a80014828393291c5873fed8542f5aa6d2924202",
+    "STATE.md": "ee5a39c745e2ba2a6104ad71eef61dce1c670de8fa300f732bb1e761a48a64fa",
+    "SPEC.md": "b35eb3397cd2b788cb8a5a8fa51df7e466146590706b548a2a432d9701f522ab",
+    "DESIGN.md": "9482460630aeda4ff21873007c32f9f0eb7f7e1e9a148f64dc36397131ade261",
+    "ACCEPTANCE.md": "30e9e36f551ef321519cc326c94322b9b3a4356d453e7baeb66d457ce60a5e6a",
+    "DECISIONS.md": "ce2b75225cefebae9089d1bca19912be20d1edf102445074022cedfa41ee6c89",
+    "pal/server.py": "eb8928a0ada019d5f98aa623d2af47d174aaa53d36ed516fc5c7dc369531fced",
+    "pal/web/app.js": "e9e23bf661574ee4317215878382cb8246438ca57d438b9727ad02d902b911df",
+    "evidence/reviews/judgment-boundary/expert-commitment-ui-contract.json": "7e2e007e08fa2d61c5d1cbfb679584b36d0d873aa3b01a31bd1c1fce4b18d0f6",
+    "evidence/reviews/judgment-boundary/ui-c045-partial/README.md": "943a60db0a7f28af1d09cc0f8129fe3e2a2d797613a9781c2a3749ac4975f817",
+    "evidence/operations/c049-browser-block-investigation.md": "1d153b1a4eccd757abf6e4ca8dfcacd7a5d962a700615af98eea1472aa0ad163",
+    "evidence/operations/c050-access-and-continuation.md": "f5eae5087c0f50772c6370e0d1e633ff58aad797f87b05b8b1cc5d31ec7dda37"
+  },
+  "owner_source": {
+    "thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "turn": "01a11a54-c55d-7d50-b0ab-58b77ec3e237",
+    "message": "01a11a54-c63f-7ca1-bf90-9f1eac70dded",
+    "verbatim": "いや、それを送っても状況は改善しません。他の方法考えなきゃいけないです。",
+    "verified_from_user_message": true
+  },
+  "delegation_source": "PAL開発 01a11113-f829-75c1-b728-3298aa3359b5; read-only design consultation, one current-auth no-extra-cost Opus review requested; no SWE, no implementation",
+  "sharing_authority": "Owner development turn 01a119ca-ba23-72c0-ad14-d98bc690ec7e explicitly authorizes necessary requests/replies between the three chats; current STATE registers this design chat. Existing owner authorization covers official Anthropic private-repository design consultation.",
+  "frozen_product_files_match": 17
+}

@@ -294,3 +294,17 @@ No model/UI rerun, canonical database write, product/test change, access clearan
 promotion. New 50-minute checkpoint NOT_CONFIGURED until noninterrupting delivery is
 established; old schedules remain PAUSED. Existing 268-test green evidence remains bound
 to unchanged source. Stable1 real functional/usefulness/final-release gates remain open.
+
+C051 consumes the actual HR-ACCESS-004 answer: do not send Support; investigate a safe
+alternative. The contract requires real UI/artifact observation without mandating a
+named automation tool; no substitute proof is adopted. Current IAB transport is also
+unavailable; opening an official public help page is queued, not displayed/cleared.
+[Requirement/evidence map and scoped alternatives](evidence/operations/c051-alternative-validation.md).
+Original C045 NOT_VERIFIED, all row statuses and finite budgets remain unchanged.
+Official Opus review and controller reconciliation now preserve a bounded A0/known-
+fixture diagnostic route and distinguish nine independent NOT_RUN first cases from
+resampling ABS-A2. Static diagnostic preparation is checked, browser execution NOT_RUN.
+HR-ACCESS-005 display is now confirmed, but one post-answer tool inventory still has no
+IAB. No diagnostic/model run or promoted row; a prospective manual observer protocol is
+being specified separately, without changing current criteria.
+Even successful remaining first cases cannot erase the unverified second A-sample.

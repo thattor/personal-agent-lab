@@ -518,3 +518,24 @@ canonical records and commit/push. Original archive hashes and NOT_RUN/partial o
 are preserved. No future implementation or completion criterion was adopted. A premature
 aggregate validation claim and the in-progress missing-link check were corrected before
 commit; final validation is emitted only after the archive and document checks succeed.
+
+## C051 — revise the method after the actual owner answer
+
+HR-ACCESS-004 is answered: do not submit Support; investigate another method. The
+development controller verified the human source and removed that current approval
+wait. Existing S0/F0/N1 gates and original failure evidence are unchanged. Required
+real UI/output proof is distinct from dependence on one automated browser, while the
+frozen actual-observation contract must still be honored.
+
+Current separate finding: IAB is not connected to CUA; only Chrome is listed. A public
+official help-page open is queued for PAL開発, not observed. No browser switch or denied
+resource access. Official Opus consultation completed once71.46s/tool-free, with fresh
+no-extra-charge checks. Adopted bounded connection/known-fixture diagnosis and independent
+NOT_RUN-case distinction; narrowed unsupported human-observer ban/permanent-unknown claims.
+Two fixed static files/three steps/one180s loopback instance prepared, NOT_RUN. No custom
+harness or production code. Unit contribution: concrete alternative and exact prerequisite,
+not functional acceptance. HR005 was answered with an actual public-page screenshot;
+one post-answer inventory still lacks IAB. Owner operation complete; no repeat request.
+Next: reconcile the design lane's concrete manual UI/development-receipt method for
+permitted future first cases before any live execution. ABS-A2 second-sample gap persists;
+no resampling or weakened criteria. Evidence: evidence/operations/c051-alternative-validation.md.

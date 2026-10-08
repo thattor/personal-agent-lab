@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized delivery goal under D-021/P002 and the owner-directed model-led Primary correction D-028/D-029. Reasoning-solvable technical choices are autonomous. Latest C050 consumes the answered HR-ACCESS-003 and prepares formal support escalation. The goal card still reports BLOCKED; this explicitly requested operational work ran. Remaining real-provider artifact/UI verification is not running. No completed-product or automatic-resume claim. No schedule restarted.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized delivery goal under D-021/P002 and the owner-directed model-led Primary correction D-028/D-029. Reasoning-solvable technical choices are autonomous. Latest C051 consumes the owner's HR-ACCESS-004 rejection of Support submission and prepares a bounded alternative with the design lane and official Opus. Goal card remains BLOCKED; remaining real-provider artifact/UI verification and the prepared diagnostic are not running. HR-ACCESS-005 screen operation is fulfilled, but IAB tool connection remains absent; a concrete alternative observer method is being specified in the design lane. No completed-product or automatic-resume claim. No schedule restarted.
 
 ## Current operating authority — 2026-10-08
 
@@ -51,7 +51,38 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
-Latest C050: HR-ACCESS-003 is ANSWERED / observation complete. The human window's
+C051: HR-ACCESS-004 is ANSWERED / Support submission declined. Direct owner source is
+verified in PAL人間判断; do not send the inquiry, repeat its approval question or wait
+for a ticket. HR-ACCESS-003 remains answered. [Current evidence and alternatives](evidence/operations/c051-alternative-validation.md).
+
+Completed preparation: separate required real-model/UI/artifact evidence from the specific
+automated observer. The frozen contract still requires actual ordinary UI and artifact
+observation; no mock substitution, criterion weakening or blocked-sample rescore.
+Design chat01a11837 obtained one official Opus review (71.46s, one turn, tool-free,
+fresh existing Pro and no-extra-charge checks). Development preserved the original and
+recorded adopted/narrowed points in DECISIONS.md; no product/acceptance change. The
+fixed diagnostic uses two known static files and ordinary stdlib http.server only:
+one loopback host/180seconds/three navigation steps, stop on first refusal. It remains
+NOT_RUN; no PAL DB, model or refused content. No substantial harness/SWE gate.
+
+Current transport: formal get/create IAB calls were unavailable. HR-ACCESS-005 is now
+ANSWERED_OPERATION_OBSERVED: the owner supplied an image of PAL開発 with the public
+OpenAI help page displayed; development independently viewed it. One post-answer
+inventory still lists only Chrome, no IAB. The owner's operation is complete; do not
+repeat it or blame the display. No diagnostic host or product model was started.
+[Direct answer and connection result](evidence/operations/c051-human-answer.json).
+
+Exact next: receive and reconcile the design lane's concrete manual-UI/development-
+verification protocol for the nine independently frozen NOT_RUN cases. Prove equivalent
+actual UI/output/receipt binding, unchanged order/oracles/23total independent native cap,
+600s hosts and fresh proof before any execution. It must use only permitted future
+content, never obtain/retry/replace ABS-A2. The original second A-sample remains a separate
+release-evidence gap. No new owner question until a concrete runnable procedure exists;
+no new login/permission/cost/browser bypass or Support approval wait. Product/acceptance
+remain unchanged, as do required whole-flow usefulness and final release gates. New
+50-minute checkpoint remains NOT_CONFIGURED and old schedules stay paused.
+
+Historical C050 (Support next action below superseded by C051): HR-ACCESS-003 is ANSWERED / observation complete. The human window's
 authorized handoff and its supplied settings image agree: Browse default Always allow,
 no displayed original port49957 exception, no visible Block/managed-lock indicator,
 CDP full access off. No setting changed. A stopped-URL ERR_CONNECTION_REFUSED is a

@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-10-08T07:35:18.375138+00:00",
+  "status": "DESIGN_PACKET_CHECKS_PASS",
+  "scope": "source consistency and complete single review, not diagnostic execution or product acceptance",
+  "review": {
+    "status": "completed",
+    "exit_code": 0,
+    "elapsed_seconds": 71.46,
+    "model": "opus",
+    "response_bytes": 6199,
+    "stderr_bytes": 0,
+    "generation_invocations": 1,
+    "max_turns": 1,
+    "tools_enabled": false,
+    "paid_fallback": false,
+    "child_exited": true
+  },
+  "product_files_match": 17,
+  "shared_source_files_changed_since_baseline": [],
+  "shared_repo_writes_by_design_chat": false,
+  "browser_fixture_implemented_or_run": false,
+  "PAL_provider_calls": 0,
+  "blocked_artifact_or_DB_access": false,
+  "reviewer_interpretations_reconciled": "PROPOSAL.md; original response preserved",
+  "current_next_action": "HR-ACCESS-005 already requested by development; wait for actual owner response/display change, no duplicate question",
+  "handoff": "tool output for development to retain; no shared repository edit or Git mutation",
+  "files": {
+    "PROPOSAL.md": {
+      "bytes": 6295,
+      "sha256": "f9b6d8757e0f60a14f2b41eb911b12871d80455cd6cac0db5e7a0662feb68916"
+    },
+    "access.json": {
+      "bytes": 1226,
+      "sha256": "2c953e1b05fab20fb6a5b4c7ddc2e5d519ce0be0e0adeeb17807a94346397f76"
+    },
+    "attempt.json": {
+      "bytes": 159,
+      "sha256": "a91fa0929be4f07b4647da95c174858f65457d184c128231daf46be882eec264"
+    },
+    "baseline.json": {
+      "bytes": 2617,
+      "sha256": "a383c30d6b47325ee00a936f3e0c5cbb98c016b980553a8361cf02bc88c282d2"
+    },
+    "completion.json": {
+      "bytes": 265,
+      "sha256": "64f783276991453432173dc4d41963ef0a852d89e894b666d33cc626088b6163"
+    },
+    "opus-response.txt": {
+      "bytes": 6199,
+      "sha256": "879ef8d25f85ecc8d32acac6b4977dc3242020088ab54905d9169c50ee9094c2"
+    },
+    "opus-stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "question.txt": {
+      "bytes": 11611,
+      "sha256": "988073671c4d8c1fe5d86591c81e5ebb0183c03f5ad96ee4bd6fa56449c38883"
+    },
+    "sources-and-updates.json": {
+      "bytes": 2799,
+      "sha256": "e7ef95854d7445890b46e771b633e25bd4d2023480e6e4c3b722a2ed3a73e119"
+    }
+  }
+}

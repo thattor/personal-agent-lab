@@ -1,0 +1,40 @@
+{
+  "schema": "pal-operational-observation-v1",
+  "checkpoint": "C051",
+  "date_utc": "2026-10-08",
+  "provenance": "Controller transcription of actual tool returns in this development turn; not raw browser telemetry",
+  "observations": [
+    {
+      "tool": "cua.getBrowser",
+      "input": {"id": "iab"},
+      "result": "Browser is not available: iab"
+    },
+    {
+      "tool": "cua.listBrowsers",
+      "result_summary": [{"family": "chrome", "type": "extension", "name": "Chrome"}],
+      "private_profile_and_extension_identifiers_omitted": true,
+      "iab_listed": false
+    },
+    {
+      "tool": "mcp__codex_app__open_in_codex",
+      "input": {"target": {"type": "browser", "url": "https://help.openai.com/en/articles/20001277-using-the-built-in-browser-in-the-chatgpt-desktop-app"}},
+      "result": {"status": "queued", "threadId": "01a11113-f829-75c1-b728-3298aa3359b5"},
+      "display_or_connection_verified": false
+    },
+    {
+      "tool": "cua.createBrowserTab",
+      "input": {"browser": "iab", "url": "https://help.openai.com/en/articles/20001277-using-the-built-in-browser-in-the-chatgpt-desktop-app", "visible": false},
+      "result": "Browser is not available: iab",
+      "created_tab": false,
+      "repeated_unavailable_result_stops_further_attempts": true
+    }
+  ],
+  "original_c045_access_cleared": false,
+  "denied_resource_accessed": false,
+  "pal_opened_in_other_browser": false,
+  "fixture_server_started": false,
+  "provider_calls": 0,
+  "canonical_writes": 0,
+  "permission_changes": 0,
+  "acceptance_promoted": false
+}
