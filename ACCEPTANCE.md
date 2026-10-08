@@ -308,3 +308,16 @@ HR-ACCESS-005 display is now confirmed, but one post-answer tool inventory still
 IAB. No diagnostic/model run or promoted row; a prospective manual observer protocol is
 being specified separately, without changing current criteria.
 Even successful remaining first cases cannot erase the unverified second A-sample.
+
+C052 specifies the equivalent human-operated main UI and development-side observation
+method for only the nine untouched cases. Exact actual links/URL, receipt/body hash and
+canonical identities must agree; original inputs/oracles/caps/first outcomes remain.
+[Procedure and provenance](evidence/operations/c052-manual-observer/README.md).
+No case has started or been promoted. HR-UI-001 asks actual availability for the first
+one-input case, not a new technical approval or usefulness PASS. No product/test changes.
+
+Subsequent owner correction supersedes that operation request: HR-UI-001 is withdrawn,
+no manual-input/receipt or readiness wait remains. Development owns technical checks
+through the existing supported browser connection, preserving all original real-UI/
+host/semantic obligations. [Evidence reuse, real remaining risks and next operation](evidence/operations/c052-technical-verification.md).
+This does not change any acceptance row or count an unexecuted test as PASS.

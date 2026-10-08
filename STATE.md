@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized delivery goal under D-021/P002 and the owner-directed model-led Primary correction D-028/D-029. Reasoning-solvable technical choices are autonomous. Latest C051 consumes the owner's HR-ACCESS-004 rejection of Support submission and prepares a bounded alternative with the design lane and official Opus. Goal card remains BLOCKED; remaining real-provider artifact/UI verification and the prepared diagnostic are not running. HR-ACCESS-005 screen operation is fulfilled, but IAB tool connection remains absent; a concrete alternative observer method is being specified in the design lane. No completed-product or automatic-resume claim. No schedule restarted.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized text-only delivery goal under D-021/P002 and D-028/D-029. C052 consumes the owner's correction: development executes ordinary technical verification; HR-UI-001 manual test/receipt request is withdrawn, not a blocker. Next is the first untouched case through the existing supported Chrome CUA connection, with original actual UI/receipt/cap obligations and no old refused content. No product model/host is currently running; all acceptance gates remain. Goal card remains BLOCKED; no completion or automatic-resume claim. No schedule restarted.
 
 ## Current operating authority — 2026-10-08
 
@@ -10,7 +10,7 @@ establishes three continuing lanes. This chat alone implements and writes canoni
 records. Human judgment is `01a1137a-8de3-7890-b874-cdd0a7125711` (PAL人間判断):
 noninferable facts, real usefulness and authority beyond existing permissions only.
 The existing design/function-change chat is `01a11837-e1e3-71f0-8ff8-bbaf8dc14527`
-(マルチモーダル対応設計を確認), confirmed against its owner's stated role and retention
+(PAL設計, formerly マルチモーダル対応設計を確認), confirmed against its owner's stated role and retention
 instructions. Its current proposals remain unadopted. Necessary requests/replies/reflection messages between these lanes are
 explicitly authorized; outside support/email sending is not. No duplicate owner questions.
 STATE.md and Issue6 remain the existing project continuation/decision entry points.
@@ -72,15 +72,20 @@ inventory still lists only Chrome, no IAB. The owner's operation is complete; do
 repeat it or blame the display. No diagnostic host or product model was started.
 [Direct answer and connection result](evidence/operations/c051-human-answer.json).
 
-Exact next: receive and reconcile the design lane's concrete manual-UI/development-
-verification protocol for the nine independently frozen NOT_RUN cases. Prove equivalent
-actual UI/output/receipt binding, unchanged order/oracles/23total independent native cap,
-600s hosts and fresh proof before any execution. It must use only permitted future
-content, never obtain/retry/replace ABS-A2. The original second A-sample remains a separate
-release-evidence gap. No new owner question until a concrete runnable procedure exists;
-no new login/permission/cost/browser bypass or Support approval wait. Product/acceptance
-remain unchanged, as do required whole-flow usefulness and final release gates. New
-50-minute checkpoint remains NOT_CONFIGURED and old schedules stay paused.
+Exact next — C052: [development-operated technical verification](evidence/operations/c052-technical-verification.md).
+The direct owner rejected offloading synthetic input/receipt collection, then explicitly
+allowed development to choose technical test inputs and execute necessary checks. HR-UI-001
+is withdrawn before any launch; no participation or trivial judgment is pending. The
+original contract requires ordinary real UI, not IAB specifically. Use the existing
+connected Chrome CUA extension for the untouched CREATIVE-PARTICULARS first case, same
+fixed input/cap2, clean pushed source, fresh existing-auth/no-extra-charge proof and owned
+600s host. Original observations/oracles/order/23total independent caps remain. No new
+product/harness. Do not retrieve/retry/regenerate/replace ABS-A2, and stop at any new
+route refusal without another route. Existing proven components are reused only where
+source and claim still match. Required current flow/usefulness/final audit and the old
+second A-sample evidence gap remain open. New50-minute checkpoint stays NOT_CONFIGURED;
+old schedules stay paused. Latest owner instruction keeps current delivery text-only;
+next-version multimodal design preparation is independent, not current scope.
 
 Historical C050 (Support next action below superseded by C051): HR-ACCESS-003 is ANSWERED / observation complete. The human window's
 authorized handoff and its supplied settings image agree: Browse default Always allow,

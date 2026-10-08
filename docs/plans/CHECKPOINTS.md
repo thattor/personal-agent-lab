@@ -539,3 +539,29 @@ one post-answer inventory still lacks IAB. Owner operation complete; no repeat r
 Next: reconcile the design lane's concrete manual UI/development-receipt method for
 permitted future first cases before any live execution. ABS-A2 second-sample gap persists;
 no resampling or weakened criteria. Evidence: evidence/operations/c051-alternative-validation.md.
+
+## C052 — make the next real UI operation executable
+
+Design's three-file manual-observer addendum was received through chat and preserved
+byte-for-byte. Its conclusion follows the original observation contract: human ordinary
+UI operation plus development's exact output/receipt binding, with no evidence waiver.
+Original product17 hashes and case/oracle/budget boundaries remain; no source or harness
+change. Production CLI help and read-only projections/ownership were checked. No live
+case or fresh provider proof yet. Unit contribution: removes automated-IAB attachment
+as an unnecessary dependency of future first cases, while leaving actual screen proof
+and the original ABS-A2 gap mandatory.
+
+Next is HR-UI-001 participation timing for the prepared first CREATIVE-PARTICULARS case,
+then one clean-pinned, fresh-proof, cap2/600s owned production host and exact observation.
+The user operates the UI, development scores and manages evidence. No new method approval,
+settings redo, Support question or invented usefulness. Current milestone remains text-only;
+the latest direct owner clarification permits next-version multimodal design preparation,
+not current-release scope expansion. [Procedure/evidence](../../evidence/operations/c052-manual-observer/README.md).
+
+Before execution the owner corrected the manual-test direction: ordinary technical
+inputs and validation belong to development. HR-UI-001 is withdrawn; its participation
+wait is superseded. Current next is the first untouched case through the existing
+Chrome CUA connection with every original UI/receipt/oracle/budget obligation intact.
+The contract never required IAB specifically; unavailable transport is not a reason
+to offload test labor. Old ABS-A2 is not accessed/replaced and a new refusal stops.
+[Current evidence/risk map and cause/prevention](../../evidence/operations/c052-technical-verification.md).

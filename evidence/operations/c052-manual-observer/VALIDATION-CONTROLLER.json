@@ -1,0 +1,41 @@
+{
+  "recorded_at": "2026-10-08T08:16:08.961995+00:00",
+  "status": "DOCUMENT_AND_PROVENANCE_CHECKS_PASS",
+  "baseline": "e177e70ce3c9d952a8c8f5605f5268f2be455fdc",
+  "product": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+  "product_hashes_matched": 17,
+  "acceptance_rows_unchanged": 31,
+  "design_originals_exact": 3,
+  "historical_evidence_unchanged": true,
+  "pal_scripts_tests_match_c047_full_268": true,
+  "checks_this_unit": [
+    "production CLI --help",
+    "source read-only projection and owned teardown inspection",
+    "document references/hash/frozen contract comparison"
+  ],
+  "full_suite": "Unchanged 268-test reference retained; not rerun this document-only unit",
+  "local_links_checked": 357,
+  "secret_patterns": "NO_MATCH; bounded scan only",
+  "new_product_calls": 0,
+  "new_reviewer_calls": 0,
+  "new_proofs": 0,
+  "canonical_writes": 0,
+  "host_running": false,
+  "HR_UI_001": "WITHDRAWN before execution; no participation wait",
+  "next": "Development executes only untouched first cases through formal connected Chrome CUA, original actualUI/binding/oracles/caps; no old refused content",
+  "files": {
+    "STATE.md": "9994e0f3abbf0255cfa790007e3691f1fa4dfe6f298aa779533ec5ebf814def5",
+    "DECISIONS.md": "18211bc435b6de609ba25f0bcffe485fb280643e4cc03369487561aced171d9e",
+    "ACCEPTANCE.md": "3d66f63f974a38910cd2a2bb4a51150eea3794fd73d0689289e770dd33f7684d",
+    "docs/plans/CHECKPOINTS.md": "d3461dcdcbb06476641899236592ecf9416f2de262c977a56708fdf9e484db2f",
+    "evidence/operations/c052-owner-technical-verification.json": "2a4ed374a56aa04aa9846299d873bbaf3df7c6c51e34355d9f8192fbbb72efea",
+    "evidence/operations/c052-human-handoff.json": "7ff166c84b06344ef9fda41bf9c21cf6a43275485f4291390caf317d7a3593cd",
+    "evidence/operations/c052-technical-verification.md": "f6b97e9a8046e8699fa1a874cceebec63688b3f34fd3ac04df3820f60336ae56",
+    "evidence/operations/c052-manual-observer/PROPOSAL-ADDENDUM.md": "941702c153ed3b621928ba21c948c8baa9fcd2d14a5caa9ce14b2d5429233a66",
+    "evidence/operations/c052-manual-observer/TRANSFER.json": "356af498a13d42b99820b9d8748eef9b07c2998fa573bbed42a9db33a5ed3c1d",
+    "evidence/operations/c052-manual-observer/owner-next-version.json": "e02d565d9b9644b1d1b49e1f0436d7d84f4d170bf71dacd40e32548cfd4b272f",
+    "evidence/operations/c052-manual-observer/SOURCE-RECORD.json": "f29b068af5d7c49f53195fe672b3515240866df113dda3c0549d929c206b75f5",
+    "evidence/operations/c052-manual-observer/README.md": "deb509c2afd9cb971e9f56772b296f5853300672997237b4a17ebf6083c68933",
+    "evidence/operations/c052-manual-observer/VALIDATION.json": "61a37dea2af5da50b23351a92408c49bdae4992211daa70ce934854df1b385f7"
+  }
+}

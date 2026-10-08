@@ -1,0 +1,22 @@
+{
+  "status": "DESIGN_SOURCE_CHECKS_PASS",
+  "created_at": "2026-10-08T07:48:51.196386+00:00",
+  "scope": "Source/contract consistency only; no browser/provider/fixture/runtime test",
+  "source_contract_unchanged": true,
+  "product_files_match_frozen_manifest": 17,
+  "remaining_first_cases": 9,
+  "frozen_ui_inputs": 14,
+  "independent_native_cap_total": 23,
+  "not_an_opus_review": true,
+  "shared_repo_git_db_written_by_design": false,
+  "files": {
+    "PROPOSAL-ADDENDUM.md": {
+      "bytes": 11461,
+      "sha256": "941702c153ed3b621928ba21c948c8baa9fcd2d14a5caa9ce14b2d5429233a66"
+    },
+    "SOURCE-RECORD.json": {
+      "bytes": 5003,
+      "sha256": "f29b068af5d7c49f53195fe672b3515240866df113dda3c0549d929c206b75f5"
+    }
+  }
+}

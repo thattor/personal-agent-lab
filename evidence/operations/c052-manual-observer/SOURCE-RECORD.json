@@ -1,0 +1,133 @@
+{
+  "status": "DESIGN_ADDENDUM_NOT_EXECUTED_NOT_REVIEWED_BY_OPUS",
+  "created_at": "2026-10-08T07:45:31.586331+00:00",
+  "repo": "/private/tmp/personal-agent-lab-stable0-20261006",
+  "head": "2abe33909b5a8a8a63cf62f2be18e97eaa049a75",
+  "product_identity": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+  "files": {
+    "AGENTS.md": {
+      "bytes": 7565,
+      "sha256": "23aefb6d34e6d05cff642db8a80014828393291c5873fed8542f5aa6d2924202"
+    },
+    "STATE.md": {
+      "bytes": 81054,
+      "sha256": "aa1819864df5cfebc59556fcb737ff08ef8f71c83a52c3f84df4a305351d8bd3"
+    },
+    "SPEC.md": {
+      "bytes": 10025,
+      "sha256": "b35eb3397cd2b788cb8a5a8fa51df7e466146590706b548a2a432d9701f522ab"
+    },
+    "DESIGN.md": {
+      "bytes": 12206,
+      "sha256": "9482460630aeda4ff21873007c32f9f0eb7f7e1e9a148f64dc36397131ade261"
+    },
+    "ACCEPTANCE.md": {
+      "bytes": 64799,
+      "sha256": "f1a7a5a300b3f5acf3bec5bc6c3589f9741626b781cc1829ad416d184d50ebd8"
+    },
+    "DECISIONS.md": {
+      "bytes": 127508,
+      "sha256": "573c49986e709552e347a1d0caf89e30cf8c00cc546a90c1ac24006f8393d35d"
+    },
+    "evidence/reviews/judgment-boundary/expert-commitment-ui-contract.json": {
+      "bytes": 53037,
+      "sha256": "7e2e007e08fa2d61c5d1cbfb679584b36d0d873aa3b01a31bd1c1fce4b18d0f6"
+    },
+    "evidence/reviews/judgment-boundary/ui-c045-partial/README.md": {
+      "bytes": 4032,
+      "sha256": "943a60db0a7f28af1d09cc0f8129fe3e2a2d797613a9781c2a3749ac4975f817"
+    },
+    "evidence/operations/c051-alternative-validation.md": {
+      "bytes": 10038,
+      "sha256": "44a3cdcfd7ffb3d24f7b8f61447e3e832fd12e40b6f48767bcf787d24b1f14b0"
+    },
+    "pal/web/app.js": {
+      "bytes": 16132,
+      "sha256": "e9e23bf661574ee4317215878382cb8246438ca57d438b9727ad02d902b911df"
+    },
+    "pal/server.py": {
+      "bytes": 7241,
+      "sha256": "eb8928a0ada019d5f98aa623d2af47d174aaa53d36ed516fc5c7dc369531fced"
+    },
+    "pal/store.py": {
+      "bytes": 81410,
+      "sha256": "32cef5c7d6a84770847de805fd6e72c57ff811818b404746bd74ac3d07efcb45"
+    }
+  },
+  "product_hash_mismatches": [],
+  "remaining": [
+    {
+      "id": "CREATIVE-PARTICULARS",
+      "native_call_limit": 2,
+      "input_count": 1,
+      "inputs_sha256": "bffa4f70fdd18733098a5bbead046c8e2d623f29bcacd705d07e51cfaad95d45"
+    },
+    {
+      "id": "SUPPLIED-FOLLOWUP",
+      "native_call_limit": 2,
+      "input_count": 1,
+      "inputs_sha256": "2c03b29683ec98e4cf6f29c7905665460a87f52bfeb431cf478cbc1916f40343"
+    },
+    {
+      "id": "ABS-B1",
+      "native_call_limit": 2,
+      "input_count": 1,
+      "inputs_sha256": "0b30bd69895c636fa8422542958e4e17d5d0909926166357a2a58d72ffc43fdc"
+    },
+    {
+      "id": "ABS-B2",
+      "native_call_limit": 2,
+      "input_count": 1,
+      "inputs_sha256": "0b30bd69895c636fa8422542958e4e17d5d0909926166357a2a58d72ffc43fdc"
+    },
+    {
+      "id": "ABS-C1",
+      "native_call_limit": 3,
+      "input_count": 2,
+      "inputs_sha256": "99fa5df98625e8978da59eb69de64ba5d95b310c05e3becd520b43b4b994aa93"
+    },
+    {
+      "id": "ABS-C2",
+      "native_call_limit": 3,
+      "input_count": 2,
+      "inputs_sha256": "99fa5df98625e8978da59eb69de64ba5d95b310c05e3becd520b43b4b994aa93"
+    },
+    {
+      "id": "UI-CLARIFY",
+      "native_call_limit": 3,
+      "input_count": 2,
+      "inputs_sha256": "a126f44b4b7a577dd57faa46232d948c0451ea4fc7f272d92c64a407734f8d89"
+    },
+    {
+      "id": "TARGET-C",
+      "native_call_limit": 3,
+      "input_count": 2,
+      "inputs_sha256": "7922f06f9e40f30dfd4edad82846fb8f7e0f7cdefad79d777a38490ccd8c2b2f"
+    },
+    {
+      "id": "COMPOUND-LOCAL-CONTINUATION",
+      "native_call_limit": 3,
+      "input_count": 2,
+      "inputs_sha256": "606a4bb2bc5db1e4e6a0fbe37b4a5787e9f58b760b0cf56ba5f7651fcfd8e5e2"
+    }
+  ],
+  "total_native_cap": 23,
+  "measurement_input_count": 14,
+  "expected_live_artifacts": 9,
+  "human_source": {
+    "thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "turn": "01a11a72-f302-7262-a97f-f58a0c821993",
+    "message": "01a11a72-f51c-7042-bcd1-c36818306a23",
+    "text": "表示している内容",
+    "attachment_inspected": true,
+    "observation": "PAL開発 selected; public OpenAI browser help displayed; no PAL content observed"
+  },
+  "development_source": {
+    "thread": "01a11113-f829-75c1-b728-3298aa3359b5",
+    "turn": "01a11a55-50cc-77b0-8093-49a9db7cafea",
+    "handoff_call": "exec-02b94d4f-b1b5-4ac2-a334-26467967db2a",
+    "observation": "After owner display, one formal listBrowsers returned Chrome extension only; IAB tool connection NOT_ESTABLISHED. Report verified as development statement; not reexecuted."
+  },
+  "authority": "Registered design lane; read-only shared repository; development remains sole canonical/Git writer. No new owner question or model invocation. This addendum is not part of completed original Opus review.",
+  "writes": "Only this new temporary handoff directory. No shared repo/Git/DB or browser/provider/fixture operation."
+}

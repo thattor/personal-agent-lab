@@ -1,0 +1,28 @@
+{
+  "source_thread": "01a11837-e1e3-71f0-8ff8-bbaf8dc14527",
+  "source_turn": "01a11a75-a73a-7b73-8d3b-b18e7cc4babc",
+  "files": [
+    {
+      "package": "pal-browser-access-design-20261008-c051-b-addendum",
+      "file": "PROPOSAL-ADDENDUM.md",
+      "bytes": 11461,
+      "sha256": "941702c153ed3b621928ba21c948c8baa9fcd2d14a5caa9ce14b2d5429233a66",
+      "source_item": "exec-3c577a07-5f67-4356-bb9a-0162b45095cc"
+    },
+    {
+      "package": "pal-browser-access-design-20261008-c051-b-addendum",
+      "file": "SOURCE-RECORD.json",
+      "bytes": 5003,
+      "sha256": "f29b068af5d7c49f53195fe672b3515240866df113dda3c0549d929c206b75f5",
+      "source_item": "exec-25a844dc-12ab-4fbf-8dcc-dcd19d2cefc8"
+    },
+    {
+      "package": "pal-browser-access-design-20261008-c051-b-addendum",
+      "file": "VALIDATION.json",
+      "bytes": 738,
+      "sha256": "61a37dea2af5da50b23351a92408c49bdae4992211daa70ce934854df1b385f7",
+      "source_item": "exec-25a844dc-12ab-4fbf-8dcc-dcd19d2cefc8"
+    }
+  ],
+  "transport": "read_thread tool-output JSON envelopes, not direct external directory access"
+}

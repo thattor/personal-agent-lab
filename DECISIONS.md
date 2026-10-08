@@ -1014,6 +1014,41 @@ is NOT_RUN. Design is specifying the manual-observer alternative for future inde
 cases, not adopting an evidence waiver or retrieving ABS-A2. This post-review fact and
 prospective method are not presented as part of the completed original Opus response.
 
+### C052 — equivalent manual UI observation, unchanged acceptance
+
+Question carried from C051's official Opus review: can actual main-UI observation be
+provided by a human while development matches the same output to host-issued evidence?
+After HR005 display succeeded without tool attachment, PAL設計 supplied a concrete
+[post-review addendum](evidence/operations/c052-manual-observer/PROPOSAL-ADDENDUM.md).
+Its additional reasoning is not represented as a second Opus review. Original contract
+already separates rendered browser navigation from HTTP byte/receipt comparison and
+does not mandate a single observer. Adopt this equivalent technical method for the
+nine untouched cases only, preserving original inputs/order/oracles/caps/deadlines and
+first outcomes. The actual screen/link/URL must bind to the same Goal/Attempt/artifact,
+receipt/hash/revision/epoch/manifest; no early or alternate retrieval of refused content.
+Old ABS-A2 remains NOT_VERIFIED, never retrieved/retried/replaced or waived.
+
+Human source turn01a11a84-67e0-7c33-93a3-615782c4fec5/message01a11a84-6918-7470-8490-b1f2008c1547
+asks which Computer Use operations fail and whether the owner can operate instead.
+Development verified the direct message. HR-UI-001 now requests only actual participation
+timing for the concrete first case. Technical scoring, host lifetime and evidence remain
+development responsibilities. No new human approval for method selection, no fabricated
+operator action and no N1-07 promotion. [Ready procedure](evidence/operations/c052-manual-observer/README.md).
+No product edit, new harness, new model consultation or current proof is introduced;
+SWE's substantial-implementation gate does not fire. Model/host execution is NOT_RUN.
+
+Before any launch, the owner challenged the synthetic manual-input request and then
+explicitly directed ordinary technical test input/execution to development, without
+trivial owner judgments. [Direct sources](evidence/operations/c052-owner-technical-verification.json).
+Withdraw HR-UI-001; no readiness or usefulness is inferred. The cause was overgeneralizing
+the unavailable IAB transport into a manual-test dependency. Existing Chrome CUA is a
+normal authorized observer for prospective untouched cases under the same actual-browser
+contract. This routine technical choice needs no new owner approval or product design
+change. C051's completed review already distinguishes those cases from ABS-A2 retries.
+Keep first outcomes/caps/oracles and all actual UI/output binding; never fetch/regenerate
+the old refused content, and stop on any new refusal without route switching. Reuse
+unchanged-component evidence only within its scope. [Risk/evidence map and prevention](evidence/operations/c052-technical-verification.md).
+
 ## D-030 — Retain multimodal research and design materials, 2026-10-08
 
 Owner source: design chat `01a11837-e1e3-71f0-8ff8-bbaf8dc14527`, 「マルチモーダル対応設計を確認」. The owner requested:
@@ -1030,4 +1065,12 @@ Earlier owner direction in that chat remains the scope of the design candidate: 
 
 Opus initial research and initial design reviews completed. A separately, explicitly authorized single SWE-2 High call returned only a partial response before the 600.016-second timeout. Received findings were reconciled with the frozen source and addressed in the candidate; revised text was not independently re-reviewed. Preserve the partial result, original denied attempts and later scoped approval as history. These records are not continuing authority for another model call, new access, payment, public exposure or implementation.
 
-All 30 candidate product evaluations remain NOT_RUN; actual Qwen/PAL capability and physical-device quality/speed are unverified. Development received the archive and verified its retained hashes, then integrated the shared-document updates after the design chat relinquished stage/commit/push. This adopts retention, not product behavior, and does not change Stable-1 completion criteria or release status. Historical handoff drafts remain unchanged; they are not current delivery receipts. Future implementation must reconcile the candidate with the then-current source and project decisions. The current development continuation and C050 access wait remain STATE.md.
+All 30 candidate product evaluations remain NOT_RUN; actual Qwen/PAL capability and physical-device quality/speed are unverified. Development received the archive and verified its retained hashes, then integrated the shared-document updates after the design chat relinquished stage/commit/push. This adopts retention, not product behavior, and does not change Stable-1 completion criteria or release status. Historical handoff drafts remain unchanged; they are not current delivery receipts. Future implementation must reconcile the candidate with the then-current source and project decisions. The current development continuation remains STATE.md.
+
+Latest direct owner clarification in PAL設計, turn01a11a86-763a-70e2-a51d-4e8631ecf901,
+message01a11a86-777d-7772-a21e-a67a66479b9f: current version's goal is text-based;
+multimodal belongs to the next version, with bridge/milestone/Issue design and the
+unfinished review allowed to continue now. [Verbatim source](evidence/operations/c052-manual-observer/owner-next-version.json).
+Adopt the current-version exclusion and future design preparation direction. Do not
+automatically activate P001/future implementation, duplicate Issues/reviews while PAL設計
+prepares its packet, or delay the current text-only release for that packet.
