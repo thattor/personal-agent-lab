@@ -1,5 +1,18 @@
 # Defects and prevention
 
+## 2026-10-09 — inline document verifier exceeded a CLI argument bound
+
+SOL passed a multi-assert Python -c argument longer than CO's512 UTF-8 byte
+per-argument limit (installed task/spec.py). CLI returned spec_invalid before
+creating a task or model call; capacity stayed0. The orchestration helper then
+tried to store the absent session ID, masking that immediate command result.
+
+Preserve the preflight JSON. Move the same document checks to a saved PAL script
+included as a protected read, keeping normal CLI argv below the bound. Print the
+command result before storing a session ID, and store it only when present.
+Next related invocation checks argv bounds and treats exit2 as a pre-task input
+error only after confirming no task/attempt was created. CO/state/limits are unchanged.
+
 ## 2026-10-09 — milestone note lost source attribution while shortening
 
 Task G's first note exceeded the declared500-token limit and blurred the full399
