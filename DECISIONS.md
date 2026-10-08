@@ -1527,3 +1527,46 @@ These are needed read/storage/verification boundaries, not dummy capacity tests.
 Launch three actual independent tasks under the same qualified state and declared
 caps; independent model reviews and SOL integration remain required. UnknownINT00
 is not repeated; service/provider/whole-product acceptance remains unmet.
+
+
+### D035 / C067 actual three-task preparation and assessment closure
+
+D47b8853cad145fa9330407acb617020, E1b22bca6ed14449ba1637d2caa538948 and
+Fd84e6010a3584678b8c3a79bfaedaab0 completed with separate Opus reviews. SWE Free
+implements D/E; Opus implements F in a different context from its review. SOL
+checks declared files/base/diff/verifier versions and integrates only those files.
+Actual peak3 is proven by eight completed local Native overlap segments,
+total262.733616s. No3+ capacity rejection occurred; first2 was a small pilot choice.
+Local cap remains12 per Native adapter; provider quota unknown,30 not available.
+
+Adopt the three unused pure preparation helpers within PARALLEL-SCOPE-2 and a six-case
+synthetic read-bytes/decode/content/integrity test. Root corrections: exact fixed
+buffer error codes after a reproduced hostile/subclass case; declared-size precedence
+assertion; explicit invalid-integrity results. D's single CO repair corrects only a
+test-helper keyword; all17 malformed Base64 cases remain. No validation is weakened.
+Root full399 PASS22.153s, targeted122 PASS; all11 source/test hashes match committed
+4ebab5a29e3c4c1b0dac939aa4d9a60364974bef. Real service/PAL/value remains UNMET/NOT_RUN.
+
+Independent Opus task Gcc4c676211714e51a18c0f1604d8f0c9 finds no source blocker and
+confirms the same hashes, but its document task remains failed/review_unresolved,
+verified=false after one allowed repair left a citation error. Preserve that result;
+no resume or status rewrite. Known completed calls distinguish this from unknown INT00.
+H5c28f94d39ba4a619d39cc3f62b5f3f0 closes only the specified attribution line, with
+an exact document verifier and independent Opus approval. Final476 tokens, other text
+unchanged. H does not rerun source/product tests or claim a new code review. SOL
+reconfirms the11 unchanged hashes before adopting the corrected assessment.
+
+Batch2 total5 ordinary tasks:4 verified,1 failed,23 actual Native calls (20 exact
+Opus5.5,3 exact SWE-2 High Free), final reserved/executing0. Pre-task verifier/host
+scripting errors created no extra Native task; retain the preflight evidence and
+proportionate prevention in DEFECTS. [Final records](evidence/operations/co-update-045-batch2-20261009/final-checks.json),
+[final assessment](evidence/operations/co-update-045-batch2-20261009/milestone-review.md).
+
+All96 runtime payload files,290 pre-update state files and13 original records remain
+byte-identical. Existing Pro extra usage remainsOFF and SWE exact model remainsFree;
+no authentication/billing changes, public release, old schedule/trial restart or CO
+implementation edit. Old INT00 pause digest/options/unknown outcome unchanged; its
+four files are still absent. Next dependency is its WorkRef/Ref/Action/Result types;
+Operation belongs to EXE01 and canonical ART/grant/source checks to later services.
+Update the same private Draft PR19 and report actual outcome to PAL人間判断. No
+whole-project approval wait or new human usefulness request is inferred.

@@ -216,5 +216,18 @@
     "F: assert invalid-input result as well as absence of hashing;27 tests"
   ],
   "product_service_and_human_value": "UNMET / NOT_RUN",
-  "milestone_review": "PENDING fresh exact-source review"
+  "milestone_review": {
+    "source_assessment_task": "cc4c676211714e51a18c0f1604d8f0c9",
+    "source_assessment_task_status": "failed",
+    "source_assessment_verified": false,
+    "source_findings": "No source blocker; final remaining required change was document citation",
+    "citation_closure_task": "5c28f94d39ba4a619d39cc3f62b5f3f0",
+    "citation_closure_status": "verified",
+    "citation_closure_verified": true,
+    "final_note_sha256": "05e0402da56f07123283af4991e13556d02b9e4c1598e72ae219ffe56229a4c5",
+    "final_note_words": 476,
+    "root_source_hashes_reconfirmed": 11,
+    "source_commit": "4ebab5a29e3c4c1b0dac939aa4d9a60364974bef",
+    "scope_verdict": "MET for local preparation; service/PAL/user value UNMET"
+  }
 }

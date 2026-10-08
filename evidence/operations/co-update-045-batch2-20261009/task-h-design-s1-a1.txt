@@ -1,0 +1,7 @@
+**Design (H, document-only)**
+
+- **Target:** `milestone-candidate-g.md` contains `Root evidence (`verification.json`):` exactly once. It is not a standalone line; it closes the "Exact supplied source…" line under "Scope and evidence". `verify_document.py` uses substring `count == 1` and `replace(old, new, 1)`, so a substring replacement is correct.
+- **Replacement (from DOCUMENT-CLOSURE.md):** `Root evidence (`verification.json`, `three-way-proof.json`):`
+- **Implement:** copy the candidate byte-for-byte into `milestone-review.md` with only that substitution. Keep the encoding, newlines and trailing newline. The change adds one whitespace token (about 476, under 500).
+- **Metrics:** root 399 and targeted 122 PASS come from `verification.json`. The eight segments sum to 262.733616s in `three-way-proof.json`. UNMET product value is preserved.
+- **G:** stays failed/review_unresolved, verified=false, pause=null. There are no state, source or canonical edits.

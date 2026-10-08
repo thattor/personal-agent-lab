@@ -3,12 +3,12 @@
 ## Goal
 Current owner instruction in chat 01a11c78-a3bc-76e1-b4ee-2451d5c0f1c2 (2026-10-09): SOL coordination, explicit CO delegation for PAL implementation/research/review, existing-route private development material use, isolated writes, host verification and staged independent reviews. This resumes scoped development preparation after the prior stop; no new authentication, paid fallback, publication or stopped schedules. See D-034.
 
-Current work: first preparation slice MET; three further independent scopes
-EXE02-file/1, EXE02-bytes/1, VER01-integrity/1 are implemented and locally tested.
-Combined Opus review of committed4ebab5a finds no code blocker; its document task G
-is failed/verified=false after the allowed repair left one source-attribution error.
-H closes only that citation with independent review. Full399 tests PASS22.153s and
-targeted122 PASS. INT00 remains deferred. Branch codex/pal-v5-co,
+Current work: two preparation slices MET, five pure helpers remain unused by PAL.
+EXE02-file/1, EXE02-bytes/1, VER01-integrity/1 have independent reviews and a synthetic
+connection. Opus assessment of committed4ebab5a finds no code blocker; document task G
+remains failed/verified=false, and H verified the requested citation correction.
+SOL reconfirmed all11 source/test hashes. Full399 PASS22.153s and targeted122 PASS.
+Actual maximum3 concurrent tasks; INT00 remains deferred. Branch codex/pal-v5-co,
 checkout /private/tmp/pal-v5-co-20261009; see D035 and PARALLEL-SCOPE-2.md.
 Candidate v5 is imported byte-for-byte with provenance under docs/design/contracts-v5.
 Actual Opus common-wire design is complete; SWE implementation timed out at900seconds
@@ -21,11 +21,15 @@ and all runtime data are retained untouched.
 Actual CO entrypoint: published0.4.5 installed at /Users/hattoritoshiyasu/Documents/PAL/co-runtime/common-orchestration-v0.4.5; /opt/homebrew/bin/python3.13 -E -s -B -m co_v4.task; existing state /private/tmp/co04-human-route-cr3o_bg1/state. Release checksums and all96 payload files passed; isolated import resolves to this install. Old state has a private local backup, with no migration or manual edits. Registered exact routes remain claude/claude-opus-5-5 and devin/swe-2-high. Independent ordinary run commands share state; host cap is12 per Native adapter (24 across these two routes). Actual batch2 maximum is3 simultaneous tasks, proven by completed local Native admission/cleanup intervals. Provider quota remains unknown;30 was not measured or available through these caps. Sol6.1/Astra remain unsupported task routes. Evidence: evidence/operations/co-update-045-20261009 and co-update-045-batch2-20261009. No global configuration or CO development source changed.
 
 Ownership: SOL for shared contracts, canonical records and integration; SWE-2 High
-implemented EXE02-request/1; Opus5.5 implemented ART01-content/1 and separately
-reviewed both file versions. SOL integrated the exact two diffs, corrected strict
-argument keys and preserved historical-freeze rejection. Current targeted39 tests,
-full316 tests (22.074s) and synthetic request/mock-text/content smoke PASS. These
-pure modules are unused by PAL. Opus milestone review of final source PASS, with exact five-file hashes confirmed by SOL against bf1759f and full316-test evidence.
+implemented request/file decoding/buffer, Opus5.5 implemented content/integrity and
+separately reviewed all components. SOL corrected strict keys/error codes, retained
+historical-freeze rejection, and connected six synthetic preparation cases.
+Source assessment and final document closure are distinct: G has no source blocker
+but remains failed; H verified only the specified document correction. Current full399
+and targeted122 evidence is linked in co-update-045-batch2-20261009/verification.json.
+Batch2 has4 verified tasks,1 failed,23 Native calls (20 Opus5.5,3 SWE Free), peak3.
+Final slots reserved/executing0; all96 payload,290 prior-state and13 original-record
+hashes remain unchanged. Service/product/human value remain UNMET/NOT_RUN.
 INT00's original four files remain unimplemented/unmodified by these tasks.
 
 Historical C064 stopped development and preserved the trial DB/records. That stop remains recorded below but is superseded for the current scoped CO preparation by the direct owner instruction; old trial/schedules remain stopped.
@@ -37,7 +41,7 @@ and existing state/unknown task is readable through its CLI. No older CO task
 process was observed before using the host ledger; this does not resolve the old
 remote SWE outcome. No decide/resume/cancel/retry/switch was performed.
 Three further pure preparation units have separate independent Opus reviews and
-SOL integration; final assessment citation closure remains pending. Common-service
+SOL integration; final assessment citation closure H is verified. Common-service
 integration waits for unresolved INT00. Trials/schedules remain stopped.
 
 ## Prior operating record — 2026-10-08 (current CO lane is C065/D034)
@@ -81,7 +85,7 @@ The owner requested reusable PAL materials be stored in this private repository,
 
 ## Working checkout
 Current development: `/private/tmp/pal-v5-co-20261009`, branch `codex/pal-v5-co`, same
-private GitHub repository. Committed CO input baseline is
+private GitHub repository. Initial INT00 CO input baseline is
 `a2d627238c72c61ae9b0ad7b9c7555bd84393dcb`. The original
 `/private/tmp/personal-agent-lab-stable0-20261006` checkout, its13 uncommitted records
 and runtime data are retained; [original integrity](evidence/operations/co-int00-20261009/original-integrity.json)
@@ -96,31 +100,30 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action — C067/D035
 
-This independent preparation slice is MET: both source diffs and the final
-Opus5.5 milestone assessment are verified and integrated, with targeted39 tests,
-full316 tests and the synthetic smoke PASS. Three ordinary CO tasks completed,
-13 Native calls total (12 Opus5.5,1 SWE-2 High), maximum actual concurrency2.
-Confirmed local Native call intervals overlap by96.164s; this is not a provider
-compute-time or12/24/30-way test. All new host slots are released. Existing-route
-local cap remains12 per adapter; Native quota unknown. Sol6.1/Astra are unsupported
-co-task routes. No billing/auth/publication/global configuration change.
+Both independent preparation slices are MET. Five unused pure helpers have scoped
+reviews and six synthetic connection cases. Current full399 PASS22.153s and
+122 targeted PASS; all11 source/test hashes match4ebab5a. G's independent source
+assessment has no blocker, but G stays failed/verified=false. H verified and
+independently approved its single required document citation fix (476 tokens).
+H checks the document/metrics only, not the source or full product.
 
-Review/source: bf1759fdc6bcaac0b8f112ca61f0f35aafc2a1b1 plus linked final hashes;
-[evidence](evidence/operations/co-update-045-20261009/final-checks.json) and
-[Opus milestone review](evidence/operations/co-update-045-20261009/milestone-review.md).
-Root records added after the review do not change source or retest product behavior.
+Batch2:4 verified/1 failed,23 Native calls (20 Opus5.5,3 SWE Free), actual peak3.
+Eight completed local overlap segments total262.733616s. Final local slots0;
+cap12 per Native adapter (24 across these routes), provider quota unknown.
+First2 was SOL's pilot choice, with no third-task rejection. Sol6.1/Astra are
+unsupported co-task routes; no30-way claim. Original13 records,290 prior-state
+files and96 runtime payload hashes remain unchanged.
+[Final records](evidence/operations/co-update-045-batch2-20261009/final-checks.json),
+[assessment](evidence/operations/co-update-045-batch2-20261009/milestone-review.md).
 
-Close the one assessment citation through H, preserve G's failed result, then
-record/push the preparation result. Source review found no blocker. Actual3-way execution
-is measured; SOL selected the prior two-task pilot, not a discovered two-task ceiling.
-Next dependent implementation is INT00's shared WorkRef/Ref/Action/Result types.
-Keep its old unknown request deferred: actual status still has no retry/switch;
-no substitute common implementation is sent. Later EXE01 owns Operation/ledger and
-ART01 owns saved IDs/source availability/transactional fencing. Current helpers
-remain unused by PAL; real provider/service CT/E2E and useful whole flow are unmet.
-Preserve original checkout/data and stopped trials/schedules. Current private Draft PR19 is updated and attached; the runtime update/capacity/
-outcome was actually sent to PAL人間判断. [Delivery/readback](evidence/operations/co-update-045-20261009/completion-delivery.json). No new human choice/read receipt,
-GitHub CI run, merge, Issue closure or whole-product completion is claimed.
+Deliver this result through the same private Draft PR19 and PAL人間判断; no
+whole PAL/Issue/milestone completion or new human usefulness question is inferred.
+Next dependency is INT00 WorkRef/Ref/Action/Result. Keep its unknown call deferred,
+with options=[] and unchanged report digest; no replacement common implementation.
+EXE01 later owns Operation/ledger, ART01 saved IDs/source availability/fencing.
+Current helpers are unused by PAL; real v5 providers/services/Goal flow and value
+remain UNMET/NOT_RUN. No new auth, paid fallback, public release or stopped
+trial/schedule restart. Source changes stop at4ebab5a; later records are documentation.
 
 ### Preserved INT00 continuation restriction
 

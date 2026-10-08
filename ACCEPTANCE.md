@@ -33,6 +33,27 @@ unimplemented; new state/capacity does not resolve it. All service CT/E2E/provid
 reference-availability and overall user usefulness are NOT_RUN. Prior Stable rows
 retain their original version/limits; no release or whole PAL completion.
 
+## C067 / D035 second preparation evidence (2026-10-09)
+
+Actual maximum3 independent CO tasks overlap on the same qualified state. Eight
+completed local Native segments total262.733616s, not remote compute/vendor capacity.
+Prior2 was SOL's small first pilot; no third-call refusal or two-task cap existed.
+
+EXE02-file/1, EXE02-bytes/1 and VER01-integrity/1 are unused pure modules, with
+separate Opus reviews, SOL corrections and six synthetic integration cases.
+Full399 unittest PASS22.153s; targeted122 PASS. All11 source/test hashes match4ebab5a.
+G's Opus assessment finds no source blocker but its document result remains
+failed/verified=false. H independently verifies the exact one-line citation fix;
+476 tokens, no other text/source change. H checks documents/metrics only and does
+not rerun product tests. [Assessment](evidence/operations/co-update-045-batch2-20261009/milestone-review.md),
+[verification](evidence/operations/co-update-045-batch2-20261009/verification.json).
+
+Batch2:4 verified tasks,1 failed,23 actual Native calls (20 Opus5.5,3 SWE Free).
+Host slots finally0, all96 payload/290 prior-state/13 original-record hashes intact.
+This slice is MET for preparation. Old INT00 remains unknown/awaiting_decision;
+service CT/E2E, actual v5 provider/storage/Goal flow and human value are NOT_RUN.
+No product completion, new grant, current trial-proof renewal or release is claimed.
+
 ## Retained Stable-0 completion definition
 
 Stable-0 may be declared only when all REQUIRED rows are PASS with evidence and the final audit is complete (D-019). blocked, partial, mock-only functional evidence, and not_run are not PASS. The original soak criterion remains unmet and historical; it is no longer required.

@@ -846,3 +846,28 @@ confirmed outcome or supported resolution of its unknown SWE request. Operation
 ledger and transactional ART storage are later owners, not substitute shared types.
 No repeated same-goal request or whole-project pause. Existing human window receives
 the runtime update, actual limits, completed contribution and exact remaining dependency.
+
+
+## C067 — three concurrent preparation modules, 2026-10-09
+
+Purpose: prepare bounded file-response/transport/integrity boundaries for the
+connected Expert path, using independent shared-state tasks. SOL's earlier2 was
+an initial pilot choice. Actual peak3 and eight local Native intervals
+(262.733616s total) are measured; cap12 per Native adapter, quota unknown.
+
+Outcome: D/E/F separate reviews and declared verifiers PASS; SOL integrated exact
+files, corrected bounded error typing and added six synthetic pipeline cases.
+Full399 PASS22.153s, targeted122 PASS. All11 final source/test hashes match4ebab5a.
+G's source assessment has no blocker, but its note stays failed/verified=false;
+H verified and independently approved the single required citation correction.
+Batch2 verified4/failed1,23 Native calls (20 Opus5.5/3 SWE Free), final slots0.
+[Evidence](../../evidence/operations/co-update-045-batch2-20261009/final-checks.json),
+[assessment](../../evidence/operations/co-update-045-batch2-20261009/milestone-review.md).
+
+Contribution: five pure unused helpers connect a deterministic bounded file
+response to prepared content and byte integrity. No actual provider, saved Ref,
+Operation receipt, Goal flow, service CT/E2E or user value is established.
+The assessment selects INT00 shared types as the next dependency, not extra helper
+work to fill slots. Its unknown call remains preserved with no retry/switch;
+Operation/ledger and ART/grant/source work follow. Preserve stopped trials/schedules,
+original data, old state and historical acceptance limits.

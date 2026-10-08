@@ -27,7 +27,10 @@ line correction with its own independent review and document verifier. No code
 implementation or unknown task is resent. Next assessment: leave margin below
 the word limit, count markdown tokens locally and keep source attribution when
 shortening. Verify the exact requested edit and report a failed CO task honestly;
-do not convert successful tests into review approval. Closure remains pending.
+do not convert successful tests into review approval. H verified the exact one-line
+correction and independent review approved it; final476 tokens, source unchanged.
+G's failed status and both reviews remain intact. This closure verifies the stated
+document requirement, not a general improvement in model accuracy.
 
 ## 2026-10-09 — decoder test helper forwarded an assertion keyword
 
