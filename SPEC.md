@@ -3,7 +3,7 @@
 ## Goal
 Overall destination: one personal conversational assistant that remembers relevant context, accepts authorized work naturally, prepares reversible results within explicit limits, survives interruption, verifies outcomes and returns results/blockers/genuine human decisions without requiring the user to manage internal tasks. Stable-0 is the released minimum core, not the whole project.
 
-G-001/D-022 manages that destination through project→milestone→Issue goal/evidence loops. [P-001 v1](docs/plans/P-001-v1.md) proposes the overall phased completion envelope and prospective G-P01–04; human adoption is pending. D-021 Stable-1 remains the independently approved current scope. Future milestone registration is planning, not implementation authority.
+G-001/D-022 manages that destination through project→milestone→Issue goal/evidence loops. [P-001 v2](docs/plans/P-001-v2.md) is the latest proposed overall phased completion envelope; v1 and prospective G-P01–04 remain retained history/proposal, not adopted authority. D-021 Stable-1 remains the independently approved current scope. Future milestone registration is planning, not implementation authority.
 
 Stable-0 is intentionally smaller than the broader M1/M2 roadmap. PublicSearch, scheduled wake, proactive topic suggestions, and memory dreaming remain accepted future work but are not Stable-0 blockers.
 

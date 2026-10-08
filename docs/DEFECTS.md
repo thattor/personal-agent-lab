@@ -1,5 +1,49 @@
 # Defects and prevention
 
+## 2026-10-08 — C064 component readiness displaced the product-value checkpoint
+
+The owner rejected the C063 conversation/draft-only trial as meaningful PAL usefulness,
+while explicitly allowing necessary component tests. The implementation has a durable
+local-draft Expert control lane but no external-information/task connector. The docs
+already distinguish that limited milestone from the overall assistant. Nevertheless,
+the release handoff asked for usefulness of that narrow screen without first resolving
+its contribution to the owner's desired connected work. No overall release was actually
+declared; the error was work selection and presentation, not a false historical release.
+
+Evidence: [direct owner sources and code map](../evidence/operations/c064-owner-value-gap.json),
+SPEC's Stable-1 local-only limit, runtime.py's local_draft capability and prior C061–063
+release handoffs. Existing G001 checkpoints were insufficiently applied: their conclusions
+did not redirect the next work away from component refinement toward integrated value.
+
+Correction: record the evaluation as received/non-PASS, stop asking the owner to test
+the same draft-only screen, and obtain one official Opus milestone direction review in
+the design lane. Preserve component proofs; do not infer missing code from the complaint
+or new connection permission from the desired outcome.
+
+Prevention: at Issue entry/closure state design role, new practical value, why this work
+is needed now and the remaining gap. At milestone boundaries or repeated/direction failures,
+Opus checks those conclusions and the next work choice. Reuse existing records; no review
+per wording change or extra micro-approval. Next verification: the C064 review must yield
+a minimal evidence-bound connected-work proposal, and the next owner evaluation must show
+that integrated task rather than a component test. This prevention is recorded; its later
+product effectiveness is not yet proven.
+
+Brief sequence: D021/P002 defined a local-draft milestone. D029 moved meaning/target
+selection to the model. Repeated C038–C060 model-quality repairs and cohorts stayed within
+that narrow task; D031 then explicitly stopped quality loops. C061–C063 nevertheless
+presented the component-ready draft flow for owner usefulness. C064's direct negative
+feedback showed the missing connected-work value and led to a pause/design rebuild.
+These facts support a work-selection/acceptance-framing failure. The inference is that
+local pass conditions displaced the project-level outcome; model incapability, an absent
+Expert control component, or lack of owner interest in the actual goal are not established.
+
+Latest correction: preserve this record, pause product work, and rebuild small milestones
+around Expert instructions and actual work. Conversation/draft composition is delegated
+to the model. P001v3 is still an unreviewed proposal, not proof that the prevention worked.
+Opus milestone review has not completed: preparation failed before invocation and the
+design chat was archived. Verify preparation files and successful delivery before claiming
+review progress; never count a failed preparation as a consultation.
+
 ## 2026-10-08 — C063 source pin still called the prior product current
 
 The first full suite after the duration change passed276/277 tests; one repository

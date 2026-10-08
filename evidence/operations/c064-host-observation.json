@@ -1,0 +1,28 @@
+{
+  "observed_at": "2026-10-08T12:44:28.243563+00:00",
+  "source_commit": "94fcacbf506b7514a2380dc1c4e61ccc5dcffca2",
+  "canonical_writes": false,
+  "product_provider_calls": 0,
+  "host_health": {
+    "pid": 20002,
+    "started_at": 1791462146.566205,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  },
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 13,
+    "expires_at": 1791470246.5000908,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "canonical_counts": {
+    "records": 6,
+    "goals": 0,
+    "attempts": 0,
+    "artifacts": 0
+  }
+}

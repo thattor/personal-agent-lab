@@ -1,0 +1,10 @@
+{
+  "contract_version": "v5 candidate",
+  "milestone": "INT-00",
+  "original_checkout_preserved": true,
+  "product_modules_changed": false,
+  "runtime_dbs_changed": false,
+  "calls": 0,
+  "review": "NOT_RUN",
+  "external_integration": "NOT_RUN"
+}

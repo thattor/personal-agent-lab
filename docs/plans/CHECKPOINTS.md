@@ -748,3 +748,39 @@ No synthetic inputs/model generation/automatic renewal/canonical repair. The two
 readiness objective is achieved; it is not2-hour elapsed reliability evidence. Next is
 actual owner whole-flow usefulness, then final release audit. Development awaits that
 external owner experience; product trial is running. No milestone/project completion.
+
+## C-064 — owner feedback requires a connected-work value checkpoint
+
+Target: C063/a433787/product04f30387, current source94fcacb. Owner HR-STABLE1-001 is
+answered: necessary component tests are acceptable, but the local conversation/draft
+screen does not deliver the desired external-information/Expert usefulness. No PASS or
+release approval follows. [Direct source and implementation map](../../evidence/operations/c064-owner-value-gap.json).
+
+Design role/value: the existing Primary and durable local-draft task lane establish safe
+delegation/control/artifacts. They do not yet let Expert obtain outside information and
+complete a useful connected task. Additional wording/recognition work would not close
+this gap, so D031 quality loops remain stopped. Tests277 PASS remain component evidence.
+
+Work selected now: one official Opus design-alignment review via PAL設計 and a minimum
+connected-work proposal. Existing official GitHub GET of this repo's Issue6 works in
+the controller; [feasibility](../../evidence/operations/c064-github-read-feasibility.json)
+is not product integration or adoption authority. Compare one bounded read-only source,
+Expert analysis/preparation and a verified reversible result with the smallest useful
+alternative. Retain safeguards and identify only the actual material scope difference
+for human adoption. New task/capability remains unimplemented pending that decision.
+
+D033 applies the owner's Issue/milestone direction check in existing records. This
+checkpoint changes next work selection; it does not revive full P001 adoption as a gate,
+old soak quotas, schedules, or ordinary technical owner questions. After scoped adoption:
+required SWE review → smallest implementation/test/evidence loop → integrated real task
+→ actual usefulness → final audit. Issue5/2/milestone1/global6 remain OPEN.
+
+C064 subsequent owner direction pauses product work and authorizes a design rebuild
+into small milestones; composition quality is delegated to the model. Goal PAUSED and
+trial PID20002 normally stopped, DB preserved/port closed. No new product/model test or
+code change. [Stop evidence](../../evidence/operations/c064-owner-pause.json), [latest source](../../evidence/operations/c064-redesign-direction.json).
+Prior design chat is archived/interrupted and its review preparation failed; Opus review
+is NOT_RUN. [P001v3 draft](P-001-v3.md) now makes the next outcome concrete, but remains
+UNREVIEWED/NOT ADOPTED. Next: designated design lane → one scoped official Opus review →
+material scope adoption → implementation of the first small milestone. Do not resume the
+old plan, infer broad new authority or ask the owner to grade component prose again.

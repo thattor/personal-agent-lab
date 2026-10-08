@@ -1,7 +1,7 @@
 # AGENTS.md — Personal Agent Lab
 
 ## Mission
-The project-level destination is the personal assistant described in SPEC.md. Manage project goal → GitHub milestone → goal-bearing Issue → verified work unit under G-001/D-022. [Overall plan P-001 v1](docs/plans/P-001-v1.md) is PROPOSED, not human-adopted. Stable-0 is released; Stable-1 under D-021 is the sole ACTIVE implementation milestone. Resume STATE.md, continue independently authorized work, and never activate PROPOSED stages from GitHub metadata alone.
+The project-level destination is the personal assistant described in SPEC.md. Manage project goal → GitHub milestone → goal-bearing Issue → verified work unit under G-001/D-022. [Latest overall plan P-001 v2](docs/plans/P-001-v2.md) is PROPOSED, not human-adopted; v1 is retained history. Stable-0 is released; Stable-1 under D-021 remains the approved current milestone; C065/D034 authorizes the scoped CO development start; INT-00 contract preparation is current, while external product activation remains subject to the reviewed candidate scope. Resume STATE.md, continue independently authorized work, and never activate PROPOSED stages from GitHub metadata alone.
 
 This is a greenfield project. Do not search for, read, copy, migrate, or preserve compatibility with any old PAL implementation, schema, workflow, review, P0/P1 list, or codebase.
 
@@ -97,7 +97,7 @@ Before each call, confirm the account is already authenticated and the selected 
 8. Update ACCEPTANCE.md with evidence and STATE.md with current state.
 9. Commit a small green increment. Reference acceptance and decision IDs.
 10. Evaluate the unit goal and contribution to its Issue/milestone/project; record outcome/evidence/commit/limits/plan impact/next action. Continue the next unfinished authorized item.
-11. At Issue closure independently verify its objective; at milestone exit/entry evaluate project contribution and plan assumptions. Defects/repeated causes/user feedback/assumption failures trigger early checkpoints. Closed children alone never complete the parent.
+11. At Issue entry/closure verify its design role, concrete added user value, why it is the next necessary work, and remaining project gap. At milestone entry/exit, and on direction drift or repeated causes, obtain one official Opus design-alignment review of those points through the design lane. Record the resulting next work choice in the existing CHECKPOINTS/STATE records. This is not a per-commit/wording review or another owner approval gate. Defects/user feedback/assumption failures trigger an early checkpoint. Closed children alone never complete the parent.
 12. Material plan changes: discuss/agreed with Opus → versioned evidence-bound proposal → actual human decision → update docs/GitHub → resume dependencies. Pending judgment blocks only affected work; routine technical decisions remain autonomous. See D-022 and docs/plans/P-001-v1.md. Do not restart paused schedules.
 
 If leaving a red state because of a real blocker, STATE.md must contain the exact failure, evidence, attempts, and next action.
@@ -115,3 +115,6 @@ A mock, fixture, reviewer opinion, or model self-report is not product evidence.
 - Stable-0 should avoid real irreversible side effects; use a spy/denied tool for negative tests.
 - No extra cost.
 - No external public exposure.
+
+## C065 CO development lane (2026-10-09)
+SOL integrates and owns canonical records. Use the global task-orchestration skill and the qualified co_v4.task entrypoint identified in STATE.md. Scoped worker changes are generated in CO-owned isolated workspaces and integrated only after SOL checks the exact diff, host verifier and independent review. Preserve the original dirty checkout and runtime data. Respect one-call-per-state; no second engine or alternate state to bypass it. Current input is docs/design/contracts-v5, candidate pending INT-00 review.

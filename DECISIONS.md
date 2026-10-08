@@ -1277,3 +1277,88 @@ Pin successful complete() after900, expiry after auth, clock fences, budget exha
 same proof reuse across durations, mock discrimination and HTTP/UI deadline agreement.
 Preserve current120-second generation deadline and supervisor cleanup grace; the displayed
 deadline is new-call admission, not a hard process-stop promise. No further review needed.
+
+## D-033 — align work selection with actual assistant value, 2026-10-08
+
+C064 independently verified three direct owner messages in the persistent human/design
+lanes. [Exact text, message IDs and current source map](evidence/operations/c064-owner-value-gap.json).
+The owner accepts necessary component tests, rejects the current conversation/draft-only
+screen as delivering the desired PAL usefulness, and requests design alignment at Issue/
+milestone progress so repeated attention to details does not displace the actual goal.
+This is received negative value feedback, not an unanswered evaluation, release approval,
+or permission to activate new external capabilities. N1-07 stays non-PASS.
+
+Adopt the directly requested operating correction without another owner question: at
+Issue entry/closure identify its design role, added practical value, necessity now and
+remaining project gap. At milestone entry/exit and direction drift/repeated causes,
+obtain one official Opus alignment review through PAL設計, with existing access/cost gates.
+Use the existing CHECKPOINTS/STATE/Issue records and make the conclusion affect the next
+work choice. Do not add a per-commit review, wording exam, new automatic approval gate,
+or repeat the same draft-only owner trial. D031's stop on prose-quality loops remains.
+
+Current facts: Primary reasoning and durable Goal/WorkOrder/local-draft Executor/host
+receipt control are implemented. Thus an Expert control component exists, but its sole
+capability is local_draft; there is no product external-information/task connector.
+Official Claude model communication and controller GitHub/CUA/reviewer capabilities
+are not PAL external tools. Existing277-test/finite real-function evidence remains
+component evidence with its original limits, not integrated usefulness. No code changed.
+
+Question assigned to one official Opus consultation in PAL設計: challenge the project's
+current direction against SPEC/DESIGN and latest proposed P001v2; identify the smallest
+useful external-information → Expert work → verified reversible result slice, compare
+a repo-bound existing official GitHub read with the smallest useful alternative, and
+separate available existing authority from a real capability/scope adoption decision.
+The review is in progress at this recording. No changed product design is adopted yet,
+and no review/implementation is duplicated in development. Preserve the raw review and
+access evidence before recording its disposition. New capability implementation still
+requires adopted scope and the existing SWE-2 High substantial-implementation review.
+
+The process failure and next verification are recorded in docs/DEFECTS.md. This boundary
+review must produce a value-bearing next unit rather than another conversation-quality
+cohort. P001/future multimodal scope stays unadopted; current safeguards, no-extra-cost,
+no new auth/public exposure, and paused schedules remain unchanged.
+
+### D033/C064 — subsequent pause and design rebuild direction
+
+The owner next explicitly instructed a development pause for learning from this failure,
+then directed rebuilding the design into small milestones, checking actual implementation
+with Opus at each boundary, continuing an unmet milestone and advancing when achieved.
+Conversation and draft composition quality should be delegated to the model; focus on
+giving Expert a concrete work instruction and obtaining its result. [Pause source/actual
+shutdown](evidence/operations/c064-owner-pause.json) and [subsequent direct direction](evidence/operations/c064-redesign-direction.json)
+were independently read. Do not treat this as an indefinite unanswered approval request,
+permission to resume the old plan, or authority to discard all useful components.
+
+Goal was changed to PAUSED. Owned trial PID20002 shut down normally; port59684 is closed,
+original DB and a local private backup are preserved with unchanged6 records and zero
+Goals/Attempts/artifacts/receipts. No new product code, tests, generation, trial extension,
+release or schedule. Design preparation and the retrospective are now the authorized work.
+The prior design turn is interrupted/archived. Its packet-generation command failed on
+source encoding; a subsequent runner invocation failed because the file did not exist.
+No completed Opus review exists. The earlier in-progress expectation above is superseded,
+not review evidence. Do not retry the same missing script or claim another chat received
+a handoff when delivery fails. Preparation should use structured/encoding-safe file writes
+and verify its file before execution; no provider call is needed to diagnose this failure.
+
+[P001v3](docs/plans/P-001-v3.md) is the single new DRAFT/UNREVIEWED/NOT ADOPTED plan,
+not a second authority source. Its first candidate outcome is one actual bounded external
+read through PAL, Expert work and a host-verified reversible result. Controlled continuation
+and integrated evaluation/release are subsequent small candidates. Model composition
+quality is not a gate. Preserve functional targeting, evidence, permissions and cost limits.
+The exact new capability/scope still needs official Opus review and material human adoption;
+the already explicit checkpoint/quality direction does not need another approval.
+
+Next is to establish the designated design lane and review this concrete draft. The old
+archived chat has not been revived and no new chat created. Missing routing does not
+prevent preparing the evidence/plan, but it must not be reported as a completed review.
+No first milestone is activated from this draft alone, and no product automatically restarts.
+
+## D-034 — scoped SOL/CO development start, 2026-10-09
+
+Direct owner source: chat 01a11c78-a3bc-76e1-b4ee-2451d5c0f1c2, latest message titled 開発体制：SOL統括＋Common Orchestrationによる並列実装. Owner explicitly authorizes delegation and necessary private PAL development materials to existing CO SOL/SWE-2 High/Devin/Astra/Opus routes, requests exact runtime/model/capacity identification and isolated scopes, and accepts actual capacity below30 with sequential work. Same existing Opus telemetry uncertainty alone is not a new send-approval gate. No new auth/service/additional cost/publication or refusal bypass is authorized.
+
+Apply this newer direction to the first coherent development-preparation unit, INT-00: preserve/import the v5 candidate, obtain an actual Opus design-delta assessment, implement pure common contract types/examples via SWE, inspect and independently review the same diff. This does not label v5 already reviewed, activate all proposed product capabilities, alter Stable-0 acceptance, or resume old schedules/trials. Later external-capability adoption must be based on the concrete reviewed scope, not GitHub metadata or a collaborator's opinion.
+
+Observed CO0.4.4 task entrypoint supports qualified Claude Opus5.5 and Devin SWE-2 High and one inference at a time per state, not30. Existing state is reused only through CLI; no direct state edits, route substitution, engine/capacity workaround or alternate state. SOL/Astra development APIs are not qualified co-task routes. Current Native quota is unknown; fresh official account observation shows Claude Pro extra usage OFF and SWE Free. Auth metadata alone is not inference proof.
+
+Keep the original checkout's uncommitted record changes, unreviewed P001v3 and runtime data intact. Development uses an isolated local worktree and an explicit committed input baseline. Models receive only listed design/source files, not owner history, runtime DB, auth files or private account metadata. CO verified means its declared verifier/files/review version only; SOL must inspect/integrate/retest. No review has completed at this preparation checkpoint.

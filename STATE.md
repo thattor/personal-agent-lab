@@ -1,7 +1,15 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 is released; text-only Stable-1 remains the immediate authorized delivery goal. D031 ends further conversation/prose-quality tuning, tests and reviews; minor editable prose is a known limitation, never a retroactive PASS. C060/C061 retain finite actual Primary/function/artifact evidence. C063 implements the directly requested trial extension under D032: fresh startup900 seconds, explicit finite admission up to8100 seconds, same budget and visible deadline. Product04f30387;34 focused/277 full tests PASS25.467s. Same-DB/URL trial now runs on owned PID20002 with fresh official Pro/extraOFF,16 inherited calls, actual UI deadline2026-10-08 23:37:26 JST;8007 seconds remained at the readiness handoff. No owner input/evaluation claimed. Remaining: real whole-flow owner usefulness and final audit/release. Goal card remains BLOCKED; this explicit development turn is active. Old schedules remain paused; the conditional noninterrupting50-minute checkpoint remains NOT_CONFIGURED.
+Current owner instruction in chat 01a11c78-a3bc-76e1-b4ee-2451d5c0f1c2 (2026-10-09): SOL coordination, explicit CO delegation for PAL implementation/research/review, existing-route private development material use, isolated writes, host verification and staged independent reviews. This resumes scoped development preparation after the prior stop; no new authentication, paid fallback, publication or stopped schedules. See D-034.
+
+Current work: INT-00 on branch codex/pal-v5-co, checkout /private/tmp/pal-v5-co-20261009. Candidate v5 is imported byte-for-byte with provenance under docs/design/contracts-v5. First unit is design-delta review plus pure shared contracts and representative executable examples. New external product capabilities and v5 real integration are NOT_RUN; original Stable-0 evidence remains historical. Original dirty checkout /private/tmp/personal-agent-lab-stable0-20261006 and all runtime data are retained untouched.
+
+Actual CO entrypoint: 0.4.4 development checkout /Users/hattoritoshiyasu/Documents/ai-company/development/common-orchestration-public; /opt/homebrew/bin/python3.13 -E -s -B -m co_v4.task; existing state /private/tmp/co04-human-route-cr3o_bg1/state. Registered exact routes claude/claude-opus-5-5 and devin/swe-2-high. Shared-state model-call ceiling is 1, quota unknown; 30-way execution is unavailable through this entrypoint. Sol6.1/Astra are not registered/supported task routes. Do not create alternate state or use the old PATH co wrapper to raise this limit. Fresh official Pro/extraOFF and SWE Free observations are in evidence/operations/co-int00-20261009/environment.json.
+
+Ownership: SOL for shared contracts, DB integration, original-canonical merge and state records; Opus for v5 design and independent milestone review; SWE-2 High for isolated contract implementation/tests. Planned initial CO run uses only imported design material and pal/__init__.py, creates pal/contracts_v5.py, tests/test_contracts_v5.py, tests/fixtures/contracts_v5.json and docs/design/contracts-v5/INT00-IMPLEMENTATION.md. It must not change existing product modules, DBs, provider configuration, services or CO. No PAL model generation or server restart is implied.
+
+Historical C064 stopped development and preserved the trial DB/records. That stop remains recorded below but is superseded for the current scoped CO preparation by the direct owner instruction; old trial/schedules remain stopped.
 
 ## Current operating authority — 2026-10-08
 
@@ -10,8 +18,10 @@ establishes three continuing lanes. This chat alone implements and writes canoni
 records. Human judgment is `01a1137a-8de3-7890-b874-cdd0a7125711` (PAL人間判断):
 noninferable facts, real usefulness and authority beyond existing permissions only.
 The existing design/function-change chat is `01a11837-e1e3-71f0-8ff8-bbaf8dc14527`
-(PAL設計, formerly マルチモーダル対応設計を確認), confirmed against its owner's stated role and retention
-instructions. Its current product implementation proposals remain unadopted; the owner-authorized next-version design preparation is retained separately. Necessary requests/replies/reflection messages between these lanes are
+(PAL設計, formerly マルチモーダル対応設計を確認). C064 now observes this chat archived/notLoaded
+with an interrupted turn; no active replacement is identified. Do not claim a handoff was
+delivered there or revive it without the appropriate owner direction. Its current product
+implementation proposals remain unadopted; the owner-authorized next-version design preparation is retained separately. Necessary requests/replies/reflection messages between these lanes are
 explicitly authorized; outside support/email sending is not. No duplicate owner questions.
 STATE.md and Issue6 remain the existing project continuation/decision entry points.
 
@@ -30,9 +40,9 @@ Hierarchy and goal/evaluation loops configured: ACTIVE [milestone1](https://gith
 
 [Private development Project](https://github.com/users/thattor/projects/1) now exists with the11 historical repository Issues plus completed [Primary implementation Issue#12](https://github.com/thattor/personal-agent-lab/issues/12), linked under parent#2; [readback](evidence/reviews/judgment-boundary/github-project-current.json). Authentic human Projects authorization/completion received: HR-PERM-001 fulfilled. No new authentication needed. Proposed future stages remain unadopted/dormant; do not use P001 adoption as a blocker for current authorized work.
 
-D-028 withdraws HR-INPUT-001/P003v1 form-only/wording approval, preserving the wrong-target defect for development. HR-STABLE1-001 is one actual end-to-end usefulness evaluation after a working candidate, not an implementation blocker. No pending micro-question. The persistent human window received the correction. D-029 assigns semantic intent/target selection/essential clarification to the Primary model, with host canonical/security/dedupe checks. Owner reference model is Qwen3.8-27B; model identity verified, actual PAL qualification NOT_RUN, no new connection installed. See [cause, authentic sources and reviews](evidence/reviews/judgment-boundary/README.md).
+D-028 withdraws HR-INPUT-001/P003v1 form-only/wording approval, preserving the wrong-target defect for development. HR-STABLE1-001 now has direct negative value feedback on C063, recorded in [C064](evidence/operations/c064-owner-value-gap.json). Do not repeat the same draft-only evaluation or call the answer pending. Technical work is owned by development; a useful integrated flow must exist before another overall owner evaluation. No pending micro-question. D-029 assigns semantic intent/target selection/essential clarification to the Primary model, with host canonical/security/dedupe checks. Owner reference model is Qwen3.8-27B; model identity verified, actual PAL qualification NOT_RUN, no new connection installed. See [cause, authentic sources and reviews](evidence/reviews/judgment-boundary/README.md).
 
-Historical Issue3 recognition under D-023 passed N1-01/N1-02 with [fixed corpus, original failures and independent evaluations](evidence/reviews/stable1-classification/README.md): frozen16/16 requests, zero unwanted Goals; final unseen12 zero false-positive Goals and3/4 request recall. Known safe miss: `草案` request remained conversation. [73-test full suite PASS](evidence/reviews/stable1-classification/final-full.txt), [96-case actual host/dedupe audit](evidence/reviews/stable1-classification/final-host-audit.json). These lexical results do not qualify current D-029 Primary recognition: N1-01/D029 current fixed40 first attempts PASS after retained predecessor FAILs; N1-02 current independent12 PASS with independent audit. Checkpoint C-001 in docs/plans/CHECKPOINTS.md. Issue4 D-024 implements schema2, bounded natural controls, durable target selections/source gates and UI buttons; N1-03/N1-04 PASS with [synthetic host/crash/HTTP evidence](evidence/reviews/stable1-targets/README.md), [91 full tests PASS](evidence/reviews/stable1-targets/selection-final-full.txt). N1-05/06 PASS, N1-07 FEEDBACK_RECEIVED, N1-08 NOT_RUN. Latest actual-provider evidence and remaining gates are recorded below.
+Historical Issue3 recognition under D-023 passed N1-01/N1-02 with [fixed corpus, original failures and independent evaluations](evidence/reviews/stable1-classification/README.md): frozen16/16 requests, zero unwanted Goals; final unseen12 zero false-positive Goals and3/4 request recall. Known safe miss: `草案` request remained conversation. [73-test full suite PASS](evidence/reviews/stable1-classification/final-full.txt), [96-case actual host/dedupe audit](evidence/reviews/stable1-classification/final-host-audit.json). These lexical results do not qualify current D-029 Primary recognition: N1-01/D029 current fixed40 first attempts PASS after retained predecessor FAILs; N1-02 current independent12 PASS with independent audit. Checkpoint C-001 in docs/plans/CHECKPOINTS.md. Issue4 D-024 implements schema2, bounded natural controls, durable target selections/source gates and UI buttons; N1-03/N1-04 PASS with [synthetic host/crash/HTTP evidence](evidence/reviews/stable1-targets/README.md), [91 full tests PASS](evidence/reviews/stable1-targets/selection-final-full.txt). N1-06 PASS; N1-05 retains the nonrequired D031 quality limitation; N1-07 FEEDBACK_RECEIVED / usefulness not accepted and N1-08 PARTIAL. Latest actual-provider evidence and remaining gates are recorded below.
 
 Stable-0 remains functional-first complete: all20 required S0/F0 rows PASS, authentic human usefulness evaluation reflected, final66 tests and controller audit PASS, master Issue#1 CLOSED/completed. Version `stable-0`, production baseline ccfba35. [Completion receipt](evidence/final/stable0/completion.json), [proof and limitations](evidence/final/stable0/README.md). Historical S0-13 stays NOT PASS/nonrequired; no long-term reliability claim. Earlier pending/active/blocked descriptions below are historical and superseded by current milestone/completion records.
 
@@ -51,31 +61,39 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
-C063/D032 is implemented and pushed as a433787/product04f30387. [277-test/source audit](evidence/reviews/two-hour-trial/validation.json).
-Only native duration, startup option and displayed deadline changed; Primary/Expert/
-context/Store/runtime source remains unchanged. Historical actual-model proofs retain
-original versions; no prose-quality sweep or resampling was performed.
+C064 owner direction supersedes the former trial/evaluation wait. [Direct feedback and
+code map](evidence/operations/c064-owner-value-gap.json), [pause](evidence/operations/c064-owner-pause.json),
+and [subsequent design-rebuild instruction](evidence/operations/c064-redesign-direction.json)
+are received. No repeated draft-only trial, prose-quality tests, synthetic owner input,
+new product implementation or release. Do not call the negative evaluation unanswered.
 
-[Actual requested extension](evidence/operations/c063-preview-launch.json): fresh existing
-Pro/extraOFF, expired PID80016 closed before replacementPID20002, same DB inode/URL and
-actual remaining16 calls. The Chrome page shows proof valid, remaining16 and the absolute
-new-call deadline2026-10-08 23:37:26 JST. At the readiness handoff8007 seconds remained,
-above the requested7200. No synthetic owner input, model generation or DB repair here.
-This Mac's URL is http://127.0.0.1:59684/; read-only history remains after proof expiry.
-No renewal, call-budget reset, new login/payment/public exposure or schedule was added.
+The authorized work now is a short evidence-based retrospective and a rebuilt design
+with small outcome milestones. [P001v3](docs/plans/P-001-v3.md) is the concrete unreviewed
+starting draft: one real connected Expert task → controlled continuation/recovery →
+integrated usefulness/release audit. Reuse existing Primary/Goal/WorkOrder/receipt/control
+components. The external read capability is proposed, not adopted. Controller official
+gh feasibility is not PAL integration or permission for a new product capability.
 
-Next: receive actual whole-flow owner use/evaluation through the existing HR-STABLE1-001
-in PAL人間判断. The working trial is running; development is now waiting for that owner
-experience, not autonomously monitoring or generating. On receipt, re-read current state
-and actual runtime, reflect the evaluation, diagnose any material functional blocker,
-then finish final full-suite/version/limitations/Issue audit and release if all required
-rows pass. If the session expires, report generation unavailable; do not silently renew.
-The Goal card is still BLOCKED; it cannot be resumed through the available goal-status tool.
+Next: establish the designated design lane (old PAL設計 is archived), hand over this
+single draft and evidence, obtain one official Opus alignment review with fresh existing
+no-extra-charge access, and finalize only the real material scope delta through the
+human window. The prior review never ran: packet preparation failed, then the runner
+file was absent before the old design turn was interrupted. Do not count it as a review
+or repeat failed commands blindly. Do not revive the old plan or require blanket P001
+adoption. Then implement only the adopted small milestone, assess actual implementation
+against design with Opus, continue if unmet and advance to the next approved milestone
+if met. Conversation/draft composition quality is delegated to the model, not a new gate.
 
-N1-07, N1-09 human component and final N1-08 remain incomplete. Issue12 is CLOSED/completed/
-Project Done; release#5, parent#2, milestone1 and overall project#6 stay OPEN. Stable-1 is
-not whole-project completion; future P001/multimodal and old schedules stay inactive.
-The conditional new50-minute noninterrupting checkpoint remains NOT_CONFIGURED.
+The product trial is NOT RUNNING. Owned PID20002 received SIGTERM, disappeared with no
+remaining children/listener, port59684 returned connection refused, and original DB/
+counts plus a local private backup were preserved. No new generation, trial extension,
+source-code change, canonical repair or schedule occurred. Goal card remains PAUSED;
+design preparation does not imply an automatically resumed goal or product server.
+
+N1-07 usefulness is not accepted, linked N1-09 human component and final N1-08 are incomplete.
+Issue12 retains its limited completed implementation objective. Release#5, parent#2,
+milestone1 and overall#6 stay OPEN. Latest scope/plan adoption, not another draft-only
+owner questionnaire, governs the next implementation. Old future stages remain inactive.
 
 ## Historical access preparation C050–C052 (superseded next actions)
 

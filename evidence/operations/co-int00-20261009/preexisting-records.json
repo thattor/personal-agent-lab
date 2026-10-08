@@ -1,0 +1,20 @@
+{
+  "source_checkout": "/private/tmp/personal-agent-lab-stable0-20261006",
+  "source_head": "94fcacbf506b7514a2380dc1c4e61ccc5dcffca2",
+  "preserved_sha256": {
+    "ACCEPTANCE.md": "e8ada641b5b54fd0ef861d85f5bf5ff2f0444a34303e554e5046ffb989742b95",
+    "AGENTS.md": "44e6c35d251f7c3148f236dc2c213371b1507090d3ec36237854c4a9141eac3a",
+    "DECISIONS.md": "75a6a18de94339ca79942e00e6a5e66cdfd88219fbb870ad6d9cd6fcea6c72df",
+    "SPEC.md": "d02c1c9970eaabe8f32f1e4ed2a0031525f3c64da2e02a456a5f8f2f13bed9e8",
+    "STATE.md": "2a85f4f57b7987f7c0c2aab8827053d6dadc8623a1576478370ce2d8b5773af4",
+    "docs/DEFECTS.md": "889ebace5614d591afd7672894adebd4744ecc679063ace752eeee2240199c0a",
+    "docs/plans/CHECKPOINTS.md": "5dea8be05a04023ffe4b7aa98f95d0f3af47afbd3f3965da9e7b3b47a3fc7706",
+    "docs/plans/P-001-v3.md": "3084059e37f2d5bd990bccdd1f5c333ca7e62d5c7bb749077ec46c7f8e708c64",
+    "evidence/operations/c064-github-read-feasibility.json": "8ebd5d80f8a895c0b655f808df5ed7f0a5fc95089c777a2c6ec0c78ca2baae1d",
+    "evidence/operations/c064-host-observation.json": "9825e1e8686d8795897382e324a4ab9981030de44911fcc0726b678730e17c79",
+    "evidence/operations/c064-owner-pause.json": "49ae9ae59d25471144e19e25005bf2a9049087814f49a5267c67f7d604e8e5ca",
+    "evidence/operations/c064-owner-value-gap.json": "30c126e5925bd483ab98e95d1e2d1ae3e289004767e00e7dd69326db277b05d1",
+    "evidence/operations/c064-redesign-direction.json": "f518333fb34bd71660a1af2015e1b26f36f2fb3836df2bdea366ee8cedf53161"
+  },
+  "original_checkout_modified": false
+}

@@ -1,0 +1,38 @@
+{
+  "observed_at": "2026-10-08T17:12:11.240841+00:00",
+  "runtime": "/Users/hattoritoshiyasu/Documents/ai-company/development/common-orchestration-public",
+  "runtime_version": "0.4.4",
+  "runtime_commit_observed": "6395ec135521c15f6426897941850cf654ba7a64",
+  "runtime_note": "Existing development checkout; source must be rechecked before execution. Not a separately installed immutable release.",
+  "python": "/opt/homebrew/bin/python3.13",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "native_cwd": "/Users/hattoritoshiyasu/Documents/ai-company/development/co04-openai/common-orchestration/runtime_v4",
+  "routes": [
+    {
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cli": "2.1.291",
+      "existing_auth": "claude.ai Pro, observed via official auth status outside sandbox",
+      "usage_session_used_percent": 5,
+      "usage_week_used_percent": 33,
+      "extra_usage_enabled": false,
+      "auto_reload_enabled": false
+    },
+    {
+      "route": "devin",
+      "model": "swe-2-high",
+      "cli": "3000.11.3",
+      "cost_tier": "Free, observed via official models list outside sandbox"
+    }
+  ],
+  "shared_state_model_call_limit": 1,
+  "quota_remaining_in_native_registry": "unknown",
+  "new_routes_registered": false,
+  "co04_task_sol_astra_supported": false,
+  "sol_astra_note": "task CLI route choices are claude/devin. Other CO adapters exist as development APIs, but are not this qualified task entrypoint. No new API route or paid Devin model registered.",
+  "actual_pal_co_calls_at_preparation": 0,
+  "parallel_model_calls_started": 0,
+  "runtime_commit_at_submission_preparation": "8580cf6e1d91a1c53d3a183c306f0f28e01fcc42",
+  "runtime_clean_at_submission_preparation": true,
+  "runtime_update_observed": "Existing CO development checkout advanced; VERSION and CLI/routes were rechecked, no CO files changed by PAL."
+}
