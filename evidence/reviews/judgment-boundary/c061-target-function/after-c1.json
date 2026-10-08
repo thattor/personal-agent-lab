@@ -1,0 +1,211 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "d4517cf29d384410b7a7c09a2346f5cd",
+      "role": "user",
+      "content": "地域の集まり向けのお礼文の下書きです。相手の名前、日付、具体的な貢献は未指定です。日本語三文で、一般的な感謝だけにしてください。外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "85ce2852a1ab40a18efffb0df0e340c8",
+      "role": "user",
+      "content": "職場の集まり向けのお礼文の下書きです。相手の名前、日付、具体的な貢献は未指定です。日本語三文で、一般的な感謝だけにしてください。外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "ca2c0d1cffbd4eaa922771e7f3f8ec06",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"d00d4989fe6947a4922023501da2f3e0\"}",
+      "usable": 1,
+      "source_event_id": "895875b301fc4f4ba552b07b16b74c5f",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "9519cee6fb7548b595f1dfc5b63d18e7",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.pause\",\"goal_id\":\"d00d4989fe6947a4922023501da2f3e0\"}",
+      "usable": 1,
+      "source_event_id": "71e715ca8e034b1682dedb5ffb03e0b8",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "1edf3949fd554227bb9d71144ccb8435",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"f2a81a0fcc664c279930b641682bb422\"}",
+      "usable": 1,
+      "source_event_id": "db2b8ad333314a1dbef3495e24f75f3c",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "9ed6673ef4c843b4aae93aa0db8dfe27",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.pause\",\"goal_id\":\"f2a81a0fcc664c279930b641682bb422\"}",
+      "usable": 1,
+      "source_event_id": "b6e8ad5ab886413bafc9a476f68d1692",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "dae1449111004c06b84508d2ac7025ee",
+      "role": "user",
+      "content": "保留中のお礼文のうち、一つを日本語二文に短く直してください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 8,
+      "id": "1a759ad989bf4481a7be81dd3d0fc6a2",
+      "role": "assistant",
+      "content": "保留中のお礼文は二つあります。地域の集まり向けと職場の集まり向けのどちらを日本語二文に短くしますか？",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"d4517cf29d384410b7a7c09a2346f5cd\",\"85ce2852a1ab40a18efffb0df0e340c8\",\"dae1449111004c06b84508d2ac7025ee\"]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "d00d4989fe6947a4922023501da2f3e0",
+      "state": "paused",
+      "revision": 1,
+      "acceptance_id": "6fe0d3f9ea044f0b9221a53540ead4fe",
+      "epoch": 1,
+      "budget": 3,
+      "total_claims": 0,
+      "reason": "user_paused",
+      "question_id": null,
+      "ambiguity": 0
+    },
+    {
+      "seq": 2,
+      "id": "f2a81a0fcc664c279930b641682bb422",
+      "state": "paused",
+      "revision": 1,
+      "acceptance_id": "c1ef1001d0474da6a4070c9926c44e03",
+      "epoch": 1,
+      "budget": 3,
+      "total_claims": 0,
+      "reason": "user_paused",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "d00d4989fe6947a4922023501da2f3e0",
+      "revision": 1,
+      "acceptance_id": "6fe0d3f9ea044f0b9221a53540ead4fe",
+      "specification": "お礼文の下書き",
+      "sources": "[\"d4517cf29d384410b7a7c09a2346f5cd\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    },
+    {
+      "goal_id": "f2a81a0fcc664c279930b641682bb422",
+      "revision": 1,
+      "acceptance_id": "c1ef1001d0474da6a4070c9926c44e03",
+      "specification": "お礼文の下書き",
+      "sources": "[\"85ce2852a1ab40a18efffb0df0e340c8\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "6fe0d3f9ea044f0b9221a53540ead4fe",
+      "goal_id": "d00d4989fe6947a4922023501da2f3e0",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    },
+    {
+      "id": "c1ef1001d0474da6a4070c9926c44e03",
+      "goal_id": "f2a81a0fcc664c279930b641682bb422",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [],
+  "receipts": [],
+  "outcomes": [],
+  "events": [
+    {
+      "seq": 1,
+      "id": "895875b301fc4f4ba552b07b16b74c5f",
+      "goal_id": "d00d4989fe6947a4922023501da2f3e0",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "71e715ca8e034b1682dedb5ffb03e0b8",
+      "goal_id": "d00d4989fe6947a4922023501da2f3e0",
+      "kind": "goal.pause",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "db2b8ad333314a1dbef3495e24f75f3c",
+      "goal_id": "f2a81a0fcc664c279930b641682bb422",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 4,
+      "id": "b6e8ad5ab886413bafc9a476f68d1692",
+      "goal_id": "f2a81a0fcc664c279930b641682bb422",
+      "kind": "goal.pause",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "questions": [],
+  "artifacts": [],
+  "primary_turns": [
+    {
+      "client_key": "ui:3fafba72-43b3-424c-8f9b-d383513f84c8:1791457053388:c556e9ab-73a0-45c6-9dc9-94a21ac6e4e9",
+      "record_id": "dae1449111004c06b84508d2ac7025ee",
+      "status": "complete",
+      "outcome": "{\"goal\":null,\"intent\":\"conversation\",\"primary_status\":\"complete\",\"record_id\":\"dae1449111004c06b84508d2ac7025ee\",\"response_id\":\"1a759ad989bf4481a7be81dd3d0fc6a2\"}"
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 2,
+    "expires_at": 1791457927.389293,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 41020,
+    "started_at": 1791457027.4715378,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

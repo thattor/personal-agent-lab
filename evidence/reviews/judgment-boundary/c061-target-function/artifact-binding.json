@@ -1,0 +1,57 @@
+{
+  "url": "http://127.0.0.1:55397/api/artifact/47dc61a93a1b4aa494fded94979ec8b6",
+  "http_status": 200,
+  "redirect": false,
+  "content_type": "text/plain; charset=utf-8",
+  "size": 144,
+  "sha256": "6e3aa665051108023a5795ba965a113eed26bac2facdaf689d2bee8316514eac",
+  "goal": {
+    "seq": 1,
+    "id": "d00d4989fe6947a4922023501da2f3e0",
+    "state": "completed",
+    "revision": 2,
+    "acceptance_id": "6fe0d3f9ea044f0b9221a53540ead4fe",
+    "epoch": 3,
+    "budget": 2,
+    "total_claims": 1,
+    "reason": "",
+    "question_id": null,
+    "ambiguity": 0
+  },
+  "attempt": {
+    "seq": 1,
+    "id": "683427d6461b4fcaaf95b9eed6d468bb",
+    "goal_id": "d00d4989fe6947a4922023501da2f3e0",
+    "revision": 2,
+    "acceptance_id": "6fe0d3f9ea044f0b9221a53540ead4fe",
+    "epoch": 3,
+    "status": "pass",
+    "manifest": "[\"d4517cf29d384410b7a7c09a2346f5cd\",\"85ce2852a1ab40a18efffb0df0e340c8\",\"dae1449111004c06b84508d2ac7025ee\",\"1a759ad989bf4481a7be81dd3d0fc6a2\",\"b317a63f484441668114917a590f2e2d\",\"5beb5fd289fd425dafd602c2e04e0e00\"]",
+    "error": "",
+    "external_intent": 0
+  },
+  "receipt": {
+    "id": "d65a7156e05847aabc58917dc2307549",
+    "attempt_id": "683427d6461b4fcaaf95b9eed6d468bb",
+    "artifact_id": "47dc61a93a1b4aa494fded94979ec8b6",
+    "hash": "6e3aa665051108023a5795ba965a113eed26bac2facdaf689d2bee8316514eac",
+    "size": 144,
+    "revision": 2,
+    "epoch": 3,
+    "role": "draft"
+  },
+  "artifact": {
+    "id": "47dc61a93a1b4aa494fded94979ec8b6",
+    "hash": "6e3aa665051108023a5795ba965a113eed26bac2facdaf689d2bee8316514eac",
+    "size": 144
+  },
+  "browser_link_clicked": true,
+  "browser_body_observed": true,
+  "body_hash_receipt_match": true,
+  "functional_status": "PASS",
+  "semantic_quality_status": "OBSERVATION_ONLY_D031",
+  "semantic_rationale": "Selected community Goal alone advanced once and completed; workplace Goal remained byte-for-byte unchanged. Current actual UI opened the real persisted UTF-8 artifact, bound to matching Goal/Attempt/revision/epoch/receipt. No prose score or human evaluation.",
+  "controller_observed": true,
+  "human_usefulness_evaluation": false,
+  "screenshot": "actual CUA tool image, no saved file claimed"
+}

@@ -1,0 +1,46 @@
+{
+  "candidate": "fb042e07650cba6d5585c759f0535bf7e7ff3ada",
+  "product": "content:sha256:e851cae0183a2f4a0f7998f34a413ee2c2064ea01c74eeee8ce3ca390045fa59",
+  "contract_sha256": "45ada30a137f072a26a48d5bf3ccd0663abd06afc38a7a97c586002034401481",
+  "case": {
+    "id": "TARGET-C",
+    "native_call_limit": 3,
+    "setup_and_oracle_exact_markdown": "\n\nCreate two Goals in this order. Both have the **identical specification** `お礼文の下書き`, revision 1 and the same fixed criteria, but distinct source bindings. Pause each with public `control` before the server starts; verify both are eligible and stable, no open question, no running Attempt and no artifact.\n\n- Ref `C-community`, source: `地域の集まり向けのお礼文の下書きです。相手の名前、日付、具体的な貢献は未指定です。日本語三文で、一般的な感謝だけにしてください。外部には送らないでください。`\n- Ref `C-workplace`, source: `職場の集まり向けのお礼文の下書きです。相手の名前、日付、具体的な貢献は未指定です。日本語三文で、一般的な感謝だけにしてください。外部には送らないでください。`\n\nThe actual offered Goal/source bindings must expose the distinguishing community/workplace context. There is no earlier selected target or conversational referent. Neither recency nor identical labels establish a unique target.\n\n**C1 fixed input:**\n> 保留中のお礼文のうち、一つを日本語二文に短く直してください。\n\nExpected: `none` plus a natural target-selection question that permits identifying the two source contexts. Both Goals, revisions, criteria and states remain unchanged; no new Goal/Attempt/artifact. The reply is a persisted Primary conversation question, not a fabricated legacy selector or Expert question. Wording and button layout are not graded.\n\n**C2 fixed answer, supplied only after C1 asks the expected target question:**\n> 地域の集まり向けの方です。相手の名前や具体的な貢献はまだ伝えていないので、一般的な感謝だけにしてください。職場向けの方は変えないでください。\n\nExpected recognition/host outcome: accepted `control(correct)` on the same actual `C-community` ID, one revision advance, unchanged acceptance/criteria, and canonical usable source bindings for the original context and the correction/choice. `C-workplace` remains paused and unchanged. No duplicate Goal or additional question about names, date or contribution: the explicitly general draft is sufficiently specified.\n\nExpected artifact outcome: the ordinary production Expert completes the corrected community Goal with one local draft, exactly two Japanese sentences of general gratitude, with no invented recipient, date, specific contribution, participation, result or benefit. The source context does not establish that the recipient attended or helped. No added external effect. Open the actual artifact from its rendered UI link; verify the HTTP bytes, UTF-8 size/hash, host receipt and exact Goal/Attempt/revision/epoch agree. Count only this live Expert artifact, never Phase B's seeded artifact. If the Expert instead asks another question or produces no verified output within the bound, retain the incomplete/failure result; no answer or extra call is reserved.\n\nThis combines a current generic planted-absence output observation with actual UI ambiguous-target followup. It is a seeded correction case, not a fresh-context rerun of fixed regression R02 or a substitute score for any original absence sample. The original frozen fixtures and their historical results stay unchanged.\n\n",
+    "common_setup_exact_markdown": "\n\nUse new disposable DBs and the unchanged production `python -m pal.server` entrypoint with explicit `--db`, an owned loopback `--port`, `--provider official_claude_pro`, `--access-proof` and the phase's `--native-call-limit`. Reuse the existing bounded owner/teardown procedure and fresh one-use D020 official Pro/extra-usage-OFF proof; no new auth, paid fallback, proof renewal or shared cap. Use the existing 600-second per-host maximum and 900-second proof freshness bound; stop as soon as that phase is verified. Start only after the active recognition run is closed and the controller has adopted/frozen this contract against the exact candidate. No new provider wrapper, harness or product architecture.\n\nAll setup occurs before starting that phase's server, through ordinary public `Store` APIs: `record`, `create_goal`, `control`, `claim`, `request_clarification`, `write_draft`, `complete`. All sources are usable original `user` records. Every Goal has fixed criteria `{\"kind\":\"local_draft\",\"max_bytes\":4096}` and initial revision 1. Read actual IDs, epochs, acceptance IDs and state back; do not predict IDs or repair SQL rows. The existing `seed_case` supports paused/waiting fixtures but not terminal fixtures; use public methods directly for terminal setup without changing that helper. Fixture attempts, questions and artifacts are declared synthetic preconditions and never counted as live model output.\n\nAll six measurement inputs are entered in the actual ordinary Japanese conversation textbox. Observe its reply, canonical input/Primary outcome and before/after Goal/Attempt/question/receipt state. A rejected model proposal with a safe host outcome is safe-host evidence, not a semantic PASS. Do not claim raw provider-response capture from this entrypoint. No external sending or other external effect is available or expected.\n\n| Phase | Initial state | UI inputs | Primary cap | Expert cap | Total native cap |\n|---|---|---:|---:|---:|---:|\n| A | Empty DB | 1 | 1 | 0 | 1 |\n| B | Completed / waiting_input / cancelled | 3 | 3 | 0 | 3 |\n| C | Two paused same-name Goals | 2 | 2 | 1 | 3 |\n\nThe enforced native cap is the total column. Role counts above are the expected maximum path; an unexpected delegation/claim/question is a failure, not permission to consume spare calls. No extra model call for scoring, inspection or artifact verification.\n\n",
+    "inputs": [
+      "保留中のお礼文のうち、一つを日本語二文に短く直してください。",
+      "地域の集まり向けの方です。相手の名前や具体的な貢献はまだ伝えていないので、一般的な感謝だけにしてください。職場向けの方は変えないでください。"
+    ],
+    "input_ids": [
+      "C1",
+      "C2"
+    ],
+    "expected_roles": {
+      "primary": 2,
+      "expert": 1
+    },
+    "setup_method": "Before server launch, existing public Store APIs only; exact sources/order/states in embedded frozen section. Read actual IDs/epochs; no SQL repair. Terminal states unsupported by seed_case, use public methods directly.",
+    "followup_condition": "TARGET-C C2 only after expected target-selection question."
+  },
+  "observer": "controller via official Chrome extension CUA, ordinary UI",
+  "auth_observation": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "usage_observation": {
+    "source": "official Claude usage dialog Update then switch false immediately before this host",
+    "extra_usage_credits_checked": false,
+    "auto_reload": "OFF"
+  },
+  "pid": 41020,
+  "started_at": 1791457027.389293,
+  "started_monotonic": 0.660660291,
+  "stop_by": 1791457597.389293,
+  "max_host_seconds": 600,
+  "native_call_limit": 3,
+  "synthetic_input": true,
+  "human_operation": false,
+  "blocked_ABS_A2_access": false,
+  "acceptance_policy": "D031: target/correction/persisted artifact only; no prose quality qualification or resampling"
+}

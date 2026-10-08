@@ -1,0 +1,46 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 2557,
+      "sha256": "9e82759224cb9e73b9fb02565e210a0d0f1bff90d8684af8abe05d6e3f69d277"
+    },
+    "after-c1-complete.json": {
+      "bytes": 6815,
+      "sha256": "5f0855405ed0aba1e870c96b6efc5da78dab67204f50d861a3d9873dcff8b94e"
+    },
+    "after-c1.json": {
+      "bytes": 6815,
+      "sha256": "5f0855405ed0aba1e870c96b6efc5da78dab67204f50d861a3d9873dcff8b94e"
+    },
+    "after.json": {
+      "bytes": 12652,
+      "sha256": "854612baed3840514cd16b06b9ee0768127f87c052b86cf2c4770c643424a8ab"
+    },
+    "artifact-binding.json": {
+      "bytes": 2192,
+      "sha256": "5f6a239472cc7d871ffc32a36438b3b72b09b764763b3c5308f4d85fe0e99d78"
+    },
+    "artifact.txt": {
+      "bytes": 144,
+      "sha256": "6e3aa665051108023a5795ba965a113eed26bac2facdaf689d2bee8316514eac"
+    },
+    "setup.json": {
+      "bytes": 4348,
+      "sha256": "bfa3d48d5a8591908ab3ef44bc47708a9ab6f16a34dd3d83f5cbbf26443b0582"
+    },
+    "start.json": {
+      "bytes": 7706,
+      "sha256": "907a914ef4a7adc8c100e937636d2871970801ca106e80815c43b8ed5a80838f"
+    },
+    "stop.json": {
+      "bytes": 274,
+      "sha256": "48b7571f170c108314b8d9cdbf32c54719094d8c44fd14210e1ed7e8e30489a9"
+    }
+  },
+  "runtime_database_retained": {
+    "state.sqlite-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    "state.sqlite-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "state.sqlite": "f24fda8ac24ff2a80307e535965d2e6e894633e2b71e2fb3a40e19016d5ea2dd",
+    "state.sqlite.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

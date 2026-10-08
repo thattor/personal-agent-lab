@@ -679,3 +679,20 @@ priority, PAL設計's minimum disposition and one38.034s official Opus acceptanc
 Stop quality-only loops and eleven-host sweep. Next only original TARGET-C functional
 selection/correction/display, actual whole-flow owner usefulness, final suite/version/
 constraints/Issue audit and private Stable-1 release. No automatic-learning claim or new quota.
+
+## C-061 — finish functional target selection and prepare the owner-use candidate
+
+Current producte851cae0 is unchanged. The original TARGET-C functional scenario passed
+through actual Chrome UI with3 official native slots: first request caused no mutation,
+target answer changed only community Goal revision1→2, workplace remained paused/unchanged,
+and the real144-byte artifact/receipt was opened. Owned host exited0 within600s; no repair.
+Evidence: evidence/reviews/judgment-boundary/c061-target-function/README.md.
+
+The candidate audit (evidence/final/stable1/audit.json) binds all17 product hashes and reuses
+older evidence only at its stated component/version scope. Final candidate suite270 PASS,
+24.959s. README now states actual usage, caps and limitations, including no automatic learning.
+D031 owner-directed quality stop is honored; no missing old sample relabelled PASS.
+Contribution: the adopted Stable-1 technical functional slice is ready for actual owner use.
+N1-07 and final N1-08 release closure remain; overall PAL goal is incomplete. No new plan.
+Next: a fresh bounded real-provider owner preview, one whole-flow HR-STABLE1-001 evaluation,
+then final release audit/closure if useful. Do not repeat quality questions or synthetic quotas.

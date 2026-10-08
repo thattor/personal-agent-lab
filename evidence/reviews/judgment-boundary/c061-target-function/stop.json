@@ -1,0 +1,11 @@
+{
+  "pid": 41020,
+  "signal": "SIGTERM",
+  "requested_at": 1791457193.967347,
+  "elapsed_at_request": 166.57805395126343,
+  "exit_code": 0,
+  "pid_absent": true,
+  "port_closed_errno": 61,
+  "verified_at": 1791457205.29224,
+  "elapsed_to_verification": 177.90294790267944
+}

@@ -1,0 +1,140 @@
+{
+  "synthetic_fixture": true,
+  "bindings": {
+    "C-community": {
+      "goal_id": "d00d4989fe6947a4922023501da2f3e0",
+      "source_id": "d4517cf29d384410b7a7c09a2346f5cd"
+    },
+    "C-workplace": {
+      "goal_id": "f2a81a0fcc664c279930b641682bb422",
+      "source_id": "85ce2852a1ab40a18efffb0df0e340c8"
+    }
+  },
+  "inspect": {
+    "records": [
+      {
+        "seq": 1,
+        "id": "d4517cf29d384410b7a7c09a2346f5cd",
+        "role": "user",
+        "content": "地域の集まり向けのお礼文の下書きです。相手の名前、日付、具体的な貢献は未指定です。日本語三文で、一般的な感謝だけにしてください。外部には送らないでください。",
+        "usable": 1,
+        "source_event_id": null,
+        "manifest": "[]",
+        "supersedes": null
+      },
+      {
+        "seq": 2,
+        "id": "85ce2852a1ab40a18efffb0df0e340c8",
+        "role": "user",
+        "content": "職場の集まり向けのお礼文の下書きです。相手の名前、日付、具体的な貢献は未指定です。日本語三文で、一般的な感謝だけにしてください。外部には送らないでください。",
+        "usable": 1,
+        "source_event_id": null,
+        "manifest": "[]",
+        "supersedes": null
+      }
+    ],
+    "notes": [],
+    "goals": [
+      {
+        "seq": 1,
+        "id": "d00d4989fe6947a4922023501da2f3e0",
+        "state": "paused",
+        "revision": 1,
+        "acceptance_id": "6fe0d3f9ea044f0b9221a53540ead4fe",
+        "epoch": 1,
+        "budget": 3,
+        "total_claims": 0,
+        "reason": "user_paused",
+        "question_id": null,
+        "ambiguity": 0
+      },
+      {
+        "seq": 2,
+        "id": "f2a81a0fcc664c279930b641682bb422",
+        "state": "paused",
+        "revision": 1,
+        "acceptance_id": "c1ef1001d0474da6a4070c9926c44e03",
+        "epoch": 1,
+        "budget": 3,
+        "total_claims": 0,
+        "reason": "user_paused",
+        "question_id": null,
+        "ambiguity": 0
+      }
+    ],
+    "revisions": [
+      {
+        "goal_id": "d00d4989fe6947a4922023501da2f3e0",
+        "revision": 1,
+        "acceptance_id": "6fe0d3f9ea044f0b9221a53540ead4fe",
+        "specification": "お礼文の下書き",
+        "sources": "[\"d4517cf29d384410b7a7c09a2346f5cd\"]",
+        "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+        "template_preview_allowed": 0
+      },
+      {
+        "goal_id": "f2a81a0fcc664c279930b641682bb422",
+        "revision": 1,
+        "acceptance_id": "c1ef1001d0474da6a4070c9926c44e03",
+        "specification": "お礼文の下書き",
+        "sources": "[\"85ce2852a1ab40a18efffb0df0e340c8\"]",
+        "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+        "template_preview_allowed": 0
+      }
+    ],
+    "acceptances": [
+      {
+        "id": "6fe0d3f9ea044f0b9221a53540ead4fe",
+        "goal_id": "d00d4989fe6947a4922023501da2f3e0",
+        "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+      },
+      {
+        "id": "c1ef1001d0474da6a4070c9926c44e03",
+        "goal_id": "f2a81a0fcc664c279930b641682bb422",
+        "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+      }
+    ],
+    "attempts": [],
+    "receipts": [],
+    "outcomes": [],
+    "events": [
+      {
+        "seq": 1,
+        "id": "895875b301fc4f4ba552b07b16b74c5f",
+        "goal_id": "d00d4989fe6947a4922023501da2f3e0",
+        "kind": "goal.queued",
+        "payload": "{\"revision\":1}",
+        "delivered": 0
+      },
+      {
+        "seq": 2,
+        "id": "71e715ca8e034b1682dedb5ffb03e0b8",
+        "goal_id": "d00d4989fe6947a4922023501da2f3e0",
+        "kind": "goal.pause",
+        "payload": "{\"revision\":1}",
+        "delivered": 0
+      },
+      {
+        "seq": 3,
+        "id": "db2b8ad333314a1dbef3495e24f75f3c",
+        "goal_id": "f2a81a0fcc664c279930b641682bb422",
+        "kind": "goal.queued",
+        "payload": "{\"revision\":1}",
+        "delivered": 0
+      },
+      {
+        "seq": 4,
+        "id": "b6e8ad5ab886413bafc9a476f68d1692",
+        "goal_id": "f2a81a0fcc664c279930b641682bb422",
+        "kind": "goal.pause",
+        "payload": "{\"revision\":1}",
+        "delivered": 0
+      }
+    ],
+    "approvals": [],
+    "rejections": [],
+    "questions": [],
+    "artifacts": [],
+    "primary_turns": []
+  }
+}

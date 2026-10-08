@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 is released; text-only Stable-1 remains the immediate authorized delivery goal. D-031 records the owner's direct instruction to stop further conversation/prose-quality tuning, testing and reviews and prioritize a useful initial version. C059 producte851cae0 is implemented and has77 focused/270 full tests PASS; C060 preserves35 passing actual Primary turns plus one observed N01, with the remaining negative/quality sweeps stopped. Minor editable prose is a known limitation; no old FAIL/NOT_VERIFIED becomes PASS. Remaining: the minimal target-selection/correction/display flow, one whole-flow owner usefulness evaluation and final audit/release. No product/model host is currently running. Goal card remains BLOCKED; this explicit development turn is active. Old schedules remain paused; the requested noninterrupting50-minute checkpoint remains NOT_CONFIGURED.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 is released; text-only Stable-1 remains the immediate authorized delivery goal. D-031 records the owner's direct instruction to stop further conversation/prose-quality tuning, testing and reviews and prioritize a useful initial version. C059 producte851cae0 is implemented and has77 focused/270 full tests PASS; C060 preserves35 passing actual Primary turns plus one observed N01, with the remaining negative/quality sweeps stopped. Minor editable prose is a known limitation; no old FAIL/NOT_VERIFIED becomes PASS. C061 now proves the remaining target-selection/correction/display flow with one actual 144-byte artifact and unchanged other Goal. Final candidate270 tests PASS24.959s. Remaining: one whole-flow owner usefulness evaluation and final audit/release. No product/model host is currently running. Goal card remains BLOCKED; this explicit development turn is active. Old schedules remain paused; the requested noninterrupting50-minute checkpoint remains NOT_CONFIGURED.
 
 ## Current operating authority — 2026-10-08
 
@@ -51,26 +51,23 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
-D-031 supersedes C059's full semantic requalification/eleven-host quality sweep.
-[Retained C060 measurements and owner instruction](evidence/reviews/judgment-boundary/c060-grounding-results/README.md):
-Japanese8/11 calls, independent11 cases/12 calls and English8/12 calls controller PASS;
-negative cohort N01 only, remaining23 uncalled, PARTIAL after owner-directed normal closure.
-All four fsync chains/blobs and retained DB integrity verify; native processes are absent.
-No more conversation/wording optimization, new quality samples or quality-only reviews.
+C061 completes the remaining target-selection/correction/display function: current producte851cae0,
+three actual official native calls, community Goal revision1→2 and matching144-byte artifact,
+other same-label Goal unchanged. Actual Chrome artifact view and host receipt agree; owned
+host closed normally. [Proof](evidence/reviews/judgment-boundary/c061-target-function/README.md).
+[Candidate audit](evidence/final/stable1/audit.json) scopes retained/current evidence; all270
+full tests PASS24.959s. No product code changed and no new quality review/qualification is needed.
+D031 preserves original FAIL/PARTIAL/NOT_VERIFIED, including untouched refused ABS-A2.
 
-Complete only the untouched TARGET-C functional path using its original two inputs and
-existing public Store fixture/production UI, at most3 native slots/600seconds with fresh
-existing official no-extra-charge proof. It must identify the intended same-label Goal,
-change only that Goal and display its actual persisted artifact. Reuse unchanged host,
-recovery/cancel/forget and already-observed clarification evidence at their proper scope;
-do not rerun them just to polish language. Original ABS-A2 remains NOT_VERIFIED and is
-not accessed, retried or replaced; D031 removes its quality-only second-sample release gate.
-
-Then present one whole-flow working-version experience through PAL人間判断, incorporate
-that actual usefulness answer, run the final full suite/version/limits/Issue audit and
-release Stable-1 only after all currently required functional rows are met. Do not
-request a wording score, repeat the quality-permission question, claim automatic learning,
-or present test counts as product completion. No new owner question is pending now.
+Prepare one actual whole-flow owner-use UI with a fresh runtime DB, production entrypoint,
+freshly observed existing Pro/no-extra-charge proof and the existing default16-call/15-minute
+bound. Present its actual URL, expiry, version and README limits once through PAL人間判断
+as HR-STABLE1-001. No technical test script, artificial input quota or wording score for
+the owner. Do not call synthetic inputs human use or interpret 'continue' as a usefulness PASS.
+The preview is not running yet. Once the actual answer arrives, reflect it, perform the
+remaining release/Issue audit and close Stable-1 only when all required rows are met.
+If waiting, record actual runtime/proof state; do not promise automatic renewal/resumption.
+Stable-1 is not whole-project completion; future proposals and stopped schedules remain inactive.
 
 ## Historical access preparation C050–C052 (superseded next actions)
 

@@ -1,0 +1,184 @@
+{
+  "audit_scope": "Stable-1 candidate functional integration and evidence audit; release pending actual whole-flow owner evaluation",
+  "audited_at": 1791457843.695698,
+  "candidate_commit": "fb042e07650cba6d5585c759f0535bf7e7ff3ada",
+  "product": "content:sha256:e851cae0183a2f4a0f7998f34a413ee2c2064ea01c74eeee8ce3ca390045fa59",
+  "source_freeze": "evidence/reviews/judgment-boundary/primary-grounding-candidate-freeze.json",
+  "all_17_product_files_match": true,
+  "versions": {
+    "python": "3.9.6",
+    "macOS": "27.0",
+    "architecture": "arm64",
+    "claude_code": "2.1.291",
+    "real_provider": "official Claude Pro, opus CLI alias",
+    "resolved_service_model_revision": "not exposed",
+    "Qwen3.8-27B": "reference only, PAL qualification NOT_RUN"
+  },
+  "policy": {
+    "decision": "D-031",
+    "owner_source": "evidence/reviews/judgment-boundary/c060-grounding-results/owner-quality-direction.json",
+    "new_quality_reviews_or_sweeps": false,
+    "old_failed_or_unobserved_results_relabelled": false,
+    "80_percent_is_new_numeric_quota": false,
+    "original_ABS_A2": "NOT_VERIFIED; refused content not revisited/retried/replaced; former quality-only release gate withdrawn by D031"
+  },
+  "source_scoped_reuse": {
+    "against_product": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+    "changed_files": [
+      "pal/primary.py"
+    ],
+    "unchanged_16_files": [
+      "pal/__init__.py",
+      "pal/classification.py",
+      "pal/controls.py",
+      "pal/draft_envelope.py",
+      "pal/native.py",
+      "pal/native_supervisor.py",
+      "pal/runtime.py",
+      "pal/sanitize.py",
+      "pal/server.py",
+      "pal/soak.py",
+      "pal/store.py",
+      "pal/template_intake.py",
+      "pal/web/app.js",
+      "pal/web/conversation.html",
+      "pal/web/inspect.html",
+      "pal/web/style.css"
+    ],
+    "meaning": "C045/C047 host, runtime, Expert, native boundary and UI are unchanged. Their original provider/model outcomes keep original versions; changed Primary is not certified by old semantic samples. Current C060 finite observations and C061 actual target UI cover the changed model path. Current full suite covers host, controls, recovery, question, source and permissions."
+  },
+  "full_suite": {
+    "command": "python3 -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "tests": 270,
+    "seconds": 24.959,
+    "log": "evidence/final/stable1/candidate-full.txt",
+    "scope": "deterministic and actual process-death tests; mock responses here are not real-provider proof"
+  },
+  "functional_findings": {
+    "N1-01_02": {
+      "status": "PASS",
+      "proof": "C060: 35 actual Primary turns across English/Japanese/independent cases plus one negative N01, with honest retained provenance. Remaining negative cohort PARTIAL after owner-directed stop, no resampling. C061 actual UI correct-target artifact. No universal or perfect-language claim."
+    },
+    "N1-03_06": {
+      "status": "PASS",
+      "proof": "C061 current ambiguous same-label target: question without mutation, bound reply changes community revision1 to2, workplace unchanged, actual displayed artifact/receipt. C045 TARGET-A zero eligible and TARGET-B mixed-state cancel retain original version. C047 actual 3-call controlled late-delivery cancel fences stale result with no accepted artifact; all 16 non-Primary files unchanged. Current full suite covers stale/cross-target/forgotten answers and immutable criteria."
+    },
+    "N1-04": {
+      "status": "PASS",
+      "proof": "Current full suite and retained primary-target-crash-current.md: real process deaths at durable selector/correction boundaries, dedupe/replay/outbox/source fences; scripted models are disclosed."
+    },
+    "N1-09": {
+      "status": "PASS_FUNCTIONAL_OWNER_EVALUATION_PENDING_N1_07",
+      "proof": "C057 actual Primary question, answer, then one displayed artifact; C061 current target clarification to correct work. Historical C022 A1/P1 proves persisted Expert question/answer and bounded exhaustion on its named version; historical unsafe bare-answer latest-Goal shortcut was subsequently removed by D029. Current tests cover explicit question/source/revision/epoch and ambiguous/stale/forgotten rejection; no claim C057 is same-Goal persisted Expert-resume proof."
+    },
+    "N1-10": {
+      "status": "PASS_FUNCTIONAL",
+      "proof": "C060 actual current Primary recognition plus C061 target/correction. Retained primary-third-run actual context/memory/reference-stop/delegation, with PHB source_ids discrepancy disclosed. Current full suite verifies closed proposals, atomic host snapshot/source/revision/epoch/criteria, interruption/replay, immediate controls and no lexical fallback. Only grounding sentence changed since scoped prior proofs; previous outcomes retain their version."
+    },
+    "S0_F0_regression": {
+      "status": "PASS_FUNCTIONAL_BOUNDARIES",
+      "proof": "Current full suite covers canonical transitions/atomic receipts/dedupe/stale/cancel/correct/pause/resume/forget/secret sanitation/restart/outbox, HTTP host/origin/read-only boundaries, provider proof reuse/expiry/exhaustion/auth/shutdown. Actual C061 UI checks native cap exhaustion and persisted output; C047 controlled stale delivery checks real returned result fencing. Stable-0 owner evaluation remains historical and is not transferred to Stable-1."
+    },
+    "N1-05": {
+      "status": "NONREQUIRED_HISTORICAL_PARTIAL_FAIL_RETAINED",
+      "proof": "D031, no prose quality perfection claim or additional tests"
+    },
+    "N1-07": {
+      "status": "PENDING",
+      "proof": "Previous owner feedback retained; current actual whole-flow evaluation not yet received. Development synthetic inputs are not owner input."
+    },
+    "N1-08": {
+      "status": "PARTIAL",
+      "proof": "Candidate full tests/version/use/limits audit available; owner result and final release/Issue audit and closure pending."
+    }
+  },
+  "known_limitations": [
+    "Finite tested behavior; minor draft prose/content imperfections may remain and should be corrected by the user before external use.",
+    "Only local text draft preparation. No sending, shell, external write, image or audio input.",
+    "Completed drafts are terminal; request a new draft to revise completed text.",
+    "Context is bounded, not all history; reference-stop is not physical erasure.",
+    "Default mock. Explicit real mode requires freshly observed existing no-extra-charge proof, expires after15minutes and defaults to16 shared calls. No silent fallback or renewal.",
+    "Cancel rejects late effects, but admitted provider generation may finish and consume its slot. Controlled late-delivery proof is not an upstream cancellation or timing SLA.",
+    "No automatic learning/model update, guarantee of improvement, unattended autonomy or long-term reliability claim.",
+    "Stopped schedules remain paused; conditional new50-minute checkpoint NOT_CONFIGURED.",
+    "Future P001/multimodal not adopted by current work; Stable-1 is not project completion."
+  ],
+  "runtime_at_audit": "All functional test hosts stopped; no product/model host currently running. Owner preview will have a separate fresh DB and receipt.",
+  "canonical_repair_performed": false,
+  "extra_payment_enabled": false,
+  "public_exposure": false,
+  "owner_usefulness_evaluation": false,
+  "stable1_complete": false,
+  "project_complete": false,
+  "evidence": {
+    "evidence/reviews/judgment-boundary/primary-grounding-candidate-freeze.json": {
+      "sha256": "0161c50a0d80dc0aed8b7d69b7dbcef266e530344d5d545c1029bc8ab80a1e29",
+      "bytes": 2363
+    },
+    "evidence/reviews/judgment-boundary/expert-commitment-candidate-freeze.json": {
+      "sha256": "1bf45e0fe170d05433570026d7131b5f454e7a85075a554787a85d0e06e13691",
+      "bytes": 2262
+    },
+    "evidence/reviews/judgment-boundary/c060-grounding-results/README.md": {
+      "sha256": "24cb9652329572b6f4182e83af53b768aaefdba4d2b9ec11bdab560f7121ef7c",
+      "bytes": 2999
+    },
+    "evidence/reviews/judgment-boundary/c060-grounding-results/owner-quality-direction.json": {
+      "sha256": "322e68de8c218019e2845d8cb9f31e9b00f06095f9500a80e8b724b6d5b65fea",
+      "bytes": 1070
+    },
+    "evidence/reviews/judgment-boundary/c060-quality-policy-review/MANIFEST.json": {
+      "sha256": "17ebb65cc6d8713bdfcf23d0859258a786d4d91fd545392c9d5ca6c074f02511",
+      "bytes": 1647
+    },
+    "evidence/reviews/judgment-boundary/c061-target-function/MANIFEST.json": {
+      "sha256": "f4ae6066f76e79af85c6501c00a5ae4f9ffdf87c6776c4d532218deb426970d1",
+      "bytes": 1626
+    },
+    "evidence/reviews/judgment-boundary/c061-target-function/artifact-binding.json": {
+      "sha256": "5f6a239472cc7d871ffc32a36438b3b72b09b764763b3c5308f4d85fe0e99d78",
+      "bytes": 2192
+    },
+    "evidence/reviews/judgment-boundary/c061-target-function/stop.json": {
+      "sha256": "48b7571f170c108314b8d9cdbf32c54719094d8c44fd14210e1ed7e8e30489a9",
+      "bytes": 274
+    },
+    "evidence/reviews/judgment-boundary/c057-ask-first-ui/README.md": {
+      "sha256": "dd7b8554848af9df050c03b95e531db93e64dc76b08f2b0108b49c0226a78963",
+      "bytes": 1436
+    },
+    "evidence/reviews/judgment-boundary/ui-c045-partial/README.md": {
+      "sha256": "943a60db0a7f28af1d09cc0f8129fe3e2a2d797613a9781c2a3749ac4975f817",
+      "bytes": 4032
+    },
+    "evidence/reviews/judgment-boundary/c047-controlled-cancel/controller-audit.json": {
+      "sha256": "c14ea0fa70191fcf2ea12512cafdc930081c8d0fc6a819e2f2ac132c21bd4b97",
+      "bytes": 1888
+    },
+    "evidence/reviews/judgment-boundary/c047-controlled-cancel/independent-audit.json": {
+      "sha256": "8de8147e7fb66ae7763c949da252d87678eda6231cebfbde23a50db4c6beb5f3",
+      "bytes": 1191
+    },
+    "evidence/reviews/judgment-boundary/primary-target-crash-current.md": {
+      "sha256": "8613e4dbebba55a47f6b4eb491f5ae691529d2fd08912abd7edaf752ed8b27e1",
+      "bytes": 1331
+    },
+    "evidence/reviews/judgment-boundary/primary-third-run/README.md": {
+      "sha256": "bcc49f99884c429aa9fcab9f13645976d38ffdfd73bcd0f3bcc93240e9e9b595",
+      "bytes": 1881
+    },
+    "evidence/reviews/feedback-alignment/live-c022/README.md": {
+      "sha256": "0c10d899e0d2ab5cff181b8ab8cbf807b26e6ee5294d59b4e900dcc172b939b3",
+      "bytes": 3230
+    },
+    "evidence/reviews/feedback-alignment/live-c022/audit.json": {
+      "sha256": "4b18fb3ad65f6dfc2be9799350da0aef6f9a3478f500b83a571ad07d175bbc08",
+      "bytes": 9719
+    },
+    "evidence/final/stable1/candidate-full.txt": {
+      "sha256": "3f709abe4c626f333b7b212aee8edd5ccbb39abf108b03720d5ce02d669a46a6",
+      "bytes": 28703
+    }
+  }
+}
