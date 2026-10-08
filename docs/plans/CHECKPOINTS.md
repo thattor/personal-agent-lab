@@ -565,3 +565,20 @@ Chrome CUA connection with every original UI/receipt/oracle/budget obligation in
 The contract never required IAB specifically; unavailable transport is not a reason
 to offload test labor. Old ABS-A2 is not accessed/replaced and a new refusal stops.
 [Current evidence/risk map and cause/prevention](../../evidence/operations/c052-technical-verification.md).
+
+## C053 — development executes the ordinary real UI checks
+
+Unit purpose: prove the two directly affected exception behaviors through the actual
+production UI and saved local artifact. First attempts CREATIVE-PARTICULARS and
+SUPPLIED-FOLLOWUP PASS with fixed inputs/oracles, two calls per owned host, actual
+rendered-link/body observation and exact host receipt binding. Both hosts stopped
+within600s, no source changes or canonical repair. This is technical evidence, not
+owner evaluation. [Evidence](../../evidence/reviews/judgment-boundary/c053-ui-chrome/README.md).
+
+Contribution: preserves useful authorized creation and supplied promises while the
+grounding instruction guards unsupported facts. The existing normal Chrome connection
+worked for these untouched cases; it does not clear or retrieve the original refusal.
+No new owner question, review gate or product scope was needed. Seven untouched cases
+remain, plus original ABS-A2 gap/usefulness/final audit. Next: B/C absence-and-context
+cases, then clarification/target/compound flows. Future multimodal preparation remains
+independent. Stable1 and the project are not complete.

@@ -1,0 +1,50 @@
+{
+  "checkpoint": "C053",
+  "scope": "Two untouched targeted exception regressions, first attempts, original contract unchanged",
+  "cases": [
+    {
+      "case": "CREATIVE-PARTICULARS",
+      "status": "PASS",
+      "semantic_controller_rationale": "Explicitly authorized fictional date (11/14) and start time (14:00) are included; concise Japanese local invitation, no essential question or external effect.",
+      "candidate": "1af0501d87acb9138e33a95db002fe04b6066cea",
+      "product": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+      "native_slots": 2,
+      "goal_id": "6acd529c94cc42da98ba72fc09f83a18",
+      "attempt_id": "fc216619a24e44998b5fb1f71c853be2",
+      "receipt_id": "fd9626552b5e462a9de95ea5a1b29103",
+      "artifact_id": "cf5faae73e9e431aab94f9420b2516dc",
+      "sha256": "69e6d4b52bd78eb81ff1b373b9873c38eb8e016eb72d72c9dbf8d60a700a82b1",
+      "size": 328,
+      "human_usefulness": false
+    },
+    {
+      "case": "SUPPLIED-FOLLOWUP",
+      "status": "PASS",
+      "semantic_controller_rationale": "The exact supplied next-week follow-up promise is retained; no event date/time, venue or other unsupported logistics; concise Japanese local invitation, no question or external effect.",
+      "candidate": "1af0501d87acb9138e33a95db002fe04b6066cea",
+      "product": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+      "native_slots": 2,
+      "goal_id": "d2c8bc3749b44c67bbd57779ccdbbaa9",
+      "attempt_id": "ce5e861392cf4b4c9eb47029c97448f1",
+      "receipt_id": "e9edf999e6a94e3999603496557bbc0a",
+      "artifact_id": "0aa434a4383d42dfbbe0831961f01c92",
+      "sha256": "1ce9446ffd122b1507c3933849061d3c76e016232de2fd8119194ff9dbcf6b84",
+      "size": 256,
+      "human_usefulness": false
+    }
+  ],
+  "native_slots_total": 4,
+  "all_owned_hosts_stopped": true,
+  "original_ABS_A2": "NOT_VERIFIED; not accessed/retried/replaced",
+  "remaining_untouched_cases": [
+    "ABS-B1",
+    "ABS-B2",
+    "ABS-C1",
+    "ABS-C2",
+    "UI-CLARIFY",
+    "TARGET-C",
+    "COMPOUND-LOCAL-CONTINUATION"
+  ],
+  "human_evaluation": "NOT_RUN",
+  "screenshot_limit": "Actual CUA screenshot images were emitted in the development turn; no screenshot file is claimed in this archive."
+}

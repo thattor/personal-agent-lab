@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized text-only delivery goal under D-021/P002 and D-028/D-029. C052 consumes the owner's correction: development executes ordinary technical verification; HR-UI-001 manual test/receipt request is withdrawn, not a blocker. Next is the first untouched case through the existing supported Chrome CUA connection, with original actual UI/receipt/cap obligations and no old refused content. No product model/host is currently running; all acceptance gates remain. Goal card remains BLOCKED; no completion or automatic-resume claim. No schedule restarted.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized text-only delivery goal under D-021/P002 and D-028/D-029. C053 completed two untouched real-model/UI cases through the existing Chrome connection: creative particulars and supplied follow-up both PASS with actual artifact/receipt binding. Seven untouched cases remain, plus the original second A-sample evidence gap, one whole-flow human usefulness evaluation and release audit. Development owns technical testing; HR-UI-001 remains withdrawn. No product host/model is running at this checkpoint. Goal card remains BLOCKED; actual authorized development is continuing in this user turn, with no automatic-resume claim. No schedule restarted.
 
 ## Current operating authority — 2026-10-08
 
@@ -50,6 +50,23 @@ Actual official Japanese functional scenarios and controls PASS on runtime basel
 Soak01 retained after reproduced stale UI warning; soak02 retained and intentionally reset for the user's bilingual UI request. Both old DBs/hash chains/receipts stay intact. [Soak02 directly confirmed receipt and reset](evidence/soak/2026-10-07/soak02-human-and-reset.json). No old human counts/time/restart proof transferred. Bilingual UI only changes display text; fixed controls, canonical values, receipts and provider remain English. [55-test full suite](evidence/tests/ui-bilingual-full.txt), [actual refresh recovery probe](evidence/ui/recovery/bilingual-after.txt). Historical runtime/soak-20261007-03 started 2026-10-07T06:14:18.834450+09:00 from clean pushed baseline 1863ef2a3037b335fa6f257a8d6fd95fb44da9dc on port58500, monitor PID3322/app PID3324. [Fresh start and served bilingual UI](evidence/soak/2026-10-07/start-03.json).
 
 ## Exact next action
+
+[C053 actual UI evidence](evidence/reviews/judgment-boundary/c053-ui-chrome/README.md):
+CREATIVE-PARTICULARS and SUPPLIED-FOLLOWUP first attempts PASS, four total native slots,
+unchanged production source, two bounded normal shutdowns. Continue ABS-B1/B2 then
+ABS-C1/C2 through ordinary Chrome UI using each original fixed input, independent cap,
+fresh existing Pro/extra-usage OFF check and disposable owned host. Then UI-CLARIFY,
+TARGET-C and COMPOUND-LOCAL-CONTINUATION. No resampling or retrieval/replacement of
+original refused ABS-A2. A new refusal stops the affected operation. Do not offload
+these technical cases or evidence collection to the owner.
+
+Current acceptance rows remain unchanged until their full obligations are proven.
+After actual required flows, request one current-version whole-flow usefulness judgment
+in PAL人間判断 and finish the release audit. No scope expansion or old quotas.
+PAL設計's next-version bridge packet is independent: preserve/register it after final
+review receipt at a safe boundary, without activating future implementation.
+
+## Historical access preparation C050–C052 (superseded next actions)
 
 C051: HR-ACCESS-004 is ANSWERED / Support submission declined. Direct owner source is
 verified in PAL人間判断; do not send the inquiry, repeat its approval question or wait

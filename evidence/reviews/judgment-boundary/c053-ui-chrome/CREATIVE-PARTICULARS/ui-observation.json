@@ -1,0 +1,15 @@
+{
+  "session_id": "096047a0-e9a6-4511-8320-8350f0b9da34",
+  "record_id": "6aa26505f6854ee8a6b5b1b9d8ce8a6d",
+  "key": "ui:096047a0-e9a6-4511-8320-8350f0b9da34:1791447669433:3e89696a-04ad-4777-b8f1-13546ece06a5",
+  "accepted_at": "2026-10-08T08:21:09.444Z",
+  "accepted_turns": 1,
+  "goal_id": "6acd529c94cc42da98ba72fc09f83a18",
+  "intent": "draft",
+  "action": null,
+  "primary_status": "complete",
+  "observer": "development controller using ordinary Chrome CUA UI",
+  "source": "actual expanded Session receipt DOM in this development turn",
+  "human_operation": false,
+  "accepted_at_is_client_timestamp": true
+}

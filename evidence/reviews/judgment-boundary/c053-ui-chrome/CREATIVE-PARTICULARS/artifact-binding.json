@@ -1,0 +1,19 @@
+{
+  "observed_at": 1791447779.062419,
+  "actual_browser_link_opened": true,
+  "browser": "official Chrome extension CUA",
+  "browser_tab_id": "172833061",
+  "actual_url": "http://127.0.0.1:61836/api/artifact/cf5faae73e9e431aab94f9420b2516dc",
+  "body_hash": "69e6d4b52bd78eb81ff1b373b9873c38eb8e016eb72d72c9dbf8d60a700a82b1",
+  "utf8_bytes": 328,
+  "goal_id": "6acd529c94cc42da98ba72fc09f83a18",
+  "attempt_id": "fc216619a24e44998b5fb1f71c853be2",
+  "receipt_id": "fd9626552b5e462a9de95ea5a1b29103",
+  "revision": 1,
+  "epoch": 1,
+  "native_calls": 2,
+  "http_status": 200,
+  "redirect": false,
+  "result": "binding PASS; semantic controller judgment pending record",
+  "screenshot": "actual tool image emitted in development turn; no stored image file yet"
+}

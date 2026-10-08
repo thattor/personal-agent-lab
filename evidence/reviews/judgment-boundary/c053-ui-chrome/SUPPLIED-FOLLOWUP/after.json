@@ -1,0 +1,183 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "7afe1475fc614611a2f53ed434a925b5",
+      "role": "user",
+      "content": "架空の昼食会への招待文を日本語で短く下書きしてください。日時はまだ書かず、「詳細は来週あらためてお知らせします」という約束を本文に含めてください。外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "befa5c4a5f954950afdcacfed18e8f81",
+      "role": "assistant",
+      "content": "下書きを受け付けました：架空の昼食会への招待文を日本語で短く下書きする。ローカル下書きのみで、外部送信はしない。日時は記載しない。本文に「詳細は来週あらためてお知らせします」という一文をそのまま含める。差出人名、宛先名、場所、会の目的、参加者は指定されていないため具体的な内容を補わず、一般的な表現にとどめる。丁寧で親しみやすい文体にし、参加を歓迎する内容にする。 / Local draft accepted.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"7afe1475fc614611a2f53ed434a925b5\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "5f66c57f27034dec9de0308e6ad41c83",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"d2c8bc3749b44c67bbd57779ccdbbaa9\"}",
+      "usable": 1,
+      "source_event_id": "9502ff90b6584f8ab57a7dab0c2021a5",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "984b7809347943239eff18c4dce338fb",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"ce5e861392cf4b4c9eb47029c97448f1\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"d2c8bc3749b44c67bbd57779ccdbbaa9\"}",
+      "usable": 1,
+      "source_event_id": "6a15a2273b6746218f6efe8fea1b8cf7",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "8e42dafc278844d6ab8bbce9c126bf1d",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"0aa434a4383d42dfbbe0831961f01c92\",\"attempt_id\":\"ce5e861392cf4b4c9eb47029c97448f1\",\"check_status\":\"pass\",\"receipt_id\":\"e9edf999e6a94e3999603496557bbc0a\"},\"event\":\"goal.completed\",\"goal_id\":\"d2c8bc3749b44c67bbd57779ccdbbaa9\"}",
+      "usable": 1,
+      "source_event_id": "ae31df6dcf014fa3ab473cc20079f05b",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "d2c8bc3749b44c67bbd57779ccdbbaa9",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "46b94da262804f95b653364479226f9d",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "d2c8bc3749b44c67bbd57779ccdbbaa9",
+      "revision": 1,
+      "acceptance_id": "46b94da262804f95b653364479226f9d",
+      "specification": "架空の昼食会への招待文を日本語で短く下書きする。ローカル下書きのみで、外部送信はしない。日時は記載しない。本文に「詳細は来週あらためてお知らせします」という一文をそのまま含める。差出人名、宛先名、場所、会の目的、参加者は指定されていないため具体的な内容を補わず、一般的な表現にとどめる。丁寧で親しみやすい文体にし、参加を歓迎する内容にする。",
+      "sources": "[\"7afe1475fc614611a2f53ed434a925b5\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "46b94da262804f95b653364479226f9d",
+      "goal_id": "d2c8bc3749b44c67bbd57779ccdbbaa9",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "ce5e861392cf4b4c9eb47029c97448f1",
+      "goal_id": "d2c8bc3749b44c67bbd57779ccdbbaa9",
+      "revision": 1,
+      "acceptance_id": "46b94da262804f95b653364479226f9d",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"7afe1475fc614611a2f53ed434a925b5\",\"befa5c4a5f954950afdcacfed18e8f81\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "e9edf999e6a94e3999603496557bbc0a",
+      "attempt_id": "ce5e861392cf4b4c9eb47029c97448f1",
+      "artifact_id": "0aa434a4383d42dfbbe0831961f01c92",
+      "hash": "1ce9446ffd122b1507c3933849061d3c76e016232de2fd8119194ff9dbcf6b84",
+      "size": 256,
+      "revision": 1,
+      "epoch": 1,
+      "role": "draft"
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "ce5e861392cf4b4c9eb47029c97448f1",
+      "receipt_id": "e9edf999e6a94e3999603496557bbc0a",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "9502ff90b6584f8ab57a7dab0c2021a5",
+      "goal_id": "d2c8bc3749b44c67bbd57779ccdbbaa9",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "6a15a2273b6746218f6efe8fea1b8cf7",
+      "goal_id": "d2c8bc3749b44c67bbd57779ccdbbaa9",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"ce5e861392cf4b4c9eb47029c97448f1\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "ae31df6dcf014fa3ab473cc20079f05b",
+      "goal_id": "d2c8bc3749b44c67bbd57779ccdbbaa9",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"0aa434a4383d42dfbbe0831961f01c92\",\"attempt_id\":\"ce5e861392cf4b4c9eb47029c97448f1\",\"check_status\":\"pass\",\"receipt_id\":\"e9edf999e6a94e3999603496557bbc0a\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "questions": [],
+  "artifacts": [
+    {
+      "id": "0aa434a4383d42dfbbe0831961f01c92",
+      "hash": "1ce9446ffd122b1507c3933849061d3c76e016232de2fd8119194ff9dbcf6b84",
+      "size": 256
+    }
+  ],
+  "primary_turns": [
+    {
+      "client_key": "ui:80aa1fba-0fb3-458c-91fa-7e5477812d86:1791448354736:09fcd0dd-ce00-471b-b1e0-aa4be62614ac",
+      "record_id": "7afe1475fc614611a2f53ed434a925b5",
+      "status": "complete",
+      "outcome": "{\"goal\":{\"acceptance_id\":\"46b94da262804f95b653364479226f9d\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"d2c8bc3749b44c67bbd57779ccdbbaa9\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":0},\"intent\":\"draft\",\"primary_status\":\"complete\",\"record_id\":\"7afe1475fc614611a2f53ed434a925b5\",\"response_id\":\"befa5c4a5f954950afdcacfed18e8f81\"}"
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 0,
+    "expires_at": 1791449228.779107,
+    "authorized_now": false,
+    "unavailable_reason": "budget_exhausted",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 79101,
+    "started_at": 1791448328.8467011,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

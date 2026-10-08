@@ -1,0 +1,183 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "6aa26505f6854ee8a6b5b1b9d8ce8a6d",
+      "role": "user",
+      "content": "架空の読書会への招待文を日本語で短く下書きしてください。日付と開始時刻は、この架空の文のためにあなたが創作して具体的に書いてください。外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "d7357979d788401197545f3fd0aa9ac8",
+      "role": "assistant",
+      "content": "下書きを受け付けました：日本語で、架空の読書会への短い招待文を下書きする。ユーザーの明示的な依頼により、この架空の文のために具体的な日付と開始時刻を創作して本文に記載する（例：月日と曜日、開始時刻）。その他の詳細（会場、課題本、主催者名、宛先名など）はユーザーから指定されていないため、創作が必要な場合は架空であることが自然に分かる範囲にとどめるか、一般的な表現にする。簡潔で親しみやすいトーン。外部への送信は行わず、ローカルの下書きのみとする。 / Local draft accepted.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"6aa26505f6854ee8a6b5b1b9d8ce8a6d\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "c1b62b50c0654985b001e0dbfad58c8a",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"6acd529c94cc42da98ba72fc09f83a18\"}",
+      "usable": 1,
+      "source_event_id": "f6e170cbc35c48c199576a9e2dc99f0d",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "0631b627cacd43dcbb5dc80204f85c70",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"fc216619a24e44998b5fb1f71c853be2\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"6acd529c94cc42da98ba72fc09f83a18\"}",
+      "usable": 1,
+      "source_event_id": "d6ed1dd33ae84e2bb7066a67b6ea0ede",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "6e21d754475f4b0295edf50fc271d9e6",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"cf5faae73e9e431aab94f9420b2516dc\",\"attempt_id\":\"fc216619a24e44998b5fb1f71c853be2\",\"check_status\":\"pass\",\"receipt_id\":\"fd9626552b5e462a9de95ea5a1b29103\"},\"event\":\"goal.completed\",\"goal_id\":\"6acd529c94cc42da98ba72fc09f83a18\"}",
+      "usable": 1,
+      "source_event_id": "ebd0257e61464882a4dcb5a504d499a2",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "6acd529c94cc42da98ba72fc09f83a18",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "a5965e3821f64072a4b275121f253536",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "6acd529c94cc42da98ba72fc09f83a18",
+      "revision": 1,
+      "acceptance_id": "a5965e3821f64072a4b275121f253536",
+      "specification": "日本語で、架空の読書会への短い招待文を下書きする。ユーザーの明示的な依頼により、この架空の文のために具体的な日付と開始時刻を創作して本文に記載する（例：月日と曜日、開始時刻）。その他の詳細（会場、課題本、主催者名、宛先名など）はユーザーから指定されていないため、創作が必要な場合は架空であることが自然に分かる範囲にとどめるか、一般的な表現にする。簡潔で親しみやすいトーン。外部への送信は行わず、ローカルの下書きのみとする。",
+      "sources": "[\"6aa26505f6854ee8a6b5b1b9d8ce8a6d\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "a5965e3821f64072a4b275121f253536",
+      "goal_id": "6acd529c94cc42da98ba72fc09f83a18",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "fc216619a24e44998b5fb1f71c853be2",
+      "goal_id": "6acd529c94cc42da98ba72fc09f83a18",
+      "revision": 1,
+      "acceptance_id": "a5965e3821f64072a4b275121f253536",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"6aa26505f6854ee8a6b5b1b9d8ce8a6d\",\"d7357979d788401197545f3fd0aa9ac8\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "fd9626552b5e462a9de95ea5a1b29103",
+      "attempt_id": "fc216619a24e44998b5fb1f71c853be2",
+      "artifact_id": "cf5faae73e9e431aab94f9420b2516dc",
+      "hash": "69e6d4b52bd78eb81ff1b373b9873c38eb8e016eb72d72c9dbf8d60a700a82b1",
+      "size": 328,
+      "revision": 1,
+      "epoch": 1,
+      "role": "draft"
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "fc216619a24e44998b5fb1f71c853be2",
+      "receipt_id": "fd9626552b5e462a9de95ea5a1b29103",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "f6e170cbc35c48c199576a9e2dc99f0d",
+      "goal_id": "6acd529c94cc42da98ba72fc09f83a18",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "d6ed1dd33ae84e2bb7066a67b6ea0ede",
+      "goal_id": "6acd529c94cc42da98ba72fc09f83a18",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"fc216619a24e44998b5fb1f71c853be2\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "ebd0257e61464882a4dcb5a504d499a2",
+      "goal_id": "6acd529c94cc42da98ba72fc09f83a18",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"cf5faae73e9e431aab94f9420b2516dc\",\"attempt_id\":\"fc216619a24e44998b5fb1f71c853be2\",\"check_status\":\"pass\",\"receipt_id\":\"fd9626552b5e462a9de95ea5a1b29103\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "questions": [],
+  "artifacts": [
+    {
+      "id": "cf5faae73e9e431aab94f9420b2516dc",
+      "hash": "69e6d4b52bd78eb81ff1b373b9873c38eb8e016eb72d72c9dbf8d60a700a82b1",
+      "size": 328
+    }
+  ],
+  "primary_turns": [
+    {
+      "client_key": "ui:096047a0-e9a6-4511-8320-8350f0b9da34:1791447669433:3e89696a-04ad-4777-b8f1-13546ece06a5",
+      "record_id": "6aa26505f6854ee8a6b5b1b9d8ce8a6d",
+      "status": "complete",
+      "outcome": "{\"goal\":{\"acceptance_id\":\"a5965e3821f64072a4b275121f253536\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"6acd529c94cc42da98ba72fc09f83a18\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":0},\"intent\":\"draft\",\"primary_status\":\"complete\",\"record_id\":\"6aa26505f6854ee8a6b5b1b9d8ce8a6d\",\"response_id\":\"d7357979d788401197545f3fd0aa9ac8\"}"
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 0,
+    "expires_at": 1791448504.3111382,
+    "authorized_now": false,
+    "unavailable_reason": "budget_exhausted",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 66784,
+    "started_at": 1791447604.372075,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

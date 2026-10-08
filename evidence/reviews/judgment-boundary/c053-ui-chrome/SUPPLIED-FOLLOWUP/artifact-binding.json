@@ -1,0 +1,54 @@
+{
+  "url": "http://127.0.0.1:64028/api/artifact/0aa434a4383d42dfbbe0831961f01c92",
+  "http_status": 200,
+  "content_type": "text/plain; charset=utf-8",
+  "size": 256,
+  "sha256": "1ce9446ffd122b1507c3933849061d3c76e016232de2fd8119194ff9dbcf6b84",
+  "goal": {
+    "seq": 1,
+    "id": "d2c8bc3749b44c67bbd57779ccdbbaa9",
+    "state": "completed",
+    "revision": 1,
+    "acceptance_id": "46b94da262804f95b653364479226f9d",
+    "epoch": 1,
+    "budget": 2,
+    "total_claims": 1,
+    "reason": "",
+    "question_id": null,
+    "ambiguity": 0
+  },
+  "attempt": {
+    "seq": 1,
+    "id": "ce5e861392cf4b4c9eb47029c97448f1",
+    "goal_id": "d2c8bc3749b44c67bbd57779ccdbbaa9",
+    "revision": 1,
+    "acceptance_id": "46b94da262804f95b653364479226f9d",
+    "epoch": 1,
+    "status": "pass",
+    "manifest": "[\"7afe1475fc614611a2f53ed434a925b5\",\"befa5c4a5f954950afdcacfed18e8f81\"]",
+    "error": "",
+    "external_intent": 0
+  },
+  "receipt": {
+    "id": "e9edf999e6a94e3999603496557bbc0a",
+    "attempt_id": "ce5e861392cf4b4c9eb47029c97448f1",
+    "artifact_id": "0aa434a4383d42dfbbe0831961f01c92",
+    "hash": "1ce9446ffd122b1507c3933849061d3c76e016232de2fd8119194ff9dbcf6b84",
+    "size": 256,
+    "revision": 1,
+    "epoch": 1,
+    "role": "draft"
+  },
+  "artifact": {
+    "id": "0aa434a4383d42dfbbe0831961f01c92",
+    "hash": "1ce9446ffd122b1507c3933849061d3c76e016232de2fd8119194ff9dbcf6b84",
+    "size": 256
+  },
+  "browser_link_clicked": true,
+  "browser_body_observed": true,
+  "body_hash_receipt_match": true,
+  "semantic_status": "PASS",
+  "semantic_rationale": "Retains exact supplied next-week follow-up promise, omits event date/time/venue and unsupported logistics, concise Japanese local invitation with general addressing; no question or external action.",
+  "controller_observed": true,
+  "human_usefulness_evaluation": false
+}
