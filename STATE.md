@@ -63,8 +63,10 @@ these technical cases or evidence collection to the owner.
 Current acceptance rows remain unchanged until their full obligations are proven.
 After actual required flows, request one current-version whole-flow usefulness judgment
 in PAL人間判断 and finish the release audit. No scope expansion or old quotas.
-PAL設計's next-version bridge packet is independent: preserve/register it after final
-review receipt at a safe boundary, without activating future implementation.
+PAL設計's final next-version bridge packet is preserved and registered: milestone8,
+parent13, MM0 14 CLOSED after readback, MM1–4 15–18 DEFERRED in Project1.
+[Registration and retained reviews](docs/design/multimodal-next-bridge-v2.md).
+No future implementation or current-release condition is activated.
 
 ## Historical access preparation C050–C052 (superseded next actions)
 

@@ -582,3 +582,16 @@ No new owner question, review gate or product scope was needed. Seven untouched 
 remain, plus original ABS-A2 gap/usefulness/final audit. Next: B/C absence-and-context
 cases, then clarification/target/compound flows. Future multimodal preparation remains
 independent. Stable1 and the project are not complete.
+
+## D030/MM0 — next-version preparation retained and registered
+
+The independent design lane supplied its final48-file packet plus manifest. Development
+verified every byte/hash, complete scoped Opus/SWE responses and all dispositions, then
+saved/pushed original records in e4ac3b2. Separate milestone8 and parent13/MM0–4 Issues14–18
+now exist with real dependencies and Project1 membership. Actual readback preceded MM0
+closure;14 is Done,13/15–18 stay Todo/DEFERRED. All30 product cases remain NOT_RUN.
+[Plan and readback](../design/multimodal-next-bridge-v2.md). No current N1/product change;
+no repeat full test or model call needed for document/registration-only work. Contribution:
+future work is reproducible and discoverable without diverting the current text release.
+Next: continue the remaining approved actual text UI cases, then integrated usefulness
+and final audit. MM1–4 are not activated by MM0 completion.
