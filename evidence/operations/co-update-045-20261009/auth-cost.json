@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-10-08T21:49:43.894775+00:00",
+  "claude_cli": "2.1.291 (Claude Code)",
+  "claude_auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "devin_cli": "devin 3000.11.3 (9c803229faa4)",
+  "swe_models_list_exit": 0,
+  "swe_model_lines": [
+    "  swe-2-high                                                                SWE-2 High  [262K context, Free]"
+  ],
+  "new_auth_or_billing_change": false,
+  "selection_check": "Exact model ID match; substring aliases are excluded.",
+  "claude_usage": {
+    "source": "existing authenticated official Chrome usage settings",
+    "session_used_percent": 46,
+    "week_used_percent": 36,
+    "extra_usage_enabled": false,
+    "auto_reload_enabled": false,
+    "purchased_credit_display": "$0",
+    "settings_changed": false
+  }
+}

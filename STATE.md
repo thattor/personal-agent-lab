@@ -3,7 +3,7 @@
 ## Goal
 Current owner instruction in chat 01a11c78-a3bc-76e1-b4ee-2451d5c0f1c2 (2026-10-09): SOL coordination, explicit CO delegation for PAL implementation/research/review, existing-route private development material use, isolated writes, host verification and staged independent reviews. This resumes scoped development preparation after the prior stop; no new authentication, paid fallback, publication or stopped schedules. See D-034.
 
-Current work: INT-00 on branch codex/pal-v5-co, checkout /private/tmp/pal-v5-co-20261009.
+Current work: INT00 remains deferred; independent EXE02-request/1 and ART01-content/1 preparation uses branch codex/pal-v5-co, checkout /private/tmp/pal-v5-co-20261009. See D035 and docs/design/contracts-v5/PARALLEL-SCOPE-1.md.
 Candidate v5 is imported byte-for-byte with provenance under docs/design/contracts-v5.
 Actual Opus common-wire design is complete; SWE implementation timed out at900seconds
 with unknown result/process outcome. CO task is awaiting_decision, not verified.
@@ -12,19 +12,20 @@ product capabilities and v5 real integration are NOT_RUN; original Stable-0 evid
 remains historical. Original dirty checkout /private/tmp/personal-agent-lab-stable0-20261006
 and all runtime data are retained untouched.
 
-Actual CO entrypoint: 0.4.4 development checkout /Users/hattoritoshiyasu/Documents/ai-company/development/common-orchestration-public; /opt/homebrew/bin/python3.13 -E -s -B -m co_v4.task; existing state /private/tmp/co04-human-route-cr3o_bg1/state. Registered exact routes claude/claude-opus-5-5 and devin/swe-2-high. Shared-state model-call ceiling is 1, quota unknown; 30-way execution is unavailable through this entrypoint. Sol6.1/Astra are not registered/supported task routes. Do not create alternate state or use the old PATH co wrapper to raise this limit. Fresh official Pro/extraOFF and SWE Free observations are in evidence/operations/co-int00-20261009/environment.json.
+Actual CO entrypoint: published0.4.5 installed at /Users/hattoritoshiyasu/Documents/PAL/co-runtime/common-orchestration-v0.4.5; /opt/homebrew/bin/python3.13 -E -s -B -m co_v4.task; existing state /private/tmp/co04-human-route-cr3o_bg1/state. Release checksums and all96 payload files passed; isolated import resolves to this install. Old state has a private local backup, with no migration or manual edits. Registered exact routes remain claude/claude-opus-5-5 and devin/swe-2-high. Independent ordinary run commands can share state; host cap is12 per Native adapter (24 across these two routes), observed reserved/executing0 before launch. Provider quota remains unknown; actual concurrent execution is still to be measured. Sol6.1/Astra remain unsupported task routes. Evidence: evidence/operations/co-update-045-20261009. No global configuration or CO development source changed.
 
 Ownership: SOL for shared contracts, DB integration, original-canonical merge and state records; Opus for v5 design and independent milestone review; SWE-2 High for isolated contract implementation/tests. Planned initial CO run uses only imported design material and pal/__init__.py, creates pal/contracts_v5.py, tests/test_contracts_v5.py, tests/fixtures/contracts_v5.json and docs/design/contracts-v5/INT00-IMPLEMENTATION.md. It must not change existing product modules, DBs, provider configuration, services or CO. No PAL model generation or server restart is implied.
 
 Historical C064 stopped development and preserved the trial DB/records. That stop remains recorded below but is superseded for the current scoped CO preparation by the direct owner instruction; old trial/schedules remain stopped.
 
-Latest continuing owner policy was independently read in PAL人間判断, turn
-01a11c9f-6db9-7f92-ba4a-96ed1ad16b07: continue possible independent work, then update
-and use an official CO0.4 parallel-capable version when available. D034 records the
-source and limits. The normal milestone release check saw only formal0.4.4 and no
-later version; no update/monitor was started. Preserve state/unknown task and use
-supported migration, then validate actual parallelism/routes before reporting it.
-This instruction does not cancel/retry/switch the SWE call or revert to CO0.3.
+Latest update instruction was independently read in PAL人間判断, turn
+01a11d77-e713-7890-8422-e1e683b564d4 (2026-10-09 JST): update to the available
+parallel-capable release. Formal0.4.5 (published2026-10-08T19:29:43Z) is installed
+and existing state/unknown task is readable through its CLI. No older CO task
+process was observed before using the host ledger; this does not resolve the old
+remote SWE outcome. No decide/resume/cancel/retry/switch was performed.
+Continue two independent pure preparation units; common-service integration still
+waits for the unresolved INT00 task. Trials/schedules remain stopped.
 
 ## Prior operating record — 2026-10-08 (current CO lane is C065/D034)
 

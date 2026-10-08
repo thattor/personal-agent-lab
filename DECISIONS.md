@@ -1434,3 +1434,42 @@ Current official GitHub release check returned only `common-orchestration-v0.4.4
 (2026-10-08T15:40:28Z), no later formal release at this checkpoint. [Release observation](evidence/operations/co-int00-20261009/release-check.json).
 The existing runtime remains0.4.4. A development HEAD advance is not a published
 parallel-capable version or qualification. No update was performed from this check.
+
+
+## D-035 — official CO0.4.5 update and independent preparation, 2026-10-09
+
+Actual owner update source: PAL人間判断 turn
+01a11d77-e713-7890-8422-e1e683b564d4, userMessage
+01a11d77-e77e-7740-9e1c-dc4c9bd2631d: 「対応版が出ているので写真に更新してください。」
+Read independently as the follow-through to D034's explicit available-release
+update/use direction; the human lane explained the contextual latest-version
+interpretation. This does not resolve or permit retrying the unknown SWE call.
+
+Official common-orchestration-v0.4.5 was published2026-10-08T19:29:43Z. Retain
+published archive/manifest/checksums privately; verify both SHA256SUMS entries and
+all96 manifest files, then install the fixed payload under Documents/PAL/co-runtime.
+Isolated import and VERSION identify this0.4.5 runtime. Existing state is reused via
+CLI after an unchanged private backup; status preserves the same awaiting_decision
+unknown task, no selectable switch. Old CO process inspection observed none;
+no claim of remote cancellation. No CO source/global configuration/route edits.
+[Installation evidence](evidence/operations/co-update-045-20261009/installation.json).
+
+New supported semantics: independent normal tasks have separate workspaces and
+journals under shared qualified state, with12 host slots per Native adapter.
+Available task routes are still only exact Opus5.5 and SWE-2 High; Sol6.1/Astra
+are unsupported here. Capacity readback initially has zero reservations/executions.
+This is capacity evidence; PAL parallel execution and integrated product acceptance
+must be measured separately. No30-task claim or extra jobs to fill slots.
+
+Adopt two independent pure technical preparation boundaries in
+[PARALLEL-SCOPE-1](docs/design/contracts-v5/PARALLEL-SCOPE-1.md): EXE02-request/1
+validates a repo-bound GitHub read request and fixed argv without executing it;
+ART01-content/1 prepares bounded UTF-8 bytes and hash without saving anything.
+They leave operation/grant/recovery, shared contract types, DB, source checks and
+real product capability activation to their owners. Scope does not change live
+PAL behavior or adopt the full v5 service plan. The original unknown task retains
+its four files; no replacement task or duplicate common implementation is sent.
+SWE handles A implementation with Opus design/independent review; separate Opus
+contexts handle B implementation/review. SOL alone integrates and records results.
+Fresh existing CLI auth/versions and official Pro extraOFF/SWE exact Free model
+were observed; no new authentication, billing/publication or stopped schedules.
