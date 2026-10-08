@@ -1,0 +1,10 @@
+{
+  "recorded_at": "2026-10-08T10:55:09.095292+00:00",
+  "mistake": "The preceding handoff message contained an incorrect manually supplied manifest SHA; packet bytes were correct and unchanged.",
+  "incorrect_message_sha256": "33777b40e897bed19337e3b1a8f99b7b32a317f9b767b725812983a6ca78c67d5",
+  "actual_manifest_sha256": "17ebb65cc6d8713bdfcf23d0859258a786d4d91fd545392c9d5ca6c074f02511",
+  "cause": "The message argument was written before inspecting the hash command result, rather than generated from it.",
+  "correction": "Read and compute the actual manifest hash and generate the correction message from that returned value.",
+  "prevention": "For later artifact handoffs, parse the successful hash command output and interpolate that value; never type a predicted digest.",
+  "verified": "Original manifest and its11 entries are unchanged."
+}

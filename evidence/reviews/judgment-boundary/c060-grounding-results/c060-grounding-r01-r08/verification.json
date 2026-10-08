@@ -1,0 +1,9 @@
+{
+  "records": 156,
+  "completed": true,
+  "judged_turns": 12,
+  "skipped_turns": 0,
+  "covered_cases": 8,
+  "scope": "live_synthetic",
+  "human_evaluation": false
+}

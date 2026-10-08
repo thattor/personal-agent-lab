@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "scope": "Single owner-directed acceptance-exit review; originals with narrowed/rejected factual interpretations",
+  "files": {
+    "DISPOSITION.md": {
+      "sha256": "d2c532d3a90606be2ef3307f9c66c1ec6409250446c94c3a04138c9990a73b6f",
+      "bytes": 3527
+    },
+    "acceptance-snapshot.json": {
+      "sha256": "944a6915885b7ad76b6948f89e6f9fe6b66317f7246bffd971093ad31931aa53",
+      "bytes": 17022
+    },
+    "access.json": {
+      "sha256": "2cbab6da22debafa3772f9e0b86b1ab26e7ba3067b2b7cba89f0dba826d06283",
+      "bytes": 755
+    },
+    "completion.json": {
+      "sha256": "44726fe42d6f0aa10872e0c90c9477aa289677da82d1a5c5ceb95d0f4ef78cd9",
+      "bytes": 344
+    },
+    "opus-response.txt": {
+      "sha256": "6a3fc275b26bcd5049f91c292c0d4d4ad6f7d19ca92bd794ca2ed136806a88f6",
+      "bytes": 3697
+    },
+    "opus-stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "owner-instruction.json": {
+      "sha256": "e2303a7449dfb9c9fb58b94bbb4bfb0e33128c88380d5522142a22124cdd9194",
+      "bytes": 827
+    },
+    "preparation.json": {
+      "sha256": "33616d238bacb185dd463410243802515b838b150105b1578ddfae2f6661caf9",
+      "bytes": 344
+    },
+    "question.txt": {
+      "sha256": "bbe08b1f8c95462a606cc9903f58ec9af27fbe9dc68fba8134e54266ae77679d",
+      "bytes": 20209
+    },
+    "run-review.py": {
+      "sha256": "8372cab429dad1971faac4688bdfaa5e9e63dc874484f725b3d8491037f92ceb",
+      "bytes": 3333
+    },
+    "start.json": {
+      "sha256": "ed463b9f629a0b05a136a7d77ac188c9591668453e2caa573fad8d1eb6925a8f",
+      "bytes": 150
+    }
+  }
+}

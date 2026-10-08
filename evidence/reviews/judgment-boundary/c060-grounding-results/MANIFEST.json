@@ -1,0 +1,352 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 2999,
+      "sha256": "24cb9652329572b6f4182e83af53b768aaefdba4d2b9ec11bdab560f7121ef7c"
+    },
+    "audit.json": {
+      "bytes": 44687,
+      "sha256": "bc158358a7ba40ec4b05b9edbe312380d6be269733fbfeab315322ca4aa40bda"
+    },
+    "c060-grounding-heldout/PGF-01-1.prompt.txt": {
+      "bytes": 7893,
+      "sha256": "7ac0d596adcf3c0ecc5b852e6790b306ece73c7a60190ee88aa13bedce89b060"
+    },
+    "c060-grounding-heldout/PGF-01-1.response.txt": {
+      "bytes": 698,
+      "sha256": "a686a2522fe157345696bafd54fad3031d36255105dbc215a847f226007e7825"
+    },
+    "c060-grounding-heldout/PGF-02-1.prompt.txt": {
+      "bytes": 7813,
+      "sha256": "38eee7d3567cc445a49f931716e5787d450f296da358732d2c9dfba422c48e93"
+    },
+    "c060-grounding-heldout/PGF-02-1.response.txt": {
+      "bytes": 568,
+      "sha256": "733898500c83c01f7d0eb944cd03a774c6edfd56b0a324788a3e9e2440ae4e30"
+    },
+    "c060-grounding-heldout/PGF-03-1.prompt.txt": {
+      "bytes": 8078,
+      "sha256": "4d09c172a786ee258684db4d0a7ca1aa30744c17122cf9885f98373763df5c2c"
+    },
+    "c060-grounding-heldout/PGF-03-1.response.txt": {
+      "bytes": 670,
+      "sha256": "9ff9d779f42a996036f4ae93a9fb5d0208fde4043ee161f8ac9fb3a4c00af8f9"
+    },
+    "c060-grounding-heldout/PGF-04-1.prompt.txt": {
+      "bytes": 7938,
+      "sha256": "6b794c5b435ff97b2d9702061d4748242270a443fbe3c1cc6ea6da02dc3bc876"
+    },
+    "c060-grounding-heldout/PGF-04-1.response.txt": {
+      "bytes": 893,
+      "sha256": "1e02b19146fda45ea0784faaab80f33a0d42642ac19976b0839f5a7cdc127f6b"
+    },
+    "c060-grounding-heldout/PGF-05-1.prompt.txt": {
+      "bytes": 7992,
+      "sha256": "d57fb8ecabaef647329ae681e35dda3184bf5772c45d5a3a3bbfa15ce8cefe6e"
+    },
+    "c060-grounding-heldout/PGF-05-1.response.txt": {
+      "bytes": 947,
+      "sha256": "1a2065e8cc565d27f782465fce31defd5dec9c0bb712abcc4c354b12ae1ff271"
+    },
+    "c060-grounding-heldout/PGF-06-1.prompt.txt": {
+      "bytes": 7956,
+      "sha256": "635ffeb0e96bbea05d9bee641de554f3c773f9ba6cf2d8f45226f5baf23c5cbf"
+    },
+    "c060-grounding-heldout/PGF-06-1.response.txt": {
+      "bytes": 262,
+      "sha256": "cb16e2ed9bce074f0d58207f69256ef7393c9b877a1a3558245a8101e6acc13b"
+    },
+    "c060-grounding-heldout/PGF-06-2.prompt.txt": {
+      "bytes": 8513,
+      "sha256": "88284edb9c2ce5aab01865b9779cc6802095cc64c4ad325d14349f9b6adf9d7f"
+    },
+    "c060-grounding-heldout/PGF-06-2.response.txt": {
+      "bytes": 687,
+      "sha256": "db720cb98f526e915b82a93d4c899531c63447d3f44cf02124f0d1bea12e70d2"
+    },
+    "c060-grounding-heldout/PGF-07-1.prompt.txt": {
+      "bytes": 7950,
+      "sha256": "0eb711d3a7c41b3f2cbd81babb40507cac53053e81d4090eb172735b3e7c637b"
+    },
+    "c060-grounding-heldout/PGF-07-1.response.txt": {
+      "bytes": 968,
+      "sha256": "29abafcde88949f9ad0df5f10211320a4ba48bf69bc0b71374b4171ec3b85b45"
+    },
+    "c060-grounding-heldout/PGF-08-1.prompt.txt": {
+      "bytes": 7932,
+      "sha256": "d655ca8a0bfac332498c1ca40f0aac38bc9b09ae19a579031b1035c100086aba"
+    },
+    "c060-grounding-heldout/PGF-08-1.response.txt": {
+      "bytes": 830,
+      "sha256": "d4f8401b8139de59656be0fc36d2048dcbe61216686c104851571bf85d25f5d7"
+    },
+    "c060-grounding-heldout/PGF-09-1.prompt.txt": {
+      "bytes": 7977,
+      "sha256": "16ae6cb0a197b3605a0ec75bd4f0d366d44a2d2e1ed4f5985707960c43f52e7e"
+    },
+    "c060-grounding-heldout/PGF-09-1.response.txt": {
+      "bytes": 280,
+      "sha256": "6349cb21621fc91dc2bfc528ae3ddd6ed0de807ec930477754912ba142660e07"
+    },
+    "c060-grounding-heldout/PGF-10-1.prompt.txt": {
+      "bytes": 7797,
+      "sha256": "e0f0b687b61188f9bd348cd8a45cd46ab69ea81f023c728709f6cb8042d969c2"
+    },
+    "c060-grounding-heldout/PGF-10-1.response.txt": {
+      "bytes": 221,
+      "sha256": "c64e05c207036f89520a1a46967a3a05f0dc0ee7301ae844be042a53b9aa74e8"
+    },
+    "c060-grounding-heldout/PGF-11-1.prompt.txt": {
+      "bytes": 8734,
+      "sha256": "5836b7d01f77691662e59b1549ae296a6d771d351b92fb97066d8141f2f26404"
+    },
+    "c060-grounding-heldout/PGF-11-1.response.txt": {
+      "bytes": 624,
+      "sha256": "72f12607a2ea054a14ed8b7426d61cc1e9b805766e34ffb4127ed3d8ac48ae1d"
+    },
+    "c060-grounding-heldout/access-observation.json": {
+      "bytes": 495,
+      "sha256": "e710d3a5b5112377aef28c16da6eab6eac6d47c1dec9fb75828fee45df75406e"
+    },
+    "c060-grounding-heldout/journal.jsonl": {
+      "bytes": 132913,
+      "sha256": "f252cf7d104fa941f87606bdef8bb06c829df67d1becf75449acdb2633d1af06"
+    },
+    "c060-grounding-heldout/verification.json": {
+      "bytes": 167,
+      "sha256": "b443ab5e7e5f81f4a42ba338af374506469dfc3987216dc6b6482bb8e2fe4822"
+    },
+    "c060-grounding-n01-n24/N01-1.prompt.txt": {
+      "bytes": 7740,
+      "sha256": "73cd53e7a325cd6d33fdd375c4fb5e7e43e834733578ca5cd173bf6c7624b268"
+    },
+    "c060-grounding-n01-n24/N01-1.response.txt": {
+      "bytes": 81,
+      "sha256": "961ada8cdeefc51caf0df50de1f84919c6b4ae71bd6fe310333e26f50cb84748"
+    },
+    "c060-grounding-n01-n24/access-observation.json": {
+      "bytes": 495,
+      "sha256": "defed22b4a8714f356f1fb0e751fc950759579212bd62f8cd0de18575a71a9df"
+    },
+    "c060-grounding-n01-n24/journal.jsonl": {
+      "bytes": 25778,
+      "sha256": "e68d66827ebb0111ff45afc3f10f1c996858602ad49413fa8cbb9910f4e99bbf"
+    },
+    "c060-grounding-n01-n24/verification.json": {
+      "bytes": 165,
+      "sha256": "1d86322a0d53c8b0efcf8f0b69f20a3f74836f3cb38e58c3d731a895c69061a0"
+    },
+    "c060-grounding-r01-r08/R01-1.prompt.txt": {
+      "bytes": 7790,
+      "sha256": "d135aed14d65fd92477ffb00cb4d553b6a8a44f96015fb4ac9d1d526b44e8958"
+    },
+    "c060-grounding-r01-r08/R01-1.response.txt": {
+      "bytes": 688,
+      "sha256": "592298475f07b2184f391197b6592d31cbc7fd6d650590196e3c723e2b42c6ca"
+    },
+    "c060-grounding-r01-r08/R02-1.prompt.txt": {
+      "bytes": 7764,
+      "sha256": "f3a85b78403f6cdda54ed28ffba68f3708cf50275ec8853c61a55baa06ef18b2"
+    },
+    "c060-grounding-r01-r08/R02-1.response.txt": {
+      "bytes": 801,
+      "sha256": "f31e3540158091defdacd56af401888a7a03a1204e47b8ac7db928e4316bf2ea"
+    },
+    "c060-grounding-r01-r08/R03-1.prompt.txt": {
+      "bytes": 7767,
+      "sha256": "73fed569a199c063c2e4d57f629e3b7f5c5d76eeb21172b4ed4e9c7bd55672ee"
+    },
+    "c060-grounding-r01-r08/R03-1.response.txt": {
+      "bytes": 710,
+      "sha256": "b73ba5061e7fe54301c254c6fa3a63bf2321ddd9d0f55ce64e387ea0eb8be206"
+    },
+    "c060-grounding-r01-r08/R04-1.prompt.txt": {
+      "bytes": 7772,
+      "sha256": "02d2939d9dad8e5deab002b84027012be9c677342843c9123105627e28da6ba4"
+    },
+    "c060-grounding-r01-r08/R04-1.response.txt": {
+      "bytes": 156,
+      "sha256": "c7170613aa054d6746f9aaa38beef7bc7ed35dfdaaa27e24f266ae05a07d9fa5"
+    },
+    "c060-grounding-r01-r08/R04-2.prompt.txt": {
+      "bytes": 8297,
+      "sha256": "6e87964da19bce25c034f7d540474d87104496f3e4b535bd1d64eb78bfa6e799"
+    },
+    "c060-grounding-r01-r08/R04-2.response.txt": {
+      "bytes": 786,
+      "sha256": "883e08d36853d759503420510e6822daf6ccc47d0f0b846ed719f295feb66614"
+    },
+    "c060-grounding-r01-r08/R05-1.prompt.txt": {
+      "bytes": 7753,
+      "sha256": "4e4dc2b47e7f380569a1db7cb3a68ea1ebd806a5b0d589256c5f702d766d945b"
+    },
+    "c060-grounding-r01-r08/R05-1.response.txt": {
+      "bytes": 145,
+      "sha256": "ecf65449ed0fae7fd0ccb9f3e67c56451636290154fa2a73708a15aa6e863d77"
+    },
+    "c060-grounding-r01-r08/R05-2.prompt.txt": {
+      "bytes": 8256,
+      "sha256": "d75f710c98f916c60ed2df47b9a3603ec46af416e8b9f24535e9ce3a2766656a"
+    },
+    "c060-grounding-r01-r08/R05-2.response.txt": {
+      "bytes": 563,
+      "sha256": "4ae2db6e9d5e09c0f86f44da89e409ddedfe15cd57b42d0d085ce8ee577002f5"
+    },
+    "c060-grounding-r01-r08/R06-1.prompt.txt": {
+      "bytes": 7789,
+      "sha256": "2a9a34c8f32912161a7ded76a46774f1b79951bfd0f8772f9e63d2a2e6200a2e"
+    },
+    "c060-grounding-r01-r08/R06-1.response.txt": {
+      "bytes": 635,
+      "sha256": "b0219b55e2073e6054dd5c2382ea292fe57c6467b39c785073876c7e299736ae"
+    },
+    "c060-grounding-r01-r08/R07-1.prompt.txt": {
+      "bytes": 7767,
+      "sha256": "4a9cb2528843aa37312958c8f780c8f4bda01870097c59b53f650ef7718c0008"
+    },
+    "c060-grounding-r01-r08/R07-1.response.txt": {
+      "bytes": 142,
+      "sha256": "e64de3d2e4411e35602340881edb6cf5ab90fdd5334bcc74c3594b0d97442ff3"
+    },
+    "c060-grounding-r01-r08/R07-2.prompt.txt": {
+      "bytes": 8289,
+      "sha256": "d8f036c0809c9767958693b594100a773207a95740f0414585a762cb254fdcf9"
+    },
+    "c060-grounding-r01-r08/R07-2.response.txt": {
+      "bytes": 768,
+      "sha256": "b5e65fe8195c77acdba39416a748d23d49b3e25f74f3664fc8d17e3723e4890f"
+    },
+    "c060-grounding-r01-r08/R08-1.prompt.txt": {
+      "bytes": 7767,
+      "sha256": "f715bc3a8c69bafdfee3b2a032f0dc290425d1dd08075319160d30f094b58a1c"
+    },
+    "c060-grounding-r01-r08/R08-1.response.txt": {
+      "bytes": 203,
+      "sha256": "f816c7c565e1ee2e0e16c68b083902bd6000cbf24be52a3846ae2526e8277ab5"
+    },
+    "c060-grounding-r01-r08/R08-2.prompt.txt": {
+      "bytes": 8348,
+      "sha256": "644074a5ca64e92a9db807c3f4d61884619e9d25d9acd0d3897c1223f0400332"
+    },
+    "c060-grounding-r01-r08/R08-2.response.txt": {
+      "bytes": 801,
+      "sha256": "786a150fe28688cfd0e402dbf59be3ccdac187472b8e50346ec3254a7cc039ca"
+    },
+    "c060-grounding-r01-r08/access-observation.json": {
+      "bytes": 495,
+      "sha256": "08603ca0cbab085742c51b0dc22d92b52e84758a9ce20d9d2cf5ba430020b100"
+    },
+    "c060-grounding-r01-r08/journal.jsonl": {
+      "bytes": 123074,
+      "sha256": "e59b59b861b35c01907008167a98df580897e3dbe065f74b863cfe82074b704f"
+    },
+    "c060-grounding-r01-r08/verification.json": {
+      "bytes": 166,
+      "sha256": "66c279a2d09fb8b201293a2c886e1a6e7bfa34d127ed5954dc0d72b3dfe4bb7e"
+    },
+    "c060-grounding-r09-r16/R09-1.prompt.txt": {
+      "bytes": 7803,
+      "sha256": "072d5e4ba3637667fe491d9127efa225cefdd64709a6d4502a2ba43562827972"
+    },
+    "c060-grounding-r09-r16/R09-1.response.txt": {
+      "bytes": 794,
+      "sha256": "9259a8bb0c8fa60c514cd0089048b039f72d6e5c57678aeeabd03bfedc061334"
+    },
+    "c060-grounding-r09-r16/R10-1.prompt.txt": {
+      "bytes": 7782,
+      "sha256": "62fa088897fd0e4fb23bee94f7d583ce12adb90a36d181be9a8bbfa38951ce1c"
+    },
+    "c060-grounding-r09-r16/R10-1.response.txt": {
+      "bytes": 971,
+      "sha256": "38d2b53acdaf4d9afe8891c0f129e5c15b19306bb57c68a3a76221023a111bfc"
+    },
+    "c060-grounding-r09-r16/R11-1.prompt.txt": {
+      "bytes": 7776,
+      "sha256": "a86f0bc2458dc390f8178f5a1ee694508d099efa89789457100dc7fed36abdf6"
+    },
+    "c060-grounding-r09-r16/R11-1.response.txt": {
+      "bytes": 948,
+      "sha256": "6b3d02abb55b428cf042f035e1a6a95157e6b7d7b0087f581af09d30a9ff754f"
+    },
+    "c060-grounding-r09-r16/R12-1.prompt.txt": {
+      "bytes": 7788,
+      "sha256": "85c278110d09cd74a4c9c5f1adeb45d1f78e98e24a8bd61429dc0879a1722649"
+    },
+    "c060-grounding-r09-r16/R12-1.response.txt": {
+      "bytes": 887,
+      "sha256": "f5b6ec9dc4d050abd3fcc5d67ba3c752b6010fe09f0893ff26097612d060c2b1"
+    },
+    "c060-grounding-r09-r16/R13-1.prompt.txt": {
+      "bytes": 7767,
+      "sha256": "8eabaf5060266fda0b2af4378fd0d1e045d59f2781cf12ee10f59d5e3d8d9ef2"
+    },
+    "c060-grounding-r09-r16/R13-1.response.txt": {
+      "bytes": 256,
+      "sha256": "995f6a40b51da69f672dda98acde8d2915b1f83ef563ed2cf98d54677b887cd4"
+    },
+    "c060-grounding-r09-r16/R13-2.prompt.txt": {
+      "bytes": 8491,
+      "sha256": "e078d882926a8ce0db0f46d7fc46791d06c285773ff33630295e64094bec7cfd"
+    },
+    "c060-grounding-r09-r16/R13-2.response.txt": {
+      "bytes": 912,
+      "sha256": "49977b01b50fa21dcd41d3b6d67300ce36c73b11278173251b0a570325ff427c"
+    },
+    "c060-grounding-r09-r16/R14-1.prompt.txt": {
+      "bytes": 7776,
+      "sha256": "92f184f50b2e321a106795c29976630346176b98c98270cd7123871f214492e4"
+    },
+    "c060-grounding-r09-r16/R14-1.response.txt": {
+      "bytes": 283,
+      "sha256": "b95efc669b5fd232e505299c82be5784bda56bb13de08aa558877eacd3fb1072"
+    },
+    "c060-grounding-r09-r16/R14-2.prompt.txt": {
+      "bytes": 8476,
+      "sha256": "ff1eb5ec30885970678db76aab2903cfbf43fe5647fed490cad05a5ce7fcd2d7"
+    },
+    "c060-grounding-r09-r16/R14-2.response.txt": {
+      "bytes": 907,
+      "sha256": "7a0c18251714640f76bca99acd16cca0377d3c55c593f06076e588e447c6d9a7"
+    },
+    "c060-grounding-r09-r16/R15-1.prompt.txt": {
+      "bytes": 7809,
+      "sha256": "69e4f8aa573ecd196879f06a92484511465f0dea0d9f7fb8f7cdfd261acc59ac"
+    },
+    "c060-grounding-r09-r16/R15-1.response.txt": {
+      "bytes": 929,
+      "sha256": "f2d1682c1fb164e7a6eb2b29f8382db69a9d131743044a737a3ef30d1632d51d"
+    },
+    "c060-grounding-r09-r16/R16-1.prompt.txt": {
+      "bytes": 7773,
+      "sha256": "52805e96f1cdc80416727986b062365bd047d2130c9b3895a97405ebfd71ac0a"
+    },
+    "c060-grounding-r09-r16/R16-1.response.txt": {
+      "bytes": 160,
+      "sha256": "4e2019d1a47f94e79af2e0fc35ed9211309a8db11be9d60edf3d824c1e9c7379"
+    },
+    "c060-grounding-r09-r16/R16-2.prompt.txt": {
+      "bytes": 8319,
+      "sha256": "d6ddc8d5f4593b59cd21c75e44924a585bc956698c19f9ed0312621d62ba2af7"
+    },
+    "c060-grounding-r09-r16/R16-2.response.txt": {
+      "bytes": 829,
+      "sha256": "01c526991126e502bd3f48772ecab64fcbcebc43623648ba5cd66fc8018b6079"
+    },
+    "c060-grounding-r09-r16/access-observation.json": {
+      "bytes": 495,
+      "sha256": "eb6fcbd0fe43c87cf78175554c02cdcbfe7659c14dbd694a664110dac9df69bb"
+    },
+    "c060-grounding-r09-r16/journal.jsonl": {
+      "bytes": 121580,
+      "sha256": "07a5597a0837b7d45e221b3634f88fa90215fc1be15f60d3509a886e847d0694"
+    },
+    "c060-grounding-r09-r16/verification.json": {
+      "bytes": 166,
+      "sha256": "bf31e8854ae1795cef7f2c93f6e930326126c8f22dcefb0000e83f7625a65a33"
+    },
+    "owner-quality-direction.json": {
+      "bytes": 1070,
+      "sha256": "322e68de8c218019e2845d8cb9f31e9b00f06095f9500a80e8b724b6d5b65fea"
+    }
+  }
+}

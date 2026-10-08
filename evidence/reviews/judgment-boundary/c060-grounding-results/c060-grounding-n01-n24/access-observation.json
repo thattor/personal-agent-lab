@@ -1,0 +1,18 @@
+{
+  "cohort": "grounding-n01-n24",
+  "checked_at": 1791456316.401372,
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "official_ui_extra_usage": false,
+  "auto_reload": "OFF",
+  "candidate": "1487d19348ffe4010fc203db37f81266696cd6d9",
+  "max_slots": 24,
+  "max_seconds": 900,
+  "additional_authentication": false,
+  "fallback": false,
+  "proof_renewal": false,
+  "stdin": "interactive terminal retained through python -c exec, no heredoc"
+}

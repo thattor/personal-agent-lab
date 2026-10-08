@@ -666,3 +666,16 @@ PASS. Contribution: reinforces source fidelity at the Primary→Expert boundary 
 new host state, semantic rules or questions. Next: bounded actual Japanese regression,
 independent12, remaining fixed corpus, affected UI/artifact evidence and existing final
 usefulness/release gates. No model/owner PASS follows unit tests.
+
+
+## C-060 — retain current results and obey the owner-directed quality stop
+C059 producte851cae0 yielded35 controller-passing Primary turns across Japanese8,
+independent11 cases/12 utterances and English8; N01 was already captured when the direct
+quality-stop instruction arrived. One judgment then normal exit0; N02–24 uncalled and
+run PARTIAL, not PASS. Original journals/blobs, four fresh no-extra-charge observations,
+51 read-only DB integrity results and absent native PIDs retained in c060-grounding-results.
+Existing77/270 tests remain green; no code change. D031 records directly verified human
+priority, PAL設計's minimum disposition and one38.034s official Opus acceptance-boundary consultation (no conversation-quality review/testing).
+Stop quality-only loops and eleven-host sweep. Next only original TARGET-C functional
+selection/correction/display, actual whole-flow owner usefulness, final suite/version/
+constraints/Issue audit and private Stable-1 release. No automatic-learning claim or new quota.

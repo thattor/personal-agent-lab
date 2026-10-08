@@ -1174,3 +1174,57 @@ UI cases; one or two review examples cannot waive existing rows or original ABS-
 Static/host tests are infrastructure proof, not semantic proof. New alias constants
 only reuse the existing runner; this small prompt/data repair does not require new
 substantial implementation/SWE review. Reassess that gate if scope grows.
+
+
+## D-031 — practical initial quality; end conversation-quality loops, 2026-10-08
+
+Direct owner source: PAL人間判断 `01a1137a-8de3-7890-b874-cdd0a7125711`,
+turn `01a11b1d-5f2e-7233-9010-2fd64c9ef8d6`, messages
+`01a11b1d-604c-7b13-b96a-d45f20b1b47e` and
+`01a11b1e-19a9-7531-bf79-24d3fb83dda8`:
+「80%の出来でいいんじゃない？あとは学習と経験で改善できるならそれでいい。
+改善期待でもいい。作り込みすぎるよりかはよっぽどまし」 and
+「会話の品質についてはこれ以上やるのは不毛だと思う」.
+[Full direct text and provenance](evidence/reviews/judgment-boundary/c060-grounding-results/owner-quality-direction.json).
+Development independently read those human messages. PAL設計 agreed the minimal
+acceptance interpretation: stop further conversation/prose-quality tuning, cases and
+reviews; retain minor editable local-output shortcomings as known limitations. This is
+already human-finalized priority/acceptance direction, not a proposal needing another
+owner answer. Before final adoption, one official Opus38.034s/exit0/REVIEW_COMPLETE
+consultation checked only the minimum acceptance delta and retained functional boundaries,
+using fresh existing Pro/extraOFF, no tools/MCP/retry/fallback. It did not tune or test
+conversation quality. [Original packet and disposition](evidence/reviews/judgment-boundary/c060-quality-policy-review/DISPOSITION.md).
+Adopt the quality/functional distinction, narrow safe-none to safety proof rather than
+successful correction, and reject Opus's mistaken classification of ABS-A2 as a PAL
+browse/send refusal: it is an unobserved generated artifact after client navigation denial.
+The original remains NOT_VERIFIED. Manifest SHA was mistyped in the chat; all11 original
+files match the actual manifest17ebb65c, and the author's correction is retained. No more
+quality reviews/corpora are planned. Existing review gates for other substantial changes remain.
+
+Adopt: no numeric80% threshold or new rubric. N1-05's historical zero-defect prose gate
+is nonrequired; its old FAIL/PARTIAL/NOT_VERIFIED evidence remains. N1-01/02/09/10 retain
+functional capability and host boundaries without repeated full quality requalification.
+N1-07 remains one real overall usefulness evaluation, with minor quality feedback allowed
+as known limitations rather than requiring every phrase to be repaired. Preserve existing
+no-invention model guidance; no source/product code is weakened or changed here.
+
+Do not relax external actions, money/auth/permissions, wrong-target changes, reference-stop,
+data integrity, dedupe/recovery or truthful canonical completion. An actual failure of a
+needed function still blocks that function. Do not rebrand prose tests as safety tests.
+Do not claim an automatic learning/update mechanism: current correction and bounded
+source-backed memory can use provided context; later developer changes can incorporate
+feedback. Neither is automatic model training or guaranteed self-improvement.
+
+C060 already captured35 passing Primary turns across Japanese8, English8 and independent12.
+The active negative cohort received N01 before the instruction, judged that one response,
+and closed normally without N02–24. Preserve it PARTIAL. The planned11-host quality sweep
+is cancelled unexecuted. Original ABS-A2 remains refused/NOT_VERIFIED; its quality-only
+second-sample quota is no longer a release gate, never access or replace that content.
+
+Remaining technical work is the already-frozen TARGET-C functional path: two same-label
+paused Goals, explicit target question, source-bound choice, correction of that Goal only,
+and actual local artifact/receipt displayed. Reuse the existing two inputs and cap3/600s;
+minor sentence-count/wording defects are observations, not a reason to resample or tune.
+Then preserve available usable outputs for one owner evaluation and do the final full
+suite/version/constraints/GitHub audit. No new acceptance case, harness or provider design.
+Stable-1 remains text-only and is not overall project completion; future scope stays dormant.

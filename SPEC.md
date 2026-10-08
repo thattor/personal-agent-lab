@@ -130,3 +130,14 @@ measured on PAL intent/context/clarification/delegation tasks, not assumed from 
 name or parameter count. Current authorized transport remains explicit bounded official
 access with mock default. Changing an endpoint or installing local inference is not
 implied by choosing the reference model.
+
+
+## Initial practical quality — D-031
+The owner accepts an imperfect but useful initial local assistant and explicitly ended
+further conversation/prose-quality tuning and testing. Minor editable draft wording,
+unsupported customary phrasing or inferred attributes stay known limitations; keep the
+existing grounding guidance without requiring zero-defect prose before delivery. This is
+not permission to execute external actions, alter the wrong target, invent canonical
+completion, bypass reference-stop or expand cost/access. No numerical80% target, automatic
+learning or model updating is promised. Real functional use and one overall human usefulness
+evaluation remain required. Stable-1 is not the full project destination.

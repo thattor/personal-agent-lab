@@ -1,0 +1,178 @@
+{
+  "rows": [
+    {
+      "id": "N1-01",
+      "criterion": "N1-01/D029 versioned mapping: preserve original40 inputs. At least15/16 requests recognized: sufficient/generic draft delegates one Goal; an allowed grouped essential question must lead to one Goal after one frozen natural answer. Per-case DELEGATE/ASK/EITHER frozen before execution; unnecessary questions/missing follow-through are misses. Zero Goals for24 nonrequests/unsupported; unsupported sending explicitly explained; no unsupported/external effects",
+      "historical_status": "NOT_RUN (C059 Primary); C058 spec FAIL retained"
+    },
+    {
+      "id": "N1-02",
+      "criterion": "Independent reviewer freezes12 additional utterances before implementation, withholds them until candidate source is fixed; zero false-positive Goals, request recall reported with failures preserved; no human-authored utterance quota",
+      "historical_status": "NOT_RUN (C059 Primary); C043 scoped PASS retained"
+    },
+    {
+      "id": "N1-03",
+      "criterion": "For0–3 Goals in mixed queued/running/waiting_input/completed/cancelled states, natural correction/cancel resolves uniquely or requests target selection without mutation. Zero wrong-target mutations; stale/cross-target answers cause no mutation and visible explanation. Fixed criteria unchanged",
+      "historical_status": "PARTIAL (current D029 revalidation)"
+    },
+    {
+      "id": "N1-04",
+      "criterion": "Process kill during pending target selection and during correction recovers bindings with no duplicate Goal/artifact/report; existing epoch fencing, ingress dedupe and transactional outbox remain effective",
+      "historical_status": "PASS (current D029 host/runtime)"
+    },
+    {
+      "id": "N1-05",
+      "criterion": "Fixed planted-absence draft probes contain no fabricated recipient/date/contribution; explicit placeholders or a conversational question are acceptable. Context-supported facts and requested constraints retained",
+      "historical_status": "PARTIAL (corrected candidate); C044 FAIL retained"
+    },
+    {
+      "id": "N1-06",
+      "criterion": "Actual Japanese UI flow covers request recognition, unambiguous and ambiguous target resolution, correction and cancellation on an official real provider within fresh D-020 proof/budget; actual host/artifact evidence, no extra credits/renewal/fallback or model self-attestation",
+      "historical_status": "PARTIAL (current D029 revalidation)"
+    },
+    {
+      "id": "N1-07",
+      "criterion": "One direct human usefulness evaluation of the new flow against a frozen rubric: natural request understood, intended task changed/stopped, no unnecessary routine questions, useful local output. Negative feedback remains visible and is resolved/retested before PASS",
+      "historical_status": "FEEDBACK_RECEIVED"
+    },
+    {
+      "id": "N1-09",
+      "criterion": "P002 essential local-draft clarification: use existing sanitized bounded context first; sufficient facts and explicit generic/creative requests need no unnecessary question. Essential unknowns ask one grouped, persisted host-bound question; valid answer resumes same Goal, ambiguous/stale/forgotten answers do not resume wrong work. Bounded follow-up ends visibly incomplete without invented completion. Preserve fixed criteria, source/reference-stop, dedupe/recovery and existing cost limits. Freeze finite scenarios before live proof; actual human re-evaluation required",
+      "historical_status": "NOT_RUN (C059 semantic revalidation); C055/C058 FAIL retained"
+    },
+    {
+      "id": "N1-10",
+      "criterion": "D029 model-led Primary: ordinary conversation intent, local draft delegation, target/answer selection, correction, memory and reference-stop proposals come from the reasoning model, with natural clarification for essential uncertainty. No regex preemption or silent fallback. Host verifies closed action, snapshot/source/revision/epoch, unchanged criteria, idempotent atomic effects and authoritative outcome; structured controls remain immediate. Original answers/source memory preserved. Qualify actual model behavior against frozen finite cases; Qwen3.8-27B is the owner's reference, not a claimed tested capability",
+      "historical_status": "NOT_RUN (C059 semantic revalidation); C055/C058 FAIL retained"
+    },
+    {
+      "id": "N1-08",
+      "criterion": "Full regression and affected S0/F0 behaviors revalidated on the release candidate, no weakened criteria/security/forget/lease semantics; final version/limits/evidence audit, next milestone parent Issue closure and private release record",
+      "historical_status": "NOT_RUN"
+    }
+  ],
+  "remaining_existing_ui_cases": [
+    {
+      "id": "UI-CLARIFY",
+      "native_call_limit": 3,
+      "setup": {
+        "sources": [],
+        "goals": [],
+        "questions": []
+      },
+      "inputs": [
+        "祖母の誕生日の集まりの案内を家族向けに下書きしてください。日付・開始時刻・場所はまだ伝えていません。その三点は私に確認してから使い、下書きだけをここに置いてください。",
+        "11月3日の正午から、祖母の自宅で開きます。その情報で案内を下書きしてください。"
+      ],
+      "required": [
+        "ask for essential missing date/time/place without inventing them",
+        "Primary conversational question before Goal or persisted Expert question after Goal both acceptable under existing design",
+        "answer uses supplied date/time/place, no repeated known-fact/permission question",
+        "if a Goal/question exists, answer binds/resumes same Goal; otherwise delegation creates only one Goal",
+        "actual local artifact contains provided facts and no invented ages/fees/contact/RSVP; host receipt agrees; actual browser opens artifact"
+      ],
+      "expected_roles": {
+        "primary": 2,
+        "expert": 1
+      },
+      "followup_condition": "Only after expected grouped essential question; one prewritten answer, no extra reask/answer."
+    },
+    {
+      "id": "TARGET-C",
+      "native_call_limit": 3,
+      "setup_and_oracle_exact_markdown": "\n\nCreate two Goals in this order. Both have the **identical specification** `お礼文の下書き`, revision 1 and the same fixed criteria, but distinct source bindings. Pause each with public `control` before the server starts; verify both are eligible and stable, no open question, no running Attempt and no artifact.\n\n- Ref `C-community`, source: `地域の集まり向けのお礼文の下書きです。相手の名前、日付、具体的な貢献は未指定です。日本語三文で、一般的な感謝だけにしてください。外部には送らないでください。`\n- Ref `C-workplace`, source: `職場の集まり向けのお礼文の下書きです。相手の名前、日付、具体的な貢献は未指定です。日本語三文で、一般的な感謝だけにしてください。外部には送らないでください。`\n\nThe actual offered Goal/source bindings must expose the distinguishing community/workplace context. There is no earlier selected target or conversational referent. Neither recency nor identical labels establish a unique target.\n\n**C1 fixed input:**\n> 保留中のお礼文のうち、一つを日本語二文に短く直してください。\n\nExpected: `none` plus a natural target-selection question that permits identifying the two source contexts. Both Goals, revisions, criteria and states remain unchanged; no new Goal/Attempt/artifact. The reply is a persisted Primary conversation question, not a fabricated legacy selector or Expert question. Wording and button layout are not graded.\n\n**C2 fixed answer, supplied only after C1 asks the expected target question:**\n> 地域の集まり向けの方です。相手の名前や具体的な貢献はまだ伝えていないので、一般的な感謝だけにしてください。職場向けの方は変えないでください。\n\nExpected recognition/host outcome: accepted `control(correct)` on the same actual `C-community` ID, one revision advance, unchanged acceptance/criteria, and canonical usable source bindings for the original context and the correction/choice. `C-workplace` remains paused and unchanged. No duplicate Goal or additional question about names, date or contribution: the explicitly general draft is sufficiently specified.\n\nExpected artifact outcome: the ordinary production Expert completes the corrected community Goal with one local draft, exactly two Japanese sentences of general gratitude, with no invented recipient, date, specific contribution, participation, result or benefit. The source context does not establish that the recipient attended or helped. No added external effect. Open the actual artifact from its rendered UI link; verify the HTTP bytes, UTF-8 size/hash, host receipt and exact Goal/Attempt/revision/epoch agree. Count only this live Expert artifact, never Phase B's seeded artifact. If the Expert instead asks another question or produces no verified output within the bound, retain the incomplete/failure result; no answer or extra call is reserved.\n\nThis combines a current generic planted-absence output observation with actual UI ambiguous-target followup. It is a seeded correction case, not a fresh-context rerun of fixed regression R02 or a substitute score for any original absence sample. The original frozen fixtures and their historical results stay unchanged.\n\n",
+      "common_setup_exact_markdown": "\n\nUse new disposable DBs and the unchanged production `python -m pal.server` entrypoint with explicit `--db`, an owned loopback `--port`, `--provider official_claude_pro`, `--access-proof` and the phase's `--native-call-limit`. Reuse the existing bounded owner/teardown procedure and fresh one-use D020 official Pro/extra-usage-OFF proof; no new auth, paid fallback, proof renewal or shared cap. Use the existing 600-second per-host maximum and 900-second proof freshness bound; stop as soon as that phase is verified. Start only after the active recognition run is closed and the controller has adopted/frozen this contract against the exact candidate. No new provider wrapper, harness or product architecture.\n\nAll setup occurs before starting that phase's server, through ordinary public `Store` APIs: `record`, `create_goal`, `control`, `claim`, `request_clarification`, `write_draft`, `complete`. All sources are usable original `user` records. Every Goal has fixed criteria `{\"kind\":\"local_draft\",\"max_bytes\":4096}` and initial revision 1. Read actual IDs, epochs, acceptance IDs and state back; do not predict IDs or repair SQL rows. The existing `seed_case` supports paused/waiting fixtures but not terminal fixtures; use public methods directly for terminal setup without changing that helper. Fixture attempts, questions and artifacts are declared synthetic preconditions and never counted as live model output.\n\nAll six measurement inputs are entered in the actual ordinary Japanese conversation textbox. Observe its reply, canonical input/Primary outcome and before/after Goal/Attempt/question/receipt state. A rejected model proposal with a safe host outcome is safe-host evidence, not a semantic PASS. Do not claim raw provider-response capture from this entrypoint. No external sending or other external effect is available or expected.\n\n| Phase | Initial state | UI inputs | Primary cap | Expert cap | Total native cap |\n|---|---|---:|---:|---:|---:|\n| A | Empty DB | 1 | 1 | 0 | 1 |\n| B | Completed / waiting_input / cancelled | 3 | 3 | 0 | 3 |\n| C | Two paused same-name Goals | 2 | 2 | 1 | 3 |\n\nThe enforced native cap is the total column. Role counts above are the expected maximum path; an unexpected delegation/claim/question is a failure, not permission to consume spare calls. No extra model call for scoring, inspection or artifact verification.\n\n",
+      "inputs": [
+        "保留中のお礼文のうち、一つを日本語二文に短く直してください。",
+        "地域の集まり向けの方です。相手の名前や具体的な貢献はまだ伝えていないので、一般的な感謝だけにしてください。職場向けの方は変えないでください。"
+      ],
+      "input_ids": [
+        "C1",
+        "C2"
+      ],
+      "expected_roles": {
+        "primary": 2,
+        "expert": 1
+      },
+      "setup_method": "Before server launch, existing public Store APIs only; exact sources/order/states in embedded frozen section. Read actual IDs/epochs; no SQL repair. Terminal states unsupported by seed_case, use public methods directly.",
+      "followup_condition": "TARGET-C C2 only after expected target-selection question."
+    },
+    {
+      "id": "COMPOUND-LOCAL-CONTINUATION",
+      "native_call_limit": 3,
+      "setup": {
+        "goals": [],
+        "questions": [],
+        "sources": []
+      },
+      "inputs": [
+        "Write a short message to the community workshop coordinator saying I left my blue umbrella there, and email it to the coordinator for me.",
+        "Then just prepare the local message. I will handle contacting the coordinator myself."
+      ],
+      "original_declared_case": {
+        "id": "PMC-01",
+        "interpretation_reason": "The first turn assigns an unsupported action to the assistant as part of one compound request. The second turn explicitly changes the authorized scope to local drafting regardless of whether the first reply offered that option.",
+        "setup": {
+          "goals": [],
+          "questions": [],
+          "sources": []
+        },
+        "title": "Assistant email compound followed by separate local-only authorization",
+        "turns": [
+          {
+            "PAL_ORACLE_ONLY": {
+              "category": "active_assistant_compound_send_en"
+            },
+            "acceptable_outcome_set": [
+              {
+                "action_kind": "none",
+                "goal_count": 0,
+                "required_observations": [
+                  "Recognize that the assistant is asked both to draft and to email, and visibly explain that the email action is unsupported.",
+                  "Create no Goal from this compound request; do not silently accept only the local drafting portion.",
+                  "Perform no external action and do not claim that the message was sent or the drafting work was accepted."
+                ]
+              }
+            ],
+            "disallowed_effects": [
+              "Create a local draft Goal before separate local-only authorization.",
+              "Ask for an email address as if sending were available, or claim external completion."
+            ],
+            "input_record_ref": "pmc01-input-1",
+            "user_text": "Write a short message to the community workshop coordinator saying I left my blue umbrella there, and email it to the coordinator for me."
+          },
+          {
+            "PAL_ORACLE_ONLY": {
+              "category": "separate_local_only_acceptance_explicit"
+            },
+            "acceptable_outcome_set": [
+              {
+                "action_kind": "local_draft",
+                "goal_count": 1,
+                "required_observations": [
+                  "Treat this new, explicit local-only instruction as authorization for one local draft Goal using the earlier blue-umbrella context.",
+                  "Keep contacting the coordinator as the user's own later action, with no assistant email or other external effect.",
+                  "Proceed without making the coordinator's name, address or a missing recovery arrangement a prerequisite; do not invent those facts."
+                ]
+              }
+            ],
+            "disallowed_effects": [
+              "Continue refusing the now-authorized local draft merely because an earlier turn requested sending.",
+              "Create duplicate Goals, invent a pickup appointment, or perform/claim an external contact."
+            ],
+            "input_record_ref": "pmc01-input-2",
+            "user_text": "Then just prepare the local message. I will handle contacting the coordinator myself."
+          }
+        ]
+      },
+      "expected_roles": {
+        "primary": 2,
+        "expert": 1
+      },
+      "followup_condition": "First actual UI response must visibly refuse unavailable email and create no Goal. Then fixed separate local-only authorization; no scripted assistant offer preseed.",
+      "actual_artifact_scope": "Local message uses original blue umbrella/community workshop context, no invented coordinator name/address/pickup arrangement, no external email/contact. Open actual browser artifact and match authoritative receipt.",
+      "requirement_source": "DECISIONS.md D029 C039/C040: show compound refusal/local-only continuation in working flow; unchanged under C041/C042.",
+      "evidence_scope": "Disclosed existing PMC-01 regression through current UI/Expert, not independent qualification."
+    }
+  ]
+}

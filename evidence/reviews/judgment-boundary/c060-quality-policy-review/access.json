@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-08T10:51:09.621968+00:00",
+  "auth": "existing official Claude Pro / claude.ai / firstParty",
+  "fresh_ui_source": "CUA Chrome tab172833171, claude.ai/new#settings/usage, observed in this consultation before call",
+  "usage_ui": {
+    "plan": "Pro",
+    "session_used_percent": 31,
+    "weekly_used_percent": 29,
+    "extra_usage_switch": 0,
+    "extra_usage_amount": "$0",
+    "auto_reload": "OFF"
+  },
+  "tools": [],
+  "mcpServers": {},
+  "safe_mode": true,
+  "max_turns": 1,
+  "max_seconds": 240,
+  "paid_fallback": false,
+  "retries": 0,
+  "authority": "PAL development authorized coordination request for one small official Opus design consultation under current owner operating instruction and AGENTS consultation rule"
+}

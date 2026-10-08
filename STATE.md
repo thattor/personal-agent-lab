@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized text-only delivery goal under D-021/P002 and D-028/D-029. C057 proves the repaired ask-first UI scenario. C058 then found an unsupported future-contact commitment in Primary's draft specification; the failed first attempt is preserved and all qualification processes stopped. C059 has completed the focused official Opus review and a one-paragraph Primary grounding repair; new producte851cae0 has77 targeted/270 full tests green and real semantic revalidation is next. Independent12, remaining target/compound UI, the original second A-sample evidence gap, one whole-flow owner usefulness evaluation and final audit remain. Development owns technical tests; no owner micro-question is pending. No product/model process is running in this checkout. Goal card remains BLOCKED; authorized development continues in this explicit user turn. No schedule restarted.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 is released; text-only Stable-1 remains the immediate authorized delivery goal. D-031 records the owner's direct instruction to stop further conversation/prose-quality tuning, testing and reviews and prioritize a useful initial version. C059 producte851cae0 is implemented and has77 focused/270 full tests PASS; C060 preserves35 passing actual Primary turns plus one observed N01, with the remaining negative/quality sweeps stopped. Minor editable prose is a known limitation; no old FAIL/NOT_VERIFIED becomes PASS. Remaining: the minimal target-selection/correction/display flow, one whole-flow owner usefulness evaluation and final audit/release. No product/model host is currently running. Goal card remains BLOCKED; this explicit development turn is active. Old schedules remain paused; the requested noninterrupting50-minute checkpoint remains NOT_CONFIGURED.
 
 ## Current operating authority — 2026-10-08
 
@@ -51,29 +51,26 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
-C059 records the official Opus49.935s review, its corrected C054 quotation error and
-adopted no-invention clarification before editing. New producte851cae0 changes only
-one Primary paragraph. Independent12/bad30605 was frozen before edit and disclosed
-only after17-file source freeze.77 targeted/270 full tests PASS. [Implementation and
-bounds](evidence/reviews/judgment-boundary/c059-source-grounding-review/IMPLEMENTATION.md).
+D-031 supersedes C059's full semantic requalification/eleven-host quality sweep.
+[Retained C060 measurements and owner instruction](evidence/reviews/judgment-boundary/c060-grounding-results/README.md):
+Japanese8/11 calls, independent11 cases/12 calls and English8/12 calls controller PASS;
+negative cohort N01 only, remaining23 uncalled, PARTIAL after owner-directed normal closure.
+All four fsync chains/blobs and retained DB integrity verify; native processes are absent.
+No more conversation/wording optimization, new quality samples or quality-only reviews.
 
-Run the fixed Japanese8 first (grounding-r09-r16, including original R15/R16), then
-new independent12, English8 and nonrequest24 via the existing runner:16/16/16/24caps,
-900s each, fresh existing official Pro/extra usageOFF, first failure stop. Then the
-[frozen affected UI cases](evidence/reviews/judgment-boundary/source-grounding-ui-contract.json)
-use11 separate owned hosts/28 total slot cap,600s each. No proof renewal, extra input,
-failed-sample resampling or canonical repair. Current behavioral qualification NOT_RUN.
+Complete only the untouched TARGET-C functional path using its original two inputs and
+existing public Store fixture/production UI, at most3 native slots/600seconds with fresh
+existing official no-extra-charge proof. It must identify the intended same-label Goal,
+change only that Goal and display its actual persisted artifact. Reuse unchanged host,
+recovery/cancel/forget and already-observed clarification evidence at their proper scope;
+do not rerun them just to polish language. Original ABS-A2 remains NOT_VERIFIED and is
+not accessed, retried or replaced; D031 removes its quality-only second-sample release gate.
 
-[C058 original43 calls](evidence/reviews/judgment-boundary/c058-primary-revalidation/README.md)
-and original C044/C055 failures stay immutable. N23 post-run audit is separate; old
-N run PARTIAL, N24 uncalled; its supplement is not being run. Original ABS-A2 remains
-NOT_VERIFIED and must not be accessed/retried/replaced. Host/security recovery proof
-retains unchanged-source scope; historical model PASS does not qualify changed Primary.
-
-After actual working-candidate proof: one whole-flow owner usefulness evaluation,
-final full suite/version/constraints audit and GitHub release/closure. No owner
-technical-test request or micro-question is pending. No product/model host is running
-at this checkpoint. Future milestone8/13/15–18 remains deferred; only MM0/14 completed.
+Then present one whole-flow working-version experience through PAL人間判断, incorporate
+that actual usefulness answer, run the final full suite/version/limits/Issue audit and
+release Stable-1 only after all currently required functional rows are met. Do not
+request a wording score, repeat the quality-permission question, claim automatic learning,
+or present test counts as product completion. No new owner question is pending now.
 
 ## Historical access preparation C050–C052 (superseded next actions)
 

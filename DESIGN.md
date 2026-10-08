@@ -134,3 +134,11 @@ Runtime returns durable asynchronous admission for ordinary messages, then sends
 UI receipts distinguish pending interpretation from committed outcome. Exact per-Goal controls and per-source reference-stop bypass the model lane. UI controls include epoch; stale clicks reject. Correction/answer drafts survive polling. Inspector exposes metadata/outcome, not copied Primary snapshots. Mock contains deterministic fixtures only; real ordinary routing has no lexical preemption/fallback. Historical persisted ingress replay preserves accepted outcomes and does not classify again.
 
 Historical P002 operator permits one DRAFT generation per input and cannot qualify this two-stage route. It rejects live setup before proof consumption; old finite matrix, budgets and historical evidence stay intact. A new candidate requires separately bounded actual-model and actual UI evidence.
+
+
+## D-031 delivery boundary
+No architecture, schema, prompt or security boundary changes with this owner-directed
+quality policy. Preserve source-grounding guidance; imperfections in editable local prose
+can be reported without new tuning/requalification loops. Existing correction, source-backed
+memory and developer-applied feedback are not automatic training or self-improvement.
+Required host integrity/control/recovery and actual functionality remain release gates.

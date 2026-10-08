@@ -1,0 +1,1 @@
+{"reply":"Sure, I'll keep it as a local draft and won't send anything. What should the draft be, and who is it for?","action":{"kind":"none"}}

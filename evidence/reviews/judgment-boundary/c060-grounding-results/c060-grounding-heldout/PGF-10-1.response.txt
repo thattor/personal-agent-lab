@@ -1,0 +1,1 @@
+{"reply":"I can't email anything to the group — sending isn't something I'm able to do. If you'd like, I can put together a local invitation draft that you can send yourself; just let me know.","action":{"kind":"none"}}
