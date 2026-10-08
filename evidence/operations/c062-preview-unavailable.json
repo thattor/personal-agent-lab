@@ -1,0 +1,77 @@
+{
+  "checked_at": 1791458953.1348538,
+  "pid": 65929,
+  "owned_pid_present": true,
+  "process_observation": "65929     1 Ss   16:25 /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -m pal.server --db runtime/stable1-owner-c061/state.sqlite --port 0 --provider official_claude_pro --access-proof runtime/stable1-owner-c061/proof.json --native-call-limit 16",
+  "health": {
+    "pid": 65929,
+    "started_at": 1791457968.391348,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  },
+  "db_integrity": "ok",
+  "tables": [
+    "records",
+    "sqlite_sequence",
+    "notes",
+    "goals",
+    "acceptances",
+    "revisions",
+    "attempts",
+    "artifacts",
+    "receipts",
+    "outcomes",
+    "events",
+    "dedupe",
+    "rejections",
+    "approvals",
+    "control_selections",
+    "questions",
+    "primary_turns"
+  ],
+  "server_log": "PAL official_claude_opus_tool_free conversation: http://127.0.0.1:59684\n",
+  "owner_source": {
+    "thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "turn_id": "01a11b44-b14c-7091-b10f-95a9fe1f75d9",
+    "message_id": "01a11b44-b25d-7431-ac9a-c73d4c96938d",
+    "text": "開けない"
+  },
+  "default_sandbox_same_url": {
+    "curl_exit": 7,
+    "http_status": "000"
+  },
+  "approved_local_read": {
+    "http_health": "200",
+    "same_pid": 65929,
+    "worker_alive": true
+  },
+  "browser_observation": {
+    "browser": "connected Chrome on development Mac",
+    "tab_id": "172833190",
+    "url": "http://127.0.0.1:59684/",
+    "actual_page_visible": true,
+    "input_field_visible": true,
+    "provider_status_text": "Unavailable / 利用不可: proof_expired",
+    "calls_remaining_visible": 16,
+    "new_generation_available": false
+  },
+  "open_in_codex": {
+    "requested_thread": "01a11113-f829-75c1-b728-3298aa3359b5",
+    "status": "queued",
+    "display_verified": false
+  },
+  "findings": {
+    "server_shutdown_supported": false,
+    "separate_default_sandbox_network_limitation_reproduced": true,
+    "owner_access_failure_cause": "UNKNOWN; device/browser path not yet confirmed",
+    "expiry_is_not_html_server_shutdown": true
+  },
+  "next": "Receive already-pending owner device/reachability answer in PAL人間判断; once owner reaches the real page, freshly check official no-extra-charge status and explicitly restart same database/URL with a new bounded proof. No repeated question or automated proof renewal.",
+  "native_calls": 0,
+  "proof_renewed": false,
+  "canonical_writes_or_repairs": false,
+  "human_evaluation": "NOT_DONE",
+  "source_unchanged": "content:sha256:e851cae0183a2f4a0f7998f34a413ee2c2064ea01c74eeee8ce3ca390045fa59",
+  "prior_270_test_suite_remains_same_product": true
+}

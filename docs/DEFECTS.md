@@ -555,3 +555,29 @@ are not release blockers under the new explicit policy. Repeated affected-corpus
 checks had become larger than the desired initial-use value. Prevention is the adopted
 scope boundary: perform checks for actual missing functions, authority or data integrity;
 do not reintroduce prose tests as safety tests. No automatic-learning fix is assumed.
+
+## C062 — preview access report and misleading sandbox probe
+
+Owner reported the Stable-1 preview would not open. Human-window plain sandbox curl
+returned exit7/HTTP000, but development's permitted read observes the same PID65929
+alive, health200 and DB integrity OK; actual Chrome page remains visible. Reproducing
+plain sandbox curl gives the same exit7. The owner browser/device cause remains UNKNOWN.
+The later proof expiry explains unavailable inference, not inability to load HTML.
+Evidence: evidence/operations/c062-preview-unavailable.json.
+
+Correction/prevention: report probe execution context, separate host liveness, actual
+browser reachability and generation authorization; one sandbox refusal is not a server
+downtime diagnosis. Before an explicitly requested rearm, verify the actual intended browser page rather
+than relying only on an HTTP probe. Keep the existing pending device question, with no
+duplicates or broader network exposure. C062 applied this by selecting the actual Chrome
+PAL tab, then restarting once with fresh official proof on the same DB/URL. New visible
+proof-valid/16remaining and health200 were verified; the owner's own reachability/use is
+still unconfirmed. Do not turn that uncertainty into a claimed owner success.
+
+C062 documentation correction before push: a broad substring replacement matched the
+Goal paragraph instead of Exact next action and removed intervening STATE headings in
+an unpushed commit. The diff review caught it; restored those sections byte-for-byte
+from the previous commit and applied only within the anchored Exact next action block.
+All section headings and operating-authority/phase/design/checkout blocks were compared
+and retained before amending. Future small STATE edits must check their section bounds
+and resulting heading list. No product source, runtime database or remote record changed.

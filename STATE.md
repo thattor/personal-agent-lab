@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 is released; text-only Stable-1 remains the immediate authorized delivery goal. D-031 records the owner's direct instruction to stop further conversation/prose-quality tuning, testing and reviews and prioritize a useful initial version. C059 producte851cae0 is implemented and has77 focused/270 full tests PASS; C060 preserves35 passing actual Primary turns plus one observed N01, with the remaining negative/quality sweeps stopped. Minor editable prose is a known limitation; no old FAIL/NOT_VERIFIED becomes PASS. C061 now proves the remaining target-selection/correction/display flow with one actual 144-byte artifact and unchanged other Goal. Final candidate270 tests PASS24.959s. Remaining: one whole-flow owner usefulness evaluation and final audit/release. The owner preview is running on http://127.0.0.1:59684/ with empty initial DB and actual official provider; new generation proof expires2026-10-08 20:27:48 JST (at most16 calls). Recheck actual state before later use. Goal card remains BLOCKED; this explicit development turn is active. Old schedules remain paused; the requested noninterrupting50-minute checkpoint remains NOT_CONFIGURED.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 is released; text-only Stable-1 remains the immediate authorized delivery goal. D-031 records the owner's direct instruction to stop further conversation/prose-quality tuning, testing and reviews and prioritize a useful initial version. C059 producte851cae0 is implemented and has77 focused/270 full tests PASS; C060 preserves35 passing actual Primary turns plus one observed N01, with the remaining negative/quality sweeps stopped. Minor editable prose is a known limitation; no old FAIL/NOT_VERIFIED becomes PASS. C061 now proves the remaining target-selection/correction/display flow with one actual 144-byte artifact and unchanged other Goal. Final candidate270 tests PASS24.959s. Remaining: one whole-flow owner usefulness evaluation and final audit/release. C062: the original preview remained alive; actual Chrome access is verified. One explicit same-DB/URL recovery now runs on PID80016 with fresh official proof until2026-10-08 20:51:35 JST, initial16 calls. The owner's device/path and use outcome remain unconfirmed. Goal card remains BLOCKED; this explicit development turn is active. Old schedules remain paused; the requested noninterrupting50-minute checkpoint remains NOT_CONFIGURED.
 
 ## Current operating authority — 2026-10-08
 
@@ -59,25 +59,36 @@ host closed normally. [Proof](evidence/reviews/judgment-boundary/c061-target-fun
 full tests PASS24.959s. No product code changed and no new quality review/qualification is needed.
 D031 preserves original FAIL/PARTIAL/NOT_VERIFIED, including untouched refused ABS-A2.
 
-The owner preview is now running at http://127.0.0.1:59684/ (owned PID65929),
-`runtime/stable1-owner-c061/state.sqlite`, candidate75dc0e3/producte851cae0.
-Existing official Pro authentication and credits/auto-reloadOFF were actually checked.
-The UI visibly shows Official live, initial16 remaining and proof valid. No synthetic
-input was added to this empty owner DB. New generation admission expires2026-10-08
-20:27:48 JST; readable output may remain afterwards. No automatic renewal or paid fallback.
-[Actual startup/access/health and handoff](evidence/final/stable1/owner-preview.json).
+C062: the owner reported 「開けない」 in PAL人間判断. Old PID65929 was alive,
+permitted local GET health200 and DB integrity OK. Ordinary sandbox curl reproduced
+exit7/HTTP000; that did not establish host shutdown. Actual Chrome root page was visible
+but inference proof had expired. [Diagnosis](evidence/operations/c062-preview-unavailable.json).
 
-HR-STABLE1-001 is handed to PAL人間判断 for one actual whole-flow use judgment with
-this URL/expiry/version and README limits, no input quotas or wording score. Current
-owner usefulness is still PENDING. Receive the authentic result in that existing chat,
-read the current state, reflect actual use/limitations, then final full-suite/release audit.
-If the session has expired before actual use, it is unavailable for new inference; a
-fresh cost check and explicit launch are required, not automatic proof renewal.
+Development selected the actual Personal Agent Lab Chrome tab, verified the visible page,
+and performed one explicit recovery requested by that owner report. Fresh official Pro /
+creditsOFF/auto-reloadOFF was checked, old owned PID stopped, then the production server
+restarted with SAME database and URL http://127.0.0.1:59684/ (new PID80016). Existing
+records/Goals/Attempts/artifacts/Primary turns were all0, retained without repair. Actual
+UI now shows proof valid/16remaining, health200 and worker alive. New admission expires
+2026-10-08 20:51:35 JST; no automatic renewal or fallback. [Restart/access/version evidence](evidence/operations/c062-preview-restart.json).
+
+The owner device/browser question is already pending in PAL人間判断; do not repeat it.
+Actual operator access on this Mac is verified, but owner's own initial failure cause is
+UNKNOWN and own access/use is not yet confirmed. The human window received the selected
+Chrome tab, same URL and new expiry. An open_in_codex request is queued for this development
+chat, not verified displayed. If the owner is on another device, loopback will not reach
+this Mac; no public binding/tunnel or permission expansion is authorized.
+
+Next: receive actual owner access/use result through HR-STABLE1-001. Diagnose a concrete
+remaining access obstacle if reported; do not recreate technical testing quotas. Actual
+whole-flow usefulness is still UNTRIED/UNEVALUATED. If the finite session expires, report
+inference unavailable; do not silently keep it alive. Producte851cae0 and its270-test result
+are unchanged; no conversation-quality loop or additional model call was performed here.
 
 Issue12 is CLOSED/completed and its Project item Done after functional-objective audit.
 Release#5, parent#2, milestone1 and overall project#6 remain OPEN. [GitHub readback](evidence/final/stable1/github-candidate.json).
-Independent required implementation is finished; remaining work depends on actual owner
-usefulness, then release closure. This development turn is recording the handoff, not
+Independent required implementation is finished; remaining work depends on actual owner page access/use in the newly prepared bounded
+trial, then the owner usefulness result and release closure. This development turn is recording the handoff, not
 an autonomous monitor. Stable-1 is not whole-project completion. Future proposals and
 old schedules remain inactive; new50-minute noninterrupting checkpoint NOT_CONFIGURED.
 

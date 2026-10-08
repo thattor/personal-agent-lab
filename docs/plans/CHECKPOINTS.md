@@ -705,3 +705,22 @@ Issue12 CLOSED/completed and board Done read back; parent2/release5/global6/mile
 remain open (evidence/final/stable1/github-candidate.json). Remaining independent required
 implementation is complete. Wait for authentic overall use, then final release audit;
 no unsupervised proof renewal or inference that a continued-development instruction is PASS.
+
+## C-062 — diagnose owner preview access before renewing inference
+
+Owner cannot open preview; source version unchanged. Same server remains healthy through
+permitted local GET and actual connected Chrome page, while ordinary sandbox curl fails.
+Proof is expired with16 slots unused. No model call, DB repair, source change or proof
+renewal. Actual owner device/browser access is still unconfirmed; human window already
+asked once. Preserve this as unresolved operational delivery, not failed model quality.
+Next: receive that access answer; confirm owner reachability, then freshly verify existing
+Pro/extraOFF and explicitly restart same DB/URL for one bounded whole-flow owner trial.
+Evidence: evidence/operations/c062-preview-unavailable.json. No release promotion or new plan.
+
+C062 follow-through: selected the actual Chrome PAL tab, then performed one explicit
+owner-report recovery with freshly checked official Pro/extraOFF. Same DB/URL preserved,
+old PID65929 closed, new PID80016 healthy; actual UI proof valid and16remaining. Admission
+expires2026-10-08 20:51:35 JST. All original DB table counts0 and no synthetic input/model
+call. Human window received the current tab/URL/deadline; owner access/evaluation remain
+unconfirmed. This is a finite requested restart, not automatic proof renewal. Source17
+files still match producte851cae0. Evidence: c062-preview-restart.json under evidence/operations.

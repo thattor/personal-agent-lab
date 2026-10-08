@@ -1,0 +1,71 @@
+{
+  "started_at": 1791459395.755386,
+  "pid": 80016,
+  "url": "http://127.0.0.1:59684/",
+  "proof_expires_at": 1791460295.755386,
+  "native_call_limit": 16,
+  "previous_pid": 65929,
+  "previous_pid_gone_and_port_closed": true,
+  "previous_exit_code": "not available: detached owned process",
+  "previous_provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 16,
+    "expires_at": 1791458868.2989938,
+    "authorized_now": false,
+    "unavailable_reason": "proof_expired",
+    "last_error": ""
+  },
+  "existing_db_counts_before_restart": {
+    "records": 0,
+    "goals": 0,
+    "attempts": 0,
+    "artifacts": 0,
+    "primary_turns": 0
+  },
+  "same_database_preserved": true,
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "auth_checked_at": 1791459395.476927,
+  "official_usage_observation": {
+    "actual_UI": true,
+    "session_used_percent": 54,
+    "week_used_percent": 31,
+    "credits_enabled": false,
+    "auto_reload_enabled": false
+  },
+  "restart_authority": "Owner cannot open/try request relayed via HR-STABLE1-001; explicit bounded operational recovery, not timer renewal",
+  "owner_access_failure_cause": "still UNKNOWN; operator actual Chrome root page accessible and selected",
+  "generation_calls_by_controller": 0,
+  "human_usefulness_evaluation": false,
+  "verified_at": 1791459435.286187,
+  "health": {
+    "pid": 80016,
+    "started_at": 1791459395.844071,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  },
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 16,
+    "expires_at": 1791460295.755386,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "actual_Chrome_UI": {
+    "tab_id": "172833190",
+    "proof_valid_visible": true,
+    "remaining_visible": 16,
+    "selected_native_chrome_tab": true
+  },
+  "expires_at_jst": "2026-10-08T20:51:35.755386+09:00",
+  "candidate_commit": "e13e268f6b2724a3a67fd6bacc60d9acfed0f4a9",
+  "product": "content:sha256:e851cae0183a2f4a0f7998f34a413ee2c2064ea01c74eeee8ce3ca390045fa59",
+  "all17_source_files_match": true,
+  "new_handoff_sent": true,
+  "previous_records_preserved": true
+}
