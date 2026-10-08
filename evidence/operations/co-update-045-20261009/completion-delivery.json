@@ -1,0 +1,24 @@
+{
+  "observed_at": "2026-10-08T22:23:00.424255+00:00",
+  "private_repo_confirmed": true,
+  "pull_request": "https://github.com/thattor/personal-agent-lab/pull/19",
+  "draft": true,
+  "remote_head_at_handoff": "76e974dbd699876f4df9ce259c2d38ca9e86cbda",
+  "remote_head_confirmed": true,
+  "github_ci_checks_reported": [],
+  "github_ci_claim": "No CI run or merge claimed; host unittest evidence separate.",
+  "human_window": {
+    "thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "title": "PAL人間判断",
+    "tool_send_success": true,
+    "human_read_or_new_decision_claimed": false
+  },
+  "remaining_int00": {
+    "status": "awaiting_decision",
+    "outcome": "unknown",
+    "options": [],
+    "skill_path": "/Users/hattoritoshiyasu/Documents/PAL/co-runtime/common-orchestration-v0.4.5/skills/co-task/SKILL.md",
+    "instruction": "A call with unknown outcome has no retry or switch; do not suggest a new run as a workaround for possibly duplicated work.",
+    "scope": "Only the original shared-contract implementation dependency; independent preparation completed."
+  }
+}
