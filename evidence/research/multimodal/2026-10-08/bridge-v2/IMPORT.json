@@ -1,0 +1,15 @@
+{
+  "imported_at": "2026-10-08T08:48:25.269226+00:00",
+  "source_manifest_sha256": "f146ebdc82877bc5a8909bb766ad08f8699aea7a3ea48acb4208dc6f46140738",
+  "exact_imported_files": 49,
+  "review_records_verified": [
+    "opus",
+    "swe-compact"
+  ],
+  "scope": "Next-version design and planning retention only; no product implementation or acceptance promotion",
+  "source_product": "53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+  "product_cases": "30 NOT_RUN",
+  "github_registration": "PENDING",
+  "controller": "PAL開発 sole writer",
+  "secret_pattern_scan": "no matching token/key patterns"
+}

@@ -11,7 +11,7 @@ records. Human judgment is `01a1137a-8de3-7890-b874-cdd0a7125711` (PAL人間判�
 noninferable facts, real usefulness and authority beyond existing permissions only.
 The existing design/function-change chat is `01a11837-e1e3-71f0-8ff8-bbaf8dc14527`
 (PAL設計, formerly マルチモーダル対応設計を確認), confirmed against its owner's stated role and retention
-instructions. Its current proposals remain unadopted. Necessary requests/replies/reflection messages between these lanes are
+instructions. Its current product implementation proposals remain unadopted; the owner-authorized next-version design preparation is retained separately. Necessary requests/replies/reflection messages between these lanes are
 explicitly authorized; outside support/email sending is not. No duplicate owner questions.
 STATE.md and Issue6 remain the existing project continuation/decision entry points.
 
@@ -38,7 +38,7 @@ Stable-0 remains functional-first complete: all20 required S0/F0 rows PASS, auth
 
 ## Retained future design materials — D-030
 
-The owner requested reusable PAL materials be stored in this private repository, including previously unsaved material from the design chat. [Image/audio design v1](docs/design/multimodal-qwen38-v1.md) links the fixed-model handoff candidate, original research, source snapshots, review history and import verification. Development received the archive and integrates the shared records under the single-writer instruction. This adopts retention only: 30 product cases remain NOT_RUN and SWE review is partial. Stable-1 scope and acceptance are unchanged; the current operational wait is C050 below.
+The owner requested reusable PAL materials be stored in this private repository, including previously unsaved material from the design chat. [Image/audio design v1](docs/design/multimodal-qwen38-v1.md) links the fixed-model handoff candidate, original research, source snapshots, review history and import verification. Development received the archive and integrates the shared records under the single-writer instruction. The [v2 bridge](docs/design/multimodal-next-bridge-v2.md) now preserves the completed scoped Opus/SWE reviews and their dispositions. All30 product cases remain NOT_RUN. Only design preparation and next-version planning are recorded; Stable-1 scope/acceptance and current C053 continuation are unchanged.
 
 ## Working checkout
 `/private/tmp/personal-agent-lab-stable0-20261006`, same private GitHub repository, remote origin/main. Original supplied untracked workspace preserved. No old implementation/schema was reused; the accidental startup metadata inspection is explicitly recorded in docs/DEFECTS.md. Do not inspect it again.

@@ -1,0 +1,24 @@
+VERDICT: Fixes are directionally correct and B1/B2 resolve on the stated semantics; Note9 is now fully covered by §4. Two residual contract-level blockers remain; MM0 may close only after they are written into the contract. All 30 cases remain NOT_RUN.
+
+B1 — RESOLVED. Reservation now lives in `media_inputs(client_key UNIQUE)`; no dedupe reservation row means `_finish_primary_outcome`'s `_remember` INSERT no longer collides. Rejecting reserved keys in all `_dedupe` paths (record/note/ingress/control) including terminal states closes ingress/control key theft, and checking the reservation before the old-turn early return closes the silent-replay hole.
+
+B2 — RESOLVED. `request_hash = 'media-v1:'+SHA256(canonical intake)` is namespace-separated from bare-hex text hashes, so a text replay of a media key can only hit request_hash mismatch → Conflict, and the early-return path can never produce a media outcome from a text payload. No-implicit-retry on duplicate/restart is correct.
+
+Note9 — RESOLVED. §4 fully specifies slot exhaustion: per-decoder/ASR/TTS max-1 slots, shared Qwen slot with queuedPrimary priority and no Expert preemption, overdue-process termination with confirmed exit before reuse, unconfirmed termination → slot dead until restart with 503 for new dependents, saved WAITING work failed rather than stranded, and inference outside Store tx/reply lock.
+
+BLOCKER 1 (new): The `media_inputs` rejection must be scoped to `_dedupe` lookup paths only. As written, "all Store _dedupe paths reject keys reserved in media_inputs even terminal states" is ambiguous — if the rejection is implemented in shared key-validation code also reached by `_remember`, the terminal dedupe write for an admitted media turn self-conflicts and the turn can never complete idempotently.
+Minimal fix: add one sentence — the `media_inputs` reservation check applies to `_dedupe` conflict lookups on new admissions; `_finish_primary_outcome`/`_remember` is exempt and is the sole writer of the terminal dedupe row for an admitted key.
+Case: MM-S10 (terminal replay/recovery).
+
+BLOCKER 2 (new): Atomicity/UNIQUE preconditions are unstated. `admit_media` must write the `primary_turns` row with `request_hash='media-v1:…'` and `status='pending'` inside the same transaction as the CAS→admitted, and both `media_inputs.client_key` and `primary_turns.client_key` must be schema-UNIQUE, otherwise a concurrent `prepare_primary` vs. `admit_media` on the same key can double-admit (the reservation check and the insert are only safe under the constraint).
+Minimal fix: add — "admit_media performs CAS, Record INSERT, and primary_turns INSERT (client_key, request_hash='media-v1:…', status='pending') in one transaction; schema guarantees UNIQUE(client_key) on both tables; UNIQUE violation → Conflict."
+Case: MM-S01, with crash variant under MM-S04.
+
+Notes (non-blocking):
+- Reserved-then-terminal keys are permanently burned; state explicitly that clients must retry with a new key.
+- Intake overflow beyond pending 8 needs a stated rejection code (429 vs 503); pick one and bind to MM-S06.
+- Reply-lock ordering vs. Store tx: declare lock order (reply lock → Store tx) to preclude deadlock; model work already outside lock.
+
+Runtime limits (contract-fixed): HTTP reception 2, pending 8; model 180s, preprocessing 60s guard (not SLA); slots decoder 1/ASR 1/TTS 1/Qwen shared 1; JSON/base64 ≤16MiB; JPEG/PNG ≤10MiB/20MP; PCM16 mono 16kHz ≤60s/2MiB; TTS segments ≤300cp/60s WAV, volatile 2 chunks/24MiB; logical quota <1GiB.
+
+REVIEW_COMPLETE

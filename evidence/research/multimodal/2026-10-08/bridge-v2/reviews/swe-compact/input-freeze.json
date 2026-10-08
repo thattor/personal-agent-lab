@@ -1,0 +1,6 @@
+{
+  "question_bytes": 9972,
+  "question_sha256": "0c1266689d127c8c4a52f9d8f1e508c84a343343835cab54069ae48b0efb2b12",
+  "scope": "Corrected-contract closure of previous incomplete SWE review, not full rereview of omitted design prose",
+  "source_head": "e177e70ce3c9d952a8c8f5605f5268f2be455fdc"
+}

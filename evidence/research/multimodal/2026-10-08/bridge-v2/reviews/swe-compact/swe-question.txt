@@ -1,0 +1,71 @@
+Complete the unfinished PAL multimodal implementation-design review by reviewing ONLY this narrow corrected contract. No tools, file reads, commands, edits, MCP or delegation. Current release is text-only; this is deferred next-version design and no product tests have run. The prior review supplied two blockers and eight notes but ended mid-note9 after600s. A subsequent full-doc request also timed out without review text. Do not recover unseen text or claim a full rereview of omitted material. Give a final answer on these fixes and remaining concrete blockers in the supplied contract. Keep under 600 English words, use Japanese if concise, end REVIEW_COMPLETE. One verdict, B1/B2/9 resolution, at most 2 blockers (exact minimal fix + case ID), and runtime limits. No long introduction/checklist.
+
+PRIOR B1: reservation in dedupe would collide with final INSERT; checking only prepare_primary leaves ingress/control key theft. PRIOR B2: primary_turn.request_hash using plain transcript hash would permit text replay of a media turn through prepare_primary early return. Note9 was cut during slot-exhaustion handling.
+
+CORRECTED CONTRACT:
+1 media_inputs(client_key UNIQUE) alone holds reservation; no dedupe reservation row. All Store _dedupe paths (record/note/ingress/control) reject keys reserved in media_inputs even terminal states. prepare_primary checks that reservation BEFORE old-turn early return. admit_media is a private Store method, not an HTTP bypass flag; it atomically CASes expected MediaInput state to admitted and creates user Record + primary_turn with exactly original client_key. Original _finish_primary_outcome alone writes dedupe primary at terminal outcome, including interrupted restart recovery. No public derived key. Runtime consults Store validation in all paths even if operation(key) exists, so operation projection is not authorization.
+2 primary_turns.request_hash=original immutable 'media-v1:'+SHA256(canonical intake incl sanitized text/image source/crop/asset hash/kind). Voice transcript hash is separate derived info, never alters intake hash. Text path hash remains bare hex and cannot match media-v1. Media retransmit returns same operation/outcome; text/control same-key always conflict. ASR/model retries are never implicit on duplicate or restart.
+3 received -> normalizing/transcribing -> admitted OR failed/cancelled/interrupted; cancel and worker claim use state CAS and require affected rows==1. No Goal before ASR success. Nonadmitted state is interrupted on restart; late worker result cannot admit. Admission and runtime Future publication share existing reply lock; model work outside lock. After admitted, intake cancel returns too_late and normal Goal control applies.
+4 each image decoder, ASR, TTS gets a separate bounded process slot, max1 each; Qwen Primary/Expert share one slot with queuedPrimary priority (no interruption of activeExpert). HTTP reception2/pending8; model180s preprocessing60s initialguard, not measuredSLA. Terminate overdue process and confirm exited before reuse. If termination cannot be confirmed, slot unavailable until restart; refuse NEW dependent requests503. Saved WAITING work depending on unusable slot is failed and not left pending forever. Inference/preprocessing never under Store transaction or reply lock. No paid/alternate-model fallback; text/cancel HTTP remains responsive when media slot fails.
+5 prior notes1-8 fixes: duplicateJSON rejected via object_pairs_hook; image_ref uses newmedia API without changing textAPI; per-input asset blobs even equalbytes (no shared authority); CAS affectedrows check; host binds operation/asset/hash and matches adapter envelope request_id rather than trusting model output; TTS only Primary outcome response_id with recursive _usable, not raw audit notification with emptymanifest; any failed/overlong TTS chunk fails wholeplayback; decoder allocation bounded and actual pixels checked beforeacceptance.
+6 inputs finite JSON/base64<=16MiB, JPEG/PNG<=10MiB/20MP, PCM16 mono16kHz<=60s/2MiB. Reject unknown fields, duplicatekeys, bad MIME/magic, stale source. Copies are under1GiB logicalquota+reservations; TTS volatile2chunks/24MiB. New input/ref retrieval respects source recursive _usable before use and before commit. client may select one previous image original/crop explicitly; model cannot select arbitrary path/URL. Sameorigin+Host/Origin/FetchMetadata/CORP; GET has no side effects.
+7 TTS reads canonical saved response_id->primary_outcome and current usable manifest; check before synthesis and every chunkdelivery. Segments<=300codepoints/60sWAV. Host boot_id + playback session epoch fence oldserveraudio. Local stop/newrecording immediately clears player queue and posts server stop epoch; no old auto-resume on disconnect/reload/restart. Audio input cancellation is distinct from Goal cancellation. ASR record provenance voice_transcript/asr_final_not_human_verified. Fixedtest facts checked against human truth; no universal ASR error detection claim. Primary final closedJSON only; reasoning not logged/decoded; unsupported capability no fallback.
+
+ACCEPTANCE: 30 cases ALL NOT_RUN. MM-S01 cross-channel/different-payload keys including primary earlyreturn; S02 CAS cancel/admit; S03 source-stop while inflight TTS incl client queue; S04 atomic crash/late result; S05 parser/decoder; S06 timeout/unreaped slots/new503/savedwaitingfailure/no fallback; S07 text/control responsiveness; S08 canary/EXIF; S09 copiedDBmigration/textregression; S10 terminalreplay/recovery without new ASR/model; S11 equalbytes independentauthority; S12 quota/cache; S13 selectedimage manifest; S14 sameorigin/GETactualbrowser; S15 reasoning/requestID/empty-manifest raw audit/oldboot/overlongorfailed TTSchunks. I01-05 realQwen, A01-05 realASR, T01-03 actualsound/stop/restart, P01 measured hardware (no inventedSLA), U01 actual owner integratedusefulness.
+
+PLAN: MM0 complete design/reviews/private repo/actualissues -> MM1 bounded sourcebound intake/store/host tests -> MM2 Qwen adapter/imageUI -> MM3 ASR/TTS/UI -> MM4 real hardware/30caseintegration/textregression/ownerusefulness. No current-release gate, no new model/dependency activation now. MM3 depends on adapter contract, not on image realhardware PASS. A host stage may close with partialfixture evidence but full testcase/parent/release remains NOT_RUN until required proof. Opus requested both complete reviews forMM0, currenttextrelease finish before nextimplementation absent separate ownerdirection, and exact code/model/hardware evidence binding; controller adopted these with historical PASS preserved, not overwritten.
+
+CURRENT SOURCE excerpts (future behavior above is NOT IMPLEMENTED):
+_dedupe (current actual source):
+    def _dedupe(self, db, key, kind, payload):
+        self._validate_key(key)
+        digest = hashlib.sha256(encode(sanitize(payload)).encode()).hexdigest()
+        if db.execute("SELECT 1 FROM primary_turns WHERE client_key=? AND status='pending'", (key,)).fetchone():
+            raise Conflict('idempotency key reserved by pending Primary turn')
+        old = db.execute('SELECT * FROM dedupe WHERE key=?', (key,)).fetchone()
+        if old:
+            if old['kind'] != kind or old['hash'] != digest:
+                raise Conflict('idempotency key payload conflict')
+            return digest, json.loads(old['result'])
+        return digest, None
+
+prepare_primary (current actual source):
+    def prepare_primary(self, key, text):
+        """Persist a normal user turn before inference; no model/effect in this transaction."""
+        self._validate_key(key)
+        if not isinstance(text, str) or not text.strip() or len(text.encode('utf-8')) > 65536:
+            raise ValueError('invalid Primary input')
+        content = sanitize(text)
+        digest = hashlib.sha256(encode(content).encode()).hexdigest()
+        with self._tx('primary_prepare') as db:
+            old = db.execute('SELECT * FROM primary_turns WHERE client_key=?', (key,)).fetchone()
+            if old:
+                if old['request_hash'] != digest:
+                    raise Conflict('idempotency key payload conflict')
+                return (json.loads(old['outcome']) if old['outcome'] else
+                        {'record_id': old['record_id'], 'goal': None, 'intent': 'conversation', 'primary_status': 'pending'})
+            _, previous = self._dedupe(db, key, 'primary', content)
+            if previous is not None:
+                raise Conflict('Primary admission missing')
+            record_id = uid()
+            db.execute("INSERT INTO records(id,role,content) VALUES (?,'user',?)", (record_id, content))
+            context = self._context(db)
+            goals = [dict(r) for r in db.execute("SELECT id,state,revision,epoch,question_id FROM goals WHERE state NOT IN ('completed','cancelled','unknown') ORDER BY seq DESC LIMIT 11")]
+            overflow = len(goals) > 10
+            goals = [] if overflow else goals
+            visible_goals, questions = [], []
+
+_finish_primary_outcome (current actual source):
+    def _finish_primary_outcome(self, db, turn, status, goal, reply, manifest, reason=None, kind='none', action=None):
+        response_id = uid()
+        db.execute("INSERT INTO records(id,role,content,manifest) VALUES (?,'assistant',?,?)",
+                   (response_id, sanitize(reply), encode(manifest)))
+        intent = {'local_draft':'draft', 'answer':'control', 'control':'control', 'forget':'forget'}.get(kind, 'conversation')
+        result = {'record_id':turn['record_id'], 'goal':goal, 'intent':intent,
+                  'primary_status':status, 'response_id':response_id}
+        if action:
+            result['action'] = action
+        if reason:
+            result['reason'] = reason
+        db.execute('UPDATE primary_turns SET status=?,outcome=? WHERE client_key=?', (status, encode(result), turn['client_key']))
+        return self._remember(db, turn['client_key'], 'primary', turn['request_hash'], result)

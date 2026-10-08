@@ -1074,3 +1074,26 @@ unfinished review allowed to continue now. [Verbatim source](evidence/operations
 Adopt the current-version exclusion and future design preparation direction. Do not
 automatically activate P001/future implementation, duplicate Issues/reviews while PAL設計
 prepares its packet, or delay the current text-only release for that packet.
+
+### D030/MM0 — complete next-version design preparation, not implementation
+
+PAL設計 returned the final packet after the owner's explicit current-text/next-version
+multimodal direction. Development verified all48 manifest entries plus the manifest,
+complete official Opus34.233s and SWE-2 High Free62.452s raw replies and their fresh
+access/cost evidence. [Plan and provenance](docs/design/multimodal-next-bridge-v2.md).
+Question: how to connect the retained v1 contract to bounded next-version work while
+finishing current Stable1 first? Adopt MM0 preparation and deferred MM1–4 planning.
+Opus requires both reviews for MM0, a clear next-version entry boundary and version-bound
+evidence. The controller narrows evidence invalidation to changed measured components;
+document-only commits do not erase historical PASS. SWE's two residual contract
+ambiguities are explicitly resolved in the supplemental text: admission-only reserved
+key lookup excludes terminal dedupe save, and CAS/Record/Primary pending insertion shares
+a transaction with unique keys. Retry keeps the same key; only a new explicit request
+uses a new key. New-key queue overflow503 and reply-lock-before-Store ordering are fixed.
+The original1GiB-inclusive quota is retained. No additional model rereview is claimed.
+
+Register a separate no-deadline next-version milestone with parent/MM0–4; no existing
+Stable2/P001 adoption or current N1 gate. Close only MM0 after repository retention and
+actual GitHub readback; parent and MM1–4 stay DEFERRED. All30 product cases remain
+NOT_RUN. Review/fixture/physical-usefulness proof remain distinct; no new implementation,
+model connection, authentication, payment, public exposure or owner micro-question.

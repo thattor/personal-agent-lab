@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-08T08:26:14.820140+00:00",
+  "case_count": 30,
+  "primary_owner_mapping": {
+    "MM1": [
+      "MM-S01",
+      "MM-S02",
+      "MM-S04",
+      "MM-S05",
+      "MM-S06",
+      "MM-S07",
+      "MM-S09",
+      "MM-S10",
+      "MM-S11",
+      "MM-S12"
+    ],
+    "MM2": [
+      "MM-I01",
+      "MM-I02",
+      "MM-I03",
+      "MM-I04",
+      "MM-I05",
+      "MM-S13",
+      "MM-S14"
+    ],
+    "MM3": [
+      "MM-A01",
+      "MM-A02",
+      "MM-A03",
+      "MM-A04",
+      "MM-A05",
+      "MM-T01",
+      "MM-T02",
+      "MM-T03",
+      "MM-S03",
+      "MM-S08",
+      "MM-S15"
+    ],
+    "MM4": [
+      "MM-P01",
+      "MM-U01"
+    ]
+  },
+  "mapping_complete_unique": true,
+  "all_statuses": "NOT_RUN",
+  "issue_drafts": 6,
+  "product_changes_by_design_chat": 0,
+  "tests_run": false,
+  "reason": "Only temporary design/planning documents changed; no product implementation or new tests.",
+  "final_checked_at": "2026-10-08T08:37:28.514585+00:00",
+  "current_head": "1af0501d87acb9138e33a95db002fe04b6066cea",
+  "reviewed_source_head": "e177e70ce3c9d952a8c8f5605f5268f2be455fdc",
+  "all_17_product_file_hashes_unchanged": true,
+  "swe_complete": true,
+  "swe_scope": "Corrected contract closure; not full rereview of omitted prose",
+  "opus_complete": true,
+  "opus_scope": "Bridge plan; no code inspection",
+  "controller_disposition_complete": true,
+  "product_acceptance_run": false,
+  "repo_github_retention": "Pending development writer readback"
+}

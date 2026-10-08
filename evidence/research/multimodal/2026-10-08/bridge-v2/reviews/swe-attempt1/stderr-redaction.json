@@ -1,0 +1,6 @@
+{
+  "reason": "CLI initialization emitted unnecessary account identifier; removed from retained packet",
+  "original_bytes": 105,
+  "retained_bytes": 103,
+  "review_answer_modified": false
+}

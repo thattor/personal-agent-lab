@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-10-08T08:21:23.716647+00:00",
+  "auth": "existing official Claude Pro / claude.ai / firstParty",
+  "fresh_ui_source": "CUA Chrome tab 172833039 at claude.ai/new#settings/usage, observed this turn before this call",
+  "usage_ui": {
+    "plan": "Pro",
+    "session_used_percent": 6,
+    "weekly_used_percent": 27,
+    "extra_usage_switch": 0,
+    "extra_usage_amount": "$0",
+    "auto_reload": "OFF"
+  },
+  "tools": [],
+  "mcpServers": {},
+  "safe_mode": true,
+  "max_turns": 1,
+  "max_seconds": 240,
+  "paid_fallback": false,
+  "authority": "Repository Opus design-partner requirement and owner continuation/next-version planning instruction"
+}

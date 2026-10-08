@@ -1,0 +1,64 @@
+{
+  "schema": "pal-mm-issue-drafts-v1",
+  "registration_rule": "PAL開発だけが登録。既存同目的Issueを確認し重複作成しない。keyは内部IDでありGitHub番号ではない。本文の依存を実在リンクへ置換し、親子対応とProjectを既存運用に沿って登録。",
+  "milestone": {
+    "title": "NEXT — Multimodal image/voice (implementation deferred)",
+    "description": "Owner 2026-10-08: current delivery remains text-only; multimodal is for the next version. Preparation MM0 now; MM1–4 implementation deferred. No due date, no Stable-1 gate, no P001 activation. Completion requires all 30 actual acceptance cases, current text regression, integrated owner usefulness and final version/limitations audit.",
+    "due_on": null
+  },
+  "issues": [
+    {
+      "key": "MM-PARENT",
+      "title": "次バージョン: 画像理解・音声入出力を既存PALへ接続",
+      "dependencies": [],
+      "initial_state": "DEFERRED",
+      "body": "本人の2026-10-08指示: 現行版はテキスト、画像・音声の正式採用は次バージョン。現在のStable-1の完了条件には加えません。設計・計画の準備だけを今回行い、実装はDEFERREDです。\n\n設計・依存・評価ID: [接続計画v2](https://github.com/thattor/personal-agent-lab/blob/main/docs/design/multimodal-next-bridge-v2.md)。原設計v1のAPI/保存/モデル契約と30受入ケースを維持します。fixture・レビュー・実機証拠を区別し、既存の本人指示や権限を拡張しません。\n\n## ゴール\n\n画像理解、録音→ASR→既存Primary、保存済み返答→TTSを既存PALの保護の下で使えるようにする。全体ゴール#6の将来作業。Stable-1親#2/実装#12の完了を妨げない。\n\n## 入口・依存\n\n状態: DEFERRED。依存: なし（今回の本人指示に基づく計画記録）。実装に進むときは最新の案件判断・端末/接続/費用条件を確認。\n\n## 完了条件\n\nMM0–4の成果を実在Issueとして参照する。全30件の対象版の証拠、text回帰、本人の一回の総合有用性、版・制約・未解決blocker監査を確認する。子Issueの完了数だけで親/milestoneを閉じない。実機未測定は未測定のまま残す。\n\n## 現在の証拠\n\n未実装・製品評価NOT_RUN。MM0の実際の完了だけは保存とreadback後に別記。動画/常時録音/ストリーミング会話は対象外。新しい費用・権限が必要ならその依存だけPAL人間判断へ。"
+    },
+    {
+      "key": "MM0",
+      "title": "MM0: 次版マルチモーダル設計・レビュー・接続計画を保存",
+      "dependencies": [],
+      "initial_state": "PREPARATION",
+      "body": "本人の2026-10-08指示: 現行版はテキスト、画像・音声の正式採用は次バージョン。現在のStable-1の完了条件には加えません。設計・計画の準備だけを今回行い、実装はDEFERREDです。\n\n設計・依存・評価ID: [接続計画v2](https://github.com/thattor/personal-agent-lab/blob/main/docs/design/multimodal-next-bridge-v2.md)。原設計v1のAPI/保存/モデル契約と30受入ケースを維持します。fixture・レビュー・実機証拠を区別し、既存の本人指示や権限を拡張しません。\n\n## ゴール\n\n既存の設計v1と現行コードの接点を、実行可能な将来の作業計画にする。途中で切れたSWEレビューを修正版で完結させ、指摘の採否を残す。\n\n## 入口・依存\n\n状態: PREPARATION。依存: なし（今回の本人指示に基づく計画記録）。実装に進むときは最新の案件判断・端末/接続/費用条件を確認。\n\n## 完了条件\n\n完全なSWE応答、Opusの設計/範囲レビュー、各指摘の採否、MM1–4の依存と出口、private repoへの原文保存、GitHubの実在milestone/親子Issue readbackを確認。30製品ケースは全てNOT_RUNのまま。コード/実機合格とはしない。\n\n## 現在の証拠\n\n未実装・製品評価NOT_RUN。MM0の実際の完了だけは保存とreadback後に別記。動画/常時録音/ストリーミング会話は対象外。新しい費用・権限が必要ならその依存だけPAL人間判断へ。"
+    },
+    {
+      "key": "MM1",
+      "title": "MM1: 原本保管・メディア受付・復旧と参照停止",
+      "dependencies": [
+        "MM0"
+      ],
+      "initial_state": "DEFERRED",
+      "body": "本人の2026-10-08指示: 現行版はテキスト、画像・音声の正式採用は次バージョン。現在のStable-1の完了条件には加えません。設計・計画の準備だけを今回行い、実装はDEFERREDです。\n\n設計・依存・評価ID: [接続計画v2](https://github.com/thattor/personal-agent-lab/blob/main/docs/design/multimodal-next-bridge-v2.md)。原設計v1のAPI/保存/モデル契約と30受入ケースを維持します。fixture・レビュー・実機証拠を区別し、既存の本人指示や権限を拡張しません。\n\n## ゴール\n\n別media受付、MediaInput/Asset、不変キー、原子的admit、復旧、容量上限を既存Store/Runtimeへ接続する。text APIを保持する。\n\n## 入口・依存\n\n状態: DEFERRED。依存: MM0。現行Stable-1の完了・最終監査後、最新の案件判断で次版の着手順・端末/接続/費用条件を確認。現行版完了前の実装は本人の別の明示指示がある場合のみ。\n\n## 完了条件\n\nMM-S01/02/04/05/06/07/09/10/11/12の担当条件を無害なfixtureで確認。新しいASR/画像/再生分岐をまだ持たないケースの全体はPASSにしない。旧DBコピーによる移行/復旧とtext回帰。実Qwen品質はMM4に残す。\n\n## 現在の証拠\n\n未実装・製品評価NOT_RUN。MM0の実際の完了だけは保存とreadback後に別記。動画/常時録音/ストリーミング会話は対象外。新しい費用・権限が必要ならその依存だけPAL人間判断へ。"
+    },
+    {
+      "key": "MM2",
+      "title": "MM2: Qwen画像契約・原本選択・切出しを接続",
+      "dependencies": [
+        "MM1"
+      ],
+      "initial_state": "DEFERRED",
+      "body": "本人の2026-10-08指示: 現行版はテキスト、画像・音声の正式採用は次バージョン。現在のStable-1の完了条件には加えません。設計・計画の準備だけを今回行い、実装はDEFERREDです。\n\n設計・依存・評価ID: [接続計画v2](https://github.com/thattor/personal-agent-lab/blob/main/docs/design/multimodal-next-bridge-v2.md)。原設計v1のAPI/保存/モデル契約と30受入ケースを維持します。fixture・レビュー・実機証拠を区別し、既存の本人指示や権限を拡張しません。\n\n## ゴール\n\n固定Qwen3.8-27Bのtext/image adapterと画像カードを接続。原本と質問を渡し、過去画像は明示選択のみ。Primary/既存Expertの閉じた提案とhost検証を保持。\n\n## 入口・依存\n\n状態: DEFERRED。依存: MM1。実装に進むときは最新の案件判断・端末/接続/費用条件を確認。\n\n## 完了条件\n\nadapter/image UIのhost条件とMM-S13、MM-S14画像部分を確認。MM-I01–05は実Qwenの別証拠が必要。機材がなければhost実装完了と実モデルNOT_RUNを分記し、実機合格を主張せずMM4へ残す。\n\n## 現在の証拠\n\n未実装・製品評価NOT_RUN。MM0の実際の完了だけは保存とreadback後に別記。動画/常時録音/ストリーミング会話は対象外。新しい費用・権限が必要ならその依存だけPAL人間判断へ。"
+    },
+    {
+      "key": "MM3",
+      "title": "MM3: 録音の確定入力と保存済み返答の読み上げ",
+      "dependencies": [
+        "MM1",
+        "MM2"
+      ],
+      "initial_state": "DEFERRED",
+      "body": "本人の2026-10-08指示: 現行版はテキスト、画像・音声の正式採用は次バージョン。現在のStable-1の完了条件には加えません。設計・計画の準備だけを今回行い、実装はDEFERREDです。\n\n設計・依存・評価ID: [接続計画v2](https://github.com/thattor/personal-agent-lab/blob/main/docs/design/multimodal-next-bridge-v2.md)。原設計v1のAPI/保存/モデル契約と30受入ケースを維持します。fixture・レビュー・実機証拠を区別し、既存の本人指示や権限を拡張しません。\n\n## ゴール\n\nQwen3-ASR-0.6Bの最終文を一度だけPrimaryへ渡す。Qwen3-TTS-12Hz-0.6B-CustomVoiceは保存済みresponse_idだけを再生。停止、旧音声拒否、再起動をUIまで接続。\n\n## 入口・依存\n\n状態: DEFERRED。依存: MM1, MM2。実装に進むときは最新の案件判断・端末/接続/費用条件を確認。\n\n## 完了条件\n\nMM-A01–05、MM-T01–03、MM-S03/08/15とMM-S14の音声側条件を担当。MM1のASR分岐と統合する。host/UI制御の証拠と実音声/端末再生の証拠を分離し、未実測はMM4へ残す。MM2のadapter契約に依存し、画像の実機PASSまでは入口にしない。\n\n## 現在の証拠\n\n未実装・製品評価NOT_RUN。MM0の実際の完了だけは保存とreadback後に別記。動画/常時録音/ストリーミング会話は対象外。新しい費用・権限が必要ならその依存だけPAL人間判断へ。"
+    },
+    {
+      "key": "MM4",
+      "title": "MM4: 実機でマルチモーダルを統合評価し正式採用を判断",
+      "dependencies": [
+        "MM1",
+        "MM2",
+        "MM3"
+      ],
+      "initial_state": "DEFERRED",
+      "body": "本人の2026-10-08指示: 現行版はテキスト、画像・音声の正式採用は次バージョン。現在のStable-1の完了条件には加えません。設計・計画の準備だけを今回行い、実装はDEFERREDです。\n\n設計・依存・評価ID: [接続計画v2](https://github.com/thattor/personal-agent-lab/blob/main/docs/design/multimodal-next-bridge-v2.md)。原設計v1のAPI/保存/モデル契約と30受入ケースを維持します。fixture・レビュー・実機証拠を区別し、既存の本人指示や権限を拡張しません。\n\n## ゴール\n\n利用端末・モデル版・量子化・実行系を固定し、画像/録音/返答再生を通常の利用経路で評価する。実際の品質と速度を記録する。\n\n## 入口・依存\n\n状態: DEFERRED。依存: MM1, MM2, MM3。実装に進むときは最新の案件判断・端末/接続/費用条件を確認。\n\n## 完了条件\n\nMM-I/A/T/Sの28件とMM-P01/MM-U01を対象版で監査し、全30件、text回帰、本人の一回の総合有用性、最終制約と未解決blockerを確認する。各証拠のcommit SHA・製品ファイルhash・モデルrevision/量子化・実行系・端末・試験条件を束縛する。一致と現行候補への対応を検証できる既存証拠だけ再利用し、変更影響は対象版未検証として再実行。過去PASSは上書きしない。対象版の統合有用性と最終回帰・監査は別途実施。事前採用していないSLAやp95を創作しない。\n\n## 現在の証拠\n\n未実装・製品評価NOT_RUN。MM0の実際の完了だけは保存とreadback後に別記。動画/常時録音/ストリーミング会話は対象外。新しい費用・権限が必要ならその依存だけPAL人間判断へ。"
+    }
+  ]
+}

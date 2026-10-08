@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-08T08:25:42.672798+00:00",
+  "elapsed_seconds": 600.513,
+  "exit_code": -15,
+  "bounded_stop": true,
+  "response_bytes": 31,
+  "response_sha256": "ef5892db4ef353478a3c4783680c0cc1b3c14496ed4a87db913e6d1e4c4ab16c",
+  "stderr_bytes": 105,
+  "terminal_marker": false,
+  "response_complete": false,
+  "attempts": 1,
+  "retry": false,
+  "fallback": false,
+  "private_config_removed": true
+}

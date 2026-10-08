@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-08T08:29:07.693731+00:00",
+  "auth": "existing Devin first-party login confirmed",
+  "model": "swe-2-high",
+  "cost_tier": "Free",
+  "catalog_entries": 1,
+  "workspace_trust": "respect=true; no override",
+  "tool_policy": {
+    "allow": [],
+    "deny": [
+      "read",
+      "grep",
+      "glob",
+      "write",
+      "edit",
+      "exec",
+      "fetch",
+      "Read(/**)",
+      "Write(/**)",
+      "Exec(*)",
+      "Fetch(*)",
+      "mcp__*",
+      "run_subagent",
+      "read_subagent"
+    ],
+    "ask": []
+  },
+  "subagents": false,
+  "hooks": "disabled for this process only",
+  "paid_fallback": false,
+  "limit_seconds": 480,
+  "authority": "Owner 2026-10-08 explicitly asked to continue incomplete multimodal review; prior scoped approval and repository consultation rule apply; not an inherited one-time receipt"
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "pal-mm-registration-stage-v1",
+  "state": "MM0 IN_PROGRESS; SWE closure pending, implementation DEFERRED",
+  "files": {
+    "BRIDGE-PLAN.md": {
+      "sha256": "e3f908f10730b133594df901e36561024b2ef99335d6c3c7810ea080500a24dc",
+      "bytes": 9953
+    },
+    "OWNER-INSTRUCTION.md": {
+      "sha256": "aff1896ddf0923da2e605adb3d894d1f2145ac4c9178624e4decc28009abf450",
+      "bytes": 2057
+    },
+    "ISSUE-DRAFTS.json": {
+      "sha256": "0d248610c0a2f84eb37529c94b357d210a5a72865bb34481b24ab568537a8748",
+      "bytes": 11582
+    },
+    "github-before.json": {
+      "sha256": "e86fdccaa1c0839a8eecdd5f8207340cf3b24f129e3ee4c8f4c85a4539816eaf",
+      "bytes": 16626
+    },
+    "VALIDATION.json": {
+      "sha256": "a66ce0a726973bde0d0aade03aa4aedfb4aea14618c49600ff3451a5a2cc955b",
+      "bytes": 907
+    },
+    "REVIEW-DISPOSITION.md": {
+      "sha256": "46036cec9f0ca701910a9f42e5389a8d5eadfc6aaf9e2a3010704b99a579b55d",
+      "bytes": 3906
+    },
+    "reviews/opus-response.txt": {
+      "sha256": "4f9dd3e0207223998dbca6f33483ceffd28daddb8139c4785e1ed7d5026a9811",
+      "bytes": 3283
+    },
+    "reviews/opus-access.json": {
+      "sha256": "4bf455d24d29e61b728f47f038850f845f3c8b3cfc6f29759f2962828e16d8e9",
+      "bytes": 668
+    },
+    "reviews/opus-question.txt": {
+      "sha256": "093714df892479cefed7d5a0df73896ba9d64333a676fd01f9a1a74c6a38d263",
+      "bytes": 13719
+    },
+    "reviews/opus-completion.json": {
+      "sha256": "7beb38af528cfb5ccc733ff2d420ea712eccbfd6020a84114314cc4440979a0b",
+      "bytes": 326
+    },
+    "reviews/opus-stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "reviews/opus-input-freeze.json": {
+      "sha256": "c78ad3712890ae5277b4ba545434b421d7abcfa9a14038d8a67ad5e254a7cfdd",
+      "bytes": 202
+    }
+  }
+}
