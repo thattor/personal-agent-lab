@@ -1473,3 +1473,37 @@ SWE handles A implementation with Opus design/independent review; separate Opus
 contexts handle B implementation/review. SOL alone integrates and records results.
 Fresh existing CLI auth/versions and official Pro extraOFF/SWE exact Free model
 were observed; no new authentication, billing/publication or stopped schedules.
+
+
+### D035 / actual implementation and milestone disposition
+
+Three ordinary tasks completed through the fixed official0.4.5 runtime and shared
+qualified state: A2363ba2f94ca4183906f00aabb66dd50, Bb0fd78557fc64e2b834aa232060915d0,
+C4fada68c758b4af8b65c4d64eca42dbf. Separate local workspaces and read/write sets;
+13 actual Native calls (12 Opus5.5,1 SWE-2 High Free), two independent calls/tasks
+at most concurrent. Confirmed local process intervals overlap96.164s; no remote
+compute-time inference or30-way execution claim. Final host reserved/executing0.
+[Actual records](evidence/operations/co-update-045-20261009/final-checks.json).
+
+Adopt the pure request/content implementations as scoped preparation, unused by
+PAL. SOL inspected both base diffs, enforced exact str argument keys after a
+reproduced review finding, and corrected a historical-freeze test that wrongly
+accepted the old trial freeze as current. Production validate_freeze and retained
+manifests are unchanged; obsolete proofs must still fail closed. Opus final
+milestone review agrees MET for preparation and UNMET for PAL/service/user value.
+The independent note review caught its own INT00/Operation ownership error and
+length limit; one CO repair/re-review corrected both, without source changes.
+
+SOL confirmed the five reviewed source/test hashes match committedbf1759f and
+full316-test evidence. Targeted39 tests and synthetic mock preview PASS; full316
+PASS22.074s. Raw failures, design, initial request_changes and final review remain
+available. No new host guard, permission, activation, old-proof renewal or existing
+runtime behavior is adopted from these preparation results.
+
+The remaining INT00 task stays unknown/awaiting_decision with options=[], unchanged
+pause digest and preserved pre-update state. No cancellation, resume, retry or
+switch choice was recorded. Common types remain its dependency; Operation ledger
+belongs to later EXE01. This is not a blanket project approval wait. Original13
+records remain byte-identical, original DB/services are not changed, trials and
+schedules remain stopped. Update PR19 with this exact preparation scope and send
+completion evidence to the existing human window; no public release or Issue closure.

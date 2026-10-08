@@ -11,6 +11,28 @@ No code was returned, and no contract implementation verifier or independent cod
 review ran. These records do not qualify any new CT/E2E/provider integration or human
 usefulness row. [Current continuation/evidence](STATE.md#exact-next-action--c065d034).
 
+## C066 / D035 independent preparation evidence (2026-10-09)
+
+PublishedCO0.4.5 is installed and loaded from a fixed payload, all96 file hashes
+verified before and after execution. The same qualified state supports two actual
+independent ordinary tasks; measured local Native intervals overlap96.164s.
+Host cap is12 per Claude/Devin adapter, not a30-way result or vendor quota promise.
+
+EXE02-request/1 and ART01-content/1 are pure unused modules: no external execution,
+saving, Ref/ID issuance or completion. CO isolated diffs have separate Opus reviews;
+SOL corrected strict keys and the old-current-freeze test assumption; final Opus
+milestone review PASS, same five source/test hashes confirmed. Targeted39 and full316
+unittest tests PASS (22.074s); synthetic request/mock-text/content preview PASS.
+Original failure logs and the repaired review are retained. Three tasks verified,
+13 Native calls (12 exact Opus5.5,1 exact SWE-2 High Free), actual maximum2 concurrent.
+[Evidence](evidence/operations/co-update-045-20261009/verification.json),
+[review](evidence/operations/co-update-045-20261009/milestone-review.md).
+
+This preparation slice is MET. Old INT00 remains awaiting_decision/unknown and
+unimplemented; new state/capacity does not resolve it. All service CT/E2E/provider/
+reference-availability and overall user usefulness are NOT_RUN. Prior Stable rows
+retain their original version/limits; no release or whole PAL completion.
+
 ## Retained Stable-0 completion definition
 
 Stable-0 may be declared only when all REQUIRED rows are PASS with evidence and the final audit is complete (D-019). blocked, partial, mock-only functional evidence, and not_run are not PASS. The original soak criterion remains unmet and historical; it is no longer required.

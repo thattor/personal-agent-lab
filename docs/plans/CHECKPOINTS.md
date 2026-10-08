@@ -821,3 +821,28 @@ parallel support is released, then updating and using the supported version. Ori
 userMessage was independently read; D034 records exact source, scope and preservation
 conditions. The milestone's official release check found only formal0.4.4, so no update
 was performed. No cancellation/retry/switch choice or new monitor is inferred.
+
+
+## C066 — official concurrent CO and independent preparation, 2026-10-09
+
+Purpose: exercise the supported shared-state runtime and prepare two small useful
+boundaries for a future connected Expert task without duplicating unknown INT00.
+Published0.4.5 archive plus all96 payload files verified, qualified state backed up
+and preserved. Two independent tasks actually overlap; third milestone review waits
+for integration. Only exact Opus5.5 and SWE-2 High Free are qualified here; local
+cap12 per adapter, Native quota unknown,30 not available. New tasks verified3,
+actual Native calls13, maximum concurrent2; final local slots0.
+
+Outcome: EXE02-request/1 and ART01-content/1 MET for pure preparation. Scoped reviews,
+SOL strict-key/freeze-test corrections, full316 PASS22.074s and synthetic mock
+connection; final independent Opus assessment and exact source hash confirmation.
+[Evidence](../../evidence/operations/co-update-045-20261009/final-checks.json),
+[review](../../evidence/operations/co-update-045-20261009/milestone-review.md).
+Real provider/service CT/E2E, saved artifacts, useful whole flow and overall PAL
+completion are NOT_RUN. No stopped trial/schedule or old proof is revived.
+
+Next: preserve unresolvedINT00; shared WorkRef/Ref/Action/Result still waits for
+confirmed outcome or supported resolution of its unknown SWE request. Operation
+ledger and transactional ART storage are later owners, not substitute shared types.
+No repeated same-goal request or whole-project pause. Existing human window receives
+the runtime update, actual limits, completed contribution and exact remaining dependency.

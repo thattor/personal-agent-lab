@@ -719,3 +719,20 @@ file-set change must keep historical hash assertions and demonstrate old-freeze
 rejection rather than regenerating historical manifests or weakening validation.
 The original full failure remains in full-unittest.log; rerun full regression on
 the corrected source and obtain independent review of the exact test diff.
+
+
+## 2026-10-09 — milestone note misassigned Operation to INT00
+
+The new independent milestone design/note named Operation as an INT00 shared type,
+although INT00 owns WorkRef/Ref/Action/Result and C07 Operation belongs to EXE01.
+The note also exceeded its600-word output envelope. A separate CO review returned
+request_changes on both plus a stale hash-check dependency statement. One bounded
+repair corrected ownership, moved already-confirmed hashes to verification and
+reduced the note to486 whitespace words; re-review approved the exact new version.
+
+Cause: the note generalized across C07 and INT00 instead of checking the scoped
+owner/type list, and its author claimed length without the stated counting rule.
+Preserve original design/initial findings and final note. Next milestone handoff
+must use the current scope's actual owner/type list and mechanically check any
+explicit output bound. This correction changes no product code or permission.
+Evidence: co-update-045-20261009/task-c-initial-review.json and milestone-review.md.

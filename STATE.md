@@ -19,7 +19,7 @@ implemented EXE02-request/1; Opus5.5 implemented ART01-content/1 and separately
 reviewed both file versions. SOL integrated the exact two diffs, corrected strict
 argument keys and preserved historical-freeze rejection. Current targeted39 tests,
 full316 tests (22.074s) and synthetic request/mock-text/content smoke PASS. These
-pure modules are unused by PAL. Opus milestone review of final source is PENDING.
+pure modules are unused by PAL. Opus milestone review of final source PASS, with exact five-file hashes confirmed by SOL against bf1759f and full316-test evidence.
 INT00's original four files remain unimplemented/unmodified by these tasks.
 
 Historical C064 stopped development and preserved the trial DB/records. That stop remains recorded below but is superseded for the current scoped CO preparation by the direct owner instruction; old trial/schedules remain stopped.
@@ -89,14 +89,28 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action — C066/D035
 
-Complete the independent Opus milestone assessment of the integrated source,
-strict-key correction and historical-freeze test correction, then record exact
-source/review evidence and push the updated existing PR19. Both ordinary tasks
-verified under published0.4.5 on the same qualified state. Confirmed local Native
-call intervals overlap by96.164s; this measures2 tasks, not12/24/30 provider calls.
-Actual cap remains12 per Claude/Devin adapter, quota unknown. Keep the old unknown
-INT00 state and original dirty checkout/data intact; no service/trial/schedule
-activation. Shared types/service wiring remain dependent work.
+This independent preparation slice is MET: both source diffs and the final
+Opus5.5 milestone assessment are verified and integrated, with targeted39 tests,
+full316 tests and the synthetic smoke PASS. Three ordinary CO tasks completed,
+13 Native calls total (12 Opus5.5,1 SWE-2 High), maximum actual concurrency2.
+Confirmed local Native call intervals overlap by96.164s; this is not a provider
+compute-time or12/24/30-way test. All new host slots are released. Existing-route
+local cap remains12 per adapter; Native quota unknown. Sol6.1/Astra are unsupported
+co-task routes. No billing/auth/publication/global configuration change.
+
+Review/source: bf1759fdc6bcaac0b8f112ca61f0f35aafc2a1b1 plus linked final hashes;
+[evidence](evidence/operations/co-update-045-20261009/final-checks.json) and
+[Opus milestone review](evidence/operations/co-update-045-20261009/milestone-review.md).
+Root records added after the review do not change source or retest product behavior.
+
+Next dependent implementation is INT00's shared WorkRef/Ref/Action/Result types.
+Keep its old unknown request deferred: actual status still has no retry/switch;
+no substitute common implementation is sent. Later EXE01 owns Operation/ledger and
+ART01 owns saved IDs/source availability/transactional fencing. Current helpers
+remain unused by PAL; real provider/service CT/E2E and useful whole flow are unmet.
+Preserve original checkout/data and stopped trials/schedules. Update current PR19
+and report the actual update/capacity/outcome to PAL人間判断. No Issue/milestone/project
+closure or whole-product completion is claimed.
 
 ### Preserved INT00 continuation restriction
 
