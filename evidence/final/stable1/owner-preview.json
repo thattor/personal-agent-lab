@@ -1,0 +1,61 @@
+{
+  "pid": 65929,
+  "start_at": 1791457968.2989938,
+  "proof_expires_at": 1791458868.2989938,
+  "native_call_limit": 16,
+  "candidate_commit": "75dc0e3a4b9238b5b589a6a2f9c302dd15bbf866",
+  "product": "content:sha256:e851cae0183a2f4a0f7998f34a413ee2c2064ea01c74eeee8ce3ca390045fa59",
+  "runtime": "runtime/stable1-owner-c061",
+  "synthetic_inputs_inserted": false,
+  "human_evaluation_received": false,
+  "url": "http://127.0.0.1:59684/",
+  "observed_at": 1791458047.6000938,
+  "health": {
+    "pid": 65929,
+    "started_at": 1791457968.391348,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  },
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 16,
+    "expires_at": 1791458868.2989938,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "browser": {
+    "chrome_tab": "172833190",
+    "actual_conversation_page_visible": true,
+    "actual_remaining_budget_visible": 16,
+    "marked_handoff": true
+  },
+  "access_observation": {
+    "checked_at": 1791457938.6773162,
+    "route": "official Claude Pro",
+    "logged_in": true,
+    "auth_method": "claude.ai",
+    "subscription": "pro",
+    "extra_usage_enabled": false,
+    "auto_reload_enabled": false,
+    "session_used_percent": 54,
+    "week_used_percent": 31,
+    "observation": "actual official usage UI refreshed + aria state; official CLI sanitized auth status",
+    "secrets_stored": false,
+    "setup_diagnostic": "First local import targeted native_supervisor incorrectly and failed before auth. Corrected to actual native_environment export in pal.native; status succeeded. No provider generation or extra login."
+  },
+  "owner_evaluation_status": "PENDING",
+  "human_thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "handoff_sent": true,
+  "human_window_presentation": {
+    "verified_by": "read_thread",
+    "thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "turn_id": "01a11b3b-504d-7c62-a537-cfd39a6a6b30",
+    "message_id": "msg_0e8607be08e8fc0c016ac77bc41c648191be27a6c54723f62e",
+    "actual_url_presented": true,
+    "actual_expiry_minute_presented": "2026-10-08 20:27 JST",
+    "owner_evaluation_received": false
+  }
+}

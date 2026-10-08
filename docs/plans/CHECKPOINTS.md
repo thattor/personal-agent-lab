@@ -696,3 +696,12 @@ Contribution: the adopted Stable-1 technical functional slice is ready for actua
 N1-07 and final N1-08 release closure remain; overall PAL goal is incomplete. No new plan.
 Next: a fresh bounded real-provider owner preview, one whole-flow HR-STABLE1-001 evaluation,
 then final release audit/closure if useful. Do not repeat quality questions or synthetic quotas.
+
+C061 release handoff: owner preview on fresh runtime/stable1-owner-c061 DB is actually
+visible in Chrome at127.0.0.1:59684, PID65929, fresh official Pro/extraOFF, initial16calls,
+proof admission ends2026-10-08 20:27:48 JST. No owner input/evaluation invented. HR-STABLE1-001
+URL and limits sent to PAL人間判断; N1-07 and linked N1-09 human component remain pending.
+Issue12 CLOSED/completed and board Done read back; parent2/release5/global6/milestone1
+remain open (evidence/final/stable1/github-candidate.json). Remaining independent required
+implementation is complete. Wait for authentic overall use, then final release audit;
+no unsupervised proof renewal or inference that a continued-development instruction is PASS.

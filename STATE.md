@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 is released; text-only Stable-1 remains the immediate authorized delivery goal. D-031 records the owner's direct instruction to stop further conversation/prose-quality tuning, testing and reviews and prioritize a useful initial version. C059 producte851cae0 is implemented and has77 focused/270 full tests PASS; C060 preserves35 passing actual Primary turns plus one observed N01, with the remaining negative/quality sweeps stopped. Minor editable prose is a known limitation; no old FAIL/NOT_VERIFIED becomes PASS. C061 now proves the remaining target-selection/correction/display flow with one actual 144-byte artifact and unchanged other Goal. Final candidate270 tests PASS24.959s. Remaining: one whole-flow owner usefulness evaluation and final audit/release. No product/model host is currently running. Goal card remains BLOCKED; this explicit development turn is active. Old schedules remain paused; the requested noninterrupting50-minute checkpoint remains NOT_CONFIGURED.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 is released; text-only Stable-1 remains the immediate authorized delivery goal. D-031 records the owner's direct instruction to stop further conversation/prose-quality tuning, testing and reviews and prioritize a useful initial version. C059 producte851cae0 is implemented and has77 focused/270 full tests PASS; C060 preserves35 passing actual Primary turns plus one observed N01, with the remaining negative/quality sweeps stopped. Minor editable prose is a known limitation; no old FAIL/NOT_VERIFIED becomes PASS. C061 now proves the remaining target-selection/correction/display flow with one actual 144-byte artifact and unchanged other Goal. Final candidate270 tests PASS24.959s. Remaining: one whole-flow owner usefulness evaluation and final audit/release. The owner preview is running on http://127.0.0.1:59684/ with empty initial DB and actual official provider; new generation proof expires2026-10-08 20:27:48 JST (at most16 calls). Recheck actual state before later use. Goal card remains BLOCKED; this explicit development turn is active. Old schedules remain paused; the requested noninterrupting50-minute checkpoint remains NOT_CONFIGURED.
 
 ## Current operating authority — 2026-10-08
 
@@ -16,7 +16,7 @@ explicitly authorized; outside support/email sending is not. No duplicate owner 
 STATE.md and Issue6 remain the existing project continuation/decision entry points.
 
 Stable-1 delivers the adopted natural conversation/context/local-draft/control slice.
-It is not the entire personal-assistant destination. Preserve existing N1/S0/F0 gates,
+It is not the entire personal-assistant destination. Preserve currently required N1/S0/F0 gates under D031,
 one current whole-flow human usefulness evaluation, final regression/version/limitations
 audit and Issue closure. Future P001 proposals remain dormant. Latest owner instruction
 also requests a NEW 50-minute development checkpoint only if delivery does not interrupt
@@ -28,7 +28,7 @@ The exact requested prompt and activation/stop conditions are preserved in
 ## Current phase
 Hierarchy and goal/evaluation loops configured: ACTIVE [milestone1](https://github.com/thattor/personal-agent-lab/milestone/1), parent#2 with actual child Issues#3/#4/#5; global Issue#6 with actual stage children#2/#7–11. Future milestones2–5 are proposed required stages IF P-001 adopted; milestone6 is optional extension, not a required PAL-1.0 gate. Milestone7 is a closed historical Stable-0 record, linked to Issue1 rather than assigned after CLI failure; Issue1 remains closed. [Actual GitHub readback](evidence/reviews/project-plan/github.json).
 
-[Private development Project](https://github.com/users/thattor/projects/1) now exists with the11 historical repository Issues plus active [Primary implementation Issue#12](https://github.com/thattor/personal-agent-lab/issues/12), linked under parent#2; [readback](evidence/reviews/judgment-boundary/github-project-current.json). Authentic human Projects authorization/completion received: HR-PERM-001 fulfilled. No new authentication needed. Proposed future stages remain unadopted/dormant; do not use P001 adoption as a blocker for current authorized work.
+[Private development Project](https://github.com/users/thattor/projects/1) now exists with the11 historical repository Issues plus completed [Primary implementation Issue#12](https://github.com/thattor/personal-agent-lab/issues/12), linked under parent#2; [readback](evidence/reviews/judgment-boundary/github-project-current.json). Authentic human Projects authorization/completion received: HR-PERM-001 fulfilled. No new authentication needed. Proposed future stages remain unadopted/dormant; do not use P001 adoption as a blocker for current authorized work.
 
 D-028 withdraws HR-INPUT-001/P003v1 form-only/wording approval, preserving the wrong-target defect for development. HR-STABLE1-001 is one actual end-to-end usefulness evaluation after a working candidate, not an implementation blocker. No pending micro-question. The persistent human window received the correction. D-029 assigns semantic intent/target selection/essential clarification to the Primary model, with host canonical/security/dedupe checks. Owner reference model is Qwen3.8-27B; model identity verified, actual PAL qualification NOT_RUN, no new connection installed. See [cause, authentic sources and reviews](evidence/reviews/judgment-boundary/README.md).
 
@@ -59,15 +59,27 @@ host closed normally. [Proof](evidence/reviews/judgment-boundary/c061-target-fun
 full tests PASS24.959s. No product code changed and no new quality review/qualification is needed.
 D031 preserves original FAIL/PARTIAL/NOT_VERIFIED, including untouched refused ABS-A2.
 
-Prepare one actual whole-flow owner-use UI with a fresh runtime DB, production entrypoint,
-freshly observed existing Pro/no-extra-charge proof and the existing default16-call/15-minute
-bound. Present its actual URL, expiry, version and README limits once through PAL人間判断
-as HR-STABLE1-001. No technical test script, artificial input quota or wording score for
-the owner. Do not call synthetic inputs human use or interpret 'continue' as a usefulness PASS.
-The preview is not running yet. Once the actual answer arrives, reflect it, perform the
-remaining release/Issue audit and close Stable-1 only when all required rows are met.
-If waiting, record actual runtime/proof state; do not promise automatic renewal/resumption.
-Stable-1 is not whole-project completion; future proposals and stopped schedules remain inactive.
+The owner preview is now running at http://127.0.0.1:59684/ (owned PID65929),
+`runtime/stable1-owner-c061/state.sqlite`, candidate75dc0e3/producte851cae0.
+Existing official Pro authentication and credits/auto-reloadOFF were actually checked.
+The UI visibly shows Official live, initial16 remaining and proof valid. No synthetic
+input was added to this empty owner DB. New generation admission expires2026-10-08
+20:27:48 JST; readable output may remain afterwards. No automatic renewal or paid fallback.
+[Actual startup/access/health and handoff](evidence/final/stable1/owner-preview.json).
+
+HR-STABLE1-001 is handed to PAL人間判断 for one actual whole-flow use judgment with
+this URL/expiry/version and README limits, no input quotas or wording score. Current
+owner usefulness is still PENDING. Receive the authentic result in that existing chat,
+read the current state, reflect actual use/limitations, then final full-suite/release audit.
+If the session has expired before actual use, it is unavailable for new inference; a
+fresh cost check and explicit launch are required, not automatic proof renewal.
+
+Issue12 is CLOSED/completed and its Project item Done after functional-objective audit.
+Release#5, parent#2, milestone1 and overall project#6 remain OPEN. [GitHub readback](evidence/final/stable1/github-candidate.json).
+Independent required implementation is finished; remaining work depends on actual owner
+usefulness, then release closure. This development turn is recording the handoff, not
+an autonomous monitor. Stable-1 is not whole-project completion. Future proposals and
+old schedules remain inactive; new50-minute noninterrupting checkpoint NOT_CONFIGURED.
 
 ## Historical access preparation C050–C052 (superseded next actions)
 
