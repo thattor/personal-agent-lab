@@ -1,0 +1,50 @@
+{
+  "candidate": "b99c22dab36988f3fe4b3312c7bb0dabd7363b6d",
+  "product": "content:sha256:8f0f5b75c9b5c1e6fe6d4ee488c6c3aa8c1bae6fb46f79f1d1f6c28b65664bcb",
+  "contract_sha256": "47b0aa6faa593a0e462c649b35c6e600def4ef2f02a7eb842cb56dfcdb8caf05",
+  "case": {
+    "id": "UI-CLARIFY",
+    "native_call_limit": 3,
+    "setup": {
+      "sources": [],
+      "goals": [],
+      "questions": []
+    },
+    "inputs": [
+      "祖母の誕生日の集まりの案内を家族向けに下書きしてください。日付・開始時刻・場所はまだ伝えていません。その三点は私に確認してから使い、下書きだけをここに置いてください。",
+      "11月3日の正午から、祖母の自宅で開きます。その情報で案内を下書きしてください。"
+    ],
+    "required": [
+      "ask for essential missing date/time/place without inventing them",
+      "Primary conversational question before Goal or persisted Expert question after Goal both acceptable under existing design",
+      "answer uses supplied date/time/place, no repeated known-fact/permission question",
+      "if a Goal/question exists, answer binds/resumes same Goal; otherwise delegation creates only one Goal",
+      "actual local artifact contains provided facts and no invented ages/fees/contact/RSVP; host receipt agrees; actual browser opens artifact"
+    ],
+    "expected_roles": {
+      "primary": 2,
+      "expert": 1
+    },
+    "followup_condition": "Only after expected grouped essential question; one prewritten answer, no extra reask/answer."
+  },
+  "observer": "controller via official Chrome extension CUA, ordinary UI",
+  "auth_observation": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "usage_observation": {
+    "source": "official Claude usage dialog Update then switch false immediately before this host",
+    "extra_usage_credits_checked": false,
+    "auto_reload": "OFF"
+  },
+  "pid": 99742,
+  "started_at": 1791451969.2122188,
+  "started_monotonic": 0.566754583,
+  "stop_by": 1791452539.2122188,
+  "max_host_seconds": 600,
+  "native_call_limit": 3,
+  "synthetic_input": true,
+  "human_operation": false,
+  "blocked_ABS_A2_access": false
+}

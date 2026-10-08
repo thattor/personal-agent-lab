@@ -1,0 +1,61 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "3daa0edf321d4494881bc35baa2605b1",
+      "role": "user",
+      "content": "祖母の誕生日の集まりの案内を家族向けに下書きしてください。日付・開始時刻・場所はまだ伝えていません。その三点は私に確認してから使い、下書きだけをここに置いてください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "02c18107ab9749b98d0ebc48aa96531d",
+      "role": "assistant",
+      "content": "承知しました。下書きに入る前に、お祖母様の誕生日の集まりの日付・開始時刻・場所の三点を教えていただけますか？いただいた内容で家族向けの案内文を下書きします。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"3daa0edf321d4494881bc35baa2605b1\"]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [],
+  "revisions": [],
+  "acceptances": [],
+  "attempts": [],
+  "receipts": [],
+  "outcomes": [],
+  "events": [],
+  "approvals": [],
+  "rejections": [],
+  "questions": [],
+  "artifacts": [],
+  "primary_turns": [
+    {
+      "client_key": "ui:b4c0ed3b-980f-430b-80b5-d0aedf879d54:1791452000729:8ac241bf-c78e-477e-b68d-d5f6ecc0afa2",
+      "record_id": "3daa0edf321d4494881bc35baa2605b1",
+      "status": "complete",
+      "outcome": "{\"goal\":null,\"intent\":\"conversation\",\"primary_status\":\"complete\",\"record_id\":\"3daa0edf321d4494881bc35baa2605b1\",\"response_id\":\"02c18107ab9749b98d0ebc48aa96531d\"}"
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 2,
+    "expires_at": 1791452869.2122188,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 99742,
+    "started_at": 1791451969.2704809,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

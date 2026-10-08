@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized text-only delivery goal under D-021/P002 and D-028/D-029. C053/C054 completed six real-model/UI first cases with artifact/receipt binding. C055 then found a real UI-CLARIFY failure: an explicit ask-first request was replaced with a completed placeholder draft. The failed run is stopped and evidence preserved; the reviewed prompt-only repair is frozen as product8f0f5b75 with270 tests green, pending actual semantic verification, not owner judgment. TARGET-C and COMPOUND remain NOT_RUN, plus the original second A-sample evidence gap, one whole-flow owner usefulness evaluation and final audit. Development owns technical testing; HR-UI-001 is withdrawn. No product host/model is running at this checkpoint. Goal card remains BLOCKED; authorized development is continuing in this user turn. No schedule restarted.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized text-only delivery goal under D-021/P002 and D-028/D-029. C053/C054 completed six real-model/UI first cases with artifact/receipt binding. C055 then found a real UI-CLARIFY failure: an explicit ask-first request was replaced with a completed placeholder draft. The failed run is stopped and evidence preserved; the reviewed prompt-only repair is frozen as product8f0f5b75 with270 tests green, with the repaired UI-CLARIFY first attempt now PASS; broader semantic qualification remains, not owner judgment. TARGET-C and COMPOUND remain NOT_RUN, plus the original second A-sample evidence gap, one whole-flow owner usefulness evaluation and final audit. Development owns technical testing; HR-UI-001 is withdrawn. No product host/model is running at this checkpoint. Goal card remains BLOCKED; authorized development is continuing in this user turn. No schedule restarted.
 
 ## Current operating authority — 2026-10-08
 
@@ -54,13 +54,13 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 D029/C056 records the completed official Opus review and smallest Primary instruction
 repair. New immutable product8f0f5b75 changes only pal/primary.py; independent12 was
 frozen before the edit and disclosed after the17-file candidate freeze.77 targeted
-and270 full tests PASS. No actual-provider proof is claimed for this candidate yet.
+and270 full tests PASS. [C057 actual UI-CLARIFY](evidence/reviews/judgment-boundary/c057-ask-first-ui/README.md) now PASSes: one grouped question before any Goal, fixed answer then one grounded artifact/receipt;3slots and normal139.987s closure.
 
 Run the new [fixed UI contract](evidence/reviews/judgment-boundary/ask-first-ui-contract.json)
-starting with UI-CLARIFY once: actual UI question, then its one fixed answer and actual
-artifact/host binding, cap3/600s with fresh existing Pro/extra usageOFF. If green,
-continue the unchanged fixed40 recognition inputs and new independent12 through the
-existing bounded runner, and the remaining TARGET-C/COMPOUND UI flows. No extra inputs,
+continuing with unchanged fixed40 recognition inputs and new independent12 through
+the existing bounded runner (separate frozen24/16/16/16caps, max900s per run and fresh
+existing Pro/extra usageOFF proof), then the remaining TARGET-C/COMPOUND UI flows.
+The completed UI-CLARIFY uses3/9 total UI slots; do not repeat it. No extra inputs,
 sample retries or proof renewal. Record first failure and stop for diagnosis. The
 C055 FAIL remains immutable; C043/six other UI passes remain old-version evidence,
 not new Primary PASS. Original ABS-A2 must not be accessed/retried/replaced.

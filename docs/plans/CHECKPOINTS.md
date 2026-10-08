@@ -632,3 +632,14 @@ is retained and corrected. [Implementation/limits](../../evidence/reviews/judgme
 Contribution: explicit user question order is represented without fixed semantic
 routing or added permission state. Next actual UI/finite qualification remains NOT_RUN;
 oldC055 FAIL and original ABS-A2 gap persist. No release or owner usefulness claim.
+
+## C057 — real ask-first repair works in its original UI scenario
+
+The repaired candidate first attempt asks for all three missing logistics, then the
+fixed answer produces one grounded artifact; actual Chrome/HTTP/receipt agree.
+[Proof](../../evidence/reviews/judgment-boundary/c057-ask-first-ui/README.md). Three
+native slots, owned host exits0 in139.987s; no extra answer/resample/canonical repair.
+Contribution: the explicit user ordering is respected in the actual product. Next:
+unchanged fixed40 and new independent12 recognition, then TARGET-C/COMPOUND, current
+whole-flow usefulness and final audit. The original C055 failure/ABS-A2 gap remain;
+this sample alone does not complete any N1 row or Stable1.

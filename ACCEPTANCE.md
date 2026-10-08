@@ -350,3 +350,8 @@ edit and disclosed after the17-file product freeze. [Review/adoption](evidence/r
 [77 focused](evidence/reviews/judgment-boundary/c056-ask-first-focused.txt),
 [270 full tests](evidence/reviews/judgment-boundary/c056-ask-first-full.txt).
 Semantic revalidation NOT_RUN onproduct8f0f5b75; no old Primary PASS transfer or relaxation.
+
+C057 [actual repaired UI-CLARIFY](evidence/reviews/judgment-boundary/c057-ask-first-ui/README.md)
+first attempt PASS on b99c22d/product8f0f5b75: one grouped question before Goal, one
+fixed answer, one grounded actual artifact with receipt/bytes match.3/3slots,139.987s
+normal owned-host closure. C055 FAIL retained; no whole N1/human/release promotion.

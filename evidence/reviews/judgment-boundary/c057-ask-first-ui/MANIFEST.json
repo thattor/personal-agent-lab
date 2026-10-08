@@ -1,0 +1,35 @@
+{
+  "source": "runtime/c056-ui-chrome/UI-CLARIFY",
+  "files": {
+    "start.json": {
+      "bytes": 2219,
+      "sha256": "63acaf0ec252237e594636c4269a80b4d0f0dd2b9d35104bd29e22c5306fb505"
+    },
+    "before.json": {
+      "bytes": 682,
+      "sha256": "19ec90d715c701a82be9dceaf66cb60a494910a2aaa6875f559d4258c3c57890"
+    },
+    "question.json": {
+      "bytes": 2057,
+      "sha256": "fe15320b4a5cf10afc5647f9667a18b630acbfbbe381b5cea08c67708e1e88c4"
+    },
+    "after.json": {
+      "bytes": 8765,
+      "sha256": "bda1a1da1d2f2427f62be94aba1bf25e35a4053a13ac17131a44e75cf51b9f91"
+    },
+    "artifact.txt": {
+      "bytes": 388,
+      "sha256": "37ef332467d1d818d8c79015723309949608bc177bba59e884d98dbd58b9ae39"
+    },
+    "artifact-binding.json": {
+      "bytes": 2220,
+      "sha256": "9d36a8b8cce14d553b71d33c98f432e65cd7785fe31fc24b5f866fb970a6aea3"
+    },
+    "stop.json": {
+      "bytes": 274,
+      "sha256": "88a7a100130f83d0444af1a4baa4a5b831e054d726dfff534b5580d90df06eb8"
+    }
+  },
+  "synthetic_controller_input": true,
+  "human_usefulness": false
+}

@@ -1,0 +1,56 @@
+{
+  "url": "http://127.0.0.1:50740/api/artifact/ecf97fe85d314552b14ba86e774551ef",
+  "http_status": 200,
+  "redirect": false,
+  "content_type": "text/plain; charset=utf-8",
+  "size": 388,
+  "sha256": "37ef332467d1d818d8c79015723309949608bc177bba59e884d98dbd58b9ae39",
+  "goal": {
+    "seq": 1,
+    "id": "93476c225d5e4cd9b71cf4397872cc03",
+    "state": "completed",
+    "revision": 1,
+    "acceptance_id": "dd526a8fcd7947369862e2cda98aec0a",
+    "epoch": 1,
+    "budget": 2,
+    "total_claims": 1,
+    "reason": "",
+    "question_id": null,
+    "ambiguity": 0
+  },
+  "attempt": {
+    "seq": 1,
+    "id": "7b99a5d0db734198ae12c643e45988b9",
+    "goal_id": "93476c225d5e4cd9b71cf4397872cc03",
+    "revision": 1,
+    "acceptance_id": "dd526a8fcd7947369862e2cda98aec0a",
+    "epoch": 1,
+    "status": "pass",
+    "manifest": "[\"3daa0edf321d4494881bc35baa2605b1\",\"02c18107ab9749b98d0ebc48aa96531d\",\"f5f5f8166b7148bb8e5e2d31d0c18aa3\",\"ebfbaf2ff1de4a71938dccb57b0fffc5\"]",
+    "error": "",
+    "external_intent": 0
+  },
+  "receipt": {
+    "id": "cb9a0d9612cc46db9667681d27733bb0",
+    "attempt_id": "7b99a5d0db734198ae12c643e45988b9",
+    "artifact_id": "ecf97fe85d314552b14ba86e774551ef",
+    "hash": "37ef332467d1d818d8c79015723309949608bc177bba59e884d98dbd58b9ae39",
+    "size": 388,
+    "revision": 1,
+    "epoch": 1,
+    "role": "draft"
+  },
+  "artifact": {
+    "id": "ecf97fe85d314552b14ba86e774551ef",
+    "hash": "37ef332467d1d818d8c79015723309949608bc177bba59e884d98dbd58b9ae39",
+    "size": 388
+  },
+  "browser_link_clicked": true,
+  "browser_body_observed": true,
+  "body_hash_receipt_match": true,
+  "semantic_status": "PASS",
+  "semantic_rationale": "First repaired-candidate attempt: one grouped question for date/start/location before any Goal; only the fixed answer then one Goal and one grounded family invitation. Artifact includes November 3/noon/grandmother home, no age/fee/contact/RSVP or invented relative timing. Actual UI body and exact host receipt agree; no repeated question or permission. Three slots, synthetic controller input, not human evaluation.",
+  "controller_observed": true,
+  "human_usefulness_evaluation": false,
+  "screenshot": "actual CUA tool image, no saved file claimed"
+}

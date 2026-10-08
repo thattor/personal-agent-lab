@@ -1,0 +1,209 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "3daa0edf321d4494881bc35baa2605b1",
+      "role": "user",
+      "content": "祖母の誕生日の集まりの案内を家族向けに下書きしてください。日付・開始時刻・場所はまだ伝えていません。その三点は私に確認してから使い、下書きだけをここに置いてください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "02c18107ab9749b98d0ebc48aa96531d",
+      "role": "assistant",
+      "content": "承知しました。下書きに入る前に、お祖母様の誕生日の集まりの日付・開始時刻・場所の三点を教えていただけますか？いただいた内容で家族向けの案内文を下書きします。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"3daa0edf321d4494881bc35baa2605b1\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "f5f5f8166b7148bb8e5e2d31d0c18aa3",
+      "role": "user",
+      "content": "11月3日の正午から、祖母の自宅で開きます。その情報で案内を下書きしてください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "ebfbaf2ff1de4a71938dccb57b0fffc5",
+      "role": "assistant",
+      "content": "下書きを受け付けました：家族向けの、祖母の誕生日の集まりの案内文を日本語で下書きする。日付：11月3日。開始時刻：正午。場所：祖母の自宅。上記三点はユーザーが確認済みの情報としてそのまま使用する。温かく親しみやすい家族向けの文面にする。終了時刻、持ち物、出欠連絡の方法・期限、祖母の年齢、その他の詳細は指定されていないため記載しない（創作しない）。送信はせず、下書きのみを作成する。 / Local draft accepted.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"3daa0edf321d4494881bc35baa2605b1\",\"02c18107ab9749b98d0ebc48aa96531d\",\"f5f5f8166b7148bb8e5e2d31d0c18aa3\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "56d07e459acc451d821419694c48b915",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"93476c225d5e4cd9b71cf4397872cc03\"}",
+      "usable": 1,
+      "source_event_id": "4dd6c4636a134ab88dc1018474cee38c",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "aad6acca7efa491a8687509d545d7670",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"7b99a5d0db734198ae12c643e45988b9\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"93476c225d5e4cd9b71cf4397872cc03\"}",
+      "usable": 1,
+      "source_event_id": "dd1d5407d1064b718c8ba61926df0d07",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "9d171d309da74f018ab3d40d86b26059",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"ecf97fe85d314552b14ba86e774551ef\",\"attempt_id\":\"7b99a5d0db734198ae12c643e45988b9\",\"check_status\":\"pass\",\"receipt_id\":\"cb9a0d9612cc46db9667681d27733bb0\"},\"event\":\"goal.completed\",\"goal_id\":\"93476c225d5e4cd9b71cf4397872cc03\"}",
+      "usable": 1,
+      "source_event_id": "0575df487cf948e6992a814075a3d4ed",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "93476c225d5e4cd9b71cf4397872cc03",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "dd526a8fcd7947369862e2cda98aec0a",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "93476c225d5e4cd9b71cf4397872cc03",
+      "revision": 1,
+      "acceptance_id": "dd526a8fcd7947369862e2cda98aec0a",
+      "specification": "家族向けの、祖母の誕生日の集まりの案内文を日本語で下書きする。日付：11月3日。開始時刻：正午。場所：祖母の自宅。上記三点はユーザーが確認済みの情報としてそのまま使用する。温かく親しみやすい家族向けの文面にする。終了時刻、持ち物、出欠連絡の方法・期限、祖母の年齢、その他の詳細は指定されていないため記載しない（創作しない）。送信はせず、下書きのみを作成する。",
+      "sources": "[\"f5f5f8166b7148bb8e5e2d31d0c18aa3\",\"3daa0edf321d4494881bc35baa2605b1\",\"02c18107ab9749b98d0ebc48aa96531d\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "dd526a8fcd7947369862e2cda98aec0a",
+      "goal_id": "93476c225d5e4cd9b71cf4397872cc03",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "7b99a5d0db734198ae12c643e45988b9",
+      "goal_id": "93476c225d5e4cd9b71cf4397872cc03",
+      "revision": 1,
+      "acceptance_id": "dd526a8fcd7947369862e2cda98aec0a",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"3daa0edf321d4494881bc35baa2605b1\",\"02c18107ab9749b98d0ebc48aa96531d\",\"f5f5f8166b7148bb8e5e2d31d0c18aa3\",\"ebfbaf2ff1de4a71938dccb57b0fffc5\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "cb9a0d9612cc46db9667681d27733bb0",
+      "attempt_id": "7b99a5d0db734198ae12c643e45988b9",
+      "artifact_id": "ecf97fe85d314552b14ba86e774551ef",
+      "hash": "37ef332467d1d818d8c79015723309949608bc177bba59e884d98dbd58b9ae39",
+      "size": 388,
+      "revision": 1,
+      "epoch": 1,
+      "role": "draft"
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "7b99a5d0db734198ae12c643e45988b9",
+      "receipt_id": "cb9a0d9612cc46db9667681d27733bb0",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "4dd6c4636a134ab88dc1018474cee38c",
+      "goal_id": "93476c225d5e4cd9b71cf4397872cc03",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "dd1d5407d1064b718c8ba61926df0d07",
+      "goal_id": "93476c225d5e4cd9b71cf4397872cc03",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"7b99a5d0db734198ae12c643e45988b9\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "0575df487cf948e6992a814075a3d4ed",
+      "goal_id": "93476c225d5e4cd9b71cf4397872cc03",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"ecf97fe85d314552b14ba86e774551ef\",\"attempt_id\":\"7b99a5d0db734198ae12c643e45988b9\",\"check_status\":\"pass\",\"receipt_id\":\"cb9a0d9612cc46db9667681d27733bb0\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "questions": [],
+  "artifacts": [
+    {
+      "id": "ecf97fe85d314552b14ba86e774551ef",
+      "hash": "37ef332467d1d818d8c79015723309949608bc177bba59e884d98dbd58b9ae39",
+      "size": 388
+    }
+  ],
+  "primary_turns": [
+    {
+      "client_key": "ui:b4c0ed3b-980f-430b-80b5-d0aedf879d54:1791452000729:8ac241bf-c78e-477e-b68d-d5f6ecc0afa2",
+      "record_id": "3daa0edf321d4494881bc35baa2605b1",
+      "status": "complete",
+      "outcome": "{\"goal\":null,\"intent\":\"conversation\",\"primary_status\":\"complete\",\"record_id\":\"3daa0edf321d4494881bc35baa2605b1\",\"response_id\":\"02c18107ab9749b98d0ebc48aa96531d\"}"
+    },
+    {
+      "client_key": "ui:b4c0ed3b-980f-430b-80b5-d0aedf879d54:1791452040629:3496c6c6-018b-470f-a8e8-f244d49e034c",
+      "record_id": "f5f5f8166b7148bb8e5e2d31d0c18aa3",
+      "status": "complete",
+      "outcome": "{\"goal\":{\"acceptance_id\":\"dd526a8fcd7947369862e2cda98aec0a\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"93476c225d5e4cd9b71cf4397872cc03\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":0},\"intent\":\"draft\",\"primary_status\":\"complete\",\"record_id\":\"f5f5f8166b7148bb8e5e2d31d0c18aa3\",\"response_id\":\"ebfbaf2ff1de4a71938dccb57b0fffc5\"}"
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 0,
+    "expires_at": 1791452869.2122188,
+    "authorized_now": false,
+    "unavailable_reason": "budget_exhausted",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 99742,
+    "started_at": 1791451969.2704809,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}
