@@ -1,5 +1,27 @@
 # Defects and prevention
 
+## 2026-10-09 — EXE02 request keys used equality instead of exact type
+
+The SWE-generated request constructor compared set(arguments) to the required
+keys. A str subclass equal to "repository" was accepted despite the intended
+strict-key contract. Independent Opus review identified this gap; SOL reproduced
+it with a failing public-API test (21 tests, one failure in strict-key-before.log).
+The cause is set equality checking values without enforcing each key's type.
+
+SOL now checks exact str key types before set comparison or field lookup, and
+the same regression plus both component suites pass39 tests. Keep this check
+when extending the C07 constructor; run the public strict-key rejection case and
+the full regression before wiring it into a host. No service/grant/DB behavior
+changed. Further independent review targets the corrected source. Evidence:
+evidence/operations/co-update-045-20261009. The constructor remains unused by PAL.
+
+The scoped Opus design also adds a63-bit positive issue-number boundary so decimal
+formatting cannot raise CPython's giant-integer conversion exception. This local
+preparation constraint is explicit in PARALLEL-SCOPE-1.md; it proves no issue exists
+and does not grant a capability. The ART helper still checks size after encoding;
+an early memory guard and direct-dataclass consistency are optional future consumer
+concerns, not product acceptance or a reason for an extra approval loop.
+
 ## 2026-10-08 — C064 component readiness displaced the product-value checkpoint
 
 The owner rejected the C063 conversation/draft-only trial as meaningful PAL usefulness,
@@ -679,3 +701,21 @@ A follow-up multi-file documentation patch assumed ACCEPTANCE.md had a bare file
 heading. The atomic patch guard rejected it without changes. Read the actual heading
 before applying the corrected patch; check section headings and diff bounds before
 the next canonical-record edit. This does not require another review/approval gate.
+
+
+## 2026-10-09 — retained trial freeze was assumed to be the current product
+
+The first full regression after adding the two preparation modules ran316 tests
+and failed one RepositoryFreezeTests case. The test passed the retained trial
+freeze to the current-product validator as if it still covered every product file.
+The validator correctly rejected the expanded file set; its security behavior is
+unchanged. The test's old current-version assumption caused the error.
+
+Retain the exact trial manifest and add its literal SHA256 assertion, read it as
+historical evidence, preserve its comparisons with older freezes, and assert that
+current-product validation now rejects it. No old proof is renewed or rescored.
+The existing added/removed/symlink fail-closed tests remain intact. Next product
+file-set change must keep historical hash assertions and demonstrate old-freeze
+rejection rather than regenerating historical manifests or weakening validation.
+The original full failure remains in full-unittest.log; rerun full regression on
+the corrected source and obtain independent review of the exact test diff.

@@ -14,7 +14,13 @@ and all runtime data are retained untouched.
 
 Actual CO entrypoint: published0.4.5 installed at /Users/hattoritoshiyasu/Documents/PAL/co-runtime/common-orchestration-v0.4.5; /opt/homebrew/bin/python3.13 -E -s -B -m co_v4.task; existing state /private/tmp/co04-human-route-cr3o_bg1/state. Release checksums and all96 payload files passed; isolated import resolves to this install. Old state has a private local backup, with no migration or manual edits. Registered exact routes remain claude/claude-opus-5-5 and devin/swe-2-high. Independent ordinary run commands can share state; host cap is12 per Native adapter (24 across these two routes), observed reserved/executing0 before launch. Provider quota remains unknown; actual concurrent execution is still to be measured. Sol6.1/Astra remain unsupported task routes. Evidence: evidence/operations/co-update-045-20261009. No global configuration or CO development source changed.
 
-Ownership: SOL for shared contracts, DB integration, original-canonical merge and state records; Opus for v5 design and independent milestone review; SWE-2 High for isolated contract implementation/tests. Planned initial CO run uses only imported design material and pal/__init__.py, creates pal/contracts_v5.py, tests/test_contracts_v5.py, tests/fixtures/contracts_v5.json and docs/design/contracts-v5/INT00-IMPLEMENTATION.md. It must not change existing product modules, DBs, provider configuration, services or CO. No PAL model generation or server restart is implied.
+Ownership: SOL for shared contracts, canonical records and integration; SWE-2 High
+implemented EXE02-request/1; Opus5.5 implemented ART01-content/1 and separately
+reviewed both file versions. SOL integrated the exact two diffs, corrected strict
+argument keys and preserved historical-freeze rejection. Current targeted39 tests,
+full316 tests (22.074s) and synthetic request/mock-text/content smoke PASS. These
+pure modules are unused by PAL. Opus milestone review of final source is PENDING.
+INT00's original four files remain unimplemented/unmodified by these tasks.
 
 Historical C064 stopped development and preserved the trial DB/records. That stop remains recorded below but is superseded for the current scoped CO preparation by the direct owner instruction; old trial/schedules remain stopped.
 
@@ -81,7 +87,19 @@ Actual official Japanese functional scenarios and controls PASS on runtime basel
 ## Historical soak (stopped for approved development)
 Soak01 retained after reproduced stale UI warning; soak02 retained and intentionally reset for the user's bilingual UI request. Both old DBs/hash chains/receipts stay intact. [Soak02 directly confirmed receipt and reset](evidence/soak/2026-10-07/soak02-human-and-reset.json). No old human counts/time/restart proof transferred. Bilingual UI only changes display text; fixed controls, canonical values, receipts and provider remain English. [55-test full suite](evidence/tests/ui-bilingual-full.txt), [actual refresh recovery probe](evidence/ui/recovery/bilingual-after.txt). Historical runtime/soak-20261007-03 started 2026-10-07T06:14:18.834450+09:00 from clean pushed baseline 1863ef2a3037b335fa6f257a8d6fd95fb44da9dc on port58500, monitor PID3322/app PID3324. [Fresh start and served bilingual UI](evidence/soak/2026-10-07/start-03.json).
 
-## Exact next action — C065/D034
+## Exact next action — C066/D035
+
+Complete the independent Opus milestone assessment of the integrated source,
+strict-key correction and historical-freeze test correction, then record exact
+source/review evidence and push the updated existing PR19. Both ordinary tasks
+verified under published0.4.5 on the same qualified state. Confirmed local Native
+call intervals overlap by96.164s; this measures2 tasks, not12/24/30 provider calls.
+Actual cap remains12 per Claude/Devin adapter, quota unknown. Keep the old unknown
+INT00 state and original dirty checkout/data intact; no service/trial/schedule
+activation. Shared types/service wiring remain dependent work.
+
+### Preserved INT00 continuation restriction
+
 
 CO task `6a9dea446fa241ceb6ee876bbdb08be9` exited75 after `s2-a1`/Devin SWE-2 High
 reached900seconds. CLI status independently confirms route_timeout/inference,
@@ -107,7 +125,7 @@ Baseline full277 unittest tests passed on host in21.974s. The first restricted r
 failed at localhost socket binding; it is retained separately, not scored as a
 product defect or a PASS. Inspect the exact CO diff before integration, rerun shared
 contract cases and required full regression, and record the same-version review.
-The current unit prepares shared contracts only. C01–C15 services, real GitHub
+Current work prepares only the independent request/content boundaries. C01–C15 services, real GitHub
 read through PAL, persistence/control-race coverage, E2E01–09 and human usefulness
 remain NOT_RUN. Historical rejected draft-only usefulness is not an unanswered
 question. Old trials/schedules remain stopped.

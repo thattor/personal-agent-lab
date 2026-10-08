@@ -1,0 +1,189 @@
+# Design Review: EXE02-request/1 (Section A of PARALLEL-SCOPE-1.md)
+
+## 1. Scope assessment
+
+**Usefulness.** The module is a useful but modest piece of EXE02 preparation. It gives one deterministic, testable place to:
+
+- restrict github.issue.read and github.file.read to the C07 argument shapes,
+- pin the repository,
+- reject path escapes and mutable refs,
+- produce a fixed `gh api` argv with no shell interpretation,
+- bound timeout and response size.
+
+These are the security-relevant parts of C07's "検証してから固定argvの既存公式CLIで読む" (validate first, then read via the fixed argv of an existing official CLI). They can be built and tested now, without INT00. The value is only realized once an EXE01-owned executor consumes the request. Until then it is unused code, which the scope explicitly accepts.
+
+**No running capability.** Confirmed, if the implementation follows this design:
+
+- No import or use of subprocess, os, socket, http, urllib.request, pathlib/open, sqlite3, or environment access.
+- `urllib.parse.quote` is pure string work and is allowed.
+- Nothing executes, resolves `gh`, reads credentials, or touches the filesystem or DB.
+- Building an argv is not running it.
+
+**Owner boundaries.** Confirmed; the module leaves all of the following to their owners:
+
+- **EXE01:** authority and grant checks, operation reservation (C15), operation/receipt ID issuance, recovery and retry_index handling.
+- **EXE02/EXE01 executor:** process execution and timeout/byte enforcement.
+- **EXE01:** response parsing, hashing, provenance (commit SHA, observed_at, updated_at, body hash) and C11 readback.
+
+The docstring must state that ReadRequest is not an authorization decision. Its existence does not prove grant, reservation, or that it came from prepare_read.
+
+**INT00.** Confirmed: this does not replace or implement INT00.
+
+- Do not define or import WorkRef, Ref, Action, or Result.
+- Do not create a common-contract module.
+- Do not touch `pal/__init__.py`.
+- ReadRequestError's codes are a subset of the C-level code vocabulary. It is a local exception, not a Result wrapper.
+
+**Scope objections.** None blocking. The risks below are the items to watch.
+
+## 2. Public API
+
+Module `pal/github_read_request_v5.py`, stdlib only (dataclasses, urllib.parse; re optional).
+
+- `__all__ = ("ReadRequest", "ReadRequestError", "prepare_read")`
+- `prepare_read(capability, arguments, *, timeout_seconds=30, max_bytes=1048576) -> ReadRequest`
+  - It raises ReadRequestError on any rejection and never returns None or a partial value.
+- Module-level constants are allowed: REPOSITORY = "thattor/personal-agent-lab", MAX_TIMEOUT_SECONDS = 30, MAX_BYTES = 1048576. Do not add other public helpers.
+
+## 3. ReadRequest and ReadRequestError
+
+**ReadRequest**
+
+- Defined as `@dataclass(frozen=True, slots=True)` with fields:
+  - capability: str
+  - argv: tuple[str, ...]
+  - timeout_seconds: int
+  - max_bytes: int
+- prepare_read always stores argv as a tuple of str.
+- No `__post_init__` revalidation and no extra fields such as ids, keys, repository copies or raw arguments.
+- The docstring says only prepare_read output is the supported form and that the value is not an authorization gate.
+
+**ReadRequestError(Exception)**
+
+- Has two attributes: code (one of "invalid_input", "denied", "limit") and message (a fixed constant string).
+- `__init__(code, message)` calls `super().__init__(message)`, so args contains only the constant message.
+- Messages come from a small fixed table. They never format, slice or repr an input value. Names of fields such as "path" or "timeout_seconds" are constants and may appear.
+- Messages stay short (≤120 chars).
+- Pickling support is not required.
+
+## 4. Validation order
+
+Checks run in this order; the first failure raises.
+
+1. capability must satisfy `type(capability) is str` and be exactly "github.issue.read" or "github.file.read".
+   - Otherwise: invalid_input.
+2. arguments must satisfy `type(arguments) is dict`, and `set(arguments)` must equal the exact required key set: {repository, number} or {repository, path, ref}.
+   - Missing, extra or non-str keys: invalid_input.
+   - Requiring the exact dict type and exact str type everywhere avoids subclasses with overridden methods and time-of-check/time-of-use reads through custom mappings.
+3. repository must satisfy `type is str`; otherwise invalid_input.
+   - If it is not exactly "thattor/personal-agent-lab": **denied**.
+   - The match is exact and case-sensitive, so "Thattor/personal-agent-lab" is denied.
+   - Denied wins over any later field fault, so a foreign repository never gets field-level feedback.
+4. Capability-specific fields:
+   - **Issue `number`:** `type(number) is int` (this rejects bool, float and str) and number ≥ 1. Otherwise invalid_input.
+     - Recommended additional guard: `number.bit_length() <= 63`, otherwise invalid_input. Without it, `str()` of an int over 4300 digits raises ValueError (CPython's int-to-string limit), which would break the "only ReadRequestError" contract. Flagged for the reviewer as a technical necessity, not a quality rule.
+   - **File `path`:**
+     - `type is str` and nonempty.
+     - No lone surrogates (U+D800–U+DFFF). Check by scanning code points, not with try/encode; see section 7.
+     - No C0 controls (U+0000–U+001F), no DEL (U+007F), no backslash.
+     - Split on "/". Every segment must be nonempty and not "." or "..". This rejects leading "/" (absolute paths), trailing "/", and "//".
+     - All failures: invalid_input.
+     - Do not normalize Unicode. Do not reject spaces, shell metacharacters, C1 controls or other ordinary Unicode.
+   - **File `ref`:** `type is str`, length exactly 40, every character in "0123456789abcdef".
+     - Use an explicit set or `re.fullmatch(r"[0-9a-f]{40}", ref)`. Do not use `\d`, isalnum or isdigit, which accept non-ASCII digits.
+     - Uppercase hex, short SHAs and branch names: invalid_input.
+5. timeout_seconds: `type is int` (not bool).
+   - Below 1: invalid_input.
+   - Above 30: limit.
+6. max_bytes: `type is int` (not bool).
+   - Below 1: invalid_input.
+   - Above 1048576: limit.
+
+## 5. Path encoding rule
+
+Encoded path = `"/".join(urllib.parse.quote(seg, safe="") for seg in path.split("/"))`.
+
+- Each segment is UTF-8 percent-encoded with uppercase hex. Only unreserved characters (A–Z, a–z, 0–9, "-", ".", "_", "~") stay literal.
+- Space, $, ;, #, ?, %, &, +, = are all encoded, so a literal "%" becomes %25 (no double-decode ambiguity) and "?" or "#" cannot alter the query.
+- The "/" separators are preserved.
+- The ref is appended raw as `?ref=<sha>`; it is already restricted to hex.
+
+Worked example: path "docs/日本 語/a$b;c#d?e.md" encodes to "docs/%E6%97%A5%E6%9C%AC%20%E8%AA%9E/a%24b%3Bc%23d%3Fe.md".
+
+## 6. Fixed argv
+
+There are exactly 7 elements. The repository string comes from the module constant, not from the input.
+
+- **Issue:** `('gh', 'api', '--method', 'GET', '--hostname', 'github.com', 'repos/thattor/personal-agent-lab/issues/<number>')`, where `<number>` is `str(number)`.
+- **File:** `('gh', 'api', '--method', 'GET', '--hostname', 'github.com', 'repos/thattor/personal-agent-lab/contents/<encoded-path>?ref=<sha>')`.
+
+Do not add headers, `--include`, `--jq`, `--paginate`, `-F`/`-f` fields, or any argument derived from input beyond the endpoint. The endpoint always starts with "repos/", so it cannot be parsed as an option.
+
+## 7. Error policy (no raw echo)
+
+- Never raise ReadRequestError inside an `except` block. `raise ... from None` still leaves `__context__` holding the original exception and its raw data.
+- Preferably the module catches no exceptions at all: every check is a plain predicate (type checks, code-point scans, comparisons).
+- The result must be that a raised error has `__cause__ is None` and `__context__ is None`.
+- args, str() and repr() contain only the constant message.
+- Inputs still appear in the caller's own traceback frames. That is unavoidable and outside this module.
+
+## 8. Required tests
+
+File `tests/test_github_read_request_v5.py`, unittest, stdlib only.
+
+- Import with `from pal.github_read_request_v5 import ...`. The verifier runs with cwd set to the workspace and does not use -I, so `pal` is importable. Do not rely on a `tests/__init__.py`.
+- Write expected strings as literals. Do not recompute them with quote.
+
+Cases:
+
+1. **Exact issue argv:** number 42 gives the full 7-tuple literal, timeout 30 and max_bytes 1048576 by default.
+2. **Exact file argv:** a simple path plus a valid SHA gives the literal tuple. The Unicode/space/$/;/#/? example in section 5 gives the literal encoded endpoint. Also cover a literal "%" (becomes %25) and a nested multi-segment path.
+3. **Immutability:**
+   - argv is a tuple of str.
+   - Assigning to any field raises AttributeError (FrozenInstanceError).
+   - Mutating the input dict after the call does not change the result.
+4. **Wrong capability** is invalid_input. Cover an unknown string, a non-str value and "github.issue.write". Also cover a file capability given issue keys, and vice versa.
+5. **Keys:** missing, extra or non-str keys, and a non-dict or dict-subclass `arguments`, are all invalid_input.
+6. **Issue number:** True, False, 0, -1, "1", 1.0 and a huge int (2**64 and 10**5000) are invalid_input. 1 is accepted.
+7. **Repository:** "other/repo", case variants, and a trailing-space variant are denied. A non-str repository is invalid_input.
+8. **Path escapes and controls**, all invalid_input:
+   - "/abs", "a//b", "a/./b", "a/../b", "..", ".", "a/", "".
+   - Backslash variants: "a\\b".
+   - "a\x00b", "a\nb", "a\x7fb".
+   - A lone surrogate: "a\ud800b".
+9. **Ref:** uppercase SHA, 39 and 41 chars, "main", "refs/heads/main", non-hex chars and non-str values are invalid_input.
+10. **Bounds:**
+    - timeout_seconds: 1 and 30 accepted; 31 is limit; 0 and -1 are invalid_input; True and 30.0 are invalid_input.
+    - max_bytes: 1 and 1048576 accepted; 1048577 is limit; 0 and -1 are invalid_input; a bool is invalid_input.
+11. **Ordering:**
+    - Other repository plus a bad path gives denied.
+    - Bad capability plus other repository gives invalid_input.
+    - Bad keys plus timeout 31 gives invalid_input.
+12. **No raw echo:** put a sentinel string into the capability, repository, path and ref (one at a time). For each, assert the sentinel is absent from `str(err)`, `repr(err)`, `err.message` and `err.args`. Also assert `err.code` is in the three-code set and that `__cause__` and `__context__` are None.
+
+No test spawns processes, uses a network, or reads the environment.
+
+## 9. Risks and remaining problems
+
+1. ReadRequest is directly constructible with arbitrary argv. A future executor must not treat the type as proof of validation. Documented here; enforcement belongs to EXE01.
+2. The int digit limit forces an upper bound on issue numbers that the scope does not state. The recommended guard is bit_length ≤ 63 returning invalid_input; the reviewer should confirm.
+3. The design commits EXE02 to `gh api`. The contents API has its own constraints, all of which belong to the later EXE02 response side, not this constructor:
+   - it returns JSON with base64 content,
+   - it refuses or truncates files over about 1 MB,
+   - it lists directories,
+   - it handles symlinks and submodules differently.
+
+   Also, `/issues/N` also returns pull requests.
+4. `gh` resolution via PATH, GH_HOST/GH_TOKEN/GH_DEBUG environment influence and credential selection are executor concerns. `--hostname` pins the host but does not neutralize the environment.
+5. There are no length bounds on path or segments, per the scope. Very long URLs will be rejected by GitHub, not here.
+6. C1 controls, bidi overrides and NFC/NFD variants pass through; they are encoded literally. That is safe for argv and the URL but may be confusing when displayed. No restriction is invented.
+7. The SHA format is checked but its existence is not, and cannot be offline. Branch-to-SHA resolution stays with the host.
+8. The denied-before-field-validation order is a design choice. Callers and tests must not assume another order.
+9. NOT_RUN, per the scope: real provider reads, CT03/04/07/08/25, E2E01–09, reference availability, INT00 wiring and user value.
+
+The implementer's explanation must state these technical choices before the file contents:
+
+- frozen slots dataclass,
+- predicate-only validation with no except blocks,
+- `quote(safe="")` per segment,
+- the 63-bit issue guard.

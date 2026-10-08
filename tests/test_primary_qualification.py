@@ -826,11 +826,16 @@ class RepositoryFreezeTests(unittest.TestCase):
                           if grounding['files'][path]!=current['files'][path]}, {'pal/primary.py'})
         self.assertEqual(grounding['heldout_sha256'], COHORTS['grounding-heldout'][1])
         self.assertFalse(grounding['heldout_contents_opened_before_freeze'])
-        trial = validate_freeze(ROOT, 'evidence/reviews/two-hour-trial/candidate-freeze.json')
+        trial_path = ROOT/'evidence/reviews/two-hour-trial/candidate-freeze.json'
+        self.assertEqual(hashlib.sha256(trial_path.read_bytes()).hexdigest(),
+                         'baa73183f52f20028642601f45e7fbb178177abf3740021152a96d12b7aefc3f')
+        trial = json.loads(trial_path.read_text())
         self.assertEqual(set(trial['files']), set(grounding['files']))
         self.assertEqual({path for path in trial['files']
                           if trial['files'][path]!=grounding['files'][path]},
                          {'pal/native.py','pal/server.py','pal/web/app.js'})
+        with self.assertRaises(RunRejected):
+            validate_freeze(ROOT, 'evidence/reviews/two-hour-trial/candidate-freeze.json')
         with self.assertRaises(RunRejected):validate_freeze(ROOT, GROUNDING_FREEZE)
         with self.assertRaises(RunRejected):validate_freeze(ROOT, ASK_FIRST_FREEZE)
         with self.assertRaises(RunRejected):validate_freeze(ROOT, expert_path)

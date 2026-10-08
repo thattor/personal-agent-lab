@@ -34,7 +34,10 @@ owned process executor; this module is not that executor or an authorization gat
 
 Only github.issue.read accepts exactly {repository,number}, and github.file.read
 accepts exactly {repository,path,ref}. Repository must be exactly
-thattor/personal-agent-lab. Issue number is strict positive int (bool is invalid).
+thattor/personal-agent-lab. All argument keys must have exact str type. Issue number
+is strict positive int (bool is invalid), at most 63 bits under the scoped Opus
+design disposition, to avoid an unbounded int-to-decimal conversion. This is a
+local initial request boundary, not proof that a corresponding issue exists.
 File path is a nonempty valid UTF-8 relative POSIX path; reject absolute paths,
 empty/dot/dotdot segments, backslashes and C0/DEL controls. Ordinary Unicode,
 spaces and shell metacharacters remain literal; do not invent a filename quality
@@ -91,3 +94,32 @@ Run targeted tests and the required full unittest suite before commit/push.
 CT03/04/07/08/25, E2E01–09, real provider reads, reference availability and user value
 remain NOT_RUN. These tasks are independent of the unknown INT00 implementation;
 common-service wiring waits for that unresolved work rather than duplicating it.
+
+## C: milestone review after SOL integration — Opus 5.5
+
+Dependency: A/B verified diffs, SOL strict-key correction, full host regression,
+and the synthetic integration check. This is an independent new review context.
+Read the exact final source/tests, product.diff, verification.json, targeted log,
+SPEC.md and PAL-contracts-v5.md. Also read scripts/primary_qualification.py and
+tests/test_primary_qualification.py to check the preserved fail-closed freeze gate.
+Do not read runtime DBs, owner transcripts, credentials or the old unknown task's
+private call prompt; this scope and verification record describe its dependency.
+
+Produce three steps: design (review final code and value/boundaries), implement
+(write a concise assessment record), review (independently check that record
+against the same inputs). Create only
+evidence/operations/co-update-045-20261009/milestone-review.md, at most600 words.
+Neither code nor canonical records are writable. Record concrete blockers with
+locations; do not fix them or silently adopt another capability or contract.
+Assess EXE02-request/1 and ART01-content/1 consistency and useful contribution,
+the corrected strict-key case, the untouched runtime freeze guard and historical
+test correction, C08 hash/bytes preview mapping, real parallel-call evidence,
+and the smallest next dependency. Full service wiring/user usefulness is unmet.
+Do not turn optional hardening or future P001 adoption into new approval gates.
+Return met/unmet for this preparation slice and distinguish it from PAL completion.
+
+Verifier: python -E -s -B -m unittest discover -s tests -p test_*_v5.py -v
+(39 meaningful component tests). Root's required full316 test result is linked
+host evidence; the partial CO workspace is not a claim to rerun that full suite.
+Independent design findings and the reviewed note are checked by SOL before
+canonical adoption. Remaining source changes, if required, need revalidation.
