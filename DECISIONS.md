@@ -1361,4 +1361,54 @@ Apply this newer direction to the first coherent development-preparation unit, I
 
 Observed CO0.4.4 task entrypoint supports qualified Claude Opus5.5 and Devin SWE-2 High and one inference at a time per state, not30. Existing state is reused only through CLI; no direct state edits, route substitution, engine/capacity workaround or alternate state. SOL/Astra development APIs are not qualified co-task routes. Current Native quota is unknown; fresh official account observation shows Claude Pro extra usage OFF and SWE Free. Auth metadata alone is not inference proof.
 
-Keep the original checkout's uncommitted record changes, unreviewed P001v3 and runtime data intact. Development uses an isolated local worktree and an explicit committed input baseline. Models receive only listed design/source files, not owner history, runtime DB, auth files or private account metadata. CO verified means its declared verifier/files/review version only; SOL must inspect/integrate/retest. No review has completed at this preparation checkpoint.
+Keep the original checkout's uncommitted record changes, unreviewed P001v3 and runtime data intact. Development uses an isolated local worktree and an explicit committed input baseline. CO's scoped task payload supplies only listed design/source files, not owner history, runtime DB, auth files or private account metadata. Existing Native ancestor/global instruction roots are recorded as potentially loaded in call evidence; measured tool-free setup is not full-machine containment or a completed transcript for the unknown SWE attempt. CO verified means its declared verifier/files/review version only; SOL must inspect/integrate/retest. No review had completed at the initial preparation checkpoint; later actual outcomes follow below.
+
+### D034 / INT00 common-wire disposition
+
+The corrected actual CO task `6a9dea446fa241ceb6ee876bbdb08be9` accepted a three-step
+plan (819/815/840 UTF-8 bytes), completed a separate `claude/claude-opus-5-5` design
+call, and entered `devin/swe-2-high` implementation. [Raw design and scoped SOL
+disposition](evidence/operations/co-int00-20261009/design-disposition.json). This is
+an actual common-wire design consultation, not an independent full-v5 service or
+product review. Final implementation review and integration are still pending.
+
+Adopt the technical binding `PAL-v5-common-wire / INT00/1` for this pure module:
+one flat `kind` discriminator for C12 Action; closed strict Result variants;
+mandatory allowed-Ref set at model DraftBrief/Action entry points; missing optional
+lookup refs distinct from an empty array; text/plain and text/markdown compose;
+zero budgets as exhausted, without implicit unlimited defaults. Do not mint formal
+condition IDs or infer permission from parsed data. These choices settle shared
+serialization only and do not activate a product connector or alter existing runtime.
+
+Retain host obligations for later actual providers: resource/grant validation,
+fixed current revision/epoch and state checks, saved identity/kind/provenance,
+reference availability and no grant expansion. U1/U2/U6/U7/U9 are deferred to those
+providers and their contract tests; parser examples cannot qualify them. The next
+milestone must bind real provider/consumer values without private reinterpretations.
+
+The design's claim that `raise ... from None` removes exception context is false:
+a local Python3.13 check confirmed `__context__` remains while display is suppressed.
+Require bounded errors without retained raw decoder context in the actual returned
+code and tests. Preserve the design output and check implementation instead of
+treating reviewer wording as proof. No state, returned plan or CO code was edited.
+
+### D034 / actual implementation outcome and continuation limit
+
+The same task's SWE implementation reached900seconds and returned exit75 with
+route_timeout/inference and unknown result/process outcome. [CLI status](evidence/operations/co-int00-20261009/paused-status.json)
+confirms no selectable route options, no returned code, no verifier or independent
+code review, and verified=false. Registered Opus/SWE candidates are information only;
+the runtime does not offer them as switches for this unknown call. Do not retry or
+create a replacement task for the same work, alter the report or raise the timeout.
+
+Keep the task deferred; the exact evidence and preservation recommendation were
+delivered to PAL人間判断. No real human choice is recorded. An explicit cancellation
+can close the CO task but cannot prove the prior request stopped. This is a CO
+execution outcome limitation, not a fresh private-source consent issue, extra-cost
+request, or reason to put all PAL work into blanket human approval wait.
+
+Independent preparation is complete: imported candidates with hashes, preserved raw
+Opus design and SOL wire binding, [five shared synthetic expectations](docs/design/contracts-v5/SHARED-EXAMPLES.json),
+original13-record integrity and full277-test baseline PASS. Documentation validation
+is not a CT/E2E implementation PASS. INT00 implementation and later dependent modules
+remain incomplete; no product source, live DB/service, model configuration or CO changed.

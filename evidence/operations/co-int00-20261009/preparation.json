@@ -4,7 +4,32 @@
   "original_checkout_preserved": true,
   "product_modules_changed": false,
   "runtime_dbs_changed": false,
-  "calls": 0,
-  "review": "NOT_RUN",
-  "external_integration": "NOT_RUN"
+  "external_integration": "NOT_RUN",
+  "phase": "INT00_DESIGN_COMPLETE_IMPLEMENTATION_OUTCOME_UNKNOWN",
+  "co_task_id": "6a9dea446fa241ceb6ee876bbdb08be9",
+  "co_verified": false,
+  "baseline_full_unittest": {
+    "tests": 277,
+    "elapsed_seconds": 21.974,
+    "result": "PASS",
+    "execution_context": "approved host / mock / temporary DB / local loopback"
+  },
+  "shared_examples": {
+    "cases": 5,
+    "validation": "documentation JSON only",
+    "service_tests": "NOT_RUN"
+  },
+  "human_lane_delivery": {
+    "thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "delivered": true,
+    "human_choice_received": false
+  },
+  "dependent_work": "Wait for confirmed outcome or a supported resolution; no same-work retry/switch while unknown.",
+  "independent_work": "Imported design, raw review, wire dispositions, shared expectations, baseline regression and original integrity recorded.",
+  "calls_at_initial_preparation": 0,
+  "independent_code_review": "NOT_RUN",
+  "completed_native_model_calls_all_submissions": 3,
+  "native_model_attempt_with_unknown_outcome": 1,
+  "common_wire_design_consultation": "COMPLETE / Opus5.5 / scope-limited",
+  "full_v5_service_design_review": "NOT_RUN"
 }

@@ -34,5 +34,20 @@
   "parallel_model_calls_started": 0,
   "runtime_commit_at_submission_preparation": "8580cf6e1d91a1c53d3a183c306f0f28e01fcc42",
   "runtime_clean_at_submission_preparation": true,
-  "runtime_update_observed": "Existing CO development checkout advanced; VERSION and CLI/routes were rechecked, no CO files changed by PAL."
+  "runtime_update_observed": "Existing CO development checkout advanced; VERSION and CLI/routes were rechecked, no CO files changed by PAL.",
+  "claude_cost_observation_refresh": {
+    "observed_at": "2026-10-08T17:21:34.442366+00:00",
+    "source": "Existing authenticated official Chrome Claude usage settings",
+    "subscription": "Pro",
+    "session_used_percent": 8,
+    "weekly_used_percent": 33,
+    "extra_usage_enabled": false,
+    "purchased_credit_balance_display": "$0",
+    "auto_reload_enabled": false,
+    "settings_changed": false,
+    "quotas_not_inferred_as_unlimited": true
+  },
+  "runtime_commit_observed_during_owned_call": "5830d8eb9c961a4175db31eb1d07ae281963c55f",
+  "runtime_update_limit": "Other CO development continues in the existing runtime checkout; PAL does not modify or freeze that project. Each running process uses its loaded code; final source inspection is not alone proof of its loaded revision.",
+  "native_context_limit": "Scoped CO task payload supplies only the listed development files. Existing Native ancestor/global instruction roots are reported potentially_loaded in call evidence; these measurements are not full-machine containment or proof of the unknown SWE attempt transcript."
 }

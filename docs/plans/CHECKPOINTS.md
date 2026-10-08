@@ -784,3 +784,34 @@ is NOT_RUN. [P001v3 draft](P-001-v3.md) now makes the next outcome concrete, but
 UNREVIEWED/NOT ADOPTED. Next: designated design lane → one scoped official Opus review →
 material scope adoption → implementation of the first small milestone. Do not resume the
 old plan, infer broad new authority or ask the owner to grade component prose again.
+
+## C065 — actual CO start and common-contract preparation, 2026-10-09
+
+Current direct owner instruction authorizes SOL/CO development and existing-route
+private development materials, isolated scopes and actual lower capacity when30
+is unavailable. Supersedes C064's stop for this scoped preparation, preserving its
+negative usefulness result, old trial stop, data and no-new-cost/auth/public boundaries.
+
+Practical contribution: settle shared wire definitions and representative expectations
+before provider/consumer teams implement incompatible local interfaces. This is the
+first dependency of a connected Expert task, not another draft-only usefulness cohort.
+Imported v5 files have source hashes and remain full-service design candidates.
+
+Actual runtime CO0.4.4 is an existing development checkout, with one inference per
+shared state and only measured Opus5.5/SWE-2 High task routes. Opus common-wire design
+completed, SOL recorded technical dispositions, original13-record hashes are unchanged
+and baseline full277 unittest tests PASS. Five synthetic CT expectations are documented.
+
+The actual SWE implementation attempt then reached900seconds with unknown result and
+process outcome. CO reports awaiting_decision/verified=false and no selectable retry or
+switch. No code, verifier, independent code review or integration. Evidence and a defer
+recommendation were delivered to PAL人間判断; no real human choice is recorded.
+[Pause/evidence](../../evidence/operations/co-int00-20261009/paused-status.json),
+[wire disposition](../../evidence/operations/co-int00-20261009/design-disposition.json),
+[shared expectations](../design/contracts-v5/SHARED-EXAMPLES.json).
+
+Continue independent preparation; preserve the unknown task and wait for confirmed
+outcome or a supported resolution before repeating that implementation. Do not turn
+this into blanket project approval wait or report30 concurrent workers. Dependent
+INT00 implementation, C01–C15 service binding, real connector, E2E01–09 and human
+usefulness remain incomplete. Project/Issue/milestone closure is not claimed.

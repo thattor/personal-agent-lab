@@ -1,0 +1,11 @@
+{
+  "import_hashes_verified": 3,
+  "synthetic_shared_cases": 5,
+  "validation": "JSON and documentation consistency only; service tests NOT_RUN",
+  "product_diff_from_tested_baseline": false,
+  "full_suite_repeated_after_docs_only_changes": false,
+  "baseline_full_suite_tests": 277,
+  "baseline_full_suite": "PASS",
+  "co_verified": false,
+  "new_code_review": "NOT_RUN"
+}

@@ -1,5 +1,18 @@
 # ACCEPTANCE.md — Stable-0 definition of done
 
+## C065 / INT00 preparation evidence (2026-10-09)
+
+Common-wire Opus5.5 consultation, SOL technical dispositions, imported v5 provenance
+and five synthetic shared expectations are preserved. Baseline full277 unittest tests
+PASS on the approved host/mock environment. Product source and runtime DB are unchanged.
+SWE-2 High implementation reached900seconds with unknown result/process outcome;
+CO task6a9dea446fa241ceb6ee876bbdb08be9 is awaiting_decision, verified=false.
+No code was returned, and no contract implementation verifier or independent code
+review ran. These records do not qualify any new CT/E2E/provider integration or human
+usefulness row. [Current continuation/evidence](STATE.md#exact-next-action--c065d034).
+
+## Retained Stable-0 completion definition
+
 Stable-0 may be declared only when all REQUIRED rows are PASS with evidence and the final audit is complete (D-019). blocked, partial, mock-only functional evidence, and not_run are not PASS. The original soak criterion remains unmet and historical; it is no longer required.
 
 | ID | Required | Acceptance | Evidence | Status |

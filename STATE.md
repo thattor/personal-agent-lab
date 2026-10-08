@@ -3,7 +3,14 @@
 ## Goal
 Current owner instruction in chat 01a11c78-a3bc-76e1-b4ee-2451d5c0f1c2 (2026-10-09): SOL coordination, explicit CO delegation for PAL implementation/research/review, existing-route private development material use, isolated writes, host verification and staged independent reviews. This resumes scoped development preparation after the prior stop; no new authentication, paid fallback, publication or stopped schedules. See D-034.
 
-Current work: INT-00 on branch codex/pal-v5-co, checkout /private/tmp/pal-v5-co-20261009. Candidate v5 is imported byte-for-byte with provenance under docs/design/contracts-v5. First unit is design-delta review plus pure shared contracts and representative executable examples. New external product capabilities and v5 real integration are NOT_RUN; original Stable-0 evidence remains historical. Original dirty checkout /private/tmp/personal-agent-lab-stable0-20261006 and all runtime data are retained untouched.
+Current work: INT-00 on branch codex/pal-v5-co, checkout /private/tmp/pal-v5-co-20261009.
+Candidate v5 is imported byte-for-byte with provenance under docs/design/contracts-v5.
+Actual Opus common-wire design is complete; SWE implementation timed out at900seconds
+with unknown result/process outcome. CO task is awaiting_decision, not verified.
+No implementation code returned and no independent code review ran. New external
+product capabilities and v5 real integration are NOT_RUN; original Stable-0 evidence
+remains historical. Original dirty checkout /private/tmp/personal-agent-lab-stable0-20261006
+and all runtime data are retained untouched.
 
 Actual CO entrypoint: 0.4.4 development checkout /Users/hattoritoshiyasu/Documents/ai-company/development/common-orchestration-public; /opt/homebrew/bin/python3.13 -E -s -B -m co_v4.task; existing state /private/tmp/co04-human-route-cr3o_bg1/state. Registered exact routes claude/claude-opus-5-5 and devin/swe-2-high. Shared-state model-call ceiling is 1, quota unknown; 30-way execution is unavailable through this entrypoint. Sol6.1/Astra are not registered/supported task routes. Do not create alternate state or use the old PATH co wrapper to raise this limit. Fresh official Pro/extraOFF and SWE Free observations are in evidence/operations/co-int00-20261009/environment.json.
 
@@ -11,7 +18,7 @@ Ownership: SOL for shared contracts, DB integration, original-canonical merge an
 
 Historical C064 stopped development and preserved the trial DB/records. That stop remains recorded below but is superseded for the current scoped CO preparation by the direct owner instruction; old trial/schedules remain stopped.
 
-## Current operating authority — 2026-10-08
+## Prior operating record — 2026-10-08 (current CO lane is C065/D034)
 
 Latest direct owner instruction in development chat `01a11113-f829-75c1-b728-3298aa3359b5`
 establishes three continuing lanes. This chat alone implements and writes canonical
@@ -51,7 +58,13 @@ Stable-0 remains functional-first complete: all20 required S0/F0 rows PASS, auth
 The owner requested reusable PAL materials be stored in this private repository, including previously unsaved material from the design chat. [Image/audio design v1](docs/design/multimodal-qwen38-v1.md) links the fixed-model handoff candidate, original research, source snapshots, review history and import verification. Development received the archive and integrates the shared records under the single-writer instruction. The [v2 bridge](docs/design/multimodal-next-bridge-v2.md) now preserves the completed scoped Opus/SWE reviews and their dispositions. All30 product cases remain NOT_RUN. Only design preparation and next-version planning are recorded; Stable-1 scope/acceptance and current C053 continuation are unchanged.
 
 ## Working checkout
-`/private/tmp/personal-agent-lab-stable0-20261006`, same private GitHub repository, remote origin/main. Original supplied untracked workspace preserved. No old implementation/schema was reused; the accidental startup metadata inspection is explicitly recorded in docs/DEFECTS.md. Do not inspect it again.
+Current development: `/private/tmp/pal-v5-co-20261009`, branch `codex/pal-v5-co`, same
+private GitHub repository. Committed CO input baseline is
+`a2d627238c72c61ae9b0ad7b9c7555bd84393dcb`. The original
+`/private/tmp/personal-agent-lab-stable0-20261006` checkout, its13 uncommitted records
+and runtime data are retained; [original integrity](evidence/operations/co-int00-20261009/original-integrity.json)
+confirms unchanged hashes. No old implementation/schema was reused during the
+historical Stable-0 startup; its accidental metadata inspection remains in docs/DEFECTS.md.
 
 ## Historical Stable-0 green increment
 Actual official Japanese functional scenarios and controls PASS on runtime baseline307058d, evidence pushed in52b4ea6. [Functional evidence](evidence/functional/2026-10-07/README.md). Follow-up found a new test observer's unsupported idle-event completion assumption; corrected only that test to inspect terminal canonical Goal state. [66-test full suite](evidence/tests/native-failure-wait-green.txt), [20 repeated failure-case tests](evidence/tests/native-failure-wait-stress.txt), [cause/prevention](docs/DEFECTS.md). No production/runtime/probe changes, accepted-behavior changes or canonical repair. F0-08 still awaits the already-requested direct human usefulness evaluation; do not repeat it.
@@ -59,7 +72,38 @@ Actual official Japanese functional scenarios and controls PASS on runtime basel
 ## Historical soak (stopped for approved development)
 Soak01 retained after reproduced stale UI warning; soak02 retained and intentionally reset for the user's bilingual UI request. Both old DBs/hash chains/receipts stay intact. [Soak02 directly confirmed receipt and reset](evidence/soak/2026-10-07/soak02-human-and-reset.json). No old human counts/time/restart proof transferred. Bilingual UI only changes display text; fixed controls, canonical values, receipts and provider remain English. [55-test full suite](evidence/tests/ui-bilingual-full.txt), [actual refresh recovery probe](evidence/ui/recovery/bilingual-after.txt). Historical runtime/soak-20261007-03 started 2026-10-07T06:14:18.834450+09:00 from clean pushed baseline 1863ef2a3037b335fa6f257a8d6fd95fb44da9dc on port58500, monitor PID3322/app PID3324. [Fresh start and served bilingual UI](evidence/soak/2026-10-07/start-03.json).
 
-## Exact next action
+## Exact next action — C065/D034
+
+CO task `6a9dea446fa241ceb6ee876bbdb08be9` exited75 after `s2-a1`/Devin SWE-2 High
+reached900seconds. CLI status independently confirms route_timeout/inference,
+outcome=unknown, process_outcome=unknown, quota=unknown and awaiting_decision.
+[Exact status/pause report](evidence/operations/co-int00-20261009/paused-status.json).
+No model code returned, no verifier ran and no independent code review completed.
+Do not infer remote cessation from local command exit or mark INT00 implementation PASS.
+CO has no selectable retry/switch options; listed Opus/SWE candidates are information
+only. Do not substitute a new run/state/engine to repeat the same possibly active work.
+
+Preserve the task without decide/resume (defer). Evidence and recommendation were
+actually delivered to PAL人間判断, thread01a1137a-8de3-7890-b874-cdd0a7125711; no authentic
+human selection has been received. Explicit task cancellation is the only other
+currently supported choice, and does not prove the old remote request stopped.
+Wait for confirmed outcome or a supported resolution. This limits dependent INT00
+implementation, not the entire project's authority or independent preparation.
+Accepted plan instructions are819/815/840 bytes. Earlier attempts and concrete causes
+are in [submissions](evidence/operations/co-int00-20261009/submissions.json).
+Opus common-wire design, scoped SOL dispositions and five synthetic shared expectations
+are preserved. Check raw-error exception retention when actual code is available.
+
+Baseline full277 unittest tests passed on host in21.974s. The first restricted run
+failed at localhost socket binding; it is retained separately, not scored as a
+product defect or a PASS. Inspect the exact CO diff before integration, rerun shared
+contract cases and required full regression, and record the same-version review.
+The current unit prepares shared contracts only. C01–C15 services, real GitHub
+read through PAL, persistence/control-race coverage, E2E01–09 and human usefulness
+remain NOT_RUN. Historical rejected draft-only usefulness is not an unanswered
+question. Old trials/schedules remain stopped.
+
+## Prior C064 next-action record (superseded for current INT00 preparation)
 
 C064 owner direction supersedes the former trial/evaluation wait. [Direct feedback and
 code map](evidence/operations/c064-owner-value-gap.json), [pause](evidence/operations/c064-owner-pause.json),

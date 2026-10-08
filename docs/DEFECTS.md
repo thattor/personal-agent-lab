@@ -638,3 +638,44 @@ from the previous commit and applied only within the anchored Exact next action 
 All section headings and operating-authority/phase/design/checkout blocks were compared
 and retained before amending. Future small STATE edits must check their section bounds
 and resulting heading list. No product source, runtime database or remote record changed.
+
+## C065 — CO submission boundaries and reviewer assumptions
+
+The coordinator manually transcribed a wrong full baseline SHA before inspecting the
+completed `git rev-parse` result. CO rejected the input before any task/model call.
+Correction: use the measured `a2d627238c72c61ae9b0ad7b9c7555bd84393dcb`; next submission
+must resolve and compare the SHA before constructing the command. Do not infer a full
+SHA from a short commit label. [Submission record](../evidence/operations/co-int00-20261009/submissions.json).
+
+The first real task failed its verifier canary under the outer restricted sandbox,
+with0 calls confirmed by CLI status. The approved host execution retained CO's own
+isolation. Restricted full tests likewise failed localhost bind, while host full277
+tests passed; an execution-context refusal is not product failure or permission to
+remove containment. Check the actual failed boundary before replacing a run.
+
+Opus returned a valid JSON plan whose design instructions were4435bytes, above CO's
+4096-byte limit. No implementation had begun and the call was completed. The scoped
+replacement explicitly limited each instruction to1000bytes and referenced the shared
+scope rather than repeating it; actual819/815/840-byte steps were accepted. Keep this
+bounded-plan rule for the next task. No output, journal, route or CO source was edited.
+
+The design then incorrectly equated `raise ... from None` with removing raw exception
+context. Python3.13 locally proved the context remains. The cause is confusing display
+suppression with retained objects; preserve the original review, verify the generated
+error path and require bounded errors without decoder context. Current implementation
+and independent review must demonstrate the outcome before this is called fixed.
+
+The actual SWE-2 High implementation call then hit the900-second deadline. CO reports
+unknown result/process outcome and no selectable retry/switch. No code was received.
+The root cause (provider delay, prompt/output size or other remote condition) remains
+UNKNOWN; the83,547-byte prompt is an observation, not proof of the cause. Preserve
+the paused report and do not claim the remote request stopped or bypass it with a
+new same-work run. A supported recovery or confirmed outcome is required first.
+If a later new unit is legitimately possible, reduce generated-output scope while
+keeping the same shared contract and complete case coverage. This prevention is
+proposed and has not been exercised or proved effective.
+
+A follow-up multi-file documentation patch assumed ACCEPTANCE.md had a bare filename
+heading. The atomic patch guard rejected it without changes. Read the actual heading
+before applying the corrected patch; check section headings and diff bounds before
+the next canonical-record edit. This does not require another review/approval gate.
