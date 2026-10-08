@@ -1,0 +1,52 @@
+test_t01_wrapped_known_text (test_github_file_payload_v5.DecodeFileTests.test_t01_wrapped_known_text) ... ok
+test_t02_literal_vector (test_github_file_payload_v5.DecodeFileTests.test_t02_literal_vector) ... ok
+test_t03_empty_file (test_github_file_payload_v5.DecodeFileTests.test_t03_empty_file) ... ok
+test_t04_crlf_wrapping (test_github_file_payload_v5.DecodeFileTests.test_t04_crlf_wrapping) ... ok
+test_t05_no_normalization (test_github_file_payload_v5.DecodeFileTests.test_t05_no_normalization) ... ok
+test_t06_extra_fields_allowed (test_github_file_payload_v5.DecodeFileTests.test_t06_extra_fields_allowed) ... ok
+test_t07_dataclass_shape (test_github_file_payload_v5.DecodeFileTests.test_t07_dataclass_shape) ... ok
+test_t08_size_bounds (test_github_file_payload_v5.DecodeFileTests.test_t08_size_bounds) ... ok
+test_t09_max_bytes (test_github_file_payload_v5.DecodeFileTests.test_t09_max_bytes) ... ok
+test_t10_payload_type (test_github_file_payload_v5.DecodeFileTests.test_t10_payload_type) ... ok
+test_t11_raw_utf8 (test_github_file_payload_v5.DecodeFileTests.test_t11_raw_utf8) ... ok
+test_t12_malformed_json (test_github_file_payload_v5.DecodeFileTests.test_t12_malformed_json) ... ok
+test_t13_duplicate_keys (test_github_file_payload_v5.DecodeFileTests.test_t13_duplicate_keys) ... ok
+test_t14_non_finite_numbers (test_github_file_payload_v5.DecodeFileTests.test_t14_non_finite_numbers) ... ok
+test_t15_not_an_object (test_github_file_payload_v5.DecodeFileTests.test_t15_not_an_object) ... ok
+test_t16_type_field (test_github_file_payload_v5.DecodeFileTests.test_t16_type_field) ... ok
+test_t17_encoding_field (test_github_file_payload_v5.DecodeFileTests.test_t17_encoding_field) ... ok
+test_t18_content_field (test_github_file_payload_v5.DecodeFileTests.test_t18_content_field) ... ok
+test_t19_size_field (test_github_file_payload_v5.DecodeFileTests.test_t19_size_field) ... ok
+test_t20_sha_field (test_github_file_payload_v5.DecodeFileTests.test_t20_sha_field) ... ok
+test_t21_forbidden_fields (test_github_file_payload_v5.DecodeFileTests.test_t21_forbidden_fields) ... ok
+test_t22_declared_size_vs_max (test_github_file_payload_v5.DecodeFileTests.test_t22_declared_size_vs_max) ... ok
+test_t23_invalid_base64 (test_github_file_payload_v5.DecodeFileTests.test_t23_invalid_base64) ... ERROR
+test_t24_size_mismatch (test_github_file_payload_v5.DecodeFileTests.test_t24_size_mismatch) ... ok
+test_t25_binary_content (test_github_file_payload_v5.DecodeFileTests.test_t25_binary_content) ... ok
+test_t26_base64_overhead (test_github_file_payload_v5.DecodeFileTests.test_t26_base64_overhead) ... ok
+test_t27_no_input_echo (test_github_file_payload_v5.DecodeFileTests.test_t27_no_input_echo) ... ok
+test_t28_all_export (test_github_file_payload_v5.DecodeFileTests.test_t28_all_export) ... ok
+
+======================================================================
+ERROR: test_t23_invalid_base64 (test_github_file_payload_v5.DecodeFileTests.test_t23_invalid_base64)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/d47b8853cad145fa9330407acb617020/workspace/tests/test_github_file_payload_v5.py", line 432, in test_t23_invalid_base64
+    self.assert_error(
+    ~~~~~~~~~~~~~~~~~^
+        payload(content, 5),
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        msg=content,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/d47b8853cad145fa9330407acb617020/workspace/tests/test_github_file_payload_v5.py", line 54, in assert_error
+    decode_file(raw, **kwargs)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^
+TypeError: decode_file() got an unexpected keyword argument 'msg'
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.005s
+
+FAILED (errors=1)

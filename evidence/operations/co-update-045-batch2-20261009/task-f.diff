@@ -1,0 +1,398 @@
+--- /dev/null
++++ b/pal/artifact_integrity_v5.py
+@@ -0,0 +1,70 @@
++"""Byte integrity check of a saved body against host-supplied metadata.
++
++VER01-integrity/1 preparation component. It compares byte length and SHA-256
++only. It issues no Condition/Ref, saves no verification, judges no meaning and
++performs no I/O. The host must prove that the expected metadata is canonical.
++"""
++
++import hashlib
++from dataclasses import dataclass
++
++__all__ = ("IntegrityCheck", "check_bytes")
++
++_MAX_BYTES = 1048576
++_SHA256_HEX_LENGTH = 64
++_LOWER_HEX = frozenset("0123456789abcdef")
++
++_MET = "met"
++_UNMET = "unmet"
++_UNKNOWN = "unknown"
++
++_INVALID_EXPECTED_SHA256 = "invalid_expected_sha256"
++_INVALID_EXPECTED_BYTES = "invalid_expected_bytes"
++_INVALID_DATA = "invalid_data"
++_DATA_EXCEEDS_LIMIT = "data_exceeds_limit"
++_BYTE_COUNT_MISMATCH = "byte_count_mismatch"
++_SHA256_MISMATCH = "sha256_mismatch"
++_INTEGRITY_MATCH = "integrity_match"
++
++
++@dataclass(frozen=True, slots=True)
++class IntegrityCheck:
++    """Outcome of one byte integrity check. It carries no input values."""
++
++    status: str
++    reason: str
++
++
++def _is_sha256_hex(value):
++    return (
++        type(value) is str
++        and len(value) == _SHA256_HEX_LENGTH
++        and all(char in _LOWER_HEX for char in value)
++    )
++
++
++def _is_byte_count(value):
++    return type(value) is int and 0 <= value <= _MAX_BYTES
++
++
++def check_bytes(data, expected_sha256, expected_bytes):
++    """Check data against an expected lowercase SHA-256 hex and byte count.
++
++    Invalid metadata or non-bytes data returns unknown. Over-limit or
++    mismatched data returns unmet. An over-limit or wrong-length body is
++    never hashed.
++    """
++    if not _is_sha256_hex(expected_sha256):
++        return IntegrityCheck(_UNKNOWN, _INVALID_EXPECTED_SHA256)
++    if not _is_byte_count(expected_bytes):
++        return IntegrityCheck(_UNKNOWN, _INVALID_EXPECTED_BYTES)
++    if type(data) is not bytes:
++        return IntegrityCheck(_UNKNOWN, _INVALID_DATA)
++    byte_count = len(data)
++    if byte_count > _MAX_BYTES:
++        return IntegrityCheck(_UNMET, _DATA_EXCEEDS_LIMIT)
++    if byte_count != expected_bytes:
++        return IntegrityCheck(_UNMET, _BYTE_COUNT_MISMATCH)
++    if hashlib.sha256(data).hexdigest() != expected_sha256:
++        return IntegrityCheck(_UNMET, _SHA256_MISMATCH)
++    return IntegrityCheck(_MET, _INTEGRITY_MATCH)
+--- /dev/null
++++ b/tests/test_artifact_integrity_v5.py
+@@ -0,0 +1,322 @@
++"""Tests for the VER01-integrity/1 byte integrity check."""
++
++import dataclasses
++import hashlib
++import unittest
++from unittest import mock
++
++from pal import artifact_integrity_v5
++from pal.artifact_integrity_v5 import IntegrityCheck, check_bytes
++
++EMPTY_SHA256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
++A_SHA256 = "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb"
++ABC_SHA256 = "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
++WRONG_SHA256 = "0" * 64
++LIMIT = 1048576
++
++STATUS_BY_REASON = {
++    "invalid_expected_sha256": "unknown",
++    "invalid_expected_bytes": "unknown",
++    "invalid_data": "unknown",
++    "data_exceeds_limit": "unmet",
++    "byte_count_mismatch": "unmet",
++    "sha256_mismatch": "unmet",
++    "integrity_match": "met",
++}
++
++
++class _Str(str):
++    pass
++
++
++class _Int(int):
++    pass
++
++
++class _Bytes(bytes):
++    pass
++
++
++class _Hostile:
++    def __len__(self):
++        raise RuntimeError("__len__ must not be called")
++
++    def __iter__(self):
++        raise RuntimeError("__iter__ must not be called")
++
++
++class _Case(unittest.TestCase):
++    def assertCheck(self, result, status, reason):
++        self.assertIs(type(result), IntegrityCheck)
++        self.assertEqual((result.status, result.reason), (status, reason))
++
++
++class SurfaceTests(_Case):
++    def test_public_surface(self):
++        self.assertEqual(
++            artifact_integrity_v5.__all__, ("IntegrityCheck", "check_bytes")
++        )
++        self.assertEqual(artifact_integrity_v5._MAX_BYTES, LIMIT)
++        self.assertEqual(
++            [field.name for field in dataclasses.fields(IntegrityCheck)],
++            ["status", "reason"],
++        )
++
++    def test_keyword_arguments(self):
++        result = check_bytes(
++            data=b"abc", expected_sha256=ABC_SHA256, expected_bytes=3
++        )
++        self.assertCheck(result, "met", "integrity_match")
++
++
++class KnownVectorTests(_Case):
++    def test_empty_body_with_zero_bytes_is_met(self):
++        self.assertCheck(check_bytes(b"", EMPTY_SHA256, 0), "met", "integrity_match")
++
++    def test_single_byte_vector_is_met(self):
++        self.assertCheck(check_bytes(b"a", A_SHA256, 1), "met", "integrity_match")
++
++    def test_abc_vector_is_met(self):
++        self.assertCheck(check_bytes(b"abc", ABC_SHA256, 3), "met", "integrity_match")
++
++
++class MultibyteTests(_Case):
++    def test_byte_count_is_not_character_count(self):
++        body = "\u3042\u3044".encode("utf-8")
++        digest = hashlib.sha256(body).hexdigest()
++        self.assertEqual(len(body), 6)
++        self.assertCheck(check_bytes(body, digest, 6), "met", "integrity_match")
++        self.assertCheck(
++            check_bytes(body, digest, 2), "unmet", "byte_count_mismatch"
++        )
++
++
++class MismatchTests(_Case):
++    def test_correct_body_with_wrong_hash(self):
++        for digest in (WRONG_SHA256, EMPTY_SHA256, A_SHA256):
++            with self.subTest(digest=digest):
++                self.assertCheck(
++                    check_bytes(b"abc", digest, 3), "unmet", "sha256_mismatch"
++                )
++
++    def test_correct_body_and_hash_with_wrong_count(self):
++        for count in (0, 2, 4, LIMIT):
++            with self.subTest(count=count):
++                self.assertCheck(
++                    check_bytes(b"abc", ABC_SHA256, count),
++                    "unmet",
++                    "byte_count_mismatch",
++                )
++
++    def test_empty_body_with_nonzero_count(self):
++        self.assertCheck(
++            check_bytes(b"", EMPTY_SHA256, 1), "unmet", "byte_count_mismatch"
++        )
++
++    def test_same_length_tampering(self):
++        for body in (b"abd", b"ABC", b"\x00bc", b"cba"):
++            with self.subTest(body=body):
++                self.assertCheck(
++                    check_bytes(body, ABC_SHA256, 3), "unmet", "sha256_mismatch"
++                )
++
++
++class InvalidMetadataTests(_Case):
++    def test_invalid_expected_sha256_is_unknown(self):
++        cases = (
++            ABC_SHA256.upper(),
++            ABC_SHA256[:63],
++            ABC_SHA256 + "0",
++            "g" + ABC_SHA256[1:],
++            ABC_SHA256 + "\n",
++            ABC_SHA256[:63] + "\n",
++            " " + ABC_SHA256[1:],
++            "\uff10" * 64,
++            "",
++            _Str(ABC_SHA256),
++            ABC_SHA256.encode("ascii"),
++            bytearray(ABC_SHA256, "ascii"),
++            None,
++            0,
++            _Hostile(),
++        )
++        for value in cases:
++            with self.subTest(value=repr(value)):
++                self.assertCheck(
++                    check_bytes(b"abc", value, 3),
++                    "unknown",
++                    "invalid_expected_sha256",
++                )
++
++    def test_invalid_expected_bytes_is_unknown(self):
++        cases = (True, False, _Int(3), -1, LIMIT + 1, 2**64, 3.0, "3", b"3", None)
++        for value in cases:
++            with self.subTest(value=repr(value)):
++                self.assertCheck(
++                    check_bytes(b"abc", ABC_SHA256, value),
++                    "unknown",
++                    "invalid_expected_bytes",
++                )
++
++    def test_bool_counts_rejected_even_when_numerically_equal(self):
++        self.assertCheck(
++            check_bytes(b"", EMPTY_SHA256, False), "unknown", "invalid_expected_bytes"
++        )
++        self.assertCheck(
++            check_bytes(b"a", A_SHA256, True), "unknown", "invalid_expected_bytes"
++        )
++
++    def test_invalid_data_is_unknown(self):
++        cases = (
++            "abc",
++            bytearray(b"abc"),
++            memoryview(b"abc"),
++            _Bytes(b"abc"),
++            None,
++            3,
++            [97, 98, 99],
++            _Hostile(),
++        )
++        for value in cases:
++            with self.subTest(value=type(value).__name__):
++                self.assertCheck(
++                    check_bytes(value, ABC_SHA256, 3), "unknown", "invalid_data"
++                )
++
++
++class PrecedenceTests(_Case):
++    def test_hash_checked_first(self):
++        self.assertCheck(
++            check_bytes(None, "BAD", -1), "unknown", "invalid_expected_sha256"
++        )
++
++    def test_count_checked_before_data(self):
++        self.assertCheck(
++            check_bytes(None, ABC_SHA256, -1), "unknown", "invalid_expected_bytes"
++        )
++
++    def test_count_mismatch_before_hash_mismatch(self):
++        self.assertCheck(
++            check_bytes(b"abd", EMPTY_SHA256, 4), "unmet", "byte_count_mismatch"
++        )
++
++
++class LimitTests(_Case):
++    def test_exact_limit_is_met_and_hashed_once(self):
++        body = b"a" * LIMIT
++        digest = hashlib.sha256(body).hexdigest()
++        with mock.patch.object(hashlib, "sha256", wraps=hashlib.sha256) as spy:
++            result = check_bytes(body, digest, LIMIT)
++        self.assertCheck(result, "met", "integrity_match")
++        spy.assert_called_once()
++
++    def test_over_limit_body_is_unmet_and_not_hashed(self):
++        body = b"a" * (LIMIT + 1)
++        prefix_digest = hashlib.sha256(body[:LIMIT]).hexdigest()
++        with mock.patch.object(hashlib, "sha256", wraps=hashlib.sha256) as spy:
++            for expected in (LIMIT, 0, 3):
++                with self.subTest(expected=expected):
++                    self.assertCheck(
++                        check_bytes(body, prefix_digest, expected),
++                        "unmet",
++                        "data_exceeds_limit",
++                    )
++        spy.assert_not_called()
++
++    def test_count_mismatch_is_not_hashed(self):
++        with mock.patch.object(hashlib, "sha256", wraps=hashlib.sha256) as spy:
++            result = check_bytes(b"abd", ABC_SHA256, 4)
++        self.assertCheck(result, "unmet", "byte_count_mismatch")
++        spy.assert_not_called()
++
++    def test_invalid_inputs_are_not_hashed(self):
++        with mock.patch.object(hashlib, "sha256", wraps=hashlib.sha256) as spy:
++            check_bytes(b"abc", "bad", 3)
++            check_bytes(b"abc", ABC_SHA256, True)
++            check_bytes(bytearray(b"abc"), ABC_SHA256, 3)
++        spy.assert_not_called()
++
++    def test_limit_count_is_valid_metadata(self):
++        self.assertCheck(
++            check_bytes(b"abc", ABC_SHA256, LIMIT), "unmet", "byte_count_mismatch"
++        )
++        self.assertCheck(
++            check_bytes(b"abc", ABC_SHA256, LIMIT + 1),
++            "unknown",
++            "invalid_expected_bytes",
++        )
++
++
++class ImmutabilityTests(_Case):
++    def setUp(self):
++        self.result = check_bytes(b"abc", ABC_SHA256, 3)
++
++    def test_fields_cannot_be_reassigned_or_deleted(self):
++        for name in ("status", "reason"):
++            with self.subTest(name=name):
++                with self.assertRaises(dataclasses.FrozenInstanceError):
++                    setattr(self.result, name, "unmet")
++                with self.assertRaises(dataclasses.FrozenInstanceError):
++                    delattr(self.result, name)
++        self.assertCheck(self.result, "met", "integrity_match")
++
++    def test_no_instance_dict_or_new_attributes(self):
++        self.assertFalse(hasattr(self.result, "__dict__"))
++        with self.assertRaises(AttributeError):
++            self.result.extra = 1
++        with self.assertRaises(AttributeError):
++            object.__setattr__(self.result, "extra", 1)
++
++    def test_equal_and_hashable(self):
++        same = IntegrityCheck("met", "integrity_match")
++        self.assertEqual(self.result, same)
++        self.assertEqual(hash(self.result), hash(same))
++
++
++class BoundedReasonTests(_Case):
++    def _all_paths(self):
++        return (
++            check_bytes(b"abc", "bad", 3),
++            check_bytes(b"abc", ABC_SHA256, -1),
++            check_bytes("abc", ABC_SHA256, 3),
++            check_bytes(b"a" * (LIMIT + 1), ABC_SHA256, 3),
++            check_bytes(b"abc", ABC_SHA256, 4),
++            check_bytes(b"abd", ABC_SHA256, 3),
++            check_bytes(b"abc", ABC_SHA256, 3),
++        )
++
++    def test_every_path_has_fixed_bounded_reason(self):
++        results = self._all_paths()
++        self.assertEqual({result.reason for result in results}, set(STATUS_BY_REASON))
++        for result in results:
++            with self.subTest(reason=result.reason):
++                self.assertIs(type(result), IntegrityCheck)
++                self.assertIs(type(result.status), str)
++                self.assertIs(type(result.reason), str)
++                self.assertEqual(result.status, STATUS_BY_REASON[result.reason])
++                self.assertTrue(result.reason.isascii())
++                self.assertLessEqual(len(result.reason), 64)
++
++    def test_inputs_are_not_echoed(self):
++        marker = "ZZECHOMARKER91"
++        body = marker.encode("ascii")
++        digest = hashlib.sha256(body).hexdigest()
++        results = (
++            check_bytes(body, marker, len(body)),
++            check_bytes(body, digest, marker),
++            check_bytes(marker, digest, len(body)),
++            check_bytes(body, digest, len(body) + 1),
++            check_bytes(body, ABC_SHA256, len(body)),
++            check_bytes(body, digest, len(body)),
++        )
++        for result in results:
++            with self.subTest(reason=result.reason):
++                rendered = repr(result) + str(result)
++                self.assertNotIn(marker.lower(), rendered.lower())
++                self.assertNotIn(digest, rendered)
++                self.assertNotIn(ABC_SHA256, rendered)
++                self.assertIn(result.reason, STATUS_BY_REASON)
++
++
++if __name__ == "__main__":
++    unittest.main()

@@ -1,5 +1,36 @@
 # Defects and prevention
 
+## 2026-10-09 — decoder test helper forwarded an assertion keyword
+
+The first SWE EXE02-file/1 test run failed with TypeError: its assert_error helper
+forwarded msg to decode_file via **kwargs, so the malformed Base64 cases did not
+reach the decoder. The failure log and initial output are preserved. CO's one
+allowed repair replaces that assertion keyword with subTest context; all17 invalid
+Base64 cases remain and28 tests pass. Decoder source is unchanged by the repair.
+
+Separate Opus review approves that version. SOL also adds the suggested public
+case for an oversized declared size with invalid Base64, pinning validation order.
+Next related change: inspect test-helper keyword forwarding and require the
+invalid-input cases to run, rather than removing them to make the suite pass.
+No production validation or acceptance was weakened. Evidence:
+evidence/operations/co-update-045-batch2-20261009/task-d-initial-verify.log.
+
+## 2026-10-09 — byte-buffer error retained a caller-supplied code
+
+Independent Opus review of EXE02-bytes/1 found that PayloadLimitError compared
+an arbitrary code using equality and retained that object when it equalled
+"limit". SOL reproduced both a retained str subclass and an invoked hostile
+comparison in error-code-before.log. Normal buffer calls passed constants, but
+the public error constructor did not satisfy its fixed-value boundary.
+
+Require an exact str before comparison and always store a module constant.
+The public regression now rejects both caller objects without invoking their
+comparison; final22 buffer tests PASS. Extend the existing strict-type check
+to public bounded-error fields when wiring these helpers into a host; this is
+a small code/test rule, not a new approval gate. A fresh milestone review checks
+the corrected source. Copy/pickle and threaded buffer use remain outside this
+single-executor preparation API. Evidence: co-update-045-batch2-20261009.
+
 ## 2026-10-09 — EXE02 request keys used equality instead of exact type
 
 The SWE-generated request constructor compared set(arguments) to the required

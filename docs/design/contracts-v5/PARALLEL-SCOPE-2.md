@@ -110,3 +110,17 @@ Run targeted tests and the required full unittest suite, inspect exact diffs and
 source hashes, and obtain one Opus milestone review of the final combined source.
 Only useful work raises parallelism; capacity status and actual call intervals are
 reported separately. Common services still await INT00, real CT/E2E/user value unmet.
+
+The final milestone task reads this scope, the five pure helpers and their tests,
+the synthetic pipeline test, root verification/source hashes and actual completed
+call intervals. Produce design, implementation of one assessment note, then a
+separate review. Write only evidence/operations/co-update-045-batch2-20261009/
+milestone-review.md, under600 words. Keep each step instruction below1000 UTF-8
+bytes by referring to this scope. Do not modify source, canonical records or state.
+Assess the corrected fixed-error constructor, exact bounds/JSON/Base64/byte/hash
+semantics, ignored provider blob hash versus pinned commit provenance, and practical
+read/storage contribution. Cite blocking findings by file:line; keep optional
+hardening separate. Source hashes are already checked by SOL, not a new approval
+gate. Report the actual targeted and root full-suite evidence distinctly; these
+are local preparation tests, not service CT/E2E, persisted evidence or human value.
+Next dependency is INT00 WorkRef/Ref/Action/Result; Operation belongs to EXE01.
