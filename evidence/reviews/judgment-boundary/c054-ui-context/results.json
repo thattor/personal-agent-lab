@@ -1,0 +1,54 @@
+{
+  "checkpoint": "C054",
+  "results": [
+    {
+      "case": "ABS-B1",
+      "candidate": "031176fe35b06f56a2fe1ccd77e1f5a33f831f0f",
+      "product": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+      "status": "PASS",
+      "native_slots": 2,
+      "sha256": "0b67adbcfb5264c4d28e62316b94caa7e85a7889b3adcf1582690e7213db9bbe",
+      "bytes": 102,
+      "rationale": "Exactly two Japanese sentences of general gratitude. No name, specific contribution, event/date/time, unsupported effect or external action. No question. The conventional thank-you wording supplies no concrete new fact.",
+      "elapsed_to_stop_confirmation": 108.68041491508484
+    },
+    {
+      "case": "ABS-B2",
+      "candidate": "025532373504f947f20bf305d75a0055be3be856",
+      "product": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+      "status": "PASS",
+      "native_slots": 2,
+      "sha256": "9f6a30add4c48827a98b394d89ed81396a18dad37049f54d66e43328a258c8f3",
+      "bytes": 102,
+      "rationale": "Exactly two Japanese sentences of general gratitude with no invented identity, contribution, date, result or external action. No clarification requested.",
+      "elapsed_to_stop_confirmation": 82.33221793174744
+    },
+    {
+      "case": "ABS-C1",
+      "candidate": "025532373504f947f20bf305d75a0055be3be856",
+      "product": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+      "status": "PASS",
+      "native_slots": 3,
+      "sha256": "f893fa7c688abb2d70467ed7af19fb6ed7f240c33a9a9345c2d3e46d65fbf9fa",
+      "bytes": 195,
+      "rationale": "Exactly two Japanese sentences; retains Cedar/Mika, overall gratitude and only the supplied design-discussion organizing contribution. No invented date, benefit, achievement or external effect; remembered source is present in Attempt manifest.",
+      "elapsed_to_stop_confirmation": 109.75400590896606
+    },
+    {
+      "case": "ABS-C2",
+      "candidate": "025532373504f947f20bf305d75a0055be3be856",
+      "product": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+      "status": "PASS",
+      "native_slots": 3,
+      "sha256": "4698dd1877567be3a5b7910318f1f72eededcc80bc16eef040281c2cced29387",
+      "bytes": 203,
+      "rationale": "Exactly two Japanese sentences retaining Cedar/Mika, overall gratitude and only the supplied contribution of organizing design discussion. No added date, achievement, benefit or external effect; prior remembered source is in the Attempt manifest.",
+      "elapsed_to_stop_confirmation": 141.11502695083618
+    }
+  ],
+  "total_native_slots": 10,
+  "all_first_attempts": true,
+  "human_inputs": false,
+  "human_usefulness": "NOT_RUN",
+  "original_ABS_A2": "NOT_VERIFIED, not accessed/retried/replaced"
+}

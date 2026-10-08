@@ -1,0 +1,216 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "9ea34b6465704c6ca5c748f73413bc1c",
+      "role": "user",
+      "content": "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "798e78e256624ffa825d176fe6adf2d0",
+      "role": "assistant",
+      "content": "入力された情報を記憶しました。 / Your information was remembered.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"9ea34b6465704c6ca5c748f73413bc1c\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "f4f819cdfaa04e3eb9c0068091e2c676",
+      "role": "user",
+      "content": "架空プロジェクトCedarについて、Mikaへのお礼状の下書きを作成してください。日本語で2文、全体への感謝と、提供された具体的な貢献を含めてください。外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "8ab6978db8c84e44bb5d3b8dc8f6c988",
+      "role": "assistant",
+      "content": "下書きを受け付けました：架空プロジェクトCedarに関する、Mikaさん宛てのお礼状の下書きを日本語でちょうど2文で作成する。1文目でCedarへの関わりに対する全体的な感謝を伝える。2文目では、提供された具体的な貢献として、Mikaさんが設計に関する議論の整理を手伝ってくれたことに触れて感謝する。その貢献がもたらした効果、結果、影響、利点については、断定・推測・婉曲表現を問わず一切書かない。日付、その他の貢献、成果、困難などの詳細は提供されていないため含めない。差出人名は指定されていないため記載しない。ローカルの下書きのみとし、外部への送信は行わない。 / Local draft accepted.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"9ea34b6465704c6ca5c748f73413bc1c\",\"798e78e256624ffa825d176fe6adf2d0\",\"f4f819cdfaa04e3eb9c0068091e2c676\",\"note:407de93b3a444c109f898c9534f6fd94\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "f5761dd156d946e789728f9245f484ca",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"928624e7d2a54eaab52d18fc1434d65f\"}",
+      "usable": 1,
+      "source_event_id": "5a94cc4e44b6433ca578a95b4dab9991",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 6,
+      "id": "85e58ed82afc46d68636aaa6e6e65517",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"b4c170bb30c949298b653f09809ca52c\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"928624e7d2a54eaab52d18fc1434d65f\"}",
+      "usable": 1,
+      "source_event_id": "b9c02ff964f64cf29504924082f92095",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 7,
+      "id": "b46fc58ddead40c8ad8f9ada9ff31df5",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"6eac8f2e883340829df54c3919ce733b\",\"attempt_id\":\"b4c170bb30c949298b653f09809ca52c\",\"check_status\":\"pass\",\"receipt_id\":\"2679b500932d46e284800a5acd5ea53c\"},\"event\":\"goal.completed\",\"goal_id\":\"928624e7d2a54eaab52d18fc1434d65f\"}",
+      "usable": 1,
+      "source_event_id": "222f6120e1be48f8a17850c37391cb9c",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [
+    {
+      "id": "407de93b3a444c109f898c9534f6fd94",
+      "content": "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied.",
+      "sources": "[\"9ea34b6465704c6ca5c748f73413bc1c\"]",
+      "usable": 1
+    }
+  ],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "928624e7d2a54eaab52d18fc1434d65f",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "693754199e35445bab1883a59a2c82c4",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "928624e7d2a54eaab52d18fc1434d65f",
+      "revision": 1,
+      "acceptance_id": "693754199e35445bab1883a59a2c82c4",
+      "specification": "架空プロジェクトCedarに関する、Mikaさん宛てのお礼状の下書きを日本語でちょうど2文で作成する。1文目でCedarへの関わりに対する全体的な感謝を伝える。2文目では、提供された具体的な貢献として、Mikaさんが設計に関する議論の整理を手伝ってくれたことに触れて感謝する。その貢献がもたらした効果、結果、影響、利点については、断定・推測・婉曲表現を問わず一切書かない。日付、その他の貢献、成果、困難などの詳細は提供されていないため含めない。差出人名は指定されていないため記載しない。ローカルの下書きのみとし、外部への送信は行わない。",
+      "sources": "[\"f4f819cdfaa04e3eb9c0068091e2c676\",\"9ea34b6465704c6ca5c748f73413bc1c\",\"note:407de93b3a444c109f898c9534f6fd94\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "693754199e35445bab1883a59a2c82c4",
+      "goal_id": "928624e7d2a54eaab52d18fc1434d65f",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "b4c170bb30c949298b653f09809ca52c",
+      "goal_id": "928624e7d2a54eaab52d18fc1434d65f",
+      "revision": 1,
+      "acceptance_id": "693754199e35445bab1883a59a2c82c4",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"9ea34b6465704c6ca5c748f73413bc1c\",\"798e78e256624ffa825d176fe6adf2d0\",\"f4f819cdfaa04e3eb9c0068091e2c676\",\"8ab6978db8c84e44bb5d3b8dc8f6c988\",\"note:407de93b3a444c109f898c9534f6fd94\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "2679b500932d46e284800a5acd5ea53c",
+      "attempt_id": "b4c170bb30c949298b653f09809ca52c",
+      "artifact_id": "6eac8f2e883340829df54c3919ce733b",
+      "hash": "f893fa7c688abb2d70467ed7af19fb6ed7f240c33a9a9345c2d3e46d65fbf9fa",
+      "size": 195,
+      "revision": 1,
+      "epoch": 1,
+      "role": "draft"
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "b4c170bb30c949298b653f09809ca52c",
+      "receipt_id": "2679b500932d46e284800a5acd5ea53c",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "5a94cc4e44b6433ca578a95b4dab9991",
+      "goal_id": "928624e7d2a54eaab52d18fc1434d65f",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "b9c02ff964f64cf29504924082f92095",
+      "goal_id": "928624e7d2a54eaab52d18fc1434d65f",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"b4c170bb30c949298b653f09809ca52c\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "222f6120e1be48f8a17850c37391cb9c",
+      "goal_id": "928624e7d2a54eaab52d18fc1434d65f",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"6eac8f2e883340829df54c3919ce733b\",\"attempt_id\":\"b4c170bb30c949298b653f09809ca52c\",\"check_status\":\"pass\",\"receipt_id\":\"2679b500932d46e284800a5acd5ea53c\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "questions": [],
+  "artifacts": [
+    {
+      "id": "6eac8f2e883340829df54c3919ce733b",
+      "hash": "f893fa7c688abb2d70467ed7af19fb6ed7f240c33a9a9345c2d3e46d65fbf9fa",
+      "size": 195
+    }
+  ],
+  "primary_turns": [
+    {
+      "client_key": "ui:0687b4c6-1151-46a3-8fe9-6f73de82ea53:1791449818207:3b1f3a75-9151-43c9-b070-f9315e66b4ee",
+      "record_id": "9ea34b6465704c6ca5c748f73413bc1c",
+      "status": "complete",
+      "outcome": "{\"goal\":null,\"intent\":\"conversation\",\"primary_status\":\"complete\",\"record_id\":\"9ea34b6465704c6ca5c748f73413bc1c\",\"response_id\":\"798e78e256624ffa825d176fe6adf2d0\"}"
+    },
+    {
+      "client_key": "ui:0687b4c6-1151-46a3-8fe9-6f73de82ea53:1791449837355:3da99da2-55f9-4031-9606-7713654b8276",
+      "record_id": "f4f819cdfaa04e3eb9c0068091e2c676",
+      "status": "complete",
+      "outcome": "{\"goal\":{\"acceptance_id\":\"693754199e35445bab1883a59a2c82c4\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"928624e7d2a54eaab52d18fc1434d65f\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":0},\"intent\":\"draft\",\"primary_status\":\"complete\",\"record_id\":\"f4f819cdfaa04e3eb9c0068091e2c676\",\"response_id\":\"8ab6978db8c84e44bb5d3b8dc8f6c988\"}"
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 0,
+    "expires_at": 1791450680.344324,
+    "authorized_now": false,
+    "unavailable_reason": "budget_exhausted",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 34678,
+    "started_at": 1791449780.4280589,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

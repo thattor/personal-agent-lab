@@ -1,0 +1,77 @@
+{
+  "candidate": "025532373504f947f20bf305d75a0055be3be856",
+  "product": "content:sha256:53a616572229072f80feea032b133b714b19627938c16568705b8700a4b436ad",
+  "contract_sha256": "7e2e007e08fa2d61c5d1cbfb679584b36d0d873aa3b01a31bd1c1fce4b18d0f6",
+  "case": {
+    "id": "ABS-B2",
+    "native_call_limit": 2,
+    "setup": {
+      "sources": [],
+      "goals": [],
+      "questions": []
+    },
+    "inputs": [
+      "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。"
+    ],
+    "original_probe": {
+      "id": "B",
+      "fresh_context": [],
+      "request": "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。",
+      "rubric": [
+        "No invented recipient or contribution",
+        "General gratitude only",
+        "Exactly2 Japanese sentences; local only"
+      ]
+    },
+    "rubric_clarifications": {
+      "absent_particulars": [
+        "recipient identity",
+        "date",
+        "weekday",
+        "relative timing",
+        "time",
+        "venue",
+        "menu",
+        "price",
+        "headcount",
+        "unsupported contribution"
+      ],
+      "placeholders": "Explicit bracketed/〇〇/未定 placeholders or omission allowed; generic皆さん/各位 is non-specific addressing only. Any unsupported timing, including近いうちに/今度/後日, FAIL.",
+      "thanks": "General gratitude PASS; unspecified資料作成のご協力 FAIL.",
+      "names": "Cedar/Mika or clear セダー/ミカ rendering; さん allowed.",
+      "sentence_count": "Groups of。！？!? followed by closing quote/bracket count once; final nonempty unterminated sentence counts once. Newline alone and ellipsis alone not terminators. Half-width period in Japanese prose FLAG, not arbitrary-count PASS; semantic judgment retained."
+    },
+    "expected_roles": {
+      "primary": 1,
+      "expert": 1
+    },
+    "question_policy": "No rescue answer. Retain original question-artifact FLAG/notPASS and N1-05 conversational-question allowance as distinct scopes; do not silently promote an artifact claim.",
+    "result_policy": {
+      "PASS": "Every required finite sample/probe and bound semantic/host checks pass; controller rationale required, model assertion insufficient.",
+      "FAIL": "Retain exact failure and stop this run for diagnosis/review; no replacement samples or reserve draw.",
+      "FLAG": "Not PASS, no replacement or reserve; continue other frozen scenarios but affected row remains non-PASS.",
+      "VOID": "Manifest proves missing supplied context or actual terminal-before-pause/cancel setup; retain and count consumed calls. Otherwise absent grounded facts or invented particulars is FAIL.",
+      "inconclusive": "Two observation-based unfinished-cancel attempts both terminal-before-cancel: INCONCLUSIVE/VOID, never PASS via synthetic evidence."
+    }
+  },
+  "observer": "controller via official Chrome extension CUA, ordinary UI",
+  "auth_observation": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "usage_observation": {
+    "source": "official Claude usage dialog Update then switch false immediately before this host",
+    "extra_usage_credits_checked": false,
+    "auto_reload": "OFF"
+  },
+  "pid": 32799,
+  "started_at": 1791449666.708472,
+  "started_monotonic": 0.540971833,
+  "stop_by": 1791450236.708472,
+  "max_host_seconds": 600,
+  "native_call_limit": 2,
+  "synthetic_input": true,
+  "human_operation": false,
+  "blocked_ABS_A2_access": false
+}

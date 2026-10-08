@@ -1,0 +1,9 @@
+# C054 — actual absent-fact and context checks
+
+The four original first attempts ABS-B1/B2/C1/C2 PASS through the ordinary production UI and official Chrome extension. B1 ran on031176f; the other three on0255323. All17 production hashes remain frozen product53a616, with no source or prompt change after any sample. The C053 full268 PASS26.020s evidence applies to identical pal/scripts/tests; this slice does not repeat unchanged tests or claim another full run.
+
+B1/B2 each produce exactly two Japanese sentences of general gratitude without an invented name or contribution. C1/C2 each first remember the supplied Cedar/Mika context, then produce two sentences with general thanks and only the supported design-discussion contribution. No added date, benefit or achievement. Both context cases prove the earlier user source is usable and appears in the actual Expert Attempt manifest.
+
+Each actual rendered artifact link was opened in Chrome, its body read, and then the same HTTP URL was matched to the exact host receipt, UTF-8 size/hash, Goal/Attempt, revision/epoch and fixed acceptance. [Results](results.json) and original per-case state/binding records preserve the observations. Ten total native slots:2/2/3/3, fresh independent official Pro/extra-usage OFF checks, no fallback or proof renewal. Four normal bounded exits and closed ports, no canonical repair. Screenshots were emitted as actual tool images; no saved image file is claimed here.
+
+These are development-controlled synthetic inputs, not owner evaluation. Three untouched flows remain: UI-CLARIFY, TARGET-C and COMPOUND-LOCAL-CONTINUATION. The original ABS-A2 gap is retained; these cases neither replace it nor access its refused content. No N1 whole-row/release/Qwen/human-usefulness promotion. Stable1 and the project remain incomplete.

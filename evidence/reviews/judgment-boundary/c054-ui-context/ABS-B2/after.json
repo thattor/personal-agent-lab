@@ -1,0 +1,183 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "96277a33fd5b4c18972a26339b15e52d",
+      "role": "user",
+      "content": "お礼状の下書きを作成してください。相手の名前や具体的な貢献は未指定です。日本語で2文、一般的な感謝だけにしてください。外部には送らないでください。",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "f5b85c222c85460f8e815c28655abda5",
+      "role": "assistant",
+      "content": "下書きを受け付けました：日本語のお礼状の下書きをちょうど2文で作成する。相手の名前は未指定のため記載しない(宛名を入れない)。具体的な貢献や出来事は未指定のため一切記載せず、一般的な感謝の気持ちのみを表現する。相手の行動による効果・結果・影響には触れない。丁寧で自然な敬語を用いる。ローカルの下書きのみで、外部への送信は行わない。 / Local draft accepted.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"96277a33fd5b4c18972a26339b15e52d\"]",
+      "supersedes": null
+    },
+    {
+      "seq": 3,
+      "id": "9253150f262744109541fb7f9536ae9b",
+      "role": "assistant",
+      "content": "{\"detail\":{\"revision\":1},\"event\":\"goal.queued\",\"goal_id\":\"09233c2a96c94413a26116080c5f20a5\"}",
+      "usable": 1,
+      "source_event_id": "bdca368e8a2440a9b342ec2cf780050e",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 4,
+      "id": "98b92d040f5c43f58dc0cc1d9227ece1",
+      "role": "assistant",
+      "content": "{\"detail\":{\"attempt_id\":\"6b5023dfd713400ba3f725d9257635cf\",\"epoch\":1},\"event\":\"attempt.claimed\",\"goal_id\":\"09233c2a96c94413a26116080c5f20a5\"}",
+      "usable": 1,
+      "source_event_id": "e7be93a11d4048d49484c1f8a18f46a6",
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 5,
+      "id": "57b907d2b3d7498f83a6a9391358aca1",
+      "role": "assistant",
+      "content": "{\"detail\":{\"artifact_id\":\"c9dc9625943c44ea88df25d521f84491\",\"attempt_id\":\"6b5023dfd713400ba3f725d9257635cf\",\"check_status\":\"pass\",\"receipt_id\":\"cd4388b78dcc4aa4a79df88d81590cf0\"},\"event\":\"goal.completed\",\"goal_id\":\"09233c2a96c94413a26116080c5f20a5\"}",
+      "usable": 1,
+      "source_event_id": "cde22673a59343aaa2dbcd4b90776c00",
+      "manifest": "[]",
+      "supersedes": null
+    }
+  ],
+  "notes": [],
+  "goals": [
+    {
+      "seq": 1,
+      "id": "09233c2a96c94413a26116080c5f20a5",
+      "state": "completed",
+      "revision": 1,
+      "acceptance_id": "f6b235941cdd4ea7b7238893080b7b99",
+      "epoch": 1,
+      "budget": 2,
+      "total_claims": 1,
+      "reason": "",
+      "question_id": null,
+      "ambiguity": 0
+    }
+  ],
+  "revisions": [
+    {
+      "goal_id": "09233c2a96c94413a26116080c5f20a5",
+      "revision": 1,
+      "acceptance_id": "f6b235941cdd4ea7b7238893080b7b99",
+      "specification": "日本語のお礼状の下書きをちょうど2文で作成する。相手の名前は未指定のため記載しない(宛名を入れない)。具体的な貢献や出来事は未指定のため一切記載せず、一般的な感謝の気持ちのみを表現する。相手の行動による効果・結果・影響には触れない。丁寧で自然な敬語を用いる。ローカルの下書きのみで、外部への送信は行わない。",
+      "sources": "[\"96277a33fd5b4c18972a26339b15e52d\"]",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}",
+      "template_preview_allowed": 0
+    }
+  ],
+  "acceptances": [
+    {
+      "id": "f6b235941cdd4ea7b7238893080b7b99",
+      "goal_id": "09233c2a96c94413a26116080c5f20a5",
+      "criteria": "{\"kind\":\"local_draft\",\"max_bytes\":4096}"
+    }
+  ],
+  "attempts": [
+    {
+      "seq": 1,
+      "id": "6b5023dfd713400ba3f725d9257635cf",
+      "goal_id": "09233c2a96c94413a26116080c5f20a5",
+      "revision": 1,
+      "acceptance_id": "f6b235941cdd4ea7b7238893080b7b99",
+      "epoch": 1,
+      "status": "pass",
+      "manifest": "[\"96277a33fd5b4c18972a26339b15e52d\",\"f5b85c222c85460f8e815c28655abda5\"]",
+      "error": "",
+      "external_intent": 0
+    }
+  ],
+  "receipts": [
+    {
+      "id": "cd4388b78dcc4aa4a79df88d81590cf0",
+      "attempt_id": "6b5023dfd713400ba3f725d9257635cf",
+      "artifact_id": "c9dc9625943c44ea88df25d521f84491",
+      "hash": "9f6a30add4c48827a98b394d89ed81396a18dad37049f54d66e43328a258c8f3",
+      "size": 102,
+      "revision": 1,
+      "epoch": 1,
+      "role": "draft"
+    }
+  ],
+  "outcomes": [
+    {
+      "attempt_id": "6b5023dfd713400ba3f725d9257635cf",
+      "receipt_id": "cd4388b78dcc4aa4a79df88d81590cf0",
+      "check_status": "pass",
+      "detail": "host_utf8_size_hash_readback"
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "id": "bdca368e8a2440a9b342ec2cf780050e",
+      "goal_id": "09233c2a96c94413a26116080c5f20a5",
+      "kind": "goal.queued",
+      "payload": "{\"revision\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 2,
+      "id": "e7be93a11d4048d49484c1f8a18f46a6",
+      "goal_id": "09233c2a96c94413a26116080c5f20a5",
+      "kind": "attempt.claimed",
+      "payload": "{\"attempt_id\":\"6b5023dfd713400ba3f725d9257635cf\",\"epoch\":1}",
+      "delivered": 1
+    },
+    {
+      "seq": 3,
+      "id": "cde22673a59343aaa2dbcd4b90776c00",
+      "goal_id": "09233c2a96c94413a26116080c5f20a5",
+      "kind": "goal.completed",
+      "payload": "{\"artifact_id\":\"c9dc9625943c44ea88df25d521f84491\",\"attempt_id\":\"6b5023dfd713400ba3f725d9257635cf\",\"check_status\":\"pass\",\"receipt_id\":\"cd4388b78dcc4aa4a79df88d81590cf0\"}",
+      "delivered": 1
+    }
+  ],
+  "approvals": [],
+  "rejections": [],
+  "questions": [],
+  "artifacts": [
+    {
+      "id": "c9dc9625943c44ea88df25d521f84491",
+      "hash": "9f6a30add4c48827a98b394d89ed81396a18dad37049f54d66e43328a258c8f3",
+      "size": 102
+    }
+  ],
+  "primary_turns": [
+    {
+      "client_key": "ui:9f0ee840-84fe-4fa9-8af9-48baccf5d797:1791449696950:3261b052-e202-4d30-96d5-fcb5b39221c8",
+      "record_id": "96277a33fd5b4c18972a26339b15e52d",
+      "status": "complete",
+      "outcome": "{\"goal\":{\"acceptance_id\":\"f6b235941cdd4ea7b7238893080b7b99\",\"ambiguity\":0,\"budget\":3,\"epoch\":0,\"id\":\"09233c2a96c94413a26116080c5f20a5\",\"question_id\":null,\"reason\":\"\",\"revision\":1,\"seq\":1,\"state\":\"queued\",\"total_claims\":0},\"intent\":\"draft\",\"primary_status\":\"complete\",\"record_id\":\"96277a33fd5b4c18972a26339b15e52d\",\"response_id\":\"f5b85c222c85460f8e815c28655abda5\"}"
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 0,
+    "expires_at": 1791450566.708472,
+    "authorized_now": false,
+    "unavailable_reason": "budget_exhausted",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 32799,
+    "started_at": 1791449666.769545,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

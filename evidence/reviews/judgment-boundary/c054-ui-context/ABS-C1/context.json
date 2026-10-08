@@ -1,0 +1,68 @@
+{
+  "records": [
+    {
+      "seq": 1,
+      "id": "9ea34b6465704c6ca5c748f73413bc1c",
+      "role": "user",
+      "content": "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[]",
+      "supersedes": null
+    },
+    {
+      "seq": 2,
+      "id": "798e78e256624ffa825d176fe6adf2d0",
+      "role": "assistant",
+      "content": "入力された情報を記憶しました。 / Your information was remembered.",
+      "usable": 1,
+      "source_event_id": null,
+      "manifest": "[\"9ea34b6465704c6ca5c748f73413bc1c\"]",
+      "supersedes": null
+    }
+  ],
+  "notes": [
+    {
+      "id": "407de93b3a444c109f898c9534f6fd94",
+      "content": "Remember this synthetic context: Cedar is a fictional project. Mika helped organize its design discussion. No other contribution or date is supplied.",
+      "sources": "[\"9ea34b6465704c6ca5c748f73413bc1c\"]",
+      "usable": 1
+    }
+  ],
+  "goals": [],
+  "revisions": [],
+  "acceptances": [],
+  "attempts": [],
+  "receipts": [],
+  "outcomes": [],
+  "events": [],
+  "approvals": [],
+  "rejections": [],
+  "questions": [],
+  "artifacts": [],
+  "primary_turns": [
+    {
+      "client_key": "ui:0687b4c6-1151-46a3-8fe9-6f73de82ea53:1791449818207:3b1f3a75-9151-43c9-b070-f9315e66b4ee",
+      "record_id": "9ea34b6465704c6ca5c748f73413bc1c",
+      "status": "complete",
+      "outcome": "{\"goal\":null,\"intent\":\"conversation\",\"primary_status\":\"complete\",\"record_id\":\"9ea34b6465704c6ca5c748f73413bc1c\",\"response_id\":\"798e78e256624ffa825d176fe6adf2d0\"}"
+    }
+  ],
+  "selections": [],
+  "provider": "official_claude_opus_tool_free",
+  "provider_status": {
+    "mode": "official_claude_pro",
+    "calls_remaining": 2,
+    "expires_at": 1791450680.344324,
+    "authorized_now": true,
+    "unavailable_reason": "",
+    "last_error": ""
+  },
+  "runtime": {
+    "pid": 34678,
+    "started_at": 1791449780.4280589,
+    "worker_alive": true,
+    "worker_error": "",
+    "stopping": false
+  }
+}

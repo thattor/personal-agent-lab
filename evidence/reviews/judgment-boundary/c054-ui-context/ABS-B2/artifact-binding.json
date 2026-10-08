@@ -1,0 +1,56 @@
+{
+  "url": "http://127.0.0.1:55969/api/artifact/c9dc9625943c44ea88df25d521f84491",
+  "http_status": 200,
+  "redirect": false,
+  "content_type": "text/plain; charset=utf-8",
+  "size": 102,
+  "sha256": "9f6a30add4c48827a98b394d89ed81396a18dad37049f54d66e43328a258c8f3",
+  "goal": {
+    "seq": 1,
+    "id": "09233c2a96c94413a26116080c5f20a5",
+    "state": "completed",
+    "revision": 1,
+    "acceptance_id": "f6b235941cdd4ea7b7238893080b7b99",
+    "epoch": 1,
+    "budget": 2,
+    "total_claims": 1,
+    "reason": "",
+    "question_id": null,
+    "ambiguity": 0
+  },
+  "attempt": {
+    "seq": 1,
+    "id": "6b5023dfd713400ba3f725d9257635cf",
+    "goal_id": "09233c2a96c94413a26116080c5f20a5",
+    "revision": 1,
+    "acceptance_id": "f6b235941cdd4ea7b7238893080b7b99",
+    "epoch": 1,
+    "status": "pass",
+    "manifest": "[\"96277a33fd5b4c18972a26339b15e52d\",\"f5b85c222c85460f8e815c28655abda5\"]",
+    "error": "",
+    "external_intent": 0
+  },
+  "receipt": {
+    "id": "cd4388b78dcc4aa4a79df88d81590cf0",
+    "attempt_id": "6b5023dfd713400ba3f725d9257635cf",
+    "artifact_id": "c9dc9625943c44ea88df25d521f84491",
+    "hash": "9f6a30add4c48827a98b394d89ed81396a18dad37049f54d66e43328a258c8f3",
+    "size": 102,
+    "revision": 1,
+    "epoch": 1,
+    "role": "draft"
+  },
+  "artifact": {
+    "id": "c9dc9625943c44ea88df25d521f84491",
+    "hash": "9f6a30add4c48827a98b394d89ed81396a18dad37049f54d66e43328a258c8f3",
+    "size": 102
+  },
+  "browser_link_clicked": true,
+  "browser_body_observed": true,
+  "body_hash_receipt_match": true,
+  "semantic_status": "PASS",
+  "semantic_rationale": "Exactly two Japanese sentences of general gratitude with no invented identity, contribution, date, result or external action. No clarification requested.",
+  "controller_observed": true,
+  "human_usefulness_evaluation": false,
+  "screenshot": "actual CUA tool image, no saved file claimed"
+}

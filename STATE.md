@@ -1,7 +1,7 @@
 # STATE.md
 
 ## Goal
-Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized text-only delivery goal under D-021/P002 and D-028/D-029. C053 completed two untouched real-model/UI cases through the existing Chrome connection: creative particulars and supplied follow-up both PASS with actual artifact/receipt binding. Seven untouched cases remain, plus the original second A-sample evidence gap, one whole-flow human usefulness evaluation and release audit. Development owns technical testing; HR-UI-001 remains withdrawn. No product host/model is running at this checkpoint. Goal card remains BLOCKED; actual authorized development is continuing in this user turn, with no automatic-resume claim. No schedule restarted.
+Project-level personal-assistant destination (SPEC.md), managed through [global Issue#6](https://github.com/thattor/personal-agent-lab/issues/6) → milestone → Issue → verified work unit. Stable-0 released; Stable-1 is the immediate authorized text-only delivery goal under D-021/P002 and D-028/D-029. C053/C054 completed six untouched real-model/UI first cases with artifact/receipt binding: creative particulars, supplied promise, general gratitude and supplied-context grounding. Three untouched UI flows remain, plus the original second A-sample evidence gap, one whole-flow owner usefulness evaluation and final audit. Development owns technical testing; HR-UI-001 is withdrawn. No product host/model is running at this checkpoint. Goal card remains BLOCKED; authorized development is continuing in this user turn. No schedule restarted.
 
 ## Current operating authority — 2026-10-08
 
@@ -51,21 +51,20 @@ Soak01 retained after reproduced stale UI warning; soak02 retained and intention
 
 ## Exact next action
 
-[C053 actual UI evidence](evidence/reviews/judgment-boundary/c053-ui-chrome/README.md):
-CREATIVE-PARTICULARS and SUPPLIED-FOLLOWUP first attempts PASS, four total native slots,
-unchanged production source, two bounded normal shutdowns. Continue ABS-B1/B2 then
-ABS-C1/C2 through ordinary Chrome UI using each original fixed input, independent cap,
-fresh existing Pro/extra-usage OFF check and disposable owned host. Then UI-CLARIFY,
-TARGET-C and COMPOUND-LOCAL-CONTINUATION. No resampling or retrieval/replacement of
-original refused ABS-A2. A new refusal stops the affected operation. Do not offload
-these technical cases or evidence collection to the owner.
+[C053](evidence/reviews/judgment-boundary/c053-ui-chrome/README.md) and
+[C054](evidence/reviews/judgment-boundary/c054-ui-context/README.md) prove six original
+first cases on unchanged product53a616. Continue UI-CLARIFY, then TARGET-C, then
+COMPOUND-LOCAL-CONTINUATION through ordinary Chrome UI. Use exact frozen inputs,
+each independent cap3, fresh existing Pro/extra-usage OFF proof and disposable owned
+600s hosts; TARGET-C uses only the predeclared public-Store fixture before launch.
+No resampling/retrieval/replacement of original refused ABS-A2; new refusal stops.
+No owner technical-test labor or trivial approval.
 
-Current acceptance rows remain unchanged until their full obligations are proven.
-After actual required flows, request one current-version whole-flow usefulness judgment
-in PAL人間判断 and finish the release audit. No scope expansion or old quotas.
-PAL設計's final next-version bridge packet is preserved and registered: milestone8,
-parent13, MM0 14 CLOSED after readback, MM1–4 15–18 DEFERRED in Project1.
-[Registration and retained reviews](docs/design/multimodal-next-bridge-v2.md).
+The original second A-sample evidence gap and one actual current-version whole-flow
+usefulness evaluation plus final audit remain open; no criterion is silently waived.
+Future design preparation is saved and registered independently: milestone8, parent13,
+MM0 14 CLOSED after readback, MM1–4 15–18 DEFERRED in Project1.
+[Retained plan/reviews/readback](docs/design/multimodal-next-bridge-v2.md).
 No future implementation or current-release condition is activated.
 
 ## Historical access preparation C050–C052 (superseded next actions)

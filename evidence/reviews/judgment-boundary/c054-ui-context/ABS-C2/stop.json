@@ -1,0 +1,11 @@
+{
+  "pid": 37789,
+  "signal": "SIGTERM",
+  "requested_at": 1791450052.1381068,
+  "elapsed_at_request": 138.36133670806885,
+  "exit_code": 0,
+  "pid_absent": true,
+  "port_closed_errno": 61,
+  "verified_at": 1791450054.891797,
+  "elapsed_to_verification": 141.11502695083618
+}

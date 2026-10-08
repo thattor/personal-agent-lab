@@ -595,3 +595,15 @@ no repeat full test or model call needed for document/registration-only work. Co
 future work is reproducible and discoverable without diverting the current text release.
 Next: continue the remaining approved actual text UI cases, then integrated usefulness
 and final audit. MM1–4 are not activated by MM0 completion.
+
+## C054 — absent facts and supplied context through actual UI
+
+Four first attempts PASS with fixed samples/oracles and independent2/2/3/3 caps.
+Generic thanks avoid invented facts; remembered Cedar/Mika/design-discussion context
+is retained in both real artifacts and the actual source manifest. Actual browser
+links and HTTP/receipt binding agree; four hosts exit within600s.
+[Evidence](../../evidence/reviews/judgment-boundary/c054-ui-context/README.md).
+Contribution: current grounding instruction preserves both useful content and absent-
+fact restraint. No product change, model grading, human input or release claim.
+Next: three remaining UI flows, preserve original ABS-A2 gap, then whole-flow usefulness
+and final audit. C053 full268 tests remain applicable to identical source.

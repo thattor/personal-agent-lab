@@ -1,0 +1,56 @@
+{
+  "url": "http://127.0.0.1:56479/api/artifact/6eac8f2e883340829df54c3919ce733b",
+  "http_status": 200,
+  "redirect": false,
+  "content_type": "text/plain; charset=utf-8",
+  "size": 195,
+  "sha256": "f893fa7c688abb2d70467ed7af19fb6ed7f240c33a9a9345c2d3e46d65fbf9fa",
+  "goal": {
+    "seq": 1,
+    "id": "928624e7d2a54eaab52d18fc1434d65f",
+    "state": "completed",
+    "revision": 1,
+    "acceptance_id": "693754199e35445bab1883a59a2c82c4",
+    "epoch": 1,
+    "budget": 2,
+    "total_claims": 1,
+    "reason": "",
+    "question_id": null,
+    "ambiguity": 0
+  },
+  "attempt": {
+    "seq": 1,
+    "id": "b4c170bb30c949298b653f09809ca52c",
+    "goal_id": "928624e7d2a54eaab52d18fc1434d65f",
+    "revision": 1,
+    "acceptance_id": "693754199e35445bab1883a59a2c82c4",
+    "epoch": 1,
+    "status": "pass",
+    "manifest": "[\"9ea34b6465704c6ca5c748f73413bc1c\",\"798e78e256624ffa825d176fe6adf2d0\",\"f4f819cdfaa04e3eb9c0068091e2c676\",\"8ab6978db8c84e44bb5d3b8dc8f6c988\",\"note:407de93b3a444c109f898c9534f6fd94\"]",
+    "error": "",
+    "external_intent": 0
+  },
+  "receipt": {
+    "id": "2679b500932d46e284800a5acd5ea53c",
+    "attempt_id": "b4c170bb30c949298b653f09809ca52c",
+    "artifact_id": "6eac8f2e883340829df54c3919ce733b",
+    "hash": "f893fa7c688abb2d70467ed7af19fb6ed7f240c33a9a9345c2d3e46d65fbf9fa",
+    "size": 195,
+    "revision": 1,
+    "epoch": 1,
+    "role": "draft"
+  },
+  "artifact": {
+    "id": "6eac8f2e883340829df54c3919ce733b",
+    "hash": "f893fa7c688abb2d70467ed7af19fb6ed7f240c33a9a9345c2d3e46d65fbf9fa",
+    "size": 195
+  },
+  "browser_link_clicked": true,
+  "browser_body_observed": true,
+  "body_hash_receipt_match": true,
+  "semantic_status": "PASS",
+  "semantic_rationale": "Exactly two Japanese sentences; retains Cedar/Mika, overall gratitude and only the supplied design-discussion organizing contribution. No invented date, benefit, achievement or external effect; remembered source is present in Attempt manifest.",
+  "controller_observed": true,
+  "human_usefulness_evaluation": false,
+  "screenshot": "actual CUA tool image, no saved file claimed"
+}

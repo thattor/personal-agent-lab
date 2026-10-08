@@ -329,3 +329,10 @@ questions, invented forbidden logistics or external effect. Owned hosts exited n
 within600s. [Evidence](evidence/reviews/judgment-boundary/c053-ui-chrome/README.md).
 Seven untouched cases and original ABS-A2 second-sample gap remain; no whole N1 row,
 owner usefulness, Qwen capability or release promotion. HR-UI-001 remains withdrawn.
+
+C054 actual UI/context subproof: ABS-B1/B2/C1/C2 first attempts PASS, two general-gratitude
+and two supplied-context samples,10 slots total, four bounded normal exits. Actual
+rendered artifact bodies match receipts, and context source membership is verified.
+[Version-bound evidence](evidence/reviews/judgment-boundary/c054-ui-context/README.md).
+Three untouched UI flows, original ABS-A2 gap, owner usefulness and final audit remain;
+no whole N1 row is promoted. Full268 C053 evidence applies to unchanged code/tests.
