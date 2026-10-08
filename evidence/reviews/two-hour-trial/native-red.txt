@@ -1,0 +1,162 @@
+test_clock_rewind_cannot_extend_proof_and_status_never_calls_provider (test_native.BoundedNativeTests) ... ok
+test_concurrent_call_budget_counts_failures_and_never_runs_over_limit (test_native.BoundedNativeTests) ... ok
+test_expiry_blocks_auth_subprocess_and_status_is_read_only (test_native.BoundedNativeTests) ... ok
+test_expiry_budget_and_auth_failures_are_visible_without_mock_fallback (test_native.BoundedNativeTests) ... ok
+test_expiry_during_auth_consumes_slot_without_generation (test_native.BoundedNativeTests) ... ok
+test_malformed_proof_never_authorizes (test_native.BoundedNativeTests) ... ok
+test_proof_consumption_is_canonical_and_rejects_unsafe_files (test_native.BoundedNativeTests) ... ok
+test_shutdown_during_auth_kills_owned_child_and_consumes_slot (test_native.BoundedNativeTests) ... ok
+test_wall_jump_and_sleep_expire_without_monotonic_progress (test_native.BoundedNativeTests) ... ok
+test_complete_after_fifteen_minutes_keeps_the_same_budget (test_native.ExtendedNativeSessionTests) ... ERROR
+test_duration_is_strict_and_bounded_at_both_api_boundaries (test_native.ExtendedNativeSessionTests) ... ERROR
+test_extended_expiry_and_clock_fences_reject_before_auth (test_native.ExtendedNativeSessionTests) ... ERROR
+test_extended_expiry_during_auth_burns_only_the_reserved_slot (test_native.ExtendedNativeSessionTests) ... ERROR
+test_extension_does_not_admit_a_stale_startup_proof (test_native.ExtendedNativeSessionTests) ... ERROR
+test_bounded_text_and_failure_and_timeout (test_native.NativeTests) ... ok
+test_env_keeps_os_identity_but_never_inherits_api_tokens (test_native.NativeTests) ... ok
+test_expired_or_unverified_route_cannot_run (test_native.NativeTests) ... ok
+test_native_cli_contract_has_no_tools_mcp_hooks_fallback_or_persistence (test_native.NativeTests) ... ok
+test_parent_sigkill_stops_provider_group (test_native.NativeTests) ... ok
+
+======================================================================
+ERROR: test_complete_after_fifteen_minutes_keeps_the_same_budget (test_native.ExtendedNativeSessionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 224, in test_complete_after_fifteen_minutes_keeps_the_same_budget
+    provider=self.fresh_provider(calls=1)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 210, in fresh_provider
+    return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+TypeError: __init__() got an unexpected keyword argument 'session_seconds'
+
+======================================================================
+ERROR: test_duration_is_strict_and_bounded_at_both_api_boundaries (test_native.ExtendedNativeSessionTests) (value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 215, in test_duration_is_strict_and_bounded_at_both_api_boundaries
+    with self.assertRaises(ValueError): self.fresh_provider(value)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 210, in fresh_provider
+    return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+TypeError: __init__() got an unexpected keyword argument 'session_seconds'
+
+======================================================================
+ERROR: test_duration_is_strict_and_bounded_at_both_api_boundaries (test_native.ExtendedNativeSessionTests) (value=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 215, in test_duration_is_strict_and_bounded_at_both_api_boundaries
+    with self.assertRaises(ValueError): self.fresh_provider(value)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 210, in fresh_provider
+    return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+TypeError: __init__() got an unexpected keyword argument 'session_seconds'
+
+======================================================================
+ERROR: test_duration_is_strict_and_bounded_at_both_api_boundaries (test_native.ExtendedNativeSessionTests) (value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 215, in test_duration_is_strict_and_bounded_at_both_api_boundaries
+    with self.assertRaises(ValueError): self.fresh_provider(value)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 210, in fresh_provider
+    return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+TypeError: __init__() got an unexpected keyword argument 'session_seconds'
+
+======================================================================
+ERROR: test_duration_is_strict_and_bounded_at_both_api_boundaries (test_native.ExtendedNativeSessionTests) (value='900')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 215, in test_duration_is_strict_and_bounded_at_both_api_boundaries
+    with self.assertRaises(ValueError): self.fresh_provider(value)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 210, in fresh_provider
+    return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+TypeError: __init__() got an unexpected keyword argument 'session_seconds'
+
+======================================================================
+ERROR: test_duration_is_strict_and_bounded_at_both_api_boundaries (test_native.ExtendedNativeSessionTests) (value=900.0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 215, in test_duration_is_strict_and_bounded_at_both_api_boundaries
+    with self.assertRaises(ValueError): self.fresh_provider(value)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 210, in fresh_provider
+    return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+TypeError: __init__() got an unexpected keyword argument 'session_seconds'
+
+======================================================================
+ERROR: test_duration_is_strict_and_bounded_at_both_api_boundaries (test_native.ExtendedNativeSessionTests) (value=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 215, in test_duration_is_strict_and_bounded_at_both_api_boundaries
+    with self.assertRaises(ValueError): self.fresh_provider(value)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 210, in fresh_provider
+    return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+TypeError: __init__() got an unexpected keyword argument 'session_seconds'
+
+======================================================================
+ERROR: test_duration_is_strict_and_bounded_at_both_api_boundaries (test_native.ExtendedNativeSessionTests) (value=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 215, in test_duration_is_strict_and_bounded_at_both_api_boundaries
+    with self.assertRaises(ValueError): self.fresh_provider(value)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 210, in fresh_provider
+    return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+TypeError: __init__() got an unexpected keyword argument 'session_seconds'
+
+======================================================================
+ERROR: test_duration_is_strict_and_bounded_at_both_api_boundaries (test_native.ExtendedNativeSessionTests) (value=8101)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 215, in test_duration_is_strict_and_bounded_at_both_api_boundaries
+    with self.assertRaises(ValueError): self.fresh_provider(value)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 210, in fresh_provider
+    return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+TypeError: __init__() got an unexpected keyword argument 'session_seconds'
+
+======================================================================
+ERROR: test_duration_is_strict_and_bounded_at_both_api_boundaries (test_native.ExtendedNativeSessionTests) (value=inf)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 215, in test_duration_is_strict_and_bounded_at_both_api_boundaries
+    with self.assertRaises(ValueError): self.fresh_provider(value)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 210, in fresh_provider
+    return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+TypeError: __init__() got an unexpected keyword argument 'session_seconds'
+
+======================================================================
+ERROR: test_duration_is_strict_and_bounded_at_both_api_boundaries (test_native.ExtendedNativeSessionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 219, in test_duration_is_strict_and_bounded_at_both_api_boundaries
+    provider=self.fresh_provider(value)
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 210, in fresh_provider
+    return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+TypeError: __init__() got an unexpected keyword argument 'session_seconds'
+
+======================================================================
+ERROR: test_extended_expiry_and_clock_fences_reject_before_auth (test_native.ExtendedNativeSessionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 244, in test_extended_expiry_and_clock_fences_reject_before_auth
+    provider=self.fresh_provider()
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 210, in fresh_provider
+    return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+TypeError: __init__() got an unexpected keyword argument 'session_seconds'
+
+======================================================================
+ERROR: test_extended_expiry_during_auth_burns_only_the_reserved_slot (test_native.ExtendedNativeSessionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 255, in test_extended_expiry_during_auth_burns_only_the_reserved_slot
+    provider=self.fresh_provider()
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 210, in fresh_provider
+    return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+TypeError: __init__() got an unexpected keyword argument 'session_seconds'
+
+======================================================================
+ERROR: test_extension_does_not_admit_a_stale_startup_proof (test_native.ExtendedNativeSessionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_native.py", line 239, in test_extension_does_not_admit_a_stale_startup_proof
+    proof.check(8100)
+TypeError: check() takes 1 positional argument but 2 were given
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.623s
+
+FAILED (errors=14)

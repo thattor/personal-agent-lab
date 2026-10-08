@@ -1,0 +1,89 @@
+{
+  "work_unit": "C063",
+  "decision": "D-032",
+  "recorded_at": 1791461993.460948,
+  "product": "content:sha256:04f30387694a8202689b06673c18ec1fb7822b7ba88f83679132bdfb0b0291a5",
+  "source_freeze": "evidence/reviews/two-hour-trial/candidate-freeze.json",
+  "changed_product_files": [
+    "pal/native.py",
+    "pal/server.py",
+    "pal/web/app.js"
+  ],
+  "unchanged_product_files": [
+    "pal/__init__.py",
+    "pal/classification.py",
+    "pal/controls.py",
+    "pal/draft_envelope.py",
+    "pal/native_supervisor.py",
+    "pal/primary.py",
+    "pal/runtime.py",
+    "pal/sanitize.py",
+    "pal/soak.py",
+    "pal/store.py",
+    "pal/template_intake.py",
+    "pal/web/conversation.html",
+    "pal/web/inspect.html",
+    "pal/web/style.css"
+  ],
+  "targeted": {
+    "native": 19,
+    "http": 15,
+    "status": "PASS"
+  },
+  "full_suite": {
+    "tests": 277,
+    "seconds": 25.467,
+    "status": "PASS",
+    "exit_code": 0,
+    "log": "evidence/reviews/two-hour-trial/full-green.txt"
+  },
+  "retained_failed_first_full": "evidence/reviews/two-hour-trial/full-red-freeze.txt",
+  "claims": [
+    "default900 retained; extended complete after900 succeeds",
+    "startup fresh900 required; proof replay across durations rejected",
+    "strict bounded duration, wall/monotonic fences, post-auth expiry, shared budget and original subprocess timeouts",
+    "HTTP expiry reflects selected duration without provider calls or canonical changes"
+  ],
+  "proof_limitations": [
+    "clock transitions and provider replies in new tests are deterministic fixtures, not2-hour elapsed observation",
+    "actual extended UI/ready-time observation pending separate launch record",
+    "Primary/Expert/context/Store/runtime source unchanged; prior actual function evidence retains original versions",
+    "owner usefulness remains pending; no new quality corpus or generation performed"
+  ],
+  "stable1_complete": false,
+  "project_complete": false,
+  "evidence": {
+    "candidate-freeze.json": {
+      "bytes": 2178,
+      "sha256": "baa73183f52f20028642601f45e7fbb178177abf3740021152a96d12b7aefc3f"
+    },
+    "full-red-freeze.txt": {
+      "bytes": 30268,
+      "sha256": "53f2be67b9db16bc976e7f3e42b6cd6b3b9b1fcba05af97e0be08b51b5d7fa2a"
+    },
+    "native-red.txt": {
+      "bytes": 12581,
+      "sha256": "9457e62ac59d791897246f98741bb337ff4961f91613def70ebd24f602a21649"
+    },
+    "http-green.txt": {
+      "bytes": 1378,
+      "sha256": "9d976fea8d2dde9b7939cf462a86cfd7c62ef569f958a025d0819d87c310083d"
+    },
+    "http-red.txt": {
+      "bytes": 2365,
+      "sha256": "b6f220e6438f1aa79ef9036338172d347911b6f8051285f4c5540e1536119ee3"
+    },
+    "MANIFEST.json": {
+      "bytes": 2492,
+      "sha256": "ffd885a266057ad3efeb15a797ae1f3b9f176966fcefce475c38dac11fbea6ec"
+    },
+    "native-green.txt": {
+      "bytes": 1955,
+      "sha256": "d92bc2663c2aa4c6249826f64e1eafc2d06b1b32447ee1bbe367e0c7eead8263"
+    },
+    "full-green.txt": {
+      "bytes": 29405,
+      "sha256": "f2e56b75f2a5ee49f758ae2c912c4285cdf3c056bd741a10625baa4e6a1226db"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "owner_source": {
+    "chat": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "turn": "01a11b5d-802f-7bd0-8e68-d93f41313d17",
+    "message": "01a11b5d-813b-72d1-9a89-8612f52c40b6",
+    "text": "もうちょと伸ばしてせめて2時間"
+  },
+  "created_at": "2026-10-08T12:08:18.609012+00:00",
+  "head": "8a2fd8521cbc536f2607c349275146398ced75fc",
+  "source_sha256": "474f0319a882bf34edb332e2e7cc3c8861e5e390eb487c458f69b1a58841107a",
+  "max_calls": {
+    "opus": 1,
+    "swe": 1
+  },
+  "scope": "finite trial extension only; no product edits; development imports reusable records"
+}

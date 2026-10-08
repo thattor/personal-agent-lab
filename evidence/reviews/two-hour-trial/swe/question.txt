@@ -1,3 +1,17 @@
+Read-only, single bounded consultation. Use no tools; all relevant code is supplied below. Do not implement or edit files. Return a concise verdict and only concrete necessary corrections. Max 650 words. End with REVIEW_COMPLETE.
+
+OWNER REQUIREMENT: existing local PAL trial should work for at least TWO HOURS after the owner is told it is ready (owner exact request: もうちょと伸ばしてせめて2時間). Same http://127.0.0.1:59684/ and same DB. Preserve currently remaining call budget, never add another 16. Extra usage OFF, existing official Claude Pro route only. Owner ended conversation-quality tuning/testing/reviews; do not reopen it, multimodal work, product scope, new infrastructure or learning work.
+
+PROPOSAL: CLI --native-session-seconds, absent -> effective900; supplied value strict integer bounded1..8100. Operator will use8100 (2h15) once and verify >=7200 remain at delivery. NativeClaude(proof,max_calls=...,session_seconds=900). AccessProof.check(max_age=900) validates strict integer1..8100 (bool not valid); use selected duration for BOTH existing wall-clock and monotonic upper/lower fences. load(), consume() and defensive NativeClaude constructor admission continue .check() with900, so stale proof cannot be revived by an extended session. After construction status() and before/after-auth .check() use the selected fixed duration, expires_at=verified_at+duration. Preserve proof JSON exact3keys, canonical proof hash/one-use marker (duration must NOT enter proof identity), authenticated route, generation/auth timeouts, safe-mode/no-tools, stop, budget, DB/Goal/mock boundaries. No periodic renewal/restart schedule. CLI default None should distinguish an explicitly supplied native option (even900) and reject it on mock. UI uses existing expires_at to display actual deadline. Do preparation first; fresh operator proof comes last. This changes admission deadline; already admitted in-flight work keeps the existing bounded timeout, not a new hard-kill semantics.
+
+CURRENT LIVE FACTS confirmed by development for C063: old process PID80016 alive, proof_expired, calls_remaining16, records/goals/artifacts0. Development alone will re-read status before stopping old host, ensure admission remains expired and no in-flight work, stop old host, launch exactly the final remaining calls (if0, do not refill/restart at16). No need a new persistent quota ledger for this single expired-host handoff. If evidence changes, conservatively re-establish final remaining budget without adding calls.
+
+Check narrowly for actual holes in this proposal, not hypothetical broad redesign. Intended tests group: default900 and extension accepts after900/rejects expiry; invalid duration inclbool/floats and bounds; stale proof cannot start and sameproof/different duration cannotconsume twice; wall/mono backward/expiry and post-auth expiry; duration doesn't resetbudget and0native limit fails; mock option rejected and HTTP expires_at/UI consistency. Existing full suite belongs to development, not this review.
+
+ROLE: implementation-design partner SWE-2 High. Assess exact call sites, validation, time arithmetic, CLI default/mock discrimination and minimal deterministic tests. No code generation needed.
+
+CURRENT CODE:
+FILE pal/native.py
 """Official tool-free Claude route, explicit fresh no-extra-charge proof required."""
 import json
 import math
@@ -28,17 +42,15 @@ class AccessProof:
     _loaded_wall: float = field(default_factory=lambda: time.time(), init=False, repr=False)
     _loaded_mono: float = field(default_factory=lambda: time.monotonic(), init=False, repr=False)
 
-    def check(self, max_age=900):
-        if type(max_age) is not int or not 1 <= max_age <= 8100:
-            raise ValueError('native session seconds must be 1..8100')
+    def check(self):
         try:
             numeric = type(self.verified_at) in (int,float) and math.isfinite(self.verified_at)
             if not numeric or self.no_extra_charge is not True or self.route != 'official_claude_pro':
                 raise ProviderUnavailable('proof_malformed')
             age = time.time() - self.verified_at
             elapsed = time.monotonic() - self._loaded_mono
-            remaining = max_age - (self._loaded_wall - self.verified_at)
-            if not 0 <= age <= max_age or not 0 <= elapsed < remaining:
+            remaining = 900 - (self._loaded_wall - self.verified_at)
+            if not 0 <= age <= 900 or not 0 <= elapsed < remaining:
                 raise ProviderUnavailable('proof_expired')
         except (TypeError,ValueError,OverflowError):
             raise ProviderUnavailable('proof_malformed') from None
@@ -158,14 +170,10 @@ def supervised_text(command, prompt, timeout=120, max_output=65536, owner=None, 
 class NativeClaude:
     identity = 'official_claude_opus_tool_free'
 
-    def __init__(self, proof, max_calls=16, session_seconds=900):
+    def __init__(self, proof, max_calls=16):
         if type(max_calls) is not int or not 1<=max_calls<=32:
             raise ValueError("native call limit must be 1..32")
-        if type(session_seconds) is not int or not 1 <= session_seconds <= 8100:
-            raise ValueError('native session seconds must be 1..8100')
-        proof.check()
         self.proof = proof
-        self._session_seconds = session_seconds
         self._remaining = max_calls
         self._last_error = ""
         self._lock = threading.Lock()
@@ -194,13 +202,13 @@ class NativeClaude:
             reason='stopped' if self._stopped else ''
             if not reason:
                 try:
-                    self.proof.check(self._session_seconds)
+                    self.proof.check()
                 except ProviderUnavailable as error:
                     reason=str(error)
             if not reason and self._remaining==0:
                 reason='budget_exhausted'
             return {'mode':'official_claude_pro','calls_remaining':self._remaining,
-                    'expires_at':self.proof.verified_at+self._session_seconds if type(self.proof.verified_at) in (int,float) and math.isfinite(self.proof.verified_at) else None,
+                    'expires_at':self.proof.verified_at+900 if type(self.proof.verified_at) in (int,float) and math.isfinite(self.proof.verified_at) else None,
                     'authorized_now':not reason,'unavailable_reason':reason,'last_error':self._last_error}
 
     def _auth_command(self):
@@ -208,7 +216,7 @@ class NativeClaude:
 
     def complete(self, prompt):
         with self._lock:
-            self.proof.check(self._session_seconds)
+            self.proof.check()
             if self._stopped:
                 raise ProviderUnavailable('stopped')
             if self._remaining==0:
@@ -223,7 +231,7 @@ class NativeClaude:
                 raise ProviderUnavailable('auth_unavailable') from None
             if not isinstance(status,dict) or not status.get('loggedIn') or status.get('authMethod')!='claude.ai' or status.get('subscriptionType') not in ('pro','max'):
                 raise ProviderUnavailable('auth_unavailable')
-            self.proof.check(self._session_seconds)
+            self.proof.check()
             phase='generation_unavailable'
             return supervised_text(self.command(),prompt,timeout=120,max_output=65536,owner=self)
         except Exception:
@@ -240,3 +248,49 @@ class NativeClaude:
                 except OSError:
                     pass
             self._calls.clear()
+
+
+FILE pal/server.py
+def build_provider(args, marker_dir=Path('runtime/native-proof-use')):
+    if args.provider=='mock':
+        if args.access_proof is not None or args.native_call_limit is not None:
+            raise ValueError('native options require explicit official provider')
+        return MockProvider(args.mock_task_delay)
+    if args.provider!='official_claude_pro' or not args.access_proof or args.mock_task_delay:
+        raise ValueError('explicit official provider requires proof and no mock delay')
+    limit=16 if args.native_call_limit is None else args.native_call_limit
+    provider=NativeClaude(AccessProof.load(args.access_proof),max_calls=limit)
+    provider.proof.consume(marker_dir)
+    return provider
+
+
+def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--db',default='runtime/pal.db')
+    parser.add_argument('--port',type=int,default=8765)
+    parser.add_argument('--mock-task-delay',type=float,default=0,help='bounded mock execution latency for control/recovery exercises')
+    parser.add_argument('--provider',choices=('mock','official_claude_pro'),default='mock')
+    parser.add_argument('--access-proof',help='operator-issued fresh official no-extra-charge metadata JSON')
+    parser.add_argument('--native-call-limit',type=int,help='bounded generation invocations, 1..32 (default16)')
+    args=parser.parse_args()
+    try:
+        provider=build_provider(args)
+    except (ValueError,RuntimeError,OSError) as error:
+        parser.error(str(error))
+    runtime=Runtime(args.db,provider=provider)
+    server=make_server(runtime,args.port)
+    def stop(*_):
+        threading.Thread(target=server.shutdown,daemon=True).start()
+    signal.signal(signal.SIGTERM,stop)
+    signal.signal(signal.SIGINT,stop)
+    print(f'PAL {provider.identity} conversation: http://127.0.0.1:{server.server_port}',flush=True)
+    try:
+        server.serve_forever()
+    finally:
+        server.server_close()
+        runtime.close()
+
+
+
+FILE pal/web/app.js
+  document.getElementById('provider').textContent='Provider: '+data.provider+' · local drafts / ローカル下書き'+(access.mode==='mock'?' · Mock / 模擬応答':' · Official live / 公式実モデル · remaining / 残り '+access.calls_remaining+' · '+(access.authorized_now?'Proof valid / 利用証明有効':'Unavailable / 利用不可: '+access.unavailable_reason)+(access.last_error?' · '+access.last_error:''));

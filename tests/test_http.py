@@ -136,6 +136,20 @@ class HTTPTests(unittest.TestCase):
         self.assertEqual(self.request('/api/message',{'key':'x','text':'x'},headers={'Origin':self.base,'Content-Type':'text/plain'})[0],400)
         self.assertEqual(self.post({'key':'big','text':'x'*70000})[0],413)
 
+    def test_extended_provider_deadline_is_readonly_in_http_state(self):
+        from unittest.mock import patch
+        from pal.native import AccessProof,NativeClaude
+        proof=AccessProof(time.time(),True)
+        self.runtime.provider=NativeClaude(proof,max_calls=3,session_seconds=8100)
+        before=self.runtime.store.inspect()
+        with patch('pal.native.supervised_text') as calls:
+            state=json.loads(self.request('/api/state')[1])
+            self.assertEqual(state['provider_status']['expires_at'],proof.verified_at+8100)
+            self.assertEqual(state['provider_status']['calls_remaining'],3)
+            self.assertTrue(state['provider_status']['authorized_now'])
+            self.assertEqual(self.runtime.store.inspect(),before)
+            calls.assert_not_called()
+
     def test_artifact_status_readonly_and_forget_stale(self):
         self.assertTrue(self.runtime.idle.wait(2))
         store = self.runtime.store
@@ -223,9 +237,9 @@ class ProviderStartupTests(unittest.TestCase):
     def test_default_is_mock_and_live_options_do_not_create_store(self):
         from types import SimpleNamespace
         from pal.server import build_provider
-        args=SimpleNamespace(provider='mock',access_proof=None,native_call_limit=None,mock_task_delay=0)
+        args=SimpleNamespace(provider='mock',access_proof=None,native_call_limit=None,native_session_seconds=None,mock_task_delay=0)
         self.assertEqual(build_provider(args).identity,'mock')
-        for field,value in (('access_proof','missing.json'),('native_call_limit',2)):
+        for field,value in (('access_proof','missing.json'),('native_call_limit',2),('native_session_seconds',900)):
             bad=SimpleNamespace(**vars(args)); setattr(bad,field,value)
             with self.assertRaises(ValueError): build_provider(bad)
 
@@ -244,3 +258,22 @@ class ProviderStartupTests(unittest.TestCase):
             self.assertEqual(provider.status()['calls_remaining'],4)
             self.assertNotEqual(provider.identity,'mock')
             provider.stop()
+
+    def test_session_duration_cannot_reconsume_or_rejuvenate_proof(self):
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        from pal.server import build_provider
+        from pal.native import ProviderUnavailable
+        for first,second in ((900,8100),(8100,900)):
+            with self.subTest(first=first), tempfile.TemporaryDirectory() as temp, patch('pal.native.time.time',return_value=10000), patch('pal.native.time.monotonic',return_value=500):
+                path=Path(temp)/'proof.json'; markers=Path(temp)/'markers'
+                path.write_text(json.dumps({'verified_at':10000,'no_extra_charge':True,'route':'official_claude_pro'}))
+                args=SimpleNamespace(provider='official_claude_pro',access_proof=str(path),native_call_limit=3,native_session_seconds=first,mock_task_delay=0)
+                provider=build_provider(args,marker_dir=markers)
+                self.assertEqual(provider.status()['expires_at'],10000+first)
+                provider.stop(); args.native_session_seconds=second
+                with self.assertRaisesRegex(ProviderUnavailable,'proof_consumed'): build_provider(args,marker_dir=markers)
+                args.native_session_seconds=8100
+                with patch('pal.native.time.time',return_value=10901), self.assertRaisesRegex(ProviderUnavailable,'proof_expired'):
+                    build_provider(args,marker_dir=Path(temp)/'unused-markers')
+                self.assertFalse((Path(temp)/'unused-markers').exists())

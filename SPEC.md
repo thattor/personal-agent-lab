@@ -110,7 +110,7 @@ The product destination is an assistant that preserves conversational context, t
 
 Stable-1 adds no task type beyond a local draft. Combined draft-and-send and send-only requests receive an explicit unsupported-action explanation with no Goal; a subsequent local-only request can create one. Discussion, quotations, hypothetical requests, record-only instructions and negation/deferral must not silently create work. Natural correction/cancel requires unique host-validated targeting; ambiguous references must not mutate an arbitrary latest Goal. Existing single-target English controls remain supported, with fixed criteria and source restrictions preserved. Forget remains explicit and reference-stop semantics remain unchanged.
 
-The existing recent30-record/first20-note context assembly is a known bounded implementation limitation. Stable-1 does not overhaul memory or claim unlimited recall. Official-provider proof freshness, finite invocation budget, mock default and human judgment boundaries remain D-020. No schedule or paused follow-up is restarted by setting this milestone.
+The existing recent30-record/first20-note context assembly is a known bounded implementation limitation. Stable-1 does not overhaul memory or claim unlimited recall. Official-provider startup proof freshness, finite invocation budget, mock default and human judgment boundaries remain D-020. D032 permits an explicit finite admission window up to8100 seconds for the owner's requested two-hour trial, default900; startup freshness stays900 seconds and a time extension does not add calls. No schedule or paused follow-up is restarted by setting this milestone.
 
 ## Model-led intake correction — D-029
 

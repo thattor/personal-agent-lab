@@ -777,7 +777,7 @@ class FreezeQualificationTests(unittest.TestCase):
 
 
 class RepositoryFreezeTests(unittest.TestCase):
-    def test_historical_primary_expert_and_current_grounding_freezes_are_distinct(self):
+    def test_retained_freezes_and_current_runtime_change_are_distinct(self):
         self.assertEqual(hashlib.sha256((ROOT/FREEZE).read_bytes()).hexdigest(), OLD_FREEZE_SHA)
         old = json.loads((ROOT/FREEZE).read_text())
         clarification_path = ROOT/NEW_FREEZE
@@ -818,12 +818,20 @@ class RepositoryFreezeTests(unittest.TestCase):
                           if current['files'][path]!=expert['files'][path]}, {'pal/primary.py'})
         self.assertEqual(current['heldout_sha256'], COHORTS['ask-first-heldout'][1])
         self.assertFalse(current['heldout_contents_opened_before_freeze'])
-        grounding = validate_freeze(ROOT, GROUNDING_FREEZE)
+        self.assertEqual(hashlib.sha256((ROOT/GROUNDING_FREEZE).read_bytes()).hexdigest(),
+                         '0161c50a0d80dc0aed8b7d69b7dbcef266e530344d5d545c1029bc8ab80a1e29')
+        grounding = json.loads((ROOT/GROUNDING_FREEZE).read_text())
         self.assertEqual(set(grounding['files']), set(current['files']))
         self.assertEqual({path for path in grounding['files']
                           if grounding['files'][path]!=current['files'][path]}, {'pal/primary.py'})
         self.assertEqual(grounding['heldout_sha256'], COHORTS['grounding-heldout'][1])
         self.assertFalse(grounding['heldout_contents_opened_before_freeze'])
+        trial = validate_freeze(ROOT, 'evidence/reviews/two-hour-trial/candidate-freeze.json')
+        self.assertEqual(set(trial['files']), set(grounding['files']))
+        self.assertEqual({path for path in trial['files']
+                          if trial['files'][path]!=grounding['files'][path]},
+                         {'pal/native.py','pal/server.py','pal/web/app.js'})
+        with self.assertRaises(RunRejected):validate_freeze(ROOT, GROUNDING_FREEZE)
         with self.assertRaises(RunRejected):validate_freeze(ROOT, ASK_FIRST_FREEZE)
         with self.assertRaises(RunRejected):validate_freeze(ROOT, expert_path)
         with self.assertRaises(RunRejected):validate_freeze(ROOT, FREEZE)

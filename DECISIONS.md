@@ -1228,3 +1228,52 @@ minor sentence-count/wording defects are observations, not a reason to resample 
 Then preserve available usable outputs for one owner evaluation and do the final full
 suite/version/constraints/GitHub audit. No new acceptance case, harness or provider design.
 Stable-1 remains text-only and is not overall project completion; future scope stays dormant.
+
+## D-032 — owner-requested finite trial time, 2026-10-08
+
+Direct owner request in PAL人間判断: 「もうちょと伸ばしてせめて2時間」,
+turn `01a11b5d-802f-7bd0-8e68-d93f41313d17`, message
+`01a11b5d-813b-72d1-9a89-8612f52c40b6`, independently read by development.
+[Authority and original host observation](evidence/operations/c063-owner-extension.json).
+The operational target is at least7200 seconds remaining when the owner receives the
+ready trial, same DB/URL and actual remaining invocation budget, existing official
+authentication and extra usage OFF. No repeated owner approval is needed for that scope.
+
+Question to official Opus and SWE-2 High through PAL設計: challenge a minimal explicit
+`--native-session-seconds` option, default900/max8100 seconds, while keeping fresh
+load/consume at900, one-use canonical proof identity, dual clocks, call budget, auth
+checks, subprocess deadlines and canonical state unchanged. This is duration-boundary
+review, not a conversation/prose-quality review under D031.
+
+Opus completed one41.920-second/exit0 review: proposal sound; validate a strict integer
+duration, pass it to status and both complete checks, reject any native option with
+mock including explicit900, and carry the observed remaining budget through a stopped
+old PID into the same DB/port/cwd. No new quota ledger or switching architecture is
+needed for the observed expired host with16 unused calls. A call already admitted
+before expiry retains the existing120-second generation timeout.
+
+Adopt this bounded design before implementation. An extended provider constructor
+must still require a fresh900-second proof; changing duration never changes the
+consumption hash or revives a used/old proof. Default provider/harness behavior stays900.
+Use8100 only explicitly for this requested trial and verify at least7200 remain at
+handoff. A fresh explicit restart is allowed here; no automatic renewal or schedule.
+The implementation review result and original evidence are recorded below before code
+changes. Rejected scope: unlimited session, increased call allowance, new auth/payment,
+proof timestamp repair, canonical DB repair, and new prose-quality qualification.
+
+Official SWE-2 High completed one101.352-second/exit0/REVIEW_COMPLETE review after
+fresh existing authentication and its standalone Free model row were checked. Opus used
+fresh existing Pro/extra usage OFF; both were tool-free supplied-source consultations
+without fallback/retry. [Original reviews and disposition](evidence/reviews/two-hour-trial/DISPOSITION.md),
+17 files verified against manifest `ffd885a266057ad3efeb15a797ae1f3b9f176966fcefce475c38dac11fbea6ec`.
+Adopt strict integer1..8100 validation in both API constructor and check, outside proof
+error conversion; invalid configuration raises ValueError. Keep current wall inclusive
+and monotonic exclusive bounds, fixed constructor duration, and existing lock placement
+(SWE's “pre-lock” wording does not move admission outside the lock). Constructor performs
+default900 freshness check. Tiny already-expired durations fail closed; do not introduce
+another admission policy. Default tests that constructed stale providers must instead
+construct fresh then advance the test clocks, preserving their original rejection claim.
+Pin successful complete() after900, expiry after auth, clock fences, budget exhaustion,
+same proof reuse across durations, mock discrimination and HTTP/UI deadline agreement.
+Preserve current120-second generation deadline and supervisor cleanup grace; the displayed
+deadline is new-call admission, not a hard process-stop promise. No further review needed.

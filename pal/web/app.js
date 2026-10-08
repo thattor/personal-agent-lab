@@ -94,7 +94,7 @@ function render(data){
   }
   receipt();
   const access=data.provider_status||{mode:'mock'};
-  document.getElementById('provider').textContent='Provider: '+data.provider+' · local drafts / ローカル下書き'+(access.mode==='mock'?' · Mock / 模擬応答':' · Official live / 公式実モデル · remaining / 残り '+access.calls_remaining+' · '+(access.authorized_now?'Proof valid / 利用証明有効':'Unavailable / 利用不可: '+access.unavailable_reason)+(access.last_error?' · '+access.last_error:''));
+  document.getElementById('provider').textContent='Provider: '+data.provider+' · local drafts / ローカル下書き'+(access.mode==='mock'?' · Mock / 模擬応答':' · Official live / 公式実モデル · remaining / 残り '+access.calls_remaining+' · '+(access.authorized_now?'Proof valid / 利用証明有効':'Unavailable / 利用不可: '+access.unavailable_reason)+(Number.isFinite(access.expires_at)?' · New requests until / 新規依頼の利用期限: '+new Date(access.expires_at*1000).toLocaleString(undefined,{timeZoneName:'short'}):'')+(access.last_error?' · '+access.last_error:''));
   if(isInspect){
     const root=document.getElementById('inspect');root.replaceChildren();
     for(const table of ['goals','attempts','outcomes','receipts','artifacts','rejections','records','notes','revisions','acceptances','events','approvals','questions','primary_turns']){

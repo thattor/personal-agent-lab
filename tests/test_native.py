@@ -23,9 +23,8 @@ class NativeTests(unittest.TestCase):
             supervised_text([sys.executable,'-c','import sys;sys.exit(3)'], 'test', timeout=3, max_output=500)
 
     def test_expired_or_unverified_route_cannot_run(self):
-        provider = NativeClaude(AccessProof(verified_at=0, no_extra_charge=True))
         with self.assertRaises(ProviderUnavailable):
-            provider.complete('No call allowed')
+            NativeClaude(AccessProof(verified_at=0, no_extra_charge=True)).complete('No call allowed')
         with self.assertRaises(ProviderUnavailable):
             NativeClaude(AccessProof(verified_at=time.time(), no_extra_charge=False)).complete('No call allowed')
 
@@ -104,8 +103,8 @@ class BoundedNativeTests(unittest.TestCase):
         self.assertFalse(status['authorized_now'])
 
     def test_expiry_blocks_auth_subprocess_and_status_is_read_only(self):
-        provider=NativeClaude(AccessProof(time.time()-901,True),max_calls=2)
-        with patch('pal.native.supervised_text') as auth:
+        provider=NativeClaude(AccessProof(time.time(),True),max_calls=2)
+        with patch('pal.native.time.time',return_value=time.time()+901), patch('pal.native.supervised_text') as auth:
             self.assertFalse(provider.status()['authorized_now'])
             with self.assertRaises(ProviderUnavailable):
                 provider.complete('synthetic')
@@ -185,12 +184,12 @@ class BoundedNativeTests(unittest.TestCase):
         from pal.runtime import Runtime
         for reason in ('expired','exhausted','auth'):
             with self.subTest(reason=reason), tempfile.TemporaryDirectory() as temp:
-                provider=NativeClaude(AccessProof(time.time()-901 if reason=='expired' else time.time(),True),max_calls=2)
+                provider=NativeClaude(AccessProof(time.time(),True),max_calls=2)
                 if reason=='exhausted':
                     with patch('pal.native.supervised_text',side_effect=ProviderUnavailable('synthetic')):
                         for _ in range(2):
                             with self.assertRaises(ProviderUnavailable): provider.complete('consume')
-                with patch('pal.native.supervised_text',return_value='{"loggedIn":false}') as call:
+                with patch('pal.native.time.time',return_value=time.time()+(901 if reason=='expired' else 0)), patch('pal.native.supervised_text',return_value='{"loggedIn":false}') as call:
                     runtime=Runtime(Path(temp)/'state.db',provider=provider)
                     try:
                         response=runtime.submit('chat','Hello')['response'].result(timeout=2)
@@ -203,3 +202,62 @@ class BoundedNativeTests(unittest.TestCase):
                         self.assertNotEqual(runtime.provider.identity,'mock')
                         self.assertEqual(call.call_count,2 if reason=='auth' else 0)
                     finally: runtime.close()
+
+
+class ExtendedNativeSessionTests(unittest.TestCase):
+    def fresh_provider(self, seconds=8100, calls=2):
+        with patch('pal.native.time.time',return_value=10000), patch('pal.native.time.monotonic',return_value=500):
+            return NativeClaude(AccessProof(10000,True),max_calls=calls,session_seconds=seconds)
+
+    def test_duration_is_strict_and_bounded_at_both_api_boundaries(self):
+        for value in (True,False,None,'900',900.0,0,-1,8101,float('inf')):
+            with self.subTest(value=value):
+                with self.assertRaises(ValueError): self.fresh_provider(value)
+                with self.assertRaises(ValueError): AccessProof(time.time(),True).check(value)
+        for value in (1,900,8100):
+            with patch('pal.native.time.time',return_value=10000), patch('pal.native.time.monotonic',return_value=500):
+                provider=self.fresh_provider(value)
+                self.assertTrue(provider.status()['authorized_now'])
+                self.assertEqual(provider.status()['expires_at'],10000+value)
+
+    def test_complete_after_fifteen_minutes_keeps_the_same_budget(self):
+        provider=self.fresh_provider(calls=1)
+        auth=json.dumps({'loggedIn':True,'authMethod':'claude.ai','subscriptionType':'pro'})
+        with patch('pal.native.time.time',return_value=11801), patch('pal.native.time.monotonic',return_value=2301), patch('pal.native.supervised_text',side_effect=[auth,'bounded output']) as calls:
+            self.assertTrue(provider.status()['authorized_now'])
+            self.assertEqual(provider.complete('synthetic'),'bounded output')
+            self.assertEqual([c.kwargs['timeout'] for c in calls.call_args_list],[10,120])
+            self.assertEqual(provider.status()['calls_remaining'],0)
+            self.assertEqual(provider.status()['unavailable_reason'],'budget_exhausted')
+            with self.assertRaisesRegex(ProviderUnavailable,'budget_exhausted'): provider.complete('no extra call')
+            self.assertEqual(calls.call_count,2)
+            with self.assertRaisesRegex(ProviderUnavailable,'proof_expired'): provider.proof.check()
+
+    def test_extension_does_not_admit_a_stale_startup_proof(self):
+        with patch('pal.native.time.time',return_value=10901), patch('pal.native.time.monotonic',return_value=500):
+            proof=AccessProof(10000,True)
+            proof.check(8100)
+            with self.assertRaisesRegex(ProviderUnavailable,'proof_expired'):
+                NativeClaude(proof,session_seconds=8100)
+
+    def test_extended_expiry_and_clock_fences_reject_before_auth(self):
+        provider=self.fresh_provider()
+        for wall,mono in ((18101,500),(10001,8601),(9999,500),(10000,499),(18100,8600)):
+            with self.subTest(wall=wall,mono=mono), patch('pal.native.time.time',return_value=wall), patch('pal.native.time.monotonic',return_value=mono), patch('pal.native.supervised_text') as calls:
+                self.assertEqual(provider.status()['unavailable_reason'],'proof_expired')
+                with self.assertRaisesRegex(ProviderUnavailable,'proof_expired'): provider.complete('denied')
+                self.assertEqual(provider.status()['calls_remaining'],2)
+                calls.assert_not_called()
+        with patch('pal.native.time.time',return_value=18100), patch('pal.native.time.monotonic',return_value=8599):
+            self.assertTrue(provider.status()['authorized_now'])
+
+    def test_extended_expiry_during_auth_burns_only_the_reserved_slot(self):
+        provider=self.fresh_provider()
+        with patch('pal.native.time.time',return_value=18099) as wall, patch('pal.native.time.monotonic',return_value=8599) as mono:
+            def auth(*args,**kwargs):
+                wall.return_value=18101; mono.return_value=8601
+                return json.dumps({'loggedIn':True,'authMethod':'claude.ai','subscriptionType':'pro'})
+            with patch('pal.native.supervised_text',side_effect=auth) as calls:
+                with self.assertRaisesRegex(ProviderUnavailable,'proof_expired'): provider.complete('denied')
+                self.assertEqual(calls.call_count,1)
+                self.assertEqual(provider.status()['calls_remaining'],1)

@@ -1,5 +1,18 @@
 # Defects and prevention
 
+## 2026-10-08 — C063 source pin still called the prior product current
+
+The first full suite after the duration change passed276/277 tests; one repository
+freeze test still required the entire checkout to equal C059 producte851cae0. The
+validator correctly rejected the changed native/server/UI files. This was a stale test
+integration assumption, not a model failure or permission to rewrite the old freeze.
+Preserved the failing log at evidence/reviews/two-hour-trial/full-red-freeze.txt and the
+original C059 manifest bytes/hash. The test now pins that historical manifest, requires
+its rejection against current source, validates the new C063 freeze and permits exactly
+the three reviewed changed files. No cohort/oracle/provider run was changed or repeated.
+Next product changes must record a new scoped source freeze before the full-suite source
+pin check. This regression validates the historical/current distinction, not prose quality.
+
 ## 2026-10-06 — correction stranded an in-flight slot
 Failure: new deterministic test showed conversational correction disabled the old Record/notes but left its consuming Attempt running. Publication fencing worked, but the global slot could remain occupied.
 Cause/evidence: `record(supersedes=...)` and `forget()` used separate invalidation paths; [regression test](../tests/test_controls_memory.py) failed with `running != queued` before fix.

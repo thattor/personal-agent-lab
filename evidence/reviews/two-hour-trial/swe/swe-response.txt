@@ -1,0 +1,29 @@
+**Verdict: Sound.** No structural holes. The design correctly confines extension to post-admission fences while `load()`/`consume()` keep the 900s stale-proof gate, and duration stays out of proof identity. Concrete corrections/confirmations needed at implementation:
+
+**1. Validate `session_seconds` in `NativeClaude.__init__`, not only inside `check()`.**
+`status()` computes `verified_at + duration` directly; if duration is only validated inside `check(max_age)`, a bad type (str/float/bool) raises a raw `TypeError` in `status()` rather than `ValueError` at construction. Require `type(session_seconds) is int and 1<=session_seconds<=8100` → `ValueError` in `__init__`. Independently keep the strict-int validation on `check(max_age)` — and raise `ValueError`, not `ProviderUnavailable`, for malformed `max_age` (programmer error, not proof state).
+
+**2. Substitute `max_age` in both fences.**
+`remaining = max_age - (self._loaded_wall - self.verified_at)` and `age <= max_age`. Preserve the existing asymmetry: wall bound inclusive (`<=`), monotonic bound strict (`elapsed < remaining`). Do not "fix" the asymmetry — it is intentional and your tests should pin it.
+
+**3. Update all post-admission call sites; leave admission untouched.**
+- `status()`: `self.proof.check(self._session_seconds)` and `expires_at = verified_at + self._session_seconds` (keep the existing finite-number guard → `None`).
+- `complete()`: both `self.proof.check()` calls (pre-lock-admission and post-auth) → `self.proof.check(self._session_seconds)`.
+- `load()`, `consume()` stay bare `.check()` → 900. `build_provider` ordering already guarantees consume runs under the 900 fence.
+- If `__init__` adds the defensive admission check, it must call `self.proof.check()` (default 900) — not with `session_seconds` — before storing state. Currently `__init__` performs no check; admission is implicit via `load`/`consume`. Adding one is fine but must use 900.
+
+**4. CLI wiring.**
+`parser.add_argument('--native-session-seconds', type=int, default=None)`; extend the mock rejection to `or args.native_session_seconds is not None`; official path passes `900 if args.native_session_seconds is None else args.native_session_seconds`. `type=int` already rejects `"1.5"`/`"abc"`; the constructor range-check surfaces out-of-range through `parser.error`. None-vs-900 discrimination is correct as designed.
+
+**5. UI gap (real, minor).**
+The current `app.js` status line does **not** render `expires_at` — it shows calls/authorized/reason only. "UI uses existing expires_at" therefore requires a small additive app.js change (epoch seconds → local deadline display). No payload change needed, but it is an edit, not reuse of existing display code.
+
+**6. Test notes.**
+- `AccessProof` is frozen: move `_loaded_wall`/`_loaded_mono` via `object.__setattr__`, or monkeypatch `pal.native.time.time`/`time.monotonic`, for deterministic fences.
+- Add: same proof file consumed once under duration 900 cannot be consumed again under 8100 (`proof_consumed`), pinning duration-out-of-identity.
+- Add: constructor rejects `session_seconds` of `True`, `900.0`, `"900"`, `0`, `8101`; accepts `1`, `8100`.
+- Pin boundary: `verified_at` age slightly >900 passes `check(8100)` but fails `check(900)`; age ==8100 passes wall, fails monotonic if elapsed ≥ remaining.
+
+No blocking issues. Proceed.
+
+REVIEW_COMPLETE

@@ -1,0 +1,47 @@
+{
+  "work_unit": "C063",
+  "scope": "Owner-requested finite live trial extension; not conversation quality tuning",
+  "owner_source": {
+    "thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "thread_title": "PAL人間判断",
+    "turn_id": "01a11b5d-802f-7bd0-8e68-d93f41313d17",
+    "message_id": "01a11b5d-813b-72d1-9a89-8612f52c40b6",
+    "text": "もうちょと伸ばしてせめて2時間",
+    "direct_human_message_independently_read": true
+  },
+  "adopted_request_scope": {
+    "time_from_verified_ready_seconds_minimum": 7200,
+    "same_url": "http://127.0.0.1:59684/",
+    "same_db": "runtime/stable1-owner-c061/state.sqlite",
+    "preserve_actual_remaining_call_budget": true,
+    "existing_authentication_only": true,
+    "extra_usage_must_remain_off": true,
+    "automatic_renewal": false,
+    "schedule_restart": false
+  },
+  "before_observation": {
+    "checked_at": "2026-10-08T12:03:12.288786+00:00",
+    "head": "8a2fd8521cbc536f2607c349275146398ced75fc",
+    "owned_pid": 80016,
+    "provider_status": {
+      "mode": "official_claude_pro",
+      "calls_remaining": 16,
+      "expires_at": 1791460295.755386,
+      "authorized_now": false,
+      "unavailable_reason": "proof_expired",
+      "last_error": ""
+    },
+    "counts": {
+      "records": 0,
+      "goals": 0,
+      "attempts": 0,
+      "artifacts": 0,
+      "primary_turns": 0
+    },
+    "method": "Approved local GET /api/state and exact owned PID command readback; no model call, submitted input or canonical write",
+    "product": "content:sha256:e851cae0183a2f4a0f7998f34a413ee2c2064ea01c74eeee8ce3ca390045fa59",
+    "all_17_product_files_match": true
+  },
+  "owner_usefulness_evaluation": false,
+  "extended_runtime_started": false
+}

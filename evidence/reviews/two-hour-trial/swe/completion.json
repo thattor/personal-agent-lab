@@ -1,0 +1,13 @@
+{
+  "finished_at": "2026-10-08T12:10:22.608267+00:00",
+  "elapsed_seconds": 101.352,
+  "exit_code": 0,
+  "timeout": false,
+  "response_bytes": 3387,
+  "stderr_bytes": 0,
+  "response_sha256": "c33d7148d21d754ce15e38208f3af44382ade9eae1d260dcf474be5b9b42208b",
+  "response_complete": true,
+  "attempts": 1,
+  "fallback": false,
+  "retry": false
+}

@@ -1,0 +1,34 @@
+test_artifact_status_readonly_and_forget_stale (test_http.HTTPTests) ... ok
+test_conversation_draft_and_inspect_artifact (test_http.HTTPTests) ... ok
+test_conversational_remember_and_forget (test_http.HTTPTests) ... ok
+test_duplicate_client_message_and_invalid_fields (test_http.HTTPTests) ... ok
+test_duplicate_natural_forget_keeps_original_target_binding (test_http.HTTPTests) ... ok
+test_explicit_question_answer_http_rejects_wrong_binding (test_http.HTTPTests) ... ok
+test_historical_bound_selection_http_and_guarded_state (test_http.HTTPTests) ... ok
+test_inspect_is_read_only_and_cross_origin_cannot_mutate (test_http.HTTPTests) ... ok
+test_lost_ack_fate_can_be_queried_without_duplicate_effect (test_http.HTTPTests) ... ok
+test_primary_ambiguity_and_explicit_control_with_stale_epoch (test_http.HTTPTests) ... ok
+test_ui_csp_no_inline_model_html_and_request_bounds (test_http.HTTPTests) ... ok
+test_default_is_mock_and_live_options_do_not_create_store (test_http.ProviderStartupTests) ... FAIL
+test_live_startup_requires_valid_proof_before_runtime (test_http.ProviderStartupTests) ... ok
+test_session_duration_cannot_reconsume_or_rejuvenate_proof (test_http.ProviderStartupTests) ... 
+======================================================================
+FAIL: test_default_is_mock_and_live_options_do_not_create_store (test_http.ProviderStartupTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 230, in test_default_is_mock_and_live_options_do_not_create_store
+    with self.assertRaises(ValueError): build_provider(bad)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_session_duration_cannot_reconsume_or_rejuvenate_proof (test_http.ProviderStartupTests) (first=8100)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/personal-agent-lab-stable0-20261006/tests/test_http.py", line 259, in test_session_duration_cannot_reconsume_or_rejuvenate_proof
+    self.assertEqual(provider.status()['expires_at'],10000+first)
+AssertionError: 10900 != 18100
+
+----------------------------------------------------------------------
+Ran 14 tests in 5.965s
+
+FAILED (failures=2)

@@ -1,0 +1,34 @@
+I've kept this a read-only review with no tools used and no files edited, as you asked.
+
+## Verdict: Sound. Proceed with the small corrections below.
+
+The proposal meets the owner's request for at least two hours: 8100s admission, with delivery checked at ≥7200s remaining. It keeps the authority limits finite. The duration stays outside proof identity and the one-use marker. Load, constructor and consume admission stays at 900s, so a stale proof can't be revived. There is no renewal, and the budget carries over and is never refilled.
+
+The no-ledger handoff is safe. `complete()` runs `proof.check()` before decrementing `_remaining`, so an expired old host can't spend calls. Its reported `calls_remaining=16` is therefore stable while you read status, stop it and relaunch.
+
+## Necessary corrections
+
+1. **Validate `session_seconds` in the `NativeClaude` constructor.** Use the same rules as `check()`: strict `int`, reject `bool`, 1..8100. Store it there. Otherwise `status()` can compute `expires_at` from an invalid value before any `check()` raises. Also make `expires_at` use `self.session_seconds`, not the literal 900, so the HTTP deadline matches the authorization fence.
+
+2. **Every post-construction `check()` must pass the selected duration explicitly.** That means `status()` and both calls in `complete()`, before and after auth. Keep the parameter's default at 900 so any missed call site fails closed. Add a test that `complete()` succeeds after 900s with D=8100. A test of `status()` alone won't catch a forgotten call site.
+
+3. **The mock-branch rejection must test `args.native_session_seconds is not None`.** The argparse default must be `None` with no `default=900`, so an explicit 900 on mock is rejected. Apply the 900 fallback only in the official branch.
+
+4. **Launch command checklist for the handoff:**
+   - Pass `--port 59684`, the same `--db`, and the same working directory, since `runtime/native-proof-use` is a relative path.
+   - Pass `--native-call-limit` explicitly with the re-read remaining value. If it's absent, the default of 16 would apply. That's coincidentally equal to the current 16, but it's the wrong source of truth.
+   - Confirm PID 80016 has exited and the port is free before launch, so two processes never share the DB.
+   - If remaining is 0, don't launch the official provider at all. The constructor will reject it anyway.
+
+## Non-blocking notes
+
+- **Short durations burn a proof.** With D<900, a proof aged between D and 900 passes load and consume, so its marker is written, but it is then unusable. This fails closed and is irrelevant to the planned 8100. Optionally, admit with `min(900, D)`.
+- **CLI parsing.** argparse `type=int` accepts `"8_100"`, `" 8100 "` and `"+8100"`. The bounds keep this harmless, so the "strict integer" claim really means bounded int at the CLI. Floats and bools only matter at the API level, and your tests cover that.
+- **Deadline semantics.** The deadline is wall-clock (`verified_at + D`). Mac sleep still uses up the window, and the monotonic fence doesn't extend it. Tell the owner the displayed `expires_at` is absolute.
+- **In-flight work.** Work admitted just before the deadline can finish up to about 150s after it (auth 10+8, generation 120+8). That matches your stated semantics; just don't describe `expires_at` as a hard stop.
+- **Remaining risk from the longer window.** The no-extra-charge attestation is now relied on for 2h15 rather than 15 min. Per-call auth still enforces `claude.ai` and pro/max, but it can't see the extra-usage setting. The operator should confirm Extra usage is OFF when issuing the proof. No code change is needed.
+- **Test list.** It's adequate. Add the `complete()`-after-900s case from correction 2. Also add a case where the same proof is consumed with D=900 and then retried with D=8100, which must give `proof_consumed`. Your list covers the reverse direction implicitly, but test both.
+
+No other material holes.
+
+REVIEW_COMPLETE

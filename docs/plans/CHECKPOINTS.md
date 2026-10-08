@@ -724,3 +724,18 @@ expires2026-10-08 20:51:35 JST. All original DB table counts0 and no synthetic i
 call. Human window received the current tab/URL/deadline; owner access/evaluation remain
 unconfirmed. This is a finite requested restart, not automatic proof renewal. Source17
 files still match producte851cae0. Evidence: c062-preview-restart.json under evidence/operations.
+
+## C-063 — make the explicitly requested two-hour trial usable
+
+Owner source and scope: evidence/operations/c063-owner-extension.json; same DB/URL and
+remaining calls, no extra charge. D032 records official Opus/SWE-2 High review and adopted
+minimal boundary before code. Native constructor/load/consume still require fresh900;
+explicit session1..8100 controls both clocks/status/pre/post-auth checks. Proof identity,
+locks, timeouts and budget unchanged; UI displays the absolute admission deadline.
+Product04f30387,34 focused/277 full tests PASS25.467s. First full source-pin failure retained
+and fixed by distinguishing the untouched historical freeze from the new three-file delta.
+No model-quality tests/corpora/outputs changed. Goal contribution: a practical finite owner
+trial can cover at least2 hours from readiness without enlarging calls or authority.
+Next: commit/push, fresh official access checks, explicit same-DB/URL restart with actual
+remaining cap and8100, real UI/readiness proof and one whole-flow owner-use evaluation.
+No Stable-1/project completion yet; final release audit remains dependent on that evaluation.

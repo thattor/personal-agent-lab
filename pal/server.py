@@ -111,14 +111,16 @@ def make_server(runtime,port=8765):
 
 
 def build_provider(args, marker_dir=Path('runtime/native-proof-use')):
+    session_seconds=getattr(args,'native_session_seconds',None)
     if args.provider=='mock':
-        if args.access_proof is not None or args.native_call_limit is not None:
+        if args.access_proof is not None or args.native_call_limit is not None or session_seconds is not None:
             raise ValueError('native options require explicit official provider')
         return MockProvider(args.mock_task_delay)
     if args.provider!='official_claude_pro' or not args.access_proof or args.mock_task_delay:
         raise ValueError('explicit official provider requires proof and no mock delay')
     limit=16 if args.native_call_limit is None else args.native_call_limit
-    provider=NativeClaude(AccessProof.load(args.access_proof),max_calls=limit)
+    provider=NativeClaude(AccessProof.load(args.access_proof),max_calls=limit,
+                          session_seconds=900 if session_seconds is None else session_seconds)
     provider.proof.consume(marker_dir)
     return provider
 
@@ -131,6 +133,7 @@ def main():
     parser.add_argument('--provider',choices=('mock','official_claude_pro'),default='mock')
     parser.add_argument('--access-proof',help='operator-issued fresh official no-extra-charge metadata JSON')
     parser.add_argument('--native-call-limit',type=int,help='bounded generation invocations, 1..32 (default16)')
+    parser.add_argument('--native-session-seconds',type=int,help='explicit finite admission window, 1..8100 seconds (default900); startup proof must be fresh within900 seconds')
     args=parser.parse_args()
     try:
         provider=build_provider(args)

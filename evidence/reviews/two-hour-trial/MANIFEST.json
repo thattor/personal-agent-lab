@@ -1,0 +1,74 @@
+{
+  "created_at": "2026-10-08T12:12:08.468338+00:00",
+  "scope": "one finite two-hour trial extension review; original replies plus disposition",
+  "files": {
+    "DISPOSITION.md": {
+      "sha256": "f2349f2b5b4f3f2e4085a1eac30132362fe456155b43ea19682686ffd33f9e97",
+      "bytes": 3805
+    },
+    "opus/access.json": {
+      "sha256": "9c44fae5d8e701e730058c7f42cd1c1f4d91cb5c90a5cdf82be07ba4d9ea0871",
+      "bytes": 754
+    },
+    "opus/completion.json": {
+      "sha256": "6c904aaa473bc2a8755765e8dccfd794ec60ae08ed8052e3d8dd1b9cdbd26786",
+      "bytes": 343
+    },
+    "opus/opus-response.txt": {
+      "sha256": "02aaf8002fa848f9294846ecabb5ed49b6bd5bc4453a09405d0e845f62fd6543",
+      "bytes": 3975
+    },
+    "opus/opus-stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "opus/question.txt": {
+      "sha256": "eaa058aa043e6444e6842019473ae21636f88dc2452cd54fa22c6497d383382f",
+      "bytes": 17886
+    },
+    "opus/run-review.py": {
+      "sha256": "0ea9819ebdc93a1e64ff568a1a58fb6955f9a2cb758a4d4e453cecd1cac97cef",
+      "bytes": 3332
+    },
+    "opus/start.json": {
+      "sha256": "2af5dcc3a8f1e9e899187b0199c01612b14d26e60a0c560fe267c50751941fb6",
+      "bytes": 150
+    },
+    "scope.json": {
+      "sha256": "5d367ec9a3a0faf2fc90b14d5897a47d8cde9c8650bbd41470f472741fd260d7",
+      "bytes": 586
+    },
+    "source.txt": {
+      "sha256": "474f0319a882bf34edb332e2e7cc3c8861e5e390eb487c458f69b1a58841107a",
+      "bytes": 14679
+    },
+    "swe/access.json": {
+      "sha256": "b068106ee2853cec52f43c99fec791cbd0e4926a7c8c7acb0888e7d4d27ba6e4",
+      "bytes": 550
+    },
+    "swe/completion.json": {
+      "sha256": "71b59f283f955cb0a38f1ba0ee239f3dc4257d28cf29633ed5420256fb630e98",
+      "bytes": 345
+    },
+    "swe/question.txt": {
+      "sha256": "7467c553e20eb4ff53e7b9a8968b7bb5ebca5dd422e60265e25293e7e1168eb7",
+      "bytes": 17925
+    },
+    "swe/run-review.py": {
+      "sha256": "be56033ce996ae960adcaf2867c35e0d8fd34107d248686e03a27042ee9ec86c",
+      "bytes": 2614
+    },
+    "swe/start.json": {
+      "sha256": "52ff987b1f4380e8f8af4bb58b9119f45cc3b0201e3308cd13e4d8035d81737e",
+      "bytes": 150
+    },
+    "swe/swe-response.txt": {
+      "sha256": "c33d7148d21d754ce15e38208f3af44382ade9eae1d260dcf474be5b9b42208b",
+      "bytes": 3387
+    },
+    "swe/swe-stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  }
+}
