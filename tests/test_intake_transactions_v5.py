@@ -88,7 +88,7 @@ class IntakeTransactionTests(unittest.TestCase):
         replay = self.store.create(request, request_scope=self.grant)
         self.assertEqual(replay.value.to_json()['work_ref'], old)
         row = self.conn.execute("SELECT session_id,work_ref_json FROM v5_intake_event WHERE kind='state'").fetchone()
-        self.assertEqual(row, ('control', dumps(new)))
+        self.assertEqual(row, ('session', dumps(new)))
 
     def test_invalidation_prechecks_all_states_and_caller_can_rollback(self):
         _, one = self.create('one')

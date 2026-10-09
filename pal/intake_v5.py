@@ -270,11 +270,11 @@ class IntakeStore:
         if replay is not None:
             return replay
         rows = connection.execute(
-            'SELECT w.goal_id,w.revision,w.epoch,w.state,w.origin_ref_json,w.brief_json '
+            'SELECT w.goal_id,w.revision,w.epoch,w.state,w.origin_ref_json,w.brief_json,w.session_id '
             'FROM v5_intake_work w WHERE w.revision=(SELECT max(x.revision) '
             'FROM v5_intake_work x WHERE x.goal_id=w.goal_id) ORDER BY w.goal_id').fetchall()
         affected = []
-        for goal_id, revision, epoch, state, origin_json, brief_json in rows:
+        for goal_id, revision, epoch, state, origin_json, brief_json, work_session in rows:
             expected = {Ref.from_json(loads(origin_json)),
                         *Brief.from_json(loads(brief_json)).context_refs}
             stored = {Ref(kind, ident) for kind, ident in connection.execute(
@@ -287,17 +287,17 @@ class IntakeStore:
             if matched:
                 if state != 'queued' or epoch >= _SQLITE_INT_MAX:
                     return _unavailable('work invalidation unavailable')
-                affected.append((WorkRef(goal_id, revision, epoch + 1), matched))
-        for work, matched in affected:
+                affected.append((WorkRef(goal_id, revision, epoch + 1), matched, work_session))
+        for work, matched, work_session in affected:
             connection.execute('UPDATE v5_intake_work SET epoch=? WHERE goal_id=? AND revision=?',
                                (work.epoch, work.goal_id, work.revision))
             result = self.append_event(connection, {
-                'key': dumps([command, key, 'event', work.goal_id]), 'session_id': session_id,
+                'key': dumps([command, key, 'event', work.goal_id]), 'session_id': work_session,
                 'work_ref': work.to_json(), 'kind': 'state', 'text': 'source use stopped',
                 'refs': [ref.to_json() for ref in matched]})
             if not result.ok:
                 return result
-        result = Result.success({'work_refs': [work.to_json() for work, _ in affected]})
+        result = Result.success({'work_refs': [work.to_json() for work, _, _ in affected]})
         self._save_replay(command, key, canonical, result)
         return result
 

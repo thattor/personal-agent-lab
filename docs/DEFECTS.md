@@ -925,3 +925,19 @@ without claiming CO verification or rerunning inference just to shorten a review
 Future document bounds should leave room for the necessary answer and be checked
 separately from semantic review. Do not relax a failed result into a PASS or use
 this document formatting failure as a reason to stop independent development.
+
+## C14 connection — source-stop state event sent to the actor session
+
+While connecting the session-scoped C14 reader, root found that queued invalidation
+sent a WorkRef state event to the stopping actor's session. A work created in another
+session would receive no update there. Independent Sol confirmed the C14 delivery
+obligation; the newly explicit cross-session test failed with an empty event list.
+MEM01's frozen tests proved atomic events but had not specified this routing case.
+
+Cause: invalidation reused the initiating session argument without selecting the
+work's persisted session. Correction: route the work state event to work.session_id;
+keep the MEM acknowledgement and replay identity associated with the actor. Do not
+invent a subscription or multi-session-attach framework. Retain the failing log
+event-routing-red.log and run the same case through actual EventReader reconnect
+once available. Future event-owner tests must cover distinct actor/work sessions,
+correct epoch and duplicate suppression, not just an atomic event count.

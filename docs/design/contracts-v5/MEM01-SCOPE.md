@@ -44,6 +44,8 @@ TSK exposes these host-only public methods:
   Precheck all affected states before any writes: only queued is supported. Other
   states return unavailable, so caller rolls back the stop. For each affected Goal,
   epoch+1, same revision/state queued, one state event, all within caller transaction.
+  Route that work event to its stored work.session_id so its C14 subscriber receives
+  the change. The separate MEM acknowledgement goes to the initiating session.
   Replay by key includes session and refs; equal request never increments twice.
   No fake transition for running/paused/waiting/terminal states.
 

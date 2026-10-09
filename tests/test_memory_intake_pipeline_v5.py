@@ -104,6 +104,22 @@ class MemoryIntakePipelineTests(unittest.TestCase):
         self.assertTrue(self.read(origin).ok)
         self.assertEqual(self.read(context).error.code.value, 'denied')
 
+    def test_work_notification_returns_to_its_session_while_stop_ack_goes_to_actor(self):
+        ref = self.record()
+        _, accepted = self.create(ref)
+        old = accepted.value.to_json()['work_ref']
+        self.assertTrue(self.stop(ref).ok)
+        work_events = self.conn.execute(
+            "SELECT work_ref_json FROM v5_intake_event WHERE session_id=? AND kind='state'",
+            ('shared-session',)).fetchall()
+        self.assertEqual([json.loads(row[0]) for row in work_events], [dict(old, epoch=1)])
+        actor_events = self.conn.execute(
+            "SELECT work_ref_json FROM v5_intake_event WHERE session_id='control' AND kind='state'").fetchall()
+        self.assertEqual(actor_events, [(None,)])
+        before = self.snapshot()
+        self.assertTrue(self.stop(ref).ok)
+        self.assertEqual(self.snapshot(), before)
+
     def test_unsupported_work_state_rolls_back_source_stop(self):
         ref = self.record()
         _, accepted = self.create(ref)
