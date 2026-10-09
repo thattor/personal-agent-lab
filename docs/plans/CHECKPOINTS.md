@@ -954,3 +954,18 @@ Continuation actually started: CO04bc81e770ea479da9ed4b9b38df6628 delegates TSK0
 pagination to SWE-2 High Free with independent Opus review. Native Astra examines
 TSK02 execution/control in parallel. The outcome of that work is pending. No new
 approval request, unknown-call resume, schedule restart, cost or publication.
+
+## C071 — durable notifications and next controlled mock connection, 2026-10-09
+
+Contribution: work state and source-stop acknowledgement can be read after reconnect
+with session-safe opaque cursors; root verifies actual MEM/TSK/C14, not a fake ledger.
+Source cd2a216, separate exact Opus5.5 code APPROVE at0cf8563, full483 PASS30.572s.
+Original SWE task filesystem verification failed and is preserved separately. Root
+fixed an existing test completion race after a two-barrier reproduction; no runtime
+behavior change. Receipt: evidence/operations/tsk03-20261009/verification.json.
+
+Actual next work: native Astra author /private/tmp/pal-tsk02-astra-20261009 from
+cd2a216, TSK02/1; SOL concurrently mock host/consumer; separate Sol6.1 review. Opus
+and SWE consultations completed and corrections adopted before implementation.
+No recurring checkpoint approval, no complete product/real UI claim. Scope remains
+local mock with controls, budgets and reference-stop, no extra cost/auth/service.

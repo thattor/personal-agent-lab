@@ -9,8 +9,9 @@ retry/cancel or state edit. AGY exact-conversation loading was rejected by autom
 review; its concrete optional approval is in the human lane. Use independent native
 work meanwhile. Exact routes, scope and current limits are in STATE/DECISIONS.
 INT00/1, TSK01/1 and MEM01/1 local preparation are integrated with separate review and
-full471 regression. Real PRI authority, live services and full v5 activation remain
-unproven. C14 pagination is delegated; TSK execution/control is the next shared boundary.
+full483 regression including durable C14 reconnect. Real PRI authority, live services
+and full v5 activation remain unproven. TSK02 controlled mock execution is now in
+isolated implementation; SOL integrates the mock host and separate Sol reviews.
 
 ## Mission
 The project-level destination is the personal assistant described in SPEC.md. Manage project goal → GitHub milestone → goal-bearing Issue → verified work unit under G-001/D-022. [Latest overall plan P-001 v2](docs/plans/P-001-v2.md) is PROPOSED, not human-adopted; v1 is retained history. Stable-0 is released; Stable-1 under D-021 remains the approved current milestone; C065/D034 authorizes the scoped CO development start; shared wire, bounded intake and MEM/TSK queued-source connection are integrated. C14 delivery and the TSK execution/control boundary are next; external product activation remains subject to the reviewed candidate scope. Resume STATE.md, continue independently authorized work, and never activate PROPOSED stages from GitHub metadata alone.

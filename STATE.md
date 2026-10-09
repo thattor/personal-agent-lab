@@ -2,6 +2,28 @@
 
 ## Goal
 
+Current C071 (2026-10-09): TSK03/1 durable C14 pagination/reconnect is MET at
+source cd2a21621455aebe57d5b94b12ea7e30af1ba4a7. Exact Opus5.5 independently
+APPROVED the C14 code at0cf8563; full483 host tests PASS30.572s after correcting
+an unrelated template test that treated global idle as its Goal completion signal.
+Actual MEM→TSK→C14 reconnect preserves cross-session routing and no duplicate events.
+[Verification](evidence/operations/tsk03-20261009/verification.json).
+
+CO SWE authored EventReader, but its own filesystem verifier failed; that result
+remains failed/verified:false. Separate CO review b0875839c07f43dc9856011373d76482
+completed and verified only the review note. Root host verification is separate.
+Two independent CO tasks actually overlapped (Claude1/Devin1); both have now ended.
+No30-parallel claim, provider capacity unknown; qualified host cap stays12/adapter.
+
+Next work has actually begun: isolated native Astra implements TSK02/1 TaskStore
+in /private/tmp/pal-tsk02-astra-20261009 from cd2a216, after completed Opus and SWE
+consultations with root dispositions in TSK02-SCOPE.md. SOL concurrently owns the
+mock invoker/runner and connected fault/control tests; separate Sol6.1 will review.
+Shared source/state files have one author. No product/real provider/UI activation,
+new authority, cost or schedule. Unknown old SWE/AGY calls stay untouched.
+
+## Retained C070 local connection record
+
 Latest continuation/sequencing is D038/C070 (2026-10-09). Checkpoints evaluate and
 correct; they do not require repeated owner approval. Root mistakenly stopped after
 C069. The corrective loop has now completed MEM01 implementation, real local-module
@@ -18,9 +40,9 @@ new intake/current reads deny it, old create receipt stays historical, and owner
 history retains the sanitized body. The coherent local preparation unit passes;
 other-state invalidation, notes, execution/verification/real model/UI remain unmet.
 
-Next actually running: CO task04bc81e770ea479da9ed4b9b38df6628 implements TSK03/1
+At C070 the next dispatch was CO task04bc81e770ea479da9ed4b9b38df6628 implements TSK03/1
 durable C14 pagination, exact devin/swe-2-high Free with separate exact Opus5.5
-review; its result is not yet available. Native Astra independently analyzes the
+review; its result was pending then and is reconciled in C071 above. Native Astra analyzed the
 TSK02 execution/control/step boundary needed for an early mock Expert loop. SOL owns
 shared contract/schema/integration. No concurrent worker writes touch the same file.
 The owner has now seen the loop proposal and restated its four stages in

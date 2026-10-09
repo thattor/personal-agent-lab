@@ -1,5 +1,18 @@
 # ACCEPTANCE.md — Stable-0 definition of done
 
+## Current C071 durable C14 connection (2026-10-09)
+
+TSK03/1 MET at cd2a21621455aebe57d5b94b12ea7e30af1ba4a7. Read-only strict
+session/cursor pagination, malformed-row rejection, caller transaction preservation,
+historical WorkRefs and actual MEM→TSK source-stop notification reconnect pass.
+Exact independent Opus5.5 APPROVE at0cf8563; root full483 PASS30.572s/exit0.
+The existing template test now waits for its durable Goal result; the stale idle
+ordering and correction are retained as evidence. [Receipt](evidence/operations/tsk03-20261009/verification.json).
+Original SWE CO task failed on verifier filesystem permissions; no CO code-test PASS
+is inferred. The separate review task verified its note structure. Real provider,
+UI, execution/control, full v5/CT20 and human usefulness remain unmet; TSK02 is now
+actually implementing the next connected mock unit.
+
 ## Current C070 / D038 real local MEM-to-intake connection (2026-10-09)
 
 MEM01/1 bounded record persistence/current access/search and queued-source-stop

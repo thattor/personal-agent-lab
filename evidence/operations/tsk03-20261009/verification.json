@@ -1,0 +1,47 @@
+{
+  "contract": "TSK03/1 PAL-contracts-v5 C14",
+  "source_commit": "cd2a21621455aebe57d5b94b12ea7e30af1ba4a7",
+  "review_base": "0cf8563378223fa080e8abaf979e42b2bdf73e51",
+  "reviewer": "independent exact claude/claude-opus-5-5 via CO0.4.5",
+  "review_task": "b0875839c07f43dc9856011373d76482",
+  "review_verdict": "APPROVE",
+  "host_tests": {
+    "reader": 10,
+    "real_MEM_TSK_C14_pipeline": 7,
+    "template_regression": 3,
+    "full": 483,
+    "full_seconds": 30.572,
+    "exit": 0
+  },
+  "source_hashes": {
+    "pal/events_v5.py": "da2a74a41622784f0ff85f0201db081e946b3e35cebb8660068ece79e8763102",
+    "pal/intake_v5.py": "31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+    "pal/memory_v5.py": "94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+    "tests/test_events_v5.py": "56055ff3d13937e2507736700da12ab89fafb2f790238145efc038c879f08aa6",
+    "tests/test_memory_intake_pipeline_v5.py": "c87d501523231b0e8dfc350b2b6be1468872ed68ca862f9de2a9da2976a7abc9",
+    "tests/test_template_intake.py": "5f012265f2e7972bd66a08de9d7b6d91c2bfea7c4304e302df0a6e0532c7acfc"
+  },
+  "original_SWE_task": "04bc81e770ea479da9ed4b9b38df6628",
+  "original_CO_verified": false,
+  "original_failure": "verifier sandbox file creation denied; independent review step did not run",
+  "root_changes": [
+    "host test temp directory",
+    "strict surrogate cases",
+    "actual cross-session reconnect consumer",
+    "existing template test waits for specific Goal instead of global idle"
+  ],
+  "limits": [
+    "local modules only",
+    "no UI/real provider/product activation",
+    "no whole CT20 completion",
+    "review artifact verification distinct from full host tests"
+  ],
+  "next_actual_dispatch": {
+    "agent": "/root/int00_astra",
+    "model": "gpt-6-astra",
+    "worktree": "/private/tmp/pal-tsk02-astra-20261009",
+    "base": "cd2a21621455aebe57d5b94b12ea7e30af1ba4a7",
+    "scope": "TSK02/1",
+    "route": "owner-approved native fallback; unsupported by CO"
+  }
+}
