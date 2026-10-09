@@ -80,8 +80,12 @@ class PrimaryBindingReview(unittest.TestCase):
                     if mode=='write':f.conn.execute("UPDATE v5_tsk_host SET used=used+1 WHERE kind='model'")
                     else:f.conn.execute('ROLLBACK');f.conn.execute('BEGIN')
                     return body
-                f.mem.read=corrupt;before=f.snapshot();out=f.ok(f.host.get_turn({'turn_id':turn}))
-                self.assertNotIn('reply',out);self.assertEqual(out['status'],'committed');self.assertEqual(f.snapshot(),before);self.assertFalse(f.conn.in_transaction);self.assertEqual(len(f.calls),1)
+                f.mem.read=corrupt;before=f.snapshot();used=f.used();result=f.host.get_turn({'turn_id':turn})
+                if mode=='rollback_begin':
+                    f.error(result,'unavailable');self.assertNotIn('value',result.to_json());self.assertNotIn('reply',result.to_json())
+                else:
+                    out=f.ok(result);self.assertNotIn('reply',out);self.assertEqual(out['status'],'committed')
+                self.assertEqual(f.snapshot(),before);self.assertEqual(f.used(),used);self.assertFalse(f.conn.in_transaction);self.assertEqual(len(f.calls),1)
     def test_c11_read_write_failure_preserves_existing_caller_transaction(self):
         f=self.fixture();turn=f.submit();f.run_turn(turn);read=f.mem.read
         f.conn.execute('CREATE TABLE caller_owned(value)');f.conn.execute('BEGIN');f.conn.execute('INSERT INTO caller_owned VALUES(7)')
