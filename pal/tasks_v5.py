@@ -382,7 +382,7 @@ class TaskStore(IntakeStore):
                 _reject('conflict')
             refs = _refs(loads(call['sources']))
             action = parse_model_action(dumps(data['action']), allowed_refs=refs).to_json()
-            if action['kind'] not in ('report', 'lookup'):
+            if action['kind'] not in ('report', 'lookup', 'compose'):
                 _reject('unavailable')
             self._gate(refs)
             reservation = self._reserve(row, lease, 'step', None)['reservation_id']
@@ -395,6 +395,54 @@ class TaskStore(IntakeStore):
             self._conn.execute('UPDATE v5_tsk_call SET step=? WHERE id=?', (step_id, call['id']))
             return step
         return self._transaction('begin_step', key, data, operation)
+
+    def authorize_artifact_save(self, connection, request):
+        """Read-only ART collaborator; the artifact owner controls this transaction."""
+        self._require_transaction(connection)
+        return self._authorize_artifact_save(request)
+
+    @_public
+    def _authorize_artifact_save(self, request):
+        data = _obj(request, {'work_ref', 'step_id', 'action'})
+        work, step_id = _work(data['work_ref']), _id(data['step_id'])
+        action = _obj(data['action'], {'kind', 'content', 'media_type', 'source_refs'})
+        requested_refs = _refs(action['source_refs'])
+        if action['kind'] != 'compose':
+            _reject('conflict')
+        row, lease = self._authority(work)
+        saved = self._one('SELECT * FROM v5_tsk_step WHERE id=?', (step_id,))
+        if saved is None:
+            _reject('not_found')
+        call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (saved['call'],))
+        if call is None:
+            _reject('unavailable')
+        try:
+            step = _obj(loads(saved['wire']),
+                        {'step_id', 'work_ref', 'index', 'action', 'status', 'result_refs'}, {'error'})
+            step_work, call_work = _work(step['work_ref']), _work(loads(call['work']))
+            refs = _refs(loads(call['sources']))
+            stored_action = parse_model_action(dumps(step['action']), allowed_refs=refs).to_json()
+        except ContractError:
+            _reject('unavailable')
+        if (step['step_id'] != step_id or call['step'] != step_id or
+                step['index'] != saved['idx'] or step['index'] != call['idx'] or
+                (saved['goal'], saved['revision']) != (step_work.goal_id, step_work.revision)):
+            _reject('unavailable')
+        if step_work != work or call_work != work:
+            _reject('stale')
+        if call['lease'] != lease['id']:
+            _reject('denied')
+        if step['status'] != 'started' or call['status'] != 'returned':
+            _reject('conflict')
+        if not set(requested_refs) <= set(refs):
+            _reject('denied')
+        if dumps(action) != dumps(stored_action) or stored_action['kind'] != 'compose':
+            _reject('conflict')
+        if (not refs or any(ref.kind.value != 'record' for ref in refs) or
+                not set(self._required(row)) <= set(refs) <= set(self._registered(row))):
+            _reject('unavailable')
+        self._gate(refs)
+        return Result.success({'source_refs': _wire(refs)})
 
     @_public
     def finish_step(self, request, *, truncated=False, excluded_refs=()):
@@ -417,6 +465,8 @@ class TaskStore(IntakeStore):
                 _reject('conflict')
             call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (saved['call'],))
             if call is None or call['lease'] != lease['id']:
+                _reject('unavailable')
+            if step['action']['kind'] == 'compose':
                 _reject('unavailable')
             self._gate(_refs(loads(call['sources'])))
             if step['action']['kind'] == 'report' and (refs or truncated or excluded_refs):

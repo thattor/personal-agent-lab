@@ -1000,3 +1000,25 @@ cover original connection cleanup, durable rollback and another connection's wri
 access. Retained author34 and actual MEM/TSK/mock/C14 connection14 pass, with broader
 regression and independent review still pending at this entry's creation.
 Evidence: evidence/operations/tsk02-20261009/{author-*,baseexception-*,connected-final.log}.
+
+## RUN01 transient persistence and fenced-release follow-up — 2026-10-09
+
+Opus found that the mock runner treated all unavailable Results as terminal failure.
+Astra added safe pre-admission yield and bounded idempotent begin/finish writes;
+returned output stays owned on unresolved persistence. Root then found that the
+new hold path also prevented ended output from being released after pause/cancel/
+source-stop. Twelve independent combinations reproduced that overbroad hold.
+The correction asks the existing TSK release boundary to decide: unfenced unfinished
+output/unended call stays occupied, ended fenced output follows latest control.
+Same-runner reentry cannot consume another model unit or invoke the callable.
+Root and independent Sol each pass24 connected cases; full regression follows ART
+integration. Red/green logs and review are in run01-reliability-20261009. Next changes
+to held-result handling cover both no-control retention and all latest-control exits.
+
+Minor dispatch corrections: document patches with stale/unnecessary context failed
+before changing files; root checked the actual current text and used an asserted
+single-block replacement. CO rejected an unsupported repair role pin with
+role_unknown before task creation. Root preserved the error and corrected only
+that pre-task option, then launched the distinct authorized ART implementation.
+No unknown call was retried. Next dispatch uses supported observed role names;
+recording this correction does not claim a general runtime change or guarantee.

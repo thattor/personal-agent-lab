@@ -1,0 +1,26 @@
+{
+  "task_id": "917989d447f94a09869f7b05e9870d3a",
+  "base": "ee1a42484b5f2a044b3ad8480735ff47c93a6922",
+  "version": "0.4.5",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "workspace_expected": "CO-owned isolated workspace",
+  "write_scope": [
+    "pal/artifacts_v5.py",
+    "tests/test_artifacts_v5.py",
+    "docs/design/contracts-v5/ART01-IMPLEMENTATION.md"
+  ],
+  "implement": "devin/swe-2-high",
+  "planner": "claude/claude-opus-5-5",
+  "cost": "Free / existing Pro credits OFF",
+  "started_status": "running",
+  "owned_session": 90339,
+  "verifier": "Python3.13 unittest discover -s tests -p test_artifacts_v5.py -v; in-memory SQLite only",
+  "root_parallel": "TSK actual authorization callback and file-backed consumer tests",
+  "preflight_error": {
+    "code": "role_unknown",
+    "cause": "Root supplied unsupported repair role pin; no task ID/model call launched",
+    "correction": "Removed unsupported role; retained supported planner/implement/review pins",
+    "next_check": "Use only previously supported role names; inspect pre-task errors before any resubmission"
+  },
+  "recorded_at": "2026-10-09T08:43:52.281538+00:00"
+}

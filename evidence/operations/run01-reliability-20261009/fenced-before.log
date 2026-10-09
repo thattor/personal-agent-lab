@@ -1,0 +1,185 @@
+test_cancel_held_call_invalidates_immediately_and_keeps_occupancy (test_mock_execution_v5.MockExecutionTests.test_cancel_held_call_invalidates_immediately_and_keeps_occupancy) ... ok
+test_cessation_persistence_failure_is_bounded_and_keeps_slot (test_mock_execution_v5.MockExecutionTests.test_cessation_persistence_failure_is_bounded_and_keeps_slot) ... ok
+test_concurrent_duplicate_invoker_request_never_enters_second_callable (test_mock_execution_v5.MockExecutionTests.test_concurrent_duplicate_invoker_request_never_enters_second_callable) ... ok
+test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) ... 
+  test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='begin_step', reentry=False, command='pause') ... FAIL
+  test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='begin_step', reentry=False, command='cancel') ... FAIL
+  test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='begin_step', reentry=False, command='stop') ... FAIL
+  test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='begin_step', reentry=True, command='pause') ... FAIL
+  test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='begin_step', reentry=True, command='cancel') ... FAIL
+  test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='begin_step', reentry=True, command='stop') ... FAIL
+  test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='finish_step', reentry=False, command='pause') ... FAIL
+  test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='finish_step', reentry=False, command='cancel') ... FAIL
+  test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='finish_step', reentry=False, command='stop') ... FAIL
+  test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='finish_step', reentry=True, command='pause') ... FAIL
+  test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='finish_step', reentry=True, command='cancel') ... FAIL
+  test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='finish_step', reentry=True, command='stop') ... FAIL
+test_held_pause_keeps_slot_until_actual_callback_return (test_mock_execution_v5.MockExecutionTests.test_held_pause_keeps_slot_until_actual_callback_return) ... ok
+test_latest_control_wins_during_source_draining (test_mock_execution_v5.MockExecutionTests.test_latest_control_wins_during_source_draining) ... ok
+test_lookup_reads_actual_bodies_and_hashes_into_next_call (test_mock_execution_v5.MockExecutionTests.test_lookup_reads_actual_bodies_and_hashes_into_next_call) ... ok
+test_lookup_unavailable_after_step_start_preserves_output (test_mock_execution_v5.MockExecutionTests.test_lookup_unavailable_after_step_start_preserves_output) ... ok
+test_lost_reservation_response_is_not_refunded_and_later_run_is_explicit (test_mock_execution_v5.MockExecutionTests.test_lost_reservation_response_is_not_refunded_and_later_run_is_explicit) ... ok
+test_pause_before_admission_and_after_admission_before_entry_invoke_zero_times (test_mock_execution_v5.MockExecutionTests.test_pause_before_admission_and_after_admission_before_entry_invoke_zero_times) ... ok
+test_pause_committed_during_local_retry_wins_over_runner_failure (test_mock_execution_v5.MockExecutionTests.test_pause_committed_during_local_retry_wins_over_runner_failure) ... ok
+test_persisted_admission_replay_never_dispatches_and_reopen_stays_blocked (test_mock_execution_v5.MockExecutionTests.test_persisted_admission_replay_never_dispatches_and_reopen_stays_blocked) ... ok
+test_persistent_begin_failure_retains_returned_output_and_blocks_reentry (test_mock_execution_v5.MockExecutionTests.test_persistent_begin_failure_retains_returned_output_and_blocks_reentry) ... ok
+test_persistent_finish_failure_retains_started_step_and_blocks_reentry (test_mock_execution_v5.MockExecutionTests.test_persistent_finish_failure_retains_started_step_and_blocks_reentry) ... ok
+test_pre_admission_unavailable_yields_and_explicit_later_run_is_safe (test_mock_execution_v5.MockExecutionTests.test_pre_admission_unavailable_yields_and_explicit_later_run_is_safe) ... ok
+test_raising_mock_is_ended_without_leaking_error_and_never_refunded (test_mock_execution_v5.MockExecutionTests.test_raising_mock_is_ended_without_leaking_error_and_never_refunded) ... ok
+test_reentry_cannot_release_uncertain_admitted_call_even_after_cancel (test_mock_execution_v5.MockExecutionTests.test_reentry_cannot_release_uncertain_admitted_call_even_after_cancel) ... ok
+test_report_is_durable_progress_and_never_completes_goal (test_mock_execution_v5.MockExecutionTests.test_report_is_durable_progress_and_never_completes_goal) ... ok
+test_same_input_write_retry_handles_one_shot_and_lost_commit_receipts (test_mock_execution_v5.MockExecutionTests.test_same_input_write_retry_handles_one_shot_and_lost_commit_receipts) ... ok
+test_stop_between_lookup_search_and_read_is_named_before_next_call (test_mock_execution_v5.MockExecutionTests.test_stop_between_lookup_search_and_read_is_named_before_next_call) ... ok
+test_stop_held_call_requeues_then_required_source_fails_once (test_mock_execution_v5.MockExecutionTests.test_stop_held_call_requeues_then_required_source_fails_once) ... ok
+test_stopped_optional_body_and_derived_steps_are_excluded_after_reclaim (test_mock_execution_v5.MockExecutionTests.test_stopped_optional_body_and_derived_steps_are_excluded_after_reclaim) ... ok
+test_uncertain_admission_never_retries_or_fails_goal (test_mock_execution_v5.MockExecutionTests.test_uncertain_admission_never_retries_or_fails_goal) ... ok
+test_zero_work_or_host_model_or_step_budget_prevents_invocation (test_mock_execution_v5.MockExecutionTests.test_zero_work_or_host_model_or_step_budget_prevents_invocation) ... ok
+
+======================================================================
+FAIL: test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='begin_step', reentry=False, command='pause')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 622, in test_fenced_output_releases_after_persistent_write_failure_or_reentry
+    self.assertEqual(self.value(result)['state'],
+                     ~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 42, in value
+    self.assertTrue(result.ok, result)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Result(ok=False, value=<object object at 0x100440ab0>, error=ErrorInfo(code=<ErrorCode.UNAVAILABLE: 'unavailable'>, message='local result persistence unresolved', refs=()))
+
+======================================================================
+FAIL: test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='begin_step', reentry=False, command='cancel')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 622, in test_fenced_output_releases_after_persistent_write_failure_or_reentry
+    self.assertEqual(self.value(result)['state'],
+                     ~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 42, in value
+    self.assertTrue(result.ok, result)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Result(ok=False, value=<object object at 0x100440ab0>, error=ErrorInfo(code=<ErrorCode.UNAVAILABLE: 'unavailable'>, message='local result persistence unresolved', refs=()))
+
+======================================================================
+FAIL: test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='begin_step', reentry=False, command='stop')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 622, in test_fenced_output_releases_after_persistent_write_failure_or_reentry
+    self.assertEqual(self.value(result)['state'],
+                     ~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 42, in value
+    self.assertTrue(result.ok, result)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Result(ok=False, value=<object object at 0x100440ab0>, error=ErrorInfo(code=<ErrorCode.UNAVAILABLE: 'unavailable'>, message='local result persistence unresolved', refs=()))
+
+======================================================================
+FAIL: test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='begin_step', reentry=True, command='pause')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 622, in test_fenced_output_releases_after_persistent_write_failure_or_reentry
+    self.assertEqual(self.value(result)['state'],
+                     ~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 42, in value
+    self.assertTrue(result.ok, result)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Result(ok=False, value=<object object at 0x100440ab0>, error=ErrorInfo(code=<ErrorCode.UNAVAILABLE: 'unavailable'>, message='owned call requires recovery', refs=()))
+
+======================================================================
+FAIL: test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='begin_step', reentry=True, command='cancel')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 622, in test_fenced_output_releases_after_persistent_write_failure_or_reentry
+    self.assertEqual(self.value(result)['state'],
+                     ~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 42, in value
+    self.assertTrue(result.ok, result)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Result(ok=False, value=<object object at 0x100440ab0>, error=ErrorInfo(code=<ErrorCode.UNAVAILABLE: 'unavailable'>, message='owned call requires recovery', refs=()))
+
+======================================================================
+FAIL: test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='begin_step', reentry=True, command='stop')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 622, in test_fenced_output_releases_after_persistent_write_failure_or_reentry
+    self.assertEqual(self.value(result)['state'],
+                     ~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 42, in value
+    self.assertTrue(result.ok, result)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Result(ok=False, value=<object object at 0x100440ab0>, error=ErrorInfo(code=<ErrorCode.UNAVAILABLE: 'unavailable'>, message='owned call requires recovery', refs=()))
+
+======================================================================
+FAIL: test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='finish_step', reentry=False, command='pause')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 622, in test_fenced_output_releases_after_persistent_write_failure_or_reentry
+    self.assertEqual(self.value(result)['state'],
+                     ~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 42, in value
+    self.assertTrue(result.ok, result)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Result(ok=False, value=<object object at 0x100440ab0>, error=ErrorInfo(code=<ErrorCode.UNAVAILABLE: 'unavailable'>, message='local result persistence unresolved', refs=()))
+
+======================================================================
+FAIL: test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='finish_step', reentry=False, command='cancel')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 622, in test_fenced_output_releases_after_persistent_write_failure_or_reentry
+    self.assertEqual(self.value(result)['state'],
+                     ~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 42, in value
+    self.assertTrue(result.ok, result)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Result(ok=False, value=<object object at 0x100440ab0>, error=ErrorInfo(code=<ErrorCode.UNAVAILABLE: 'unavailable'>, message='local result persistence unresolved', refs=()))
+
+======================================================================
+FAIL: test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='finish_step', reentry=False, command='stop')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 622, in test_fenced_output_releases_after_persistent_write_failure_or_reentry
+    self.assertEqual(self.value(result)['state'],
+                     ~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 42, in value
+    self.assertTrue(result.ok, result)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Result(ok=False, value=<object object at 0x100440ab0>, error=ErrorInfo(code=<ErrorCode.UNAVAILABLE: 'unavailable'>, message='local result persistence unresolved', refs=()))
+
+======================================================================
+FAIL: test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='finish_step', reentry=True, command='pause')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 622, in test_fenced_output_releases_after_persistent_write_failure_or_reentry
+    self.assertEqual(self.value(result)['state'],
+                     ~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 42, in value
+    self.assertTrue(result.ok, result)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Result(ok=False, value=<object object at 0x100440ab0>, error=ErrorInfo(code=<ErrorCode.UNAVAILABLE: 'unavailable'>, message='unfinished step requires recovery', refs=()))
+
+======================================================================
+FAIL: test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='finish_step', reentry=True, command='cancel')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 622, in test_fenced_output_releases_after_persistent_write_failure_or_reentry
+    self.assertEqual(self.value(result)['state'],
+                     ~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 42, in value
+    self.assertTrue(result.ok, result)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Result(ok=False, value=<object object at 0x100440ab0>, error=ErrorInfo(code=<ErrorCode.UNAVAILABLE: 'unavailable'>, message='unfinished step requires recovery', refs=()))
+
+======================================================================
+FAIL: test_fenced_output_releases_after_persistent_write_failure_or_reentry (test_mock_execution_v5.MockExecutionTests.test_fenced_output_releases_after_persistent_write_failure_or_reentry) (boundary='finish_step', reentry=True, command='stop')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 622, in test_fenced_output_releases_after_persistent_write_failure_or_reentry
+    self.assertEqual(self.value(result)['state'],
+                     ~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-run01-astra-20261009/tests/test_mock_execution_v5.py", line 42, in value
+    self.assertTrue(result.ok, result)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Result(ok=False, value=<object object at 0x100440ab0>, error=ErrorInfo(code=<ErrorCode.UNAVAILABLE: 'unavailable'>, message='unfinished step requires recovery', refs=()))
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.235s
+
+FAILED (failures=12)

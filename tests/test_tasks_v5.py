@@ -143,6 +143,81 @@ class TaskTests(unittest.TestCase):
         self.assertEqual(self.value(memory.stop_reference({'key': 'actual-stop', 'source_ref': record}, session_id='stop-session')), stopped)
         self.assertFalse(self.conn.in_transaction)
 
+    def test_compose_save_authorization_is_read_only_and_keeps_all_call_sources(self):
+        claim = self.start()
+        all_refs = [{'kind': 'record', 'id': 'origin'}, {'kind': 'record', 'id': 'extra'}]
+        self.value(self.store.register_sources({'work_ref': claim['work_ref'], 'refs': all_refs}))
+        self.returned(claim, all_refs)
+        action = {'kind': 'compose', 'content': '本文\n', 'media_type': 'text/markdown',
+                  'source_refs': [all_refs[0]]}
+        step = self.value(self.begin(claim, action))
+        request = {'work_ref': claim['work_ref'], 'step_id': step['step_id'], 'action': action}
+        with self.assertRaises(ValueError):
+            self.store.authorize_artifact_save(self.conn, request)
+        other = self.connect()
+        other.execute('BEGIN')
+        try:
+            with self.assertRaises(ValueError):
+                self.store.authorize_artifact_save(other, request)
+        finally:
+            other.rollback()
+        before = self.snapshot()
+        self.conn.execute('BEGIN IMMEDIATE')
+        changes = self.conn.total_changes
+        try:
+            self.assertEqual(self.value(self.store.authorize_artifact_save(self.conn, request)),
+                             {'source_refs': all_refs})
+            self.assertTrue(self.conn.in_transaction)
+            self.assertEqual(changes, self.conn.total_changes)
+            changed = copy.deepcopy(request)
+            changed['action']['content'] = 'changed'
+            self.error(self.store.authorize_artifact_save(self.conn, changed), 'conflict')
+            changed = copy.deepcopy(request)
+            changed['action']['source_refs'] = [{'kind': 'record', 'id': 'never supplied'}]
+            self.error(self.store.authorize_artifact_save(self.conn, changed), 'denied')
+            self.error(self.store.authorize_artifact_save(self.conn, {**request, 'extra': 1}), 'invalid_input')
+        finally:
+            self.conn.rollback()
+        self.assertEqual(before, self.snapshot())
+        self.error(self.finish(claim, step), 'unavailable')
+        self.error(self.release(claim), 'conflict')
+        self.assertEqual(self.value(self.store.get_work({'goal_id': claim['work_ref']['goal_id']}))[
+            'current_artifact_refs'], [])
+        self.value(self.control(claim, 'pause'))
+        self.conn.execute('BEGIN')
+        try:
+            self.error(self.store.authorize_artifact_save(self.conn, request), 'conflict')
+        finally:
+            self.conn.rollback()
+        self.assertEqual(self.value(self.release(claim))['state'], 'paused')
+
+    def test_compose_save_authority_denies_stopped_inputs_and_corrupt_call_metadata(self):
+        claim = self.start()
+        call = self.returned(claim)
+        action = {'kind': 'compose', 'content': '', 'media_type': 'text/plain', 'source_refs': []}
+        step = self.value(self.begin(claim, action))
+        request = {'work_ref': claim['work_ref'], 'step_id': step['step_id'], 'action': action}
+        self.conn.execute('BEGIN IMMEDIATE')
+        try:
+            self.conn.execute("UPDATE test_sources SET status='denied' WHERE id='origin'")
+            self.error(self.store.authorize_artifact_save(self.conn, request), 'denied')
+        finally:
+            self.conn.rollback()
+        for column, value in [('sources', '{}'), ('sources', '[]'), ('work', '{}')]:
+            self.conn.execute('BEGIN IMMEDIATE')
+            try:
+                self.conn.execute('UPDATE v5_tsk_call SET ' + column + '=? WHERE id=?',
+                                  (value, call['call_id']))
+                self.error(self.store.authorize_artifact_save(self.conn, request), 'unavailable')
+            finally:
+                self.conn.rollback()
+        self.value(self.control(claim, 'cancel'))
+        self.conn.execute('BEGIN')
+        try:
+            self.error(self.store.authorize_artifact_save(self.conn, request), 'stale')
+        finally:
+            self.conn.rollback()
+
     def test_empty_claim_and_strict_inputs(self):
         self.assertEqual(self.claim(), {'status': 'empty'})
         for request in ({}, {'runner_id': ''}, {'runner_id': True}, {'runner_id': '\ud800'}, {'runner_id': 'r', 'extra': 1}, []):
@@ -556,7 +631,7 @@ class TaskTests(unittest.TestCase):
                        {'kind': 'lookup', 'query': 'q', 'source_refs': [{'kind': 'record', 'id': 'extra'}]}):
             self.error(self.begin(claim, action), 'invalid_input')
             self.assertEqual(before, self.snapshot())
-        self.error(self.begin(claim, {'kind': 'compose', 'content': 'text', 'media_type': 'text/plain', 'source_refs': []}), 'unavailable')
+        self.error(self.begin(claim, {'kind': 'ask', 'question': 'Which?', 'missing_fact': 'target', 'source_refs': []}), 'unavailable')
         self.assertEqual(before, self.snapshot())
         step = self.value(self.begin(claim))
         request = {'work_ref': claim['work_ref'], 'step_id': step['step_id'], 'result_refs': []}
