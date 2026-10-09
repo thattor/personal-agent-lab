@@ -56,7 +56,7 @@ class MockInvoker:
             return self._invoke(tasks, admission, callback)
 
     def _invoke(self, tasks, admission, callback):
-        if not callable(callback):
+        if not callable(callback) or _native_provider(callback):
             return _failure(ErrorCode.INVALID_INPUT, 'mock callable required')
         call_id = admission.get('call_id') if type(admission) is dict else None
         if type(call_id) is not str or not call_id:
@@ -104,7 +104,7 @@ class MockInvoker:
             return _failure(ErrorCode.INVALID_INPUT, 'mock output is not JSON data')
 
 
-class MockRunner:
+class _RunnerCore:
     """Run a finite mock slice on supplied same-thread TSK/MEM/optional ART owners.
 
     expert receives the C12 object and two mock-only diagnostic keyword arguments:
@@ -122,7 +122,9 @@ class MockRunner:
         self._verifications = verifications
         guard = getattr(tasks, 'startup_guard', None)
         self.runner_id = guard.runner_id if guard is not None else 'mock-runner-' + uuid.uuid4().hex
-        self.invoker = MockInvoker()
+
+    def _register_exposure(self, work, refs):
+        return None
 
     def _read_context(self, required, optional):
         values, excluded = [], []
@@ -150,8 +152,8 @@ class MockRunner:
                 return read, [], []
         return None, values, excluded
 
-    def run_once(self, expert, *, max_steps=1):
-        if not callable(expert) or type(max_steps) is not int or not 1 <= max_steps <= 100:
+    def _run_slice(self, expert, *, max_steps=1):
+        if type(max_steps) is not int or not 1 <= max_steps <= 100:
             return _failure(ErrorCode.INVALID_INPUT, 'invalid mock slice configuration')
         claimed = self._tasks.claim({'runner_id': self.runner_id})
         if not claimed.ok:
@@ -453,7 +455,7 @@ class MockRunner:
                     raise ContractError()
                 call = _value(observed)
                 if (type(call) is not dict
-                        or set(call) != {'call_id', 'lease_id', 'work_ref', 'index', 'status', 'may_enter', 'step_id'}
+                        or not self._call_shape(call)
                         or call['call_id'] != call_id or call['lease_id'] != lease_id
                         or call['step_id'] != step['step_id'] or call['status'] != 'returned'
                         or type(call['may_enter']) is not bool or call['may_enter']
@@ -533,6 +535,9 @@ class MockRunner:
                 return release('failed', 'work budget exhausted', ErrorCode.LIMIT)
             if any(remaining[kind]['host'] <= 0 for kind in ('model', 'step')):
                 return release('yield', 'host budget exhausted', ErrorCode.LIMIT)
+            registered = self._register_exposure(work, [item['ref'] for item in context])
+            if registered is not None and not registered.ok:
+                return failed(registered, 'exposed source unavailable')
             index = metadata['next_step_index']
             reservation = self._tasks.reserve_budget({
                 'key': dumps(['RUN01.model', lease_id, index]), 'work_ref': work,
@@ -544,13 +549,12 @@ class MockRunner:
                    'context': context, 'steps': eligible_steps, 'remaining_budget': remaining}
             if eligible_links:
                 c12['pending_inputs'] = copy.deepcopy(eligible_links)
-            called = self.invoker.invoke(self._tasks, {
+            called = self._dispatch({
                 'call_id': call_id, 'lease_id': lease_id, 'work_ref': work,
                 'reservation_id': _value(reservation)['reservation_id'],
-                'source_refs': [item['ref'] for item in context]},
-                lambda: expert(copy.deepcopy(c12),
-                               excluded_refs=tuple(ref.to_json() for ref in dict.fromkeys(excluded_all)),
-                               excluded_step_ids=tuple(excluded_steps)))
+                'source_refs': [item['ref'] for item in context]}, c12, expert,
+                tuple(ref.to_json() for ref in dict.fromkeys(excluded_all)),
+                tuple(excluded_steps))
             calls.append(call_id)
             if not called.ok:
                 if called.error.code is ErrorCode.UNAVAILABLE:
@@ -630,3 +634,31 @@ class MockRunner:
                 if outcome is not None:
                     return outcome
         return release('yield', 'bounded mock slice yielded')
+
+
+class MockRunner(_RunnerCore):
+    """Explicit callable-only mock execution; native providers use another runner."""
+
+    def __init__(self, tasks, memory, *, artifacts=None, verifications=None):
+        super().__init__(tasks, memory, artifacts=artifacts, verifications=verifications)
+        self.invoker = MockInvoker()
+
+    @staticmethod
+    def _call_shape(call):
+        return set(call) == {'call_id', 'lease_id', 'work_ref', 'index', 'status', 'may_enter', 'step_id'}
+
+    def run_once(self, expert, *, max_steps=1):
+        if not callable(expert) or _native_provider(expert):
+            return _failure(ErrorCode.INVALID_INPUT, 'mock callable required')
+        return self._run_slice(expert, max_steps=max_steps)
+
+    def _dispatch(self, admission, context, expert, excluded_refs, excluded_steps):
+        return self.invoker.invoke(self._tasks, admission,
+            lambda: expert(copy.deepcopy(context), excluded_refs=excluded_refs,
+                           excluded_step_ids=excluded_steps))
+
+
+def _native_provider(value):
+    from pal.native_call_v5 import NativeProfile
+    owner = getattr(value, '__self__', value)
+    return type(getattr(owner, 'profile', None)) is NativeProfile
