@@ -1,5 +1,31 @@
 # Defects and prevention
 
+## 2026-10-09 — managed invoker caught owner faults as host refusal
+
+Root's first RUN01/3 wrapper at e020c5c caught RuntimeError around the whole
+invocation, including unguarded legacy execution. Independent Sol reproduced a
+callback KeyboardInterrupt plus ending-write RuntimeError returning unavailable
+with admitted occupancy retained, concealing the interruption. Existing24 passed;
+they did not cover concurrent primary interruption and failed ending observation.
+Original REQUEST_CHANGES and fixed two-method RED are retained in the review and
+test history. A new guard catch must surround permit acquisition only.
+
+The repair narrows the catch to ExitStack.enter_context and preserves an original
+non-Exception BaseException even if the ending attempt raises. It does not invent
+an ended status or release uncertain occupancy. Fixed two methods cover six
+interruption/end-fault pairs and a direct guardless owner RuntimeError. The first
+test assumed a null step_id field; the historical API omits it, so its author
+corrected that accessor only and reconfirmed RED on unchanged e020c5c. Root's
+repaired two-method run is PASS; exact independent rereview/managed connection
+remain required before acceptance. Next invocation-lifetime changes must verify
+both interruption propagation and failed ending observation, separately from
+host permit refusal. No extra blanket review or model call is introduced.
+
+Two guessed focused test filenames returned exit5/zero tests while preparing
+this change. They are not PASS. The actual test_mock_execution_v5 filename was
+then read from rg inventory and all24 executed PASS. Future focused verification
+uses the observed filename and checks executed count as well as exit status.
+
 ## 2026-10-09 — inline document verifier exceeded a CLI argument bound
 
 SOL passed a multi-assert Python -c argument longer than CO's512 UTF-8 byte

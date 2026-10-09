@@ -8,7 +8,7 @@ An optional same-thread VER owner enables the COMPLETE01/1 verify/complete seam;
 default verifications=None preserves the bounded draft-only behavior.
 """
 import copy
-from contextlib import nullcontext
+from contextlib import ExitStack
 import threading
 import uuid
 
@@ -45,11 +45,14 @@ class MockInvoker:
 
     def invoke(self, tasks, admission, callback):
         guard = getattr(tasks, 'startup_guard', None)
-        try:
-            with guard.activity() if guard is not None else nullcontext():
-                return self._invoke(tasks, admission, callback)
-        except RuntimeError:
-            return _failure(ErrorCode.UNAVAILABLE, 'mock host ownership unavailable')
+        if guard is None:
+            return self._invoke(tasks, admission, callback)
+        with ExitStack() as lifetime:
+            try:
+                lifetime.enter_context(guard.activity())
+            except RuntimeError:
+                return _failure(ErrorCode.UNAVAILABLE, 'mock host ownership unavailable')
+            return self._invoke(tasks, admission, callback)
 
     def _invoke(self, tasks, admission, callback):
         if not callable(callback):
@@ -81,7 +84,12 @@ class MockInvoker:
         try:
             action = callback()
         except BaseException as error:
-            ended = self._end(tasks, call_id, 'raised')
+            try:
+                ended = self._end(tasks, call_id, 'raised')
+            except BaseException:
+                if not isinstance(error, Exception):
+                    raise error
+                raise
             if not isinstance(error, Exception):
                 raise
             return ended if not ended.ok else _failure(
