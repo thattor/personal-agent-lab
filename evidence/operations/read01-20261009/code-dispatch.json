@@ -1,0 +1,57 @@
+{
+  "observed_at": "2026-10-09T10:52:47.884213+00:00",
+  "co_version": "0.4.5",
+  "runtime": "/Users/hattoritoshiyasu/Documents/PAL/co-runtime/common-orchestration-v0.4.5",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "co_capacity": {
+    "host_limit_per_adapter": 12,
+    "claude_executing": 0,
+    "devin_executing": 1,
+    "provider_limit": "unknown"
+  },
+  "owned_current_assignments": [
+    {
+      "route": "CO devin/swe-2-high Free",
+      "module": "pal/verification_v5.py",
+      "contract": "READ01/1",
+      "base": "f18a240269aaaa0662ba94e0123c0bc18db29460",
+      "fixture_hash": "3e145f6fb6d1aca41450720a96fb535b1cc97a9d0285e53b4d358b38fccfa001"
+    },
+    {
+      "route": "direct AGY claude-sonnet-5-5-high",
+      "modules": [
+        "pal/host_read_v5.py",
+        "pal/read_consumer_v5.py"
+      ],
+      "contract": "READ01/1",
+      "base": "f18a240269aaaa0662ba94e0123c0bc18db29460",
+      "workspace": "/Users/hattoritoshiyasu/Documents/PAL/agy-work/intake-review-20261009/read01-sonnet-code",
+      "mode": "plan",
+      "sandbox": true,
+      "response_only_code": true,
+      "fixture_hash": "e9d075beec8c604449527f76a16399562986478e827184b1b1edef827c4ec97d"
+    }
+  ],
+  "native_tests": {
+    "author": "gpt-6.1-sol separate /root/art_native_sol",
+    "commit": "83c62fabd4c2f7e0b394aa486a09bc1b0011ab23",
+    "integrated": "ca43d81",
+    "test_methods": 21
+  },
+  "agy_preflight": {
+    "CLI": "1.3.2",
+    "authenticated": true,
+    "plan": "Google AI Pro",
+    "model_list": "claude-sonnet-5-5-high",
+    "effective_AI_Credits": "off observed TUI /settings without change",
+    "claude_gpt_weekly_remaining_percent": 63.2,
+    "five_hour_remaining_percent": 97.41,
+    "new_login": false,
+    "old_conversation_action": false
+  },
+  "actual_owned_implementation_count": 2,
+  "actual_co_implementation_count": 1,
+  "thirty_parallel": false,
+  "integration_owner": "SOL Root; same21 immutable+real9+same consumer demo+independent review then full suite",
+  "boundaries": "Prior unknown/refusals unchanged; no new cost/auth/reset/live DB/schedule/publication."
+}

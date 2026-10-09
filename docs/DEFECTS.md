@@ -1126,3 +1126,18 @@ and the tsk-integration receipt; no CO pass substitutes for either integration.
 A documentation patch used a misremembered context line and was rejected before
 any edit. Root checked the actual file/diff and applied an exact matching context;
 subsequent patches use a fresh narrow source read when the context is uncertain.
+
+
+## READ01 AGY inspection command selection (2026-10-09)
+During an owned fresh Sonnet TUI, Root sent ESC plus `/usage` and Enter in one
+input before inspecting the slash-command menu. The CLI displayed `/plan usage`
+and generated an unnecessary response; it read only the scoped AGENTS file and
+returned clarification. No product code was changed; no prior unknown call was
+resumed. The evidence establishes the wrong submitted text, not the exact internal
+key-handler cause. The response ended and Root cleared the input with Ctrl-U.
+Correction: type `/usage` alone, inspect the exact selected `View model quota
+usage` menu, then submit separately. This successfully showed63.20% Claude/GPT
+weekly and97.41% five-hour remaining. Apply the same Observe -> type -> verify
+selection -> Enter sequence to settings inspection; never batch ESC, text, Enter.
+The accidental request was within the existing subscription; no new auth/credits
+setting was enabled. Preserve this distinction from the intended code assignment.
