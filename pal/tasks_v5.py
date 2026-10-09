@@ -104,6 +104,7 @@ class TaskStore(IntakeStore):
         self._artifact_inspect = artifact_inspect
         super().__init__(connection, **kwargs)
         schema = (
+            'CREATE TABLE IF NOT EXISTS v5_tsk_primary_reservation (reservation TEXT PRIMARY KEY,session TEXT NOT NULL,reserve_key TEXT NOT NULL UNIQUE)',
             'CREATE TABLE IF NOT EXISTS v5_tsk_recovery_adoption (step_id TEXT PRIMARY KEY,call_id TEXT NOT NULL UNIQUE,lease_id TEXT NOT NULL UNIQUE,artifact_id TEXT NOT NULL UNIQUE,origin_work_json TEXT NOT NULL,adopted_work_json TEXT NOT NULL,recover_key TEXT NOT NULL,event_id TEXT NOT NULL UNIQUE)',
             'CREATE TABLE IF NOT EXISTS v5_tsk_recovery_replay (recover_key TEXT PRIMARY KEY,adopted_step_id TEXT UNIQUE,event_id TEXT NOT NULL UNIQUE,result_json TEXT NOT NULL)',
             'CREATE TABLE IF NOT EXISTS v5_tsk_enrollment (singleton INTEGER PRIMARY KEY CHECK(singleton=1),db_uuid TEXT NOT NULL,profile TEXT NOT NULL)',
@@ -241,6 +242,26 @@ class TaskStore(IntakeStore):
             execution = type(request['command']) is dict and request['command'].get('kind') == 'complete'
         if not execution:
             return
+        if command == 'reserve_budget' and 'work_ref' not in request:
+            self._own_session(ready=True)
+            saved = self._one("SELECT input_json,result_json FROM v5_intake_replay WHERE command='reserve_budget' AND key=?", (request['key'],))
+            if saved is not None:
+                try:
+                    original = _obj(loads(saved['input_json']), {'key', 'kind'}, {'work_ref', 'role'})
+                    if dumps(original) != saved['input_json'] or original['key'] != request['key']:
+                        raise ContractError()
+                    if 'work_ref' in original:
+                        _work(original['work_ref'])
+                        return
+                    result = Result.from_json(loads(saved['result_json']))
+                    value = _obj(result.value.to_json(), {'reservation_id', 'remaining'})
+                    remaining = _obj(value['remaining'], {'host'})
+                    if not result.ok or type(remaining['host']) is not int or not 0 <= remaining['host'] <= _MAX:
+                        raise ContractError()
+                    self._primary_reservation(self._one('SELECT * FROM v5_tsk_reservation WHERE id=?', (_id(value['reservation_id']),)))
+                except (ContractError, KeyError, TypeError, AttributeError):
+                    _reject('unavailable')
+            return
         data = request['request'] if command == 'finish_step' else request
         self._execution()
         lease = None
@@ -254,6 +275,10 @@ class TaskStore(IntakeStore):
                     _reject('unavailable')
         elif command == 'consume':
             reservation = self._one('SELECT * FROM v5_tsk_reservation WHERE id=?', (data['reservation_id'],))
+            if reservation is not None and (reservation['lease'] is None or reservation['role'] == 'primary' or
+                    self._one('SELECT session FROM v5_tsk_primary_reservation WHERE reservation=?', (reservation['id'],))):
+                self._primary_reservation(reservation)
+                return
             if reservation is not None:
                 lease = self._one('SELECT * FROM v5_tsk_lease WHERE id=?', (reservation['lease'],))
                 if lease is None:
@@ -781,6 +806,239 @@ class TaskStore(IntakeStore):
             return self._claim_wire(row, lease)
         return self._transaction('claim', None, data, operation)
 
+    def _candidate_gate(self, refs):
+        changes = self._conn.total_changes
+        self._conn.execute('SAVEPOINT v5_tsk_candidate_gate')
+        try:
+            outcome = self._source_gate(self._conn, refs)
+            self._conn.execute('RELEASE v5_tsk_candidate_gate')
+            if (not self._conn.in_transaction or self._conn.total_changes != changes or
+                    type(outcome) is not str or outcome not in ('available', 'denied', 'not_found', 'unavailable')):
+                _reject('unavailable')
+            return outcome == 'available'
+        except BaseException:
+            try:
+                self._conn.execute('ROLLBACK TO v5_tsk_candidate_gate')
+                self._conn.execute('RELEASE v5_tsk_candidate_gate')
+            except sqlite3.Error:
+                pass
+            raise
+
+    @_public
+    def list_candidates(self, request):
+        data = _obj(request, {'session_id', 'limit'}, {'goal_ids', 'query'})
+        _id(data['session_id'])
+        limit = data['limit']
+        if type(limit) is not int or not 1 <= limit <= 20:
+            raise ContractError()
+        ids = data.get('goal_ids')
+        if 'goal_ids' in data:
+            if type(ids) is not list or len(ids) > 20:
+                raise ContractError()
+            ids = [_id(value) for value in ids]
+            if len(ids) != len(set(ids)):
+                raise ContractError()
+        if 'query' in data:
+            _reject('unavailable')
+        self._require_idle()
+        self._conn.execute('BEGIN')
+        try:
+            rows = self._rows('SELECT w.* FROM v5_intake_work w WHERE revision=(SELECT MAX(revision) FROM v5_intake_work WHERE goal_id=w.goal_id)')
+            if ids is not None:
+                rows = [row for row in rows if row['goal_id'] in ids]
+            activity = {}
+            for event in self._rows('SELECT seq,work_ref_json FROM v5_intake_event WHERE work_ref_json IS NOT NULL'):
+                work = _work(loads(event['work_ref_json']))
+                activity[work.goal_id] = max(activity.get(work.goal_id, 0), event['seq'])
+            rows.sort(key=lambda row: (-activity.get(row['goal_id'], 0), row['goal_id']))
+            values = []
+            for row in rows[:limit]:
+                work = self._wr(row)
+                _work(work.to_json())
+                brief = Brief.from_json(loads(row['brief_json']))
+                grant = Grant.from_json(loads(row['grant_json']))
+                _id(row['session_id'])
+                _id(row['expert_id'])
+                if brief.target.repository not in grant.repositories:
+                    raise ContractError()
+                if (row['state'] not in ('queued', 'running', 'waiting_input', 'paused', 'completed', 'cancelled', 'failed') or
+                        len({c.id for c in brief.conditions}) != len(brief.conditions)):
+                    raise ContractError()
+                refs = self._registered(row)
+                if (any(ref.kind.value != 'record' for ref in refs) or
+                        not set(self._required(row)) <= set(refs)):
+                    raise ContractError()
+                questions = [q for q in self._questions(row) if q['status'] == 'open']
+                if any(not set(q['dependencies']) <= set(refs) for q in questions):
+                    raise ContractError()
+                visible = self._candidate_gate(refs)
+                values.append({'work_ref': work.to_json(), 'brief_summary': brief.purpose.encode('utf-8')[:512].decode('utf-8', 'ignore') if visible else '',
+                    'expert_id': row['expert_id'], 'state': row['state'],
+                    'open_questions': [{'id': q['id'], 'text': q['question'].encode('utf-8')[:1024].decode('utf-8', 'ignore') if visible else '',
+                                        'revision': q['revision']} for q in questions],
+                    'dependency_refs': _wire(refs), 'text_withheld': not visible})
+            result = Result.success({'works': values, 'truncated': len(rows) > limit})
+            if len(dumps(result).encode('utf-8')) > 131072:
+                _reject('limit')
+            self._conn.execute('COMMIT')
+            return result
+        except BaseException as error:
+            self._rollback()
+            if isinstance(error, ContractError):
+                _reject('unavailable')
+            raise
+
+    @staticmethod
+    def _receipt_brief(draft, saved):
+        expected = draft.to_json()
+        actual = saved.to_json()
+        if len({c.id for c in saved.conditions}) != len(saved.conditions):
+            raise ContractError()
+        actual['conditions'] = [{k: v for k, v in c.items() if k != 'id'} for c in actual['conditions']]
+        if actual != expected:
+            raise ContractError()
+
+    def _original_receipt(self, namespace, key):
+        saved = self._one('SELECT input_json,result_json FROM v5_intake_replay WHERE command=? AND key=?', (namespace, key))
+        if saved is None:
+            _reject('not_found')
+        try:
+            request = loads(saved['input_json'])
+            if dumps(request) != saved['input_json'] or request['key'] != key:
+                raise ContractError()
+            result = Result.from_json(loads(saved['result_json']))
+            if not result.ok:
+                raise ContractError()
+            if namespace == 'C03.create':
+                request = _obj(request, {'key', 'session_id', 'origin_record_ref', 'brief', 'request_scope'})
+                value = _obj(result.value.to_json(), {'work_ref', 'expert_id', 'state', 'grant'})
+                work = _work(value['work_ref'])
+                scope = Grant.from_json(request['request_scope'])
+                grant = Grant.from_json(value['grant'])
+                origin = Ref.from_json(request['origin_record_ref'])
+                draft = DraftBrief.from_json(request['brief'])
+                row = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=1', (work.goal_id,))
+                if (row is None or work.revision != 1 or work.epoch != 0 or value['state'] != 'queued' or
+                        origin.kind.value != 'record' or _id(request['session_id']) != row['session_id'] or
+                        origin != Ref.from_json(loads(row['origin_ref_json'])) or
+                        _id(value['expert_id']) != row['expert_id'] or grant != Grant.from_json(loads(row['grant_json'])) or
+                        _intersect(grant, scope) != grant or draft.target.repository not in grant.repositories):
+                    raise ContractError()
+                self._receipt_brief(draft, Brief.from_json(loads(row['brief_json'])))
+            else:
+                request = _obj(request, {'key', 'work_ref', 'command'})
+                value = _obj(result.value.to_json(), {'work_ref', 'state', 'control_status'})
+                target, work = _work(request['work_ref']), _work(value['work_ref'])
+                command = request['command']
+                kind = command.get('kind') if type(command) is dict else command
+                if kind not in ('pause', 'resume', 'cancel', 'answer', 'change', 'complete'):
+                    raise ContractError()
+                row = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=?', (work.goal_id, work.revision))
+                prior = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=?', (target.goal_id, target.revision))
+                if (row is None or prior is None or work.goal_id != target.goal_id or
+                        work.revision != target.revision + (1 if kind == 'change' else 0) or work.epoch > row['epoch'] or
+                        value['state'] not in ('queued', 'running', 'waiting_input', 'paused', 'completed', 'cancelled') or
+                        value['control_status'] not in ('none', 'pause_requested', 'draining')):
+                    raise ContractError()
+                for stored_row in (prior, row):
+                    Brief.from_json(loads(stored_row['brief_json']))
+                    Grant.from_json(loads(stored_row['grant_json']))
+                    if Ref.from_json(loads(stored_row['origin_ref_json'])).kind.value != 'record':
+                        raise ContractError()
+                    _id(stored_row['session_id'])
+                    _id(stored_row['expert_id'])
+                if kind in ('pause', 'resume', 'cancel'):
+                    if type(command) is not str or value['state'] not in {'pause': ('paused', 'running'), 'resume': ('queued', 'waiting_input'), 'cancel': ('cancelled',)}[kind]:
+                        raise ContractError()
+                elif kind == 'change':
+                    _obj(command, {'kind', 'brief', 'origin_record_ref'})
+                    origin = Ref.from_json(command['origin_record_ref'])
+                    if origin.kind.value != 'record' or origin != Ref.from_json(loads(row['origin_ref_json'])):
+                        raise ContractError()
+                    self._receipt_brief(DraftBrief.from_json(command['brief']), Brief.from_json(loads(row['brief_json'])))
+                    old_grant, grant = Grant.from_json(loads(prior['grant_json'])), Grant.from_json(loads(row['grant_json']))
+                    if (_intersect(grant, old_grant) != grant or row['session_id'] != prior['session_id'] or
+                            row['expert_id'] != prior['expert_id'] or value['state'] not in ('queued', 'running', 'paused')):
+                        raise ContractError()
+                elif kind == 'answer':
+                    _obj(command, {'kind', 'question_id', 'answer_record_ref'})
+                    answer = Ref.from_json(command['answer_record_ref'])
+                    question = next((q for q in self._questions(row) if q['id'] == _id(command['question_id'])), None)
+                    if (answer.kind.value != 'record' or question is None or question['answer'] != answer.to_json() or
+                            value['state'] not in ('queued', 'paused') or value['control_status'] != 'none'):
+                        raise ContractError()
+                else:
+                    _obj(command, {'kind', 'verification_ref'})
+                    verification = Ref.from_json(command['verification_ref'])
+                    if verification.kind.value != 'verification' or value['state'] != 'completed' or value['control_status'] != 'none':
+                        raise ContractError()
+                    events = self._rows("SELECT refs_json,session_id FROM v5_intake_event WHERE kind='result' AND text='work completed from saved verification' AND work_ref_json=?", (dumps(work),))
+                    expected = [{'kind': 'artifact', 'id': item['artifact_id']} for item in self._artifact_set(work)] + [verification.to_json()]
+                    if not any(loads(event['refs_json']) == expected and event['session_id'] == row['session_id'] for event in events):
+                        raise ContractError()
+            return result
+        except (ContractError, KeyError, TypeError, ValueError):
+            _reject('unavailable')
+
+    @_public
+    def get_create_by_key(self, request):
+        return self._original_receipt('C03.create', _id(_obj(request, {'key'})['key']))
+
+    @_public
+    def get_control_by_key(self, request):
+        return self._original_receipt('control', _id(_obj(request, {'key'})['key']))
+
+    def _primary_reservation(self, item):
+        session = self._own_session(ready=True)
+        try:
+            if item is None:
+                raise ContractError()
+            _id(item['id'])
+            if (item['lease'], item['work'], item['idx'], item['kind'], item['role']) != (None, None, None, 'model', 'primary'):
+                raise ContractError()
+            if item['binding'] is not None:
+                _id(item['binding'])
+            binding = self._one('SELECT * FROM v5_tsk_primary_reservation WHERE reservation=?', (item['id'],))
+            if binding is None:
+                raise ContractError()
+            owner = self._session(_id(binding['session']), self._enrollment())
+            key = _id(binding['reserve_key'])
+            replay = self._one("SELECT input_json,result_json FROM v5_intake_replay WHERE command='reserve_budget' AND key=?", (key,))
+            if replay is None or replay['input_json'] != dumps({'key': key, 'kind': 'model', 'role': 'primary'}):
+                raise ContractError()
+            reserved = Result.from_json(loads(replay['result_json']))
+            value = _obj(reserved.value.to_json(), {'reservation_id', 'remaining'})
+            remaining = _obj(value['remaining'], {'host'})
+            if (not reserved.ok or value['reservation_id'] != item['id'] or
+                    type(remaining['host']) is not int or not 0 <= remaining['host'] <= _MAX):
+                raise ContractError()
+            consumed = self._one("SELECT input_json,result_json FROM v5_intake_replay WHERE command='consume' AND key=?", (item['id'],))
+            if consumed is None:
+                if item['binding'] is not None:
+                    raise ContractError()
+            else:
+                expected = {'reservation_id': item['id'], 'call_or_operation_id': _id(item['binding'])}
+                if consumed['input_json'] != dumps(expected) or Result.from_json(loads(consumed['result_json'])).to_json() != Result.success(expected).to_json():
+                    raise ContractError()
+        except (ContractError, KeyError, TypeError, AttributeError):
+            _reject('unavailable')
+        if owner['id'] != session['id']:
+            _reject('denied')
+
+    def _reserve_primary(self, key):
+        session = self._own_session(ready=True)
+        row = self._one("SELECT * FROM v5_tsk_host WHERE kind='model'")
+        if (row is None or any(type(row[k]) is not int or not 0 <= row[k] <= _MAX for k in ('used', 'ceiling')) or
+                row['used'] > row['ceiling']):
+            _reject('unavailable')
+        if row['used'] == row['ceiling']:
+            _reject('limit')
+        reservation = self._change_mint('reservation')
+        self._conn.execute("UPDATE v5_tsk_host SET used=used+1 WHERE kind='model'")
+        self._conn.execute("INSERT INTO v5_tsk_reservation VALUES (?,NULL,NULL,NULL,'model','primary',NULL)", (reservation,))
+        self._conn.execute('INSERT INTO v5_tsk_primary_reservation VALUES (?,?,?)', (reservation, session['id'], key))
+        return {'reservation_id': reservation, 'remaining': {'host': row['ceiling'] - row['used'] - 1}}
+
     def _artifact_set(self, work):
         self._recovery_integrity()
         rows = self._rows('SELECT * FROM v5_tsk_artifact_set WHERE goal=? AND revision=? ORDER BY seq',
@@ -881,7 +1139,11 @@ class TaskStore(IntakeStore):
         key = _id(data['key'])
         if data['kind'] not in ('model', 'step', 'operation'):
             raise ContractError()
-        if 'work_ref' not in data or data['kind'] == 'operation':
+        if 'work_ref' not in data:
+            if data['kind'] != 'model' or data.get('role') != 'primary':
+                raise ContractError()
+            return self._transaction('reserve_budget', key, data, lambda: self._reserve_primary(key))
+        if data['kind'] == 'operation':
             _reject('unavailable')
         work = _work(data['work_ref'])
         role = data.get('role')
