@@ -3,7 +3,7 @@ from functools import wraps
 import sqlite3
 
 from pal.contracts_v5 import (Brief, ContractError, Grant, Limits, Ref, Result,
-                              WorkRef, dumps, loads, parse_model_action)
+                              WorkRef, dumps, loads, parse_model_action, action_from_json)
 from pal.intake_v5 import IntakeStore
 
 _MAX = 2**63 - 1
@@ -79,6 +79,8 @@ class TaskStore(IntakeStore):
         self._artifact_inspect = artifact_inspect
         super().__init__(connection, **kwargs)
         schema = (
+            "CREATE TABLE IF NOT EXISTS v5_tsk_question (id TEXT PRIMARY KEY,goal TEXT NOT NULL,revision INTEGER NOT NULL,step_id TEXT NOT NULL UNIQUE,question TEXT NOT NULL,missing_fact TEXT NOT NULL,sources TEXT NOT NULL,status TEXT NOT NULL CHECK(status IN ('open','answered','closed')),answer_ref TEXT)",
+            "CREATE UNIQUE INDEX IF NOT EXISTS v5_tsk_one_question ON v5_tsk_question(goal) WHERE status='open'",
             'CREATE TABLE IF NOT EXISTS v5_tsk_artifact_set (seq INTEGER PRIMARY KEY,goal TEXT NOT NULL,revision INTEGER NOT NULL,artifact_id TEXT NOT NULL,step_id TEXT NOT NULL,UNIQUE(goal,revision,artifact_id),UNIQUE(goal,revision,step_id))',
             'CREATE TABLE IF NOT EXISTS v5_tsk_lease (id TEXT PRIMARY KEY,runner TEXT NOT NULL,goal TEXT NOT NULL,revision INTEGER NOT NULL,active INTEGER NOT NULL)',
             'CREATE UNIQUE INDEX IF NOT EXISTS v5_tsk_one_lease ON v5_tsk_lease(active) WHERE active=1',
@@ -219,7 +221,8 @@ class TaskStore(IntakeStore):
     def _claim_wire(self, row, lease):
         steps = self._steps(row)
         finished = [step for step in steps if loads(step['wire'])['status'] == 'finished']
-        checkpoint = {'last_finished_index': -1, 'open_question_refs': []}
+        questions = self._questions(row)
+        checkpoint = {'last_finished_index': -1, 'open_question_refs': [q['id'] for q in questions if q['status'] == 'open']}
         if finished:
             last = finished[-1]
             checkpoint['last_finished_index'] = last['idx']
@@ -227,7 +230,9 @@ class TaskStore(IntakeStore):
                 checkpoint.update(lookup_truncated=bool(last['truncated']), lookup_excluded_refs=loads(last['excluded']))
         return {'lease_id': lease['id'], 'work_ref': self._wr(row).to_json(), 'brief': loads(row['brief_json']),
                 'grant': loads(row['grant_json']), 'checkpoint': checkpoint,
-                'steps': [loads(step['wire']) for step in steps], 'pending_inputs': []}
+                'steps': [loads(step['wire']) for step in steps], 'pending_inputs': [
+                    {'question_id': q['id'], 'step_id': q['step_id'], 'answer_record_ref': q['answer']}
+                    for q in questions if q['status'] == 'answered']}
 
     @_public
     def claim(self, request):
@@ -300,6 +305,10 @@ class TaskStore(IntakeStore):
             return result
         value = result.value.to_json()
         rows = self._artifact_set(_work(value['work_ref']))
+        row = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=?',
+                        (value['work_ref']['goal_id'], value['work_ref']['revision']))
+        value['open_questions'] = [{'id': q['id'], 'text': q['question'], 'revision': q['revision']}
+                                   for q in self._questions(row) if q['status'] == 'open']
         value['current_artifact_refs'] = [{'kind': 'artifact', 'id': row['artifact_id']} for row in rows]
         return Result.success(value)
 
@@ -447,7 +456,7 @@ class TaskStore(IntakeStore):
                 _reject('conflict')
             refs = _refs(loads(call['sources']))
             action = parse_model_action(dumps(data['action']), allowed_refs=refs).to_json()
-            if action['kind'] not in ('report', 'lookup', 'compose'):
+            if action['kind'] not in ('report', 'lookup', 'compose', 'ask'):
                 _reject('unavailable')
             if action['kind'] == 'compose' and self._artifact_inspect is None:
                 _reject('unavailable')
@@ -623,6 +632,8 @@ class TaskStore(IntakeStore):
             step = loads(saved['wire'])
             if step['work_ref'] != work.to_json():
                 _reject('stale')
+            if step['action']['kind'] == 'ask':
+                _reject('conflict')
             if step['status'] != 'started':
                 _reject('conflict')
             if step['action']['kind'] == 'compose':
@@ -703,30 +714,7 @@ class TaskStore(IntakeStore):
         except ContractError:
             _reject('unavailable')
 
-    def _complete(self, work, verification):
-        row, lease = self._authority(work)
-        data = self._inspect_verification(verification)
-        inspected = _work(data['work_ref'])
-        if (inspected.goal_id, inspected.revision) != (work.goal_id, work.revision):
-            _reject('conflict')
-        if inspected.epoch != work.epoch:
-            _reject('stale')
-        context = self._verification_context({'work_ref': work.to_json()}, purpose='status')
-        if not context.ok:
-            raise _Rejected(context)
-        current = context.value.to_json()
-        if data['artifact_refs'] != current['artifact_refs']:
-            _reject('stale')
-        if [c['condition_id'] for c in data['checks']] != [c['id'] for c in current['conditions']]:
-            _reject('unavailable')
-        sources = _refs(data['source_refs'])
-        if not set(_refs(current['source_refs'])) <= set(sources) <= set(self._registered(row)):
-            _reject('unavailable')
-        self._gate(sources)
-        if data['status'] != 'valid':
-            _reject('unavailable')
-        if any(c['status'] != 'met' for c in data['checks']):
-            _reject('conflict')
+    def _ready_to_close(self, row, lease, work, asking=None):
         try:
             saved_steps = {saved['id']: saved for saved in self._steps(row)}
             steps = {key: loads(saved['wire']) for key, saved in saved_steps.items()}
@@ -752,10 +740,36 @@ class TaskStore(IntakeStore):
                         raise ContractError()
         except (ContractError, KeyError, TypeError):
             _reject('unavailable')
-        if (any(step['status'] == 'started' for step in steps.values()) or
+        if (any(step['status'] == 'started' and key != asking for key, step in steps.items()) or
                 any(call['status'] == 'admitted' or (call['status'] == 'returned' and
-                    (call['step'] not in steps or steps[call['step']]['status'] != 'finished')) for call in calls)):
+                    (call['step'] not in steps or (steps[call['step']]['status'] != 'finished' and call['step'] != asking))) for call in calls)):
             _reject('conflict')
+
+    def _complete(self, work, verification):
+        row, lease = self._authority(work)
+        data = self._inspect_verification(verification)
+        inspected = _work(data['work_ref'])
+        if (inspected.goal_id, inspected.revision) != (work.goal_id, work.revision):
+            _reject('conflict')
+        if inspected.epoch != work.epoch:
+            _reject('stale')
+        context = self._verification_context({'work_ref': work.to_json()}, purpose='status')
+        if not context.ok:
+            raise _Rejected(context)
+        current = context.value.to_json()
+        if data['artifact_refs'] != current['artifact_refs']:
+            _reject('stale')
+        if [c['condition_id'] for c in data['checks']] != [c['id'] for c in current['conditions']]:
+            _reject('unavailable')
+        sources = _refs(data['source_refs'])
+        if not set(_refs(current['source_refs'])) <= set(sources) <= set(self._registered(row)):
+            _reject('unavailable')
+        self._gate(sources)
+        if data['status'] != 'valid':
+            _reject('unavailable')
+        if any(c['status'] != 'met' for c in data['checks']):
+            _reject('conflict')
+        self._ready_to_close(row, lease, work)
         row['state'] = 'completed'
         self._conn.execute('UPDATE v5_intake_work SET state=? WHERE goal_id=? AND revision=?',
                            ('completed', work.goal_id, work.revision))
@@ -765,23 +779,195 @@ class TaskStore(IntakeStore):
                     (*_refs(data['artifact_refs']), verification))
         return {'work_ref': work.to_json(), 'state': 'completed', 'control_status': 'none'}
 
+    def _question_step(self, saved):
+        try:
+            step = _obj(loads(saved['wire']), {'step_id', 'work_ref', 'index', 'action', 'status', 'result_refs'}, {'error'})
+            binding = _work(step['work_ref'])
+            action = action_from_json(step['action']).to_json()
+            call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (saved['call'],))
+            if (step['step_id'] != saved['id'] or
+                    (binding.goal_id, binding.revision) != (saved['goal'], saved['revision']) or
+                    type(step['index']) is not int or not 0 <= step['index'] <= _MAX or
+                    type(saved['idx']) is not int or step['index'] != saved['idx'] or
+                    step['status'] not in ('started', 'finished', 'abandoned') or call is None or
+                    call['status'] not in ('admitted', 'returned', 'raised', 'not_entered') or
+                    _work(loads(call['work'])) != binding or type(call['idx']) is not int or
+                    call['idx'] != step['index'] or call['step'] != saved['id']):
+                raise ContractError()
+            lease = self._one('SELECT * FROM v5_tsk_lease WHERE id=?', (call['lease'],))
+            if lease is None or (lease['goal'], lease['revision']) != (binding.goal_id, binding.revision):
+                raise ContractError()
+            refs = _refs(loads(call['sources']))
+            if any(ref.kind.value != 'record' for ref in refs):
+                raise ContractError()
+            _refs(step['result_refs'])
+            if 'error' in step and type(step['error']) is not str:
+                raise ContractError()
+            if action['kind'] == 'ask':
+                if step['result_refs'] or 'error' in step or not set(_refs(action['source_refs'])) <= set(refs):
+                    raise ContractError()
+            return step, call, refs
+        except (ContractError, KeyError, TypeError):
+            _reject('unavailable')
+
+    def _questions(self, row):
+        try:
+            items = self._rows('SELECT * FROM v5_tsk_question WHERE goal=? AND revision=?',
+                               (row['goal_id'], row['revision']))
+            required, registered = set(self._required(row)), set(self._registered(row))
+            result, by_step = [], set()
+            for item in items:
+                _id(item['id'])
+                saved = self._one('SELECT * FROM v5_tsk_step WHERE id=?', (item['step_id'],))
+                if saved is None:
+                    raise ContractError()
+                step, call, refs = self._question_step(saved)
+                action = {'kind': 'ask', 'question': item['question'], 'missing_fact': item['missing_fact'],
+                          'source_refs': loads(item['sources'])}
+                action_from_json(action)
+                if ((saved['goal'], saved['revision']) != (row['goal_id'], row['revision']) or
+                        _work(step['work_ref']).epoch > row['epoch'] or
+                        step['status'] != 'finished' or call['status'] != 'returned' or
+                        action != step['action'] or not required <= set(refs) <= registered or
+                        item['status'] not in ('open', 'answered', 'closed')):
+                    raise ContractError()
+                answer = None if item['answer_ref'] is None else Ref.from_json(loads(item['answer_ref']))
+                if ((item['status'] == 'answered') != (answer is not None) or
+                        (answer is not None and (answer.kind.value != 'record' or answer not in registered))):
+                    raise ContractError()
+                item.update(dependencies=tuple(refs), work_ref=step['work_ref'], index=step['index'], answer=answer.to_json() if answer else None)
+                result.append(item)
+                by_step.add(item['step_id'])
+            finished = {saved['id'] for saved in self._steps(row)
+                        if (wire := loads(saved['wire']))['status'] == 'finished' and wire['action']['kind'] == 'ask'}
+            if finished != by_step:
+                raise ContractError()
+            opened = [q for q in result if q['status'] == 'open']
+            if len(opened) > 1 or (opened and row['state'] not in ('waiting_input', 'paused')):
+                raise ContractError()
+            if opened and self._one('SELECT id FROM v5_tsk_lease WHERE goal=? AND revision=? AND active=1',
+                                    (row['goal_id'], row['revision'])):
+                raise ContractError()
+            if row['state'] == 'waiting_input' and not opened:
+                raise ContractError()
+            return sorted(result, key=lambda q: q['index'])
+        except (ContractError, KeyError, TypeError):
+            _reject('unavailable')
+
+    @_public
+    def ask(self, request):
+        data = _obj(request, {'key', 'work_ref', 'step_id', 'question', 'missing_fact', 'source_refs'})
+        key, work, step_id = _id(data['key']), _work(data['work_ref']), _id(data['step_id'])
+        action = action_from_json({'kind': 'ask', **{name: data[name] for name in ('question', 'missing_fact', 'source_refs')}}).to_json()
+        if any(ref.kind.value != 'record' for ref in _refs(data['source_refs'])):
+            raise ContractError()
+        def operation():
+            row, lease = self._authority(work)
+            saved = self._one('SELECT * FROM v5_tsk_step WHERE id=?', (step_id,))
+            if saved is None:
+                _reject('not_found')
+            step, call, refs = self._question_step(saved)
+            if step['work_ref'] != work.to_json():
+                _reject('stale')
+            if step['status'] != 'started' or step['action'] != action:
+                _reject('conflict')
+            if call['lease'] != lease['id']:
+                _reject('denied')
+            if call['status'] != 'returned':
+                _reject('conflict')
+            self._ready_to_close(row, lease, work, asking=step_id)
+            try:
+                if not set(self._required(row)) <= set(refs) <= set(self._registered(row)):
+                    raise ContractError()
+            except ContractError:
+                _reject('unavailable')
+            self._gate(refs)
+            self._questions(row)
+            if self._one("SELECT id FROM v5_tsk_question WHERE goal=? AND status='open'", (work.goal_id,)):
+                _reject('unavailable')
+            question_id = self._mint('question')
+            step['status'] = 'finished'
+            self._conn.execute('UPDATE v5_tsk_step SET wire=? WHERE id=?', (dumps(step), step_id))
+            self._conn.execute('INSERT INTO v5_tsk_question VALUES (?,?,?,?,?,?,?,?,NULL)',
+                (question_id, work.goal_id, work.revision, step_id, data['question'], data['missing_fact'], dumps(data['source_refs']), 'open'))
+            self._conn.execute("UPDATE v5_intake_work SET state='waiting_input' WHERE goal_id=? AND revision=?", (work.goal_id, work.revision))
+            self._conn.execute('UPDATE v5_tsk_lease SET active=0 WHERE id=?', (lease['id'],))
+            self._set_flags(row, 0, 0)
+            self._event(row, 'question', data['question'], tuple(Ref.from_json(ref) for ref in data['source_refs']))
+            return {'question_id': question_id, 'state': 'waiting_input', 'work_ref': work.to_json()}
+        return self._transaction('C04.ask', key, data, operation)
+
+    @_public
+    def get_question_by_key(self, request):
+        data = _obj(request, {'key'})
+        key = _id(data['key'])
+        saved = self._one("SELECT input_json,result_json FROM v5_intake_replay WHERE command='C04.ask' AND key=?", (key,))
+        if saved is None:
+            _reject('not_found')
+        try:
+            original = _obj(loads(saved['input_json']), {'key', 'work_ref', 'step_id', 'question', 'missing_fact', 'source_refs'})
+            result = Result.from_json(loads(saved['result_json']))
+            receipt = _obj(result.value.to_json(), {'question_id', 'state', 'work_ref'})
+            work = _work(receipt['work_ref'])
+            if not result.ok or original['key'] != key or receipt['state'] != 'waiting_input' or original['work_ref'] != work.to_json():
+                raise ContractError()
+            row = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=?', (work.goal_id, work.revision))
+            match = [q for q in self._questions(row) if q['id'] == receipt['question_id']]
+            if len(match) != 1 or match[0]['work_ref'] != work.to_json() or any(original[name] != match[0][name] for name in ('step_id', 'question', 'missing_fact')) or original['source_refs'] != loads(match[0]['sources']):
+                raise ContractError()
+            return result
+        except (ContractError, KeyError, TypeError, AttributeError):
+            _reject('unavailable')
+
+    def _answer(self, work, command):
+        row = self._current(work, epoch=False)
+        target = self._one('SELECT * FROM v5_tsk_question WHERE id=?', (command['question_id'],))
+        if target is None or target['goal'] != work.goal_id:
+            _reject('not_found')
+        if target['revision'] != work.revision:
+            _reject('stale')
+        questions = self._questions(row)
+        question = next(q for q in questions if q['id'] == command['question_id'])
+        if question['status'] != 'open':
+            _reject('conflict')
+        answer = Ref.from_json(command['answer_record_ref'])
+        self._gate(tuple(dict.fromkeys((*question['dependencies'], answer))))
+        self._conn.execute("UPDATE v5_tsk_question SET status='answered',answer_ref=? WHERE id=?", (dumps(answer), question['id']))
+        self._register(row, (answer,))
+        row['state'] = 'queued' if row['state'] == 'waiting_input' else 'paused'
+        self._conn.execute('UPDATE v5_intake_work SET state=? WHERE goal_id=? AND revision=?', (row['state'], work.goal_id, work.revision))
+        self._event(row, 'state', 'question answered', (answer,))
+        return {'work_ref': self._wr(row).to_json(), 'state': row['state'], 'control_status': 'none'}
+
     @_public
     def control(self, request):
         data = _obj(request, {'key', 'work_ref', 'command'})
         key, work = _id(data['key']), _work(data['work_ref'])
         command = data['command']
         verification = None
+        answer = None
         if type(command) is dict:
-            _obj(command, {'kind', 'verification_ref'})
-            verification = Ref.from_json(command['verification_ref'])
-            if command['kind'] != 'complete' or verification.kind.value != 'verification':
-                raise ContractError()
+            if command.get('kind') == 'answer':
+                _obj(command, {'kind', 'question_id', 'answer_record_ref'})
+                _id(command['question_id'])
+                if Ref.from_json(command['answer_record_ref']).kind.value != 'record':
+                    raise ContractError()
+                answer = command
+            else:
+                _obj(command, {'kind', 'verification_ref'})
+                verification = Ref.from_json(command['verification_ref'])
+                if command['kind'] != 'complete' or verification.kind.value != 'verification':
+                    raise ContractError()
         elif command not in ('pause', 'resume', 'cancel'):
             raise ContractError()
         def operation():
+            if answer is not None:
+                return self._answer(work, answer)
             if verification is not None:
                 return self._complete(work, verification)
             row = self._current(work, epoch=False)
+            questions = self._questions(row)
+            opened = [q for q in questions if q['status'] == 'open']
             flags = self._flags(row)
             before = (row['state'], row['epoch'], flags['pause'])
             command = data['command']
@@ -792,17 +978,18 @@ class TaskStore(IntakeStore):
                     if row['epoch'] == _MAX:
                         _reject('unavailable')
                     row.update(state='cancelled', epoch=row['epoch'] + 1)
+                    self._conn.execute("UPDATE v5_tsk_question SET status='closed' WHERE goal=? AND status='open'", (work.goal_id,))
             elif command == 'pause':
                 if row['state'] == 'running':
                     flags['pause'] = 1
-                elif row['state'] == 'queued':
+                elif row['state'] in ('queued', 'waiting_input'):
                     row['state'] = 'paused'
                 elif row['state'] != 'paused':
                     _reject('conflict')
             else:
                 if row['state'] != 'paused':
                     _reject('conflict')
-                row['state'] = 'queued'
+                row['state'] = 'waiting_input' if opened else 'queued'
                 flags['pause'] = 0
             if before != (row['state'], row['epoch'], flags['pause']):
                 self._conn.execute('UPDATE v5_intake_work SET state=?,epoch=? WHERE goal_id=? AND revision=?',
@@ -880,10 +1067,18 @@ class TaskStore(IntakeStore):
                     'a source registered for this completed work was stopped; completion is historical',
                     tuple(ref for ref in refs if ref in registered))
                 continue
-            if row['state'] not in ('queued', 'running', 'paused') or row['epoch'] == _MAX:
+            questions = self._questions(row)
+            row['open_question'] = next((q for q in questions if q['status'] == 'open'), None)
+            if row['state'] not in ('queued', 'running', 'paused', 'waiting_input') or row['epoch'] == _MAX:
                 _reject('unavailable')
             affected.append(row)
         for row in affected:
+            question = row['open_question']
+            if question is not None and set(refs) & set(question['dependencies']):
+                self._conn.execute("UPDATE v5_tsk_question SET status='closed' WHERE id=?", (question['id'],))
+                if row['state'] == 'waiting_input':
+                    row['state'] = 'queued'
+                    self._conn.execute("UPDATE v5_intake_work SET state='queued' WHERE goal_id=? AND revision=?", (row['goal_id'], row['revision']))
             row['epoch'] += 1
             self._conn.execute('UPDATE v5_intake_work SET epoch=? WHERE goal_id=? AND revision=?', (row['epoch'], row['goal_id'], row['revision']))
             if row['state'] == 'running':
