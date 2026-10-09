@@ -1,0 +1,9 @@
+test_changed_raw_scope_conflicts_even_when_effective_grant_matches (test_v5_intake_pipeline.IntakePipelineTests.test_changed_raw_scope_conflicts_even_when_effective_grant_matches) ... ok
+test_model_brief_durable_read_and_mock_bytes_remain_queued (test_v5_intake_pipeline.IntakePipelineTests.test_model_brief_durable_read_and_mock_bytes_remain_queued) ... ok
+test_reference_stop_rejects_new_intake_but_replays_old_receipt (test_v5_intake_pipeline.IntakePipelineTests.test_reference_stop_rejects_new_intake_but_replays_old_receipt) ... ok
+test_replay_returns_original_receipt_under_changed_host_configuration (test_v5_intake_pipeline.IntakePipelineTests.test_replay_returns_original_receipt_under_changed_host_configuration) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.009s
+
+OK

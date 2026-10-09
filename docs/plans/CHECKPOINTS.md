@@ -1,5 +1,30 @@
 # Development checkpoint ledger
 
+## C069 — isolated intake and read preparation verified
+
+TSK01/1 is MET at8db45fd06b5485bc1af5dd33b13bff8663c3ccf9. Exact AGY Opus5.5 High
+completed two design reviews; root corrected zero-budget and transaction-gap advice
+before ALIGNED. Its larger structured code call returned partial output at deadline;
+whole artifact rejected, one complete module recovered unchanged. Astra inspected
+that source and authored tests/note; separate Sol6.1 APPROVED exact root integration.
+Root retained all outcomes, compared source hashes and ran full440 PASS22.989s plus
+four synthetic consumer cases. [Receipt](../../evidence/operations/tsk01-20261009/verification.json).
+
+Useful contribution: accepted work can now preserve formal conditions, bounded grants,
+source bindings and one notification atomically, replay without duplicate effects,
+and read the saved version. This is unused isolated preparation, not operational
+PRI/MEM authority or a running v5 Goal flow. All broader service/live/UI/value gates
+remain NOT_RUN/UNMET; old trial evidence and stopped schedules are unchanged.
+
+Automatic review refused opening the exact unknown AGY conversation after timeout;
+no process was created and no indirect workaround was used. Specific optional owner
+permission is in PAL人間判断, while native work continued to completion. Old SWE
+unknown state is untouched. No whole-project/milestone/Issue completion is declared.
+Next: freeze the shared same-DB MEM availability/TSK ownership contract before
+implementing the bounded stop-to-intake connection; do not invent30 independent
+jobs or widen current authority. See D037/STATE for actual model and route evidence.
+
+
 Each coherent unit records its detailed test/change/evidence/commit/result/next action in the corresponding GitHub Issue and STATE.md. Issue exit and milestone exit/entry independently evaluate parent contribution. Material deviations create a versioned plan proposal; no automatic acceptance weakening.
 
 ## C-000 — G-001 hierarchy and P-001 proposal baseline, 2026-10-07

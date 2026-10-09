@@ -1,6 +1,28 @@
 # ACCEPTANCE.md — Stable-0 definition of done
 
-## Current C068 / D036 shared-wire preparation (2026-10-09)
+## Current C069 / D037 isolated intake preparation (2026-10-09)
+
+TSK01/1 C03.create and C02.get_work are MET for the fixed unused preparation scope.
+Atomic formal Brief/Grant/bindings/event/replay, nonexpanding grants/zero budgets,
+same-transaction required source gate, durable read/replay, conflict, rollback with
+preexisting work preserved and bounded strict errors are covered. Source8db45fd has
+independent native Sol6.1 APPROVE; root full440 PASS22.989s and four new synthetic
+wire/intake/pure-preview cases pass. [Verification](evidence/operations/tsk01-20261009/verification.json),
+[independent review](evidence/operations/tsk01-20261009/sol-independent-review.md).
+
+AGY's whole code artifact was rejected as incomplete at its print deadline despite
+exit0/SUCCESS. Only a fully closed module value was recovered; Astra inspected it
+and supplied actual tests/note. Provenance does not imply successful AGY completion.
+The author14-test helper's initial null/default confusion is retained with its fix.
+
+Host-only request_scope/source_gate are trusted synthetic seams. Real PRI/MEM
+permission/availability, shared C14, search/attach/claim/leases, historical revisions,
+providers/UI, service CT/E2E, full v5 adoption and human usefulness remain NOT_RUN.
+The module has no production importer; pure preview creates no Operation, artifact
+or completion. This record does not promote a product or live acceptance row.
+
+
+## Retained C068 / D036 shared-wire preparation (2026-10-09)
 
 INT00/1 code and synthetic consumer integration are MET for their scoped behavior.
 Native gpt-6-astra authored four isolated files; fresh gpt-6.1-sol independently

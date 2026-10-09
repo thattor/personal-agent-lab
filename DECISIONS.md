@@ -1714,3 +1714,58 @@ on both adapters, host cap12 each; that is neither vendor quota nor30-way proof.
 Assign isolated AGY Opus5.5 High implementation, native Astra independent boundary
 analysis, SOL integration, then a separate independent code review after output.
 No technical human decision or old unknown-call cancellation/retry is implied.
+
+
+D037 implementation-route correction (before adoption): AGY's first code-generation
+request failed with explicit schema-key INVALID_ARGUMENT400 and no code. The corrected
+envelope used fixed module/tests/note keys. That call exited0/reported SUCCESS, but
+stderr says `print timeout after 7m0s with turn in progress; returning partial output`.
+Host wall425.622s is measured; CLI duration0 is not useful. JSON is unterminated, so
+root rejects whole-unit completion. Only the fully closed module string12465bytes,
+hash29f5162c..., was recovered, syntax-checked and retained as unverified. Complete
+tests/note are absent. [Receipt](evidence/operations/tsk01-20261009/author-receipt.json).
+
+AGY conversation67432c30-a8e8-4660-8425-8c3a55feff4e has unknown remote terminal
+status; no retry/resume/cancellation was issued. Its text-only stream has no tool
+steps. Local exit is not proof remote inference stopped. No new AGY call until
+reconciled. The two completed design reviews remain useful; their success does
+not qualify this larger structured code-output request.
+
+stderr also says `--mode plan has no effect while slash command expansion is disabled`.
+Earlier records describe requested flags, not proven plan enforcement. Observed
+no-tool streams and isolated material scope are separate facts; do not rely on that
+ignored flag as a permission boundary. No setting or permission bypass was used.
+Future route checks must resolve effective mode and final-turn status with supported
+controls. No new human technical approval is created by this implementation defect.
+
+Continue through the owner's approved native fallback. Astra now authors completion
+and tests in the isolated candidate worktree; it no longer independently reviews
+this unit. Separate Sol6.1 reviews the completed exact commit and root consumer
+changes. Root owns adoption. Condition IDs are unique within each immutable Brief
+addressed by WorkRef (consistent with C09); no cross-Goal registry is required here.
+Default UUIDs avoid ordinary reuse; injected collisions test the actual Brief/Goal/
+event uniqueness boundaries. This clarification adds no product authority.
+
+
+D037 supported-control check: official AGY documentation describes interactive
+`--conversation ID` as loading the named conversation, and stream ACTIVE/DONE
+states separately from result status. The failed code stream has2423 ACTIVE agent
+updates and no DONE; init reports request-review. Root proposed loading only that
+exact conversation, without a prompt, from the same approved narrow workspace.
+Automatic approval review rejected it before startup because it might resume or
+duplicate the still-unknown generation. No same-operation workaround was used.
+The concrete command, risk and optional scoped approval were sent to PAL人間判断;
+no actual owner response is inferred. This does not block the native completion.
+[Control evidence](evidence/operations/tsk01-20261009/agy-deferred-route.json).
+
+
+D037/C069 actual unit outcome: native Astra completed author commit3e828019 with
+14 targeted tests; the recovered module's hash is unchanged. Root cherry-pick9689462
+preserves all three authored files, then8db45fd adds four synthetic consumer cases.
+Separate native Sol6.1 APPROVES exact8db45fd; root source hashes match and full440
+PASS22.989s, exit0. TSK01/1 unused preparation is MET. Details and retained failed
+attempts are in evidence/operations/tsk01-20261009/verification.json. Real PRI/MEM
+source/permission authority, history, C14 sharing, execution/services/providers/UI
+and human value remain NOT_RUN. The current receipt supersedes author-time pending
+review/full-suite text; it does not rewrite author provenance or promote product
+acceptance. Next dependency is the shared MEM/TSK same-transaction source boundary.

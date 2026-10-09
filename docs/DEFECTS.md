@@ -851,3 +851,39 @@ SWE call. Preserve plan_invalid and verified=false. The corrected bounded task
 asks the planner for<=1200-byte instructions referring to the goal, without drafting
 or predetermining the assessment. Future assessment requests keep plan instructions
 brief; no runtime/state edit or limit bypass. Evidence: milestone-plan-failure.json.
+
+
+## TSK01 AGY structured-output key rejection — 2026-10-09
+
+The first text-only code-generation invocation ended with INVALID_ARGUMENT400 before
+a response: output-schema properties used repository paths containing slashes, while
+the AGY/provider schema accepts only64-character alphanumeric/underscore/dot/hyphen
+keys. No files or model code were returned; process exited3 in8.068s. The retained
+receipt is evidence/operations/tsk01-20261009/author-schema-rejection.json.
+Root changed only the envelope to fixed module/tests/note keys, with a host-owned
+whitelist mapping to three paths. Next structured-output assignment uses simple
+field names and keeps repository paths as data. Corrected invocation success still
+requires a terminal result, strict JSON decode, whitelist/hash inspection and actual
+tests; an accepted schema alone does not prove code correctness.
+
+
+## AGY timeout surfaced as SUCCESS with incomplete structured output — 2026-10-09
+
+Corrected TSK01 generation ended locally after425.622s with exit0/statusSUCCESS,
+while stderr reports a7-minute print timeout with the turn still in progress.
+Root strict JSON decoding failed on an unterminated tests string; only one complete
+module value was available, and the implementation note was absent. The remote
+turn's terminal outcome is unknown. Receipt and complete unverified module are kept
+under evidence/operations/tsk01-20261009; raw stream remains local.
+
+CLI exit/status is insufficient: inspect deadline warnings, decode the entire JSON,
+enforce all output paths, then syntax, actual test discovery/run and independent
+review. Root initially continued a test command after extraction failed; that
+command exited5 with zero tests. Retained as an invalid attempt, never PASS. Future
+dependent checks require successful extraction and nonempty test discovery.
+
+The same stderr says plan mode has no effect with disabled slash expansion. Keep
+requested flags distinct from effective controls and inspect warnings before route
+qualification. No tool step was observed. Hand the partial source to native Astra
+under the owner-approved fallback; separate Sol6.1 reviews. No new AGY invocation
+or unsupported cancellation/retry resolves the unknown turn.

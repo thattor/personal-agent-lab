@@ -2,57 +2,60 @@
 
 ## Goal
 
-Latest owner direction is D037 (following D036/C068) (PAL人間判断 turn
-01a11e03-d386-77c0-8faa-41f0ab765513): use an approved alternative implementation
-route while SWE-2 is unavailable, prioritizing usable AGY; direct calls are allowed
-when CO does not support the route. This overrides the earlier CO-only restriction
-for this PAL work, without new auth/payment/publication or broad permission changes.
-INT00 common wire preparation is implemented and integrated: native gpt-6-astra
-authored the four files; a fresh gpt-6.1-sol context independently approved them.
-SOL confirmed byte identity, connected five new synthetic consumer cases and ran
-full422 tests PASS22.424s on source92732afa. An existing deadline shutdown race
-found by regression was reproduced, fixed and independently reviewed separately.
-The exact claude/claude-opus-5-5 CO design assessment is ALIGNED; SOL checked and
-integrated its sole review note. CO verification covers its bounded format and
-file version. Services/authority/DB/provider/Goal/UI/human value remain NOT_RUN. See
-[verification](evidence/operations/co-int00-20261009/verification.json) and
-[independent reviews](evidence/operations/co-int00-20261009/sol-independent-review.md).
-Old unknown status is preserved, not a whole-project stop. SOL owns integration;
-AGY Opus5.5 High is now qualified for one scoped direct call at a time under D037.
-The exact PAL-only workspace trust, existing auth, credits OFF and two successful
-text design calls are confirmed. TSK01/1 design is ALIGNED and implementation is next.
+Latest owner direction is D037/C069 following D036/C068. Direct alternative routes
+are authorized when CO cannot serve the work; private development material stays
+within the approved routes with no new auth, cost or publication.
 
-Next scoped unit: TSK-01 intake, C03.create/C02.get_work, over an isolated mock
-SQLite schema. It must mint formal Condition IDs, preserve nonexpanding host/request
-Grants and zero budgets, commit intake/event atomically, and prove same-key replay,
-different-input conflict, not_found and rollback. C02 reads select a revision;
-expected-version stale errors belong to later mutations. This is the selected next
-development dependency, not implemented behavior or product activation. No model,
-GitHub, UI or existing service/DB dependency is needed. SOL owns shared schema and
-integration. [Opus rationale](evidence/operations/co-int00-20261009/milestone-review.md).
-The author-time pending statements in INT00-IMPLEMENTATION.md are superseded by
-this checkpoint and verification.json; that four-file snapshot is retained exactly.
+TSK01/1 isolated C03.create/C02.get_work preparation is MET at source
+8db45fd06b5485bc1af5dd33b13bff8663c3ccf9. AGY Opus5.5 High supplied one fully
+recoverable module within a rejected partial artifact; native Astra inspected that
+module and completed tests/note. The module's original hash29f5162c... is unchanged.
+Separate native gpt-6.1-sol independently APPROVED the exact integrated commit;
+root verified the diff/source hashes, four synthetic consumer cases and the full
+440-test suite PASS22.989s, exit0. [Evidence](evidence/operations/tsk01-20261009/verification.json).
 
-C068 investigation found Devin session unique-cobweb: exact83,547-byte prompt match,
-17 system and3 copied user nodes, no saved assistant/tool response, no ATIF result.
-Parent54709/ACP54710 and matching children/groups are absent in the current snapshot.
-CO workspace inputs are byte-identical and all4 outputs absent. About900.149s between
-prompt/journal mtimes corroborates the900s deadline. Old source attempts group kill
-but lacks a durable cleanup receipt; underlying inference cause remains unknown.
-[Diagnostic facts and limits](evidence/operations/co-int00-20261009/diagnosis.json).
+Intake now stores the formal Brief, nonexpanding Grant, bindings, accepted event
+and replay result atomically in an explicitly supplied isolated SQLite connection.
+Same-key replay returns the original result; changed input conflicts; stopped sources
+reject new intake. Zero budgets are valid exhausted values. C02 is read-only and
+missing requested revisions are not_found. Trusted host request_scope/source_gate
+remain injection seams; they do not prove real PRI permission or MEM availability.
+This module is unused by the running product. Real services/authority, historical
+revisions, C14 sharing, execution/ledger, providers, Goal/UI and usefulness remain
+NOT_RUN/UNMET. The original Stable-0/Stable-1 evidence is historical to its versions.
 
-Historical AGY pre-qualification record (superseded by D037):
-AGY1.3.1 lists exact claude-opus-5-5 and claude-sonnet-5-5 low/medium/high variants.
-Model listing alone is not inference/billing proof. useG1Credits is unset; a narrow
-PAL cwd asked for new workspace trust and was exited with No. Automatic approval
-review rejected a home-wide AGY startup as too broad; no such startup occurred.
-Do not route around that refusal. Existing Codex Pro ordinary usage is allowed
-(40% weekly used); no reset/purchase/paid fallback is enabled. The authorized
-Astra/Sol route remains available independently of the AGY issue.
+The prior INT00/1 common-wire unit remains MET, with separate Astra author/Sol review,
+119 fixtures/three doctests and full422 at source92732afa. Current440 supersedes the
+regression count only; it does not renew any live trial/acceptance. Old authored
+notes' pending review/full-suite statements describe their authoring time and are
+superseded by current verification receipts, preserving provenance.
 
-The former C067 and INT00 continuation records below are retained history. Their
-no-replacement instruction remains binding for CO retry/switch/resume, while D036
-explicitly allows separately isolated alternative implementation under SOL ownership.
+Current route status: official CO0.4.5 uses the qualified existing state/routes below.
+Measured peak remains3 tasks, host cap12 per adapter/24 across Claude and Devin;
+provider capacity is unknown and30 was never claimed. The last read-only host
+capacity snapshot showed0 reserved/executing on both adapters. AGY isn't a CO route.
+Its exact PAL workspace trust, existing auth, credits OFF and two completed Opus5.5
+High design calls are proven; TSK01/1 design was ALIGNED after root corrections.
+The longer AGY code call reached its420s print deadline and emitted partial output
+while the turn remained ACTIVE, despite exit0/SUCCESS. Its remote termination is
+unknown. Automatic review rejected loading that exact conversation without a prompt
+because loading could resume/duplicate it; no process started, no workaround used.
+The optional specific permission was sent to PAL人間判断. No new AGY call is launched;
+this is not a project-wide stop, and native completion/review succeeded independently.
+[Route receipt](evidence/operations/tsk01-20261009/agy-deferred-route.json).
+
+Old SWE task6a9dea446fa241ceb6ee876bbdb08be9 remains unknown/awaiting_decision with
+options=[] and its original report digest. D036 permits separately isolated work,
+not cancellation/retry/resume or automatic old-output adoption. Preserve its state.
+Current AGY plan flag was ignored with disabled slash expansion; actual stream init
+reports request-review. No tool steps were observed. Requested flags, effective
+permission mode and successful artifact delivery are separate evidence.
+
+Next dependency is a reviewed same-DB MEM availability/TSK transaction contract and
+a bounded source-stop-to-intake connection. It is NOT_RUN; freeze that shared owner
+boundary before assigning dependent modules. It does not require a new owner technical
+question or activate candidate-wide services. SOL owns shared schema, integration
+and canonical records; old DBs, trials and schedules remain untouched/stopped.
 
 ## Retained C065–C067 preparation record
 
