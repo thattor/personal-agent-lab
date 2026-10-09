@@ -278,6 +278,47 @@ class CompletionTests(unittest.TestCase):
         self.conn.execute("UPDATE v5_tsk_step SET call='unrelated'")
         self.error(self.store.control(request), 'unavailable')
 
+    def test_mutually_matching_old_call_and_step_epoch_are_corrupt(self):
+        claim, request = self.ready()
+        old = {**claim['work_ref'], 'epoch': 0}
+        step = loads(self.conn.execute('SELECT wire FROM v5_tsk_step').fetchone()[0])
+        step['work_ref'] = old
+        self.conn.execute('UPDATE v5_tsk_step SET wire=?', (dumps(step),))
+        self.conn.execute('UPDATE v5_tsk_call SET work=?', (dumps(old),))
+        self.error(self.store.control(request), 'unavailable')
+
+    def test_step_wire_index_requires_integer_and_saved_index_equality(self):
+        _, request = self.ready()
+        step = loads(self.conn.execute('SELECT wire FROM v5_tsk_step').fetchone()[0])
+        for index in (False, -1, 1, '0'):
+            with self.subTest(index=index):
+                self.conn.execute('UPDATE v5_tsk_step SET wire=?', (dumps({**step, 'index': index}),))
+                self.error(self.store.control(request), 'unavailable')
+
+    def test_malformed_stored_call_work_is_unavailable_not_caller_error(self):
+        _, request = self.ready()
+        self.conn.execute("UPDATE v5_tsk_call SET work='{'")
+        self.error(self.store.control(request), 'unavailable')
+
+    def test_all_ended_call_states_require_current_work_and_valid_index(self):
+        claim, request = self.ready()
+        for status in ('raised', 'not_entered'):
+            for work, index in ((dumps({**claim['work_ref'], 'epoch': 0}), 0),
+                                ('{', 0), (dumps(claim['work_ref']), -1),
+                                (dumps(claim['work_ref']), 'bad'), (dumps(claim['work_ref']), 1)):
+                with self.subTest(status=status, work=work, index=index):
+                    self.conn.execute('UPDATE v5_tsk_call SET status=?,work=?,idx=?', (status, work, index))
+                    self.error(self.store.control(request), 'unavailable')
+
+    def test_prior_lease_finished_artifact_can_complete_with_current_verification(self):
+        first, request = self.ready()
+        self.value(self.release(first))
+        current = self.claim('next-lease')
+        self.assertNotEqual(first['work_ref']['epoch'], current['work_ref']['epoch'])
+        self.ver['work_ref'] = current['work_ref']
+        request['work_ref'] = current['work_ref']
+        self.assertEqual(self.value(self.store.control(request))['state'], 'completed')
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -65,3 +65,31 @@ evidence referenced an absent artifact (already malformed). The fixture now uses
 create then claim and makes the subset result structurally valid before testing
 set comparison. Next boundary tests must isolate the intended precedence with a
 valid earlier-layer fixture. No runtime criteria were weakened to pass these tests.
+
+## Independent review readiness correction
+
+Independent Sol found that mutual call/Step equality did not prove current lease
+identity: changing both saved WorkRefs to epoch 0 could complete epoch 1. The code
+also omitted wire.index validation, allowing false to equal SQL integer 0, and
+let malformed stored call.work escape as caller invalid_input. These were actual
+owner-validation defects, not a new scope or callback authority feature.
+
+Failing regressions were added first: 22 tests ran with 14 failures/subtest failures
+in /private/tmp/pal-complete-tsk-readiness-red.log. The correction strictly parses
+all current-lease call WorkRefs and compares them to current work, regardless of
+ended status; validates call and saved/wire indices as bounded nonnegative integers;
+and checks every linked Step's work/index/call binding. Stored parsing failures map
+to unavailable. Revision Steps retain their legitimate historical epochs unless
+linked to this current lease, so a finished prior-lease artifact remains eligible
+for a newly current VER result. The regression explicitly proves that case.
+
+After correction, completion22 PASS0.154s, binding16 PASS0.116s and context8
+PASS0.008s using the same Python3.13 commands above. Logs are respectively:
+/private/tmp/pal-complete-tsk-readiness-green.log,
+/private/tmp/pal-complete-tsk-readiness-binding.log,
+/private/tmp/pal-complete-tsk-readiness-context.log.
+Next readiness/authority tests must independently corrupt both mutually matching
+records, test bool-vs-int equality and malformed persisted JSON, and retain a
+positive historical-epoch case. These are author checks; independent rereview and
+Root actual integration remain required. The prior superseded legacy regression
+expectation remains unchanged outside this owner's scope.

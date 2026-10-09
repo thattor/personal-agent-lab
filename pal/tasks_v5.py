@@ -727,22 +727,35 @@ class TaskStore(IntakeStore):
             _reject('unavailable')
         if any(c['status'] != 'met' for c in data['checks']):
             _reject('conflict')
-        saved_steps = {saved['id']: saved for saved in self._steps(row)}
-        steps = {key: loads(saved['wire']) for key, saved in saved_steps.items()}
-        calls = self._rows('SELECT * FROM v5_tsk_call WHERE lease=?', (lease['id'],))
-        if (any(step.get('status') not in ('started', 'finished', 'abandoned') for step in steps.values()) or
-                any(call['status'] not in ('admitted', 'returned', 'raised', 'not_entered') for call in calls)):
+        try:
+            saved_steps = {saved['id']: saved for saved in self._steps(row)}
+            steps = {key: loads(saved['wire']) for key, saved in saved_steps.items()}
+            calls = self._rows('SELECT * FROM v5_tsk_call WHERE lease=?', (lease['id'],))
+            for key, step in steps.items():
+                saved = saved_steps[key]
+                binding = _work(step['work_ref'])
+                if (step['status'] not in ('started', 'finished', 'abandoned') or
+                        step['step_id'] != key or
+                        (binding.goal_id, binding.revision) != (work.goal_id, work.revision) or
+                        type(step['index']) is not int or not 0 <= step['index'] <= _MAX or
+                        type(saved['idx']) is not int or step['index'] != saved['idx']):
+                    raise ContractError()
+            for call in calls:
+                if (call['status'] not in ('admitted', 'returned', 'raised', 'not_entered') or
+                        _work(loads(call['work'])) != work or
+                        type(call['idx']) is not int or not 0 <= call['idx'] <= _MAX):
+                    raise ContractError()
+                if call['step'] in steps:
+                    saved, step = saved_steps[call['step']], steps[call['step']]
+                    if (saved['call'] != call['id'] or step['index'] != call['idx'] or
+                            _work(step['work_ref']) != work):
+                        raise ContractError()
+        except (ContractError, KeyError, TypeError):
             _reject('unavailable')
         if (any(step['status'] == 'started' for step in steps.values()) or
                 any(call['status'] == 'admitted' or (call['status'] == 'returned' and
                     (call['step'] not in steps or steps[call['step']]['status'] != 'finished')) for call in calls)):
             _reject('conflict')
-        for call in calls:
-            if call['status'] == 'returned':
-                saved, step = saved_steps[call['step']], steps[call['step']]
-                if (saved['call'] != call['id'] or saved['idx'] != call['idx'] or
-                        step['step_id'] != call['step'] or step['work_ref'] != loads(call['work'])):
-                    _reject('unavailable')
         row['state'] = 'completed'
         self._conn.execute('UPDATE v5_intake_work SET state=? WHERE goal_id=? AND revision=?',
                            ('completed', work.goal_id, work.revision))
