@@ -36,6 +36,9 @@ not. Inference failure is not free. Constructor configuration is trusted input.
   gap is history-only record; identical resend completes it, changed sanitized
   input conflicts. submit never infers. No raw input/snapshot bodies are stored
   in PRI; original body remains MEM-owned. Host mints nonempty unique turn ID.
+  C11/user_view is used only to validate that returned immutable Ref/body hash
+  for admission metadata, including stopped history; it never supplies inference
+  context. Model exposure always uses the stricter C11/model_context path.
 - `get_turn({turn_id}) -> Result[{status,effect_refs,reply?,error?}]` with public
   pending/committed/failed/interrupted. Pending internal phases are not UI claims.
   Original outcome/effect receipt is history, not new authority. Stored reply is
@@ -60,6 +63,11 @@ not_found, unready conflict, bad guard/connection/config/corrupt store unavailab
 Public errors contain only fixed messages/codes/valid Refs, no raw exceptions,
 SQL/path/body or guessed success. BaseException propagates after owned cleanup.
 Caller active transactions are refused for mutations without being taken over.
+History and all reply gates share one read snapshot. A cooperating C11 read's
+write is rolled back to its savepoint and suppresses reply, preserving prior
+caller writes. Lost/replaced read transaction is unavailable; no successful
+history projection is made from that invalid snapshot. These savepoints detect
+cooperating-owner faults; they are not a hostile-code containment boundary.
 
 ## Source-safe bounded snapshot and Root F5 refinement
 
@@ -104,6 +112,11 @@ across callback. Reserve key dumps(['PRI01.reserve',turn_id]), existing TSK work
 model/primary; consume binds exactly dumps(['PRI01.call',turn_id]). PRI owns C15
 ledger status admitted/returned/raised/not_entered/interrupted and binding/session.
 Reserve failure/consume failure makes no callback; keep successful charges history.
+After reserve/consume, recheck semantic fingerprint and all exposure refs, with
+the source check inside the short durable call admission transaction and again
+before callback entry. A confirmed admission whose acknowledgement is lost does
+not enter callback; record not_entered when the local ending can be confirmed.
+Uncertain ending stays pending. No consumed charge is refunded.
 
 invoke receives closed C15 request {call_id,reservation_id,role:"primary",messages:
 [{role:"system",text:<fixed grammar instruction>},{role:"user",text:<C01 JSON>}],
@@ -113,6 +126,13 @@ model output field. Call ending stores status/output hash, no raw output JSON.
 Ordinary callback raise is bounded failed; BaseException attempts known raised
 ending then propagates. Uncertain admission/ending persistence never permits a
 new callback; startup reconciles the durable row. There is no output fallback.
+Invalid UTF8 callback text is a known returned call with absent output hash and
+a failed parsed turn, rather than an invented admitted/unknown call.
+PRI-owned companion hashes bind turn/session/nonce, call identity/reservation,
+snapshot exposure metadata and saved intent; terminal outcome has its own
+canonical hash and closed fixed error shape. One-sided corruption fails closed.
+These checks detect accidental record mismatch, not coordinated forgery of a
+trusted database. They do not query private owner tables or authorize new effects.
 
 Before dispatch persist exact normalized proposal, original reply, owner request,
 trusted fixed scope and effect key dumps(['PRI01.effect',turn_id,proposal_kind]).
@@ -140,6 +160,9 @@ WorkRef/question ID is not a Ref kind. Host reply may name the owner-confirmed
 Goal ID/revision/state, never invent a purpose from withheld text. Append-event
 failure rolls back terminal commit. Owner events remain distinct. No MEM assistant
 reply is added and no turn/reply/event text is subsequent model context.
+The model reply retains its8192UTF8byte wire cap; model text plus fixed owner
+acknowledgement has a separate16384UTF8byte host cap. No content is silently
+truncated or taken from a withheld body.
 
 ## Startup reconciliation and fixed proof
 
