@@ -291,13 +291,22 @@ class NativeClaudeBuffer:
         usage = frame['modelUsage']
         _closed(usage, (CLAUDE_MODEL_ID,))
         counts = usage[CLAUDE_MODEL_ID]
-        if type(counts) is not dict:
-            _fail()
-        _integer(counts['inputTokens'], 1)
-        _integer(counts['outputTokens'], 1)
-        for value in counts.values():
-            if type(value) not in (int, float) or value < 0 or (type(value) is float and not math.isfinite(value)):
+        _closed(counts, ('canonicalModel', 'provider', 'costBasis',
+                         'inputTokens', 'outputTokens', 'cacheReadInputTokens',
+                         'cacheCreationInputTokens', 'thinkingTokens',
+                         'contextWindow', 'maxOutputTokens', 'webSearchRequests', 'costUSD'))
+        for name, expected in (('canonicalModel', CLAUDE_MODEL_ID),
+                               ('provider', 'firstParty'), ('costBasis', 'list')):
+            if type(counts[name]) is not str or counts[name] != expected:
                 _fail()
+        for name in ('inputTokens', 'outputTokens', 'contextWindow', 'maxOutputTokens'):
+            _integer(counts[name], 1)
+        for name in ('cacheReadInputTokens', 'cacheCreationInputTokens', 'thinkingTokens'):
+            _integer(counts[name], 0)
+        _integer(counts['webSearchRequests'], 0, 0)
+        cost = counts['costUSD']
+        if type(cost) not in (int, float) or cost < 0 or (type(cost) is float and not math.isfinite(cost)):
+            _fail()
         stats = frame['subagent_stats']
         singles = ('spawned', 'started_in_background', 'max_depth', 'spawned_by_subagents', 'completed', 'failed')
         groups = {'requested': ('background', 'foreground', 'unset'),
