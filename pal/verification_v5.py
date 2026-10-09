@@ -71,7 +71,8 @@ def _record_refs(value):
     if type(value) is not list:
         raise ContractError()
     refs = [Ref.from_json(item) for item in value]
-    if any(ref.kind is not RefKind.RECORD for ref in refs):
+    if (not refs or len(set(refs)) != len(refs)
+            or any(ref.kind is not RefKind.RECORD for ref in refs)):
         raise ContractError()
     return refs
 
@@ -80,7 +81,7 @@ def _conditions(value):
     if type(value) is not list:
         raise ContractError()
     conditions = [Condition.from_json(item) for item in value]
-    if len({condition.id for condition in conditions}) != len(conditions):
+    if not conditions or len({condition.id for condition in conditions}) != len(conditions):
         raise ContractError()
     return conditions
 
@@ -92,7 +93,7 @@ def _hash(value):
 
 
 def _bytes(value):
-    if type(value) is not int or value < 0 or value > _MAX_INT:
+    if type(value) is not int or not 0 <= value <= 1048576:
         raise ContractError()
     return value
 
@@ -107,8 +108,11 @@ def _request(value):
 
 def _context_data(result):
     data = _obj(result.value.to_json(), _CONTEXT_FIELDS)
+    refs = _artifact_refs(data['artifact_refs'])
+    if len(set(refs)) != len(refs):
+        raise ContractError()
     return (_work(data['work_ref']), _conditions(data['conditions']),
-            _artifact_refs(data['artifact_refs']), _record_refs(data['source_refs']))
+            refs, _record_refs(data['source_refs']))
 
 
 def _artifact_meta(result, ref):
@@ -230,7 +234,7 @@ class VerificationStore:
             if not result.ok:
                 code = result.error.code.value
                 self._rollback()
-                return _error(code)
+                return _error(code if code in ('not_found', 'stale', 'denied', 'conflict') else 'unavailable')
             work, conditions, current_refs, required = _context_data(result)
             if work != _work(data['work_ref']):
                 self._rollback()
@@ -244,7 +248,7 @@ class VerificationStore:
                 if not inspected.ok:
                     code = inspected.error.code.value
                     self._rollback()
-                    return _error({'denied': 'denied', 'stale': 'stale'}.get(code, 'unavailable'))
+                    return _error('denied' if code == 'denied' else 'unavailable')
                 meta, meta_work = _artifact_meta(inspected, ref)
                 if meta_work.goal_id != work.goal_id or meta_work.revision != work.revision:
                     self._rollback()
@@ -262,7 +266,7 @@ class VerificationStore:
                 self._rollback()
                 return _error('denied' if state == 'denied' else 'unavailable')
             checks = _checks(conditions, current_refs)
-            verification_id = _id(self._id_factory('verification'))
+            verification_id = _id(self._guard(lambda: self._id_factory('verification')))
             verification_ref = Ref(RefKind.VERIFICATION, verification_id).to_json()
             receipt = {'verification_ref': verification_ref, 'checks': checks}
             record = {'verification_ref': verification_ref, 'work_ref': work.to_json(),
@@ -328,6 +332,8 @@ class VerificationStore:
         work = _work(record['work_ref'])
         conditions = _conditions(record['conditions'])
         refs = _artifact_refs(record['artifact_refs'])
+        if len(set(refs)) != len(refs):
+            raise ContractError()
         required = _record_refs(record['required_refs'])
         sources = _record_refs(record['source_refs'])
         if type(record['artifacts']) is not list:
@@ -370,32 +376,29 @@ class VerificationStore:
                                 purpose='status')
             if not result.ok:
                 code = result.error.code.value
-                if code in ('stale', 'denied'):
+                if code == 'stale':
                     return 'invalidated'
                 raise _Failure(code if code in ('not_found', 'unavailable') else 'unavailable')
             work, conditions, refs, required = _context_data(result)
         except ContractError:
             raise _Failure('unavailable')
-        if (work != stored['work']
-                or [c.to_json() for c in conditions] != [c.to_json() for c in stored['conditions']]
-                or [r.to_json() for r in refs] != [r.to_json() for r in stored['refs']]
-                or [r.to_json() for r in required] != [r.to_json() for r in stored['required']]):
-            return 'invalidated'
+        if work != stored['work'] or conditions != stored['conditions'] or required != stored['required']:
+            raise _Failure('unavailable')
+        if refs != stored['refs']:
+            if len(refs) > len(stored['refs']) and refs[:len(stored['refs'])] == stored['refs']:
+                return 'invalidated'
+            raise _Failure('unavailable')
         for meta in stored['metas']:
             try:
                 inspected = self._call(self._artifact_inspect, {'ref': meta['artifact_ref']})
                 if not inspected.ok:
                     code = inspected.error.code.value
-                    if code in ('stale', 'denied'):
+                    if code == 'denied':
                         return 'invalidated'
                     raise _Failure('unavailable')
-                current, current_work = _artifact_meta(
+                current, _ = _artifact_meta(
                     inspected, Ref.from_json(meta['artifact_ref']))
-                if (current_work.goal_id != stored['work'].goal_id
-                        or current_work.revision != stored['work'].revision
-                        or current['hash'] != meta['hash'] or current['bytes'] != meta['bytes']
-                        or current['step_id'] != meta['step_id']
-                        or current['source_refs'] != meta['source_refs']):
+                if current != meta:
                     raise ContractError()
             except ContractError:
                 raise _Failure('unavailable')
@@ -426,7 +429,7 @@ class VerificationStore:
         except ContractError:
             return _error('invalid_input')
         if ref.kind is not RefKind.VERIFICATION:
-            return _error()
+            return _error('invalid_input')
         try:
             self._conn.execute('BEGIN')
             value = self._typed_result(ref)
@@ -450,7 +453,7 @@ class VerificationStore:
         except ContractError:
             return _error('invalid_input')
         if ref.kind is not RefKind.VERIFICATION:
-            return _error()
+            return _error('invalid_input')
         try:
             return Result.success(self._typed_result(ref))
         except _Failure as exc:

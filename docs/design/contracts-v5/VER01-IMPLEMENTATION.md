@@ -30,9 +30,11 @@ collaborators wrapped in a savepoint guarded by `in_transaction` and
   artifact bindings, conservative source union; corruption -> unavailable,
   no repair), then compared against `context(purpose='status')`, the exact
   current ordered set, current artifact integrity and the source gate.
-  Stale context, changed work/set/dependencies or denied evidence ->
-  `invalidated`; not_found/unavailable context -> same error; other broken
-  evidence -> unavailable. `inspect` is readonly on the caller's active
+  Explicit stale context, legitimate ordered set append or denied source evidence
+  -> `invalidated`; not_found/unavailable context -> same error. Same-WorkRef
+  condition/required-ref changes, set shrink/reorder and uncertain owner errors
+  -> unavailable. Current artifact metadata including its original epoch must
+  match the immutable snapshot exactly. `inspect` is readonly on the caller's active
   transaction.
 
 Errors: malformed caller input -> invalid_input; ordinary Exception ->
@@ -55,5 +57,18 @@ completion, actual MEM/TSK/ART integration, or C10 readiness.
 - A trusted collaborator's COMMIT inside a guard cannot be undone (documented
   limit shared with ArtifactStore).
 - `semantic` and `source_fetched` stay unknown; no evaluator/EXE owner exists.
-- C10 typed readback, real-owner integration, disk reopen, two-connection
-  ordering and terminal-safe lease handling are explicitly out of scope.
+- C10 control integration and terminal-safe lease handling remain out of scope.
+  Root separately adds real-owner integration, reopen and two-connection cases;
+  their evidence is not attributed to this SWE author.
+
+## Independent integration corrections
+
+Native Sol review of candidate9147584 and Root strict probes reproduced malformed
+fixed context and overly broad invalidation. Root rejects empty/duplicate owner
+sets and dependencies, empty Conditions, out-of-range ART metadata, unsupported
+owner errors, and non-verification read refs. Current artifact WorkRef is compared
+in full. The id factory is guarded before writes so premature COMMIT cannot cause
+autocommitted partial VER rows. No guard can undo a collaborator's own commit.
+Nine independent integrity methods reproduced20 failing subcases; after fixes all
+45 focused tests pass (12 actual connection,8 TSK context,16 original acceptance,
+9 integrity). Full regression and independent rereview are recorded separately.

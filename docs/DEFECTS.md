@@ -1083,3 +1083,19 @@ canonical C15.call and C08.save formats before execution; AST passes, execution
 is NOT_RUN until VER exists. Cause was a locally recreated fixture's shorthand
 identity. Next integration fixture uses the actual host key contract before
 asserting downstream behavior. This is a test correction, not a product defect.
+
+
+VER01 strict boundary defects at9147584: independent Sol found that empty fixed
+Conditions could save checks=[], changed same-revision conditions/required refs or
+set shrink/reorder were reported as ordinary invalidation, and changed artifact
+epoch still returned valid. Root probes additionally found loose owner provenance/
+byte bounds and error mapping, wrong-kind read errors, and an id_factory COMMIT
+that allowed VER inserts to autocommit before the final COMMIT failed. Cause: the
+initial16 fixtures covered successful public paths but not these corrupt snapshots
+and transaction replacement points. Root retained original CO16 PASS and added
+9 integrity methods (20 failing subcases), then closed those validation paths and
+guarded ID minting before writes. Focused45 pass; independent rereview/full suite
+pending. Next owner integration tests must distinguish legitimate monotonic state
+changes from corruption, compare all immutable binding fields, and probe every
+trusted callable between BEGIN and the first durable write. This finding applies
+to these actual APIs, not a promise to sandbox arbitrary collaborator code.
