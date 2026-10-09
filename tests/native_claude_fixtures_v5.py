@@ -16,7 +16,7 @@ def frames(text='日本語\n保存',session=SESSION):
  for i,part in enumerate((text[:split],text[split:])):
   assistants.append({'type':'assistant','session_id':session,'uuid':uid(3+i),'parent_tool_use_id':None,'request_id':'request-fixture','message':{'id':'message-fixture','type':'message','role':'assistant','model':MODEL,'content':[{'type':'thinking','thinking':'not answer','signature':'fixture-signature'},{'type':'text','text':part}],'stop_reason':None}})
  rate={'type':'rate_limit_event','session_id':session,'uuid':uid(5),'rate_limit_info':{'status':'allowed','isUsingOverage':False,'overageDisabledReason':'org_level_disabled'}}
- result={'type':'result','subtype':'success','session_id':session,'uuid':uid(6),'is_error':False,'stop_reason':'end_turn','terminal_reason':'completed','num_turns':1,'queued_turn_count':0,'result_index':0,'permission_denials':[],'modelUsage':{MODEL:{'inputTokens':11,'outputTokens':9,'costUSD':0.0}},'subagent_stats':stats(),'result':text}
+ result={'type':'result','subtype':'success','session_id':session,'uuid':uid(6),'is_error':False,'stop_reason':'end_turn','terminal_reason':'completed','num_turns':1,'queued_turn_count':0,'result_index':0,'permission_denials':[],'modelUsage':{MODEL:{'canonicalModel':MODEL,'provider':'firstParty','costBasis':'list','inputTokens':11,'outputTokens':9,'cacheReadInputTokens':0,'cacheCreationInputTokens':2,'thinkingTokens':3,'contextWindow':200000,'maxOutputTokens':16384,'webSearchRequests':0,'costUSD':0.0125}},'subagent_stats':stats(),'result':text}
  return [init,tick,*assistants,rate,result]
 def stream(rows):return b''.join(canonical(row)+b'\n' for row in rows)
 def buffer(*,text=None,request_hash='1'*64,profile_hash='2'*64,attempt=None,session=SESSION,argv_hash=None):
