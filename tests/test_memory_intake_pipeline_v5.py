@@ -7,6 +7,7 @@ import tempfile
 import unittest
 
 from pal.contracts_v5 import Grant, Limits, Ref
+from pal.events_v5 import EventReader
 from pal.intake_v5 import IntakeStore
 from pal.memory_v5 import MemoryStore
 from pal.sanitize import sanitize
@@ -119,6 +120,38 @@ class MemoryIntakePipelineTests(unittest.TestCase):
         before = self.snapshot()
         self.assertTrue(self.stop(ref).ok)
         self.assertEqual(self.snapshot(), before)
+
+    def test_c14_reconnect_delivers_stop_to_work_and_ack_to_actor_once(self):
+        ref = self.record()
+        _, accepted = self.create(ref)
+        old = accepted.value.to_json()['work_ref']
+        reader = EventReader(self.conn, page_size=1)
+        first = reader.get_events({'session_id': 'shared-session'}).value.to_json()
+        second = reader.get_events({'session_id': 'shared-session',
+                                    'after_event_id': first['next_cursor']}).value.to_json()
+        self.assertEqual(second['events'][0]['work_ref'], old)
+        cursor = second['next_cursor']
+        self.assertTrue(self.stop(ref).ok)
+        self.assertTrue(self.stop(ref).ok)
+        self.conn.close()
+        self.conn, self.intake, self.memory = self.connect()
+        reader = EventReader(self.conn, page_size=1)
+        resumed = reader.get_events({'session_id': 'shared-session',
+                                     'after_event_id': cursor}).value.to_json()
+        self.assertEqual(len(resumed['events']), 1)
+        state = resumed['events'][0]
+        self.assertEqual((state['kind'], state['work_ref'], state['refs']),
+                         ('state', dict(old, epoch=1), [ref]))
+        empty = reader.get_events({'session_id': 'shared-session',
+                                   'after_event_id': resumed['next_cursor']}).value.to_json()
+        self.assertEqual(empty, {'events': [], 'next_cursor': resumed['next_cursor']})
+        actor = reader.get_events({'session_id': 'control'}).value.to_json()
+        self.assertEqual(len(actor['events']), 1)
+        self.assertEqual(actor['events'][0]['kind'], 'state')
+        self.assertNotIn('work_ref', actor['events'][0])
+        foreign = reader.get_events({'session_id': 'shared-session',
+                                     'after_event_id': actor['next_cursor']})
+        self.assertEqual(foreign.error.code.value, 'not_found')
 
     def test_unsupported_work_state_rolls_back_source_stop(self):
         ref = self.record()

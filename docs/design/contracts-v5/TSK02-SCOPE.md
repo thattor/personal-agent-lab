@@ -1,89 +1,155 @@
-# TSK02/1 — proposed controlled mock Expert step
+# TSK02/1 — controlled mock Expert step
 
-DRAFT for Opus consultation, not implementation adoption. Prerequisite is the
-verified MEM01 connection at013bf52. TSK03 read-only event pagination is independently
-running through CO; it does not write shared state. SOL owns contract/integration.
+SOL technical disposition of the complete Opus5.5 consultation is adopted under
+D038. Its CO document verifier failed on length; original note/receipt remain in
+`evidence/operations/tsk02-20261009`. SWE implementation consultation is still
+required before substantial code. Prerequisite: MEM01/1 and TSK01/1, current source
+6adf42b. This scope implements a local connected mock, not product activation.
 
-Next contribution: append → intake → claim → source-bound mock Expert report or
-lookup → durable step/event → release. Exercise pause/cancel/reference-stop while
-the actual mock callable is held at a barrier. This gives an early useful connected
-execution path instead of another collection of disconnected helper functions.
-It remains a local mock, not actual model/GitHub/UI or completion/usefulness proof.
+Outcome: MEM append → intake → claim → source-bound mock Expert report/lookup →
+durable step/event → release. Controls and reference stop must commit while the
+actual mock callable waits at a deterministic barrier. Goal remains unfinished.
+No new model/provider/auth/cost/service, existing live DB migration, UI, scheduler,
+Operation, question/answer, change/attach, ART/VER completion or automatic recovery.
+Python standard library only. Fresh isolated SQLite databases in tests.
 
-## Proposed required behavior
+## Ownership and files
 
-TSK stays sole owner of work state, single execution slot, source dependencies,
-steps, budget reservations and events. Reuse existing tables and add only necessary
-lease/call-lifecycle, control metadata, steps and reservations. No existing DB
-migration, providers, authentication, cost, arbitrary execution or schedule.
-All standalone mutations use BEGIN IMMEDIATE; MEM invalidation remains inside its
-own transaction through the public TSK callback. No model/I/O wait in a transaction.
+One isolated author owns `pal/tasks_v5.py`, `tests/test_tasks_v5.py`, and
+`docs/design/contracts-v5/TSK02-IMPLEMENTATION.md`. Small required internal hooks
+in `pal/intake_v5.py` are also exclusively theirs. TSK remains one canonical owner.
+Prefer `TaskStore(IntakeStore)` with the same constructor plus required host_limits
+(Limits). Reuse intake/source/replay/event tables; add necessary v5_tsk_ tables.
+No schema changes to existing tables. Existing IntakeStore callers retain their
+queued-only behavior; TaskStore is the extended execution composition. Root owns
+mock invoker/runner and connected tests, canonical docs and integration. Separate
+Sol6.1 reviews the integrated implementation. C14 EventReader writes no state.
 
-- claim({runner_id}) occupies one queued Goal, increments epoch, returns C13 lease /
-  work / Brief / Grant / checkpoint / steps / pending_inputs. Another owner cannot
-  claim while occupied. Replayed claim by the same runner must not create a new lease.
-- register_sources({work_ref,refs}) checks current running authority and MEM before
-  registering model context and lookup dependencies; no cached source authority.
-- reserve_budget({key,work_ref?,kind,role?}) and consume({reservation_id,call_or_operation_id})
-  enforce finite work plus explicit finite host limits. Persist usage across reopen /
-  control; same key replays, different input conflicts; failed calls never refund.
-- begin_step({key,work_ref,action}) supports report/lookup only initially, reserves
-  a step once, and records the validated Action. Model-selected Refs must belong
-  to actual supplied context; they do not create IDs or permission.
-- finish_step({work_ref,step_id,result_refs,error?}) checks current authority/sources,
-  stores result and event atomically. Repeated equal finish input replays by step ID;
-  changed input conflicts. Report never completes a Goal.
-- control({key,work_ref,command}) implements pause/resume/cancel. Owner commands
-  compare revision, not epoch alone. Pause queued→paused; pause running requests stop
-  and blocks new work/adoption; cancel invalidates epoch and retains occupied slot
-  until owned call termination. Terminal resume conflicts.
-- release({lease_id,work_ref,outcome,reason}) requires the currently owned lease and
-  actual owned-call cessation. It can release an old epoch without overwriting a
-  later pause/cancel/source-stop intent. Wrong lease cannot free the slot.
-- Extend source-stop: running→epoch invalidation/draining then queued after cessation;
-  paused remains paused; terminal history remains unchanged. Later pause/cancel while
-  draining takes precedence. Subsequent stopped-source use is a visible bounded
-  blocker, never a retry spin or silent cached-body reuse.
+Standalone mutations require an idle caller connection and use BEGIN IMMEDIATE.
+Rollback a failed transaction; no external call or body read inside a transaction.
+MEM calls TaskStore.invalidate_by_refs on its exact active connection; no nested
+BEGIN/COMMIT/ROLLBACK. Trusted callbacks are not arbitrary-code sandbox boundaries.
 
-## Questions for technical disposition
+## Frozen host APIs
 
-1. Freeze claim retry/occupied/empty result and C13 step replay/error shapes. The v5
-   claim request has no explicit key; the same runner can recover its owned lease.
-2. Define the smallest correct call-start/control linearization. A host coordinator
-   serializes admission with structured control; it must release its lock before
-   waiting for a callable, so controls remain responsive. Distinguish a committed
-   admission from actual callable entry. Test both ordered races with barriers.
-3. Do not accept call_stopped=True or EXP self-report. A required trusted mock-call
-   wrapper allocates/binds call ID, observes return/exception, and records cessation
-   from its own termination path. A leased/orphaned call after reopen stays blocked;
-   no automatic clearing, new call or inferred provider termination. If threaded,
-   observe actual termination/join. This proves only mock callable cessation.
-4. Keep roles honest: RUN owns no persistent state. TSK may own reservation/call
-   binding and lease metadata, while full C15 raw-model-result ownership belongs to
-   MOD. Decide whether the first mock host can avoid a separate raw output ledger
-   without claiming complete MOD, or whether that small owner is essential now.
-5. Select a stable finite host-budget identity/lifetime; changed settings cannot
-   erase usage. Define exhaustion failure/state/event behavior and zero-budget path.
-6. Lookup persists Ref selections, not MEM bodies; reread before each later mock
-   call. Use explicit same-session search (existing work_ref filter is unavailable)
-   and register every source before model reservation. Avoid a fake semantic search.
+All request objects are strict v5 shapes; return Result with the eight ErrorCodes.
+IDs are nonempty UTF-8 strings; integers exclude bool, are bounded for SQLite.
+Repeated successful mutations return original receipts without new effects; changed
+canonical input conflicts. Replay is historical, never fresh execution authority.
+Internal keys use canonical JSON arrays. Missing identities are not_found;
+wrong revision/epoch is stale; current-state/changed-input conflict is conflict;
+stopped source is denied; exhausted budget is limit; persistence/source-owner
+failure is bounded unavailable. Error messages never contain raw callback data.
 
-## Acceptance and division
+- `claim({runner_id})`: oldest queued row by rowid → running, epoch+1, occupied
+  lease and state event atomically. Return C13 fields lease_id/work_ref/brief/grant/
+  checkpoint/steps/pending_inputs; empty is `{status:empty}`. Same runner while it
+  owns an active lease returns that lease/current work metadata without new effects.
+  Another runner sees conflict, even if the owned work was cancelled. Each host
+  process mints a fresh runner_id; do not adopt an old runner after restart.
+- `get_execution_context({lease_id,work_ref})`: host-only read for the root driver:
+  return session_id, required_refs (origin plus Brief.context_refs), optional_refs
+  (registered lookup refs minus required), remaining_budget (work and host counts
+  per kind), and next_step_index. Check owned lease/current authority. No bodies.
+- `register_sources({work_ref,refs})`: current running authority/no control, verify
+  all exact refs through MEM in transaction, insert dependencies once. No cached
+  source authority. Required refs originate from intake; new refs are optional.
+- `reserve_budget({key,work_ref,kind,role?})`: kind=model or step; only expert role
+  for model in this slice. Work-less and operation are unavailable. Reserve one
+  from both finite ledgers atomically; return reservation_id and remaining
+  `{work:int,host:int}` for that kind. Failures never refund. Step reservation is
+  internal to begin_step, not a second runner reservation.
+- `consume({reservation_id,call_or_operation_id})`: bind exactly once; same binding
+  replays, another ID conflicts. Must not let an unrelated step/model reservation
+  authorize a call. admit_call performs the model consume in its own transaction.
+- `admit_call({call_id,lease_id,work_ref,reservation_id,source_refs})`: requires owned
+  current running lease/no control, no unended call and no unadopted returned call
+  for this next step. Recheck MEM and registered membership, consume model reservation
+  and persist call lifecycle metadata atomically. Index is next step index; host
+  call_id is derived from lease_id/index. Return call_id and status. Equal replay
+  returns the original receipt but must not cause another invocation.
+- `end_call({call_id,outcome})`: trusted invoker only, outcome returned/raised/
+  not_entered, recorded after actual return/exception or known skipped entry. May
+  finish an old epoch; cannot adopt its output. Replay by call_id + canonical input.
+  No model/runner-supplied call_stopped boolean. A read-only call-status query is
+  allowed for host coordination; its exact shape must be documented before driver
+  use. Cessation persistence failure leaves occupancy blocked, never inferred.
+- `begin_step({key,work_ref,action})`: parse with shared model-action validator and
+  refs actually supplied to the ended/returned call at next index. Only report and
+  lookup supported; other valid actions return unavailable. Current authority and
+  current supplied-source availability, no active control. Reserve step once and
+  store C13 Step. No second step per call/index. Report is not completion.
+- `finish_step({work_ref,step_id,result_refs,error?})`: strict C13 shape, replay by
+  step_id/canonical input; current authority, no control, current sources. Report
+  has empty result_refs. Lookup uses actual MEM same-session search plus C11 reads
+  outside the transaction; recheck/register all returned refs here. An unavailable
+  lookup ref is not silently persisted as usable. Persist step/checkpoint and one
+  progress/error event atomically. Lookup truncation is passed explicitly via a
+  host-only keyword `truncated=False` and included in replay/event/checkpoint metadata;
+  it must not silently add a field to C13 Step. Never store copied MEM bodies.
+- `control({key,work_ref,command})`: pause/resume/cancel. Owner commands compare
+  goal_id/revision, not epoch alone. Queued pause→paused; running pause records
+  pause_requested without epoch change and blocks admission/adoption. Cancel on
+  nonterminal sets cancelled and epoch+1, keeps occupied lease. Paused resume→queued;
+  terminal/running resume conflicts. New-key repeated pause/cancel returns current
+  state. Corresponding state event and replay commit together.
+- `release({lease_id,work_ref,outcome,reason})`: yield/paused/failed. Unknown lease
+  not_found; wrong slot owner denied; wrong Goal/revision stale. Every admitted
+  call must have ended; otherwise conflict. Old owned epoch may release. paused
+  requires pause intent. Abandon started steps, free slot and persist state/event/
+  receipt together. Precedence: cancelled → paused intent → draining queued →
+  runner outcome (yield queued, failed failed). Replay by lease_id + canonical input.
 
-One report step produces one durable event/step, Goal still unfinished. Lookup
-reads actual MEM content and supplies it to the next bounded mock call. Zero/exhausted
-budgets cause zero invocation; replay/control/reopen do not refund. Barrier cases:
-pause-before-start, start-before-pause, cancel-held-call, stop-held-call, and
-stop→pause/cancel. Late result is rejected; occupancy remains until observed cessation;
-an old owned lease releases without losing newer intent. Failure at step/event/
-reservation persistence rolls back its transaction and preserves prior receipts.
+## Linearization and source-stop
 
-Proposed author split after scope freeze: isolated TSK persistence/control owner
-(Astra or available SWE); independent root mock-driver/consumer integration;
-separate Sol6.1 code review. No concurrent writes to shared files. Opus assesses
-intent/contract alignment, not actual code correctness or human usefulness.
+Admit/control/stop are ordered by SQLite commit. Admission means the call is already
+owned/in-flight for control purposes, even before Python entry; this is not proof
+that the callback ran. A wrapper may reread and skip entry as not_entered. The small
+race after that read belongs to the already admitted call: control still fences
+its result and retains occupancy. Do not claim atomic physical callback entry or
+remote termination. No DB transaction or coordinator lock spans the callback.
+Root's trusted synchronous wrapper records end_call in its termination path. If
+threading is used, observe actual callback return/join; a timeout is not cessation.
+A repeated admission receipt never reinvokes a callable. Orphaned occupied calls
+remain blocked after reopen; recover is unavailable, no clearing or recomputation.
 
-Ask/answer/C04, change/attach revisions, external Operation, ART/VER/complete and
-full process recovery can remain explicitly unsupported; never emulate a question
-as a report or mark Goal complete from an Expert summary. State which requirements
-are truly necessary for this first connection before adopting the scope.
+TaskStore invalidation retains check-all-before-write and coverage checks. For each
+matched current revision: queued→epoch+1 queued; running→epoch+1 with draining flag;
+paused→epoch+1 paused; cancelled/failed skip unchanged. waiting_input/completed remain
+unavailable and are not reachable through this slice. Running may have pause intent;
+keep it when marking draining. Event routes to the affected work's stored session;
+MEM acknowledgement routes to the initiating session. Cancel/pause committed during
+draining wins at release. Mixed queued/running/terminal dependencies remain atomic.
+A stopped required source after requeue makes one explicit failed/blocker result,
+not a retry spin. Stopped optional lookup sources are omitted and named as excluded
+before a later call; no cached bodies and no stopped selected refs in model context.
+
+## Budgets and limits
+
+Host ledger lifetime is this database: explicit finite Limits required, each within
+SQLite range, zero valid. No reset API. Configuration may change limits only, never
+used counts; counts >= limit are exhausted. Work ledger is goal_id across revisions,
+using Grant ceilings and no reset on control/reopen. Claim refuses exhausted host
+model or step budgets without changing state. Mid-lease host limit yields with a
+reason, work limit fails with a reason; required-source denial fails once. No unused
+reservation refund. These are mock invocation/step counts, not real provider usage.
+Full C15 MOD raw result/status/model_id/replay/interrupted/work-less calls remain
+unmet. TSK owns only execution-right metadata, no raw model output ledger. A crash
+losing in-memory output cannot safely reinvoke it and remains blocked for recovery.
+
+## Verification and returned evidence
+
+Author tests: strict input, empty/occupied/retried claim, current/replayed/stale
+control, wrong/old owned lease, step/call dedupe, finite budgets across reopen/limit
+changes, all-or-nothing event/step/reservation failure, source coverage and mixed
+state invalidation, no transaction crossing callbacks. Zero budget invokes nothing.
+Root connected tests use actual MEM/TSK/C14 and a real mock callable: report then
+lookup supplies actual usable bodies/hash to next call; pause-first/admit-first;
+admit then pause before entry; cancel/stop while held; stop→pause/cancel and pause→stop;
+late adoption denied; no release before cessation; raising callback no refund;
+reopen orphan stays blocked; stop-before/after lookup registration; no duplicate
+notification on reconnect. Use Events/barriers, never sleeps or caller stop booleans.
+
+Return exact diff, test command/count/status, API shape note and unresolved limits.
+Root verifies source, integrates, runs full suite and obtains separate review before
+accepting the connected unit. Then continue the next unfinished authorized slice.

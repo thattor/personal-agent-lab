@@ -1852,3 +1852,21 @@ and exact swe-2-high Free; no new auth/cost/fallback. Native Astra analyzes the
 independent TSK02 control/step boundary while this runs. The first corrected
 implementation→verification→independent assessment→next-dispatch loop is observed;
 ongoing success and complete PAL delivery are not inferred from one cycle.
+
+D038 TSK02 technical disposition: Opus5.5 task0f5365d4c1ba438396ed08a16da2fab2
+completed both calls and returned a full REFINE consultation. Its12000-byte document
+verifier failed; keep that result and original response, no rerun just to shorten it.
+Adopt the corrected connected report/lookup mock, durable lease/call lifecycle,
+nonrefunding finite work+host budgets, immediate structured controls, source-stop
+and latest-intent precedence described in TSK02-SCOPE.md. Required and optional
+sources stay distinct. TSK is sole owner; RUN has no persistent competing state.
+Full MOD raw output/replay and orphan recovery remain explicitly incomplete.
+
+Clarify two limits in the advice: a committed admission is already owned/in-flight,
+not proof of actual Python entry. A last pre-entry check cannot make physical entry
+atomic with another connection's control; late results are fenced and slot retained.
+An ended call with lost in-memory output is also not permission to recompute. The
+mock wrapper, not a supplied stop boolean, observes cessation. Shared C13 Step shape
+is preserved; lookup truncation is host metadata. Technical choices add no new owner
+approval gate or external activation. SWE consultation precedes substantial code;
+isolated Astra authors TSK, SOL integrates mock flow, separate Sol6.1 reviews.

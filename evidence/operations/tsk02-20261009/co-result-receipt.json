@@ -1,0 +1,88 @@
+{
+  "schema": "co.task-result/2",
+  "task_id": "0f5365d4c1ba438396ed08a16da2fab2",
+  "base_sha": "bda4f9c7416dc0046111f06b5ec7aa663376dcd4",
+  "status": "failed",
+  "verified": false,
+  "error": {
+    "code": "verification_failed"
+  },
+  "attempts": [
+    {
+      "attempt_id": "plan-a1",
+      "call_id": "plan",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:36305f7ee8003c6d965b0bf30428ff0b3c21e1c7d9e563a34edfb921a081d6fa",
+      "role": "planner",
+      "route": "claude",
+      "step_id": "plan"
+    },
+    {
+      "attempt_id": "s1-a1",
+      "call_id": "s1",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:55156df914149263dd8b1a59e100b314c39beba6e27123838a53bacd8bdda399",
+      "role": "implement",
+      "route": "claude",
+      "step_id": "s1"
+    }
+  ],
+  "selection": {
+    "mode": "fixed",
+    "targets": {
+      "implement": {
+        "model": "claude-opus-5-5",
+        "route": "claude"
+      },
+      "planner": {
+        "model": "claude-opus-5-5",
+        "route": "claude"
+      },
+      "review": {
+        "model": "claude-opus-5-5",
+        "route": "claude"
+      }
+    }
+  },
+  "reviews": {},
+  "repairs_used": 0,
+  "workspace": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/0f5365d4c1ba438396ed08a16da2fab2/workspace",
+  "result_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/0f5365d4c1ba438396ed08a16da2fab2/result.json",
+  "diff_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/0f5365d4c1ba438396ed08a16da2fab2/result.diff",
+  "diff_digest": "sha256:fe328dd152434aaafc48931a9150613b51bf23b272dbb8a22cf3745e32a4cd7f",
+  "note": "verifier ran on 7 listed files; no full-repo build claim",
+  "verification": {
+    "exit": 1,
+    "n": 1,
+    "passed": false,
+    "sandbox": "seatbelt-v1",
+    "version": "sha256:1d73c9f2ba93a58f16b6821f27c5be8ca1ecd2e02a1837b65cd11d34a959734e",
+    "before": {
+      "docs/design/contracts-v5/MEM01-SCOPE.md": "sha256:0651644bc7618d1a78be06ebe8c0139426277b3e498d52dcfa4d463cf3ca55ec",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/TSK02-SCOPE.md": "sha256:5b6669c8d37b408641a2160857edef5e970070986738061d64560f93c85fe0f0",
+      "evidence/operations/mem01-20261009/verification.json": "sha256:aa1cd704cdabe1bbe5e8b083a5636bbe26d7c858e63a48cd94d892304209889d",
+      "evidence/operations/tsk02-20261009/opus-scope-review.md": "sha256:eaadc2571d303f44ae0a5b2b5d22b7ea905de1759916813c8ba1b287e73a2b23",
+      "pal/intake_v5.py": "sha256:7e9ef3e52477363e104bea0fd8872984f4e81a289a30c221d3fc07522ce86fb4",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4"
+    },
+    "after": {
+      "docs/design/contracts-v5/MEM01-SCOPE.md": "sha256:0651644bc7618d1a78be06ebe8c0139426277b3e498d52dcfa4d463cf3ca55ec",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/TSK02-SCOPE.md": "sha256:5b6669c8d37b408641a2160857edef5e970070986738061d64560f93c85fe0f0",
+      "evidence/operations/mem01-20261009/verification.json": "sha256:aa1cd704cdabe1bbe5e8b083a5636bbe26d7c858e63a48cd94d892304209889d",
+      "evidence/operations/tsk02-20261009/opus-scope-review.md": "sha256:eaadc2571d303f44ae0a5b2b5d22b7ea905de1759916813c8ba1b287e73a2b23",
+      "pal/intake_v5.py": "sha256:7e9ef3e52477363e104bea0fd8872984f4e81a289a30c221d3fc07522ce86fb4",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4"
+    }
+  },
+  "log_sha256": "e08b84d26fc57640108588640f6245d9ef9079c2f2f4556de9944c19cb7b8cee",
+  "response_bytes": 13056,
+  "response_sha256": "eaadc2571d303f44ae0a5b2b5d22b7ea905de1759916813c8ba1b287e73a2b23"
+}

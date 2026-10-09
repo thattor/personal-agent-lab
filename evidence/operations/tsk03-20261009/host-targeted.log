@@ -1,0 +1,15 @@
+test_constructor_rejects_bad_config (test_events_v5.EventReaderTest.test_constructor_rejects_bad_config) ... ok
+test_corrupt_stored_rows_are_bounded_unavailable (test_events_v5.EventReaderTest.test_corrupt_stored_rows_are_bounded_unavailable) ... ok
+test_initial_empty_session_returns_null_cursor (test_events_v5.EventReaderTest.test_initial_empty_session_returns_null_cursor) ... ok
+test_missing_ledger_is_bounded_unavailable (test_events_v5.EventReaderTest.test_missing_ledger_is_bounded_unavailable) ... ok
+test_pages_resume_exactly_across_mixed_sessions (test_events_v5.EventReaderTest.test_pages_resume_exactly_across_mixed_sessions) ... ok
+test_reads_preserve_caller_transaction_and_writes (test_events_v5.EventReaderTest.test_reads_preserve_caller_transaction_and_writes) ... ok
+test_reopen_recovers_persisted_events (test_events_v5.EventReaderTest.test_reopen_recovers_persisted_events) ... ok
+test_strict_request_validation (test_events_v5.EventReaderTest.test_strict_request_validation) ... ok
+test_unicode_empty_text_and_historical_workref (test_events_v5.EventReaderTest.test_unicode_empty_text_and_historical_workref) ... ok
+test_unknown_and_foreign_session_cursor_not_found (test_events_v5.EventReaderTest.test_unknown_and_foreign_session_cursor_not_found) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.032s
+
+OK

@@ -941,3 +941,23 @@ invent a subscription or multi-session-attach framework. Retain the failing log
 event-routing-red.log and run the same case through actual EventReader reconnect
 once available. Future event-owner tests must cover distinct actor/work sessions,
 correct epoch and duplicate suppression, not just an atomic event count.
+
+## TSK03 verifier environment and TSK02 document size — 2026-10-09
+
+CO TSK03 completed SWE generation/repair, but its verifier denied SQLite creation
+under TMPDIR and then mkdir in the workspace. The worker's assumption that cwd was
+writable was false; no behavioral assertion ran and the planned Opus review did not
+run. Preserve failed/verified:false and copy only scoped returned files for separate
+host verification. Do not edit CO sandbox/state or claim the host result as CO PASS.
+Future disk-using CO tests need supported writable-path qualification; use read-only
+CO review/advice while host filesystem tests run under existing PAL authorization.
+
+Root's first host test accidentally resolved python3 to Xcode Python3.9; StrEnum
+import failed, so no behavior was tested. Its log is retained. Corrected command
+uses the already-qualified absolute Python3.13 path and preserves subprocess status.
+Next checks use that exact interpreter, nonzero discovered test counts and exit code.
+
+TSK02's complete Opus advice again exceeded a document-only byte cap. Repeating a
+narrow formatting verifier is unnecessary rework, not a product defect. Retain its
+failure and use reasoned dispositions; future review notes have a generous finite
+bound and structural verdict check, separate from semantic or code acceptance.
