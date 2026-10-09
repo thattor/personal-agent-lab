@@ -1012,3 +1012,16 @@ Next is actually proposed for SWE consultation: deterministic C09 storage, then
 C10 with completed-history stop/lease safety. Keep semantics unknown when unverified,
 no model or save self-completion, and no full product activation. See verification
 and milestone-review-receipt in evidence/operations/art01-20261009.
+
+
+## C075 candidate — durable checks distinguish history from current evidence
+
+Source fab7c77, full650 PASS24.227s and independent Sol review APPROVE/45 focused.
+CO SWE author16-test result, Root actual connection12 and strict integrity9,
+Astra-reviewed TSK context8 are distinct evidence classes. Reproduced corruption
+and ID-factory transaction gaps were fixed before this candidate. No Goal completes.
+Current Opus assessment is in progress. Next authorized unit is frozen COMPLETE01
+with atomic complete + completed source-stop history + terminal-safe lease release;
+Astra TSK and independent RUN tests are actually dispatched in separate worktrees.
+No new owner decision or unknown-call retry. Full product/semantic/UI acceptance
+remains unmet. See ver01-20261009/verification.json and COMPLETE01-SCOPE.

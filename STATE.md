@@ -1,5 +1,25 @@
 # STATE.md
 
+## Current C075 candidate — deterministic verification connected
+
+Exact source fab7c77bb4e8ece6b094e7b96c9f7194c04e3d53 passes full650 host tests
+(24.227s, exit0),45 focused tests and separate Sol6.1 rereview APPROVE. TSK context
+has independent Astra approval. CO SWE authored VER; Root corrected reproduced
+strict-boundary defects and connected actual MEM/TSK/ART/VER on temporary SQLite.
+[Receipt](evidence/operations/ver01-20261009/verification.json). Saved historical
+checks and current valid/invalidated evidence are distinct. No Goal completes yet.
+Exact CO Opus5.5 milestone assessment is running; this is a tested local candidate,
+not whole-PAL acceptance, CI, semantic evaluation, real service/UI or usefulness.
+
+COMPLETE01-SCOPE is frozen after actual Opus72fabf04 and SWEd8bd21a2 consultations.
+Isolated native Astra implements the TSK completion/history/terminal boundary;
+a separate native Sol prepares immutable RUN tests before SWE coordinator work.
+Root owns real integration and canonical updates. No duplicate shared-file writers.
+Readiness and accepted source are rechecked before integration; no checkpoint wait
+or extra owner gate. CO remains0.4.5 in the same qualified state. Latest native
+usage read allows ordinary usage (91% weekly used); no reset or paid fallback.
+All previous unknown calls, stopped schedules and live DBs remain untouched.
+
 ## Current C074 — durable saved drafts connected
 
 Source2e8dfcf531ba0ddfc89dcb83eec0c6e0f58abc00 connects actual MEM/TSK/RUN/ART/C14

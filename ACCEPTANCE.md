@@ -1,5 +1,17 @@
 # ACCEPTANCE.md
 
+## C075 candidate — local deterministic verification
+
+Source fab7c77:650 host tests PASS,45 focused cases PASS and independent Sol review
+APPROVE; separate Astra approves the TSK readonly context. Actual temporary SQLite
+owners verify fixed Conditions, exact ordered saved artifacts, historical replay,
+current epoch/set/source invalidation, reopen and atomic fault/control ordering.
+Semantic/source_fetched remain unknown; no model/step budget is spent by VER.
+[Evidence](evidence/operations/ver01-20261009/verification.json). Opus milestone
+assessment is pending, while frozen safe-completion implementation continues.
+Whole v5, C10 complete, provider/UI, restart recovery and usefulness remain unmet.
+
+
 ## Current C074 — durable saved drafts connected
 
 Source2e8dfcf531ba0ddfc89dcb83eec0c6e0f58abc00 connects actual MEM/TSK/RUN/ART/C14
