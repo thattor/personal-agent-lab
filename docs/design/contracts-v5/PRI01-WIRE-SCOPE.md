@@ -31,7 +31,7 @@ list of record Refs, list of closed `{id,text,revision}` questions: nonempty UTF
 id, UTF8 text, strict positive revision matching its candidate WorkRef revision.
 Each Goal appears once and question IDs are unique per candidate. Withheld entries
 have empty summary/all question text; no hidden body. Allowed states are existing
-TSK queued/running/waiting/paused/completed/cancelled/failed, never superseded.
+TSK queued/running/waiting_input/paused/completed/cancelled/failed, never superseded.
 No input mutation or aliasing in the returned normalized plain JSON dict.
 
 This parser checks exposure membership, not source usability, snapshot freshness,
