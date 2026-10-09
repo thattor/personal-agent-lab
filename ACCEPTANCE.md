@@ -1,15 +1,20 @@
 # ACCEPTANCE.md
 
-## Current C087 / prepared C088 — diagnostic fixtures pass; actual goal unmet
+## Current C088 — legacy deletion passes; actual whole goal remains unmet
 
-Root full1210 PASS32.581s/exit0 and separate final source reviews establish the
-bounded local diagnostic contract only. New text records remain unqualified; no
-C15/native/effective-model/semantic/UI/usefulness row is promoted. Original N2
-UNKNOWN is unchanged. Actual Opus planner returned a proposal, but CO rejected
-its plan and no completed design report or declared verifier exists.
-LEGACY01/1 removal is prepared under explicit owner instruction; all current v5
-cases stay and old evidence is preserved. No replacement UI is implemented.
-Whole goal NOT_MET. Earlier checkpoints below remain version-bound history.
+LEGACY01/1 source0e5cdf0 has independent source/docs/export APPROVE. Root full930
+PASS9.109s/exit0, Primary owned-process5 PASS0.557s, Expert fixture6 PASS/exit0 and
+three mock demos pass. The280 removed methods exclusively cover deleted old code;
+all88 retained current test/fixture files and current v5 source are unchanged.
+No qualification, semantic or usefulness criterion was removed or relaxed.
+[Verification](evidence/operations/legacy01-20261010/verification.json).
+
+Old operational code and current startup/model-input references are removed.
+History/evidence/DBs/conversations/unknowns are preserved. HTTP/UI replacement is
+NOT_IMPLEMENTED. C087 diagnostics remain unqualified; N2 remains UNKNOWN and the
+original model is not verified. The previous successful Opus planner is not a
+completed review. Real provider/Expert, v5 UI and authentic whole-flow usefulness
+remain unmet; **whole goal NOT_MET**. Earlier rows are version-bound history.
 
 ## Current C086 — actual N2 not qualified; local source proof remains
 

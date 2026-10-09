@@ -1305,3 +1305,13 @@ Preserve its planning assessment, not a completed review. C088 LEGACY01/1 frozen
 under actual owner removal instruction; old operational entry confirmed, v5
 HTTP/UI absent. Deletion/docs work next, with all v5 cases/old evidence retained.
 Whole goal NOT_MET; no new real call or implicit unknown replay.
+
+
+## C088 — current-only operational entry and retained v5 closure (2026-10-10)
+
+MET locally at0e5cdf0:54 legacy-only paths removed; all88 current tests/fixtures
+and v5 source equal-byte retained. Separate source/docs/export APPROVE; Root930
+PASS9.109s, Primary5/Expert6 owned-process fixtures and three mock demos exit0.
+Old SPEC/DESIGN are exact public-body history, not mandatory inputs. No DB/unknown
+removal, native qualification, replacement UI or whole-goal PASS. Current HTTP/UI
+still requires a fresh v5 implementation; model evidence remains a distinct gap.

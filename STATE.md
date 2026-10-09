@@ -1,26 +1,24 @@
 # STATE.md
 
-## Current C087 — local diagnostic slice verified; C088 legacy removal frozen
+## Current C088 — operational old PAL removed; current v5 verified locally
 
-PRI02-DIAGNOSTIC/1 is integrated atsource69c6e22 with separate buffer and wrapper
-APPROVE and Root full1210 PASS32.581s/exit0. Valid already captured text is saved
-locally/unqualified after the original supported stop; strict model/ending gates
-and old UNKNOWN outcomes remain. No N3/T2/real Expert, new ACK authority or UI/
-usefulness acceptance. Source changes invalidate the earlier wrapper envelope.
-[Local verification](evidence/operations/pri02-diagnostic-20261010/verification.json).
+LEGACY01/1 is integrated at source0e5cdf0. Separate Astra deletion and Sol entry
+updates have independent APPROVE. Root full **930 PASS9.109s/exit0**, Primary
+owned-process5 PASS0.557s and Expert6 PASS/exit0, plus all three disposable mock
+demos, validate the final current-v5 slice. The lower count removes280 exclusively
+old-engine methods; all88 current test/fixture files and v5 source bytes remain.
+Old SPEC/DESIGN bodies are exact-byte history, while current mandatory entry docs
+and contract header point to current owners. No old/live DB, conversation, evidence
+or unknown outcome was deleted. [Verification](evidence/operations/legacy01-20261010/verification.json).
 
-Actual official CO Opus5.5 on CLI2.1.291 completed a tool-free planner call; it is
-available on that observed call. Its overlong plan was rejected, with no design
-step/verifier or completed report. Embedded ALIGNED/REFINE remains a proposal;
-CO verified:false. [Record](evidence/operations/pri02-diagnostic-20261010/opus-planning-summary.json).
-AGY observed weekly0% is a separate route. Old holds/rejections remain untouched.
-
-Owner D054 explicitly requests old code removal with no compatibility. Current
-README/server/Web actually launch old PAL; v5 has no HTTP/UI replacement.
-[LEGACY01/1](docs/design/contracts-v5/LEGACY-REMOVAL-SCOPE.md) assigns isolated
-Astra deletion and Sol docs, retained v5 tests/utility and Root final integration.
-Removal is PREPARED, not complete. No DB/conversation/evidence/unknown deletion.
-Continue source work; whole goal NOT_MET. Below are retained checkpoints.
+C087 unqualified text retention remains source-verified. Official CO Opus5.5's
+previous planner succeeded but its plan was rejected; no completed design review
+follows from that proposal. Original N2/other UNKNOWN records and strict model/
+cessation/NativeReturned gates are unchanged. Current HTTP/UI is NOT_IMPLEMENTED.
+Next independent source work: bounded unqualified modern model observations and
+a fresh current-v5 mock-only HTTP/UI connection, frozen separately before writers.
+No N3/T2/real Expert or weaker profile is authorized by these source scopes.
+Whole goal remains **NOT_MET**. Earlier checkpoints below are retained history.
 
 ## Current C086 — N2 consumed once; effective model unproven; reassessment next
 

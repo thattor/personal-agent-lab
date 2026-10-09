@@ -1641,3 +1641,12 @@ actual import closure and every retained v5 test rather than classifying by suff
 Do not equate removed old UI with a completed new UI.
 
 The first anonymous-export replacement matched a nonexistent newline after the UUID, so it changed zero bytes. Re-review caught the same identifier before publication. Root now requires exactly one bare-identifier match and asserts absence after replacement, preserving both private candidates and creating another clean descendant of source69c6. This is a concrete checked correction; private candidates are excluded from public ancestry.
+
+
+C088 prevention is verified at0e5cdf0: independent import closure and88 retained
+file hashes match, full930 and owned-process5/6 pass, exact prior public SPEC/DESIGN
+bodies remain in history and mandatory entry docs reference current owners. The
+old engine cannot be imported through the removed11 modules in this checkout.
+Current HTTP/UI absence is explicit and remains unfinished work, not hidden by
+old endpoints. Independent export review verifies no private candidate ancestry
+and no new unnecessary owner identifier; bare-ID assertion correction applied.
