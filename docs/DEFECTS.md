@@ -961,3 +961,25 @@ TSK02's complete Opus advice again exceeded a document-only byte cap. Repeating 
 narrow formatting verifier is unnecessary rework, not a product defect. Retain its
 failure and use reasoned dispositions; future review notes have a generous finite
 bound and structural verdict check, separate from semantic or code acceptance.
+
+## C14 regression — stale idle notification used as Goal completion
+
+Full483 at0cf8563 plus the template-wait correction candidate initially failed one
+existing template test: receipts was empty after idle.wait. Separate Sol6.1 diagnosed
+and root reproduced the ordering with two barriers: an older no-work pass delivers,
+Primary commits/clears idle/sets wake, then the old pass sets idle while the new Goal
+is still queued. New C14 modules are unused by that runtime; no causal change is
+attributed to them. The retained idle-race-probe.py/log prove queued receipts0, then
+failed/incomplete_template with one preview receipt after the actual work finishes.
+
+Correction: this test uses existing work_settled(runtime, goal_id), whose condition
+is the durable Goal outcome. Runtime idle behavior is unchanged; it is not a reliable
+per-Goal completion barrier. Next outcome tests await the specific Goal or receipt,
+not the coarse global idle event. Targeted3 and full483 PASS30.572s after this fix.
+Other uses of idle remain outside this small correction and are not broadly audited.
+
+Evidence clarifications: the first TSK03 SQLite-open failure is reported by the
+worker note; the preserved final verifier directly proves mkdir denial. Do not
+present the first cause as separately reproduced. The first successful-review
+receipt extraction assumed an error field and failed before saving the receipt;
+error is optional on success, and corrected extraction checked the original hash.

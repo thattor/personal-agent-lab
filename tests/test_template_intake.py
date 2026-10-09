@@ -1,4 +1,4 @@
-from tests.helpers import settled
+from tests.helpers import settled, work_settled
 import tempfile
 import unittest
 from pathlib import Path
@@ -35,11 +35,11 @@ class TemplateIntakeTests(unittest.TestCase):
                 {'kind':'incomplete_preview','content':'Date {{date}}','missing':'{{date}}','citations':[]}]))
             try:
                 goal_id = settled(runtime, 'g','Make a draft blank template with {{date}}')['goal']['id']
-                self.assertTrue(runtime.idle.wait(3))
+                goal = work_settled(runtime, goal_id)
                 receipt = runtime.store.inspect()['receipts'][0]
                 self.assertEqual(receipt['role'], 'preview')
                 self.assertTrue(runtime.store.artifact(receipt['artifact_id']).startswith(PREVIEW_BANNER.encode()))
-                self.assertEqual(runtime.store.get_goal(goal_id)['state'], 'failed')
-                self.assertEqual(runtime.store.get_goal(goal_id)['reason'], 'incomplete_template')
+                self.assertEqual(goal['state'], 'failed')
+                self.assertEqual(goal['reason'], 'incomplete_template')
             finally:
                 runtime.close()

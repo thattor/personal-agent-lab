@@ -1870,3 +1870,14 @@ mock wrapper, not a supplied stop boolean, observes cessation. Shared C13 Step s
 is preserved; lookup truncation is host metadata. Technical choices add no new owner
 approval gate or external activation. SWE consultation precedes substantial code;
 isolated Astra authors TSK, SOL integrates mock flow, separate Sol6.1 reviews.
+
+TSK02 implementation consultation d3ad7fc12edc4abf89b66d3f46f93ba8 completed through
+exact SWE-2 High Free; CO verified the bounded review artifact, not implementation.
+Adopt its reservation lease/epoch/index binding, one-shot draining clear, process
+invoker dedupe, step readiness, optional-source exclusions and budget headroom.
+Astra separately found the same unadopted-output/yield gap and supplied strict host
+query shapes. Ordinary yield cannot discard an unfinished returned call. Preserve
+C13 owner-intent precedence: reject SWE's blanket refusal to release fenced output
+on pause/draining, and its stronger old-epoch restriction. The owned lease and Goal/
+revision permit freeing only occupancy, never stale result adoption. These rulings
+are technical applications of the consulted scope and C13, not new product authority.

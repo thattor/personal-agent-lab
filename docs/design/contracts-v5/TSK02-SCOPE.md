@@ -2,8 +2,9 @@
 
 SOL technical disposition of the complete Opus5.5 consultation is adopted under
 D038. Its CO document verifier failed on length; original note/receipt remain in
-`evidence/operations/tsk02-20261009`. SWE implementation consultation is still
-required before substantial code. Prerequisite: MEM01/1 and TSK01/1, current source
+`evidence/operations/tsk02-20261009`. SWE consultation d3ad7fc12edc4abf89b66d3f46f93ba8
+completed, with the technical dispositions below applied before code.
+Prerequisite: MEM01/1 and TSK01/1, current source
 6adf42b. This scope implements a local connected mock, not product activation.
 
 Outcome: MEM append → intake → claim → source-bound mock Expert report/lookup →
@@ -47,10 +48,17 @@ failure is bounded unavailable. Error messages never contain raw callback data.
   owns an active lease returns that lease/current work metadata without new effects.
   Another runner sees conflict, even if the owned work was cancelled. Each host
   process mints a fresh runner_id; do not adopt an old runner after restart.
+  Successful claim has no additional status field. Checkpoint is
+  `{last_finished_index:int,open_question_refs:[],lookup_truncated?:bool,
+  lookup_excluded_refs?:[Ref]}`;
+  initial last_finished_index is -1, first step index is 0.
 - `get_execution_context({lease_id,work_ref})`: host-only read for the root driver:
   return session_id, required_refs (origin plus Brief.context_refs), optional_refs
   (registered lookup refs minus required), remaining_budget (work and host counts
   per kind), and next_step_index. Check owned lease/current authority. No bodies.
+  remaining_budget is exactly `{model:{work,host},step:{work,host}}`.
+  This metadata read must not gate all optional refs before the driver can omit
+  stopped ones. Effect admission separately checks required/supplied availability.
 - `register_sources({work_ref,refs})`: current running authority/no control, verify
   all exact refs through MEM in transaction, insert dependencies once. No cached
   source authority. Required refs originate from intake; new refs are optional.
@@ -59,21 +67,33 @@ failure is bounded unavailable. Error messages never contain raw callback data.
   from both finite ledgers atomically; return reservation_id and remaining
   `{work:int,host:int}` for that kind. Failures never refund. Step reservation is
   internal to begin_step, not a second runner reservation.
+  Bind reservation metadata to the sole active lease, claimed WorkRef, next index,
+  kind and role. A model reservation also requires remaining work/host step budget
+  before debit. A reserved last model unit remains valid when unused count is zero.
 - `consume({reservation_id,call_or_operation_id})`: bind exactly once; same binding
   replays, another ID conflicts. Must not let an unrelated step/model reservation
   authorize a call. admit_call performs the model consume in its own transaction.
+  A standalone consume is only a binding receipt, never invocation permission.
 - `admit_call({call_id,lease_id,work_ref,reservation_id,source_refs})`: requires owned
   current running lease/no control, no unended call and no unadopted returned call
   for this next step. Recheck MEM and registered membership, consume model reservation
   and persist call lifecycle metadata atomically. Index is next step index; host
   call_id is derived from lease_id/index. Return call_id and status. Equal replay
   returns the original receipt but must not cause another invocation.
+  Enforce required refs ⊆ supplied refs ⊆ registered refs and exact reservation
+  lease/WorkRef/index/kind. Step headroom is still required before invocation.
+  No next call while any step is started. A returned call without a step may only
+  be adopted by begin_step; a finished step enables the next index. Raised or
+  not_entered calls require release, never another call at that same index.
 - `end_call({call_id,outcome})`: trusted invoker only, outcome returned/raised/
   not_entered, recorded after actual return/exception or known skipped entry. May
   finish an old epoch; cannot adopt its output. Replay by call_id + canonical input.
   No model/runner-supplied call_stopped boolean. A read-only call-status query is
-  allowed for host coordination; its exact shape must be documented before driver
-  use. Cessation persistence failure leaves occupancy blocked, never inferred.
+  `get_call({call_id}) -> {call_id,lease_id,work_ref,index,
+  status:admitted|returned|raised|not_entered,may_enter:bool,step_id?}`. may_enter
+  requires admitted phase plus current owned running authority and no control.
+  It is information, never
+  invocation authority. Cessation persistence failure leaves occupancy blocked.
 - `begin_step({key,work_ref,action})`: parse with shared model-action validator and
   refs actually supplied to the ended/returned call at next index. Only report and
   lookup supported; other valid actions return unavailable. Current authority and
@@ -82,8 +102,11 @@ failure is bounded unavailable. Error messages never contain raw callback data.
 - `finish_step({work_ref,step_id,result_refs,error?})`: strict C13 shape, replay by
   step_id/canonical input; current authority, no control, current sources. Report
   has empty result_refs. Lookup uses actual MEM same-session search plus C11 reads
-  outside the transaction; recheck/register all returned refs here. An unavailable
-  lookup ref is not silently persisted as usable. Persist step/checkpoint and one
+  outside the transaction; recheck/register usable returned refs here. Newly found
+  denied/not_found optional refs are excluded and named in checkpoint/event metadata;
+  unavailable rolls back. Optional host keyword `excluded_refs=()` carries refs
+  already excluded during C11 reads and is included in canonical replay identity.
+  Previously supplied refs must still be available. Persist step/checkpoint and one
   progress/error event atomically. Lookup truncation is passed explicitly via a
   host-only keyword `truncated=False` and included in replay/event/checkpoint metadata;
   it must not silently add a field to C13 Step. Never store copied MEM bodies.
@@ -99,6 +122,11 @@ failure is bounded unavailable. Error messages never contain raw callback data.
   requires pause intent. Abandon started steps, free slot and persist state/event/
   receipt together. Precedence: cancelled → paused intent → draining queued →
   runner outcome (yield queued, failed failed). Replay by lease_id + canonical input.
+  Clear the resolved draining/pause flags on every successful release. Otherwise a
+  requeued stopped origin could yield forever instead of failing once on reclaim.
+  With no control intent, yield conflicts on a returned call without a finished
+  step (including a started step). Explicit failed may terminate; cancellation,
+  pause or draining may discard the fenced output while retaining the newer intent.
 
 ## Linearization and source-stop
 
@@ -112,6 +140,12 @@ Root's trusted synchronous wrapper records end_call in its termination path. If
 threading is used, observe actual callback return/join; a timeout is not cessation.
 A repeated admission receipt never reinvokes a callable. Orphaned occupied calls
 remain blocked after reopen; recover is unavailable, no clearing or recomputation.
+Before admission, the one trusted invoker owned by the host process registers the
+call ID under a process-local lock/map. Only its first owner can enter. An uncertain
+admission result stays blocked. This map does not replace TSK persistence and is
+not a security boundary against arbitrary host code. It prevents duplicate wrapper
+entry, including concurrent calls; a new host uses a new runner ID and cannot
+resume an old occupied lease. No lock spans the actual callable.
 
 TaskStore invalidation retains check-all-before-write and coverage checks. For each
 matched current revision: queued→epoch+1 queued; running→epoch+1 with draining flag;
@@ -136,6 +170,15 @@ reservation refund. These are mock invocation/step counts, not real provider usa
 Full C15 MOD raw result/status/model_id/replay/interrupted/work-less calls remain
 unmet. TSK owns only execution-right metadata, no raw model output ledger. A crash
 losing in-memory output cannot safely reinvoke it and remains blocked for recovery.
+
+SWE advice is applied on binding, one-shot draining, admission dedupe, readiness,
+lookup exclusions and budget headroom. Two stronger suggestions are not adopted:
+blanket refusal to release a returned-but-fenced output on pause/draining conflicts
+with C13/latest-intent semantics; the ordinary no-control yield remains rejected.
+Restricting old-epoch release to claimed/current epoch is unnecessary authority:
+the owned lease plus Goal/revision authorizes freeing occupancy, never adoption.
+Keep C13 old-owned-epoch release. Astra's matching lifecycle clarification adds no
+new product scope. Root's mock entry/cessation is only a trusted in-process proof.
 
 ## Verification and returned evidence
 

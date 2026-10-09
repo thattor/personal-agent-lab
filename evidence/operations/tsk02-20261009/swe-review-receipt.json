@@ -1,0 +1,81 @@
+{
+  "task_id": "d3ad7fc12edc4abf89b66d3f46f93ba8",
+  "base_sha": "0cf8563378223fa080e8abaf979e42b2bdf73e51",
+  "status": "verified",
+  "verified": true,
+  "attempts": [
+    {
+      "attempt_id": "plan-a1",
+      "call_id": "plan",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:f125349f70a0b5c6e4777216e46e3dfb191340e3362a183d8ca1a904a96c64b0",
+      "role": "planner",
+      "route": "claude",
+      "step_id": "plan"
+    },
+    {
+      "attempt_id": "s1-a1",
+      "call_id": "s1",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "swe-2-high",
+      "prompt_sha256": "sha256:477d91e9755f7685d4e803c770f6484b186578cd202709390cb4d593a5394f3b",
+      "role": "implement",
+      "route": "devin",
+      "step_id": "s1"
+    }
+  ],
+  "selection": {
+    "mode": "fixed",
+    "targets": {
+      "implement": {
+        "model": "swe-2-high",
+        "route": "devin"
+      },
+      "planner": {
+        "model": "claude-opus-5-5",
+        "route": "claude"
+      },
+      "review": {
+        "model": "claude-opus-5-5",
+        "route": "claude"
+      }
+    }
+  },
+  "workspace": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/d3ad7fc12edc4abf89b66d3f46f93ba8/workspace",
+  "diff_digest": "sha256:007dc65cbf8780c2739cbdd2ff81095a14fe000e24d228dacbaf6c9f94479128",
+  "error": null,
+  "verification": {
+    "exit": 0,
+    "n": 1,
+    "passed": true,
+    "sandbox": "seatbelt-v1",
+    "before": {
+      "docs/design/contracts-v5/MEM01-SCOPE.md": "sha256:9ee628fd5bf5cc7120b3ad300fb7cf51dc54d7f7e2aa98de130885d7cf2dadae",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/TSK02-SCOPE.md": "sha256:f61a0393e4765cd84d56da034f7098d3e77b20742c7ba7235d204d95c7f786cf",
+      "evidence/operations/tsk02-20261009/opus-scope-review.md": "sha256:eaadc2571d303f44ae0a5b2b5d22b7ea905de1759916813c8ba1b287e73a2b23",
+      "evidence/operations/tsk02-20261009/swe-implementation-review.md": "sha256:4f3a4e7d7648bc92bfd121b1ff5a2cc3c213c8cceea01d92e914dfe775026fcf",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/intake_v5.py": "sha256:31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4"
+    },
+    "after": {
+      "docs/design/contracts-v5/MEM01-SCOPE.md": "sha256:9ee628fd5bf5cc7120b3ad300fb7cf51dc54d7f7e2aa98de130885d7cf2dadae",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/TSK02-SCOPE.md": "sha256:f61a0393e4765cd84d56da034f7098d3e77b20742c7ba7235d204d95c7f786cf",
+      "evidence/operations/tsk02-20261009/opus-scope-review.md": "sha256:eaadc2571d303f44ae0a5b2b5d22b7ea905de1759916813c8ba1b287e73a2b23",
+      "evidence/operations/tsk02-20261009/swe-implementation-review.md": "sha256:4f3a4e7d7648bc92bfd121b1ff5a2cc3c213c8cceea01d92e914dfe775026fcf",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/intake_v5.py": "sha256:31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4"
+    },
+    "log": "Consultation artifact structure checked; semantic adoption remains SOL responsibility\n"
+  },
+  "response_sha256": "4f3a4e7d7648bc92bfd121b1ff5a2cc3c213c8cceea01d92e914dfe775026fcf",
+  "semantic_verdict": "REFINE; see root disposition in TSK02-SCOPE.md"
+}
