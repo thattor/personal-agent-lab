@@ -14,7 +14,10 @@ from review package2b13a63, no current-scope blocker. C074 local milestone is ME
 Goal completion/VER, artifact model re-input, orphan recovery, PRI/provider/UI,
 product activation and real usefulness remain unproven. Model report/save does not
 mark a Goal completed. Next authorized dependency is staged deterministic verification then safe completion.
-VER01-SCOPE is proposed for actual SWE consultation; Opus already recommends staging.
+VER01-SCOPE is adopted after completed SWE consultation e2477652. Immutable public
+acceptance tests are fixed at96568a5; CO taskf9f8dd69c40f4ebca78d294deaa5f640
+now implements only the VER owner and note. Root owns the TSK callback and actual
+connection tests. No VER execution or completion claim before implementation.
 
 Storage code came from separate native Sol6.1 under the freshly verified owner
 alternative instruction, not the unknown CO task. CO0.4.5 remains in the same

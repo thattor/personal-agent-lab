@@ -477,6 +477,9 @@ class TaskStore(IntakeStore):
             raise ContractError()
         row = self._authority(work)[0] if purpose == 'save' else self._current(work)
         try:
+            if row['state'] not in ('queued', 'running', 'paused', 'waiting_input',
+                                    'completed', 'cancelled', 'failed'):
+                raise ContractError()
             brief = Brief.from_json(loads(row['brief_json']))
             required = self._required(row)
             if (len({item.id for item in brief.conditions}) != len(brief.conditions) or

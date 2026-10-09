@@ -1064,3 +1064,13 @@ work session. Corrected fixture to claim before kind validation and asserted bot
 properly scoped notifications. No runtime change/criteria relaxation. Future tests
 must establish authority and choose the owning notification session before checking
 a later boundary. Initial failures retained in actual-connection-initial.log.
+
+
+VER01 context defect: independent Astra reproduced a factual status snapshot for
+state=not-a-work-state at96568a5. Cause: the new status path bypassed execution
+authority as intended but omitted validation of the saved state vocabulary. Root
+added the failing regression, then validated all seven contract states before
+returning a factual snapshot. Save keeps existing authority error precedence.
+Eight focused tests pass; red/green evidence is in ver01-20261009. Next factual
+read callback must distinguish valid nonrunning state from corrupt owner state,
+without treating pause as lost evidence. No live data was changed.

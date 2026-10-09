@@ -125,6 +125,13 @@ class VerificationContextTests(unittest.TestCase):
         self.conn.execute("DELETE FROM v5_intake_source WHERE id='required'")
         self.error(self.snapshot(), 'unavailable')
 
+    def test_factual_status_rejects_unknown_saved_state(self):
+        for state in ('queued', 'running', 'paused', 'waiting_input', 'completed', 'cancelled', 'failed'):
+            self.conn.execute('UPDATE v5_intake_work SET state=?', (state,))
+            self.value(self.snapshot())
+        self.conn.execute("UPDATE v5_intake_work SET state='not-a-work-state'")
+        self.error(self.snapshot(), 'unavailable')
+
 
 if __name__ == '__main__':
     unittest.main()
