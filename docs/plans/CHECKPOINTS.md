@@ -1101,3 +1101,19 @@ Separate Sol APPROVE exact0ff0309, Root equal-byte integration ata974fc0,
 full793 PASS25.447s and executable ASK demo PASS. Preserved fields/bytes and
 plain-text limits are in read-display-20261009/verification.json. This independent
 correction does not replace the pending ASK milestone/CHANGE01 consultation.
+
+
+C078 independent defect follow-up: Root source7450202 corrects existing C13
+release uncertainty, preserving occupied calls and current control flags.
+Root full794 PASS26.492s at18813c2 and independent Sol exact-source APPROVE54
+confirm the bounded fix; 1 regression method contains18 distinct subcases.
+C10.change remains unadopted. The failed fixture-import discovery and original
+RED are retained; next composed fixture uses module import. No milestone or
+whole-product alignment is inferred from green tests.
+
+D044 publication preparation follows the direct current owner instruction after
+the D043 AGY private egress refusal. Root audits actual exposed history, images
+and GitHub records and repairs the two concrete upstream attribution omissions
+before changing only the existing repo's visibility. All execution limits, old
+unknown calls, no new auth/cost, no live deployment and contract consultation
+conditions continue. Publication and AGY execution need observed separate success.

@@ -2,6 +2,15 @@
 
 ## C078 — ASK01 implementation and connection verified
 
+Existing C13 cessation follow-up: source7450202 rejects NULL/unknown/unrecognized
+call status before release writes and preserves the occupied slot/control state.
+Root fixed regression1 method/18 subcases and related93 PASS; independent Sol
+APPROVE exact source with54 methods; full794 PASS26.492s at18813c2. Source and
+evidence hashes are retained in
+[verification](evidence/operations/release-integrity-20261009/verification.json).
+This closes a reproduced existing-contract defect, not C10.change/recovery or
+whole-product acceptance. Final ASK milestone Opus consultation remains pending.
+
 Source b844706eb303f759f14cbd7857dcf86b44f3de99:787 host-local tests PASS25.139s,
 40 new ASK methods, focused114 including existing TSK cases. Actual temporary
 MEM/TSK/RUN/ART/VER/C14 owners and executable demo verify question/wait/answer/

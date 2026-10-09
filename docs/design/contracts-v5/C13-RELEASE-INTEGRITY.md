@@ -16,6 +16,9 @@ removes those36 duplicate methods, without weakening the18 failure assertions.
 Both original logs are retained. Next composed fixture tests use module imports
 to avoid discovery of imported TestCase classes.
 
-Evidence: evidence/operations/release-integrity-20261009. Separate source review
-and Root full regression are pending. This narrow defect fix aligns an existing
-contract; Opus consultation for CHANGE01 remains required before adoption.
+Evidence: evidence/operations/release-integrity-20261009/verification.json.
+Separate Sol source review APPROVES exact7450202, independently executing54
+methods (including1 integrity method with18 subcases). Root full regression
+at18813c2 passes794 methods26.492s; only a design note separates it from the
+reviewed production source. This narrow defect fix aligns an existing contract;
+Opus consultation for CHANGE01 remains required before adoption.

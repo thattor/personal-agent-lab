@@ -1,6 +1,17 @@
 # STATE.md
 
-## Latest authority D043 / D041 / D040
+## Latest authority D044 / D043 / D041 / D040
+
+D044 directly authorizes making the existing thattor/personal-agent-lab public
+if the approved AGY route still cannot execute. The exact D043 private egress
+was refused before launch, satisfying that condition. Publication is being
+prepared, not yet reported complete. Root owns visibility and canonical updates;
+native Astra/Sol separately audit reachable text, all32 images and GitHub content.
+No confirmed secret, third-party private conversation or unrelated private code
+has been found. Two missing upstream attribution files are being repaired before
+publication. No history rewrite, source removal, new service/auth/cost or live
+product exposure is included. This supersedes the repository-publication hold
+only for this specified repository. Actual tool restrictions remain operative.
 
 Owner role pools are fixed in DECISIONS D041: design Opus/Astra/Sol6.1; code
 SWE-2 High/Astra/Sol6.1/Sonnet5.5/Opus5.5; lead Sol6.1/Opus5.5. Unconnected
@@ -64,12 +75,20 @@ multiline metadata and terminal controls display safely. See
 evidence/operations/read-display-20261009/verification.json. This implements an
 already recorded Opus note and changes no product/contract semantics.
 
+Existing C13 release uncertainty is corrected atsource7450202: unrecognized or
+NULL saved call status now returns unavailable before any release/control writes.
+Independent Sol APPROVE and Root full794 PASS26.492s at18813c2 verify18 corruption
+subcases without releasing occupied work. The2-line guard changes no contract,
+C10.change, old-revision release or recovery. Receipt:
+evidence/operations/release-integrity-20261009/verification.json.
+
 Remaining dependent work is the prepared Opus consultation, then contract freeze
 and isolated implementation; no unnecessary duplicate work is queued to fill slots.
 D043 removes recurring AGY material-sharing questions; actual tool/product
 restrictions remain operative. Whole PAL/PRI/UI/provider,
 semantic usefulness, general
-recovery, auth/cost/publication and unknown-call boundaries remain unchanged.
+recovery, auth/cost and unknown-call boundaries remain unchanged. D044 is the
+sole concrete publication exception.
 
 ## Retained C077 — local result readback accepted
 

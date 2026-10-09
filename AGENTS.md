@@ -1,6 +1,6 @@
 # AGENTS.md — Personal Agent Lab
 
-Current D043/D042/D041/D040/C078 continuation and D037 route instruction supersede earlier stops
+Current D044/D043/D042/D041/D040/C078 continuation and D037 route instruction supersede earlier stops
 and the CO-only restriction. Evaluate checkpoints, correct within accepted scope,
 then actually continue the next unfinished authorized dependency.
 SWE-2 remains preferred when usable; native Astra/Sol and scoped AGY Opus5.5/Sonnet5.5
@@ -54,7 +54,7 @@ Read at the start of every work session:
 
 If documents conflict, later explicit decisions in DECISIONS.md win. Never silently weaken accepted product behavior to make tests pass.
 
-Keep reusable PAL research, design records and data in this private repository with provenance and verification limits (D-030). Temporary folders and chat artifacts are staging copies, not the only retained copy. Historical access receipts and one-time approvals do not grant new execution authority.
+Keep reusable PAL research, design records and data in this repository with provenance and verification limits (D-030). D044 authorizes publishing this existing repository after the concrete readiness audit; it does not authorize secrets, unrelated private data, deployment or broader services. Temporary folders and chat artifacts are staging copies, not the only retained copy. Historical access receipts and one-time approvals do not grant new execution authority.
 
 ## Roles
 - Lead: Sol6.1 or Opus5.5; Root/Sol owns integration and canonical records.
@@ -158,7 +158,7 @@ A mock, fixture, reviewer opinion, or model self-report is not product evidence.
 - Irreversible/external side effects require host-side policy plus explicit approval.
 - Stable-0 should avoid real irreversible side effects; use a spy/denied tool for negative tests.
 - No extra cost.
-- No external public exposure.
+- No external public exposure beyond the existing repository visibility change authorized in D044.
 
 ## C065 CO development lane (2026-10-09)
 SOL integrates and owns canonical records. Use the global task-orchestration skill and the qualified co_v4.task entrypoint identified in STATE.md. Scoped worker changes are generated in CO-owned isolated workspaces and integrated only after SOL checks the exact diff, host verifier and independent review. Preserve the original dirty checkout and runtime data. Use the published0.4.5 concurrent-task CLI identified in STATE.md. Independent ordinary runs may share the existing qualified state, within the host limit of12 per Native adapter; no second engine, alternate state or ledger edits to bypass it. Current input is docs/design/contracts-v5. Common-wire design consultation is complete, full v5 service adoption and independent code review remain incomplete. The SWE attempt has unknown outcome: follow the exact continuation limit in STATE.md rather than starting a duplicate implementation.

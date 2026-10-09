@@ -1,0 +1,40 @@
+{
+  "source_fix_commit": "7450202bd8ab838193710cfa9875f3443238d347",
+  "full_suite_checkout": "18813c2dd28e87236d836451c1e0f2b1267da1fa",
+  "full_suite": {
+    "tests": 794,
+    "exit_code": 0,
+    "test_seconds": 26.492,
+    "owned_wrapper_seconds": 26.704
+  },
+  "targeted_author": {
+    "methods": 93,
+    "integrity_methods": 1,
+    "integrity_subcases": 18
+  },
+  "independent_review": {
+    "model": "native gpt-6.1-sol",
+    "context": "int00_sol_review",
+    "verdict": "APPROVE",
+    "author_commit": "4642ab661682ad7d69a246494443c0fd402c7376",
+    "methods": 54,
+    "integrity_subcases": 18
+  },
+  "files": {
+    "pal/tasks_v5.py": "029b0199931b17e629a61b34c2098137399c4b85a996eb44f987965aaf737ef9",
+    "tests/test_tasks_release_integrity_v5.py": "a2a015a4a5f973ea3135d0012b197f96be81a1d8e6f88744e7c51cd2de01cb31",
+    "docs/design/contracts-v5/C13-RELEASE-INDEPENDENT-REVIEW.md": "485cf6973fe8b00d456ea6e71ed022aece16283aea03b67f757324fd95e7925f"
+  },
+  "logs": {
+    "initial-imported-fixture-red.log": "8e6cb320d6643de58962bd408112966c8cf4dbac980e033e7e092c0f12ee6c4c",
+    "red.log": "9373c646a12ce7d8746f7d7685eb5581cfa7c4a75ccf424e61409910e1db10dd",
+    "targeted-green.log": "63b25ea7f01adcc4a62368f39ed56b88109d2461fd5bf8822d0e0d6022fa910e",
+    "full.log": "94523deef15ad59f18f124a0db26feb09a8964a2e1d7119860e234e7731f109a",
+    "full-receipt.json": "795751fa8fea234962cefadca3866322b6c2d96d19463aa2a35f1dbef651a59d"
+  },
+  "limits": [
+    "host-local temporary fixtures only; no CI or real provider",
+    "existing C13 current-lease cessation guard only",
+    "no C10.change, old-revision release, general recovery or whole-product completion"
+  ]
+}

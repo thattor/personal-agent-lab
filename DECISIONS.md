@@ -2196,3 +2196,33 @@ reported22:20 reset, not yet observed available. Independent Sol reviews the
 C10 proposal while that narrow consultation dependency waits. This single review
 condition is not copied into global config, an enduring per-call permission rule,
 or a wider project stop. No claim about unpublished review internals is made.
+
+
+D044 — existing PAL repository publication, 2026-10-09
+Direct owner instruction in this development chat: 「本プロジェクトは公開前提です。それでも実行できないならば、先にrepoをパブリックにしましょう」.
+The D043 exact AGY review was still rejected before launch. This satisfies the
+condition; Root prepares and may change only thattor/personal-agent-lab visibility
+to public after inspecting its actual exposed material. GitHub code/history,
+Issues/PRs and Actions history become public; no product deployment is implied.
+Native independent audits cover the two remote branches' reachable source/text,
+32 image blobs, and GitHub content. No confirmed credentials, unrelated private
+code or actual third-party private conversation was found; ordinary owner
+project approvals, synthetic cases and workflow paths are project provenance,
+not an invented additional owner gate. Two upstream attribution omissions are
+being repaired at their pinned source bytes before public change.
+This supersedes earlier no-publication instructions only for this concrete repo.
+No history rewrite, deletion, license choice for PAL, secret/personal-data send,
+new service/authentication/payment, application hosting or access-policy bypass.
+Visibility change must use normal GitHub authority and automatic review; refusal
+of that operation cannot be bypassed. A saved decision is not successful
+publication or accepted AGY execution; readback and owned-call evidence are required.
+
+C078 existing C13 follow-up — recognized ended calls must precede release.
+Root reproduced that NULL/unknown status could close an occupied lease because
+the previous guard checked admitted only. Source7450202 adds the closed status
+whitelist before writes. Root regression1/18 and related93 pass; independent Sol
+APPROVE54 and full794/26.492s at18813c2 pass. Preserve original red/discovery logs.
+Future ended-call checks use recognized state, not merely absence of admitted;
+composed unittest fixtures use module imports to avoid duplicate discovery.
+No new semantics were adopted; CHANGE01/ASK Opus consultation still precedes
+contract freeze. See release-integrity-20261009/verification.json and C13 note.
