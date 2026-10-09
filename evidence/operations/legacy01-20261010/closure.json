@@ -1,0 +1,644 @@
+{
+  "ancestry": {
+    "fff19cc_before01ae956": true,
+    "source0e5cdf0_before_fff19cc": true,
+    "source69c6_before_legacy_source0e5cdf0": true
+  },
+  "current_import_check": "AST parse current pal/scripts/tools modules; removed exact module/prefix absent",
+  "current_import_modules": {
+    "pal/__init__.py": [],
+    "pal/artifact_content_v5.py": [
+      "__future__",
+      "dataclasses",
+      "hashlib"
+    ],
+    "pal/artifact_integrity_v5.py": [
+      "dataclasses",
+      "hashlib"
+    ],
+    "pal/artifacts_v5.py": [
+      "datetime",
+      "pal.artifact_content_v5",
+      "pal.artifact_integrity_v5",
+      "pal.contracts_v5",
+      "sqlite3",
+      "uuid"
+    ],
+    "pal/bounded_payload_v5.py": [],
+    "pal/contracts_v5.py": [
+      "dataclasses",
+      "enum",
+      "functools",
+      "json",
+      "math",
+      "types",
+      "typing"
+    ],
+    "pal/events_v5.py": [
+      "pal.contracts_v5",
+      "sqlite3"
+    ],
+    "pal/github_file_payload_v5.py": [
+      "base64",
+      "binascii",
+      "dataclasses",
+      "json"
+    ],
+    "pal/github_read_request_v5.py": [
+      "dataclasses",
+      "urllib.parse"
+    ],
+    "pal/host_read_v5.py": [
+      "pal.contracts_v5",
+      "re"
+    ],
+    "pal/intake_v5.py": [
+      "pal.contracts_v5",
+      "sqlite3",
+      "uuid"
+    ],
+    "pal/memory_v5.py": [
+      "datetime",
+      "hashlib",
+      "pal.contracts_v5",
+      "sqlite3",
+      "uuid"
+    ],
+    "pal/mock_host_v5.py": [
+      "contextlib",
+      "fcntl",
+      "os",
+      "sqlite3",
+      "stat",
+      "threading",
+      "uuid"
+    ],
+    "pal/mock_runner_v5.py": [
+      "contextlib",
+      "copy",
+      "pal.artifacts_v5",
+      "pal.contracts_v5",
+      "pal.native_call_v5",
+      "threading",
+      "uuid"
+    ],
+    "pal/native_call_v5.py": [
+      "dataclasses",
+      "hashlib",
+      "json",
+      "native_text_v5"
+    ],
+    "pal/native_expert_runner_v5.py": [
+      "contextlib",
+      "copy",
+      "pal.contracts_v5",
+      "pal.mock_runner_v5",
+      "pal.native_call_v5"
+    ],
+    "pal/native_text_v5.py": [
+      "collections.abc",
+      "hashlib",
+      "json",
+      "types"
+    ],
+    "pal/primary_host_v5.py": [
+      "functools",
+      "hashlib",
+      "pal.contracts_v5",
+      "pal.mock_host_v5",
+      "pal.native_call_v5",
+      "pal.primary_wire_v5",
+      "pal.sanitize",
+      "sqlite3",
+      "uuid"
+    ],
+    "pal/primary_wire_v5.py": [
+      "pal.contracts_v5"
+    ],
+    "pal/read_consumer_v5.py": [
+      "pal.contracts_v5",
+      "pal.host_read_v5",
+      "unicodedata"
+    ],
+    "pal/sanitize.py": [
+      "re"
+    ],
+    "pal/tasks_v5.py": [
+      "contextlib",
+      "functools",
+      "hashlib",
+      "pal.artifacts_v5",
+      "pal.contracts_v5",
+      "pal.intake_v5",
+      "pal.mock_host_v5",
+      "pal.native_call_v5",
+      "sqlite3",
+      "uuid"
+    ],
+    "pal/verification_v5.py": [
+      "datetime",
+      "hashlib",
+      "pal.contracts_v5",
+      "sqlite3",
+      "uuid"
+    ],
+    "scripts/demo_ask_v5.py": [
+      "argparse",
+      "json",
+      "pal.artifacts_v5",
+      "pal.contracts_v5",
+      "pal.events_v5",
+      "pal.host_read_v5",
+      "pal.memory_v5",
+      "pal.mock_runner_v5",
+      "pal.read_consumer_v5",
+      "pal.tasks_v5",
+      "pal.verification_v5",
+      "pathlib",
+      "sqlite3",
+      "sys",
+      "tempfile"
+    ],
+    "scripts/demo_change_v5.py": [
+      "argparse",
+      "json",
+      "pal.artifacts_v5",
+      "pal.contracts_v5",
+      "pal.events_v5",
+      "pal.host_read_v5",
+      "pal.memory_v5",
+      "pal.mock_runner_v5",
+      "pal.read_consumer_v5",
+      "pal.tasks_v5",
+      "pal.verification_v5",
+      "pathlib",
+      "sqlite3",
+      "sys",
+      "tempfile"
+    ],
+    "scripts/demo_readback_v5.py": [
+      "pal.artifacts_v5",
+      "pal.contracts_v5",
+      "pal.events_v5",
+      "pal.host_read_v5",
+      "pal.memory_v5",
+      "pal.mock_runner_v5",
+      "pal.read_consumer_v5",
+      "pal.tasks_v5",
+      "pal.verification_v5",
+      "pathlib",
+      "sqlite3",
+      "sys",
+      "tempfile"
+    ],
+    "scripts/verify_change_milestone_review_v5.py": [
+      "hashlib",
+      "json",
+      "pathlib",
+      "sys"
+    ],
+    "scripts/verify_design_report_v5.py": [
+      "json",
+      "pathlib",
+      "sys"
+    ],
+    "scripts/verify_readback_demo_v5.py": [
+      "argparse",
+      "demo_readback_v5",
+      "json",
+      "pathlib"
+    ],
+    "tools/native_devin_text_v5.py": [
+      "copy",
+      "hashlib",
+      "importlib",
+      "json",
+      "os",
+      "pal.contracts_v5",
+      "pal.native_call_v5",
+      "pal.native_text_v5",
+      "pathlib",
+      "pwd",
+      "re",
+      "selectors",
+      "shutil",
+      "stat",
+      "subprocess",
+      "sys",
+      "time",
+      "types",
+      "uuid"
+    ],
+    "tools/qualify_primary_native_v5.py": [
+      "argparse",
+      "hashlib",
+      "importlib",
+      "json",
+      "os",
+      "pal.contracts_v5",
+      "pal.primary_wire_v5",
+      "pathlib",
+      "re",
+      "secrets",
+      "sys",
+      "time"
+    ],
+    "tools/verify_native_expert_lifetime_v5.py": [
+      "argparse",
+      "contextlib",
+      "hashlib",
+      "json",
+      "os",
+      "pal.artifacts_v5",
+      "pal.contracts_v5",
+      "pal.events_v5",
+      "pal.host_read_v5",
+      "pal.memory_v5",
+      "pal.mock_host_v5",
+      "pal.native_call_v5",
+      "pal.native_expert_runner_v5",
+      "pal.native_text_v5",
+      "pal.read_consumer_v5",
+      "pal.tasks_v5",
+      "pal.verification_v5",
+      "pathlib",
+      "select",
+      "signal",
+      "sqlite3",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "threading",
+      "unittest"
+    ],
+    "tools/verify_native_primary_lifetime_v5.py": [
+      "contextlib",
+      "hashlib",
+      "json",
+      "pal.artifacts_v5",
+      "pal.contracts_v5",
+      "pal.events_v5",
+      "pal.memory_v5",
+      "pal.mock_host_v5",
+      "pal.mock_runner_v5",
+      "pal.native_call_v5",
+      "pal.native_text_v5",
+      "pal.primary_host_v5",
+      "pal.sanitize",
+      "pal.tasks_v5",
+      "pal.verification_v5",
+      "pathlib",
+      "select",
+      "signal",
+      "sqlite3",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "threading",
+      "unittest",
+      "unittest.mock"
+    ]
+  },
+  "entry_docs_independent_review": "APPROVE at0e5cdf0 andfff19cc, no old operational startup or mandatory legacy implementation input",
+  "entry_docs_scope": [
+    "README.md",
+    "CODEX-PROMPT.md",
+    "AGENTS.md",
+    "SPEC.md",
+    "DESIGN.md"
+  ],
+  "import_pal_server": {
+    "error_type": "ModuleNotFoundError",
+    "exit_code": 1,
+    "module": "pal.server"
+  },
+  "legacy_deleted_test_import_edges": {
+    "tests/helpers.py": [
+      "time"
+    ],
+    "tests/test_citations.py": [
+      "pal.store",
+      "pathlib",
+      "tempfile",
+      "unittest"
+    ],
+    "tests/test_controls.py": [
+      "json",
+      "pal.controls",
+      "pathlib",
+      "unittest"
+    ],
+    "tests/test_controls_memory.py": [
+      "json",
+      "pal.store",
+      "sqlite3",
+      "test_store",
+      "unittest"
+    ],
+    "tests/test_correction_sources.py": [
+      "json",
+      "pal.store",
+      "pathlib",
+      "tempfile",
+      "unittest"
+    ],
+    "tests/test_crash.py": [
+      "json",
+      "os",
+      "pal.store",
+      "pathlib",
+      "signal",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "unittest"
+    ],
+    "tests/test_draft_envelope.py": [
+      "json",
+      "pal.draft_envelope",
+      "unittest"
+    ],
+    "tests/test_http.py": [
+      "json",
+      "pal.controls",
+      "pal.native",
+      "pal.runtime",
+      "pal.server",
+      "pathlib",
+      "tempfile",
+      "threading",
+      "time",
+      "types",
+      "unittest",
+      "unittest.mock",
+      "urllib.error",
+      "urllib.request"
+    ],
+    "tests/test_ingress_classification.py": [
+      "json",
+      "pal.classification",
+      "pal.runtime",
+      "pal.store",
+      "pathlib",
+      "tempfile",
+      "tests.helpers",
+      "unittest",
+      "unittest.mock"
+    ],
+    "tests/test_live_cancel_probe.py": [
+      "hashlib",
+      "json",
+      "os",
+      "pal.native",
+      "pal.runtime",
+      "pal.store",
+      "pathlib",
+      "scripts.live_cancel_probe",
+      "scripts.live_evidence",
+      "scripts.live_runner",
+      "select",
+      "shutil",
+      "signal",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "threading",
+      "time",
+      "unittest",
+      "unittest.mock"
+    ],
+    "tests/test_live_evidence.py": [
+      "json",
+      "os",
+      "pal.native",
+      "pathlib",
+      "scripts.live_evidence",
+      "scripts.live_gate",
+      "signal",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "threading",
+      "time",
+      "unittest"
+    ],
+    "tests/test_live_gate.py": [
+      "pal.native",
+      "pal.runtime",
+      "pathlib",
+      "scripts.live_gate",
+      "tempfile",
+      "threading",
+      "unittest"
+    ],
+    "tests/test_live_operator.py": [
+      "os",
+      "pal.native",
+      "pathlib",
+      "scripts.live_evidence",
+      "scripts.live_operator",
+      "scripts.live_runner",
+      "tempfile",
+      "time",
+      "unittest",
+      "unittest.mock"
+    ],
+    "tests/test_live_runner.py": [
+      "hashlib",
+      "json",
+      "pal.runtime",
+      "pathlib",
+      "scripts.live_evidence",
+      "scripts.live_runner",
+      "tempfile",
+      "unittest",
+      "unittest.mock",
+      "urllib.request"
+    ],
+    "tests/test_native.py": [
+      "concurrent.futures",
+      "json",
+      "os",
+      "pal.native",
+      "pal.runtime",
+      "pathlib",
+      "signal",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "threading",
+      "time",
+      "unittest",
+      "unittest.mock"
+    ],
+    "tests/test_preview.py": [
+      "concurrent.futures",
+      "hashlib",
+      "pal.store",
+      "pathlib",
+      "sqlite3",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "unittest"
+    ],
+    "tests/test_primary.py": [
+      "concurrent.futures",
+      "json",
+      "pal.primary",
+      "pal.store",
+      "pathlib",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "unittest"
+    ],
+    "tests/test_primary_qualification.py": [
+      "copy",
+      "hashlib",
+      "json",
+      "pal.native",
+      "pal.primary",
+      "pal.store",
+      "pathlib",
+      "scripts.live_evidence",
+      "scripts.live_runner",
+      "scripts.primary_qualification",
+      "shutil",
+      "tempfile",
+      "time",
+      "unittest",
+      "unittest.mock"
+    ],
+    "tests/test_primary_runtime.py": [
+      "concurrent.futures",
+      "json",
+      "pal.runtime",
+      "pal.store",
+      "pathlib",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "threading",
+      "time",
+      "unittest"
+    ],
+    "tests/test_questions.py": [
+      "pal.store",
+      "pathlib",
+      "sqlite3",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "unittest"
+    ],
+    "tests/test_runtime.py": [
+      "dataclasses",
+      "pal.runtime",
+      "pal.store",
+      "pathlib",
+      "tempfile",
+      "tests.helpers",
+      "threading",
+      "unittest"
+    ],
+    "tests/test_runtime_envelope.py": [
+      "json",
+      "pal.runtime",
+      "pathlib",
+      "tempfile",
+      "tests.helpers",
+      "time",
+      "unittest"
+    ],
+    "tests/test_runtime_question_crash.py": [
+      "pal.runtime",
+      "pal.store",
+      "pathlib",
+      "signal",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "test_runtime_envelope",
+      "unittest"
+    ],
+    "tests/test_schema_migration.py": [
+      "pal.store",
+      "pathlib",
+      "sqlite3",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "unittest"
+    ],
+    "tests/test_soak.py": [
+      "copy",
+      "importlib.util",
+      "json",
+      "pal.soak",
+      "pal.store",
+      "pathlib",
+      "tempfile",
+      "time",
+      "unittest"
+    ],
+    "tests/test_store.py": [
+      "pal.store",
+      "pathlib",
+      "sqlite3",
+      "tempfile",
+      "unittest"
+    ],
+    "tests/test_target_selection.py": [
+      "concurrent.futures",
+      "json",
+      "pal.controls",
+      "pal.store",
+      "pathlib",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "unittest"
+    ],
+    "tests/test_template_boundary.py": [
+      "json",
+      "pal.runtime",
+      "pal.store",
+      "pathlib",
+      "tempfile",
+      "tests.helpers",
+      "time",
+      "unittest",
+      "unittest.mock"
+    ],
+    "tests/test_template_intake.py": [
+      "pal.runtime",
+      "pal.store",
+      "pathlib",
+      "tempfile",
+      "tests.helpers",
+      "tests.test_runtime_envelope",
+      "unittest"
+    ]
+  },
+  "pal_sanitize_equal_public_base": true,
+  "pal_sanitize_sha256": "eb1a8dcef9cfeb659d9e5fe655eca1148012adf1f2d7883c904e5542f2009bc6",
+  "removed_modules": [
+    "pal.classification",
+    "pal.controls",
+    "pal.draft_envelope",
+    "pal.native",
+    "pal.native_supervisor",
+    "pal.primary",
+    "pal.runtime",
+    "pal.server",
+    "pal.soak",
+    "pal.store",
+    "pal.template_intake"
+  ],
+  "retained_test_fixture_hashes_receipt": "verification.json",
+  "retained_tests_do_not_import_deleted_test_helpers": true,
+  "source": "0e5cdf01e2b3b3851c19966d0e56ec6b7b6666f5",
+  "version": "LEGACY01-CLOSURE/1",
+  "whole_goal": "NOT_MET"
+}

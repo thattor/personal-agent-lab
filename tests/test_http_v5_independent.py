@@ -1,6 +1,8 @@
 """Independent UI01 frozen HTTP acceptance; actual owners, injected mocks only."""
 import http.client
 import json
+from pathlib import Path
+import sqlite3
 import threading
 import unittest
 from urllib.parse import urlencode
@@ -144,7 +146,11 @@ class HTTPIndependentTests(unittest.TestCase):
         self.assertFalse(release.is_set()); self.assertFalse(self.app.wait_idle(timeout=.01))
         release.set(); self.assertTrue(self.app.wait_idle(timeout=3))
         self.assertEqual(len(calls), 1)
-        self.assertEqual(self.works()[0]['state'], {'pause': 'paused', 'cancel': 'cancelled', 'source-stop': 'failed'}[action])
+        self.assertEqual(self.works()[0]['state'], {'pause': 'paused', 'cancel': 'cancelled', 'source-stop': 'queued'}[action])
+        if action == 'source-stop':
+            current = self.works()[0]
+            self.assertGreater(current['work_ref']['epoch'], work['work_ref']['epoch'])
+            self.assertIs(current['text_withheld'], True)
         self.assertNotIn('LATE_DRAFT_MUST_NOT_SAVE', json.dumps(self.ok('GET', '/api/inspection')))
 
     def test_blocked_expert_pause_responsive_and_late_fenced(self): self.blocking_case('pause')
@@ -210,10 +216,107 @@ class HTTPIndependentTests(unittest.TestCase):
             return self.proposal(req)[0]
         self.start(primary); self.addCleanup(release.set)
         self.submit(); self.assertTrue(entered.wait(2))
+        path = Path(self.app.database_path)
+        self.assertTrue(path.is_file())
+        with self.assertRaises(AttributeError):
+            self.app.database_path = str(path) + '.other'
         self.assertIs(self.app.close(timeout=.01), False)
+        self.assertTrue(path.is_file())
+        from pal.mock_host_v5 import MockHostSession
+        with self.assertRaises(RuntimeError):
+            accidental = MockHostSession.open(path)
+            self.addCleanup(accidental.close)
         self.assertFalse(self.app.wait_idle(timeout=.01))
         release.set(); self.assertTrue(self.app.wait_idle(timeout=3))
         self.assertIs(self.app.close(timeout=3), True)
+        self.assertFalse(path.exists())
+
+
+    def test_capacity_sixteen_includes_active_and_rejects_before_persistence(self):
+        entered, release = threading.Event(), threading.Event(); calls = []
+        def primary(req):
+            calls.append(req); entered.set()
+            if not release.wait(10): raise AssertionError('fixture release missing')
+            return self.proposal(req)[0]
+        self.start(primary); self.addCleanup(release.set)
+        first = self.submit('queue-0'); self.assertTrue(entered.wait(2))
+        for i in range(1, 16):
+            self.assertEqual(self.submit('queue-' + str(i))['status'], 'pending')
+        self.assertEqual(len(calls), 1)
+        path = Path(self.app.database_path)
+        def snapshot():
+            with sqlite3.connect(path.as_uri() + '?mode=ro', uri=True) as conn:
+                return tuple(conn.iterdump())
+        before = snapshot()
+        status, body = self.request('POST', '/api/turns',
+                                    {'client_key': 'queue-16', 'text': 'overflow-must-not-persist'})
+        self.assertEqual(status, 503, body)
+        result = json.loads(body); self.assertIs(result['ok'], False)
+        self.assertEqual(snapshot(), before)
+        self.assertEqual(len(calls), 1)
+        release.set(); self.assertTrue(self.app.wait_idle(timeout=5))
+        self.assertEqual(len(calls), 16)
+
+    def test_malformed_and_non_origin_targets_return_bounded_errors_without_effects(self):
+        calls = []
+        self.start(lambda req: calls.append(req) or self.proposal(req)[0])
+        for target in ('http://[', 'http://foreign.invalid/api/turns', '//foreign.invalid/api/turns'):
+            with self.subTest(target=target):
+                status, body = self.request('POST', target, {'client_key': 'invalid-target', 'text': 'must not persist'})
+                self.assertTrue(400 <= status < 500, (status, body))
+                result = json.loads(body)
+                self.assertIs(result.get('ok'), False)
+                self.assertLessEqual(len(body), 1024)
+                self.assertNotIn(b'/private/', body)
+                self.assertNotIn(b'Traceback', body)
+        self.assertTrue(self.app.wait_idle(timeout=1))
+        self.assertEqual(calls, [])
+        self.assertEqual(self.works(), [])
+        self.assertEqual(self.ok('GET', '/api/inspection')['items'], [])
+
+    def test_demo_held_close_reports_nonzero_without_private_path(self):
+        import contextlib
+        import importlib.util
+        import io
+        from unittest.mock import patch
+        import pal.http_v5
+        source = Path(pal.http_v5.__file__).resolve().parents[1] / 'scripts' / 'demo_http_v5.py'
+        spec = importlib.util.spec_from_file_location('ui_demo_under_review', source)
+        demo = importlib.util.module_from_spec(spec); spec.loader.exec_module(demo)
+        class App:
+            def close(self): return False
+        class Server:
+            server_port = 12345
+            def serve_forever(self): raise KeyboardInterrupt()
+            def server_close(self): pass
+        out, err = io.StringIO(), io.StringIO()
+        with patch.object(demo, 'LocalMockApp', return_value=App()), \
+             patch.object(demo, 'create_server', return_value=Server()), \
+             contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            status = demo.main()
+        self.assertIs(type(status), int)
+        self.assertNotEqual(status, 0)
+        self.assertTrue(err.getvalue().strip())
+        self.assertNotIn('/private/', err.getvalue())
+        self.assertNotIn('Traceback', err.getvalue())
+
+    def test_security_headers_on_static_status_and_refusal(self):
+        self.start()
+        for path in ('/', '/api/status', '/not-a-route'):
+            with self.subTest(path=path):
+                c = http.client.HTTPConnection('127.0.0.1', self.server.server_port, timeout=2)
+                try:
+                    c.request('GET', path, headers={'Host': self.authority})
+                    response = c.getresponse(); response.read()
+                    csp = response.getheader('Content-Security-Policy', '')
+                    directives = {part.strip() for part in csp.split(';')}
+                    self.assertIn("frame-ancestors 'none'", directives)
+                    self.assertIn("base-uri 'none'", directives)
+                    self.assertEqual(response.getheader('X-Content-Type-Options'), 'nosniff')
+                    self.assertEqual(response.getheader('Cache-Control'), 'no-store')
+                    self.assertEqual(response.getheader('Referrer-Policy'), 'no-referrer')
+                finally:
+                    c.close()
 
 
 if __name__ == '__main__':

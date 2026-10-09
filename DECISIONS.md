@@ -2711,3 +2711,66 @@ current-v5 acceptance. Source/import closure and exact archived public bodies ar
 checked. No current checkout open file was found before deletion; no unrelated
 process was stopped or broad old-service cessation inferred. Old DB/conversation/
 evidence/unknowns remain. No replacement HTTP/UI or real-native completion claim.
+
+
+## D055 — apply actual Opus review and parallel fixed scopes (2026-10-10)
+
+Exact official CO Opus5.5 completed planner+report calls and shape verification
+at01ae956, CO verified:true. It is a document design review, not source review or
+product verification. Raw report bytes are retained; C088/model diagnostic/UI
+all REFINE. Root supplies explicit ancestry/import closure/deleted-test edges in
+legacy01 closure.json without rewriting the protected earlier receipt. fff19cc
+contains the completed0e5cdf0 deletion; baseline930=1210-280, plus new cases.
+
+Root adopts UI01/2 before acceptance: no implicit temp finalizer on hold, bounded
+preadmission before new saved input, explicit turn/answer/resume progression,
+headers and independent fixtures/review. Fresh prototype source is not yet an
+accepted UI. Model diagnostic API remains the frozen/1 without schema changes:
+P1's minimal explicit-limit alternative is adopted (modern configOptions only;
+legacy model advertisements are not projected and hint-null cannot prove absence).
+Session token is lowercase SHA256 over exact UTF8 sessionId, not owner binding.
+Original entered BaseException and stop/ending-write failure stay generic entered
+failure points: retain best-effort after the original supported stop attempt has
+returned/raised and rethrow the original interrupt. Opus's no-file-on-interrupt
+alternative is not adopted because it would discard the stated diagnostic goal
+and contradict fixed preservation cases; no diagnostic grants new authority or
+cessation, and no no-delay timing guarantee is claimed for local fsync. Existing
+source/strict replay isolation is independently checked; no static mirror test is
+required. Supplied report scope is explicit; no N3/T2/real Expert is authorized.
+
+Native Sol UI source and separate Astra HTTP fixtures run in isolated checkouts.
+Separate Sol model fixed20 RED precedes ordinary CO Opusplanner/SWE-2 High pure
+class and separate Astra wrapper; source reviews differ from authors. Devin fresh
+model catalog confirms exact swe-2-high/Free; no additional billing is enabled.
+The shared public capacity retains original Devin held1; native limit4 includes
+Root. Ordinary CO tasks use only existing shared state and fixed exact roles,
+no setup/new route/auth/unknown resume/runtime edit. Whole goal remains NOT_MET.
+
+
+## D056 — reviewed local integration and preserved CO timeout (2026-10-10)
+
+Latest owner continuation authorizes necessary parallel development. The separate CO pure task requested devin/swe-2-high; planner completed,
+implementation timed out300s/exit75, awaiting_decision, outcome/process unknown,
+verified:false and options[]. Informational candidates grant no selectable retry.
+No quota/cause, actual implementation model or remote cessation is inferred.
+Original state/output/workspace is preserved without decide/resume/retry/cancel/
+forced release or late-output auto-adoption. Existing C073 authority allows a
+NEW isolated Native Sol6.1 pure implementation, distinct from that call; separate
+Astra wrapper and separate Sol reviewer keep implementation/review contexts distinct.
+Root adopts exact independently APPROVED bytes only, full969/exit0 and source hashes.
+
+UI01/2 source has separate Astra19 APPROVE and Root scripted browser proof;
+LOCAL_MOCK_VERIFIED replaces current HTTP/UI absence. This is a test surface,
+with fresh disposable DB, no native route or authentic usefulness claim. Previous
+930 owner fixtures remain; all88 old current-v5 test/fixture files equal-byte.
+Model fixed20/native151 APPROVE retains old7619-byte buffer prefix unchanged,
+original stop/hook/result semantics and strict exact-model/replay gates. Its modern
+model record remains unqualified and cannot restore old unsaved N2 frames.
+
+New capture/wrapper hashes invalidate the previous profile envelope; do not reuse
+it. D055 review/dispositions do not authorize a new call. Next Root must freeze a
+distinct bounded diagnostic proposal and obtain independent operator/design proof
+before any N3; no real Expert or profile weakening is implied. No new auth, cost,
+service, public exposure or other-project/CO changes. Whole goal remains NOT_MET.
+See c089-c090 verification and minimized CO summary; public provenance omits raw
+owner message identifiers and private account/runtime paths.

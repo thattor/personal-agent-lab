@@ -9,7 +9,8 @@ frozen scope. Read current [STATE.md](STATE.md), [DECISIONS.md](DECISIONS.md) an
 Latest owner decisions/current frozen scope take precedence over historical proposals.
 
 Local current v5 owner/Primary/mock/native-boundary slices are implemented and
-fixture-tested at their recorded exact versions. HTTP/UI is NOT_IMPLEMENTED.
+fixture-tested at their recorded exact versions. HTTP/UI is LOCAL_MOCK_VERIFIED
+under UI01/2, with a fresh disposable loopback demo and no native route.
 Real model qualification, real Expert connection, whole-flow usefulness and whole
 product acceptance remain NOT_MET. No new design or acceptance criteria are
 introduced by this pointer.

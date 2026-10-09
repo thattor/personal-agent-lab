@@ -18,7 +18,8 @@ or local fixture PASS alone does not complete the product.
    another project's runtime/state or another owner's files.
 
 Mock is the default. No new auth, cost, service or provider call follows from this
-prompt. Current v5 HTTP/UI is not implemented. Real-model qualification and
+prompt. Current v5 HTTP/UI is a verified disposable local mock under UI01/2. Native UI,
+real-model qualification and
 whole-flow usefulness remain unmet. Historical local or native evidence does not
 supply continuing call authority. Do not invent replacement acceptance criteria;
 continue the next dependency identified by current STATE/DECISIONS and the latest

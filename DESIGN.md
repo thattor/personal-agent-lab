@@ -11,9 +11,10 @@ Current owners include memory, intake/tasks, artifacts, structural verification,
 events/read inspection and Primary composition. Mock and explicit native runners
 have different evidence/entry semantics. PAL core imports no CO; an external
 wrapper's public runtime dependency does not become product qualification.
-Current HTTP/UI remains NOT_IMPLEMENTED. Real qualification/usefulness and whole
-goal remain NOT_MET. Old operational engines are outside the current import graph
-and are targeted for removal under LEGACY01, without compatibility wrappers.
+Current HTTP/UI is LOCAL_MOCK_VERIFIED under UI01/2 using the current owners and
+a fresh disposable SQLite DB. Real qualification/usefulness and whole goal remain
+NOT_MET. LEGACY01 removed old operational engines from the current import graph,
+without compatibility wrappers.
 
 The exact earlier architecture body is [historical](docs/history/legacy-design-pre-v5.md).
 Do not use it as a mandatory model input or current startup guide.

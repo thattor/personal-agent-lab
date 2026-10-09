@@ -1650,3 +1650,56 @@ old engine cannot be imported through the removed11 modules in this checkout.
 Current HTTP/UI absence is explicit and remains unfinished work, not hidden by
 old endpoints. Independent export review verifies no private candidate ancestry
 and no new unnecessary owner identifier; bare-ID assertion correction applied.
+
+
+C089 UI independent fixture initially expected failed after in-flight reference
+stop. Actual immutable current TSK/MEM/MockRunner advances epoch and drains to
+queued; C05 explicitly specifies it. The source author preserved owner behavior
+and fixed tests, returning14/15 instead of rewriting status. Root reconciles the
+contract; independent test author corrects state and strengthens epoch/withheld/
+late-output assertions. Original failure is retained. Next fixture uses exact
+current owner transition contract, not an inferred terminal state.
+
+Opus found prototype UI TemporaryDirectory finalizer could delete a held DB and
+post-submit queue refusal could strand a persisted turn. Root adopts UI01/2:
+explicit temp removal only after owned completion and capacity reservation before
+store, with independent failure/hold tests. These are required corrections before
+integration, not accepted product behavior. CO's short-plan instruction prevention
+worked in the new C088 report (plan accepted, report produced, shape verified);
+old plan_invalid output remains unchanged and was never a completed review.
+
+
+C089 URL/refusal and displayed-question correction: independent URL probes found
+urlsplit ValueError escaped the transport guard and absolute foreign targets were
+accepted with a local Host. Source now bounds/origin-form validates the target
+inside refusal handling before owner mutation; independent malformed/foreign URL
+cases prove refusal with no turn/DB effect. UI used question.question but current
+READ exports question.text, masking the actual question with a generic fallback.
+Source now reads the current field; actual Root browser displays the date question
+and saves the answer in the same work. Independent demo hold case requires exit1
+without exposing a private path. Final Astra19 and Root969 pass.
+
+C090 implementation-route/interpreter correction: CO SWE implementation timed
+out with unknown outcome and no selectable option; cause/quota remain unknown.
+Preserve it; a distinct authorized Native implementation has separate source
+review and fixed20/native151 proof. Author's first default Python3 was3.9 and
+could not import existing StrEnum. Python3.13 rerun passes without source/test
+workarounds. Pin the existing3.13 interpreter before related verification and
+record interpreter/setup failure separately from product RED. Old prefix/hash and
+all88 retained fixture hashes are rechecked; new envelope is required before a
+new finite native diagnostic. No accepted mock result becomes native qualification.
+
+C090 publication correction: independent export review caught an unnecessary raw
+CO task identifier in the new decision and minimized receipt. It was a development
+identifier, not required public provenance. The first candidate52489fe is preserved
+on its local branch and excluded from public ancestry. Root creates a normal
+descendant of reviewed source0d60b6f with anonymous evidence label, asserts exactly
+one replacement per affected file and identifier absence, and obtains exact-head
+export review. Future public records use named evidence plus source/file digests;
+private task lookup stays local. No force push or original CO outcome rewrite.
+Export review of the entire next push also found the same unnecessary task-ID
+field in the completed Opus summary. Root preserves all intermediate candidates
+and reconstructs the approved final tree from498c628 before that addition; actual
+legacy source0e5/fff19/01ae ancestry remains. Source/test bytes are exactly those
+verified at0d60b6f; that local test commit remains preserved. Both summary task-ID
+fields are replaced by anonymous labels. No task is retried or rewritten.

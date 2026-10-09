@@ -196,3 +196,178 @@ class NativeTextBuffer:
         if evidence != _EVIDENCE_PREFIX + digest:
             _refuse('evidence mismatch')
         return digest, evidence
+
+
+class _ModelMalformed(Exception):
+    pass
+
+
+class _ModelOverflow(Exception):
+    pass
+
+
+def _model_token(value, maximum=256, *, nonempty=True):
+    if not isinstance(value, str) or (nonempty and not value):
+        raise _ModelMalformed
+    # Avoid encoding unbounded input, while malformed UTF8 remains recoverable.
+    if len(value) > maximum:
+        raise _ModelOverflow
+    try:
+        encoded = value.encode('utf-8')
+    except UnicodeEncodeError:
+        raise _ModelMalformed from None
+    if len(encoded) > maximum:
+        raise _ModelOverflow
+    return value
+
+
+class NativeModelDiagnostic:
+    """Bounded modern callback projections without model authority."""
+
+    _limits = {'max_observations': 32, 'max_options': 16, 'max_values': 32,
+               'max_string_bytes': 256, 'max_record_bytes': 32768}
+
+    def __init__(self, *, request_sha256, profile_sha256, attempt_ref, model_id):
+        if not _is_hex64(request_sha256) or not _is_hex64(profile_sha256):
+            raise ValueError('invalid hash binding')
+        if not isinstance(attempt_ref, dict) or set(attempt_ref) != _ATTEMPT_KEYS:
+            raise ValueError('invalid attempt binding')
+        try:
+            model_id = _model_token(model_id, 512)
+            attempt = {key: _model_token(attempt_ref[key], 512)
+                       for key in _ATTEMPT_KEYS}
+        except (_ModelMalformed, _ModelOverflow):
+            raise ValueError('invalid token binding') from None
+        self._record = {'version': 'PRI02-MODEL-DIAGNOSTIC/1',
+                        'authority': 'unqualified',
+                        'request_sha256': request_sha256,
+                        'profile_sha256': profile_sha256,
+                        'attempt_ref': attempt, 'requested_model_id': model_id,
+                        'status': 'complete', 'observations': [],
+                        'limits': dict(self._limits)}
+
+    @staticmethod
+    def _canonical(record):
+        return json.dumps(record, sort_keys=True, separators=(',', ':'),
+                          ensure_ascii=False, allow_nan=False)
+
+    def snapshot(self):
+        return json.loads(self._canonical(self._record))
+
+    @staticmethod
+    def _values(entries):
+        if not isinstance(entries, list) or not entries:
+            raise _ModelMalformed
+        if len(entries) > 32:
+            raise _ModelOverflow
+        values = []
+        grouped = None
+        for entry in entries:
+            if not isinstance(entry, dict):
+                raise _ModelMalformed
+            is_group = 'group' in entry
+            if grouped is not None and grouped != is_group:
+                raise _ModelMalformed
+            grouped = is_group
+            if is_group:
+                _model_token(entry['group'])
+                children = entry.get('options')
+                if not isinstance(children, list) or not children:
+                    raise _ModelMalformed
+                if len(children) > 32 or len(values) + len(children) > 32:
+                    raise _ModelOverflow
+            else:
+                children = [entry]
+            for child in children:
+                if not isinstance(child, dict) or 'group' in child:
+                    raise _ModelMalformed
+                values.append(_model_token(child.get('value')))
+        return values
+
+    @classmethod
+    def _options(cls, fields, shape):
+        if 'configOptions' not in fields:
+            if shape == 'config_option_update':
+                raise _ModelMalformed
+            return []
+        raw = fields['configOptions']
+        if not isinstance(raw, list):
+            raise _ModelMalformed
+        if len(raw) > 16:
+            raise _ModelOverflow
+        options = []
+        for entry in raw:
+            if not isinstance(entry, dict):
+                raise _ModelMalformed
+            option_id = _model_token(entry.get('id'))
+            category = (_model_token(entry['category'], nonempty=False)
+                        if 'category' in entry else None)
+            kind = entry.get('type')
+            current = entry.get('currentValue')
+            if kind == 'select':
+                current = _model_token(current)
+                values = cls._values(entry.get('options'))
+            elif kind == 'boolean':
+                if type(current) is not bool or 'options' in entry:
+                    raise _ModelMalformed
+                values = []
+            else:
+                raise _ModelMalformed
+            options.append({'id': option_id, 'category': category, 'type': kind,
+                            'current_value': current, 'available_values': values})
+        return options
+
+    def observe(self, fields, *, hook, current_update=False,
+                original_hook='returned'):
+        if self._record['status'] == 'incomplete':
+            return
+        metadata_valid = (hook in ('observe', 'verify_session')
+                          and type(current_update) is bool
+                          and original_hook in ('returned', 'raised'))
+        if metadata_valid and hook == 'observe' and isinstance(fields, dict):
+            if ('configOptions' not in fields and 'sessionId' not in fields
+                    and fields.get('sessionUpdate') != 'config_option_update'):
+                return
+        if len(self._record['observations']) >= 32:
+            self._record['status'] = 'incomplete'
+            return
+        shape = ('preprompt_snapshot' if hook == 'verify_session' else
+                 'config_option_update' if isinstance(fields, dict)
+                 and fields.get('sessionUpdate') == 'config_option_update' else
+                 'field_snapshot')
+        row = {'delivery_index': len(self._record['observations']),
+               'hook': hook if metadata_valid else 'observe',
+               'shape': shape if metadata_valid else 'field_snapshot',
+               'original_hook': original_hook if metadata_valid else 'raised',
+               'session_sha256': None,
+               'current_update': current_update if metadata_valid else False,
+               'projection_status': 'valid', 'options': [],
+               'effective_model_hint': None}
+        try:
+            if not metadata_valid or not isinstance(fields, dict):
+                raise _ModelMalformed
+            if 'sessionId' in fields:
+                try:
+                    session = _model_token(fields['sessionId'], 512)
+                except _ModelOverflow:
+                    raise _ModelMalformed from None
+                row['session_sha256'] = hashlib.sha256(session.encode('utf-8')).hexdigest()
+            row['options'] = self._options(fields, shape)
+            models = [opt for opt in row['options'] if opt['id'] == 'model']
+            if (len(models) == 1 and models[0]['type'] == 'select'
+                    and models[0]['current_value'] in models[0]['available_values']):
+                row['effective_model_hint'] = {
+                    'option_id': 'model', 'current_value': models[0]['current_value']}
+        except _ModelOverflow:
+            self._record['status'] = 'incomplete'
+            return
+        except _ModelMalformed:
+            row['projection_status'] = 'malformed'
+            row['options'] = []
+            row['effective_model_hint'] = None
+        candidate = {**self._record, 'status': 'incomplete',
+                     'observations': self._record['observations'] + [row]}
+        if len(self._canonical(candidate).encode('utf-8')) > 32768:
+            self._record['status'] = 'incomplete'
+            return
+        self._record['observations'].append(row)

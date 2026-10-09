@@ -32,7 +32,7 @@ Historical docs/receipts remain evidence, not active specifications or startup p
 ## Verification and reporting
 
 ```sh
-python3 -E -s -B -m unittest discover -s tests -v
+python3.13 -E -s -B -m unittest discover -s tests -v
 ```
 
 Retain all current v5 tests, including unsuffixed probes. Use disposable fixtures
@@ -40,5 +40,7 @@ and existing current v5 demos/lifetime verifiers for bounded local verification.
 Report exact source, actual command/exit/count, findings and remaining limits.
 Distinguish source approval, local mock/fixture proof, real transport qualification,
 operational adoption and authentic human usefulness. Current HTTP/UI is
-NOT_IMPLEMENTED; real qualification/usefulness and whole goal remain NOT_MET.
+LOCAL_MOCK_VERIFIED; native UI, real qualification/usefulness and whole goal remain
+NOT_MET. Use the existing Python3.13 interpreter for local verification; a Python3.9
+StrEnum import failure is not a product regression.
 Global guidance and saved owner instructions remain independently applicable.

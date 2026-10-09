@@ -1,3 +1,22 @@
+# Current C090 — local HTTP/UI and model diagnostics pass; whole goal unmet
+
+Source0d60b6f has Root **969 PASS18.995s/exit0**, independent UI19/native151 APPROVE
+and actual scripted browser turn/question/answer/saved-result proof. New20 diagnostic
+and19 UI cases supplement retained930; all88 existing current-v5 test/fixtures are
+unchanged. [Exact source/test receipt](evidence/operations/c089-c090-20261010/verification.json).
+
+UI01/2 is LOCAL_MOCK_VERIFIED, including held cleanup, preadmission/controls,
+headers, malformed URL refusal, literal text display and demo hold exit1. Model
+observations remain unqualified; original null/false model still refuses despite
+a matching hint. Previous wrapper/capture qualification envelope is invalidated.
+Official Opus5.5 design review is completed with D055 dispositions. New CO SWE
+implementation UNKNOWN is preserved and the distinct approved Native fallback is
+source proof only. No new provider invocation or original native qualification.
+
+Actual exact model/native Expert/current native UI and authentic whole-flow
+usefulness/release remain **NOT_MET**. Earlier C088 HTTP/UI absence statements
+are historical; neither mock completion nor CO verified report shape completes PAL.
+
 # ACCEPTANCE.md
 
 ## Current C088 — legacy deletion passes; actual whole goal remains unmet

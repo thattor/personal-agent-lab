@@ -1,3 +1,33 @@
+# Current C090 — mock UI and bounded model diagnostics verified locally
+
+Root source0d60b6f integrates separately authored/reviewed UI01/2 and
+PRI02-MODEL-DIAGNOSTIC/1. Root normal full **969 PASS18.995s/exit0**. All88 previous
+current-v5 test/fixture files are equal-byte retained; new UI19 and diagnostic20
+make930+19+20. Independent Astra UI19 and distinct Sol native151 pass with APPROVE.
+Root browser verifies turn → actual question → answer → same-work saved draft,
+script-like input as literal text, no console errors and owned-server exit0.
+[Verification](evidence/operations/c089-c090-20261010/verification.json).
+
+Current HTTP/UI is **LOCAL_MOCK_VERIFIED**, fresh disposable loopback only, not
+real-model UI, deployment or authentic usefulness. UI01/2 preserves a held DB/guard,
+bounds preadmission to16, keeps controls immediate and uses current v5 owners.
+Unqualified model projections retain modern configOptions with explicit limits;
+they do not alter original strict gates, TSK/ART/READ/replay or N2 UNKNOWN.
+Capture/wrapper changes invalidate the previous qualification envelope.
+
+The new official Opus5.5 document review completed and all REFINE findings have
+recorded dispositions under D055. It is neither source nor product qualification.
+CO requested SWE-2 High pure implementation timed out300s, awaiting_decision/
+UNKNOWN/verified:false and no selectable options. Original outcome is preserved;
+a separately authorized isolated Native Sol implementation was independently
+reviewed and integrated under D056. No CO retry/state edit/forced lease release.
+
+Whole goal remains **NOT_MET**: actual exact-model qualification, native Expert,
+real-model current UI, authentic improved whole-flow usefulness and release audit.
+Next independent step is a reviewed distinct diagnostic MAX1 proposal with new
+source binding; current source scopes authorize no N3/T2/real Expert entry. Earlier
+checkpoints below are retained history, not current startup or acceptance.
+
 # STATE.md
 
 ## Current C088 — operational old PAL removed; current v5 verified locally

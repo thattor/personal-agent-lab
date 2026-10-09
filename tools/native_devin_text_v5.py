@@ -21,7 +21,7 @@ from types import SimpleNamespace
 import uuid
 
 from pal.contracts_v5 import dumps, Ref
-from pal.native_text_v5 import NativeTextBuffer
+from pal.native_text_v5 import NativeTextBuffer, NativeModelDiagnostic
 from pal.native_call_v5 import NativeProfile, NativeReturned, NativeNeverEntered
 
 _TRANSPORT_VERSION = 'devin 3000.11.3 (9c803229faa4)'
@@ -260,7 +260,7 @@ class NativeDevinText:
 
     def invoke(self, request, *, on_enter):
         entered = False
-        pool = ref = host = adapter = buffer = None
+        pool = ref = host = adapter = buffer = model_diagnostic = None
         last_status = None
         stopped = False
         request_hash = None
@@ -313,15 +313,39 @@ class NativeDevinText:
             host = api.DevinTextHost(config, expected_response=None)
             buffer = NativeTextBuffer(request_sha256=request_hash, profile_sha256=self.profile.profile_sha256,
                                       attempt_ref=attempt, model_id='swe-2-high')
+            try:
+                model_diagnostic = NativeModelDiagnostic(request_sha256=request_hash,
+                    profile_sha256=self.profile.profile_sha256, attempt_ref=attempt,
+                    model_id='swe-2-high')
+            except BaseException:
+                pass
+            def record_model(fields, hook, current_update, original_hook):
+                if model_diagnostic is not None:
+                    try:
+                        model_diagnostic.observe(fields, hook=hook,
+                            current_update=current_update, original_hook=original_hook)
+                    except BaseException:
+                        pass
             def verify(req, phase, native):
-                host.verify(req, phase, native)
-                if req != native_request:
-                    _fail()
-                if phase == 'session':
-                    buffer.begin()
+                original_hook = 'raised'
+                try:
+                    host.verify(req, phase, native)
+                    original_hook = 'returned'
+                    if req != native_request:
+                        _fail()
+                    if phase == 'session':
+                        buffer.begin()
+                finally:
+                    if phase == 'session':
+                        record_model(native, 'verify_session', False, original_hook)
             def observe(fields, *, current_update=False):
-                host.observe_model(fields, current_update=current_update)
-                buffer.observe(fields, current_update=current_update)
+                original_hook = 'raised'
+                try:
+                    host.observe_model(fields, current_update=current_update)
+                    original_hook = 'returned'
+                    buffer.observe(fields, current_update=current_update)
+                finally:
+                    record_model(fields, 'observe', current_update, original_hook)
             adapter = api.DevinAdapter(verify_host=verify, transport_factory=host.transport, desired_mode='plan',
                 verify_text_cessation=host.verify_text_cessation, observe_model=observe, rpc_timeout=10)
             def factory(req):
@@ -392,6 +416,11 @@ class NativeDevinText:
                 result = NativeReturned(capture=capture, cessation=ending)
                 evidence = result.validate(request_sha256=request_hash, profile=self.profile)
                 _write(call_dir / 'ending.json', {'capture': capture, 'evidence': evidence})
+                if model_diagnostic is not None:
+                    try:
+                        _write(call_dir / 'model-observations.json', model_diagnostic.snapshot())
+                    except BaseException:
+                        pass
                 return result
         except NativeNeverEntered:
             raise
@@ -407,6 +436,11 @@ class NativeDevinText:
             if entered and buffer is not None:
                 try:
                     _write(call_dir / 'unqualified-output.json', buffer.unqualified_snapshot())
+                except BaseException:
+                    pass
+            if entered and model_diagnostic is not None:
+                try:
+                    _write(call_dir / 'model-observations.json', model_diagnostic.snapshot())
                 except BaseException:
                     pass
             if entered and adapter is not None and host is not None:

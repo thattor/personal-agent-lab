@@ -23,26 +23,29 @@ completion and read inspection. Primary mock composition and explicit native
 Primary/Expert ownership boundaries have local fixture tests. Native fixture
 endings and source approval are not real-provider qualification.
 
-HTTP/UI: **NOT_IMPLEMENTED**. Real model qualification, real Expert connection,
+HTTP/UI: **LOCAL_MOCK_VERIFIED** under UI01/2, using a fresh disposable database
+and a loopback server. Real model qualification, real Expert connection, native UI,
 authentic whole-flow usefulness and overall product acceptance: **NOT_MET**.
-There is no replacement web-server startup command. Current development defaults
-to mock; no provider invocation is needed for the checks below.
+Start the test page with `python3.13 -E -s -B scripts/demo_http_v5.py`; open its
+printed loopback URL and send 「下書きデモ」. Answer the displayed date question to
+see a saved fixed example. Ctrl-C stops it; an unresolved worker retains its DB
+and returns exit1. This is a scripted mock test, with no provider call.
 
 ## Run local checks
 
-Python standard library only. The integrated LEGACY01 candidate's normal discovery
+Python3.11+ and standard library only; Root verified Python3.13. Normal discovery
 must retain every current v5 case, including unsuffixed integrity probes:
 
 ```sh
-python3 -E -s -B -m unittest discover -s tests -v
+python3.13 -E -s -B -m unittest discover -s tests -v
 ```
 
 Existing demos use current owners and disposable local SQLite:
 
 ```sh
-python3 -E -s -B scripts/demo_ask_v5.py
-python3 -E -s -B scripts/demo_change_v5.py
-python3 -E -s -B scripts/demo_readback_v5.py
+python3.13 -E -s -B scripts/demo_ask_v5.py
+python3.13 -E -s -B scripts/demo_change_v5.py
+python3.13 -E -s -B scripts/demo_readback_v5.py
 ```
 
 The fixture lifetime tools `tools/verify_native_primary_lifetime_v5.py` and
