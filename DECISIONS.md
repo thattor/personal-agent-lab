@@ -1963,3 +1963,14 @@ checks are unavailable, not proof of invalidation or success. Semantic and unbui
 source-fetch checks remain unknown; no model claim or changed condition is MET.
 SWE consultation will refine the exact same-TX APIs before substantial persistence
 implementation. This is a technical continuation within D038, not an owner gate.
+
+
+D038 VER01 technical adoption: CO SWE consultation e2477652c7ce43cbb9e20a91386fe2e1
+completed with REFINE. Adopt its deterministic storage/current-status/strict-owner
+boundaries in VER01-SCOPE, preserving existing authority error precedence rather
+than its contradictory blanket queued-state test. Current source gate uncertainty
+is an error, not a status. Structural artifact_saved does not verify arbitrary
+description quality; semantic/source_fetched remain unknown. Split immutable
+in-memory tests from the smaller SWE code-only module assignment; Root owns TSK
+callback/actual connection and a separate reviewer assesses exact source. No C10,
+new model path, state engine, new permission, or unknown-call retry is introduced.

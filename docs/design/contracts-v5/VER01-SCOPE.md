@@ -1,7 +1,7 @@
 # VER01/1 — deterministic saved verification (Stage A)
 
-PROPOSED technical API scope under D038/C074. Opus task7cd3d557 recommends this
-stage before C10 completion; SWE consultation must refine it before implementation.
+ADOPTED technical API scope under D038/C074 after Opus task7cd3d557 staging
+and completed SWE consultation e2477652c7ce43cbb9e20a91386fe2e1 (REFINE).
 Base accepted source2e8dfcf, full605; actual dispatch pins the proposal commit.
 
 Value: fixed host Conditions are checked against the whole saved artifact set and
@@ -111,3 +111,50 @@ stop and attachment; no mixed snapshot. Rollback after actual VER write and proc
 interrupt leaves no partial record/key and preserves caller ownership. Typed forged
 checks/duplicate or missing Conditions/unsupported refs/malformed callbacks fail.
 No completion or product/real-model usefulness claim from these cases.
+
+
+## SWE disposition and frozen details
+
+Adopt consultation items1-10 and meaningful cases, with these exact clarifications:
+
+- The TSK method is verification_context(connection, request, *, purpose). The
+  request contains only work_ref; the host-only purpose keyword is required.
+  Wrong purpose returns invalid_input. The thin public wrapper requires the exact
+  active connection before the Result wrapper, as existing ART-save authorization.
+- Preserve existing _authority order: no owned active lease is denied, including
+  an ordinarily released queued/paused Goal. An active pause/drain is conflict;
+  cancel with an old WorkRef is stale. The consultation's test6 blanket queued/
+  paused=conflict conflicts with its item2; use these existing precise outcomes.
+- Status uses _current with epoch matching, not running authority or source gate.
+  It returns required origin/Brief records only (not every registered optional
+  lookup), fixed unique Condition IDs and the validated ordered artifact set.
+  Required refs must remain registered/record-only; malformed stored state is
+  unavailable, distinct from malformed caller input invalid_input.
+- VER verify input non-artifact Ref is invalid_input; any ordered set mismatch
+  (including duplicate/reorder) conflict. Owner ART not_found for an artifact in
+  the current set and MEM not_found for a required dependency are unavailable.
+  Different saved artifact Goal/revision is stale; an older artifact epoch of the
+  same revision is allowed. Transient or corrupt evidence never creates an unmet
+  check. Empty current set alone produces artifact_saved unmet.
+- Context(status) stale or a legitimately appended artifact set yields invalidated.
+  Source denied yields invalidated. Context not_found/unavailable remains that
+  error; all other uncertain/broken owner evidence is unavailable. Pause with
+  unchanged epoch/set/sources keeps the stored verification fact valid.
+- Same-input verify/get_by_key returns the original receipt before authority
+  checks. The later C10 typed read must never call get_by_key. No model/step spend.
+- Storage layout is private to VER. Retain enough immutable context, artifact
+  metadata and original receipt to validate all record bindings, exact fixed
+  Condition IDs/order, expected deterministic checks/evidence refs and conservative
+  dependency union. Recompute structural expected checks on stored-data validation;
+  a forged semantic met is corrupt, never accepted. The suggested SQL column list
+  is illustrative; no timestamp API or extra engine is required by C09.
+- Callback guard errors clean only owned savepoints and preserve caller transaction
+  for inspect. A trusted callback's COMMIT cannot be undone; document that limit.
+
+Delivery split: scoped native test author prepares compact in-memory public-API
+acceptance tests against this frozen contract (no claims before implementation).
+SWE-2 High is assigned only the new VER module and implementation note through CO,
+with those tests as immutable inputs and declared verifier. SOL owns the independent
+TSK callback and later actual connected tests. This reduces implementation output
+size after earlier large SWE coding timeouts; it does not retry unknown tasks or
+change CO runtime/state/limits. A separate native reviewer will inspect exact code.
