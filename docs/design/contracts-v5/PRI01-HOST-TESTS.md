@@ -4,8 +4,8 @@ Frozen base1b1bd275fe76d470e5df796c79fed76c6eaa0cef; PRI01-SCOPE is authority.
 Only tests/test_primary_host_v5.py and this note are authored. No Primary source,
 shared scope, TSK candidate source, owner tests or canonical record edits.
 
-39 methods, 28695 UTF8 bytes.
-SHA256 `9afd8f43443e9994651d734bab37284815d6f223dfcf1f729af64108f4bddcd4`.
+39 methods, 28730 UTF8 bytes.
+SHA256 `ff53dc0d2e2fbba566352d46e1dad2c64e108ea51d11407f1271c3e5d721c6e3`.
 
 ## Fixture dependencies and qualifications
 
@@ -85,3 +85,23 @@ checks exact source. Root owns schema corruption, genuine simultaneous-process
 entry, process cessation, whole sentence→ask/answer/change→saved/check/readback,
 full regression and later authentic usefulness. These unit expectations prove no
 semantic intention, quality rubric, real-provider profile, P001 or overall goal.
+
+
+## Authorized fixture-order correction
+
+Root's first actual source run recorded38 PASS/1 FAIL. The malformed C11 fixture
+was injected before submit, so admission correctly refused corrupted immutable
+hash via read-only C11 user_view; the test never reached model-entry fault. Root
+clarified that user_view is used only to verify MEM's immutable Ref/hash during
+admission, not as model input or copied PRI body. Model-entry remains model_context.
+Correction restores ordinary MEM.read for each submit, then installs the same
+hash/usability/extra-field fault before run_turn. All failed/no-callback/no-charge
+expectations remain unchanged. No source weakened to admit corrupted hash.
+
+Independent isolated execution using exact Root source as read dependency:
+39 PASS,0.397s, /private/tmp/pal-primary-host-fixture-order.log. This validates the
+fixture correction only, not independent source review. Previous missing-module
+baseline is retained above; Root first failure log remains
+/private/tmp/pal-pri01-host-root-first.log. No source overlay is included in commit.
+Next relevant fixture must complete ordinary durable admission before injecting
+model-entry corruption, or explicitly assert admission refusal instead.

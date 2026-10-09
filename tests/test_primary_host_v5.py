@@ -241,7 +241,8 @@ class PrimaryHostTests(unittest.TestCase):
         for change in ({'hash':'0'*64},{'usable':False},{'extra':True}):
             def broken(req,*,purpose,change=change):
                 body=self.ok(original(req,purpose=purpose));body.update(change);return Result.success(body)
-            self.mem.read=broken;turn=self.submit();self.run_turn(turn,'failed');self.assertEqual(self.calls,[])
+            self.mem.read=original;turn=self.submit()
+            self.mem.read=broken;self.run_turn(turn,'failed');self.assertEqual(self.calls,[])
         self.mem.read=original;self.assertEqual(self.used(),0)
 
     def test_new_work_full_exposure_closure_and_trusted_grant(self):
