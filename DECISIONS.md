@@ -1769,3 +1769,45 @@ source/permission authority, history, C14 sharing, execution/services/providers/
 and human value remain NOT_RUN. The current receipt supersedes author-time pending
 review/full-suite text; it does not rewrite author provenance or promote product
 acceptance. Next dependency is the shared MEM/TSK same-transaction source boundary.
+
+## D-038 — checkpoint continuation and requested loop proposal, 2026-10-09
+
+Actual owner instructions were read in PAL人間判断, not inferred from its agent:
+
+- Turn01a11f76-dac6-7462-959a-a7ab1326f91a, message01a11f76-db05-7470-8f4a-2e5dacf60cf1:
+  the owner challenged why development stopped after the expected-design evaluation.
+- Turn01a11f77-8c93-7560-9709-5e08d419c3e4, message01a11f77-8cf6-75d3-8302-701c63715b49:
+  「閉ループで開発できないの？」
+- Turn01a11f78-c488-75f1-b09f-97f95f3edb55, message01a11f78-c4ce-7133-b8c7-d949f7a50aab:
+  「チェックポイントを置く分にはいいけど設計とズレてないとか、ズレていても対処がわかるとかは待つ必要ないからさ、作業続けていいよ」
+- Later turn01a11f7a-198f-7852-8cfc-1312922a471d, message01a11f7a-1c51-7271-b1ff-c3fa639e3c29:
+  「あなたの考え開発閉ループ作ってみて、それを私もみてから、実際にやってみようか」
+- Latest read turn01a11f7b-b6c0-7ad2-9c1e-66f85947d02a, message01a11f7b-b701-7593-8476-a575d9863aad:
+  「実装、検証、評価、改善。このループってことね」
+
+The continuing rule is implement → verify → assess against accepted design → improve
+or select the next unmet dependency. A checkpoint or reviewer approval alone never
+requires owner confirmation. Clear corrections within accepted scope proceed with
+reverification. Only a material goal/scope/acceptance change or genuinely new authority,
+cost or noninferable owner judgment blocks its dependent work. No schedule restart,
+unknown-call resume, access-refusal bypass, authentication, payment or publication.
+
+The later request asks to see the proposed loop before its trial. The human lane has
+shown a six-step proposal and the owner has restated its four-step meaning; that
+restatement is not recorded as explicit trial-start approval. SOL is preparing the
+MEM/TSK boundary and acceptance examples meanwhile, without dispatching implementation
+under a newly claimed loop approval. This narrow current condition must be updated
+from the actual next owner response, not turned into recurring checkpoint approval.
+
+Root's C069 turn termination was an incorrect continuation decision, not evidence of
+a project-wide technical block. Existing AGENTS development-loop item10 already
+required continuing the next authorized item. The corrective step is to record the
+next concrete dependency and its actual dispatch/reason before concluding a checkpoint;
+do not add a scheduler or new approval mechanism. See docs/DEFECTS.md.
+
+Current independent work: native Astra analyzed transaction/ownership boundaries;
+separate native Sol6.1 derived adversarial acceptance conditions, both read-only at
+666506a. Both identify existing-work invalidation as required before execution use.
+The proposed MEM01 scope is in docs/design/contracts-v5/MEM01-SCOPE.md. No code/test
+change or MEM implementation verification is claimed. C069 source440-test evidence
+remains historical to8db45fd; no unchanged suite rerun is needed for this record.

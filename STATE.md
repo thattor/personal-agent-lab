@@ -2,7 +2,18 @@
 
 ## Goal
 
-Latest owner direction is D037/C069 following D036/C068. Direct alternative routes
+Latest continuation/sequencing is D038 (2026-10-09). Checkpoints evaluate and correct;
+they do not require repeated owner approval. Root mistakenly stopped after C069.
+Native Astra and independent Sol6.1 have now completed read-only MEM/TSK ownership
+and adversarial-case analysis at666506a. The next concrete scope proposal is
+[MEM01/1](docs/design/contracts-v5/MEM01-SCOPE.md), still DRAFT, not implemented.
+The owner's later request to see a closed-loop proposal before trying it is being
+handled in PAL人間判断; the four-step restatement is not inferred trial-start approval.
+Continue independent contract preparation; do not introduce a recurring approval
+gate or use the narrower proposal condition as a project-wide technical blocker.
+Unknown SWE/AGY calls and stopped trials/schedules remain untouched.
+
+The continuing route instruction is D037/C069 following D036/C068. Direct alternative routes
 are authorized when CO cannot serve the work; private development material stays
 within the approved routes with no new auth, cost or publication.
 

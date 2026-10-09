@@ -887,3 +887,24 @@ requested flags distinct from effective controls and inspect warnings before rou
 qualification. No tool step was observed. Hand the partial source to native Astra
 under the owner-approved fallback; separate Sol6.1 reviews. No new AGY invocation
 or unsupported cancellation/retry resolves the unknown turn.
+
+## C069 — stopped after a checkpoint despite continuing authorized work
+
+Root ended its turn after recording the successful isolated intake unit while the
+reviewed next MEM/TSK dependency remained. The owner challenged that stop. The
+evidence is the C069 final report, STATE's next dependency, AGENTS loop item10 and
+the actual owner turns recorded in D038. No technical project-wide blocker explains
+the stop; treating delivery of a checkpoint report as a stopping condition was the
+controller's mistake. Existing route-specific refusals did not block native work.
+
+Correction: begin independent MEM/TSK boundary and acceptance analysis, then continue
+the next authorized implementation after evaluation. The owner subsequently asked
+to see the loop proposal before trying it; respect that narrower sequencing without
+retroactively using it to excuse the earlier stop. A restatement is not new approval.
+
+Prevention: at each next checkpoint, inspect the current owner instruction and next
+unmet dependency, then record an actual dispatch or a concrete dependency-specific
+wait. A green result alone is insufficient to end ongoing development. Apply the
+already-existing loop rule, with no new recurring approval or schedule. Its first
+full corrective cycle remains unverified until implementation, connected validation,
+independent assessment and the next authorized dispatch actually occur.
