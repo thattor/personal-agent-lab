@@ -180,7 +180,7 @@ def _fresh_pin(api, state_dir, executable):
         _fail()
     env = api.launch_environment()
     version = _metadata(executable, ['--version'], env).decode('utf-8', 'strict').strip()
-    if not re.fullmatch(r'(?:Devin(?: CLI)?\s+)?3000\.11\.3', version, re.IGNORECASE):
+    if not re.fullmatch(r'(?:(?i:Devin(?: CLI)? )?3000\.11\.3|devin 3000\.11\.3 \([0-9a-f]{12}\))', version):
         _fail()
     auth = _metadata(executable, ['auth', 'status'], env).decode('utf-8', 'strict')
     if not re.search(r'(?im)^\s*(?:authenticated|logged in)(?:\s|:|$)', auth) or re.search(r'(?i)(?:unauthenticated|not\s+(?:\w+\s+){0,3}(?:authenticated|logged in))', auth):
