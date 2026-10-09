@@ -1268,3 +1268,18 @@ Next: exact Opus checkpoint/provider design consultation, freeze separate finite
 no-extra-cost native profile, actually prove it, then one authentic usefulness
 judgment. PRI02 provider note is PROPOSED, no model/adapter/cessation acceptance.
 Overall goal NOT_MET; P001/oldDB/live services/unknown retries remain outside scope.
+
+## C085 — local native Expert integrated, actual qualification pending (2026-10-10)
+
+- Final TSK35d13, NativeRunnerdbe00a/shared core7acad3, READ6d4b91 and cleanup84e5
+  have separate independent APPROVE; equal-byte integration is checked.
+- Root full1202 PASS32.407s/exit0 at e4fea10; restricted original1202/3FAIL/29ERROR
+  retained. Root process/connection6 PASS0.685s at verifier99daec, independent6
+  PASS0.595s. Native endings are fixtures only.
+- Genuine ART saved-tail lookup/fresh structural VER/readback, no reinference or
+  refunds, orphan native hold and responsive controls are verified locally.
+- CO initial SWE cleanup bytes completed; repair UNKNOWN/options empty/verifiedfalse
+  stays untouched. Independent38 proof does not rewrite CO verification.
+- D051 exact independently approved N2 operator and PRIMARY-only MAX1 freeze are
+  complete. Next: actual N2 receipt, then separately frozen Expert pairing. No N3
+  after another UNKNOWN before design reassessment. Overall goal remains NOT_MET.

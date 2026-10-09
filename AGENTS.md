@@ -1,5 +1,16 @@
 # AGENTS.md — Personal Agent Lab
 
+Current C085/D051: native Expert source/local fixture slice is integrated with
+independent final TSK, runner, READ and verifier APPROVE. Root full1202 PASS32.407s
+at sourcee4fea10, plus actual owned-process/connection6 PASS0.685s. These are local
+fixtures; no real Expert or whole-product acceptance follows. Stop-order source
+SHA84e5 is the completed initial CO SWE snapshot, independently approved/38 PASS;
+CO's repair timed out UNKNOWN and verified remains false. No retry or adoption
+of that repair. PRI02-N2/1 now has an independently approved exact operator and
+a distinct PRIMARY-only MAX1 Root freeze; outcome is NOT_RUN until execution.
+Preserve all old UNKNOWN calls/leases. Current STATE/DECISIONS supersedes older
+preparation descriptions below. Real connection/UI/usefulness remain unmet.
+
 Current C084/D050: native Expert source/fixture contract is frozen in
 PRI03-NATIVE-EXPERT-SCOPE.md after actual exact Opus5.5 REFINE and Root
 reconciliation. Independent fixed tests precede TSK/runner code; Root owns shared

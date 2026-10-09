@@ -1,6 +1,25 @@
 # ACCEPTANCE.md
 
-## Current C084 — contract preparation, no new native acceptance
+## Current C085 — native Expert local preparation passes; whole goal unmet
+
+Root full **1202 PASS32.407s/exit0** at e4fea10 covers the integrated independently
+approved native Expert/TSK/READ and stop-order source. Independent final source
+reviews and separate fixed tests precede integration. Root actual owned-process
+fixture **6 PASS0.685s** includes four SIGKILL/wait/reopen barriers and two live
+connections/threads. Original ending/output/charge retention, held orphan startup,
+known-ended ART lookup-only recovery, fresh structural VER and readonly display
+are verified locally. All endings are fixtures; killed child PIDs prove local
+death only. [Receipt](evidence/operations/pri03-20261010/verification.json).
+
+CO's initial cleanup bytes have independent38 PASS/APPROVE, while its repair is
+UNKNOWN and CO verified:false. The original restricted1202/3FAIL/29ERROR and
+native-to-mock downgrade RED remain preserved. PRI02-N2/1 has an exact independently
+approved PRIMARY-only MAX1 operator after this proof; actual outcome **NOT_RUN**.
+No real Expert, provider qualification, UI, semantic usefulness or whole-product
+PASS follows. Normal conversation after a held orphan restart remains a release
+gap. Original N1/T/CO unknowns are neither retried nor released.
+
+## Retained C084 — contract preparation, no new native acceptance
 
 Actual Opus5.5 High design review completed SUCCESS on seven public documents
 and attributed host results; verdicts C083 REFINE/N2 conditional ALIGNED/Expert

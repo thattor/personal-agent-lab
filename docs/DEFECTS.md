@@ -1544,3 +1544,52 @@ Opus source-free review assumed a transport version refusal always supplies a
 NeverStarted receipt; actual original adapter fixtures show UNAVAILABLE/no evidence.
 Root reconciles every actual-entry gate against installed public source and does
 not turn reviewer advice into fabricated native cessation or new authority.
+
+## C085 native Expert integrity, read provenance and verification errors (2026-10-10)
+
+Independent source review found that changing a native base row to mock and
+deleting its side row bypassed native validation despite its retained native
+admission receipt. Original get/begin/output probes failed; corrected TSK35d13
+checks reverse receipt binding before any ended-call authority. Fixed25 plus the
+new one-method/three-subcase regression pass; Root full1202 passes. Coordinated
+forgery/removal of all trusted-host evidence is outside the stated threat scope.
+Retain the original f336 blocker rather than calling the author's initial green
+suite sufficient. Next changes must check both side presence and retained producer
+identity through every ended-call consumer.
+
+The original TSK fixture compared the whole usage tuple, which includes reservation
+rows, while native admission must bind that reservation to its canonical call.
+Independent fixture correction keeps budget counters unchanged and permits only
+the required binding; all other fields and duplicate snapshots remain fixed.
+Two existing mock corruption fixtures used positional INSERT for eight columns
+after the frozen discriminator added columns. Explicit target columns preserve
+the original corruption/authority assertions; no accepted behavior was weakened.
+
+Genuine native saved-tail recovery produced ART and C14 but READ recognized only
+the mock fixed notice. Independent genuine/forged two-case RED precedes READ6d4b91
+correction. The view has no provenance field, so its global mock caption was false
+for native fixture results; it now says provenance is unverified. Three old caption
+expectations were independently corrected while retaining escaping/read-only/hash/
+order/currentness/authority checks. READ32 plus nativeREAD2 pass. A forged fixed
+notice never manufactures an artifact or completion.
+
+Root's isolated READ command sequence ran tests and then committed without checking
+each exit; the later successful commit masked the earlier two caption failures in
+the shell result. The failed log and isolated commit are retained. Source was not
+integrated until independent review, fixture correction and actual separate exit0
+runs. Prevention applied here: issue test calls separately, inspect their explicit
+exit, then commit/integrate; a shell's last-command exit is not a test receipt.
+
+CO cleanup initial step completed at SHA84e5, then its declared35 tests failed
+14/12 and automatic repair timed out UNKNOWN. Independent reconstruction of the
+exact nine inputs and full checkout both38 PASS. Original traces prove restricted
+temporary-path PermissionError and passwd KeyError; all failures were not individually
+classified. No source or credential workaround, runtime/seatbelt edit or unknown
+repair retry was used. Root accepts only hash-bound completed initial source after
+separate review and38 PASS; CO verified remains false. Next similarly constrained
+CO jobs must distinguish worker bytes from supported verifier-environment proof
+and use already-authorized independent local verification where necessary.
+
+Root full restricted1202/3FAIL/29ERROR repeats existing localhost/child restrictions.
+The same frozen criteria/source pass1202 under approved local execution. Preserve
+both logs and scope; local fixture process death never proves native cessation.

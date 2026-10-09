@@ -1,6 +1,46 @@
 # STATE.md
 
-## Current C084 — native Expert contract frozen; source preparation underway
+## Current C085 — native Expert local slice verified; distinct N2 frozen
+
+Root integrated exact independently approved native TSK35d13, runnerdbe00a,
+shared mock core7acad3, READ6d4b91 and cleanup wrapper84e5. Completed Root full
+**1202 PASS32.407s/exit0** at e4fea1046821068a9684bcc2009252fcc6a38b7e;
+the restricted attempt1202/3FAIL/29ERROR is retained. Same criteria passed under
+approved local execution; no product or test workaround. The separately added
+owned-process verifier99daec has independent APPROVE and Root **6 PASS0.685s**:
+four actual SIGKILL/wait/reopen barriers and two connection/thread controls.
+Endings remain fixtures; these PIDs do not prove native cessation.
+[Verification](evidence/operations/pri03-20261010/verification.json).
+
+The original native-to-mock downgrade blocker is fixed by reverse admission
+receipt binding before reads/effects. Genuine native saved-tail display uses
+original ART readback and the fixed notice; a forged notice grants no authority.
+The READ caption states provenance is unverified by that view. Retained original
+REDs, fixture corrections and the masked command-exit mistake are in DEFECTS.
+
+CO SWE planner and initial cleanup implementation completed; repair timed out
+UNKNOWN with no selectable option. CO verified:false/exit75 remains. Only the
+initial snapshot, matching the frozen pre-repair hash, was accepted after separate
+38-case source/fixture approval. Observed verifier restrictions include temporary
+path PermissionError and passwd KeyError; all individual failure causes are not
+proven. No repair retry, cancellation, state edit or runtime change. Fresh public
+capacity is host12/adapter, Claude0/0 and Devin1/0 (original held slot); quota
+unknown. Native Codex limit4 including Root; no30 claim or extra-cost enablement.
+
+D051 freezes [PRI02-N2/1](docs/design/contracts-v5/PRI02-N2-ROOT-FREEZE.md) at the
+immutable e4fea10 source after finished full/source and independent operator proof.
+It permits one new synthetic PRIMARY ACP call with zero PAL effects, not replay
+of N1. N2 is **NOT_RUN** until its actual receipt. Candidate digest is not transport
+qualification. Original N1/T/CO unknowns stay untouched. Wrapper Expert pairing
+waits for the N2 outcome and a new envelope; no N3 after another UNKNOWN without
+design reassessment. Overall goal **NOT_MET**: real Expert connection, usable UI,
+an authentic improved whole-flow usefulness judgment and release audit remain.
+
+Native unknown orphan startup remains held; same-process ready Primary remains
+budget eligible. This source slice does not adopt unknown retirement or separate
+readiness and does not satisfy normal conversation after held restart.
+
+## Retained C084 — native Expert contract frozen; source preparation underway
 
 Actual exact AGY Opus5.5 High review is SUCCESS: C083 REFINE, distinct N2
 conditional ALIGNED, Expert REFINE. Root resolves the scope against actual source

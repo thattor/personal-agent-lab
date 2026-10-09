@@ -2591,3 +2591,31 @@ new session. Preserve existing same-process ready Primary reservation; only orph
 restart is startup-held. The source-free Opus blanket-readiness assumption is not
 adopted as a new shutdown. Native known-ended recovery uses fixed user text
 "Execution recovered" or "Saved draft recovered", with existing mock IDs unchanged.
+
+## D051 — local native Expert verified; distinct N2 finite freeze (2026-10-10)
+
+Owner continuation remains 「必要なだけ並列作業で開発して」; no new overall stage,
+auth, cost or service is adopted. D050 source/fixture slice is now equal-byte
+integrated after separate TSK/runner/READ/cleanup/verifier APPROVE. Root full1202
+PASS32.407s/exit0 at e4fea10 and owned-process6 PASS0.685s are local fixture proof.
+The native-to-mock downgrade blocker is repaired before ended-call authority.
+All original REDs and fixture/command-order mistakes are retained in DEFECTS.
+No real Expert or whole-goal acceptance follows.
+
+CO SWE planner/initial cleanup step completed, but repair timed out UNKNOWN and
+verified remains false. Frozen initial SHA84e5 is independently38 PASS/APPROVE;
+only those completed bytes are adopted. No unknown repair output, retry/cancel,
+CO/state/global change or new engine. Observed CO verifier environment failures
+are reported without asserting all fourteen failures/twelve errors have one cause.
+
+SOL freezes PRI02-N2/1 at exact e4fea1046821068a9684bcc2009252fcc6a38b7e under
+D050 conditional alignment and current owner authority. Independent operator SHA
+2fbecfbe281d4387549bc727252fcbd771fbfa73ed74ea50ae254869621a187b APPROVE,
+AST/fourteen hashes/exact HEAD/clean scope, finished Root full and cleanup source
+proof are complete. Scope is one distinct synthetic PRIMARY-only ACP prompt,
+zero PAL effects, no original allowance reuse. Actual Free/auth/capacity guards
+run before possible execute. Original N1 evidence hashes and held baseline1 are
+protected; aggregate stays below12. Returned original ending precedes semantic
+comparison; candidate digest alone never qualifies transport. No N3 after another
+UNKNOWN without design reassessment. See PRI02-N2-ROOT-FREEZE.md. N2 is NOT_RUN
+until an actual receipt; further Expert pairing waits for that outcome.
