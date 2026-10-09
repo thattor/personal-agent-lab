@@ -1,6 +1,7 @@
 """Transactional execution rights for a trusted local mock host (TSK02/1)."""
 from functools import wraps
 from contextlib import contextmanager
+import hashlib
 import uuid
 import sqlite3
 
@@ -8,6 +9,7 @@ from pal.contracts_v5 import (Brief, Condition, DraftBrief, ContractError, Grant
                               WorkRef, dumps, loads, parse_model_action, action_from_json)
 from pal.intake_v5 import IntakeStore, _intersect
 from pal.artifacts_v5 import artifact_save_key
+from pal.native_call_v5 import NativeProfile, NativeReturned, NativeNeverEntered, validate_native_evidence
 
 _MAX = 2**63 - 1
 _PROFILE = "managed-inprocess-mock/1"
@@ -120,7 +122,8 @@ class TaskStore(IntakeStore):
             'CREATE TABLE IF NOT EXISTS v5_tsk_host (kind TEXT PRIMARY KEY,ceiling INTEGER NOT NULL,used INTEGER NOT NULL)',
             'CREATE TABLE IF NOT EXISTS v5_tsk_usage (goal TEXT,kind TEXT,used INTEGER NOT NULL,PRIMARY KEY(goal,kind))',
             'CREATE TABLE IF NOT EXISTS v5_tsk_reservation (id TEXT PRIMARY KEY,lease TEXT,work TEXT,idx INTEGER,kind TEXT,role TEXT,binding TEXT)',
-            'CREATE TABLE IF NOT EXISTS v5_tsk_call (id TEXT PRIMARY KEY,lease TEXT,work TEXT,idx INTEGER,reservation TEXT,sources TEXT NOT NULL,status TEXT,step TEXT,UNIQUE(lease,idx))',
+            'CREATE TABLE IF NOT EXISTS v5_tsk_call (id TEXT PRIMARY KEY,lease TEXT,work TEXT,idx INTEGER,reservation TEXT,sources TEXT NOT NULL,status TEXT,step TEXT,native TEXT NOT NULL DEFAULT \"mock\",native_hash TEXT,UNIQUE(lease,idx))',
+            'CREATE TABLE IF NOT EXISTS v5_tsk_native (call_id TEXT PRIMARY KEY,wire TEXT NOT NULL)',
             'CREATE TABLE IF NOT EXISTS v5_tsk_step (id TEXT PRIMARY KEY,goal TEXT,revision INTEGER,idx INTEGER,call TEXT UNIQUE,wire TEXT NOT NULL,truncated INTEGER NOT NULL,excluded TEXT NOT NULL,UNIQUE(goal,revision,idx))',
         )
         connection.execute('BEGIN IMMEDIATE')
@@ -236,6 +239,10 @@ class TaskStore(IntakeStore):
                 _reject('denied')
 
     def _execution_request(self, command, request):
+        if command == 'admit_native_call':
+            return self._execution_request('admit_call', request['admission'])
+        if command in ('enter_native_call', 'end_native_call', 'mark_native_unknown'):
+            return self._execution_request('end_call', request)
         execution = command in ('claim', 'admit_call', 'end_call', 'begin_step', 'finish_step',
                                 'C04.ask', 'release', 'reserve_budget', 'consume', 'register')
         if command == 'control':
@@ -308,9 +315,14 @@ class TaskStore(IntakeStore):
                     self._own_session()
                     if self._startup_guard.phase != 'startup':
                         _reject('conflict')
+                self._native_integrity()
                 self._execution_request(command, request)
                 if command == 'recover':
                     self._recovery_integrity()
+                if command in ('admit_call', 'end_call'):
+                    saved_call = self._one('SELECT native FROM v5_tsk_call WHERE id=?', (request['call_id'],))
+                    if saved_call is not None and saved_call['native'] != 'mock':
+                        _reject('conflict')
                 canonical = dumps(request)
                 result = self._lookup_replay(command, key, canonical) if key is not None else None
                 if result is None:
@@ -320,6 +332,7 @@ class TaskStore(IntakeStore):
                         self._save_replay(command, key, canonical, result)
                         if command == 'recover':
                             self._recovery_integrity()
+                self._native_integrity()
                 self._conn.execute('COMMIT')
                 return result
             except BaseException:
@@ -425,6 +438,12 @@ class TaskStore(IntakeStore):
         self._artifact_set(self._wr(old))
         self._artifact_set(self._wr(row))
         calls = self._old_calls(old, lease, claim=claim)
+        for call in calls:
+            if call['native'] == 'native' and call['status'] == 'admitted':
+                _, side = self._native_side(call['id'])
+                return {'disposition': 'held', 'work_ref': self._wr(row).to_json(), 'state': row['state'],
+                    'control_status': 'pause_requested' if flags['pause'] else 'draining' if flags['drain'] else 'none',
+                    'lease_id': lease_id, 'call_id': call['id'], 'phase': side['phase'], 'reason': 'native_unknown'}
         started = []
         for call in calls:
             if call['step'] is not None:
@@ -509,11 +528,13 @@ class TaskStore(IntakeStore):
         self._conn.execute('UPDATE v5_tsk_lease SET active=0 WHERE id=?', (lease_id,))
         self._set_flags(row, 0, 0)
         refs = [] if adopted is None else [adopted[2].to_json()]
-        text = 'mock execution recovered' if adopted is None else 'mock saved draft recovered'
+        text = self._recovery_text(lease_id, None if adopted is None else adopted[0]['step_id'])
         self._conn.execute('INSERT INTO v5_intake_event (event_id,session_id,work_ref_json,kind,text,refs_json) VALUES (?,?,?,?,?,?)',
             (event_id, row['session_id'], dumps(self._wr(row)), 'state', text, dumps(refs)))
         value = {'disposition': 'settled', 'work_ref': self._wr(row).to_json(), 'state': state,
                  'control_status': 'none', 'recovered_lease_id': lease_id, 'interrupted_call_ids': interrupted}
+        if self._native_unadopted(lease_id):
+            value['reason'] = 'native_returned_unadopted'
         self._conn.execute('INSERT INTO v5_tsk_recovery_replay VALUES (?,?,?,?)',
             (key, None if adopted is None else adopted[0]['step_id'], event_id, dumps(Result.success(value))))
         if adopted is not None:
@@ -543,7 +564,17 @@ class TaskStore(IntakeStore):
             raise
 
 
+    def _native_unadopted(self, lease_id):
+        return self._one("SELECT id FROM v5_tsk_call WHERE lease=? AND native='native' AND status='returned' AND step IS NULL", (lease_id,)) is not None
+
+    def _recovery_text(self, lease_id, step_id):
+        native = self._one("SELECT id FROM v5_tsk_call WHERE lease=? AND native='native'", (lease_id,))
+        if native:
+            return 'Execution recovered' if step_id is None else 'Saved draft recovered'
+        return 'mock execution recovered' if step_id is None else 'mock saved draft recovered'
+
     def _recovery_integrity(self):
+        self._native_integrity()
         try:
             receipts = {}
             for saved in self._rows("SELECT * FROM v5_intake_replay WHERE command='recover'"):
@@ -556,10 +587,13 @@ class TaskStore(IntakeStore):
                 if not result.ok:
                     raise ContractError()
                 value = _obj(result.value.to_json(), {'disposition', 'work_ref', 'state', 'control_status',
-                            'recovered_lease_id', 'interrupted_call_ids'})
+                            'recovered_lease_id', 'interrupted_call_ids'}, {'reason'})
                 work = _work(value['work_ref'])
                 lease = self._one('SELECT * FROM v5_tsk_lease WHERE id=?', (lease_id,))
                 interrupted = value['interrupted_call_ids']
+                if ('reason' in value) != self._native_unadopted(lease_id) or (
+                        'reason' in value and value['reason'] != 'native_returned_unadopted'):
+                    raise ContractError()
                 if (value['disposition'] != 'settled' or value['control_status'] != 'none' or
                         value['state'] not in ('queued', 'paused', 'waiting_input', 'completed', 'cancelled', 'failed') or
                         value['recovered_lease_id'] != lease_id or lease is None or type(lease['active']) is not int or lease['active'] != 0 or
@@ -594,7 +628,7 @@ class TaskStore(IntakeStore):
                 if (event is None or row is None or work.epoch > row['epoch'] or
                         event['session_id'] != row['session_id'] or event['kind'] != 'state' or
                         _work(loads(event['work_ref_json'])) != work or
-                        event['text'] != ('mock execution recovered' if step_id is None else 'mock saved draft recovered')):
+                        event['text'] != self._recovery_text(lease['id'], step_id)):
                     raise ContractError()
                 if step_id is None and loads(event['refs_json']) != []:
                     raise ContractError()
@@ -713,6 +747,7 @@ class TaskStore(IntakeStore):
             [(row['goal_id'], row['revision'], ref.kind.value, ref.id) for ref in refs])
 
     def _steps(self, row):
+        self._native_integrity()
         return self._rows('SELECT * FROM v5_tsk_step WHERE goal=? AND revision=? ORDER BY idx', (row['goal_id'], row['revision']))
 
     def _index(self, row):
@@ -1042,6 +1077,7 @@ class TaskStore(IntakeStore):
         return {'reservation_id': reservation, 'remaining': {'host': row['ceiling'] - row['used'] - 1}}
 
     def _artifact_set(self, work):
+        self._native_integrity()
         self._recovery_integrity()
         rows = self._rows('SELECT * FROM v5_tsk_artifact_set WHERE goal=? AND revision=? ORDER BY seq',
                           (work.goal_id, work.revision))
@@ -1162,36 +1198,300 @@ class TaskStore(IntakeStore):
         reservation, binding = _id(data['reservation_id']), _id(data['call_or_operation_id'])
         return self._transaction('consume', reservation, data, lambda: self._bind(reservation, binding))
 
+    @staticmethod
+    def _native_token(value):
+        _id(value)
+        if len(value.encode('utf-8')) > 512:
+            raise ContractError()
+        return value
+
+    @staticmethod
+    def _digest(value):
+        return hashlib.sha256(dumps(value).encode('utf-8')).hexdigest()
+
+    def _native_request(self, admission, request, profile):
+        if type(profile) is not NativeProfile:
+            raise ContractError()
+        data = _obj(request, {'call_id', 'reservation_id', 'role', 'work_ref', 'messages', 'source_refs', 'output_kind'})
+        if len(dumps(data).encode('utf-8')) > 65536:
+            raise ContractError()
+        if data['role'] != 'expert' or data['output_kind'] != 'expert_action':
+            raise ContractError()
+        for name in ('call_id', 'reservation_id', 'work_ref', 'source_refs'):
+            if data[name] != admission[name]:
+                _reject('conflict')
+        for name in ('call_id', 'reservation_id', 'lease_id'):
+            self._native_token(admission[name])
+        work = _work(data['work_ref'])
+        self._native_token(work.goal_id)
+        refs = _refs(data['source_refs'])
+        if len(refs) != len(data['source_refs']) or len(refs) > 64 or any(r.kind.value != 'record' for r in refs):
+            raise ContractError()
+        for ref in refs:
+            self._native_token(ref.id)
+        if type(data['messages']) is not list or not 1 <= len(data['messages']) <= 64:
+            raise ContractError()
+        for message in data['messages']:
+            message = _obj(message, {'role', 'text'})
+            if message['role'] not in ('system', 'user', 'assistant') or type(message['text']) is not str:
+                raise ContractError()
+        return data
+
+    def _native_hash(self, call, side):
+        # The mutable Step backlink is checked separately, so ordinary finish needs no re-seal.
+        return self._digest({'call': {k: call[k] for k in
+            ('id', 'lease', 'work', 'idx', 'reservation', 'sources', 'status', 'native')},
+            'side': side})
+
+    def _native_save(self, call_id, side, status):
+        self._conn.execute('UPDATE v5_tsk_native SET wire=? WHERE call_id=?', (dumps(side), call_id))
+        call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (call_id,))
+        call['status'] = status
+        self._conn.execute('UPDATE v5_tsk_call SET status=?,native_hash=? WHERE id=?',
+            (status, self._native_hash(call, side), call_id))
+
+    def _native_integrity(self):
+        """Validate storage facts only; source stops never erase original cessation."""
+        try:
+            sides = {r['call_id']: r['wire'] for r in self._rows('SELECT * FROM v5_tsk_native')}
+            for call in self._rows('SELECT * FROM v5_tsk_call'):
+                if call['native'] == 'mock':
+                    if call['native_hash'] is not None or call['id'] in sides:
+                        raise ContractError()
+                    continue
+                if call['native'] != 'native' or call['id'] not in sides:
+                    raise ContractError()
+                side = _obj(loads(sides.pop(call['id'])), {'admission', 'request', 'profile', 'request_hash',
+                    'session', 'phase', 'attempt', 'ending', 'ending_hash', 'text', 'text_hash'})
+                admission = _obj(side['admission'], {'call_id', 'lease_id', 'work_ref', 'reservation_id', 'source_refs'})
+                p = _obj(side['profile'], {'id', 'model_id', 'qualification_sha256', 'evidence_kind', 'profile_sha256'})
+                profile = NativeProfile(model_id=p['model_id'], qualification_sha256=p['qualification_sha256'], evidence_kind=p['evidence_kind'])
+                if profile.to_json() != p:
+                    raise ContractError()
+                request = self._native_request(admission, side['request'], profile)
+                replay = self._one("SELECT * FROM v5_intake_replay WHERE command='admit_native_call' AND key=?", (call['id'],))
+                if (replay is None or replay['input_json'] != dumps({'admission': admission, 'request': request, 'profile': p}) or
+                        replay['result_json'] != dumps(Result.success({'call_id': call['id'], 'status': 'admitted'}))):
+                    raise ContractError()
+                work = _work(admission['work_ref'])
+                if (call['id'] != admission['call_id'] or call['lease'] != admission['lease_id'] or
+                        call['work'] != dumps(work) or call['reservation'] != admission['reservation_id'] or
+                        call['sources'] != dumps(admission['source_refs']) or type(call['idx']) is not int or not 0 <= call['idx'] <= _MAX or
+                        call['id'] != dumps(['C15.call', call['lease'], call['idx']]) or
+                        side['request_hash'] != self._digest(request) or call['native_hash'] != self._native_hash(call, side)):
+                    raise ContractError()
+                lease = self._one('SELECT * FROM v5_tsk_lease WHERE id=?', (call['lease'],))
+                if lease is None:
+                    raise ContractError()
+                owner, claim = self._lease_binding(lease, self._enrollment())
+                if claim != work or side['session'] != owner['id']:
+                    raise ContractError()
+                reserved = self._one('SELECT * FROM v5_tsk_reservation WHERE id=?', (call['reservation'],))
+                if reserved is None or (reserved['lease'], reserved['work'], reserved['idx'], reserved['kind'], reserved['role'], reserved['binding']) != (
+                        call['lease'], call['work'], call['idx'], 'model', 'expert', call['id']):
+                    raise ContractError()
+                row = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=?', (work.goal_id, work.revision))
+                refs = _refs(admission['source_refs'])
+                if row is None or not set(self._required(row)) <= set(refs) <= set(self._registered(row)):
+                    raise ContractError()
+                phase = side['phase']
+                if side['attempt'] is not None:
+                    attempt = _obj(side['attempt'], {'run_id', 'job_id', 'attempt_id'})
+                    for value in attempt.values():
+                        self._native_token(value)
+                if phase in ('prepared', 'entering', 'unknown'):
+                    if (call['status'] != 'admitted' or call['step'] is not None or
+                            any(side[k] is not None for k in ('ending', 'ending_hash', 'text', 'text_hash')) or
+                            (phase == 'prepared' and side['attempt'] is not None) or
+                            (phase == 'entering' and side['attempt'] is None)):
+                        raise ContractError()
+                elif phase in ('returned', 'not_entered'):
+                    if (call['status'] != phase or side['ending_hash'] != self._digest(side['ending']) or
+                            len(dumps(side['ending']).encode('utf-8')) > 65536):
+                        raise ContractError()
+                    if phase == 'returned':
+                        evidence = validate_native_evidence(side['ending'], request_sha256=side['request_hash'], profile=profile)
+                        if (side['attempt'] is None or evidence['attempt_ref'] != side['attempt'] or
+                                type(side['text']) is not str or len(side['text'].encode('utf-8')) != evidence['utf8_bytes'] or
+                                hashlib.sha256(side['text'].encode('utf-8')).hexdigest() != evidence['output_sha256'] or
+                                side['text_hash'] != evidence['output_sha256']):
+                            raise ContractError()
+                    else:
+                        ending = _obj(side['ending'], {'request_sha256', 'profile_sha256', 'evidence_ref'})
+                        NativeNeverEntered(**ending)
+                        if (ending['request_sha256'] != side['request_hash'] or ending['profile_sha256'] != profile.profile_sha256 or
+                                side['text'] is not None or side['text_hash'] is not None or call['step'] is not None):
+                            raise ContractError()
+                else:
+                    raise ContractError()
+                linked = self._rows('SELECT * FROM v5_tsk_step WHERE call=?', (call['id'],))
+                if call['step'] is None:
+                    if linked:
+                        raise ContractError()
+                else:
+                    if len(linked) != 1 or linked[0]['id'] != call['step'] or phase != 'returned':
+                        raise ContractError()
+                    saved = linked[0]
+                    step = _obj(loads(saved['wire']), {'step_id', 'work_ref', 'index', 'action', 'status', 'result_refs'}, {'error'})
+                    self._native_token(saved['id'])
+                    _refs(step['result_refs'])
+                    if 'error' in step and type(step['error']) is not str:
+                        raise ContractError()
+                    if (saved['goal'], saved['revision'], saved['idx']) != (work.goal_id, work.revision, call['idx']) or (
+                            step['step_id'] != saved['id'] or step['work_ref'] != work.to_json() or
+                            type(step['index']) is not int or step['index'] != call['idx'] or
+                            step['status'] not in ('started', 'finished', 'abandoned') or
+                            step['action'] != parse_model_action(side['text'], allowed_refs=refs).to_json()):
+                        raise ContractError()
+            if sides:
+                raise ContractError()
+        except (ContractError, _Rejected, ValueError, TypeError, KeyError, AttributeError):
+            _reject('unavailable')
+
+    def _native_side(self, call_id, *, owned=False):
+        self._native_integrity()
+        call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (call_id,))
+        if call is None:
+            _reject('not_found')
+        if call['native'] != 'native':
+            _reject('conflict')
+        side = loads(self._one('SELECT wire FROM v5_tsk_native WHERE call_id=?', (call_id,))['wire'])
+        if owned:
+            session = self._own_session(ready=True)
+            if side['session'] != session['id']:
+                _reject('denied')
+        return call, side
+
+    @_public
+    def admit_native_call(self, admission, *, c15_request, profile):
+        data = _obj(admission, {'call_id', 'lease_id', 'work_ref', 'reservation_id', 'source_refs'})
+        request = self._native_request(data, c15_request, profile)
+        canonical = {'admission': data, 'request': request, 'profile': profile.to_json()}
+        def operation():
+            session = self._own_session(ready=True)
+            result = self._admit_call(data)
+            side = dict(canonical, request_hash=self._digest(request), session=session['id'], phase='prepared',
+                        attempt=None, ending=None, ending_hash=None, text=None, text_hash=None)
+            self._conn.execute('INSERT INTO v5_tsk_native VALUES (?,?)', (data['call_id'], dumps(side)))
+            self._conn.execute("UPDATE v5_tsk_call SET native='native' WHERE id=?", (data['call_id'],))
+            self._native_save(data['call_id'], side, 'admitted')
+            return result
+        return self._transaction('admit_native_call', data['call_id'], canonical, operation)
+
+    @_public
+    def enter_native_call(self, request):
+        data = _obj(request, {'call_id', 'attempt_ref'})
+        call_id = self._native_token(data['call_id'])
+        attempt = _obj(data['attempt_ref'], {'run_id', 'job_id', 'attempt_id'})
+        for value in attempt.values():
+            self._native_token(value)
+        def operation():
+            call, side = self._native_side(call_id, owned=True)
+            if side['phase'] != 'prepared':
+                _reject('conflict')
+            self._authority(_work(loads(call['work'])), call['lease'])
+            self._gate(_refs(loads(call['sources'])))
+            side.update(phase='entering', attempt=attempt)
+            self._native_save(call_id, side, 'admitted')
+            return {'call_id': call_id, 'status': 'entered'}
+        return self._transaction('enter_native_call', None, data, operation)
+
+    @_public
+    def mark_native_unknown(self, request):
+        data = _obj(request, {'call_id'})
+        call_id = self._native_token(data['call_id'])
+        def operation():
+            call, side = self._native_side(call_id, owned=True)
+            if side['phase'] not in ('prepared', 'entering', 'unknown'):
+                _reject('conflict')
+            if side['phase'] != 'unknown':
+                side['phase'] = 'unknown'
+                self._native_save(call_id, side, 'admitted')
+            return {'call_id': call_id, 'status': 'admitted', 'phase': 'unknown'}
+        return self._transaction('mark_native_unknown', None, data, operation)
+
+    @_public
+    def end_native_call(self, request, *, ending):
+        data = _obj(request, {'call_id'})
+        call_id = self._native_token(data['call_id'])
+        def operation():
+            call, side = self._native_side(call_id, owned=True)
+            p = side['profile']
+            profile = NativeProfile(model_id=p['model_id'], qualification_sha256=p['qualification_sha256'], evidence_kind=p['evidence_kind'])
+            text = text_hash = None
+            if type(ending) is NativeReturned:
+                evidence = ending.validate(request_sha256=side['request_hash'], profile=profile)
+                if side['attempt'] is None or evidence['attempt_ref'] != side['attempt']:
+                    _reject('conflict')
+                phase, text, text_hash = 'returned', ending.text, evidence['output_sha256']
+            elif type(ending) is NativeNeverEntered:
+                if ending.request_sha256 != side['request_hash'] or ending.profile_sha256 != profile.profile_sha256:
+                    _reject('conflict')
+                phase = 'not_entered'
+                evidence = {'request_sha256': ending.request_sha256, 'profile_sha256': ending.profile_sha256,
+                            'evidence_ref': ending.evidence_ref}
+                NativeNeverEntered(**evidence)
+            else:
+                raise ContractError()
+            if len(dumps(evidence).encode('utf-8')) > 65536:
+                raise ContractError()
+            updated = dict(side, phase=phase, ending=evidence, ending_hash=self._digest(evidence), text=text, text_hash=text_hash)
+            if side['phase'] in ('returned', 'not_entered'):
+                if side != updated:
+                    _reject('conflict')
+            else:
+                self._native_save(call_id, updated, phase)
+            return {'call_id': call_id, 'status': phase}
+        return self._transaction('end_native_call', None, data, operation)
+
+    @_public
+    def get_native_output(self, request):
+        data = _obj(request, {'call_id', 'lease_id', 'work_ref'})
+        def operation():
+            call, side = self._native_side(self._native_token(data['call_id']))
+            work = _work(data['work_ref'])
+            if call['lease'] != _id(data['lease_id']) or call['work'] != dumps(work):
+                _reject('stale')
+            self._authority(work, call['lease'])
+            self._gate(_refs(loads(call['sources'])))
+            if side['phase'] != 'returned':
+                _reject('unavailable')
+            return {'call_id': call['id'], 'status': 'succeeded', 'content': side['text'], 'model_id': side['profile']['model_id']}
+        return self._transaction('get_native_output', None, data, operation)
+
     @_public
     def admit_call(self, request):
         data = _obj(request, {'call_id', 'lease_id', 'work_ref', 'reservation_id', 'source_refs'})
         call_id, lease_id, reservation = (_id(data[name]) for name in ('call_id', 'lease_id', 'reservation_id'))
         work, refs = _work(data['work_ref']), _refs(data['source_refs'])
-        def operation():
-            row, lease = self._authority(work, lease_id)
-            index = self._index(row)
-            if call_id != dumps(['C15.call', lease_id, index]):
+        return self._transaction('admit_call', call_id, data, lambda: self._admit_call(data))
+
+    def _admit_call(self, data):
+        call_id, lease_id, reservation = (_id(data[name]) for name in ('call_id', 'lease_id', 'reservation_id'))
+        work, refs = _work(data['work_ref']), _refs(data['source_refs'])
+        row, lease = self._authority(work, lease_id)
+        index = self._index(row)
+        if call_id != dumps(['C15.call', lease_id, index]):
+            _reject('conflict')
+        for call in self._rows('SELECT * FROM v5_tsk_call WHERE lease=?', (lease_id,)):
+            step = self._one('SELECT wire FROM v5_tsk_step WHERE id=?', (call['step'],))
+            if call['status'] != 'returned' or step is None or loads(step['wire'])['status'] != 'finished':
                 _reject('conflict')
-            for call in self._rows('SELECT * FROM v5_tsk_call WHERE lease=?', (lease_id,)):
-                step = self._one('SELECT wire FROM v5_tsk_step WHERE id=?', (call['step'],))
-                if call['status'] != 'returned' or step is None or loads(step['wire'])['status'] != 'finished':
-                    _reject('conflict')
-            if any(loads(step['wire'])['status'] == 'started' for step in self._steps(row)):
-                _reject('conflict')
-            if not set(self._required(row)) <= set(refs) <= set(self._registered(row)):
-                _reject('denied')
-            item = self._one('SELECT * FROM v5_tsk_reservation WHERE id=?', (reservation,))
-            if item is None:
-                _reject('not_found')
-            if (item['lease'], item['work'], item['idx'], item['kind'], item['role']) != (lease_id, dumps(work), index, 'model', 'expert'):
-                _reject('conflict')
-            self._headroom(row, 'step')
-            self._gate(refs)
-            self._bind(reservation, call_id)
-            self._conn.execute('INSERT INTO v5_tsk_call VALUES (?,?,?,?,?,?,?,NULL)',
-                               (call_id, lease_id, dumps(work), index, reservation, dumps(_wire(refs)), 'admitted'))
-            return {'call_id': call_id, 'status': 'admitted'}
-        return self._transaction('admit_call', call_id, data, operation)
+        if any(loads(step['wire'])['status'] == 'started' for step in self._steps(row)):
+            _reject('conflict')
+        if not set(self._required(row)) <= set(refs) <= set(self._registered(row)):
+            _reject('denied')
+        item = self._one('SELECT * FROM v5_tsk_reservation WHERE id=?', (reservation,))
+        if item is None:
+            _reject('not_found')
+        if (item['lease'], item['work'], item['idx'], item['kind'], item['role']) != (lease_id, dumps(work), index, 'model', 'expert'):
+            _reject('conflict')
+        self._headroom(row, 'step')
+        self._gate(refs)
+        self._bind(reservation, call_id)
+        self._conn.execute('INSERT INTO v5_tsk_call(id,lease,work,idx,reservation,sources,status,step) VALUES (?,?,?,?,?,?,?,NULL)',
+                           (call_id, lease_id, dumps(work), index, reservation, dumps(_wire(refs)), 'admitted'))
+        return {'call_id': call_id, 'status': 'admitted'}
 
     @_public
     def end_call(self, request):
@@ -1211,6 +1511,7 @@ class TaskStore(IntakeStore):
 
     @_public
     def get_call(self, request):
+        self._native_integrity()
         data = _obj(request, {'call_id'})
         call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (_id(data['call_id']),))
         if call is None:
@@ -1226,6 +1527,9 @@ class TaskStore(IntakeStore):
                 pass
         result = {'call_id': call['id'], 'lease_id': call['lease'], 'work_ref': loads(call['work']),
                   'index': call['idx'], 'status': call['status'], 'may_enter': may_enter}
+        if call['native'] == 'native':
+            _, side = self._native_side(call['id'])
+            result.update(profile_id=side['profile']['id'], native_phase=side['phase'], may_enter=False)
         if call['step'] is not None or call['status'] == 'interrupted':
             result['step_id'] = call['step']
         return Result.success(result)
@@ -1242,6 +1546,10 @@ class TaskStore(IntakeStore):
                 _reject('conflict')
             refs = _refs(loads(call['sources']))
             action = parse_model_action(dumps(data['action']), allowed_refs=refs).to_json()
+            if call['native'] == 'native':
+                _, side = self._native_side(call['id'])
+                if parse_model_action(side['text'], allowed_refs=refs).to_json() != action:
+                    _reject('conflict')
             if action['kind'] not in ('report', 'lookup', 'compose', 'ask'):
                 _reject('unavailable')
             if action['kind'] == 'compose' and self._artifact_inspect is None:
@@ -1297,6 +1605,7 @@ class TaskStore(IntakeStore):
 
     @_public
     def _authorize_artifact_save(self, request):
+        self._native_integrity()
         data = _obj(request, {'work_ref', 'step_id', 'action'})
         work, step_id = _work(data['work_ref']), _id(data['step_id'])
         action = _obj(data['action'], {'kind', 'content', 'media_type', 'source_refs'})
@@ -1517,6 +1826,8 @@ class TaskStore(IntakeStore):
                         type(saved['idx']) is not int or step['index'] != saved['idx']):
                     raise ContractError()
             for call in calls:
+                if call['native'] == 'native':
+                    self._gate(_refs(loads(call['sources'])))
                 if (call['status'] not in _CALL_STATES or
                         (call['status'] == 'interrupted' and call['step'] is not None) or
                         _work(loads(call['work'])) != work or
