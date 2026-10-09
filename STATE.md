@@ -41,6 +41,12 @@ C0966170c26 is published in existing Draft PR19 with independent anonymous36/36
 equal-byte readback; no reported CI checks or merge. Do not call the CO report's
 verified:true product completion or native qualification.
 
+Failure fixed8 is now frozen from separate Sol792c3f: genuine original RED8/
+20failures/0errors/7.523s/exit1, absent prospective records. The escaping-error
+phase prerequisite is explicit before source release. The wrapper source and
+new full1037 remain pending; completed1029 is the C096 source/test checkpoint,
+not a PASS of these new expectations. Original inventories and C094 held remain.
+
 # Retained C095 — typed usage corrected; native fixture UI next
 
 Root67c93db integrates Astra76a8d5c after separate Sol APPROVE. Full **1019

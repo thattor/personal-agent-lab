@@ -44,8 +44,11 @@ case. Do not serialize request/output/auth/environment or an exception message.
 
 phase is a finite wrapper phase: durable_admission, buffer, entering_hook, spawn,
 capture_streams, pump, finish, validate, owned_wait, save_ending, save_capture,
-release, close_streams. Track one local phase immediately before each operation,
-including handles-finally flush/fsync/close as close_streams. The latter may replace
+release, close_streams. phase describes the operation whose exception reaches the
+outer handler. Track a local phase before each operation; temporarily use
+close_streams for handles-finally flush/fsync/close, restoring the previous phase
+if all close operations succeed. A pump failure followed by normal closing stays
+pump; a close-stream failure is close_streams. The latter may replace
 a pump exception; primary_error means the exception reaching the outer handler,
 not every causal predecessor. Do not serialize __context__. Each error is a
 closed kind/errno/sites object. Kind uses exact type membership in this frozen
@@ -105,6 +108,26 @@ test helper. After Root freezes8 hashes/RED, separate Sol source author owns onl
 tools/native_claude_text_v5.py. Separate Astra reviews that implementation;
 Root integrates, verifies unchanged old files/source closure and full regression.
 Return commits/diff/log hashes/actual counts/exits, not completion self-reports.
+
+Pre-source clarification: the fixed author identified that blindly leaving the
+last successful close operation as phase would label a feed/pump failure
+close_streams. Root chooses the escaping-error phase above before author writes;
+fixed8 keep pump versus masked close_streams expectations. This is an explicit
+contract choice, not a change to get implementation PASS.
+
+Root freezes final fixed792c3f075ad305e9cc6ffb92998bb91c44c2f43a (initial8ca259b,
+UTF8 fixture407d67a/792c3f corrections retained): sole new test file SHA256
+fd35c58f1d3f756250ebc746d0a1e2ecddd8419289c2a660e4c7f9ff630d3e0c.
+AST8 methods, original existing-source RED8/20failures/0errors/7.523s/exit1,
+log SHAa6f32a2f5f23afe242c797f621496b726bffb81b57297a707e1f8da89f72e092.
+Root reads actual helper/method/metadata-versus-generation dependencies and exact
+test bodies before release. Existing methods are imported by module name without
+inheriting/re-exporting TestCase classes. Old source/tests remain unchanged.
+The author's initial metadata-child counting/pump reach and JSON-escaped canary
+fixture mistakes are preserved privately and corrected before this freeze.
+Next fixed-proof checks distinguish metadata children from the actual inert
+generation child, exercise the intended fault seam and decode split frame content
+for the privacy canary. This verifies observation storage, not model prose quality.
 
 ## Unresolved old-UNKNOWN decision
 

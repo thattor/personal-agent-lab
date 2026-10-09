@@ -3200,3 +3200,14 @@ C096 exact6170c26 is normally pushed to existing Draft PR19 and independently
 read back anonymously36/36 HTTP200/equal hashes, image included. CI checks are
 not reported, Draft remains open, no merge/deploy/visibility change. Root source
 20d512a/1029 PASS40.369s remains current proof because this checkpoint is docs-only.
+
+D070 pre-source phase clarification: fixed author reports the final successful
+handles-close phase would overwrite a feed/pump fault phase under literal wording.
+Root explicitly chooses the operation whose exception escapes, restoring the
+prior phase after successful close. Pump error remains pump; masking close error
+is close_streams, with unavailable pump observations null. This resolves the
+shared prerequisite before writers; fixed8 expectations remain unchanged.
+Separate Astra's U4 one-method/three-subcase trace now PASS1.570s/exit0: pause,
+cancel/source-stop return released with states paused/cancelled/queued and
+control_status none; _hold call0. Original results are unchanged by the observer.
+U4 is a clarification, not an incidental held latch or further source repair.
