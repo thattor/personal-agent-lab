@@ -1117,3 +1117,12 @@ and GitHub records and repairs the two concrete upstream attribution omissions
 before changing only the existing repo's visibility. All execution limits, old
 unknown calls, no new auth/cost, no live deployment and contract consultation
 conditions continue. Publication and AGY execution need observed separate success.
+
+
+D044 outcome: existing repository PUBLIC verified by both authenticated metadata
+and anonymous HTTP200 at12:36UTC. Attribution-only PR20 merged before visibility
+change. No existing history/DB was deleted or rewritten and no live product
+was exposed. Next actual dependency remains Opus ASK milestone/CHANGE01 design
+consultation; prepare a fresh public-byte-bound package including the later
+independent C10 critique and C13 correction, preserving the prior never-launched
+private package/refusals. Route and cost checks precede one owned new call.

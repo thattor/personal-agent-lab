@@ -4,12 +4,12 @@
 
 D044 directly authorizes making the existing thattor/personal-agent-lab public
 if the approved AGY route still cannot execute. The exact D043 private egress
-was refused before launch, satisfying that condition. Publication is being
-prepared, not yet reported complete. Root owns visibility and canonical updates;
+was refused before launch, satisfying that condition. Publication completed at12:36UTC; authenticated API and anonymous HTTP200
+confirm visibility public. Root owns visibility and canonical updates;
 native Astra/Sol separately audit reachable text, all32 images and GitHub content.
 No confirmed secret, third-party private conversation or unrelated private code
-has been found. Two missing upstream attribution files are being repaired before
-publication. No history rewrite, source removal, new service/auth/cost or live
+has been found. Two missing upstream attribution files are repaired at their pinned bytes,
+independently approved and merged to main viaPR20. No history rewrite, source removal, new service/auth/cost or live
 product exposure is included. This supersedes the repository-publication hold
 only for this specified repository. Actual tool restrictions remain operative.
 
@@ -59,7 +59,9 @@ records project-wide AGY authority. Fresh preflight confirms exactOpus5.5High,
 existing Google AI Pro and AI Credits OFF. Automatic review nevertheless rejects
 this13-file202200-byte private payload to AGY/Google-hosted Claude as insufficiently
 specific egress authorization. No process/run.json/stream/model call started.
-A direct exact-payload approval question is pending; no bypass or repeat. This
+That exact private-send refusal is retained; D044 later publishes the repository
+with anonymous readback. Fresh public inputs may be prepared through normal
+automatic review; no prior unknown call or refused private send is bypassed. This
 is a transport limit, not a new permanent per-call user-approval rule. Historical
 Sonnet refusals/completed code and unknown calls stay untouched. Evidence:
 d043-agy-egress-refusal.json, agy-opus-review-preflight.json and opus-review-prepared.json.

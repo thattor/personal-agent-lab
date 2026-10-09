@@ -2226,3 +2226,16 @@ Future ended-call checks use recognized state, not merely absence of admitted;
 composed unittest fixtures use module imports to avoid duplicate discovery.
 No new semantics were adopted; CHANGE01/ASK Opus consultation still precedes
 contract freeze. See release-integrity-20261009/verification.json and C13 note.
+
+
+D044 observed completion: GitHub accepted the normal visibility command.
+Authenticated API and independent anonymous GET at2026-10-09T12:36:47.716835Z
+return public/private:false/HTTP200 for thattor/personal-agent-lab. No auth header
+was used for the anonymous check. Attribution-only PR20 exactc467071, separately
+Astra APPROVE, merged main as3e8cf8d before publication. Source exposure can
+persist through forks; no product deployment, private Projects visibility,
+new auth/cost, history rewrite or CO state change occurred. Evidence:
+evidence/operations/publication-20261009/public-readback.json and readiness.json.
+Prior private AGY refusals remain historical facts. New public-source review
+inputs require actual anonymous byte verification and normal runtime approval;
+public visibility is not a guarantee that a model route executes successfully.
