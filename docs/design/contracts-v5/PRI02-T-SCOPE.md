@@ -34,6 +34,18 @@ installed public NativeCandidates after hashing VERSION and the actual
 task/select.py, task/infer.py, task/transcript.py and task/admission.py.
 Production output labels `native_cli_compatibility`, not C15 qualification.
 
+Minimal public selection fixture: route=devin, model=swe-2-high,
+measurement_digest=`sha256:` plus64 lower hex. Other real selection fields may
+be retained locally. Public result: text/model/route/tool_calls and evidence with
+version, cost_tier, measurement_digest and selection_digest. selection_digest is
+`sha256:` plus SHA256 of sorted compact ensure_ascii=False strict JSON of the
+entire selected pin; optional real known_context/api_key_source remain local.
+The fixed journal filename is journal.json and uses phase for prepared/entering/
+terminal and status for final outcome. Invalid input or existing attempt directory
+may raise a fixed safe ValueError without invocation. Otherwise qualify returns
+status, profile and evidence_kind plus hashes/route/model/fixed error code as
+applicable. Raw bodies and arbitrary exception text never appear in that mapping.
+
 Input is a closed C15-shaped mapping with call_id/reservation_id nonempty bounded
 strings, role=primary, output_kind=primary_proposal, nonempty messages with closed
 role/text fields (system/user only), and a list of valid RECORD Ref JSON source_refs.
@@ -42,7 +54,7 @@ summary. The synthetic prompt instructs strict PRI01-WIRE JSON with an ordinary
 reply and proposal kind=none; fixture refs are explicitly synthetic. No semantic
 truth or useful-result claim follows from valid JSON.
 
-Use exact fixed policy target implement=devin/swe-2-high, focus=code.
+Use exact fixed policy target implement=devin/swe-2-high, focus=coding.
 Selection must match the route/model and measured digest. Timeout=60 seconds.
 Pinned version/config/Free preflight is rechecked by CO before before_launch.
 The optional runtime_binding records installed source digests and exact version;
