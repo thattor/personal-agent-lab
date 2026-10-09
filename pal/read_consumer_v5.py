@@ -14,7 +14,7 @@ from pal.host_read_v5 import checked_result
 __all__ = ['NOTICE', 'inspect_session', 'render']
 
 NOTICE = 'a source registered for this completed work was stopped; completion is historical'
-_RECOVERY_NOTICE = 'mock saved draft recovered'
+_RECOVERY_NOTICES = frozenset({'mock saved draft recovered', 'Saved draft recovered'})
 _EVENT_KINDS = frozenset({'accepted', 'progress', 'question', 'state', 'result', 'error'})
 _MAX_PAGES = 64
 
@@ -128,7 +128,7 @@ def _scan(request, events, max_pages):
         cursor = following
         for event in batch:
             notice = event['kind'] == 'progress' and event['text'] == NOTICE
-            recovered = event['kind'] == 'state' and event['text'] == _RECOVERY_NOTICE
+            recovered = event['kind'] == 'state' and event['text'] in _RECOVERY_NOTICES
             if event['kind'] == 'result' or notice or recovered:
                 selected.append(event)
             if notice and 'work_ref' in event:
@@ -276,7 +276,7 @@ def _display_lines(lines):
 def render(inspection):
     """Plain-text rendering of an inspect_session success value."""
     lines = ['Saved-result inspection (read-only; not completion authority)',
-             'Model: mock (no real model call; saved drafts are mock output)',
+             'Model provenance: unverified by this view',
              'Verification: structural only (no semantic quality judgement)',
              f"Session: {inspection['session_id']}"]
     if not inspection['items']:
