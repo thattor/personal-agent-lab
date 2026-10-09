@@ -1,4 +1,28 @@
-# Current C094 — direct MAX1 consumed UNKNOWN; local correction proceeds
+# Current C095 — typed usage corrected; native fixture UI next
+
+Root67c93db integrates Astra76a8d5c after separate Sol APPROVE. Full **1019
+PASS29.885s/exit0** preserves1013 existing methods plus6 fixed schema cases.
+97 of98 previous test/fixture files are equal-byte; the sole authorized helper
+change now includes the observed12-key metadata shape. No old expectation or
+owner/wrapper behavior changed. [Verification](evidence/operations/c095-usage-correction-20261010/verification.json).
+
+The restricted1019 run's18 socket-bind PermissionErrors are retained; the same
+source/tests and criteria pass under approved local loopback/inert-child scope.
+Current C094 remains consumed UNKNOWN/NOT_PROVEN/active held, without output
+adoption, reconstruction, release, rotation or another entry. New source invalidates
+the old transport pin; local PASS does not qualify the direct provider.
+
+D067 freezes [UI02-NATIVE-FIXTURE/1](docs/design/contracts-v5/UI02-NATIVE-FIXTURE-SCOPE.md)
+for current NativePrimaryHost/NativeExpertRunner/ART/VER/read/HTTP source-only
+connection. Separate Astra fixed10 precedes isolated Sol source and separate
+Astra source review; Root integration/full/browser proof remain. Only explicitly
+declared fixture providers are admitted and no qualified launch is added.
+Actual CO0.4.5 public capacity is12/adapter, Claude0/0 and Devin1/0 held;
+native local maximum4 includes Root, without claiming30. Extra-cost enabling is
+excluded and native quota availability remains unknown. Mock stays default;
+real qualification/Expert/UI/authentic usefulness/release and whole goal **NOT_MET**.
+
+# Retained C094 — direct MAX1 consumed UNKNOWN; local correction proceeded
 
 D064's distinct direct PRIMARY used one invoke/entry and zero PAL effects at
 source8bee45b. Original protocol frames identify Claude2.1.291 and exact

@@ -3050,3 +3050,44 @@ synthetic shape; do not stop at top-level modelUsage keys. Record this check in
 the correction evidence and apply it to the next profile/operator freeze. Keep
 mock default, CO optional, no prose-quality/intelligence scoring, no new service,
 auth or fee, and whole goal NOT_MET.
+
+D066 actual C095: separately authored Astra76a8d5c modifies only the usage block;
+independent Sol approves exact source8939d18 after36 PASS10.160s/exit0. The reviewer's
+fixed-test authorship is disclosed and the source author is a separate context.
+Root67c93db integrates fixeda8cd and source76a8 with unchanged frozen hashes.
+Full1019 PASS29.885s/exit0 preserves1013 existing expectations plus6;97 of98 previous
+test/fixture files remain byte-equal, with only the explicitly corrected valid
+usage helper changed. Source/pair bytes and three original log hashes are checked
+in C095 verification. No further provider entry or original receipt adoption.
+
+The first restricted full run1019/errors18/exit1 is retained. All18 observed errors
+are socket.bind PermissionErrors. Re-run in approved local loopback/inert-child
+scope passes the same bytes/criteria without changing or skipping tests. Use that
+known required verification scope for the next HTTP full run; do not repeat a
+known blocked bind or change product code to satisfy sandbox restrictions.
+
+## D067 — native-owner HTTP slice with fixture-only admission (2026-10-10)
+
+Root freezes UI02-NATIVE-FIXTURE/1 against current67c93db source. It composes the
+same explicit provider instance into NativePrimaryHost and NativeExpertRunner,
+with finite constructor scope/limits, fresh private DB, separate control/read
+connections and strict committed-turn progression. Exact fixture_only True
+excludes official real-provider wrappers; startup/poll/read cannot enter. Held/
+unavailable responses stop queued progression and do not release/refund UNKNOWN.
+Bounded close retains the native DB; guard closure is not native cessation.
+Changed profiles/markers cannot prevent core controls/ART reads, and cannot
+justify a mock/proxy downgrade. Mock stays default and native qualification NOT_RUN.
+
+Separate Astra fixes10 new methods plus a typed synthetic helper before separate
+Sol writes only the native app/minimal HTTP/web files. Existing tests/owners/
+wrappers remain unchanged. Separate Astra reviews that different author's source,
+disclosing its test authorship; Root owns contract/canon/integration/full/browser
+evidence. No actual entry/root rotation/C094 recovery, old DB, auth/fee/service or
+qualified launch is included. A later authentic operator must additionally bind
+the HTTP/UI/admission/queue bytes and proper transport/lane disposition.
+
+Fresh supported CO0.4.5 VERSION/decide help/capacity confirms limit12 per adapter,
+Claude executing0/reserved0, Devin executing1/reserved0 (preserved held baseline).
+Ordinary concurrent runs are supported by the installed co-task contract, while
+the local native agent maximum4 includes Root. No30-execution or known free-quota
+claim is made. No CO state/runtime/route change or cost enabling follows.

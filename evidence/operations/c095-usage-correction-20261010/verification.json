@@ -1,0 +1,67 @@
+{
+  "actual_qualification": "NOT_PROVEN",
+  "authorized_changed_helper": [
+    "tests/native_claude_fixtures_v5.py"
+  ],
+  "contract": "PRI02-CLAUDE-USAGE/1",
+  "existing_methods_unchanged": 1013,
+  "fixed_author_commit": "a8cd8bb5d2cfddc69ed52f13eb5788d9cd7e69f2",
+  "hashes": {
+    "pal/native_claude_text_v5.py": "8939d18afee7f328f693fd6af5813cee5f1bef98de88a1d9afa05aba18fa1fcc",
+    "tests/native_claude_fixtures_v5.py": "0df039fa677d1c379772632754ee96615bd8be47e2a9aba4b7dd25856a3a54cf",
+    "tests/test_native_claude_usage_v5.py": "7ba8f35dca018b344629016b73178b467d4536eead6a3d770b400a54898b4690"
+  },
+  "independent_review": {
+    "fixed6_sha256": "7ba8f35dca018b344629016b73178b467d4536eead6a3d770b400a54898b4690",
+    "helper_sha256": "0df039fa677d1c379772632754ee96615bd8be47e2a9aba4b7dd25856a3a54cf",
+    "independence": "Fixed fixture/tests authored by reviewer; production source authored by separate Astra context",
+    "limits": "Local synthetic protocol and owned fake children only; no actual receipt reconstruction/feed/ending adoption, model qualification, provider entry, auth/CO operations or original UNKNOWN mutation; Root full integration separate",
+    "log_sha256": "dbba81ea3cc4b4ec50faa7d7c2e5b5ab6510b9102440956102f55cd959d2dd59",
+    "source_commit": "76a8d5c2cc23d23b639740d9bfbff6ff0a970838",
+    "source_sha256": "8939d18afee7f328f693fd6af5813cee5f1bef98de88a1d9afa05aba18fa1fcc",
+    "test_command": "python3.13 -E -s -B -m unittest discover -s tests -p 'test_native_claude_*v5.py' -v",
+    "verdict": "APPROVE"
+  },
+  "new_fixed_methods": 6,
+  "original_C094": "UNKNOWN, active held, not reconstructed or adopted",
+  "prose_grading": false,
+  "real_provider_entry": false,
+  "restricted_original": {
+    "confirmed_error": "loopback socket.bind PermissionError",
+    "criteria_or_test_change": false,
+    "errors": 18,
+    "exit": 1,
+    "log_sha256": "b8859cc4be48c52e87a0345a1892377b56dc91829cc637e9eebd9a4f938c06d7",
+    "tests": 1019
+  },
+  "retained_test_files": 98,
+  "root_full": {
+    "command": [
+      "python3.13",
+      "-E",
+      "-s",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "execution_scope": "approved local loopback and inert-child verification",
+    "exit": 0,
+    "full_log_sha256": "eeb029bd0db314e5bec53eba5428d0750664f53bb4111fa9c166f043c45d4750",
+    "prose_grading": false,
+    "real_provider_entry": false,
+    "source_and_tests_unchanged": true,
+    "source_commit": "67c93db5afd191a4b6b0a5ef2ebc487761e9c649",
+    "test_seconds": 29.885,
+    "tests": 1019,
+    "wall_seconds": 30.242
+  },
+  "source_author_commit": "76a8d5c2cc23d23b639740d9bfbff6ff0a970838",
+  "source_commit": "67c93db5afd191a4b6b0a5ef2ebc487761e9c649",
+  "unchanged_old_test_files": 97,
+  "version": "PAL-C095-USAGE/1",
+  "whole_goal": "NOT_MET"
+}

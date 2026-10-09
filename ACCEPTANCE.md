@@ -1,4 +1,20 @@
-# Current C094 — exact raw model observed; direct qualification remains unmet
+# Current C095 — functional usage correction passes1019; real proof still unmet
+
+Root67c93db full **1019 PASS29.885s/exit0** follows independent Sol36/source
+APPROVE of separate Astra76a8d5c. New6 fixed schema methods and one explicitly
+corrected synthetic helper retain every old1013 expectation and97 other test/
+fixture files. Wrong metadata/types/bounds/nonfinite cost/web-search values refuse.
+[Source verification](evidence/operations/c095-usage-correction-20261010/verification.json).
+
+The original restricted run1019/errors18/exit1 is retained; its actual errors are
+loopback socket.bind PermissionErrors. The approved local verification changes
+execution permission only, with no source/test/criteria change. No genuine provider
+entry, original-ending reconstruction or prose/intelligence grading occurred.
+C094 remains UNKNOWN/NOT_PROVEN/active held and source changes invalidate its pin.
+UI02 native-owner HTTP preparation is source/fixture only; native activation,
+real Expert/UI/usefulness/release and whole goal remain NOT_MET.
+
+# Retained C094 — exact raw model observed; direct qualification remains unmet
 
 At8bee45b the distinct D064 allowance was consumed once: invoke1/entry1,
 PAL effects0, exit1, UNKNOWN/transport NOT_PROVEN/semantic NOT_RUN. Original
