@@ -52,15 +52,17 @@ one frame262144 bytes excluding LF; frames2048; JSON nesting64; final text32768
 UTF8 bytes, >=1; text-content blocks1..2048; bounded metadata tokens512 UTF8 bytes.
 Reject duplicate JSON keys, nonfinite numbers, invalid UTF8, blank lines, missing
 final LF/truncated frame, bad required types, duplicate frame UUID, foreign session,
-unknown frame type/subtype, bad order and any frame after result. Additional
+unknown frame type/subtype, bad order and any frame after result. Every frame has
+the expected session_id and a distinct nonempty bounded uuid. Additional
 version-observed metadata keys may be retained/hash-bound but grant no authority.
 
-First frame is exactly one system/init with expected session, version2.1.291,
+First frame is exactly one system/init with expected session, claude_code_version2.1.291,
 modelclaude-opus-5-5, tools[], mcp_servers[], permissionModedontAsk. Advertised
 agents/skills/plugins are not execution and need not be empty. Permit system/
 thinking_tokens ticks with integer nonnegative estimated_tokens and delta; ignore
-their content for output. Permit rate_limit_event only with isUsingOverage false,
-statusallowed, overageDisabledReasonorg_level_disabled. Neither changes authority.
+their content for output. Permit rate_limit_event only with rate_limit_info holding
+isUsingOverage false, statusallowed, overageDisabledReasonorg_level_disabled.
+Neither changes authority.
 
 Assistant frames have parent_tool_use_id null, a nonempty bounded request_id, one
 shared message.id, message.type message, roleassistant, exact model, and nonempty
