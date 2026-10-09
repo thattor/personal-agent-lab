@@ -83,15 +83,39 @@ def _write(path, value):
         os.close(fd)
 
 
+def _runtime_origin(module, runtime):
+    spec = getattr(module, '__spec__', None)
+    origin = getattr(module, '__file__', None)
+    spec_origin = getattr(spec, 'origin', None)
+    locations = []
+    for paths in (getattr(spec, 'submodule_search_locations', None),
+                  getattr(module, '__path__', None)):
+        if paths is not None:
+            paths = tuple(paths)
+            if not paths:
+                _fail()
+            locations.extend(paths)
+    if origin is None:
+        # Namespace packages have no source file; every search root is authority.
+        if spec_origin is not None or not locations:
+            _fail()
+    else:
+        if spec_origin != origin:
+            _fail()
+        locations.append(origin)
+    for location in locations:
+        if (not isinstance(location, (str, os.PathLike)) or not str(location)
+                or not Path(location).resolve(strict=True).is_relative_to(runtime)):
+            _fail()
+
+
 def _load_runtime(runtime):
     runtime = Path(runtime).resolve(strict=True)
     if (runtime / 'VERSION').read_text('utf-8').strip() != '0.4.5':
         _fail()
     for name, module in tuple(sys.modules.items()):
         if name == 'co_v4' or name.startswith('co_v4.'):
-            origin = getattr(module, '__file__', None)
-            if origin is None or not Path(origin).resolve().is_relative_to(runtime):
-                _fail()
+            _runtime_origin(module, runtime)
     sys.path.insert(0, str(runtime))
     try:
         modules = {name: importlib.import_module('co_v4.' + name) for name in
@@ -100,8 +124,7 @@ def _load_runtime(runtime):
         sys.path.remove(str(runtime))
     for name, module in tuple(sys.modules.items()):
         if name == 'co_v4' or name.startswith('co_v4.'):
-            if not Path(module.__file__).resolve().is_relative_to(runtime):
-                _fail()
+            _runtime_origin(module, runtime)
     host, cap = modules['devin_host'], modules['adapter_capacity']
     return SimpleNamespace(contracts=modules['contracts'], DevinTextHost=host.DevinTextHost,
         DevinHostConfig=host.DevinHostConfig, DevinAdapter=modules['adapters.devin'].DevinAdapter,
@@ -219,7 +242,7 @@ class NativeDevinText:
             if not os.access(self.executable, os.X_OK) or not 1 <= len(self.credentials) <= 8:
                 _fail()
             for path in self.credentials:
-                _file(path, private=True)
+                _file(path)
             _ledger()
             api = _load_runtime(self.runtime)
             pin = _pin(_fresh_pin(api, self.state_dir, self.executable))
@@ -264,7 +287,8 @@ class NativeDevinText:
             call_dir.mkdir(mode=0o700)
             workspace = call_dir / 'workspace'
             workspace.mkdir(mode=0o700)
-            attempt = {'run_id': 'pal-native-' + uuid.uuid4().hex, 'job_id': 'primary', 'attempt_id': uuid.uuid4().hex}
+            attempt = {'run_id': 'task-cwd:' + _sha(str(workspace.resolve(strict=True)).encode('utf-8')),
+                       'job_id': 'primary', 'attempt_id': uuid.uuid4().hex}
             ref = c.AttemptRef(**attempt)
             journal = call_dir / 'request.json'
             _write(journal, {'request': request, 'request_sha256': request_hash, 'prompt_sha256': request_hash,
