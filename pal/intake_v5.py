@@ -3,7 +3,8 @@
 Unused preparation, not a live service. The host supplies an open sqlite3
 connection with isolation_level=None, a trusted Grant ceiling, the configured
 expert_id and a trusted same-DB source_gate. This module opens no file, creates
-only v5_intake_ tables and implements no PRI authority or MEM reference stop.
+only v5_intake_ tables. MEM01 adds host transaction-bound events and queued-source
+invalidation; it does not implement execution, real PRI authority or other states.
 """
 import sqlite3
 import uuid
@@ -23,6 +24,7 @@ _GATE_ERRORS = {
     'unavailable': (ErrorCode.UNAVAILABLE, 'source unavailable'),
 }
 GATE_OUTCOMES = frozenset({'available', *_GATE_ERRORS})
+_EVENT_KINDS = frozenset({'accepted', 'progress', 'question', 'state', 'result', 'error'})
 
 _SCHEMA = (
     'CREATE TABLE IF NOT EXISTS v5_intake_work ('
@@ -37,6 +39,9 @@ _SCHEMA = (
     'CREATE TABLE IF NOT EXISTS v5_intake_replay ('
     ' command TEXT NOT NULL, key TEXT NOT NULL, input_json TEXT NOT NULL,'
     ' result_json TEXT NOT NULL, PRIMARY KEY (command, key))',
+    'CREATE TABLE IF NOT EXISTS v5_intake_source ('
+    ' goal_id TEXT NOT NULL, revision INTEGER NOT NULL, kind TEXT NOT NULL, id TEXT NOT NULL,'
+    ' PRIMARY KEY (goal_id, revision, kind, id))',
 )
 
 
@@ -57,6 +62,16 @@ def _identifier(value):
         raise ContractError('empty id')
     if not _valid_id(value):
         raise ContractError('invalid utf-8')
+    return value
+
+
+def _text(value):
+    if type(value) is not str:
+        raise ContractError('wrong type')
+    try:
+        value.encode('utf-8')
+    except UnicodeError:
+        raise ContractError('invalid utf-8') from None
     return value
 
 
@@ -203,6 +218,107 @@ class IntakeStore:
             return _unavailable()
         return Result.success(value)
 
+    def append_event(self, connection, request):
+        """C14 event mutation; caller owns this transaction and must roll back errors."""
+        self._require_transaction(connection)
+        try:
+            _object(request, {'key', 'session_id', 'kind', 'text', 'refs'}, {'work_ref'})
+            key = _identifier(request['key'])
+            session = _identifier(request['session_id'])
+            kind = _text(request['kind'])
+            if kind not in _EVENT_KINDS:
+                raise ContractError('invalid enum value')
+            content = _text(request['text'])
+            if type(request['refs']) is not list:
+                raise ContractError('wrong type')
+            refs = tuple(Ref.from_json(ref) for ref in request['refs'])
+            work = WorkRef.from_json(request['work_ref']) if 'work_ref' in request else None
+        except ContractError as error:
+            return _invalid(error)
+        canonical = dumps(request)
+        replay = self._lookup_replay('C14.append_event', key, canonical)
+        if replay is not None:
+            return replay
+        if work is not None:
+            row = connection.execute('SELECT revision,epoch FROM v5_intake_work '
+                                     'WHERE goal_id=? ORDER BY revision DESC LIMIT 1',
+                                     (work.goal_id,)).fetchone()
+            if row is None:
+                return Result.failure(ErrorCode.NOT_FOUND, 'work not found')
+            if row != (work.revision, work.epoch):
+                return Result.failure(ErrorCode.STALE, 'work changed')
+        event_id = self._append_event(session, work, kind, content, refs)
+        result = Result.success({'event_id': event_id})
+        self._save_replay('C14.append_event', key, canonical, result)
+        return result
+
+    def invalidate_by_refs(self, connection, *, key, session_id, refs):
+        """Invalidate queued work only, within the MEM-owned source-stop transaction."""
+        self._require_transaction(connection)
+        try:
+            _identifier(key)
+            _identifier(session_id)
+            if type(refs) is not tuple or any(type(ref) is not Ref for ref in refs):
+                raise ContractError('wrong type')
+        except ContractError as error:
+            return _invalid(error)
+        refs = tuple(dict.fromkeys(refs))
+        canonical = dumps({'key': key, 'session_id': session_id,
+                           'refs': [ref.to_json() for ref in refs]})
+        command = 'TSK.invalidate_by_refs'
+        replay = self._lookup_replay(command, key, canonical)
+        if replay is not None:
+            return replay
+        rows = connection.execute(
+            'SELECT w.goal_id,w.revision,w.epoch,w.state,w.origin_ref_json,w.brief_json '
+            'FROM v5_intake_work w WHERE w.revision=(SELECT max(x.revision) '
+            'FROM v5_intake_work x WHERE x.goal_id=w.goal_id) ORDER BY w.goal_id').fetchall()
+        affected = []
+        for goal_id, revision, epoch, state, origin_json, brief_json in rows:
+            expected = {Ref.from_json(loads(origin_json)),
+                        *Brief.from_json(loads(brief_json)).context_refs}
+            stored = {Ref(kind, ident) for kind, ident in connection.execute(
+                'SELECT kind,id FROM v5_intake_source WHERE goal_id=? AND revision=?',
+                (goal_id, revision))}
+            # Existing data without its owner index must not silently evade a stop.
+            if not expected <= stored:
+                return _unavailable('source dependencies unavailable')
+            matched = tuple(ref for ref in refs if ref in stored)
+            if matched:
+                if state != 'queued' or epoch >= _SQLITE_INT_MAX:
+                    return _unavailable('work invalidation unavailable')
+                affected.append((WorkRef(goal_id, revision, epoch + 1), matched))
+        for work, matched in affected:
+            connection.execute('UPDATE v5_intake_work SET epoch=? WHERE goal_id=? AND revision=?',
+                               (work.epoch, work.goal_id, work.revision))
+            result = self.append_event(connection, {
+                'key': dumps([command, key, 'event', work.goal_id]), 'session_id': session_id,
+                'work_ref': work.to_json(), 'kind': 'state', 'text': 'source use stopped',
+                'refs': [ref.to_json() for ref in matched]})
+            if not result.ok:
+                return result
+        result = Result.success({'work_refs': [work.to_json() for work, _ in affected]})
+        self._save_replay(command, key, canonical, result)
+        return result
+
+    def _lookup_replay(self, command, key, canonical):
+        row = self._conn.execute('SELECT input_json,result_json FROM v5_intake_replay '
+                                 'WHERE command=? AND key=?', (command, key)).fetchone()
+        if row is None:
+            return None
+        if row[0] != canonical:
+            return Result.failure(ErrorCode.CONFLICT, 'key reused with different input')
+        return Result.from_json(loads(row[1]))
+
+    def _save_replay(self, command, key, canonical, result):
+        self._conn.execute('INSERT INTO v5_intake_replay VALUES (?,?,?,?)',
+                           (command, key, canonical, dumps(result)))
+
+    def _require_transaction(self, connection):
+        if (connection is not self._conn or connection.isolation_level is not None
+                or not connection.in_transaction):
+            raise ValueError('callback requires the same active transaction')
+
     def _create_locked(self, key, session_id, origin, draft, scope, canonical):
         conn = self._conn
         row = conn.execute('SELECT input_json, result_json FROM v5_intake_replay'
@@ -232,6 +348,9 @@ class IntakeStore:
                      ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
                      (goal_id, 1, 0, 'queued', dumps(brief), dumps(grant), session_id,
                       dumps(origin), self._expert_id))
+        conn.executemany('INSERT INTO v5_intake_source VALUES (?,?,?,?)',
+                         [(goal_id, 1, ref.kind.value, ref.id)
+                          for ref in dict.fromkeys((origin, *draft.context_refs))])
         self._append_event(session_id, work_ref, 'accepted', 'work accepted', (origin,))
         conn.execute('INSERT INTO v5_intake_replay (command, key, input_json, result_json)'
                      ' VALUES (?, ?, ?, ?)', (_COMMAND, key, canonical, dumps(result)))

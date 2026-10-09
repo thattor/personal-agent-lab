@@ -229,6 +229,57 @@
         "Reject another lease without freeing the current slot."
       ],
       "implementation_status": "NOT_RUN"
+    },
+    {
+      "id": "CT-20-intake",
+      "contract_version": "MEM01/1",
+      "owner": "MEM-01/MEM-04 + TSK-01",
+      "scope": "Queued source invalidation only; full CT-20 remains unmet",
+      "append_request": {
+        "client_key": "shared-record",
+        "session_id": "shared-session",
+        "role": "user",
+        "text": "会議の準備を進めてください。"
+      },
+      "search_request": {
+        "query": "会議",
+        "session_id": "shared-session",
+        "limit": 10
+      },
+      "intake_template": {
+        "key": "shared-intake",
+        "session_id": "shared-session",
+        "origin_record_ref": {
+          "kind": "record",
+          "id": "REPLACE_WITH_HOST_RECORD_ID"
+        },
+        "brief": {
+          "purpose": "会議の準備",
+          "target": {
+            "repository": "thattor/personal-agent-lab",
+            "issue_numbers": [],
+            "files": []
+          },
+          "constraints": [],
+          "conditions": [
+            {
+              "description": "準備結果を保存する",
+              "check": "artifact_saved"
+            }
+          ],
+          "context_refs": []
+        }
+      },
+      "expected": {
+        "initial_state": "queued",
+        "initial_epoch": 0,
+        "stopped_state": "queued",
+        "stopped_epoch": 1,
+        "fresh_intake_error": "denied",
+        "current_model_read_error": "denied",
+        "owner_history_usable": false,
+        "old_receipt_epoch": 0
+      }
     }
   ],
   "wire_samples": [

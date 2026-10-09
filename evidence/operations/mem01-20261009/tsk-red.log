@@ -1,0 +1,126 @@
+test_create_registers_all_sources_and_invalidation_preserves_receipt (test_intake_transactions_v5.IntakeTransactionTests.test_create_registers_all_sources_and_invalidation_preserves_receipt) ... ERROR
+test_epoch_overflow_and_foreign_transaction_rejected (test_intake_transactions_v5.IntakeTransactionTests.test_epoch_overflow_and_foreign_transaction_rejected) ... ERROR
+test_event_strict_wire_and_current_work_binding (test_intake_transactions_v5.IntakeTransactionTests.test_event_strict_wire_and_current_work_binding) ... 
+  test_event_strict_wire_and_current_work_binding (test_intake_transactions_v5.IntakeTransactionTests.test_event_strict_wire_and_current_work_binding) (field='extra') ... ERROR
+  test_event_strict_wire_and_current_work_binding (test_intake_transactions_v5.IntakeTransactionTests.test_event_strict_wire_and_current_work_binding) (field='kind') ... ERROR
+  test_event_strict_wire_and_current_work_binding (test_intake_transactions_v5.IntakeTransactionTests.test_event_strict_wire_and_current_work_binding) (field='text') ... ERROR
+  test_event_strict_wire_and_current_work_binding (test_intake_transactions_v5.IntakeTransactionTests.test_event_strict_wire_and_current_work_binding) (field='refs') ... ERROR
+  test_event_strict_wire_and_current_work_binding (test_intake_transactions_v5.IntakeTransactionTests.test_event_strict_wire_and_current_work_binding) (field='work_ref') ... ERROR
+test_event_strict_wire_and_current_work_binding (test_intake_transactions_v5.IntakeTransactionTests.test_event_strict_wire_and_current_work_binding) ... ERROR
+test_invalidating_one_source_does_not_touch_unrelated_work (test_intake_transactions_v5.IntakeTransactionTests.test_invalidating_one_source_does_not_touch_unrelated_work) ... ERROR
+test_invalidation_prechecks_all_states_and_caller_can_rollback (test_intake_transactions_v5.IntakeTransactionTests.test_invalidation_prechecks_all_states_and_caller_can_rollback) ... ERROR
+test_missing_source_coverage_is_unavailable_instead_of_silent_miss (test_intake_transactions_v5.IntakeTransactionTests.test_missing_source_coverage_is_unavailable_instead_of_silent_miss) ... ERROR
+test_public_event_replay_is_transaction_bound_and_rollback_owned_by_caller (test_intake_transactions_v5.IntakeTransactionTests.test_public_event_replay_is_transaction_bound_and_rollback_owned_by_caller) ... ERROR
+
+======================================================================
+ERROR: test_create_registers_all_sources_and_invalidation_preserves_receipt (test_intake_transactions_v5.IntakeTransactionTests.test_create_registers_all_sources_and_invalidation_preserves_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_intake_transactions_v5.py", line 75, in test_create_registers_all_sources_and_invalidation_preserves_receipt
+    refs = self.conn.execute('SELECT kind,id FROM v5_intake_source').fetchall()
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: v5_intake_source
+
+======================================================================
+ERROR: test_epoch_overflow_and_foreign_transaction_rejected (test_intake_transactions_v5.IntakeTransactionTests.test_epoch_overflow_and_foreign_transaction_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_intake_transactions_v5.py", line 138, in test_epoch_overflow_and_foreign_transaction_rejected
+    self.store.append_event(other, self.event())
+    ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IntakeStore' object has no attribute 'append_event'
+
+======================================================================
+ERROR: test_event_strict_wire_and_current_work_binding (test_intake_transactions_v5.IntakeTransactionTests.test_event_strict_wire_and_current_work_binding) (field='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_intake_transactions_v5.py", line 64, in test_event_strict_wire_and_current_work_binding
+    self.assertEqual(self.store.append_event(self.conn, bad).error.code.value,
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IntakeStore' object has no attribute 'append_event'
+
+======================================================================
+ERROR: test_event_strict_wire_and_current_work_binding (test_intake_transactions_v5.IntakeTransactionTests.test_event_strict_wire_and_current_work_binding) (field='kind')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_intake_transactions_v5.py", line 64, in test_event_strict_wire_and_current_work_binding
+    self.assertEqual(self.store.append_event(self.conn, bad).error.code.value,
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IntakeStore' object has no attribute 'append_event'
+
+======================================================================
+ERROR: test_event_strict_wire_and_current_work_binding (test_intake_transactions_v5.IntakeTransactionTests.test_event_strict_wire_and_current_work_binding) (field='text')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_intake_transactions_v5.py", line 64, in test_event_strict_wire_and_current_work_binding
+    self.assertEqual(self.store.append_event(self.conn, bad).error.code.value,
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IntakeStore' object has no attribute 'append_event'
+
+======================================================================
+ERROR: test_event_strict_wire_and_current_work_binding (test_intake_transactions_v5.IntakeTransactionTests.test_event_strict_wire_and_current_work_binding) (field='refs')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_intake_transactions_v5.py", line 64, in test_event_strict_wire_and_current_work_binding
+    self.assertEqual(self.store.append_event(self.conn, bad).error.code.value,
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IntakeStore' object has no attribute 'append_event'
+
+======================================================================
+ERROR: test_event_strict_wire_and_current_work_binding (test_intake_transactions_v5.IntakeTransactionTests.test_event_strict_wire_and_current_work_binding) (field='work_ref')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_intake_transactions_v5.py", line 64, in test_event_strict_wire_and_current_work_binding
+    self.assertEqual(self.store.append_event(self.conn, bad).error.code.value,
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IntakeStore' object has no attribute 'append_event'
+
+======================================================================
+ERROR: test_event_strict_wire_and_current_work_binding (test_intake_transactions_v5.IntakeTransactionTests.test_event_strict_wire_and_current_work_binding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_intake_transactions_v5.py", line 68, in test_event_strict_wire_and_current_work_binding
+    self.assertEqual(self.store.append_event(self.conn, event).error.code.value, 'stale')
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IntakeStore' object has no attribute 'append_event'
+
+======================================================================
+ERROR: test_invalidating_one_source_does_not_touch_unrelated_work (test_intake_transactions_v5.IntakeTransactionTests.test_invalidating_one_source_does_not_touch_unrelated_work)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_intake_transactions_v5.py", line 122, in test_invalidating_one_source_does_not_touch_unrelated_work
+    result = self.store.invalidate_by_refs(self.conn, key='opaque:key', session_id='s',
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IntakeStore' object has no attribute 'invalidate_by_refs'
+
+======================================================================
+ERROR: test_invalidation_prechecks_all_states_and_caller_can_rollback (test_intake_transactions_v5.IntakeTransactionTests.test_invalidation_prechecks_all_states_and_caller_can_rollback)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_intake_transactions_v5.py", line 100, in test_invalidation_prechecks_all_states_and_caller_can_rollback
+    result = self.store.invalidate_by_refs(self.conn, key='stop', session_id='session',
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IntakeStore' object has no attribute 'invalidate_by_refs'
+
+======================================================================
+ERROR: test_missing_source_coverage_is_unavailable_instead_of_silent_miss (test_intake_transactions_v5.IntakeTransactionTests.test_missing_source_coverage_is_unavailable_instead_of_silent_miss)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_intake_transactions_v5.py", line 109, in test_missing_source_coverage_is_unavailable_instead_of_silent_miss
+    self.conn.execute('DELETE FROM v5_intake_source')
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: v5_intake_source
+
+======================================================================
+ERROR: test_public_event_replay_is_transaction_bound_and_rollback_owned_by_caller (test_intake_transactions_v5.IntakeTransactionTests.test_public_event_replay_is_transaction_bound_and_rollback_owned_by_caller)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_intake_transactions_v5.py", line 43, in test_public_event_replay_is_transaction_bound_and_rollback_owned_by_caller
+    self.store.append_event(self.conn, self.event())
+    ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IntakeStore' object has no attribute 'append_event'
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.014s
+
+FAILED (errors=12)

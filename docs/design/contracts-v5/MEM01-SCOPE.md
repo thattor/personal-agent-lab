@@ -34,6 +34,8 @@ TSK exposes these host-only public methods:
 - append_event(connection, request:dict) -> Result[{event_id}]. request is exactly
   C14 key, session_id, kind, text, refs, with optional work_ref (omit if absent).
   Strict JSON values. Equal key/canonical input replays; different input conflicts.
+  After replay lookup, an optional work_ref must match current stored revision/epoch;
+  missing work is not_found and an old binding is stale. MEM events omit work_ref.
 - invalidate_by_refs(connection, *, key:str, session_id:str, refs:tuple[Ref,...])
   -> Result[{work_refs:[WorkRef JSON]}]. Require exact stored connection and an active
   transaction (programmer errors otherwise). Deduplicate refs in first-seen order.
