@@ -32,6 +32,15 @@ release, rotation or output adoption follows. Future failure observability and
 an explicit old-UNKNOWN disposition are being prepared independently. Real
 qualification/Expert/UI/authentic usefulness/release and whole goal **NOT_MET**.
 
+D070's actual CO Opus5.5 milestone review completes REFINE: UI design aligned;
+minimum prospective private failure contract is now frozen after P1-P10
+disposition. Separate fixed8 tests precede wrapper-only source and independent
+Astra review. Source implementation and new full verification remain pending;
+no actual product invoke, new root or old-call disposition is authorized.
+C0966170c26 is published in existing Draft PR19 with independent anonymous36/36
+equal-byte readback; no reported CI checks or merge. Do not call the CO report's
+verified:true product completion or native qualification.
+
 # Retained C095 — typed usage corrected; native fixture UI next
 
 Root67c93db integrates Astra76a8d5c after separate Sol APPROVE. Full **1019

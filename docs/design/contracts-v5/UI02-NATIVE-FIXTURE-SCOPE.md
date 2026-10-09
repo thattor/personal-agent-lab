@@ -72,6 +72,10 @@ INVALID_INPUT is not converted into a returned action. No further progression
 while held, including already queued items; pending durable turns remain saved.
 Controls/source-stop/read remain available with separate connections. Never infer
 an ending, release/refund an unknown call, or clear held from queue emptiness.
+While held, pause/cancel/source-stop/read remain available; resume and structured
+answer require a reservation and refuse503 before durable control/admission.
+Do not describe a refused answer as saved-but-unscheduled. A constructor startup
+refusal retains its fresh DB but returns no application object/path to the caller.
 
 Bound queue/admissions to16. Local worker quiescence may satisfy wait_idle, while
 status remains held. close is bounded; active worker/handlers/admissions retain

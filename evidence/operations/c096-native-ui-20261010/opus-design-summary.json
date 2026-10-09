@@ -1,0 +1,50 @@
+{
+  "version": "C096-DESIGN-RECEIPT/1",
+  "task_id": "dbf5d54b38a64e56959f7ae5ec6507ac",
+  "base_sha": "6170c26874679a731f6fe1e841f473420af21a60",
+  "read_sha256": {
+    "docs/design/contracts-v5/UI02-NATIVE-FIXTURE-SCOPE.md": "5cb242c456773decea9bf4dcf3133b913d5974a09fa18864453426fee1369e02",
+    "pal/native_http_v5.py": "6ecb5c95c6f84a5a4ac901428d9490b87813b7d1b3c0f2539b79eb8929c9ed5f",
+    "pal/http_v5.py": "cd1c72783b35753e360d80e92ffadfeae0d294db49aef18c745628fc4cf031ec",
+    "docs/design/contracts-v5/PRI02-CLAUDE-FAILURE-SCOPE.md": "4054ab54e13a122cc2a80d5e0c9b40d1f56dbd96ef4f5a362185b81543cde0ea",
+    "tools/native_claude_text_v5.py": "81a67ced9e88fb0c3897801c6be2f0ad555c6cf9e78f7453d417548c99b04431",
+    "pal/native_call_v5.py": "5993dfd616157a1d90fdf910750859498abd071b4bb6ae1636c74708fe481dfa",
+    "evidence/operations/c096-native-ui-20261010/verification.json": "2aeeac85ec666810bf67386b0bd168903b5449ade04e3a2bc844bf14a2b9b0c4",
+    "evidence/operations/c094-direct-native-20261010/native-summary.json": "41749c6630d32496cd0cc808fbf8232ef0c39bc148d4e461587001bf49ddc3cf"
+  },
+  "report_sha256": "14bdfa454eb63e37cffe06ba2cf87a935fba95381dc7aca9535891072919eb43",
+  "verdict": "REFINE",
+  "co_version": "0.4.5",
+  "co_verified_scope": "REPORT_SHAPE_ONLY; not source/product qualification",
+  "calls": [
+    {
+      "phase": "planner",
+      "model_id": "claude-opus-5-5",
+      "result_model_ids": [
+        "claude-opus-5-5"
+      ],
+      "cli_version": "2.1.291",
+      "duration_ms": 9083,
+      "tools": 0,
+      "permissions": 0,
+      "extra_usage_observed_disabled": true,
+      "frame_count": 9,
+      "stream_sha256": "e8c1cce4772075dbc0f93c39126b39e3fc6badb386a85d28a7044d21e302af0b"
+    },
+    {
+      "phase": "report",
+      "model_id": "claude-opus-5-5",
+      "result_model_ids": [
+        "claude-opus-5-5"
+      ],
+      "cli_version": "2.1.291",
+      "duration_ms": 142983,
+      "tools": 0,
+      "permissions": 0,
+      "extra_usage_observed_disabled": true,
+      "frame_count": 85,
+      "stream_sha256": "1b4a3547355ce7584153f87658f3bcf7dc1dceec05137b5191a9ba4d3a5c5b5d"
+    }
+  ],
+  "product_native_entry": false
+}

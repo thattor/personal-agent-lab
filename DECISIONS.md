@@ -3154,3 +3154,49 @@ design route before freezing new tests/source. Original no-second-entry/rotation
 and extra-cost/auth/service boundaries remain. A concrete old-UNKNOWN/new-MAX1
 human decision is prepared independently after the design/operator evidence;
 no call or irreversible action is implied by the proposal.
+
+## D070 — actual C096 Opus review; minimum prospective failure scope frozen (2026-10-10)
+
+Ordinary CO0.4.5 task dbf5d54b38a64e56959f7ae5ec6507ac completes exit0/verified:true
+at6170c26, strictly REPORT_SHAPE_ONLY. Root verifies all8 supplied inputs equal
+their exact base bytes and the report SHA14bdfa4. Original init/result frames
+identify Claude2.1.291 and exact claude-opus-5-5 in both planner9.083s and report
+142.983s, tools/MCP/permissions0 and no-overage/org-disabled. Current fresh same
+account Pro/credit-OFF evidence preceded launch; no setting/auth/service changed.
+Ordinary supported task records are written by CO itself; no state/runtime manual
+edit or old UNKNOWN operation occurred. [Report](docs/reviews/C096-NATIVE-UI-FAILURE-DESIGN-OPUS.md),
+[minimized receipt](evidence/operations/c096-native-ui-20261010/opus-design-summary.json).
+
+Verdict REFINE, current UI design aligned without source-blocking finding.
+U1 held resume/structured-answer503 before durable admission and U3 retained
+startup-refusal DB without returned object/path are clarified in UI02 scope.
+U2 trusted fixture marker is no attestation and cannot become a real launcher
+gate; actual whole-flow operator remains separate. U4 current C05 release returns
+control_status none; a bounded independent trace of existing concurrent-control
+cases checks the actual shape. U5 Root's four reviewed/integrated UI source hashes
+already match in verification.json. No UI source or fixed test changes follow.
+
+Root adopts P1-P10 in PRI02-CLAUDE-FAILURE/1 before source writers: preserve exact
+existing public outcomes; cleanup once only with child; one suppressed diagnostic
+attempt after cleanup; local phase including close_streams; finite exact exception
+type membership; only last8 exact pinned-file traceback sites, no message/context/
+absolute path/private value; cleanup outcome is local, sometimes stream-close
+only; nullable returned pump WNOWAIT/EOF observations; completed-write flags;
+existing exclusive0600/fsync write with4096 cap and no overwrite/truncation.
+Eight fixed methods include non-Exception object identity, masked pump/close
+failure, four private canary sources and post-wait/write failures. `_pump`, owner
+engines, all old tests and old cases stay unchanged. Root source pin changes when
+the wrapper changes; no old pin/receipt rebinding follows.
+
+Separate Sol fixed-test author precedes separate Sol wrapper source author;
+independent Astra source review and Root full verification complete only this
+source slice. This supersedes D069's PROPOSED source status, while its prohibition
+on actual entry and old UNKNOWN operations continues. B1/B2/B4/B5/B6 remain real
+entry/whole-goal blockers: no C094 recovery, distinct MAX1/new root needs a concrete
+separate human decision, no accepted real ending/qualified launcher/authentic
+usefulness/release. No prose/intelligence grading or additional cost is introduced.
+
+C096 exact6170c26 is normally pushed to existing Draft PR19 and independently
+read back anonymously36/36 HTTP200/equal hashes, image included. CI checks are
+not reported, Draft remains open, no merge/deploy/visibility change. Root source
+20d512a/1029 PASS40.369s remains current proof because this checkpoint is docs-only.
