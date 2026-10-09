@@ -67,6 +67,42 @@
   },
   "native_transport_actual": "UNKNOWN; see native-n-summary.json",
   "co_swe_native_call_implementation": "Timed out with unknown outcome; untouched. Separate approved native Sol source adopted instead.",
-  "next": "Correct exact full transport version and retain original failure observations; obtain design checkpoint assessment before distinct new finite actual qualification. NativeExpert preparation is proposal only.",
-  "limits": "Fixtures/source reviews/full suite establish local preparation. They do not establish actual ACP ending, real semantic behavior, native Expert, UI adoption, authentic usefulness or whole goal. Historical1094 K1 failure remains retained with cause unresolved."
+  "next": "Receive checkpoint design assessment; freeze distinct finite corrected-candidate qualification and NativeExpert owner contracts. Original N1/T/CO unknowns remain untouched.",
+  "limits": "Fixtures/source reviews/full suite establish local preparation. They do not establish actual ACP ending, real semantic behavior, native Expert, UI adoption, authentic usefulness or whole goal. Historical1094 K1 failure remains retained with cause unresolved.",
+  "latest_corrected_preparation": {
+    "source_commit": "808b05f3bf50d0df73c7a0fa00db737d6520863b",
+    "source_and_fixed_hashes": {
+      "tools/native_devin_text_v5.py": "ac1250b16395319c6c0b14de815358da97a884c8f823217686730c78c568ad03",
+      "tests/test_native_devin_diagnostics_v5.py": "da8afc989ec9c7cc5b7d4592d16c516be64f9f32e983ee2443a080743ba43949",
+      "tests/test_native_devin_metadata_v5.py": "ff618dd45ef12613b56011d0e44d914a4290adc2b305a3bf754b1dbab0fb5f2d",
+      "tests/test_native_devin_text_v5.py": "7c703c8d7dd30a748fd5177dc21242e9ec9034f126cd571baf785289efa30250",
+      "tests/test_native_devin_runtime_boundary_v5.py": "75b9ee36dfb7277defa21b1601023d6ccdc8244502c9a44a54b70f079bfb21b9"
+    },
+    "author": "native Astra; frozen minimal version and failure-observation source only",
+    "independent_review": {
+      "reviewer": "separate native Sol6.1",
+      "verdict": "APPROVE",
+      "fixed_tests": 35,
+      "elapsed_seconds": 0.226,
+      "log_sha256": "723e79e48cc16d52c8ce894352b2e2804587bd61e381833500eae91b29c5b466"
+    },
+    "root_full": {
+      "count": 1161,
+      "elapsed_seconds": 30.939,
+      "status": "PASS",
+      "exit_code": 0,
+      "log_sha256": "cedf5d2f63bec74c78de539a4599a09133b9e31f1bc2f4523410464349c69cfd"
+    },
+    "new_actual_qualification": "NOT_RUN",
+    "original_n1_unknown_and_held_slot_unchanged": true,
+    "original_t_and_co_unknowns_untouched": true,
+    "limits": "Source/fixture correction only; exact original full version boundary and bounded non-pumping diagnostics. No new actual provider/ending/Expert/UI/usefulness proof."
+  },
+  "public_export": {
+    "commit": "a332c53e79b7e28788f6abbb42099edc122a3535",
+    "independent_verdict": "APPROVE",
+    "anonymous_exact_byte_hash_matches": 36,
+    "receipt": "public-readback.json",
+    "corrected_808b05f_included": false
+  }
 }

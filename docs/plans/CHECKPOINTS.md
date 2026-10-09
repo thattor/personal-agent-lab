@@ -16,9 +16,14 @@ The exact-version incompatibility and missing original failure observation are
 concrete correction targets. The earlier T/CO unknowns remain unchanged; no
 retry, invented NeverStarted or forced capacity release. Whole goal NOT_MET.
 
-Next: independent fixed public-constructor/observation tests, minimal wrapper
-correction, review/full verification, checkpoint design assessment and a separate
-bounded candidate qualification. Native Expert ownership/replay/held-startup
+Correction808b05f/SHAac1250 has independent fixed diagnostics6/metadata6,
+source35 APPROVE and Root full1161 PASS30.939s/exit0. Original execute/diagnostic
+receipts are bounded and cached, with no diagnostic status pumping. Public
+source/contracts/evidence at a332c53 received independent export APPROVE and all36
+anonymous exact-byte/hash readbacks; later corrections await their own export.
+
+Next: checkpoint design assessment and a separate bounded candidate qualification.
+Native Expert ownership/replay/held-startup
 preparation continues independently; proposal is not code adoption. Then finite
 real connection/UI proof and one improved authentic usefulness judgment.
 

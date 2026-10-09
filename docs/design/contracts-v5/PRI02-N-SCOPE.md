@@ -296,3 +296,13 @@ finished full verification precede any later entry. The original N allowance is
 consumed. A new candidate's distinct finite qualification requires its own explicit
 Root freeze after this checkpoint/design assessment; this amendment authorizes
 source preparation only, not another actual prompt under the old case.
+
+C083 correction receipt: exact candidate808b05f/SHAac1250 is independently
+APPROVED with fixed35 and Root full1161 PASS30.939s/exit0. Local execute.json
+closed keys are {attempt_ref,status,reason,never_started_evidence_ref}. Local
+diagnostic.json closed keys are {attempt_ref,last_status,protocol_diagnostic,
+host_observation}; last_status is null or the cached closed {attempt_ref,event_id,
+state,evidence_ref}. It never adds a status call. Persistence/protocol diagnostics
+failures preserve UNKNOWN and one supported stop, without reinference/refund.
+Original raw receipts remain private. This establishes source preparation only;
+no new actual native qualification has run under the corrected candidate.

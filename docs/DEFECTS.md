@@ -1514,8 +1514,10 @@ discarded, this is a proven incompatibility and consistent failure mechanism,
 not uniquely established original-call cause or retroactive NeverStarted proof.
 One unknown shared lease remains held; original case and raw records remain local.
 
-Correction is frozen, not yet implemented here: exact full transport-version
+Correction808b05f/SHAac1250 implements the frozen exact full transport-version
 metadata/config plus bounded local execute/cached-status/protocol/host observations.
+Independent fixed diagnostics6 and metadata6 retained REDs before source; final
+separate wrapper35 APPROVE and Root full1161 PASS30.939s confirm local correction.
 Public status is not a read-only diagnostic: it pumps protocol. Save already
 observed status and public non-pumping diagnostic, then the one supported stop;
 never add a diagnostic poll before stop or retry execute on persistence failure.

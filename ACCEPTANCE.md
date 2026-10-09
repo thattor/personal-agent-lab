@@ -2,8 +2,9 @@
 
 ## Current C083 — native local preparation passes; actual qualification UNKNOWN
 
-Root full **1155 PASS31.130s/exit0** at190fcc4. NativeCall has independent Sol
-fixed15 APPROVE; external wrapper has independent29 APPROVE; NativePrimary has
+Corrected candidate808b05f has Root full **1161 PASS30.939s/exit0** and separate
+wrapper35 APPROVE. Earlier source190fcc4 full **1155 PASS31.130s/exit0** is retained.
+NativeCall has independent Sol fixed15 APPROVE; original wrapper29 APPROVE; NativePrimary has
 separate65 plus three actual temporary-owner probes APPROVE. Root owned-process
 fixture **5 PASS0.471s**, four SIGKILL/wait/reopen barriers and two connections
 with control/source-stop, proves no reinference/refund/redispatch after local
@@ -16,7 +17,8 @@ one shared capacity slot held. Prompt submission and effective native model are
 NOT_PROVEN; official auth/current version/Free metadata are eligibility only.
 [Receipt](evidence/operations/pri02-20261010/native-n-summary.json).
 The reproducible exact-version mismatch and original failure-observation gap
-are frozen source corrections; they do not rewrite the old outcome or release
+are corrected in exact source SHAac1250 with independent fixed6/metadata6,
+source35 and full1161 proof; they do not rewrite the old outcome or release
 that lease. No actual native Primary/Expert product connection, real semantic/UI
 proof, authentic improved usefulness or whole-goal acceptance follows. PRI03 is
 preparation only. Historical1094 K1 failure remains retained/unresolved despite

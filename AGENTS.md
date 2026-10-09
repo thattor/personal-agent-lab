@@ -1,12 +1,14 @@
 # AGENTS.md — Personal Agent Lab
 
 Current C083: overall goal remains unmet. NativeCall, explicit NativePrimary and
-the external ACP wrapper have independent source approval and Root full1155 PASS;
+the external ACP wrapper have independent source approval. Corrected candidate
+808b05f has separate wrapper35 APPROVE and Root full1161 PASS;
 five owned-process fixture cases also pass. The original N MAX1 qualification is
 UNKNOWN, with stop ERROR/no evidence and one shared slot held. Preserve original
 T/N and CO unknown calls without replay, reclassification or forced release.
-Continue the frozen exact-version/failure-observation source correction and
-independent work. A distinct new finite actual case requires its own Root freeze
+The frozen exact-version/failure-observation source correction is implemented
+and verified locally. Continue independent work. A distinct new finite actual case
+requires its own Root freeze
 after checkpoint design assessment. Native Expert preparation remains a proposal.
 Real-provider integration and authentic whole-flow usefulness remain. No native
 provider under a mock profile, old/live DB migration, new auth or cost.

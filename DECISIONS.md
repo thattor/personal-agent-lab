@@ -2525,3 +2525,13 @@ full verification. New candidate entry is separate from the consumed old MAX1
 and requires a checkpoint design assessment plus its own finite Root freeze.
 This is approved technical continuation, not a new service/auth/cost or owner
 permission wait. Native Expert's storage/recovery proposal is not adopted yet.
+
+D049/C083 correction receipt: final candidate808b05f wrapper SHAac1250 implements
+the frozen full-version and bounded failure-observation contract. Independent
+fixed diagnostics6/metadata6 retained REDs precede Astra source; separate Sol35
+APPROVE and Root full1161 PASS30.939s/exit0 bind the final source. The old N1
+UNKNOWN and held slot are unchanged; corrected actual qualification is NOT_RUN.
+Anonymous all36 byte/hash readback at public a332c53 follows separate export
+APPROVE. Later source corrections require bounded export verification. The next
+Opus consultation is design-only on seven public documents and attributed host
+results; its verdict is pending, not source review or authority for actual entry.

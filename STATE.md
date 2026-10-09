@@ -2,9 +2,11 @@
 
 ## Current C083 — local native preparation verified; actual N UNKNOWN; goal NOT MET
 
-Latest owner instruction remains 「必要なだけ並列作業で開発して」. Root full1155
-PASS31.130s/exit0 at190fcc4; pure NativeCall, explicit NativePrimary and external
-ACP wrapper have separate source approvals. Root five actual owned-process
+Latest owner instruction remains 「必要なだけ並列作業で開発して」. Root full1161
+PASS30.939s/exit0 at808b05f; the corrected wrapper has independent Sol35 APPROVE.
+The earlier full1155 PASS31.130s/exit0 at190fcc4 and pure NativeCall, explicit
+NativePrimary/external wrapper source approvals remain historical preparation.
+Root five actual owned-process
 fixture cases PASS0.471s, including four SIGKILL/wait/reopen barriers and two
 connections/control/source-stop. These establish local preparation only.
 [Verification](evidence/operations/pri02-20261010/native-preparation-verification.json).
@@ -22,9 +24,11 @@ Read-only actual version metadata and independent original-constructor fixtures
 identify a concrete mismatch: ACP expects the exact full version display, while
 the wrapper supplied bare3000.11.3. The original OperationReply was not retained,
 so this cannot uniquely classify the original failure or invent NeverStarted.
-SOL freezes the minimal full-version check/config and bounded original failure
-observations in PRI02-N-SCOPE. Independent tests precede source correction and
-final review/full proof. The old allowance is consumed; a distinct candidate's
+The minimal full-version check/config and bounded original failure observations
+frozen in PRI02-N-SCOPE are implemented at808b05f, wrapper SHAac1250. Independent
+fixed diagnostics6/metadata6 preceded Astra source; separate Sol35 APPROVE and
+Root full1161 finished PASS. No new actual provider case has entered. The old
+allowance is consumed; a distinct candidate's
 new finite case follows a checkpoint design assessment and explicit Root freeze.
 No automatic same-request retry, lease clearing or CO/runtime edit.
 
