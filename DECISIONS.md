@@ -2463,3 +2463,32 @@ its role-selection cause is recorded in docs/DEFECTS.md. CO report-shape verifie
 is not source or product approval. Fixed ART/TSK tests precede implementation;
 separate source review and actual crash/VER/readback proof are still required.
 Whole C13, full PRI, provider proof and personal usefulness remain unmet.
+
+## D049 — C081 aligned; separate native compatibility proof (2026-10-10)
+
+Actual existing AGY claude-opus-5-5-high returns C081 ALIGNED and PRI02 REFINE.
+SOL adopts this design assessment against the completed actual1058 tests,
+five process/connection tests and independent exact-source Astra approval.
+The three supplied public documents are hash-bound to6f2e480. This review neither
+read product source nor ran tests. Its actual-exposure F5 endorsement is new;
+the earlier unreceived PRI refinement and all unknown calls remain untouched.
+N1 clarifies the residual race for uncited exposure on answer/control/source-stop:
+the full closure is checked before dispatch but not atomically inside every
+owner mutation. Selected target/revision/current-answer/source gates remain.
+N2's current-answer binding is already enforced by WIRE and the host.
+
+Adopt PRI02's two stages: standalone compatibility then separately qualified
+native C15 lifetime and integration. SOL freezes PRI02-T/1 max1/zeroeffects after
+Astra's actual installed-source comparison. Public NativeCandidates can execute
+one CLI prompt without a multi-call task. Normal return proves strict correlated
+ATIF export/exit0/owned wait/group cleanup; it does not expose complete EOF drain,
+child PID, ACP completion or remote cessation. Export is post-exit bounded, not
+live disk capped. These are recorded limits of T, not lowered native C15 gates.
+Native readiness/unknown policy remains a separate freeze; Opus's per-turn hold
+and Astra's conservative global-block suggestion are not silently equated.
+
+The new AGY run requested plan but init reported request-review even without the
+previous conflicting flag. Observed steps were input/response only, no tools.
+Do not claim a hard allowlist or plan enforcement; the earlier sole-cause claim
+is unconfirmed. Raw records stay local under D045. Continue independent source,
+tests and native preparation without a new technical human approval gate.

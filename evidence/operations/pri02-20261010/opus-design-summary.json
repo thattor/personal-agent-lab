@@ -1,0 +1,45 @@
+{
+  "base": "6f2e4801e48d44d3e6beb1d67701bdf24c3da09d",
+  "model_requested": "claude-opus-5-5-high",
+  "model_observed": "claude-opus-5-5-high",
+  "status": "SUCCESS",
+  "exit_code": 0,
+  "elapsed_seconds": 145.984,
+  "review_duration_seconds": 140.801469,
+  "requested_mode": "plan",
+  "effective_permission_mode": "request-review",
+  "sandbox_requested": true,
+  "hard_tool_allowlist_enforced": false,
+  "observed_step_types": [
+    "agent_response",
+    "user_input"
+  ],
+  "report_sha256": "2627c5af476a828af634ceed1fa03dc1632462af7eba251509b0a7b564773e68",
+  "checkpoint_verdict": "ALIGNED",
+  "next_preparation_verdict": "REFINE",
+  "input_files": [
+    {
+      "path": "docs/design/contracts-v5/PRI01-SCOPE.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI01-SCOPE.md",
+      "bytes": 13716,
+      "sha256": "64dd904f43dd490c08aea374b4632e5e144dd3a121f0b72a0efe545b62925f6f",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-PROVIDER-PROPOSAL.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI02-PROVIDER-PROPOSAL.md",
+      "bytes": 10537,
+      "sha256": "76d0be214bdc6bbe02a0757c091b17bf14fbb82e709b5f0fe16919ce1fc8932d",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-CONSULTATION-REQUEST.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI02-CONSULTATION-REQUEST.md",
+      "bytes": 6488,
+      "sha256": "ec4e050998482258ccb82bd1c77ad4c95c79c74d01ba05b1b984e5daf4ce3628",
+      "status": 200
+    }
+  ],
+  "raw_records": "retained locally under D045; no conversation IDs, usage/account values or workspace paths published",
+  "limits": "Design only; source/tests not supplied or executed; no code/provider/function/usefulness proof. Actual exposure F5 independently endorsed now; original unreceived refinement remains unknown."
+}
