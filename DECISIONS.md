@@ -2037,3 +2037,20 @@ explicit same Goal/revision notice intersecting VER dependencies. Public example
 for C02/C11/C14 accompany assignments to prevent the prior consumer mismatch.
 Separate immutable tests precede code. This is local readback, not model-context
 or PRI/UI activation, and adds no new permission/cost/schema/live DB.
+
+
+D039 owner implementation/usage steering (2026-10-09): fresh human-lane readback
+confirms user messages01a12044-1db9 (actively use SWE-2 High for code and include
+AGY Sonnet5.5 code) and01a12044-72cd (Codex remaining below5%). Native Sol returns
+READ acceptance21; start no further native author/reviewer. Allocate VER.read to
+existing CO SWE-2 High Free; HostReader+bounded consumer to one fresh isolated
+AGY claude-sonnet-5-5-high context after current no-credit/quota checks. Root owns
+contracts, actual demo/connection and adoption. This changes allocation, not scope.
+Prior unknown/refused calls are neither resumed nor cancelled; no new auth, credit
+consumption setting, reset, publication or stopped-schedule restart. Existing D038
+implementation/verification/evaluation/improvement loop continues.
+
+READ01 read-specific error clarification: absence of the requested VER Ref alone
+is not_found; context(status) not_found becomes unavailable in C11 read because
+current status is uncertain. Typed C09 behavior is unchanged. Independent fixture
+83c62fa records this distinction; exact21 tests are immutable during implementation.

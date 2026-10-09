@@ -155,3 +155,7 @@ is visible. A session's different works are never collapsed into one work state.
 The real local demo must call this same consumer; a generic dispatcher alone does
 not complete READ01. Split immutable VER-read tests and host/consumer tests from
 the code authors. Root owns the actual demo/connection evidence and canonical docs.
+
+READ-specific error disposition: only absence of the requested verification Ref is
+not_found. Context(status) not_found means current status cannot be established
+and maps to unavailable in read. Typed C09 get_verification is unchanged.

@@ -13,8 +13,10 @@ Original failures, author hashes and corrective evidence are retained separately
 
 Exact CO Opus5.5 taskd2abb079 is ALIGNED with no current-scope blocker; C076 local
 slice is MET. Root verified supplied snapshot bytes and unchanged reviewed TSK
-source. The next concrete C11 body/read consumer is design-refined with Opus/Astra;
-SWE implementation consultation precedes its freeze and code assignments.
+source. READ01 is now frozen after SWE c2027bf7; independent tests21 arrived as83c62fa.
+Latest direct owner steering D039 prioritizes SWE code and a scoped AGY Sonnet5.5
+implementation, conserving native usage. Root prepared actual9 RED and local demo.
+VER.read and HostReader/consumer assignments are being dispatched separately.
 No running product is enabled: mock VER wiring remains explicit. Whole v5,
 PRI/provider/UI, semantic verification, general recovery and usefulness are unmet.
 CO stays0.4.5 on the existing shared state/routes. This RUN task was one owned CO
