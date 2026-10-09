@@ -101,19 +101,21 @@ def _environment():
 
 
 def _cleanup(child):
-    # The group was created exclusively for this child, never an inherited job.
+    # Only this transport waits on the child. Keep an unreaped leader's PID owned
+    # until the final group signal, even if TERM already ended that leader.
     try:
-        os.killpg(child.pid, signal.SIGTERM)
-    except ProcessLookupError:
-        pass
-    try:
-        child.wait(timeout=1)
-    except subprocess.TimeoutExpired:
-        try:
-            os.killpg(child.pid, signal.SIGKILL)
-        except ProcessLookupError:
-            pass
-        child.wait(timeout=2)
+        if child.returncode is None:
+            try:
+                os.killpg(child.pid, signal.SIGTERM)
+            except ProcessLookupError:
+                pass
+            time.sleep(0.05)
+            try:
+                os.killpg(child.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            time.sleep(0.05)
+            child.wait(timeout=2)
     finally:
         for stream in (child.stdin, child.stdout, child.stderr):
             if stream is not None:
