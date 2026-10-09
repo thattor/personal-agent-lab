@@ -1,0 +1,53 @@
+{
+  "base": "96e135b4e95a1325cd2c1b5b99efe90c40510b53",
+  "co_runtime": "0.4.5",
+  "co_verified": true,
+  "co_verifier_scope": "report shape and declared file scope only",
+  "evidence_label": "C091 new distinct diagnostic official Opus5.5 design review",
+  "inputs": {
+    "docs/design/contracts-v5/PRI02-MODEL-DIAGNOSTIC-SCOPE.md": "ae0d276e273e693f8518c8b8b6dcef56afe7fc81536fc9f98442a18cbfc50fae",
+    "docs/design/contracts-v5/PRI02-N2-ROOT-FREEZE.md": "c7b2b8a599004df878c19006c3cc12801ceef2785a0155ff7a9e3294029e8e35",
+    "docs/design/contracts-v5/PRI02-N3-DIAGNOSTIC-SCOPE.md": "78be90c8ceae6f773d820d5e58a448b9f591b7c95ba3a769840c68e22bbb07db",
+    "evidence/operations/c089-c090-20261010/verification.json": "b521e544566d459eb780cf78529041e943ea564ec8a55eeb35173a426f67c46c",
+    "evidence/operations/pri02-diagnostic-20261010/model-feasibility.md": "0fc8e71c570152714971675f75d6d9184fc13690c410bfbb3c6ea532f9e14822",
+    "evidence/operations/pri03-20261010/native-n2-summary.json": "a5287fff603278edbf4aeba490f75a8ac0ced56f44bdeb0910cc2d921ac263ac"
+  },
+  "models": [
+    {
+      "cli_version": "2.1.291",
+      "duration_ms": 7558,
+      "init_model": "claude-opus-5-5",
+      "permission_mode": "dontAsk",
+      "requested_model": "claude-opus-5-5",
+      "result_model_ids": [
+        "claude-opus-5-5"
+      ],
+      "role": "planner",
+      "route": "claude",
+      "stream_sha256": "6cde0706c18efd028629682fe30ec3d59c19ffbda6ea1508cc3a35fd35736554",
+      "success": true,
+      "tool_uses": 0
+    },
+    {
+      "cli_version": "2.1.291",
+      "duration_ms": 171950,
+      "init_model": "claude-opus-5-5",
+      "permission_mode": "dontAsk",
+      "requested_model": "claude-opus-5-5",
+      "result_model_ids": [
+        "claude-opus-5-5"
+      ],
+      "role": "implement",
+      "route": "claude",
+      "stream_sha256": "fc950b3890e84276c77f55ffe9e571c50bab7a972d1219f809864f6ec1082047",
+      "success": true,
+      "tool_uses": 0
+    }
+  ],
+  "new_auth_cost_service": false,
+  "provider_entry": false,
+  "report_sha256": "7a03da834795a273211aa5aca27387626ee22a35b0ddac08d41ac7e7d39784a0",
+  "root_disposition": "C1-C7 adopted for diagnostic-only proposal and exact final freeze; source/entry remains pending",
+  "verdict": "REFINE",
+  "whole_goal": "NOT_MET"
+}

@@ -2797,3 +2797,15 @@ review only. Actual invoke is NOT_RUN and waits for Root's reviewed exact-hash
 freeze after design disposition plus independent operator APPROVE. Existing
 N1/N2/CO UNKNOWNs remain untouched; old envelope cannot be reused. No real Expert,
 weaker profile, additional auth/cost/service or public/native UI entry is implied.
+
+
+D057 actual design disposition: official CO Opus5.5 planner/report completed with
+original init/result model IDs matching exactclaude-opus-5-5, tools0/success and
+report-shape verified:true. Raw report and anonymous input/model/hash receipt are
+retained. Verdict REFINE C1-C7 is adopted into the proposal, with expected strict
+UNKNOWN, strict-only semantic parsing, closed ordered diagnostic classification,
+exact bindings/pins, phased guards/extended original hashes, minimum public facts
+and context-level independence limitations. No actual entry/freeze yet.
+Independent operator review reproduces5 assertion failures: post-capacity error
+still marked transportPASS and4 malformed model records AVAILABLE. Source author
+repairs them in the private candidate; reviewer fixtures remain separate.

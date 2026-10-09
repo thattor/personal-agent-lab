@@ -1710,3 +1710,14 @@ after that assertion because failure propagation was not enabled. Exact committe
 revisions535993c and0d60b6f now have zero production/test diff; no byte mismatch was
 masked as PASS. Dependent mutations must follow a successful tool result; compare
 explicit committed revisions or file manifests so new untracked files are covered.
+
+C091 private operator review: five independent fake-bridge assertions reject
+the first candidate: global post-capacity refusal still left transportPASS and
+malformed normalized diagnostic records still counted AVAILABLE. Cause is early
+qualification assignment and partial row validation. Original failing fixture/log
+is retained; source author must close full schema and delay qualification until
+postchecks, preserving the known original ending. Opus C1-C7 also resolves
+classification precedence and pre-entry guard phases before actual freeze. New
+request nonce must be unpredictable. Actual case/native entry is still absent;
+local operator errors are not live provider outcomes. Re-review exact repaired
+hash with same meaningful fixtures before any new original call.
