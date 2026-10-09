@@ -1,12 +1,14 @@
-"""RUN01/2 bounded mock composition; no provider, persistent runner state or recovery.
+"""RUN01/3 bounded mock composition using optional managed host ownership.
 
 The host owns exactly one invoker per process and mints a new runner identity on
 restart. This is trusted Python coordination, not a boundary for arbitrary code.
-Only callback return/exception proves cessation here; no remote process is modeled.
+The managed invoker holds its host activity permit through the end-record attempt.
+Explicit startup recovery belongs to TSK; no remote process is modeled here.
 An optional same-thread VER owner enables the COMPLETE01/1 verify/complete seam;
 default verifications=None preserves the bounded draft-only behavior.
 """
 import copy
+from contextlib import nullcontext
 import threading
 import uuid
 
@@ -42,6 +44,14 @@ class MockInvoker:
         return result
 
     def invoke(self, tasks, admission, callback):
+        guard = getattr(tasks, 'startup_guard', None)
+        try:
+            with guard.activity() if guard is not None else nullcontext():
+                return self._invoke(tasks, admission, callback)
+        except RuntimeError:
+            return _failure(ErrorCode.UNAVAILABLE, 'mock host ownership unavailable')
+
+    def _invoke(self, tasks, admission, callback):
         if not callable(callback):
             return _failure(ErrorCode.INVALID_INPUT, 'mock callable required')
         call_id = admission.get('call_id') if type(admission) is dict else None
@@ -101,7 +111,8 @@ class MockRunner:
         self._memory = memory
         self._artifacts = artifacts
         self._verifications = verifications
-        self.runner_id = 'mock-runner-' + uuid.uuid4().hex
+        guard = getattr(tasks, 'startup_guard', None)
+        self.runner_id = guard.runner_id if guard is not None else 'mock-runner-' + uuid.uuid4().hex
         self.invoker = MockInvoker()
 
     def _read_context(self, required, optional):
