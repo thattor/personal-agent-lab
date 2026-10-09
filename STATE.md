@@ -33,7 +33,8 @@ superseded by current verification receipts, preserving provenance.
 Current route status: official CO0.4.5 uses the qualified existing state/routes below.
 Measured peak remains3 tasks, host cap12 per adapter/24 across Claude and Devin;
 provider capacity is unknown and30 was never claimed. The last read-only host
-capacity snapshot showed0 reserved/executing on both adapters. AGY isn't a CO route.
+capacity snapshot showed Claude0/Devin1 executing and0 reserved; this host-wide
+count includes other work, and root has no active CO command. AGY is not a CO route.
 Its exact PAL workspace trust, existing auth, credits OFF and two completed Opus5.5
 High design calls are proven; TSK01/1 design was ALIGNED after root corrections.
 The longer AGY code call reached its420s print deadline and emitted partial output
