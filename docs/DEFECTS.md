@@ -1168,3 +1168,12 @@ the stopped MEM body via the notice. Preserve those structural/local limits;
 final full regression/review is separate. VER CO first attempt propagated context
 not_found; immutable10 caught it and the single declared repair corrected it.
 Both verifier attempts are retained, preventing final PASS from hiding the error.
+
+
+READ01 review packaging: taskf100ab72 failed input validation before any provider
+call because selected blobs273341 exceeded installed CO MAX_CONTEXT262144. Root
+removed duplicated demo JSON and full already-used review, preserving source,
+contracts, test sources, receipts and readable demo. Corrected248512-byte input
+started asde3d5d69. Future launchers preflight committed blob max65536/total262144
+against installed workspace.py; runtime/state limits stay unchanged. Original
+failure/calls0 preserved. This corrects packaging, not an access refusal.

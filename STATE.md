@@ -1,5 +1,24 @@
 # STATE.md
 
+## READ01 candidate and next consultation (2026-10-09)
+
+Source ff1a1ccab553173fa4eae17b29fbe0a79b998313 passes747 local host tests
+(25.142s), focused36 and the actual temporary-SQLite readback demo. Final independent
+CO Opus5.5 review de3d5d69eee84e79bc549eb2c62cee55 is running against3b7fff5;
+READ01 has not yet been marked MET. Original Sonnet code, Root/Opus findings,
+SWE correction and Root C11 adjustment are separately retained in read01 evidence.
+An input-only CO rejection f100ab72 made zero model calls; deduplicated input
+248512 bytes stays within the unmodified262144-byte limit.
+
+D039 conserves native usage (fresh reading98% weekly used, ordinary usage allowed).
+No further native agents. Existing CO SWE-2 High Free is consulting ASK01-PROPOSAL
+from3b7fff5; code waits for Root reconciliation with Opus and a frozen shared scope.
+Root owns contract/canonical/adoption. Owned live launchers and stdout prefixes:
+`/private/tmp/pal-read01-opus-final-v2-launch.py` / `pal-read01-opus-final-v2`;
+`/private/tmp/pal-ask01-swe-consult-launch.py` / `pal-ask01-swe-consult`.
+Retrieve only completed owned outputs; do not repeat unknown old calls.
+No new cost/auth/reset/publication/live DB/schedule; continue the authorized loop.
+
 ## Current C076 — local verified completion connected
 
 Source bdce832b8fdb68f6317c033155474a4204703189 passes full711 host tests

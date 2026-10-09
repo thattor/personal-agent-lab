@@ -1,0 +1,11 @@
+{
+  "time": "2026-10-09T11:12:07.042993+00:00",
+  "read_review_task": "de3d5d69eee84e79bc549eb2c62cee55",
+  "read_source": "ff1a1ccab553173fa4eae17b29fbe0a79b998313",
+  "ask_launch": "/private/tmp/pal-ask01-swe-consult-launch.py",
+  "scope": "technical advice only; next code waits for shared freeze",
+  "native_weekly_used": 98,
+  "ordinary_usage_allowed": true,
+  "no_reset_or_paid_fallback": true,
+  "observed_peak_owned_CO": 3
+}
