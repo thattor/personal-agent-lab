@@ -1254,9 +1254,11 @@ class TaskStore(IntakeStore):
         """Validate storage facts only; source stops never erase original cessation."""
         try:
             sides = {r['call_id']: r['wire'] for r in self._rows('SELECT * FROM v5_tsk_native')}
+            admissions = {r['key']: r for r in self._rows(
+                "SELECT * FROM v5_intake_replay WHERE command='admit_native_call'")}
             for call in self._rows('SELECT * FROM v5_tsk_call'):
                 if call['native'] == 'mock':
-                    if call['native_hash'] is not None or call['id'] in sides:
+                    if call['native_hash'] is not None or call['id'] in sides or call['id'] in admissions:
                         raise ContractError()
                     continue
                 if call['native'] != 'native' or call['id'] not in sides:
@@ -1269,7 +1271,7 @@ class TaskStore(IntakeStore):
                 if profile.to_json() != p:
                     raise ContractError()
                 request = self._native_request(admission, side['request'], profile)
-                replay = self._one("SELECT * FROM v5_intake_replay WHERE command='admit_native_call' AND key=?", (call['id'],))
+                replay = admissions.pop(call['id'], None)
                 if (replay is None or replay['input_json'] != dumps({'admission': admission, 'request': request, 'profile': p}) or
                         replay['result_json'] != dumps(Result.success({'call_id': call['id'], 'status': 'admitted'}))):
                     raise ContractError()
@@ -1343,7 +1345,8 @@ class TaskStore(IntakeStore):
                             step['status'] not in ('started', 'finished', 'abandoned') or
                             step['action'] != parse_model_action(side['text'], allowed_refs=refs).to_json()):
                         raise ContractError()
-            if sides:
+            # Admission receipts also identify native producers if both mutable rows were cleared.
+            if sides or admissions:
                 raise ContractError()
         except (ContractError, _Rejected, ValueError, TypeError, KeyError, AttributeError):
             _reject('unavailable')
