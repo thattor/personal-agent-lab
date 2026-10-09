@@ -1,4 +1,38 @@
-# Current C096 — native-owner fixture UI connected and verified
+# Current C097 — private failure observations verified; real entry still held
+
+Root679f267 integrates separate Solfeaddb1 wrapper and Sold07a631 fixed fixture
+correction after independent Astra APPROVE. Root full **1037 PASS46.933s/exit0**
+retains all101 C096 test/fixture files byte-equal. Only the Claude wrapper changes;
+the other16 qualification source paths, pump/cleanup helpers, strict acceptance,
+public outcomes and active/release behavior are unchanged.
+[Verification](evidence/operations/c097-private-failure-20261010/verification.json).
+
+Prospective activated failures now attempt a bounded private failure.json after
+the existing cleanup, keeping primary and cleanup errors separate. Diagnostic
+failure cannot replace the existing public outcome. Success/pre-entry refusal
+adds no record; the diagnostic grants no ending, recovery or remote-cessation
+authority. The changed wrapper invalidates the prior seventeen-file pin.
+
+Original REDs remain. Fixed-test assumptions about Darwin cleanup success and
+the parser's rejection phase were wrong; narrow inert-child cleanup and a missing
+final-result fixture reach the required success/finish branches without weakening
+criteria. Independent review executes corrected8, old provider9 and two probes.
+Root verifies all four old real-case inventories unchanged (7/9/12/13 files),
+C094 active held, and zero real provider entry during this source verification.
+
+Current UI retains LOCAL_MOCK_VERIFIED and LOCAL_NATIVE_FIXTURE_VERIFIED proof;
+unchanged UI source needs no repeated browser run. The independent operator audit
+finds missing C094 inventory protection and overlapping-case admission. D072
+freezes separate fixed-test/source/review preparation of the minimum v3 guards.
+D073 records the completed independent operator APPROVE: fixed4/old8/fault2
+all pass and Root's actual four-inventory guard matches. The concrete separate
+MAX1 disposition is PENDING HUMAN in the existing decision lane; it is not a
+private-material-sharing or model-telemetry reconfirmation.
+No new real case/root/invoke is authorized; C094's UNKNOWN remains preserved.
+Real qualification/Expert/UI/authentic usefulness/release and whole goal **NOT_MET**.
+CO is optional and no model prose/intelligence quality is graded.
+
+# Retained C096 — native-owner fixture UI connected and verified
 
 Root20d512a integrates separate Sol5dc3706/ef918b7 after independent Astra
 APPROVE. Full **1029 PASS40.369s/exit0** keeps all99 previous test/fixture files

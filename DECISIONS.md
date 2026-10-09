@@ -3211,3 +3211,103 @@ Separate Astra's U4 one-method/three-subcase trace now PASS1.570s/exit0: pause,
 cancel/source-stop return released with states paused/cancelled/queued and
 control_status none; _hold call0. Original results are unchanged by the observer.
 U4 is a clarification, not an incidental held latch or further source repair.
+
+## D071 — C097 prospective failure source independently verified (2026-10-10)
+
+Latest direct owner instruction continues necessary parallel development.
+Separate Solfeaddb1 changes only the Claude wrapper; separate Sold07a631 corrects
+the new fixed fixtures. Independent Astra approves exact wrapper SHAd7b63a2 and
+test SHAbbafd44 after corrected8 PASS8.354s/exit0, old provider9 PASS9.874s/exit0
+and two independent probes. Root679f267 full1037 PASS46.933s/exit0 preserves all101
+C096 test/fixture files and the other16 native qualification paths byte-equal.
+[Actual verification](evidence/operations/c097-private-failure-20261010/verification.json).
+
+Original fixed source RED8/20failures and candidate original-fixture RED8/7failures
+remain. Six failures assumed an exited-only Darwin group's cleanup succeeded,
+although existing cleanup raises EPERM while still reaping/closing; one assumed
+bad_protocol reached finish/RuntimeError, although original feed rejects it with
+ValueError. The unchanged production helpers expose these facts accurately.
+The separate fixture correction uses bounded owned EOF/wait/stream-close for
+deterministic success, retains explicit EPERM failure, and omits final result to
+reach original finish/ValueError. Correction remains old-source RED8/20failures,
+and independent review finds no contract or acceptance weakening.
+Minimum prevention: construct and observe the intended operation's result before
+freezing its phase; distinguish platform-dependent signal outcomes from explicit
+success fixtures. Keep the actual cleanup-outcome independent probe and verify
+the earliest parser rejection site. Preserve the original logs, not only GREEN.
+
+The new failure.json is private/bounded/best effort and cannot qualify an ending,
+release UNKNOWN or prove remote cessation. Public outcomes/one-cleanup/active,
+strict acceptance, pump/cleanup helpers and old tests are unchanged. Root's real
+old inventories compare equal (7/9/12/13 files), C094 active remains held, and this
+source verification enters zero real providers. New wrapper invalidates the old
+17-file pin. UI source is unchanged; its previous local fixture/browser proof
+remains, without a redundant browser run. Real whole-flow usefulness, qualified
+Primary/Expert/UI and release remain NOT_MET. No conversation quality grading.
+
+## D072 — minimum v3 qualification-operator preparation only (2026-10-10)
+
+Read-only current-source audit runs the existing eight fake operator cases once:
+PASS8/1.462s/exit0, preserving operator67e1261 and fake83c4052. It finds three
+concrete preparation gaps: exact original inventory keys omit the now-existing
+C094; a new case inside an old root is created before later mutation detection;
+expiry and fresh usage evidence are checked only before preparation. The nested
+case is reproduced with synthetic entry0/provider0, never an actual old case.
+These are local operator deficiencies, not evidence of safe old-call cessation.
+
+Root freezes [PRI02-CLAUDE-QUALIFICATION/2 preparation](docs/design/contracts-v5/PRI02-CLAUDE-QUALIFICATION-V3-PREPARATION.md).
+Only new private operator/test copies may change: exact four original inventories,
+resolved case/root overlap rejection before mkdir/import, hook-time expiry/fresh
+private proof/hash recheck before entry record, and failure.json as conservative
+entry evidence. All existing seventeen-path/model/binary/request/pair/raw/ending,
+typed refusal/MAX1 and qualification gates remain. Never promote diagnostics.
+
+Separate Sol fixed4 SHA227c810 precedes source author write release. Actual old
+operator RED4/9failures/1error/0.245s/exit1 is retained; the error is its refusal
+of a valid four-inventory input. To reach later guards only, baseline tests use
+the old accepted version1 envelope and an isolated synthetic inventory validator;
+the exact four-key API is tested without that patch. Candidate requires version2.
+Separate Sol owns new operator source; separate Astra reviews exact bytes and
+Root verifies results/old inventories before marking preparation complete.
+
+This scope creates no real attempt root, generation allowance, old UNKNOWN
+disposition, output adoption or release. D065/D070's consumed/no-rotation boundary
+continues. A concrete evidence-backed decision goes to the designated existing
+PAL human-decision chat after preparation; private material sharing itself is
+already authorized and is not asked again. Existing approved independent work
+continues; CO remains optional and no new auth/service/cost is included.
+
+## D073 — exact v3 preparation approved; distinct allowance pending human (2026-10-10)
+
+Separate Sol's new private operator SHA07c7d4f has only the minimum18-added/
+8-removed guard lines. Fixed227c810 and old67e1261/83c4052 bytes remain. Separate
+Astra APPROVE preparation-only executes fixed4 PASS0.249s, old unchanged8
+PASS1.473s and independent fault2 PASS0.057s, all exit0; source17 matches Root679f267.
+Root reads the diff and original logs, recomputes all review/log hashes, confirms
+source17/binary hashes, and executes only the read-only original inventory guard
+against actual N1/N2/N3/C094 metadata. All file/hash/tuple/absence bindings match
+counts7/9/12/13, C094 stays active, and no real CLI or new attempt root is used.
+[Preparation evidence](evidence/operations/c097-private-failure-20261010/operator-preparation-summary.json).
+
+The controlled overlap and missing-fourth-inventory deficiencies are repaired
+only in a new private copy. Prevention is now exercised by explicit pre-mkdir
+overlap refusal, fourth-inventory hook mutation and private-proof/time refusal
+tests; retained RED demonstrates the former holes. Do not call a hash/map PASS
+provider qualification, charge proof or extra available quota.
+
+Root prepares [one concrete disposition](docs/reviews/C097-HELD-LANE-DISPOSITION-PROPOSAL.md)
+for the existing PAL human-decision lane: preserve C094 and all originals held
+and unadopted, and explicitly choose whether to allow a distinct independent
+PRIMARY-only synthetic MAX1. Alternative is no further actual qualification.
+An actual new allowance requires the human choice plus final unchanged exact
+source/operator/17-file pin/binary/full-four-inventory/fresh same-account credit-
+OFF evidence and expiry. The private preparation plan is nonexecuting:
+approved_max1:false, invokes permitted0, no case created, no fresh proof/expiry
+pretended. No source/testing/publication work depends on that choice.
+
+This required disposition arises from D065/D070's consumed MAX1/held/no-rotation
+condition and missing original ending, not private status or unconfirmed Opus
+telemetry. Earlier private material/AGY authorizations continue. No old retry,
+forced release, model-result reconstruction, new auth/service/cost or product
+acceptance weakening is proposed. Whole goal remains NOT_MET; actual Primary
+qualification, Expert/UI, authentic usefulness and release evidence still remain.

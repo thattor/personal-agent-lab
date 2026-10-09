@@ -1,0 +1,43 @@
+{
+  "source_commit": "679f2676d9bc4059d89a25bbca7df2d04bcc8b21",
+  "pin": {
+    "cli_version": "2.1.291",
+    "executable_sha256": "9a1d2ed6bb4421e8fc80c892c0413f293be3ee50ae3d7dda1a7622197a056690",
+    "model_id": "claude-opus-5-5",
+    "profile_id": "pal-claude-print-text/1",
+    "source_hashes": {
+      "pal/__init__.py": "2bdd5650424f91c2d6b0bea2f85bffbf63b1e0c0f3d7ecfc22db9974663da5bc",
+      "pal/artifact_content_v5.py": "e51d0a4c1835ae12fba7af2342fe3e14f956988501e05e15e845c956d4908680",
+      "pal/artifact_integrity_v5.py": "1243147aefc9d1cadcd555c9ddfd374606daf653d692e15742cbbb19427d1716",
+      "pal/artifacts_v5.py": "1e37f0ed0435f97c54166210b1ac2746ce52edb271482030ce646a3e388c3ef1",
+      "pal/contracts_v5.py": "683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/intake_v5.py": "31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "pal/mock_host_v5.py": "e9b8f5eda1e01ec9a76ba52f3783845f302df262eea2248f4c5c36738a670208",
+      "pal/mock_runner_v5.py": "7acad3f6a10b2d7f8fe6fe3e02869d72671f77af9a5faffa941a038748d360ff",
+      "pal/native_call_v5.py": "5993dfd616157a1d90fdf910750859498abd071b4bb6ae1636c74708fe481dfa",
+      "pal/native_claude_text_v5.py": "8939d18afee7f328f693fd6af5813cee5f1bef98de88a1d9afa05aba18fa1fcc",
+      "pal/native_expert_runner_v5.py": "6ceb190c830a506ca140dc4248755ef632f082cb71c03d655926c29dff2a69c1",
+      "pal/native_text_v5.py": "dd402aa1602ae70923e7f8bb8c2730d50a51c1b77121f2a2664bfc94ec13528e",
+      "pal/primary_host_v5.py": "479d69bd058275ef0df98d1fab1e48e75f60691de41dfca4010ecb8adf541fe2",
+      "pal/primary_wire_v5.py": "828aa1b9b2c7fbb0500ed56d7ec19c95954ee2de48e19285e1db7437aaefb67f",
+      "pal/sanitize.py": "eb1a8dcef9cfeb659d9e5fe655eca1148012adf1f2d7883c904e5542f2009bc6",
+      "pal/tasks_v5.py": "69472ecaacd836dd1a8eb0ce0485d59f18b9e8e59d630c0fb25945086469714f",
+      "tools/native_claude_text_v5.py": "d7b63a205b0ccf85a4e88cd9a7c9616d38e6b56ff20802b79f789b6554e333b3"
+    },
+    "version": "NATIVE-CLAUDE01/1"
+  },
+  "pin_sha256": "88c198cd2341850f3db2d27518c4824e93ff54cb8e15c27c23e83e66efa7e166",
+  "original_counts": {
+    "N1": 7,
+    "N2": 9,
+    "N3": 12,
+    "C094": 13
+  },
+  "old_equal": true,
+  "c094_active_held": true,
+  "old_source_paths_equal": 16,
+  "operator_sha256": "07c7d4f415db16da8cf7ae20d7eb024ee17ac7ed3946b86655cd5de0287ba735",
+  "actual_cli_or_model_invoked": false,
+  "scope": "source_binding_only",
+  "transport_qualification": "NOT_RUN"
+}

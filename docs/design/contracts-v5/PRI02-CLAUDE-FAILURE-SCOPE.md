@@ -129,6 +129,21 @@ Next fixed-proof checks distinguish metadata children from the actual inert
 generation child, exercise the intended fault seam and decode split frame content
 for the privacy canary. This verifies observation storage, not model prose quality.
 
+## Current corrected fixed fixture and actual source proof
+
+Current fixed correction d07a631133521863c07534d07d9eff5d526a1d03 supersedes the
+prospective test bytes above, not their contract or original RED evidence. SHA256
+bbafd44f9f95551ff7af4602ceeb0d5d2f5694e7ffa74bbb8beb881d3ec7b009,
+eight unchanged method identities. Source candidate feaddb1's original run exposes
+six assumptions of Darwin cleanup success and one unreachable finish/RuntimeError
+expectation. Controlled inert-child owned EOF/wait/close makes the required
+success branch deterministic; explicit cleanup EPERM remains a distinct case.
+Missing final result passes feed and fails finish with the original ValueError.
+Old source with corrected fixtures remains RED8/20failures/0errors/7.914s/exit1.
+Separate Astra approves the correction and source; Root679f267 full1037
+PASS46.933s/exit0 preserves all101 previous C096 test/fixture files. All original
+logs/hashes remain in C097 verification. No failure.json contents are published.
+
 ## Unresolved old-UNKNOWN decision
 
 Current public APIs and saved evidence provide no way to recover C094's original

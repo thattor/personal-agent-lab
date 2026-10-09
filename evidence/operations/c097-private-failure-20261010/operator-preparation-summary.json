@@ -1,0 +1,75 @@
+{
+  "version": "C097-QUALIFICATION-OPERATOR-PREPARATION/1",
+  "scope": "preparation_only",
+  "contract_id": "PRI02-CLAUDE-QUALIFICATION/2",
+  "operator_sha256": "07c7d4f415db16da8cf7ae20d7eb024ee17ac7ed3946b86655cd5de0287ba735",
+  "fixed4_sha256": "227c810c275a4a0e81628608e1fada09434a6a5e9ce54f503e909a5b1ef2cadf",
+  "baseline_red": {
+    "methods": 4,
+    "failures": 9,
+    "errors": 1,
+    "seconds": 0.245,
+    "exit_code": 1,
+    "log_sha256": "f2b69794fbfb829965e9909574be0944504605e77172195b2224f8640a4715a9"
+  },
+  "independent_review": {
+    "verdict": "APPROVE preparation-only",
+    "operator_sha256": "07c7d4f415db16da8cf7ae20d7eb024ee17ac7ed3946b86655cd5de0287ba735",
+    "production_source_base": "679f2676d9bc4059d89a25bbca7df2d04bcc8b21",
+    "source17_equal": true,
+    "counts": {
+      "fixed": 4,
+      "old_expectations_unchanged": 8,
+      "independent_faults": 2
+    },
+    "all_exit": 0,
+    "logs": {
+      "fixed4": {
+        "sha256": "a535d002bad69af968899793d9b3505de5da9b3225130a658b6cc5880d9e3e65",
+        "tail": [
+          "----------------------------------------------------------------------",
+          "Ran 4 tests in 0.249s",
+          "",
+          "OK"
+        ]
+      },
+      "old8": {
+        "sha256": "13d2221174676918222f2d339dc063b94e42cdbb517c8157b724ab7bdb934daa",
+        "tail": [
+          "----------------------------------------------------------------------",
+          "Ran 8 tests in 1.473s",
+          "",
+          "OK"
+        ]
+      },
+      "faults": {
+        "sha256": "a78f858a90fe0986afe7bfcc43e4b36af04e77417838c02919803450d84af885",
+        "tail": [
+          "----------------------------------------------------------------------",
+          "Ran 2 tests in 0.057s",
+          "",
+          "OK"
+        ]
+      }
+    },
+    "limits": [
+      "Actual invocation NOT_AUTHORIZED.",
+      "Only synthetic inventories/fake providers/inert CLI used; no real old cases or auth touched.",
+      "Proof age/hash guard is not charge or provider capacity proof.",
+      "failure.json remains uncertainty only, never ending or qualification."
+    ]
+  },
+  "independent_review_sha256": "c9bc6ccad0de007106bacfc63c6d2f50f899aba31920f6728c43fae8c9d8d9d5",
+  "root_original_guard": "all_four_actual_inventories_tuple_hashes_and_absences_match",
+  "old_original_file_counts": [
+    7,
+    9,
+    12,
+    13
+  ],
+  "c094_active_held": true,
+  "actual_cli_or_provider_invoked": false,
+  "actual_attempt_root_created": false,
+  "actual_entry_authorization": "PENDING_HUMAN",
+  "whole_goal": "NOT_MET"
+}

@@ -1,4 +1,21 @@
-# Current C096 — native fixture UI verified; actual native proof still unmet
+# Current C097 — private failure source1037 passes; real proof still unmet
+
+Root679f267 full **1037 PASS46.933s/exit0** follows independent Astra APPROVE of
+separate Solfeaddb1 and fixed Sold07a631. All101 previous C096 test/fixture files
+retain exact bytes; only the wrapper changes among the17 qualification paths.
+Corrected fixed8/old provider9/two independent probes cover separate errors,
+cleanup/write ordering, bounded private observations and unchanged public result.
+[Verification](evidence/operations/c097-private-failure-20261010/verification.json).
+
+The original REDs and fixture mistakes are retained under D071. Narrow controlled
+success cleanup and a feed-valid/finish-invalid frame sequence correct fixture
+reachability without altering old cleanup or any product gate. Root actual old
+inventories match (7/9/12/13 files), C094 active stays held, no actual provider
+entry/output adoption/release occurs, and the new pin is unqualified.
+UI's existing local mock/native-fixture browser proof remains version-bound to
+unchanged UI source. Distinct real qualification and whole goal remain NOT_MET.
+
+# Retained C096 — native fixture UI verified; actual native proof still unmet
 
 Root20d512a full **1029 PASS40.369s/exit0**, independent Astra source APPROVE,
 fixed10/old HTTP19 and original3 malformed-owner probes validate the native-owner

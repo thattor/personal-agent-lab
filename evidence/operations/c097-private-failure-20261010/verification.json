@@ -1,0 +1,125 @@
+{
+  "version": "C097-PRIVATE-FAILURE-VERIFICATION/1",
+  "source_commit": "679f2676d9bc4059d89a25bbca7df2d04bcc8b21",
+  "contract_id": "PRI02-CLAUDE-FAILURE/1",
+  "scope": "source_and_synthetic_functional_verification",
+  "integrated_author_commits": {
+    "fixed": "d07a631133521863c07534d07d9eff5d526a1d03",
+    "wrapper": "feaddb1c9f77e5138a21f331e4f9b1f73c36b545"
+  },
+  "file_sha256": {
+    "tools/native_claude_text_v5.py": "d7b63a205b0ccf85a4e88cd9a7c9616d38e6b56ff20802b79f789b6554e333b3",
+    "tests/test_native_claude_failure_v5.py": "bbafd44f9f95551ff7af4602ceeb0d5d2f5694e7ffa74bbb8beb881d3ec7b009"
+  },
+  "full": {
+    "argv": [
+      "/opt/homebrew/bin/python3.13",
+      "-E",
+      "-s",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "run_methods": 1037,
+    "ast_methods": 1037,
+    "test_seconds": 46.933,
+    "full_log_sha256": "b093bff86aad3807c8dd828fc4f6e24bc840d0e075e89e53694aa2f1b3b6eeef",
+    "source_tests_unchanged": true,
+    "old_test_fixture_files_unchanged": 101,
+    "changed_source_files": [
+      "tools/native_claude_text_v5.py"
+    ]
+  },
+  "independent_review": {
+    "verdict": "APPROVE",
+    "receipt_sha256": "bb02df33ef109e98bb62d84432aac6242401acd3e644710af981abc30653993e",
+    "corrected_fixed8": {
+      "test_commit": "d07a631133521863c07534d07d9eff5d526a1d03",
+      "test_sha256": "bbafd44f9f95551ff7af4602ceeb0d5d2f5694e7ffa74bbb8beb881d3ec7b009",
+      "methods": 8,
+      "seconds": 8.354,
+      "exit": 0,
+      "review": "Deterministic actual inert-child wait/close success; explicit cleanup EPERM retained; missing result reaches finish. No acceptance weakening."
+    },
+    "old_provider9": {
+      "exit": 0,
+      "methods": 9,
+      "seconds": 9.874
+    },
+    "independent_probes": {
+      "methods": 2,
+      "exit": 0,
+      "seconds": 0.589,
+      "checks": "actual cleanup outcome/order, selected public error, active retention, observed EOF/code, separate errors, exact-type/path privacy"
+    },
+    "log_sha256": {
+      "fixed8-owned": "19d05e27c644e4dc75ac0a804b13a8af8c7e4ba8f5d13acbf87c73d267b4a2f1",
+      "probes-final": "1eb0900d08a682af9dcf800c20d64e47b0b43a963a71cd56126c4f4c801f33f9",
+      "provider9": "51ed0c259a46d8debeb4fafceba0c77a847c80c493aaa4bc312e8ddb0bbc2cd9",
+      "corrected8": "768971c2ceec156051c03f87c7d354b88ad264233920e7df67d0aa51da8f6c70"
+    },
+    "source_author_and_reviewer_contexts_distinct": true
+  },
+  "original_red": {
+    "methods": 8,
+    "failures": 20,
+    "errors": 0,
+    "seconds": 7.523,
+    "exit_code": 1,
+    "log_sha256": "a6f32a2f5f23afe242c797f621496b726bffb81b57297a707e1f8da89f72e092"
+  },
+  "retained_original_fixture_candidate_red": {
+    "methods": 8,
+    "failures": 7,
+    "errors": 0,
+    "seconds": 7.589,
+    "exit_code": 1,
+    "log_sha256": "ee36c63611939264da41155145eb5f3d88f36e5cec1c1893e150eafa7d1279b7"
+  },
+  "fixed_correction": {
+    "report_sha256": "2d55cfc7601c3fdd5cc18b13d54e85d4b5af353870fc4ae7e9b6798739107b75",
+    "original_source_red": {
+      "methods": 8,
+      "failures": 20,
+      "errors": 0,
+      "seconds": 7.914,
+      "exit_code": 1,
+      "log_sha256": "7d13e8b31dd7f742b2267d14a9e7b68b7f189a647129fe602d4e570a940fb58e"
+    },
+    "candidate_green": {
+      "methods": 8,
+      "seconds": 6.86,
+      "exit_code": 0,
+      "log_sha256": "2d7ba44119fbddd318ff63ff7c1af03d0b26398274b6947d95af7b00ced422fc"
+    }
+  },
+  "old_native_cases": {
+    "file_counts": [
+      7,
+      9,
+      12,
+      13
+    ],
+    "file_sets_and_hashes_equal": true,
+    "before_inventory_sha256": "670f59e80aee960020ee50984a0938f393a1a53d165d406d9c4b6a7b02e24e2b",
+    "after_inventory_sha256": "58dfe6d1fe2c6760c434344123ee46a31ee91fc30114f779c7e9ceb1ba32a753",
+    "c094_active_held": true,
+    "recovery_or_release": false
+  },
+  "real_provider_entered": false,
+  "conversation_intelligence_or_prose_graded": false,
+  "real_transport_qualification": "NOT_RUN",
+  "native_ui": "NOT_RUN",
+  "whole_goal": "NOT_MET",
+  "limits": [
+    "Private failure observations are best effort, not accepted ending or remote cessation.",
+    "The wrapper changes the seventeen-file pin; old receipts and pins are not rebound.",
+    "Full success validates source and fixtures only.",
+    "All original UNKNOWNs remain held; no distinct new MAX1 is authorized."
+  ]
+}
