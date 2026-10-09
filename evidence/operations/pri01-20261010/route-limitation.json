@@ -1,0 +1,22 @@
+{
+  "schema": "PAL.route-limitation/1",
+  "contract": "PRI01/1 refinement consultation",
+  "model": "claude-opus-5-5",
+  "route": "claude",
+  "runtime_version": "0.4.5",
+  "base": "d87f054c091f8e08d5ad4e91a69433fa09735025",
+  "actual_terminal": "session limit; reported reset3:40am Asia/Tokyo",
+  "co_error": "route_failed",
+  "co_inference_outcome": "unknown",
+  "co_process_outcome": "unknown",
+  "selectable_options": [],
+  "candidates_informational_only": [
+    "claude/claude-opus-5-5",
+    "devin/swe-2-high"
+  ],
+  "provider_quota_remaining": "unknown",
+  "action": "preserve pause; no retry/resume/cancel, duplicate consultation, billing/auth/state change",
+  "review_report_received": false,
+  "other_progress": "RECOVERY02 owner implementation, independent review and real connection tests continue; original completed PRI Opus REFINE remains valid",
+  "limits": "this limitation is not an Opus refinement verdict or whole-project block"
+}

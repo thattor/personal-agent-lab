@@ -14,6 +14,7 @@ from pal.host_read_v5 import checked_result
 __all__ = ['NOTICE', 'inspect_session', 'render']
 
 NOTICE = 'a source registered for this completed work was stopped; completion is historical'
+_RECOVERY_NOTICE = 'mock saved draft recovered'
 _EVENT_KINDS = frozenset({'accepted', 'progress', 'question', 'state', 'result', 'error'})
 _MAX_PAGES = 64
 
@@ -127,7 +128,8 @@ def _scan(request, events, max_pages):
         cursor = following
         for event in batch:
             notice = event['kind'] == 'progress' and event['text'] == NOTICE
-            if event['kind'] == 'result' or notice:
+            recovered = event['kind'] == 'state' and event['text'] == _RECOVERY_NOTICE
+            if event['kind'] == 'result' or notice or recovered:
                 selected.append(event)
             if notice and 'work_ref' in event:
                 work = event['work_ref']

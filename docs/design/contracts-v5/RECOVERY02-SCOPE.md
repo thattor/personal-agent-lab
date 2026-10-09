@@ -128,6 +128,13 @@ Current get_work/current_artifact_refs and execution context expose the attached
 ART through existing fields. VER unchanged: old verification is historical;
 only fresh verify with new WorkRef/key may complete through ordinary checks.
 
+Root also connects the saved-result consumer to this fixed state notice. It
+selects state text `mock saved draft recovered` for ordinary user_view owner
+readback, retaining event WorkRef and per-Ref errors/current usability. This is
+display discovery only, never TSK adoption/producer proof or model_context. The
+two typed TSK bindings remain the only recovery-integrity discriminator. Existing
+result/COMPLETE notices and closed inspection/render shape remain unchanged.
+
 ## Fixed acceptance and Root connection
 
 ART fixed cases: exact match zero changes/no body; definitive absence; dangling

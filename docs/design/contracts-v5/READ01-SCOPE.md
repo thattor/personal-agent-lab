@@ -136,6 +136,9 @@ Conditions/checks and public artifact bindings; this never becomes authority.
 Exact calls: events.get_events({session_id,after_event_id?}); tasks.get_work(
 {goal_id,revision}) from the event WorkRef; reader.read({ref},purpose='user_view').
 Select result events and progress events with the exact COMPLETE01 notice text.
+RECOVERY02/1 adds its fixed `mock saved draft recovered` state notice so saved
+adopted artifacts are discoverable before completion. This selection is only
+user_view display discovery, not typed recovery proof or completion authority.
 Missing event WorkRef produces visible unavailable work, without a guessed ID.
 Correlate source-stop notices by Goal+revision and named Ref intersection with the
 verification's source_refs. A usable result stays current; an unusable result is
