@@ -1251,3 +1251,43 @@ verified full793 tests and actual ASK demo. Next renderer-field additions retain
 this display boundary plus serialized-input invariance checks. Evidence and the
 original isolated-import test invocation error are retained separately under
 evidence/operations/read-display-20261009; no HTML/UI security claim is made.
+
+## C080 recovery fixture and history proof corrections (2026-10-10)
+
+Independent fixed22 had four methods/eight subcases create an admitted call but
+expect default empty interrupted IDs after recovery. The actual HOST connection
+made this mistake visible. The test owner captured each original fixture call ID
+and explicitly asserted it, preserving the helper/assertions and original RED/hash.
+No source contract or interrupted status was changed to satisfy wrong fixtures.
+
+Independent source review then reproduced two concrete gaps: historical producing
+Step/call status/index corruption passed pairwise links; a fully managed older
+lease's missing owner/wrong claim epoch also passed. Astra's final8f20d0 validates
+complete original historical Step/call/reservation and original managed claim
+proof, without rewriting/enrolling history. Original five probes plus the later
+two-subcase probe remain; independent final22/6 and intact multi-session history
+pass. Root actual connection6 also passes. Future recovery adoption must retain
+these known-shape and original-owner/claim checks, not mere mutual equality.
+
+## C080 CO verification and report preparation (2026-10-10)
+
+HOST first SWE source passes fixed13 outside CO, while CO reports seven SQLite
+open errors and a downstream child-pipe failure. The environment cause remains
+unconfirmed; no runtime sandbox was weakened. Its bounded repair later times out
+with unknown inference outcome. Preserve that pause without retry/resume/cancel;
+only the known completed first source is independently reviewed and selected.
+Native source/connection proof is distinct from CO verified:false.
+
+RECOVERY02's first launch specified nonexistent wire_v5.py and exited input_invalid
+before any model call. Corrected input uses actual contracts_v5.py; all committed
+paths and64KiB/256KiB limits were host-checked before dispatch. Future launch input
+lists come from the Git snapshot, not guessed filenames. The original failed task
+remains unchanged.
+
+The subsequent planner chose report-producing role implement, whose Root pin still
+pointed to SWE. Its report is a completed SWE evaluation, not Opus adoption. Earlier
+RECOVERY01/PRI consultation records were checked and both report calls actually
+used Opus5.5. Correction pins every role to exact Opus5.5 for a design-only task and
+checks actual call model before attribution/adoption. The new report call is
+observed Opus5.5; final result/adoption are pending. Runtime/state and old unknown
+calls are not altered. Report shape verification cannot prove model attribution.

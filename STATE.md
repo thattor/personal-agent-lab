@@ -13,8 +13,13 @@ and host snapshot binding. Independent fixed HOST13, TSK22 and actual-connection
 precede implementation. SWE-2 High's HOST task is in its single bounded repair:
 the first CO verifier reports SQLite open errors; its exact source passes the
 unchanged13 in a separate native workspace, so the environment cause is unresolved.
-Astra prepared TSK source; separate Sol reproduced historical-Step corruption
-and Astra repaired it. Managed22/connection6 are still pending actual HOST handoff.
+The repair timed out with unknown inference outcome and is preserved without
+resume/retry/cancel. Only the known returned first HOST sourcee9b8f5 is selected;
+separate Sol APPROVE binds those bytes. Astra's final TSK8f20d0 passed corrected
+fixed22 and independent6 after two preserved history-integrity defects; separate
+Sol APPROVE binds the final source. Root's actual process-death/owner connection6
+PASS0.153s includes one fresh callback, saved draft/fresh VER, immediate controls,
+exception lifetime, completed history and explicit started-compose hold.
 RUN exact17a7dd7 is independently APPROVED after preserved interruption/end-record
 fault regressions. No source self-report or report-shaped CO verified is a product
 completion claim.
@@ -22,8 +27,12 @@ completion claim.
 Separate Sol's saved ART-tail RECOVERY02 proposal is retained for exact Opus
 consultation and SOL freeze. PRI consultation completed REFINE with precise
 candidate text, provenance, workless budget and receipt-recovery prerequisites;
-its scope is not yet frozen and no PRI code executes. Continue these independent
+its full scope is not yet frozen and no PRI code executes. Only PRI01-MEM/1's
+read-only recent-record/stop-receipt prerequisites are now frozen; independent13
+tests are RED before source. Continue these independent
 dependencies without duplicate implementation or repeated green verification.
+Full suite remains pending this additive MEM implementation; local connection
+success alone does not close the checkpoint or the whole goal.
 
 Actual CO0.4.5 state/qualified routes are unchanged. Fresh capacity before this
 consultation: Claude0/0 and Devin0/0, host limit12 per adapter; native limit4
