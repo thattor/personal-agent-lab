@@ -413,6 +413,181 @@ class MockExecutionTests(unittest.TestCase):
             {'call_id': endings[0]['call_id']}))['status'], 'admitted')
         self.assertEqual(self.tasks.claim({'runner_id': 'new'}).error.code, ErrorCode.CONFLICT)
 
+    def test_pre_admission_unavailable_yields_and_explicit_later_run_is_safe(self):
+        for owner, name in ((self.tasks, 'get_execution_context'), (self.tasks, 'register_sources'),
+                            (self.memory, 'read'), (self.tasks, 'reserve_budget'),
+                            (self.tasks, 'admit_call')):
+            with self.subTest(boundary=name):
+                _, work = self.create(key=name)
+                runner = MockRunner(self.tasks, self.memory)
+                calls = []
+                def expert(*args, **kwargs):
+                    calls.append(1)
+                    return {'kind': 'report', 'summary': 'usable'}
+                original = getattr(owner, name)
+                setattr(owner, name, lambda *a, **k: Result.failure(ErrorCode.UNAVAILABLE, 'SECRET fixture'))
+                result = runner.run_once(expert)
+                setattr(owner, name, original)
+                self.assertEqual(self.current(work)['state'], 'queued')
+                self.assertEqual(calls, [])
+                self.assertEqual(self.value(result)['reason_code'], 'unavailable')
+                self.assertEqual(self.conn.execute('SELECT count(*) FROM v5_tsk_lease WHERE active=1').fetchone()[0], 0)
+                self.value(runner.run_once(expert))
+                self.assertEqual(calls, [1])
+                self.control(work, 'cancel')
+
+    def test_same_input_write_retry_handles_one_shot_and_lost_commit_receipts(self):
+        for lost in (False, True):
+            with self.subTest(commit_then_unavailable=lost):
+                _, work = self.create(key=str(lost))
+                runner = MockRunner(self.tasks, self.memory)
+                attempts = {'begin_step': [], 'finish_step': []}
+                originals = {}
+                for name in attempts:
+                    original = getattr(self.tasks, name)
+                    originals[name] = original
+                    def flaky(request, _name=name, _original=original, **kwargs):
+                        attempts[_name].append((copy.deepcopy(request), copy.deepcopy(kwargs)))
+                        if len(attempts[_name]) == 1:
+                            if lost:
+                                self.value(_original(request, **kwargs))
+                            return Result.failure(ErrorCode.UNAVAILABLE, 'lost response')
+                        return _original(request, **kwargs)
+                    setattr(self.tasks, name, flaky)
+                calls = []
+                def expert(*a, **k):
+                    calls.append(1)
+                    return {'kind': 'report', 'summary': 'once'}
+                result = runner.run_once(expert)
+                for name, original in originals.items():
+                    setattr(self.tasks, name, original)
+                self.value(result)
+                self.assertEqual(calls, [1])
+                for requests in attempts.values():
+                    self.assertEqual(len(requests), 2)
+                    self.assertEqual(requests[0], requests[1])
+                goal = work['goal_id']
+                self.assertEqual(self.conn.execute('SELECT count(*) FROM v5_tsk_step WHERE goal=?', (goal,)).fetchone()[0], 1)
+                self.assertEqual(self.conn.execute('SELECT used FROM v5_tsk_usage WHERE goal=? AND kind=?', (goal, 'step')).fetchone()[0], 1)
+                self.assertEqual(sum(e['kind'] == 'progress' and e.get('work_ref', {}).get('goal_id') == goal for e in self.events()), 1)
+                self.control(work, 'cancel')
+
+    def persistent_write_failure(self, name):
+        _, work = self.create()
+        runner = MockRunner(self.tasks, self.memory)
+        calls, attempts = [], []
+        original = getattr(self.tasks, name)
+        def unavailable(request, **kwargs):
+            attempts.append((copy.deepcopy(request), copy.deepcopy(kwargs)))
+            return Result.failure(ErrorCode.UNAVAILABLE, 'SECRET fixture')
+        setattr(self.tasks, name, unavailable)
+        def expert(*args, **kwargs):
+            calls.append(1)
+            return {'kind': 'report', 'summary': 'do not discard'}
+        result = runner.run_once(expert)
+        setattr(self.tasks, name, original)
+        self.assertEqual(result.error.code, ErrorCode.UNAVAILABLE)
+        self.assertNotIn('SECRET', dumps(result))
+        self.assertEqual(len(attempts), 3)
+        self.assertTrue(all(item == attempts[0] for item in attempts))
+        self.assertEqual(self.current(work)['state'], 'running')
+        self.assertEqual(self.conn.execute('SELECT count(*) FROM v5_tsk_lease WHERE active=1').fetchone()[0], 1)
+        before = self.conn.execute('SELECT * FROM v5_tsk_usage ORDER BY kind').fetchall()
+        again = runner.run_once(expert)
+        self.assertFalse(again.ok)
+        self.assertEqual(calls, [1])
+        self.assertEqual(before, self.conn.execute('SELECT * FROM v5_tsk_usage ORDER BY kind').fetchall())
+        self.assertEqual(self.current(work)['state'], 'running')
+
+    def test_persistent_begin_failure_retains_returned_output_and_blocks_reentry(self):
+        self.persistent_write_failure('begin_step')
+
+    def test_persistent_finish_failure_retains_started_step_and_blocks_reentry(self):
+        self.persistent_write_failure('finish_step')
+
+    def test_uncertain_admission_never_retries_or_fails_goal(self):
+        _, work = self.create()
+        runner = MockRunner(self.tasks, self.memory)
+        original = self.tasks.admit_call
+        def lost(request):
+            self.value(original(request))
+            return Result.failure(ErrorCode.UNAVAILABLE, 'lost admission')
+        self.tasks.admit_call = lost
+        calls = []
+        result = runner.run_once(lambda *a, **k: calls.append(1))
+        self.tasks.admit_call = original
+        self.assertFalse(result.ok)
+        before = self.conn.execute('SELECT * FROM v5_tsk_usage').fetchall()
+        self.assertFalse(runner.run_once(lambda *a, **k: calls.append(1)).ok)
+        self.assertEqual(calls, [])
+        self.assertEqual(self.current(work)['state'], 'running')
+        self.assertEqual(before, self.conn.execute('SELECT * FROM v5_tsk_usage').fetchall())
+
+    def test_lookup_unavailable_after_step_start_preserves_output(self):
+        _, work = self.create()
+        runner = MockRunner(self.tasks, self.memory)
+        calls = []
+        original = self.memory.search
+        self.memory.search = lambda request: Result.failure(ErrorCode.UNAVAILABLE, 'SECRET search')
+        def expert(*a, **k):
+            calls.append(1)
+            return {'kind': 'lookup', 'query': ''}
+        result = runner.run_once(expert)
+        self.memory.search = original
+        self.assertEqual(result.error.code, ErrorCode.UNAVAILABLE)
+        self.assertEqual(self.current(work)['state'], 'running')
+        self.assertFalse(runner.run_once(expert).ok)
+        self.assertEqual(calls, [1])
+        self.assertEqual(self.conn.execute("SELECT used FROM v5_tsk_usage WHERE kind='model'").fetchone()[0], 1)
+        self.assertEqual(self.conn.execute("SELECT used FROM v5_tsk_usage WHERE kind='step'").fetchone()[0], 1)
+        self.assertEqual(sum(e['kind'] == 'progress' for e in self.events()), 0)
+
+    def test_lost_reservation_response_is_not_refunded_and_later_run_is_explicit(self):
+        _, work = self.create()
+        runner = MockRunner(self.tasks, self.memory)
+        original = self.tasks.reserve_budget
+        def lost(request):
+            self.value(original(request))
+            return Result.failure(ErrorCode.UNAVAILABLE, 'lost reservation')
+        self.tasks.reserve_budget = lost
+        calls = []
+        def expert(*a, **k):
+            calls.append(1)
+            return {'kind': 'report', 'summary': 'later explicit attempt'}
+        self.value(runner.run_once(expert))
+        self.tasks.reserve_budget = original
+        self.assertEqual(calls, [])
+        self.assertEqual(self.current(work)['state'], 'queued')
+        self.value(runner.run_once(expert))
+        self.assertEqual(calls, [1])
+        self.assertEqual(self.conn.execute("SELECT used FROM v5_tsk_usage WHERE kind='model'").fetchone()[0], 2)
+
+    def test_pause_committed_during_local_retry_wins_over_runner_failure(self):
+        _, work = self.create()
+        control_conn, controls, _ = self.connect()
+        self.addCleanup(control_conn.close)
+        original = self.tasks.begin_step
+        attempts = []
+        def transient(request):
+            attempts.append(copy.deepcopy(request))
+            if len(attempts) == 1:
+                self.value(controls.control({'key': 'pause-during-write', 'work_ref': request['work_ref'], 'command': 'pause'}))
+                return Result.failure(ErrorCode.UNAVAILABLE, 'temporary')
+            return original(request)
+        self.tasks.begin_step = transient
+        calls = []
+        def expert(*a, **k):
+            calls.append(1)
+            return {'kind': 'report', 'summary': 'fenced'}
+        result = MockRunner(self.tasks, self.memory).run_once(expert)
+        self.tasks.begin_step = original
+        self.assertEqual(self.value(result)['state'], 'paused')
+        self.assertEqual(len(attempts), 2)
+        self.assertEqual(attempts[0], attempts[1])
+        self.assertEqual(calls, [1])
+        self.assertEqual(self.conn.execute('SELECT count(*) FROM v5_tsk_lease WHERE active=1').fetchone()[0], 0)
+        self.assertEqual(sum(e['kind'] == 'progress' for e in self.events()), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

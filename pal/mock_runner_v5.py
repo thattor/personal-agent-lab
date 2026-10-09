@@ -1,4 +1,4 @@
-"""RUN01/1 bounded mock composition; no provider, persistent runner state or recovery.
+"""RUN01/2 bounded mock composition; no provider, persistent runner state or recovery.
 
 The host owns exactly one invoker per process and mints a new runner identity on
 restart. This is trusted Python coordination, not a boundary for arbitrary code.
@@ -140,8 +140,32 @@ class MockRunner:
                 value['reason_code'] = error_code.value
             return Result.success(value)
 
+        output_pending = False
+
         def failed(result, reason):
+            if result.error.code is ErrorCode.UNAVAILABLE:
+                if output_pending:
+                    return _failure(ErrorCode.UNAVAILABLE, 'local result persistence unresolved')
+                return release('yield', reason, result.error.code)
             return release('failed', reason, result.error.code)
+
+        def persist(method, request, **kwargs):
+            for _ in range(3):
+                result = method(request, **kwargs)
+                if result.ok or result.error.code is not ErrorCode.UNAVAILABLE:
+                    return result
+            return result
+
+        # A returned output has no durable MOD body to recover here. A fresh run
+        # must not turn a retained lease into permission for another model unit.
+        if any(step['status'] == 'started' for step in steps):
+            return _failure(ErrorCode.UNAVAILABLE, 'unfinished step requires recovery')
+        next_index = max((step['index'] for step in steps), default=-1) + 1
+        existing = self._tasks.get_call({'call_id': dumps(['C15.call', lease_id, next_index])})
+        if existing.ok:
+            return _failure(ErrorCode.UNAVAILABLE, 'owned call requires recovery')
+        if existing.error.code is not ErrorCode.NOT_FOUND:
+            return failed(existing, 'call readiness unavailable')
 
         for _ in range(max_steps):
             context_result = self._tasks.get_execution_context(
@@ -197,8 +221,16 @@ class MockRunner:
                                excluded_step_ids=tuple(excluded_steps)))
             calls.append(call_id)
             if not called.ok:
+                if called.error.code is ErrorCode.UNAVAILABLE:
+                    status = self._tasks.get_call({'call_id': call_id})
+                    if status.ok and _value(status)['status'] == 'raised':
+                        return release('failed', 'mock callable raised', ErrorCode.UNAVAILABLE)
+                    if (status.ok and _value(status)['status'] in ('admitted', 'returned')) or (
+                            not status.ok and status.error.code is not ErrorCode.NOT_FOUND):
+                        return _failure(ErrorCode.UNAVAILABLE, 'owned call outcome unresolved')
                 return failed(called, 'mock call unavailable or stopped')
-            begun = self._tasks.begin_step({
+            output_pending = True
+            begun = persist(self._tasks.begin_step, {
                 'key': dumps(['C13.begin_step', call_id]), 'work_ref': work,
                 'action': _value(called)['action']})
             if not begun.ok:
@@ -219,11 +251,12 @@ class MockRunner:
                     return failed(read_error, 'lookup source unavailable')
                 result_refs = [item['ref'] for item in usable]
                 excluded_all.extend(lookup_excluded)
-            ended_step = self._tasks.finish_step(
+            ended_step = persist(self._tasks.finish_step,
                 {'work_ref': work, 'step_id': step['step_id'], 'result_refs': result_refs},
                 truncated=truncated, excluded_refs=tuple(lookup_excluded))
             if not ended_step.ok:
                 return failed(ended_step, 'mock step could not be saved')
             finished.append(_value(ended_step))
             steps.append(_value(ended_step))
+            output_pending = False
         return release('yield', 'bounded mock slice yielded')
