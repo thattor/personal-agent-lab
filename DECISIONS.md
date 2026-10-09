@@ -2632,3 +2632,34 @@ reclassification, field rewrite or forced capacity release. Actual summary is in
 pri03 native-n2-summary.json. Proceed to authorized exact Opus5.5 design reassessment
 and independent technical work before any N3 or real Expert entry. Do not silently
 weaken acceptance; alternative guarantee/profile is an explicit design decision.
+
+
+## D052 — bounded unqualified diagnostic retention (2026-10-10)
+
+Root adopts the independent Native Sol C086 REFINE into
+[PRI02-DIAGNOSTIC/1](docs/design/contracts-v5/PRI02-UNQUALIFIED-DIAGNOSTIC-SCOPE.md).
+Strict exact effective-model/original cessation/NativeReturned gates remain.
+New fixed tests precede separate pure-buffer and wrapper implementation. Valid
+already captured text is retained locally as unqualified after supported stop;
+poisoned text remains discarded. Diagnostic writes cannot qualify output or retry
+inference. No N3/T2/real Expert call, preprompt refusal, new auth/cost/service, CO
+edit, unknown-call reopening or weak-profile adoption. Original N2 remains UNKNOWN.
+
+Fresh AGY quota refresh shows Claude/GPT weekly0%, overages OFF; no new Opus5.5
+review is launched and Native Sol fallback is explicitly attributed. CO0.4.5
+public capacity is Claude0/0, Devin1/0, host12 per adapter. The ordinary entry
+requires a planner and has no supported preplanned-input route. D041's design
+pool is preserved; unavailable Opus is not replaced by a SWE planner. Use approved
+Native Sol buffer and Astra wrapper source work, independent Sol fixed tests,
+separate source review and Root integration, at most the actual four native slots.
+
+Independent Astra identifies current official ACP configOptions/currentValue/
+config_option_update versus installed CO's legacy model observer. Existing public
+callbacks can preserve full session result, a distinct preprompt snapshot and
+validated-session updates; callbacks may duplicate and do not preserve wire order
+or independently carry prompt ID. Model metadata actual presence in N2 remains
+UNCONFIRMED because frames were not saved. Original cessation cannot be elevated
+by diagnostic interpretation. Further bounded source/design work may use these
+public hooks without changing CO or manufacturing original verified fields.
+Source changes invalidate the previous wrapper/capture envelope; later real work
+needs its own reviewed contract/freeze. Whole goal remains NOT_MET.
