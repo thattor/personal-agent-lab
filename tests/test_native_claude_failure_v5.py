@@ -193,7 +193,7 @@ class ClaudeFailureTests(unittest.TestCase):
         for existing_file in (False, True):
             with self.subTest(existing=existing_file):
                 self.setup_provider('bad_protocol')
-                self.exe.write_text(self.exe.read_text().replace('fixture output', CANARY))
+                self.exe.write_text(self.exe.read_text().replace("'text': 'fixture'", "'text': "+repr(CANARY)))
                 pin=f.pin(existing.ROOT,self.exe); self.profile=f.profile(f.digest(f.canonical(pin)))
                 self.provider=self.module.NativeClaudeText(executable=self.exe,attempt_root=self.lane,profile=self.profile)
                 request=self.request(); request['messages'][1]['text']=CANARY
