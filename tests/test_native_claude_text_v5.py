@@ -22,9 +22,14 @@ class ClaudeBufferTests(unittest.TestCase):
   self.assertEqual(capture['cessation_sha256'],f.digest(f.canonical(ending)));self.assertEqual(capture['evidence_ref'],'pal-claude-text:'+capture['cessation_sha256'])
   with self.assertRaises(ValueError):b.finish(stdout_eof=True,stderr_eof=True,exit_code=0)
   with self.assertRaises(ValueError):b.feed(b'{}\n')
+ def test_canonical_argv_exact_placeholder_binding_and_strict_inputs(self):
+  m=self.module();self.assertEqual(m.claude_argv(session_id=f.SESSION),f.argv(f.SESSION));self.assertEqual(m.claude_argv(session_id=f.SESSION,executable='/fixture/claude'),f.argv(f.SESSION,'/fixture/claude'))
+  for kw in ({'session_id':'bad'},{'session_id':f.SESSION,'executable':''},{'session_id':f.SESSION,'executable':False}):
+   with self.subTest(kw=kw),self.assertRaises((ValueError,TypeError)):m.claude_argv(**kw)
+  with self.assertRaises(ValueError):f.buffer(argv_hash='9'*64)
  def test_constructor_strict_bindings_copy_and_closed_profile_pair(self):
   cls=self.module().NativeClaudeBuffer
-  valid={'request_sha256':'1'*64,'profile_sha256':'2'*64,'attempt_ref':copy.deepcopy(f.ATTEMPT),'session_id':f.SESSION,'argv_sha256':'3'*64}
+  valid={'request_sha256':'1'*64,'profile_sha256':'2'*64,'attempt_ref':copy.deepcopy(f.ATTEMPT),'session_id':f.SESSION,'argv_sha256':f.digest(f.canonical(f.argv(f.SESSION)))}
   self.assertIsInstance(cls(**valid),cls)
   for change in ({'request_sha256':'A'*64},{'profile_sha256':False},{'session_id':'not-uuid'},{'argv_sha256':'x'},{'attempt_ref':{**f.ATTEMPT,'extra':1}}):
    with self.subTest(change=change),self.assertRaises((ValueError,TypeError)):cls(**{**valid,**change})
@@ -49,7 +54,7 @@ class ClaudeBufferTests(unittest.TestCase):
     if isinstance(rows[-1]['modelUsage'][f.MODEL].get('costUSD'),float) and str(rows[-1]['modelUsage'][f.MODEL]['costUSD'])=='nan':self.fail(raw=b'\n'.join(json.dumps(r).encode() for r in rows)+b'\n')
     else:self.fail(rows)
  def test_order_duplicates_unknown_trailing_and_poisoned_finish(self):
-  base=f.frames();variants=[base[1:],base+[base[-1]],[base[0],base[0],*base[1:]],[base[0],base[-1],*base[1:-1]],[{**base[0],'type':'user'},*base[1:]],[base[0],{**base[1],'subtype':'unknown'},*base[2:]]]
+  base=f.frames();variants=[base[1:],[r for r in base if r['type']!='rate_limit_event'],base+[base[-1]],[base[0],base[0],*base[1:]],[base[0],base[-1],*base[1:-1]],[{**base[0],'type':'user'},*base[1:]],[base[0],{**base[1],'subtype':'unknown'},*base[2:]]]
   rows=copy.deepcopy(base);rows[3]['uuid']=rows[2]['uuid'];variants.append(rows)
   for rows in variants:
    with self.subTest(length=len(rows)):self.fail(rows)
@@ -74,7 +79,7 @@ class ClaudeBufferTests(unittest.TestCase):
   m=self.module();b=f.buffer();b.feed(f.stream(f.frames()));pair=b.finish(stdout_eof=True,stderr_eof=True,exit_code=0);capture=pair['capture'];ending=pair['cessation']
   kw={'request_sha256':'1'*64,'profile_sha256':'2'*64,'attempt_ref':f.ATTEMPT,'model_id':f.MODEL,'output_sha256':capture['output_sha256'],'utf8_bytes':capture['utf8_bytes'],'chunks':2}
   value=m.validate_claude_ending(ending,**kw);value['completion']['exit_code']=5;self.assertEqual(ending['completion']['exit_code'],0)
-  changes=[lambda e:e.update(extra=1),lambda e:e.update(model_id='wrong'),lambda e:e.update(request_sha256='9'*64),lambda e:e.update(prompt_sha256='9'*64),lambda e:e.update(stdout_sha256='bad'),lambda e:e['protocol'].update(assistant_model='wrong'),lambda e:e['completion'].update(exit_code=False),lambda e:e['completion'].update(subagents=1),lambda e:e.update(chunks=True)]
+  changes=[lambda e:e.update(argv_sha256='9'*64),lambda e:e.update(extra=1),lambda e:e.update(model_id='wrong'),lambda e:e.update(request_sha256='9'*64),lambda e:e.update(prompt_sha256='9'*64),lambda e:e.update(stdout_sha256='bad'),lambda e:e['protocol'].update(assistant_model='wrong'),lambda e:e['completion'].update(exit_code=False),lambda e:e['completion'].update(subagents=1),lambda e:e.update(chunks=True)]
   for change in changes:
    with self.subTest(index=changes.index(change)),self.assertRaises(ValueError):e=copy.deepcopy(ending);change(e);m.validate_claude_ending(e,**kw)
  def test_native_returned_claude_dispatch_and_profile_laundering_refusal(self):

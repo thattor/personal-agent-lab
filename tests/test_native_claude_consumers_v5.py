@@ -47,6 +47,14 @@ class ClaudeConsumerTests(unittest.TestCase):
  def test_tsk_current_raw_replay_and_historical_profile_decoder_integrity(self):
   n=NativeFixture(self);n.profile=f.profile();n.prepare();self.assertTrue(n.admit().ok);self.assertTrue(n.enter().ok);ending=f.returned(n.request,n.profile,dumps(n.action),n.attempt);self.assertTrue(n.end(ending).ok);before=n.f.snapshot();value=n.f.value(n.output());self.assertEqual(value['content'],dumps(n.action));self.assertEqual(value['model_id'],f.MODEL);self.assertTrue(n.end(ending).ok);self.assertEqual(n.f.snapshot(),before)
   self.assertTrue(n.stop().ok);before=n.f.snapshot();self.assertFalse(n.output().ok);self.assertEqual(n.f.snapshot(),before)
+ def test_primary_typed_before_hook_refusal_is_not_entered_and_not_reinvoked(self):
+  c=self.primary()
+  def refused(request,hook):raise f.refusal(request,c.provider.profile)
+  c.provider.behavior=refused;turn=c.submit();out=c.run_turn(turn);self.assertEqual(out['status'],'failed');self.assertNotIn('reply',out);self.assertEqual(c.conn.execute('SELECT phase FROM v5_pri_native').fetchone()[0],'not_entered');used=c.used();self.assertEqual(c.run_turn(turn),out);self.assertEqual(c.used(),used);self.assertEqual(len(c.provider.calls),1)
+ def test_expert_typed_before_hook_refusal_records_known_end_without_effect_or_reinvoke(self):
+  c=self.expert()
+  def refused(request,hook):raise f.refusal(request,c.provider.profile)
+  c.provider.behavior=refused;c.execute();c.no_effects();self.assertEqual(c.call()['native_phase'],'not_entered');self.assertEqual(c.call()['status'],'not_entered');self.assertIn('end_native_call',c.boundary.log);used=c.conn.execute("SELECT used FROM v5_tsk_usage WHERE goal=? AND kind='model'",(c.work['goal_id'],)).fetchone()[0];c.execute();self.assertEqual(len(c.provider.requests),1);self.assertEqual(c.conn.execute("SELECT used FROM v5_tsk_usage WHERE goal=? AND kind='model'",(c.work['goal_id'],)).fetchone()[0],used)
  def test_mock_and_devin_boundaries_refuse_claude_provider_without_entry(self):
   c=self.primary();Mock=importlib.import_module('pal.primary_host_v5').PrimaryHost
   for invoke in (c.provider,c.provider.invoke):
