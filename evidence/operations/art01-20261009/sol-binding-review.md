@@ -10,4 +10,7 @@ Root actual consumer initial14 tests independently PASS0.124s (hash
  a7f237f54dd6a767df401100c42597c09ce350807f94931e03d8bc33590759fe).
 Reviewer requested persistent actual save/finish response failures, budget counts,
 and unselected source stop after attachment before whole connection acceptance.
-Root added those plus shared duplicate-Ref regression; exact final review pending.
+Root added those plus shared duplicate-Ref regression; final independent review APPROVE at exact2e8dfcf531ba0ddfc89dcb83eec0c6e0f58abc00.
+18 actual consumer tests PASS0.182s; missing persistent failures, actual budget
+counts and unselected post-attachment source-stop cases are now verified.
+Consumer SHA256 f9ee226a2cac87025eb2e5d2511e9300238ca66bb043c9645acf9ba7b0ee7ce6.

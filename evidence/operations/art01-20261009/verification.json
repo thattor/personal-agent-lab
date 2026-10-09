@@ -1,0 +1,45 @@
+{
+  "source_commit": "2e8dfcf531ba0ddfc89dcb83eec0c6e0f58abc00",
+  "full_tests": {
+    "count": 605,
+    "seconds": 23.88,
+    "exit": 0,
+    "command": "/opt/homebrew/bin/python3.13 -E -s -B -m unittest discover -s tests -v",
+    "log": "full-integrated.log"
+  },
+  "actual_connection_tests": 18,
+  "artifact_owner_tests": 20,
+  "binding_owner_tests": 52,
+  "independent_reviews": {
+    "ART": "Astra APPROVE exact98b8f12c3ee90e73d0c84a14dc6142f955faad26; Rootfa40b66 byte-identical",
+    "TSK_RUN": "Sol6.1 APPROVE exactd6e0a721cec6dee75e51a1d97d314a3d7bcfb70d",
+    "consumer": "Sol6.1 APPROVE exact2e8dfcf531ba0ddfc89dcb83eec0c6e0f58abc00"
+  },
+  "co_storage_task": {
+    "task_id": "917989d447f94a09869f7b05e9870d3a",
+    "verified": false,
+    "status": "awaiting_decision",
+    "outcome": "unknown",
+    "not_resumed": true
+  },
+  "implementation_route": "Separate native Sol6.1 under freshly reread owner alternative instruction; not a CO verified implementation",
+  "design_review": "Opus milestone pending",
+  "limits": [
+    "mock local SQLite only",
+    "No VER/Goal completion",
+    "No artifact re-input into models",
+    "No general recovery/provider/PRI/UI/live activation or human usefulness proof",
+    "Three unknown old CO/AGY calls preserved; no remote cessation claim"
+  ],
+  "source_sha256": {
+    "pal/tasks_v5.py": "50d2e3474979e1a11f8855675eea25636c0a1b2595f5a201474d18851718342f",
+    "pal/mock_runner_v5.py": "421c5980d40691430aa5c69ae72bda77733e14d6d3ee20ec7ddeeec4c5441cf2",
+    "pal/artifacts_v5.py": "31ac6ec74b816b2eca5268543ada02abfcef8535f7525a7a08115df23e6afd70",
+    "tests/test_tasks_v5.py": "58058442ba7a54f08d42522b8327ea8eef2bc16e51ade2d39cd44ad0798b5aaa",
+    "tests/test_task_artifact_binding_v5.py": "1bf835540914f1cb73765aecfebfcdd4e215ab57e52ca0138a1fd6d9ad02b05b",
+    "tests/test_mock_execution_v5.py": "8c210aa1bf746f3423256781b887507a86a64b62038ce84963f396c59d5ac962",
+    "tests/test_mock_compose_v5.py": "e6557aa3a11f6fe5fec62c51abd2d5694abaee0b4a52d2cd48bcbbe250e8b2be",
+    "tests/test_artifacts_v5.py": "164636abfa750868b888328c3dda76349477a48623d77591cb02acab6f52774f",
+    "tests/test_artifact_connection_v5.py": "f9ee226a2cac87025eb2e5d2511e9300238ca66bb043c9645acf9ba7b0ee7ce6"
+  }
+}

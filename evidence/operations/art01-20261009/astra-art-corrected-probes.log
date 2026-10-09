@@ -1,0 +1,3 @@
+oversized: limit, no key burn
+shared duplicate refs: saved, identical replay, dedup request conflicts, body readable
+RuntimeError/KeyboardInterrupt/SystemExit: guard mutation undone, ART savepoint removed, caller write/transaction preserved
