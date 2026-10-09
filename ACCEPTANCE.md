@@ -1,5 +1,17 @@
 # ACCEPTANCE.md
 
+## Current C080 — whole-goal exit still unmet
+
+[Independent exit audit](docs/plans/GOAL-EXIT-AUDIT-20261009.md) binds the current
+175cdc6 candidate and preserves all earlier source versions/test counts. Local
+C074–C079 are verified; v5 restart recovery and Primary ingress are not yet
+implemented. Authentic usefulness has received non-PASS feedback, not a pending
+answer to be requested again. Historic real-provider P002 functional proof does
+not establish current-v5 Primary functionality or whole-flow usefulness.
+Earlier next-work paragraphs below are checkpoint history superseded by STATE's
+current dependency, not active parallel assignments. Recovery/PRI proposal notes
+and the running Opus consultation are not implementation acceptance.
+
 ## C079 — CHANGE01/1 implementation and connection verified
 
 Sourceb4baae24f226ccd4396cf723d8f31d03ef1e67b3, SHA256

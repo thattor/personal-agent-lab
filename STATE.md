@@ -1,5 +1,32 @@
 # STATE.md
 
+## Current C080 — continued necessary parallel development
+
+The latest direct owner instruction asks to continue remaining work and use as
+much parallel development as necessary. Overall goal NOT MET: independent
+[exit audit](docs/plans/GOAL-EXIT-AUDIT-20261009.md) distinguishes verified local
+C074–C079 from absent v5 recovery/Primary connection and received non-PASS
+usefulness feedback. This is not another wait for the old answer.
+
+Three separate native contexts completed recovery design, saved ART/VER-tail
+analysis and goal-exit audit. Notes are proposals/attributed research, not adopted
+API or recovery PASS. Exact qualified CO Claude Opus5.5 adoption consultation is
+running against the fixed candidate inputs; after adoption SOL freezes shared
+examples and allocates isolated HOST/TSK/RUN source and independent tests.
+Separate Sol investigates PRI ingress under existing C01–C15 while waiting;
+no execution depends on an unfrozen recovery interface.
+
+Actual CO0.4.5 state/qualified routes are unchanged. Fresh capacity before this
+consultation: Claude0/0 and Devin0/0, host limit12 per adapter; native limit4
+including SOL. Current work does not claim30 concurrent agents or provider quota.
+No new authentication, service, payment, state edits, old DB changes or retries
+of prior unknown outcomes. D045 raw-local/minimal-public evidence still applies.
+
+Next: managed mock restart proof, precise saved-tail adoption, then current-v5
+Primary→same-Goal ask/answer/change→saved/check/readback connection. Only a useful
+integrated candidate can be sent for the one authentic overall usefulness
+judgment; developer technical choices and fixed tests proceed autonomously.
+
 ## Latest authority D044 / D043 / D041 / D040
 
 D044 directly authorizes making the existing thattor/personal-agent-lab public

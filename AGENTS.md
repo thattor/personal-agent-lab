@@ -1,5 +1,12 @@
 # AGENTS.md — Personal Agent Lab
 
+Current C080: the overall goal remains unmet. C074–C079 establish bounded local
+saved/verified/read/ask/change connections; restart recovery, v5 Primary ingress
+and authentic whole-flow usefulness remain. Continue independent approved work
+through these dependencies rather than stopping after a component checkpoint.
+The older next-work descriptions below are retained history; STATE/DECISIONS
+and the latest exact candidate evidence govern continuation.
+
 Current D044/D043/D042/D041/D040/C078 continuation and D037 route instruction supersede earlier stops
 and the CO-only restriction. Evaluate checkpoints, correct within accepted scope,
 then actually continue the next unfinished authorized dependency.
@@ -13,11 +20,12 @@ conversation actions remain prohibited. Exact limits are in STATE/DECISIONS.
 INT00/1, TSK01/1, MEM01/1, TSK03/1 and TSK02/RUN01 local mock preparation are
 integrated with separate review and full531 regression, including durable C14,
 actual controls/source-stop and callable-cessation occupancy. Real PRI authority,
-recovery, saved verified drafts, live services and full v5 activation remain unproven.
+recovery, real services and full v5 activation remain unproven. Saved verified
+drafts are now proven locally by the subsequent C074–C079 checkpoints.
 C074: saved drafts are connected through actual MEM/TSK/RUN/ART/C14;
 full605 passes with independent ART/TSK/RUN/consumer reviews. Exact CO Opus5.5
 milestone review is ALIGNED. Continue the next unfinished
-verification/completion dependency; whole v5 service activation remains unproven.
+dependency described in current STATE; whole v5 service activation remains unproven.
 Native Sol authored storage under existing owner fallback; the CO timeout remains
 unknown and untouched. Current STATE/DECISIONS supersede historical pending text.
 C075: deterministic VER is connected atfab7c77, full650 and independent review

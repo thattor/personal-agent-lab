@@ -2,6 +2,29 @@
 
 This file records decisions needed to continue implementation. Newer entries override older conflicting entries.
 
+## D-046 — continue to the project goal with necessary parallel work
+Date: 2026-10-09
+Owner: latest direct user instructions in the continuing development task.
+Instruction: continue if work remains, report whether the goal is reached, and
+develop using as much parallel work as necessary. This renews continuation under
+the existing scope and route/material permissions; it does not add costs/auth,
+activate PROPOSED P001, alter product acceptance or resolve unknown prior calls.
+
+Independent exit audit at175cdc6 confirms the overall goal remains unmet despite
+845 local tests and CHANGE design alignment. Recovery, current-v5 Primary and a
+materially useful integrated candidate precede the one authentic usefulness
+judgment. C064/D033 feedback is already received and non-PASS; do not treat it as
+an unanswered blocker. A verified component checkpoint is a dependency result,
+not permission to stop while authorized independent development remains.
+
+SOL owns the shared contract/canonical records/integration. Separate contexts
+own isolated source, fixed tests and independent review; unnecessary duplicated
+work is not created to fill slots. CO0.4.5 qualified Opus5.5/Devin SWE-2 High and
+approved native Astra/Sol alternatives keep their actual limits and provenance.
+Root verifies source bytes, connected behavior and required checks independently
+before recording acceptance; model self-reports and CO report verification alone
+are insufficient. Reassess this condition at each subsequent project exit.
+
 ## D-000 — Greenfield only
 Date: 2026-10-06
 Decision: New PAL is designed and implemented from zero. Old PAL code, schema, workflow, reviews, P0/P1 lists, and compatibility constraints are excluded from design input and reuse analysis.
