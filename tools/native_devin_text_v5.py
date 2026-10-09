@@ -260,7 +260,7 @@ class NativeDevinText:
 
     def invoke(self, request, *, on_enter):
         entered = False
-        pool = ref = host = adapter = None
+        pool = ref = host = adapter = buffer = None
         last_status = None
         stopped = False
         request_hash = None
@@ -402,6 +402,11 @@ class NativeDevinText:
                     stop = pool.stop(ref)
                     if type(stop) is c.StopReply and stop.ref == ref and type(stop.status) is c.StopStatus:
                         _write(call_dir / 'stop.json', {'attempt_ref': attempt, 'status': stop.status.value, 'evidence_ref': stop.evidence_ref})
+                except BaseException:
+                    pass
+            if entered and buffer is not None:
+                try:
+                    _write(call_dir / 'unqualified-output.json', buffer.unqualified_snapshot())
                 except BaseException:
                     pass
             if entered and adapter is not None and host is not None:
