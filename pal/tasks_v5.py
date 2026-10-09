@@ -1348,6 +1348,7 @@ class TaskStore(IntakeStore):
     def _old_calls(self, row, lease, *, claim=None):
         try:
             calls = self._rows('SELECT * FROM v5_tsk_call WHERE lease=?', (lease['id'],))
+            enrollment = self._enrollment() if claim is not None else None
             inspected = list(calls)
             if claim is not None:
                 seen = {call['id'] for call in calls}
@@ -1380,6 +1381,10 @@ class TaskStore(IntakeStore):
                     raise ContractError()
                 if claim is not None and call['lease'] == lease['id'] and work != claim:
                     raise ContractError()
+                if enrollment is not None:
+                    _, original_claim = self._lease_binding(call_lease, enrollment)
+                    if work != original_claim:
+                        raise ContractError()
                 if call['id'] != dumps(['C15.call', call_lease['id'], call['idx']]):
                     raise ContractError()
                 if (call_lease['id'], call['idx']) in indexes:

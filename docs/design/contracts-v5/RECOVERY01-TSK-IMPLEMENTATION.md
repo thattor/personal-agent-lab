@@ -119,3 +119,34 @@ With unchanged repaired TSK source and actual HOST:
 Source SHA256: `d5b207b24bac6c928960394ad0f4903506ebdb934cf25d838f334511883a7791`.
 The same source passed existing122 and independent5 as recorded above. No full
 suite or subprocess recovery claim; Root owns those subsequent integration checks.
+
+## Historical managed claim proof follow-up
+
+Independent probe commit `f481fd30e198c4748c67ba31fa02c79b692834cd` showed a
+remaining distinction: Step/call/reservation mutual integrity did not establish
+that their historical lease still had its original managed owner/claim binding.
+Deleting that owner row or changing its claim epoch allowed settlement. Both
+were reproduced before this fix; author RED log:
+`/private/tmp/pal-recovery-history-binding-author-red.log`.
+
+The five-line correction resolves every inspected producing lease through the
+same original enrollment/session/profile/runner/claim validator used for the
+occupied lease, and requires exact stored call WorkRef equality with that claim.
+It never enrolls missing history or invents fallback ownership. Legacy helper
+validation remains usable without enrollment; actual recover always requires
+enrollment and refuses uncertain historical ownership. All checks are read-only.
+
+Unchanged actual-HOST fixed22 PASS0.543s; original five probes plus the new one
+(two corrupt subcases) PASS0.159s; affected existing122 PASS1.971s. An additional
+actual multi-session positive probe confirms intact older managed history allows
+settlement and its Step bytes remain identical. All exit0. Logs respectively:
+`/private/tmp/pal-recovery-tsk-final-22.log`,
+`/private/tmp/pal-recovery-history-binding-green.log`,
+`/private/tmp/pal-recovery-tsk-final-122.log`,
+`/private/tmp/pal-recovery-history-binding-positive.log`.
+
+Next-use prevention: verify historical producing lease ownership as well as
+pairwise record equality; retain both corruption cases and intact multi-session
+history when changing recovery validation. Independent final approval remains
+separate. Corrected source SHA256:
+`8f20d02d132b3a70a811919a262b928b0904cc30de8479a977c0c204b95c1670`.
