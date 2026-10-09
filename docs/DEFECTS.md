@@ -983,3 +983,20 @@ worker note; the preserved final verifier directly proves mkdir denial. Do not
 present the first cause as separately reproduced. The first successful-review
 receipt extraction assumed an error field and failed before saving the receipt;
 error is optional on success, and corrected extraction checked the original hash.
+
+## TSK02 consumer signature and interruption rollback — 2026-10-09
+
+The initial synthetic tests repeated a new dictionary-style invalidation signature,
+while actual MEM calls inherited TSK invalidation with keyword arguments. Root's
+consumer inspection found the mismatch. The author corrected the exact callback
+and added actual MemoryStore.stop_reference coverage. An isolated owner test is
+insufficient evidence of a consumer boundary; next callback edits run its real caller.
+
+Root also found that TSK transaction owners caught Exception, leaving a transaction
+open on KeyboardInterrupt/SystemExit. Six deterministic pre-fix cases reproduced
+the lock/schema/data cleanup failure. Both owners now roll back BaseException and
+re-raise; the public Result boundary still lets interruption propagate. Two new tests
+cover original connection cleanup, durable rollback and another connection's write
+access. Retained author34 and actual MEM/TSK/mock/C14 connection14 pass, with broader
+regression and independent review still pending at this entry's creation.
+Evidence: evidence/operations/tsk02-20261009/{author-*,baseexception-*,connected-final.log}.

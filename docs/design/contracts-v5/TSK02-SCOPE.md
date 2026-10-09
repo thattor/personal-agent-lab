@@ -10,6 +10,12 @@ Prerequisite: MEM01/1 and TSK01/1, current source
 Outcome: MEM append → intake → claim → source-bound mock Expert report/lookup →
 durable step/event → release. Controls and reference stop must commit while the
 actual mock callable waits at a deterministic barrier. Goal remains unfinished.
+RUN01/1 is the local mock composition: a fresh process runner identity, one local
+invoker owner per call_id and a finite max_steps. Its callable receives the closed
+C12 object plus mock-only excluded_refs/excluded_step_ids keyword metadata; these
+are identities, not stopped bodies. This does not amend the C12 wire contract.
+Confirmed return/exception is persisted with up to three same-input end_call writes
+on unavailable. No provider retry occurs; persistence failure retains occupancy.
 No new model/provider/auth/cost/service, existing live DB migration, UI, scheduler,
 Operation, question/answer, change/attach, ART/VER completion or automatic recovery.
 Python standard library only. Fresh isolated SQLite databases in tests.
@@ -57,6 +63,11 @@ failure is bounded unavailable. Error messages never contain raw callback data.
   (registered lookup refs minus required), remaining_budget (work and host counts
   per kind), and next_step_index. Check owned lease/current authority. No bodies.
   remaining_budget is exactly `{model:{work,host},step:{work,host}}`.
+  Also return `step_sources:[{step_id,refs:[Ref]}]` for current-revision steps:
+  union of the durable call's supplied_refs and the step's result_refs. Missing
+  provenance is unavailable. Root only supplies finished historical Steps whose
+  complete provenance is currently usable; an old report may contain stopped
+  source content even when raw C11 bodies were excluded. C13 Step stays unchanged.
   This metadata read must not gate all optional refs before the driver can omit
   stopped ones. Effect admission separately checks required/supplied availability.
 - `register_sources({work_ref,refs})`: current running authority/no control, verify
