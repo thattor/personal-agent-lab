@@ -61,9 +61,10 @@ historical Step/call/reservation and artifact-set validation; latest intent;
 current TSK source gate; exact ART lookup; projection/binding validation; premint;
 settlement writes. Reconcile historical managed owner/claim checks unchanged.
 Require started compose, original empty result_refs, no error key, returned linked
-call, closed parseable ComposeAction, unique step/call/index/lease binding. Source
+call, closed parseable ComposeAction, unique step/call/index/lease binding. Original call.sources and returned producer
 refs are nonempty duplicate-free records; required <= original call.sources <=
-registered. Root confirmed authorize_artifact_save returns call.sources verbatim:
+registered. ComposeAction.source_refs keeps its parser-accepted exact list,
+including empty/subset/duplicates. Root confirmed authorize_artifact_save returns call.sources verbatim:
 ART producer projection must equal this ordered list, as well as original WorkRef
 and step_id, valid artifact/hash/bytes and no existing set/adoption artifact/Step.
 No _register write: provenance is already registered and validated.

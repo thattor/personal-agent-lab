@@ -12,6 +12,21 @@ Earlier next-work paragraphs below are checkpoint history superseded by STATE's
 current dependency, not active parallel assignments. Recovery/PRI proposal notes
 and the running Opus consultation are not implementation acceptance.
 
+## C080a — managed mock recovery and MEM prerequisite verified locally
+
+At b0b02998, Root full **907 PASS27.543s**, actual process/owner connection6 PASS,
+exact independent HOST/TSK/RUN/MEM approvals; evidence is
+[evidence/operations/recovery01-20261010/verification.json](evidence/operations/recovery01-20261010/verification.json).
+Known returned HOSTe9b8f5 and TSK8f20d0 are integrated; original CO HOST repair
+unknown pause and failed fixture/history probes remain preserved. PRI-MEM's two
+read-only methods pass fixed13 and independent related26, no Primary runs.
+
+Started compose with saved ART is still deliberately held; RECOVERY02/1 now
+frozen after actual Opus5.5 REFINE, separate fixed owner tests are expected RED
+before source. Started operate remains external_tail. No whole C13, PRI, provider
+or usefulness PASS. Next: ART lookup and same-revision adoption, actual crash/fresh
+VER proof, then integrated Primary and one improved owner-flow judgment.
+
 ## C079 — CHANGE01/1 implementation and connection verified
 
 Sourceb4baae24f226ccd4396cf723d8f31d03ef1e67b3, SHA256

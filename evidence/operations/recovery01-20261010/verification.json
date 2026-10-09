@@ -1,0 +1,120 @@
+{
+  "schema": "PAL.local-verification/1",
+  "contract": "RECOVERY01/1 + PRI01-MEM/1",
+  "tested_commit": "b0b02998a8db2548bafb3ca4feb5c70565ad2d4e",
+  "source_sha256": {
+    "pal/mock_host_v5.py": "e9b8f5eda1e01ec9a76ba52f3783845f302df262eea2248f4c5c36738a670208",
+    "pal/tasks_v5.py": "8f20d02d132b3a70a811919a262b928b0904cc30de8479a977c0c204b95c1670",
+    "pal/mock_runner_v5.py": "a8aad7ba24357a3da1c35e5c17e15719da200751c6a233596b05b662f81f48a0",
+    "pal/memory_v5.py": "3016fa56c33d3bafc3a6165766f0873594145a5d4e77b3c53f3c88a1ec077444",
+    "pal/artifacts_v5.py": "a24e8dd9a3dcb69f3fc77fb2c8a8bcf5a197e548b14deb59454cad89cc559a91"
+  },
+  "root_full_suite": {
+    "command": "python3.13 -E -s -B -m unittest discover -s tests -v",
+    "tests": 907,
+    "seconds": 27.543,
+    "exit_code": 0,
+    "execution": "approved local loopback-capable path",
+    "result": "PASS"
+  },
+  "retained_default_sandbox_run": {
+    "tests": 907,
+    "failures": 3,
+    "errors": 29,
+    "cause": "existing localhost socket binding PermissionError EPERM; not a recovery assertion failure"
+  },
+  "root_real_process_connection": {
+    "tests": 6,
+    "seconds": 0.153,
+    "result": "PASS",
+    "scope": "live lock refusal, actual SIGKILL/wait, admitted interruption and one fresh callback, immediate control, BaseException lifetime, finished compose/fresh VER/readback, started compose explicit hold"
+  },
+  "independent_reviews": {
+    "HOST": {
+      "model": "Sol6.1",
+      "source_sha256": "e9b8f5eda1e01ec9a76ba52f3783845f302df262eea2248f4c5c36738a670208",
+      "verdict": "APPROVE",
+      "fixed_tests": 13,
+      "seconds": 0.106,
+      "attribution": "separate native review context; Root recorded returned report"
+    },
+    "TSK": "docs/design/contracts-v5/RECOVERY01-TSK-REVIEW.md final APPROVE; fixed22 + independent6",
+    "RUN": "exact17a7dd7 independent APPROVE before pure shared key substitution; full907 and fixed key identity retain behavior",
+    "MEM": "docs/design/contracts-v5/PRI01-MEM-REVIEW.md exact source APPROVE; fixed13 + existing26 + caller-TX probes"
+  },
+  "mem_co": {
+    "actual_calls": [
+      {
+        "role": "planner",
+        "route": "claude",
+        "model": "claude-opus-5-5"
+      },
+      {
+        "role": "implement",
+        "route": "devin",
+        "model": "swe-2-high"
+      }
+    ],
+    "verified": true,
+    "verified_scope": "unchanged fixed13 only",
+    "input_binding": {
+      "base": "c068a9c6dcd0a3846ada0a420a930941d2bb007f",
+      "files": [
+        {
+          "path": "docs/design/contracts-v5/PRI01-MEM-IMPLEMENTATION-REQUEST.md",
+          "bytes": 1674,
+          "sha256": "ad95e3aed348ac247a617eb855e6d79fca639931f7d214beb04f296796adcad8"
+        },
+        {
+          "path": "docs/design/contracts-v5/PRI01-MEM-SCOPE.md",
+          "bytes": 3730,
+          "sha256": "8521587d94229954a73e1087c90db9d095c4767101273de1f4eb7b43aa5ea0de"
+        },
+        {
+          "path": "docs/design/contracts-v5/MEM01-SCOPE.md",
+          "bytes": 9834,
+          "sha256": "9ee628fd5bf5cc7120b3ad300fb7cf51dc54d7f7e2aa98de130885d7cf2dadae"
+        },
+        {
+          "path": "tests/test_memory_primary_v5.py",
+          "bytes": 10652,
+          "sha256": "a994265b0f433fda4fd491de4d5464d345436efe27d494a4a3d0a9b01139b38c"
+        },
+        {
+          "path": "pal/memory_v5.py",
+          "bytes": 13089,
+          "sha256": "94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4"
+        },
+        {
+          "path": "pal/intake_v5.py",
+          "bytes": 18876,
+          "sha256": "31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad"
+        },
+        {
+          "path": "pal/contracts_v5.py",
+          "bytes": 20973,
+          "sha256": "683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f"
+        },
+        {
+          "path": "pal/sanitize.py",
+          "bytes": 773,
+          "sha256": "eb1a8dcef9cfeb659d9e5fe655eca1148012adf1f2d7883c904e5542f2009bc6"
+        },
+        {
+          "path": "pal/__init__.py",
+          "bytes": 50,
+          "sha256": "2bdd5650424f91c2d6b0bea2f85bffbf63b1e0c0f3d7ecfc22db9974663da5bc"
+        }
+      ]
+    }
+  },
+  "unknown_host_repair": "timeout inference outcome remains unknown; no retry/resume/cancel, only known returned initial source accepted independently",
+  "unmet": [
+    "RECOVERY02 saved compose adoption",
+    "started operate external_tail",
+    "full PRI connection",
+    "v5 real provider proof",
+    "authentic personal usefulness",
+    "whole C13/product acceptance"
+  ]
+}

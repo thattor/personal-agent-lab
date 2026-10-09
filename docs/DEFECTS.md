@@ -1288,6 +1288,16 @@ The subsequent planner chose report-producing role implement, whose Root pin sti
 pointed to SWE. Its report is a completed SWE evaluation, not Opus adoption. Earlier
 RECOVERY01/PRI consultation records were checked and both report calls actually
 used Opus5.5. Correction pins every role to exact Opus5.5 for a design-only task and
-checks actual call model before attribution/adoption. The new report call is
-observed Opus5.5; final result/adoption are pending. Runtime/state and old unknown
+checks actual call model before attribution/adoption. The corrected report completed with actual Opus5.5, REFINE adopted as D047
+after host input binding and current-code reconciliation. Runtime/state and old unknown
 calls are not altered. Report shape verification cannot prove model attribution.
+
+
+RECOVERY02 ART launch initially used guessed role names reviewer/repair, causing
+role_unknown before a task/model call. The completed selection record proves
+registered names planner/implement/review/design; corrected ordinary launch uses
+those exact names. Next dispatch reads actual route/role metadata rather than
+guesses. Runtime/state unchanged; this is a pre-task argument correction, not a
+retry of an unknown inference. Existing full-suite localhost tests require the
+already authorized loopback-capable local execution; restricted907 errors29 and
+failures3 retained, same907 PASS without source or criterion change.

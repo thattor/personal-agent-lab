@@ -1,49 +1,40 @@
 # STATE.md
 
-## Current C080 — continued necessary parallel development
+## Current C080 — necessary parallel development, overall goal NOT MET
 
-The latest direct owner instruction asks to continue remaining work and use as
-much parallel development as necessary. Overall goal NOT MET: independent
-[exit audit](docs/plans/GOAL-EXIT-AUDIT-20261009.md) distinguishes verified local
-C074–C079 from absent v5 recovery/Primary connection and received non-PASS
-usefulness feedback. This is not another wait for the old answer.
+Latest owner direction: continue remaining work with necessary parallel execution.
+Verified local checkpoint C080a at b0b02998: Root full907 PASS27.543s, actual
+process/connection6 PASS, independent exact HOSTe9b8f5/TSK8f20d0/RUN17a7dd7/MEM3016fa
+approvals. [Receipt](evidence/operations/recovery01-20261010/verification.json).
+Full restricted run's localhost EPERM29 errors/3 failures is retained; the same
+suite passes approved local execution. No criterion or product source workaround.
 
-RECOVERY01/1 is frozen after exact qualified CO Claude Opus5.5 REFINE consultation
-and host snapshot binding. Independent fixed HOST13, TSK22 and actual-connection6
-precede implementation. SWE-2 High's HOST task is in its single bounded repair:
-the first CO verifier reports SQLite open errors; its exact source passes the
-unchanged13 in a separate native workspace, so the environment cause is unresolved.
-The repair timed out with unknown inference outcome and is preserved without
-resume/retry/cancel. Only the known returned first HOST sourcee9b8f5 is selected;
-separate Sol APPROVE binds those bytes. Astra's final TSK8f20d0 passed corrected
-fixed22 and independent6 after two preserved history-integrity defects; separate
-Sol APPROVE binds the final source. Root's actual process-death/owner connection6
-PASS0.153s includes one fresh callback, saved draft/fresh VER, immediate controls,
-exception lifetime, completed history and explicit started-compose hold.
-RUN exact17a7dd7 is independently APPROVED after preserved interruption/end-record
-fault regressions. No source self-report or report-shaped CO verified is a product
-completion claim.
+CO0.4.5 is actually running ordinary supported tasks on the existing state. Native
+Codex capacity4 including Root; CO host limit12 per Native adapter, provider quota
+unknown. Actual roles: SWE-2 High module code, Astra complex TSK, separate Sol
+fixed tests/source reviews, exact claude-opus-5-5 design consultation. No30 claim.
+HOST's bounded CO repair timed out with unknown inference outcome: no resume,
+retry/cancel or unknown source adopted; only completed initial HOST bytes accepted
+through independent native proof. Other earlier unknown calls remain untouched.
 
-Separate Sol's saved ART-tail RECOVERY02 proposal is retained for exact Opus
-consultation and SOL freeze. PRI consultation completed REFINE with precise
-candidate text, provenance, workless budget and receipt-recovery prerequisites;
-its full scope is not yet frozen and no PRI code executes. Only PRI01-MEM/1's
-read-only recent-record/stop-receipt prerequisites are now frozen; independent13
-tests are RED before source. Continue these independent
-dependencies without duplicate implementation or repeated green verification.
-Full suite remains pending this additive MEM implementation; local connection
-success alone does not close the checkpoint or the whole goal.
+RECOVERY02/1 is frozen after actual Opus5.5 REFINE F1–F10 plus Root current-code
+reconciliation. ART fixed16 is committed before source (lookup absent RED); SWE
+ART implementation runs in CO-owned workspace. Separate Sol authors TSK fixed
+cases, then Astra implements in another workspace; TaskStore89,663bytes exceeds
+CO's64KiB read limit so native route is the already authorized alternative. Root
+owns shared key/RUN and actual crash/VER proof. No shared source-file writes.
 
-Actual CO0.4.5 state/qualified routes are unchanged. Fresh capacity before this
-consultation: Claude0/0 and Devin0/0, host limit12 per adapter; native limit4
-including SOL. Current work does not claim30 concurrent agents or provider quota.
-No new authentication, service, payment, state edits, old DB changes or retries
-of prior unknown outcomes. D045 raw-local/minimal-public evidence still applies.
+PRI-MEM/1 readonly prerequisites are integrated. Full PRI still unfrozen: Astra
+seam proposal exposes source-withheld candidate provenance over-invalidation and
+uses existing finite host counter/session-owned reservations. Opus refinement,
+TSK prerequisites and actual ART adoption precede Primary activation. Continue
+independent design/preparation while implementation dependencies finish.
 
-Next: managed mock restart proof, precise saved-tail adoption, then current-v5
-Primary→same-Goal ask/answer/change→saved/check/readback connection. Only a useful
-integrated candidate can be sent for the one authentic overall usefulness
-judgment; developer technical choices and fixed tests proceed autonomously.
+Overall gap: saved-tail recovery → bounded Primary whole flow → separately
+qualified finite real-provider proof → one authentic improved usefulness judgment.
+Prior negative owner feedback is known, not another approval wait. Started operate
+external_tail, semantic checks, future P001/multimodal/service scope and old/live
+DB/schedules remain outside this acceptance. Keep exact limits; no new auth/cost.
 
 ## Latest authority D044 / D043 / D041 / D040
 

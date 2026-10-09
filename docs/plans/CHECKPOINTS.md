@@ -1176,3 +1176,17 @@ report verifier PASS; no source/test verification criterion changes. F3 shared
 state-table wording is corrected. C080 scoped recovery/startup-lock preparation
 starts before PRI routing; ended leases and admitted/unknown states stay distinct.
 General recovery/PRI/provider/UI/semantic usefulness and whole-PAL are unmet.
+
+
+## C080a — restart ownership and read-only Primary memory prerequisite
+
+MET locally at b0b02998: Root full907 PASS27.543s; actual process/owner connection6;
+independent exact HOST/TSK/RUN/MEM review. It removes duplicate mock dispatch after
+qualified process death, retains immediate controls/history/counters, and adds
+source-safe recent metadata/original stop receipts. Original defects and unknown
+CO HOST repair stay preserved. Started compose still holds until RECOVERY02
+adoption; started operate holds. Overall goal NOT MET. Opus RECOVERY02 REFINE
+now adopted as D047; fixed ART/TSK owner tests precede source. PRI full seam remains
+unfrozen pending exposure/budget/receipt choices. Continue ART adoption → Primary
+whole path → finite separately qualified provider proof → authentic usefulness.
+No additional human technical approval, service activation or P001 adoption.
