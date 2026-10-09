@@ -57,3 +57,35 @@ Final acceptance will bind an exact candidate commit/hash and rerun meaningful
 fixed and independent cases. Root owns process/whole mock integration and full
 regression. This review does not establish a real-provider profile, authentic
 usefulness, external service activation or complete product acceptance.
+
+## Exact candidate review — REQUEST_CHANGES
+
+Candidate `f7bac929cb4bec57205e8a6163106f3b7b058f82`, source SHA256
+`d54f9e741b036acb334169b88e7481f1caf44e61239fec9299ca80dc947b2678`.
+Reviewed in a separate detached checkout. Fixed39 PASS0.438s and binding8
+PASS0.145s under Python3.13 -E -s -B. Original two independent cases are now PASS:
+stop after actual consume causes zero callback entries; malformed saved error
+returns unavailable without echoing the canary. Local logs:
+`/private/tmp/pri-host-astra-fixed-review.log`,
+`/private/tmp/pri-host-astra-binding-review.log`,
+`/private/tmp/pri-host-astra-independent-probes.log`.
+
+A blocking persisted phase/intent inconsistency remains. `_turn` validates that
+applying requires intent, but does not validate the converse. An actual new_work
+owner commit followed by response loss leaves applying with a valid saved intent.
+Changing only turn.phase to returned (also pending/preparing/admitted) leaves its
+intent/call hashes valid. Startup recovery then records interrupted, despite the
+existing committed Goal, instead of holding the contradictory durable state.
+This is not coordinated evidence forgery: only one phase column changes.
+
+Independent fixed regression `tests/test_primary_phase_review_v5.py` creates this
+real-owner commit gap, changes only phase, reopens the real managed host and
+requires held/zero writes/no lookup/no new charge/no callback, retaining the Goal.
+Original candidate: 1 method / 4 cases RED, 4 failures, 0.056s; evidence in
+`/private/tmp/pri-host-astra-phase-red.log`. Tests do not modify production source.
+Root acknowledged the finding and owns a minimal phase/intent/call consistency
+repair; no repaired candidate has yet been reviewed here.
+
+Process5 and whole-suite results are Root evidence, not this review's independent
+runs. Final approval remains withheld pending an exact corrected candidate and
+unchanged probe rerun. No provider/service/live-data operation was performed.
