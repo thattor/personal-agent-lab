@@ -108,9 +108,21 @@ class MockRunner:
         values, excluded = [], []
         required_set = set(required)
         for ref in dict.fromkeys((*required, *optional)):
-            read = self._memory.read({'ref': ref.to_json()}, purpose='model_context')
+            try:
+                read = self._memory.read({'ref': ref.to_json()}, purpose='model_context')
+                if type(read) is not Result:
+                    raise ContractError()
+                read = Result.from_json(read.to_json())
+                if read.ok:
+                    body = _value(read)
+                    if (type(body) is not dict or Ref.from_json(body['ref']) != ref
+                            or type(body['content']) is not str):
+                        raise ContractError()
+                    dumps(body['content'])
+            except Exception:
+                return _failure(ErrorCode.UNAVAILABLE, 'source read unavailable'), [], []
             if read.ok:
-                values.append(_value(read))
+                values.append(body)
             elif ref not in required_set and read.error.code in (
                     ErrorCode.DENIED, ErrorCode.NOT_FOUND):
                 excluded.append(ref)
@@ -133,6 +145,7 @@ class MockRunner:
         finished, calls, excluded_steps_all = [], [], []
         excluded_all = list(_refs(lease['checkpoint'].get('lookup_excluded_refs', [])))
         last_receipt = None
+        pending_inputs = []
 
         def release(outcome, reason, error_code=None):
             result = self._tasks.release({'lease_id': lease_id, 'work_ref': work,
@@ -142,7 +155,8 @@ class MockRunner:
             value = dict(_value(result), status='released', lease_id=lease_id,
                          steps=finished, call_ids=calls,
                          excluded_refs=[ref.to_json() for ref in dict.fromkeys(excluded_all)],
-                         excluded_step_ids=list(dict.fromkeys(excluded_steps_all)))
+                         excluded_step_ids=list(dict.fromkeys(excluded_steps_all)),
+                         pending_inputs=copy.deepcopy(pending_inputs))
             if error_code is not None:
                 value['reason_code'] = error_code.value
             if last_receipt is not None:
@@ -172,8 +186,8 @@ class MockRunner:
                     return result
             return result
 
-        def local_call(method, request):
-            for _ in range(3):
+        def local_call(method, request, *, attempts=3):
+            for _ in range(attempts):
                 try:
                     result = method(copy.deepcopy(request))
                     if type(result) is not Result:
@@ -221,7 +235,7 @@ class MockRunner:
                 if verified.error.code is ErrorCode.UNAVAILABLE:
                     return yield_or_retain('verification persistence unresolved')
                 if verified.error.code in (ErrorCode.CONFLICT, ErrorCode.STALE, ErrorCode.DENIED):
-                    return failed(verified, 'verification authority changed')
+                    return None
                 return _failure(ErrorCode.UNAVAILABLE, 'verification outcome unavailable')
             try:
                 receipt = _value(verified)
@@ -296,7 +310,139 @@ class MockRunner:
             return Result.success(dict(done, status='completed', lease_id=lease_id,
                 verification=receipt, steps=reported_steps, call_ids=reported_calls,
                 excluded_refs=[ref.to_json() for ref in dict.fromkeys(excluded_all)],
-                excluded_step_ids=list(dict.fromkeys(excluded_steps_all))))
+                excluded_step_ids=list(dict.fromkeys(excluded_steps_all)),
+                pending_inputs=copy.deepcopy(pending_inputs)))
+
+        def identifier(value):
+            if type(value) is not str or not value:
+                raise ContractError()
+            dumps(value)
+            return value
+
+        def step_index(step):
+            index = step['index']
+            if type(index) is not int or not 0 <= index <= 9223372036854775807:
+                raise ContractError()
+            return index
+
+        def validate_links():
+            raw = lease.get('pending_inputs', [])
+            if type(raw) is not list:
+                raise ContractError()
+            by_id = {}
+            for step in steps:
+                identifier(step['step_id'])
+                step_index(step)
+                if step['status'] not in ('started', 'finished', 'abandoned'):
+                    raise ContractError()
+                if step['step_id'] in by_id:
+                    raise ContractError()
+                by_id[step['step_id']] = step
+            seen_questions, seen_steps = set(), set()
+            previous_index = -1
+            for link in raw:
+                if type(link) is not dict or set(link) != {'question_id', 'step_id', 'answer_record_ref'}:
+                    raise ContractError()
+                question_id, step_id = identifier(link['question_id']), identifier(link['step_id'])
+                answer = Ref.from_json(link['answer_record_ref'])
+                step = by_id[step_id]
+                binding = WorkRef.from_json(step['work_ref'])
+                action = step['action']
+                if (answer.kind.value != 'record' or question_id in seen_questions or step_id in seen_steps
+                        or step['status'] != 'finished' or step_index(step) <= previous_index
+                        or (binding.goal_id, binding.revision) != (work['goal_id'], work['revision'])
+                        or binding.epoch > WorkRef.from_json(work).epoch
+                        or type(action) is not dict or action.get('kind') != 'ask'):
+                    raise ContractError()
+                parsed = parse_model_action(dumps(action), allowed_refs=_refs(action['source_refs']))
+                if parsed.kind.value != 'ask' or step['result_refs'] != []:
+                    raise ContractError()
+                seen_questions.add(question_id)
+                seen_steps.add(step_id)
+                previous_index = step_index(step)
+            return copy.deepcopy(raw)
+
+        def wait_for_answer(step):
+            recovering = False
+            try:
+                if (type(step) is not dict
+                        or set(step) != {'step_id', 'work_ref', 'index', 'action', 'status', 'result_refs'}
+                        or step['result_refs'] != [] or step['status'] != 'started'
+                        or WorkRef.from_json(step['work_ref']) != WorkRef.from_json(work)):
+                    raise ContractError()
+                identifier(step['step_id'])
+                step_index(step)
+                action = parse_model_action(dumps(step['action']),
+                                            allowed_refs=_refs(step['action']['source_refs'])).to_json()
+                if action['kind'] != 'ask':
+                    raise ContractError()
+                request = {'key': dumps(['C04.ask', work, step['step_id']]), 'work_ref': work,
+                           'step_id': step['step_id'],
+                           **{name: action[name] for name in ('question', 'missing_fact', 'source_refs')}}
+                result = local_call(self._tasks.ask, request)
+                if result is not None and not result.ok and result.error.code is ErrorCode.UNAVAILABLE:
+                    recovering = True
+                    result = local_call(self._tasks.get_question_by_key, {'key': request['key']}, attempts=1)
+            except Exception:
+                return _failure(ErrorCode.UNAVAILABLE, 'question response unavailable')
+            if result is None:
+                return _failure(ErrorCode.UNAVAILABLE, 'question response malformed')
+            if not result.ok:
+                code = result.error.code
+                if recovering:
+                    return yield_or_retain('question persistence unresolved')
+                if code in (ErrorCode.CONFLICT, ErrorCode.STALE, ErrorCode.DENIED,
+                            ErrorCode.NOT_FOUND, ErrorCode.INVALID_INPUT):
+                    released = release('yield', 'question authority changed', code)
+                    return released if released.ok else _failure(code, 'question could not be adopted')
+                return _failure(ErrorCode.UNAVAILABLE, 'question outcome unavailable')
+            try:
+                receipt = _value(result)
+                if (type(receipt) is not dict or set(receipt) != {'question_id', 'state', 'work_ref'}
+                        or receipt['state'] != 'waiting_input'
+                        or WorkRef.from_json(receipt['work_ref']) != WorkRef.from_json(work)):
+                    raise ContractError()
+                identifier(receipt['question_id'])
+            except (ContractError, KeyError, TypeError):
+                return _failure(ErrorCode.UNAVAILABLE, 'question receipt malformed')
+            completed_step = dict(step, status='finished', result_refs=[])
+            result = dict(receipt, status='waiting', lease_id=lease_id, step_id=step['step_id'],
+                steps=[*finished, completed_step], call_ids=calls,
+                pending_inputs=copy.deepcopy(pending_inputs),
+                excluded_refs=[ref.to_json() for ref in dict.fromkeys(excluded_all)],
+                excluded_step_ids=list(dict.fromkeys(excluded_steps_all)))
+            if last_receipt is not None:
+                result['verification'] = last_receipt
+            return Result.success(result)
+
+        try:
+            pending_inputs = validate_links()
+        except (ContractError, KeyError, TypeError):
+            return yield_or_retain('answer linkage unavailable')
+
+        started = [step for step in steps if step['status'] == 'started']
+        if (len(started) == 1 and steps and started[0] is steps[-1]
+                and type(started[0]['action']) is dict and started[0]['action'].get('kind') == 'ask'):
+            step = started[0]
+            try:
+                call_id = dumps(['C15.call', lease_id, step_index(step)])
+                observed = local_call(self._tasks.get_call, {'call_id': call_id})
+                if observed is None or not observed.ok:
+                    raise ContractError()
+                call = _value(observed)
+                if (type(call) is not dict
+                        or set(call) != {'call_id', 'lease_id', 'work_ref', 'index', 'status', 'may_enter', 'step_id'}
+                        or call['call_id'] != call_id or call['lease_id'] != lease_id
+                        or call['step_id'] != step['step_id'] or call['status'] != 'returned'
+                        or type(call['may_enter']) is not bool or call['may_enter']
+                        or type(call['index']) is not int or call['index'] != step_index(step)
+                        or WorkRef.from_json(call['work_ref']) != WorkRef.from_json(work)
+                        or WorkRef.from_json(step['work_ref']) != WorkRef.from_json(work)):
+                    raise ContractError()
+            except (ContractError, KeyError, TypeError):
+                return yield_or_retain('retained question call unavailable')
+            calls.append(call_id)
+            return wait_for_answer(step)
 
         # A returned output has no durable MOD body to recover here. A fresh run
         # must not turn a retained lease into permission for another model unit.
@@ -327,6 +473,8 @@ class MockRunner:
             context_result = self._tasks.get_execution_context(
                 {'lease_id': lease_id, 'work_ref': work})
             if not context_result.ok:
+                if context_result.error.code in (ErrorCode.CONFLICT, ErrorCode.STALE, ErrorCode.DENIED):
+                    return release('yield', 'execution authority changed', context_result.error.code)
                 return failed(context_result, 'execution context unavailable')
             metadata = _value(context_result)
             required, optional = _refs(metadata['required_refs']), _refs(metadata['optional_refs'])
@@ -354,6 +502,10 @@ class MockRunner:
                 else:
                     excluded_steps.append(step['step_id'])
             excluded_steps_all.extend(excluded_steps)
+            eligible_ids = {step['step_id'] for step in eligible_steps}
+            eligible_links = [link for link in pending_inputs
+                              if link['step_id'] in eligible_ids
+                              and Ref.from_json(link['answer_record_ref']) in available]
             remaining = metadata['remaining_budget']
             if any(remaining[kind]['work'] <= 0 for kind in ('model', 'step')):
                 return release('failed', 'work budget exhausted', ErrorCode.LIMIT)
@@ -368,6 +520,8 @@ class MockRunner:
             call_id = dumps(['C15.call', lease_id, index])
             c12 = {'work_ref': work, 'brief': lease['brief'], 'grant_summary': lease['grant'],
                    'context': context, 'steps': eligible_steps, 'remaining_budget': remaining}
+            if eligible_links:
+                c12['pending_inputs'] = copy.deepcopy(eligible_links)
             called = self.invoker.invoke(self._tasks, {
                 'call_id': call_id, 'lease_id': lease_id, 'work_ref': work,
                 'reservation_id': _value(reservation)['reservation_id'],
@@ -400,6 +554,8 @@ class MockRunner:
             if not begun.ok:
                 return failed(begun, 'mock action could not be adopted')
             step = _value(begun)
+            if action['kind'] == 'ask':
+                return wait_for_answer(step)
             result_refs, lookup_excluded, truncated = [], [], False
             if step['action']['kind'] == 'lookup':
                 found = self._memory.search({'session_id': metadata['session_id'],
