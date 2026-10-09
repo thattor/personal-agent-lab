@@ -55,6 +55,7 @@ class MockComposeTests(unittest.TestCase):
         memory = None
         self.tasks = TaskStore(self.conn, host_grant=grant, expert_id='expert',
                                host_limits=Limits(0, 50, 50),
+                               artifact_inspect=lambda c, r: Result.failure('unavailable', 'unused double'),
                                source_gate=lambda c, refs: memory.source_gate(c, refs))
         memory = self.memory = MemoryStore(self.conn, sanitize_text=lambda x: x,
                                            append_event=self.tasks.append_event,
@@ -69,7 +70,6 @@ class MockComposeTests(unittest.TestCase):
             request_scope=grant))['work_ref']
         self.owner = ReceiptOwner()
         self.calls, self.finishes = [], []
-        self.tasks._artifact_inspect = lambda c, r: Result.failure('unavailable', 'unused double')
         self.real_finish = self.tasks.finish_step
         self.tasks.finish_step = self.finish_double
 
