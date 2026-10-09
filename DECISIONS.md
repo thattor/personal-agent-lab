@@ -2162,3 +2162,20 @@ owner response without claiming an accepted runtime permission or external send.
 Do not extend it to a materially different review package or edit CO/global approval
 settings. Any needed later operation must be concrete and use a permitted approval
 path. Development and verification continue with the native implementation.
+
+
+D043 — project-wide AGY development approval, 2026-10-09
+Direct owner instruction in this development chat: 「本プロジェクトにおけるAGY使用を全面的に承認します」.
+This supersedes the per-package AGY permission wait. Existing AGY paths may receive
+necessary PAL development code/spec/tests/diffs for the authorized design, code
+and independent review roles; do not re-ask the same project/material permission
+for each new bounded assignment. Proceed with the prepared202200-byte exact
+claude-opus-5-5-high ASK milestone/CHANGE01 consultation. Preserve the previous
+automatic refusals as history; the new direct instruction is the fresh authority,
+not a bypass or an invented acceptance of the old presentation channel.
+Role pools, mock/stdlib-only scope, no secrets/credentials/unneeded personal data,
+no new auth/service/paid fallback/publication/live DB changes, and actual product
+access/org/tool approval limits still apply. No CO/AGY/global permission settings
+are changed. Unknown old calls remain untouched and the completed native ASK
+code assignment is not duplicated. Confirm each route/model/auth/cost condition
+before use; success must be observed, not inferred from this saved permission.

@@ -1,6 +1,6 @@
 # STATE.md
 
-## Latest authority D041 / D040
+## Latest authority D043 / D041 / D040
 
 Owner role pools are fixed in DECISIONS D041: design Opus/Astra/Sol6.1; code
 SWE-2 High/Astra/Sol6.1/Sonnet5.5/Opus5.5; lead Sol6.1/Opus5.5. Unconnected
@@ -9,7 +9,9 @@ after the owner's manual reset; maximum32 remains bounded by real capacity.
 Native slots4 including Root; CO0.4.5 host12 per adapter, currently0/0 each.
 Claude Code Pro is session-limited (owner image reset22:19; provider22:20).
 AGY Claude is separate: owner image48% session/39% weekly, not upper100% buckets.
-No new reset, credits, auth, runtime/state edits, service or schedule.
+D043 directly authorizes project-wide AGY development use and removes repeated
+material-sharing confirmation. Existing cost/auth/service and runtime policy
+boundaries remain. No new reset, credits, auth, runtime/state edits or schedule.
 
 ## C078 — question/answer implementation verified; milestone review pending
 
@@ -40,10 +42,11 @@ grant, revision/old-lease/budget/history invariants and exact source hazards.
 It remains a proposal; Opus consultation precedes adoption or change code.
 Root fixed a13-file202200-byte ASK milestone/next-design review package at163779d,
 SHA256 bf69fe23ba35e585cdb547d743859fec65954bb809c6f59fbc31fc2ae97eb3aa,
-for existing AGY claude-opus-5-5-high. Direct manual approval was requested in
-the development chat because the previous automatic review rejected the
-other-thread permission presentation. No answer/send is claimed. Prior Sonnet
-manual approval is not expanded. Evidence: opus-review-prepared.json. The qualified
+for existing AGY claude-opus-5-5-high. D043 direct owner project-wide AGY approval
+now releases the material-sharing wait. The exact prepared review is being
+preflighted; no successful send/result is claimed before observation. Historical
+Sonnet refusals and completed native code remain untouched. Evidence:
+opus-review-prepared.json. The qualified
 CO Opus alternative is available only after actual route quota permits; the
 reported22:20 reset is a time estimate, not a verified resumed route.
 
@@ -57,8 +60,8 @@ already recorded Opus note and changes no product/contract semantics.
 
 Remaining dependent work is the prepared Opus consultation, then contract freeze
 and isolated implementation; no unnecessary duplicate work is queued to fill slots.
-No recurring owner approval is introduced for routine development; any actual
-transport approval remains specific to its package. Whole PAL/PRI/UI/provider,
+D043 removes recurring AGY material-sharing questions; actual tool/product
+restrictions remain operative. Whole PAL/PRI/UI/provider,
 semantic usefulness, general
 recovery, auth/cost/publication and unknown-call boundaries remain unchanged.
 

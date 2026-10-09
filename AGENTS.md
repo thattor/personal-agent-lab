@@ -1,6 +1,6 @@
 # AGENTS.md — Personal Agent Lab
 
-Current D042/D041/D040/C078 continuation and D037 route instruction supersede earlier stops
+Current D043/D042/D041/D040/C078 continuation and D037 route instruction supersede earlier stops
 and the CO-only restriction. Evaluate checkpoints, correct within accepted scope,
 then actually continue the next unfinished authorized dependency.
 SWE-2 remains preferred when usable; native Astra/Sol and scoped AGY Opus5.5/Sonnet5.5
@@ -30,8 +30,9 @@ separate TSK/RUN source reviews. Final Opus milestone review remains pending.
 Subsequent READ01 display N1 correction atsourcea974fc0 passes793 full host tests,
 actual ASK demo and separate Sol review; it changes no storage or wire semantics.
 Continue independent C10.change design preparation; consultation precedes adoption.
-Preserve AGY egress refusals and specific D042 manual-approval scope; do not
-duplicate the finished native ASK implementation or alter CO/approval settings.
+D043 directly approves project-wide AGY development use; no repeated material
+sharing permission question. Preserve prior refusals, completed native ASK code
+and unknown calls; do not duplicate work or alter CO/approval settings.
 
 C077: READ01 local slice MET atff1a1cc,747 host PASS and independent exact Opus
 code APPROVE. Milestone provenance REFINE was addressed by a saved/rerun harness;
