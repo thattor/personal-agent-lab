@@ -2378,3 +2378,34 @@ recovery scope (latest intent across revisions); F4 is a PRI host provenance
 obligation; F5 historical artifact refs remain revision-scoped. None is used to
 weaken source-stop or to pretend PRI/recovery works. See CHANGE01-MILESTONE-OUTCOME,
 RECOVERY01-PREPARATION and milestone-disposition.json.
+
+
+D046 — continue the remaining goal through necessary parallel work, 2026-10-10
+Source: latest direct owner instructions in this development chat:
+「まだ残っているなら続けて、ゴールに達していますか？」 and
+「必要なだけ並列作業で開発して」. The independent goal-exit audit establishes
+that local C074–C079 do not complete the overall destination; v5 recovery/Primary
+and authentic usefulness remain. Received non-PASS feedback is not an unanswered
+permission request. Continue approved dependencies after each verified checkpoint.
+This supplements D041/D045 without activating P001, new fees/auth/services, old
+DB use, unknown-call retries or wider publication.
+
+RECOVERY01 question: what minimal managed mock lifetime and orphan-settlement
+contract distinguishes ceased unknown entry from returned/raised/not_entered?
+Actual qualified CO claude-opus-5-5 planner and separate design report completed;
+REFINE is adopted with F1–F11 in RECOVERY01-SCOPE at06aed962. Host binds11 fixed
+input files to the consultation base. CO verified:true means bounded report shape
+only. Registered DB/session/lease/claim proof, strict provenance/history integrity,
+startup-only settlement and distinct interrupted are required. Started compose
+and operate retain explicit holds. No generic child/provider death proof follows.
+Fixed HOST13/TSK22/connection6 precede isolated source; SOL owns integration.
+
+PRI question: what minimum connection makes an ordinary turn drive same-Goal
+ask/answer/change and saved/check/readback without new routing authority?
+Actual exact CO claude-opus-5-5 returns REFINE; report and host12-input binding are
+retained. Candidate text must be source-safe, provenance conservatively closed,
+workless Primary charged by TSK's finite host counter, effects reconciled through
+public original-receipt lookup and one PRI terminal event. No artificial Expert
+lease, private-owner SQL, reply-to-memory laundering or inferred human approval.
+SOL has not yet frozen this contract. Host wiring follows recovery and ART-tail
+adoption; one actual usefulness judgment follows a materially improved candidate.

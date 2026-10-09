@@ -8,13 +8,22 @@ much parallel development as necessary. Overall goal NOT MET: independent
 C074–C079 from absent v5 recovery/Primary connection and received non-PASS
 usefulness feedback. This is not another wait for the old answer.
 
-Three separate native contexts completed recovery design, saved ART/VER-tail
-analysis and goal-exit audit. Notes are proposals/attributed research, not adopted
-API or recovery PASS. Exact qualified CO Claude Opus5.5 adoption consultation is
-running against the fixed candidate inputs; after adoption SOL freezes shared
-examples and allocates isolated HOST/TSK/RUN source and independent tests.
-Separate Sol investigates PRI ingress under existing C01–C15 while waiting;
-no execution depends on an unfrozen recovery interface.
+RECOVERY01/1 is frozen after exact qualified CO Claude Opus5.5 REFINE consultation
+and host snapshot binding. Independent fixed HOST13, TSK22 and actual-connection6
+precede implementation. SWE-2 High's HOST task is in its single bounded repair:
+the first CO verifier reports SQLite open errors; its exact source passes the
+unchanged13 in a separate native workspace, so the environment cause is unresolved.
+Astra prepared TSK source; separate Sol reproduced historical-Step corruption
+and Astra repaired it. Managed22/connection6 are still pending actual HOST handoff.
+RUN exact17a7dd7 is independently APPROVED after preserved interruption/end-record
+fault regressions. No source self-report or report-shaped CO verified is a product
+completion claim.
+
+Separate Sol's saved ART-tail RECOVERY02 proposal is retained for exact Opus
+consultation and SOL freeze. PRI consultation completed REFINE with precise
+candidate text, provenance, workless budget and receipt-recovery prerequisites;
+its scope is not yet frozen and no PRI code executes. Continue these independent
+dependencies without duplicate implementation or repeated green verification.
 
 Actual CO0.4.5 state/qualified routes are unchanged. Fresh capacity before this
 consultation: Claude0/0 and Devin0/0, host limit12 per adapter; native limit4
