@@ -28,6 +28,9 @@ D073 records the completed independent operator APPROVE: fixed4/old8/fault2
 all pass and Root's actual four-inventory guard matches. The concrete separate
 MAX1 disposition is PENDING HUMAN in the existing decision lane; it is not a
 private-material-sharing or model-telemetry reconfirmation.
+Exact C0971d632c3 is normally pushed to existing Draft PR19; independent
+anonymous17/17 HTTP200/equal-byte readback is recorded, source/test hashes unchanged.
+[Publication receipt](evidence/operations/c097-private-failure-20261010/public-readback-1d632c3.json).
 No new real case/root/invoke is authorized; C094's UNKNOWN remains preserved.
 Real qualification/Expert/UI/authentic usefulness/release and whole goal **NOT_MET**.
 CO is optional and no model prose/intelligence quality is graded.

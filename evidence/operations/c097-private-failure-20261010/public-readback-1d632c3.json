@@ -1,0 +1,151 @@
+{
+  "count": 17,
+  "exit": 0,
+  "export_report_sha256": "47e36c2f70b3b9137e61ae7e895d5502e64baca50aee88885113dfadc099a16e",
+  "files": [
+    {
+      "actual_sha256": "b2d9369fab36056df4770ab4d3176fe361c303393e8f13bf185d35940605ed2b",
+      "bytes": 108007,
+      "expected_sha256": "b2d9369fab36056df4770ab4d3176fe361c303393e8f13bf185d35940605ed2b",
+      "http": 200,
+      "match": true,
+      "path": "ACCEPTANCE.md"
+    },
+    {
+      "actual_sha256": "8c65c6bb7d17527703a5c9c7203d76c949eae87911647d0fcc2ef3d5cdacea38",
+      "bytes": 3362,
+      "expected_sha256": "8c65c6bb7d17527703a5c9c7203d76c949eae87911647d0fcc2ef3d5cdacea38",
+      "http": 200,
+      "match": true,
+      "path": "AGENTS.md"
+    },
+    {
+      "actual_sha256": "887fc725a68c1661372081e63bcbf3934cfd2d18e3c494ab4b0e26589abda9e8",
+      "bytes": 288489,
+      "expected_sha256": "887fc725a68c1661372081e63bcbf3934cfd2d18e3c494ab4b0e26589abda9e8",
+      "http": 200,
+      "match": true,
+      "path": "DECISIONS.md"
+    },
+    {
+      "actual_sha256": "85cd47c26ae9d15c994ca66f038933562cea14445188fef5d0d97d09caa4b00e",
+      "bytes": 150899,
+      "expected_sha256": "85cd47c26ae9d15c994ca66f038933562cea14445188fef5d0d97d09caa4b00e",
+      "http": 200,
+      "match": true,
+      "path": "STATE.md"
+    },
+    {
+      "actual_sha256": "5b102964491645174d43e172988d30d13d98052292483a50736d20960b3a81fd",
+      "bytes": 10516,
+      "expected_sha256": "5b102964491645174d43e172988d30d13d98052292483a50736d20960b3a81fd",
+      "http": 200,
+      "match": true,
+      "path": "docs/design/contracts-v5/PRI02-CLAUDE-FAILURE-SCOPE.md"
+    },
+    {
+      "actual_sha256": "951e406df3dbc77b9ccf2842952ba25f30e6d499f5d0aecf8fcea82df8b5928d",
+      "bytes": 3465,
+      "expected_sha256": "951e406df3dbc77b9ccf2842952ba25f30e6d499f5d0aecf8fcea82df8b5928d",
+      "http": 200,
+      "match": true,
+      "path": "docs/design/contracts-v5/PRI02-CLAUDE-QUALIFICATION-V3-PREPARATION.md"
+    },
+    {
+      "actual_sha256": "412541a0353eb284492cecd6e7b7b9d8e82ed106dadbd59a1945e24381a732b9",
+      "bytes": 10223,
+      "expected_sha256": "412541a0353eb284492cecd6e7b7b9d8e82ed106dadbd59a1945e24381a732b9",
+      "http": 200,
+      "match": true,
+      "path": "docs/design/contracts-v5/UI02-NATIVE-FIXTURE-SCOPE.md"
+    },
+    {
+      "actual_sha256": "14bdfa454eb63e37cffe06ba2cf87a935fba95381dc7aca9535891072919eb43",
+      "bytes": 11937,
+      "expected_sha256": "14bdfa454eb63e37cffe06ba2cf87a935fba95381dc7aca9535891072919eb43",
+      "http": 200,
+      "match": true,
+      "path": "docs/reviews/C096-NATIVE-UI-FAILURE-DESIGN-OPUS.md"
+    },
+    {
+      "actual_sha256": "388a58de80cd65d5905a31448883f1c89b36e49a8130fe54dd9c4e0aa4adc234",
+      "bytes": 3583,
+      "expected_sha256": "388a58de80cd65d5905a31448883f1c89b36e49a8130fe54dd9c4e0aa4adc234",
+      "http": 200,
+      "match": true,
+      "path": "docs/reviews/C097-HELD-LANE-DISPOSITION-PROPOSAL.md"
+    },
+    {
+      "actual_sha256": "23741d662d3a7e08ef9488c928fcf3e433df1313eea25b4a4e5dbcb975ca53bc",
+      "bytes": 2163,
+      "expected_sha256": "23741d662d3a7e08ef9488c928fcf3e433df1313eea25b4a4e5dbcb975ca53bc",
+      "http": 200,
+      "match": true,
+      "path": "evidence/operations/c096-native-ui-20261010/opus-design-summary.json"
+    },
+    {
+      "actual_sha256": "3de739f0fd1d2d67fd96d007a1acbd93bb08747d4a1f0c8b2bb6a33836ef0801",
+      "bytes": 11795,
+      "expected_sha256": "3de739f0fd1d2d67fd96d007a1acbd93bb08747d4a1f0c8b2bb6a33836ef0801",
+      "http": 200,
+      "match": true,
+      "path": "evidence/operations/c096-native-ui-20261010/public-readback-6170c26.json"
+    },
+    {
+      "actual_sha256": "f014e5acf3ba097bf6894f54ae98756a39681d4170e3b20c71827b3fbf4ae6bb",
+      "bytes": 842,
+      "expected_sha256": "f014e5acf3ba097bf6894f54ae98756a39681d4170e3b20c71827b3fbf4ae6bb",
+      "http": 200,
+      "match": true,
+      "path": "evidence/operations/c096-native-ui-20261010/u4-shape-trace-summary.json"
+    },
+    {
+      "actual_sha256": "79b13c5004c5985ce784e82dcad0e710cda0b4f97be5c677d5b977ff74aee933",
+      "bytes": 2561,
+      "expected_sha256": "79b13c5004c5985ce784e82dcad0e710cda0b4f97be5c677d5b977ff74aee933",
+      "http": 200,
+      "match": true,
+      "path": "evidence/operations/c097-private-failure-20261010/operator-preparation-summary.json"
+    },
+    {
+      "actual_sha256": "cfc45e1c63dd1f0de04d695c3b8676edd2f547dfa804b11303c8bd9f6752409f",
+      "bytes": 2493,
+      "expected_sha256": "cfc45e1c63dd1f0de04d695c3b8676edd2f547dfa804b11303c8bd9f6752409f",
+      "http": 200,
+      "match": true,
+      "path": "evidence/operations/c097-private-failure-20261010/source-pin-summary.json"
+    },
+    {
+      "actual_sha256": "40515e7bb9a998fcd86f0bd4cc417626b2601ed80cf5b708d715455db1205ce8",
+      "bytes": 4374,
+      "expected_sha256": "40515e7bb9a998fcd86f0bd4cc417626b2601ed80cf5b708d715455db1205ce8",
+      "http": 200,
+      "match": true,
+      "path": "evidence/operations/c097-private-failure-20261010/verification.json"
+    },
+    {
+      "actual_sha256": "bbafd44f9f95551ff7af4602ceeb0d5d2f5694e7ffa74bbb8beb881d3ec7b009",
+      "bytes": 18143,
+      "expected_sha256": "bbafd44f9f95551ff7af4602ceeb0d5d2f5694e7ffa74bbb8beb881d3ec7b009",
+      "http": 200,
+      "match": true,
+      "path": "tests/test_native_claude_failure_v5.py"
+    },
+    {
+      "actual_sha256": "d7b63a205b0ccf85a4e88cd9a7c9616d38e6b56ff20802b79f789b6554e333b3",
+      "bytes": 22689,
+      "expected_sha256": "d7b63a205b0ccf85a4e88cd9a7c9616d38e6b56ff20802b79f789b6554e333b3",
+      "http": 200,
+      "match": true,
+      "path": "tools/native_claude_text_v5.py"
+    }
+  ],
+  "head": "1d632c399134997fcd7b891b6559ba47450ee55a",
+  "limitations": [
+    "Anonymous exact-commit HTTP readback only; no source approval or real qualification",
+    "One GET per file; timeout10 seconds; max4 parallel; bounded2MiB; no credentials/cookies/retries"
+  ],
+  "matches": 17,
+  "status": "PASS",
+  "version": "C097-INDEPENDENT-ANONYMOUS-READBACK/1"
+}
