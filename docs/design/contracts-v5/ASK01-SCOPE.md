@@ -206,7 +206,9 @@ rule. This is same-runner local continuation, not restart adoption.
 
 C076: VER verify conflict/stale/denied returns to the bounded loop like complete,
 not failed(). Existing execution-context authority and release fencing settle
-newer controls before inference. Persistent verify unavailable retains existing
+newer controls before inference: get_execution_context conflict/stale/denied uses
+release(yield), never the generic failed disposition. Required-source gate denied
+remains its existing separate terminal path. Persistent verify unavailable retains existing
 yield_or_retain behavior; completion uncertainty retains its existing behavior.
 
 ## 7. Essential acceptance and ownership
