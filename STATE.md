@@ -31,6 +31,8 @@ consultation b52e1ef96fbc482e88bb5c002b686a1b finished with useful REFINE advice
 its document size verifier failed (6885/6000 bytes), preserved as verified:false.
 Unknown SWE/AGY calls and stopped trials/schedules remain untouched.
 
+## Retained C069 outcome and route snapshot
+
 The continuing route instruction is D037/C069 following D036/C068. Direct alternative routes
 are authorized when CO cannot serve the work; private development material stays
 within the approved routes with no new auth, cost or publication.
