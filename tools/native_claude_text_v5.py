@@ -106,6 +106,11 @@ def _cleanup(child):
     try:
         if child.returncode is None:
             try:
+                os.waitid(os.P_PID, child.pid, os.WEXITED | os.WNOHANG | os.WNOWAIT)
+            except ChildProcessError:
+                # Another owner reaped it; no PGID-only signal is safe now.
+                _fail()
+            try:
                 os.killpg(child.pid, signal.SIGTERM)
             except ProcessLookupError:
                 pass
@@ -120,6 +125,24 @@ def _cleanup(child):
         for stream in (child.stdin, child.stdout, child.stderr):
             if stream is not None:
                 stream.close()
+
+
+def _observe_exit(child, deadline):
+    # WNOWAIT preserves PID ownership until protocol acceptance or error cleanup.
+    while True:
+        status = os.waitid(os.P_PID, child.pid,
+                           os.WEXITED | os.WNOHANG | os.WNOWAIT)
+        if status is not None:
+            if status.si_pid != child.pid:
+                _fail()
+            if status.si_code == os.CLD_EXITED:
+                return status.si_status
+            if status.si_code in (os.CLD_KILLED, os.CLD_DUMPED):
+                return -status.si_status
+            _fail()
+        if time.monotonic() >= deadline:
+            _fail()
+        time.sleep(0.01)
 
 
 def _pump(child, raw, *, seconds, stdout_cap, stderr_cap, feed=None,
@@ -179,7 +202,7 @@ def _pump(child, raw, *, seconds, stdout_cap, stderr_cap, feed=None,
         remaining = deadline - time.monotonic()
         if sent != len(raw) or remaining <= 0:
             _fail()
-        code = child.wait(timeout=remaining)
+        code = _observe_exit(child, deadline)
     return bytes(output), bytes(errors), eof, code
 
 
@@ -191,6 +214,8 @@ def _metadata(executable, args, cwd, env):
         out, err, eof, code = _pump(child, b'', seconds=15,
                                   stdout_cap=65536, stderr_cap=65536, combined_cap=65536)
         if code != 0 or len(out) + len(err) > 65536 or not all(eof.values()):
+            _fail()
+        if child.wait(timeout=2) != code:
             _fail()
         return out
     finally:
@@ -425,6 +450,8 @@ class NativeClaudeText:
                                  exit_code=code)
             returned = NativeReturned(**pair)
             returned.validate(request_sha256=request_hash, profile=self.profile)
+            if child.wait(timeout=2) != code:
+                _fail()
             _write(call_dir / 'ending.json', pair['cessation'])
             _write(call_dir / 'capture.json', pair['capture'])
             self._release(active)
