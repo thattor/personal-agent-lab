@@ -13,11 +13,11 @@ or committed by this reviewer. This commit adds only this note.
 ## Evidence
 
 `/opt/homebrew/bin/python3.13 -E -s -B -m unittest discover -s tests -p test_native_text_v5.py -v`
-passed 15 tests in 0.005s, exit0. Log `/private/tmp/native-text-astra-fixed15.log`.
+passed 15 tests in 0.005s, exit0. Fixed15 raw log is retained locally.
 
-Independent `/private/tmp/native_text_astra_probe.py` ran using the same interpreter
+The independent local probe ran using the same interpreter
 with `-E -s -B`: 19 tests in 0.002s, exit0; log
-`/private/tmp/native-text-astra-probe19.log`. Fourteen ending fields each exercised
+the probe19 raw log is retained locally. Fourteen ending fields each exercised
 six substituted values (None/list/dict/bool/int/float), including positive zero
 where the contract permits it. Additional probes exercised immutable copied
 attempt binding, nontext/malformed poison, full optional Japanese receipt
@@ -28,7 +28,7 @@ The first private probe incorrectly classified integer zero as invalid for
 owned_exit_code/tool_events/pending_permissions. All three resulting failures
 were fixture errors: the frozen contract explicitly permits them. The private
 probe was corrected to assert success for those exact cases; original log retained
-at `/private/tmp/native-text-astra-probe19-fixture-red.log`. Product source and
+as the probe19-fixture-red evidence. Product source and
 fixed tests were not changed. Next type-matrix review must distinguish exact type
 rejection from field-specific valid zero values.
 

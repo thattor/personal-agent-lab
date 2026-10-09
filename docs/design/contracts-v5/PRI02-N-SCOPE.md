@@ -253,3 +253,46 @@ then freezes the finite acceptance cases/allowance within existing owner scope.
 Return exact diff/source/test hashes, commands/exit/results and remaining issues.
 Passing this slice establishes a bounded connection prerequisite, not real
 Expert semantic behavior, full service activation or authentic human usefulness.
+
+## C083 observed failure and bounded source correction
+
+The original N MAX1 invocation at source190fcc4 entered and is UNKNOWN. Its
+supported stop returned ERROR without evidence; one shared Devin slot remains
+executing. Preserve the original request, entry, workspace and failed result.
+No reclassification, forced release, resume, cancellation or original-request
+retry follows from a later diagnostic or source repair. Full1155 PASS and the
+separate five actual owned-process fixture cases do not qualify the provider.
+
+Independent read-only constructor fixtures reproduce a concrete version-boundary
+mismatch. Public AcpTransport invokes `devin version`, comparing its stripped
+stdout exactly before ACP spawn. The wrapper supplied semantic `3000.11.3`;
+actual metadata is `devin 3000.11.3 (9c803229faa4)`. The original OperationReply
+was not saved, so this reproducible mechanism does not identify the unique cause
+of that original call or create a NeverStarted receipt retroactively.
+
+SOL adopts Astra's minimal correction within NATIVE-ACP01/1: retain the closed
+pin schema and semantic version, add the fixed full transport-version constant
+`devin 3000.11.3 (9c803229faa4)`, check the original `version` metadata against
+that exact value in _fresh_pin, and pass the full constant to original
+DevinHostConfig.expected_version. The wrapper hash binds the constant and the
+executable hash binds the actual binary. A different build is refused and needs
+reevaluation. No original CO transport, verifier, runtime or state is edited.
+
+Add bounded local original-observation retention before cleanup. After execute,
+validate OperationReply's exact type/ref/status and save attempt_ref/status/reason
+plus a matching NeverStarted evidence ref or null, without resume_state or another
+request copy. Preserve only the status already obtained by the ordinary loop.
+On failure, save the cached state or null, public protocol_diagnostic or a fixed
+unavailable marker, and the original bounded host.observation. Do not poll status
+for diagnosis: status pumps protocol and can send during bootstrap. Save the
+supported stop's original outcome once, then close. A diagnostic write failure
+stays UNKNOWN and cannot suppress the single supported cleanup attempt or cause
+another execute. Raw observations stay exclusively local; public summaries carry
+the necessary verified facts and hashes. No arbitrary exception/native text is
+converted into cessation authority.
+
+Separate fixed fixtures precede this source correction; exact source review and
+finished full verification precede any later entry. The original N allowance is
+consumed. A new candidate's distinct finite qualification requires its own explicit
+Root freeze after this checkpoint/design assessment; this amendment authorizes
+source preparation only, not another actual prompt under the old case.

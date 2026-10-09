@@ -1,0 +1,72 @@
+{
+  "checkpoint": "C083",
+  "scope": "Current NativeCall, explicit NativePrimary and external original ACP preparation; provider qualification failed UNKNOWN",
+  "whole_goal": "NOT_MET",
+  "source_commit": "190fcc4e0540984f50ca1ca165ec99116c4a055c",
+  "source_and_fixed_hashes": {
+    "pal/native_call_v5.py": "94f4f63bd1070cb037b8a9220fe0c5b232f78e7aa8f805d268ad8edf03344395",
+    "pal/native_text_v5.py": "e000aef8f9491223a1b53d58caf5f4a8b3b683e3d844062cceae45171276941f",
+    "pal/primary_host_v5.py": "a049033e4fb30ce7e1539b1841575cdf3fd5cbe2f06bed7db6dfc67075b5dbb8",
+    "tests/test_native_call_v5.py": "fcc0e68ed2f7f66f20bc949e43dc7ccb0a57447e4ca97b5befef2532125cd35f",
+    "tests/test_native_devin_metadata_v5.py": "443548e3fc0032dcca1666922c59b74a9788c985d9f0b7751445b0caecb8c6ef",
+    "tests/test_native_devin_runtime_boundary_v5.py": "75b9ee36dfb7277defa21b1601023d6ccdc8244502c9a44a54b70f079bfb21b9",
+    "tests/test_native_devin_text_v5.py": "7c703c8d7dd30a748fd5177dc21242e9ec9034f126cd571baf785289efa30250",
+    "tests/test_native_primary_host_v5.py": "2bd96018409a1af4341899960803622bbaedb5a6c42bebbc87fb594e4c4fa153",
+    "tools/native_devin_text_v5.py": "67c7ae88456c3b1c3a3d7639baf179112b9d4fc3f5d3185d22ac67f077175d4a",
+    "tools/verify_native_primary_lifetime_v5.py": "c3616ec994092d55965d59080bbc2b992f14bafa40fe5a16ef322580f5834a60"
+  },
+  "root_full": {
+    "count": 1155,
+    "elapsed_seconds": 31.13,
+    "status": "PASS",
+    "exit_code": 0,
+    "log_sha256": "e360ccca01b7f428dbd0540c9e51b0a392833d1a3b9d326f8169c6f6801eabb5"
+  },
+  "earlier_root_full": {
+    "source_commit": "5506c0864b992b0aa34a932670330f52cff32b4e",
+    "count": 1145,
+    "elapsed_seconds": 30.935,
+    "status": "PASS",
+    "exit_code": 0,
+    "log_sha256": "33dd4c99f69ef92dd63dcad6afe92ae594d0b3828b00ad7d60f19906e1bc8472"
+  },
+  "root_actual_owned_process_fixtures": {
+    "count": 5,
+    "elapsed_seconds": 0.471,
+    "status": "PASS",
+    "exit_code": 0,
+    "sigkill_wait_reopen_barriers": 4,
+    "two_connections_and_thread_control_source_stop": true,
+    "evidence_kind": "fixture",
+    "log_sha256": "fea4d5ca12101624846a7ed0df65a388e955754282e001f07b8580e4b8db032f"
+  },
+  "independent_reviews": {
+    "native_call": {
+      "verdict": "APPROVE",
+      "reviewer": "separate native Sol6.1",
+      "fixed_tests": 15
+    },
+    "wrapper": {
+      "verdict": "APPROVE",
+      "reviewer": "separate native Sol6.1",
+      "fixed_wrapper_boundary_metadata_tests": 29
+    },
+    "native_primary": {
+      "verdict": "APPROVE",
+      "reviewer": "separate native Sol6.1",
+      "fixed_native_mock_binding_phase_tests": 65,
+      "additional_actual_temporary_owner_probes": 3
+    },
+    "dynamic_buffer": {
+      "verdict": "APPROVE",
+      "reviewer": "native Astra",
+      "fixed_tests": 15,
+      "independent_probes": 19,
+      "co_verified_scope": "Original pure-buffer fixed15 only"
+    }
+  },
+  "native_transport_actual": "UNKNOWN; see native-n-summary.json",
+  "co_swe_native_call_implementation": "Timed out with unknown outcome; untouched. Separate approved native Sol source adopted instead.",
+  "next": "Correct exact full transport version and retain original failure observations; obtain design checkpoint assessment before distinct new finite actual qualification. NativeExpert preparation is proposal only.",
+  "limits": "Fixtures/source reviews/full suite establish local preparation. They do not establish actual ACP ending, real semantic behavior, native Expert, UI adoption, authentic usefulness or whole goal. Historical1094 K1 failure remains retained with cause unresolved."
+}

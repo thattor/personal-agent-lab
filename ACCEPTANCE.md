@@ -1,6 +1,28 @@
 # ACCEPTANCE.md
 
-## Current C082 — whole-goal exit still unmet
+## Current C083 — native local preparation passes; actual qualification UNKNOWN
+
+Root full **1155 PASS31.130s/exit0** at190fcc4. NativeCall has independent Sol
+fixed15 APPROVE; external wrapper has independent29 APPROVE; NativePrimary has
+separate65 plus three actual temporary-owner probes APPROVE. Root owned-process
+fixture **5 PASS0.471s**, four SIGKILL/wait/reopen barriers and two connections
+with control/source-stop, proves no reinference/refund/redispatch after local
+interruption. All those endings remain fixture-labelled.
+[Verification](evidence/operations/pri02-20261010/native-preparation-verification.json).
+
+The distinct original N MAX1 invocation is **UNKNOWN**, entry observed once,
+no usable output/known original ending. Supported stop ERROR/no evidence leaves
+one shared capacity slot held. Prompt submission and effective native model are
+NOT_PROVEN; official auth/current version/Free metadata are eligibility only.
+[Receipt](evidence/operations/pri02-20261010/native-n-summary.json).
+The reproducible exact-version mismatch and original failure-observation gap
+are frozen source corrections; they do not rewrite the old outcome or release
+that lease. No actual native Primary/Expert product connection, real semantic/UI
+proof, authentic improved usefulness or whole-goal acceptance follows. PRI03 is
+preparation only. Historical1094 K1 failure remains retained/unresolved despite
+the later completed full suites passing.
+
+## Retained C082 — whole-goal exit still unmet
 
 Current-v5 Primary PRI01/1 local mock connection is implemented and verified at
 source d9f0e12; historical C080 and older “next” descriptions below are superseded

@@ -1490,3 +1490,43 @@ The exact same unchanged historical case subsequently passed singly with the
 required temporary loopback access (3.174s). Cause remains unresolved; keep the
 original full failure and separate restricted bind errors, never label that full
 run PASS. Later full regression must complete independently on the final source.
+
+## C083 actual runtime and failure-observation boundaries (2026-10-10)
+
+Independent actual import found that the wrapper assumed every CO module has a
+source file. Installed co_v4.adapters is a legitimate namespace package with
+__file__None. The same source also imposed credential0600, although the original
+host requires regular existing metadata and the active authorized target is0644.
+Its UUID run ID missed public gate's durable task-cwd classification. Astra repairs
+all namespace search-origin checks, retains credential identity without changing
+its permissions, and binds public run ID to canonical cwd. Original fixed19 did
+not exercise actual import/metadata/cwd compatibility; separate four RED fixtures
+now pass, with optional installed-runtime checks skipped only on absent hosts.
+
+Official --version emits a full display with build. The first wrapper regex
+refused it; an independent six-case metadata fixture preceded the exact-format
+repair. Root full1155 and actual process5 then passed. The original N MAX1 still
+returned UNKNOWN: wrapper gave bare semantic version to AcpTransport, whose
+original version-command check requires exact full stdout before ACP spawn.
+Independent real-constructor/adapter doubles reproduce refusal/UNAVAILABLE and
+stop ERROR without Native execution. Because the original OperationReply was
+discarded, this is a proven incompatibility and consistent failure mechanism,
+not uniquely established original-call cause or retroactive NeverStarted proof.
+One unknown shared lease remains held; original case and raw records remain local.
+
+Correction is frozen, not yet implemented here: exact full transport-version
+metadata/config plus bounded local execute/cached-status/protocol/host observations.
+Public status is not a read-only diagnostic: it pumps protocol. Save already
+observed status and public non-pumping diagnostic, then the one supported stop;
+never add a diagnostic poll before stop or retry execute on persistence failure.
+Future native entry requires real public constructor/metadata compatibility,
+independent source/full proof and its distinct finite candidate scope. No CO
+transport monkeypatch, runtime/state edit or forced unknown-lease release.
+
+The public Opus summary hashed the13510-byte original response, while Markdown
+added one final LF and has13511 bytes. Raw response and public file independently
+confirm that exact difference. Separate original_response_sha256 and
+public_report_sha256 now identify the bytes and transformation; reviewer text and
+verdict are unchanged. Future exported reports bind exact published bytes and
+label original response hashes separately. Public review notes also use local
+evidence labels rather than inaccessible raw host paths; originals stay local.

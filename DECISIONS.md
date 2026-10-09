@@ -2508,3 +2508,20 @@ files; tests precede implementation and independent reviews precede actual entry
 Native unknown is held per turn, never settled by a mock lock. N transport max1
 is separately frozen; later integrated actual cases require a concrete finite
 acceptance envelope, not extra technical human permission. See PRI02-N-SCOPE.
+
+D049/C083 observed continuation: full1155 and independently reviewed native
+source/fixtures pass, but the sole original N qualification is UNKNOWN. Supported
+stop ERROR/no evidence leaves one existing Devin slot held. No original output,
+ending, prompt submission or effective native model is proved. NeverStarted is
+not inferred from cleanup, absence of files or a later constructor diagnostic.
+Preserve original T/N/CO unknowns without retry/reclassification/forced release.
+
+SOL adopts Astra's scoped correction: retain the closed semantic pin; bind/check
+the exact full transport-version constant through wrapper/executable hashes;
+pass it unchanged to original CO host. Save original execute replies and cached
+failure observations locally before cleanup, with no diagnostic status pumping.
+Independent installed constructor fixtures precede source, review and finished
+full verification. New candidate entry is separate from the consumed old MAX1
+and requires a checkpoint design assessment plus its own finite Root freeze.
+This is approved technical continuation, not a new service/auth/cost or owner
+permission wait. Native Expert's storage/recovery proposal is not adopted yet.

@@ -1,5 +1,27 @@
 # Development checkpoint ledger
 
+## C083 — native local lifetime preparation; original qualification UNKNOWN
+
+Goal: connect the current Primary host to a distinct native lifetime without
+borrowing mock cessation authority. NativeCall/NativePrimary/external wrapper
+source approvals, Root full1155 PASS31.130s and five actual owned-process fixture
+cases establish local preparation at190fcc4. The sole original N entry is UNKNOWN:
+no usable output/known ending, stop ERROR/no evidence, one shared slot held.
+[Verification](../../evidence/operations/pri02-20261010/native-preparation-verification.json)
+and [original case](../../evidence/operations/pri02-20261010/native-n-summary.json).
+
+Contribution: explicit native profiles, immutable ending bindings and conservative
+restart/control behavior are available; actual provider adoption is unqualified.
+The exact-version incompatibility and missing original failure observation are
+concrete correction targets. The earlier T/CO unknowns remain unchanged; no
+retry, invented NeverStarted or forced capacity release. Whole goal NOT_MET.
+
+Next: independent fixed public-constructor/observation tests, minimal wrapper
+correction, review/full verification, checkpoint design assessment and a separate
+bounded candidate qualification. Native Expert ownership/replay/held-startup
+preparation continues independently; proposal is not code adoption. Then finite
+real connection/UI proof and one improved authentic usefulness judgment.
+
 ## C069 — isolated intake and read preparation verified
 
 TSK01/1 is MET at8db45fd06b5485bc1af5dd33b13bff8663c3ccf9. Exact AGY Opus5.5 High

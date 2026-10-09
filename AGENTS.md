@@ -1,12 +1,15 @@
 # AGENTS.md — Personal Agent Lab
 
-Current C081: overall goal remains unmet. PRI01/1 Primary whole managed mock path
-is integrated and independently approved; Root full1058 PASS, actual3 process gaps,
-two-connection thread/control and whole mock5 PASS. Separately qualified finite
-real-provider proof and authentic whole-flow usefulness remain. Consult the next
-native compatibility proof under D049/PRI02-T/1, then freeze the separate native
-profile and continue approved work. Actual Opus5.5 C081 alignment is received.
-No provider under mock profile or old/live DB migration.
+Current C083: overall goal remains unmet. NativeCall, explicit NativePrimary and
+the external ACP wrapper have independent source approval and Root full1155 PASS;
+five owned-process fixture cases also pass. The original N MAX1 qualification is
+UNKNOWN, with stop ERROR/no evidence and one shared slot held. Preserve original
+T/N and CO unknown calls without replay, reclassification or forced release.
+Continue the frozen exact-version/failure-observation source correction and
+independent work. A distinct new finite actual case requires its own Root freeze
+after checkpoint design assessment. Native Expert preparation remains a proposal.
+Real-provider integration and authentic whole-flow usefulness remain. No native
+provider under a mock profile, old/live DB migration, new auth or cost.
 Older next-work descriptions below are retained history; STATE/DECISIONS and the
 latest exact candidate evidence govern continuation.
 

@@ -1,6 +1,42 @@
 # STATE.md
 
-## Current C082 — native preparation verified; actual T UNKNOWN; goal NOT MET
+## Current C083 — local native preparation verified; actual N UNKNOWN; goal NOT MET
+
+Latest owner instruction remains 「必要なだけ並列作業で開発して」. Root full1155
+PASS31.130s/exit0 at190fcc4; pure NativeCall, explicit NativePrimary and external
+ACP wrapper have separate source approvals. Root five actual owned-process
+fixture cases PASS0.471s, including four SIGKILL/wait/reopen barriers and two
+connections/control/source-stop. These establish local preparation only.
+[Verification](evidence/operations/pri02-20261010/native-preparation-verification.json).
+
+The original N MAX1 qualification entered once and is UNKNOWN. No usable output
+or original ending was obtained; supported stop returned ERROR without evidence.
+Actual native prompt submission/effective model are not proven. Existing CLI
+metadata/auth and unique SWE-2 High Free catalog checks passed. Candidate profile
+hash is not successful qualification. One shared Devin slot remains executing;
+original raw request/entry/workspace/result are local and untouched. T's sole
+UNKNOWN case and the earlier unknown CO implementation calls are also untouched.
+[Actual N receipt](evidence/operations/pri02-20261010/native-n-summary.json).
+
+Read-only actual version metadata and independent original-constructor fixtures
+identify a concrete mismatch: ACP expects the exact full version display, while
+the wrapper supplied bare3000.11.3. The original OperationReply was not retained,
+so this cannot uniquely classify the original failure or invent NeverStarted.
+SOL freezes the minimal full-version check/config and bounded original failure
+observations in PRI02-N-SCOPE. Independent tests precede source correction and
+final review/full proof. The old allowance is consumed; a distinct candidate's
+new finite case follows a checkpoint design assessment and explicit Root freeze.
+No automatic same-request retry, lease clearing or CO/runtime edit.
+
+Current capacity: CO0.4.5 existing shared state, host12 per Native adapter;
+Claude0 executing/0 reserved, Devin1 executing/0 reserved, provider quota unknown.
+Codex4 slots including Root, actual gpt-6.1-sol and gpt-6-astra contexts; SWE-2 High
+remains preferred when usable. No30 claim or duplicate work. PRI03 native Expert
+has an evidence-bound preparation proposal only, including native TSK ownership,
+raw-output replay and held startup dependencies. Continue independent source,
+tests and review toward real integration and one improved usefulness judgment.
+
+## Retained C082 — native preparation verified; actual T UNKNOWN; goal NOT MET
 
 Latest owner direction: continue remaining work with necessary parallel execution.
 PRI02-T/1 consumed its sole actual CLI prompt: UNKNOWN, strict original-prompt

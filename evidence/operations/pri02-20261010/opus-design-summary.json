@@ -14,7 +14,9 @@
     "agent_response",
     "user_input"
   ],
-  "report_sha256": "2627c5af476a828af634ceed1fa03dc1632462af7eba251509b0a7b564773e68",
+  "original_response_sha256": "2627c5af476a828af634ceed1fa03dc1632462af7eba251509b0a7b564773e68",
+  "public_report_sha256": "a9a168701ead3c43007f5745536452c07d6219d1259b52ea132630f55f3dc8b6",
+  "report_formatting": "Public Markdown is the original model response plus one trailing LF; response text and verdict are unchanged.",
   "checkpoint_verdict": "ALIGNED",
   "next_preparation_verdict": "REFINE",
   "input_files": [
