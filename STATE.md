@@ -2,7 +2,7 @@
 
 ## Goal
 
-Latest owner direction is D036/C068 (PAL人間判断 turn
+Latest owner direction is D037 (following D036/C068) (PAL人間判断 turn
 01a11e03-d386-77c0-8faa-41f0ab765513): use an approved alternative implementation
 route while SWE-2 is unavailable, prioritizing usable AGY; direct calls are allowed
 when CO does not support the route. This overrides the earlier CO-only restriction
@@ -18,12 +18,15 @@ file version. Services/authority/DB/provider/Goal/UI/human value remain NOT_RUN.
 [verification](evidence/operations/co-int00-20261009/verification.json) and
 [independent reviews](evidence/operations/co-int00-20261009/sol-independent-review.md).
 Old unknown status is preserved, not a whole-project stop. SOL owns integration;
-AGY access/cost conditions remain unresolved and no new trust is enabled.
+AGY Opus5.5 High is now qualified for one scoped direct call at a time under D037.
+The exact PAL-only workspace trust, existing auth, credits OFF and two successful
+text design calls are confirmed. TSK01/1 design is ALIGNED and implementation is next.
 
 Next scoped unit: TSK-01 intake, C03.create/C02.get_work, over an isolated mock
 SQLite schema. It must mint formal Condition IDs, preserve nonexpanding host/request
 Grants and zero budgets, commit intake/event atomically, and prove same-key replay,
-different-input conflict, not_found/stale and rollback. This is the selected next
+different-input conflict, not_found and rollback. C02 reads select a revision;
+expected-version stale errors belong to later mutations. This is the selected next
 development dependency, not implemented behavior or product activation. No model,
 GitHub, UI or existing service/DB dependency is needed. SOL owns shared schema and
 integration. [Opus rationale](evidence/operations/co-int00-20261009/milestone-review.md).
@@ -38,6 +41,7 @@ prompt/journal mtimes corroborates the900s deadline. Old source attempts group k
 but lacks a durable cleanup receipt; underlying inference cause remains unknown.
 [Diagnostic facts and limits](evidence/operations/co-int00-20261009/diagnosis.json).
 
+Historical AGY pre-qualification record (superseded by D037):
 AGY1.3.1 lists exact claude-opus-5-5 and claude-sonnet-5-5 low/medium/high variants.
 Model listing alone is not inference/billing proof. useG1Credits is unset; a narrow
 PAL cwd asked for new workspace trust and was exited with No. Automatic approval

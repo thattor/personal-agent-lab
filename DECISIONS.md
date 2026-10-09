@@ -1660,3 +1660,57 @@ owns shared schema/integration, with isolated implementation and an independent
 exact-commit review before adoption. No real DB/model/connector/UI is needed.
 This is a technical next-work selection within D036; it is NOT_RUN and does not
 activate the full candidate plan or create a new human approval request.
+
+
+## D-037 — scoped AGY qualification and TSK01/1 intake disposition, 2026-10-09
+
+Actual owner turns in PAL人間判断 were read directly:
+01a11e23-a42e-7431-aefa-10c2fdcb00d2/userMessage01a11e23-a4ad-7c20-a99c-449c3e161ea7
+approves AGY Opus5.5 when the official Claude route is limited, including necessary
+private PAL materials, and requires independent work to continue.
+01a11e25-7a70-72d0-ba3b-694d51b6dd21/userMessage01a11e25-7aeb-70e0-9a88-3154f0532061
+authorizes the specified PAL directory and a narrower dedicated work directory if
+needed. This does not authorize home-wide trust, publication, new auth or extra cost.
+
+Automatic review approved startup and exact workspace trust only for
+`/Users/hattoritoshiyasu/Documents/PAL/agy-work/intake-review-20261009` after that
+owner instruction. The earlier home-wide startup was refused and never retried.
+The exact trusted path was read back; no global trust override was used. Actual
+CLI banner1.3.2, existing Google AI Pro session, `Use AI Credits` OFF, Claude/GPT
+weekly71.83% and five-hour100% remaining were observed before calls. No billing or
+login setting changed. The earlier language-server1.3.1 observation remains a distinct
+observation, not evidence that this task updated software.
+
+Two sequential direct AGY calls requested `claude-opus-5-5-high`, plan+sandbox,
+with PAL-only synthetic contract inputs. First call SUCCESS in74.895s returned REFINE;
+follow-up SUCCESS in40.583s returned ALIGNED. The second stream init independently
+echoes the exact model ID and shows only user_input/system_message/agent_response
+step types, no tool steps. Its327.037s/2-turn result metadata is conversation-cumulative,
+not the second call wall time. Original staged input hashes match. Raw streams may
+contain reasoning/account data and are retained locally, not in this repository.
+[Qualification](evidence/operations/co-int00-20261009/agy-qualified-settings.json),
+[refinement receipt](evidence/operations/co-int00-20261009/agy-refinement-receipt.json),
+[initial review](evidence/operations/co-int00-20261009/agy-intake-review-v1.md),
+[corrected review](evidence/operations/co-int00-20261009/agy-intake-review-v2.md).
+
+SOL rejected the first review's zero-budget/empty-capability denial and its source
+check before BEGIN: exhausted budgets remain valid stored values, and immutable Ref
+IDs do not make availability immutable. Opus explicitly withdrew both recommendations.
+Adopt TSK01/1 scope before implementation: strict C03 create/C02 get_work, host-only
+request_scope, nonexpanding grant, same-transaction required source_gate, atomic
+intake/event/replay, replay-before-current-checks, missing revision=>not_found.
+The root scope follows exact C02 fields (expert is in create output) and permits
+embedded immutable conditions/grant/bindings to avoid redundant persistence tables.
+The gate is trusted host code with no I/O or transaction control; it is no new
+capability for models. Replayed intake grants no current execution authority.
+
+[TSK01/1](docs/design/contracts-v5/TSK01-SCOPE.md) is authorized unused preparation;
+real MEM availability, PRI authorization resolution, shared C14 services, historical
+revisions, execution owners, providers and product activation remain NOT_RUN.
+AGY is not a CO adapter. D036 allows this direct fallback; no new engine/state or
+claimed CO verified flag is added. Use one AGY call at a time until actual route
+concurrency is qualified. CO0.4.5 current capacity snapshot has0 reserved/executing
+on both adapters, host cap12 each; that is neither vendor quota nor30-way proof.
+Assign isolated AGY Opus5.5 High implementation, native Astra independent boundary
+analysis, SOL integration, then a separate independent code review after output.
+No technical human decision or old unknown-call cancellation/retry is implied.

@@ -1,10 +1,11 @@
 # AGENTS.md — Personal Agent Lab
 
-Current C068/D036 route instruction supersedes the earlier CO-only restriction:
+Current D037 (following C068/D036) route instruction supersedes the earlier CO-only restriction:
 SWE-2 remains preferred; while unavailable, use the owner's approved Astra,
 Sol6.1 or AGY Opus5.5/Sonnet5.5 alternative. Prefer usable AGY, and use a direct
 route when CO cannot support it. Verify exact model, existing access/cost and
-isolation. Preserve the old unknown CO task; no journal edit or implicit cancel.
+isolation. D037 qualifies one direct AGY call at a time in the exact trusted PAL
+workspace; TSK01/1 in docs/design/contracts-v5/TSK01-SCOPE.md is the next fixed unit. Preserve the old unknown CO task; no journal edit or implicit cancel.
 INT00 shared-wire preparation is integrated at C068; next is bounded TSK-01 intake
 (C03/C02) in an isolated mock schema, as selected in STATE/DECISIONS.
 See those records for diagnostic evidence, verified scope and current assignment.
