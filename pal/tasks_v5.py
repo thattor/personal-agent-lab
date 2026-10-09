@@ -7,6 +7,7 @@ import sqlite3
 from pal.contracts_v5 import (Brief, Condition, DraftBrief, ContractError, Grant, Limits, Ref, Result,
                               WorkRef, dumps, loads, parse_model_action, action_from_json)
 from pal.intake_v5 import IntakeStore, _intersect
+from pal.artifacts_v5 import artifact_save_key
 
 _MAX = 2**63 - 1
 _PROFILE = "managed-inprocess-mock/1"
@@ -72,7 +73,10 @@ def _wire(refs):
 
 class TaskStore(IntakeStore):
     def __init__(self, connection, *, host_limits, artifact_inspect=None, verification_inspect=None,
-                 startup_guard=None, **kwargs):
+                 startup_guard=None, artifact_lookup=None, **kwargs):
+        if artifact_lookup is not None and not callable(artifact_lookup):
+            raise TypeError('artifact_lookup must be callable')
+        self._artifact_lookup = artifact_lookup
         self._startup_guard = startup_guard
         if startup_guard is not None:
             from pal.mock_host_v5 import MockHostSession
@@ -100,6 +104,8 @@ class TaskStore(IntakeStore):
         self._artifact_inspect = artifact_inspect
         super().__init__(connection, **kwargs)
         schema = (
+            'CREATE TABLE IF NOT EXISTS v5_tsk_recovery_adoption (step_id TEXT PRIMARY KEY,call_id TEXT NOT NULL UNIQUE,lease_id TEXT NOT NULL UNIQUE,artifact_id TEXT NOT NULL UNIQUE,origin_work_json TEXT NOT NULL,adopted_work_json TEXT NOT NULL,recover_key TEXT NOT NULL,event_id TEXT NOT NULL UNIQUE)',
+            'CREATE TABLE IF NOT EXISTS v5_tsk_recovery_replay (recover_key TEXT PRIMARY KEY,adopted_step_id TEXT UNIQUE,event_id TEXT NOT NULL UNIQUE,result_json TEXT NOT NULL)',
             'CREATE TABLE IF NOT EXISTS v5_tsk_enrollment (singleton INTEGER PRIMARY KEY CHECK(singleton=1),db_uuid TEXT NOT NULL,profile TEXT NOT NULL)',
             'CREATE TABLE IF NOT EXISTS v5_tsk_session (id TEXT PRIMARY KEY,runner TEXT NOT NULL UNIQUE,db_uuid TEXT NOT NULL,profile TEXT NOT NULL,orphan TEXT)',
             'CREATE TABLE IF NOT EXISTS v5_tsk_lease_owner (lease TEXT PRIMARY KEY,session TEXT NOT NULL,claim_work TEXT NOT NULL)',
@@ -278,6 +284,8 @@ class TaskStore(IntakeStore):
                     if self._startup_guard.phase != 'startup':
                         _reject('conflict')
                 self._execution_request(command, request)
+                if command == 'recover':
+                    self._recovery_integrity()
                 canonical = dumps(request)
                 result = self._lookup_replay(command, key, canonical) if key is not None else None
                 if result is None:
@@ -285,6 +293,8 @@ class TaskStore(IntakeStore):
                     result = Result.success(value)
                     if key is not None and not (command == 'recover' and value.get('disposition') == 'held'):
                         self._save_replay(command, key, canonical, result)
+                        if command == 'recover':
+                            self._recovery_integrity()
                 self._conn.execute('COMMIT')
                 return result
             except BaseException:
@@ -356,15 +366,15 @@ class TaskStore(IntakeStore):
                 _reject('unavailable')
             if self._startup_guard.phase != 'startup':
                 _reject('conflict')
-            return self._transaction('recover', key, data, lambda: self._recover(lease_id))
+            return self._transaction('recover', key, data, lambda: self._recover(lease_id, key))
 
-    def _recover(self, lease_id):
+    def _recover(self, lease_id, key):
         try:
-            return self._recover_owned(lease_id)
+            return self._recover_owned(lease_id, key)
         except (ContractError, KeyError, TypeError, ValueError):
             _reject('unavailable')
 
-    def _recover_owned(self, lease_id):
+    def _recover_owned(self, lease_id, key):
         session = self._own_session()
         lease = self._one('SELECT * FROM v5_tsk_lease WHERE id=?', (lease_id,))
         if lease is None:
@@ -396,12 +406,61 @@ class TaskStore(IntakeStore):
                 step = loads(self._one('SELECT wire FROM v5_tsk_step WHERE id=?', (call['step'],))['wire'])
                 if step['status'] == 'started':
                     started.append(step)
+        adopted = None
         for step in started:
-            if step['action']['kind'] in ('compose', 'operate'):
-                return {'disposition': 'held', 'work_ref': self._wr(row).to_json(), 'state': row['state'],
-                    'control_status': 'pause_requested' if flags['pause'] else 'draining' if flags['drain'] else 'none',
-                    'lease_id': lease_id, 'step_id': step['step_id'],
-                    'reason': 'artifact_tail' if step['action']['kind'] == 'compose' else 'external_tail'}
+            kind = step['action']['kind']
+            if kind not in ('compose', 'operate'):
+                continue
+            held = {'disposition': 'held', 'work_ref': self._wr(row).to_json(), 'state': row['state'],
+                'control_status': 'pause_requested' if flags['pause'] else 'draining' if flags['drain'] else 'none',
+                'lease_id': lease_id, 'step_id': step['step_id'],
+                'reason': 'artifact_tail' if kind == 'compose' else 'external_tail'}
+            if kind == 'operate':
+                return held
+            call = next(c for c in calls if c['step'] == step['step_id'])
+            sources = loads(call['sources'])
+            refs = _refs(sources)
+            parse_model_action(dumps(step['action']), allowed_refs=refs)
+            if (step['result_refs'] != [] or 'error' in step or call['status'] != 'returned' or
+                    not refs or len(refs) != len(sources) or
+                    any(q['status'] == 'open' for q in questions)):
+                _reject('unavailable')
+            if (old['revision'] != row['revision'] or
+                    row['state'] in ('completed', 'cancelled', 'failed', 'paused') or flags['pause']):
+                continue
+            if self._artifact_lookup is None:
+                return held
+            gate = self._recovery_read(lambda: self._check_sources(tuple(dict.fromkeys((*self._required(row), *refs)))))
+            if gate is not None:
+                if type(gate) is Result and not gate.ok and gate.error.code.value == 'denied':
+                    continue
+                return held
+            outcome = self._recovery_read(lambda: self._artifact_lookup(self._conn, {
+                'key': artifact_save_key(step['work_ref'], step['step_id']),
+                'work_ref': step['work_ref'], 'step_id': step['step_id'], 'action': step['action']}))
+            try:
+                if type(outcome) is not Result:
+                    return held
+                outcome = Result.from_json(outcome.to_json())
+                if not outcome.ok:
+                    if outcome.error.code.value == 'not_found':
+                        continue
+                    return held
+                metadata = _obj(outcome.value.to_json(), {'artifact_ref', 'work_ref', 'step_id', 'hash', 'bytes', 'source_refs'})
+                artifact = Ref.from_json(metadata['artifact_ref'])
+                if (artifact.kind.value != 'artifact' or _work(metadata['work_ref']) != claim or
+                        metadata['step_id'] != step['step_id'] or metadata['source_refs'] != sources or
+                        type(metadata['hash']) is not str or len(metadata['hash']) != 64 or
+                        any(c not in '0123456789abcdef' for c in metadata['hash']) or
+                        type(metadata['bytes']) is not int or not 0 <= metadata['bytes'] <= 1048576 or
+                        self._one('SELECT step_id FROM v5_tsk_artifact_set WHERE artifact_id=? OR step_id=?', (artifact.id, step['step_id'])) or
+                        self._one('SELECT step_id FROM v5_tsk_recovery_adoption WHERE artifact_id=? OR step_id=?', (artifact.id, step['step_id']))):
+                    return held
+            except (ContractError, KeyError, TypeError, ValueError):
+                return held
+            if adopted is not None:
+                _reject('unavailable')
+            adopted = (step, call, artifact)
         if row['state'] not in ('completed', 'cancelled', 'failed'):
             if type(row['epoch']) is not int or not 0 <= row['epoch'] < _MAX:
                 _reject('unavailable')
@@ -411,7 +470,11 @@ class TaskStore(IntakeStore):
         for call_id in interrupted:
             self._conn.execute("UPDATE v5_tsk_call SET status='interrupted' WHERE id=?", (call_id,))
         for step in started:
-            step['status'] = 'abandoned'
+            step['status'] = 'finished' if adopted is not None and step is adopted[0] else 'abandoned'
+            if step['status'] == 'finished':
+                step['result_refs'] = [adopted[2].to_json()]
+                self._conn.execute('INSERT INTO v5_tsk_artifact_set(goal,revision,artifact_id,step_id) VALUES (?,?,?,?)',
+                    (row['goal_id'], row['revision'], adopted[2].id, step['step_id']))
             self._conn.execute('UPDATE v5_tsk_step SET wire=? WHERE id=?', (dumps(step), step['step_id']))
         opened = any(q['status'] == 'open' for q in questions)
         state = 'paused' if row['state'] == 'paused' else self._latest_intent(row, flags, fallback='queued', opened=opened)
@@ -420,10 +483,160 @@ class TaskStore(IntakeStore):
                            (state, row['epoch'], row['goal_id'], row['revision']))
         self._conn.execute('UPDATE v5_tsk_lease SET active=0 WHERE id=?', (lease_id,))
         self._set_flags(row, 0, 0)
+        refs = [] if adopted is None else [adopted[2].to_json()]
+        text = 'mock execution recovered' if adopted is None else 'mock saved draft recovered'
         self._conn.execute('INSERT INTO v5_intake_event (event_id,session_id,work_ref_json,kind,text,refs_json) VALUES (?,?,?,?,?,?)',
-            (event_id, row['session_id'], dumps(self._wr(row)), 'state', 'mock execution recovered', '[]'))
-        return {'disposition': 'settled', 'work_ref': self._wr(row).to_json(), 'state': state,
-                'control_status': 'none', 'recovered_lease_id': lease_id, 'interrupted_call_ids': interrupted}
+            (event_id, row['session_id'], dumps(self._wr(row)), 'state', text, dumps(refs)))
+        value = {'disposition': 'settled', 'work_ref': self._wr(row).to_json(), 'state': state,
+                 'control_status': 'none', 'recovered_lease_id': lease_id, 'interrupted_call_ids': interrupted}
+        self._conn.execute('INSERT INTO v5_tsk_recovery_replay VALUES (?,?,?,?)',
+            (key, None if adopted is None else adopted[0]['step_id'], event_id, dumps(Result.success(value))))
+        if adopted is not None:
+            step, call, artifact = adopted
+            self._conn.execute('INSERT INTO v5_tsk_recovery_adoption VALUES (?,?,?,?,?,?,?,?)',
+                (step['step_id'], call['id'], lease_id, artifact.id, dumps(claim), dumps(self._wr(row)), key, event_id))
+        return value
+
+    def _recovery_read(self, operation):
+        changes = self._conn.total_changes
+        self._conn.execute('SAVEPOINT v5_tsk_recovery_read')
+        try:
+            try:
+                result = operation()
+            except Exception:
+                result = Result.failure('unavailable', 'recovery source unavailable')
+            self._conn.execute('RELEASE v5_tsk_recovery_read')
+            if not self._conn.in_transaction or self._conn.total_changes != changes:
+                _reject('unavailable')
+            return result
+        except BaseException:
+            try:
+                self._conn.execute('ROLLBACK TO v5_tsk_recovery_read')
+                self._conn.execute('RELEASE v5_tsk_recovery_read')
+            except sqlite3.Error:
+                pass
+            raise
+
+
+    def _recovery_integrity(self):
+        try:
+            receipts = {}
+            for saved in self._rows("SELECT * FROM v5_intake_replay WHERE command='recover'"):
+                key = _id(saved['key'])
+                request = _obj(loads(saved['input_json']), {'key', 'lease_id'})
+                if _id(request['key']) != key or dumps(request) != saved['input_json']:
+                    raise ContractError()
+                lease_id = _id(request['lease_id'])
+                result = Result.from_json(loads(saved['result_json']))
+                if not result.ok:
+                    raise ContractError()
+                value = _obj(result.value.to_json(), {'disposition', 'work_ref', 'state', 'control_status',
+                            'recovered_lease_id', 'interrupted_call_ids'})
+                work = _work(value['work_ref'])
+                lease = self._one('SELECT * FROM v5_tsk_lease WHERE id=?', (lease_id,))
+                interrupted = value['interrupted_call_ids']
+                if (value['disposition'] != 'settled' or value['control_status'] != 'none' or
+                        value['state'] not in ('queued', 'paused', 'waiting_input', 'completed', 'cancelled', 'failed') or
+                        value['recovered_lease_id'] != lease_id or lease is None or type(lease['active']) is not int or lease['active'] != 0 or
+                        work.goal_id != lease['goal'] or work.revision < lease['revision'] or
+                        type(interrupted) is not list or len(set(interrupted)) != len(interrupted)):
+                    raise ContractError()
+                self._lease_binding(lease, self._enrollment())
+                historical = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=?', (work.goal_id, work.revision))
+                if historical is None or work.epoch > historical['epoch']:
+                    raise ContractError()
+                actual = self._rows("SELECT id FROM v5_tsk_call WHERE lease=? AND status='interrupted'", (lease_id,))
+                if set(interrupted) != {call['id'] for call in actual}:
+                    raise ContractError()
+                for identity in interrupted:
+                    call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (_id(identity),))
+                    if call is None or call['lease'] != lease_id or call['status'] != 'interrupted':
+                        raise ContractError()
+                receipts[key] = (saved, request, value, work, lease)
+            bindings = {}
+            for binding in self._rows('SELECT * FROM v5_tsk_recovery_replay'):
+                key, event_id = _id(binding['recover_key']), _id(binding['event_id'])
+                if key not in receipts:
+                    raise ContractError()
+                saved, request, value, work, lease = receipts[key]
+                if binding['result_json'] != saved['result_json']:
+                    raise ContractError()
+                step_id = binding['adopted_step_id']
+                if step_id is not None:
+                    _id(step_id)
+                event = self._one('SELECT * FROM v5_intake_event WHERE event_id=?', (event_id,))
+                row = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=?', (work.goal_id, work.revision))
+                if (event is None or row is None or work.epoch > row['epoch'] or
+                        event['session_id'] != row['session_id'] or event['kind'] != 'state' or
+                        _work(loads(event['work_ref_json'])) != work or
+                        event['text'] != ('mock execution recovered' if step_id is None else 'mock saved draft recovered')):
+                    raise ContractError()
+                if step_id is None and loads(event['refs_json']) != []:
+                    raise ContractError()
+                bindings[key] = (binding, event)
+            adopted_steps = set()
+            for adoption in self._rows('SELECT * FROM v5_tsk_recovery_adoption'):
+                for name in ('step_id', 'call_id', 'lease_id', 'artifact_id', 'recover_key', 'event_id'):
+                    _id(adoption[name])
+                key = adoption['recover_key']
+                if key not in bindings:
+                    raise ContractError()
+                binding, event = bindings[key]
+                saved_replay, request, value, adopted_work, lease = receipts[key]
+                origin = _work(loads(adoption['origin_work_json']))
+                if (binding['adopted_step_id'] != adoption['step_id'] or binding['event_id'] != adoption['event_id'] or
+                        request['lease_id'] != adoption['lease_id'] or
+                        _work(loads(adoption['adopted_work_json'])) != adopted_work or
+                        (origin.goal_id, origin.revision) != (adopted_work.goal_id, adopted_work.revision) or
+                        adopted_work.epoch <= origin.epoch or value['interrupted_call_ids'] != []):
+                    raise ContractError()
+                _, claim = self._lease_binding(lease, self._enrollment())
+                if claim != origin:
+                    raise ContractError()
+                call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (adoption['call_id'],))
+                saved = self._one('SELECT * FROM v5_tsk_step WHERE id=?', (adoption['step_id'],))
+                if call is None or saved is None:
+                    raise ContractError()
+                step = _obj(loads(saved['wire']), {'step_id', 'work_ref', 'index', 'action', 'status', 'result_refs'})
+                action = action_from_json(step['action'])
+                refs = [{'kind': 'artifact', 'id': adoption['artifact_id']}]
+                if (step['status'] != 'finished' or step['action']['kind'] != 'compose' or step['result_refs'] != refs or
+                        step['step_id'] != saved['id'] or saved['call'] != call['id'] or call['step'] != saved['id'] or
+                        call['lease'] != lease['id'] or call['status'] != 'returned' or
+                        _work(loads(call['work'])) != origin or _work(step['work_ref']) != origin or
+                        type(call['idx']) is not int or not 0 <= call['idx'] <= _MAX or
+                        type(step['index']) is not int or type(saved['idx']) is not int or
+                        step['index'] != call['idx'] or saved['idx'] != call['idx'] or
+                        (saved['goal'], saved['revision']) != (origin.goal_id, origin.revision) or
+                        call['id'] != dumps(['C15.call', lease['id'], call['idx']]) or loads(event['refs_json']) != refs):
+                    raise ContractError()
+                row = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=?', (origin.goal_id, origin.revision))
+                sources = loads(call['sources'])
+                dependencies = _refs(sources)
+                if (not dependencies or len(dependencies) != len(sources) or
+                        any(ref.kind.value != 'record' for ref in dependencies) or
+                        not set(self._required(row)) <= set(dependencies) <= set(self._registered(row))):
+                    raise ContractError()
+                parse_model_action(dumps(action), allowed_refs=dependencies)
+                model = self._one('SELECT * FROM v5_tsk_reservation WHERE id=?', (_id(call['reservation']),))
+                steps = self._rows("SELECT * FROM v5_tsk_reservation WHERE kind='step' AND binding=?", (saved['id'],))
+                if model is None or len(steps) != 1:
+                    raise ContractError()
+                for reservation, kind, role, identity in ((model, 'model', 'expert', call['id']), (steps[0], 'step', None, saved['id'])):
+                    _id(reservation['id'])
+                    if (type(reservation['idx']) is not int or
+                            (reservation['lease'], _work(loads(reservation['work'])), reservation['idx'], reservation['kind'], reservation['role'], reservation['binding']) !=
+                            (lease['id'], origin, call['idx'], kind, role, identity)):
+                        raise ContractError()
+                items = self._rows('SELECT * FROM v5_tsk_artifact_set WHERE step_id=? OR artifact_id=?', (saved['id'], adoption['artifact_id']))
+                if (len(items) != 1 or (items[0]['goal'], items[0]['revision'], items[0]['step_id'], items[0]['artifact_id']) !=
+                        (origin.goal_id, origin.revision, saved['id'], adoption['artifact_id'])):
+                    raise ContractError()
+                adopted_steps.add(saved['id'])
+            if {item[0]['adopted_step_id'] for item in bindings.values() if item[0]['adopted_step_id'] is not None} != adopted_steps:
+                raise ContractError()
+        except (ContractError, KeyError, TypeError, ValueError):
+            _reject('unavailable')
 
     def _current(self, work, epoch=True):
         row = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? ORDER BY revision DESC LIMIT 1', (work.goal_id,))
@@ -569,6 +782,7 @@ class TaskStore(IntakeStore):
         return self._transaction('claim', None, data, operation)
 
     def _artifact_set(self, work):
+        self._recovery_integrity()
         rows = self._rows('SELECT * FROM v5_tsk_artifact_set WHERE goal=? AND revision=? ORDER BY seq',
                           (work.goal_id, work.revision))
         try:
@@ -1370,7 +1584,11 @@ class TaskStore(IntakeStore):
                 _id(call_lease['id'])
                 _id(call['id'])
                 _id(call['reservation'])
-                sources = set(_refs(loads(call['sources'])))
+                source_wire = loads(call['sources'])
+                source_refs = _refs(source_wire)
+                if claim is not None and (not source_refs or len(source_refs) != len(source_wire)):
+                    raise ContractError()
+                sources = set(source_refs)
                 if not required <= sources <= registered or any(ref.kind.value != 'record' for ref in sources):
                     raise ContractError()
                 work = _work(loads(call['work']))
