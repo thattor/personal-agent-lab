@@ -89,3 +89,26 @@ repair; no repaired candidate has yet been reviewed here.
 Process5 and whole-suite results are Root evidence, not this review's independent
 runs. Final approval remains withheld pending an exact corrected candidate and
 unchanged probe rerun. No provider/service/live-data operation was performed.
+
+## Corrected candidate 39f08ce — REQUEST_CHANGES
+
+Exact commit `39f08cee6bd835981604328066d9e5b6d23a2fc1`, source SHA256
+`44dfbca17fdffd95df8c840a4da076622a44f0e7e0512aef4ea3bc3e1ddcdf86`.
+Independent fixed39 PASS0.426s, binding8 PASS0.237s and phase1/4cases PASS0.073s.
+The original single-column phase counterexample is fixed.
+
+The stricter admitted-phase check introduces a genuine normal-recovery regression:
+recover_turns commits call.status=interrupted first, leaving turn.phase=admitted;
+_terminal reloads the row through _turn, which now rejects that combination.
+The actual child-death process test therefore reports held after a write instead
+of settling interrupted, and later recovery cannot repair it. This is not a
+fixture mismatch or hypothetical corruption. The unchanged process suite gives
+4 PASS / 1 FAIL, 0.366s, specifically
+`test_admitted_child_death_interrupts_no_reinference_or_refund`.
+
+Evidence: `/private/tmp/pri-host-astra-corrected-process.log`; focused logs use
+`/private/tmp/pri-host-astra-corrected39.log`, `-corrected8.log`,
+`-corrected-phase.log`. All commands use Python3.13 -E -s -B unittest discovery.
+Recommended correction is atomic interruption plus terminal/event settlement,
+so strict public validation need not accept an invalid intermediate persisted
+phase. Root was notified before approval; production source remains untouched.
