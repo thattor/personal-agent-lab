@@ -73,6 +73,7 @@ proof. Local POSIX fixture proof does not establish network filesystem behavior.
 ## TSK01 recovery exact seam and enrollment
 
 `TaskStore(..., startup_guard=None)` adds the trusted optional seam. Exact
+The read-only `TaskStore.startup_guard` exposes that passed object to RUN only.
 MockHostSession class plus registry identity required; no duck-typed proof.
 Validate the connection before initialization with a supplied guard. Add separate
 tables for singleton DB UUID/profile (`managed-inprocess-mock/1`), append-only
