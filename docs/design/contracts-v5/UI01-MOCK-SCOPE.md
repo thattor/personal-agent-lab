@@ -14,7 +14,10 @@ option or automatic provider fallback. The UI accepts a turn, displays pending/
 committed/failed/interrupted, shows current work/question/result, supports bound
 answer and structured pause/resume/cancel/source-reference stop, and reads saved
 results using current public owners. Model decisions are explicitly injected mock
-fixtures. Default fixture reply must label itself as a test and must not pretend
+fixtures. Pin mock target repository='demo', no external capabilities, per-work
+Grant((),('demo',),Limits(0,6,6)), and shared host Limits(0,20,20); Primary and
+Expert both consume the current shared budget. This target is a mock label, not
+permission to fetch/write an external repository. Default fixture reply must label itself as a test and must not pretend
 to understand arbitrary input; include a documented deterministic local example
 create->ask->answer->compose->structural VER/complete->readback. Prototype routing
 is not natural language capability or authentic usefulness proof.
