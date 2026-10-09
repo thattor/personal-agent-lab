@@ -2121,3 +2121,18 @@ SUCCESS263.877s; only finish tool observed, no tests. Candidate and receipt are
 retained under evidence/operations/ask01-20261009. Astra reconciles against actual
 source; Root freezes one contract before implementation. Root verified all10 original input hashes and exact prompt bytes against
 immutable git blobs; all matched. Original candidate provenance is preserved.
+
+
+D038/D041 ASK01/1 frozen: adopt the checked Astra reconciliation of the fresh
+AGY Opus candidate. C04 atomically finishes ask, saves question/event/replay,
+waits and deactivates the ended lease. No split release window. Answer remains
+an optional source and gains question/Step/record linkage in claim. Add optional
+C12 pending_inputs only for eligible question Steps plus available answer bodies;
+Root and Astra reviewed this minimal association extension. Source-stop closes
+questions only for required/full producing-call dependencies; unrelated historic
+optional invalidation preserves waiting. Existing paused states/retained leases
+are not globally redefined. Same-key receipts are history, new-key resolved answer
+conflicts. ASK01-SCOPE owns exact authority/rollback/readiness and bounded RUN loss
+handling. Separate fixed tests precede TSK/RUN code. Actual owners/demo and an
+independent review remain required. This is technical completion of the existing
+ask/answer slice, not a new plan/permission/provider/semantic/UI/operational scope.

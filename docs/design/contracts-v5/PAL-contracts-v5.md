@@ -125,7 +125,8 @@ contentはUTF-8本文、media_typeは本文の型。receipt/verificationの表�
 kindはrecord/note→MEM、source/receipt→EXE、artifact→ART、verification→VERの公開readへ振り分ける。モデルはpurposeやアクセス権を指定しない。model_context/verificationは参照停止を拒否する。user_viewは本人UIだけが利用でき、停止済み原記録を表示できる。成果物に停止済み出典があれば履歴表示に留め、モデル入力には戻さない。参照が無ければnot_found、権限/参照停止ならdenied。
 
 ### C12 次の一手（RUN→EXP）
-入力：{work_ref,brief,grant_summary,context:[C11結果],steps:[Step],remaining_budget}。
+入力：{work_ref,brief,grant_summary,context:[C11結果],steps:[Step],remaining_budget,pending_inputs?:[{question_id,step_id,answer_record_ref}]}。
+ASK01/1では、回答と質問Stepが両方この呼出しへ渡される場合だけpending_inputsへ関連を含める。空なら省略する。本文を複製せず、C11で読んだ回答と保存済みStepをIDで結ぶ。停止・除外された関連はホスト診断に保持し、モデルへ渡さない。
 出力：Action = lookup{query,source_refs?:[Ref]} / operate{capability,arguments,source_refs} / ask{question,missing_fact,source_refs} / compose{content,media_type,source_refs} / verify{artifact_refs} / report{summary}。
 既知のRef選択は可、正式IDの新規発行は不可。composeはEXP-03、ask/lookupはEXP-02が支援し、別モデル呼出しを必須にしない。lookupはC06で候補を取得し、指定済みsource_refs又は返った候補の原文をC11で読み、次のC12へ渡す。切詰めは明示し、読んでいない原文を読んだ扱いにしない。RUNは各ActionをMEM/EXE/TSK/ART/VERへ渡す。reportは表示候補であり完了命令ではない。検証でmetならRUNがC10.completeを呼ぶ。未達なら残予算内でExpertへ返す。
 

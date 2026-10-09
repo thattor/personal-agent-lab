@@ -29,16 +29,17 @@ claim. Original Sonnet11 PASS, Root3 RED, Opus F1, SWE14 repair and final36 are
 separate. D039 actual code contributors are CO SWE-2 High and direct AGY exact
 claude-sonnet-5-5-high; Root owns integration. No new native author/reviewer.
 
-Next ASK01: completed AGY exact claude-opus-5-5-high candidate2d96c06a
-(SUCCESS263.877s, no tests, only finish) and native Astra actual-state analysis
-agree on atomic ask/Step/question/event/replay/waiting/lease closure. Root is
-reconciling answer linkage, source-stop and replay/retained-tail semantics before
-freezing. Inputs were reverified against immutable basea58cde7; matching manifest
-evidence is saved. No implementation assignment consumes an unfrozen seam.
-CO8288ddc3 remains unknown after planner session limit, untouched. No supported
-preplanned CO run exists; do not substitute SWE into the design/planner role.
-Use approved native/AGY alternatives while that route is unavailable. Original
-unknown/refused calls, live DBs and no-auth/cost/publication limits continue.
+Next ASK01/1 is frozen in docs/design/contracts-v5/ASK01-SCOPE.md after AGY
+Opus candidate2d96c06a and Astra actual-state reconciliation. Root adopts atomic
+ask closure, linked optional answers, eligibility-filtered additive C12 association,
+precise waiting/source-stop and bounded loss handling. Separate Sol contexts now
+prepare immutable TSK and RUN acceptance tests; source authors follow that input.
+Root owns actual temporary SQLite demo/connection. No live activation.
+CO8288ddc3 remains unknown after planner session limit, untouched. CO's supported
+CLI has no preplanned bypass; do not use SWE as planner under D041. Approved native
+Astra TSK and fresh AGY Sonnet5.5 RUN code are the intended available alternatives.
+SWE remains preferred when the qualified permitted planner can execute again.
+All prior unknown/refused calls, live DBs, cost/auth/publication boundaries remain.
 
 ## Current C076 — local verified completion connected
 
