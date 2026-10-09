@@ -1,5 +1,18 @@
 # ACCEPTANCE.md
 
+## C076 — local verified completion and retained source history
+
+Sourcebdce832 passes711 host tests/24.789s/exit0. Separate Sol6.1 approves RUN30
+and TSK46; exact CO claude/claude-opus-5-5 taskd2abb079 is ALIGNED. Root verifies
+TSK bytes unchanged since a48d0cf3 and final source/test hashes. Local slice MET.
+Actual MEM/TSK/RUN/ART/VER/C14 tests cover complete, stopped historical output,
+next claim, current authority, response loss and failures after owned writes.
+[Evidence](evidence/operations/complete01-20261009/verification.json).
+Only structural artifact_saved-only work can complete; semantic/source_fetched
+stay unknown. Full product, PRI/provider/UI, general recovery and usefulness are
+unmet. Next READ01 adds an actual C14-to-owned-body consumer after contract freeze;
+its design review does not claim implementation or activate a real service.
+
 ## C075 — local deterministic verification
 
 Source fab7c77:650 host tests PASS,45 focused cases PASS and independent Sol review

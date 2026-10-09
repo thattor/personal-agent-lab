@@ -1031,3 +1031,20 @@ C075 outcome: MET for the scoped deterministic local slice. Exact Opus5.5
 task0e78d5da is ALIGNED, Root binds supplied code/test bytes tofab7c77. No current
 blocker; continue isolated COMPLETE01. Product gaps above remain. Evidence:
 evidence/operations/ver01-20261009/milestone-review-receipt.json.
+
+
+## C076 — local completion has current evidence and historical source-stop safety
+
+MET atbdce832:711 host tests PASS24.789s, independent TSK46/RUN30 and exact CO
+Opus5.5 d2abb079 ALIGNED. All61 new completion methods retain the distinction
+between synthetic acceptance and actual local owners. Root corrected C02 consumer
+shape and unknown-error terminalization before acceptance. Current state, whole
+artifact set, fixed checks, sources and ended calls gate one atomic completion.
+Completed history survives later source stop; reuse is denied. No product, real
+model, semantic, recovery or usefulness completion is inferred.
+
+Next actual work: READ01 design refined by native Astra and Opus; SWE consultation
+will freeze VER read/clock and the bounded result-inspection consumer. Value is
+reading a saved draft plus its checks and present usability via durable C14 refs.
+Contract-dependent code waits that freeze; independent records/push proceed. No
+recurring owner approval or original unknown-call retry. See complete01-20261009.

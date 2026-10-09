@@ -1,6 +1,6 @@
 # STATE.md
 
-## Current C076 candidate — local verified completion connected
+## Current C076 — local verified completion connected
 
 Source bdce832b8fdb68f6317c033155474a4204703189 passes full711 host tests
 (24.789s, exit0). Separate native Sol approves final RUN with30 tests; TSK has
@@ -11,8 +11,10 @@ CO SWE task39213ad4 passed its immutable16, then Root actual consumers exposed t
 C02 mismatch; unknown-error terminalization was independently found and repaired.
 Original failures, author hashes and corrective evidence are retained separately.
 
-Milestone Opus design alignment is next; candidate is not yet the C076 acceptance
-record. Root is examining the next concrete C11 body/read consumer with Astra.
+Exact CO Opus5.5 taskd2abb079 is ALIGNED with no current-scope blocker; C076 local
+slice is MET. Root verified supplied snapshot bytes and unchanged reviewed TSK
+source. The next concrete C11 body/read consumer is design-refined with Opus/Astra;
+SWE implementation consultation precedes its freeze and code assignments.
 No running product is enabled: mock VER wiring remains explicit. Whole v5,
 PRI/provider/UI, semantic verification, general recovery and usefulness are unmet.
 CO stays0.4.5 on the existing shared state/routes. This RUN task was one owned CO

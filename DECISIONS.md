@@ -2007,3 +2007,22 @@ corruption; both remain non-valid. TSK context review provenance stays3f37f78
 (Astra), with finalfab7c77 actual consumer covered by Sol/Root. Continue the already
 dispatched COMPLETE01 TSK/RUN work, not a new owner approval gate. No product/UI,
 semantic, recovery or unknown-call acceptance is implied.
+
+
+D038/C076 accepted: bdce832 passes711 host tests/24.789s and separate TSK46/RUN30
+review. Exact CO Opus5.5 taskd2abb079 is ALIGNED for the local complete/terminal/
+history slice; Root verifies supplied bytes and unchanged TSK source sincea48d.
+Only structural artifact_saved-only work completes; no semantic/product claim.
+The original CO16 pass, actual C02 failures and unknown-error repair remain distinct.
+
+Adopt READ01 design refinements from the same Opus review (READ01 REFINE), following
+native Astra analysis: useful completion requires a concrete C14-to-owned-body
+consumer, not an unused dispatcher. VER C11 read has fixed historical dumps/UTF-8
+JSON/hash with public ART hash/bytes, current usable separately, and guarded injected
+clock captured in its read transaction. Its observed_at is read-at, unlike existing
+MEM/ART stored observation time; do not invent creation dates. Deny all invalidated
+verification for non-user purposes, retain history for user_view. Consumer keeps
+TSK state, structural/mock labels and not-current wording separate; bounded pages
+preserve cursor and per-ref errors. No cross-owner atomic snapshot claim. Freeze
+exact request/response examples and tests with SWE before code. This is within
+D038 preparation; no new owner decision, model activation or schema migration.

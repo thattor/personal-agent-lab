@@ -56,3 +56,15 @@ general recovery, complete v5 activation and actual usefulness remain unfinished
 No original unknown CO/AGY call, stopped schedule, live DB, auth, paid fallback or
 publication is activated by this candidate. A green checkpoint leads to the next
 unfinished authorized dependency, not another routine owner-approval question.
+
+Outcome: exact CO claude/claude-opus-5-5 taskd2abb079 is ALIGNED for C076, no
+current-scope blocker. Root compared every supplied snapshot file to07c0c07 and
+current code/test bytes tobdce832. tasks_v5.py is byte-identical to the independently
+reviewed a48d0cf3. C076 local slice is MET; no product gate is promoted.
+
+READ01 separately received REFINE, adopted as design clarifications: an injectable
+guarded read clock with per-kind observation semantics, stable dumps/UTF-8 projection
+and public ART hash/bytes, not-current wording, real paginated C14 consumer with
+independent TSK state, and explicit tests. Exact implementation scope awaits SWE
+consultation. Keep Opus's nonblocking recognized-VER-authority-disagreement note
+for the next RUN edit; this milestone does not claim arbitrary owners cannot fail.
