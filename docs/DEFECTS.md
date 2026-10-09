@@ -1721,3 +1721,15 @@ classification precedence and pre-entry guard phases before actual freeze. New
 request nonce must be unpredictable. Actual case/native entry is still absent;
 local operator errors are not live provider outcomes. Re-review exact repaired
 hash with same meaningful fixtures before any new original call.
+
+C091 further validator correction: source inferred config_option_update required
+current_update=True from the flag name. Actual CO public callback uses that flag
+only for legacy model updates; modern config updates legitimately deliverFalse.
+Root and Astra independently used the genuine pure collector to reproduce false
+UNAVAILABLE. Author removed only the invented implication, retaining bool and
+hook/shape validation; independent final probe passes. Future callback fixtures
+use actual public-hook flag semantics, not inferred names. No runtime or gate
+change. Author's initial generator also matched an unanchored HASHES substring
+inside N1_HASHES, causing two pre-import NameErrors; explicit distinct assignments
+and mechanical tracked-path/hash comparisons now prevent that substitution.
+These preparation REDs caused no native entry/effects and remain retained locally.

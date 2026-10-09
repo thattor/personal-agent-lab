@@ -2809,3 +2809,16 @@ and context-level independence limitations. No actual entry/freeze yet.
 Independent operator review reproduces5 assertion failures: post-capacity error
 still marked transportPASS and4 malformed model records AVAILABLE. Source author
 repairs them in the private candidate; reviewer fixtures remain separate.
+
+
+## D058 — exact one-case diagnostic freeze (2026-10-10)
+
+Root applies D057 actual Opus C1-C7 disposition and independently APPROVED
+operator6d99dc0 after meaningful fake-bridge5 and genuine modernFalse duplicate
+probe. Root checked the exact operator/source/four pins/full-log and absent new
+case. PRI02-N3-DIAGNOSTIC-ROOT-FREEZE fixes PRIMARY-only synthetic nonce/MAX1,
+zero PAL effects, unchanged strict model gates and original UNKNOWN preservation.
+Expected outcome is UNKNOWN unless the original strict path unexpectedly passes.
+Actual case remains NOT_RUN until its real receipt. This is a distinct diagnostic,
+not a retry/release, guarantee change or general further-call permission. Respect
+actual access/tool/policy limits. Every later provider entry needs new reassessment.

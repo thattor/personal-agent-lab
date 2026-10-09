@@ -1,0 +1,41 @@
+{
+  "candidate_source": "4f0e12c719dbc6f7e34dc784388ae4d619161cd4",
+  "contract": "PRI02-N3-DIAGNOSTIC/1",
+  "diagnostic_authority": "unqualified",
+  "effects": 0,
+  "expected_native_outcome": "UNKNOWN unless original strict path passes without collector",
+  "fake_bridge_groups": {
+    "exit": 0,
+    "log_sha256": "e82aa46f1d996853e4a2b7f78071e8d9bcfd0b6579da1e6177603c396319bf85",
+    "source": "c44d15b6bdcff2c9085aa1e399d0c84e81d3b11c534b2f5d39ac2419bec01e94",
+    "test_seconds": 16.776,
+    "tests": 5
+  },
+  "final_delta": {
+    "changed_lines": 1,
+    "exit": 0,
+    "log_sha256": "d00fea549fb24cbd18fe3e61685be8c5288d462aa19b6045b08be2b976c171d1",
+    "new_probe": 1,
+    "reason": "current_update is a legacy callback flag; modern config_option_update legitimately delivers false",
+    "test_seconds": 0.009
+  },
+  "further_provider_entry": "requires new reassessment after this case",
+  "independent_reviewer": "Native gpt-6-astra, distinct from operator author Native gpt-6.1-sol",
+  "max_calls": 1,
+  "operator_sha256": "6d99dc0e862d672b3b017fd3fe92f62284d41f5c065146e64fcc4e7786b5ac2a",
+  "provider_entry": "NOT_RUN",
+  "raw_operator_and_fixture_logs": "retained local only",
+  "root_exit": 0,
+  "root_full_log_sha256": "854e1b784e379a1e8ce6272fa49a1d614f8731ca94127fabf52a5c08356ce7bf",
+  "root_tests": 969,
+  "source_author_selfchecks": "NOT counted as independent review",
+  "source_pins": {
+    "pal/native_text_v5.py": "8990510b5b793f4f1a58bb60567cc02e3c72c5a1462ae0c516a4bf60caeb12ea",
+    "tests/test_native_devin_model_diagnostic_v5.py": "9f29e5f4b68346c40a52e9881b219efda8a1aba3635443b064464ed643610d78",
+    "tests/test_native_model_diagnostic_v5.py": "38365f480824e141c00c130aa7a9a7731d08dbd533c66907ccc0d7e78ba99c11",
+    "tools/native_devin_text_v5.py": "31e7deb9cb078f7ae411e00dc90bc3c74bb58b954666a0fd3d778e385713b5e6"
+  },
+  "tested_source": "0d60b6f610010467605b6f6b4d98cef2286978e0",
+  "verdict": "APPROVE",
+  "whole_goal": "NOT_MET"
+}
