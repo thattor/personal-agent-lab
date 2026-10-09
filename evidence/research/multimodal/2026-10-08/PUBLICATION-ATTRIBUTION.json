@@ -1,0 +1,29 @@
+{
+  "retrieved_at": "2026-10-09T12:29:32.555734+00:00",
+  "scope": "supplement two attribution files at original pinned commits; originals and earlier receipts unchanged",
+  "files": [
+    {
+      "repo": "livekit/agents",
+      "pinned_commit": "bcdf90771c38fbbc275fd835a6dafa7ae5200685",
+      "path": "NOTICE",
+      "git_blob": "692adc99215eab510e2f4617a132cdcdb5cda026",
+      "sha256": "6d0f7c5e0deb284362296c5da110dd353831da2e67ca77cb5abc051b951b0fac",
+      "bytes": 553,
+      "archive_path": "sources/livekit__agents/files/NOTICE",
+      "retrieval_api": "https://api.github.com/repos/livekit/agents/git/blobs/692adc99215eab510e2f4617a132cdcdb5cda026"
+    },
+    {
+      "repo": "open-webui/open-webui",
+      "pinned_commit": "8bd8b4fac5e059578ac0c74b3c18d11139f88b7d",
+      "path": "LICENSE_HISTORY",
+      "git_blob": "a9eb5e259d6df16ab6456cf1ba7b9f7a890bbafa",
+      "sha256": "b1567cc9763241a41569e01f08272a167dac57273f717b95b31ba7b5ec935e17",
+      "bytes": 2872,
+      "archive_path": "sources/open-webui__open-webui/files/LICENSE_HISTORY",
+      "retrieval_api": "https://api.github.com/repos/open-webui/open-webui/git/blobs/a9eb5e259d6df16ab6456cf1ba7b9f7a890bbafa"
+    }
+  ],
+  "cause": "selected-file archive omitted root NOTICE and license-referenced LICENSE_HISTORY; original selection rationale is not established",
+  "next_check": "before redistributing a selected source archive, inspect upstream root NOTICE and license-referenced attribution files, and retain matching pinned bytes",
+  "limits": "research archive only; no PAL runtime dependency or PAL license change"
+}
