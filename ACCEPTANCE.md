@@ -1,29 +1,28 @@
-# ACCEPTANCE.md — Stable-0 definition of done
+# ACCEPTANCE.md
 
-## Current C073 — reliability verified; ART connection in progress
+## Current C074 candidate — durable saved drafts connected
 
-RUN01/2 and the TSK save-authorization hook are verified at source
-1be000aca0e169805f182d9e13bb019cb5740b0e: full543 PASS23.484s/exit0, separate native
-Sol6.1 review of both owned changes, including two reproduced hook corrections.
-[Evidence](evidence/operations/run01-reliability-20261009/verification.json).
-This supersedes C072's pending RUN implementation status; local mock only.
+Source2e8dfcf531ba0ddfc89dcb83eec0c6e0f58abc00 connects actual MEM/TSK/RUN/ART/C14
+in temporary SQLite: exact-byte saved drafts, current artifact set, reconnectable
+progress and controlled receipt recovery. Root full605 PASS23.880s/exit0; actual
+consumer18 PASS with separate Sol6.1 approval; ART20 with independent Astra approval;
+TSK/RUN separately approved after reproduced fixes. This supersedes C073's pending
+storage/connection status. [Verification](evidence/operations/art01-20261009/verification.json).
 
-SWE binding consultation f4cba212a4934abaa5175a4f8133e9ff completed (REFINE; CO
-verified only the review note). Adopt ART01-BINDING with root's provenance and
-trusted-callback clarifications. TSK consumer preparation can use the fixed public
-callback with test doubles; actual ART integration remains dependent/unverified.
-SOL owns RUN/consumer integration and canonical records, isolated Astra the TSK
-binding module; separate Sol reviews. No VER/complete, provider, recovery or live DB.
+Exact CO Opus5.5 milestone task7cd3d55711f04fee95e26435f00fe3a3 is running from
+review package2b13a63. Its design alignment/next-slice recommendation remains pending.
+Goal completion/VER, artifact model re-input, orphan recovery, PRI/provider/UI,
+product activation and real usefulness remain unproven. Model report/save does not
+mark a Goal completed. Next authorized dependency is host verification and safe
+completion, subject to technical Opus/SWE consultation; analysis is proceeding.
 
-CO storage task917989d447f94a09869f7b05e9870d3a timed out at s1-a1 devin/swe-2-high:
-outcome/process_outcome/quota unknown, options=[], verified:false, no returned diff.
-[Exact pause](evidence/operations/art01-20261009/implementation-pause.json).
-Preserve it with the earlier SWE and AGY unknown calls. No retry/resume/switch/cancel,
-state edit, or duplicate ART implementation. Read-only diagnosis and independent
-TSK/RUN component work continue. Actual stored-and-attached draft remains NOT_RUN.
-
-
-## Current C072 controlled mock execution (2026-10-09)
+Storage code came from separate native Sol6.1 under the freshly verified owner
+alternative instruction, not the unknown CO task. CO0.4.5 remains in the same
+qualified state; current measured routes claude/claude-opus-5-5 and devin/swe-2-high
+Free. At09:15UTC capacity reported Claude1/Devin0, hostlimit12 each; actual earlier
+independent CO calls peaked2, not30. Native model work is labeled separately.
+Three prior CO/AGY unknowns remain preserved; no resume/cancel/state edit or remote
+cessation claim. No new auth/cost/service/publication/schedule/DB migration.
 
 TSK02/1 + RUN01/1 local preparation MET at ea2e8fa064cad188e4477d8b534692012083768a.
 Actual MEM/TSK/mock/C14 report and lookup, exact body/hash context, control barriers,

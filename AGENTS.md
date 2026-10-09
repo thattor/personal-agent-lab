@@ -12,11 +12,12 @@ INT00/1, TSK01/1, MEM01/1, TSK03/1 and TSK02/RUN01 local mock preparation are
 integrated with separate review and full531 regression, including durable C14,
 actual controls/source-stop and callable-cessation occupancy. Real PRI authority,
 recovery, saved verified drafts, live services and full v5 activation remain unproven.
-RUN01/2 and the TSK save hook now pass full543 with separate Sol reviews at C073.
-CO ART storage timed out with unknown outcome and no returned diff; preserve it.
-Frozen binding consultation is complete. Isolated native Astra prepares the TSK
-consumer; SOL prepares RUN/tests. Test-double components are not ART integration.
-No replacement ART implementation, unknown-call retry or whole-project wait.
+C074 candidate: saved drafts are connected through actual MEM/TSK/RUN/ART/C14;
+full605 passes with independent ART/TSK/RUN/consumer reviews. Exact CO Opus5.5
+milestone review is running. Continue its technical assessment and next unfinished
+verification/completion dependency; whole v5 service activation remains unproven.
+Native Sol authored storage under existing owner fallback; the CO timeout remains
+unknown and untouched. Current STATE/DECISIONS supersede historical pending text.
 
 ## Mission
 The project-level destination is the personal assistant described in SPEC.md. Manage project goal → GitHub milestone → goal-bearing Issue → verified work unit under G-001/D-022. [Latest overall plan P-001 v2](docs/plans/P-001-v2.md) is PROPOSED, not human-adopted; v1 is retained history. Stable-0 is released; Stable-1 under D-021 remains the approved current milestone; C065/D034 authorizes the scoped CO development start; shared wire, bounded intake and MEM/TSK queued-source connection are integrated. C14 delivery and the TSK execution/control boundary are next; external product activation remains subject to the reviewed candidate scope. Resume STATE.md, continue independently authorized work, and never activate PROPOSED stages from GitHub metadata alone.
