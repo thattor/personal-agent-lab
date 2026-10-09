@@ -6,7 +6,7 @@ structured inspection plus a plain-text rendering. Each owner read has its own
 snapshot; there is no cross-owner atomic claim, no cache, and no completion,
 dispatch or semantic-quality authority.
 """
-from pal.contracts_v5 import ContractError, ErrorCode, Ref, Result, WorkRef, loads
+from pal.contracts_v5 import ContractError, ErrorCode, Ref, Result, WorkRef, dumps, loads
 from pal.host_read_v5 import checked_result
 
 __all__ = ['NOTICE', 'inspect_session', 'render']
@@ -36,8 +36,26 @@ def _valid_request(request):
             and all(_identifier(value) for value in request.values()))
 
 
+def _json_copy(value):
+    try:
+        return loads(dumps(value))
+    except Exception:
+        return value
+
+
+def _ref_key(value):
+    """(kind, id) when value is a valid Ref JSON object, else None."""
+    try:
+        ref = Ref.from_json(value)
+    except ContractError:
+        return None
+    return ref.kind.value, ref.id
+
+
 def _parse_event(data):
-    """Strict C14 event copy, or None when malformed."""
+    """Strict C14 event copy, or None when malformed. Refs stay deep-copied JSON
+    values in original order; a malformed ref becomes a visible per-ref error
+    later, never a page failure here."""
     try:
         base = {'event_id', 'kind', 'text', 'refs'}
         if type(data) is not dict or not base <= set(data) <= base | {'work_ref'}:
@@ -50,7 +68,7 @@ def _parse_event(data):
         if type(data['refs']) is not list:
             return None
         event = {'event_id': data['event_id'], 'kind': data['kind'], 'text': data['text'],
-                 'refs': [Ref.from_json(item).to_json() for item in data['refs']]}
+                 'refs': [_json_copy(item) for item in data['refs']]}
         if 'work_ref' in data:
             event['work_ref'] = WorkRef.from_json(data['work_ref']).to_json()
         return event
@@ -106,12 +124,14 @@ def _scan(request, events, max_pages):
         seen.add(following)
         cursor = following
         for event in batch:
-            if event['kind'] == 'result':
+            notice = event['kind'] == 'progress' and event['text'] == NOTICE
+            if event['kind'] == 'result' or notice:
                 selected.append(event)
-            elif event['kind'] == 'progress' and event['text'] == NOTICE and 'work_ref' in event:
+            if notice and 'work_ref' in event:
                 work = event['work_ref']
-                notices.append(((work['goal_id'], work['revision']),
-                                {(ref['kind'], ref['id']) for ref in event['refs']}))
+                named = {key for key in (_ref_key(item) for item in event['refs'])
+                         if key is not None}
+                notices.append(((work['goal_id'], work['revision']), named))
     return None, (selected, notices, cursor, True)
 
 
@@ -131,22 +151,23 @@ def _work(tasks, work_ref):
 
 def _read(reader, ref, work_ref, notices):
     try:
-        result = checked_result(reader.read({'ref': dict(ref)}, purpose='user_view'), ref)
+        result = checked_result(reader.read({'ref': ref}, purpose='user_view'), ref)
     except Exception:
         result = _unavailable('read unavailable')
     data = result.to_json()
     validity = None
-    if result.ok and ref['kind'] == 'verification':
+    if result.ok and type(ref) is dict and ref.get('kind') == 'verification':
         body = data['value']
         if body['usable']:
             validity = 'current'
         else:
-            key = (work_ref['goal_id'], work_ref['revision']) if work_ref else None
-            sources = {(item['kind'], item['id']) for item in body['source_refs']}
-            stopped = key is not None and any(
-                notice_key == key and names & sources for notice_key, names in notices)
+            work = body['work_ref'] if body['work_ref'] is not None else work_ref
+            goal = (work['goal_id'], work['revision']) if work else None
+            sources = {_ref_key(item) for item in body['source_refs']} - {None}
+            stopped = goal is not None and any(
+                notice_goal == goal and named & sources for notice_goal, named in notices)
             validity = 'source stopped' if stopped else 'not current'
-    return {'ref': dict(ref), 'result': data, 'validity': validity}
+    return {'ref': ref, 'result': data, 'validity': validity}
 
 
 def inspect_session(request, *, events, tasks, reader, max_pages=_MAX_PAGES):
@@ -177,7 +198,14 @@ def _indent(text, prefix):
 
 
 def _name(ref):
-    return f"{ref['kind']}:{ref['id']}"
+    """'kind:id' for a valid Ref JSON value; a safe dumps rendering otherwise."""
+    key = _ref_key(ref)
+    if key is not None:
+        return f'{key[0]}:{key[1]}'
+    try:
+        return dumps(ref)
+    except Exception:
+        return repr(ref)
 
 
 def _verification_lines(content):
@@ -210,9 +238,13 @@ def _read_lines(read):
         lines.append(f"    Read failed: {error['code']}: {error['message']}")
         return lines
     body = result['value']
-    lines.append(f"    Read at: {body['observed_at']} (time of this read, not creation time)")
+    is_verification = type(ref) is dict and ref.get('kind') == 'verification'
+    if is_verification:
+        lines.append(f"    Read at: {body['observed_at']} (time of this read, not creation time)")
+    else:
+        lines.append(f"    Observed at: {body['observed_at']} (stored observation time)")
     lines.append(f"    Media type: {body['media_type']}  hash: {body['hash']}")
-    if ref['kind'] == 'verification':
+    if is_verification:
         lines.append('    Saved verification (historical, separate from current usability):')
         lines.extend(_verification_lines(body['content']))
         lines.append(f"    Current usability: {read['validity']}")
@@ -233,7 +265,7 @@ def render(inspection):
         lines.append('No result events found.')
     for number, item in enumerate(inspection['items'], 1):
         event = item['event']
-        lines.append(f"Result event {number}: {event['event_id']} ({event['text']})")
+        lines.append(f"Event {number} ({event['kind']}): {event['event_id']} ({event['text']})")
         work_ref = event.get('work_ref')
         if work_ref:
             lines.append(f"  Work ref: goal {work_ref['goal_id']} revision {work_ref['revision']}"

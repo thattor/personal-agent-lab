@@ -1,0 +1,20 @@
+test_completed_history_notice_is_a_visible_item_even_without_work_ref (test_read_regressions_v5.ReadRegressionTests.test_completed_history_notice_is_a_visible_item_even_without_work_ref) ... ok
+test_malformed_notice_refs_are_visible_without_correlating_false_cause (test_read_regressions_v5.ReadRegressionTests.test_malformed_notice_refs_are_visible_without_correlating_false_cause) ... ok
+test_real_c11_optional_fields_are_accepted_and_extras_rejected (test_read_regressions_v5.ReadRegressionTests.test_real_c11_optional_fields_are_accepted_and_extras_rejected) ... FAIL
+test_renderer_preserves_each_owner_timestamp_meaning (test_read_regressions_v5.ReadRegressionTests.test_renderer_preserves_each_owner_timestamp_meaning) ... ok
+test_resumed_window_never_invents_an_unseen_source_stop_notice (test_read_regressions_v5.ReadRegressionTests.test_resumed_window_never_invents_an_unseen_source_stop_notice) ... ok
+test_unknown_and_malformed_refs_remain_visible_per_ref_failures (test_read_regressions_v5.ReadRegressionTests.test_unknown_and_malformed_refs_remain_visible_per_ref_failures) ... ok
+
+======================================================================
+FAIL: test_real_c11_optional_fields_are_accepted_and_extras_rejected (test_read_regressions_v5.ReadRegressionTests.test_real_c11_optional_fields_are_accepted_and_extras_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_read_regressions_v5.py", line 56, in test_real_c11_optional_fields_are_accepted_and_extras_rejected
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'owner unavailable', 'refs': []}}
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.035s
+
+FAILED (failures=1)
