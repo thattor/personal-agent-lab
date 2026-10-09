@@ -1,0 +1,18 @@
+{
+  "author_source": "076d4d20c170638b46f2e06f697e985e4476514b",
+  "source_sha256": "60e7ccb02279a374e3283297c8bce3fe23c7a0b42cd04ccba08a4ad6777d68d5",
+  "method_count": 1,
+  "subcases": 9,
+  "baseline": "RED",
+  "failure_count": 9,
+  "errors": 0,
+  "cause": "Cleanup compared linked values but omitted strict identifier/canonical call/source membership validation; consistently corrupt records could release occupied work.",
+  "test_sha256": "717cf1f445b9590df3797e6a1f1289e251d24591f139b63babf1c7e36597ffa2",
+  "red_sha256": "2884fc9d4e949d18fac3105383a852d718a12444e8ddb49c8359b19ea87003b7",
+  "independent_finding": "Separate Sol reproduced blank reservation and Step identity beyond Root call/source probes.",
+  "prevention": "At stored-boundary validation check identifier shape and original admission invariants as well as pairwise equality; probe consistent multi-row corruption.",
+  "remaining": "Author repair and independent exact-source rereview required; original frozen50 unchanged.",
+  "scope_original_sha256": "fdd1fe51f1d8931bb900f21f4dd4b097c1e17ea5cab838b905553b22cbfaf62c",
+  "scope_public_sha256": "3d5b137db0590bdee445dfc8baa4a42666aa11e4316f440ef5872f1b05c288f9",
+  "public_export": "Original command/results unchanged. Original hashes refer to locally retained evidence; exported log hashes are in verification.json."
+}

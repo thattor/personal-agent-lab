@@ -1126,3 +1126,36 @@ was exposed. Next actual dependency remains Opus ASK milestone/CHANGE01 design
 consultation; prepare a fresh public-byte-bound package including the later
 independent C10 critique and C13 correction, preserving the prior never-launched
 private package/refusals. Route and cost checks precede one owned new call.
+
+
+C078 final outcome: exact AGY claude-opus-5-5-high review completed
+SUCCESS305.502s: ASK ALIGNED for the frozen local mock contract and roles, CHANGE
+READY_TO_FREEZE. Root794 and independent exact-source reviews are the actual test
+proof; reviewer executes no tests and reports connection-test truncation and
+unsupplied RUN/ART/VER/MEM source. Preserve those limits, historical refusals and
+requested versus actual request-review CLI mode in the exact receipt.
+
+## C079 — same-Goal correction, frozen CHANGE01/1, 2026-10-09
+
+Value: a saved corrected requirement can replace current work while preserving
+history, prior authority and consumed budgets, and fencing late results. This is
+the next necessary local dependency before routing such requests through PRI;
+cancel/new Goal would erase that continuity. Actual Opus consultation plus Astra
+v1 source reconciliation precede Root adoption of CHANGE01-SCOPE.md and shared
+C02/C10/C13 history addenda. Fixed independent TSK/RUN tests are assigned first,
+Astra owns isolated tasks_v5.py source afterward; Root connects actual temporary
+MEM/TSK/RUN/ART/VER/C14 and owns demo, integration and canonical records. RUN is
+changed only if a test exposes a concrete settling defect. No implementation
+PASS is claimed at freeze. Actual native maximum4 including Root, not30. CO0.4.5
+and its qualified shared state are preserved; last planner limit is unchanged.
+Unmet whole-project obligations remain PRI/provider/UI, general recovery,
+semantic verification and authentic usefulness. No existing live DB is touched.
+
+
+C079 implemented outcome: exact author b4baae24 and unchanged four fixed test
+files are integrated. Root full845 PASS26.939s and actual same-Goal replacement
+demo PASS; independent Sol APPROVE after51/122 and original no-write probes.
+Preserve original50 green, later nine corruption REDs and REQUEST_CHANGES. The
+repair restores valid original call/source identity before cleanup. Final Opus
+CHANGE alignment is pending; D045 keeps raw transport evidence local and requires
+normal approval of minimized code/verification export plus public readback.

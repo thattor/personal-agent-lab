@@ -64,6 +64,7 @@
 入力：{session_id,query?:str,goal_ids?:[str],limit:int}。
 出力：{works:[{work_ref,brief_summary,expert_id,state,open_questions:[{id,text,revision}]}]}。
 get_work入力：{goal_id,revision?}→{work_ref,brief,grant,state,current_artifact_refs,open_questions}。VERはこの窓口から固定条件と現行成果物集合を読む。過去revisionの読出しは履歴であり現行完了には使えない。
+CHANGE01/1では、旧revisionのstateは履歴専用のsuperseded、open_questionsは空とする。最新revisionの状態領域にはsupersededを加えない。回答済み・閉鎖済み質問、旧成果物・Step・受付結果は履歴に残し、旧C04/C10再送の保存応答を最新状態へ書き換えない。
 読取り専用。別セッションの仕事も本人の同一アカウント内で検索できる。候補からの意味選択はPrimary、ID/版の有効性はTSKが確認。候補なしと曖昧を混同しない。
 
 ### C03 作成・継続入力の結合（TSK-01）
@@ -116,6 +117,7 @@ get_verification{verification_ref}→{work_ref,artifact_refs,checks,source_refs,
 出力：{work_ref,state,control_status:none|pause_requested|draining,open_question_id?,reason?}。
 answerは質問/版/原回答の可用性を照合し、回答結合と質問解消を一度で保存する。回答済み再送は同じ結果。paused中は回答を保存するだけでpausedを維持し、resumeでqueuedへ戻る。
 changeは新briefをそのまま無条件に信頼せず、元依頼と差分・既存grant範囲を確認する。条件を変える場合も新revisionで明示する。旧質問はsuperseded、旧artifact/verificationは履歴になる。取得事実は対象・鮮度・参照可否を再確認して再利用できる。
+CHANGE01/1の閉じた入力・grant交差・出典義務・原記録重複・履歴・lease解放は[固定スコープ](CHANGE01-SCOPE.md)に従う。公開APIはcontrol(request)のまま。信頼されたホストが保存済み修正原文を結び、導出・再利用した全記録をcontext_refsへ含める。TSKは意味の権限判断を代行しない。新grantは最新の既存grantと現在のホスト上限の交差であり、Goal/host予算をリセットしない。
 completeはVERの保存結果を読み、全必須条件met、現在のWorkRef、現行artifact集合、出典可用性を一つのトランザクションで照合する。照合中に変更があればstale、未達ならconflict。Expertが渡す任意判定JSONは受け付けない。
 
 ### C11 本文と保存結果の読出し（各所有者）
@@ -135,6 +137,7 @@ claim入力：{runner_id}→{lease_id,work_ref,brief,grant,checkpoint,steps,pend
 begin_step入力：{key,work_ref,action}→Step。Step = {step_id,work_ref,index:int,action,status:started|finished|abandoned,result_refs:[Ref],error:str?}。現在性を確認し、モデル出力の構造と権限を検証したホストが一度保存する。C12推論前のcall_idはlease_idと次step indexからホストが確保し、begin_step前のモデル予算と中断状態を追えるようにする。begin_stepの同key再送は同じStep。
 finish_step入力：{work_ref,step_id,result_refs,error?}→Step。外部I/Oから戻った結果を照合して確定。step書込み前に落ちた時はstep_idから導出したkeyでEXE/ART/VERのget_by_keyを照会して復元し、済んだ操作を再発行しない。各提供側はget_by_key(key)→保存結果又はnot_foundを提供し、keyは仕事/step/操作種別の範囲で一意とする。
 release入力：{lease_id,work_ref,outcome:yield|paused|failed,reason}→保存済みstate。yieldはqueuedへ戻す。failedは予算切れ又は解消不能を理由付きで保存する。停止要求時は進行中呼出しを回収してpausedへ。現行権限を失った呼出しの結果は台帳にだけ残す。releaseは古いepochでも、現在の占有lease_idと一致し呼出し回収済みなら占有枠だけ解放できる。保存状態は最新のcancel/pause/change意図を優先し、古い要求で戻さない。異なるlease_idは拒否する。
+CHANGE01/1では、新規claimは各Goalの最新queuedだけを選ぶ。保持された旧leaseは診断値を返すが旧revisionの実行権を与えない。旧leaseの解放は呼出し・予約・Stepの所有結合と終了状態を確認し、旧startedだけをabandonedにする。最新revisionのcancel、pause、その他queuedの順に確定し、応答は最新WorkRef。旧failed結果で置換後の仕事をfailedにしない。
 recoverはホスト起動時だけ実行。起動ロックで旧runner不在を確認し、EXE.recoverで所有呼出しを照合してからTSKのrunningを無効化。未完了stepを照合して再開可能ならqueued、情報待ちはwaiting_input、paused/cancelledは維持する。モデル推論が中断したstepは未確定として同じ出典から再計算できるが、完了済み操作を繰り返さない。復旧で回収した旧epochの確定観測は、現revisionの目的・出典可用性・鮮度を確認して新しいstepへ参照として結合する。ARTの旧epoch保存結果も同revisionかつ有効出典ならホストが復旧採用を記録できる。VERの旧epoch判定はC10.completeへ流用せず現epochで再確認する。これは旧実行の遅延結果を無条件に採用する経路ではない。
 checkpointは最後のfinished stepのindexと未解消question参照。内部思考の保存は要件にしない。
 
@@ -155,6 +158,7 @@ C07.prepareはoperation予約をEXE-01が確保してOperationへ保存し、exe
 ## 5. 状態遷移と競合の決着
 
 revisionは目的・対象・制約・条件の変更で増やす。epochはclaimと即時無効化(cancel/change/参照停止/復旧)で増やす。値の連続性に意味を持たせず、等値だけで現行性を照合する。
+CHANGE01/1の新revision/epochは直前の最新値それぞれ+1とし、新Condition IDを発行する。旧行はsuperseded、旧制御フラグは解除し、新行が最新意図を所有する。running置換は旧leaseを保持してdraining、pause意図を引き継ぐ。参照停止はその時点の最新revisionの登録出典に作用する。旧専用出典の停止で独立した新修正を拒否せず、新修正自身の出典停止または終端確定は拒否する。既存DBの移行・復旧をこの固定スコープから推定しない。
 
 | 操作 | 状態 | 結果 |
 |---|---|---|

@@ -1,0 +1,1987 @@
+test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end (test_tasks_change_v5.ChangeTests.test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end) ...
+  test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end (test_tasks_change_v5.ChangeTests.test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end) (intent='pause') ... FAIL
+  test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end (test_tasks_change_v5.ChangeTests.test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end) (intent='cancel') ... FAIL
+  test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end (test_tasks_change_v5.ChangeTests.test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end) (intent='none') ... FAIL
+test_all_four_states_preserve_identity_and_empty_new_execution_history (test_tasks_change_v5.ChangeTests.test_all_four_states_preserve_identity_and_empty_new_execution_history) ...
+  test_all_four_states_preserve_identity_and_empty_new_execution_history (test_tasks_change_v5.ChangeTests.test_all_four_states_preserve_identity_and_empty_new_execution_history) (state='queued') ... FAIL
+  test_all_four_states_preserve_identity_and_empty_new_execution_history (test_tasks_change_v5.ChangeTests.test_all_four_states_preserve_identity_and_empty_new_execution_history) (state='waiting_input') ... FAIL
+  test_all_four_states_preserve_identity_and_empty_new_execution_history (test_tasks_change_v5.ChangeTests.test_all_four_states_preserve_identity_and_empty_new_execution_history) (state='paused') ... FAIL
+  test_all_four_states_preserve_identity_and_empty_new_execution_history (test_tasks_change_v5.ChangeTests.test_all_four_states_preserve_identity_and_empty_new_execution_history) (state='running') ... FAIL
+test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) ...
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='extra_top') ... FAIL
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='grant') ... FAIL
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='scope') ... FAIL
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='limits') ... FAIL
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='extra_command') ... FAIL
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='nonrecord') ... FAIL
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='bool_revision') ... FAIL
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='negative_epoch') ... FAIL
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='extra_brief') ... FAIL
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='empty_conditions') ... FAIL
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='bool_issue') ... FAIL
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='invalid_check') ... FAIL
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='bad_ref_context') ... FAIL
+  test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='bad_utf8') ... FAIL
+test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically (test_tasks_change_v5.ChangeTests.test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically) ...
+  test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically (test_tasks_change_v5.ChangeTests.test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically) (collision='same_new') ... FAIL
+  test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically (test_tasks_change_v5.ChangeTests.test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically) (collision='prior') ... FAIL
+  test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically (test_tasks_change_v5.ChangeTests.test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically) (collision='old_history') ... FAIL
+test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) ...
+  test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='status', value=None) ... FAIL
+  test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='status', value='unknown') ... FAIL
+  test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='idx', value=-1) ... FAIL
+  test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='idx', value=9223372036854775808) ... FAIL
+  test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='work', value='{"epoch":1,"goal_id":"foreign","revision":1}') ... FAIL
+  test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='work', value='{"epoch":false,"goal_id":"g","revision":1}') ... FAIL
+  test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='reservation', value='absent') ... FAIL
+  test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='reservation', field='lease', value='foreign') ... FAIL
+  test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='reservation', field='work', value='{"epoch":1,"goal_id":"foreign","revision":1}') ... FAIL
+  test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='reservation', field='idx', value=-1) ... FAIL
+  test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='reservation', field='kind', value='step') ... FAIL
+  test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='reservation', field='role', value='primary') ... FAIL
+  test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='reservation', field='binding', value='another-call') ... FAIL
+test_ended_returned_raised_notentered_old_calls_can_settle_without_step (test_tasks_change_v5.ChangeTests.test_ended_returned_raised_notentered_old_calls_can_settle_without_step) ...
+  test_ended_returned_raised_notentered_old_calls_can_settle_without_step (test_tasks_change_v5.ChangeTests.test_ended_returned_raised_notentered_old_calls_can_settle_without_step) (outcome='returned') ... FAIL
+  test_ended_returned_raised_notentered_old_calls_can_settle_without_step (test_tasks_change_v5.ChangeTests.test_ended_returned_raised_notentered_old_calls_can_settle_without_step) (outcome='raised') ... FAIL
+  test_ended_returned_raised_notentered_old_calls_can_settle_without_step (test_tasks_change_v5.ChangeTests.test_ended_returned_raised_notentered_old_calls_can_settle_without_step) (outcome='not_entered') ... FAIL
+test_epoch_tolerant_fresh_control_old_revision_stale_and_missing_goal (test_tasks_change_v5.ChangeTests.test_epoch_tolerant_fresh_control_old_revision_stale_and_missing_goal) ... FAIL
+test_grant_preserves_previous_order_and_intersection_denies_repository (test_tasks_change_v5.ChangeTests.test_grant_preserves_previous_order_and_intersection_denies_repository) ... FAIL
+test_latest_only_claim_and_retained_claim_never_authorize_old_work (test_tasks_change_v5.ChangeTests.test_latest_only_claim_and_retained_claim_never_authorize_old_work) ... FAIL
+test_latest_superseded_and_question_row_corruption_fail_closed (test_tasks_change_v5.ChangeTests.test_latest_superseded_and_question_row_corruption_fail_closed) ...
+  test_latest_superseded_and_question_row_corruption_fail_closed (test_tasks_change_v5.ChangeTests.test_latest_superseded_and_question_row_corruption_fail_closed) (mutation='latest_superseded') ... FAIL
+  test_latest_superseded_and_question_row_corruption_fail_closed (test_tasks_change_v5.ChangeTests.test_latest_superseded_and_question_row_corruption_fail_closed) (mutation='missing_question') ... FAIL
+  test_latest_superseded_and_question_row_corruption_fail_closed (test_tasks_change_v5.ChangeTests.test_latest_superseded_and_question_row_corruption_fail_closed) (mutation='question_text') ... FAIL
+  test_latest_superseded_and_question_row_corruption_fail_closed (test_tasks_change_v5.ChangeTests.test_latest_superseded_and_question_row_corruption_fail_closed) (mutation='waiting_without_open') ... FAIL
+test_old_only_stop_after_change_is_noop_but_shared_and_new_sources_fence_latest (test_tasks_change_v5.ChangeTests.test_old_only_stop_after_change_is_noop_but_shared_and_new_sources_fence_latest) ... FAIL
+test_old_questions_are_history_not_transferred_and_original_receipts_replay (test_tasks_change_v5.ChangeTests.test_old_questions_are_history_not_transferred_and_original_receipts_replay) ...
+  test_old_questions_are_history_not_transferred_and_original_receipts_replay (test_tasks_change_v5.ChangeTests.test_old_questions_are_history_not_transferred_and_original_receipts_replay) (status='open') ... FAIL
+  test_old_questions_are_history_not_transferred_and_original_receipts_replay (test_tasks_change_v5.ChangeTests.test_old_questions_are_history_not_transferred_and_original_receipts_replay) (status='answered') ... FAIL
+  test_old_questions_are_history_not_transferred_and_original_receipts_replay (test_tasks_change_v5.ChangeTests.test_old_questions_are_history_not_transferred_and_original_receipts_replay) (status='closed') ... FAIL
+test_old_started_step_abandoned_release_replay_is_historical_and_strict (test_tasks_change_v5.ChangeTests.test_old_started_step_abandoned_release_replay_is_historical_and_strict) ... FAIL
+test_one_changed_event_uses_new_workref_origin_and_own_session (test_tasks_change_v5.ChangeTests.test_one_changed_event_uses_new_workref_origin_and_own_session) ... FAIL
+test_origin_and_condition_freshness_are_goal_local_not_global_registry (test_tasks_change_v5.ChangeTests.test_origin_and_condition_freshness_are_goal_local_not_global_registry) ... FAIL
+test_owned_write_and_event_replay_failures_roll_back_including_baseexception (test_tasks_change_v5.ChangeTests.test_owned_write_and_event_replay_failures_roll_back_including_baseexception) ...
+  test_owned_write_and_event_replay_failures_roll_back_including_baseexception (test_tasks_change_v5.ChangeTests.test_owned_write_and_event_replay_failures_roll_back_including_baseexception) (target='first_write', exception=<class 'RuntimeError'>) ... FAIL
+  test_owned_write_and_event_replay_failures_roll_back_including_baseexception (test_tasks_change_v5.ChangeTests.test_owned_write_and_event_replay_failures_roll_back_including_baseexception) (target='first_write', exception=<class 'KeyboardInterrupt'>) ... FAIL
+  test_owned_write_and_event_replay_failures_roll_back_including_baseexception (test_tasks_change_v5.ChangeTests.test_owned_write_and_event_replay_failures_roll_back_including_baseexception) (target='event', exception=<class 'RuntimeError'>) ... FAIL
+  test_owned_write_and_event_replay_failures_roll_back_including_baseexception (test_tasks_change_v5.ChangeTests.test_owned_write_and_event_replay_failures_roll_back_including_baseexception) (target='event', exception=<class 'KeyboardInterrupt'>) ... FAIL
+  test_owned_write_and_event_replay_failures_roll_back_including_baseexception (test_tasks_change_v5.ChangeTests.test_owned_write_and_event_replay_failures_roll_back_including_baseexception) (target='replay', exception=<class 'RuntimeError'>) ... FAIL
+  test_owned_write_and_event_replay_failures_roll_back_including_baseexception (test_tasks_change_v5.ChangeTests.test_owned_write_and_event_replay_failures_roll_back_including_baseexception) (target='replay', exception=<class 'KeyboardInterrupt'>) ... FAIL
+test_prepared_old_admission_is_stale_and_may_enter_false_after_change (test_tasks_change_v5.ChangeTests.test_prepared_old_admission_is_stale_and_may_enter_false_after_change) ... FAIL
+test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) ...
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='COMMIT') ... FAIL
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='ROLLBACK') ... FAIL
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='COMMIT_BEGIN') ... FAIL
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='ROLLBACK_BEGIN') ... FAIL
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='WRITE') ... FAIL
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='EXCEPTION') ... FAIL
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='INTERRUPT') ... FAIL
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='COMMIT') ... FAIL
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='ROLLBACK') ... FAIL
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='COMMIT_BEGIN') ... FAIL
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='ROLLBACK_BEGIN') ... FAIL
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='WRITE') ... FAIL
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='EXCEPTION') ... FAIL
+  test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='INTERRUPT') ... FAIL
+test_prior_grant_narrowing_survives_host_widening_and_usage_does_not_reset (test_tasks_change_v5.ChangeTests.test_prior_grant_narrowing_survives_host_widening_and_usage_does_not_reset) ... FAIL
+test_release_lease_identity_and_paused_outcome_do_not_guess_authority (test_tasks_change_v5.ChangeTests.test_release_lease_identity_and_paused_outcome_do_not_guess_authority) ... FAIL
+test_replay_is_original_after_more_change_stop_and_terminal_not_current_state (test_tasks_change_v5.ChangeTests.test_replay_is_original_after_more_change_stop_and_terminal_not_current_state) ... FAIL
+test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance (test_tasks_change_v5.ChangeTests.test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance) ...
+  test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance (test_tasks_change_v5.ChangeTests.test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance) (origin={'id': 'record-b4859af93dd1401bb54e1f4d24ecf6ec', 'kind': 'record'}) ... FAIL
+  test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance (test_tasks_change_v5.ChangeTests.test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance) (origin={'id': 'record-b97c84ca4bab4cca91e25eb4701dd0d2', 'kind': 'record'}) ... FAIL
+test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance (test_tasks_change_v5.ChangeTests.test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance) ... FAIL
+test_revision_and_epoch_overflow_reject_before_mint (test_tasks_change_v5.ChangeTests.test_revision_and_epoch_overflow_reject_before_mint) ...
+  test_revision_and_epoch_overflow_reject_before_mint (test_tasks_change_v5.ChangeTests.test_revision_and_epoch_overflow_reject_before_mint) (field='revision') ... FAIL
+  test_revision_and_epoch_overflow_reject_before_mint (test_tasks_change_v5.ChangeTests.test_revision_and_epoch_overflow_reject_before_mint) (field='epoch') ... FAIL
+test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key (test_tasks_change_v5.ChangeTests.test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key) ...
+  test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key (test_tasks_change_v5.ChangeTests.test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key) (outcome='not_found') ... FAIL
+  test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key (test_tasks_change_v5.ChangeTests.test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key) (outcome='denied') ... FAIL
+  test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key (test_tasks_change_v5.ChangeTests.test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key) (outcome='unavailable') ... FAIL
+test_source_stop_before_change_depends_on_explicit_new_provenance (test_tasks_change_v5.ChangeTests.test_source_stop_before_change_depends_on_explicit_new_provenance) ...
+  test_source_stop_before_change_depends_on_explicit_new_provenance (test_tasks_change_v5.ChangeTests.test_source_stop_before_change_depends_on_explicit_new_provenance) (mode='old_only') ... FAIL
+  test_source_stop_before_change_depends_on_explicit_new_provenance (test_tasks_change_v5.ChangeTests.test_source_stop_before_change_depends_on_explicit_new_provenance) (mode='reused') ... FAIL
+  test_source_stop_before_change_depends_on_explicit_new_provenance (test_tasks_change_v5.ChangeTests.test_source_stop_before_change_depends_on_explicit_new_provenance) (mode='new_origin') ... FAIL
+  test_source_stop_before_change_depends_on_explicit_new_provenance (test_tasks_change_v5.ChangeTests.test_source_stop_before_change_depends_on_explicit_new_provenance) (mode='terminal_failed') ... FAIL
+test_state_lease_inconsistency_rejects_change_without_writes (test_tasks_change_v5.ChangeTests.test_state_lease_inconsistency_rejects_change_without_writes) ...
+  test_state_lease_inconsistency_rejects_change_without_writes (test_tasks_change_v5.ChangeTests.test_state_lease_inconsistency_rejects_change_without_writes) (mutation='running_no_lease') ... FAIL
+  test_state_lease_inconsistency_rejects_change_without_writes (test_tasks_change_v5.ChangeTests.test_state_lease_inconsistency_rejects_change_without_writes) (mutation='queued_has_lease') ... FAIL
+  test_state_lease_inconsistency_rejects_change_without_writes (test_tasks_change_v5.ChangeTests.test_state_lease_inconsistency_rejects_change_without_writes) (mutation='unknown_state') ... FAIL
+  test_state_lease_inconsistency_rejects_change_without_writes (test_tasks_change_v5.ChangeTests.test_state_lease_inconsistency_rejects_change_without_writes) (mutation='old_lease_no_drain') ... FAIL
+test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) ...
+  test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='bool_index') ... FAIL
+  test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='negative_index') ... FAIL
+  test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='foreign_work') ... FAIL
+  test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='future_epoch') ... FAIL
+  test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='wrong_id') ... FAIL
+  test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='sql_goal') ... FAIL
+  test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='sql_index') ... FAIL
+  test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='sql_call') ... FAIL
+  test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='sql_call_lease') ... FAIL
+  test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='result_shape') ... FAIL
+  test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='unknown_status') ... FAIL
+  test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='error_type') ... FAIL
+test_terminal_changes_conflict_without_burning_key (test_tasks_change_v5.ChangeTests.test_terminal_changes_conflict_without_burning_key) ...
+  test_terminal_changes_conflict_without_burning_key (test_tasks_change_v5.ChangeTests.test_terminal_changes_conflict_without_burning_key) (state='completed') ... FAIL
+  test_terminal_changes_conflict_without_burning_key (test_tasks_change_v5.ChangeTests.test_terminal_changes_conflict_without_burning_key) (state='cancelled') ... FAIL
+  test_terminal_changes_conflict_without_burning_key (test_tasks_change_v5.ChangeTests.test_terminal_changes_conflict_without_burning_key) (state='failed') ... FAIL
+
+======================================================================
+FAIL: test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end (test_tasks_change_v5.ChangeTests.test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end) (intent='pause')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 318, in test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end
+    self.change()
+    ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end (test_tasks_change_v5.ChangeTests.test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end) (intent='cancel')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 318, in test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end
+    self.change()
+    ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end (test_tasks_change_v5.ChangeTests.test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end) (intent='none')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 318, in test_admitted_multichange_latest_pause_stop_and_cancel_win_after_actual_end
+    self.change()
+    ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_all_four_states_preserve_identity_and_empty_new_execution_history (test_tasks_change_v5.ChangeTests.test_all_four_states_preserve_identity_and_empty_new_execution_history) (state='queued')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 104, in test_all_four_states_preserve_identity_and_empty_new_execution_history
+    out = self.change()
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_all_four_states_preserve_identity_and_empty_new_execution_history (test_tasks_change_v5.ChangeTests.test_all_four_states_preserve_identity_and_empty_new_execution_history) (state='waiting_input')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 104, in test_all_four_states_preserve_identity_and_empty_new_execution_history
+    out = self.change()
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_all_four_states_preserve_identity_and_empty_new_execution_history (test_tasks_change_v5.ChangeTests.test_all_four_states_preserve_identity_and_empty_new_execution_history) (state='paused')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 104, in test_all_four_states_preserve_identity_and_empty_new_execution_history
+    out = self.change()
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_all_four_states_preserve_identity_and_empty_new_execution_history (test_tasks_change_v5.ChangeTests.test_all_four_states_preserve_identity_and_empty_new_execution_history) (state='running')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 104, in test_all_four_states_preserve_identity_and_empty_new_execution_history
+    out = self.change()
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='extra_top')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='grant')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='scope')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='limits')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='extra_command')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='nonrecord')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='bool_revision')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='negative_epoch')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='extra_brief')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='empty_conditions')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='bool_issue')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='invalid_check')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='bad_ref_context')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_command_and_shared_strict_parsers_do_not_burn_key (test_tasks_change_v5.ChangeTests.test_closed_command_and_shared_strict_parsers_do_not_burn_key) (mutation='bad_utf8')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 96, in test_closed_command_and_shared_strict_parsers_do_not_burn_key
+    self.change(key='same-valid-key')
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically (test_tasks_change_v5.ChangeTests.test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically) (collision='same_new')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 479, in test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically
+    self.assert_unchanged(self.request(origin=origin), 'unavailable')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically (test_tasks_change_v5.ChangeTests.test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically) (collision='prior')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 479, in test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically
+    self.assert_unchanged(self.request(origin=origin), 'unavailable')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically (test_tasks_change_v5.ChangeTests.test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically) (collision='old_history')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 477, in test_condition_collisions_with_same_brief_or_prior_goal_history_fail_atomically
+    self.change(); origin = self.f.record('later correction collision')
+    ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='status', value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 395, in test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes
+    self.value(self.t.end_call({'call_id': call['call_id'], 'outcome': 'returned'})); self.change()
+                                                                                      ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='status', value='unknown')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 395, in test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes
+    self.value(self.t.end_call({'call_id': call['call_id'], 'outcome': 'returned'})); self.change()
+                                                                                      ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='idx', value=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 395, in test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes
+    self.value(self.t.end_call({'call_id': call['call_id'], 'outcome': 'returned'})); self.change()
+                                                                                      ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='idx', value=9223372036854775808)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 395, in test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes
+    self.value(self.t.end_call({'call_id': call['call_id'], 'outcome': 'returned'})); self.change()
+                                                                                      ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='work', value='{"epoch":1,"goal_id":"foreign","revision":1}')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 395, in test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes
+    self.value(self.t.end_call({'call_id': call['call_id'], 'outcome': 'returned'})); self.change()
+                                                                                      ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='work', value='{"epoch":false,"goal_id":"g","revision":1}')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 395, in test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes
+    self.value(self.t.end_call({'call_id': call['call_id'], 'outcome': 'returned'})); self.change()
+                                                                                      ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='call', field='reservation', value='absent')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 395, in test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes
+    self.value(self.t.end_call({'call_id': call['call_id'], 'outcome': 'returned'})); self.change()
+                                                                                      ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='reservation', field='lease', value='foreign')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 395, in test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes
+    self.value(self.t.end_call({'call_id': call['call_id'], 'outcome': 'returned'})); self.change()
+                                                                                      ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='reservation', field='work', value='{"epoch":1,"goal_id":"foreign","revision":1}')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 395, in test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes
+    self.value(self.t.end_call({'call_id': call['call_id'], 'outcome': 'returned'})); self.change()
+                                                                                      ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='reservation', field='idx', value=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 395, in test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes
+    self.value(self.t.end_call({'call_id': call['call_id'], 'outcome': 'returned'})); self.change()
+                                                                                      ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='reservation', field='kind', value='step')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 395, in test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes
+    self.value(self.t.end_call({'call_id': call['call_id'], 'outcome': 'returned'})); self.change()
+                                                                                      ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='reservation', field='role', value='primary')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 395, in test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes
+    self.value(self.t.end_call({'call_id': call['call_id'], 'outcome': 'returned'})); self.change()
+                                                                                      ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes (test_tasks_change_v5.ChangeTests.test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes) (table='reservation', field='binding', value='another-call')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 395, in test_cross_revision_release_rejects_corrupt_call_or_reservation_without_writes
+    self.value(self.t.end_call({'call_id': call['call_id'], 'outcome': 'returned'})); self.change()
+                                                                                      ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_ended_returned_raised_notentered_old_calls_can_settle_without_step (test_tasks_change_v5.ChangeTests.test_ended_returned_raised_notentered_old_calls_can_settle_without_step) (outcome='returned')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 340, in test_ended_returned_raised_notentered_old_calls_can_settle_without_step
+    self.setUp(); call = self.admitted(); self.change()
+                                          ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_ended_returned_raised_notentered_old_calls_can_settle_without_step (test_tasks_change_v5.ChangeTests.test_ended_returned_raised_notentered_old_calls_can_settle_without_step) (outcome='raised')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 340, in test_ended_returned_raised_notentered_old_calls_can_settle_without_step
+    self.setUp(); call = self.admitted(); self.change()
+                                          ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_ended_returned_raised_notentered_old_calls_can_settle_without_step (test_tasks_change_v5.ChangeTests.test_ended_returned_raised_notentered_old_calls_can_settle_without_step) (outcome='not_entered')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 340, in test_ended_returned_raised_notentered_old_calls_can_settle_without_step
+    self.setUp(); call = self.admitted(); self.change()
+                                          ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_epoch_tolerant_fresh_control_old_revision_stale_and_missing_goal (test_tasks_change_v5.ChangeTests.test_epoch_tolerant_fresh_control_old_revision_stale_and_missing_goal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 188, in test_epoch_tolerant_fresh_control_old_revision_stale_and_missing_goal
+    out = self.value(self.t.control(req))
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_grant_preserves_previous_order_and_intersection_denies_repository (test_tasks_change_v5.ChangeTests.test_grant_preserves_previous_order_and_intersection_denies_repository)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 164, in test_grant_preserves_previous_order_and_intersection_denies_repository
+    self.change()
+    ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_latest_only_claim_and_retained_claim_never_authorize_old_work (test_tasks_change_v5.ChangeTests.test_latest_only_claim_and_retained_claim_never_authorize_old_work)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 367, in test_latest_only_claim_and_retained_claim_never_authorize_old_work
+    self.change()
+    ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_latest_superseded_and_question_row_corruption_fail_closed (test_tasks_change_v5.ChangeTests.test_latest_superseded_and_question_row_corruption_fail_closed) (mutation='latest_superseded')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 259, in test_latest_superseded_and_question_row_corruption_fail_closed
+    self.assert_unchanged(self.request(work=self.f.lease['work_ref']), 'unavailable')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_latest_superseded_and_question_row_corruption_fail_closed (test_tasks_change_v5.ChangeTests.test_latest_superseded_and_question_row_corruption_fail_closed) (mutation='missing_question')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 259, in test_latest_superseded_and_question_row_corruption_fail_closed
+    self.assert_unchanged(self.request(work=self.f.lease['work_ref']), 'unavailable')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_latest_superseded_and_question_row_corruption_fail_closed (test_tasks_change_v5.ChangeTests.test_latest_superseded_and_question_row_corruption_fail_closed) (mutation='question_text')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 259, in test_latest_superseded_and_question_row_corruption_fail_closed
+    self.assert_unchanged(self.request(work=self.f.lease['work_ref']), 'unavailable')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_latest_superseded_and_question_row_corruption_fail_closed (test_tasks_change_v5.ChangeTests.test_latest_superseded_and_question_row_corruption_fail_closed) (mutation='waiting_without_open')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 259, in test_latest_superseded_and_question_row_corruption_fail_closed
+    self.assert_unchanged(self.request(work=self.f.lease['work_ref']), 'unavailable')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_old_only_stop_after_change_is_noop_but_shared_and_new_sources_fence_latest (test_tasks_change_v5.ChangeTests.test_old_only_stop_after_change_is_noop_but_shared_and_new_sources_fence_latest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 282, in test_old_only_stop_after_change_is_noop_but_shared_and_new_sources_fence_latest
+    self.change(draft=draft)
+    ~~~~~~~~~~~^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_old_questions_are_history_not_transferred_and_original_receipts_replay (test_tasks_change_v5.ChangeTests.test_old_questions_are_history_not_transferred_and_original_receipts_replay) (status='open')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 236, in test_old_questions_are_history_not_transferred_and_original_receipts_replay
+    self.change()
+    ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_old_questions_are_history_not_transferred_and_original_receipts_replay (test_tasks_change_v5.ChangeTests.test_old_questions_are_history_not_transferred_and_original_receipts_replay) (status='answered')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 236, in test_old_questions_are_history_not_transferred_and_original_receipts_replay
+    self.change()
+    ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_old_questions_are_history_not_transferred_and_original_receipts_replay (test_tasks_change_v5.ChangeTests.test_old_questions_are_history_not_transferred_and_original_receipts_replay) (status='closed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 236, in test_old_questions_are_history_not_transferred_and_original_receipts_replay
+    self.change()
+    ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_old_started_step_abandoned_release_replay_is_historical_and_strict (test_tasks_change_v5.ChangeTests.test_old_started_step_abandoned_release_replay_is_historical_and_strict)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 346, in test_old_started_step_abandoned_release_replay_is_historical_and_strict
+    self.change(); self.change(origin=self.f.record('third revision'))
+    ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_one_changed_event_uses_new_workref_origin_and_own_session (test_tasks_change_v5.ChangeTests.test_one_changed_event_uses_new_workref_origin_and_own_session)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 133, in test_one_changed_event_uses_new_workref_origin_and_own_session
+    out = self.change()
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_origin_and_condition_freshness_are_goal_local_not_global_registry (test_tasks_change_v5.ChangeTests.test_origin_and_condition_freshness_are_goal_local_not_global_registry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 214, in test_origin_and_condition_freshness_are_goal_local_not_global_registry
+    self.change()
+    ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_owned_write_and_event_replay_failures_roll_back_including_baseexception (test_tasks_change_v5.ChangeTests.test_owned_write_and_event_replay_failures_roll_back_including_baseexception) (target='first_write', exception=<class 'RuntimeError'>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 499, in test_owned_write_and_event_replay_failures_roll_back_including_baseexception
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_owned_write_and_event_replay_failures_roll_back_including_baseexception (test_tasks_change_v5.ChangeTests.test_owned_write_and_event_replay_failures_roll_back_including_baseexception) (target='first_write', exception=<class 'KeyboardInterrupt'>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 498, in test_owned_write_and_event_replay_failures_roll_back_including_baseexception
+    with self.assertRaises(KeyboardInterrupt): self.t.control(self.request())
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: KeyboardInterrupt not raised
+
+======================================================================
+FAIL: test_owned_write_and_event_replay_failures_roll_back_including_baseexception (test_tasks_change_v5.ChangeTests.test_owned_write_and_event_replay_failures_roll_back_including_baseexception) (target='event', exception=<class 'RuntimeError'>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 499, in test_owned_write_and_event_replay_failures_roll_back_including_baseexception
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_owned_write_and_event_replay_failures_roll_back_including_baseexception (test_tasks_change_v5.ChangeTests.test_owned_write_and_event_replay_failures_roll_back_including_baseexception) (target='event', exception=<class 'KeyboardInterrupt'>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 498, in test_owned_write_and_event_replay_failures_roll_back_including_baseexception
+    with self.assertRaises(KeyboardInterrupt): self.t.control(self.request())
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: KeyboardInterrupt not raised
+
+======================================================================
+FAIL: test_owned_write_and_event_replay_failures_roll_back_including_baseexception (test_tasks_change_v5.ChangeTests.test_owned_write_and_event_replay_failures_roll_back_including_baseexception) (target='replay', exception=<class 'RuntimeError'>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 499, in test_owned_write_and_event_replay_failures_roll_back_including_baseexception
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_owned_write_and_event_replay_failures_roll_back_including_baseexception (test_tasks_change_v5.ChangeTests.test_owned_write_and_event_replay_failures_roll_back_including_baseexception) (target='replay', exception=<class 'KeyboardInterrupt'>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 498, in test_owned_write_and_event_replay_failures_roll_back_including_baseexception
+    with self.assertRaises(KeyboardInterrupt): self.t.control(self.request())
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: KeyboardInterrupt not raised
+
+======================================================================
+FAIL: test_prepared_old_admission_is_stale_and_may_enter_false_after_change (test_tasks_change_v5.ChangeTests.test_prepared_old_admission_is_stale_and_may_enter_false_after_change)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 379, in test_prepared_old_admission_is_stale_and_may_enter_false_after_change
+    call = self.admitted(); self.change()
+                            ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='COMMIT')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 466, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='ROLLBACK')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 466, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='COMMIT_BEGIN')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 466, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='ROLLBACK_BEGIN')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 466, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='WRITE')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 466, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='EXCEPTION')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 466, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='condition', action='INTERRUPT')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 465, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    with self.assertRaises(KeyboardInterrupt): self.t.control(self.request())
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: KeyboardInterrupt not raised
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='COMMIT')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 466, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='ROLLBACK')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 466, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='COMMIT_BEGIN')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 466, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='ROLLBACK_BEGIN')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 466, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='WRITE')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 466, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='EXCEPTION')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 466, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    else: self.error(self.t.control(self.request()), 'unavailable')
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction (test_tasks_change_v5.ChangeTests.test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction) (prefix='event', action='INTERRUPT')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 465, in test_prewrite_condition_and_event_mints_cannot_lose_or_mutate_owned_transaction
+    with self.assertRaises(KeyboardInterrupt): self.t.control(self.request())
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: KeyboardInterrupt not raised
+
+======================================================================
+FAIL: test_prior_grant_narrowing_survives_host_widening_and_usage_does_not_reset (test_tasks_change_v5.ChangeTests.test_prior_grant_narrowing_survives_host_widening_and_usage_does_not_reset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 146, in test_prior_grant_narrowing_survives_host_widening_and_usage_does_not_reset
+    self.change()
+    ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_release_lease_identity_and_paused_outcome_do_not_guess_authority (test_tasks_change_v5.ChangeTests.test_release_lease_identity_and_paused_outcome_do_not_guess_authority)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 358, in test_release_lease_identity_and_paused_outcome_do_not_guess_authority
+    self.change()
+    ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_replay_is_original_after_more_change_stop_and_terminal_not_current_state (test_tasks_change_v5.ChangeTests.test_replay_is_original_after_more_change_stop_and_terminal_not_current_state)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 170, in test_replay_is_original_after_more_change_stop_and_terminal_not_current_state
+    req = self.request(); first = self.value(self.t.control(req))
+                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance (test_tasks_change_v5.ChangeTests.test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance) (origin={'id': 'record-b4859af93dd1401bb54e1f4d24ecf6ec', 'kind': 'record'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 198, in test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance
+    self.assert_unchanged(self.request(origin=origin, key=self.f.key()), 'conflict')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'conflict'
+
+======================================================================
+FAIL: test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance (test_tasks_change_v5.ChangeTests.test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance) (origin={'id': 'record-b97c84ca4bab4cca91e25eb4701dd0d2', 'kind': 'record'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 197, in test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance
+    if origin == self.correction: self.change()
+                                  ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance (test_tasks_change_v5.ChangeTests.test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 199, in test_reused_origin_conflicts_but_same_brief_with_fresh_origin_can_advance
+    third = self.change(origin=self.f.record('fresh correction same exact draft'))
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_revision_and_epoch_overflow_reject_before_mint (test_tasks_change_v5.ChangeTests.test_revision_and_epoch_overflow_reject_before_mint) (field='revision')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 446, in test_revision_and_epoch_overflow_reject_before_mint
+    self.assert_unchanged(self.request(), 'unavailable')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_revision_and_epoch_overflow_reject_before_mint (test_tasks_change_v5.ChangeTests.test_revision_and_epoch_overflow_reject_before_mint) (field='epoch')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 446, in test_revision_and_epoch_overflow_reject_before_mint
+    self.assert_unchanged(self.request(), 'unavailable')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key (test_tasks_change_v5.ChangeTests.test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key) (outcome='not_found')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 302, in test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key
+    self.assert_unchanged(req, outcome)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'not_found'
+
+======================================================================
+FAIL: test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key (test_tasks_change_v5.ChangeTests.test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key) (outcome='denied')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 302, in test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key
+    self.assert_unchanged(req, outcome)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'denied'
+
+======================================================================
+FAIL: test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key (test_tasks_change_v5.ChangeTests.test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key) (outcome='unavailable')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 302, in test_same_transaction_gate_outcomes_are_preserved_without_new_rows_or_key
+    self.assert_unchanged(req, outcome)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_source_stop_before_change_depends_on_explicit_new_provenance (test_tasks_change_v5.ChangeTests.test_source_stop_before_change_depends_on_explicit_new_provenance) (mode='old_only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 278, in test_source_stop_before_change_depends_on_explicit_new_provenance
+    else: self.assertEqual(self.value(self.t.control(req))['work_ref']['revision'], 2)
+                           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_source_stop_before_change_depends_on_explicit_new_provenance (test_tasks_change_v5.ChangeTests.test_source_stop_before_change_depends_on_explicit_new_provenance) (mode='reused')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 270, in test_source_stop_before_change_depends_on_explicit_new_provenance
+    if mode in ('reused', 'new_origin'): self.assert_unchanged(req, 'denied')
+                                         ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'denied'
+
+======================================================================
+FAIL: test_source_stop_before_change_depends_on_explicit_new_provenance (test_tasks_change_v5.ChangeTests.test_source_stop_before_change_depends_on_explicit_new_provenance) (mode='new_origin')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 270, in test_source_stop_before_change_depends_on_explicit_new_provenance
+    if mode in ('reused', 'new_origin'): self.assert_unchanged(req, 'denied')
+                                         ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'denied'
+
+======================================================================
+FAIL: test_source_stop_before_change_depends_on_explicit_new_provenance (test_tasks_change_v5.ChangeTests.test_source_stop_before_change_depends_on_explicit_new_provenance) (mode='terminal_failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 277, in test_source_stop_before_change_depends_on_explicit_new_provenance
+    self.assert_unchanged(self.request(), 'conflict')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'conflict'
+
+======================================================================
+FAIL: test_state_lease_inconsistency_rejects_change_without_writes (test_tasks_change_v5.ChangeTests.test_state_lease_inconsistency_rejects_change_without_writes) (mutation='running_no_lease')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 434, in test_state_lease_inconsistency_rejects_change_without_writes
+    self.assert_unchanged(self.request(work=target, origin=self.f.record('another correction')), 'unavailable')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_state_lease_inconsistency_rejects_change_without_writes (test_tasks_change_v5.ChangeTests.test_state_lease_inconsistency_rejects_change_without_writes) (mutation='queued_has_lease')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 434, in test_state_lease_inconsistency_rejects_change_without_writes
+    self.assert_unchanged(self.request(work=target, origin=self.f.record('another correction')), 'unavailable')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_state_lease_inconsistency_rejects_change_without_writes (test_tasks_change_v5.ChangeTests.test_state_lease_inconsistency_rejects_change_without_writes) (mutation='unknown_state')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 434, in test_state_lease_inconsistency_rejects_change_without_writes
+    self.assert_unchanged(self.request(work=target, origin=self.f.record('another correction')), 'unavailable')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_state_lease_inconsistency_rejects_change_without_writes (test_tasks_change_v5.ChangeTests.test_state_lease_inconsistency_rejects_change_without_writes) (mutation='old_lease_no_drain')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 433, in test_state_lease_inconsistency_rejects_change_without_writes
+    target = self.change()['work_ref']; self.conn.execute('UPDATE v5_tsk_control SET drain=0 WHERE revision=2')
+             ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='bool_index')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 407, in test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot
+    self.setUp(); self.f.call([self.f.origin]); step = self.value(self.t.begin_step({'key': self.f.key(), 'work_ref': self.f.lease['work_ref'], 'action': {'kind': 'report', 'summary': 'old'}})); self.change()
+                                                                                                                                                                                                   ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='negative_index')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 407, in test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot
+    self.setUp(); self.f.call([self.f.origin]); step = self.value(self.t.begin_step({'key': self.f.key(), 'work_ref': self.f.lease['work_ref'], 'action': {'kind': 'report', 'summary': 'old'}})); self.change()
+                                                                                                                                                                                                   ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='foreign_work')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 407, in test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot
+    self.setUp(); self.f.call([self.f.origin]); step = self.value(self.t.begin_step({'key': self.f.key(), 'work_ref': self.f.lease['work_ref'], 'action': {'kind': 'report', 'summary': 'old'}})); self.change()
+                                                                                                                                                                                                   ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='future_epoch')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 407, in test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot
+    self.setUp(); self.f.call([self.f.origin]); step = self.value(self.t.begin_step({'key': self.f.key(), 'work_ref': self.f.lease['work_ref'], 'action': {'kind': 'report', 'summary': 'old'}})); self.change()
+                                                                                                                                                                                                   ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='wrong_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 407, in test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot
+    self.setUp(); self.f.call([self.f.origin]); step = self.value(self.t.begin_step({'key': self.f.key(), 'work_ref': self.f.lease['work_ref'], 'action': {'kind': 'report', 'summary': 'old'}})); self.change()
+                                                                                                                                                                                                   ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='sql_goal')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 407, in test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot
+    self.setUp(); self.f.call([self.f.origin]); step = self.value(self.t.begin_step({'key': self.f.key(), 'work_ref': self.f.lease['work_ref'], 'action': {'kind': 'report', 'summary': 'old'}})); self.change()
+                                                                                                                                                                                                   ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='sql_index')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 407, in test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot
+    self.setUp(); self.f.call([self.f.origin]); step = self.value(self.t.begin_step({'key': self.f.key(), 'work_ref': self.f.lease['work_ref'], 'action': {'kind': 'report', 'summary': 'old'}})); self.change()
+                                                                                                                                                                                                   ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='sql_call')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 407, in test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot
+    self.setUp(); self.f.call([self.f.origin]); step = self.value(self.t.begin_step({'key': self.f.key(), 'work_ref': self.f.lease['work_ref'], 'action': {'kind': 'report', 'summary': 'old'}})); self.change()
+                                                                                                                                                                                                   ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='sql_call_lease')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 407, in test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot
+    self.setUp(); self.f.call([self.f.origin]); step = self.value(self.t.begin_step({'key': self.f.key(), 'work_ref': self.f.lease['work_ref'], 'action': {'kind': 'report', 'summary': 'old'}})); self.change()
+                                                                                                                                                                                                   ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='result_shape')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 407, in test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot
+    self.setUp(); self.f.call([self.f.origin]); step = self.value(self.t.begin_step({'key': self.f.key(), 'work_ref': self.f.lease['work_ref'], 'action': {'kind': 'report', 'summary': 'old'}})); self.change()
+                                                                                                                                                                                                   ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='unknown_status')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 407, in test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot
+    self.setUp(); self.f.call([self.f.origin]); step = self.value(self.t.begin_step({'key': self.f.key(), 'work_ref': self.f.lease['work_ref'], 'action': {'kind': 'report', 'summary': 'old'}})); self.change()
+                                                                                                                                                                                                   ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot (test_tasks_change_v5.ChangeTests.test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot) (mutation='error_type')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 407, in test_step_binding_corruption_and_bool_wire_index_cannot_free_old_slot
+    self.setUp(); self.f.call([self.f.origin]); step = self.value(self.t.begin_step({'key': self.f.key(), 'work_ref': self.f.lease['work_ref'], 'action': {'kind': 'report', 'summary': 'old'}})); self.change()
+                                                                                                                                                                                                   ~~~~~~~~~~~^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 51, in change
+    return self.value(self.t.control(self.request(**kwargs)))
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 31, in value
+    return self.f.value(result)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_terminal_changes_conflict_without_burning_key (test_tasks_change_v5.ChangeTests.test_terminal_changes_conflict_without_burning_key) (state='completed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 224, in test_terminal_changes_conflict_without_burning_key
+    self.assert_unchanged(self.request(), 'conflict')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'conflict'
+
+======================================================================
+FAIL: test_terminal_changes_conflict_without_burning_key (test_tasks_change_v5.ChangeTests.test_terminal_changes_conflict_without_burning_key) (state='cancelled')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 224, in test_terminal_changes_conflict_without_burning_key
+    self.assert_unchanged(self.request(), 'conflict')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'conflict'
+
+======================================================================
+FAIL: test_terminal_changes_conflict_without_burning_key (test_tasks_change_v5.ChangeTests.test_terminal_changes_conflict_without_burning_key) (state='failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_v5.py", line 224, in test_terminal_changes_conflict_without_burning_key
+    self.assert_unchanged(self.request(), 'conflict')
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 72, in assert_unchanged
+    self.error(self.t.control(request), code)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 68, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'conflict'
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.708s
+
+FAILED (failures=109)

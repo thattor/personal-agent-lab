@@ -26,10 +26,21 @@ for isolated TSK/RUN work. Continue the loop; do not activate partial completion
 
 
 C078: ASK01 sourceb844706 passes787 host tests, actual temporary-SQLite demo and
-separate TSK/RUN source reviews. Final Opus milestone review remains pending.
+separate TSK/RUN source reviews. Exact AGY claude-opus-5-5-high review
+completed SUCCESS: ASK ALIGNED within the local mock scope; coverage limits and
+actual request-review mode are retained. C13 follow-up full794 also passes.
 Subsequent READ01 display N1 correction atsourcea974fc0 passes793 full host tests,
 actual ASK demo and separate Sol review; it changes no storage or wire semantics.
-Continue independent C10.change design preparation; consultation precedes adoption.
+C079: CHANGE READY_TO_FREEZE was reconciled with actual owner code. Root freezes
+CHANGE01/1 in CHANGE01-SCOPE.md: independent fixed tests precede isolated TSK
+implementation; Root owns shared contracts and actual connection. No blanket RUN
+edit or whole-product activation. Earlier pending design text is retained history.
+Final sourceb4baae2 is independently APPROVED and equal-byte integrated. Root
+full845 PASS26.939s and executable actual-owner demo PASS. Preserve original
+REQUEST_CHANGES and nine consistently corrupted-ID/source cases. Final CHANGE
+Opus milestone review remains pending; earlier READY_TO_FREEZE is not that verdict.
+D045 keeps raw operational evidence local and publishes necessary summaries;
+normal minimized-export approval and anonymous readback are still required.
 D043 directly approves project-wide AGY development use; no repeated material
 sharing permission question. Preserve prior refusals, completed native ASK code
 and unknown calls; do not duplicate work or alter CO/approval settings.

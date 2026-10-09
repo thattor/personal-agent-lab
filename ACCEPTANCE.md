@@ -1,5 +1,33 @@
 # ACCEPTANCE.md
 
+## C079 — CHANGE01/1 implementation and connection verified
+
+Sourceb4baae24f226ccd4396cf723d8f31d03ef1e67b3, SHA256
+498b06ca6033c980bfdfe24b54195f247dbc7a46d267c67a1a54b0028f5c3e8f,
+is byte-identical after Root integration. Independent fixed50 methods precede
+source; later Root integrity1 method/9 subcases reproduces malformed consistent
+call/reservation/Step IDs and saved source bindings. Original REQUEST_CHANGES
+and RED remain retained; separate Sol's exact repaired-source rereview APPROVE
+independently executes51 and related122, reproducing no-write refusal of both
+original linked-ID failures. Pairwise equality alone was insufficient; strict
+ID/canonical admission/source-membership checks now precede cleanup writes.
+
+Root full845 PASS26.939s/exit0, including51 new methods. Actual temporary
+MEM/TSK/RUN/ART/VER/C14 connection and executable demo PASS: correction during
+admitted old callback retains occupancy, discards late output, continues the same
+Goal's new revision and completes a retained structural draft. Source histories,
+questions, replay, prior grant, counters, current intents, ordered two-connection
+effects, prewrite mint and rollback are covered. Fixed four files are unchanged;
+RUN/intake/shared Python owners are unchanged. No migration of old/live DBs.
+[Verification](evidence/operations/change01-20261009/verification.json) and
+[candidate](docs/design/contracts-v5/CHANGE01-MILESTONE.md).
+
+Implementation/connection PASS; final CHANGE Opus alignment PENDING. Earlier
+ASK ALIGNED/CHANGE READY_TO_FREEZE was contract consultation. No real PRI/model/
+provider/UI, general recovery, semantic sufficiency, authentic usefulness or
+whole-PAL acceptance. D045 publishes necessary summaries and keeps raw runtime
+records locally; approved normal export/readback still need observation.
+
 ## C078 — ASK01 implementation and connection verified
 
 Existing C13 cessation follow-up: source7450202 rejects NULL/unknown/unrecognized
@@ -9,7 +37,8 @@ APPROVE exact source with54 methods; full794 PASS26.492s at18813c2. Source and
 evidence hashes are retained in
 [verification](evidence/operations/release-integrity-20261009/verification.json).
 This closes a reproduced existing-contract defect, not C10.change/recovery or
-whole-product acceptance. Final ASK milestone Opus consultation remains pending.
+whole-product acceptance. Final ASK milestone Opus consultation is now ALIGNED
+for this local mock slice; see the exact public review receipt below.
 
 Source b844706eb303f759f14cbd7857dcf86b44f3de99:787 host-local tests PASS25.139s,
 40 new ASK methods, focused114 including existing TSK cases. Actual temporary
@@ -20,10 +49,15 @@ is preserved. Separate Sol source reviews approve exact final Astra TSK and Sol
 RUN bytes; Root independently verifies integration and all final source hashes.
 [Receipt](evidence/operations/ask01-20261009/verification.json).
 
-Implementation/connection are PASS. Final milestone Opus alignment is PENDING;
-do not label it ALIGNED or claim whole-product completion. No semantic answer
+Implementation/connection are PASS. Exact AGY claude-opus-5-5-high final milestone
+review completed SUCCESS/ASK ALIGNED at12:48UTC. Review uses supplied
+Root proof, executes no tests, reports a truncated connection test and unsupplied
+RUN/ART/VER/MEM sources. It confirms design alignment within the frozen scope.
+No whole-product completion. No semantic answer
 sufficiency, real PRI/provider/UI, general restart recovery or usefulness proof.
-Next C10.change remains a design proposal pending technical consultation.
+[Review receipt](evidence/operations/ask01-20261009/opus-public-review-summary.json).
+C10.change is implemented and independently verified under CHANGE01/1; see
+C079 above. Final CHANGE design alignment remains distinct from this ASK verdict.
 
 READ01 N1 follow-up atsourcea974fc0:793 full host tests PASS25.447s,32 read tests
 and actual ASK demo PASS. Separate Sol independently APPROVES exact0ff0309,

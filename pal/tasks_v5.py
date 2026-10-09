@@ -2,9 +2,9 @@
 from functools import wraps
 import sqlite3
 
-from pal.contracts_v5 import (Brief, ContractError, Grant, Limits, Ref, Result,
+from pal.contracts_v5 import (Brief, Condition, DraftBrief, ContractError, Grant, Limits, Ref, Result,
                               WorkRef, dumps, loads, parse_model_action, action_from_json)
-from pal.intake_v5 import IntakeStore
+from pal.intake_v5 import IntakeStore, _intersect
 
 _MAX = 2**63 - 1
 
@@ -79,7 +79,7 @@ class TaskStore(IntakeStore):
         self._artifact_inspect = artifact_inspect
         super().__init__(connection, **kwargs)
         schema = (
-            "CREATE TABLE IF NOT EXISTS v5_tsk_question (id TEXT PRIMARY KEY,goal TEXT NOT NULL,revision INTEGER NOT NULL,step_id TEXT NOT NULL UNIQUE,question TEXT NOT NULL,missing_fact TEXT NOT NULL,sources TEXT NOT NULL,status TEXT NOT NULL CHECK(status IN ('open','answered','closed')),answer_ref TEXT)",
+            "CREATE TABLE IF NOT EXISTS v5_tsk_question (id TEXT PRIMARY KEY,goal TEXT NOT NULL,revision INTEGER NOT NULL,step_id TEXT NOT NULL UNIQUE,question TEXT NOT NULL,missing_fact TEXT NOT NULL,sources TEXT NOT NULL,status TEXT NOT NULL CHECK(status IN ('open','answered','closed','superseded')),answer_ref TEXT)",
             "CREATE UNIQUE INDEX IF NOT EXISTS v5_tsk_one_question ON v5_tsk_question(goal) WHERE status='open'",
             'CREATE TABLE IF NOT EXISTS v5_tsk_artifact_set (seq INTEGER PRIMARY KEY,goal TEXT NOT NULL,revision INTEGER NOT NULL,artifact_id TEXT NOT NULL,step_id TEXT NOT NULL,UNIQUE(goal,revision,artifact_id),UNIQUE(goal,revision,step_id))',
             'CREATE TABLE IF NOT EXISTS v5_tsk_lease (id TEXT PRIMARY KEY,runner TEXT NOT NULL,goal TEXT NOT NULL,revision INTEGER NOT NULL,active INTEGER NOT NULL)',
@@ -245,7 +245,7 @@ class TaskStore(IntakeStore):
                     _reject('conflict')
                 row = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=?', (lease['goal'], lease['revision']))
                 return self._claim_wire(row, lease)
-            row = self._one("SELECT * FROM v5_intake_work WHERE state='queued' ORDER BY rowid LIMIT 1")
+            row = self._one("SELECT * FROM v5_intake_work w WHERE state='queued' AND revision=(SELECT MAX(revision) FROM v5_intake_work WHERE goal_id=w.goal_id) ORDER BY rowid LIMIT 1")
             if row is None:
                 return {'status': 'empty'}
             for host in self._rows('SELECT * FROM v5_tsk_host'):
@@ -812,6 +812,10 @@ class TaskStore(IntakeStore):
 
     def _questions(self, row):
         try:
+            latest = self._one('SELECT MAX(revision) AS revision FROM v5_intake_work WHERE goal_id=?', (row['goal_id'],))
+            historical = row['revision'] < latest['revision']
+            if (row['state'] == 'superseded') != historical:
+                raise ContractError()
             items = self._rows('SELECT * FROM v5_tsk_question WHERE goal=? AND revision=?',
                                (row['goal_id'], row['revision']))
             required, registered = set(self._required(row)), set(self._registered(row))
@@ -829,7 +833,8 @@ class TaskStore(IntakeStore):
                         _work(step['work_ref']).epoch > row['epoch'] or
                         step['status'] != 'finished' or call['status'] != 'returned' or
                         action != step['action'] or not required <= set(refs) <= registered or
-                        item['status'] not in ('open', 'answered', 'closed')):
+                        item['status'] not in ('open', 'answered', 'closed', 'superseded') or
+                        (item['status'] == 'superseded' and not historical)):
                     raise ContractError()
                 answer = None if item['answer_ref'] is None else Ref.from_json(loads(item['answer_ref']))
                 if ((item['status'] == 'answered') != (answer is not None) or
@@ -843,7 +848,7 @@ class TaskStore(IntakeStore):
             if finished != by_step:
                 raise ContractError()
             opened = [q for q in result if q['status'] == 'open']
-            if len(opened) > 1 or (opened and row['state'] not in ('waiting_input', 'paused')):
+            if (historical and opened) or len(opened) > 1 or (opened and row['state'] not in ('waiting_input', 'paused')):
                 raise ContractError()
             if opened and self._one('SELECT id FROM v5_tsk_lease WHERE goal=? AND revision=? AND active=1',
                                     (row['goal_id'], row['revision'])):
@@ -954,15 +959,153 @@ class TaskStore(IntakeStore):
         self._event(row, 'state', 'question answered', (answer,))
         return {'work_ref': self._wr(row).to_json(), 'state': row['state'], 'control_status': 'none'}
 
+    def _change_mint(self, prefix):
+        before = self._conn.total_changes
+        self._conn.execute('SAVEPOINT v5_tsk_change_mint')
+        try:
+            identifier = self._mint(prefix)
+            if not self._conn.in_transaction or self._conn.total_changes != before:
+                _reject('unavailable')
+            self._conn.execute('RELEASE v5_tsk_change_mint')
+            return identifier
+        except BaseException:
+            if self._conn.in_transaction:
+                try:
+                    self._conn.execute('ROLLBACK TO v5_tsk_change_mint')
+                    self._conn.execute('RELEASE v5_tsk_change_mint')
+                except sqlite3.Error:
+                    pass
+            raise
+
+    def _change(self, work, draft, origin):
+        row = self._current(work, epoch=False)
+        if row['state'] in ('completed', 'cancelled', 'failed'):
+            _reject('conflict')
+        if row['state'] not in ('queued', 'waiting_input', 'paused', 'running'):
+            _reject('unavailable')
+        self._questions(row)
+        flags = self._flags(row)
+        if any(type(flags[name]) is not int or flags[name] not in (0, 1) for name in ('pause', 'drain')):
+            _reject('unavailable')
+        lease = self._one('SELECT * FROM v5_tsk_lease WHERE goal=? AND active=1', (work.goal_id,))
+        if ((row['state'] == 'running') != (lease is not None) or
+                (lease is not None and (lease['revision'] > row['revision'] or
+                 (lease['revision'] != row['revision'] and not flags['drain'])))):
+            _reject('unavailable')
+        try:
+            history = self._rows('SELECT origin_ref_json,brief_json FROM v5_intake_work WHERE goal_id=?', (work.goal_id,))
+            origins = [Ref.from_json(loads(item['origin_ref_json'])) for item in history]
+            old_ids = {condition.id for item in history for condition in Brief.from_json(loads(item['brief_json'])).conditions}
+            prior = Grant.from_json(loads(row['grant_json']))
+        except ContractError:
+            _reject('unavailable')
+        if origin in origins:
+            _reject('conflict')
+        grant = _intersect(self._host_grant, prior)
+        if draft.target.repository not in grant.repositories:
+            _reject('denied')
+        refs = tuple(dict.fromkeys((origin, *draft.context_refs)))
+        self._gate(refs)
+        if row['revision'] == _MAX or row['epoch'] == _MAX:
+            _reject('unavailable')
+        conditions = []
+        for condition in draft.conditions:
+            identifier = self._change_mint('condition')
+            if identifier in old_ids:
+                _reject('unavailable')
+            old_ids.add(identifier)
+            conditions.append(Condition(identifier, condition.description, condition.check))
+        event_id = self._change_mint('event')
+        brief = Brief(draft.purpose, draft.target, draft.constraints, tuple(conditions), draft.context_refs)
+        current = dict(row, revision=row['revision'] + 1, epoch=row['epoch'] + 1,
+                       state='queued' if row['state'] == 'waiting_input' else row['state'])
+        self._conn.execute('INSERT INTO v5_intake_work VALUES (?,?,?,?,?,?,?,?,?)',
+            (work.goal_id, current['revision'], current['epoch'], current['state'], dumps(brief),
+             dumps(grant), row['session_id'], dumps(origin), row['expert_id']))
+        self._register(current, refs)
+        self._conn.execute("UPDATE v5_intake_work SET state='superseded' WHERE goal_id=? AND revision=?", (work.goal_id, row['revision']))
+        self._set_flags(row, 0, 0)
+        self._conn.execute("UPDATE v5_tsk_question SET status='superseded' WHERE goal=? AND revision=? AND status='open'", (work.goal_id, row['revision']))
+        pause, drain = (flags['pause'], 1) if current['state'] == 'running' else (0, 0)
+        self._set_flags(current, pause, drain)
+        # Premint only this event: the shared writer mints after owned writes.
+        self._conn.execute('INSERT INTO v5_intake_event (event_id,session_id,work_ref_json,kind,text,refs_json) VALUES (?,?,?,?,?,?)',
+            (event_id, row['session_id'], dumps(self._wr(current)), 'state', 'work changed', dumps([origin.to_json()])))
+        return {'work_ref': self._wr(current).to_json(), 'state': current['state'],
+                'control_status': 'pause_requested' if pause else 'draining' if drain else 'none'}
+
+    def _old_calls(self, row, lease):
+        try:
+            calls = self._rows('SELECT * FROM v5_tsk_call WHERE lease=?', (lease['id'],))
+            linked, indexes = set(), set()
+            required, registered = set(self._required(row)), set(self._registered(row))
+            for call in calls:
+                _id(call['id'])
+                _id(call['reservation'])
+                sources = set(_refs(loads(call['sources'])))
+                if not required <= sources <= registered:
+                    raise ContractError()
+                work = _work(loads(call['work']))
+                if (call['status'] not in ('admitted', 'returned', 'raised', 'not_entered') or
+                        (work.goal_id, work.revision) != (row['goal_id'], row['revision']) or
+                        work.epoch > row['epoch'] or type(call['idx']) is not int or not 0 <= call['idx'] <= _MAX):
+                    raise ContractError()
+                if call['id'] != dumps(['C15.call', lease['id'], call['idx']]):
+                    raise ContractError()
+                if call['idx'] in indexes:
+                    raise ContractError()
+                indexes.add(call['idx'])
+                reservation = self._one('SELECT * FROM v5_tsk_reservation WHERE id=?', (call['reservation'],))
+                if (reservation is None or type(reservation['idx']) is not int or
+                        (reservation['lease'], _work(loads(reservation['work'])), reservation['idx'],
+                         reservation['kind'], reservation['role'], reservation['binding']) !=
+                        (lease['id'], work, call['idx'], 'model', 'expert', call['id'])):
+                    raise ContractError()
+                if call['step'] is not None:
+                    _id(call['step'])
+                    saved = self._one('SELECT * FROM v5_tsk_step WHERE id=?', (call['step'],))
+                    if saved is None or saved['id'] in linked:
+                        raise ContractError()
+                    step = _obj(loads(saved['wire']), {'step_id', 'work_ref', 'index', 'action', 'status', 'result_refs'}, {'error'})
+                    action_from_json(step['action'])
+                    _refs(step['result_refs'])
+                    if (step['status'] not in ('started', 'finished', 'abandoned') or
+                            ('error' in step and type(step['error']) is not str) or
+                            type(step['index']) is not int or type(saved['idx']) is not int or
+                            (saved['goal'], saved['revision'], saved['idx'], saved['call'], step['step_id'],
+                             _work(step['work_ref']), step['index']) !=
+                            (work.goal_id, work.revision, call['idx'], call['id'], saved['id'], work, call['idx'])):
+                        raise ContractError()
+                    linked.add(saved['id'])
+            # Other leases may have finished historical Steps, but no dangling owned linkage.
+            for saved in self._steps(row):
+                call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (saved['call'],))
+                if call is None or call['step'] != saved['id']:
+                    raise ContractError()
+                if loads(saved['wire'])['status'] == 'started' and saved['id'] not in linked:
+                    raise ContractError()
+        except (ContractError, KeyError, TypeError):
+            _reject('unavailable')
+        if any(call['status'] == 'admitted' for call in calls):
+            _reject('conflict')
+
     @_public
     def control(self, request):
         data = _obj(request, {'key', 'work_ref', 'command'})
         key, work = _id(data['key']), _work(data['work_ref'])
         command = data['command']
+        change = None
         verification = None
         answer = None
         if type(command) is dict:
-            if command.get('kind') == 'answer':
+            if command.get('kind') == 'change':
+                _obj(command, {'kind', 'brief', 'origin_record_ref'})
+                draft = DraftBrief.from_json(command['brief'])
+                origin = Ref.from_json(command['origin_record_ref'])
+                if origin.kind.value != 'record':
+                    raise ContractError()
+                change = (draft, origin)
+            elif command.get('kind') == 'answer':
                 _obj(command, {'kind', 'question_id', 'answer_record_ref'})
                 _id(command['question_id'])
                 if Ref.from_json(command['answer_record_ref']).kind.value != 'record':
@@ -976,6 +1119,8 @@ class TaskStore(IntakeStore):
         elif command not in ('pause', 'resume', 'cancel'):
             raise ContractError()
         def operation():
+            if change is not None:
+                return self._change(work, *change)
             if answer is not None:
                 return self._answer(work, answer)
             if verification is not None:
@@ -1029,8 +1174,31 @@ class TaskStore(IntakeStore):
                 _reject('denied')
             if (lease['goal'], lease['revision']) != (work.goal_id, work.revision):
                 _reject('stale')
-            row = self._current(work, epoch=False)
+            old = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=?', (work.goal_id, work.revision))
+            row = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? ORDER BY revision DESC LIMIT 1', (work.goal_id,))
+            if old is None or row is None:
+                _reject('unavailable')
             flags = self._flags(row)
+            if old['revision'] != row['revision']:
+                if any(type(flags[name]) is not int or flags[name] not in (0, 1) for name in ('pause', 'drain')):
+                    _reject('unavailable')
+                if old['state'] != 'superseded' or not (row['state'] == 'cancelled' or (row['state'] == 'running' and flags['drain'])):
+                    _reject('unavailable')
+                self._old_calls(old, lease)
+                if data['outcome'] == 'paused' and not flags['pause']:
+                    _reject('conflict')
+                for saved in self._steps(old):
+                    step = loads(saved['wire'])
+                    if step['status'] == 'started':
+                        step['status'] = 'abandoned'
+                        self._conn.execute('UPDATE v5_tsk_step SET wire=? WHERE id=?', (dumps(step), saved['id']))
+                state = 'cancelled' if row['state'] == 'cancelled' else 'paused' if flags['pause'] else 'queued'
+                row['state'] = state
+                self._conn.execute('UPDATE v5_intake_work SET state=? WHERE goal_id=? AND revision=?', (state, row['goal_id'], row['revision']))
+                self._conn.execute('UPDATE v5_tsk_lease SET active=0 WHERE id=?', (lease_id,))
+                self._set_flags(row, 0, 0)
+                self._event(row, 'state', data['reason'])
+                return {'work_ref': self._wr(row).to_json(), 'state': state, 'control_status': 'none'}
             calls = self._rows('SELECT * FROM v5_tsk_call WHERE lease=?', (lease_id,))
             if any(call['status'] not in ('admitted', 'returned', 'raised', 'not_entered') for call in calls):
                 _reject('unavailable')

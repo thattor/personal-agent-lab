@@ -2239,3 +2239,75 @@ evidence/operations/publication-20261009/public-readback.json and readiness.json
 Prior private AGY refusals remain historical facts. New public-source review
 inputs require actual anonymous byte verification and normal runtime approval;
 public visibility is not a guarantee that a model route executes successfully.
+
+
+C079 — adopted CHANGE01/1 after actual Opus consultation, 2026-10-09
+Question: after the safe question/answer path, what minimal contract lets a saved
+correction replace current work without losing history, authority or budgets?
+Actual existing AGY Google AI Pro/creditsOFF review completed SUCCESS,
+requested/observed claude-opus-5-5-high: ASK ALIGNED / CHANGE READY_TO_FREEZE.
+Inputs are17 anonymous public-byte-matched files atc49bb00. Reviewer runs no tests
+and reports connection-test truncation and unsupplied owner modules. Root adopts
+the actual response after separate Astra v1 source reconciliation04f08d.
+
+Adopt unchanged control(request), latest-prior grant intersection, trusted-host
+all-reused-record provenance, fresh Condition IDs, same-Goal revision/epoch,
+historical superseded, latest-only claim and latest-intent old-lease settlement.
+Adopt stricter WorkRef/index/reservation/Step bindings before cleanup. Qualify
+source-stop ordering: old-only stopped sources do not reject an independent new
+nonterminal replacement; new/reused stopped sources deny, terminal work conflicts.
+Reject new authority kwargs and blanket RUN source changes. Root selects Condition
+and event-ID guarded mint before first owned write in CHANGE only. Callback commits
+cannot be undone; no hostile-host/global callback atomicity claim is made.
+[CHANGE01/1](docs/design/contracts-v5/CHANGE01-SCOPE.md) is the frozen implementation
+scope. Independent fixed tests precede isolated Astra source. Root owns common
+contract/canonical writes, actual connection and final proof. No live DB migration,
+PRI/provider/UI/semantic activation or whole-product acceptance. D041 roles,
+actual capacity, unknown-call preservation and no-new-auth/cost still apply.
+
+C079 review-procedure correction: the AGY print command combined --mode plan with
+--disable-slash-commands. Stderr explicitly says plan has no effect; init records
+request-review. Preserve raw requested mode and annotate effective mode. Observed
+tools were finish only and all17 staged inputs remained unchanged. The next call
+must omit that conflicting flag and inspect init/stderr before asserting plan;
+this prevention is recorded, not yet operationally verified. No approval/CO or
+global trust policy is altered. See opus-public-review-summary.json; raw receipt/stderr retained locally.
+
+
+D045 — public review evidence minimization, 2026-10-09
+Source: actual owner message in PAL人間判断,
+read directly by Root after the lane handoff. Owner adopts the immediately prior
+recommendation to retain raw records locally and publish necessary evaluation and
+verification information: 「そのやり方でいいと思います」. 「利用枠の情報ぐらいは別にいい」
+permits those counts but does not require publishing them. Optional design review
+after reported22:20 reset is allowed after actual provider availability check.
+This supersedes the pending raw8-file publication question only with the minimized
+option. Do not interpret it as whole raw-payload/conversation-ID/local-path
+publication permission. Preserve raw files and rejected local commits exactly;
+create a public summary and code/contract export from existing remote ancestry,
+normal approval, no force/history rewrite. This is a materially reduced payload,
+not another executor for the rejected push. Verify public tree and input hashes.
+A saved decision or lane handoff alone is not actual accepted push.
+
+Prevention within PAL: public input preparation binds code/spec/tests to a real
+public commit and anonymous bytes/hash receipt. Keep runtime/account/transport
+raw data local by default; public evidence describes exact model, verdict, source,
+checks, tool/mode limits and result scope. Confirm actual route availability and
+cost before sending. No global trust/approval or CO-project change, new service,
+auth/cost, stopped schedule or model-use permission question is introduced.
+
+
+C079 implementation proof and defect prevention, 2026-10-09
+Astra source b4baae24 is byte-identically integrated and independently APPROVED
+by separate Sol after51 focused/122 related methods and original linked-ID probes.
+Root full845 PASS26.939s/exit0 and actual temporary MEM/TSK/RUN/ART/VER/C14 demo
+PASS. Independent original50 preceded source; Root later fixed1 method/9 subcases
+before the repair. Original REQUEST_CHANGES/RED and author initial pass remain.
+Cause: consistently malformed call/reservation/Step IDs and saved sources could
+satisfy pairwise equality, allowing old-lease cleanup writes. Nine mechanical
+guards require valid/canonical identities and original source-membership bindings
+before mutation. The unchanged negative cases and independently reproduced probes
+verify no-write unavailable; use these checks at subsequent recovery boundaries.
+No new framework, gate, RUN patch or live DB migration is introduced. Exact
+fixed inputs/source hashes and limits are in change01 verification.json. Final
+CHANGE Opus alignment and normal minimized-public-export approval remain pending.

@@ -17,14 +17,25 @@ Owner role pools are fixed in DECISIONS D041: design Opus/Astra/Sol6.1; code
 SWE-2 High/Astra/Sol6.1/Sonnet5.5/Opus5.5; lead Sol6.1/Opus5.5. Unconnected
 chore-model candidates are not claimed available. Native restraint is lifted
 after the owner's manual reset; maximum32 remains bounded by real capacity.
-Native slots4 including Root; CO0.4.5 host12 per adapter, currently0/0 each.
+Native slots4 including Root; CO0.4.5 host12 per adapter, fresh12:47UTC snapshot Claude0/0, Devin1/0; that Devin job is not ours.
 Claude Code Pro is session-limited (owner image reset22:19; provider22:20).
 AGY Claude is separate: owner image48% session/39% weekly, not upper100% buckets.
 D043 directly authorizes project-wide AGY development use and removes repeated
 material-sharing confirmation. Existing cost/auth/service and runtime policy
 boundaries remain. No new reset, credits, auth, runtime/state edits or schedule.
 
-## C078 — question/answer implementation verified; milestone review pending
+## C079 — CHANGE01/1 source and connection verified; milestone review next
+
+D045 owner answer in PAL人間判断 at13:18UTC adopts keeping raw review records
+locally and publishing necessary evaluation/verification information. Usage-slot
+information is acceptable but not required. This is not raw8-file permission or
+blanket exposure of conversation IDs/local paths. Preserve the rejected commits
+and exact raw files; prepare a minimal public summary on clean ancestry from the
+current remote branch, with no force push/history rewrite. Same product/contract
+bytes remain authoritative; public export is distinct from raw execution evidence.
+Normal approval and anonymous readback must succeed before publication is claimed.
+Source/tests/integration continue. Optional post22:20 official Opus review requires
+actual route availability, not the owner's reset-time estimate. See D045.
 
 ASK01/1 source b844706eb303f759f14cbd7857dcf86b44f3de99 passes787 local host
 tests (25.139s/exit0), including40 new methods. Focused114 includes existing TSK
@@ -41,33 +52,47 @@ not weakened. AGY Sonnet did not execute this code assignment: its private
 payload was rejected twice before launch. D042's subsequent manual-approval
 direction is retained without duplicating the now-completed native assignment.
 
-Final ASK milestone Opus review is still PENDING, not ALIGNED/MET by self-report.
-CO0.4.5 and its existing shared state are unchanged; fresh12:15UTC read-only capacity
-shows Claude0/0 and Devin1 executing/0 reserved, limit12 per adapter. The Devin
-slot is not an owned PAL task and is not interrupted or counted as our work. Claude
-planner remains session-limited until the reported22:20 reset. Fixed role rules
-prohibit substituting SWE as planner; direct AGY code egress rejection is not
-bypassed. Native ASK implementation had two independent delegates, not32.
+Final ASK milestone review completed SUCCESS305.502s at12:48UTC via existing AGY
+Google AI Pro, AI Credits OFF, requested/observed claude-opus-5-5-high. Conversation
+the ASK01 final design review: ASK ALIGNED; CHANGE READY_TO_FREEZE.
+The17 public inputs atc49bb00 match anonymous HTTP200 bytes/hashes. Public byte
+binding does not prove all inputs were read: the model reports connection-test
+truncation and unsupplied RUN/ART/VER/MEM implementations. It executes no tests.
+Root's794 and separate source reviews remain the actual implementation evidence.
+CLI conflicting flags disabled plan mode: observed request-review, only finish
+used,17 source files unchanged. Raw run/stderr and corrected receipt preserve it.
+Future print reviews omit the conflicting disable-slash-commands flag and check
+actual init mode before claiming a constraint; that future fix is not yet tested.
+[Review receipt](evidence/operations/ask01-20261009/opus-public-review-summary.json).
 
-Next design preparation is complete in CHANGE01-SEAMS-PROPOSAL.md: original
-grant, revision/old-lease/budget/history invariants and exact source hazards.
-It remains a proposal; Opus consultation precedes adoption or change code.
-Root fixed a13-file202200-byte ASK milestone/next-design review package at163779d,
-SHA256 bf69fe23ba35e585cdb547d743859fec65954bb809c6f59fbc31fc2ae97eb3aa,
-for existing AGY claude-opus-5-5-high. D043 direct owner project-wide AGY approval
-records project-wide AGY authority. Fresh preflight confirms exactOpus5.5High,
-existing Google AI Pro and AI Credits OFF. Automatic review nevertheless rejects
-this13-file202200-byte private payload to AGY/Google-hosted Claude as insufficiently
-specific egress authorization. No process/run.json/stream/model call started.
-That exact private-send refusal is retained; D044 later publishes the repository
-with anonymous readback. Fresh public inputs may be prepared through normal
-automatic review; no prior unknown call or refused private send is bypassed. This
-is a transport limit, not a new permanent per-call user-approval rule. Historical
-Sonnet refusals/completed code and unknown calls stay untouched. Evidence:
-d043-agy-egress-refusal.json, agy-opus-review-preflight.json and opus-review-prepared.json.
-Sol independently critiques C10 source/grant/old-lease counterexamples. The qualified
-CO Opus alternative is available only after actual route quota permits; the
-reported22:20 reset is a time estimate, not a verified resumed route.
+The original13-file202200-byte private review at163779d was rejected before launch
+under D043 despite owner project approval. No model call or old run exists. D044
+publishes the existing repository; this separate fresh public-source review was
+accepted by normal automatic review. Old refusals/unknown calls remain untouched,
+with no new per-call permission rule or global/CO policy edit.
+
+Root reconciles actual Opus with Astra v1 actual-source proposal04f08d and freezes
+[CHANGE01/1](docs/design/contracts-v5/CHANGE01-SCOPE.md): unchanged control API,
+latest-prior grant ceiling, explicit reused-source obligations, historical
+superseded, latest-only claim and strict owned old-lease cleanup. Root adopts
+pre-write Condition/event ID mint guards and conditional source-stop ordering.
+No unconditional RUN edit; no extra authority object or live DB migration.
+Separate Sol fixed TSK28 and another Sol RUN11 before Astra source; Root fixed
+actual connection11. Root later added one integrity method/nine corruption cases.
+Final author b4baae24 repairs the reproduced call/reservation/Step/source bindings.
+Root source SHA256498b06ca6033c980bfdfe24b54195f247dbc7a46d267c67a1a54b0028f5c3e8f
+is equal-byte integrated, all four test files unchanged. Independent separate Sol
+APPROVE executes51 focused/122 related and verifies original malformed-ID probes
+refuse without writes. Root full845 PASS26.939s/exit0 and actual temporary-owner
+demo PASS. Original RED/REQUEST_CHANGES remain retained; prior passing50 missed
+consistent corruption because pairwise identity equality alone was insufficient.
+Root owns shared contracts, canonical updates and final verification; final CHANGE
+Opus design review remains pending, distinct from prior READY_TO_FREEZE.
+[Receipt](evidence/operations/change01-20261009/verification.json).
+CO0.4.5 existing runtime/state unchanged; last12:47UTC host capacity Claude0/0,
+Devin1 executing/0 reserved, limit12/adapter. That Devin task is not ours. Planner
+reported22:20 JST reset is not observed resumed availability. Native4 slots
+including Root; no claim of30 parallel jobs or SWE planner substitution.
 
 Independent READ01 N1 display correction is also verified: sourcea974fc0,793 full
 host tests PASS25.447s, focused32 and executable ASK demo PASS. Separate Sol
@@ -84,8 +109,9 @@ subcases without releasing occupied work. The2-line guard changes no contract,
 C10.change, old-revision release or recovery. Receipt:
 evidence/operations/release-integrity-20261009/verification.json.
 
-Remaining dependent work is the prepared Opus consultation, then contract freeze
-and isolated implementation; no unnecessary duplicate work is queued to fill slots.
+Remaining work is final CHANGE milestone consultation and minimized public
+export/readback. Next scoped recovery/host lock versus PRI routing is a design
+sequence question; no duplicate implementation is queued to fill slots.
 D043 removes recurring AGY material-sharing questions; actual tool/product
 restrictions remain operative. Whole PAL/PRI/UI/provider,
 semantic usefulness, general

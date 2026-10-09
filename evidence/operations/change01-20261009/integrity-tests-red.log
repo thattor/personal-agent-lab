@@ -1,0 +1,150 @@
+test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) ... 
+  test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='empty_call_id') ... FAIL
+  test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='null_call_id') ... FAIL
+  test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='noncanonical_call_id') ... FAIL
+  test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='empty_reservation_id') ... FAIL
+  test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='empty_step_id') ... FAIL
+  test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='malformed_sources') ... FAIL
+  test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='missing_required_source') ... FAIL
+  test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='unregistered_source') ... FAIL
+  test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='invalid_source_ref') ... FAIL
+
+======================================================================
+FAIL: test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='empty_call_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_integrity_v5.py", line 51, in test_consistently_corrupted_call_reservation_step_and_sources_do_not_release
+    f.error(result, 'unavailable')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 67, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'queued', 'work_ref': {'epoch': 2, 'goal_id': 'goal-40c2646d062e4e6fb8d825a74d315583', 'revision': 2}}}
+
+======================================================================
+FAIL: test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='null_call_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_integrity_v5.py", line 51, in test_consistently_corrupted_call_reservation_step_and_sources_do_not_release
+    f.error(result, 'unavailable')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 67, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'queued', 'work_ref': {'epoch': 2, 'goal_id': 'goal-7adad992ebfa4e6ea3ede88f6961a87f', 'revision': 2}}}
+
+======================================================================
+FAIL: test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='noncanonical_call_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_integrity_v5.py", line 51, in test_consistently_corrupted_call_reservation_step_and_sources_do_not_release
+    f.error(result, 'unavailable')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 67, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'queued', 'work_ref': {'epoch': 2, 'goal_id': 'goal-0ab2d1e971174c8f84d845a6f8ff759d', 'revision': 2}}}
+
+======================================================================
+FAIL: test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='empty_reservation_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_integrity_v5.py", line 51, in test_consistently_corrupted_call_reservation_step_and_sources_do_not_release
+    f.error(result, 'unavailable')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 67, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'queued', 'work_ref': {'epoch': 2, 'goal_id': 'goal-52f8ae0386d64a35a366a5de10bf1105', 'revision': 2}}}
+
+======================================================================
+FAIL: test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='empty_step_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_integrity_v5.py", line 51, in test_consistently_corrupted_call_reservation_step_and_sources_do_not_release
+    f.error(result, 'unavailable')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 67, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'queued', 'work_ref': {'epoch': 2, 'goal_id': 'goal-75891246a846453e9adfef70291facde', 'revision': 2}}}
+
+======================================================================
+FAIL: test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='malformed_sources')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_integrity_v5.py", line 51, in test_consistently_corrupted_call_reservation_step_and_sources_do_not_release
+    f.error(result, 'unavailable')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 67, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'queued', 'work_ref': {'epoch': 2, 'goal_id': 'goal-8b349b3867fe45f89cdbf35bc634f698', 'revision': 2}}}
+
+======================================================================
+FAIL: test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='missing_required_source')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_integrity_v5.py", line 51, in test_consistently_corrupted_call_reservation_step_and_sources_do_not_release
+    f.error(result, 'unavailable')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 67, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'queued', 'work_ref': {'epoch': 2, 'goal_id': 'goal-8422362a86a04d06a20163988f033b65', 'revision': 2}}}
+
+======================================================================
+FAIL: test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='unregistered_source')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_integrity_v5.py", line 51, in test_consistently_corrupted_call_reservation_step_and_sources_do_not_release
+    f.error(result, 'unavailable')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 67, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'queued', 'work_ref': {'epoch': 2, 'goal_id': 'goal-184b72644a0c4bed95ed7852b099e686', 'revision': 2}}}
+
+======================================================================
+FAIL: test_consistently_corrupted_call_reservation_step_and_sources_do_not_release (test_tasks_change_integrity_v5.ChangeIntegrityTests.test_consistently_corrupted_call_reservation_step_and_sources_do_not_release) (case='invalid_source_ref')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_tasks_change_integrity_v5.py", line 51, in test_consistently_corrupted_call_reservation_step_and_sources_do_not_release
+    f.error(result, 'unavailable')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_change_v5.py", line 34, in error
+    self.f.error(result, code)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<repo>/tests/test_tasks_ask_v5.py", line 67, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'queued', 'work_ref': {'epoch': 2, 'goal_id': 'goal-1c3edc11ee7f41ac90d365948b8f8afb', 'revision': 2}}}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.067s
+
+FAILED (failures=9)

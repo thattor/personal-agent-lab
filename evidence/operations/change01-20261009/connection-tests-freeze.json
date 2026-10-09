@@ -1,0 +1,22 @@
+{
+  "base": "e0fbdc23602e2a0cf6dc8f2c0590aaae459619a8",
+  "scope_sha256": "fdd1fe51f1d8931bb900f21f4dd4b097c1e17ea5cab838b905553b22cbfaf62c",
+  "method_count": 11,
+  "baseline": "RED",
+  "assertion_failures": 20,
+  "errors": 0,
+  "elapsed_seconds": 0.164,
+  "command": "/opt/homebrew/bin/python3.13 -E -s -B -m unittest discover -s tests -p 'test_change_connection_v5.py' -v",
+  "cause": "unchanged C10 parser rejects valid change as invalid_input; downstream assertions not executed",
+  "tests_sha256": "31c92e805407689abebae60d5ffd10c4d1811a4d1f0abe6892aabd76a13feaa1",
+  "demo_sha256": "442c0a71913e3dcdf6e9948584d7cb06bb24b1f2c798dec1cd66c4845a29786a",
+  "files": {
+    "connection-tests-initial-red.log": "f7f48a121fab2c936a14929701a92f9f735a99e6e3ede9d8f1a9ecd2a55b0dd1",
+    "connection-tests-fixed-red.log": "acd6303d869f9ba5e06dbf0eb52ebb0a62c63972658cf8ca66bc4ffc6e342679"
+  },
+  "fixture_correction": "Before test freeze, replaced a nonexistent get_step helper with direct read of persisted Step wire. Original RED had not reached that helper. No source or expected state changes.",
+  "no_existing_DB_or_provider": true,
+  "scope_original_sha256": "fdd1fe51f1d8931bb900f21f4dd4b097c1e17ea5cab838b905553b22cbfaf62c",
+  "scope_public_sha256": "3d5b137db0590bdee445dfc8baa4a42666aa11e4316f440ef5872f1b05c288f9",
+  "public_export": "Original command/results unchanged. Original hashes refer to locally retained evidence; exported log hashes are in verification.json."
+}

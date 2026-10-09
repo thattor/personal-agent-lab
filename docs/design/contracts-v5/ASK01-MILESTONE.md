@@ -35,17 +35,22 @@ ASK01-INDEPENDENT-REVIEW.md and the full verification.json/hash manifest.
 
 Earlier AGY Opus5.5 candidate2d96c06a plus Astra source reconciliation informed
 the frozen contract. That is not a final milestone review. Final Opus alignment
-is PENDING. CO0.4.5 remains the installed runtime, existing state unchanged;
+is ALIGNED after exact AGY claude-opus-5-5-high review completed
+SUCCESS305.502s on17 byte-matched public inputs atsourcec49bb00. The model executes
+no tests, reports connection-test truncation and unsupplied RUN/ART/VER/MEM sources.
+Its alignment is limited to the local mock contract/roles and supplied host receipts.
+CLI plan mode was disabled by a conflicting flag: observed request-review, only
+finish used, unchanged17 input files. The full receipt preserves this limitation.
+CO0.4.5 remains the installed runtime, existing state unchanged;
 qualified Claude planner is session-limited and D041 excludes SWE from design.
 No unknown call is resumed/cancelled and no AGY egress refusal is bypassed.
 
 Proposed next value: C10.change should let a revised requirement replace the
 current revision while preserving history and budgets and fencing late results.
-AFTER-ASK01-PROPOSAL and the source-seam proposal are consultation inputs, not
-adopted semantics or permission to modify product scope. Opus should assess
-purpose, owner boundaries, minimal contract, next dependency and remaining gap.
-Then Root freezes the shared contract, fixes independent tests and assigns
-isolated modules. No unnecessary parallelism or duplicate implementation.
+AFTER-ASK01-PROPOSAL and the source-seam proposal remain retained inputs. Opus's
+actual CHANGE READY_TO_FREEZE response and Astra's actual-source reconciliation
+are adopted into CHANGE01-SCOPE.md by Root. Fixed independent tests precede
+isolated modules; no unnecessary parallelism or duplicate implementation.
 
 Unmet whole-PAL obligations remain: real Primary routing/provider/UI activation,
 general restart recovery, semantic verification and authentic usefulness. No new

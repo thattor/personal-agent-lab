@@ -1,0 +1,15 @@
+test_cancel_wins_over_old_failed_outcome (test_mock_change_v5.MockChangeTests.test_cancel_wins_over_old_failed_outcome) ... ok
+test_change_at_local_save_finish_ask_and_verify_boundaries_never_completes (test_mock_change_v5.MockChangeTests.test_change_at_local_save_finish_ask_and_verify_boundaries_never_completes) ... ok
+test_change_during_admitted_call_discards_all_action_kinds_after_return (test_mock_change_v5.MockChangeTests.test_change_during_admitted_call_discards_all_action_kinds_after_return) ... ok
+test_next_revision_progress_preserves_goal_usage_and_history (test_mock_change_v5.MockChangeTests.test_next_revision_progress_preserves_goal_usage_and_history) ... ok
+test_pause_change_shared_stop_latest_intent_wins_after_cessation (test_mock_change_v5.MockChangeTests.test_pause_change_shared_stop_latest_intent_wins_after_cessation) ... ok
+test_raised_callable_releases_only_after_raised_cessation (test_mock_change_v5.MockChangeTests.test_raised_callable_releases_only_after_raised_cessation) ... ok
+test_retained_admitted_call_keeps_occupancy_until_returned (test_mock_change_v5.MockChangeTests.test_retained_admitted_call_keeps_occupancy_until_returned) ... ok
+test_retained_ask_checks_call_then_one_fenced_ask_no_inference (test_mock_change_v5.MockChangeTests.test_retained_ask_checks_call_then_one_fenced_ask_no_inference) ... ok
+test_retained_finished_compose_verification_stale_then_safe_release (test_mock_change_v5.MockChangeTests.test_retained_finished_compose_verification_stale_then_safe_release) ... ok
+test_retained_started_compose_and_report_never_reenter_or_save (test_mock_change_v5.MockChangeTests.test_retained_started_compose_and_report_never_reenter_or_save) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.005s
+
+OK

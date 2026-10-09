@@ -1,0 +1,283 @@
+test_actual_callable_change_fences_output_keeps_occupancy_then_finishes_replacement (test_change_connection_v5.ChangeConnectionTests.test_actual_callable_change_fences_output_keeps_occupancy_then_finishes_replacement) ... FAIL
+test_admission_commit_order_fences_old_reservation_without_refund (test_change_connection_v5.ChangeConnectionTests.test_admission_commit_order_fences_old_reservation_without_refund) ... 
+  test_admission_commit_order_fences_old_reservation_without_refund (test_change_connection_v5.ChangeConnectionTests.test_admission_commit_order_fences_old_reservation_without_refund) (admit_first=True) ... FAIL
+  test_admission_commit_order_fences_old_reservation_without_refund (test_change_connection_v5.ChangeConnectionTests.test_admission_commit_order_fences_old_reservation_without_refund) (admit_first=False) ... FAIL
+test_answer_commit_order_preserves_answered_history_or_rejects_superseded_question (test_change_connection_v5.ChangeConnectionTests.test_answer_commit_order_preserves_answered_history_or_rejects_superseded_question) ... 
+  test_answer_commit_order_preserves_answered_history_or_rejects_superseded_question (test_change_connection_v5.ChangeConnectionTests.test_answer_commit_order_preserves_answered_history_or_rejects_superseded_question) (answer_first=True) ... FAIL
+  test_answer_commit_order_preserves_answered_history_or_rejects_superseded_question (test_change_connection_v5.ChangeConnectionTests.test_answer_commit_order_preserves_answered_history_or_rejects_superseded_question) (answer_first=False) ... FAIL
+test_artifact_and_verification_history_never_enter_new_current_set (test_change_connection_v5.ChangeConnectionTests.test_artifact_and_verification_history_never_enter_new_current_set) ... FAIL
+test_artifact_save_commit_order_preserves_receipt_or_rejects_fresh_stale_write (test_change_connection_v5.ChangeConnectionTests.test_artifact_save_commit_order_preserves_receipt_or_rejects_fresh_stale_write) ... 
+  test_artifact_save_commit_order_preserves_receipt_or_rejects_fresh_stale_write (test_change_connection_v5.ChangeConnectionTests.test_artifact_save_commit_order_preserves_receipt_or_rejects_fresh_stale_write) (save_first=True) ... FAIL
+  test_artifact_save_commit_order_preserves_receipt_or_rejects_fresh_stale_write (test_change_connection_v5.ChangeConnectionTests.test_artifact_save_commit_order_preserves_receipt_or_rejects_fresh_stale_write) (save_first=False) ... FAIL
+test_change_write_lock_blocks_other_connection_effects_before_its_commit (test_change_connection_v5.ChangeConnectionTests.test_change_write_lock_blocks_other_connection_effects_before_its_commit) ... FAIL
+test_complete_commit_order_prevents_terminal_change_or_stale_completion (test_change_connection_v5.ChangeConnectionTests.test_complete_commit_order_prevents_terminal_change_or_stale_completion) ... 
+  test_complete_commit_order_prevents_terminal_change_or_stale_completion (test_change_connection_v5.ChangeConnectionTests.test_complete_commit_order_prevents_terminal_change_or_stale_completion) (complete_first=True) ... FAIL
+  test_complete_commit_order_prevents_terminal_change_or_stale_completion (test_change_connection_v5.ChangeConnectionTests.test_complete_commit_order_prevents_terminal_change_or_stale_completion) (complete_first=False) ... FAIL
+test_finish_commit_order_retains_or_abandons_only_old_step (test_change_connection_v5.ChangeConnectionTests.test_finish_commit_order_retains_or_abandons_only_old_step) ... 
+  test_finish_commit_order_retains_or_abandons_only_old_step (test_change_connection_v5.ChangeConnectionTests.test_finish_commit_order_retains_or_abandons_only_old_step) (finish_first=True) ... FAIL
+  test_finish_commit_order_retains_or_abandons_only_old_step (test_change_connection_v5.ChangeConnectionTests.test_finish_commit_order_retains_or_abandons_only_old_step) (finish_first=False) ... FAIL
+test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect (test_change_connection_v5.ChangeConnectionTests.test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect) ... 
+  test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect (test_change_connection_v5.ChangeConnectionTests.test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect) (reuse=False, stop_first=True) ... FAIL
+  test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect (test_change_connection_v5.ChangeConnectionTests.test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect) (reuse=False, stop_first=False) ... FAIL
+  test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect (test_change_connection_v5.ChangeConnectionTests.test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect) (reuse=True, stop_first=True) ... FAIL
+  test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect (test_change_connection_v5.ChangeConnectionTests.test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect) (reuse=True, stop_first=False) ... FAIL
+test_verification_save_commit_order_keeps_original_record_or_denies_new_stale_check (test_change_connection_v5.ChangeConnectionTests.test_verification_save_commit_order_keeps_original_record_or_denies_new_stale_check) ... 
+  test_verification_save_commit_order_keeps_original_record_or_denies_new_stale_check (test_change_connection_v5.ChangeConnectionTests.test_verification_save_commit_order_keeps_original_record_or_denies_new_stale_check) (verify_first=True) ... FAIL
+  test_verification_save_commit_order_keeps_original_record_or_denies_new_stale_check (test_change_connection_v5.ChangeConnectionTests.test_verification_save_commit_order_keeps_original_record_or_denies_new_stale_check) (verify_first=False) ... FAIL
+test_waiting_question_and_receipt_remain_history_without_old_answer_adoption (test_change_connection_v5.ChangeConnectionTests.test_waiting_question_and_receipt_remain_history_without_old_answer_adoption) ... FAIL
+
+======================================================================
+FAIL: test_actual_callable_change_fences_output_keeps_occupancy_then_finishes_replacement (test_change_connection_v5.ChangeConnectionTests.test_actual_callable_change_fences_output_keeps_occupancy_then_finishes_replacement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 101, in test_actual_callable_change_fences_output_keeps_occupancy_then_finishes_replacement
+    self.assertEqual((settled['status'], settled['state']), ('released', 'queued'))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('released', 'failed') != ('released', 'queued')
+
+First differing element 1:
+'failed'
+'queued'
+
+- ('released', 'failed')
+?               ^^^^
+
++ ('released', 'queued')
+?               ^^^^
+
+
+======================================================================
+FAIL: test_admission_commit_order_fences_old_reservation_without_refund (test_change_connection_v5.ChangeConnectionTests.test_admission_commit_order_fences_old_reservation_without_refund) (admit_first=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 171, in test_admission_commit_order_fences_old_reservation_without_refund
+    self.f.value(tasks.control(self.request()))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_admission_commit_order_fences_old_reservation_without_refund (test_change_connection_v5.ChangeConnectionTests.test_admission_commit_order_fences_old_reservation_without_refund) (admit_first=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 171, in test_admission_commit_order_fences_old_reservation_without_refund
+    self.f.value(tasks.control(self.request()))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_answer_commit_order_preserves_answered_history_or_rejects_superseded_question (test_change_connection_v5.ChangeConnectionTests.test_answer_commit_order_preserves_answered_history_or_rejects_superseded_question) (answer_first=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 276, in test_answer_commit_order_preserves_answered_history_or_rejects_superseded_question
+    self.f.value(tasks.control(self.request()))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_answer_commit_order_preserves_answered_history_or_rejects_superseded_question (test_change_connection_v5.ChangeConnectionTests.test_answer_commit_order_preserves_answered_history_or_rejects_superseded_question) (answer_first=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 276, in test_answer_commit_order_preserves_answered_history_or_rejects_superseded_question
+    self.f.value(tasks.control(self.request()))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_artifact_and_verification_history_never_enter_new_current_set (test_change_connection_v5.ChangeConnectionTests.test_artifact_and_verification_history_never_enter_new_current_set)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 144, in test_artifact_and_verification_history_never_enter_new_current_set
+    self.f.value(tasks.control(self.request()))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_artifact_save_commit_order_preserves_receipt_or_rejects_fresh_stale_write (test_change_connection_v5.ChangeConnectionTests.test_artifact_save_commit_order_preserves_receipt_or_rejects_fresh_stale_write) (save_first=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 213, in test_artifact_save_commit_order_preserves_receipt_or_rejects_fresh_stale_write
+    self.f.value(tasks.control(self.request()))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_artifact_save_commit_order_preserves_receipt_or_rejects_fresh_stale_write (test_change_connection_v5.ChangeConnectionTests.test_artifact_save_commit_order_preserves_receipt_or_rejects_fresh_stale_write) (save_first=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 213, in test_artifact_save_commit_order_preserves_receipt_or_rejects_fresh_stale_write
+    self.f.value(tasks.control(self.request()))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_change_write_lock_blocks_other_connection_effects_before_its_commit (test_change_connection_v5.ChangeConnectionTests.test_change_write_lock_blocks_other_connection_effects_before_its_commit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 319, in test_change_write_lock_blocks_other_connection_effects_before_its_commit
+    self.changed()
+    ~~~~~~~~~~~~^^
+  File "<repo>/tests/test_change_connection_v5.py", line 38, in changed
+    return request, self.f.value(self.f.tasks.control(request))
+                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_complete_commit_order_prevents_terminal_change_or_stale_completion (test_change_connection_v5.ChangeConnectionTests.test_complete_commit_order_prevents_terminal_change_or_stale_completion) (complete_first=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 254, in test_complete_commit_order_prevents_terminal_change_or_stale_completion
+    self.f.error(tasks.control(change), 'conflict')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 61, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'conflict'
+
+======================================================================
+FAIL: test_complete_commit_order_prevents_terminal_change_or_stale_completion (test_change_connection_v5.ChangeConnectionTests.test_complete_commit_order_prevents_terminal_change_or_stale_completion) (complete_first=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 257, in test_complete_commit_order_prevents_terminal_change_or_stale_completion
+    self.f.value(tasks.control(change))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_finish_commit_order_retains_or_abandons_only_old_step (test_change_connection_v5.ChangeConnectionTests.test_finish_commit_order_retains_or_abandons_only_old_step) (finish_first=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 193, in test_finish_commit_order_retains_or_abandons_only_old_step
+    self.f.value(tasks.control(self.request()))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_finish_commit_order_retains_or_abandons_only_old_step (test_change_connection_v5.ChangeConnectionTests.test_finish_commit_order_retains_or_abandons_only_old_step) (finish_first=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 193, in test_finish_commit_order_retains_or_abandons_only_old_step
+    self.f.value(tasks.control(self.request()))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect (test_change_connection_v5.ChangeConnectionTests.test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect) (reuse=False, stop_first=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 301, in test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect
+    changed = self.f.value(tasks.control(request))
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect (test_change_connection_v5.ChangeConnectionTests.test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect) (reuse=False, stop_first=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 301, in test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect
+    changed = self.f.value(tasks.control(request))
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect (test_change_connection_v5.ChangeConnectionTests.test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect) (reuse=True, stop_first=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 298, in test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect
+    self.f.error(tasks.control(request), 'denied')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 61, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'denied'
+
+======================================================================
+FAIL: test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect (test_change_connection_v5.ChangeConnectionTests.test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect) (reuse=True, stop_first=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 301, in test_old_only_or_declared_shared_source_stop_has_exact_commit_order_effect
+    changed = self.f.value(tasks.control(request))
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_verification_save_commit_order_keeps_original_record_or_denies_new_stale_check (test_change_connection_v5.ChangeConnectionTests.test_verification_save_commit_order_keeps_original_record_or_denies_new_stale_check) (verify_first=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 233, in test_verification_save_commit_order_keeps_original_record_or_denies_new_stale_check
+    self.f.value(tasks.control(self.request()))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_verification_save_commit_order_keeps_original_record_or_denies_new_stale_check (test_change_connection_v5.ChangeConnectionTests.test_verification_save_commit_order_keeps_original_record_or_denies_new_stale_check) (verify_first=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 233, in test_verification_save_commit_order_keeps_original_record_or_denies_new_stale_check
+    self.f.value(tasks.control(self.request()))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+======================================================================
+FAIL: test_waiting_question_and_receipt_remain_history_without_old_answer_adoption (test_change_connection_v5.ChangeConnectionTests.test_waiting_question_and_receipt_remain_history_without_old_answer_adoption)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>/tests/test_change_connection_v5.py", line 123, in test_waiting_question_and_receipt_remain_history_without_old_answer_adoption
+    self.changed()
+    ~~~~~~~~~~~~^^
+  File "<repo>/tests/test_change_connection_v5.py", line 38, in changed
+    return request, self.f.value(self.f.tasks.control(request))
+                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'invalid_input', 'message': 'invalid task request', 'refs': []}}
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.164s
+
+FAILED (failures=20)

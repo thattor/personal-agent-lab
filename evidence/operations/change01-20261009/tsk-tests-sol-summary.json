@@ -1,0 +1,20 @@
+{
+  "base": "e0fbdc23602e2a0cf6dc8f2c0590aaae459619a8",
+  "source_baseline": "c49bb005ab9fe18b53e27934a537934325dd26a7",
+  "scope_sha256": "fdd1fe51f1d8931bb900f21f4dd4b097c1e17ea5cab838b905553b22cbfaf62c",
+  "test_sha256": "a1b8a68a95a8430879e5b73fb83e7c60b5bd9d69d92fa977f6a9a961bccda9fd",
+  "methods": 28,
+  "executed_subcases": 97,
+  "failures": 109,
+  "errors": 0,
+  "expected_red": true,
+  "syntax": "AST PASS",
+  "command": "/opt/homebrew/bin/python3.13 -E -s -B -m unittest discover -s tests -p test_tasks_change_v5.py -v",
+  "exit": 1,
+  "limits": "Baseline lacks C10.change. Later assertions, mint/fault and cross-revision cleanup paths are not reached yet; no implementation or green acceptance claimed.",
+  "raw_log_sha256": "feb2b9d76532ed2ea9126ae24d38a3e4b8c35e1e5ddd06df3caae89f4c45fb46",
+  "display_log": "Trailing line whitespace normalized only; exact raw bytes retained in tsk-tests-sol-red.raw.log.gz",
+  "scope_original_sha256": "fdd1fe51f1d8931bb900f21f4dd4b097c1e17ea5cab838b905553b22cbfaf62c",
+  "scope_public_sha256": "3d5b137db0590bdee445dfc8baa4a42666aa11e4316f440ef5872f1b05c288f9",
+  "public_export": "Original command/results unchanged. Original hashes refer to locally retained evidence; exported log hashes are in verification.json."
+}
