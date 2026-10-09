@@ -2855,3 +2855,39 @@ Root requests checkpoint design assessment of actual N3/local marker/route limit
 send evidence and recommended proper CO-owner scope to the designated human lane.
 Existing N1/N2/N3/CO UNKNOWNs, held baseline and qualification remain unchanged.
 Each further provider entry needs new reassessment; none is authorized here.
+
+
+D059 actual C092: exact separately authored Astra6ea9771 source has Sol independent
+APPROVE/native165 PASS1.560s; fixed14 original RED is retained unchanged. Root
+c6eb469 full983 PASS19.397s/exit0. Original969 methods remain, nine-key diagnostic/
+limits/native buffer and strict gates unchanged; new hashes invalidate the profile.
+Actual official Opus5.5 C091 report/7-input hashes and original init/result identity
+are retained; CO verified means report shape/listed files only. C1 adopted cheap
+prospective observability/no further entry; C2 corrected to no retained reason/
+UNKNOWN for absent/not_observed, never non-overflow proof, with fixed initial
+non-count cases added; C3 CO-owner dependency is confined to that CO native route
+and superseded as a universal stop by the latest D060 owner clarification.
+
+## D060 — CO is optional; model intelligence is not a quality gate (2026-10-10)
+
+Root freshly read the actual owner message in PAL人間判断 at06:34 JST:
+「開発にcoを使わないといけないという判断はしないでね 手段の一つなので」;
+the owner confirms conversation quality/intelligence is delegated to the model
+and asks whether dependent quality tests exist. This clarifies development means;
+it does not remove functional permission/budget/work/stop/save/replay guarantees,
+permit model mislabelling, new auth/cost/service or UNKNOWN retry/release.
+
+Independent currentc6eb469 audit (84 test modules/983 AST methods plus actual bodies)
+finds no conversational naturalness/style/intelligence grading or prose-quality
+release gate. VER semantic remains unknown; forged semantic met is rejected;
+exact strings are synthetic bytes/replay/display/transport contract fixtures.
+D031/D033 quality-testing stop remains. Root separately executed983 functional
+regression PASS, not a model-intelligence evaluation. Send this evidence to the
+existing designated human lane; canon remains Root-owned.
+
+Continue a distinct existing first-party Claude direct profile proposal with
+original CLI2.1.291 model-bearing frames/request/owned EOF/wait and all managed
+PAL consumers. CO's native2.1.285/public seam is one route's limit, not a product
+prerequisite. No CO edits or alternate CO engine. Current Devin profile remains
+strict; do not convert old evidence or unknowns to Claude, or call a requested
+model an observed one. Proposal/source preparation is not qualification or entry.

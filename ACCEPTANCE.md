@@ -1,3 +1,19 @@
+# Current C092 — source983 passes; real functional proof still outstanding
+
+Independent source review/native165 and Root full983 PASS19.397s/exit0 establish
+local bounded sidecar/unchanged strict-gate behavior atc6eb469. Original969 methods
+are retained, plus14 fixed new methods. No actual new provider call or original
+UNKNOWN rewrite. [Verification](evidence/operations/c092-model-overflow-20261010/verification.json).
+
+D060 confirms CO is optional. Independent current tests/VER/Primary/active-contract
+review found no prose naturalness/style/intelligence grading or quality release
+gate; fixture byte equality and closed I/O/state/authority tests remain functional.
+[Audit](evidence/operations/c092-model-overflow-20261010/test-scope-audit.md).
+Real native connection/Expert/UI/work-flow usefulness/release remain NOT_MET.
+A separately qualified direct-route profile may be prepared; current CO-specific
+native receipt/version limitations are not universal product requirements. Old
+Devin receipts/gates and N1/N2/N3/CO UNKNOWN stay unchanged. Earlier rows are history.
+
 # Current C091 — actual diagnostic is UNKNOWN; no native qualification
 
 N3 used its sole frozen invoke/entry with zero PAL effects, exit1. Independent

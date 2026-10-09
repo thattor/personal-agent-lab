@@ -44,3 +44,15 @@ LOCAL_MOCK_VERIFIED; native UI, real qualification/usefulness and whole goal rem
 NOT_MET. Use the existing Python3.13 interpreter for local verification; a Python3.9
 StrEnum import failure is not a product regression.
 Global guidance and saved owner instructions remain independently applicable.
+
+
+## Latest owner clarification D060
+
+CO is one development means, not a mandatory product or implementation condition.
+Use approved direct alternatives when appropriate; do not promote one CO-native
+profile's version/receipt limitation into a universal PAL stop. Conversation and
+composition intelligence/quality remain delegated to the model under D031/D033:
+no prose grading, style corpus, model judge or quality release gate. Functional
+I/O, permissions, budgets, work state, controls, saved bytes and replay still need
+verification. A new direct profile needs its own explicit source/functional proof;
+this clarification does not permit new auth/cost/service or old UNKNOWN operations.

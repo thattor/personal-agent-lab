@@ -1,3 +1,33 @@
+# Current C092 — local diagnostic verified; CO optional, direct candidate next
+
+Rootc6eb469 integrates PRI02-MODEL-OVERFLOW/1 with independent Sol APPROVE and
+native165 PASS1.560s/exit0. Root full **983 PASS19.397s/exit0** keeps969 methods
+plus14 new fixed methods. A bounded first-reason/count-only private sidecar is
+prospective; original diagnostic/1 nine keys/caps, buffer and strict model/replay
+behavior are unchanged. [Verification](evidence/operations/c092-model-overflow-20261010/verification.json).
+New wrapper/capture hashes invalidate the prior envelope. No further real call.
+
+Latest owner clarification D060: CO is one development means, not mandatory;
+conversation/prose intelligence/quality stays delegated to the model. Independent
+current test audit found no naturalness/style/intelligence grading or prose-quality
+release gate. Exact strings verify synthetic fixture storage/replay/display/transport.
+[Audit](evidence/operations/c092-model-overflow-20261010/test-scope-audit.md).
+
+Actual official Opus5.5 C091 document review completed REFINE. Root adopts cheap
+local source scope/no-entry and added first-row fixtures, while refusing its
+unsupported incomplete+not_observed cause inference. CO-native compatibility/
+model-proof limitations concern that route; they do not stop all PAL development.
+Existing first-party direct Claude2.1.291/Opus5.5 profile is a source proposal under
+independent Sol/Astra feasibility, not implemented/qualified/activated. Preserve
+honest protocol model, request, owned ending, budgets/control/save/UNKNOWN/replay.
+No new auth/cost/service, CO edit, opaque multi-call task adapter or engine bypass.
+
+N3 remains UNKNOWN/NOT_PROVEN/semantic NOT_RUN/INCOMPLETE0 with its consumed MAX1,
+original N1/N2/N3/CO records and held baseline unchanged. Current UI remains
+LOCAL_MOCK_VERIFIED. Whole goal **NOT_MET**: direct real-provider qualification,
+native Expert/UI, authentic improved work-flow usefulness and release audit remain.
+This is functional acceptance, with no prose-quality scoring. Earlier rows are history.
+
 # Current C091 — single diagnostic consumed; strict model remains unproven
 
 The separately reviewed/frozen N3 diagnostic entered exactly once and ended

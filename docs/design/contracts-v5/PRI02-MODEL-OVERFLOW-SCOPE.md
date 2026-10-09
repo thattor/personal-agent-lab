@@ -89,3 +89,30 @@ Independent approval plus Root full suite is required before integration. This
 source verification does not authorize another native case, real integration or
 whole-goal completion. Any later provider entry needs a distinct evidence-based
 reassessment and exact reviewed operator/source freeze; no such entry is proposed here.
+
+
+## Actual Opus C091 disposition and local C092 proof
+
+C1 adopted: this is inexpensive prospective observability only. Completion,
+any overflow marker and any retained hint are not model qualification and do not
+justify a new native diagnostic. Limits cannot increase under this scope, and a
+matching hint cannot repair an original null/false model. No new entry follows.
+
+C2 refined by Root against the best-effort/source contract: overflow means the
+first retained collector-bound refusal. An absent sidecar or an incomplete old
+record paired with not_observed leaves the reason UNKNOWN/NOT_RETAINED; it cannot
+prove a non-overflow cause or metadata absence. The review's stronger non-overflow
+inference is not adopted. Separate fixed1 method/four subcases add first-row token
+and record-byte refusal on both hooks, with the original13 methods unchanged.
+
+C3 applies to the existing CO native routes pending their public evidence seam;
+D060's newer explicit owner instruction makes CO one development means, not a
+product prerequisite. A separately reviewed existing direct-route candidate may
+be designed under its own profile without modifying CO or reusing its evidence.
+No direct provider is implemented or activated by this source scope.
+
+C092 integrated exact Astra source with distinct Sol review and165 PASS/exit0;
+Root full983 PASS19.397s/exit0 atc6eb469. Existing969 remain, plus14 new methods.
+The old nine-key record/caps and original native buffer/strict gates remain;
+new four source/test pins invalidate the envelope. This is local source proof,
+not an actual model-overflow sidecar from N3 or real qualification.
