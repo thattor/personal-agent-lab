@@ -1,0 +1,11 @@
+{
+  "source_commit": "ff1a1ccab553173fa4eae17b29fbe0a79b998313",
+  "finished_at": "2026-10-09T11:06:59.626022+00:00",
+  "full_exit": 0,
+  "wall_seconds": 25.351,
+  "full_tail": "t_unknown_verification_and_malformed_read_requests) ... ok\n\n----------------------------------------------------------------------\nRan 747 tests in 25.142s\n\nOK\n",
+  "focused": "36 PASS 0.152s",
+  "actual_demo": "PASS completed preserved, immutable VER body/hash, current to source stopped, visible stopped MEM notice",
+  "scope": "host local synthetic/temporary SQLite; not GitHub CI or full PAL",
+  "independent_final_review": "PENDING"
+}
