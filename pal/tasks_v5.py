@@ -464,6 +464,33 @@ class TaskStore(IntakeStore):
         self._require_transaction(connection)
         return self._authorize_artifact_save(request)
 
+    def verification_context(self, connection, request, *, purpose):
+        """Readonly VER snapshot; factual status is independent of execution rights."""
+        self._require_transaction(connection)
+        return self._verification_context(request, purpose=purpose)
+
+    @_public
+    def _verification_context(self, request, *, purpose):
+        data = _obj(request, {'work_ref'})
+        work = _work(data['work_ref'])
+        if purpose not in ('save', 'status'):
+            raise ContractError()
+        row = self._authority(work)[0] if purpose == 'save' else self._current(work)
+        try:
+            brief = Brief.from_json(loads(row['brief_json']))
+            required = self._required(row)
+            if (len({item.id for item in brief.conditions}) != len(brief.conditions) or
+                    any(ref.kind.value != 'record' for ref in required) or
+                    not set(required) <= set(self._registered(row))):
+                raise ContractError()
+            artifacts = self._artifact_set(work)
+        except ContractError:
+            _reject('unavailable')
+        return Result.success({'work_ref': work.to_json(),
+            'conditions': [item.to_json() for item in brief.conditions],
+            'artifact_refs': [{'kind': 'artifact', 'id': item['artifact_id']} for item in artifacts],
+            'source_refs': _wire(required)})
+
     @_public
     def _authorize_artifact_save(self, request):
         data = _obj(request, {'work_ref', 'step_id', 'action'})
