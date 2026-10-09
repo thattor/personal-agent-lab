@@ -87,7 +87,7 @@ class ReadDisplayTests(unittest.TestCase):
         self.assertEqual(dumps(inspection).encode(), original)
         self.assertEqual(inspection['items'][0]['reads'][0]['result']['value'], body)
         self.assertIn('      一行目\n      二行目\n      \n      末尾\n', output)
-        self.assertIn('Model: mock', output)
+        self.assertIn('Model provenance: unverified by this view', output)
         self.assertIn('Verification: structural', output)
 
 

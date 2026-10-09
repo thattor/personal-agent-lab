@@ -15,7 +15,7 @@ from pal.contracts_v5 import Limits
 from pal.events_v5 import EventReader
 from pal.host_read_v5 import HostReader
 from pal.memory_v5 import MemoryStore
-from pal.read_consumer_v5 import inspect_session
+from pal.read_consumer_v5 import inspect_session, render
 from pal.tasks_v5 import TaskStore
 from pal.verification_v5 import VerificationStore
 
@@ -66,7 +66,8 @@ class NativeRecoveryReadTests(unittest.TestCase):
         current = n.f.work()
         self.assertEqual(current['current_artifact_refs'], [receipt['artifact_ref']])
         before = n.f.snapshot()
-        items = self.inspect(n)['items']
+        inspection = self.inspect(n)
+        items = inspection['items']
         selected = [item for item in items if item['event']['text'] == 'Saved draft recovered']
         self.assertEqual(len(selected), 1)
         item = selected[0]
@@ -79,6 +80,12 @@ class NativeRecoveryReadTests(unittest.TestCase):
         body = item['reads'][0]['result']['value']
         for name in ('ref', 'content', 'media_type', 'hash', 'work_ref', 'source_refs'):
             self.assertEqual(body[name], original[name])
+        rendered = render(inspection)
+        self.assertIn('Model provenance: unverified by this view', rendered)
+        self.assertNotIn('Model: mock', rendered)
+        self.assertNotIn('no real model call', rendered)
+        self.assertNotIn('Model: native', rendered)
+        self.assertNotIn('qualified real model', rendered)
         self.assertEqual(n.f.snapshot(), before)
 
     def test_same_text_ordinary_c14_event_cannot_invent_artifact_producer(self):
