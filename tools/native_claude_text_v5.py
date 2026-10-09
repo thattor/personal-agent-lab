@@ -111,16 +111,20 @@ def _cleanup(child):
                 # Another owner reaped it; no PGID-only signal is safe now.
                 _fail()
             try:
-                os.killpg(child.pid, signal.SIGTERM)
-            except ProcessLookupError:
-                pass
-            time.sleep(0.05)
-            try:
-                os.killpg(child.pid, signal.SIGKILL)
-            except ProcessLookupError:
-                pass
-            time.sleep(0.05)
-            child.wait(timeout=2)
+                try:
+                    os.killpg(child.pid, signal.SIGTERM)
+                except ProcessLookupError:
+                    pass
+                time.sleep(0.05)
+                try:
+                    os.killpg(child.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+                time.sleep(0.05)
+            finally:
+                # Darwin may deny signaling an exited-only group. Ownership was
+                # established above; even that error must not leak its zombie.
+                child.wait(timeout=2)
     finally:
         for stream in (child.stdin, child.stdout, child.stderr):
             if stream is not None:
