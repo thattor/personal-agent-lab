@@ -30,10 +30,15 @@ owner prerequisites are frozen from the completed actual Opus PRI F1/F2/F4/F6/F7
 and current-code reconciliation. Separate Sol fixed tests precede isolated Astra
 TSK/SWE parser source; full TaskStore exceeds CO64KiB so the approved native
 route supplies complete context. Root owns shared contracts and host connection.
-Full PRI remains unfrozen: additional Opus refinement returned session-limit
+Full PRI is now frozen in PRI01-SCOPE.md under D048: additional Opus refinement returned session-limit
 error, CO outcome unknown/options empty; no report received or adopted and no
-duplicate consultation. Independent owner work and source-exposure reconciliation
-continue, without new cost/auth or whole-project approval wait.
+duplicate consultation. Root explicitly adopts actual-exposure closure with full
+uncited visible dependencies after Astra reconciliation, not new Opus endorsement.
+TSK candidate226eab passes24/195 but independent review found a contradictory
+running-pause receipt accepted; narrow repair precedes integration. CO SWE pure
+parser task7df39c is active with immutable25 and verified Free model access;
+native Sol fixed host tests precede Root host source. Stop-aware replies and fixed
+host-only C14 text prevent copied reply context. No new cost/auth or approval wait.
 
 Overall gap: bounded Primary whole flow → separately
 qualified finite real-provider proof → one authentic improved usefulness judgment.

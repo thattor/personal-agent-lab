@@ -1336,3 +1336,11 @@ PRI wire freeze initially wrote waiting rather than actual waiting_input and
 left candidate Ref representation ambiguous. Both were corrected before fixed
 test dispatch/commit after reading actual TSK and C02 JSON seams. Future freezes
 copy existing state/wire names from owner definitions rather than shorthand.
+
+PRI-WIRE dispatch first mistyped the full base SHA while preparing the command;
+runtime returned input_invalid before task allocation/call. Correct Git rev-parse
+SHA3d0dedc87df60ff0bb2c24e887d8f662580150fc starts ordinary task7df39c. Future
+commands take the exact preflight manifest base, never reconstruct a SHA suffix.
+Authentication freshly reports existing Devin Pro account; the actual exact
+swe-2-high model is advertised Free. Account tier and model price are separate;
+provider quota remains unknown and no billing setting is changed.

@@ -2,6 +2,40 @@
 
 This file records decisions needed to continue implementation. Newer entries override older conflicting entries.
 
+## D048 — first Primary host connection, Root technical disposition
+Date: 2026-10-10 (local continuing session)
+Completed actual CO claude-opus-5-5 PRI01 REFINE is retained at
+evidence/operations/pri01-20261009/opus-design-review.json. Root consulted that
+report before adoption, reconciled its evidence limits against current actual
+owners with Astra, and freezes PRI01-SCOPE/TSK-SCOPE/WIRE-SCOPE. Additional
+consultation1ec690fc hit a session limit with CO unknown outcome/options empty;
+no new report received or endorsed. Its pause is preserved without retry.
+
+Adopt F1/F2/F4/F6/F7 owner prerequisites, exact original receipts, finite existing
+shared model counter, managed session-owned workless Primary reservation, closed
+proposal grammar, current-record answer/change and fingerprint checks. One
+owned callback has durable CAS/session evidence and no DB transaction. Qualified
+startup reconciles original receipts only; uncertain owner effects remain applying.
+Immediate structured control and record stop bypass inference. One terminal turn
+and fixed host C14 notice are atomic; no model reply in MEM/C14 model context.
+
+Explicit technical refinement of literal F5: require original turn, all C11 bodies
+actually exposed and every dependency of all text-visible candidates, including
+uncited sources. Withheld candidate IDs/state/ref metadata are never bodies,
+selectable hidden records or answer/change authority. Astra's source reconciliation
+shows literal all-candidate union would deny unrelated new work after a historical
+source stop. Visible-source stop before adoption still fails the owner's atomic
+context_refs gate. Root adopts this bounded refinement; do not attribute it to
+the unavailable additional Opus report. No capability/permission or acceptance
+is expanded. Reply source gates cover conversation/control and current rereads;
+historical confirmed effects remain visible even when reply use is stopped.
+
+Separate fixed tests precede isolated code; exact independent review, Root actual
+whole mock/process connection and full regression precede scoped acceptance.
+Separately qualified finite provider proof and one authentic usefulness judgment
+remain. No CLI provider under managed-inprocess-mock/1, P001 adoption, old/live
+DB migration, new auth/service/cost or model completion authority.
+
 ## D-046 — continue to the project goal with necessary parallel work
 Date: 2026-10-09
 Owner: latest direct user instructions in the continuing development task.
