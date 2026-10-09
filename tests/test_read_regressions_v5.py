@@ -46,6 +46,41 @@ class ReadRegressionTests(unittest.TestCase):
         self.assertIn('read at', verification)
         self.assertIn('not creation time', verification)
 
+    def test_real_c11_optional_fields_are_accepted_and_extras_rejected(self):
+        body = fixed.c11(fixed.R)
+        del body['work_ref']
+        owner = self.fixture.owners[0]
+        for value in (body, {**body, 'version': 'saved-v1'}, {**body, 'work_ref': None}):
+            owner.response = fixed.Result.success(value)
+            result = self.fixture.reader.read({'ref': fixed.R}, purpose='user_view')
+            self.assertTrue(result.ok, result.to_json())
+            self.assertEqual(result.value.to_json(), value)
+        for value in ({**body, 'version': 5}, {**body, 'extra': 1}):
+            owner.response = fixed.Result.success(value)
+            self.fixture.error(self.fixture.reader.read({'ref': fixed.R}, purpose='user_view'), 'unavailable')
+
+    def test_malformed_notice_refs_are_visible_without_correlating_false_cause(self):
+        self.fixture.owners[2].usable = False
+        notice = fixed.event('notice', kind='progress', text=fixed.NOTICE,
+                             refs=['raw', 5, None, {'kind': 'record'}])
+        out = self.fixture.inspect([self.fixture.page([fixed.event('result'), notice], 'notice'),
+                                    self.fixture.page([], 'notice')])
+        self.assertEqual(len(out['items']), 2)
+        self.assertEqual(out['items'][0]['reads'][1]['validity'], 'not current')
+        for read in out['items'][1]['reads']:
+            self.assertEqual(read['result']['error']['code'], 'invalid_input')
+        self.assertIn('invalid_input', self.fixture.render(out))
+        self.assertIn('notice', self.fixture.render(out).lower())
+
+    def test_resumed_window_never_invents_an_unseen_source_stop_notice(self):
+        self.fixture.owners[2].usable = False
+        events = fixed.StrictEvents(self, [self.fixture.page([fixed.event('result')], 'result'),
+                                          self.fixture.page([], 'result')], initial_cursor='old-notice')
+        result = self.fixture.inspect_session({'session_id': 'session', 'after_event_id': 'old-notice'},
+            events=events, tasks=self.fixture.tasks, reader=self.fixture.reader)
+        self.assertTrue(result.ok, result.to_json())
+        self.assertEqual(result.value.to_json()['items'][0]['reads'][1]['validity'], 'not current')
+
 
 if __name__ == '__main__':
     unittest.main()

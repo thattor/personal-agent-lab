@@ -1,0 +1,65 @@
+Local temporary SQLite demo; mock model and structural verification only.
+
+Before source stop
+Saved-result inspection (read-only; not completion authority)
+Model: mock (no real model call; saved drafts are mock output)
+Verification: structural only (no semantic quality judgement)
+Session: demo-session
+Result event 1: event-7bffe7d84c704389944e0b854a39de2a (work completed from saved verification)
+  Work ref: goal goal-491fc9cacd2e4ff595cadfc0de9bf649 revision 1 epoch 1
+  Work state (TSK, separate from result usability): completed
+  Ref artifact:artifact-84ffc334fe4b4339ae2c8b2bd41c2654
+    Read at: 2026-10-09T10:59:51.577111+00:00 (time of this read, not creation time)
+    Media type: text/plain  hash: 22efd9075e36be02274d6b05a82ee4994365644c68154faef79051636f9242c2
+    Usable: yes
+    Content:
+      打合せのご案内（下書き）
+      日時・場所は未確定です。
+      送信前にご確認ください。
+  Ref verification:verification-8c2b26428ec841f7858426bce40cde27
+    Read at: 2026-10-09T10:59:51.592176+00:00 (time of this read, not creation time)
+    Media type: application/json  hash: 14edcf2b12ea4dfe50032136954a6e3b3e79fd7b1d8280957336634de438ae7b
+    Saved verification (historical, separate from current usability):
+      Fixed Conditions:
+        - condition-8a01e994a77b43fd89efb165f5a965d8 [artifact_saved]: ローカル下書きが保存されている
+      Original checks (historical; structural, not a semantic judgement):
+        - condition-8a01e994a77b43fd89efb165f5a965d8: met - ordered artifact set saved and verified (evidence: artifact:artifact-84ffc334fe4b4339ae2c8b2bd41c2654)
+      Saved artifact bindings, in order:
+        - artifact:artifact-84ffc334fe4b4339ae2c8b2bd41c2654 hash=22efd9075e36be02274d6b05a82ee4994365644c68154faef79051636f9242c2 bytes=110
+      Dependencies: record:record-0a89c5ad5ae84ae9a89b26455b70a045, record:record-d9dcf3ea65184d8f89258a5c0eef70b3
+    Current usability: current
+Next cursor: event-7bffe7d84c704389944e0b854a39de2a
+Page scan truncated: no
+
+
+After source stop
+Saved-result inspection (read-only; not completion authority)
+Model: mock (no real model call; saved drafts are mock output)
+Verification: structural only (no semantic quality judgement)
+Session: demo-session
+Result event 1: event-7bffe7d84c704389944e0b854a39de2a (work completed from saved verification)
+  Work ref: goal goal-491fc9cacd2e4ff595cadfc0de9bf649 revision 1 epoch 1
+  Work state (TSK, separate from result usability): completed
+  Ref artifact:artifact-84ffc334fe4b4339ae2c8b2bd41c2654
+    Read at: 2026-10-09T10:59:51.577111+00:00 (time of this read, not creation time)
+    Media type: text/plain  hash: 22efd9075e36be02274d6b05a82ee4994365644c68154faef79051636f9242c2
+    Usable: no
+    Content:
+      打合せのご案内（下書き）
+      日時・場所は未確定です。
+      送信前にご確認ください。
+  Ref verification:verification-8c2b26428ec841f7858426bce40cde27
+    Read at: 2026-10-09T10:59:51.595852+00:00 (time of this read, not creation time)
+    Media type: application/json  hash: 14edcf2b12ea4dfe50032136954a6e3b3e79fd7b1d8280957336634de438ae7b
+    Saved verification (historical, separate from current usability):
+      Fixed Conditions:
+        - condition-8a01e994a77b43fd89efb165f5a965d8 [artifact_saved]: ローカル下書きが保存されている
+      Original checks (historical; structural, not a semantic judgement):
+        - condition-8a01e994a77b43fd89efb165f5a965d8: met - ordered artifact set saved and verified (evidence: artifact:artifact-84ffc334fe4b4339ae2c8b2bd41c2654)
+      Saved artifact bindings, in order:
+        - artifact:artifact-84ffc334fe4b4339ae2c8b2bd41c2654 hash=22efd9075e36be02274d6b05a82ee4994365644c68154faef79051636f9242c2 bytes=110
+      Dependencies: record:record-0a89c5ad5ae84ae9a89b26455b70a045, record:record-d9dcf3ea65184d8f89258a5c0eef70b3
+    Current usability: source stopped
+Next cursor: event-3a5ffd60932f45a2a347a7cffaf5ca2c
+Page scan truncated: no
+

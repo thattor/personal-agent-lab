@@ -1,4 +1,6 @@
 """VER01 deterministic saved verification; trusted same-connection collaborators only."""
+from datetime import datetime, timedelta, timezone
+import hashlib
 import sqlite3
 import uuid
 
@@ -12,6 +14,7 @@ _CONTEXT_FIELDS = {'work_ref', 'conditions', 'artifact_refs', 'source_refs'}
 _ARTIFACT_FIELDS = {'artifact_ref', 'work_ref', 'step_id', 'hash', 'bytes', 'source_refs'}
 _RECORD_FIELDS = {'verification_ref', 'work_ref', 'conditions', 'artifact_refs',
                   'artifacts', 'required_refs', 'source_refs', 'checks', 'receipt'}
+_READ_PURPOSES = frozenset({'model_context', 'verification', 'user_view'})
 _SCHEMA = (
     'CREATE TABLE IF NOT EXISTS v5_ver_body ('
     'id TEXT PRIMARY KEY, input_json TEXT NOT NULL, record_json TEXT NOT NULL)',
@@ -31,6 +34,23 @@ class _Failure(Exception):
 
 def _error(code='unavailable'):
     return Result.failure(code, 'verification operation ' + code)
+
+
+def _utc_now():
+    return datetime.now(timezone.utc).isoformat()
+
+
+def _read_time(value):
+    if type(value) is not str or not value:
+        raise ContractError()
+    text = value[:-1] + '+00:00' if value.endswith('Z') else value
+    try:
+        parsed = datetime.fromisoformat(text)
+    except ValueError:
+        raise ContractError() from None
+    if parsed.tzinfo is None or parsed.utcoffset() != timedelta(0):
+        raise ContractError()
+    return value
 
 
 def _obj(value, keys):
@@ -146,7 +166,8 @@ def _checks(conditions, artifact_refs):
 
 
 class VerificationStore:
-    def __init__(self, connection, *, context, artifact_inspect, source_gate, id_factory=None):
+    def __init__(self, connection, *, context, artifact_inspect, source_gate,
+                 id_factory=None, clock=None):
         if not isinstance(connection, sqlite3.Connection):
             raise TypeError('connection must be sqlite3.Connection')
         if connection.isolation_level is not None or connection.in_transaction:
@@ -155,11 +176,14 @@ class VerificationStore:
             raise TypeError('trusted collaborators must be callable')
         if id_factory is not None and not callable(id_factory):
             raise TypeError('id_factory must be callable')
+        if clock is not None and not callable(clock):
+            raise TypeError('clock must be callable')
         self._conn = connection
         self._context = context
         self._artifact_inspect = artifact_inspect
         self._source_gate = source_gate
         self._id_factory = id_factory or (lambda prefix: prefix + '-' + uuid.uuid4().hex)
+        self._clock = clock if clock is not None else _utc_now
         connection.execute('BEGIN IMMEDIATE')
         try:
             for sql in _SCHEMA:
@@ -411,6 +435,58 @@ class VerificationStore:
         if state != 'available':
             raise _Failure('unavailable')
         return 'valid'
+
+    def read(self, request, *, purpose):
+        if type(purpose) is not str or purpose not in _READ_PURPOSES:
+            raise ValueError('purpose must be model_context, verification or user_view')
+        self._idle()
+        try:
+            ref = Ref.from_json(_obj(request, {'ref'})['ref'])
+        except ContractError:
+            return _error('invalid_input')
+        if ref.kind is not RefKind.VERIFICATION:
+            return _error('unavailable')
+        try:
+            self._conn.execute('BEGIN')
+            stored = self._stored(ref.id)
+            if stored is None:
+                self._rollback()
+                return _error('not_found')
+            usable = self._current_status(stored) == 'valid'
+            observed_at = _read_time(self._guard(self._clock))
+            content = dumps({
+                'work_ref': stored['work'].to_json(),
+                'conditions': [condition.to_json() for condition in stored['conditions']],
+                'artifact_refs': [item.to_json() for item in stored['refs']],
+                'artifacts': [{'artifact_ref': meta['artifact_ref'], 'hash': meta['hash'],
+                               'bytes': meta['bytes']} for meta in stored['metas']],
+                'source_refs': [item.to_json() for item in stored['sources']],
+                'checks': stored['checks'],
+            })
+            self._rollback()
+            if not usable and purpose != 'user_view':
+                return _error('denied')
+            return Result.success({
+                'ref': ref.to_json(),
+                'content': content,
+                'media_type': 'application/json',
+                'hash': hashlib.sha256(content.encode('utf-8')).hexdigest(),
+                'observed_at': observed_at,
+                'work_ref': stored['work'].to_json(),
+                'source_refs': [item.to_json() for item in stored['sources']],
+                'usable': usable,
+            })
+        except _Failure as exc:
+            self._rollback()
+            # Status-context not_found means current status cannot be established;
+            # in read only an absent requested verification Ref is not_found.
+            return _error('unavailable' if exc.code == 'not_found' else exc.code)
+        except Exception:
+            self._rollback()
+            return _error()
+        except BaseException:
+            self._rollback()
+            raise
 
     def _typed_result(self, ref):
         stored = self._stored(ref.id)

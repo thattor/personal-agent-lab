@@ -6,6 +6,7 @@ import unittest
 
 from pal.contracts_v5 import dumps, loads
 from pal.events_v5 import EventReader
+from pal.mock_runner_v5 import MockRunner
 from pal.verification_v5 import VerificationStore
 import test_completion_connection_v5 as completion
 import test_mock_completion_connection_v5 as flow
@@ -80,8 +81,8 @@ class ReadConnectionTests(unittest.TestCase):
         verification_read = self.reads(rest, 'verification')[0]
         self.assertEqual(verification_read['validity'], 'current')
         self.assertEqual(rest['items'][0]['work']['value']['state'], 'completed')
-        rendered = self.render(rest)
-        for label in ('mock model', 'structural verification', 'read at', 'completed'):
+        rendered = self.render(rest).lower()
+        for label in ('mock', 'structural', 'read at', 'completed'):
             self.assertIn(label, rendered)
         self.assertIn('下書き', rendered)
         self.assertEqual((self.f.snapshot(), self.f.conn.total_changes), (snapshot, changes))
@@ -122,14 +123,15 @@ class ReadConnectionTests(unittest.TestCase):
         _, request = self.f.ready()
         first_work = copy.deepcopy(self.f.work)
         self.f.value(self.f.tasks.control(request))
-        self.f.create_next(session='draft-session')
-        self.f.lease = self.f.value(self.f.tasks.claim({'runner_id': 'second'}))
-        self.f.work = self.f.lease['work_ref']
-        self.f.calls, self.f.saved_refs = 0, []
-        self.f.value(self.f.tasks.register_sources({'work_ref': self.f.work, 'refs': self.f.refs}))
-        self.f.compose()
-        verification = self.f.verify('second-verify')
-        self.f.value(self.f.tasks.control(self.f.complete_request(verification)))
+        second = self.f.create_next(session='draft-session')
+        runner = MockRunner(self.f.tasks, self.f.memory, artifacts=self.f.artifacts,
+                            verifications=self.f.verifications)
+        def expert(context, **diagnostics):
+            return {'kind': 'compose', 'media_type': 'text/plain', 'content': '別の仕事の下書き',
+                    'source_refs': [body['ref'] for body in context['context']]}
+        self.assertEqual(self.f.value(runner.run_once(expert))['status'], 'completed')
+        self.f.work = self.f.value(self.f.tasks.get_work({'goal_id': second['goal_id'],
+                                                        'revision': second['revision']}))['work_ref']
         result = self.inspect()
         self.assertEqual([item['event']['work_ref'] for item in result['items']], [first_work, self.f.work])
         self.assertEqual([item['work']['value']['work_ref'] for item in result['items']], [first_work, self.f.work])

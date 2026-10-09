@@ -1141,3 +1141,21 @@ weekly and97.41% five-hour remaining. Apply the same Observe -> type -> verify
 selection -> Enter sequence to settings inspection; never batch ESC, text, Enter.
 The accidental request was within the existing subscription; no new auth/credits
 setting was enabled. Preserve this distinction from the intended code assignment.
+
+
+## READ01 Sonnet consumer boundary and Root connection fixtures (2026-10-09)
+The first exact AGY Sonnet5.5 response passed immutable11 but omitted historical
+notices, failed a whole page for one malformed Ref and mislabeled saved MEM/ART
+times. Root reproduced3 failures; independent exact CO Opus5.5 task531650 confirmed
+them and found required work_ref rejects actual MEM's optional-field C11 body.
+Root real9 initially reported3 failures: that real MEM defect, a fixture with
+global replay-key reuse across two works, and a case-sensitive prose assertion.
+Correct the latter two in Root tests: the second work uses actual MockRunner's
+scoped keys, and label assertions test meaning case-insensitively. Result8/9 pass;
+MEM still fails, so no product fix is falsely inferred from fixture correction.
+Preserve original logs and Sonnet bytes. Add optional C11 field/malformed notice/
+window regression cases; supplied doubles must include each actual owner variant.
+CO SWE repairs the original3; Root must reconcile Opus F1 and rerun actual owners
+plus demo, then obtain separate final source review. Renderer is display only,
+never completion or semantic authority. This is a source/input-shape coverage gap,
+not evidence for more model-quality gates or a new user decision.

@@ -159,3 +159,9 @@ the code authors. Root owns the actual demo/connection evidence and canonical do
 READ-specific error disposition: only absence of the requested verification Ref is
 not_found. Context(status) not_found means current status cannot be established
 and maps to unavailable in read. Typed C09 get_verification is unchanged.
+
+C11 host dispatch preserves the existing owner contract: work_ref and version are
+optional envelope fields (PAL-contracts-v5 C11). MEM omits work_ref; ART and VER
+include it. Allow absent/null/valid WorkRef and absent/string version, reject extra
+keys. VER's own exact eight-key response remains as frozen above. The renderer
+uses the owner's stored observation time for MEM/ART, current read time for VER.
