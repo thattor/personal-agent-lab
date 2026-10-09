@@ -123,7 +123,8 @@ class PrimaryHost:
             '(id TEXT PRIMARY KEY,user_session TEXT NOT NULL,client_key TEXT NOT NULL,record_json TEXT NOT NULL,'
             'input_hash TEXT NOT NULL,host_session TEXT NOT NULL,runner TEXT NOT NULL,db_uuid TEXT NOT NULL,'
             'profile TEXT NOT NULL,phase TEXT NOT NULL,nonce TEXT,snapshot_json TEXT,intent_json TEXT,'
-            'outcome_json TEXT,event_id TEXT,call_id TEXT,outcome_hash TEXT,call_hash TEXT,UNIQUE(user_session,client_key))')
+            'outcome_json TEXT,event_id TEXT,call_id TEXT,outcome_hash TEXT,call_hash TEXT,'
+            'admission_hash TEXT NOT NULL,UNIQUE(user_session,client_key))')
         self._conn.execute('CREATE TABLE IF NOT EXISTS v5_pri_call '
             '(id TEXT PRIMARY KEY,turn_id TEXT NOT NULL UNIQUE,host_session TEXT NOT NULL,runner TEXT NOT NULL,'
             'db_uuid TEXT NOT NULL,profile TEXT NOT NULL,reservation_id TEXT NOT NULL,status TEXT NOT NULL,'
@@ -196,20 +197,30 @@ class PrimaryHost:
         _digest(row['input_hash'])
         _record(self._json(row['record_json']))
         self._binding(row)
+        if _digest(row['admission_hash']) != self._admission_hash(row):
+            _refuse()
         if row['phase'] not in (*_ACTIVE, 'terminal'):
             _refuse()
         if row['phase'] != 'pending' and row['nonce'] is None:
             _refuse()
         if row['nonce'] is not None:
             _text(row['nonce'], identifier=True)
+        if row['phase'] == 'pending' and (row['nonce'] is not None or row['snapshot_json'] is not None):
+            _refuse()
         if (row['phase'] == 'terminal') != (row['outcome_json'] is not None and row['event_id'] is not None):
             _refuse()
         if row['phase'] == 'applying' and (row['intent_json'] is None or row['snapshot_json'] is None):
             _refuse()
         call = self._call(row)
+        if row['phase'] in ('pending', 'preparing') and call is not None:
+            _refuse()
         if row['phase'] in ('admitted', 'returned', 'applying') and call is None:
             _refuse()
         if row['phase'] == 'returned' and call['status'] != 'returned':
+            _refuse()
+        if row['phase'] == 'admitted' and call['status'] not in ('admitted', 'raised', 'not_entered'):
+            _refuse()
+        if row['phase'] != 'terminal' and (row['phase'] == 'applying') != (row['intent_json'] is not None):
             _refuse()
         if row['phase'] == 'applying' and (call['status'] != 'returned' or call['output_hash'] is None):
             _refuse()
@@ -218,8 +229,10 @@ class PrimaryHost:
                 _refuse()
             if _digest(row['outcome_hash']) != _hash(row['outcome_json']):
                 _refuse()
-            self._outcome(row)
-        elif row['outcome_hash'] is not None:
+            outcome = self._outcome(row)
+            if outcome['status'] == 'committed' and (call is None or call['status'] != 'returned'):
+                _refuse()
+        elif any(row[key] is not None for key in ('outcome_json', 'event_id', 'outcome_hash')):
             _refuse()
         return row
 
@@ -298,9 +311,12 @@ class PrimaryHost:
                         _refuse()
                     return {'turn_id': row['id'], 'status': self._status(row)}
                 identity = 'turn-' + uuid.uuid4().hex
-                self._conn.execute('INSERT INTO v5_pri_turn VALUES (?,?,?,?,?,?,?,?,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)',
+                admission = dict(zip(('id', 'user_session', 'client_key', 'record_json', 'input_hash',
+                                      'host_session', 'runner', 'db_uuid', 'profile'),
                     (identity, session, key, dumps(ref), body['hash'], self._guard.session_id,
-                     self._guard.runner_id, self._guard.db_uuid, _PROFILE, 'pending'))
+                     self._guard.runner_id, self._guard.db_uuid, _PROFILE)))
+                self._conn.execute('INSERT INTO v5_pri_turn VALUES (?,?,?,?,?,?,?,?,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,?)',
+                    (*admission.values(), 'pending', self._admission_hash(admission)))
                 return {'turn_id': identity, 'status': 'pending'}
             return Result.success(self._write(admit))
 
@@ -498,9 +514,13 @@ class PrimaryHost:
         return call
 
     @staticmethod
-    def _turn_hash(row):
+    def _admission_hash(row):
         return _hash(dumps({key: row[key] for key in ('id', 'user_session', 'client_key', 'record_json',
-                      'input_hash', 'host_session', 'runner', 'db_uuid', 'profile', 'nonce')}))
+                      'input_hash', 'host_session', 'runner', 'db_uuid', 'profile')}))
+
+    @classmethod
+    def _turn_hash(cls, row):
+        return _hash(dumps({'admission': cls._admission_hash(row), 'nonce': row['nonce']}))
 
     def _bind_call(self, identity):
         call = self._one('SELECT * FROM v5_pri_call WHERE turn_id=?', (identity,))
