@@ -168,6 +168,38 @@ do not use that lock as native cessation. Its native session/turn/call rows carr
 the distinct profile. preflight occurs before reserve; TSK reserve/consume once.
 No waits inside SQLite transactions. SOL alone changes the shared host module.
 
+Public constructor in pal/primary_host_v5.py is
+NativePrimaryHost(connection, *, guard, memory, tasks, request_scope, provider).
+provider is a trusted non-callable object with exact NativeProfile-valued profile,
+preflight() and invoke(request, *, on_enter); no generic mock invoke parameter.
+All existing PrimaryHost mock constructor behavior stays fixed. preflight runs
+after bounded snapshot/source validation, before model reserve. on_enter receives
+the original native attempt mapping once and commits its cross-binding/source
+gate before any external execution. A NativeReturned without that hook is held.
+Only a matching NativeNeverEntered may settle not_entered; wrong binding or any
+other exception after invoking the provider is unknown, never mock raised.
+
+The side table name is v5_pri_native with columns call_id/request_hash/
+profile_json/attempt_json/phase/ending_json/ending_hash. profile_json is exact
+canonical NativeProfile.to_json. phase is prepared/entering/unknown/returned/
+not_entered, attempt_json null only before entry. The existing C15 call hash binds
+both call and native side row for native profiles, remaining exactly call-only
+for mock. Missing native side or an extra mock side is unavailable. Native
+returned evidence is text-free NativeReturned.validate; not-entered ending is
+closed {kind:not_entered,request_sha256,profile_sha256,evidence_ref}, checked by
+NativeNeverEntered. ending_hash binds that exact canonical ending JSON. Unknown
+has no ending/output hash. Side/call/profile/status/phase converse is mandatory.
+
+get_turn returns existing closed status/effect_refs/reply/error shape. Native
+unknown uses status=held with empty effect_refs and no model body/error details;
+active entry before known ending may remain pending. Same held turn run is a
+read only result. A fresh explicit turn has its own current profile/counters;
+profile mismatch does not permit executing an old pending turn. Recovery of
+native admitted/entering first records unknown and holds; pending/preparing
+without any C15 call can fail locally. Returned-before-intent may fail locally;
+applying uses only original owner lookup, never redispatch. Existing mock turn
+recovery remains interrupted, and its rows never gain native authority.
+
 A PRI-owned mandatory side row binds call_id/request/profile/qualification,
 original attempt, entry state and exact returned evidence/hash. Ending side row,
 C15 returned/output hash and turn phase/hash commit atomically. Unknown is a
