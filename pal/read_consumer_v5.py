@@ -6,6 +6,8 @@ structured inspection plus a plain-text rendering. Each owner read has its own
 snapshot; there is no cross-owner atomic claim, no cache, and no completion,
 dispatch or semantic-quality authority.
 """
+import unicodedata
+
 from pal.contracts_v5 import ContractError, ErrorCode, Ref, Result, WorkRef, dumps, loads
 from pal.host_read_v5 import checked_result
 
@@ -255,6 +257,20 @@ def _read_lines(read):
     return lines
 
 
+def _display_lines(lines):
+    # Keep continuation text visibly subordinate, including strings embedded in
+    # labels. Escape controls rather than letting the terminal interpret them.
+    displayed = []
+    for line in lines:
+        for index, part in enumerate(line.split('\n')):
+            safe = ''.join(
+                f'\\u{ord(char):04x}'
+                if unicodedata.category(char) in {'Cc', 'Cf', 'Zl', 'Zp'} else char
+                for char in part)
+            displayed.append(('      | ' if index else '') + safe)
+    return displayed
+
+
 def render(inspection):
     """Plain-text rendering of an inspect_session success value."""
     lines = ['Saved-result inspection (read-only; not completion authority)',
@@ -284,4 +300,4 @@ def render(inspection):
         lines.append('Page scan truncated: the page limit was reached; more events may exist after the cursor.')
     else:
         lines.append('Page scan truncated: no')
-    return '\n'.join(lines) + '\n'
+    return '\n'.join(_display_lines(lines)) + '\n'
