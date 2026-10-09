@@ -899,8 +899,10 @@ controller's mistake. Existing route-specific refusals did not block native work
 
 Correction: begin independent MEM/TSK boundary and acceptance analysis, then continue
 the next authorized implementation after evaluation. The owner subsequently asked
-to see the loop proposal before trying it; respect that narrower sequencing without
-retroactively using it to excuse the earlier stop. A restatement is not new approval.
+to see the loop proposal before trying it and then restated the shown proposal.
+Root briefly inferred a further start-approval requirement; that inference is
+withdrawn. Existing continuation was not revoked, and the loop creates no new scope.
+Do not turn a request for explanation into a new permission gate.
 
 Prevention: at each next checkpoint, inspect the current owner instruction and next
 unmet dependency, then record an actual dispatch or a concrete dependency-specific

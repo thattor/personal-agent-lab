@@ -1,0 +1,18 @@
+{
+  "schema": "pal.mem01-design-dispatch/1",
+  "task_id": "b52e1ef96fbc482e88bb5c002b686a1b",
+  "base": "c3ace7ad917a7b1b2a601a0d2a63d16a19a66115",
+  "role": "independent design consultation before implementation",
+  "runtime_version": "0.4.5",
+  "route": "claude",
+  "model": "claude-opus-5-5",
+  "pins": ["planner", "implement", "review"],
+  "steps": 1,
+  "repairs": 0,
+  "call_timeout_seconds": 600,
+  "output": "evidence/operations/mem01-20261009/opus-boundary-review.md",
+  "output_limit_bytes": 6000,
+  "verifier": "UTF-8 nonempty bounded note containing a verdict; semantic assessment remains SOL responsibility",
+  "implementation_started": false,
+  "old_unknown_calls_acted_on": false
+}

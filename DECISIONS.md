@@ -1792,12 +1792,14 @@ reverification. Only a material goal/scope/acceptance change or genuinely new au
 cost or noninferable owner judgment blocks its dependent work. No schedule restart,
 unknown-call resume, access-refusal bypass, authentication, payment or publication.
 
-The later request asks to see the proposed loop before its trial. The human lane has
-shown a six-step proposal and the owner has restated its four-step meaning; that
-restatement is not recorded as explicit trial-start approval. SOL is preparing the
-MEM/TSK boundary and acceptance examples meanwhile, without dispatching implementation
-under a newly claimed loop approval. This narrow current condition must be updated
-from the actual next owner response, not turned into recurring checkpoint approval.
+The later request asks to see the proposed loop before trying it. The human lane
+has shown that proposal and the owner has restated its four-step meaning. The agent's
+suggestion of a separate approval gate is not an owner instruction. Root initially
+overinterpreted the sequencing as requiring another explicit start authorization;
+that interpretation is withdrawn. No new approval is inferred from the restatement:
+the existing explicit continuation and existing AGENTS loop remain the authority.
+The proposal introduces no scheduler, new execution route, scope or permission.
+Proceed within that scope after technical prerequisites, without a new human wait.
 
 Root's C069 turn termination was an incorrect continuation decision, not evidence of
 a project-wide technical block. Existing AGENTS development-loop item10 already
@@ -1808,6 +1810,30 @@ do not add a scheduler or new approval mechanism. See docs/DEFECTS.md.
 Current independent work: native Astra analyzed transaction/ownership boundaries;
 separate native Sol6.1 derived adversarial acceptance conditions, both read-only at
 666506a. Both identify existing-work invalidation as required before execution use.
-The proposed MEM01 scope is in docs/design/contracts-v5/MEM01-SCOPE.md. No code/test
-change or MEM implementation verification is claimed. C069 source440-test evidence
+The proposed MEM01 scope is in docs/design/contracts-v5/MEM01-SCOPE.md. Official
+CO0.4.5 Opus5.5 consultation taskb52e1ef96fbc482e88bb5c002b686a1b has actually
+started on committedc3ace7a. No code/test change or MEM verification is yet claimed.
+C069 source440-test evidence
 remains historical to8db45fd; no unchanged suite rerun is needed for this record.
+
+D038 technical adoption: actual Opus5.5 review recommends connecting queued-work
+invalidation and public C14 events now, rather than more record-only preparation.
+Adopt that recommendation with the exact shared API in MEM01-SCOPE.md. SOL owns TSK
+source registration, transaction-bound public Result callbacks and integration;
+Astra owns MEM record storage/read/stop/search, with separate Sol code review.
+Use sanitized canonical replay identity and the existing imperfect sanitizer.
+Opaque internal keys use canonical arrays to avoid separator collisions. Optional
+C11 fields are omitted, and empty search means recent eligible records.
+
+Reject the review's claim that a callback COMMIT after writes can be fully rolled
+back. Collaborators are trusted host methods, not a sandbox; tests prove the actual
+methods preserve transaction ownership and that ordinary failure rolls back. A
+committing collaborator violates the contract and cannot receive a rollback claim.
+Unsupported affected work states or missing source coverage fail the whole stop.
+Running/notes/verification/real-service obligations remain unmet before activation.
+
+CO taskb52e1ef96fbc482e88bb5c002b686a1b completed both exact Opus5.5 calls and emitted
+the complete6885-byte REFINE response; its6000-byte document verifier failed. Preserve
+failed/verified:false and the original note. SOL's design consultation/disposition
+is distinct from CO document verification and future code/product verification.
+No blind rerun, relaxed PASS or runtime edit is needed to use the observed advice.

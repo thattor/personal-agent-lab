@@ -1,91 +1,142 @@
-# MEM01/1 — proposed record-to-intake connection
+# MEM01/1 — record-to-intake connection
 
-Status: DRAFT for technical consultation; not an implementation dispatch or product
-activation. SOL owns the shared contract and integration. Baseline:
-666506a438e3bd1a793255875b6acf3ecd8b7989 (TSK01 source8db45fd). Scope is PAL v5
-C05 append/record stop, bounded C06, C11 record reads and the C14 transaction seam.
+Status: ADOPTED technical scope under D038, after actual Opus5.5 consultation and
+SOL dispositions. Source prerequisite c3ace7ad917a7b1b2a601a0d2a63d16a19a66115;
+worker dispatch pins the commit containing this frozen scope. PAL v5 C05 append /
+record stop, record-only C06, C11 record read, C14 events and queued TSK invalidation.
+Python standard library only. No real service, model call, live DB, migration,
+external access, schedule or runtime/config change.
 
-## Intended result
+## Ownership and deliverables
 
-In a fresh isolated SQLite database, persist a conversation record through MEM,
-create a real TSK intake from that record, stop its use, and verify that new intake
-and model/verification reads reject it while owner history retains the body.
-Equal old intake replay returns its historical receipt without restoring availability.
-Do not substitute a fake source table for the MEM provider in the connection test.
+SOL owns pal/intake_v5.py, its tests, shared examples, integration and canonical docs.
+Astra owns only pal/memory_v5.py, tests/test_memory_v5.py and
+ docs/design/contracts-v5/MEM01-IMPLEMENTATION.md in its separate worktree. Read
+this scope, pal/contracts_v5.py, pal/intake_v5.py, pal/sanitize.py and v5 contract.
+Return those three files, actual targeted test results and remaining limitations.
+Independent Sol6.1 reviews the exact integrated commit after author tests pass.
 
-This must not become another disconnected helper. Resolve the shared event and
-existing-work invalidation boundary before adoption. Full running/paused/waiting
-invalidation, derived notes, correct, claim/leases, executor and actual model/UI
-activation remain separate unfinished work, never inferred from this slice.
+The complete small path is MEM append → real TSK create → MEM reference-stop →
+TSK queued epoch invalidation and event in the same transaction. Fresh intake/read
+is denied; old create receipt replays unchanged; owner history retains the body.
+This is unfinished product integration, not another fake availability table.
 
-## Candidate ownership and interfaces
+## Shared transaction interfaces (frozen)
 
-MEM owns immutable record bodies, availability, append/stop replay and record
-selection. TSK owns work/source dependencies and events. Only the caller opens the
-database; no existing database or migration is authorized. Both stores use the same
-explicit sqlite3 connection with isolation_level=None. No provider or external I/O
-is performed inside a transaction.
+Both stores receive the same caller-owned sqlite3 connection, isolation_level=None.
+Constructors reject active transactions/config errors. They initialize only their
+own v5_ tables in a transaction. No file opening or old-schema migration.
+Standalone create/append/stop own BEGIN IMMEDIATE through COMMIT/ROLLBACK. Busy returns
+unavailable. Callbacks never start/end a transaction or perform external I/O.
 
-- `MemoryStore(connection, *, sanitize_text, append_event, invalidate_by_refs,
-  id_factory=None, clock=None)`: required trusted host collaborators, no silent
-  permissive defaults. Exact callback shapes are still under consultation.
-- `append({client_key, session_id, role, text})`: strict C05 input, host identity/time
-  and durable order. Preserve sanitized UTF-8 text, including empty text and whitespace.
-- `stop_reference({key, source_ref}, *, session_id)`: session is trusted host context
-  for the initiating notification, not inferred from the stopped record's session.
-- `read({ref}, *, purpose)`: purpose is trusted host context. model_context and
-  verification reject stopped records; user_view returns retained body and usable:false.
-- `search({query, session_id, limit})`: initial record-only subset; summaries:[],
-  deterministic matching/order, and accurate truncated. Optional work-context search
-  is not silently ignored; its behavior must be frozen before acceptance.
-- `source_gate(connection, refs)`: read-only within the identical active transaction.
-  A record kind/id must match exactly. Other owners require an explicit dispatcher;
-  absent owner adapters fail closed.
+TSK exposes these host-only public methods:
 
-Each standalone MEM mutation owns BEGIN IMMEDIATE, replay lookup, mutation,
-TSK-owned event/invalidation callbacks, replay result and COMMIT. TSK create continues
-to own its transaction and calls the MEM read-only gate. Neither nests standalone
-mutation APIs. A public TSK transaction-bound callback must not commit independently.
-Any callback failure rolls back the entire operation and leaves its key retryable.
+- append_event(connection, request:dict) -> Result[{event_id}]. request is exactly
+  C14 key, session_id, kind, text, refs, with optional work_ref (omit if absent).
+  Strict JSON values. Equal key/canonical input replays; different input conflicts.
+- invalidate_by_refs(connection, *, key:str, session_id:str, refs:tuple[Ref,...])
+  -> Result[{work_refs:[WorkRef JSON]}]. Require exact stored connection and an active
+  transaction (programmer errors otherwise). Deduplicate refs in first-seen order.
+  TSK finds current dependent work from its source table. Require complete origin
+  dependency coverage; old/inconsistent work without it returns unavailable.
+  Precheck all affected states before any writes: only queued is supported. Other
+  states return unavailable, so caller rolls back the stop. For each affected Goal,
+  epoch+1, same revision/state queued, one state event, all within caller transaction.
+  Replay by key includes session and refs; equal request never increments twice.
+  No fake transition for running/paused/waiting/terminal states.
 
-Equal canonical operation/key/input returns the original result; different input
-conflicts. Replay may not store unsanitized text or reactivate a stopped record.
-Current `pal/sanitize.py` supplies the existing policy, explicitly imperfect. Pass
-that trusted function from the integration host. Freeze whether replay equality
-uses sanitized canonical text before implementation; never persist the original
-unsanitized input in a secondary replay ledger or invent a new keyword filter.
+Callbacks return strict Result, not raw IDs or exceptions for business failures.
+Caller must propagate failed Result and roll back its whole mutation. Programmer /
+SQLite exceptions become bounded unavailable at the standalone entrypoint. Verify
+result shape; malformed results are unavailable. These are trusted host methods,
+not a sandbox. SAVEPOINT plus active-transaction checks may detect misuse, but a
+callback which commits earlier writes violates the contract and cannot be rolled
+back retroactively. Do not claim otherwise. Test the actual TSK methods never commit;
+atomic rollback tests inject ordinary exceptions while the transaction stays open.
 
-## Shared boundary to resolve
+Use dumps([...]) with separate namespace/command/key/goal elements for internal keys;
+opaque IDs can contain punctuation, so colon concatenation is not collision-safe.
+TSK create registers origin and every context Ref in v5_intake_source atomically
+with work/event/replay. Its saved C03 result remains immutable when current epoch
+changes. Current get_work returns the changed epoch. No historical receipt grants
+current execution or reference authority.
 
-The native Astra and independent Sol6.1 analyses agree that future-intake rejection
-alone cannot satisfy C05/CT-20 existing-work invalidation. A possible bounded first
-implementation includes TSK-owned registration of origin/context sources and queued
-work invalidation in the same stop transaction. Unsupported work states must fail
-the entire stop rather than falsely acknowledge completion. Before any execution
-activation, extend this owner to all required states, verification and adopted refs.
-An alternative record-only preparation can be technically valid but leaves that
-activation blocker explicit. SOL will choose after the required Opus consultation;
-these alternatives are not new owner policy questions.
+## MEM API and persistence
 
-## Acceptance to freeze with the chosen boundary
+MemoryStore(connection, *, sanitize_text, append_event, invalidate_by_refs,
+            id_factory=None, clock=None)
 
-1. Append, exact replay/conflict, immutable body/hash/identity/time/order and reopen.
-2. Source-kind alias rejection; stopped/missing/unsupported owner outcomes.
-3. MEM append → real intake → record stop → fresh intake denied with zero intake
-   effects → old intake receipt replay unchanged, while current source reads deny.
-4. Stop removes candidates, never raw owner history; append replay cannot restore it.
-5. Stop-first and intake-first orders with two synchronized connections, no sleeps.
-   State precisely which pre-existing work is invalidated in each committed order.
-6. Inject abort after availability update and after event/invalidation writes;
-   all changes roll back, preserving already-existing rows. Retry succeeds.
-7. Candidate exclusion, strict limit/bool/overflow behavior, accurate truncation,
-   empty matches, and eligible older rows filling a result after a newer stop.
-8. Invalid input/sanitizer/callback results and lock contention cause bounded errors
-   without partial effects, raw-secret replay copies, or output body leakage.
+All three collaborators are required trusted callables. id_factory(prefix) defaults
+to UUID IDs; clock() returns nonempty UTF-8 host timestamp (default UTC ISO8601).
+No identity sanitizer/default-allow invalidator. At integration pass current
+pal.sanitize.sanitize, and the real bound TSK methods. A host closure connects TSK's
+required gate to the MEM instance after both stores are initialized; no create before
+initialization completes. MEM owns only v5_mem_record and v5_mem_replay.
 
-Python standard library only. SOL owns `pal/intake_v5.py`, shared examples, integration
-tests and canonical records. The eventual MEM author receives isolated files
-`pal/memory_v5.py`, `tests/test_memory_v5.py`, and a short implementation note. An
-independent reviewer receives the exact integrated commit after author tests pass.
-Root runs the meaningful connected cases and full regression, then selects the next
-unfinished authorized dependency; a successful checkpoint is not a stop condition.
+append({client_key,session_id,role,text}) -> Result[{record_ref}]
+- role exactly user|assistant; strict UTF-8 text, including empty/whitespace. Reject
+  extras/wrong types/empty IDs before writes. Sanitize before BEGIN; exception or
+  non-str/bad-UTF8 result is unavailable. Current sanitizer is deliberately imperfect.
+- Replay identity is canonical sanitized input; different raw text with equal sanitized
+  text replays equally. Changed sanitized content/session/role conflicts. Never persist
+  raw input, raw-input hash or a second unsanitized replay ledger.
+- New immutable host record ID, durable sequence, role/session, sanitized text/hash,
+  observed_at and usable flag. A new Ref is always a new immutable body/version.
+- Same transaction calls append_event with namespace [C05.append,client_key,event],
+  kind accepted, text record saved, refs [record_ref], no work_ref, then saves replay.
+
+stop_reference({key,source_ref}, *, session_id) -> Result[{affected_refs}]
+- source_ref must be record; strict key/session. Session is trusted initiating host
+  context and participates in replay identity. Missing record is not_found.
+- Equal operation/key/input replays; changed input conflicts. If available: mark
+  stopped, call invalidate_by_refs with namespace [C05.stop_reference,key,invalidate],
+  then append_event with namespace [C05.stop_reference,key,event], kind state,
+  text source use stopped, refs [source_ref], no work_ref. Save Result, commit.
+- Already stopped under a new key saves a receipt without another event/invalidation.
+  No physical delete or body overwrite; append replay never restores usability.
+
+read({ref}, *, purpose) -> Result[C11 value]
+- purpose is trusted host context, exactly model_context|verification|user_view;
+  invalid host purpose is a configuration/programmer error. Request validates Ref.
+- Only record owner is implemented. Other kinds return unavailable; missing record
+  not_found; stopped model/verification read denied. user_view returns usable:false.
+- Exact C11 required fields: ref, content, media_type=text/plain, hash=SHA256 UTF-8,
+  observed_at, source_refs=[], usable. Omit optional version/work_ref; null is not str.
+
+search({query,session_id,limit,work_ref?}) -> Result[C06 value]
+- query may be empty (recent records); otherwise exact literal substring, no language
+  normalization. Same-session available records ordered durable seq descending.
+- limit strict int 1..50; bool/zero/overflow invalid_input. Validate WorkRef if present,
+  then unavailable for this unfinished optional filter; never silently ignore it.
+- summaries=[], record_refs eligible matches, truncated iff more eligible matches
+  exist than limit (fetch limit+1). Stopped rows cannot displace eligible older rows.
+
+source_gate(connection, refs:tuple[Ref,...]) -> str
+- Bound method requires identical connection and active transaction; mismatch or
+  malformed refs returns unavailable. Reads only, no changes/transaction control.
+- Non-record ownership unavailable; missing record not_found; stopped denied; all
+  available returns available. Deterministic first failing Ref order, empty available.
+
+## Required tests and outcome
+
+Use fresh tempfile SQLite databases and actual reopen, no original/live data.
+- Exact durable Unicode/empty/whitespace/sanitized append and immutable hash/time/order;
+  canonical replay/conflict, sanitizer failure, no raw secret persisted or in errors.
+- Ref kind aliases, missing/stopped/history purposes; current read after old selection.
+- Callback failures/malformed results roll back record/availability/event/replay and
+  preserve preexisting data; failed key remains retryable. No premature commit by actual
+  TSK callbacks. Trusted contract violations are not sandbox/rollback success claims.
+- Real MEM→intake→stop: current epoch0→1, queued, source refs indexed, TSK/MEM events;
+  fresh intake denied without effects, old intake receipt remains epoch0.
+- Two connection orders with explicit locks/barriers, no sleeps: stop-first denies;
+  intake-first commits, then stop invalidates that work. Non-queued affected state
+  or missing dependency index rejects the whole stop with all previous rows unchanged.
+- Search bounds/order/truncation/stop exclusion, work_ref unavailable; lock contention.
+- Separate independent review of integrated source, targeted tests and root full suite.
+
+Unmet: notes/remember/correct/transitive propagation; all non-queued invalidation;
+step/artifact/verification dependency registration; claim/leases/draining; C14 cursor;
+full C06/cross-session relevance; real PRI authority, model, UI/execution activation.
+Before execution, satisfy the corresponding v5 obligations. Do not label CT-20 or
+whole C05/06/11/14 complete. After this scope passes, continue the next authorized
+TSK/RUN connection dependency instead of stopping at the checkpoint.
