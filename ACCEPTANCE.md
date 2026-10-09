@@ -4,13 +4,35 @@
 
 [Independent exit audit](docs/plans/GOAL-EXIT-AUDIT-20261009.md) binds the current
 175cdc6 candidate and preserves all earlier source versions/test counts. Local
-C074–C079 are verified; v5 restart recovery and Primary ingress are not yet
-implemented. Authentic usefulness has received non-PASS feedback, not a pending
+C074–C079 are verified; bounded mock restart recovery is now implemented through
+C080b; Primary ingress remains unimplemented. Authentic usefulness has received non-PASS feedback, not a pending
 answer to be requested again. Historic real-provider P002 functional proof does
 not establish current-v5 Primary functionality or whole-flow usefulness.
 Earlier next-work paragraphs below are checkpoint history superseded by STATE's
 current dependency, not active parallel assignments. Recovery/PRI proposal notes
-and the running Opus consultation are not implementation acceptance.
+and a paused/unreceived Opus refinement are not implementation acceptance.
+
+## C080b — saved compose recovery and current readback verified locally
+
+At ef16a93, Root full **948 PASS30.157s/exit0**, unchanged real-process connection
+**4 PASS0.672s/7 child barriers**, exact independent ART/TSK/READ APPROVE.
+[Verification](evidence/operations/recovery02-20261010/verification.json).
+Real SIGKILL before/after save COMMIT, restart, original Step/current ART adoption,
+unchanged bytes/hash, no repeated model/save charge, original receipt replay,
+old VER invalidation/fresh structural complete/readback and ordered controls/
+source-stop non-adoption are proven on disposable managed mock DBs.
+ART CO verified:true covers its fixed16 only; actual SWE source is independently
+checked with existing20. TSK fixed20 and ordinary-text marker probe2 pass; READ
+existing32/independent4 pass. Retain the initial marker design defect, original
+lease replay fixture correction and actual readback3/4 failure with unchanged
+final4 PASS. Normal C14 text grants no recovery/completion authority.
+
+The earlier C080a saved-compose hold is superseded only within RECOVERY02's
+frozen mock profile. Started operate external_tail remains held. No whole C13,
+PRI/provider or personal usefulness PASS. PRI owner prerequisites are frozen;
+full PRI activation remains next. Additional Opus consultation hit its actual
+session limit with CO unknown outcome/no selectable options; no report received,
+adopted or duplicated. Approved independent development continues.
 
 ## C080a — managed mock recovery and MEM prerequisite verified locally
 

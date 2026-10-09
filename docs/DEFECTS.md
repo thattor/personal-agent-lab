@@ -1323,3 +1323,16 @@ Opus PRI refinement call returned an actual session-limit error (Asia/Tokyo rese
 options; candidates are informational only. Preserve its pause with no retry,
 resume/cancel, capacity/state edit or paid fallback. First PRI Opus REFINE remains
 valid; additional report not received and cannot be attributed or adopted.
+
+Actual RECOVERY02 process/readback first passed3/4: saved-tail ART adoption was
+correct, but READ discovered only result/completion notices and omitted the new
+state recovery notice. Root adds exact-notice user_view discovery through existing
+owner APIs, not typed recovery proof/model context/completion. Same unchanged4
+then PASS0.672s, separate exact READ review32+4 APPROVE, Root full948 PASS.
+Next new delivery path checks ordinary reader discovery as well as owner storage;
+phrase matching remains display-only and must never classify TSK producers.
+
+PRI wire freeze initially wrote waiting rather than actual waiting_input and
+left candidate Ref representation ambiguous. Both were corrected before fixed
+test dispatch/commit after reading actual TSK and C02 JSON seams. Future freezes
+copy existing state/wire names from owner definitions rather than shorthand.

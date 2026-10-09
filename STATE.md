@@ -3,9 +3,11 @@
 ## Current C080 — necessary parallel development, overall goal NOT MET
 
 Latest owner direction: continue remaining work with necessary parallel execution.
-Verified local checkpoint C080a at b0b02998: Root full907 PASS27.543s, actual
-process/connection6 PASS, independent exact HOSTe9b8f5/TSK8f20d0/RUN17a7dd7/MEM3016fa
-approvals. [Receipt](evidence/operations/recovery01-20261010/verification.json).
+Verified local checkpoint C080b at ef16a93: Root full948 PASS30.157s, actual
+saved-tail process/connection4 PASS with7 child barriers, independent exact
+ART1e37f0/TSK611e05/READebbd03 approvals.
+[Receipt](evidence/operations/recovery02-20261010/verification.json).
+Earlier C080a HOST/RUN/MEM proof remains retained.
 Full restricted run's localhost EPERM29 errors/3 failures is retained; the same
 suite passes approved local execution. No criterion or product source workaround.
 
@@ -17,20 +19,23 @@ HOST's bounded CO repair timed out with unknown inference outcome: no resume,
 retry/cancel or unknown source adopted; only completed initial HOST bytes accepted
 through independent native proof. Other earlier unknown calls remain untouched.
 
-RECOVERY02/1 is frozen after actual Opus5.5 REFINE F1–F10 plus Root current-code
-reconciliation. ART fixed16 is committed before source (lookup absent RED); SWE
-ART implementation runs in CO-owned workspace. Separate Sol authors TSK fixed
-cases, then Astra implements in another workspace; TaskStore89,663bytes exceeds
-CO's64KiB read limit so native route is the already authorized alternative. Root
-owns shared key/RUN and actual crash/VER proof. No shared source-file writes.
+RECOVERY02/1 is integrated after actual Opus5.5 REFINE F1–F10 and exact-source
+independent reviews. SWE ART fixed16, Astra TSK fixed20, original marker probe2
+and Root actual crash/fresh-VER/readback4 pass. Typed adoption/internal-replay
+bindings prove recovery; ordinary C14 text is never a producer marker. Preserve
+the original failing marker, replay-fixture and display probes and unknown calls.
 
-PRI-MEM/1 readonly prerequisites are integrated. Full PRI still unfrozen: Astra
-seam proposal exposes source-withheld candidate provenance over-invalidation and
-uses existing finite host counter/session-owned reservations. Opus refinement,
-TSK prerequisites and actual ART adoption precede Primary activation. Continue
-independent design/preparation while implementation dependencies finish.
+PRI-MEM/1 readonly prerequisites are integrated. PRI01-TSK/1 and PRI01-WIRE/1
+owner prerequisites are frozen from the completed actual Opus PRI F1/F2/F4/F6/F7
+and current-code reconciliation. Separate Sol fixed tests precede isolated Astra
+TSK/SWE parser source; full TaskStore exceeds CO64KiB so the approved native
+route supplies complete context. Root owns shared contracts and host connection.
+Full PRI remains unfrozen: additional Opus refinement returned session-limit
+error, CO outcome unknown/options empty; no report received or adopted and no
+duplicate consultation. Independent owner work and source-exposure reconciliation
+continue, without new cost/auth or whole-project approval wait.
 
-Overall gap: saved-tail recovery → bounded Primary whole flow → separately
+Overall gap: bounded Primary whole flow → separately
 qualified finite real-provider proof → one authentic improved usefulness judgment.
 Prior negative owner feedback is known, not another approval wait. Started operate
 external_tail, semantic checks, future P001/multimodal/service scope and old/live

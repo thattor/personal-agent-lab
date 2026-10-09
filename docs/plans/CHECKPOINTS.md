@@ -1190,3 +1190,18 @@ now adopted as D047; fixed ART/TSK owner tests precede source. PRI full seam rem
 unfrozen pending exposure/budget/receipt choices. Continue ART adoption → Primary
 whole path → finite separately qualified provider proof → authentic usefulness.
 No additional human technical approval, service activation or P001 adoption.
+
+## C080b — recover the actual saved tail without re-execution
+
+MET locally at ef16a93: exact approved ART1e37f0/TSK611e05/READebbd03 integrated;
+Root full948 PASS30.157s, actual process4/7 child barriers PASS0.672s. ART's fixed16
+CO SWE implementation has separate exact-source review; TSK fixed20/ordinary
+marker probe2 and READ independent32/4 pass. Real saved Step adoption retains
+body/hash/budget history, supports fresh VER/structural complete/current readback,
+and respects ordered pause/change/cancel/stop. Preserve original test/design/
+display failures and all unknown CO calls. Earlier C080a saved-tail hold is
+superseded within this qualified mock profile, not for started external operate.
+No whole-product PASS. PRI-TSK/WIRE owner prerequisites now have separate fixed
+tests before isolated source; full Primary → separately qualified provider → one
+authentic usefulness judgment remain. Opus refinement's session-limit/unknown
+pause is preserved without retry; already reviewed independent work continues.

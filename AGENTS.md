@@ -1,7 +1,7 @@
 # AGENTS.md — Personal Agent Lab
 
-Current C080: the overall goal remains unmet. C074–C079 establish bounded local
-saved/verified/read/ask/change connections; restart recovery, v5 Primary ingress
+Current C080b: the overall goal remains unmet. C074–C080b establish bounded local
+saved/verified/read/ask/change and managed mock restart recovery; v5 Primary ingress
 and authentic whole-flow usefulness remain. Continue independent approved work
 through these dependencies rather than stopping after a component checkpoint.
 The older next-work descriptions below are retained history; STATE/DECISIONS
