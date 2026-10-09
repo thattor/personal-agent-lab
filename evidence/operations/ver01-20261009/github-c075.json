@@ -1,0 +1,20 @@
+{
+  "issue": {
+    "number": 6,
+    "state": "OPEN",
+    "body_readback_match": true,
+    "body_sha256": "6f4446defb83a14d8e4d5a22672680fbd34c24cd8a29dedaf2ac685dcceecc7d"
+  },
+  "pr": {
+    "number": 19,
+    "state": "OPEN",
+    "body_readback_match": true,
+    "body_sha256": "74bc6c453ec0c232f64248d54c61ff70371f3b9179d71df1524ca314b5ac4cfe",
+    "headRefOid": "a2d6e5f7e8bec343ccd9b80878016824f6c5779a",
+    "isDraft": true,
+    "statusCheckRollup": []
+  },
+  "source": "fab7c77bb4e8ece6b094e7b96c9f7194c04e3d53",
+  "pushed": "a2d6e5f7e8bec343ccd9b80878016824f6c5779a",
+  "limits": "650 is local host result; no merge, close, deployment or product completion"
+}

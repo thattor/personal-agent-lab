@@ -548,7 +548,14 @@ class TaskTests(unittest.TestCase):
         self.conn.execute("UPDATE v5_intake_work SET state='completed' WHERE goal_id=?", (third['goal_id'],))
         before = self.snapshot()
         self.conn.execute('BEGIN IMMEDIATE')
-        self.error(self.invalidate(), 'unavailable')
+        completed_stop = self.value(self.invalidate())
+        self.assertEqual({work['goal_id'] for work in completed_stop['work_refs']},
+                         {first['goal_id'], second['goal_id']})
+        self.assertEqual(self.conn.execute('SELECT state,epoch FROM v5_intake_work WHERE goal_id=?',
+                                          (third['goal_id'],)).fetchone(), ('completed', third['epoch']))
+        notices = self.conn.execute("SELECT session_id,refs_json FROM v5_intake_event WHERE text=?",
+            ('a source registered for this completed work was stopped; completion is historical',)).fetchall()
+        self.assertEqual(notices, [('session', dumps([{'kind': 'record', 'id': 'origin'}]))])
         self.conn.execute('ROLLBACK')
         self.assertEqual(before, self.snapshot())
         self.conn.execute("UPDATE v5_intake_work SET state='paused' WHERE goal_id=?", (third['goal_id'],))
