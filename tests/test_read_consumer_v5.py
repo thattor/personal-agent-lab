@@ -224,7 +224,7 @@ class ReadConsumerTests(unittest.TestCase):
         out = self.inspect([self.page([event('e1')], 'e1'), self.page([], 'e1')])
         text = self.render(out)
         self.assertIs(type(text), str)
-        for label in ('mock', 'structural', 'read at', 'completed', 'current', 'unknown'):
+        for label in ('model provenance: unverified by this view', 'structural', 'read at', 'completed', 'current', 'unknown'):
             self.assertIn(label, text.lower())
         self.assertIn('保存本文', text)
         self.assertIn('条件を確認', text)

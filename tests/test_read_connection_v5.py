@@ -82,7 +82,7 @@ class ReadConnectionTests(unittest.TestCase):
         self.assertEqual(verification_read['validity'], 'current')
         self.assertEqual(rest['items'][0]['work']['value']['state'], 'completed')
         rendered = self.render(rest).lower()
-        for label in ('mock', 'structural', 'read at', 'completed'):
+        for label in ('model provenance: unverified by this view', 'structural', 'read at', 'completed'):
             self.assertIn(label, rendered)
         self.assertIn('下書き', rendered)
         self.assertEqual((self.f.snapshot(), self.f.conn.total_changes), (snapshot, changes))
