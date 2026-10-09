@@ -2822,3 +2822,36 @@ Expected outcome is UNKNOWN unless the original strict path unexpectedly passes.
 Actual case remains NOT_RUN until its real receipt. This is a distinct diagnostic,
 not a retry/release, guarantee change or general further-call permission. Respect
 actual access/tool/policy limits. Every later provider entry needs new reassessment.
+
+
+D058 actual C091 outcome: the separately frozen diagnostic used invoke1/entry1,
+zero PAL effects, exit1/20.708s, UNKNOWN/transport NOT_PROVEN/semantic NOT_RUN.
+Original completed/end_turn/EOF/owned exit0/tool0/permission0 and matching
+CONFIRMED stop are preserved, but effective model null/false still refuses.
+Model record INCOMPLETE/0 rows/0 hints does not prove absent metadata or identify
+the overflow boundary. Separate Astra23 receipt/hash/binding/source/stop/guard
+checks match; original N1/N2 inventory/absence and owned capacity baseline remain.
+No raw session/prompt reconstruction, semantic analysis, retry/pump/state edit or
+further native entry. The one-case allowance is consumed, and each further entry
+needs a new design reassessment. Continue independent local source/route analysis;
+whole goal NOT_MET, C090 source/full/mock UI proof unchanged.
+
+
+## D059 — prospective reason-only source and route reassessment (2026-10-10)
+
+Latest continuing necessary-parallel authority applies to the local bounded
+PRI02-MODEL-OVERFLOW/1 refinement. Original diagnostic/1 nine-key projections,
+all32/16/32/256/32768 limits and strict native/replay gates remain. Separate Sol
+fixed tests precede isolated Astra two-file source and separate Sol review;
+Root integrates/tests exact bytes. No retry/duplicate of the CO pure UNKNOWN.
+Marker source invalidates the envelope but authorizes no new real diagnostic.
+
+Read-only separate Sol feasibility plus actual version-only metadata confirms
+existing native Claude exact2.1.285 versus installed2.1.291, with no older binary
+present, and public model-evidence mapping unresolved. Ordinary task Opus5.5
+remains usable for a bounded checkpoint document review, not native qualification.
+Do not edit CO, install another binary, scrape private fields or weaken profile.
+Root requests checkpoint design assessment of actual N3/local marker/route limits;
+send evidence and recommended proper CO-owner scope to the designated human lane.
+Existing N1/N2/N3/CO UNKNOWNs, held baseline and qualification remain unchanged.
+Each further provider entry needs new reassessment; none is authorized here.

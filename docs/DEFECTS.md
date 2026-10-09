@@ -1733,3 +1733,21 @@ change. Author's initial generator also matched an unanchored HASHES substring
 inside N1_HASHES, causing two pre-import NameErrors; explicit distinct assignments
 and mechanical tracked-path/hash comparisons now prevent that substitution.
 These preparation REDs caused no native entry/effects and remain retained locally.
+
+
+## C091 — bounded model capture loses the first overflow reason
+
+Observed: the one newly frozen diagnostic produced an unqualified incomplete
+record with zero observations/hints. The contract intentionally freezes the
+previous prefix on overflow, and no reason/site/count is retained. Source-local
+12 synthetic cases distinguish option/value/token/record overflow from malformed
+rows and observation-count overflow; they cannot identify the real boundary or
+unique RuntimeError cause. Expected collector overflow returns normally and
+best-effort wrapper diagnostics cannot explain that RuntimeError by themselves.
+
+Correction now: preserve UNKNOWN and original receipts, publish only the verified
+anonymous result, and require new reassessment before further entry. Prospective
+prevention: evaluate one finite first-overflow enum/site/count-only sidecar under
+a separate scope, with unchanged limits/gates and independent fixtures. Do not
+blindly increase limits, parse unqualified text, reconstruct old frames or call
+again solely to retry. That source refinement is not implemented/qualified here.

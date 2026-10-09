@@ -1,3 +1,20 @@
+# Current C091 — actual diagnostic is UNKNOWN; no native qualification
+
+N3 used its sole frozen invoke/entry with zero PAL effects, exit1. Independent
+Astra's23 original binding/hash/stop/source/guard checks all match, with unchanged
+old N1/N2 inventory/absence and restored owned capacity. The original model stays
+null/verified:false and invocation-bound-only. Original owned ending/CONFIRMED
+stop does not satisfy the strict PAL exact-model requirement. Transport NOT_PROVEN,
+NativeReturned absent and qualified semantic output NOT_RUN remain.
+[Actual minimized receipt](evidence/operations/c091-n3-diagnostic-20261010/native-n3-summary.json).
+
+Model observations are INCOMPLETE/0 rows/0 hints, not proof of no metadata. The
+actual overflow dimension and unique RuntimeError cause cannot be recovered from
+retained records. No unqualified text was semantically evaluated. No later call,
+profile weakening, old UNKNOWN operation or forced release is authorized by this
+receipt. C090 source/full969/mock UI/browser proof remains valid and distinct;
+whole goal stays **NOT_MET**. Earlier checkpoints below are history.
+
 # Current C090 — local HTTP/UI and model diagnostics pass; whole goal unmet
 
 Source0d60b6f has Root **969 PASS18.995s/exit0**, independent UI19/native151 APPROVE

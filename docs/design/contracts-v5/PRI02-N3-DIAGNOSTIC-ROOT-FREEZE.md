@@ -63,3 +63,16 @@ real Expert or weaker profile before a new evidence-based design reassessment.
 An unexpected original strict PASS binds only this exact new envelope/wrapper/
 capture. Current UI stays mock; native UI/authentic usefulness/release and whole
 goal remain NOT_MET.
+
+
+## Actual C091 — this single allowance is consumed
+
+The original case ran invoke1/entry1/effects0, exit1/20.708s: UNKNOWN, transport
+NOT_PROVEN, qualified semantic NOT_RUN, no NativeReturned. Model record is
+INCOMPLETE/0 observations/0 hints, with actual overflow dimension unknown. Original
+model null/false, owned completed/end_turn/EOF/exit0 and matching CONFIRMED stop
+are retained. Independent Astra23 original receipt checks match; original N1/N2
+inventory/absence and own capacity are unchanged. See the separate
+[actual receipt](../../../evidence/operations/c091-n3-diagnostic-20261010/native-n3-summary.json).
+Pre-entry operator/design receipts above remain historical proof, not current
+NOT_RUN. No later entry or UNKNOWN rewrite follows; a new reassessment is required.

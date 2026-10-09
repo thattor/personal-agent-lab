@@ -1,3 +1,29 @@
+# Current C091 — single diagnostic consumed; strict model remains unproven
+
+The separately reviewed/frozen N3 diagnostic entered exactly once and ended
+**UNKNOWN**, exit1, zero PAL effects. Original completed/end_turn/EOF/owned exit0,
+tool0/permission0 and matching CONFIRMED stop are retained. The effective model
+is still null/verified:false, so transport is NOT_PROVEN, no NativeReturned is
+saved and qualified semantic output is NOT_RUN. Unqualified text is retained
+locally without semantic evaluation. [Actual receipt](evidence/operations/c091-n3-diagnostic-20261010/native-n3-summary.json).
+
+The bounded modern record is **INCOMPLETE with0 observations and0 hints**. This
+means collection overflowed before retaining a relevant row; it does not prove
+that model metadata was absent. The particular overflow boundary and unique
+RuntimeError site are unproven. Independent Astra recomputed23 original receipt/
+source/stop/guard checks; all match. Saved and fresh supported public capacity is
+Claude0/0, Devin1/0, limit12; original N1/N2 file inventory/absence is unchanged.
+No native pumping, old unknown retry/cancel/release, state edit or further call.
+
+D058's one-case allowance is consumed. Every further provider entry needs a new
+evidence-based design reassessment, including another diagnostic. Continue local
+count/reason-only feasibility and an existing Claude native compatibility audit;
+keep current strict model/evidence/replay gates and all original unknowns. C090
+969/exit0, independent UI19/native151 and actual mock browser proof remain source
+proof because production/tests are unchanged. UI stays LOCAL_MOCK_VERIFIED;
+exact real-model qualification, native Expert/UI, authentic whole-flow usefulness
+and release audit remain **NOT_MET**. Earlier entries below are retained history.
+
 # Current C090 — mock UI and bounded model diagnostics verified locally
 
 Root source0d60b6f integrates separately authored/reviewed UI01/2 and
