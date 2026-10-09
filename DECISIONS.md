@@ -2619,3 +2619,16 @@ protected; aggregate stays below12. Returned original ending precedes semantic
 comparison; candidate digest alone never qualifies transport. No N3 after another
 UNKNOWN without design reassessment. See PRI02-N2-ROOT-FREEZE.md. N2 is NOT_RUN
 until an actual receipt; further Expert pairing waits for that outcome.
+
+D051/C086 observed result: the distinct N2 allowance is consumed. Actual invoke1/
+entry1 returns UNKNOWN/exit1, effects0, no NativeReturned/output; semantic NOT_RUN.
+Original public host cessation and supported stop match and show owned end_turn/
+EOF/exit0/tool0/permission0; fresh capacity1 baseline remains. Requested swe-2-high
+was invocation-bound-only, effective_model:null/verified:false. Original receipt
+therefore cannot satisfy PAL strict effective-model gate. Independent Astra's
+original-receipt/synthetic-text probe proves a model-mismatch rejection, not the
+unique original exception or reconstructed actual response. No original outcome
+reclassification, field rewrite or forced capacity release. Actual summary is in
+pri03 native-n2-summary.json. Proceed to authorized exact Opus5.5 design reassessment
+and independent technical work before any N3 or real Expert entry. Do not silently
+weaken acceptance; alternative guarantee/profile is an explicit design decision.

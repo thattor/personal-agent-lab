@@ -1,6 +1,18 @@
 # ACCEPTANCE.md
 
-## Current C085 — native Expert local preparation passes; whole goal unmet
+## Current C086 — actual N2 not qualified; local source proof remains
+
+N2 is UNKNOWN after its sole invoke/entry, exit1/zero PAL effects. Original
+COMPLETED/end_turn/EOF/tool0/permission0 and matching CONFIRMED stop support the
+recorded owned native handoff, with the original held baseline restored. They do
+not verify the effective model: requested swe-2-high is invocation-bound-only,
+effective_model:null/verified:false. No NativeReturned/output/semantic PASS is
+saved. [Actual N2 receipt](evidence/operations/pri03-20261010/native-n2-summary.json).
+No weaker ending/profile is substituted. No N3 or real Expert entry before design
+reassessment; original N1/T/CO/N2 UNKNOWN remains. C085 full1202/local6 source
+proof continues independently; real connection/UI/usefulness/whole goal NOT_MET.
+
+## Retained C085 — native Expert local preparation passes; whole goal unmet
 
 Root full **1202 PASS32.407s/exit0** at e4fea10 covers the integrated independently
 approved native Expert/TSK/READ and stop-order source. Independent final source

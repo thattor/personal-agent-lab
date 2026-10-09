@@ -1283,3 +1283,15 @@ Overall goal NOT_MET; P001/oldDB/live services/unknown retries remain outside sc
 - D051 exact independently approved N2 operator and PRIMARY-only MAX1 freeze are
   complete. Next: actual N2 receipt, then separately frozen Expert pairing. No N3
   after another UNKNOWN before design reassessment. Overall goal remains NOT_MET.
+
+## C086 — N2 actual UNKNOWN; reassess model evidence before entry (2026-10-10)
+
+- New frozen N2 invoked/entered once, effects0, exit1/UNKNOWN; no NativeReturned
+  or semantic result. Original N1/T/CO outcomes stay untouched.
+- Correlated original end_turn/EOF/owned exit0/tool0/permission0/CONFIRMED own stop
+  are retained; public capacity is again baseline1. Effective model is unproven
+  and requested swe-2-high invocation binding cannot satisfy the strict PAL gate.
+- Separate Astra receipt/source diagnosis and synthetic inert rejection probe are
+  complete; no output reconstructed, unique original exception not proven.
+- Next exact Opus5.5 design reassessment precedes any N3 or real Expert entry.
+  Local C085 source/full1202/crash6 remains; whole goal NOT_MET.

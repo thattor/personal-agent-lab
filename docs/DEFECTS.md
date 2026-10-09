@@ -1593,3 +1593,24 @@ and use already-authorized independent local verification where necessary.
 Root full restricted1202/3FAIL/29ERROR repeats existing localhost/child restrictions.
 The same frozen criteria/source pass1202 under approved local execution. Preserve
 both logs and scope; local fixture process death never proves native cessation.
+
+## C086 actual N2 model-evidence mismatch (2026-10-10)
+
+Corrected wrapper84e5 executed the sole distinct N2 and retained accepted execute,
+COMPLETED/end_turn/EOF/exit0/tool0/permission0 and matching CONFIRMED stop. Its
+public cessation has requested swe-2-high but effective_model:null/verified:false
+and invocation_bound_only. PAL NativeTextBuffer requires exact verified effective
+model, so this actual receipt cannot qualify NativeReturned. Independent Astra
+recomputes receipt binding and reproduces ValueError model mismatch with explicitly
+synthetic text. CO's native_handoff_verified and unverified model can coexist under
+its native contract; there is no evidence that server model acknowledgement was
+obtained. Full frames/output are not retained, so this is not proven absence of all
+server metadata or the only original failure cause.
+
+Correction/disposition: preserve UNKNOWN and original raw evidence, keep strict
+qualification unmet, no N3/Expert entry before design reassessment. The baseline
+held1 is restored by the original supported own stop, never direct ledger editing.
+Prevention under review: inspect an existing supported server model-ack path and
+consider effective-model checks at the preprompt session barrier. Do not treat
+invocation CLI arguments as server acknowledgement or rewrite verified fields.
+No source/acceptance change is adopted by recording this diagnosis alone.

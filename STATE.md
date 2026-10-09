@@ -1,6 +1,28 @@
 # STATE.md
 
-## Current C085 — native Expert local slice verified; distinct N2 frozen
+## Current C086 — N2 consumed once; effective model unproven; reassessment next
+
+The frozen new N2 case ran exactly once and remains **UNKNOWN**, exit1, entry1,
+zero PAL effects, no saved NativeReturned and semantic NOT_RUN. Its original public
+observations contain accepted execute, COMPLETED/end_turn/EOF, owned exit0,
+tool/permission0 and matching supported stop CONFIRMED. Fresh public capacity is
+again Claude0/0, Devin1/0, retaining the original held baseline; no forced release.
+The recorded model is requested swe-2-high with effective_model:null,
+effective_model_verified:false, invocation_bound_only. These do not meet PAL's
+strict exact-effective-model ending requirement. Candidate digest stays unqualified.
+[Actual receipt](evidence/operations/pri03-20261010/native-n2-summary.json).
+
+Independent Astra recomputed original cessation/stop binding and reproduced
+NativeTextBuffer's model mismatch using explicitly synthetic text. This is not
+reconstruction of N2 output or proof of the unique original exception cause.
+CO's native handoff contract permits invocation-bound-only; PAL's stricter model
+requirement is separate. Full server frames/output are unavailable, so absence
+of all server model metadata is not proven. No N3, real Expert entry or attestation
+rewrite before design reassessment. Existing authorized Opus5.5 design consultation
+and independent technical work proceed; no new cost/auth/service or CO edits.
+C085 local source/full/crash proof remains valid; whole goal stays **NOT_MET**.
+
+## Retained C085 — native Expert local slice verified; distinct N2 frozen
 
 Root integrated exact independently approved native TSK35d13, runnerdbe00a,
 shared mock core7acad3, READ6d4b91 and cleanup wrapper84e5. Completed Root full

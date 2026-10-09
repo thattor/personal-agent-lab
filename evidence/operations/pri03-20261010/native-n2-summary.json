@@ -1,0 +1,72 @@
+{
+  "version": "PRI02-N2-ACTUAL-SUMMARY/1",
+  "case_identity": "PRI02-N2/1",
+  "source_commit": "e4fea1046821068a9684bcc2009252fcc6a38b7e",
+  "wrapper_sha256": "84e5f168786382a661fecd464eb6c5c0421659ccb33d779c7638ebac94710d84",
+  "operator_sha256": "2fbecfbe281d4387549bc727252fcbd771fbfa73ed74ea50ae254869621a187b",
+  "maximum_calls": 1,
+  "invoke_count": 1,
+  "entry_observed": true,
+  "exit": 1,
+  "effects": 0,
+  "status": "unknown",
+  "transport_qualification": "NOT_PROVEN",
+  "semantic_output": "NOT_RUN",
+  "native_returned_saved": false,
+  "candidate_profile_is_qualification": false,
+  "original_observations": {
+    "execute_status": "accepted",
+    "last_status": "completed",
+    "native_stop_reason": "end_turn",
+    "stdout_eof_validated": true,
+    "owned_exit_code": 0,
+    "tool_events": 0,
+    "pending_permissions": 0,
+    "requested_model": "swe-2-high",
+    "effective_model": null,
+    "effective_model_verified": false,
+    "model_binding": "invocation_bound_only",
+    "native_version": "devin 3000.11.3 (9c803229faa4)",
+    "stop_status": "confirmed",
+    "stop_matches_original_cessation": true
+  },
+  "post_capacity": {
+    "limit": 12,
+    "routes": {
+      "claude": {
+        "executing": 0,
+        "reserved": 0
+      },
+      "devin": {
+        "executing": 1,
+        "reserved": 0
+      }
+    },
+    "original_held_baseline_unchanged": true,
+    "provider_quota": "unknown"
+  },
+  "raw_sha256": {
+    "case": "f0f1c5ae8aa6a86b8e2739c80b930408c3508628961f20f48200c58476cc961f",
+    "entry": "a628f01917ca2f65f6125226ba92e2dba516a13ff5a24503a7ef102ca36f5fd9",
+    "result": "d50b385058598d613f7269d8d36a16572c8e5bc959c80b149b7a3f31a90dc41c",
+    "execute": "0e41866a4fdfef8d3ac48f72f9d11560229e643f9785c25fda05b7bba68779bb",
+    "diagnostic": "ad395a4f84971f5cdad0e73be1d5802c0e8450545abd8fe534f72dd7ce14af45",
+    "stop": "73f82d622907641183daa324ec0428846cfc4e481dc64eabeb3434986bb2d541"
+  },
+  "independent_diagnosis": {
+    "reviewer": "native Astra separate context",
+    "synthetic_receipt_probe": "NativeTextBuffer.finish rejects original cessation with model mismatch",
+    "actual_output_reconstructed": false,
+    "only_original_failure_cause_proven": false,
+    "all_native_protocol_frames_available": false,
+    "recognized_effective_model_advertisement_observed": false
+  },
+  "disposition": "No N3 or real Expert entry before design reassessment; original UNKNOWN unchanged",
+  "limits": [
+    "Original cessation supports owned turn/EOF/wait and confirmed own stop",
+    "No verified effective model or qualified PAL native ending/output",
+    "Owned cleanup is not provider-global/internal-isolation proof",
+    "No model/nonce/semantic/UI/whole-product acceptance",
+    "Original N1/T/CO evidence and held slots are not replayed or forced released"
+  ]
+}

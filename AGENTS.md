@@ -1,5 +1,12 @@
 # AGENTS.md — Personal Agent Lab
 
+Current C086: N2 consumed its sole case and remains UNKNOWN. Original observations
+support COMPLETED/end_turn/EOF/CONFIRMED stop, but effective model is unproven;
+NativeReturned/transport qualification and semantic proof are absent. Original
+held capacity baseline1 remains. No N3 or real Expert entry before design
+reassessment; preserve all old outcomes. Continue authorized independent review
+and source work. Local C085 source/full1202/crash6 proof remains, whole NOT_MET.
+
 Current C085/D051: native Expert source/local fixture slice is integrated with
 independent final TSK, runner, READ and verifier APPROVE. Root full1202 PASS32.407s
 at sourcee4fea10, plus actual owned-process/connection6 PASS0.685s. These are local
