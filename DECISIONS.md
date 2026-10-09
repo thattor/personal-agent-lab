@@ -2973,3 +2973,31 @@ stay local. No new generation, qualification or native activation is authorized
 by this source checkpoint. Private operator independent faults are under repair;
 another exact Root design/operator freeze precedes any real MAX1. Whole goal
 NOT_MET; original unknowns unchanged, CO optional and mock remains default.
+
+## D064 — separately reviewed direct PRIMARY MAX1 (2026-10-10)
+
+C093 exact source/full/independent approvals support the distinct existing
+first-party direct candidate. The C093 Opus S1-S8/L1-L5 design dispositions remain;
+CO-native model/version limitations are not a universal product prerequisite.
+The private operator's independent5 fault subcases exposed false NeverEntered,
+saved capture/raw substitution and hook/ending tuple mismatch. The author repairs
+them without changing production gates, and separate Astra approves exact
+operator67e1261 with8 fake cases plus5 independent subcases. Retain original REDs.
+Prevention: compare original saved evidence and entry/raw bindings before PASS or
+functional output parsing; an exception type alone is not pre-entry proof.
+
+Root adopts [PRI02-CLAUDE-QUALIFICATION/1](docs/design/contracts-v5/PRI02-CLAUDE-QUALIFICATION-ROOT-FREEZE.md).
+It permits one exact new synthetic PRIMARY-only invoke/entry after Root privately
+freezes final source/operator/binary/17-file pin, permanent case, full old inventories
+and fresh same-account extra-usage-disabled evidence. No DB/effects, Expert or UI
+entry is included. Expected nonce/none output is functional correlation, not prose
+grading. Actual outcome remains NOT_RUN until its original receipt; no fallback,
+old unknown action, state edit, root rotation or second entry is implied.
+
+Actual existing first-party metadata is pro/claude.ai/loggedIn. Browser profile
+email matches CLI locally, and prior usage view shows credit use OFF. No setting
+or credential was changed. Automatic review rejected clipboard restoration/read
+and overwrite variants because they could touch unrelated clipboard data; Root
+instead compared the visible profile email without clipboard access. Fresh usage
+evidence is still checked immediately before the private exact launch freeze.
+Whole goal NOT_MET; mock default and original UNKNOWNs remain unchanged.

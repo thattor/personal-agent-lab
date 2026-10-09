@@ -1,3 +1,17 @@
+# Current C094 preparation — direct PRIMARY MAX1 adopted, not run
+
+D064 adopts one distinct synthetic PRIMARY-only direct qualification after exact
+Root private source/operator/binary/17-pin/case/old-inventory and fresh prior
+same-account extra-usage freeze. Final operator has independent Astra APPROVE:
+8 fake cases plus5 independent failure subcases. The original source is unchanged
+from the actual1013 full proof. No DB effects, Expert, UI activation, fallback or
+old UNKNOWN operation is included. [Finite scope](docs/design/contracts-v5/PRI02-CLAUDE-QUALIFICATION-ROOT-FREEZE.md).
+
+Actual generation/qualification remains **NOT_RUN** until an original receipt.
+Account identity was compared by visible profile email without clipboard access;
+fresh extra-usage-disabled proof precedes actual entry. No auth or billing change.
+Whole goal NOT_MET. Earlier source checkpoints below retain their original meaning.
+
 # Current C093 — direct Claude source verified, actual entry still not run
 
 Root9ffa093 integrates the separately authored direct Claude core and owned
