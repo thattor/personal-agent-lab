@@ -31,7 +31,10 @@ test doubles establish only fixture behavior. `runtime_binding=None` always
 labels evidence `fixture`, never native proof. CLI accepts required absolute
 `--runtime`, `--state-dir`, `--attempt-dir`, `--request` paths; it loads the
 installed public NativeCandidates after hashing VERSION and the actual
-task/select.py, task/infer.py, task/transcript.py and task/admission.py.
+co_v4/task/select.py, co_v4/task/infer.py, co_v4/task/transcript.py and
+co_v4/task/admission.py. The sole module is co_v4.task.select and the exact
+constructor is NativeCandidates(state_dir); no module search or default-state
+fallback. Check the module origin and runtime VERSION=0.4.5 before use.
 Production output labels `native_cli_compatibility`, not C15 qualification.
 
 Minimal public selection fixture: route=devin, model=swe-2-high,
@@ -49,6 +52,7 @@ applicable. Raw bodies and arbitrary exception text never appear in that mapping
 Input is a closed C15-shaped mapping with call_id/reservation_id nonempty bounded
 strings, role=primary, output_kind=primary_proposal, nonempty messages with closed
 role/text fields (system/user only), and a list of valid RECORD Ref JSON source_refs.
+At least one source_ref is the synthetic current record used by the wire parser.
 Total UTF8 request bytes <=32768. No source body or raw output in minimized
 summary. The synthetic prompt instructs strict PRI01-WIRE JSON with an ordinary
 reply and proposal kind=none; fixture refs are explicitly synthetic. No semantic

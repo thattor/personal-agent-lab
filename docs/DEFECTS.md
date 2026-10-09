@@ -1405,3 +1405,25 @@ the actual CO category coding before any fixed tests or implementation.
 Two scope-edit patch attempts failed without changes because Root supplied a
 nonexistent context and then out-of-order hunks. Exact local text was reread and
 the edit applied in file order. No model call or product behavior was affected.
+
+## PRI02-T external qualification implementation (2026-10-10)
+
+CO SWE planner/implementation both completed, but fixed19 verification failed
+one invalid UTF8 output case: serializing the original return with ensure_ascii
+false raised before wire rejection, reporting unknown instead of the known
+returned-invalid ending. Root preserves original RED/CO verified:false and
+escapes raw JSON for lossless local retention; the unchanged19 now pass.
+
+Root source inspection also found guessed import/module/runtime paths, a
+default-state constructor fallback, bytes passed to the string JSON parser, and
+omitted raw request/prompt retention. The isolated writer had no actual runtime
+source and the freeze did not explicitly name the full Python module path.
+Root pins co_v4.task.select/NativeCandidates(state_dir), validates module origin
+and VERSION, uses actual co_v4/task relative source paths, reads strict UTF8
+request text and fsyncs original request/prompt/runtime binding before entry.
+The CLI returns a nonzero exit for unknown/invalid/refused outcomes.
+
+Prevention: provide exact import/constructor and executable input shape in the
+external seam contract, then test the actual metadata load and CLI path as well
+as duck fixtures before any real invocation. Independent review still precedes
+that invocation; Root's repair is not covered by the failed CO verification.
