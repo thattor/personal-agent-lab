@@ -655,7 +655,7 @@ class TaskTests(unittest.TestCase):
                        {'kind': 'lookup', 'query': 'q', 'source_refs': [{'kind': 'record', 'id': 'extra'}]}):
             self.error(self.begin(claim, action), 'invalid_input')
             self.assertEqual(before, self.snapshot())
-        self.error(self.begin(claim, {'kind': 'ask', 'question': 'Which?', 'missing_fact': 'target', 'source_refs': []}), 'unavailable')
+        self.error(self.begin(claim, {'kind': 'verify', 'artifact_refs': []}), 'unavailable')
         self.assertEqual(before, self.snapshot())
         step = self.value(self.begin(claim))
         request = {'work_ref': claim['work_ref'], 'step_id': step['step_id'], 'result_refs': []}

@@ -1,0 +1,67 @@
+test_question_id_callback_cannot_move_owned_writes_outside_transaction (test_tasks_ask_integrity_v5.AskMintIntegrityTests.test_question_id_callback_cannot_move_owned_writes_outside_transaction) ... 
+  test_question_id_callback_cannot_move_owned_writes_outside_transaction (test_tasks_ask_integrity_v5.AskMintIntegrityTests.test_question_id_callback_cannot_move_owned_writes_outside_transaction) (action='COMMIT') ... FAIL
+  test_question_id_callback_cannot_move_owned_writes_outside_transaction (test_tasks_ask_integrity_v5.AskMintIntegrityTests.test_question_id_callback_cannot_move_owned_writes_outside_transaction) (action='ROLLBACK') ... FAIL
+  test_question_id_callback_cannot_move_owned_writes_outside_transaction (test_tasks_ask_integrity_v5.AskMintIntegrityTests.test_question_id_callback_cannot_move_owned_writes_outside_transaction) (action='COMMIT_BEGIN') ... FAIL
+  test_question_id_callback_cannot_move_owned_writes_outside_transaction (test_tasks_ask_integrity_v5.AskMintIntegrityTests.test_question_id_callback_cannot_move_owned_writes_outside_transaction) (action='ROLLBACK_BEGIN') ... FAIL
+  test_question_id_callback_cannot_move_owned_writes_outside_transaction (test_tasks_ask_integrity_v5.AskMintIntegrityTests.test_question_id_callback_cannot_move_owned_writes_outside_transaction) (action='WRITE') ... FAIL
+
+======================================================================
+FAIL: test_question_id_callback_cannot_move_owned_writes_outside_transaction (test_tasks_ask_integrity_v5.AskMintIntegrityTests.test_question_id_callback_cannot_move_owned_writes_outside_transaction) (action='COMMIT')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_ask_integrity_v5.py", line 31, in test_question_id_callback_cannot_move_owned_writes_outside_transaction
+    self.assertEqual(f.dump(), before)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: 'BEGI[1308 chars]');\nINSERT INTO "v5_intake_event" VALUES(6,\'[12208 chars]MIT;' != 'BEGI[1308 chars]');\nCREATE TABLE v5_intake_replay ( command T[10788 chars]MIT;'
+Diff is 15667 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_question_id_callback_cannot_move_owned_writes_outside_transaction (test_tasks_ask_integrity_v5.AskMintIntegrityTests.test_question_id_callback_cannot_move_owned_writes_outside_transaction) (action='ROLLBACK')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_ask_integrity_v5.py", line 31, in test_question_id_callback_cannot_move_owned_writes_outside_transaction
+    self.assertEqual(f.dump(), before)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: 'BEGI[1308 chars]');\nINSERT INTO "v5_intake_event" VALUES(6,\'[12208 chars]MIT;' != 'BEGI[1308 chars]');\nCREATE TABLE v5_intake_replay ( command T[10788 chars]MIT;'
+Diff is 15482 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_question_id_callback_cannot_move_owned_writes_outside_transaction (test_tasks_ask_integrity_v5.AskMintIntegrityTests.test_question_id_callback_cannot_move_owned_writes_outside_transaction) (action='COMMIT_BEGIN')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_ask_integrity_v5.py", line 29, in test_question_id_callback_cannot_move_owned_writes_outside_transaction
+    f.error(f.tasks.ask(f.request), 'unavailable')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_ask_v5.py", line 67, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'question_id': 'synthetic-question-id', 'state': 'waiting_input', 'work_ref': {'epoch': 1, 'goal_id': 'goal-07b40125f5934228bdc18cbd901cf481', 'revision': 1}}}
+
+======================================================================
+FAIL: test_question_id_callback_cannot_move_owned_writes_outside_transaction (test_tasks_ask_integrity_v5.AskMintIntegrityTests.test_question_id_callback_cannot_move_owned_writes_outside_transaction) (action='ROLLBACK_BEGIN')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_ask_integrity_v5.py", line 29, in test_question_id_callback_cannot_move_owned_writes_outside_transaction
+    f.error(f.tasks.ask(f.request), 'unavailable')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_ask_v5.py", line 67, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'question_id': 'synthetic-question-id', 'state': 'waiting_input', 'work_ref': {'epoch': 1, 'goal_id': 'goal-c99a2503063f43c59297922690da24d6', 'revision': 1}}}
+
+======================================================================
+FAIL: test_question_id_callback_cannot_move_owned_writes_outside_transaction (test_tasks_ask_integrity_v5.AskMintIntegrityTests.test_question_id_callback_cannot_move_owned_writes_outside_transaction) (action='WRITE')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_ask_integrity_v5.py", line 29, in test_question_id_callback_cannot_move_owned_writes_outside_transaction
+    f.error(f.tasks.ask(f.request), 'unavailable')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_ask_v5.py", line 67, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'question_id': 'synthetic-question-id', 'state': 'waiting_input', 'work_ref': {'epoch': 1, 'goal_id': 'goal-e3764cb466974c08973cc21657da0218', 'revision': 1}}}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.052s
+
+FAILED (failures=5)
