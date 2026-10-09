@@ -1,14 +1,17 @@
 # ART01-bind/1 — connect saved drafts to current work
 
-PROPOSED technical continuation under D038, after ART01-store/1 and RUN01/2.
+ADOPTED technical continuation under D038/C073 after SWE consultation f4cba212.
+RUN01/2 is accepted; ART01-store/1 has an unknown CO implementation outcome.
 This is the mock compose -> saved and attached draft milestone recommended by
 Opus task6bd433a2799a49d2b27d5c5bc9708e7d. No VER/complete, real provider/UI,
 general recovery, new permission/cost/service or live database activation.
 
 SOL owns TSK/RUN/ART integration and common records. SWE consultation precedes
 substantial connection changes; separate Sol reviews the exact integrated source.
-Do not begin code against an unavailable ART implementation; consultation can use
-the frozen owner boundary while that independent implementation completes.
+The TSK consumer and RUN coordinator may be prepared against this frozen callback
+contract in isolated files with explicit test doubles. Do not consume or reimplement
+the unknown ART task. Actual storage integration waits for a safely obtained owner
+implementation and independent review; component tests do not satisfy that dependency.
 
 ## Minimal boundary
 
@@ -88,3 +91,54 @@ be attached after losing authority. Wrong WorkRef/step, corrupt inspect metadata
 empty/multiple/non-artifact results, mid-attachment fault and no-ART runner must
 fail closed. Prove artifact re-input remains denied rather than claiming full
 kind-aware source support. Disk reopen/get_by_key is receipt recovery only.
+
+
+## SWE consultation disposition and exact binding rules
+
+Adopt R1-R9 from evidence/operations/art01-20261009/swe-binding-review.md with two
+clarifications: an unregistered artifact is allowed in execution provenance only
+when it is the validated, attached result of that finished compose Step, not merely
+because its kind is artifact. Callback guards detect violations; a trusted callback
+that commits its caller's transaction cannot be claimed to have been rolled back.
+
+- TSK owns v5_tsk_artifact_set(goal, revision, seq, artifact_id, step_id) or an
+  equivalently constrained minimal table. Unique artifact/step within the revision;
+  ordered append, never replacement. C02 get_work exposes validated stored refs,
+  empty for no rows, corrupt row unavailable. Root owns final schema integration.
+- get_execution_context requires all input record provenance to remain registered.
+  A finished compose result must match its TSK-owned set/step binding. Include the
+  artifact in step_sources, so existing RUN filtering excludes the whole compose
+  Step until actual C11 artifact re-input is adopted. Test a later claim/report;
+  do not permit unknown arbitrary artifact refs or register them as input sources.
+- TSK begin_step compose requires a configured artifact_inspect callable. Without
+  it return unavailable before any Step write. Store-stage hook unit tests can
+  supply a readonly unused inspect stub; that is not ART integration. RUN also
+  rejects no-ART compose before begin_step, retaining the ended call unless a
+  newer control permits release. No repeat callable or additional reservation.
+- Inspect guard: same active connection, savepoint, callback, still active,
+  successful release, unchanged total_changes, strict six-key Result value and
+  exact types. Error/mutation/exception/bad shape is unavailable. Normal rollback
+  removes all attachment writes; collaborators remain trusted host code.
+- Inspect source_refs set must equal the producing call's complete source set,
+  record-only/nonempty, and call.step must equal step_id. Require hash/byte metadata
+  to be syntactically valid. Recheck current source gate. Corrupt provenance is
+  unavailable; gate denied/not_found/unavailable preserves the owner result.
+- Compose input: exactly one artifact result, no error, no truncated/excluded
+  metadata. Violations invalid_input with unchanged Step. Inspect ref mismatch is
+  unavailable; wrong saved step conflict; wrong saved WorkRef stale; absent artifact
+  not_found; non-returned call conflict; wrong lease denied; missing call unavailable.
+- One finish transaction writes Step finished, one ordered set row, record-only
+  dependency registration, one C14 progress event carrying the artifact, and replay.
+  Fault after any write rolls all of them back. Replay precedes authority checks;
+  a committed finish replay after pause/release returns the original receipt.
+  An uncommitted finish after abandonment cannot newly attach historical storage.
+- RUN retries identical local save at most three times on unavailable; only then
+  retries get_by_key at most three times to recover its original receipt. Never
+  get_by_key after conflict/invalid_input or use it as current attachment authority.
+  Finish remains bounded/idempotent and refences current controls/sources. Exactly
+  one artifact, set row, event, model call and budget unit after response loss.
+
+Ownership: isolated Astra may change tasks_v5.py, its focused tests and a binding
+implementation note. SOL owns mock_runner_v5.py, consumer tests and canonical docs.
+ART storage files stay owned by the unresolved CO task; no concurrent replacement.
+Separate Sol reviews TSK and RUN changes after exact commits, independent of authors.

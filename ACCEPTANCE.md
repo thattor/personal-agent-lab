@@ -1,5 +1,28 @@
 # ACCEPTANCE.md — Stable-0 definition of done
 
+## Current C073 — reliability verified; ART connection in progress
+
+RUN01/2 and the TSK save-authorization hook are verified at source
+1be000aca0e169805f182d9e13bb019cb5740b0e: full543 PASS23.484s/exit0, separate native
+Sol6.1 review of both owned changes, including two reproduced hook corrections.
+[Evidence](evidence/operations/run01-reliability-20261009/verification.json).
+This supersedes C072's pending RUN implementation status; local mock only.
+
+SWE binding consultation f4cba212a4934abaa5175a4f8133e9ff completed (REFINE; CO
+verified only the review note). Adopt ART01-BINDING with root's provenance and
+trusted-callback clarifications. TSK consumer preparation can use the fixed public
+callback with test doubles; actual ART integration remains dependent/unverified.
+SOL owns RUN/consumer integration and canonical records, isolated Astra the TSK
+binding module; separate Sol reviews. No VER/complete, provider, recovery or live DB.
+
+CO storage task917989d447f94a09869f7b05e9870d3a timed out at s1-a1 devin/swe-2-high:
+outcome/process_outcome/quota unknown, options=[], verified:false, no returned diff.
+[Exact pause](evidence/operations/art01-20261009/implementation-pause.json).
+Preserve it with the earlier SWE and AGY unknown calls. No retry/resume/switch/cancel,
+state edit, or duplicate ART implementation. Read-only diagnosis and independent
+TSK/RUN component work continue. Actual stored-and-attached draft remains NOT_RUN.
+
+
 ## Current C072 controlled mock execution (2026-10-09)
 
 TSK02/1 + RUN01/1 local preparation MET at ea2e8fa064cad188e4477d8b534692012083768a.

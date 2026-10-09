@@ -12,4 +12,7 @@ ART module/connection/full acceptance not covered.
 Root reproduced both in hook-review-before.log. Root now validates the user action
 with the existing shared C12 parser, and strictly validates saved Step metadata
 before equality checks. Expanded malformed content/media/index/status/result/error
-cases pass36 in hook-review-after.log. Independent rereview is pending.
+cases pass36 in hook-review-after.log. Independent rereview APPROVE at exact 1be000aca0e169805f182d9e13bb019cb5740b0e.
+Original independent probes now return unavailable and invalid_input respectively;
+36 targeted tests PASS0.183s. No additional blocker. ART body/connection remain outside
+that review. Root full543 PASS23.484s/exit0 at the same source.

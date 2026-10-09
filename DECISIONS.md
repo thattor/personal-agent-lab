@@ -1914,3 +1914,16 @@ historical receipts, not task state or completion. A compose step remains unboun
 at this storage stage; do not describe it as the complete compose path. Reject the
 advice's implication that failed work can simply be reclaimed: failed is terminal.
 Next binding/RUN stage is explicitly required by the Opus milestone direction.
+
+
+D038/C073: RUN01/2 and TSK save authorization at1be000a pass full543/23.484s, separate
+Sol reviews APPROVE. Preserve first-hook review findings and red/green reproduction.
+SWE binding consultation f4cba212 completed and advises REFINE. Adopt R1-R9 with the
+explicit narrow compose-result source exception and trusted-callback rollback limit
+in ART01-BINDING. TSK/RUN preparation against this fixed API is independent of the
+unavailable ART implementation; component doubles do not count as connected proof.
+ART task917989d447f94a09869f7b05e9870d3a s1-a1 timed out after900s, with unknown
+outcome/process/quota and no selectable retry. No returned files, verifier or diff.
+Preserve the pause; investigate read-only. Do not retry/resume/switch/cancel, directly
+edit CO state, or start a duplicate ART implementation. The old unknown SWE/AGY calls
+also remain preserved. Current stage is not a saved draft or completed Goal.

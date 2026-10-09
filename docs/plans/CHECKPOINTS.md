@@ -986,3 +986,15 @@ consults ART persistence. Root owns connection/canonical state; Sol reviews chan
 Follow storage with compose/current-artifact binding, then VER/complete. Before
 those dependencies, add artifact-kind source checks and terminal-history stop rules.
 No model replay, orphan recovery, live DB/provider/UI activation or new owner gate.
+
+
+## C073 — transient-write resilience accepted, storage call unresolved, 2026-10-09
+
+Source1be000a: full543 PASS23.484s/exit0. Separate Sol reviews approve RUN01/2 and
+corrected TSK save authorization. Same-input local retry and control-fenced release
+preserve model-call ownership; no extra model retry. Artifact save/attachment is
+not yet verified. CO storage task917989… unknown after900s; no returned diff.
+SWE binding advice f4cba212 completed and is dispositioned in ART01-BINDING.
+Next actual assignment: isolated Astra TSK binding consumer with contract doubles,
+SOL RUN/consumer preparation and read-only timeout diagnosis. No duplicate storage
+implementation or recurring owner approval. Integration waits for an ART owner.

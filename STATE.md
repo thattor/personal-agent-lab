@@ -1,28 +1,26 @@
 # STATE.md
 
-## Goal
+## Current C073 — reliability verified; ART connection in progress
 
-Current C072 (2026-10-09): TSK02/1 + RUN01/1 local mock execution is MET at
-source ea2e8fa064cad188e4477d8b534692012083768a. Actual MEM/TSK/mock/C14 connection
-covers report/lookup, immediate controls, finite budgets, source-stop and occupied
-slot retention until callable cessation. Author34, root connected14 and full531
-PASS23.350s/exit0; separate native Sol6.1 APPROVE and exact CO Opus5.5 ALIGNED.
-[Verification](evidence/operations/tsk02-20261009/verification.json).
+RUN01/2 and the TSK save-authorization hook are verified at source
+1be000aca0e169805f182d9e13bb019cb5740b0e: full543 PASS23.484s/exit0, separate native
+Sol6.1 review of both owned changes, including two reproduced hook corrections.
+[Evidence](evidence/operations/run01-reliability-20261009/verification.json).
+This supersedes C072's pending RUN implementation status; local mock only.
 
-This is local mock preparation: no saved draft, completed Goal, real provider,
-recover, UI or human-usefulness proof. Persisted orphan leases/calls remain blocked.
-Opus F1 identifies transient-unavailable-to-terminal-failure as the next liveness
-correction; it does not block the frozen mock slice, but must be fixed before the
-compose loop. F2 source-kind dispatch/artifact history is a dependency for binding;
-completed-work invalidation must precede any complete implementation.
+SWE binding consultation f4cba212a4934abaa5175a4f8133e9ff completed (REFINE; CO
+verified only the review note). Adopt ART01-BINDING with root's provenance and
+trusted-callback clarifications. TSK consumer preparation can use the fixed public
+callback with test doubles; actual ART integration remains dependent/unverified.
+SOL owns RUN/consumer integration and canonical records, isolated Astra the TSK
+binding module; separate Sol reviews. No VER/complete, provider, recovery or live DB.
 
-Continuation is actually dispatched: native Astra in
-/private/tmp/pal-run01-astra-20261009 from edfad064a776179d5d914d668bb2eb3d7f7694a6
-implements RUN01/2, with isolated runner/test ownership. CO SWE-2 High Free task
-dc4fbad81715497481bb66a5e02f8f23 consults ART01-store/1 persistence in parallel;
-its scope is still proposed until advice/disposition. SOL owns TSK/ART integration,
-contracts and canonical records; separate Sol reviews author changes. No new
-permission, cost, service, live DB or schedule. Unknown old SWE/AGY calls untouched.
+CO storage task917989d447f94a09869f7b05e9870d3a timed out at s1-a1 devin/swe-2-high:
+outcome/process_outcome/quota unknown, options=[], verified:false, no returned diff.
+[Exact pause](evidence/operations/art01-20261009/implementation-pause.json).
+Preserve it with the earlier SWE and AGY unknown calls. No retry/resume/switch/cancel,
+state edit, or duplicate ART implementation. Read-only diagnosis and independent
+TSK/RUN component work continue. Actual stored-and-attached draft remains NOT_RUN.
 
 ## Retained C071 durable reconnect record
 
