@@ -25,7 +25,20 @@ CANARY = 'PRIVATE_FAILURE_CANARY_日本語'
 
 class ClaudeFailureTests(unittest.TestCase):
     # Reuse setup methods, without inheriting or discovering the old TestCase.
-    setup_provider = existing.ClaudeProviderTests.setup_provider
+    def setup_provider(self, *args, **kwargs):
+        result=existing.ClaudeProviderTests.setup_provider(self,*args,**kwargs)
+        self.metadata_cleanup=self.module._cleanup
+        return result
+
+    def inert_cleanup(self, child):
+        if not self.enter.exists():
+            return self.metadata_cleanup(child)
+        # This owned fake child has no descendants or effects. EOF on its input
+        # lets it exit normally, so success does not depend on Darwin killpg.
+        if child.stdin is not None and not child.stdin.closed: child.stdin.close()
+        child.wait(timeout=2)
+        for stream in (child.stdin,child.stdout,child.stderr):
+            if stream is not None and not stream.closed: stream.close()
     request = existing.ClaudeProviderTests.request
     hook = existing.ClaudeProviderTests.hook
     invoke = existing.ClaudeProviderTests.invoke
@@ -83,7 +96,7 @@ class ClaudeFailureTests(unittest.TestCase):
         for where in ('feed', 'finish'):
             with self.subTest(where=where):
                 self.setup_provider()
-                original = self.module._cleanup
+                original = self.inert_cleanup
                 with self.track_children(), patch.object(self.module, '_cleanup', wraps=original) as cleanup, \
                      patch.object(self.module.NativeClaudeBuffer, where, side_effect=ValueError(CANARY)):
                     self.generic_failure(self.invoke)
@@ -93,7 +106,7 @@ class ClaudeFailureTests(unittest.TestCase):
                 self.assertFalse(row['ending_write_completed']); self.assertFalse(row['capture_write_completed'])
 
     def test_primary_and_cleanup_errors_are_separate_with_exact_errno_kind(self):
-        self.setup_provider(); original = self.module._cleanup
+        self.setup_provider(); original = self.inert_cleanup
         def cleanup(child):
             original(child)
             if not self.enter.exists(): return
@@ -113,7 +126,7 @@ class ClaudeFailureTests(unittest.TestCase):
         for kind in (KeyboardInterrupt, SystemExit):
             for child_exists in (False, True):
                 with self.subTest(kind=kind.__name__, child=child_exists):
-                    self.setup_provider(); error=kind(CANARY); original=self.module._cleanup
+                    self.setup_provider(); error=kind(CANARY); original=self.inert_cleanup
                     def hook(attempt):
                         self.hook(attempt)
                         if not child_exists: raise error
@@ -133,7 +146,7 @@ class ClaudeFailureTests(unittest.TestCase):
         for primary in (ValueError(CANARY), KeyboardInterrupt(CANARY), SystemExit(CANARY)):
             for diagnostic in (OSError(errno.ENOSPC, CANARY), KeyboardInterrupt(CANARY)):
                 with self.subTest(primary=type(primary).__name__, diagnostic=type(diagnostic).__name__):
-                    self.setup_provider(); original=self.module._write; cleanup_original=self.module._cleanup
+                    self.setup_provider(); original=self.module._write; cleanup_original=self.inert_cleanup
                     attempts=[]
                     def write(path, value):
                         if path.name=='failure.json':
@@ -167,6 +180,7 @@ class ClaudeFailureTests(unittest.TestCase):
                 from contextlib import ExitStack
                 with ExitStack() as stack:
                     stack.enter_context(patch.object(self.module,'_write',side_effect=write))
+                    stack.enter_context(patch.object(self.module,'_cleanup',side_effect=self.inert_cleanup))
                     if mode=='pump_close':
                         stack.enter_context(patch.object(self.module,'_pump',side_effect=pump))
                         stack.enter_context(patch.object(self.module.os,'fsync',side_effect=sync))
@@ -192,8 +206,8 @@ class ClaudeFailureTests(unittest.TestCase):
     def test_private_bounded_closed_record_and_exclusive_existing_retention(self):
         for existing_file in (False, True):
             with self.subTest(existing=existing_file):
-                self.setup_provider('bad_protocol')
-                self.exe.write_text(self.exe.read_text().replace("'text': 'fixture'", "'text': "+repr(CANARY)))
+                self.setup_provider()
+                self.exe.write_text(self.exe.read_text().replace("'text': 'fixture'", "'text': "+repr(CANARY)).replace("for row in rows:sys.stdout","rows=rows[:-1]\nfor row in rows:sys.stdout"))
                 pin=f.pin(existing.ROOT,self.exe); self.profile=f.profile(f.digest(f.canonical(pin)))
                 self.provider=self.module.NativeClaudeText(executable=self.exe,attempt_root=self.lane,profile=self.profile)
                 request=self.request(); request['messages'][1]['text']=CANARY
@@ -203,11 +217,11 @@ class ClaudeFailureTests(unittest.TestCase):
                     self.hook(attempt)
                     if existing_file:
                         path=self.call_dir()/'failure.json'; path.write_bytes(b'original private fixture');path.chmod(0o600)
-                with patch.object(self.module,'_environment',side_effect=environment),patch.object(self.module.shutil,'which',return_value=str(self.exe)):
+                with patch.object(self.module,'_cleanup',side_effect=self.inert_cleanup), patch.object(self.module,'_environment',side_effect=environment),patch.object(self.module.shutil,'which',return_value=str(self.exe)):
                     self.generic_failure(lambda:self.provider.invoke(request,on_enter=hook))
                 if existing_file:self.assertEqual((self.call_dir()/'failure.json').read_bytes(),b'original private fixture')
                 else:
-                    row=self.failure(phase='finish'); self.assertEqual(row['primary_error']['kind'],'RuntimeError')
+                    row=self.failure(phase='finish'); self.assertEqual(row['primary_error']['kind'],'ValueError')
                     self.assertTrue(row['primary_error']['sites'])
                     self.assertNotIn('fixture output',(self.call_dir()/'failure.json').read_text())
                 self.assertTrue((self.lane/'active.json').exists())
