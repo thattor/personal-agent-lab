@@ -42,7 +42,8 @@ class WrapperUnqualifiedTests(unittest.TestCase):
                             writes.append('unqualified');self.assertEqual(order.count('stop'),1)
                             if point=='write':raise error
                         return original(path,value)
-                    with patch.object(c.module.NativeTextBuffer,'unqualified_snapshot',side_effect=snapshot,create=True),patch.object(c.module,'_write',side_effect=write):c.unknown()
+                    with patch.object(c.module.NativeTextBuffer,'unqualified_snapshot',side_effect=snapshot,create=True) as probe,patch.object(c.module,'_write',side_effect=write):c.unknown()
+                    probe.assert_called_once()
                     self.assertEqual(order.count('stop'),1);self.assertEqual(order.count('diagnostic'),1)
                     self.assertEqual(c.owners.pool.executions,1);self.assertNotIn('status',order)
                     self.assertEqual(writes,[] if point=='snapshot' else ['unqualified'])
@@ -50,8 +51,9 @@ class WrapperUnqualifiedTests(unittest.TestCase):
         primary=KeyboardInterrupt('original');owner=order_fixture.StopOrderTests(methodName='runTest')
         c,order=owner.fixture(primary=primary);self.addCleanup(owner.doCleanups)
         def snapshot(*args):self.assertEqual(order.count('stop'),1);raise SystemExit('diagnostic')
-        with patch.object(c.module.NativeTextBuffer,'unqualified_snapshot',side_effect=snapshot,create=True):
+        with patch.object(c.module.NativeTextBuffer,'unqualified_snapshot',side_effect=snapshot,create=True) as probe:
             with self.assertRaises(KeyboardInterrupt) as caught:c.invoke()
+        probe.assert_called_once()
         self.assertIs(caught.exception,primary);self.assertEqual(order.count('stop'),1);self.assertEqual(c.owners.pool.executions,1)
     def test_success_and_typed_never_entered_add_no_unqualified_record(self):
         c=self.fixture();c.invoke();self.assertEqual(list(c.attempt_root.rglob('unqualified-output.json')),[])
