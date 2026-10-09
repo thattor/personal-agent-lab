@@ -7,7 +7,7 @@ from pal.artifact_content_v5 import ArtifactContentError, prepare_content
 from pal.artifact_integrity_v5 import check_bytes
 from pal.contracts_v5 import ContractError, Ref, RefKind, Result, WorkRef, dumps, loads
 
-__all__ = ['ArtifactStore']
+__all__ = ['ArtifactStore', 'artifact_save_key']
 _MAX_INT = 9223372036854775807
 _FIELDS = {'key', 'work_ref', 'step_id', 'content', 'media_type', 'source_refs'}
 _SCHEMA = (
@@ -44,6 +44,10 @@ def _work(value):
     if work.revision > _MAX_INT or work.epoch > _MAX_INT:
         raise ContractError()
     return work
+
+
+def artifact_save_key(work_ref, step_id):
+    return dumps(['C08.save', _work(work_ref).to_json(), _id(step_id)])
 
 
 def _refs(value):

@@ -180,6 +180,57 @@ class MemoryStore:
         except (sqlite3.Error, ContractError):
             return _unavailable()
 
+    def list_recent(self, request):
+        """Closed same-session usable record metadata, newest first; no bodies."""
+        try:
+            data = _object(request, ('session_id', 'limit'))
+            _text(data['session_id'], True)
+            limit = data['limit']
+            if type(limit) is not int or not 1 <= limit <= 50:
+                raise ContractError('out of range')
+        except ContractError:
+            return _invalid()
+        try:
+            rows = self._conn.execute(
+                'SELECT id FROM v5_mem_record WHERE session_id=? AND usable=1'
+                ' ORDER BY seq DESC LIMIT ?',
+                (data['session_id'], limit + 1)).fetchall()
+            return Result.success(
+                {'record_refs': [Ref('record', row[0]).to_json() for row in rows[:limit]],
+                 'truncated': len(rows) > limit})
+        except (sqlite3.Error, ContractError):
+            return _unavailable()
+
+    def get_stop_reference_by_key(self, request):
+        """Return the stored C05.stop_reference receipt without reapplying its stop."""
+        try:
+            data = _object(request, ('key',))
+            key = _text(data['key'], True)
+        except ContractError:
+            return _invalid()
+        try:
+            row = self._conn.execute(
+                'SELECT input_json,result_json FROM v5_mem_replay WHERE command=? AND key=?',
+                ('C05.stop_reference', key)).fetchone()
+            if row is None:
+                return _failure('not_found', 'stop receipt not found')
+            stored = _object(loads(row[0]), ('key', 'source_ref', 'session_id'))
+            source_ref = Ref.from_json(stored['source_ref'])
+            _text(stored['session_id'], True)
+            if (stored['key'] != key or source_ref.kind is not RefKind.RECORD
+                    or dumps(stored) != row[0]):
+                raise ContractError('invalid json')
+            result = Result.from_json(loads(row[1]))
+            if (not result.ok
+                    or result.value.to_json() != {'affected_refs': [source_ref.to_json()]}):
+                raise ContractError('invalid json')
+            if self._conn.execute('SELECT 1 FROM v5_mem_record WHERE id=?',
+                                  (source_ref.id,)).fetchone() is None:
+                raise ContractError('invalid json')
+            return result
+        except Exception:
+            return _unavailable()
+
     def source_gate(self, connection, refs):
         """Read-only TSK gate, bound to this connection and its existing transaction."""
         if connection is not self._conn or type(refs) is not tuple:

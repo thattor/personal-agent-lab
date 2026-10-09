@@ -13,6 +13,7 @@ import threading
 import uuid
 
 from pal.contracts_v5 import ContractError, ErrorCode, Ref, Result, WorkRef, dumps, parse_model_action
+from pal.artifacts_v5 import artifact_save_key
 
 
 def _value(result):
@@ -593,7 +594,7 @@ class MockRunner:
                 result_refs = [item['ref'] for item in usable]
                 excluded_all.extend(lookup_excluded)
             elif step['action']['kind'] == 'compose':
-                key = dumps(['C08.save', work, step['step_id']])
+                key = artifact_save_key(work, step['step_id'])
                 save_request = {'key': key, 'work_ref': work, 'step_id': step['step_id'],
                                 **{name: step['action'][name]
                                    for name in ('content', 'media_type', 'source_refs')}}

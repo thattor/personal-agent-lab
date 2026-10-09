@@ -2409,3 +2409,23 @@ public original-receipt lookup and one PRI terminal event. No artificial Expert
 lease, private-owner SQL, reply-to-memory laundering or inferred human approval.
 SOL has not yet frozen this contract. Host wiring follows recovery and ART-tail
 adoption; one actual usefulness judgment follows a materially improved candidate.
+
+
+## D047 — saved compose recovery refinement adopted (2026-10-10)
+
+SOL adopts actual CO Claude Opus5.5 RECOVERY02 REFINE F1–F10, preserving the
+report and nine Git-bound inputs in evidence/operations/recovery02-20261010.
+RECOVERY02-SCOPE.md freezes the active-connection ART lookup, exact canonical
+original action, shared pure RUN/TSK save-key function, denied versus uncertain
+taxonomy, same-revision adoption of the original Step, bidirectional internal
+adoption/replay/event integrity and one atomic state event. Pause non-adoption
+is the deliberate conservative policy; attach/drain preserves pending inputs.
+ROOT checked current RECOVERY01 and actual ART authorization's ordered call
+provenance. Ordinary finish, VER and all counters remain unchanged.
+
+Only actual report-producing claude-opus-5-5 counts as this consultation. The
+earlier mispinned SWE report is retained locally, is not an Opus adoption, and
+its role-selection cause is recorded in docs/DEFECTS.md. CO report-shape verified
+is not source or product approval. Fixed ART/TSK tests precede implementation;
+separate source review and actual crash/VER/readback proof are still required.
+Whole C13, full PRI, provider proof and personal usefulness remain unmet.
