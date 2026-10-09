@@ -348,7 +348,9 @@ class MockRunner:
                 step = by_id[step_id]
                 binding = WorkRef.from_json(step['work_ref'])
                 action = step['action']
-                if (answer.kind.value != 'record' or question_id in seen_questions or step_id in seen_steps
+                if (type(step) is not dict
+                        or set(step) != {'step_id', 'work_ref', 'index', 'action', 'status', 'result_refs'}
+                        or answer.kind.value != 'record' or question_id in seen_questions or step_id in seen_steps
                         or step['status'] != 'finished' or step_index(step) <= previous_index
                         or (binding.goal_id, binding.revision) != (work['goal_id'], work['revision'])
                         or binding.epoch > WorkRef.from_json(work).epoch

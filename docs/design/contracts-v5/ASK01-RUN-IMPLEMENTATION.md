@@ -69,3 +69,31 @@ they do not integrate Astra's separate ASK TSK source. Root must integrate that
 source, execute actual temporary SQLite consumer/demo/full regression, and obtain
 independent RUN review before claiming the ASK milestone. No full product, semantic
 answer sufficiency, live operation or general restart recovery is established.
+
+## Independent-review correction: linked historical ask Step closure
+
+Independent RUN review of `a7ceb54` reproduced that a linked finished historical
+ask Step with `error=1`, `error='ask failed'` or an unknown field could enter C12.
+Root confirmed the issue and owns the separate red regression. The author had
+validated the linkage, action, state and binding without checking the Step's closed
+shape, so valid association could conceal malformed historical Step data.
+
+The bounded correction requires a linked finished ask Step to have exactly the
+six committed C04 fields: step_id/work_ref/index/action/status/result_refs. No
+error/extra field is accepted. This is the same closed invariant as the committed
+ask path. Matching Goal/revision and legitimate historical epochs remain accepted;
+no broader historical Step semantics or source-owner change is introduced.
+
+Author green probes exercise the three independently reported mutations: all
+refused before reservation/inference. Fixed15 PASS0.013s/exit0 and mock77
+PASS0.401s/exit0; existing old-epoch linkage cases remain green. Logs:
+`/private/tmp/pal-ask-run-sol-review-fixed-tests.log` and
+`/private/tmp/pal-ask-run-sol-review-mock-tests.log`. Fixed15 hash is unchanged.
+No new test file is authored here; Root's independent regression and rereview
+remain separate evidence.
+
+Prevention/next check: when carrying stored public Steps into C12, validate the
+closed committed shape alongside relationship and lifecycle checks. Reuse Root's
+extra/error-field regression for later linkage changes. This correction does not
+prove every historical Step kind or actual ASK integration; Root still owns those
+acceptance boundaries and the independent reviewer must assess this exact fix.
