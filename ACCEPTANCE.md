@@ -1,5 +1,16 @@
 # ACCEPTANCE.md
 
+## Current C087 / prepared C088 — diagnostic fixtures pass; actual goal unmet
+
+Root full1210 PASS32.581s/exit0 and separate final source reviews establish the
+bounded local diagnostic contract only. New text records remain unqualified; no
+C15/native/effective-model/semantic/UI/usefulness row is promoted. Original N2
+UNKNOWN is unchanged. Actual Opus planner returned a proposal, but CO rejected
+its plan and no completed design report or declared verifier exists.
+LEGACY01/1 removal is prepared under explicit owner instruction; all current v5
+cases stay and old evidence is preserved. No replacement UI is implemented.
+Whole goal NOT_MET. Earlier checkpoints below remain version-bound history.
+
 ## Current C086 — actual N2 not qualified; local source proof remains
 
 N2 is UNKNOWN after its sole invoke/entry, exit1/zero PAL effects. Original

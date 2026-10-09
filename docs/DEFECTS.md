@@ -1614,3 +1614,30 @@ Prevention under review: inspect an existing supported server model-ack path and
 consider effective-model checks at the preprompt session barrier. Do not treat
 invocation CLI arguments as server acknowledgement or rewrite verified fields.
 No source/acceptance change is adopted by recording this diagnosis alone.
+
+
+C087 execution/export corrections: Root omitted the implement pin on the first
+fixed-mode report command. CO spec validation returned spec_invalid before task
+creation/model launch; the original error is retained. Public CLI/source showed
+fixed mode requires planner+implement even for a report. Root supplied the same
+Opus model for both; actual call succeeded. Opus then returned9255-byte step
+instructions over4096, so plan_invalid and no design step/verifier. Preserve it
+as a planning proposal. Next related CO goal asks for short instructions referring
+to frozen input; runtime/state is unchanged and that prevention is not yet tested.
+
+Independent export review REQUEST_CHANGES found a raw owner-message UUID newly
+added to D053. It is unnecessary public provenance under D045. Root preserved
+private6a2e312 and built a normal descendant of safe source69c6 with anonymous
+D053 wording and identical eight review inputs. No force push/history rewrite;
+private6a2 is excluded from public ancestry. Recheck reachability and all new
+identifiers before the next push. Full1210 source proof is unchanged.
+
+C088 old-entry cause: v5 development had added current owners while legacy README/
+server/Web/default model-input instructions still advertised the old engine.
+Independent source/import and docs audits confirm the mismatch. LEGACY01/1
+removes the operational old code and makes mandatory inputs/startup references
+current-only. Existing history/evidence remains explicitly historical. Validate
+actual import closure and every retained v5 test rather than classifying by suffix.
+Do not equate removed old UI with a completed new UI.
+
+The first anonymous-export replacement matched a nonexistent newline after the UUID, so it changed zero bytes. Re-review caught the same identifier before publication. Root now requires exactly one bare-identifier match and asserts absence after replacement, preserving both private candidates and creating another clean descendant of source69c6. This is a concrete checked correction; private candidates are excluded from public ancestry.

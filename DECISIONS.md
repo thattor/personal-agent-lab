@@ -2663,3 +2663,40 @@ by diagnostic interpretation. Further bounded source/design work may use these
 public hooks without changing CO or manufacturing original verified fields.
 Source changes invalidate the previous wrapper/capture envelope; later real work
 needs its own reviewed contract/freeze. Whole goal remains NOT_MET.
+
+
+D053 (2026-10-10): the latest actual owner message in PAL人間判断,
+local owner-availability evidence D053, says「claude opusは使える」.
+Root read the actual turn, not only the delegated summary. Use the existing
+qualified official Claude Opus5.5 route for necessary unevaluated design/review;
+no new auth/cost/service, reset, old unknown resume or duplicate evaluated review.
+Current CLI2.1.291 readonly auth is loggedIn/claude.ai/firstParty/Pro under approved
+local execution. Restricted-sandbox auth:false was not logout evidence. AGY's
+separate observed weekly0% remains separate. CO ordinary task measurement and
+product native host qualification are distinct; do not transfer version/availability
+proof between them. The C087 diagnostic/local source proof and model-observation
+feasibility are the new Opus checkpoint, not re-review of completed C083 alone.
+
+
+D053 observed official route: CO ordinary task invoked exact claude-opus-5-5
+planner on CLI2.1.291; original init/result show that model, tools0, success58.702s.
+The returned plan has9255-byte instructions over CO's4096 limit, so the task is
+failed/plan_invalid/verified:false with no design step or declared verification.
+Its embedded diagnostic ALIGNED/next REFINE is a planning proposal, not a completed
+review. Preserve original output/hash; do not edit CO state or claim approval.
+The pre-task spec_invalid was Root's missing fixed-mode implement pin, corrected
+before any first attempt. Future runs pin planner+implement and ask for short
+plan instructions referring to the frozen scope. No provider failure or new fee
+is inferred. See opus-planning-summary.json; official availability differs from AGY.
+
+## D054 — remove actual old operational PAL references (2026-10-10)
+
+Latest actual owner instruction in PAL人間判断:「palの旧版を参照している
+可能性があるなら旧版の削除をしてください。互換は必要ありません」.
+Root read the actual turn. Independent current-repo audits confirm old pal.server/
+web/Runtime/Store and current README/model-input instructions. LEGACY01/1 freezes
+necessary tracked-code removal and current entry correction, with separate Astra
+source and Sol docs, unchanged v5 utility/owners/fixtures, independent reviews
+and Root integration. No old/live DB, conversations, evidence or unknown removal;
+no broad old-checkout deletion, new auth/cost/service or replacement UI claim.
+Current v5 has no HTTP/UI implementation; that remains unfinished product work.

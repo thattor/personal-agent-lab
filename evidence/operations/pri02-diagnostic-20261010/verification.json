@@ -1,0 +1,77 @@
+{
+  "version": "PRI02-DIAGNOSTIC-LOCAL-PROOF/1",
+  "source_commit": "69c6e226ba14da881f0ed11670601b1b5e854c48",
+  "contract": "PRI02-DIAGNOSTIC/1",
+  "source_and_fixed_tests": {
+    "docs/design/contracts-v5/PRI02-UNQUALIFIED-DIAGNOSTIC-SCOPE.md": "fbdf4090fc58e439a0e825b78dc93fb14b407b040d658274a681152a3ab844b1",
+    "pal/native_text_v5.py": "3c8719b9288dbac3c94d3c4b7ddff89da9f90eb7762fc3c857ebd2bee10edebf",
+    "tools/native_devin_text_v5.py": "7b21343d70f2d57dba9a5c787aa77fa451fe2b287be70743d12b5c4d04b3ce1f",
+    "pal/native_call_v5.py": "94f4f63bd1070cb037b8a9220fe0c5b232f78e7aa8f805d268ad8edf03344395",
+    "tests/test_native_text_diagnostic_v5.py": "467c38d72e3de91790e3cd69c35765b3908ef296fa0669312308a1321963d316",
+    "tests/test_native_devin_unqualified_v5.py": "c059c58c59a55910cfd65eefe5fbeb91ae9251dcaa419b7ec53dd55d6e879b5d"
+  },
+  "implementation": {
+    "buffer": {
+      "author": "native Sol separate context",
+      "commit": "907619e09538246f332f5b5da52e3c5f68676d7a",
+      "changed_lines": 15
+    },
+    "wrapper": {
+      "author": "native Astra separate context",
+      "commit": "317e1a4f20db624660c3fe5d3ef3a0f5b52f3fe9",
+      "added_lines": 6,
+      "deleted_lines": 1
+    }
+  },
+  "independent_source_reviews": {
+    "buffer": {
+      "reviewer": "native Sol separate fixed-test context",
+      "verdict": "APPROVE",
+      "text_cases": 19,
+      "call_cases": 15,
+      "exit": 0
+    },
+    "wrapper": {
+      "reviewer": "native Sol separate implementation context, not wrapper author",
+      "verdict": "APPROVE",
+      "cases": 42,
+      "seconds": 0.273,
+      "exit": 0
+    }
+  },
+  "root_full": {
+    "command": "python3.13 -E -s -B -m unittest discover -s tests -v",
+    "cases": 1210,
+    "seconds": 32.581,
+    "exit": 0,
+    "status": "PASS",
+    "log_sha256": "e566329849a5d731491aeb797ff0d7a63bdb6094c72de551451ca71821724991"
+  },
+  "preserved_red": {
+    "pure": {
+      "methods": 4,
+      "errors": 8,
+      "exit": 1,
+      "log_sha256": "f8a2f89a61176521ed35db9ffd53ab3a3c4893fc1343a62d6985962b5bcd9866"
+    },
+    "wrapper": {
+      "methods": 4,
+      "failures": 8,
+      "exit": 1,
+      "log_sha256": "9472ede642e688d4f03a5770a35fffae51a345355ba075ed7551d9795e456061"
+    }
+  },
+  "qualification": "NOT_PROVEN",
+  "effects": 0,
+  "actual_provider_calls": 0,
+  "old_unknowns_unchanged": true,
+  "limits": [
+    "Fixture results only",
+    "No N3, T2 or real Expert",
+    "No original ending or verified-model field rewrite",
+    "No new model-ACK authority",
+    "Raw unqualified text stays local",
+    "Source changes invalidate previous wrapper/capture envelope",
+    "Whole goal remains NOT_MET"
+  ]
+}

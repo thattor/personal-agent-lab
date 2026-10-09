@@ -1295,3 +1295,13 @@ Overall goal NOT_MET; P001/oldDB/live services/unknown retries remain outside sc
   complete; no output reconstructed, unique original exception not proven.
 - Next exact Opus5.5 design reassessment precedes any N3 or real Expert entry.
   Local C085 source/full1202/crash6 remains; whole goal NOT_MET.
+
+
+C087: source69c6e22 bounded unqualified text retention integrated, independent
+buffer/wrapper APPROVE, Root full1210 PASS32.581s/exit0. No gate relaxation or
+provider call. Official CO Opus5.5 completed planner success58.702s, but9255-byte
+instructions violate4096, giving plan_invalid/verified:false/no design step.
+Preserve its planning assessment, not a completed review. C088 LEGACY01/1 frozen
+under actual owner removal instruction; old operational entry confirmed, v5
+HTTP/UI absent. Deletion/docs work next, with all v5 cases/old evidence retained.
+Whole goal NOT_MET; no new real call or implicit unknown replay.
