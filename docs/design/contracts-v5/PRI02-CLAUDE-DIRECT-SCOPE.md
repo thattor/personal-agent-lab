@@ -81,8 +81,10 @@ subagent frame. Assistant stop_reason may be null, as observed in this version.
 
 One final result requires subtypesuccess, is_error false, stop_reasonend_turn,
 terminal_reasoncompleted, num_turns integer1, queued_turn_count0, result_index0,
-permission_denials[], and singleton modelUsage keyclaude-opus-5-5 with nonnegative
-finite numeric usage metadata and positive integer inputTokens/outputTokens.
+permission_denials[], and singleton modelUsage keyclaude-opus-5-5. The original
+numeric-all-values assumption is superseded by PRI02-CLAUDE-USAGE/1's exact12-key
+typed metadata grammar after C094: exact canonicalModel/provider/costBasis strings
+and bounded numeric usage fields. Positive inputTokens/outputTokens remain.
 subagent_stats must have the observed closed shape with all integer counters0:
 spawned, started_in_background, max_depth, spawned_by_subagents, completed,
 failed; requested{background,foreground,unset}; killed{parent,user,system};

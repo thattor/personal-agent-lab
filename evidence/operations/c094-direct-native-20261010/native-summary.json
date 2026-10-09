@@ -1,0 +1,78 @@
+{
+  "PAL_effects": 0,
+  "accepted_capture": false,
+  "accepted_ending": false,
+  "active_held": true,
+  "actual_observations": {
+    "assistant_model": "claude-opus-5-5",
+    "cli_version": "2.1.291",
+    "frame_count": 4,
+    "frame_types": [
+      "system",
+      "assistant",
+      "rate_limit_event",
+      "result"
+    ],
+    "init_model": "claude-opus-5-5",
+    "mcp_servers": 0,
+    "num_turns": 1,
+    "overage_disabled_reason": "org_level_disabled",
+    "permission_denials": 0,
+    "queued_turn_count": 0,
+    "result_index": 0,
+    "result_model_usage_keys": [
+      "claude-opus-5-5"
+    ],
+    "result_stop_reason": "end_turn",
+    "result_subtype": "success",
+    "stderr_bytes": 0,
+    "stdout_bytes": 4943,
+    "stdout_sha256": "b6133b74c240b81981638742002a27de2307d0e2aa80738dc4f8bc5f9a92ba3f",
+    "subagents": 0,
+    "terminal_reason": "completed",
+    "tools": 0,
+    "using_overage": false
+  },
+  "confirmed_protocol_defect": "numeric-all-values validation rejects observed string canonicalModel/provider/costBasis",
+  "earlier_originals_same_shape": {
+    "planner_stream_sha256": "19ddf7ede90cf46065a8ec6225fac04ac3985792d13bbaa7bd7631275ba83a29",
+    "report_stream_sha256": "68f48204e0ba62b3386a1e8dc832b0790bf570bf788078541792ba6195b39ad0"
+  },
+  "entry_count": 1,
+  "exit": 1,
+  "freeze_sha256": "c97d0fc7e34d102eab1491e55845c5c0dc343b8cb015763e81c01ea5cf81d2ed",
+  "independent_audit": {
+    "all_match": true,
+    "checks": 33,
+    "feed_only_result_rejection": true,
+    "finish_called": false,
+    "report_sha256": "add09ba787f37cab12173106ea3418df0daac9cc9ae47c58a738e33663493af8",
+    "semantic_parsed": false
+  },
+  "invoke_count": 1,
+  "limits": [
+    "Raw protocol model IDs observed; no qualified ending or semantic adoption follows",
+    "Feed-only reproduction proves a decoder rejection; original error trace not retained, other cleanup causes not excluded",
+    "Consumed allowance and held lane preserved; no second call, rotation, reconstruction or release",
+    "Original raw/account/nonce/case IDs stay private"
+  ],
+  "local_EOF_wait_receipt": "NOT_RETAINED_NOT_PROVEN",
+  "operator_sha256": "67e1261fd50665dc086eb0b6d051863ac90c851aedae902564845f7f8c725917",
+  "originals_unchanged": true,
+  "pin_sha256": "05b71d26c3b5a446d5109f4feda00e14c50aa96bdc9f1e3f1b1261b0cb66930c",
+  "prior_extra_usage_disabled_verified": true,
+  "prose_grading": false,
+  "qualification": "NOT_PROVEN",
+  "result": {
+    "entry_count": 1,
+    "error_category": "local_failure",
+    "native_outcome": "UNKNOWN",
+    "originals_unchanged": true,
+    "semantic": "NOT_RUN",
+    "transport_qualification": "NOT_PROVEN"
+  },
+  "source_commit": "8bee45b3d87dd0f86af2ae133ef99778b899351b",
+  "source_count": 17,
+  "version": "PAL-C094-DIRECT-MAX1/1",
+  "whole_goal": "NOT_MET"
+}

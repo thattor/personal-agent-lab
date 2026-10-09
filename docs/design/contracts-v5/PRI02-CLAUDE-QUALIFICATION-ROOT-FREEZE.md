@@ -1,7 +1,10 @@
 # PRI02-CLAUDE-QUALIFICATION/1 — distinct direct PRIMARY MAX1
 
-Root design disposition under D064. Actual outcome is NOT_RUN until the private
-exact freeze and actual receipt. This is one new existing first-party Claude
+Original pre-entry design disposition under D064. C094 has now consumed the
+allowance once and remains UNKNOWN/NOT_PROVEN with its active lane held; see
+[D065 actual receipt](../../../evidence/operations/c094-direct-native-20261010/native-summary.json).
+The following is the retained finite scope, not permission for another entry.
+This was one new existing first-party Claude
 print-profile qualification, independent of the preserved Devin/CO unknowns.
 CO is optional. No new auth, cost/service enablement, CO modification or weaker
 model/ending gate is adopted.

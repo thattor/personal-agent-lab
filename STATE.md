@@ -1,16 +1,27 @@
-# Current C094 preparation — direct PRIMARY MAX1 adopted, not run
+# Current C094 — direct MAX1 consumed UNKNOWN; local correction proceeds
 
-D064 adopts one distinct synthetic PRIMARY-only direct qualification after exact
-Root private source/operator/binary/17-pin/case/old-inventory and fresh prior
-same-account extra-usage freeze. Final operator has independent Astra APPROVE:
-8 fake cases plus5 independent failure subcases. The original source is unchanged
-from the actual1013 full proof. No DB effects, Expert, UI activation, fallback or
-old UNKNOWN operation is included. [Finite scope](docs/design/contracts-v5/PRI02-CLAUDE-QUALIFICATION-ROOT-FREEZE.md).
+D064's distinct direct PRIMARY used one invoke/entry and zero PAL effects at
+source8bee45b. Original protocol frames identify Claude2.1.291 and exact
+claude-opus-5-5, but the result is **UNKNOWN/NOT_PROVEN/semantic NOT_RUN**, exit1.
+The active lane remains held; capture/ending and the local EOF/wait receipt are
+absent. Independent Astra recomputes33 matching source/binding/old-inventory
+checks. No raw output adoption, second entry, rotation or release follows.
+[Actual minimized receipt](evidence/operations/c094-direct-native-20261010/native-summary.json).
 
-Actual generation/qualification remains **NOT_RUN** until an original receipt.
-Account identity was compared by visible profile email without clipboard access;
-fresh extra-usage-disabled proof precedes actual entry. No auth or billing change.
-Whole goal NOT_MET. Earlier source checkpoints below retain their original meaning.
+The collector wrongly treats every modelUsage value as numeric. Feed-only
+reproduction rejects three actual string metadata fields. Earlier original C093
+streams already contain that same12-key shape; Root's contract and valid fixture
+omitted it. The original detailed exception was not retained, so another cleanup
+failure is not excluded. Prior same-account credit-OFF proof and later no-overage
+frame are retained; list-price cost metadata does not prove a new charge.
+
+D066 freezes [PRI02-CLAUDE-USAGE/1](docs/design/contracts-v5/PRI02-CLAUDE-USAGE-SCOPE.md)
+for source/fixture repair only: separate Sol fixed6/helper, Astra one-file decoder,
+independent Sol source review, Root integration/full verification. Native HTTP/UI
+can be prepared with fixtures independently; real activation needs qualification
+and a proper disposition of the held lane. No new provider call is authorized here.
+Mock stays default, native UI/authentic usefulness/release and whole goal **NOT_MET**.
+Earlier checkpoints below retain their version-bound meaning.
 
 # Current C093 — direct Claude source verified, actual entry still not run
 

@@ -1,4 +1,22 @@
-# Current C093 — direct source1013 passes; qualification not run
+# Current C094 — exact raw model observed; direct qualification remains unmet
+
+At8bee45b the distinct D064 allowance was consumed once: invoke1/entry1,
+PAL effects0, exit1, UNKNOWN/transport NOT_PROVEN/semantic NOT_RUN. Original
+init/assistant/result metadata identifies exactclaude-opus-5-5 and CLI2.1.291;
+tools/MCP/permissions/subagents/overage are zero. There is no accepted capture,
+ending or retained local EOF/wait proof. The active lane stays held. Independent
+Astra's33 source/binding/inventory checks match; all old originals are unchanged.
+[Actual receipt](evidence/operations/c094-direct-native-20261010/native-summary.json).
+
+Public feed-only reproduction confirms rejection of string canonicalModel,
+provider and costBasis by numeric-all-values validation. Earlier C093 original
+streams already have that same12-key schema. D066 permits typed local repair and
+fixed functional tests; it does not reconstruct or adopt the consumed response.
+Original detailed failure trace is absent and other cleanup failure is unexcluded.
+Actual raw model identity does not replace an owned accepted ending. No further
+call/lease release/native activation or prose grading follows. Whole goal NOT_MET.
+
+# Retained C093 — direct source1013 passes; qualification not run at that checkpoint
 
 Root9ffa093 full **1013 PASS29.866s/exit0** follows independent Sol core APPROVE
 (pure11, consumer10, related166 and2 extra cases) and Astra wrapper APPROVE

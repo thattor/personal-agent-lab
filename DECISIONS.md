@@ -3001,3 +3001,52 @@ and overwrite variants because they could touch unrelated clipboard data; Root
 instead compared the visible profile email without clipboard access. Fresh usage
 evidence is still checked immediately before the private exact launch freeze.
 Whole goal NOT_MET; mock default and original UNKNOWNs remain unchanged.
+
+## D065 — C094 direct allowance consumed UNKNOWN (2026-10-10)
+
+The exact D064 private freeze used source8bee45b, operator67e1261 and the17-file
+pin05b71d2. One invoke/entry produced four complete original frames, stdout4943
+bytes, stderr0, no PAL effects and exit1. Exactclaude-opus-5-5 is observed in the
+original init/assistant/modelUsage key; CLI2.1.291, tools/MCP/permissions/subagents0
+and no-overage/org-level-disabled are observed. Prior same-account credit-OFF
+proof is retained. No new authentication or billing setting was enabled.
+
+The outcome remains UNKNOWN/NOT_PROVEN/semantic NOT_RUN: active held, no accepted
+ending/capture and no retained owned EOF/wait receipt. Independent Astra recomputes
+33 matching source/freeze/pin/request/entry/old-inventory checks. All old N1/N2/N3
+files and absent paths are unchanged. Never synthesize ending/exit0 from a model
+result frame or convert these observed IDs into qualification/output adoption.
+The allowance is consumed; no second call, rotation, old unknown action or release.
+
+Feed-only reproduction confirms that the numeric-all-values collector rejects
+the string canonicalModel/provider/costBasis metadata. Original C093 planner and
+report streams already contain the same12-key types, with hashes in the minimized
+C094 receipt. Root's contract/valid fixture omission made this avoidable. This is
+not evidence of a newly changed server shape or missing model ACK. The original
+detailed exception trace is absent, so the unique runtime/cleanup cause is not
+asserted. Preserve raw records privately and send evidence/recommended proper
+held-lane disposition to the designated human-decision lane. Independent source
+and fixture work continues; real activation/recovery remains a separate boundary.
+
+## D066 — explicit observed usage schema, source-only correction (2026-10-10)
+
+Root freezes PRI02-CLAUDE-USAGE/1. Closed12-key typed metadata strengthens the
+actual-shape contract: exact canonicalModel/provider/costBasis strings, positive
+integer input/output/context/max counters, nonnegative integer cache/thinking,
+zero integer web searches and finite nonnegative costUSD excluding bool.
+Cost metadata is informational list-price usage, not an actual new-charge claim.
+All request/model/ordering/caps/owned ending/save/UNKNOWN/replay criteria remain.
+
+Separate Sol changes only the synthetic valid usage helper and adds6 fixed
+methods before Astra changes only the pure collector usage block. Preserve all
+old30 method expectations and94 pre-direct file bytes; retain original fixture
+bytes and RED in Git. Independent Sol reviews the different author's source;
+Root integrates/tests exact bytes. The source hash invalidates the old pin and
+does not convert any old receipt to PASS. No actual invoke/release is authorized.
+
+Prevention is proportional: enumerate every qualification-bearing field name and
+type from available original version-bound streams before freezing a valid
+synthetic shape; do not stop at top-level modelUsage keys. Record this check in
+the correction evidence and apply it to the next profile/operator freeze. Keep
+mock default, CO optional, no prose-quality/intelligence scoring, no new service,
+auth or fee, and whole goal NOT_MET.
