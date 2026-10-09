@@ -23,8 +23,11 @@ class ClaudeBufferTests(unittest.TestCase):
   with self.assertRaises(ValueError):b.finish(stdout_eof=True,stderr_eof=True,exit_code=0)
   with self.assertRaises(ValueError):b.feed(b'{}\n')
  def test_constructor_strict_bindings_copy_and_closed_profile_pair(self):
-  for kw in ({'request_sha256':'A'*64},{'profile_sha256':False},{'session_id':'not-uuid'},{'argv_sha256':'x'},{'attempt':{**f.ATTEMPT,'extra':1}}):
-   with self.subTest(kw=kw),self.assertRaises((ValueError,TypeError)):f.buffer(**kw)
+  cls=self.module().NativeClaudeBuffer
+  valid={'request_sha256':'1'*64,'profile_sha256':'2'*64,'attempt_ref':copy.deepcopy(f.ATTEMPT),'session_id':f.SESSION,'argv_sha256':'3'*64}
+  self.assertIsInstance(cls(**valid),cls)
+  for change in ({'request_sha256':'A'*64},{'profile_sha256':False},{'session_id':'not-uuid'},{'argv_sha256':'x'},{'attempt_ref':{**f.ATTEMPT,'extra':1}}):
+   with self.subTest(change=change),self.assertRaises((ValueError,TypeError)):cls(**{**valid,**change})
   native=importlib.import_module('pal.native_call_v5');p=f.profile();data=p.to_json();self.assertEqual(data['id'],f.ID);self.assertEqual(native.NativeProfile.from_json(data),p)
   for change in ({'extra':1},{'profile_sha256':'9'*64},{'evidence_kind':'native_like'}):
    with self.subTest(change=change),self.assertRaises(ValueError):native.NativeProfile.from_json({**p.to_json(),**change})
@@ -35,7 +38,7 @@ class ClaudeBufferTests(unittest.TestCase):
   old=native.NativeProfile(model_id='swe-2-high',qualification_sha256='4'*64,evidence_kind='fixture');self.assertEqual(old.id,'co-devin-acp-dynamic-text/1');self.assertEqual(native.NativeProfile.from_json(old.to_json()),old)
  def test_model_session_request_message_and_tool_mismatch(self):
   changes=[(0,lambda r:r.update(model='wrong')),(0,lambda r:r.update(claude_code_version='2.1.290')),(0,lambda r:r.update(tools=['Read'])),(0,lambda r:r.update(mcp_servers=[{'name':'x'}])),(0,lambda r:r.update(permissionMode='default')),
-   (2,lambda r:r['message'].update(model='wrong')),(3,lambda r:r['message'].update(id='foreign')),(3,lambda r:r.update(request_id='foreign')),(2,lambda r:r.update(parent_tool_use_id='tool')),(2,lambda r:r['message'].update(content=[{'type':'tool_use','id':'PRIVATE_CANARY'}])),(2,lambda r:r.update(session_id=f.uid(99))),(4,lambda r:r['rate_limit_info'].update(isUsingOverage=True)),(4,lambda r:r['rate_limit_info'].update(status='rejected')),(1,lambda r:r.update(estimated_tokens=-1)),(1,lambda r:r.update(delta=True)),(2,lambda r:r.update(request_id='x'*513)),(2,lambda r:r.pop('uuid'))]
+   (2,lambda r:r['message'].update(model='wrong')),(3,lambda r:r['message'].update(id='foreign')),(3,lambda r:r.update(request_id='foreign')),(2,lambda r:r.update(parent_tool_use_id='tool')),(2,lambda r:r['message'].update(content=[{'type':'tool_use','id':'PRIVATE_CANARY'}])),(2,lambda r:r.update(session_id=f.uid(99))),(4,lambda r:r['rate_limit_info'].update(isUsingOverage=True)),(4,lambda r:r['rate_limit_info'].update(status='rejected')),(1,lambda r:r.update(estimated_tokens=-1)),(1,lambda r:r.update(estimated_tokens_delta=True)),(2,lambda r:r.update(request_id='x'*513)),(2,lambda r:r.pop('uuid'))]
   for index,change in changes:
    with self.subTest(index=index):rows=f.frames();change(rows[index]);self.fail(rows)
  def test_result_false_types_subagents_usage_and_output_mismatch(self):

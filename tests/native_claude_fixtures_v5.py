@@ -11,7 +11,7 @@ def stats():return {'spawned':0,'started_in_background':0,'max_depth':0,'spawned
 def frames(text='日本語\n保存',session=SESSION):
  split=len(text)//2
  init={'type':'system','subtype':'init','session_id':session,'uuid':uid(1),'claude_code_version':VERSION,'model':MODEL,'tools':[],'mcp_servers':[],'permissionMode':'dontAsk','agents':['unused-agent'],'skills':['unused-skill'],'plugins':[{'name':'unused-plugin'}]}
- tick={'type':'system','subtype':'thinking_tokens','session_id':session,'uuid':uid(2),'estimated_tokens':7,'delta':2}
+ tick={'type':'system','subtype':'thinking_tokens','session_id':session,'uuid':uid(2),'estimated_tokens':7,'estimated_tokens_delta':2}
  assistants=[]
  for i,part in enumerate((text[:split],text[split:])):
   assistants.append({'type':'assistant','session_id':session,'uuid':uid(3+i),'parent_tool_use_id':None,'request_id':'request-fixture','message':{'id':'message-fixture','type':'message','role':'assistant','model':MODEL,'content':[{'type':'thinking','thinking':'not answer','signature':'fixture-signature'},{'type':'text','text':part}],'stop_reason':None}})

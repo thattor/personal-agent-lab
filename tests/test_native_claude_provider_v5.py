@@ -49,6 +49,16 @@ if mode=='exit_error':sys.exit(1)
  def invoke(self,request=None):
   with patch.object(self.module.shutil,'which',return_value=str(self.exe)):
    return self.provider.invoke(request or self.request(),on_enter=self.hook)
+ def track_children(self):
+  original=self.module.subprocess.Popen;self.children=[]
+  def start(*args,**kwargs):
+   child=original(*args,**kwargs)
+   if '-p' in args[0]:self.children.append(child)
+   return child
+  return patch.object(self.module.subprocess,'Popen',side_effect=start)
+ def reaped(self):
+  self.assertEqual(len(self.children),1)
+  for child in self.children:self.assertIsNotNone(child.poll());self.assertIsNotNone(child.returncode)
  def test_metadata_pin_defensive_no_generation_and_official_version_auth_refusal(self):
   pin=self.setup_provider()
   with patch.object(self.module.shutil,'which',return_value=str(self.exe)):actual=self.provider.preflight()
@@ -78,8 +88,8 @@ if mode=='exit_error':sys.exit(1)
   for mode in ('partial','exit_error','stderr_cap','stdout_cap','bad_protocol'):
    with self.subTest(mode=mode):
     self.setup_provider(mode)
-    with self.assertRaises(Exception):self.invoke()
-    self.assertTrue((self.lane/'active.json').exists());self.assertEqual(self.starts.read_text(),'start\n')
+    with self.track_children(),self.assertRaises(Exception):self.invoke()
+    self.reaped();self.assertTrue((self.lane/'active.json').exists());self.assertEqual(self.starts.read_text(),'start\n')
     restarted=self.module.NativeClaudeText(executable=self.exe,attempt_root=self.lane,profile=self.profile)
     with patch.object(self.module.shutil,'which',return_value=str(self.exe)),self.assertRaises(Exception):restarted.invoke({**self.request(),'call_id':'different'},on_enter=self.hook)
     self.assertEqual(self.starts.read_text(),'start\n')
@@ -97,10 +107,14 @@ if mode=='exit_error':sys.exit(1)
  def test_owned_timeout_and_blocked_stdin_bounded_no_second_entry(self):
   for mode in ('timeout','blocked_stdin'):
    with self.subTest(mode=mode):
-    self.setup_provider(mode);clock=iter(range(0,100000,10));request=self.request();request['messages'][1]['text']='x'*60000
-    # Accelerate only the wrapper's existing monotonic deadline. No transport callback.
-    with patch.object(self.module.time,'monotonic',side_effect=lambda:next(clock)),self.assertRaises(Exception):self.invoke(request)
-    self.assertTrue((self.lane/'active.json').exists());self.assertTrue(self.enter.exists())
+    self.setup_provider(mode);clock=iter(range(10,100000,10));request=self.request();request['messages'][1]['text']='x'*60000
+    original_clock=self.module.time.monotonic
+    def entry_clock():
+     current=original_clock()
+     return current+next(clock) if self.enter.exists() else current
+    # Metadata remains on the real clock; only an accepted entry accelerates expiry.
+    with self.track_children(),patch.object(self.module.time,'monotonic',side_effect=entry_clock),self.assertRaises(Exception):self.invoke(request)
+    self.reaped();self.assertTrue((self.lane/'active.json').exists());self.assertTrue(self.enter.exists())
  def test_foreign_profile_symlink_root_and_pin_change_fail_closed(self):
   self.setup_provider();native=importlib.import_module('pal.native_call_v5')
   wrong=native.NativeProfile(model_id='swe-2-high',qualification_sha256='4'*64,evidence_kind='fixture')
