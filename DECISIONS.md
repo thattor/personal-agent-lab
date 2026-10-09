@@ -2026,3 +2026,14 @@ TSK state, structural/mock labels and not-current wording separate; bounded page
 preserve cursor and per-ref errors. No cross-owner atomic snapshot claim. Freeze
 exact request/response examples and tests with SWE before code. This is within
 D038 preparation; no new owner decision, model activation or schema migration.
+
+
+D038 READ01 implementation freeze: CO SWE-2 High Free c2027bf7 returned ALIGNED.
+Adopt its owner read/dispatch/pagination advice with Root's exact multi-work item
+shape, UTC clock guard and truthful fault limits in READ01-SCOPE. SQLite
+total_changes is monotonic even after rollback, and trusted callback COMMIT cannot
+be undone; ordinary reads remain mutation-free. Stop-cause wording requires an
+explicit same Goal/revision notice intersecting VER dependencies. Public examples
+for C02/C11/C14 accompany assignments to prevent the prior consumer mismatch.
+Separate immutable tests precede code. This is local readback, not model-context
+or PRI/UI activation, and adds no new permission/cost/schema/live DB.
