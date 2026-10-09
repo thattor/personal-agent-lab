@@ -1,6 +1,6 @@
 # ACCEPTANCE.md
 
-## Current C074 candidate — durable saved drafts connected
+## Current C074 — durable saved drafts connected
 
 Source2e8dfcf531ba0ddfc89dcb83eec0c6e0f58abc00 connects actual MEM/TSK/RUN/ART/C14
 in temporary SQLite: exact-byte saved drafts, current artifact set, reconnectable
@@ -9,8 +9,8 @@ consumer18 PASS with separate Sol6.1 approval; ART20 with independent Astra appr
 TSK/RUN separately approved after reproduced fixes. This supersedes C073's pending
 storage/connection status. [Verification](evidence/operations/art01-20261009/verification.json).
 
-Exact CO Opus5.5 milestone task7cd3d55711f04fee95e26435f00fe3a3 is running from
-review package2b13a63. Its design alignment/next-slice recommendation remains pending.
+Exact CO Opus5.5 milestone task7cd3d55711f04fee95e26435f00fe3a3 returned ALIGNED
+from review package2b13a63, no current-scope blocker. C074 local milestone is MET.
 Goal completion/VER, artifact model re-input, orphan recovery, PRI/provider/UI,
 product activation and real usefulness remain unproven. Model report/save does not
 mark a Goal completed. Next authorized dependency is host verification and safe

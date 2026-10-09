@@ -1,15 +1,15 @@
 # ART01-store/1 + ART01-bind/1 milestone review candidate
 
-Exact implemented source2e8dfcf531ba0ddfc89dcb83eec0c6e0f58abc00.
+Exact implemented source 2e8dfcf531ba0ddfc89dcb83eec0c6e0f58abc00.
 Value: a mock Expert compose proposal now yields a durable exact-byte draft, one
 current TSK artifact, and a reconnectable C14 progress event, while Goal stays
 unfinished. It can be read after reopening; original receipt recovery is separate
 from current adoption/body-use permission. Models never mark a Goal complete.
 
-Actual MEM/TSK/RUN/ART/C14 connection18 PASS, ART owner20, TSK owner52; host full605
+Actual MEM/TSK/RUN/ART/C14 connection 18 PASS, ART owner 20, TSK owner 52; host full 605
 PASS23.880s/exit0. Evidence operations/art01-20261009/verification.json binds sources.
-Astra independently reviewed ART98b8f12 (Rootfa40b66 byte-identical). Separate Sol6.1
-approved TSK/RUNd6e0a72 and actual consumer2e8dfcf; no self-review counted.
+Astra independently reviewed ART 98b8f12 (Root fa40b66 byte-identical). Separate Sol6.1
+approved TSK/RUN d6e0a72 and actual consumer 2e8dfcf; no self-review counted.
 
 The source includes narrow corrections from reproduced reviews: temporary missing
 receipt retains output/slot; missing current-set rows fail instead of hiding drafts;
@@ -57,3 +57,7 @@ invalidation and completion be one connected next slice or staged dependencies?
 Do not introduce real provider, paid fallback, general recovery, a second state
 engine or a recurring human approval. Technical next-slice advice only; no permission
 or accepted behavior changes and no whole-product PASS.
+
+Opus task 7cd3d557 returned ALIGNED, no current blocker. Its review read the supplied
+connection log and source files; helper modules, full605 log and TSK owner tests
+were host-verified but not read by Opus. The 52 count is all TSK owner tests (36 +16).

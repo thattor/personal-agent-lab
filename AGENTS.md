@@ -12,9 +12,9 @@ INT00/1, TSK01/1, MEM01/1, TSK03/1 and TSK02/RUN01 local mock preparation are
 integrated with separate review and full531 regression, including durable C14,
 actual controls/source-stop and callable-cessation occupancy. Real PRI authority,
 recovery, saved verified drafts, live services and full v5 activation remain unproven.
-C074 candidate: saved drafts are connected through actual MEM/TSK/RUN/ART/C14;
+C074: saved drafts are connected through actual MEM/TSK/RUN/ART/C14;
 full605 passes with independent ART/TSK/RUN/consumer reviews. Exact CO Opus5.5
-milestone review is running. Continue its technical assessment and next unfinished
+milestone review is ALIGNED. Continue the next unfinished
 verification/completion dependency; whole v5 service activation remains unproven.
 Native Sol authored storage under existing owner fallback; the CO timeout remains
 unknown and untouched. Current STATE/DECISIONS supersede historical pending text.

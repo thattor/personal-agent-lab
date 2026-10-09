@@ -1,0 +1,81 @@
+{
+  "task_id": "7cd3d55711f04fee95e26435f00fe3a3",
+  "base": "2b13a63a8e2b0b07b6271d29e2d317cc405f2995",
+  "attempts": [
+    {
+      "attempt_id": "plan-a1",
+      "call_id": "plan",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:63bde70fc76f98539bd3482ed3203a112be628175490d7f5f5212849b76d4884",
+      "role": "planner",
+      "route": "claude",
+      "step_id": "plan"
+    },
+    {
+      "attempt_id": "s1-a1",
+      "call_id": "s1",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:6be63926dfdc9ae81fec40bd793d54541c53a72aaa937ba842a2381fe082ebc7",
+      "role": "implement",
+      "route": "claude",
+      "step_id": "s1"
+    }
+  ],
+  "status": "verified",
+  "verified": true,
+  "verify": {
+    "after": {
+      "docs/design/contracts-v5/ART01-BINDING.md": "sha256:e4545a684fced3fe2c6bf98fa046df5621405d6275e21e4f3db4107973d096ec",
+      "docs/design/contracts-v5/ART01-MILESTONE.md": "sha256:5e629e157acc0a27ce8f5271528e934ab5c11bb62d647a5b23476eb8c0182079",
+      "docs/design/contracts-v5/ART01-SCOPE.md": "sha256:fae57ead2cfdc65d6cd0e3efbed8c72e11cdda466214a1de7e23ccd6330f5028",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "evidence/operations/art01-20261009/actual-connection-final.log": "sha256:8388601fc8fc3796f232dd9e5c1b1ac6986da872a4ac52cfe347a261afc27a5c",
+      "evidence/operations/art01-20261009/astra-art-review.md": "sha256:42d66bd35871697e4b6cba461a63874d7474588467cd51577846e8317aef5db8",
+      "evidence/operations/art01-20261009/opus-milestone-review.md": "sha256:3717628450e835aef89eae7144074956f349e4aa010ab65236ad730fdec96ae4",
+      "evidence/operations/art01-20261009/sol-binding-review.md": "sha256:ed7221eef49d905769120cb261af1e98c1b8509e5a5ca32ee0b5fe4201e81be7",
+      "evidence/operations/art01-20261009/verification.json": "sha256:3fb93feeec172cc7f43d43b80f39a249af09ece1b39939e81f775d752e83798a",
+      "pal/artifacts_v5.py": "sha256:31ac6ec74b816b2eca5268543ada02abfcef8535f7525a7a08115df23e6afd70",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/intake_v5.py": "sha256:31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+      "pal/mock_runner_v5.py": "sha256:421c5980d40691430aa5c69ae72bda77733e14d6d3ee20ec7ddeeec4c5441cf2",
+      "pal/tasks_v5.py": "sha256:50d2e3474979e1a11f8855675eea25636c0a1b2595f5a201474d18851718342f",
+      "tests/test_artifact_connection_v5.py": "sha256:f9ee226a2cac87025eb2e5d2511e9300238ca66bb043c9645acf9ba7b0ee7ce6"
+    },
+    "before": {
+      "docs/design/contracts-v5/ART01-BINDING.md": "sha256:e4545a684fced3fe2c6bf98fa046df5621405d6275e21e4f3db4107973d096ec",
+      "docs/design/contracts-v5/ART01-MILESTONE.md": "sha256:5e629e157acc0a27ce8f5271528e934ab5c11bb62d647a5b23476eb8c0182079",
+      "docs/design/contracts-v5/ART01-SCOPE.md": "sha256:fae57ead2cfdc65d6cd0e3efbed8c72e11cdda466214a1de7e23ccd6330f5028",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "evidence/operations/art01-20261009/actual-connection-final.log": "sha256:8388601fc8fc3796f232dd9e5c1b1ac6986da872a4ac52cfe347a261afc27a5c",
+      "evidence/operations/art01-20261009/astra-art-review.md": "sha256:42d66bd35871697e4b6cba461a63874d7474588467cd51577846e8317aef5db8",
+      "evidence/operations/art01-20261009/opus-milestone-review.md": "sha256:3717628450e835aef89eae7144074956f349e4aa010ab65236ad730fdec96ae4",
+      "evidence/operations/art01-20261009/sol-binding-review.md": "sha256:ed7221eef49d905769120cb261af1e98c1b8509e5a5ca32ee0b5fe4201e81be7",
+      "evidence/operations/art01-20261009/verification.json": "sha256:3fb93feeec172cc7f43d43b80f39a249af09ece1b39939e81f775d752e83798a",
+      "pal/artifacts_v5.py": "sha256:31ac6ec74b816b2eca5268543ada02abfcef8535f7525a7a08115df23e6afd70",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/intake_v5.py": "sha256:31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+      "pal/mock_runner_v5.py": "sha256:421c5980d40691430aa5c69ae72bda77733e14d6d3ee20ec7ddeeec4c5441cf2",
+      "pal/tasks_v5.py": "sha256:50d2e3474979e1a11f8855675eea25636c0a1b2595f5a201474d18851718342f",
+      "tests/test_artifact_connection_v5.py": "sha256:f9ee226a2cac87025eb2e5d2511e9300238ca66bb043c9645acf9ba7b0ee7ce6"
+    },
+    "exit": 0,
+    "log": "Milestone review note structure only\n",
+    "n": 1,
+    "passed": true,
+    "sandbox": "seatbelt-v1",
+    "version": "sha256:a762bab385ee2da98afadd6d5dd7cde6f8d5ee43ffabce7a0522e23e1b5e2f83"
+  },
+  "result_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/7cd3d55711f04fee95e26435f00fe3a3/result.json",
+  "diff_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/7cd3d55711f04fee95e26435f00fe3a3/result.diff",
+  "scope": "Opus design assessment; document verification only; no reviewer-run tests",
+  "decision": "ALIGNED current local mock saved-draft milestone; no blocker",
+  "disposition": "Adopt staged deterministic C09 first then C10 with completed-history source-stop and terminal-safe release. Derived readonly status avoids a new invalidation engine within monotonic adopted scope. Detailed API proposal follows SWE consultation."
+}

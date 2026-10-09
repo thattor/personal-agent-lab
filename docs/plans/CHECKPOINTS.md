@@ -998,3 +998,17 @@ SWE binding advice f4cba212 completed and is dispositioned in ART01-BINDING.
 Next actual assignment: isolated Astra TSK binding consumer with contract doubles,
 SOL RUN/consumer preparation and read-only timeout diagnosis. No duplicate storage
 implementation or recurring owner approval. Integration waits for an ART owner.
+
+
+## C074 — saved drafts are attached with current-source safeguards, 2026-10-09
+
+Local mock milestone MET at source2e8dfcf: full605 PASS23.880s; actual connection18
+plus independent Sol approval; ART20 plus independent Astra approval; TSK/RUN
+independently approved. Exact CO Opus5.5 task7cd3d557 ALIGNED, no current blocker.
+Value is durable saved draft, current-set/readback and reconnectable progress.
+Original unknown CO implementation is preserved, never labeled successful; native
+Sol fallback authored storage under existing directly verified owner instruction.
+Next is actually proposed for SWE consultation: deterministic C09 storage, then
+C10 with completed-history stop/lease safety. Keep semantics unknown when unverified,
+no model or save self-completion, and no full product activation. See verification
+and milestone-review-receipt in evidence/operations/art01-20261009.

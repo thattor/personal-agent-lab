@@ -20,10 +20,11 @@ SQLite only. Do not search/read old PAL. Unknown old calls remain untouched.
 
 ## Ownership and public interface
 
-CO SWE-2 High owns only pal/artifacts_v5.py, tests/test_artifacts_v5.py and
-docs/design/contracts-v5/ART01-IMPLEMENTATION.md. SOL owns the TSK hook, connected
-tests, common scope and canonical records. Separate Sol reviews the integrated
-source. No shared writer or worker update to other source files.
+Original CO SWE task remained unknown without returned files. Under the existing
+owner fallback instruction, isolated native Sol6.1 authored pal/artifacts_v5.py,
+tests/test_artifacts_v5.py and ART01-IMPLEMENTATION.md; independent Astra approved
+exact98b8f12. SOL owns integration/common records, with separate Sol review of
+TSK/RUN and actual connected tests. See ART01-MILESTONE and verification evidence.
 
 ArtifactStore(connection, *, authorize_save, source_gate, id_factory=None,
 clock=None) initializes only v5_art_ tables. The supplied SQLite connection is

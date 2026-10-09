@@ -1942,3 +1942,24 @@ routing defaults), not a fabricated CO pause decision or new CO engine. AGY's ow
 unresolved call/rejection stays untouched. Ordinary Codex usage is allowed; no paid
 fallback, reset, new authorization or external service is used. Independent Astra
 will review ART after its TSK task; separate Sol reviews Root/Astra changes.
+
+
+D038/C074 accepted: ART01-store/1 + ART01-bind/1 at source2e8dfcf pass full605
+(23.880s, exit0), actual temporary-SQLite consumer18, ART owner20 and TSK owner52.
+Separate Astra approves ART98b8f12; separate Sol approves TSK/RUNd6e0a72 and actual
+consumer2e8dfcf. Exact CO Opus5.5 task7cd3d55711f04fee95e26435f00fe3a3 is ALIGNED,
+no current-scope blocker. It ran no commands and saw the full-suite receipt only;
+CO verified the note structure, while Root binds actual tests/source independently.
+Source is actual immutable saved/attached drafts under mock execution, not VER,
+complete, live service, full v5 activation or usefulness. Original unknown CO/AGY
+calls remain untouched; native storage provenance is explicit.
+
+Adopt Opus's two staged next dependencies: deterministic C09 storage first, without
+completion; then C10 complete only together with completed-history source-stop and
+terminal-safe lease handling. Under current monotonic epochs/append-only sets and
+irreversible reference stop, VER can derive valid/invalidated from current WorkRef,
+set and source gate without a second invalidation state engine. Unavailable owner
+checks are unavailable, not proof of invalidation or success. Semantic and unbuilt
+source-fetch checks remain unknown; no model claim or changed condition is MET.
+SWE consultation will refine the exact same-TX APIs before substantial persistence
+implementation. This is a technical continuation within D038, not an owner gate.
