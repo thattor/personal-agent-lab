@@ -1074,3 +1074,12 @@ returning a factual snapshot. Save keeps existing authority error precedence.
 Eight focused tests pass; red/green evidence is in ver01-20261009. Next factual
 read callback must distinguish valid nonrunning state from corrupt owner state,
 without treating pause as lost evidence. No live data was changed.
+
+
+VER01 connection-test preparation: independent Sol found that Root invented a
+call key prefix instead of using the exact C15.call binding required by TSK. That
+would reject eleven tests before VER. Corrected staged fixture to the existing
+canonical C15.call and C08.save formats before execution; AST passes, execution
+is NOT_RUN until VER exists. Cause was a locally recreated fixture's shorthand
+identity. Next integration fixture uses the actual host key contract before
+asserting downstream behavior. This is a test correction, not a product defect.

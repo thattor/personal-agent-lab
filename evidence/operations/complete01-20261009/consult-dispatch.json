@@ -1,0 +1,17 @@
+{
+  "task_id": "72fabf04d0fa4dbb9785f30f0310f7f8",
+  "base": "903a411451f1ffa34c4a34904c710c23cca1ede2",
+  "runtime_version": "0.4.5",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "owned_session": 65745,
+  "status": "running",
+  "planner": "claude/claude-opus-5-5",
+  "reviewer": "claude/claude-opus-5-5",
+  "write_scope": [
+    "evidence/operations/complete01-20261009/opus-scope-review.md"
+  ],
+  "verifier": "Review note structure only",
+  "concurrency": "Two owned CO tasks overlap: this design review and VER implementation. Global host capacity snapshot at09:44UTC was Claude1/Devin3; other tasks are not claimed as PAL work. Limit12 per adapter, provider quota unknown.",
+  "auth_cost": "Existing authenticated Claude Pro route confirmed immediately before launch; no settings/auth/payment change.",
+  "authority": "Technical proposal only, before adoption/implementation; no unknown task retry or new engine"
+}
