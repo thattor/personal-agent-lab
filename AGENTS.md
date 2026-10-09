@@ -4,8 +4,9 @@ Current C081: overall goal remains unmet. PRI01/1 Primary whole managed mock pat
 is integrated and independently approved; Root full1058 PASS, actual3 process gaps,
 two-connection thread/control and whole mock5 PASS. Separately qualified finite
 real-provider proof and authentic whole-flow usefulness remain. Consult the next
-Opus checkpoint/profile proposal, freeze the separate native profile and continue
-approved work. No provider under mock profile or old/live DB migration.
+native compatibility proof under D049/PRI02-T/1, then freeze the separate native
+profile and continue approved work. Actual Opus5.5 C081 alignment is received.
+No provider under mock profile or old/live DB migration.
 Older next-work descriptions below are retained history; STATE/DECISIONS and the
 latest exact candidate evidence govern continuation.
 

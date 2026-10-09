@@ -48,18 +48,26 @@ readback/source stop. All5 calls in that path are labeled in-process mock.
 [Receipt](evidence/operations/pri01-20261010/verification.json).
 Preserve initial binding/error/gate/phase defects, strict-phase recovery regression
 and fixture-only corrections; no expectations weakened, no stopped body fallback.
-Primary scope is implemented locally; new Opus checkpoint alignment is still due.
+Primary scope is implemented locally; new actual AGY Opus5.5 design assessment is
+ALIGNED. Supplied public docs only, no source/test execution by this reviewer.
 
-Next PRI02-PROVIDER-PROPOSAL is technical preparation only. A subprocess/remote
+PRI02 Opus review is REFINE; D049 adopts the two-stage bounded sequence.
+PRI02-T/1 is frozen for one native CLI compatibility proof with zero owner effects,
+separate tests/code/review. Independent installed-source comparison establishes
+strict ATIF correlation/exit0/owned group cleanup but no complete EOF drain;
+ATIF disk size is checked after exit. These limits are not native C15 adoption.
+A subprocess/remote
 provider cannot inherit managed-inprocess-mock/1 lock-cessation proof or hide a
 multi-call CO task as one PAL charge. Separate exact consultation/profile freeze,
 finite current no-extra-cost route and completion/unknown evidence precede entry.
 Fresh existing AGY models advertises claude-opus-5-5-high; read-only availability
 and no-extra-cost settings were checked locally. Account/usage metadata is kept
-local under D045. This does not establish a successful new design call.
+local under D045. The exact claude-opus-5-5-high design call now completed
+SUCCESS145.984s, effective request-review, no observed tool steps. No hard
+allowlist/plan enforcement claim. See pri02 Opus design summary/report.
 
-Overall gap: Opus checkpoint/profile consultation → separately qualified finite
-real-provider proof → one authentic improved usefulness judgment.
+Overall gap: one native compatibility proof → separately qualified native C15
+connection/finite functional proof → one authentic improved usefulness judgment.
 Prior negative owner feedback is known, not another approval wait. Started operate
 external_tail, semantic checks, future P001/multimodal/service scope and old/live
 DB/schedules remain outside this acceptance. Keep exact limits; no new auth/cost.

@@ -1383,3 +1383,25 @@ repair. Agent status confirmed the mistake; followup_task started the intended
 turn. Next continuation uses followup_task for idle/completed agents and treats
 messages as progress only after actual status/output, without duplicate work.
 No model/runtime/policy changes or new recurring approval procedure are introduced.
+
+## C081/PRI02 native preparation corrections (2026-10-10)
+
+The new AGY print review omitted the prior conflicting flag but again reported
+effective request-review after requested plan. The previous sole-cause inference
+is unconfirmed. Observed input/response steps contain no tool actions; that does
+not establish hard plan/tool enforcement. Retain actual init/step evidence and
+check effective mode on later reviews instead of equating requested flags with
+active restrictions. No configuration or permission setting was changed.
+
+Root initially inferred normal NativeCandidates return implied fully drained EOF.
+Independent Astra read _spawn's leader0.5s grace: pipes may be closed before EOF
+and a normal strict ATIF export still returned after owned process/group cleanup.
+PRI02-T records exactly that compatibility scope, not native C15 cessation.
+Also distinguish8MiB in-memory capture from post-exit export size checking; no
+live export disk cap is proved. Native integration must retain its separate
+bound-completion/ending requirements. Scope's code shorthand was corrected to
+the actual CO category coding before any fixed tests or implementation.
+
+Two scope-edit patch attempts failed without changes because Root supplied a
+nonexistent context and then out-of-order hunks. Exact local text was reread and
+the edit applied in file order. No model call or product behavior was affected.
