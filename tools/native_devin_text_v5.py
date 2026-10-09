@@ -396,6 +396,14 @@ class NativeDevinText:
         except NativeNeverEntered:
             raise
         except BaseException as error:
+            if entered and pool is not None and ref is not None and not stopped:
+                stopped = True
+                try:
+                    stop = pool.stop(ref)
+                    if type(stop) is c.StopReply and stop.ref == ref and type(stop.status) is c.StopStatus:
+                        _write(call_dir / 'stop.json', {'attempt_ref': attempt, 'status': stop.status.value, 'evidence_ref': stop.evidence_ref})
+                except BaseException:
+                    pass
             if entered and adapter is not None and host is not None:
                 try:
                     try:
@@ -411,14 +419,6 @@ class NativeDevinText:
                     _write(call_dir / 'diagnostic.json', {'attempt_ref': dict(attempt),
                         'last_status': copy.deepcopy(last_status), 'protocol_diagnostic': copy.deepcopy(diagnostic),
                         'host_observation': observation})
-                except BaseException:
-                    pass
-            if entered and pool is not None and ref is not None and not stopped:
-                stopped = True
-                try:
-                    stop = pool.stop(ref)
-                    if type(stop) is c.StopReply and stop.ref == ref and type(stop.status) is c.StopStatus:
-                        _write(call_dir / 'stop.json', {'attempt_ref': attempt, 'status': stop.status.value, 'evidence_ref': stop.evidence_ref})
                 except BaseException:
                     pass
             if not isinstance(error, Exception):
