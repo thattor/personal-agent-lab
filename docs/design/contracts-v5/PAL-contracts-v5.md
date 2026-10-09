@@ -84,12 +84,15 @@ append入力：{client_key,session_id,role:user|assistant,text:str}→{record_re
 remember入力：{key,text,source_refs:[Ref]}→{note_ref}。派生要約には必ず出典を持つ。本人原文とモデルの推測を区別する。
 correct入力：{key,old_ref,new_record_ref}→{replacement_ref,affected_refs}。
 stop_reference入力：{key,source_ref}→{affected_refs}。
+PRI01-MEM/1では、get_stop_reference_by_key{key}で原始成功receiptを読める。再適用や本文利用を許可する口ではなく、破損・不整合を拒否する読取り専用口。[固定スコープ](PRI01-MEM-SCOPE.md)に従う。
 correct/stop_referenceは派生noteの利用可否も同じ処理で更新する。RUN/ART/VERが現在利用している出典に当たれば、共有トランザクション内でTSKの公開窓口から実行権・検証を無効化する。TSKは仕事の利用出典集合を所有し、briefの出典と各stepへ渡す出典、採用した成果物・観測のsource_refsを記録する。モデル呼出し前に依存参照を登録し利用可否を再確認する。MEMは派生noteを含むaffected_refsをTSK.invalidate_by_refsへ渡す。runningはepoch無効化とdrainingを経てqueued、queuedは再評価、pausedは維持、waiting_inputは質問の出典も確認して必要なら旧質問を閉じqueuedへ。completed等の履歴状態は遡って書き換えず、成果物の出典利用停止を表示する。C11とcompleteでも現在の利用可否を確認する。原本文を他モジュールに複製してこの確認を逃れない。外部送信済みのモデル入力を取り消せるとは約束せず、以後の入力と結果採用に適用する。
 
 ### C06 関連情報の取得（MEM-03）
 入力：{query:str,session_id,work_ref?:WorkRef,limit:int}。
 出力：{summaries:[{ref,text,source_refs}],record_refs:[Ref],truncated:bool}。
 最初に小さな関連要約を返し、必要な原本文はC11で取得する。初版は直近記録＋検索索引で候補を作り、必要ならモデルが候補を選ぶ。日本語の検索方式は代表的な固有名・言い換えの例で選ぶ技術判断。高度なベクトル基盤を前提にしない。取得なしは空配列、利用停止は除外する。
+
+PRI01-MEM/1のlist_recent{session_id,limit}→{record_refs,truncated}は利用可能な同一session原記録を直近順に返す。本文利用は別途C11で確認し、派生要約やPRI回答を入力へ戻さない。[固定スコープ](PRI01-MEM-SCOPE.md)に従う。
 
 ### C07 外部操作（EXE-01）
 prepare入力：{key,work_ref,step_id,capability:str,arguments:object,source_refs:[Ref]}。
