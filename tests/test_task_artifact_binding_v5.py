@@ -268,6 +268,34 @@ class ArtifactBindingTests(unittest.TestCase):
         self.value(self.store.finish_step(request))
         self.assertEqual(self.current(claim)['current_artifact_refs'], [ref])
 
+    def test_missing_last_or_all_set_rows_cannot_erase_finished_compose_projection(self):
+        claim, _, first, request = self.compose()
+        self.value(self.store.finish_step(request))
+        _, _, second, request2 = self.compose(claim)
+        self.value(self.store.finish_step(request2))
+        for deleted in ((second['id'],), (first['id'], second['id'])):
+            with self.subTest(deleted=deleted):
+                self.conn.execute('BEGIN')
+                try:
+                    self.conn.executemany('DELETE FROM v5_tsk_artifact_set WHERE artifact_id=?', [(item,) for item in deleted])
+                    self.error(self.store.get_work({'goal_id': claim['work_ref']['goal_id']}), 'unavailable')
+                finally:
+                    self.conn.execute('ROLLBACK')
+        self.assertEqual(self.current(claim)['current_artifact_refs'], [first, second])
+
+    def test_no_artifact_work_and_unfinished_compose_still_project_empty(self):
+        claim = self.start()
+        self.assertEqual(self.current(claim)['current_artifact_refs'], [])
+        self.returned(claim)
+        report = self.value(self.begin(claim))
+        self.value(self.store.finish_step({'work_ref': claim['work_ref'], 'step_id': report['step_id'], 'result_refs': []}))
+        self.assertEqual(self.current(claim)['current_artifact_refs'], [])
+        claim, _, _, _ = self.compose(claim)
+        self.assertEqual(self.current(claim)['current_artifact_refs'], [])
+        self.value(self.control(claim, 'pause'))
+        self.value(self.release(claim))
+        self.assertEqual(self.current(claim)['current_artifact_refs'], [])
+
     def test_artifact_reinput_stays_closed(self):
         claim, step, ref, request = self.compose()
         self.value(self.store.finish_step(request))

@@ -84,3 +84,26 @@ response-loss flow, connected MEM source-stop races, full repository regression,
 independent review, VER/complete, restart recovery, provider/UI/product activation
 or usefulness acceptance. Root owns integration and those dependent checks. These
 consumer-double results do not resolve the unknown ART implementation outcome.
+
+## Independent review correction: missing set rows
+
+Root and the separate TSK reviewer found that projection validated set→Step only.
+Deleting a set row after a normal finished compose made get_work incorrectly return
+an empty or incomplete successful set, although execution-context validation rejected
+it. Cause: the implementation checked existing rows but did not derive the required
+rows from finished compose Steps. The append-only contract does not permit removal.
+
+Projection now also derives finished-compose Step→artifact identities and requires
+exact equality with the stored set bindings. Missing final/all rows fail unavailable;
+ordinary work, finished reports, started compose and abandoned compose still project
+an empty set when no artifact was attached. This same validation serves get_work,
+execution context and pre-attachment checks. No repair or hidden row reconstruction
+is performed.
+
+The two deletion variants failed before the fix in
+`/private/tmp/pal-art-bind-missing-set-before.log`. After the fix the same targeted
+command passes **52 tests**, with log
+`/private/tmp/pal-art-bind-missing-set-after.log`. Next-use regression: any change
+to an append-only projection must test removal of its last/all rows as well as
+corruption of rows that still exist. Actual ART integration remains outside this
+author test-double evidence.

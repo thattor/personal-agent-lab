@@ -273,6 +273,18 @@ class TaskStore(IntakeStore):
                 binding = _work(step['work_ref'])
                 if (binding.goal_id, binding.revision) != (work.goal_id, work.revision):
                     raise ContractError()
+            expected = {}
+            for saved in self._rows('SELECT id,wire FROM v5_tsk_step WHERE goal=? AND revision=?',
+                                    (work.goal_id, work.revision)):
+                step = loads(saved['wire'])
+                if step['status'] == 'finished' and step['action']['kind'] == 'compose':
+                    results = _refs(step['result_refs'])
+                    if (step['step_id'] != saved['id'] or len(step['result_refs']) != 1 or
+                            results[0].kind.value != 'artifact'):
+                        raise ContractError()
+                    expected[saved['id']] = results[0].id
+            if expected != {item['step_id']: item['artifact_id'] for item in rows}:
+                raise ContractError()
         except (ContractError, KeyError, TypeError):
             _reject('unavailable')
         return rows
