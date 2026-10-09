@@ -2583,3 +2583,11 @@ that outcome and invalidate its envelope; a later separately frozen Expert MAX1
 combines exact new-profile qualification with connection proof. No N3 after another
 UNKNOWN without design reassessment. Original N1/T/CO calls remain unchanged and
 unreplayed. No new human method approval, auth, cost, service or runtime/state edit.
+
+D050 actual-source clarification: independent Astra reconciliation at0a34e42
+shows _own_session/Primary reserve checks current ready identity and shared budget,
+not active Expert lease. finish_startup refuses the lease only for a not-ready
+new session. Preserve existing same-process ready Primary reservation; only orphan
+restart is startup-held. The source-free Opus blanket-readiness assumption is not
+adopted as a new shutdown. Native known-ended recovery uses fixed user text
+"Execution recovered" or "Saved draft recovered", with existing mock IDs unchanged.

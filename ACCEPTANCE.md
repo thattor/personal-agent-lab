@@ -13,8 +13,8 @@ slot and T/CO unknowns remain; no qualified transport or whole-goal PASS follows
 [Review receipt](evidence/operations/pri03-20261010/opus-design-summary.json) and
 [scope](docs/design/contracts-v5/PRI03-NATIVE-EXPERT-SCOPE.md) fix raw TSK retention,
 current-only replay, stored-byte Action binding, conservative prepared/unknown
-recovery, and honest held startup. Normal conversation under native Expert UNKNOWN
-is a release-relevant gap; unknown retirement/readiness separation are not adopted.
+recovery, and honest held startup. Normal conversation after native Expert orphan restart
+is a release-relevant gap; same-process ready Primary remains budget-eligible; unknown retirement/readiness separation are not adopted.
 
 ## Current C083 — native local preparation passes; actual qualification UNKNOWN
 

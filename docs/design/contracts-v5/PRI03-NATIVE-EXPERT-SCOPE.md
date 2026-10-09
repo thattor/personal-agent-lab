@@ -145,16 +145,19 @@ Known ended started compose may use RECOVERY02's typed original ART lookup and
 strict native binding before adopting. Unknown producer/lookup unavailable holds.
 Do not redo save/model; a new epoch or artifact set needs fresh VER. Old native
 status/evidence/completed facts remain immutable; append new recovery evidence.
-Profile-aware fixed event text distinguishes native recovery; preserve existing
-mock event/replay IDs. Event wording alone never grants recovery authority.
+Profile-aware fixed event text is "Execution recovered" for native known-ended
+settlement, and "Saved draft recovered" for native original-ART adoption. Preserve
+existing mock event/replay IDs. Event wording alone never grants recovery authority.
 
 Pause/change/cancel/stop remain immediately recordable on separate connections.
 They fence later adoption but do not free an unknown lease. Genuine ending permits
 old-owned release under current C13 latest intent. Full source closure is checked
 before begin/finish/save/ask/complete, not only cited Action refs.
 
-The one active Expert lease means startup remains held and existing ready-dependent
-model reservations remain unavailable. Keep public Result/error codes and existing
+After an orphan restart, the active Expert lease keeps the new session startup
+held and its ready-dependent model reservations unavailable. An already-ready
+same-process session retains workless Primary reservation under shared budget;
+no new readiness shutdown is introduced. Keep public Result/error codes and existing
 managed startup wire; returned held data contains identifiers/phase/reason only,
 never raw text/PID/exception. Structured controls/reference-stop/read inspection
 remain usable. This is a disclosed degraded state and release-relevant gap; it does

@@ -7,9 +7,10 @@ conditional ALIGNED, Expert REFINE. Root resolves the scope against actual sourc
 and freezes [PRI03-NATIVE-EXPERT/1](docs/design/contracts-v5/PRI03-NATIVE-EXPERT-SCOPE.md)
 under D050. TSK owns bounded raw/ending durability and original-call current replay;
 all ended-call consumers validate native bindings; Steps match stored Action bytes.
-Prepared/entering/unknown keeps the global lease/startup held. Structured controls,
-reference-stop and read inspection remain; normal model-led conversation in this
-degraded state is a release gap. No readiness split/unknown retirement is adopted.
+Prepared/entering/unknown keeps the global lease and holds orphan-restart startup.
+An already-ready same-process session retains budgeted Primary reservation.
+Structured controls/reference-stop/read remain; model-led conversation after
+held restart is a release gap. No readiness split/unknown retirement is adopted.
 
 Independent Sol fixed TSK/runner tests precede isolated Astra TSK/CO SWE runner
 source; Root owns contracts and integration. The immediate CO SWE cleanup-order

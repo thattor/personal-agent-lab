@@ -5,8 +5,9 @@ PRI03-NATIVE-EXPERT-SCOPE.md after actual exact Opus5.5 REFINE and Root
 reconciliation. Independent fixed tests precede TSK/runner code; Root owns shared
 contracts/integration. Stop-before-diagnostic source refinement is in CO SWE work.
 N2 is NOT_RUN and needs its own final-source MAX1 freeze. No Expert real entry yet.
-Prepared/entering/unknown native Expert remains held, with controls/stop/read and
-no ready-dependent inference. This disclosed degraded state is a release gap.
+After orphan restart, prepared/entering/unknown native Expert holds startup, with
+controls/stop/read and no new ready-dependent inference. Existing same-process
+ready Primary reservation remains possible under shared budget. This disclosed degraded state is a release gap.
 Original N1/T/CO unknown calls remain untouched; whole goal remains NOT_MET.
 
 Current C083: overall goal remains unmet. NativeCall, explicit NativePrimary and
