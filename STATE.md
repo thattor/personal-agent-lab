@@ -1,6 +1,25 @@
 # STATE.md
 
-## Current C075 — deterministic verification connected
+## Current C076 candidate — local verified completion connected
+
+Source bdce832b8fdb68f6317c033155474a4204703189 passes full711 host tests
+(24.789s, exit0). Separate native Sol approves final RUN with30 tests; TSK has
+separate46-test approval after Astra's correction. Actual temporary SQLite owners
+now connect compose -> verify -> completed -> later source-stop history. Unknown
+checks stay non-completing. [Receipt](evidence/operations/complete01-20261009/verification.json).
+CO SWE task39213ad4 passed its immutable16, then Root actual consumers exposed the
+C02 mismatch; unknown-error terminalization was independently found and repaired.
+Original failures, author hashes and corrective evidence are retained separately.
+
+Milestone Opus design alignment is next; candidate is not yet the C076 acceptance
+record. Root is examining the next concrete C11 body/read consumer with Astra.
+No running product is enabled: mock VER wiring remains explicit. Whole v5,
+PRI/provider/UI, semantic verification, general recovery and usefulness are unmet.
+CO stays0.4.5 on the existing shared state/routes. This RUN task was one owned CO
+task, not30; host cap12/adapter, provider capacity unknown. Previous unknown calls,
+stopped schedules, live DBs, no-new-auth and no-extra-payment boundaries continue.
+
+## Retained C075 — deterministic verification connected
 
 Exact source fab7c77bb4e8ece6b094e7b96c9f7194c04e3d53 passes full650 host tests
 (24.227s, exit0),45 focused tests and separate Sol6.1 rereview APPROVE. TSK context
