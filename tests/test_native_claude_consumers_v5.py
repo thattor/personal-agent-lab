@@ -1,6 +1,7 @@
 """Real disposable v5 owners with typed Claude fixture endings; no real-model claim."""
 import copy,importlib,sys,unittest
 from pathlib import Path
+from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]));sys.path.insert(0,str(Path(__file__).resolve().parent))
 from pal.contracts_v5 import dumps,loads
 import native_claude_fixtures_v5 as f
@@ -9,10 +10,12 @@ import test_native_expert_runner_v5 as expert_fixture
 from native_expert_fixtures_v5 import NativeFixture
 class ClaudeConsumerTests(unittest.TestCase):
  def primary(self):
-  c=primary_fixture.NativePrimaryTests(methodName='runTest');c.setUp();self.addCleanup(c.doCleanups)
   class Provider(primary_fixture.Provider):
+   def __init__(self,owner):super().__init__(owner);self.profile=f.profile()
    def returned(self,request,attempt):return f.returned(request,self.profile,dumps({'reply':'fixture reply','proposal':self.proposal}),attempt)
-  c.provider=Provider(c);c.provider.profile=f.profile();c.host=c.make_host();return c
+  c=primary_fixture.NativePrimaryTests(methodName='runTest');self.addCleanup(c.doCleanups)
+  with patch.object(primary_fixture,'Provider',Provider):c.setUp()
+  return c
  def expert(self):
   c=expert_fixture.NativeExpertRunnerTests(methodName='runTest');c.setUp();self.addCleanup(c.doCleanups)
   class Provider(expert_fixture.FixtureProvider):
