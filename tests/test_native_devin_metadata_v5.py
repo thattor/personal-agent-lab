@@ -37,6 +37,7 @@ class DevinMetadataTests(unittest.TestCase):
         patch.dict(sys.modules,{Candidates.__module__:module}).start()
         self.api=SimpleNamespace(NativeCandidates=Candidates,launch_environment=lambda:{'PATH':'fixture'})
         self.version=b'devin 3000.11.3 (9c803229faa4)\n'
+        self.transport_version=b'devin 3000.11.3 (9c803229faa4)\n'
         self.auth=b'Authenticated: fixture\n'
         self.catalog={'families':[{'variants':[{'model_uid':'swe-2-high','cost_tier':'Free'}]}]}
         self.metadata_error=None
@@ -44,7 +45,7 @@ class DevinMetadataTests(unittest.TestCase):
             owner.assertEqual(Path(executable),owner.executable);owner.assertEqual(env,{'PATH':'fixture'})
             owner.commands.append(tuple(args))
             if owner.metadata_error:raise owner.metadata_error
-            return {('--version',):owner.version,('auth','status'):owner.auth,
+            return {('--version',):owner.version,('version',):owner.transport_version,('auth','status'):owner.auth,
                     ('models','list','--format','json'):json.dumps(owner.catalog).encode()}[tuple(args)]
         patch.object(wrapper,'_metadata',side_effect=metadata).start()
         self.which=patch.object(wrapper.shutil,'which',return_value=str(self.executable)).start()
@@ -58,12 +59,16 @@ class DevinMetadataTests(unittest.TestCase):
         self.assertEqual((pin['route'],pin['model'],pin['version'],pin['cost_tier']),
                          ('devin','swe-2-high','3000.11.3','Free'))
         self.assertEqual(self.selected,[('implement','coding',{'mode':'fixed','targets':{'implement':{'route':'devin','model':'swe-2-high'}}})])
-        self.assertEqual(self.commands,[('--version',),('auth','status'),('models','list','--format','json')])
+        self.assertEqual(self.commands,[('--version',),('version',),('auth','status'),('models','list','--format','json')])
         self.assertEqual(pin['selection_digest'],'sha256:'+hashlib.sha256(json.dumps(self.selection,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False).encode()).hexdigest())
         for relative,digest in pin['runtime_hashes'].items():
             self.assertEqual(digest,hashlib.sha256((self.runtime/relative).read_bytes()).hexdigest())
         self.assertEqual(pin['executable_sha256'],hashlib.sha256(self.executable.read_bytes()).hexdigest())
         self.assertEqual(pin['wrapper_sha256'],hashlib.sha256(Path(wrapper.__file__).read_bytes()).hexdigest())
+        for raw in (b'devin 3000.11.3 (otherbuild)',b'devin 3000.11.2 (9c803229faa4)',b'3000.11.3'):
+            with self.subTest(transport_version=raw):
+                self.transport_version=raw;self.commands.clear();self.refuse()
+                self.assertEqual(self.commands,[('--version',),('version',)])
     def test_wrong_version_prefix_substring_and_malformed_build_refuse(self):
         for version in (b'devin 3000.11.2 (9c803229faa4)',b'garbage devin 3000.11.3 (9c803229faa4)',
                         b'devin 3000.11.3 (9c803229faa4) garbage',b'devin 3000.11.3 ()',
