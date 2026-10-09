@@ -840,3 +840,14 @@ both to the source commit. Do not infer test success from completion or a wrappe
 error. Evidence: co-int00-20261009/full-initial-wrapper-error.log,
 full-pre-fix-retry.log, deadline-before.log, deadline-after.log,
 full-integrated.log and sol-independent-review.md.
+
+## C068 — oversized planner instructions in a design-assessment task
+
+CO taskad95757c7dd847fcbcabfd3903bec53c completed one exact Opus5.5 planner call,
+then rejected its5795-byte instructions against the installed4096-byte field limit.
+No assessment worker, verifier or file write ran. The Native admission records a
+confirmed stop; this known terminal plan failure is distinct from the old unknown
+SWE call. Preserve plan_invalid and verified=false. The corrected bounded task
+asks the planner for<=1200-byte instructions referring to the goal, without drafting
+or predetermining the assessment. Future assessment requests keep plan instructions
+brief; no runtime/state edit or limit bypass. Evidence: milestone-plan-failure.json.

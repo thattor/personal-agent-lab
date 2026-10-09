@@ -7,9 +7,28 @@ Latest owner direction is D036/C068 (PAL人間判断 turn
 route while SWE-2 is unavailable, prioritizing usable AGY; direct calls are allowed
 when CO does not support the route. This overrides the earlier CO-only restriction
 for this PAL work, without new auth/payment/publication or broad permission changes.
-INT00 is the next implementation slice; old unknown status is preserved, not a
-whole-project stop. SOL owns integration; isolated Astra implementation and a fresh
-Sol6.1 review are selected while AGY access/cost conditions are unresolved.
+INT00 common wire preparation is implemented and integrated: native gpt-6-astra
+authored the four files; a fresh gpt-6.1-sol context independently approved them.
+SOL confirmed byte identity, connected five new synthetic consumer cases and ran
+full422 tests PASS22.424s on source92732afa. An existing deadline shutdown race
+found by regression was reproduced, fixed and independently reviewed separately.
+The exact claude/claude-opus-5-5 CO design assessment is ALIGNED; SOL checked and
+integrated its sole review note. CO verification covers its bounded format and
+file version. Services/authority/DB/provider/Goal/UI/human value remain NOT_RUN. See
+[verification](evidence/operations/co-int00-20261009/verification.json) and
+[independent reviews](evidence/operations/co-int00-20261009/sol-independent-review.md).
+Old unknown status is preserved, not a whole-project stop. SOL owns integration;
+AGY access/cost conditions remain unresolved and no new trust is enabled.
+
+Next scoped unit: TSK-01 intake, C03.create/C02.get_work, over an isolated mock
+SQLite schema. It must mint formal Condition IDs, preserve nonexpanding host/request
+Grants and zero budgets, commit intake/event atomically, and prove same-key replay,
+different-input conflict, not_found/stale and rollback. This is the selected next
+development dependency, not implemented behavior or product activation. No model,
+GitHub, UI or existing service/DB dependency is needed. SOL owns shared schema and
+integration. [Opus rationale](evidence/operations/co-int00-20261009/milestone-review.md).
+The author-time pending statements in INT00-IMPLEMENTATION.md are superseded by
+this checkpoint and verification.json; that four-file snapshot is retained exactly.
 
 C068 investigation found Devin session unique-cobweb: exact83,547-byte prompt match,
 17 system and3 copied user nodes, no saved assistant/tool response, no ATIF result.

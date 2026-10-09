@@ -1618,3 +1618,45 @@ gpt-6.1-sol for independent review. Current Codex Pro ordinary usage is allowed,
 40% weekly used; no credit purchase, usage reset or paid fallback is authorized.
 Report actual launch/results and any remaining AGY limitation to the existing
 human window. Do not ask the owner to repeat the technical implementation decision.
+
+
+D036 implementation/assessment outcome — C068:
+Astra authored d286fe7 (four INT00 files) in an isolated worktree; a fresh native
+Sol6.1 context approved the exact commit. SOL's601df87 cherry-pick is byte-identical.
+Consumer tests8892440 add five pure composition cases. The unrelated probe race
+fix92732afa is separately reviewed; it changes only diagnostic shutdown handling,
+not product authority or historical live acceptance. Root full422 PASS22.424s and
+all seven source hashes are recorded in co-int00-20261009/verification.json.
+
+Exact claude/claude-opus-5-5 via CO0.4.5 independently assessed the shared-wire design
+as ALIGNED at9390c38, with no design blocker. SOL inspected/applied the sole note
+and confirmed its protected inputs and source92732afa hashes at the review base.
+Taska9fdddb584e241b99ad1c748b49fcbb7 is verified for the bounded document verifier;
+there is no CO code-review step or whole-product verification in that flag. Two
+calls completed. Its predecessorad95757c7dd847fcbcabfd3903bec53c completed one call
+but failed plan_invalid (instructions5795>4096 bytes); no worker/verifier/file write
+occurred. Both outcomes are retained, total3 new Native Opus calls. The corrective
+prompt requested<=1200 bytes; actual1367 satisfied the runtime4096-byte bound,
+not that stricter prompt target. No runtime limit was changed.
+
+SOL dispositions of the design note:
+- The author-time pending statements are superseded by current STATE/ACCEPTANCE and
+  verification, preserving the exact author snapshot. D036 replaces only the old
+  model/sequence assignment, not INT00 semantics.
+- The root branch lineage is a698391 ->601df87 ->8892440 ->92732afa ->9390c38.
+  Every supplied source hash at92732afa matches the review base. Source authoring,
+  synthetic consumer work and the independently reviewed probe fix are distinct.
+- The note's phrase "both condition check enums" is imprecise: one CheckKind enum
+  with three values is shared by DraftCondition and Condition. This wording does
+  not change the code or accepted design. Wrong-kind decoder errors remain bounded.
+- Full v5 service adoption, host authority, persistence, providers, live UI and
+  usefulness remain unproven. A parsed Ref/value is never operational authority.
+
+Select the next bounded preparation unit proposed by Opus: TSK-01 C03.create and
+C02.get_work over an isolated mock SQLite schema. Scope includes host condition-ID
+issuance, nonexpanding host/request Grant intersection, zero budgets, atomic
+intake/event storage, key replay/conflict and not_found/stale/rollback tests. SOL
+owns shared schema/integration, with isolated implementation and an independent
+exact-commit review before adoption. No real DB/model/connector/UI is needed.
+This is a technical next-work selection within D036; it is NOT_RUN and does not
+activate the full candidate plan or create a new human approval request.

@@ -1,5 +1,27 @@
 # ACCEPTANCE.md — Stable-0 definition of done
 
+## Current C068 / D036 shared-wire preparation (2026-10-09)
+
+INT00/1 code and synthetic consumer integration are MET for their scoped behavior.
+Native gpt-6-astra authored four isolated files; fresh gpt-6.1-sol independently
+approved exactd286fe7. SOL verified byte identity and added five connection cases.
+Targeted15 methods cover119 shared fixtures and3 doctests; consumer11 cases pass.
+An existing probe deadline race was deterministically reproduced, fixed and
+independently approved; related22 and full422 PASS22.424s on source92732afa.
+[Versioned evidence](evidence/operations/co-int00-20261009/verification.json),
+[independent reviews](evidence/operations/co-int00-20261009/sol-independent-review.md).
+Exact Opus5.5 design-alignment review is ALIGNED; SOL checked the input hashes and
+integrated its note. The CO task's verified flag proves its bounded document
+verifier/file version only. [Assessment and scope](evidence/operations/co-int00-20261009/milestone-review.md).
+
+WorkRef/Ref/DraftBrief/Brief/Grant/Result/Action are now immutable, strict wire
+values with reusable cases. This resolves the code dependency for later consumers,
+without authorizing resources or implementing availability, saved IDs, Operation
+ledger, transactions, services, real providers, Goal/UI flow or human usefulness.
+Those remain NOT_RUN/UNMET. Original SWE task remains unknown/verified=false;
+D036 explicitly authorized the separate implementation, without cancel/retry/resume.
+The following C065-C067 entries retain their historical file/version boundaries.
+
 ## C065 / INT00 preparation evidence (2026-10-09)
 
 Common-wire Opus5.5 consultation, SOL technical dispositions, imported v5 provenance
@@ -9,7 +31,7 @@ SWE-2 High implementation reached900seconds with unknown result/process outcome;
 CO task6a9dea446fa241ceb6ee876bbdb08be9 is awaiting_decision, verified=false.
 No code was returned, and no contract implementation verifier or independent code
 review ran. These records do not qualify any new CT/E2E/provider integration or human
-usefulness row. [Current continuation/evidence](STATE.md#exact-next-action--c065d034).
+usefulness row. [Preserved continuation/evidence](STATE.md#preserved-int00-continuation-restriction).
 
 ## C066 / D035 independent preparation evidence (2026-10-09)
 

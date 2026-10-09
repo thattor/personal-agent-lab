@@ -5,10 +5,12 @@ SWE-2 remains preferred; while unavailable, use the owner's approved Astra,
 Sol6.1 or AGY Opus5.5/Sonnet5.5 alternative. Prefer usable AGY, and use a direct
 route when CO cannot support it. Verify exact model, existing access/cost and
 isolation. Preserve the old unknown CO task; no journal edit or implicit cancel.
-See STATE/DECISIONS for the scoped diagnostic evidence and current assignment.
+INT00 shared-wire preparation is integrated at C068; next is bounded TSK-01 intake
+(C03/C02) in an isolated mock schema, as selected in STATE/DECISIONS.
+See those records for diagnostic evidence, verified scope and current assignment.
 
 ## Mission
-The project-level destination is the personal assistant described in SPEC.md. Manage project goal → GitHub milestone → goal-bearing Issue → verified work unit under G-001/D-022. [Latest overall plan P-001 v2](docs/plans/P-001-v2.md) is PROPOSED, not human-adopted; v1 is retained history. Stable-0 is released; Stable-1 under D-021 remains the approved current milestone; C065/D034 authorizes the scoped CO development start; INT-00 contract preparation is current, while external product activation remains subject to the reviewed candidate scope. Resume STATE.md, continue independently authorized work, and never activate PROPOSED stages from GitHub metadata alone.
+The project-level destination is the personal assistant described in SPEC.md. Manage project goal → GitHub milestone → goal-bearing Issue → verified work unit under G-001/D-022. [Latest overall plan P-001 v2](docs/plans/P-001-v2.md) is PROPOSED, not human-adopted; v1 is retained history. Stable-0 is released; Stable-1 under D-021 remains the approved current milestone; C065/D034 authorizes the scoped CO development start; INT-00 shared-wire preparation is integrated; bounded TSK intake is next, while external product activation remains subject to the reviewed candidate scope. Resume STATE.md, continue independently authorized work, and never activate PROPOSED stages from GitHub metadata alone.
 
 This is a greenfield project. Do not search for, read, copy, migrate, or preserve compatibility with any old PAL implementation, schema, workflow, review, P0/P1 list, or codebase.
 

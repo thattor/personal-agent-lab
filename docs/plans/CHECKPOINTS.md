@@ -871,3 +871,35 @@ The assessment selects INT00 shared types as the next dependency, not extra help
 work to fill slots. Its unknown call remains preserved with no retry/switch;
 Operation/ledger and ART/grant/source work follow. Preserve stopped trials/schedules,
 original data, old state and historical acceptance limits.
+
+
+## C068 — shared wire implementation through the authorized fallback, 2026-10-09
+
+Outcome: INT00/1 pure shared values and its source-membership boundary are MET.
+Native gpt-6-astra implemented four isolated files; separate gpt-6.1-sol approved
+the exact commit. SOL confirmed byte identity and five new synthetic consumer
+cases. A flaky existing probe deadline race was deterministically reproduced,
+fixed and separately reviewed. Full422 PASS22.424s at source92732afa; targeted15
+methods/119 fixtures/3 doctests, consumer11, probe22.
+[Verification](../../evidence/operations/co-int00-20261009/verification.json),
+[reviews](../../evidence/operations/co-int00-20261009/sol-independent-review.md).
+
+Independent exact Opus5.5 design assessment through CO0.4.5 is ALIGNED; source hashes
+at the assessment base match. The note-only task has2 calls and a successful
+bounded-document verifier; an earlier terminal plan-length failure has1 call and
+remains failed. This is not a CO code-review or product-verification claim.
+[Assessment](../../evidence/operations/co-int00-20261009/milestone-review.md),
+[receipt](../../evidence/operations/co-int00-20261009/milestone-receipt.json).
+
+Contribution: later modules can now share strict WorkRef/Ref/Brief/Grant/Result/Action
+and synthetic examples. TSK C03/C02 intake is the selected next bounded unit;
+condition-ID issuance, grant intersection, idempotent transaction and rollback
+are still NOT_RUN. No services, real provider/connector, saved provenance, complete
+Goal/UI flow, useful human outcome, main merge or release is established.
+
+D036 is independently corroborated by the actual human turn. Old SWE unknown
+state/report digest is unchanged; local absent PID/output observations are not a
+remote termination receipt. AGY lists exact5.5 variants but its trust/cost conditions
+are unresolved; the home-wide startup was rejected by automatic review and was
+not bypassed. Ordinary Codex and existing Claude Pro/extra-use-OFF routes were used.
+No new auth/payment/publication, live DB operation or schedule/trial restart.
