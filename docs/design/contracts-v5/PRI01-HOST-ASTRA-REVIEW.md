@@ -112,3 +112,45 @@ Evidence: `/private/tmp/pri-host-astra-corrected-process.log`; focused logs use
 Recommended correction is atomic interruption plus terminal/event settlement,
 so strict public validation need not accept an invalid intermediate persisted
 phase. Root was notified before approval; production source remains untouched.
+
+## Final exact candidate — APPROVE within PRI01/1
+
+Commit `d9f0e12de2db00a24e502dbe06acbf8843ce9be6`; source SHA256
+`81a5ec8b6c65fce3b6aa5f76b0cd0430d4914ea972ea1740a16100842d99bfec`.
+The strict phase checks remain in place. Recovery now changes an old, qualified
+admitted call to interrupted inside the same terminal transaction as its call
+hash, turn outcome and C14 event. It no longer commits an invalid intermediate
+admitted/interrupted state. No blocking finding remains in the reviewed scope.
+The two prior REQUEST_CHANGES findings and evidence above remain retained.
+
+Independent execution with `/opt/homebrew/bin/python3.13 -E -s -B`, unittest
+TestLoader discovery of the four unchanged files:
+`test_primary_host_v5.py`, `test_primary_binding_review_v5.py`,
+`test_primary_phase_review_v5.py`, `test_primary_process_v5.py`:
+**53 methods PASS, 1.034s, exit 0**. This includes fixed39, binding8, phase1 with
+four corruption subcases, and process5 including actual child termination/wait,
+two-connection concurrency and the bounded whole mock flow. Log:
+`/private/tmp/pri-host-astra-final53.log`.
+
+Four additional independent actual-owner cases passed under the same runtime:
+- Original consume-to-admission source-stop produces zero callback entry.
+- Original malformed saved error is unavailable with no canary echo.
+- Actual callback return with failed ending persistence leaves admitted history;
+  after a new managed startup, append_event performs its real writes then raises
+  RuntimeError. Recovery holds with an identical database snapshot, including
+  admitted call status/hash, and no budget change. Restoring the event owner lets
+  the same turn settle interrupted without another callback.
+- The same after-event-write KeyboardInterrupt rolls back every settlement write,
+  propagates and leaves no transaction open; restored retry settles once.
+
+Log `/private/tmp/pri-host-astra-final-independent.log` binds the exact source
+hash. Final candidate checkout remains clean; reviewer changed only this review
+note and the previously authorized independent phase test in the review branch.
+
+Approval is exact-source and scoped to the cooperative managed in-process mock.
+The hashes detect inconsistent persisted bindings; they are not cryptographic
+proof against coordinated trusted-store forgery. Lock/permit evidence does not
+prove child/provider cessation. No live DB migration or external provider was
+used. Full regression remains Root's separate responsibility; this does not
+establish real-provider readiness, authentic usefulness or overall product
+completion. No new owner approval or execution authority is created by this note.
