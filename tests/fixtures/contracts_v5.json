@@ -1,0 +1,2809 @@
+{
+  "contract_id": "PAL-v5-common-wire",
+  "contract_version": "INT00/1",
+  "input_version": "PAL-contracts-v5",
+  "fixture_version": 1,
+  "cases": [
+    {
+      "id": "work-boundary",
+      "target": "WorkRef",
+      "contract": [
+        "sec3",
+        "CT-10",
+        "CT-19"
+      ],
+      "expect": "accepted",
+      "input": {
+        "goal_id": "goal:synthetic",
+        "revision": 1,
+        "epoch": 0
+      }
+    },
+    {
+      "id": "work-revision-0",
+      "target": "WorkRef",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "goal_id": "goal:synthetic",
+        "revision": 0,
+        "epoch": 0
+      }
+    },
+    {
+      "id": "work-epoch--1",
+      "target": "WorkRef",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "goal_id": "goal:synthetic",
+        "revision": 1,
+        "epoch": -1
+      }
+    },
+    {
+      "id": "work-revision-True",
+      "target": "WorkRef",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "goal_id": "goal:synthetic",
+        "revision": true,
+        "epoch": 0
+      }
+    },
+    {
+      "id": "work-revision-1.0",
+      "target": "WorkRef",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "goal_id": "goal:synthetic",
+        "revision": 1.0,
+        "epoch": 0
+      }
+    },
+    {
+      "id": "work-revision-'1'",
+      "target": "WorkRef",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "goal_id": "goal:synthetic",
+        "revision": "1",
+        "epoch": 0
+      }
+    },
+    {
+      "id": "work-goal_id-''",
+      "target": "WorkRef",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "goal_id": "",
+        "revision": 1,
+        "epoch": 0
+      }
+    },
+    {
+      "id": "work-goal_id-None",
+      "target": "WorkRef",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "goal_id": null,
+        "revision": 1,
+        "epoch": 0
+      }
+    },
+    {
+      "id": "work-missing",
+      "target": "WorkRef",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "goal_id": "g",
+        "revision": 1
+      }
+    },
+    {
+      "id": "work-extra",
+      "target": "WorkRef",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "goal_id": "goal:synthetic",
+        "revision": 1,
+        "epoch": 0,
+        "extra": 0
+      }
+    },
+    {
+      "id": "work-opaque-id",
+      "target": "WorkRef",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "accepted",
+      "input": {
+        "goal_id": " \n日本語 ",
+        "revision": 1,
+        "epoch": 0
+      }
+    },
+    {
+      "id": "ref-record",
+      "target": "Ref",
+      "contract": [
+        "sec3",
+        "C11",
+        "CT-05"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "record",
+        "id": "synthetic:record"
+      }
+    },
+    {
+      "id": "ref-note",
+      "target": "Ref",
+      "contract": [
+        "sec3",
+        "C11",
+        "CT-05"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "note",
+        "id": "synthetic:note"
+      }
+    },
+    {
+      "id": "ref-source",
+      "target": "Ref",
+      "contract": [
+        "sec3",
+        "C11",
+        "CT-05"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "source",
+        "id": "synthetic:source"
+      }
+    },
+    {
+      "id": "ref-receipt",
+      "target": "Ref",
+      "contract": [
+        "sec3",
+        "C11",
+        "CT-05"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "receipt",
+        "id": "synthetic:receipt"
+      }
+    },
+    {
+      "id": "ref-artifact",
+      "target": "Ref",
+      "contract": [
+        "sec3",
+        "C11",
+        "CT-05"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "artifact",
+        "id": "synthetic:artifact"
+      }
+    },
+    {
+      "id": "ref-verification",
+      "target": "Ref",
+      "contract": [
+        "sec3",
+        "C11",
+        "CT-05"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "verification",
+        "id": "synthetic:verification"
+      }
+    },
+    {
+      "id": "bad-ref-17",
+      "target": "Ref",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "Artifact",
+        "id": "x"
+      }
+    },
+    {
+      "id": "bad-ref-18",
+      "target": "Ref",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "url",
+        "id": "x"
+      }
+    },
+    {
+      "id": "bad-ref-19",
+      "target": "Ref",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "source",
+        "id": ""
+      }
+    },
+    {
+      "id": "bad-ref-20",
+      "target": "Ref",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "source",
+        "id": 1
+      }
+    },
+    {
+      "id": "draft-ct24",
+      "target": "DraftBrief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "accepted",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "formal-ct24",
+      "target": "Brief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "accepted",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved",
+            "id": "condition:synthetic"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "model-draft-provided",
+      "target": "ModelDraftBrief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "accepted",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      },
+      "allowed_refs": [
+        {
+          "kind": "record",
+          "id": "synthetic:record"
+        },
+        {
+          "kind": "note",
+          "id": "synthetic:note"
+        },
+        {
+          "kind": "source",
+          "id": "synthetic:source"
+        },
+        {
+          "kind": "receipt",
+          "id": "synthetic:receipt"
+        },
+        {
+          "kind": "artifact",
+          "id": "synthetic:artifact"
+        },
+        {
+          "kind": "verification",
+          "id": "synthetic:verification"
+        }
+      ]
+    },
+    {
+      "id": "DraftBrief-empty",
+      "target": "DraftBrief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DraftBrief-check",
+      "target": "DraftBrief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "unknown"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DraftBrief-bool-issue",
+      "target": "DraftBrief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            true
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DraftBrief-missing-file-ref",
+      "target": "DraftBrief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DraftBrief-extra-target",
+      "target": "DraftBrief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ],
+          "other": 0
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DraftBrief-bad-context",
+      "target": "DraftBrief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "Brief-empty",
+      "target": "Brief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Brief-check",
+      "target": "Brief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "unknown",
+            "id": "condition:synthetic"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Brief-bool-issue",
+      "target": "Brief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            true
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved",
+            "id": "condition:synthetic"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Brief-missing-file-ref",
+      "target": "Brief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved",
+            "id": "condition:synthetic"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Brief-extra-target",
+      "target": "Brief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ],
+          "other": 0
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved",
+            "id": "condition:synthetic"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Brief-bad-context",
+      "target": "Brief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved",
+            "id": "condition:synthetic"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "draft-id-'invented'",
+      "target": "DraftBrief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved",
+            "id": "invented"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "draft-id-None",
+      "target": "DraftBrief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved",
+            "id": null
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "formal-id-True",
+      "target": "Brief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "formal-id-False",
+      "target": "Brief",
+      "contract": [
+        "C03",
+        "CT-24"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved",
+            "id": ""
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "draft-condition",
+      "target": "DraftCondition",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "accepted",
+      "input": {
+        "description": "",
+        "check": "semantic"
+      }
+    },
+    {
+      "id": "formal-condition",
+      "target": "Condition",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "accepted",
+      "input": {
+        "id": "c",
+        "description": "",
+        "check": "source_fetched"
+      }
+    },
+    {
+      "id": "target-content-not-policy",
+      "target": "Target",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "accepted",
+      "input": {
+        "repository": "",
+        "issue_numbers": [
+          -1,
+          0,
+          7,
+          7
+        ],
+        "files": [
+          {
+            "path": "",
+            "ref": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "ordinary-content",
+      "target": "DraftBrief",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "accepted",
+      "input": {
+        "purpose": "",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "",
+          " \n"
+        ],
+        "conditions": [
+          {
+            "description": "",
+            "check": "semantic"
+          },
+          {
+            "description": "",
+            "check": "semantic"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          },
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "result-object",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "accepted",
+      "input": {
+        "ok": true,
+        "value": {
+          "mixed": [
+            null,
+            true,
+            1,
+            1.0,
+            -0.0,
+            "日本語"
+          ]
+        }
+      }
+    },
+    {
+      "id": "result-null",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "accepted",
+      "input": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "error-invalid_input",
+      "target": "Result",
+      "contract": [
+        "sec3",
+        "C10",
+        "CT-02",
+        "CT-08",
+        "CT-10"
+      ],
+      "expect": "accepted",
+      "input": {
+        "ok": false,
+        "error": {
+          "code": "invalid_input",
+          "message": "",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "synthetic:record"
+            },
+            {
+              "kind": "note",
+              "id": "synthetic:note"
+            },
+            {
+              "kind": "source",
+              "id": "synthetic:source"
+            },
+            {
+              "kind": "receipt",
+              "id": "synthetic:receipt"
+            },
+            {
+              "kind": "artifact",
+              "id": "synthetic:artifact"
+            },
+            {
+              "kind": "verification",
+              "id": "synthetic:verification"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "error-not_found",
+      "target": "Result",
+      "contract": [
+        "sec3",
+        "C10",
+        "CT-02",
+        "CT-08",
+        "CT-10"
+      ],
+      "expect": "accepted",
+      "input": {
+        "ok": false,
+        "error": {
+          "code": "not_found",
+          "message": "",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "synthetic:record"
+            },
+            {
+              "kind": "note",
+              "id": "synthetic:note"
+            },
+            {
+              "kind": "source",
+              "id": "synthetic:source"
+            },
+            {
+              "kind": "receipt",
+              "id": "synthetic:receipt"
+            },
+            {
+              "kind": "artifact",
+              "id": "synthetic:artifact"
+            },
+            {
+              "kind": "verification",
+              "id": "synthetic:verification"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "error-ambiguous",
+      "target": "Result",
+      "contract": [
+        "sec3",
+        "C10",
+        "CT-02",
+        "CT-08",
+        "CT-10"
+      ],
+      "expect": "accepted",
+      "input": {
+        "ok": false,
+        "error": {
+          "code": "ambiguous",
+          "message": "",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "synthetic:record"
+            },
+            {
+              "kind": "note",
+              "id": "synthetic:note"
+            },
+            {
+              "kind": "source",
+              "id": "synthetic:source"
+            },
+            {
+              "kind": "receipt",
+              "id": "synthetic:receipt"
+            },
+            {
+              "kind": "artifact",
+              "id": "synthetic:artifact"
+            },
+            {
+              "kind": "verification",
+              "id": "synthetic:verification"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "error-stale",
+      "target": "Result",
+      "contract": [
+        "sec3",
+        "C10",
+        "CT-02",
+        "CT-08",
+        "CT-10"
+      ],
+      "expect": "accepted",
+      "input": {
+        "ok": false,
+        "error": {
+          "code": "stale",
+          "message": "",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "synthetic:record"
+            },
+            {
+              "kind": "note",
+              "id": "synthetic:note"
+            },
+            {
+              "kind": "source",
+              "id": "synthetic:source"
+            },
+            {
+              "kind": "receipt",
+              "id": "synthetic:receipt"
+            },
+            {
+              "kind": "artifact",
+              "id": "synthetic:artifact"
+            },
+            {
+              "kind": "verification",
+              "id": "synthetic:verification"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "error-denied",
+      "target": "Result",
+      "contract": [
+        "sec3",
+        "C10",
+        "CT-02",
+        "CT-08",
+        "CT-10"
+      ],
+      "expect": "accepted",
+      "input": {
+        "ok": false,
+        "error": {
+          "code": "denied",
+          "message": "",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "synthetic:record"
+            },
+            {
+              "kind": "note",
+              "id": "synthetic:note"
+            },
+            {
+              "kind": "source",
+              "id": "synthetic:source"
+            },
+            {
+              "kind": "receipt",
+              "id": "synthetic:receipt"
+            },
+            {
+              "kind": "artifact",
+              "id": "synthetic:artifact"
+            },
+            {
+              "kind": "verification",
+              "id": "synthetic:verification"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "error-unavailable",
+      "target": "Result",
+      "contract": [
+        "sec3",
+        "C10",
+        "CT-02",
+        "CT-08",
+        "CT-10"
+      ],
+      "expect": "accepted",
+      "input": {
+        "ok": false,
+        "error": {
+          "code": "unavailable",
+          "message": "",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "synthetic:record"
+            },
+            {
+              "kind": "note",
+              "id": "synthetic:note"
+            },
+            {
+              "kind": "source",
+              "id": "synthetic:source"
+            },
+            {
+              "kind": "receipt",
+              "id": "synthetic:receipt"
+            },
+            {
+              "kind": "artifact",
+              "id": "synthetic:artifact"
+            },
+            {
+              "kind": "verification",
+              "id": "synthetic:verification"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "error-limit",
+      "target": "Result",
+      "contract": [
+        "sec3",
+        "C10",
+        "CT-02",
+        "CT-08",
+        "CT-10"
+      ],
+      "expect": "accepted",
+      "input": {
+        "ok": false,
+        "error": {
+          "code": "limit",
+          "message": "",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "synthetic:record"
+            },
+            {
+              "kind": "note",
+              "id": "synthetic:note"
+            },
+            {
+              "kind": "source",
+              "id": "synthetic:source"
+            },
+            {
+              "kind": "receipt",
+              "id": "synthetic:receipt"
+            },
+            {
+              "kind": "artifact",
+              "id": "synthetic:artifact"
+            },
+            {
+              "kind": "verification",
+              "id": "synthetic:verification"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "error-conflict",
+      "target": "Result",
+      "contract": [
+        "sec3",
+        "C10",
+        "CT-02",
+        "CT-08",
+        "CT-10"
+      ],
+      "expect": "accepted",
+      "input": {
+        "ok": false,
+        "error": {
+          "code": "conflict",
+          "message": "",
+          "refs": [
+            {
+              "kind": "record",
+              "id": "synthetic:record"
+            },
+            {
+              "kind": "note",
+              "id": "synthetic:note"
+            },
+            {
+              "kind": "source",
+              "id": "synthetic:source"
+            },
+            {
+              "kind": "receipt",
+              "id": "synthetic:receipt"
+            },
+            {
+              "kind": "artifact",
+              "id": "synthetic:artifact"
+            },
+            {
+              "kind": "verification",
+              "id": "synthetic:verification"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "bad-result-54",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "ok": 1,
+        "value": 0
+      }
+    },
+    {
+      "id": "bad-result-55",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "ok": "true",
+        "value": 0
+      }
+    },
+    {
+      "id": "bad-result-56",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "ok": true,
+        "error": {
+          "code": "invalid_input",
+          "message": "",
+          "refs": []
+        }
+      }
+    },
+    {
+      "id": "bad-result-57",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "ok": true,
+        "value": null,
+        "error": null
+      }
+    },
+    {
+      "id": "bad-result-58",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "ok": false,
+        "value": 0
+      }
+    },
+    {
+      "id": "bad-result-59",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "ok": false,
+        "error": {
+          "code": "other",
+          "message": "",
+          "refs": []
+        }
+      }
+    },
+    {
+      "id": "bad-result-60",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "ok": false,
+        "error": {
+          "code": "stale",
+          "message": ""
+        }
+      }
+    },
+    {
+      "id": "bad-result-61",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "ok": false,
+        "error": {
+          "code": "stale",
+          "message": "",
+          "refs": [
+            {
+              "kind": "source",
+              "id": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "action-0",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "lookup",
+        "query": "q"
+      }
+    },
+    {
+      "id": "model-action-0",
+      "target": "ModelAction",
+      "contract": [
+        "C12",
+        "CT-12",
+        "CT-26"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "lookup",
+        "query": "q"
+      },
+      "allowed_refs": [
+        {
+          "kind": "record",
+          "id": "synthetic:record"
+        },
+        {
+          "kind": "note",
+          "id": "synthetic:note"
+        },
+        {
+          "kind": "source",
+          "id": "synthetic:source"
+        },
+        {
+          "kind": "receipt",
+          "id": "synthetic:receipt"
+        },
+        {
+          "kind": "artifact",
+          "id": "synthetic:artifact"
+        },
+        {
+          "kind": "verification",
+          "id": "synthetic:verification"
+        }
+      ]
+    },
+    {
+      "id": "action-1",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "lookup",
+        "query": "q",
+        "source_refs": []
+      }
+    },
+    {
+      "id": "model-action-1",
+      "target": "ModelAction",
+      "contract": [
+        "C12",
+        "CT-12",
+        "CT-26"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "lookup",
+        "query": "q",
+        "source_refs": []
+      },
+      "allowed_refs": [
+        {
+          "kind": "record",
+          "id": "synthetic:record"
+        },
+        {
+          "kind": "note",
+          "id": "synthetic:note"
+        },
+        {
+          "kind": "source",
+          "id": "synthetic:source"
+        },
+        {
+          "kind": "receipt",
+          "id": "synthetic:receipt"
+        },
+        {
+          "kind": "artifact",
+          "id": "synthetic:artifact"
+        },
+        {
+          "kind": "verification",
+          "id": "synthetic:verification"
+        }
+      ]
+    },
+    {
+      "id": "action-2",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "lookup",
+        "query": "q",
+        "source_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "model-action-2",
+      "target": "ModelAction",
+      "contract": [
+        "C12",
+        "CT-12",
+        "CT-26"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "lookup",
+        "query": "q",
+        "source_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      },
+      "allowed_refs": [
+        {
+          "kind": "record",
+          "id": "synthetic:record"
+        },
+        {
+          "kind": "note",
+          "id": "synthetic:note"
+        },
+        {
+          "kind": "source",
+          "id": "synthetic:source"
+        },
+        {
+          "kind": "receipt",
+          "id": "synthetic:receipt"
+        },
+        {
+          "kind": "artifact",
+          "id": "synthetic:artifact"
+        },
+        {
+          "kind": "verification",
+          "id": "synthetic:verification"
+        }
+      ]
+    },
+    {
+      "id": "action-3",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "operate",
+        "capability": "github.issue.read",
+        "arguments": {
+          "nested": [
+            1,
+            1.0,
+            true,
+            null,
+            -0.0,
+            {
+              "日本語": "本文",
+              "array": []
+            }
+          ]
+        },
+        "source_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      }
+    },
+    {
+      "id": "model-action-3",
+      "target": "ModelAction",
+      "contract": [
+        "C12",
+        "CT-12",
+        "CT-26"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "operate",
+        "capability": "github.issue.read",
+        "arguments": {
+          "nested": [
+            1,
+            1.0,
+            true,
+            null,
+            -0.0,
+            {
+              "日本語": "本文",
+              "array": []
+            }
+          ]
+        },
+        "source_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      },
+      "allowed_refs": [
+        {
+          "kind": "record",
+          "id": "synthetic:record"
+        },
+        {
+          "kind": "note",
+          "id": "synthetic:note"
+        },
+        {
+          "kind": "source",
+          "id": "synthetic:source"
+        },
+        {
+          "kind": "receipt",
+          "id": "synthetic:receipt"
+        },
+        {
+          "kind": "artifact",
+          "id": "synthetic:artifact"
+        },
+        {
+          "kind": "verification",
+          "id": "synthetic:verification"
+        }
+      ]
+    },
+    {
+      "id": "action-4",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "ask",
+        "question": "何ですか",
+        "missing_fact": "内容",
+        "source_refs": [
+          {
+            "kind": "note",
+            "id": "synthetic:note"
+          }
+        ]
+      }
+    },
+    {
+      "id": "model-action-4",
+      "target": "ModelAction",
+      "contract": [
+        "C12",
+        "CT-12",
+        "CT-26"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "ask",
+        "question": "何ですか",
+        "missing_fact": "内容",
+        "source_refs": [
+          {
+            "kind": "note",
+            "id": "synthetic:note"
+          }
+        ]
+      },
+      "allowed_refs": [
+        {
+          "kind": "record",
+          "id": "synthetic:record"
+        },
+        {
+          "kind": "note",
+          "id": "synthetic:note"
+        },
+        {
+          "kind": "source",
+          "id": "synthetic:source"
+        },
+        {
+          "kind": "receipt",
+          "id": "synthetic:receipt"
+        },
+        {
+          "kind": "artifact",
+          "id": "synthetic:artifact"
+        },
+        {
+          "kind": "verification",
+          "id": "synthetic:verification"
+        }
+      ]
+    },
+    {
+      "id": "action-5",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "compose",
+        "content": "本文",
+        "media_type": "text/plain",
+        "source_refs": [
+          {
+            "kind": "source",
+            "id": "synthetic:source"
+          }
+        ]
+      }
+    },
+    {
+      "id": "model-action-5",
+      "target": "ModelAction",
+      "contract": [
+        "C12",
+        "CT-12",
+        "CT-26"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "compose",
+        "content": "本文",
+        "media_type": "text/plain",
+        "source_refs": [
+          {
+            "kind": "source",
+            "id": "synthetic:source"
+          }
+        ]
+      },
+      "allowed_refs": [
+        {
+          "kind": "record",
+          "id": "synthetic:record"
+        },
+        {
+          "kind": "note",
+          "id": "synthetic:note"
+        },
+        {
+          "kind": "source",
+          "id": "synthetic:source"
+        },
+        {
+          "kind": "receipt",
+          "id": "synthetic:receipt"
+        },
+        {
+          "kind": "artifact",
+          "id": "synthetic:artifact"
+        },
+        {
+          "kind": "verification",
+          "id": "synthetic:verification"
+        }
+      ]
+    },
+    {
+      "id": "action-6",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "compose",
+        "content": "# 本文",
+        "media_type": "text/markdown",
+        "source_refs": [
+          {
+            "kind": "source",
+            "id": "synthetic:source"
+          }
+        ]
+      }
+    },
+    {
+      "id": "model-action-6",
+      "target": "ModelAction",
+      "contract": [
+        "C12",
+        "CT-12",
+        "CT-26"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "compose",
+        "content": "# 本文",
+        "media_type": "text/markdown",
+        "source_refs": [
+          {
+            "kind": "source",
+            "id": "synthetic:source"
+          }
+        ]
+      },
+      "allowed_refs": [
+        {
+          "kind": "record",
+          "id": "synthetic:record"
+        },
+        {
+          "kind": "note",
+          "id": "synthetic:note"
+        },
+        {
+          "kind": "source",
+          "id": "synthetic:source"
+        },
+        {
+          "kind": "receipt",
+          "id": "synthetic:receipt"
+        },
+        {
+          "kind": "artifact",
+          "id": "synthetic:artifact"
+        },
+        {
+          "kind": "verification",
+          "id": "synthetic:verification"
+        }
+      ]
+    },
+    {
+      "id": "action-7",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "verify",
+        "artifact_refs": [
+          {
+            "kind": "artifact",
+            "id": "synthetic:artifact"
+          }
+        ]
+      }
+    },
+    {
+      "id": "model-action-7",
+      "target": "ModelAction",
+      "contract": [
+        "C12",
+        "CT-12",
+        "CT-26"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "verify",
+        "artifact_refs": [
+          {
+            "kind": "artifact",
+            "id": "synthetic:artifact"
+          }
+        ]
+      },
+      "allowed_refs": [
+        {
+          "kind": "record",
+          "id": "synthetic:record"
+        },
+        {
+          "kind": "note",
+          "id": "synthetic:note"
+        },
+        {
+          "kind": "source",
+          "id": "synthetic:source"
+        },
+        {
+          "kind": "receipt",
+          "id": "synthetic:receipt"
+        },
+        {
+          "kind": "artifact",
+          "id": "synthetic:artifact"
+        },
+        {
+          "kind": "verification",
+          "id": "synthetic:verification"
+        }
+      ]
+    },
+    {
+      "id": "action-8",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "report",
+        "summary": "表示候補"
+      }
+    },
+    {
+      "id": "model-action-8",
+      "target": "ModelAction",
+      "contract": [
+        "C12",
+        "CT-12",
+        "CT-26"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "report",
+        "summary": "表示候補"
+      },
+      "allowed_refs": [
+        {
+          "kind": "record",
+          "id": "synthetic:record"
+        },
+        {
+          "kind": "note",
+          "id": "synthetic:note"
+        },
+        {
+          "kind": "source",
+          "id": "synthetic:source"
+        },
+        {
+          "kind": "receipt",
+          "id": "synthetic:receipt"
+        },
+        {
+          "kind": "artifact",
+          "id": "synthetic:artifact"
+        },
+        {
+          "kind": "verification",
+          "id": "synthetic:verification"
+        }
+      ]
+    },
+    {
+      "id": "bad-action-80",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "other"
+      }
+    },
+    {
+      "id": "bad-action-81",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "rejected",
+      "input": {
+        "summary": "x"
+      }
+    },
+    {
+      "id": "bad-action-82",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "Report",
+        "summary": "x"
+      }
+    },
+    {
+      "id": "bad-action-83",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "report",
+        "summary": "x",
+        "extra": 0
+      }
+    },
+    {
+      "id": "bad-action-84",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "operate",
+        "capability": "x",
+        "arguments": [],
+        "source_refs": []
+      }
+    },
+    {
+      "id": "bad-action-85",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "report"
+      }
+    },
+    {
+      "id": "bad-action-86",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "compose",
+        "content": "x",
+        "media_type": "application/json",
+        "source_refs": []
+      }
+    },
+    {
+      "id": "bad-action-87",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "lookup",
+        "query": "q",
+        "source_refs": null
+      }
+    },
+    {
+      "id": "bad-action-88",
+      "target": "Action",
+      "contract": [
+        "C12",
+        "CT-03"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "ask",
+        "question": "q",
+        "missing_fact": "f",
+        "source_refs": [
+          {
+            "kind": "source",
+            "id": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "unprovided-source",
+      "target": "ModelAction",
+      "contract": [
+        "C12",
+        "CT-12"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "operate",
+        "capability": "github.issue.read",
+        "arguments": {
+          "nested": [
+            1,
+            1.0,
+            true,
+            null,
+            -0.0,
+            {
+              "日本語": "本文",
+              "array": []
+            }
+          ]
+        },
+        "source_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      },
+      "allowed_refs": []
+    },
+    {
+      "id": "unprovided-kind",
+      "target": "ModelAction",
+      "contract": [
+        "C12",
+        "CT-12"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "lookup",
+        "query": "q",
+        "source_refs": [
+          {
+            "kind": "source",
+            "id": "same"
+          }
+        ]
+      },
+      "allowed_refs": [
+        {
+          "kind": "record",
+          "id": "same"
+        }
+      ]
+    },
+    {
+      "id": "unprovided-draft",
+      "target": "ModelDraftBrief",
+      "contract": [
+        "C03",
+        "CT-12"
+      ],
+      "expect": "rejected",
+      "input": {
+        "purpose": "指定情報をまとめる。",
+        "target": {
+          "repository": "synthetic/repo",
+          "issue_numbers": [
+            7
+          ],
+          "files": [
+            {
+              "path": "README.md",
+              "ref": "main"
+            }
+          ]
+        },
+        "constraints": [
+          "read only"
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      },
+      "allowed_refs": []
+    },
+    {
+      "id": "unprovided-verify",
+      "target": "ModelAction",
+      "contract": [
+        "C09",
+        "CT-12"
+      ],
+      "expect": "rejected",
+      "input": {
+        "kind": "verify",
+        "artifact_refs": [
+          {
+            "kind": "artifact",
+            "id": "synthetic:artifact"
+          }
+        ]
+      },
+      "allowed_refs": []
+    },
+    {
+      "id": "model-empty-allowed",
+      "target": "ModelAction",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "report",
+        "summary": "表示候補"
+      },
+      "allowed_refs": []
+    },
+    {
+      "id": "verify-kind-host-duty",
+      "target": "ModelAction",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "accepted",
+      "input": {
+        "kind": "verify",
+        "artifact_refs": [
+          {
+            "kind": "record",
+            "id": "synthetic:record"
+          }
+        ]
+      },
+      "allowed_refs": [
+        {
+          "kind": "record",
+          "id": "synthetic:record"
+        }
+      ]
+    },
+    {
+      "id": "limits-zero",
+      "target": "Limits",
+      "contract": [
+        "sec3",
+        "C15",
+        "CT-17",
+        "CT-29"
+      ],
+      "expect": "accepted",
+      "input": {
+        "max_operations": 0,
+        "max_steps": 0,
+        "max_model_calls": 0
+      }
+    },
+    {
+      "id": "grant-zero",
+      "target": "Grant",
+      "contract": [
+        "sec3",
+        "C15",
+        "CT-17",
+        "CT-29"
+      ],
+      "expect": "accepted",
+      "input": {
+        "capabilities": [],
+        "repositories": [],
+        "limits": {
+          "max_operations": 0,
+          "max_steps": 0,
+          "max_model_calls": 0
+        }
+      }
+    },
+    {
+      "id": "limit-max_operations--1",
+      "target": "Limits",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "max_operations": -1,
+        "max_steps": 0,
+        "max_model_calls": 0
+      }
+    },
+    {
+      "id": "limit-max_operations-True",
+      "target": "Limits",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "max_operations": true,
+        "max_steps": 0,
+        "max_model_calls": 0
+      }
+    },
+    {
+      "id": "limit-max_operations-1.0",
+      "target": "Limits",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "max_operations": 1.0,
+        "max_steps": 0,
+        "max_model_calls": 0
+      }
+    },
+    {
+      "id": "limit-missing-max_operations",
+      "target": "Limits",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "max_steps": 0,
+        "max_model_calls": 0
+      }
+    },
+    {
+      "id": "limit-max_steps--1",
+      "target": "Limits",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "max_operations": 0,
+        "max_steps": -1,
+        "max_model_calls": 0
+      }
+    },
+    {
+      "id": "limit-max_steps-True",
+      "target": "Limits",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "max_operations": 0,
+        "max_steps": true,
+        "max_model_calls": 0
+      }
+    },
+    {
+      "id": "limit-max_steps-1.0",
+      "target": "Limits",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "max_operations": 0,
+        "max_steps": 1.0,
+        "max_model_calls": 0
+      }
+    },
+    {
+      "id": "limit-missing-max_steps",
+      "target": "Limits",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "max_operations": 0,
+        "max_model_calls": 0
+      }
+    },
+    {
+      "id": "limit-max_model_calls--1",
+      "target": "Limits",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "max_operations": 0,
+        "max_steps": 0,
+        "max_model_calls": -1
+      }
+    },
+    {
+      "id": "limit-max_model_calls-True",
+      "target": "Limits",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "max_operations": 0,
+        "max_steps": 0,
+        "max_model_calls": true
+      }
+    },
+    {
+      "id": "limit-max_model_calls-1.0",
+      "target": "Limits",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "max_operations": 0,
+        "max_steps": 0,
+        "max_model_calls": 1.0
+      }
+    },
+    {
+      "id": "limit-missing-max_model_calls",
+      "target": "Limits",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "max_operations": 0,
+        "max_steps": 0
+      }
+    },
+    {
+      "id": "grant-negative",
+      "target": "Grant",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input": {
+        "capabilities": [],
+        "repositories": [],
+        "limits": {
+          "max_operations": 0,
+          "max_steps": -1,
+          "max_model_calls": 0
+        }
+      }
+    },
+    {
+      "id": "raw-110",
+      "target": "Action",
+      "contract": [
+        "sec3",
+        "C12"
+      ],
+      "expect": "rejected",
+      "input_raw": "{\"kind\":\"report\",\"kind\":\"lookup\",\"summary\":\"x\"}"
+    },
+    {
+      "id": "raw-111",
+      "target": "Action",
+      "contract": [
+        "sec3",
+        "C12"
+      ],
+      "expect": "rejected",
+      "input_raw": "{\"kind\":\"operate\",\"capability\":\"x\",\"arguments\":{\"x\":1,\"x\":2},\"source_refs\":[]}"
+    },
+    {
+      "id": "raw-112",
+      "target": "Action",
+      "contract": [
+        "sec3",
+        "C12"
+      ],
+      "expect": "rejected",
+      "input_raw": "{\"kind\":\"report\",\"summary\":\"\\ud800\"}"
+    },
+    {
+      "id": "raw-113",
+      "target": "Action",
+      "contract": [
+        "sec3",
+        "C12"
+      ],
+      "expect": "rejected",
+      "input_raw": "{\"kind\":\"report\",\"summary\":\"x\"}{}"
+    },
+    {
+      "id": "raw-114",
+      "target": "Action",
+      "contract": [
+        "sec3",
+        "C12"
+      ],
+      "expect": "rejected",
+      "input_raw": "[]"
+    },
+    {
+      "id": "raw-number-NaN",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input_raw": "{\"ok\":true,\"value\":NaN}"
+    },
+    {
+      "id": "raw-number-Infinity",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input_raw": "{\"ok\":true,\"value\":Infinity}"
+    },
+    {
+      "id": "raw-number--Infinity",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input_raw": "{\"ok\":true,\"value\":-Infinity}"
+    },
+    {
+      "id": "raw-number-1e400",
+      "target": "Result",
+      "contract": [
+        "sec3"
+      ],
+      "expect": "rejected",
+      "input_raw": "{\"ok\":true,\"value\":1e400}"
+    }
+  ]
+}
