@@ -3,6 +3,8 @@
 The host owns exactly one invoker per process and mints a new runner identity on
 restart. This is trusted Python coordination, not a boundary for arbitrary code.
 Only callback return/exception proves cessation here; no remote process is modeled.
+An optional same-thread VER owner enables the COMPLETE01/1 verify/complete seam;
+default verifications=None preserves the bounded draft-only behavior.
 """
 import copy
 import threading
@@ -92,10 +94,13 @@ class MockRunner:
     Structured controls use another connection and never acquire an invoker lock.
     """
 
-    def __init__(self, tasks, memory, *, artifacts=None):
+    def __init__(self, tasks, memory, *, artifacts=None, verifications=None):
+        if verifications is not None and artifacts is None:
+            raise ValueError('verifications require an artifact owner')
         self._tasks = tasks
         self._memory = memory
         self._artifacts = artifacts
+        self._verifications = verifications
         self.runner_id = 'mock-runner-' + uuid.uuid4().hex
         self.invoker = MockInvoker()
 
@@ -127,6 +132,7 @@ class MockRunner:
         steps = list(lease['steps'])
         finished, calls, excluded_steps_all = [], [], []
         excluded_all = list(_refs(lease['checkpoint'].get('lookup_excluded_refs', [])))
+        last_receipt = [None]
 
         def release(outcome, reason, error_code=None):
             result = self._tasks.release({'lease_id': lease_id, 'work_ref': work,
@@ -139,6 +145,8 @@ class MockRunner:
                          excluded_step_ids=list(dict.fromkeys(excluded_steps_all)))
             if error_code is not None:
                 value['reason_code'] = error_code.value
+            if last_receipt[0] is not None:
+                value['verification'] = last_receipt[0]
             return Result.success(value)
 
         output_pending = False
@@ -164,6 +172,75 @@ class MockRunner:
                     return result
             return result
 
+        def finalize():
+            got = persist(self._tasks.get_work, {'work_ref': work})
+            if not got.ok:
+                if got.error.code is ErrorCode.UNAVAILABLE:
+                    return yield_or_retain('work state unavailable')
+                return failed(got, 'work state unavailable')
+            artifact_refs = list(_value(got).get('current_artifact_refs') or [])
+            verified = persist(self._verifications.verify, {
+                'key': dumps(['C09.verify', work, artifact_refs]),
+                'work_ref': work, 'artifact_refs': artifact_refs})
+            if not verified.ok:
+                if verified.error.code is ErrorCode.UNAVAILABLE:
+                    return yield_or_retain('verification persistence unresolved')
+                return failed(verified, 'verification failed')
+            try:
+                receipt = _value(verified)
+                checks = receipt['checks']
+                valid = (type(receipt) is dict
+                         and set(receipt) == {'verification_ref', 'checks'}
+                         and Ref.from_json(receipt['verification_ref']).kind.value == 'verification'
+                         and type(checks) is list and bool(checks))
+                if valid:
+                    for check in checks:
+                        valid = (type(check) is dict
+                                 and set(check) == {'condition_id', 'status', 'reason',
+                                                    'evidence_refs'}
+                                 and type(check['condition_id']) is str and check['condition_id']
+                                 and type(check['status']) is str
+                                 and type(check['reason']) is str
+                                 and type(check['evidence_refs']) is list
+                                 and all(bool(Ref.from_json(item))
+                                         for item in check['evidence_refs']))
+                        if not valid:
+                            break
+            except (ContractError, KeyError, TypeError):
+                return _failure(ErrorCode.UNAVAILABLE, 'verification receipt malformed')
+            if not valid:
+                return _failure(ErrorCode.UNAVAILABLE, 'verification receipt malformed')
+            last_receipt[0] = receipt
+            if any(check['status'] != 'met' for check in checks):
+                return None
+            completed = persist(self._tasks.control, {
+                'key': dumps(['C10.complete', work, receipt['verification_ref']]),
+                'work_ref': work,
+                'command': {'kind': 'complete',
+                            'verification_ref': receipt['verification_ref']}})
+            if not completed.ok:
+                code = completed.error.code
+                if code in (ErrorCode.UNAVAILABLE, ErrorCode.AMBIGUOUS):
+                    return _failure(ErrorCode.UNAVAILABLE,
+                                    'completion persistence remains unresolved')
+                if code in (ErrorCode.CONFLICT, ErrorCode.STALE, ErrorCode.DENIED):
+                    return None
+                return failed(completed, 'completion failed')
+            try:
+                done = _value(completed)
+                valid = (type(done) is dict
+                         and set(done) == {'work_ref', 'state', 'control_status'}
+                         and done['work_ref'] == work and done['state'] == 'completed'
+                         and done['control_status'] == 'none')
+            except (ContractError, KeyError, TypeError):
+                return _failure(ErrorCode.UNAVAILABLE, 'completion receipt malformed')
+            if not valid:
+                return _failure(ErrorCode.UNAVAILABLE, 'completion receipt malformed')
+            return Result.success(dict(done, status='completed', lease_id=lease_id,
+                verification=receipt, steps=finished, call_ids=calls,
+                excluded_refs=[ref.to_json() for ref in dict.fromkeys(excluded_all)],
+                excluded_step_ids=list(dict.fromkeys(excluded_steps_all))))
+
         # A returned output has no durable MOD body to recover here. A fresh run
         # must not turn a retained lease into permission for another model unit.
         if any(step['status'] == 'started' for step in steps):
@@ -174,6 +251,23 @@ class MockRunner:
             return yield_or_retain('owned call requires recovery')
         if existing.error.code is not ErrorCode.NOT_FOUND:
             return failed(existing, 'call readiness unavailable')
+
+        if self._verifications is not None:
+            last_finished = next((step for step in reversed(steps)
+                                  if step['status'] == 'finished'), None)
+            if (last_finished is not None and type(last_finished['action']) is dict
+                    and last_finished['action'].get('kind') == 'compose'
+                    and last_finished['result_refs']):
+                current = persist(self._tasks.get_work, {'work_ref': work})
+                if not current.ok:
+                    if current.error.code is ErrorCode.UNAVAILABLE:
+                        return yield_or_retain('work state unavailable')
+                    return failed(current, 'work state unavailable')
+                tail = _value(current).get('current_artifact_refs') or []
+                if tail and tail[-1] == last_finished['result_refs'][-1]:
+                    outcome = finalize()
+                    if outcome is not None:
+                        return outcome
 
         for _ in range(max_steps):
             context_result = self._tasks.get_execution_context(
@@ -299,4 +393,8 @@ class MockRunner:
             finished.append(_value(ended_step))
             steps.append(_value(ended_step))
             output_pending = False
+            if self._verifications is not None and action['kind'] == 'compose':
+                outcome = finalize()
+                if outcome is not None:
+                    return outcome
         return release('yield', 'bounded mock slice yielded')
