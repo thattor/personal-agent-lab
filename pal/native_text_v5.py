@@ -73,6 +73,21 @@ class NativeTextBuffer:
         self._chunks = []
         self._utf8_bytes = 0
 
+    def unqualified_snapshot(self):
+        """Observe retained text without granting capture or ending authority."""
+        phase = ('poisoned' if self._poisoned else 'sealed' if self._sealed
+                 else 'capturing' if self._begun else 'not_begun')
+        text = ''.join(self._chunks)
+        return {'version': 'NATIVE-TEXT-DIAGNOSTIC/1',
+                'authority': 'unqualified', 'phase': phase,
+                'text': text,
+                'text_sha256': hashlib.sha256(text.encode('utf-8')).hexdigest(),
+                'utf8_bytes': self._utf8_bytes, 'chunks': len(self._chunks),
+                'request_sha256': self._request_sha256,
+                'profile_sha256': self._profile_sha256,
+                'attempt_ref': dict(self._attempt_ref),
+                'requested_model_id': self._model_id}
+
     def begin(self):
         if self._begun or self._sealed or self._poisoned:
             self._poison()
