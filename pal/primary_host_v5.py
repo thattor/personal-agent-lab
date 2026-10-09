@@ -1,4 +1,4 @@
-"""PRI01/1 managed in-process mock turns using public PAL owner calls."""
+"""Primary turns with separate managed mock and qualified native lifetimes."""
 from functools import wraps
 import hashlib
 import sqlite3
@@ -10,6 +10,7 @@ from pal.primary_wire_v5 import PrimaryProposalError, parse_primary_output
 from pal.sanitize import sanitize
 
 _PROFILE = 'managed-inprocess-mock/1'
+_NATIVE_PROFILE = 'co-devin-acp-dynamic-text/1'
 _ACTIVE = ('pending', 'preparing', 'admitted', 'returned', 'applying')
 _SYSTEM = ('Return exactly one JSON object {reply,proposal}. Proposal is none; new_work with a '
            'DraftBrief; answer with disclosed work_ref/question_id and current record_ref; control '
@@ -28,6 +29,14 @@ class _Refusal(Exception):
 class _TransactionFailure(_Refusal):
     def __init__(self):
         super().__init__('unavailable')
+
+
+class _InvocationFailed(Exception):
+    pass
+
+
+class _InvocationHeld(Exception):
+    pass
 
 
 def _refuse(code='unavailable'):
@@ -99,6 +108,8 @@ def _record(value):
 
 
 class PrimaryHost:
+    _profile = _PROFILE
+
     def __init__(self, connection, *, guard, memory, tasks, request_scope, invoke,
                  model_id='mock-primary'):
         if (not isinstance(connection, sqlite3.Connection) or connection.isolation_level is not None
@@ -106,6 +117,11 @@ class PrimaryHost:
                 or type(request_scope) is not Grant or not callable(invoke)
                 or type(model_id) is not str or not model_id):
             raise ValueError('invalid Primary host configuration')
+        if self._profile == _PROFILE:
+            from pal.native_call_v5 import NativeProfile
+            bound = getattr(invoke, '__self__', None)
+            if type(getattr(bound, 'profile', None)) is NativeProfile:
+                raise ValueError('native provider requires its explicit Primary host')
         model_id.encode('utf-8', 'strict')
         if (tasks.startup_guard is not guard or getattr(tasks, '_conn', None) is not connection
                 or getattr(memory, '_conn', None) is not connection or guard.db_uuid is None):
@@ -130,9 +146,12 @@ class PrimaryHost:
             'db_uuid TEXT NOT NULL,profile TEXT NOT NULL,reservation_id TEXT NOT NULL,status TEXT NOT NULL,'
             'model_id TEXT NOT NULL,input_hash TEXT NOT NULL,output_hash TEXT,nonce TEXT NOT NULL,'
             'snapshot_hash TEXT NOT NULL,intent_hash TEXT,turn_hash TEXT NOT NULL)')
+        self._conn.execute('CREATE TABLE IF NOT EXISTS v5_pri_native '
+            '(call_id TEXT PRIMARY KEY,request_hash TEXT NOT NULL,profile_json TEXT NOT NULL,'
+            'attempt_json TEXT,phase TEXT NOT NULL,ending_json TEXT,ending_hash TEXT)')
         identity = self._guard.session_id
         expected = {'id': identity, 'runner': self._guard.runner_id,
-                    'db_uuid': self._guard.db_uuid, 'profile': _PROFILE}
+                    'db_uuid': self._guard.db_uuid, 'profile': self._profile}
         old = self._one('SELECT * FROM v5_pri_session WHERE id=?', (identity,))
         if old is None:
             self._conn.execute('INSERT INTO v5_pri_session VALUES (?,?,?,?)', tuple(expected.values()))
@@ -185,7 +204,8 @@ class PrimaryHost:
         saved = self._one('SELECT * FROM v5_pri_session WHERE id=?', (row['host_session'],))
         if (saved is None or saved != {'id': row['host_session'], 'runner': row['runner'],
                                       'db_uuid': row['db_uuid'], 'profile': row['profile']}
-                or row['db_uuid'] != self._guard.db_uuid or row['profile'] != _PROFILE):
+                or row['db_uuid'] != self._guard.db_uuid
+                or row['profile'] not in (_PROFILE, _NATIVE_PROFILE)):
             _refuse()
 
     def _turn(self, identity):
@@ -218,14 +238,14 @@ class PrimaryHost:
             _refuse()
         if row['phase'] == 'returned' and call['status'] != 'returned':
             _refuse()
-        if row['phase'] == 'admitted' and call['status'] not in ('admitted', 'raised', 'not_entered'):
+        if row['phase'] == 'admitted' and call['status'] not in ('admitted', 'raised', 'not_entered', 'unknown'):
             _refuse()
         if row['phase'] != 'terminal' and (row['phase'] == 'applying') != (row['intent_json'] is not None):
             _refuse()
         if row['phase'] == 'applying' and (call['status'] != 'returned' or call['output_hash'] is None):
             _refuse()
         if row['phase'] == 'terminal':
-            if call is not None and call['status'] == 'admitted':
+            if call is not None and call['status'] in ('admitted', 'unknown'):
                 _refuse()
             if _digest(row['outcome_hash']) != _hash(row['outcome_json']):
                 _refuse()
@@ -240,9 +260,13 @@ class PrimaryHost:
         self._idle()
         if self._guard.phase != 'ready':
             _refuse('conflict')
-        if self._one("SELECT id FROM v5_pri_turn WHERE phase!='terminal' AND host_session!=? LIMIT 1",
-                     (self._guard.session_id,)):
-            _refuse('conflict')
+        for candidate in self._rows("SELECT id FROM v5_pri_turn WHERE phase!='terminal' AND host_session!=?",
+                                    (self._guard.session_id,)):
+            row = self._turn(candidate['id'])
+            call = self._call(row)
+            if not (row['profile'] == _NATIVE_PROFILE and row['phase'] == 'admitted'
+                    and call is not None and call['status'] == 'unknown'):
+                _refuse('conflict')
 
     def _body(self, ref, expected=None, *, purpose='model_context'):
         # Owner reads cooperate under a savepoint; this is not a hostile-code sandbox.
@@ -314,7 +338,7 @@ class PrimaryHost:
                 admission = dict(zip(('id', 'user_session', 'client_key', 'record_json', 'input_hash',
                                       'host_session', 'runner', 'db_uuid', 'profile'),
                     (identity, session, key, dumps(ref), body['hash'], self._guard.session_id,
-                     self._guard.runner_id, self._guard.db_uuid, _PROFILE)))
+                     self._guard.runner_id, self._guard.db_uuid, self._profile)))
                 self._conn.execute('INSERT INTO v5_pri_turn VALUES (?,?,?,?,?,?,?,?,?,?,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,?)',
                     (*admission.values(), 'pending', self._admission_hash(admission)))
                 return {'turn_id': identity, 'status': 'pending'}
@@ -377,6 +401,9 @@ class PrimaryHost:
 
     def _view(self, row):
         if row['phase'] != 'terminal':
+            call = self._call(row)
+            if row['profile'] == _NATIVE_PROFILE and call is not None and call['status'] == 'unknown':
+                return Result.success({'status': 'held', 'effect_refs': []})
             return Result.success({'status': 'pending', 'effect_refs': []})
         outcome = self._outcome(row)
         if 'reply' in outcome:
@@ -492,12 +519,12 @@ class PrimaryHost:
         if (call['id'] != dumps(['PRI01.call', row['id']])
                 or call['id'] != row['call_id'] or call['nonce'] != row['nonce']
                 or any(call[k] != row[k] for k in ('host_session', 'runner', 'db_uuid', 'profile'))
-                or call['status'] not in ('admitted', 'returned', 'raised', 'not_entered', 'interrupted')):
+                or call['status'] not in ('admitted', 'returned', 'raised', 'not_entered', 'interrupted', 'unknown')):
             _refuse()
         for key in ('reservation_id', 'model_id'):
             _text(call[key], identifier=True)
         _digest(call['input_hash'])
-        if (_digest(row['call_hash']) != _hash(dumps(call))
+        if (_digest(row['call_hash']) != self._call_digest(call)
                 or _digest(call['turn_hash']) != self._turn_hash(row)):
             _refuse()
         if _digest(call['snapshot_hash']) != _hash(row['snapshot_json']):
@@ -513,6 +540,88 @@ class PrimaryHost:
             _digest(call['output_hash'])
         return call
 
+    def _native_side(self, call):
+        from pal.native_call_v5 import NativeNeverEntered, NativeProfile, validate_native_evidence
+        side = self._one('SELECT * FROM v5_pri_native WHERE call_id=?', (call['id'],))
+        if call['profile'] == _PROFILE:
+            if side is not None or call['status'] == 'unknown':
+                _refuse()
+            return None
+        if (side is None or call['profile'] != _NATIVE_PROFILE
+                or call['status'] not in ('admitted', 'unknown', 'returned', 'not_entered')
+                or side['request_hash'] != call['input_hash']):
+            _refuse()
+        data = self._json(side['profile_json'])
+        _closed(data, ('id', 'model_id', 'qualification_sha256', 'evidence_kind', 'profile_sha256'))
+        profile = NativeProfile(model_id=data['model_id'], qualification_sha256=data['qualification_sha256'],
+                                evidence_kind=data['evidence_kind'])
+        if data != profile.to_json() or call['model_id'] != profile.model_id:
+            _refuse()
+        phase = side['phase']
+        if phase not in ('prepared', 'entering', 'unknown', 'returned', 'not_entered'):
+            _refuse()
+        attempt = None if side['attempt_json'] is None else self._json(side['attempt_json'])
+        if attempt is not None:
+            _closed(attempt, ('run_id', 'job_id', 'attempt_id'))
+            for value in attempt.values():
+                if not 0 < len(_text(value, identifier=True)) <= 512:
+                    _refuse()
+        if phase in ('entering', 'returned') and attempt is None:
+            _refuse()
+        if phase == 'prepared' and attempt is not None:
+            _refuse()
+        if call['status'] == 'admitted' and phase not in ('prepared', 'entering'):
+            _refuse()
+        if call['status'] == 'unknown' and phase != 'unknown':
+            _refuse()
+        if call['status'] in ('admitted', 'unknown'):
+            if any(value is not None for value in (side['ending_json'], side['ending_hash'], call['output_hash'])):
+                _refuse()
+        else:
+            if phase != call['status'] or side['ending_json'] is None:
+                _refuse()
+            if _digest(side['ending_hash']) != _hash(side['ending_json']):
+                _refuse()
+            ending = self._json(side['ending_json'])
+            if phase == 'returned':
+                evidence = validate_native_evidence(ending, request_sha256=call['input_hash'], profile=profile)
+                if evidence['attempt_ref'] != attempt or evidence['output_sha256'] != call['output_hash']:
+                    _refuse()
+            else:
+                _closed(ending, ('kind', 'request_sha256', 'profile_sha256', 'evidence_ref'))
+                if ending['kind'] != 'not_entered' or call['output_hash'] is not None:
+                    _refuse()
+                receipt = NativeNeverEntered(request_sha256=ending['request_sha256'],
+                    profile_sha256=ending['profile_sha256'], evidence_ref=ending['evidence_ref'])
+                if receipt.request_sha256 != call['input_hash'] or receipt.profile_sha256 != profile.profile_sha256:
+                    _refuse()
+        return side
+
+    def _call_digest(self, call):
+        if call['profile'] == _PROFILE:
+            if self._one('SELECT call_id FROM v5_pri_native WHERE call_id=?', (call['id'],)) is not None:
+                _refuse()
+            if call['status'] == 'unknown':
+                _refuse()
+            return _hash(dumps(call))
+        side = self._native_side(call)
+        return _hash(dumps({'call': call, 'native': side}))
+
+    def _native_unknown(self, identity):
+        def unknown():
+            row = self._turn(identity)
+            call = self._call(row)
+            if call is None or call['profile'] != _NATIVE_PROFILE:
+                _refuse()
+            if call['status'] == 'unknown':
+                return
+            if call['status'] != 'admitted':
+                _refuse()
+            self._conn.execute("UPDATE v5_pri_native SET phase='unknown' WHERE call_id=?", (call['id'],))
+            self._conn.execute("UPDATE v5_pri_call SET status='unknown' WHERE id=?", (call['id'],))
+            self._bind_call(identity)
+        self._write(unknown)
+
     @staticmethod
     def _admission_hash(row):
         return _hash(dumps({key: row[key] for key in ('id', 'user_session', 'client_key', 'record_json',
@@ -526,7 +635,7 @@ class PrimaryHost:
         call = self._one('SELECT * FROM v5_pri_call WHERE turn_id=?', (identity,))
         if call is None:
             _refuse()
-        self._conn.execute('UPDATE v5_pri_turn SET call_hash=? WHERE id=?', (_hash(dumps(call)), identity))
+        self._conn.execute('UPDATE v5_pri_turn SET call_hash=? WHERE id=?', (self._call_digest(call), identity))
 
     def _end(self, row, status, output=None):
         def end():
@@ -659,6 +768,9 @@ class PrimaryHost:
             if row['phase'] == 'terminal':
                 return
             call = self._call(row)
+            if row['profile'] == _NATIVE_PROFILE and (status == 'interrupted'
+                    or call is not None and call['status'] in ('admitted', 'unknown')):
+                _refuse()
             if status == 'interrupted' and call is not None and call['status'] == 'admitted':
                 if self._guard.phase != 'startup' or row['host_session'] == self._guard.session_id:
                     _refuse()
@@ -699,6 +811,26 @@ class PrimaryHost:
             pass
         return self._read_view(identity)
 
+    def _prepare_invocation(self):
+        pass
+
+    def _admit_profile(self, call_id, request):
+        pass
+
+    def _invoke_call(self, row, request):
+        try:
+            raw = self._invoke(request)
+        except BaseException as error:
+            try:
+                self._end(row, 'raised')
+            except Exception:
+                pass
+            if not isinstance(error, Exception):
+                raise
+            raise _InvocationFailed() from None
+        self._end(row, 'returned', raw)
+        return raw
+
     @_public
     def run_turn(self, request):
         identity = _text(_closed(request, ('turn_id',))['turn_id'], identifier=True)
@@ -706,6 +838,8 @@ class PrimaryHost:
         row = self._turn(identity)
         if row['phase'] != 'pending':
             return self._read_view(identity)
+        if row['profile'] != self._profile:
+            _refuse('conflict')
         with self._guard.activity():
             nonce = uuid.uuid4().hex
             def claim():
@@ -719,6 +853,7 @@ class PrimaryHost:
                 snapshot, metadata = self._snapshot(row)
                 self._snapshot_check(row, metadata)
                 self._write(lambda: self._conn.execute('UPDATE v5_pri_turn SET snapshot_json=? WHERE id=?', (dumps(metadata), identity)))
+                self._prepare_invocation()
                 reservation = _value(self._tasks.reserve_budget({'key': dumps(['PRI01.reserve', identity]), 'kind': 'model', 'role': 'primary'}))
                 if (type(reservation) is not dict or set(reservation) != {'reservation_id', 'remaining'}
                         or type(reservation['remaining']) is not dict or set(reservation['remaining']) != {'host'}
@@ -738,6 +873,7 @@ class PrimaryHost:
                          reservation_id, 'admitted', self._model_id, _hash(dumps(call_request)), nonce,
                          _hash(dumps(metadata)), self._turn_hash(row)))
                     self._conn.execute("UPDATE v5_pri_turn SET phase='admitted',call_id=? WHERE id=? AND nonce=?", (call_id, identity, nonce))
+                    self._admit_profile(call_id, call_request)
                     self._bind_call(identity)
                 self._write(admit)
                 self._exposure_check(metadata)
@@ -754,16 +890,11 @@ class PrimaryHost:
                     pass
                 return self._finish(identity, 'failed', code='unavailable')
             try:
-                raw = self._invoke(call_request)
-            except BaseException as error:
-                try:
-                    self._end(row, 'raised')
-                except Exception:
-                    pass
-                if not isinstance(error, Exception):
-                    raise
+                raw = self._invoke_call(row, call_request)
+            except _InvocationFailed:
                 return self._finish(identity, 'failed', code='unavailable')
-            self._end(row, 'returned', raw)
+            except _InvocationHeld:
+                return self._read_view(identity)
             try:
                 output = parse_primary_output(raw, current_record_ref=_record(snapshot['record_ref']),
                     candidates=snapshot['candidates']['works'],
@@ -827,6 +958,8 @@ class PrimaryHost:
         if self._guard.phase != 'startup':
             _refuse('conflict')
         outcome = {'interrupted_turn_ids': [], 'committed_turn_ids': [], 'held_turn_ids': []}
+        if self._profile == _NATIVE_PROFILE:
+            outcome['failed_turn_ids'] = []
         with self._guard.operation():
             rows = self._rows("SELECT id FROM v5_pri_turn WHERE phase!='terminal' AND host_session!=? ORDER BY rowid",
                               (self._guard.session_id,))
@@ -835,6 +968,11 @@ class PrimaryHost:
                 try:
                     row = self._turn(identity)
                     call = self._call(row)
+                    native = row['profile'] == _NATIVE_PROFILE
+                    if native and call is not None and call['status'] in ('admitted', 'unknown'):
+                        self._native_unknown(identity)
+                        outcome['held_turn_ids'].append(identity)
+                        continue
                     if row['phase'] == 'applying':
                         if call is None or call['status'] != 'returned':
                             _refuse()
@@ -848,8 +986,134 @@ class PrimaryHost:
                             self._terminal(identity, 'committed', reply=reply, refs=refs)
                             outcome['committed_turn_ids'].append(identity)
                             continue
-                    self._terminal(identity, 'interrupted', code='unavailable')
-                    outcome['interrupted_turn_ids'].append(identity)
+                    self._terminal(identity, 'failed' if native else 'interrupted', code='unavailable')
+                    if native:
+                        outcome.setdefault('failed_turn_ids', []).append(identity)
+                    else:
+                        outcome['interrupted_turn_ids'].append(identity)
                 except Exception:
                     outcome['held_turn_ids'].append(identity)
         return Result.success(outcome)
+
+
+class NativePrimaryHost(PrimaryHost):
+    """Explicit trusted provider composition; mock ownership proves only local I/O."""
+    _profile = _NATIVE_PROFILE
+
+    def __init__(self, connection, *, guard, memory, tasks, request_scope, provider):
+        from pal.native_call_v5 import NativeProfile
+        if (callable(provider) or type(getattr(provider, 'profile', None)) is not NativeProfile
+                or not callable(getattr(provider, 'preflight', None))
+                or not callable(getattr(provider, 'invoke', None))):
+            raise ValueError('invalid native Primary provider')
+        self._provider, self._native_profile = provider, provider.profile
+        super().__init__(connection, guard=guard, memory=memory, tasks=tasks,
+                         request_scope=request_scope, invoke=provider.invoke,
+                         model_id=self._native_profile.model_id)
+
+    def _prepare_invocation(self):
+        from pal.native_call_v5 import NativeProfile
+        if (type(self._provider.profile) is not NativeProfile
+                or self._provider.profile.to_json() != self._native_profile.to_json()):
+            _refuse()
+        self._provider.preflight()
+
+    def _admit_profile(self, call_id, request):
+        self._conn.execute('INSERT INTO v5_pri_native VALUES (?,?,?,NULL,?,NULL,NULL)',
+            (call_id, _hash(dumps(request)), dumps(self._native_profile.to_json()), 'prepared'))
+
+    def _native_end(self, row, status, ending, output_hash=None):
+        def end():
+            current = self._turn(row['id'])
+            call = self._call(current)
+            if call is None or call['status'] != 'admitted' or call['profile'] != _NATIVE_PROFILE:
+                _refuse()
+            side = self._native_side(call)
+            if status == 'returned' and (side['phase'] != 'entering'
+                    or self._json(side['attempt_json']) != ending['attempt_ref']):
+                _refuse()
+            raw = dumps(ending)
+            self._conn.execute('UPDATE v5_pri_native SET phase=?,ending_json=?,ending_hash=? WHERE call_id=?',
+                               (status, raw, _hash(raw), call['id']))
+            self._conn.execute('UPDATE v5_pri_call SET status=?,output_hash=? WHERE id=?',
+                               (status, output_hash, call['id']))
+            if status == 'returned':
+                self._conn.execute("UPDATE v5_pri_turn SET phase='returned' WHERE id=?", (row['id'],))
+            self._bind_call(row['id'])
+        self._write(end)
+
+    def _not_entered(self, identity):
+        row = self._turn(identity)
+        call = self._call(row)
+        if call is not None and call['status'] == 'admitted':
+            side = self._native_side(call)
+            if side['phase'] != 'prepared' or side['attempt_json'] is not None:
+                _refuse()
+            self._native_end(row, 'not_entered', {'kind': 'not_entered',
+                'request_sha256': call['input_hash'],
+                'profile_sha256': self._native_profile.profile_sha256,
+                'evidence_ref': 'pal-native:before-provider-call'})
+
+    def _invoke_call(self, row, request):
+        from pal.native_call_v5 import NativeNeverEntered, NativeReturned
+        entered, poisoned = False, False
+
+        def on_enter(attempt):
+            nonlocal entered, poisoned
+            try:
+                if entered or poisoned:
+                    _refuse()
+                _closed(attempt, ('run_id', 'job_id', 'attempt_id'))
+                for value in attempt.values():
+                    if not 0 < len(_text(value, identifier=True)) <= 512:
+                        _refuse()
+                def enter():
+                    current = self._turn(row['id'])
+                    call = self._call(current)
+                    if (call is None or call['status'] != 'admitted'
+                            or call['input_hash'] != _hash(dumps(request))):
+                        _refuse()
+                    side = self._native_side(call)
+                    if side['phase'] != 'prepared' or side['attempt_json'] is not None:
+                        _refuse()
+                    self._exposure_check(self._metadata(current))
+                    self._conn.execute("UPDATE v5_pri_native SET phase='entering',attempt_json=? WHERE call_id=?",
+                                       (dumps(attempt), call['id']))
+                    self._bind_call(row['id'])
+                self._write(enter)
+                entered = True
+            except BaseException:
+                poisoned = True
+                raise
+
+        try:
+            returned = self._provider.invoke(request, on_enter=on_enter)
+            if poisoned or not entered or type(returned) is not NativeReturned:
+                _refuse()
+            evidence = returned.validate(request_sha256=_hash(dumps(request)), profile=self._native_profile)
+            self._native_end(row, 'returned', evidence, evidence['output_sha256'])
+            return returned.text
+        except NativeNeverEntered as receipt:
+            if (type(receipt) is NativeNeverEntered and receipt.request_sha256 == _hash(dumps(request))
+                    and receipt.profile_sha256 == self._native_profile.profile_sha256):
+                try:
+                    self._native_end(row, 'not_entered', {'kind': 'not_entered',
+                        'request_sha256': receipt.request_sha256,
+                        'profile_sha256': receipt.profile_sha256, 'evidence_ref': receipt.evidence_ref})
+                except Exception:
+                    pass
+                else:
+                    raise _InvocationFailed() from None
+            try:
+                self._native_unknown(row['id'])
+            except Exception:
+                pass
+            raise _InvocationHeld() from None
+        except BaseException as error:
+            try:
+                self._native_unknown(row['id'])
+            except Exception:
+                pass
+            if not isinstance(error, Exception):
+                raise
+            raise _InvocationHeld() from None

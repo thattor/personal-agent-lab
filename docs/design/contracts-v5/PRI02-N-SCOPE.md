@@ -85,6 +85,12 @@ fresh official CLI version/auth/model-catalog Free checks and exact measurement
 binding. Never enable paid fallback or read credential contents. Credential
 targets are explicit existing files checked by metadata only. Preserve original
 launch_environment, check_launch_template, delegation and model validation.
+Public selection's measurement describes normal CLI route eligibility, not ACP
+or equivalence to the separately supplied current executable. Resolve the actual
+official devin executable and bind its current version/hash/Free metadata to
+this N envelope; the actual original ACP host then qualifies that executable.
+Do not inspect private NativeCandidates fields or run extra infer probes to
+pretend normal ATIF measurement qualified ACP.
 
 Fixture seams are _load_runtime(runtime), returning a namespace with contracts,
 DevinTextHost/DevinHostConfig/DevinAdapter/DelegatedScope/CapacityLedger/
@@ -199,6 +205,8 @@ native admitted/entering first records unknown and holds; pending/preparing
 without any C15 call can fail locally. Returned-before-intent may fail locally;
 applying uses only original owner lookup, never redispatch. Existing mock turn
 recovery remains interrupted, and its rows never gain native authority.
+Native local-adoption failures appear in recovery.failed_turn_ids, never in
+interrupted_turn_ids. Mock-only recovery retains its original three-key shape.
 
 A PRI-owned mandatory side row binds call_id/request/profile/qualification,
 original attempt, entry state and exact returned evidence/hash. Ending side row,

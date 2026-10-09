@@ -1460,3 +1460,33 @@ claim and ordering were wrong. Root acknowledged this to the owner. Prevention:
 await final exit0 before a dependent dispatch or a completed-verification claim;
 use the correct cwd -E -s -B command and retain earlier failing invocation logs.
 This is a concrete execution check, not a new per-call approval procedure.
+
+## PRI02-N fixture boundaries and unknown CO implementation (2026-10-10)
+
+CO2ede5937 planner completed, but SWE implementation exceeded the requested240s
+and returned route_timeout/outcome unknown. No verified diff was adopted, no
+decide/resume/cancel/retry or direct state/lease edit was made. The approved
+separate native Sol context implemented NATIVE-CALL01 from the frozen contract
+and independent15 tests. Preserve the unknown CO attempt, not a failed product
+module verdict. Avoid arbitrarily short implementation deadlines for large
+context; keep ordinary qualified runtime timing for later distinct assignments.
+
+Native Primary fixed17 initially injected KeyboardInterrupt into every parser
+call, including pre-admission candidate validation, rather than returned-before-
+intent. A second fixture omitted TaskStore's required source_gate. The test owner
+corrected only those inputs/boundaries, retained original failures and kept the
+paused receipt/committed none expectations. Exact returned-record barrier and
+actual owner constructor prevent those false product failures on next work.
+
+Root's generic review-pattern command again used -I even though its first module
+does not insert the repository path. It produced one import error, then the
+correct cwd -E -s -B command passed. Root now uses cwd-based discovery for all
+ad-hoc tests; -I is confined to explicit frozen verifiers already known to insert
+their own root. Do not compensate with implementation or expectation changes.
+
+Full1094 ran28.030s with one historical K1 missing-context assertion. No current
+v5 source caused that body selection and no old implementation was read/copied.
+The exact same unchanged historical case subsequently passed singly with the
+required temporary loopback access (3.174s). Cause remains unresolved; keep the
+original full failure and separate restricted bind errors, never label that full
+run PASS. Later full regression must complete independently on the final source.
