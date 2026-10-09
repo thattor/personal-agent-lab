@@ -31,8 +31,9 @@ payload was rejected twice before launch. D042's subsequent manual-approval
 direction is retained without duplicating the now-completed native assignment.
 
 Final ASK milestone Opus review is still PENDING, not ALIGNED/MET by self-report.
-CO0.4.5 and its existing shared state are unchanged; latest read-only capacity
-shows0 executing/0 reserved for claude and devin, limit12 per adapter. Claude
+CO0.4.5 and its existing shared state are unchanged; fresh12:15UTC read-only capacity
+shows Claude0/0 and Devin1 executing/0 reserved, limit12 per adapter. The Devin
+slot is not an owned PAL task and is not interrupted or counted as our work. Claude
 planner remains session-limited until the reported22:20 reset. Fixed role rules
 prohibit substituting SWE as planner; direct AGY code egress rejection is not
 bypassed. Native ASK implementation had two independent delegates, not32.
@@ -43,10 +44,15 @@ It remains a proposal; Opus consultation precedes adoption or change code.
 Root fixed a13-file202200-byte ASK milestone/next-design review package at163779d,
 SHA256 bf69fe23ba35e585cdb547d743859fec65954bb809c6f59fbc31fc2ae97eb3aa,
 for existing AGY claude-opus-5-5-high. D043 direct owner project-wide AGY approval
-now releases the material-sharing wait. The exact prepared review is being
-preflighted; no successful send/result is claimed before observation. Historical
-Sonnet refusals and completed native code remain untouched. Evidence:
-opus-review-prepared.json. The qualified
+records project-wide AGY authority. Fresh preflight confirms exactOpus5.5High,
+existing Google AI Pro and AI Credits OFF. Automatic review nevertheless rejects
+this13-file202200-byte private payload to AGY/Google-hosted Claude as insufficiently
+specific egress authorization. No process/run.json/stream/model call started.
+A direct exact-payload approval question is pending; no bypass or repeat. This
+is a transport limit, not a new permanent per-call user-approval rule. Historical
+Sonnet refusals/completed code and unknown calls stay untouched. Evidence:
+d043-agy-egress-refusal.json, agy-opus-review-preflight.json and opus-review-prepared.json.
+Sol independently critiques C10 source/grant/old-lease counterexamples. The qualified
 CO Opus alternative is available only after actual route quota permits; the
 reported22:20 reset is a time estimate, not a verified resumed route.
 

@@ -76,7 +76,7 @@
   "prompt_sha256": "bf69fe23ba35e585cdb547d743859fec65954bb809c6f59fbc31fc2ae97eb3aa",
   "execution_started": false,
   "cost": "existing Google AI Pro only; AI Credits must stay OFF; no new auth or paid fallback",
-  "status": "D043 directly approved; preflight, execution/result not yet claimed",
+  "status": "D043 project approval recorded, but automatic review rejected exact private egress before launch; direct specific question pending",
   "old_sonnet_assignment": "completed natively; never retried",
   "approval_reason": "automatic review rejected prior private AGY send and did not accept other-thread owner-source readback; new package is not covered by old specific154607-byte manual direction",
   "approval": {

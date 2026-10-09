@@ -1032,6 +1032,8 @@ class TaskStore(IntakeStore):
             row = self._current(work, epoch=False)
             flags = self._flags(row)
             calls = self._rows('SELECT * FROM v5_tsk_call WHERE lease=?', (lease_id,))
+            if any(call['status'] not in ('admitted', 'returned', 'raised', 'not_entered') for call in calls):
+                _reject('unavailable')
             if any(call['status'] == 'admitted' for call in calls):
                 _reject('conflict')
             if data['outcome'] == 'paused' and not flags['pause']:

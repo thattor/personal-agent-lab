@@ -1,0 +1,222 @@
+test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) ... 
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status=None, control=None, outcome='yield') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status=None, control=None, outcome='failed') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status=None, control='pause', outcome='yield') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status=None, control='pause', outcome='failed') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status=None, control='cancel', outcome='yield') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status=None, control='cancel', outcome='failed') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='unknown', control=None, outcome='yield') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='unknown', control=None, outcome='failed') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='unknown', control='pause', outcome='yield') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='unknown', control='pause', outcome='failed') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='unknown', control='cancel', outcome='yield') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='unknown', control='cancel', outcome='failed') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='not-a-status', control=None, outcome='yield') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='not-a-status', control=None, outcome='failed') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='not-a-status', control='pause', outcome='yield') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='not-a-status', control='pause', outcome='failed') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='not-a-status', control='cancel', outcome='yield') ... FAIL
+  test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='not-a-status', control='cancel', outcome='failed') ... FAIL
+test_admission_replay_is_historical_end_call_is_canonical (test_tasks_v5.TaskTests.test_admission_replay_is_historical_end_call_is_canonical) ... ok
+test_baseexception_after_claim_writes_rolls_back_and_propagates (test_tasks_v5.TaskTests.test_baseexception_after_claim_writes_rolls_back_and_propagates) ... ok
+test_baseexception_during_constructor_rolls_back_schema_and_host_setup (test_tasks_v5.TaskTests.test_baseexception_during_constructor_rolls_back_schema_and_host_setup) ... ok
+test_busy_locking_and_idle_connection_requirements (test_tasks_v5.TaskTests.test_busy_locking_and_idle_connection_requirements) ... ok
+test_cessation_write_failure_keeps_occupancy_and_retry_can_finish (test_tasks_v5.TaskTests.test_cessation_write_failure_keeps_occupancy_and_retry_can_finish) ... ok
+test_claim_and_reservation_identifier_collisions_roll_back (test_tasks_v5.TaskTests.test_claim_and_reservation_identifier_collisions_roll_back) ... ok
+test_claim_oldest_retry_occupied_reopen (test_tasks_v5.TaskTests.test_claim_oldest_retry_occupied_reopen) ... ok
+test_compose_save_authority_denies_stopped_inputs_and_corrupt_call_metadata (test_tasks_v5.TaskTests.test_compose_save_authority_denies_stopped_inputs_and_corrupt_call_metadata) ... ok
+test_compose_save_authorization_is_read_only_and_keeps_all_call_sources (test_tasks_v5.TaskTests.test_compose_save_authorization_is_read_only_and_keeps_all_call_sources) ... ok
+test_control_ignores_old_epoch_but_checks_revision_and_dedupes (test_tasks_v5.TaskTests.test_control_ignores_old_epoch_but_checks_revision_and_dedupes) ... ok
+test_current_sources_are_rechecked_before_begin_and_finish (test_tasks_v5.TaskTests.test_current_sources_are_rechecked_before_begin_and_finish) ... ok
+test_empty_claim_and_strict_inputs (test_tasks_v5.TaskTests.test_empty_claim_and_strict_inputs) ... ok
+test_event_failure_rolls_back_claim_control_finish_release_and_invalidation (test_tasks_v5.TaskTests.test_event_failure_rolls_back_claim_control_finish_release_and_invalidation) ... ok
+test_last_model_unit_admits_and_step_headroom_blocks_before_debit (test_tasks_v5.TaskTests.test_last_model_unit_admits_and_step_headroom_blocks_before_debit) ... ok
+test_lookup_exclusions_truncation_and_provenance_without_copied_body (test_tasks_v5.TaskTests.test_lookup_exclusions_truncation_and_provenance_without_copied_body) ... ok
+test_lookup_unavailable_rolls_back_all_results_and_event (test_tasks_v5.TaskTests.test_lookup_unavailable_rolls_back_all_results_and_event) ... ok
+test_malformed_public_shapes_are_bounded_and_nonmutating (test_tasks_v5.TaskTests.test_malformed_public_shapes_are_bounded_and_nonmutating) ... ok
+test_missing_step_provenance_fails_closed (test_tasks_v5.TaskTests.test_missing_step_provenance_fails_closed) ... ok
+test_mixed_invalidation_prechecks_coverage_states_and_routes_sessions (test_tasks_v5.TaskTests.test_mixed_invalidation_prechecks_coverage_states_and_routes_sessions) ... ok
+test_model_action_closed_shape_membership_and_unimplemented_action (test_tasks_v5.TaskTests.test_model_action_closed_shape_membership_and_unimplemented_action) ... ok
+test_old_owned_epoch_release_and_wrong_lease (test_tasks_v5.TaskTests.test_old_owned_epoch_release_and_wrong_lease) ... ok
+test_pause_fences_while_retaining_lease_until_actual_end (test_tasks_v5.TaskTests.test_pause_fences_while_retaining_lease_until_actual_end) ... ok
+test_pause_then_source_stop_retains_pause (test_tasks_v5.TaskTests.test_pause_then_source_stop_retains_pause) ... ok
+test_queued_pause_resume_cancel_and_terminal_failure (test_tasks_v5.TaskTests.test_queued_pause_resume_cancel_and_terminal_failure) ... ok
+test_raised_calls_require_release_and_do_not_refund (test_tasks_v5.TaskTests.test_raised_calls_require_release_and_do_not_refund) ... ok
+test_real_memory_stop_callback_signature_and_atomic_work_invalidation (test_tasks_v5.TaskTests.test_real_memory_stop_callback_signature_and_atomic_work_invalidation) ... ok
+test_report_roundtrip_replays_next_call_and_checkpoint (test_tasks_v5.TaskTests.test_report_roundtrip_replays_next_call_and_checkpoint) ... ok
+test_required_supplied_registered_membership_and_live_gate (test_tasks_v5.TaskTests.test_required_supplied_registered_membership_and_live_gate) ... ok
+test_reservation_and_step_insert_failure_roll_back_debit (test_tasks_v5.TaskTests.test_reservation_and_step_insert_failure_roll_back_debit) ... ok
+test_reservation_binding_wrong_kind_epoch_index_and_replay (test_tasks_v5.TaskTests.test_reservation_binding_wrong_kind_epoch_index_and_replay) ... ok
+test_reservation_from_old_lease_never_authorizes_new_epoch (test_tasks_v5.TaskTests.test_reservation_from_old_lease_never_authorizes_new_epoch) ... ok
+test_returned_or_started_output_cannot_be_silently_yielded (test_tasks_v5.TaskTests.test_returned_or_started_output_cannot_be_silently_yielded) ... ok
+test_source_gate_errors_do_not_leak_or_commit_mutations (test_tasks_v5.TaskTests.test_source_gate_errors_do_not_leak_or_commit_mutations) ... ok
+test_source_stop_pause_cancel_precedence_and_clear_drain (test_tasks_v5.TaskTests.test_source_stop_pause_cancel_precedence_and_clear_drain) ... ok
+test_work_budget_and_host_counts_survive_release_reopen_and_limit_changes (test_tasks_v5.TaskTests.test_work_budget_and_host_counts_survive_release_reopen_and_limit_changes) ... ok
+test_zero_host_budgets_leave_work_unclaimed (test_tasks_v5.TaskTests.test_zero_host_budgets_leave_work_unclaimed) ... ok
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status=None, control=None, outcome='yield')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'queued', 'work_ref': {'epoch': 1, 'goal_id': 'goal-80ce10c357694de989da7a578076b74c', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status=None, control=None, outcome='failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'failed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-9543a39c635d4c4f844274fa66f662db', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status=None, control='pause', outcome='yield')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'paused', 'work_ref': {'epoch': 1, 'goal_id': 'goal-342b2f9fc38a48fca948cca4b173fb5a', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status=None, control='pause', outcome='failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'paused', 'work_ref': {'epoch': 1, 'goal_id': 'goal-5d3034961c6d43d1860a48272527580d', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status=None, control='cancel', outcome='yield')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'cancelled', 'work_ref': {'epoch': 2, 'goal_id': 'goal-5b01a1fc2d4d48ef8399350a63790952', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status=None, control='cancel', outcome='failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'cancelled', 'work_ref': {'epoch': 2, 'goal_id': 'goal-cfe686df6bdc4275b337510c13630286', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='unknown', control=None, outcome='yield')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'queued', 'work_ref': {'epoch': 1, 'goal_id': 'goal-d7810df8057e4576af550cbe52706d02', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='unknown', control=None, outcome='failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'failed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-060938fbbccc4ed1b9b29f98a0879f35', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='unknown', control='pause', outcome='yield')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'paused', 'work_ref': {'epoch': 1, 'goal_id': 'goal-9b9810da53a44b90bb2be150ef1f92af', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='unknown', control='pause', outcome='failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'paused', 'work_ref': {'epoch': 1, 'goal_id': 'goal-9c5111917b76400787f755615259af35', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='unknown', control='cancel', outcome='yield')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'cancelled', 'work_ref': {'epoch': 2, 'goal_id': 'goal-3c88ffe9c4864d2ebdd5f76cc014eb05', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='unknown', control='cancel', outcome='failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'cancelled', 'work_ref': {'epoch': 2, 'goal_id': 'goal-b39e1c7ab2bf48c3b7a0240469d3c703', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='not-a-status', control=None, outcome='yield')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'queued', 'work_ref': {'epoch': 1, 'goal_id': 'goal-5800c328b5cc4e8e9d7c08ce66fd4a1a', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='not-a-status', control=None, outcome='failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'failed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-fcbd03e61f784fddac4c920947cc96f6', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='not-a-status', control='pause', outcome='yield')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'paused', 'work_ref': {'epoch': 1, 'goal_id': 'goal-888e48ef1b9e4351aa2187d159c4b37a', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='not-a-status', control='pause', outcome='failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'paused', 'work_ref': {'epoch': 1, 'goal_id': 'goal-a29b038b5ea24b519b1242b381fc287a', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='not-a-status', control='cancel', outcome='yield')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'cancelled', 'work_ref': {'epoch': 2, 'goal_id': 'goal-8bf41e1cfe9f4e559d8c24404e7ed182', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_call_status_cannot_release_or_rewrite_current_control (test_tasks_release_integrity_v5.ReleaseIntegrityTests.test_unknown_call_status_cannot_release_or_rewrite_current_control) (status='not-a-status', control='cancel', outcome='failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_tasks_release_integrity_v5.py", line 28, in test_unknown_call_status_cannot_release_or_rewrite_current_control
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'cancelled', 'work_ref': {'epoch': 2, 'goal_id': 'goal-2439a792166d448eb3c1416e7d93e6cd', 'revision': 1}}}
+
+----------------------------------------------------------------------
+Ran 37 tests in 0.622s
+
+FAILED (failures=18)

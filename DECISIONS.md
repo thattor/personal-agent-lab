@@ -2175,7 +2175,24 @@ automatic refusals as history; the new direct instruction is the fresh authority
 not a bypass or an invented acceptance of the old presentation channel.
 Role pools, mock/stdlib-only scope, no secrets/credentials/unneeded personal data,
 no new auth/service/paid fallback/publication/live DB changes, and actual product
-access/org/tool approval limits still apply. No CO/AGY/global permission settings
-are changed. Unknown old calls remain untouched and the completed native ASK
+access/org/tool approval limits still apply. No CO/global approval policy is
+edited. Native CLI trust is scoped to the prepared PAL review folder only;
+its ordinary scoped trust prompt was accepted under the owner PAL/AGY authority.
+Unknown old calls remain untouched and the completed native ASK
 code assignment is not duplicated. Confirm each route/model/auth/cost condition
 before use; success must be observed, not inferred from this saved permission.
+
+
+D043 observed execution limit — the prepared AGY review was rejected again by
+automatic approval before launch. Exact reason: broad AGY-use approval did not
+specifically authorize13 private artifacts202200 bytes to the external
+AGY/Google-hosted Claude destination under its egress policy. The direct owner
+project approval remains recorded; this is an actual transport refusal, not
+a claim that the owner withheld approval. No run.json/stream/model call exists.
+Root does not bypass or repeat the refused action without new relevant evidence.
+A direct question now names exact input/hash/destination. CO remains the already
+approved alternative; its qualified Opus route was last session-limited and
+reported22:20 reset, not yet observed available. Independent Sol reviews the
+C10 proposal while that narrow consultation dependency waits. This single review
+condition is not copied into global config, an enduring per-call permission rule,
+or a wider project stop. No claim about unpublished review internals is made.
