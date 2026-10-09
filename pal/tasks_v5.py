@@ -1,5 +1,6 @@
 """Transactional execution rights for a trusted local mock host (TSK02/1)."""
 from functools import wraps
+import sqlite3
 
 from pal.contracts_v5 import (Brief, ContractError, Grant, Limits, Ref, Result,
                               WorkRef, dumps, loads, parse_model_action)
@@ -66,12 +67,15 @@ def _wire(refs):
 
 
 class TaskStore(IntakeStore):
-    def __init__(self, connection, *, host_limits, artifact_inspect=None, **kwargs):
+    def __init__(self, connection, *, host_limits, artifact_inspect=None, verification_inspect=None, **kwargs):
         if type(host_limits) is not Limits or any(x > _MAX for x in
                 (host_limits.max_operations, host_limits.max_steps, host_limits.max_model_calls)):
             raise ValueError('finite SQLite host limits required')
         if artifact_inspect is not None and not callable(artifact_inspect):
             raise TypeError('artifact_inspect must be callable')
+        if verification_inspect is not None and not callable(verification_inspect):
+            raise TypeError('verification_inspect must be callable')
+        self._verification_inspect = verification_inspect
         self._artifact_inspect = artifact_inspect
         super().__init__(connection, **kwargs)
         schema = (
@@ -655,13 +659,115 @@ class TaskStore(IntakeStore):
             return step
         return self._transaction('finish_step', step_id, canonical, operation)
 
+    def _inspect_verification(self, ref):
+        if self._verification_inspect is None:
+            _reject('unavailable')
+        changes = self._conn.total_changes
+        self._conn.execute('SAVEPOINT v5_tsk_verification_inspect')
+        try:
+            result = self._verification_inspect(self._conn, {'verification_ref': ref.to_json()})
+            if not self._conn.in_transaction or self._conn.total_changes != changes:
+                _reject('unavailable')
+            self._conn.execute('RELEASE v5_tsk_verification_inspect')
+        except BaseException:
+            if self._conn.in_transaction:
+                try:
+                    self._conn.execute('ROLLBACK TO v5_tsk_verification_inspect')
+                    self._conn.execute('RELEASE v5_tsk_verification_inspect')
+                except sqlite3.Error:
+                    # Trusted host COMMIT cannot be undone by our former savepoint.
+                    pass
+            raise
+        try:
+            if type(result) is not Result:
+                raise ContractError()
+            result = Result.from_json(result.to_json())
+            if not result.ok:
+                _reject('not_found' if result.error.code.value == 'not_found' else 'unavailable')
+            data = _obj(result.value.to_json(), {'work_ref', 'artifact_refs', 'checks', 'source_refs', 'status'})
+            _work(data['work_ref'])
+            for name, kind in (('artifact_refs', 'artifact'), ('source_refs', 'record')):
+                if type(data[name]) is not list or any(Ref.from_json(r).kind.value != kind for r in data[name]):
+                    raise ContractError()
+            if data['status'] not in ('valid', 'invalidated') or type(data['checks']) is not list:
+                raise ContractError()
+            available = set(_refs(data['artifact_refs']) + _refs(data['source_refs']))
+            for check in data['checks']:
+                _obj(check, {'condition_id', 'status', 'reason', 'evidence_refs'})
+                _id(check['condition_id'])
+                if (check['status'] not in ('met', 'unmet', 'unknown') or
+                        type(check['reason']) is not str or len(check['reason']) > 1024 or
+                        not set(_refs(check['evidence_refs'])) <= available):
+                    raise ContractError()
+            return data
+        except ContractError:
+            _reject('unavailable')
+
+    def _complete(self, work, verification):
+        row, lease = self._authority(work)
+        data = self._inspect_verification(verification)
+        inspected = _work(data['work_ref'])
+        if (inspected.goal_id, inspected.revision) != (work.goal_id, work.revision):
+            _reject('conflict')
+        if inspected.epoch != work.epoch:
+            _reject('stale')
+        context = self._verification_context({'work_ref': work.to_json()}, purpose='status')
+        if not context.ok:
+            raise _Rejected(context)
+        current = context.value.to_json()
+        if data['artifact_refs'] != current['artifact_refs']:
+            _reject('stale')
+        if [c['condition_id'] for c in data['checks']] != [c['id'] for c in current['conditions']]:
+            _reject('unavailable')
+        sources = _refs(data['source_refs'])
+        if not set(_refs(current['source_refs'])) <= set(sources) <= set(self._registered(row)):
+            _reject('unavailable')
+        self._gate(sources)
+        if data['status'] != 'valid':
+            _reject('unavailable')
+        if any(c['status'] != 'met' for c in data['checks']):
+            _reject('conflict')
+        saved_steps = {saved['id']: saved for saved in self._steps(row)}
+        steps = {key: loads(saved['wire']) for key, saved in saved_steps.items()}
+        calls = self._rows('SELECT * FROM v5_tsk_call WHERE lease=?', (lease['id'],))
+        if (any(step.get('status') not in ('started', 'finished', 'abandoned') for step in steps.values()) or
+                any(call['status'] not in ('admitted', 'returned', 'raised', 'not_entered') for call in calls)):
+            _reject('unavailable')
+        if (any(step['status'] == 'started' for step in steps.values()) or
+                any(call['status'] == 'admitted' or (call['status'] == 'returned' and
+                    (call['step'] not in steps or steps[call['step']]['status'] != 'finished')) for call in calls)):
+            _reject('conflict')
+        for call in calls:
+            if call['status'] == 'returned':
+                saved, step = saved_steps[call['step']], steps[call['step']]
+                if (saved['call'] != call['id'] or saved['idx'] != call['idx'] or
+                        step['step_id'] != call['step'] or step['work_ref'] != loads(call['work'])):
+                    _reject('unavailable')
+        row['state'] = 'completed'
+        self._conn.execute('UPDATE v5_intake_work SET state=? WHERE goal_id=? AND revision=?',
+                           ('completed', work.goal_id, work.revision))
+        self._conn.execute('UPDATE v5_tsk_lease SET active=0 WHERE id=?', (lease['id'],))
+        self._set_flags(row, 0, 0)
+        self._event(row, 'result', 'work completed from saved verification',
+                    (*_refs(data['artifact_refs']), verification))
+        return {'work_ref': work.to_json(), 'state': 'completed', 'control_status': 'none'}
+
     @_public
     def control(self, request):
         data = _obj(request, {'key', 'work_ref', 'command'})
         key, work = _id(data['key']), _work(data['work_ref'])
-        if data['command'] not in ('pause', 'resume', 'cancel'):
+        command = data['command']
+        verification = None
+        if type(command) is dict:
+            _obj(command, {'kind', 'verification_ref'})
+            verification = Ref.from_json(command['verification_ref'])
+            if command['kind'] != 'complete' or verification.kind.value != 'verification':
+                raise ContractError()
+        elif command not in ('pause', 'resume', 'cancel'):
             raise ContractError()
         def operation():
+            if verification is not None:
+                return self._complete(work, verification)
             row = self._current(work, epoch=False)
             flags = self._flags(row)
             before = (row['state'], row['epoch'], flags['pause'])
@@ -726,7 +832,7 @@ class TaskStore(IntakeStore):
                 if step['status'] == 'started':
                     step['status'] = 'abandoned'
                     self._conn.execute('UPDATE v5_tsk_step SET wire=? WHERE id=?', (dumps(step), saved['id']))
-            state = ('cancelled' if row['state'] == 'cancelled' else 'paused' if flags['pause'] else
+            state = (row['state'] if row['state'] in ('completed', 'cancelled', 'failed') else 'paused' if flags['pause'] else
                      'queued' if flags['drain'] or data['outcome'] == 'yield' else 'failed')
             row['state'] = state
             self._conn.execute('UPDATE v5_intake_work SET state=? WHERE goal_id=? AND revision=?', (state, work.goal_id, work.revision))
@@ -755,6 +861,11 @@ class TaskStore(IntakeStore):
             if not set(self._required(row)) <= registered:
                 _reject('unavailable')
             if not set(refs) & registered or row['state'] in ('cancelled', 'failed'):
+                continue
+            if row['state'] == 'completed':
+                self._event(row, 'progress',
+                    'a source registered for this completed work was stopped; completion is historical',
+                    tuple(ref for ref in refs if ref in registered))
                 continue
             if row['state'] not in ('queued', 'running', 'paused') or row['epoch'] == _MAX:
                 _reject('unavailable')
