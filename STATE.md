@@ -1,14 +1,15 @@
 # STATE.md
 
-## Latest authority D040 — native restraint lifted
+## Latest authority D041 / D040
 
-Owner manually reset Codex and authorizes up to32 parallel units (verified user
-message01a12069-d6d3). Current weekly use0%, ordinary usage allowed. This supersedes
-D039 restraint; SWE code and AGY Sonnet implementation preferences continue.
-Actual native slots4 including Root, CO cap12/adapter; Claude Pro separately
-session-limited until22:20 JST. No capacity/permission/cost workaround.
-Native Astra now checks ASK owner-state invariants in parallel with the fresh
-AGY Opus contract candidate. Code waits for one Root-owned shared freeze.
+Owner role pools are fixed in DECISIONS D041: design Opus/Astra/Sol6.1; code
+SWE-2 High/Astra/Sol6.1/Sonnet5.5/Opus5.5; lead Sol6.1/Opus5.5. Unconnected
+chore-model candidates are not claimed available. Native restraint is lifted
+after the owner's manual reset; maximum32 remains bounded by real capacity.
+Native slots4 including Root; CO0.4.5 host12 per adapter, currently0/0 each.
+Claude Code Pro is session-limited (owner image reset22:19; provider22:20).
+AGY Claude is separate: owner image48% session/39% weekly, not upper100% buckets.
+No new reset, credits, auth, runtime/state edits, service or schedule.
 
 ## C077 — local result readback accepted
 
@@ -28,18 +29,16 @@ claim. Original Sonnet11 PASS, Root3 RED, Opus F1, SWE14 repair and final36 are
 separate. D039 actual code contributors are CO SWE-2 High and direct AGY exact
 claude-sonnet-5-5-high; Root owns integration. No new native author/reviewer.
 
-Next ASK01: SWE2610f221 and Opus de3d5d69 advise REFINE. Exact state/lease/API
-CO Opus8288ddc326e347169ac7ac699a1a80bc stopped before code at planner rate_limit
-(Claude Pro session resets22:20 JST). CO still marks unknown; preserve it untouched.
-Fresh approved AGY claude-opus-5-5-high contract draft is running froma58cde7
-under /PAL/agy-work/intake-review-20261009/ask01-opus-contract. Launcher:
-/private/tmp/pal-ask01-agy-opus-contract-launch.py. Just-confirmed Google AI Pro,
-Credits off, weekly57.01% and five-hour85.02% remaining. No preflight inference.
-Candidate contract only;
-Root freezes it before code, no owner decision is needed. Preserve
-all old unknown/refused calls and live DBs. Codex remaining2% at last reading,
-ordinary usage allowed; no reset/paid fallback. Use existing CO/AGY for work.
-No new auth/cost/publication/schedule. Continue the authorized development loop.
+Next ASK01: completed AGY exact claude-opus-5-5-high candidate2d96c06a
+(SUCCESS263.877s, no tests, only finish) and native Astra actual-state analysis
+agree on atomic ask/Step/question/event/replay/waiting/lease closure. Root is
+reconciling answer linkage, source-stop and replay/retained-tail semantics before
+freezing. Inputs were reverified against immutable basea58cde7; matching manifest
+evidence is saved. No implementation assignment consumes an unfrozen seam.
+CO8288ddc3 remains unknown after planner session limit, untouched. No supported
+preplanned CO run exists; do not substitute SWE into the design/planner role.
+Use approved native/AGY alternatives while that route is unavailable. Original
+unknown/refused calls, live DBs and no-auth/cost/publication limits continue.
 
 ## Current C076 — local verified completion connected
 

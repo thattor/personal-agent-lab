@@ -1,6 +1,6 @@
 # AGENTS.md — Personal Agent Lab
 
-Current D040/C077 continuation and D037 route instruction supersede earlier stops
+Current D041/D040/C077 continuation and D037 route instruction supersede earlier stops
 and the CO-only restriction. Evaluate checkpoints, correct within accepted scope,
 then actually continue the next unfinished authorized dependency.
 SWE-2 remains preferred when usable; native Astra/Sol and scoped AGY Opus5.5/Sonnet5.5
@@ -48,9 +48,15 @@ If documents conflict, later explicit decisions in DECISIONS.md win. Never silen
 Keep reusable PAL research, design records and data in this private repository with provenance and verification limits (D-030). Temporary folders and chat artifacts are staging copies, not the only retained copy. Historical access receipts and one-time approvals do not grant new execution authority.
 
 ## Roles
-- Codex: controller and implementer. Own project/milestone/Issue loops, coding, tests, commits, evidence, checkpoints and continuation within the current adopted plan.
-- Opus: independent design partner. Consult before adopting a design change.
-- Devin SWE-2 High: implementation-design and code-generation partner. Consult for substantial implementation architecture, concurrency, persistence, recovery, idempotency, test harnesses, provider/tool boundaries, or uncertain substantial code generation.
+- Lead: Sol6.1 or Opus5.5; Root/Sol owns integration and canonical records.
+- Design candidates: Opus, Astra, Sol6.1.
+- Implementation candidates: SWE-2 High, Astra, Sol6.1, Sonnet5.5, Opus5.5.
+- Low-risk chores candidates: Gemini3.8 Flash, Haiku5.5, Luna6.1, only if the exact
+  model/route is verified available; not design or acceptance authority.
+- Independent review uses a separate execution context under the existing review
+  authorization. Authors' self-checks do not count as independent review.
+D041 supersedes older SWE design gates for new assignments. Substantial design
+consultation uses the design pool; SWE remains preferred for code when available.
 
 Codex remains responsible for integration and evidence.
 
@@ -73,7 +79,7 @@ Consult Opus before adoption when a change affects:
 
 Record the question, answer, and adopted/rejected conclusion in DECISIONS.md before implementation.
 
-Consult SWE-2 High before substantial implementation when:
+Consult an available D041 design candidate before substantial implementation when:
 - choosing or changing persistence/transaction strategy;
 - choosing or changing concurrency/worker model;
 - implementing restart recovery, dedupe, stale-result fencing, artifact atomicity;

@@ -2090,3 +2090,34 @@ per adapter, Claude Pro session still separately limited, AGY provider concurren
 unknown. Use independent meaningful units only. Native Astra now analyzes actual
 ASK state invariants while AGY Opus drafts a candidate. Root freezes contracts
 before tests/code assignment. Original unknown pauses remain untouched.
+
+
+D041 (2026-10-09) owner fixes role candidate pools. Fresh actual user message
+01a1206b-70b2-7ed0-896d-6c811fcbe287 in PAL人間判断 specifies:
+- Design: Opus, Astra, Sol6.1.
+- Implementation: SWE-2 High, Astra, Sol6.1, Sonnet5.5, Opus5.5.
+- Lead: Sol6.1, Opus5.5.
+- Low-risk chores: Gemini3.8 Flash, Haiku5.5, Luna6.1.
+Use only verified available IDs/routes; the chores list does not prove connection
+or authorize a substitute. Earlier SWE design consultations predate this rule;
+new design work uses the design pool. Independent review remains a separate
+context under prior role authority. Root Sol6.1 owns canonical integration.
+CO0.4.5 has no supported preplanned-input CLI; fixed run still requires a planner.
+The qualified design route Claude/claude-opus-5-5 is session-limited. Do not assign
+SWE as planner to evade the new role rule or add/modify CO adapters/state. Existing
+direct AGY Opus/Sonnet and native Astra/Sol alternatives continue. SWE implementation
+remains preferred when a permitted planner is available. Capacity status currently
+0 executing/0 reserved each; host12 per adapter is not provider quota or32 concurrency.
+
+Owner quota images were read directly from user messages01a1206d-0f9a and
+01a1206d-eeda. At that screenshot time: Claude Code Pro session0%, reset22:19,
+weekly44%; separate AGY Claude session48%, reset00:49 next day, weekly39%. AGY's
+upper100% buckets are not Claude model capacity. Values are observations, not
+guarantees/current quota or permission to consume credits. Keep additional usage
+off and check the exact route before each new call. No reset/schedule activation.
+
+Fresh direct AGY exact claude-opus-5-5-high contract candidate2d96c06a completed
+SUCCESS263.877s; only finish tool observed, no tests. Candidate and receipt are
+retained under evidence/operations/ask01-20261009. Astra reconciles against actual
+source; Root freezes one contract before implementation. Root verified all10 original input hashes and exact prompt bytes against
+immutable git blobs; all matched. Original candidate provenance is preserved.

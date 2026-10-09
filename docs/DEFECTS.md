@@ -1177,3 +1177,11 @@ contracts, test sources, receipts and readable demo. Corrected248512-byte input
 started asde3d5d69. Future launchers preflight committed blob max65536/total262144
 against installed workspace.py; runtime/state limits stay unchanged. Original
 failure/calls0 preserved. This corrects packaging, not an access refusal.
+
+
+## ASK01 hash-prefix false alarm in an uncommitted draft (2026-10-09)
+Root mistook an e3b0-prefixed SHA256 for the empty-content hash before comparing
+the complete digest. Exact byte/hash verification found all10 inputs intact and
+all original manifest hashes correct. The inaccurate draft and receipt limitation
+were removed before commit. Future decisions use complete digest equality and
+byte comparison, never a familiar prefix. This corrective check passed here.
