@@ -1,0 +1,18 @@
+{
+  "route": "existing installed AGY CLI",
+  "version": "1.3.2",
+  "operation": "agy models",
+  "exit_code": 0,
+  "timeout": false,
+  "models_confirmed": [
+    "claude-opus-5-5-low",
+    "claude-opus-5-5-medium",
+    "claude-opus-5-5-high"
+  ],
+  "stdout_sha256": "0fe8eac40fd3a1f2554de5c998412b23e219cda82edd3f980f93f2f526a03bda",
+  "quota": "NOT_REPORTED",
+  "additional_fees": "NOT_REPORTED",
+  "actual_generation": false,
+  "native_receipt_compatibility": "NOT_VERIFIED",
+  "auth_configuration_billing_changes": false
+}

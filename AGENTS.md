@@ -39,8 +39,9 @@ Retain all current v5 tests, including unsuffixed probes. Use disposable fixture
 and existing current v5 demos/lifetime verifiers for bounded local verification.
 Report exact source, actual command/exit/count, findings and remaining limits.
 Distinguish source approval, local mock/fixture proof, real transport qualification,
-operational adoption and authentic human usefulness. Current HTTP/UI is
-LOCAL_MOCK_VERIFIED; native UI, real qualification/usefulness and whole goal remain
+operational adoption and authentic human usefulness. Current HTTP/UI has
+LOCAL_MOCK_VERIFIED and LOCAL_NATIVE_FIXTURE_VERIFIED proof; genuine native UI,
+real qualification/usefulness and whole goal remain
 NOT_MET. Use the existing Python3.13 interpreter for local verification; a Python3.9
 StrEnum import failure is not a product regression.
 Global guidance and saved owner instructions remain independently applicable.

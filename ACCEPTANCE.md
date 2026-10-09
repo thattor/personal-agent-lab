@@ -1,4 +1,20 @@
-# Current C095 — functional usage correction passes1019; real proof still unmet
+# Current C096 — native fixture UI verified; actual native proof still unmet
+
+Root20d512a full **1029 PASS40.369s/exit0**, independent Astra source APPROVE,
+fixed10/old HTTP19 and original3 malformed-owner probes validate the native-owner
+fixture HTTP slice. All99 prior test/fixture files and the17-file native transport
+closure are unchanged. [Verification](evidence/operations/c096-native-ui-20261010/verification.json).
+
+Actual Root loopback browser confirms the bound question/answer, same-work
+completion and saved literal script-like text with no console errors. Four typed
+fixture calls, bounded close, retained DB and owned server exit0 are observed.
+The first operator API error/exit1 is preserved separately; corrected operator
+uses current public list_candidates and passes unchanged criteria. UI is
+LOCAL_NATIVE_FIXTURE_VERIFIED in addition to LOCAL_MOCK_VERIFIED, with genuine
+native qualification NOT_RUN. No prose/intelligence grading, real provider or
+UNKNOWN recovery occurred. C094 remains held; whole goal **NOT_MET**.
+
+# Retained C095 — functional usage correction passes1019; real proof still unmet
 
 Root67c93db full **1019 PASS29.885s/exit0** follows independent Sol36/source
 APPROVE of separate Astra76a8d5c. New6 fixed schema methods and one explicitly

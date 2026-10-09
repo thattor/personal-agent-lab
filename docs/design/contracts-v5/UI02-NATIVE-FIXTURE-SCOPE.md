@@ -52,8 +52,11 @@ controls. Keep request/idempotency/host-origin/size/security-header contracts.
 Owners use separate SQLite connections; never hold the app mutex or DB transaction
 across provider callbacks. No external file operation or send is in this scope.
 
-One accepted pending turn schedules run_turn once. Inspect the returned public
-turn status: only committed permits at most one NativeExpertRunner.execute_next
+One accepted pending turn schedules run_turn once. Validate the complete current
+closed public owner envelope before inspecting status or progressing. A known
+status alone, missing required fields or extra keys grants no entry. Existing
+owners retain nested Step/verification semantics; do not add a second owner engine.
+Only committed permits at most one NativeExpertRunner.execute_next
 slice. Result.ok/HTTP200/queue-empty alone grants no Expert entry. Failed,
 interrupted, pending, held or unavailable/unrecognized outcomes do not advance.
 Poll/read/pause/cancel/source-stop schedule no entry. Explicit successful resume
@@ -145,3 +148,12 @@ remaining issues. Fixed local endings are not actual qualification.
 HTTP/UI files are outside the existing17-file transport closure. Future whole-flow
 operator scope must bind their exact bytes, admission/queue settings and authentic
 provider qualification separately; this slice adds no qualified launch command.
+
+Independent review of source5dc3706 originally REQUEST_CHANGES despite10+19 green:
+empty with an extra key, released without its required details and committed
+without effect_refs were incorrectly accepted by status-only checks; the latter
+scheduled Expert. Source-only repair ef918b7 validates actual closed owner shapes.
+The original three probes now all latch held and malformed Primary dispatches0
+Experts. Fixed tests and the other three UI source files stay unchanged.
+Prevention: include malformed trusted-owner envelopes in boundary review and
+check required fields before progression; passing existing fixtures is insufficient.

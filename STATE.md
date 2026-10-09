@@ -1,4 +1,38 @@
-# Current C095 — typed usage corrected; native fixture UI next
+# Current C096 — native-owner fixture UI connected and verified
+
+Root20d512a integrates separate Sol5dc3706/ef918b7 after independent Astra
+APPROVE. Full **1029 PASS40.369s/exit0** keeps all99 previous test/fixture files
+byte-equal and adds10 functional cases. Primary/Expert/TSK/ART/VER/transport owners
+and the17-file qualification closure are unchanged from C095.
+[Verification](evidence/operations/c096-native-ui-20261010/verification.json).
+
+Root's actual disposable loopback browser path verifies question → answer → the
+same completed work → saved literal content, with4 typed synthetic invokes,
+zero browser errors, server exit0, bounded app close and retained private DB.
+Current UI has LOCAL_MOCK_VERIFIED and LOCAL_NATIVE_FIXTURE_VERIFIED proof;
+native_available:false/qualification NOT_RUN remain explicit. No real provider
+was entered and no conversation/intelligence/prose quality was graded.
+
+Independent review caught malformed known-status responses advancing work; repaired
+closed owner-envelope checks hold all3 original probes, with malformed Primary
+Expert dispatch0. A Root browser-finalizer API-name mistake caused the initial
+operator exit1; its DB/receipt are retained. The corrected public list_candidates
+operator repeats the same fixture criteria and exits0. Both mistakes and minimum
+prevention are recorded in D068; no product criteria or old test was weakened.
+
+Actual AGY1.3.2 models metadata completes exit0 and advertises exact
+claude-opus-5-5-high. It does not report quota/extra fees or prove generation/
+native receipts, so no AGY generation follows. CO remains optional; current local
+parallel capacity4 includes Root, CO ordinary shared state supports12/adapter,
+without claiming30 or known free native quota.
+
+C094 stays consumed UNKNOWN/NOT_PROVEN/active held with missing original ending/
+capture/owned EOF-wait; there is no supported recovery API. No second entry,
+release, rotation or output adoption follows. Future failure observability and
+an explicit old-UNKNOWN disposition are being prepared independently. Real
+qualification/Expert/UI/authentic usefulness/release and whole goal **NOT_MET**.
+
+# Retained C095 — typed usage corrected; native fixture UI next
 
 Root67c93db integrates Astra76a8d5c after separate Sol APPROVE. Full **1019
 PASS29.885s/exit0** preserves1013 existing methods plus6 fixed schema cases.

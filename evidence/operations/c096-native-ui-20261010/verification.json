@@ -1,0 +1,67 @@
+{
+  "source_commit": "20d512ae6b87382a19007b2ca95e613adb7bfefd",
+  "scope": "UI02-NATIVE-FIXTURE/1",
+  "full_suite": {
+    "tests": 1029,
+    "seconds": 40.369,
+    "exit_code": 0,
+    "log_sha256": "962c963b1207cc3950c6cc9c7b2e15e1e0ce99451ff5836d1c622ce7c6c37ee9",
+    "all_previous_test_fixture_files_byte_equal": 99,
+    "all_core_source_unchanged_from_c095": true,
+    "source_and_tests_unchanged_during_verification": true
+  },
+  "independent_review": {
+    "verdict": "APPROVE",
+    "source_commit": "ef918b7b84687ee9e90be70d5ac7aa265e9b1508",
+    "review_sha256": "ad102e515edfb01a6bb3d622185fdd337bd2a3d528f09578ace07f07f75c231e",
+    "fixed_tests": 10,
+    "old_http_tests": 19,
+    "original_malformed_owner_cases_held": 3,
+    "malformed_primary_expert_dispatch": 0,
+    "disclosure": "Fixed-test author Astra reviewed separate Sol production source.",
+    "logs_sha256": {
+      "pal-ui02-astra-repaired-native10.log": "73d55801a2f5b6f613c6e2e918a25cfc0ac012f5f2cc886ce94e73a35b2581f2",
+      "pal-ui02-astra-repaired-old19.log": "07ba4da06038909523c6b263355cdda6ee8de3072390a62cdc135b7bf30ada7f",
+      "pal-ui02-astra-repaired-owner-probe.log": "0019f9ac9acaf4ad03d15037eace3b5fe45bd55f9ced2418c808907864ec3988"
+    }
+  },
+  "file_sha256": {
+    "pal/native_http_v5.py": "6ecb5c95c6f84a5a4ac901428d9490b87813b7d1b3c0f2539b79eb8929c9ed5f",
+    "pal/http_v5.py": "cd1c72783b35753e360d80e92ffadfeae0d294db49aef18c745628fc4cf031ec",
+    "pal/web_v5/index.html": "2856a6375d63c8a14222e07e7d42ecc981282fff5c94bb6296ddb773a6773d0a",
+    "pal/web_v5/app.js": "73531b8fe3739d6933d067076af6084e56de5f0b778fd02fd5386b484ac349f6",
+    "tests/test_native_http_v5.py": "bc78be39ae2f97cc85ebbada345e17b0751e3cad5ecbb68bb3f7be7b93a5a7cb",
+    "tests/native_http_fixtures_v5.py": "a5c1022c9fd70c412d53d7063b29c3927a83a83cdae939222fd2f1bd8c3c3322"
+  },
+  "browser": {
+    "scope": "synthetic typed fixture; actual local browser",
+    "states": [
+      "waiting_input",
+      "completed"
+    ],
+    "same_work": true,
+    "answer_record_question_binding": true,
+    "saved_artifacts": 1,
+    "literal_script_text": true,
+    "console_errors": 0,
+    "typed_fixture_invokes": 4,
+    "actual_native_model_calls": 0,
+    "server_exit_code": 0,
+    "app_close": true,
+    "database_retained": true,
+    "receipt_sha256": "2a7dd053ded24ad9a5efddec00ec4997b71ac9fd07403bf56cfbd7107e59f109",
+    "screenshot_sha256": "cd7bc53649a051ca640394c6ded2a334bf2d8cdb79a08f32b5b448962feb0774",
+    "ax_sha256": "5e7af57056f86b6a4b6839f587f7f272c28a137732d27d16e4949aedc161275c",
+    "original_operator_failure_retained": true,
+    "original_operator_failure_sha256": "d04f5754efcfb2dfc5504fc832fcb83d13b1952cd9a3597154520ed412441b68"
+  },
+  "status": "LOCAL_NATIVE_FIXTURE_VERIFIED",
+  "native_qualification": "NOT_RUN",
+  "c094": "UNKNOWN_NOT_PROVEN_ACTIVE_HELD",
+  "whole_goal": "NOT_MET",
+  "prose_quality_grading": false,
+  "limits": [
+    "No real provider entry, unknown recovery/release/rotation, old DB change, auth/service or fee enabling.",
+    "HTTP/UI outside the17-file transport qualification closure; whole-flow source binding remains separate."
+  ]
+}

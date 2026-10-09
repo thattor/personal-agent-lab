@@ -3091,3 +3091,66 @@ Claude executing0/reserved0, Devin executing1/reserved0 (preserved held baseline
 Ordinary concurrent runs are supported by the installed co-task contract, while
 the local native agent maximum4 includes Root. No30-execution or known free-quota
 claim is made. No CO state/runtime/route change or cost enabling follows.
+
+## D068 — C096 current native-owner fixture UI accepted locally (2026-10-10)
+
+Separate Sol source5dc3706 has independent Astra REQUEST_CHANGES:10 new/19 old
+HTTP tests passed but known-status-only checks accepted malformed owner envelopes.
+Original empty+extra and released-without-details stayed idle; malformed committed
+scheduled Expert. Source-only ef918b7 repair validates actual closed Primary/Expert
+shapes before progression. Independent Astra APPROVE includes unchanged fixed10
+PASS10.579s/old19 PASS10.271s and all3 original probes held, malformed Primary
+Expert dispatch0. Reviewer's fixed-test authorship and separate source author
+are disclosed. Minimum prevention: review complete boundary envelopes, including
+malformed trusted-owner shapes, before status-based work progression.
+
+Root20d512a integrates exact source and reviews hashes/logs. Full1029 PASS40.369s/
+exit0 preserves all99 C095 test/fixture files; only new10 methods and their helper
+are added. Only four native HTTP/web source files differ from C095; all core
+owners/wrappers/17-file transport closure stay byte-equal. Qualification pins
+therefore do not acquire UI/whole-flow coverage.
+
+Root actual loopback browser verifies current native owners using an explicitly
+marked synthetic provider: question, answer record/question binding, same-work
+completed state, one saved artifact, literal script-like text and no console
+errors. Final owned server exits0, app close succeeds and DB remains private.
+Four fixture invokes are not four actual model calls. No naturalness/prose/
+intelligence assessment or qualification is implied.
+
+Root's first finalizer incorrectly guessed TaskStore.list_works, which does not
+exist. Browser output was observed, but operator exit1 before app close prevents
+using it as a completed teardown proof. Original operator/receipt/DB are retained.
+The corrected fresh-fixture operator uses the same public list_candidates request
+as HTTP, with identical criteria and source, and ends exit0. This repeats the API
+name assumption already caught in the fixed-test reach correction; the prevention
+had not yet been applied to this ad-hoc operator. Apply the same source/API-name,
+request-shape and response-projection check to operator finalizers before launch,
+and use guaranteed finally closure without masking failed assertion/exit status.
+No test expectation or product source was changed to absorb the operator error.
+
+AGY1.3.2 metadata once succeeds through properly scoped automatic review of its
+existing diagnostic/localhost requirements; catalog lists exact Opus5.5 high.
+No new auth/setup/generation or billing setting changes. Quota/extra fees are
+not reported and remain unverified; metadata does not authorize a charge or
+establish NativeReturned compatibility. Actual underlying access/tool refusals
+remain binding. Original C094/CO/Devin unknowns and no-rotation/no-second-entry
+remain; no output adoption/release. Next milestone design consultation and
+prospective failure observability preparation continue. Whole goal NOT_MET.
+
+## D069 — prospective failure observation proposal for design review (2026-10-10)
+
+[PRI02-CLAUDE-FAILURE/1](docs/design/contracts-v5/PRI02-CLAUDE-FAILURE-SCOPE.md)
+is PROPOSED, not an implementation assignment or provider allowance. Separate
+Astra reads current public owners/wrapper and confirms no supported recovery path
+for the missing original owned observations. Lack of a public recovery path does
+not prove all possible original records absent. C094 stays UNKNOWN/active held.
+
+The minimum future source proposal separates the original exception from local
+cleanup success/failure in a bounded private diagnostic; its best-effort write
+cannot change return/raise/release/strict ending behavior. No message/absolute
+path/private input is serialized. Null observations remain unknown. Root submits
+current C096 connection and this minimum proposal to the existing exact Opus5.5
+design route before freezing new tests/source. Original no-second-entry/rotation
+and extra-cost/auth/service boundaries remain. A concrete old-UNKNOWN/new-MAX1
+human decision is prepared independently after the design/operator evidence;
+no call or irreversible action is implied by the proposal.
