@@ -2,17 +2,33 @@
 
 ## Goal
 
-Latest continuation/sequencing is D038 (2026-10-09). Checkpoints evaluate and correct;
-they do not require repeated owner approval. Root mistakenly stopped after C069.
-Native Astra and independent Sol6.1 have now completed read-only MEM/TSK ownership
-and adversarial-case analysis at666506a. The next concrete scope proposal is
-[MEM01/1](docs/design/contracts-v5/MEM01-SCOPE.md), still DRAFT, not implemented.
+Latest continuation/sequencing is D038/C070 (2026-10-09). Checkpoints evaluate and
+correct; they do not require repeated owner approval. Root mistakenly stopped after
+C069. The corrective loop has now completed MEM01 implementation, real local-module
+connection, verification and independent assessment, then actually dispatched its
+next independent dependency instead of ending at the checkpoint.
+
+MEM01/1 is MET at source013bf52c5a8ec079614071f251109a9413b08a60. Astra authored
+MEM, SOL authored TSK shared events/source indexing/queued invalidation and five real
+MEM→intake→stop cases, separate Sol6.1 independently APPROVED. Full471 tests PASS
+23.782s, exit0. Actual SQLite modules share the transaction; no fake source table
+stands in for MEM in the connection cases. [Verification](evidence/operations/mem01-20261009/verification.json).
+Stopping a source invalidates dependent queued epochs and saves both owners' events;
+new intake/current reads deny it, old create receipt stays historical, and owner
+history retains the sanitized body. The coherent local preparation unit passes;
+other-state invalidation, notes, execution/verification/real model/UI remain unmet.
+
+Next actually running: CO task04bc81e770ea479da9ed4b9b38df6628 implements TSK03/1
+durable C14 pagination, exact devin/swe-2-high Free with separate exact Opus5.5
+review; its result is not yet available. Native Astra independently analyzes the
+TSK02 execution/control/step boundary needed for an early mock Expert loop. SOL owns
+shared contract/schema/integration. No concurrent worker writes touch the same file.
 The owner has now seen the loop proposal and restated its four stages in
 PAL人間判断. This does not grant new scope, but it does not withdraw the prior explicit
 continuation either. Apply the existing loop within that authority. Do not invent a
 new trial-start or recurring checkpoint approval requirement. CO Opus5.5 boundary
-consultation b52e1ef96fbc482e88bb5c002b686a1b is active; isolate MEM authorship from
-SOL's TSK/shared integration, then obtain independent code assessment.
+consultation b52e1ef96fbc482e88bb5c002b686a1b finished with useful REFINE advice;
+its document size verifier failed (6885/6000 bytes), preserved as verified:false.
 Unknown SWE/AGY calls and stopped trials/schedules remain untouched.
 
 The continuing route instruction is D037/C069 following D036/C068. Direct alternative routes
@@ -65,11 +81,10 @@ Current AGY plan flag was ignored with disabled slash expansion; actual stream i
 reports request-review. No tool steps were observed. Requested flags, effective
 permission mode and successful artifact delivery are separate evidence.
 
-Next dependency is a reviewed same-DB MEM availability/TSK transaction contract and
-a bounded source-stop-to-intake connection. It is NOT_RUN; freeze that shared owner
-boundary before assigning dependent modules. It does not require a new owner technical
-question or activate candidate-wide services. SOL owns shared schema, integration
-and canonical records; old DBs, trials and schedules remain untouched/stopped.
+The C069 next dependency (same-DB MEM/TSK boundary and bounded stop-to-intake
+connection) is now MET at C070 above. This does not activate candidate-wide services.
+SOL owns shared schema, integration and canonical records; old DBs, trials and
+schedules remain untouched/stopped. Current work is C14 delivery and TSK execution.
 
 ## Retained C065–C067 preparation record
 

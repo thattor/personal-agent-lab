@@ -910,3 +910,18 @@ wait. A green result alone is insufficient to end ongoing development. Apply the
 already-existing loop rule, with no new recurring approval or schedule. Its first
 full corrective cycle remains unverified until implementation, connected validation,
 independent assessment and the next authorized dispatch actually occur.
+
+C070 application: MEM01 source013bf52 passed actual local-module connection and471
+regression, independent Sol6.1 APPROVE, then CO task04bc81e770ea479da9ed4b9b38df6628
+was actually dispatched for the next C14 dependency. That first corrective cycle is
+observed. It does not guarantee every future checkpoint or whole-product completion.
+
+## MEM01 design-note verifier length failure — 2026-10-09
+
+The completed Opus response was6885 bytes against a declared6000-byte document cap.
+CO correctly returned verification_failed/verified:false; both model calls finished.
+Root preserved the note and receipt and used its advice with explicit dispositions,
+without claiming CO verification or rerunning inference just to shorten a review.
+Future document bounds should leave room for the necessary answer and be checked
+separately from semantic review. Do not relax a failed result into a PASS or use
+this document formatting failure as a reason to stop independent development.

@@ -1,14 +1,16 @@
 # AGENTS.md — Personal Agent Lab
 
-Current D037/C069 route instruction supersedes the earlier CO-only restriction.
+Current D038/C070 continuation and D037 route instruction supersede earlier stops
+and the CO-only restriction. Evaluate checkpoints, correct within accepted scope,
+then actually continue the next unfinished authorized dependency.
 SWE-2 remains preferred when usable; native Astra/Sol and scoped AGY Opus5.5/Sonnet5.5
 are owner-approved alternatives. Preserve both recorded unknown calls; no implicit
 retry/cancel or state edit. AGY exact-conversation loading was rejected by automatic
 review; its concrete optional approval is in the human lane. Use independent native
 work meanwhile. Exact routes, scope and current limits are in STATE/DECISIONS.
-INT00/1 and TSK01/1 unused preparation are integrated with separate review and full440
-regression. Real PRI/MEM authority, live services and full v5 activation remain unproven.
-Next freeze the shared MEM/TSK availability transaction boundary before dependent work.
+INT00/1, TSK01/1 and MEM01/1 local preparation are integrated with separate review and
+full471 regression. Real PRI authority, live services and full v5 activation remain
+unproven. C14 pagination is delegated; TSK execution/control is the next shared boundary.
 
 ## Mission
 The project-level destination is the personal assistant described in SPEC.md. Manage project goal → GitHub milestone → goal-bearing Issue → verified work unit under G-001/D-022. [Latest overall plan P-001 v2](docs/plans/P-001-v2.md) is PROPOSED, not human-adopted; v1 is retained history. Stable-0 is released; Stable-1 under D-021 remains the approved current milestone; C065/D034 authorizes the scoped CO development start; INT-00 shared-wire and bounded TSK intake preparation are integrated; the MEM/TSK transaction boundary is next, while external product activation remains subject to the reviewed candidate scope. Resume STATE.md, continue independently authorized work, and never activate PROPOSED stages from GitHub metadata alone.

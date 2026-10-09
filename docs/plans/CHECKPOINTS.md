@@ -928,3 +928,29 @@ remote termination receipt. AGY lists exact5.5 variants but its trust/cost condi
 are unresolved; the home-wide startup was rejected by automatic review and was
 not bypassed. Ordinary Codex and existing Claude Pro/extra-use-OFF routes were used.
 No new auth/payment/publication, live DB operation or schedule/trial restart.
+
+## C069 — isolated intake preparation, retained 2026-10-09
+
+TSK01/1 at source8db45fd: formal Brief/Grant/bindings/event/replay and strict read,
+independent Sol6.1 approval and full440 PASS. Evidence is tsk01-20261009/verification.json.
+Real MEM was still an injected seam. Root ended the turn despite the existing
+continuation rule; the owner challenged that stop. D038 records cause and correction.
+
+## C070 — real MEM/TSK connection and observed continuation, 2026-10-09
+
+MEM01/1 MET at013bf52; Astra MEM + SOL TSK/integration, independent Sol6.1 APPROVE,
+full471 PASS23.782s, related45. Actual local SQLite append→intake→reference-stop
+invalidates queued work and writes events atomically. Durable receipt replay,
+current-read denial, retained owner history, both lock orders and rollback after
+actual owner writes pass. [Evidence](../../evidence/operations/mem01-20261009/verification.json).
+Opus design advice was applied with explicit dispositions; its overly long note
+failed its CO verifier, preserved as failed rather than relabelled a task PASS.
+
+Contribution: a future intake cannot depend on stopped records, and existing queued
+work loses its prior epoch. Execution of running work, notes/verification dependencies,
+real providers/UI and overall usefulness remain UNMET. This is not full CT-20.
+
+Continuation actually started: CO04bc81e770ea479da9ed4b9b38df6628 delegates TSK03 C14
+pagination to SWE-2 High Free with independent Opus review. Native Astra examines
+TSK02 execution/control in parallel. The outcome of that work is pending. No new
+approval request, unknown-call resume, schedule restart, cost or publication.

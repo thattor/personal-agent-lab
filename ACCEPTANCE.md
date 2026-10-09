@@ -1,6 +1,24 @@
 # ACCEPTANCE.md — Stable-0 definition of done
 
-## Current C069 / D037 isolated intake preparation (2026-10-09)
+## Current C070 / D038 real local MEM-to-intake connection (2026-10-09)
+
+MEM01/1 bounded record persistence/current access/search and queued-source-stop
+connection is MET at source013bf52c5a8ec079614071f251109a9413b08a60. The real MEM and
+TSK providers share SQLite transactions: source stop, epoch increment and events
+commit or roll back together; fresh requests deny stopped sources, historical
+receipts do not regain authority, and owner history retains sanitized raw text.
+Both serialized lock orders, reopen and failure after actual TSK writes pass.
+Related45 tests pass; full471 PASS23.782s, exit0. Separate Sol6.1 APPROVE exact source.
+[Versioned evidence](evidence/operations/mem01-20261009/verification.json).
+
+This is a local module connection, not actual provider/UI or whole CT-20 acceptance.
+Non-queued work fails reference-stop closed; those transitions, notes/correction,
+step/artifact/verification refs, execution/leases/budgets and real runtime are still
+unmet. Trusted callbacks are not sandboxed; an illegal callback COMMIT cannot be
+rolled back after the fact. No live trial or old product evidence is renewed.
+Next C14 pagination is actually dispatched through CO; assessment does not stop work.
+
+## Retained C069 / D037 isolated intake preparation (2026-10-09)
 
 TSK01/1 C03.create and C02.get_work are MET for the fixed unused preparation scope.
 Atomic formal Brief/Grant/bindings/event/replay, nonexpanding grants/zero budgets,
