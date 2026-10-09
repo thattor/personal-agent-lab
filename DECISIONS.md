@@ -1974,3 +1974,15 @@ description quality; semantic/source_fetched remain unknown. Split immutable
 in-memory tests from the smaller SWE code-only module assignment; Root owns TSK
 callback/actual connection and a separate reviewer assesses exact source. No C10,
 new model path, state engine, new permission, or unknown-call retry is introduced.
+
+
+D038 COMPLETE01 design consultation72fabf04 (exact CO Opus5.5) returned REFINE.
+Root adopts R1-R8 in the proposed scope before SWE persistence consultation: exact
+host epoch, strict owner comparisons/error precedence, ended-call predicate,
+historical completed-source progress notices, no non-MET zero-cost yield loop,
+no release after complete, forwarding-closure wiring and canonical host keys.
+R4 needs no extra result field: MEM validates closed work_refs and ignores values;
+retain only epoch-invalidated works in that list and use the completed work's
+progress event for historical notice. New field would needlessly alter MEM.
+This is design refinement only; implementation remains gated by the pending SWE
+consultation and Stage A VER evidence. No new owner decision or external action.

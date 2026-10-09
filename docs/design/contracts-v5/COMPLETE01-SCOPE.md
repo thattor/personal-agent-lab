@@ -1,7 +1,8 @@
 # COMPLETE01/1 — verified local completion with retained history
 
-PROPOSED technical Stage B under D038/C074. Do not implement until Opus and SWE
-consultation dispositions are recorded. Stage A VER is independently in progress.
+PROPOSED technical Stage B under D038/C074. Opus consultation72fabf04 returned
+REFINE; its disposition is incorporated below. Do not implement until the SWE
+consultation disposition is recorded. Stage A VER is independently in progress.
 This proposal follows Opus task7cd3d557 L1/L2 and the independent Astra analysis of
 source3f37f78. It grants no product activation or new external effects.
 
@@ -18,7 +19,10 @@ new service/auth/cost/publication and all prior unknown-call retries.
 ## TSK public seam and strict authority
 
 TaskStore adds optional trusted verification_inspect=VerificationStore.inspect.
-Missing collaborator makes complete unavailable. Existing control strings remain
+Construct TSK first with a forwarding closure to VER, then construct VER with
+TSK.verification_context, like the existing ART cycle; no mutable public setter.
+Missing collaborator makes new complete unavailable, checked after key replay.
+Existing control strings remain
 pause/resume/cancel. Add one closed object command:
 
     control({key, work_ref,
@@ -40,12 +44,18 @@ ID, in fixed order, and every status met. Bounded reasons and evidence Ref kinds
 membership must match the C09 available set. Required origin/Brief record refs must
 be included, every dependency must be registered, and gate all supplied sources
 again using MEM in this transaction. Actual VER owns the conservative ART union.
-Malformed owner output or corrupt evidence is unavailable. Invalidated/old WorkRef
-or changed set is stale; valid unknown/unmet is conflict; missing verification is
-not_found. Empty Condition lists are invalid stored state, never vacuous success.
+Malformed owner output or corrupt evidence is unavailable. First preserve current
+authority errors, then missing verification not_found. Different inspected Goal or
+revision is conflict; old inspected epoch or changed set is stale. After all TSK
+comparisons and current source gates pass, an unexplained invalidated status is
+unavailable because the owners disagree. Source gate failures keep their existing
+denied/unavailable mapping. Valid unknown/unmet is conflict. Empty Condition lists
+are invalid stored state, never vacuous success.
 
-Before writing completion, require all calls in the current lease to have ended;
-no admitted call, started Step or returned output without its finished Step. No
+Before writing completion, require each call in the current lease to be returned,
+raised or not_entered; every returned row needs its finished Step and no Step in
+the revision may be started. Unknown saved call/Step state is unavailable; valid
+unfinished activity is conflict. No
 budget refund or extra reservation. In the same transaction persist completed,
 close the active lease, clear pause/drain flags, append exactly one result event
 with current artifact refs and verification Ref, and store the original receipt.
@@ -56,9 +66,15 @@ owned writes; BaseException propagates. Trusted collaborator COMMIT cannot be un
 ## Completed history and terminal safety
 
 invalidate_by_refs must accept dependencies of completed work. Keep its state,
-epoch, artifact set and completion fact. In the existing MEM transaction emit a
-bounded source-stop notice to the work session once per invalidation key; report
-the current WorkRef in the affected result. No VER write hook/second state engine.
+epoch, flags, artifact set and completion fact, even at maximum epoch. In the
+existing MEM transaction emit one progress notice per completed Goal/key to the
+work session with only the stopped refs registered for that Goal. Fixed text:
+'a source registered for this completed work was stopped; completion is historical'.
+This does not claim completion revocation or that an unused optional source was a
+VER dependency. Keep the existing closed {work_refs} result: it lists only works
+whose epochs were invalidated; completed history is signalled by the progress event.
+MEM currently validates this list and does not use its values (_callback); no new
+field or second invalidation engine is necessary. No VER mutation hook is added.
 VER current status then derives invalidated from the denied MEM dependency; ART
 verification/model_context reads deny and user_view retains history usable=false.
 Existing cancelled/failed handling remains unchanged. Unsupported waiting_input
@@ -74,24 +90,31 @@ completion of such a revision remains blocked until an explicit future change AP
 ## Optional mock host connection
 
 MockRunner(..., artifacts=ART, verifications=VER) enables the local host sequence.
+Supplying verifications without artifacts is invalid host configuration.
 Default verifications=None preserves current bounded draft-only operation. This is
 test/local composition, not a real service toggle. Model verify Action stays closed
 and verification Ref never enters Step.result_refs or model context in this slice.
 
 Host reads the exact current artifact set, then calls C09 verify with a canonical
-key bound to WorkRef plus ordered set. If every fixed check is met it calls C10
-complete with a key bound to WorkRef plus verification Ref. C10 revalidates all
+key dumps(['C09.verify',work,refs]). If every fixed check is met it calls C10
+complete with dumps(['C10.complete',work,verification_ref]). C10 revalidates all
 authority. Success returns completed without an additional release. Keep finished
 step/call diagnostics and the original verification receipt in the local response.
-Unknown/unmet yields unfinished with an explicit reason and no terminal failure.
+Unknown/unmet falls through to the normal finite step loop, with the verification
+result available in the local response. It does not by itself release/fail work or
+skip a needed next step. Existing actual budget exhaustion can still fail work.
 
-Run this finalization seam after finished compose and before any new inference when
-reentering a lease that already holds attached artifacts. That permits bounded
+Run this finalization seam after each finished compose. At entry, first pass the
+existing started-Step and get_call readiness checks; only trigger finalization
+when the last finished Step is compose and its artifact is the current set tail.
+For an active retained lease this happens before new inference and permits bounded
 same-input verification/completion replay after lost responses without a second
 model call or a separate persistence engine. Use the existing three-attempt local
 unavailable retry limit, with no new inference to repair local persistence. On
 persistent ambiguous completion response retain occupancy and return unavailable;
-reentry reaches the same finalization seam first. A current pause/cancel/source stop
+active-lease reentry reaches the same finalization seam first. If completion had
+committed, the lease is already inactive and the next claim may move to another
+Goal; it never invokes a model again for that completed Goal. A current pause/cancel/source stop
 uses existing TSK release fencing. Do not convert transient unavailability to failed.
 An inactive lease after a committed but lost response never lets release overwrite
 completed. General adoption by a new runner after process restart remains excluded.
@@ -112,6 +135,7 @@ Tests must use real temporary SQLite MEM/TSK/ART/VER for the connected path:
   forged/malformed callback or corrupted VER evidence fail closed;
 - two-connection pause before complete vs complete before pause, and source stop
   before complete vs completed history followed by successful stop and invalidation;
+  one source shared by completed and running work must stop both uses atomically;
 - admitted call, started Step and returned unadopted output cannot close occupancy;
 - failures/interrupts after actual completion writes roll back state, lease, event
   and replay; commit-lost responses replay once, persistent uncertainty/reentry never
