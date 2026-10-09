@@ -5,7 +5,7 @@ import uuid
 
 from pal.artifact_content_v5 import ArtifactContentError, prepare_content
 from pal.artifact_integrity_v5 import check_bytes
-from pal.contracts_v5 import ContractError, Ref, RefKind, Result, WorkRef, dumps, loads
+from pal.contracts_v5 import ComposeAction, ContractError, Ref, RefKind, Result, WorkRef, dumps, loads
 
 __all__ = ['ArtifactStore', 'artifact_save_key']
 _MAX_INT = 9223372036854775807
@@ -291,6 +291,44 @@ class ArtifactStore:
             info, body = self._loaded(ref)
             if body is None:
                 return info
+            state = self._gate(body[3])
+            return Result.success(info) if state == 'available' else _error(
+                'denied' if state == 'denied' else 'unavailable')
+        except Exception:
+            return _error()
+
+    def lookup_saved(self, connection, request):
+        # Read-only recovery callback: the caller owns the active transaction.
+        if connection is not self._conn or not connection.in_transaction or connection.isolation_level is not None:
+            raise ValueError('lookup_saved requires the supplied active connection')
+        try:
+            data = _obj(request, {'key', 'work_ref', 'step_id', 'action'})
+            key = _id(data['key'])
+            step_id = _id(data['step_id'])
+            work = _work(data['work_ref'])
+            action = ComposeAction.from_json(data['action'])
+            prepared = prepare_content(action.content, action.media_type.value)
+            canonical = dumps({'key': key, 'work_ref': data['work_ref'], 'step_id': step_id,
+                               'content': prepared.content, 'media_type': prepared.media_type,
+                               'source_refs': [ref.to_json() for ref in action.source_refs]})
+        except (ContractError, ArtifactContentError):
+            return _error('invalid_input')
+        try:
+            row = self._conn.execute(
+                'SELECT input_json,result_json,artifact_id FROM v5_art_replay WHERE key=?', (key,)).fetchone()
+            if row is None:
+                if self._conn.execute('SELECT 1 FROM v5_art_body WHERE step_id=?',
+                                      (step_id,)).fetchone() is not None:
+                    return _error('unavailable')
+                return _error('not_found')
+            if row[0] != canonical:
+                return _error('conflict')
+            receipt = self._saved_receipt(row)
+            info, body = self._loaded(Ref.from_json(receipt['artifact_ref']))
+            if (body is None or info['artifact_ref'] != receipt['artifact_ref'] or
+                    info['hash'] != receipt['hash'] or info['bytes'] != receipt['bytes'] or
+                    info['step_id'] != step_id or _work(info['work_ref']) != work):
+                return _error()
             state = self._gate(body[3])
             return Result.success(info) if state == 'available' else _error(
                 'denied' if state == 'denied' else 'unavailable')

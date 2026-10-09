@@ -1301,3 +1301,25 @@ guesses. Runtime/state unchanged; this is a pre-task argument correction, not a
 retry of an unknown inference. Existing full-suite localhost tests require the
 already authorized loopback-capable local execution; restricted907 errors29 and
 failures3 retained, same907 PASS without source or criterion change.
+
+
+## RECOVERY02 early independent review corrections (2026-10-10)
+
+Root's freeze incorrectly called the fixed event text an independent producer
+marker. Astra consequently scanned arbitrary C14 text; separate Sol reproduced
+ordinary report/release with that text succeeding but making get_work unavailable.
+Correct scope uses the two typed adoption/internal-replay event-ID bindings, then
+validates kind/text/refs/work. Ordinary text is never reserved. Single-row deletion
+still fails closed; coordinated deletion/forgery is outside the trusted DB claim.
+The independent failing probe is preserved and must pass against final source.
+
+ART first real CO planner returned5386byte step instructions, exceeding4096.
+Actual completed planner output was examined; no SWE implementation launched.
+Corrected ordinary task asked a short reference-to-scope plan, kept all limits and
+produced SWE source with fixed16 PASS. Do not clone failed/unknown tasks blindly.
+
+Opus PRI refinement call returned an actual session-limit error (Asia/Tokyo reset
+3:40am). CO labels route_failed, inference/process outcome unknown, no selectable
+options; candidates are informational only. Preserve its pause with no retry,
+resume/cancel, capacity/state edit or paid fallback. First PRI Opus REFINE remains
+valid; additional report not received and cannot be attributed or adopted.

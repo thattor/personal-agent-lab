@@ -110,15 +110,17 @@ same Goal/revision adopted, adopted.epoch>origin.epoch and equals its stored
 recover settled work_ref; exactly one set row; recovery replay input links that
 lease/key and result settled; its internal adoption reference equals this Step;
 event exists with matching adopted WorkRef and refs [artifact]. Conversely every
-internal replay adoption reference and every recovery adoption state event has
-the corresponding row. Validate duplicate/missing/foreign links and row shape.
+internal replay adoption reference has its adoption row; these typed bindings
+identify the producer of each checked recovery event. Validate duplicate/missing/foreign links and row shape.
 Ordinary finished compose with neither adoption nor marker remains valid. This
 does not claim to detect coordinated forgery of all trusted local DB evidence.
 
 Reuse one RECOVERY01 C14 state event in settlement. Adopted text is fixed
 `mock saved draft recovered`, refs [artifact]; abandoned/ordinary recovery keeps
-`mock execution recovered`, empty refs. The fixed adopted text is an independent
-marker checked against adoption/replay, so deleting one annotation is detected.
+`mock execution recovered`, empty refs. The two typed adoption/internal-replay bindings, not arbitrary event text or
+kind/refs, identify recovery events. Bidirectional checks detect single-row
+deletions. Ordinary reports/release/public events may carry the same text without
+becoming adoption. No phrase reservation or new marker table is required.
 No body, clock, progress/result event or completion announcement. Same-key replay
 returns original settled value with zero new rows/epoch/event and still checks
 managed guard/DB and stored recovery integrity. Different input conflicts.
