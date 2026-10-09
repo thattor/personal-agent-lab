@@ -1986,3 +1986,14 @@ retain only epoch-invalidated works in that list and use the completed work's
 progress event for historical notice. New field would needlessly alter MEM.
 This is design refinement only; implementation remains gated by the pending SWE
 consultation and Stage A VER evidence. No new owner decision or external action.
+
+
+D038 COMPLETE01 technical adoption: exact CO SWE-2 High consultationd8bd21a2
+returned REFINE after Opus72fabf04. Adopt the frozen complete/terminal/history
+transaction and error order plus host dispositions in COMPLETE01-SCOPE. TSK and
+RUN may now implement independently by file ownership from this shared seam;
+complete remains unaccepted until all three safety parts and actual connected
+consumer tests pass. Default mock runner still requires explicit VER wiring.
+No semantic model/verifyAction, general recovery, UI/provider activation, new
+authority/cost or unknown-call retry. Root current VERfab7c77 is independently
+approved; full regression and its milestone review are tracked separately.

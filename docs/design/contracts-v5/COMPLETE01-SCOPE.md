@@ -1,8 +1,8 @@
 # COMPLETE01/1 — verified local completion with retained history
 
-PROPOSED technical Stage B under D038/C074. Opus consultation72fabf04 returned
-REFINE; its disposition is incorporated below. Do not implement until the SWE
-consultation disposition is recorded. Stage A VER is independently in progress.
+ADOPTED technical Stage B under D038 after Opus consultation72fabf04 and SWE
+consultationd8bd21a2 (both REFINE), with Root dispositions below. Stage A VER
+implementation is independently reviewed atfab7c77 and full650 passes.
 This proposal follows Opus task7cd3d557 L1/L2 and the independent Astra analysis of
 source3f37f78. It grants no product activation or new external effects.
 
@@ -146,3 +146,33 @@ Tests must use real temporary SQLite MEM/TSK/ART/VER for the connected path:
 Frozen tests/host receipts and independent review must precede a milestone claim.
 CO verified covers its declared command only. Whole PAL, semantic usefulness and
 the user-facing real assistant remain unfinished even when this local slice passes.
+
+## Frozen SWE disposition
+
+Adopt the ten complete steps and the explicit R1-R8 details from the consultation.
+The public constructor rejects verifications without artifacts with ValueError.
+A successful RUN completion returns status=completed, work_ref, state=completed,
+control_status=none, lease_id, the original C09 receipt under verification, finished
+steps, call_ids and existing excluded_refs/excluded_step_ids diagnostics. It does
+not fabricate a finished verify Step. Include the last verification receipt in
+normal finite-slice results when present, so unknown is visible without a Goal
+completion claim. No change to the default collaborator-free behavior.
+
+After valid non-MET, continue the normal bounded loop. After complete conflict,
+stale or denied, likewise return to the loop; its execution-context authority and
+existing release boundary settle any newer pause/cancel/drain before inference.
+A persistent verify unavailable uses yield_or_retain; persistent complete
+unavailable returns unavailable without release. Other malformed/unknown callback
+outcomes fail closed without treating model re-invocation as persistence repair.
+Keep canonical C09/C10 requests unchanged through each three-attempt retry.
+
+Readonly inspect guards must clean their owned savepoint on failure; do not copy
+only the success path of the older _inspect_artifact helper. Validate recognized
+call and Step statuses before readiness comparisons. Invalidated while every TSK
+comparison/source gate succeeds means owner disagreement, not a guessed source
+stop. Root selected work_refs to contain only actual epoch invalidations, avoiding
+a needless MEM contract change; historical completed notices carry their own refs.
+
+All changes remain isolated until the three TSK safety pieces pass together. The
+RUN owner depends on this frozen contract, not implementation internals; actual
+consumer tests and independent reviews gate the integrated milestone claim.
