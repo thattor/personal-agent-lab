@@ -1,0 +1,93 @@
+{
+  "task_id": "dc4fbad81715497481bb66a5e02f8f23",
+  "base_sha": "2aaca0a0ea3e47fd7e35d47411e41a3eb6354203",
+  "status": "verified",
+  "verified": true,
+  "attempts": [
+    {
+      "attempt_id": "plan-a1",
+      "call_id": "plan",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:2d4f784fd211e40c2c1d3450ebc335bfad6a5bfb24af727248a9dd992a9e20f0",
+      "role": "planner",
+      "route": "claude",
+      "step_id": "plan"
+    },
+    {
+      "attempt_id": "s1-a1",
+      "call_id": "s1",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "swe-2-high",
+      "prompt_sha256": "sha256:d7718fe5c24204a6a8135c75f1be4094f2cdbe390768474275758c071701d013",
+      "role": "implement",
+      "route": "devin",
+      "step_id": "s1"
+    }
+  ],
+  "selection": {
+    "mode": "fixed",
+    "targets": {
+      "implement": {
+        "model": "swe-2-high",
+        "route": "devin"
+      },
+      "planner": {
+        "model": "claude-opus-5-5",
+        "route": "claude"
+      },
+      "review": {
+        "model": "claude-opus-5-5",
+        "route": "claude"
+      }
+    }
+  },
+  "workspace": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/dc4fbad81715497481bb66a5e02f8f23/workspace",
+  "diff_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/dc4fbad81715497481bb66a5e02f8f23/result.diff",
+  "result_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/dc4fbad81715497481bb66a5e02f8f23/result.json",
+  "diff_digest": "sha256:5fe690773c66b449f58425b90249a83bdaa401199370a7b538dc66892fc18034",
+  "error": null,
+  "verify": {
+    "after": {
+      "docs/design/contracts-v5/ART01-SCOPE.md": "sha256:4ab276c78920a4689143312daaae744ffc1f6f1a76527d99a29b8581907e6383",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/TSK02-SCOPE.md": "sha256:5031b816ea42e4b1579a058e060e83bb20a7317a804005a4e28119b5f4604a11",
+      "evidence/operations/art01-20261009/swe-scope-review.md": "sha256:8c68b73b1299c7183f316a0f3e60cd8a7dedd35d976fadaabd9b5dd0093a6533",
+      "pal/artifact_content_v5.py": "sha256:e51d0a4c1835ae12fba7af2342fe3e14f956988501e05e15e845c956d4908680",
+      "pal/artifact_integrity_v5.py": "sha256:1243147aefc9d1cadcd555c9ddfd374606daf653d692e15742cbbb19427d1716",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/intake_v5.py": "sha256:31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+      "pal/tasks_v5.py": "sha256:f5f3724279291ae050403081e64fefd74e01bb2ec9a9430ca24955a00e7bc458",
+      "tests/test_mock_execution_v5.py": "sha256:262c4c158c2891ce3a28b7cdccbb6192ff6f7b13f2c90dcbbc1f3be0840f9fa5",
+      "tests/test_tasks_v5.py": "sha256:9c9d1d11cbe0bc55a6b074eb446338c7d563b9d31461cc8c2e53d5b5b63c6166"
+    },
+    "before": {
+      "docs/design/contracts-v5/ART01-SCOPE.md": "sha256:4ab276c78920a4689143312daaae744ffc1f6f1a76527d99a29b8581907e6383",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/TSK02-SCOPE.md": "sha256:5031b816ea42e4b1579a058e060e83bb20a7317a804005a4e28119b5f4604a11",
+      "evidence/operations/art01-20261009/swe-scope-review.md": "sha256:8c68b73b1299c7183f316a0f3e60cd8a7dedd35d976fadaabd9b5dd0093a6533",
+      "pal/artifact_content_v5.py": "sha256:e51d0a4c1835ae12fba7af2342fe3e14f956988501e05e15e845c956d4908680",
+      "pal/artifact_integrity_v5.py": "sha256:1243147aefc9d1cadcd555c9ddfd374606daf653d692e15742cbbb19427d1716",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/intake_v5.py": "sha256:31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+      "pal/tasks_v5.py": "sha256:f5f3724279291ae050403081e64fefd74e01bb2ec9a9430ca24955a00e7bc458",
+      "tests/test_mock_execution_v5.py": "sha256:262c4c158c2891ce3a28b7cdccbb6192ff6f7b13f2c90dcbbc1f3be0840f9fa5",
+      "tests/test_tasks_v5.py": "sha256:9c9d1d11cbe0bc55a6b074eb446338c7d563b9d31461cc8c2e53d5b5b63c6166"
+    },
+    "exit": 0,
+    "log": "Consultation note structure only\n",
+    "n": 1,
+    "passed": true,
+    "sandbox": "seatbelt-v1",
+    "version": "sha256:930a0015bb742ed283737f55171b327ff79842b2362564930694744b68a36341"
+  },
+  "artifact_sha256": "8c68b73b1299c7183f316a0f3e60cd8a7dedd35d976fadaabd9b5dd0093a6533",
+  "semantic_verdict": "REFINE",
+  "limit": "Consultation note structure only; not code verification"
+}

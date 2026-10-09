@@ -1905,3 +1905,12 @@ ART keeps conservative actual-call dependency provenance, so model omission of a
 source cannot evade reference stop. Completed-state history/source-stop must be
 handled before complete becomes reachable. Orphan lease recovery and actual real
 provider cessation remain separate requirements before activation.
+
+D038 ART storage disposition: SWE scope consultation dc4fbad81715497481bb66a5e02f8f23
+returned REFINE with five API/error/receipt/read/dead-end clarifications. Apply them
+in ART01-SCOPE before dispatch. TSK authorizes the exact started compose action and
+returns conservative actual-call record dependencies; ART owns immutable bytes and
+historical receipts, not task state or completion. A compose step remains unbound
+at this storage stage; do not describe it as the complete compose path. Reject the
+advice's implication that failed work can simply be reclaimed: failed is terminal.
+Next binding/RUN stage is explicitly required by the Opus milestone direction.

@@ -1,8 +1,9 @@
 # ART01-store/1 — durable draft bytes and current source readback
 
-Status: PROPOSED technical implementation scope under D038. No code dispatch until
-SWE implementation consultation and SOL disposition. It implements existing C08/
-C11 semantics, not a new live capability. Base prerequisite is TSK02/RUN01 source
+Status: ADOPTED technical implementation scope under D038. SWE consultation
+dc4fbad81715497481bb66a5e02f8f23 completed; SOL adopts its five clarifications below.
+This implements existing C08/C11 semantics, not a new live capability.
+Base prerequisite is TSK02/RUN01 source
 ea2e8fa064cad188e4477d8b534692012083768a; actual dispatch pins the scope commit.
 
 Value: a source-bound draft is really saved and read back with the same bytes/hash,
@@ -118,3 +119,29 @@ faults after INSERT, process interruptions, metadata/body corruption, and no dat
 or raw errors leaked by failures. Tests must exercise public boundaries, not merely
 repeat implementation details. Real MEM/TSK consumers and disk/lock tests are SOL's
 acceptance obligations. Return exact diff, command/results, and remaining limits.
+
+
+## SWE consultation disposition before dispatch
+
+The callback method is exactly TaskStore.authorize_artifact_save(connection, request),
+injected as ArtifactStore(..., authorize_save=tasks.authorize_artifact_save).
+No alias, keyword-shape variant or synthetic-only signature is accepted.
+Unknown work/step is not_found; revision/epoch mismatch stale; absent/wrong lease
+or out-of-call source membership denied; non-running/control intent/non-started
+step/non-returned call/canonical action mismatch conflict; missing call/corrupt
+metadata/non-record provenance unavailable. Preserve Result failure codes while
+using fixed bounded error text. Do not forward arbitrary collaborator messages.
+
+get_by_key requires an idle connection and returns the exact original three-key
+receipt value; it does not read content or re-authorize use. read has the exact
+eight C11 keys stated above, no version; historical WorkRef/time remain unchanged.
+Stored replay metadata must still have the declared shape and valid hash/count.
+
+A started compose Step intentionally cannot finish in this storage stage. Tests
+retain it or use an explicit fenced pause/cancel/stop release; they never fake a
+successful yield/attachment. This stage is not a usable compose loop. The next
+required stage binds the artifact into TSK's current set and connects RUN, together
+with kind-aware source checks and RUN01/2 persistence handling. Only that stage
+can establish mock compose -> saved and attached draft. VER/complete remain later.
+SWE's statement that a failed release can be reclaimed is not adopted: failed is
+terminal; only a valid control/drain transition can requeue under current TSK.
