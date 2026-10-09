@@ -1,0 +1,25 @@
+{
+  "source": "bdce832b8fdb68f6317c033155474a4204703189",
+  "analyst": "native Astra, read-only separate context",
+  "recommendation": "C11 VER read plus concrete C14-to-owned-body local consumer; dispatcher alone is premature",
+  "findings": [
+    "VER typed read/inspect already suffices for C10; C11 adds human-readable result inspection",
+    "VER has no persisted creation timestamp; do not fabricate one",
+    "fixed historical content/hash should stay stable while current usable changes",
+    "missing/corrupt/uncertain owners remain errors; source stop does not revoke completion",
+    "RUN model re-input and real PRI/UI are outside the slice"
+  ],
+  "proposed_supplements": [
+    "observed_at means read-snapshot observation time",
+    "all invalidated verification denies model_context/verification; user_view retains history"
+  ],
+  "acceptance": [
+    "real MEM/ART/VER through same reader",
+    "C14 result refs to readable artifact and fixed-condition verification",
+    "Unicode and content hash",
+    "source/epoch/set invalidation and purpose gates",
+    "same-snapshot reads and failure cleanup",
+    "no durable owner mutation"
+  ],
+  "adoption": "pending exact Opus review; no implementation or new authority"
+}
