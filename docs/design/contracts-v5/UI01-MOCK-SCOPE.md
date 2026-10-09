@@ -22,12 +22,16 @@ is not natural language capability or authentic usefulness proof.
 ## Public application and HTTP surface
 
 New files only: pal/http_v5.py, pal/web_v5/index.html, app.js, style.css,
-scripts/demo_http_v5.py, tests/test_http_v5.py. No current owner source/test changes.
+scripts/demo_http_v5.py, tests/test_http_v5.py and independent
+tests/test_http_v5_independent.py. No current owner source/test changes.
 Application class LocalMockApp(primary_invoke=None, expert_invoke=None) owns a
 fresh TemporaryDirectory/DB/MockHostSession, single session_id and bounded worker.
-None selects explicit documented built-in fixtures; injection stays mock and
-refuses bound NativeProfile invoke as existing owners do. open/start and close
-may be context-manager methods. create_server(app, port=0) returns a stdlib
+Constructor opens the fresh managed host to ready. None selects explicit
+documented built-in fixtures; injection stays mock and refuses bound NativeProfile
+invoke as existing owners do. Expose session_id; support context manager returning
+self. close(timeout=5.0) returns bool: true only after worker/connections/guard
+cleanup, false leaves held guard/DB and status. wait_idle(timeout=5.0) returns bool
+without executing/pumping a model. create_server(app, port=0) returns a stdlib
 ThreadingHTTPServer bound127.0.0.1; it never starts on import. Existing public
 owners perform actual memory/task/artifact/verification/turn persistence; no
 duplicate application state machine or SQL status edits.
