@@ -2150,3 +2150,15 @@ AGY call or payload workaround, and route the concrete optional judgment to the
 already designated human lane. Native Sol separately implements RUN within the
 existing fallback authority; no duplicated AGY execution or owner wait. AGY
 Sonnet contribution to prior READ01 remains true, not to this ASK01 attempt.
+
+
+D042 owner manual-approval direction (2026-10-09), actual userMessage
+01a1207d-eadc-76e0-81f7-ca257b1efdd4 freshly read: the owner will propose an adopted
+model list in CO separately and asks to obtain permission through explicit manual
+approval here. This follows the concrete154607-byte9-file AGY Sonnet ASK code
+request. By receipt, the same implementation was already completed by native Sol
+a7ceb54 and integrated; do not run a duplicate original assignment. Record the
+owner response without claiming an accepted runtime permission or external send.
+Do not extend it to a materially different review package or edit CO/global approval
+settings. Any needed later operation must be concrete and use a permitted approval
+path. Development and verification continue with the native implementation.
