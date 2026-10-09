@@ -1054,3 +1054,13 @@ TSK yield_or_retain; only the original explicit nontransient save rejection uses
 terminal handling. Check missing/unavailable receipts and reentry call count in the
 next connected tests. Component evidence is runner-compose-review.md; actual storage
 fault verification remains pending.
+
+
+ART01 connection-test correction: Root first tested register_sources after releasing
+its lease and expected a kind error, but live authority correctly rejected denied
+first. Root also expected the MEM source-stop message on the work session although
+MEM emits it on the control session and TSK emits work sources invalidated on the
+work session. Corrected fixture to claim before kind validation and asserted both
+properly scoped notifications. No runtime change/criteria relaxation. Future tests
+must establish authority and choose the owning notification session before checking
+a later boundary. Initial failures retained in actual-connection-initial.log.

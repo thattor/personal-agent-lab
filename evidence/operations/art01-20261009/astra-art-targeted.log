@@ -1,0 +1,22 @@
+test_array_order_is_input_identity_and_receipt_metadata_matches_input (test_artifacts_v5.ArtifactStoreTests.test_array_order_is_input_identity_and_receipt_metadata_matches_input) ... ok
+test_authority_failure_codes_and_corrupt_authority (test_artifacts_v5.ArtifactStoreTests.test_authority_failure_codes_and_corrupt_authority) ... ok
+test_bad_replay_metadata_unavailable_without_authority (test_artifacts_v5.ArtifactStoreTests.test_bad_replay_metadata_unavailable_without_authority) ... ok
+test_caller_transaction_and_host_configuration_preconditions (test_artifacts_v5.ArtifactStoreTests.test_caller_transaction_and_host_configuration_preconditions) ... ok
+test_empty_unicode_newlines_and_inclusive_bound (test_artifacts_v5.ArtifactStoreTests.test_empty_unicode_newlines_and_inclusive_bound) ... ok
+test_exact_body_receipt_provenance_and_readonly_inspect (test_artifacts_v5.ArtifactStoreTests.test_exact_body_receipt_provenance_and_readonly_inspect) ... ok
+test_fault_after_write_and_baseexception_roll_back (test_artifacts_v5.ArtifactStoreTests.test_fault_after_write_and_baseexception_roll_back) ... ok
+test_gate_mutation_and_interrupt_read_rollback (test_artifacts_v5.ArtifactStoreTests.test_gate_mutation_and_interrupt_read_rollback) ... ok
+test_id_collision_rolls_back_second_step (test_artifacts_v5.ArtifactStoreTests.test_id_collision_rolls_back_second_step) ... ok
+test_inspect_interrupt_preserves_caller_transaction_for_owner_rollback (test_artifacts_v5.ArtifactStoreTests.test_inspect_interrupt_preserves_caller_transaction_for_owner_rollback) ... ok
+test_metadata_body_and_provenance_tampering_are_unavailable (test_artifacts_v5.ArtifactStoreTests.test_metadata_body_and_provenance_tampering_are_unavailable) ... ok
+test_missing_and_unsupported_refs_and_invalid_read_shape (test_artifacts_v5.ArtifactStoreTests.test_missing_and_unsupported_refs_and_invalid_read_shape) ... ok
+test_mutating_and_committing_collaborators_fail_closed (test_artifacts_v5.ArtifactStoreTests.test_mutating_and_committing_collaborators_fail_closed) ... ok
+test_original_replay_after_stop_and_exact_input_conflicts (test_artifacts_v5.ArtifactStoreTests.test_original_replay_after_stop_and_exact_input_conflicts) ... ok
+test_reopen_and_busy_lock_do_not_burn_key (test_artifacts_v5.ArtifactStoreTests.test_reopen_and_busy_lock_do_not_burn_key) ... ok
+test_source_gate_failures_and_missing_dependency_history (test_artifacts_v5.ArtifactStoreTests.test_source_gate_failures_and_missing_dependency_history) ... ok
+test_strict_requests_and_no_key_burn (test_artifacts_v5.ArtifactStoreTests.test_strict_requests_and_no_key_burn) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.030s
+
+OK
