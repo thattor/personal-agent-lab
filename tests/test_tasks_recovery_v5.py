@@ -281,21 +281,21 @@ class RecoveryTests(unittest.TestCase):
     def test_two_connection_latest_pause_cancel_and_source_stop_win(self):
         for intent in ('pause','cancel','source_stop'):
             with self.subTest(intent=intent):
-                self.setUp(); self.call(None); self.reopen(); _, controller, memory, _, _ = self.connect()
+                self.setUp(); call=self.call(None); self.reopen(); _, controller, memory, _, _ = self.connect()
                 if intent == 'source_stop': self.value(memory.stop_reference({'key':self.key(),'source_ref':self.origin},session_id='control'))
                 else: self.value(controller.control({'key':self.key(),'work_ref':self.work()['work_ref'],'command':intent}))
-                epoch = self.work()['work_ref']['epoch']; out=self.settled(self.recover())
+                epoch = self.work()['work_ref']['epoch']; out=self.settled(self.recover(), [call])
                 self.assertEqual(out['state'], 'cancelled' if intent=='cancel' else 'paused' if intent=='pause' else 'queued')
                 self.assertEqual(out['work_ref']['epoch'], epoch if intent=='cancel' else epoch+1)
 
     def test_change_then_pause_or_cancel_latest_revision_settles_old_lease(self):
         for intent in ('pause','cancel'):
             with self.subTest(intent=intent):
-                self.setUp(); self.call(None); correction=self.record('correction'); self.reopen(); _, controller, _, _, _=self.connect()
+                self.setUp(); call=self.call(None); correction=self.record('correction'); self.reopen(); _, controller, _, _, _=self.connect()
                 changed=self.value(controller.control({'key':self.key(),'work_ref':self.work()['work_ref'],
                     'command':{'kind':'change','origin_record_ref':correction,'brief':self.draft}}))
                 self.value(controller.control({'key':self.key(),'work_ref':changed['work_ref'],'command':intent}))
-                out=self.settled(self.recover()); self.assertEqual(out['work_ref']['revision'],2)
+                out=self.settled(self.recover(), [call]); self.assertEqual(out['work_ref']['revision'],2)
                 self.assertEqual(out['state'],'paused' if intent=='pause' else 'cancelled')
                 self.assertEqual(self.work(1)['state'],'superseded')
 
@@ -321,13 +321,13 @@ class RecoveryTests(unittest.TestCase):
     def test_owned_write_failure_and_baseexception_roll_back_entire_settlement(self):
         for exception in (RuntimeError, KeyboardInterrupt):
             with self.subTest(exception=exception):
-                self.setUp(); self.call(None); self.reopen(); before=self.snapshot()
+                self.setUp(); call=self.call(None); self.reopen(); before=self.snapshot()
                 self.conn.fault=exception; self.conn.writes_until_fault=1
                 if exception is KeyboardInterrupt:
                     with self.assertRaises(KeyboardInterrupt): self.recover()
                 else: self.error(self.recover(),'unavailable')
                 self.assertEqual(self.snapshot(),before); self.assertFalse(self.conn.in_transaction)
-                self.settled(self.recover())
+                self.settled(self.recover(), [call])
 
     def test_finished_artifact_history_and_old_verification_cannot_complete_new_epoch(self):
         _, step=self.stage('compose'); work=self.lease['work_ref']
@@ -389,9 +389,9 @@ class RecoveryTests(unittest.TestCase):
         self.value(self.t.control({'key':self.key(),'work_ref':self.work()['work_ref'],'command':{
             'kind':'answer','question_id':question['question_id'],'answer_record_ref':answer}}))
         self.lease=self.value(self.t.claim({'runner_id':self.guard.runner_id})); links=copy.deepcopy(self.lease['pending_inputs'])
-        self.call(None); self.reopen(); _,_,mem,_,_=self.connect()
+        call=self.call(None); self.reopen(); _,_,mem,_,_=self.connect()
         self.value(mem.stop_reference({'key':self.key(),'source_ref':answer},session_id='control'))
-        self.settled(self.recover()); self.value(self.t.finish_startup()); next_claim=self.value(self.t.claim({'runner_id':self.guard.runner_id}))
+        self.settled(self.recover(), [call]); self.value(self.t.finish_startup()); next_claim=self.value(self.t.claim({'runner_id':self.guard.runner_id}))
         self.assertEqual(next_claim['pending_inputs'],links)
 
     def test_registration_after_commit_mark_reply_loss_reconstructs_snapshot(self):
