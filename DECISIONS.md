@@ -2774,3 +2774,26 @@ before any N3; no real Expert or profile weakening is implied. No new auth, cost
 service, public exposure or other-project/CO changes. Whole goal remains NOT_MET.
 See c089-c090 verification and minimized CO summary; public provenance omits raw
 owner message identifiers and private account/runtime paths.
+
+
+## D057 — distinct diagnostic proposal, no new entry yet (2026-10-10)
+
+C090 safe normal push4f0e12c succeeded; anonymous exact94-file readback matches
+40 retained/added files and54 deletion404s. Draft PR19 exact HEAD is4f0e12c with
+no reported CI checks. Independent export APPROVE validates actual legacy
+ancestry, unchanged verified source/test bytes and minimized evidence. Prior
+intermediate candidates/raw task lookup remain local; no force/history rewrite.
+
+Fresh CO0.4.5 public capacity remains limit12, Claude0/0, Devin1/0; official
+Devin3000.11.3 auth/catalog verifies exact swe-2-high/Free, existing route only.
+This is current eligibility metadata, not a real model call or effective-model
+proof. Native local concurrency is4 including Root, not30 observed executions.
+
+Independent Astra confirms model hints cannot pass current original ending/
+durable replay gates. Root proposes PRI02-N3-DIAGNOSTIC/1 for one new original
+synthetic PRIMARY-only zero-effect modern-observation case. Scope authorizes
+local isolated operator preparation, fixtures and exact official Opus5.5 design
+review only. Actual invoke is NOT_RUN and waits for Root's reviewed exact-hash
+freeze after design disposition plus independent operator APPROVE. Existing
+N1/N2/CO UNKNOWNs remain untouched; old envelope cannot be reused. No real Expert,
+weaker profile, additional auth/cost/service or public/native UI entry is implied.

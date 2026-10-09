@@ -28,6 +28,11 @@ Next independent step is a reviewed distinct diagnostic MAX1 proposal with new
 source binding; current source scopes authorize no N3/T2/real Expert entry. Earlier
 checkpoints below are retained history, not current startup or acceptance.
 
+C090 is now published at4f0e12c: exact anonymous94-file readback (40 equal200,
+54 deleted404), existing Draft PR19 updated, CI checks not reported. D057 freezes
+local preparation/review of the separate PRI02-N3-DIAGNOSTIC/1 proposal; actual
+entry remains NOT_RUN until Root's exact-hash design/operator freeze.
+
 # STATE.md
 
 ## Current C088 — operational old PAL removed; current v5 verified locally

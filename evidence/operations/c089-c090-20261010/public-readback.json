@@ -1,0 +1,572 @@
+{
+  "all_match": true,
+  "anonymous": true,
+  "base": "520ff5e211ae6f3c7593709bb45ada94742d9014",
+  "files": [
+    {
+      "change": "M",
+      "http": 200,
+      "path": "ACCEPTANCE.md",
+      "sha256": "d5b4d4d6c76d002b5fa5e14e266603f9725572ad1a95fe892fc8d5dbf1a57ba5"
+    },
+    {
+      "change": "M",
+      "http": 200,
+      "path": "AGENTS.md",
+      "sha256": "6cf4c4a4bb267491aa8d02d799a583bda19f55585c6e325e174d2e795b37656f"
+    },
+    {
+      "change": "M",
+      "http": 200,
+      "path": "CODEX-PROMPT.md",
+      "sha256": "c9c4a1b5a268f7ad99820ee1002f1157a3a9dc1c45b6be45cbd7332b06d229ef"
+    },
+    {
+      "change": "M",
+      "http": 200,
+      "path": "DECISIONS.md",
+      "sha256": "33bbb9a412cb55b1aa3052ec2322cad854c6ae9de0d19016f36364c96bc93cd3"
+    },
+    {
+      "change": "M",
+      "http": 200,
+      "path": "DESIGN.md",
+      "sha256": "e7c7d695aaaa2e3f07ea0f06cbbbad53dd82b1baf29bd186e70eefe6148df586"
+    },
+    {
+      "change": "M",
+      "http": 200,
+      "path": "README.md",
+      "sha256": "f89ef7005cb35ec3e7d3657b164349be50b004e5a6875ca0527de3febe893b23"
+    },
+    {
+      "change": "M",
+      "http": 200,
+      "path": "SPEC.md",
+      "sha256": "ef97c064565cb3ade7b838cf2b77c402040746f3ba5fcce05613232b52940e0d"
+    },
+    {
+      "change": "M",
+      "http": 200,
+      "path": "STATE.md",
+      "sha256": "c269088b1a36b487a8dac81fae95772bc55b6bb718f3703fa0f9de11de353401"
+    },
+    {
+      "change": "M",
+      "http": 200,
+      "path": "docs/DEFECTS.md",
+      "sha256": "cddb6d6afd94d3699fc3a8022afdbc644499240f6f3a79978351dff4f0bf78a1"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "docs/design/contracts-v5/LEGACY-REMOVAL-SCOPE.md",
+      "sha256": "98908438be96055987a080e227c60a4ed614f1e38928269fe7618e8eb97ee86a"
+    },
+    {
+      "change": "M",
+      "http": 200,
+      "path": "docs/design/contracts-v5/PAL-contracts-v5.md",
+      "sha256": "52bddae39df30e5da26e76798e855707a0c39946f42f8fae837d7fca7a22ca4d"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "docs/design/contracts-v5/PRI02-MODEL-DIAGNOSTIC-SCOPE.md",
+      "sha256": "ae0d276e273e693f8518c8b8b6dcef56afe7fc81536fc9f98442a18cbfc50fae"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "docs/design/contracts-v5/PRI02-UNQUALIFIED-DIAGNOSTIC-SCOPE.md",
+      "sha256": "fbdf4090fc58e439a0e825b78dc93fb14b407b040d658274a681152a3ab844b1"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "docs/design/contracts-v5/UI01-MOCK-REFINEMENT-SCOPE.md",
+      "sha256": "e2a5f1085be28508efa2d99f03b7f78511a7f5f1b93f91de846fcb39ddf05412"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "docs/design/contracts-v5/UI01-MOCK-SCOPE.md",
+      "sha256": "c4b2c6a4d8ff4a10184f9f4eb87deff6432080379d7ab4043c0aae9fa653c01d"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "docs/history/legacy-design-pre-v5.md",
+      "sha256": "7d988d4ac3bd50b6f3cba4cb938d0e341cbbf4f3d98c25c255a2e1085026c74f"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "docs/history/legacy-spec-pre-v5.md",
+      "sha256": "d02c1c9970eaabe8f32f1e4ed2a0031525f3c64da2e02a456a5f8f2f13bed9e8"
+    },
+    {
+      "change": "M",
+      "http": 200,
+      "path": "docs/plans/CHECKPOINTS.md",
+      "sha256": "71001641dd5de22aa25ee309f7e2d270fc2557ff2c6e502e4a6a4a3eb3467fc8"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "docs/reviews/C088-NEXT-SCOPES-OPUS.md",
+      "sha256": "c077760c34858bb5506aede0d3c1fd742656dc5952426bf43dfcf19aeeed8dba"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "evidence/operations/c089-c090-20261010/co-swe-unknown-summary.json",
+      "sha256": "44bee4a47f28729f4942e948266f8e9acd6369db95f59523c30abc017960fba4"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "evidence/operations/c089-c090-20261010/verification.json",
+      "sha256": "b521e544566d459eb780cf78529041e943ea564ec8a55eeb35173a426f67c46c"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "evidence/operations/legacy01-20261010/closure.json",
+      "sha256": "1a7da60d6f82f37ac55189221d92d0472b79e5fc10f03ff380f5ecb70de988c8"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "evidence/operations/legacy01-20261010/opus-design-summary.json",
+      "sha256": "d2c219f307a9df82b425ed4c2430217a71b3b8fefe19c513651f74f6840f04a5"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "evidence/operations/legacy01-20261010/verification.json",
+      "sha256": "3dde4340c37b7057cee264139413ff3f377b00a307561afe0637a88b6b232092"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "evidence/operations/pri02-diagnostic-20261010/model-feasibility.md",
+      "sha256": "0fc8e71c570152714971675f75d6d9184fc13690c410bfbb3c6ea532f9e14822"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "evidence/operations/pri02-diagnostic-20261010/opus-planning-summary.json",
+      "sha256": "66ecc2636c7464413d5b42a55b841787bff7985f920f8123e6ca990ba29f32be"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "evidence/operations/pri02-diagnostic-20261010/verification.json",
+      "sha256": "8c23bc8c6fb9e1cb98f7dd6a18d384ca8e8b4c38799c81a27960b63127f4febb"
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/classification.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/controls.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/draft_envelope.py",
+      "sha256": null
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "pal/http_v5.py",
+      "sha256": "d19952728c4f05b65eaaec1a9d5ccf210e5ddbf827b02a513e1756b7a90c215f"
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/native.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/native_supervisor.py",
+      "sha256": null
+    },
+    {
+      "change": "M",
+      "http": 200,
+      "path": "pal/native_text_v5.py",
+      "sha256": "8990510b5b793f4f1a58bb60567cc02e3c72c5a1462ae0c516a4bf60caeb12ea"
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/primary.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/runtime.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/server.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/soak.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/store.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/template_intake.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/web/app.js",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/web/conversation.html",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/web/inspect.html",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "pal/web/style.css",
+      "sha256": null
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "pal/web_v5/app.js",
+      "sha256": "419c22def1016e062a9e96ac97a475867c27151ebd7f75c0865ff6ceb2f67d38"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "pal/web_v5/index.html",
+      "sha256": "0edfa3afebc2913c1aa9fda46ef6f89b7f17c1eb932d854e0f8cde605d4fabf6"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "pal/web_v5/style.css",
+      "sha256": "e341eb8e96c730657ab839659cc0ec8ce60295280c99777308694bf11aec73a0"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "scripts/demo_http_v5.py",
+      "sha256": "f821688dcac358eef8b117afd9b85cad34e0d347d4eac5d4d0e7881b92389038"
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "scripts/live_cancel_probe.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "scripts/live_evidence.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "scripts/live_gate.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "scripts/live_operator.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "scripts/live_runner.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "scripts/live_smoke.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "scripts/primary_qualification.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "scripts/soak_monitor.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/helpers.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_citations.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_controls.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_controls_memory.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_correction_sources.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_crash.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_draft_envelope.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_http.py",
+      "sha256": null
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "tests/test_http_v5.py",
+      "sha256": "5c0586c600510ecef339022b919d49fca1c1483f1451604d197908d4b5f22985"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "tests/test_http_v5_independent.py",
+      "sha256": "245782e2498adefd186d48c7adf0d68318d49601d263f18204063efb956b4f7c"
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_ingress_classification.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_live_cancel_probe.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_live_evidence.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_live_gate.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_live_operator.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_live_runner.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_native.py",
+      "sha256": null
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "tests/test_native_devin_model_diagnostic_v5.py",
+      "sha256": "9f29e5f4b68346c40a52e9881b219efda8a1aba3635443b064464ed643610d78"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "tests/test_native_devin_unqualified_v5.py",
+      "sha256": "c059c58c59a55910cfd65eefe5fbeb91ae9251dcaa419b7ec53dd55d6e879b5d"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "tests/test_native_model_diagnostic_v5.py",
+      "sha256": "38365f480824e141c00c130aa7a9a7731d08dbd533c66907ccc0d7e78ba99c11"
+    },
+    {
+      "change": "A",
+      "http": 200,
+      "path": "tests/test_native_text_diagnostic_v5.py",
+      "sha256": "467c38d72e3de91790e3cd69c35765b3908ef296fa0669312308a1321963d316"
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_preview.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_primary.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_primary_qualification.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_primary_runtime.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_questions.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_runtime.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_runtime_envelope.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_runtime_question_crash.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_schema_migration.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_soak.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_store.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_target_selection.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_template_boundary.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/test_template_intake.py",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/ui/primary-flow.cjs",
+      "sha256": null
+    },
+    {
+      "change": "D",
+      "http": 404,
+      "path": "tests/ui/question-flow.cjs",
+      "sha256": null
+    },
+    {
+      "change": "M",
+      "http": 200,
+      "path": "tools/native_devin_text_v5.py",
+      "sha256": "31e7deb9cb078f7ae411e00dc90bc3c74bb58b954666a0fd3d778e385713b5e6"
+    }
+  ],
+  "head": "4f0e12c719dbc6f7e34dc784388ae4d619161cd4"
+}
