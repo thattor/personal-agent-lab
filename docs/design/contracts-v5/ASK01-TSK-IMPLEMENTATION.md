@@ -82,3 +82,27 @@ Actual RUN+ART+VER+READ01 demo/integration and full regression are Root-owned an
 NOT_RUN here. Author execution of independently written tests is not independent
 source review. General recovery, real model/semantic judgment, PRI/UI, service
 activation and whole-product usefulness remain outside this slice.
+
+## Independent review: question mint transaction ownership
+
+Sol reproduced a P1 in 7caaa2a: the trusted ID factory could COMMIT or ROLLBACK
+before the first ask write, return a valid ID, and allow subsequent TSK writes
+to autocommit. COMMIT followed by BEGIN even returned success under a replaced
+transaction. Independent reproduction retained in /private/tmp/pal-ask-tsk-mint-red.log
+confirms all three paths. Cause: ID shape validation did not check transaction
+ownership at this newly introduced callback boundary.
+
+Question mint now owns a savepoint and checks active transaction/total_changes,
+then RELEASE proves the original savepoint still exists before any ask write.
+Failure cleans only that owned savepoint when possible; the outer owner rolls
+back any remaining transaction. Callback COMMIT cannot be undone; the guarantee
+is detection and no subsequent TSK mutation, not a hostile-callback sandbox.
+No event-path or other owner behavior was broadened.
+
+Scratch probes for COMMIT, ROLLBACK, COMMIT+BEGIN, ROLLBACK+BEGIN, mutating factory,
+and ordinary valid factory all pass; original DB contents remain unchanged for
+the five rejected cases. /private/tmp/pal-ask-tsk-mint-green.log. The fixed17 suite
+passes (0.257s, exit0), /private/tmp/pal-ask-tsk-mint-fixed17.log; no tests edited.
+Next ID-factory transaction-boundary checks must cover both inactive and replaced
+transactions before the first owned write. Root owns durable regression tests and
+independent rereview. The original commit and red evidence are preserved.

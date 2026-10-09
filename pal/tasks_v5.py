@@ -885,7 +885,22 @@ class TaskStore(IntakeStore):
             self._questions(row)
             if self._one("SELECT id FROM v5_tsk_question WHERE goal=? AND status='open'", (work.goal_id,)):
                 _reject('unavailable')
-            question_id = self._mint('question')
+            changes = self._conn.total_changes
+            self._conn.execute('SAVEPOINT v5_tsk_question_mint')
+            try:
+                question_id = self._mint('question')
+                if not self._conn.in_transaction or self._conn.total_changes != changes:
+                    _reject('unavailable')
+                self._conn.execute('RELEASE v5_tsk_question_mint')
+            except BaseException:
+                if self._conn.in_transaction:
+                    try:
+                        self._conn.execute('ROLLBACK TO v5_tsk_question_mint')
+                        self._conn.execute('RELEASE v5_tsk_question_mint')
+                    except sqlite3.Error:
+                        # Lost transaction ownership is detected, not reversible.
+                        pass
+                raise
             step['status'] = 'finished'
             self._conn.execute('UPDATE v5_tsk_step SET wire=? WHERE id=?', (dumps(step), step_id))
             self._conn.execute('INSERT INTO v5_tsk_question VALUES (?,?,?,?,?,?,?,?,NULL)',
