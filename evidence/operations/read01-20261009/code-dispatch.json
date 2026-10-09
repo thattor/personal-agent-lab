@@ -53,5 +53,14 @@
   "actual_co_implementation_count": 1,
   "thirty_parallel": false,
   "integration_owner": "SOL Root; same21 immutable+real9+same consumer demo+independent review then full suite",
-  "boundaries": "Prior unknown/refusals unchanged; no new cost/auth/reset/live DB/schedule/publication."
+  "boundaries": "Prior unknown/refusals unchanged; no new cost/auth/reset/live DB/schedule/publication.",
+  "agy_execution": {
+    "conversation_id": "6d8c5cf9-0a16-47fa-beca-11a1e4ca0126",
+    "stream_init_model": "claude-sonnet-5-5-high",
+    "requested_mode": "plan",
+    "effective_mode": "not established; CLI warns mode plan has no effect with disable-slash-commands",
+    "sandbox_flag": true,
+    "authority": "text-only code request, no edits/tools; inspect output and actual events before adoption",
+    "new_call": true
+  }
 }

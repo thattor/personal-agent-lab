@@ -1,0 +1,39 @@
+{
+  "started_at": "2026-10-09T10:52:21.472250+00:00",
+  "model_requested": "claude-sonnet-5-5-high",
+  "mode": "plan",
+  "sandbox": true,
+  "cwd": "/Users/hattoritoshiyasu/Documents/PAL/agy-work/intake-review-20261009/read01-sonnet-code",
+  "fresh_conversation": true,
+  "prior_unknown_untouched": true,
+  "prompt_sha256": "d0279398de7c25ee55ea738eca72a3f55d6fa815e3dab72388eea3aac849fa5d",
+  "inputs": {
+    "base": "f18a240269aaaa0662ba94e0123c0bc18db29460",
+    "files": {
+      "docs/design/contracts-v5/READ01-SCOPE.md": "27a77aad52bcfbeb5264fee8eeb63b87098a5bd97cec298a3219cbae565ec895",
+      "docs/design/contracts-v5/READ01-TEST-PLAN.md": "a274a15e9fd1ef1a4db4ea49188c918aaa872613706bea165855839f901b1c93",
+      "tests/test_read_consumer_v5.py": "e9d075beec8c604449527f76a16399562986478e827184b1b1edef827c4ec97d",
+      "pal/contracts_v5.py": "683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/events_v5.py": "da2a74a41622784f0ff85f0201db081e946b3e35cebb8660068ece79e8763102"
+    },
+    "model_requested": "claude-sonnet-5-5-high",
+    "write_outputs": [
+      "pal/host_read_v5.py",
+      "pal/read_consumer_v5.py"
+    ]
+  },
+  "finished_at": "2026-10-09T10:54:53.040303+00:00",
+  "elapsed_seconds": 151.566,
+  "exit_code": 0,
+  "stdout_bytes": 58684,
+  "result_status": "SUCCESS",
+  "actual_model": "claude-sonnet-5-5-high",
+  "conversation_id": "6d8c5cf9-0a16-47fa-beca-11a1e4ca0126",
+  "product_acceptance": "NOT_VERIFIED",
+  "tool_events": "only finish after agent_response; no file/shell/network tool events",
+  "output_hashes": {
+    "host_read_v5.py": "29b2a91b381e0ba8e650a10d0e0e9f31a771ce60f812c3acf9cfd975837e783c",
+    "read_consumer_v5.py": "6c62b45ed8642f6af4c6ce539a5ccfe023e2cde7e585a921158daf250f38c55a"
+  },
+  "effective_mode": "requested plan ignored with disable-slash-commands; no permission bypass flag; text-only response scope enforced by inspected events"
+}
