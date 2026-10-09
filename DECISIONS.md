@@ -2891,3 +2891,26 @@ PAL consumers. CO's native2.1.285/public seam is one route's limit, not a produc
 prerequisite. No CO edits or alternate CO engine. Current Devin profile remains
 strict; do not convert old evidence or unknowns to Claude, or call a requested
 model an observed one. Proposal/source preparation is not qualification or entry.
+
+## D061 — distinct direct-Claude source contract (2026-10-10)
+
+Root freezes PRI02-CLAUDE-DIRECT/1 for the existing official CLI2.1.291 and exact
+pal-claude-print-text/1 + claude-opus-5-5, independently of CO. Existing concrete
+typed native values, strict Devin branch and managed permission/source/control/
+budget/entry/save/replay/UNKNOWN boundaries remain. One direct-route owned max1
+lane retains an unknown active record across restart; no automatic root rotation,
+refund, old-call conversion or unqualified production adoption.
+
+Read-only actual metadata under approved existing keychain access reports logged
+in/claude.ai/firstParty/pro. Sandbox-only metadata was unavailable; it does not
+prove missing account. No auth or charge change. Original completed task stream
+shows two assistant frames sharing message/request IDs, null assistant stop reason,
+final end_turn/completed, unused advertised skills/plugins and all-zero subagent
+execution counters. Freeze the actual vocabulary instead of treating advertisement
+as use. This is source feasibility, not a new provider qualification.
+
+Separate Sol owns fixed local fixtures first; Astra owns closed collector/value/
+consumer source, separate Sol owns external wrapper. Disjoint isolated writes and
+independent cross-author review precede Root integration/full verification. Scope
+authorizes no generation or actual qualification. No prose-quality test. Whole
+goal NOT_MET; later real entry needs distinct exact design/operator freeze.

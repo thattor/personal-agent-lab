@@ -1,3 +1,12 @@
+# Current source preparation — direct Claude contract fixed, no entry
+
+PRI02-CLAUDE-DIRECT/1 defines a separate closed existing first-party CLI profile,
+fixed raw-frame/owned-local-ending/qualification bindings and managed consumer
+mapping. Independent fixed tests precede separate core and wrapper authors with
+cross-author reviews. D061 permits local source work only; no actual generation,
+qualification or native activation. C092983 source proof remains the last full
+verification. Existing unknowns and CO state are unchanged. Whole goal NOT_MET.
+
 # Current C092 — local diagnostic verified; CO optional, direct candidate next
 
 Rootc6eb469 integrates PRI02-MODEL-OVERFLOW/1 with independent Sol APPROVE and
