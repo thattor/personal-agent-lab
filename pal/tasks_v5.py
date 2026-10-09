@@ -1,5 +1,7 @@
 """Transactional execution rights for a trusted local mock host (TSK02/1)."""
 from functools import wraps
+from contextlib import contextmanager
+import uuid
 import sqlite3
 
 from pal.contracts_v5 import (Brief, Condition, DraftBrief, ContractError, Grant, Limits, Ref, Result,
@@ -7,6 +9,8 @@ from pal.contracts_v5 import (Brief, Condition, DraftBrief, ContractError, Grant
 from pal.intake_v5 import IntakeStore, _intersect
 
 _MAX = 2**63 - 1
+_PROFILE = "managed-inprocess-mock/1"
+_CALL_STATES = ("admitted", "returned", "raised", "not_entered", "interrupted")
 
 
 class _Rejected(Exception):
@@ -67,7 +71,24 @@ def _wire(refs):
 
 
 class TaskStore(IntakeStore):
-    def __init__(self, connection, *, host_limits, artifact_inspect=None, verification_inspect=None, **kwargs):
+    def __init__(self, connection, *, host_limits, artifact_inspect=None, verification_inspect=None,
+                 startup_guard=None, **kwargs):
+        self._startup_guard = startup_guard
+        if startup_guard is not None:
+            from pal.mock_host_v5 import MockHostSession
+            if type(startup_guard) is not MockHostSession:
+                raise TypeError('exact mock host required')
+            startup_guard.check_connection(connection)
+            with startup_guard.operation():
+                self._initialize(connection, host_limits, artifact_inspect, verification_inspect, kwargs)
+        else:
+            self._initialize(connection, host_limits, artifact_inspect, verification_inspect, kwargs)
+
+    @property
+    def startup_guard(self):
+        return self._startup_guard
+
+    def _initialize(self, connection, host_limits, artifact_inspect, verification_inspect, kwargs):
         if type(host_limits) is not Limits or any(x > _MAX for x in
                 (host_limits.max_operations, host_limits.max_steps, host_limits.max_model_calls)):
             raise ValueError('finite SQLite host limits required')
@@ -79,6 +100,10 @@ class TaskStore(IntakeStore):
         self._artifact_inspect = artifact_inspect
         super().__init__(connection, **kwargs)
         schema = (
+            'CREATE TABLE IF NOT EXISTS v5_tsk_enrollment (singleton INTEGER PRIMARY KEY CHECK(singleton=1),db_uuid TEXT NOT NULL,profile TEXT NOT NULL)',
+            'CREATE TABLE IF NOT EXISTS v5_tsk_session (id TEXT PRIMARY KEY,runner TEXT NOT NULL UNIQUE,db_uuid TEXT NOT NULL,profile TEXT NOT NULL,orphan TEXT)',
+            'CREATE TABLE IF NOT EXISTS v5_tsk_lease_owner (lease TEXT PRIMARY KEY,session TEXT NOT NULL,claim_work TEXT NOT NULL)',
+
             "CREATE TABLE IF NOT EXISTS v5_tsk_question (id TEXT PRIMARY KEY,goal TEXT NOT NULL,revision INTEGER NOT NULL,step_id TEXT NOT NULL UNIQUE,question TEXT NOT NULL,missing_fact TEXT NOT NULL,sources TEXT NOT NULL,status TEXT NOT NULL CHECK(status IN ('open','answered','closed','superseded')),answer_ref TEXT)",
             "CREATE UNIQUE INDEX IF NOT EXISTS v5_tsk_one_question ON v5_tsk_question(goal) WHERE status='open'",
             'CREATE TABLE IF NOT EXISTS v5_tsk_artifact_set (seq INTEGER PRIMARY KEY,goal TEXT NOT NULL,revision INTEGER NOT NULL,artifact_id TEXT NOT NULL,step_id TEXT NOT NULL,UNIQUE(goal,revision,artifact_id),UNIQUE(goal,revision,step_id))',
@@ -111,21 +136,294 @@ class TaskStore(IntakeStore):
         rows = self._rows(sql, args)
         return rows[0] if rows else None
 
-    def _transaction(self, command, key, request, operation):
-        self._require_idle()
-        self._conn.execute('BEGIN IMMEDIATE')
+    @contextmanager
+    def _host_permit(self):
+        guard = self._startup_guard
+        if guard is None:
+            yield
+        else:
+            guard.check_connection(self._conn)
+            with guard.operation():
+                guard.check_connection(self._conn)
+                yield
+
+    def _enrollment(self):
+        rows = self._rows('SELECT * FROM v5_tsk_enrollment')
+        if not rows:
+            if (self._one('SELECT id FROM v5_tsk_session LIMIT 1') or
+                    self._one('SELECT lease FROM v5_tsk_lease_owner LIMIT 1') or
+                    (self._startup_guard is not None and self._startup_guard.db_uuid is not None)):
+                _reject('unavailable')
+            return None
+        if len(rows) != 1:
+            _reject('unavailable')
+        row = rows[0]
         try:
-            canonical = dumps(request)
-            result = self._lookup_replay(command, key, canonical) if key is not None else None
-            if result is None:
-                result = Result.success(operation())
-                if key is not None:
-                    self._save_replay(command, key, canonical, result)
-            self._conn.execute('COMMIT')
+            if (row['singleton'] != 1 or row['profile'] != _PROFILE or
+                    type(row['db_uuid']) is not str or uuid.UUID(row['db_uuid']).hex != row['db_uuid']):
+                raise ValueError()
+        except (ValueError, TypeError, AttributeError):
+            _reject('unavailable')
+        guard = self._startup_guard
+        if guard is not None and guard.db_uuid is not None and guard.db_uuid != row['db_uuid']:
+            _reject('unavailable')
+        return row
+
+    def _session(self, identity, enrollment):
+        session = self._one('SELECT * FROM v5_tsk_session WHERE id=?', (identity,))
+        try:
+            if session is None or enrollment is None:
+                raise ContractError()
+            _id(session['id'])
+            _id(session['runner'])
+            if session['orphan'] is not None:
+                _id(session['orphan'])
+            if (session['db_uuid'], session['profile']) != (enrollment['db_uuid'], _PROFILE):
+                raise ContractError()
+        except ContractError:
+            _reject('unavailable')
+        return session
+
+    def _own_session(self, *, ready=False):
+        guard = self._startup_guard
+        if guard is None:
+            _reject('unavailable')
+        guard.check_connection(self._conn)
+        if ready and guard.phase != 'ready':
+            _reject('conflict')
+        enrollment = self._enrollment()
+        session = self._session(guard.session_id, enrollment)
+        if (session['runner'] != guard.runner_id or guard.db_uuid != session['db_uuid'] or
+                guard.orphan_lease_id != session['orphan']):
+            _reject('unavailable')
+        return session
+
+    def _lease_binding(self, lease, enrollment):
+        try:
+            _id(lease['id'])
+            _id(lease['runner'])
+            if type(lease['active']) is not int or lease['active'] not in (0, 1):
+                raise ContractError()
+            binding = self._one('SELECT * FROM v5_tsk_lease_owner WHERE lease=?', (lease['id'],))
+            if binding is None:
+                raise ContractError()
+            _id(binding['session'])
+            claim = _work(loads(binding['claim_work']))
+            if claim.epoch < 1 or (claim.goal_id, claim.revision) != (lease['goal'], lease['revision']):
+                raise ContractError()
+            session = self._session(binding['session'], enrollment)
+            if lease['runner'] != session['runner']:
+                raise ContractError()
+        except ContractError:
+            _reject('unavailable')
+        return session, claim
+
+    def _execution(self, lease=None):
+        enrollment = self._enrollment()
+        if enrollment is None and self._startup_guard is None:
+            return
+        session = self._own_session(ready=True)
+        if lease is not None:
+            owner, _ = self._lease_binding(lease, enrollment)
+            if owner['id'] != session['id']:
+                _reject('denied')
+
+    def _execution_request(self, command, request):
+        execution = command in ('claim', 'admit_call', 'end_call', 'begin_step', 'finish_step',
+                                'C04.ask', 'release', 'reserve_budget', 'consume', 'register')
+        if command == 'control':
+            execution = type(request['command']) is dict and request['command'].get('kind') == 'complete'
+        if not execution:
+            return
+        data = request['request'] if command == 'finish_step' else request
+        self._execution()
+        lease = None
+        if 'lease_id' in data:
+            lease = self._one('SELECT * FROM v5_tsk_lease WHERE id=?', (data['lease_id'],))
+        elif command == 'end_call':
+            call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (data['call_id'],))
+            if call is not None:
+                lease = self._one('SELECT * FROM v5_tsk_lease WHERE id=?', (call['lease'],))
+                if lease is None:
+                    _reject('unavailable')
+        elif command == 'consume':
+            reservation = self._one('SELECT * FROM v5_tsk_reservation WHERE id=?', (data['reservation_id'],))
+            if reservation is not None:
+                lease = self._one('SELECT * FROM v5_tsk_lease WHERE id=?', (reservation['lease'],))
+                if lease is None:
+                    _reject('unavailable')
+        elif 'work_ref' in data:
+            work = _work(data['work_ref'])
+            if self._enrollment() is not None:
+                owners = self._rows('SELECT lease FROM v5_tsk_lease_owner WHERE claim_work=?', (dumps(work),))
+                if len(owners) > 1:
+                    _reject('unavailable')
+                if owners:
+                    lease = self._one('SELECT * FROM v5_tsk_lease WHERE id=?', (owners[0]['lease'],))
+                    if lease is None:
+                        _reject('unavailable')
+            if lease is None:
+                lease = self._one('SELECT * FROM v5_tsk_lease WHERE goal=? AND revision=? AND active=1',
+                                  (work.goal_id, work.revision))
+        if lease is not None:
+            self._execution(lease)
+
+    def _transaction(self, command, key, request, operation):
+        with self._host_permit():
+            self._require_idle()
+            self._conn.execute('BEGIN IMMEDIATE')
+            try:
+                if command == 'recover':
+                    self._own_session()
+                    if self._startup_guard.phase != 'startup':
+                        _reject('conflict')
+                self._execution_request(command, request)
+                canonical = dumps(request)
+                result = self._lookup_replay(command, key, canonical) if key is not None else None
+                if result is None:
+                    value = operation()
+                    result = Result.success(value)
+                    if key is not None and not (command == 'recover' and value.get('disposition') == 'held'):
+                        self._save_replay(command, key, canonical, result)
+                self._conn.execute('COMMIT')
+                return result
+            except BaseException:
+                self._rollback()
+                raise
+
+    @_public
+    def register_host(self):
+        guard = self._startup_guard
+        if guard is None:
+            _reject('unavailable')
+        def operation():
+            if guard.phase not in ('owned', 'startup'):
+                _reject('conflict')
+            enrollment = self._enrollment()
+            if enrollment is None:
+                enrollment = {'db_uuid': uuid.uuid4().hex, 'profile': _PROFILE}
+                self._conn.execute('INSERT INTO v5_tsk_enrollment VALUES (1,?,?)',
+                                   (enrollment['db_uuid'], _PROFILE))
+            saved = self._one('SELECT * FROM v5_tsk_session WHERE id=?', (guard.session_id,))
+            if saved is None:
+                if guard.phase != 'owned' or guard.db_uuid is not None:
+                    _reject('unavailable')
+                leases = self._rows('SELECT * FROM v5_tsk_lease WHERE active=1')
+                if len(leases) > 1:
+                    _reject('unavailable')
+                orphan = leases[0]['id'] if leases else None
+                self._conn.execute('INSERT INTO v5_tsk_session VALUES (?,?,?,?,?)',
+                    (guard.session_id, guard.runner_id, enrollment['db_uuid'], _PROFILE, orphan))
+            saved = self._session(guard.session_id, enrollment)
+            if saved['runner'] != guard.runner_id:
+                _reject('unavailable')
+            return {'session_id': saved['id'], 'runner_id': saved['runner'], 'orphan_lease_id': saved['orphan']}
+        with self._host_permit():
+            result = self._transaction('register_host', None, {}, operation)
+            value = result.value.to_json()
+            guard.mark_registered(self._enrollment()['db_uuid'], value['orphan_lease_id'])
             return result
-        except BaseException:
-            self._rollback()
-            raise
+
+    @_public
+    def finish_startup(self):
+        def operation():
+            session = self._own_session()
+            if self._startup_guard.phase not in ('startup', 'ready'):
+                _reject('conflict')
+            if self._startup_guard.phase != 'ready' and self._one('SELECT id FROM v5_tsk_lease WHERE active=1'):
+                _reject('conflict')
+            return {'session_id': session['id'], 'runner_id': session['runner'], 'status': 'ready'}
+        with self._host_permit():
+            result = self._transaction('finish_startup', None, {}, operation)
+            if self._startup_guard.phase != 'ready':
+                self._startup_guard.activate()
+            return result
+
+    @staticmethod
+    def _latest_intent(row, flags, *, fallback, opened=False):
+        if row['state'] in ('completed', 'cancelled', 'failed'):
+            return row['state']
+        if flags['pause'] or (opened and row['state'] == 'paused'):
+            return 'paused'
+        return 'waiting_input' if opened else fallback
+
+    @_public
+    def recover(self, request):
+        data = _obj(request, {'key', 'lease_id'})
+        key, lease_id = _id(data['key']), _id(data['lease_id'])
+        with self._host_permit():
+            if self._startup_guard is None:
+                _reject('unavailable')
+            if self._startup_guard.phase != 'startup':
+                _reject('conflict')
+            return self._transaction('recover', key, data, lambda: self._recover(lease_id))
+
+    def _recover(self, lease_id):
+        try:
+            return self._recover_owned(lease_id)
+        except (ContractError, KeyError, TypeError, ValueError):
+            _reject('unavailable')
+
+    def _recover_owned(self, lease_id):
+        session = self._own_session()
+        lease = self._one('SELECT * FROM v5_tsk_lease WHERE id=?', (lease_id,))
+        if lease is None:
+            _reject('not_found')
+        if lease['active'] == 0:
+            _reject('conflict')
+        if lease_id != session['orphan']:
+            _reject('conflict')
+        owner, claim = self._lease_binding(lease, self._enrollment())
+        if owner['id'] == session['id']:
+            _reject('unavailable')
+        old = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=?', (lease['goal'], lease['revision']))
+        row = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? ORDER BY revision DESC LIMIT 1', (lease['goal'],))
+        if (old is None or row is None or claim.epoch > old['epoch'] or
+                (old['revision'] != row['revision'] and old['state'] != 'superseded') or
+                row['state'] not in ('queued', 'running', 'waiting_input', 'paused', 'completed', 'cancelled', 'failed')):
+            _reject('unavailable')
+        flags = self._flags(row)
+        if any(type(flags[k]) is not int or flags[k] not in (0, 1) for k in ('pause', 'drain')):
+            _reject('unavailable')
+        self._questions(old)
+        questions = self._questions(row)
+        self._artifact_set(self._wr(old))
+        self._artifact_set(self._wr(row))
+        calls = self._old_calls(old, lease, claim=claim)
+        started = []
+        for call in calls:
+            if call['step'] is not None:
+                step = loads(self._one('SELECT wire FROM v5_tsk_step WHERE id=?', (call['step'],))['wire'])
+                if step['status'] == 'started':
+                    started.append(step)
+        for step in started:
+            if step['action']['kind'] in ('compose', 'operate'):
+                return {'disposition': 'held', 'work_ref': self._wr(row).to_json(), 'state': row['state'],
+                    'control_status': 'pause_requested' if flags['pause'] else 'draining' if flags['drain'] else 'none',
+                    'lease_id': lease_id, 'step_id': step['step_id'],
+                    'reason': 'artifact_tail' if step['action']['kind'] == 'compose' else 'external_tail'}
+        if row['state'] not in ('completed', 'cancelled', 'failed'):
+            if type(row['epoch']) is not int or not 0 <= row['epoch'] < _MAX:
+                _reject('unavailable')
+            row['epoch'] += 1
+        event_id = self._change_mint('event')
+        interrupted = [call['id'] for call in calls if call['status'] == 'admitted']
+        for call_id in interrupted:
+            self._conn.execute("UPDATE v5_tsk_call SET status='interrupted' WHERE id=?", (call_id,))
+        for step in started:
+            step['status'] = 'abandoned'
+            self._conn.execute('UPDATE v5_tsk_step SET wire=? WHERE id=?', (dumps(step), step['step_id']))
+        opened = any(q['status'] == 'open' for q in questions)
+        state = 'paused' if row['state'] == 'paused' else self._latest_intent(row, flags, fallback='queued', opened=opened)
+        row['state'] = state
+        self._conn.execute('UPDATE v5_intake_work SET state=?,epoch=? WHERE goal_id=? AND revision=?',
+                           (state, row['epoch'], row['goal_id'], row['revision']))
+        self._conn.execute('UPDATE v5_tsk_lease SET active=0 WHERE id=?', (lease_id,))
+        self._set_flags(row, 0, 0)
+        self._conn.execute('INSERT INTO v5_intake_event (event_id,session_id,work_ref_json,kind,text,refs_json) VALUES (?,?,?,?,?,?)',
+            (event_id, row['session_id'], dumps(self._wr(row)), 'state', 'mock execution recovered', '[]'))
+        return {'disposition': 'settled', 'work_ref': self._wr(row).to_json(), 'state': state,
+                'control_status': 'none', 'recovered_lease_id': lease_id, 'interrupted_call_ids': interrupted}
 
     def _current(self, work, epoch=True):
         row = self._one('SELECT * FROM v5_intake_work WHERE goal_id=? ORDER BY revision DESC LIMIT 1', (work.goal_id,))
@@ -153,6 +451,7 @@ class TaskStore(IntakeStore):
             _reject('not_found')
         if lease is None or (lease_id is not None and lease['id'] != lease_id) or (lease['goal'], lease['revision']) != (work.goal_id, work.revision):
             _reject('denied')
+        self._execution(lease)
         flags = self._flags(row)
         if row['state'] != 'running' or flags['pause'] or flags['drain']:
             _reject('conflict')
@@ -239,7 +538,11 @@ class TaskStore(IntakeStore):
         data = _obj(request, {'runner_id'})
         runner = _id(data['runner_id'])
         def operation():
+            if self._enrollment() is not None and runner != self._startup_guard.runner_id:
+                _reject('denied')
             lease = self._one('SELECT * FROM v5_tsk_lease WHERE active=1')
+            if lease is not None:
+                self._execution(lease)
             if lease:
                 if lease['runner'] != runner:
                     _reject('conflict')
@@ -258,6 +561,9 @@ class TaskStore(IntakeStore):
                                ('running', row['epoch'], row['goal_id'], row['revision']))
             lease = {'id': self._mint('lease')}
             self._conn.execute('INSERT INTO v5_tsk_lease VALUES (?,?,?,?,1)', (lease['id'], runner, row['goal_id'], row['revision']))
+            if self._enrollment() is not None:
+                self._conn.execute('INSERT INTO v5_tsk_lease_owner VALUES (?,?,?)',
+                    (lease['id'], self._startup_guard.session_id, dumps(self._wr(row))))
             self._event(row, 'state', 'work running')
             return self._claim_wire(row, lease)
         return self._transaction('claim', None, data, operation)
@@ -431,6 +737,8 @@ class TaskStore(IntakeStore):
         call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (_id(data['call_id']),))
         if call is None:
             _reject('not_found')
+        if call['status'] not in _CALL_STATES or (call['status'] == 'interrupted' and call['step'] is not None):
+            _reject('unavailable')
         may_enter = False
         if call['status'] == 'admitted':
             try:
@@ -440,7 +748,7 @@ class TaskStore(IntakeStore):
                 pass
         result = {'call_id': call['id'], 'lease_id': call['lease'], 'work_ref': loads(call['work']),
                   'index': call['idx'], 'status': call['status'], 'may_enter': may_enter}
-        if call['step'] is not None:
+        if call['step'] is not None or call['status'] == 'interrupted':
             result['step_id'] = call['step']
         return Result.success(result)
 
@@ -475,12 +783,14 @@ class TaskStore(IntakeStore):
     def authorize_artifact_save(self, connection, request):
         """Read-only ART collaborator; the artifact owner controls this transaction."""
         self._require_transaction(connection)
-        return self._authorize_artifact_save(request)
+        with self._host_permit():
+            return self._authorize_artifact_save(request)
 
     def verification_context(self, connection, request, *, purpose):
         """Readonly VER snapshot; factual status is independent of execution rights."""
         self._require_transaction(connection)
-        return self._verification_context(request, purpose=purpose)
+        with self._host_permit():
+            return self._verification_context(request, purpose=purpose)
 
     @_public
     def _verification_context(self, request, *, purpose):
@@ -729,7 +1039,8 @@ class TaskStore(IntakeStore):
                         type(saved['idx']) is not int or step['index'] != saved['idx']):
                     raise ContractError()
             for call in calls:
-                if (call['status'] not in ('admitted', 'returned', 'raised', 'not_entered') or
+                if (call['status'] not in _CALL_STATES or
+                        (call['status'] == 'interrupted' and call['step'] is not None) or
                         _work(loads(call['work'])) != work or
                         type(call['idx']) is not int or not 0 <= call['idx'] <= _MAX):
                     raise ContractError()
@@ -790,7 +1101,7 @@ class TaskStore(IntakeStore):
                     type(step['index']) is not int or not 0 <= step['index'] <= _MAX or
                     type(saved['idx']) is not int or step['index'] != saved['idx'] or
                     step['status'] not in ('started', 'finished', 'abandoned') or call is None or
-                    call['status'] not in ('admitted', 'returned', 'raised', 'not_entered') or
+                    call['status'] not in _CALL_STATES or call['status'] == 'interrupted' or
                     _work(loads(call['work'])) != binding or type(call['idx']) is not int or
                     call['idx'] != step['index'] or call['step'] != saved['id']):
                 raise ContractError()
@@ -1034,34 +1345,55 @@ class TaskStore(IntakeStore):
         return {'work_ref': self._wr(current).to_json(), 'state': current['state'],
                 'control_status': 'pause_requested' if pause else 'draining' if drain else 'none'}
 
-    def _old_calls(self, row, lease):
+    def _old_calls(self, row, lease, *, claim=None):
         try:
             calls = self._rows('SELECT * FROM v5_tsk_call WHERE lease=?', (lease['id'],))
+            inspected = list(calls)
+            if claim is not None:
+                seen = {call['id'] for call in calls}
+                for saved in self._steps(row):
+                    if saved['call'] not in seen:
+                        historic = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (saved['call'],))
+                        if historic is None:
+                            raise ContractError()
+                        inspected.append(historic)
+                        seen.add(historic['id'])
             linked, indexes = set(), set()
             required, registered = set(self._required(row)), set(self._registered(row))
-            for call in calls:
+            for call in inspected:
+                call_lease = lease if call['lease'] == lease['id'] else self._one(
+                    'SELECT * FROM v5_tsk_lease WHERE id=?', (call['lease'],))
+                if (call_lease is None or (call_lease['goal'], call_lease['revision']) !=
+                        (row['goal_id'], row['revision'])):
+                    raise ContractError()
+                _id(call_lease['id'])
                 _id(call['id'])
                 _id(call['reservation'])
                 sources = set(_refs(loads(call['sources'])))
-                if not required <= sources <= registered:
+                if not required <= sources <= registered or any(ref.kind.value != 'record' for ref in sources):
                     raise ContractError()
                 work = _work(loads(call['work']))
-                if (call['status'] not in ('admitted', 'returned', 'raised', 'not_entered') or
+                if (call['status'] not in _CALL_STATES or
+                        (call['status'] == 'interrupted' and call['step'] is not None) or
                         (work.goal_id, work.revision) != (row['goal_id'], row['revision']) or
                         work.epoch > row['epoch'] or type(call['idx']) is not int or not 0 <= call['idx'] <= _MAX):
                     raise ContractError()
-                if call['id'] != dumps(['C15.call', lease['id'], call['idx']]):
+                if claim is not None and call['lease'] == lease['id'] and work != claim:
                     raise ContractError()
-                if call['idx'] in indexes:
+                if call['id'] != dumps(['C15.call', call_lease['id'], call['idx']]):
                     raise ContractError()
-                indexes.add(call['idx'])
+                if (call_lease['id'], call['idx']) in indexes:
+                    raise ContractError()
+                indexes.add((call_lease['id'], call['idx']))
                 reservation = self._one('SELECT * FROM v5_tsk_reservation WHERE id=?', (call['reservation'],))
                 if (reservation is None or type(reservation['idx']) is not int or
                         (reservation['lease'], _work(loads(reservation['work'])), reservation['idx'],
                          reservation['kind'], reservation['role'], reservation['binding']) !=
-                        (lease['id'], work, call['idx'], 'model', 'expert', call['id'])):
+                        (call_lease['id'], work, call['idx'], 'model', 'expert', call['id'])):
                     raise ContractError()
                 if call['step'] is not None:
+                    if call['status'] == 'interrupted' or (claim is not None and call['status'] != 'returned'):
+                        raise ContractError()
                     _id(call['step'])
                     saved = self._one('SELECT * FROM v5_tsk_step WHERE id=?', (call['step'],))
                     if saved is None or saved['id'] in linked:
@@ -1076,18 +1408,30 @@ class TaskStore(IntakeStore):
                              _work(step['work_ref']), step['index']) !=
                             (work.goal_id, work.revision, call['idx'], call['id'], saved['id'], work, call['idx'])):
                         raise ContractError()
+                    if claim is not None:
+                        reservations = self._rows('SELECT * FROM v5_tsk_reservation WHERE kind=? AND binding=?',
+                                                  ('step', saved['id']))
+                        if len(reservations) != 1:
+                            raise ContractError()
+                        reserved = reservations[0]
+                        _id(reserved['id'])
+                        if (type(reserved['idx']) is not int or
+                                (reserved['lease'], _work(loads(reserved['work'])), reserved['idx'], reserved['role']) !=
+                                (call_lease['id'], work, call['idx'], None)):
+                            raise ContractError()
                     linked.add(saved['id'])
             # Other leases may have finished historical Steps, but no dangling owned linkage.
             for saved in self._steps(row):
                 call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (saved['call'],))
                 if call is None or call['step'] != saved['id']:
                     raise ContractError()
-                if loads(saved['wire'])['status'] == 'started' and saved['id'] not in linked:
+                if loads(saved['wire'])['status'] == 'started' and (saved['id'] not in linked or call['lease'] != lease['id']):
                     raise ContractError()
         except (ContractError, KeyError, TypeError):
             _reject('unavailable')
-        if any(call['status'] == 'admitted' for call in calls):
+        if claim is None and any(call['status'] == 'admitted' for call in calls):
             _reject('conflict')
+        return calls
 
     @_public
     def control(self, request):
@@ -1192,7 +1536,7 @@ class TaskStore(IntakeStore):
                     if step['status'] == 'started':
                         step['status'] = 'abandoned'
                         self._conn.execute('UPDATE v5_tsk_step SET wire=? WHERE id=?', (dumps(step), saved['id']))
-                state = 'cancelled' if row['state'] == 'cancelled' else 'paused' if flags['pause'] else 'queued'
+                state = self._latest_intent(row, flags, fallback='queued')
                 row['state'] = state
                 self._conn.execute('UPDATE v5_intake_work SET state=? WHERE goal_id=? AND revision=?', (state, row['goal_id'], row['revision']))
                 self._conn.execute('UPDATE v5_tsk_lease SET active=0 WHERE id=?', (lease_id,))
@@ -1200,7 +1544,8 @@ class TaskStore(IntakeStore):
                 self._event(row, 'state', data['reason'])
                 return {'work_ref': self._wr(row).to_json(), 'state': state, 'control_status': 'none'}
             calls = self._rows('SELECT * FROM v5_tsk_call WHERE lease=?', (lease_id,))
-            if any(call['status'] not in ('admitted', 'returned', 'raised', 'not_entered') for call in calls):
+            if any(call['status'] not in _CALL_STATES or
+                   (call['status'] == 'interrupted' and call['step'] is not None) for call in calls):
                 _reject('unavailable')
             if any(call['status'] == 'admitted' for call in calls):
                 _reject('conflict')
@@ -1217,8 +1562,8 @@ class TaskStore(IntakeStore):
                 if step['status'] == 'started':
                     step['status'] = 'abandoned'
                     self._conn.execute('UPDATE v5_tsk_step SET wire=? WHERE id=?', (dumps(step), saved['id']))
-            state = (row['state'] if row['state'] in ('completed', 'cancelled', 'failed') else 'paused' if flags['pause'] else
-                     'queued' if flags['drain'] or data['outcome'] == 'yield' else 'failed')
+            state = self._latest_intent(row, flags,
+                fallback='queued' if flags['drain'] or data['outcome'] == 'yield' else 'failed')
             row['state'] = state
             self._conn.execute('UPDATE v5_intake_work SET state=? WHERE goal_id=? AND revision=?', (state, work.goal_id, work.revision))
             self._conn.execute('UPDATE v5_tsk_lease SET active=0 WHERE id=?', (lease_id,))
