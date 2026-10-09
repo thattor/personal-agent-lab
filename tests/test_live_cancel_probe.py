@@ -264,6 +264,60 @@ class CancelProbeTests(unittest.TestCase):
             except RuntimeError:
                 pass  # The deliberately failed evidence remains an error.
 
+    def test_operator_deadline_before_watchdog_exits_cleanly(self):
+        probe = self.start()
+        probe.deadline = time.monotonic() - 1
+        read_fd, write_fd = os.pipe()
+        try:
+            serve_operator(probe, input_fd=read_fd)
+        finally:
+            os.close(read_fd)
+            os.close(write_fd)
+        self.assertTrue(probe.close_done.is_set())
+        data = probe.runtime.store.inspect()
+        self.assertEqual((data['receipts'], data['artifacts']), ([], []))
+        records = verify_journal(probe.directory / 'journal.jsonl')
+        self.assertEqual([r['reason'] for r in records if r['event'] == 'run.closed'],
+                         ['wall_deadline'])
+        self.assertFalse(any(r['event'] == 'operator.failed' for r in records))
+        reopened = Runtime(probe.runtime.store.path)
+        reopened.close()
+
+    def test_operator_concurrent_close_preserves_original_reason(self):
+        probe = self.start()
+        check = probe._check
+        def close_then_check():
+            probe.close_run('signal')
+            check()
+        read_fd, write_fd = os.pipe()
+        try:
+            with patch.object(probe, '_check', side_effect=close_then_check):
+                serve_operator(probe, input_fd=read_fd)
+        finally:
+            os.close(read_fd)
+            os.close(write_fd)
+        records = verify_journal(probe.directory / 'journal.jsonl')
+        self.assertEqual([r['reason'] for r in records if r['event'] == 'run.closed'],
+                         ['signal'])
+        self.assertFalse(any(r['event'] == 'operator.failed' for r in records))
+        self.assertTrue(probe.close_done.is_set())
+        self.assertEqual(probe.runtime.store.inspect()['receipts'], [])
+
+    def test_operator_other_rejection_remains_failure(self):
+        probe = self.start()
+        read_fd, write_fd = os.pipe()
+        try:
+            with patch.object(probe, '_check', side_effect=RunRejected('fixture pin changed')):
+                with self.assertRaises(RunRejected):
+                    serve_operator(probe, input_fd=read_fd)
+        finally:
+            os.close(read_fd)
+            os.close(write_fd)
+        records = verify_journal(probe.directory / 'journal.jsonl')
+        self.assertTrue(any(r['event'] == 'operator.failed' for r in records))
+        self.assertTrue(probe.close_done.is_set())
+        self.assertEqual(probe.runtime.store.inspect()['receipts'], [])
+
     def test_subprocess_eof_sigint_and_deadline_while_held_release_lock(self):
         child_code = '''
 import json,sys,time

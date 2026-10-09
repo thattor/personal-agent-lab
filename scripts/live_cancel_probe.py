@@ -28,6 +28,10 @@ HARNESS = {'scripts/'+name+'.py' for name in (
 _LIVE = object()
 
 
+class _ProbeStopped(RunRejected):
+    pass
+
+
 class DeliveryHold:
     def __init__(self):
         self.held = threading.Event()
@@ -90,7 +94,7 @@ class CancelProbe:
 
     def _check(self):
         if self.closed.is_set() or time.monotonic() >= self.deadline:
-            raise RunRejected('probe closed or expired')
+            raise _ProbeStopped('probe closed or expired')
         if self.pin is not None:
             self.pin.check()
 
@@ -348,6 +352,9 @@ def serve_operator(probe, input_fd=None):
                     probe.close_run('operator_finish')
                 else:
                     raise RunRejected('unknown operator command')
+    except _ProbeStopped:
+        # The watchdog can close between loop checks; preserve its first reason.
+        probe.close_run('wall_deadline')
     except BaseException as error:
         probe.journal.append({'event':'operator.failed', 'error':type(error).__name__})
         raise
