@@ -1,0 +1,12 @@
+{
+  "task": "8288ddc326e347169ac7ac699a1a80bc",
+  "base": "a58cde78e7777a5254f5e5b812fe6ed757576008",
+  "model": "claude/claude-opus-5-5",
+  "input_bytes": 195342,
+  "writes": [
+    "docs/design/contracts-v5/ASK01-SCOPE-CANDIDATE.md"
+  ],
+  "scope": "candidate contract reconciliation only; Root owns adoption; no source implementation until freeze",
+  "owned_launcher": "/private/tmp/pal-ask01-scope-candidate-launch.py",
+  "status_at_recording": "running"
+}

@@ -19,7 +19,9 @@ separate. D039 actual code contributors are CO SWE-2 High and direct AGY exact
 claude-sonnet-5-5-high; Root owns integration. No new native author/reviewer.
 
 Next ASK01: SWE2610f221 and Opus de3d5d69 advise REFINE. Exact state/lease/API
-contract must be reconciled before code; no owner decision is needed. Preserve
+contract is being reconciled by CO Opus8288ddc326e347169ac7ac699a1a80bc
+(basea58cde7, /private/tmp/pal-ask01-scope-candidate-launch.py). Candidate only;
+Root freezes it before code, no owner decision is needed. Preserve
 all old unknown/refused calls and live DBs. Codex remaining2% at last reading,
 ordinary usage allowed; no reset/paid fallback. Use existing CO/AGY for work.
 No new auth/cost/publication/schedule. Continue the authorized development loop.

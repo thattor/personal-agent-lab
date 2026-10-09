@@ -1048,3 +1048,21 @@ will freeze VER read/clock and the bounded result-inspection consumer. Value is
 reading a saved draft plus its checks and present usability via durable C14 refs.
 Contract-dependent code waits that freeze; independent records/push proceed. No
 recurring owner approval or original unknown-call retry. See complete01-20261009.
+
+
+## C077 — saved draft/check/usability readback through real local owners
+
+Local READ01 MET atff1a1cc:747 host PASS25.142s, focused36, actual temporary-SQLite
+demo and independent exact CO Opusde3d5d69 Code APPROVE. Milestone REFINE was
+provenance-only; Root committed the exact assertion harness and regenerated
+verified-demo outputs. Preserve Opus's verdict and prior wrapper logs separately.
+Sonnet5.5 authored real host/consumer source; SWE authored VER and fixed three
+consumer gaps; Root corrected C11 optional fields. Fixed tests alone did not
+prove integration: real MEM exposed an omitted-field bug. All failure evidence
+is retained. No product/semantic/PRI/UI/recovery/usefulness or CI claim.
+
+Next actual work is ASK01 contract reconciliation: CO Opus8288ddc3 atbasea58cde7
+receives SWE2610f221 advice and the Opus NEXT review. Candidate draft resolves the
+waiting/occupied-lease contradiction and minimal question/answer controls; Root
+will freeze the shared API before code. Independent work has not been made into
+a recurring human gate. Native98% usage/cost/unknown-call boundaries continue.
