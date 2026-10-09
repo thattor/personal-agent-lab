@@ -35,12 +35,31 @@ planner remains session-limited until the reported22:20 reset. Fixed role rules
 prohibit substituting SWE as planner; direct AGY code egress rejection is not
 bypassed. Native ASK implementation had two independent delegates, not32.
 
-Next independent work: Astra refines the proposed C10.change seam, original grant,
-revision/old-lease/budget/history invariants before Opus consultation. It is a
-design proposal only; no new semantics or change code adopted. Root prepares a
-concrete ASK milestone/next-design review package. No recurring owner approval
-is introduced for routine development; any actual transport approval remains
-specific to its package. Whole PAL/PRI/UI/provider, semantic usefulness, general
+Next design preparation is complete in CHANGE01-SEAMS-PROPOSAL.md: original
+grant, revision/old-lease/budget/history invariants and exact source hazards.
+It remains a proposal; Opus consultation precedes adoption or change code.
+Root fixed a13-file202200-byte ASK milestone/next-design review package at163779d,
+SHA256 bf69fe23ba35e585cdb547d743859fec65954bb809c6f59fbc31fc2ae97eb3aa,
+for existing AGY claude-opus-5-5-high. Direct manual approval was requested in
+the development chat because the previous automatic review rejected the
+other-thread permission presentation. No answer/send is claimed. Prior Sonnet
+manual approval is not expanded. Evidence: opus-review-prepared.json. The qualified
+CO Opus alternative is available only after actual route quota permits; the
+reported22:20 reset is a time estimate, not a verified resumed route.
+
+Independent READ01 N1 display correction is also verified: sourcea974fc0,793 full
+host tests PASS25.447s, focused32 and executable ASK demo PASS. Separate Sol
+APPROVE exact author0ff0309 includes236 Unicode control-character probes. Root
+compared integrated bytes; saved content/hash/inspection remain unchanged while
+multiline metadata and terminal controls display safely. See
+evidence/operations/read-display-20261009/verification.json. This implements an
+already recorded Opus note and changes no product/contract semantics.
+
+Remaining dependent work is the prepared Opus consultation, then contract freeze
+and isolated implementation; no unnecessary duplicate work is queued to fill slots.
+No recurring owner approval is introduced for routine development; any actual
+transport approval remains specific to its package. Whole PAL/PRI/UI/provider,
+semantic usefulness, general
 recovery, auth/cost/publication and unknown-call boundaries remain unchanged.
 
 ## Retained C077 — local result readback accepted

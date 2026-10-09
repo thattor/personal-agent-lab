@@ -16,6 +16,13 @@ do not label it ALIGNED or claim whole-product completion. No semantic answer
 sufficiency, real PRI/provider/UI, general restart recovery or usefulness proof.
 Next C10.change remains a design proposal pending technical consultation.
 
+READ01 N1 follow-up atsourcea974fc0:793 full host tests PASS25.447s,32 read tests
+and actual ASK demo PASS. Separate Sol independently APPROVES exact0ff0309,
+including236 Unicode control/format/separator probes. Metadata continuations
+remain visibly nested, controls are escaped, Japanese/draft readability and
+stored content/hash/inspection bytes are preserved. [Display evidence](evidence/operations/read-display-20261009/verification.json).
+This is a bounded plain-text correction, not HTML/UI or semantic acceptance.
+
 ## C077 — local result readback accepted
 
 Unchanged sourceff1a1ccab553173fa4eae17b29fbe0a79b998313 passes747 local host tests

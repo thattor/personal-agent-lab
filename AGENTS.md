@@ -27,6 +27,8 @@ for isolated TSK/RUN work. Continue the loop; do not activate partial completion
 
 C078: ASK01 sourceb844706 passes787 host tests, actual temporary-SQLite demo and
 separate TSK/RUN source reviews. Final Opus milestone review remains pending.
+Subsequent READ01 display N1 correction atsourcea974fc0 passes793 full host tests,
+actual ASK demo and separate Sol review; it changes no storage or wire semantics.
 Continue independent C10.change design preparation; consultation precedes adoption.
 Preserve AGY egress refusals and specific D042 manual-approval scope; do not
 duplicate the finished native ASK implementation or alter CO/approval settings.

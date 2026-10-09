@@ -1211,3 +1211,17 @@ the6 committed fields; integrity1 method/3 subcases and separate final rereview
 pass before reservation/inference, without failed release. Legitimate old epochs
 remain valid. Next C12 linkage edit must retain both shape and provenance checks.
 Full787 Root regression and exact-byte source comparison passed after both fixes.
+
+## READ01 N1 display impersonation correction
+
+Existing independent Opus N1 identified direct interpolation of multiline owner
+and model strings into labels. Public inspect/render reproduced5 failures among
+6 new tests before correction; structured data was unchanged. Sol's final display
+boundary prefixes embedded LF continuations and escapes Unicode Cc/Cf/Zl/Zp;
+stored content/hash/inspection bytes are preserved. Separate Sol tested all236
+non-LF controls/format/separator characters in this interpreter, CRLF and blank
+forged labels; approved exact0ff0309. Root integrated equal bytes ata974fc0 and
+verified full793 tests and actual ASK demo. Next renderer-field additions retain
+this display boundary plus serialized-input invariance checks. Evidence and the
+original isolated-import test invocation error are retained separately under
+evidence/operations/read-display-20261009; no HTML/UI security claim is made.

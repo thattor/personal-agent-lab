@@ -1088,3 +1088,16 @@ state changes. Native authorized fallbacks completed this slice. The refused
 AGY Sonnet upload never ran, and later manual-approval direction did not trigger
 duplicate work. Root will send only a concrete separately scoped review package
 through an accepted route. Existing unknown calls and live DBs stay untouched.
+
+C078 continuation: Astra completed CHANGE01-SEAMS-PROPOSAL, identifying latest-only
+claim and old-owned lease release as mandatory companions to revision insertion.
+No change implementation is adopted. Concrete Opus package163779d,13 inputs,
+202200 prompt bytes is prepared; direct development-chat manual approval is
+pending, not inferred from tool acceptance of the question or elapsed time.
+
+Meanwhile the existing Opus READ01 N1 finding was corrected independently by
+native Sol: embedded metadata newlines are subordinate and controls are visible.
+Separate Sol APPROVE exact0ff0309, Root equal-byte integration ata974fc0,
+full793 PASS25.447s and executable ASK demo PASS. Preserved fields/bytes and
+plain-text limits are in read-display-20261009/verification.json. This independent
+correction does not replace the pending ASK milestone/CHANGE01 consultation.
