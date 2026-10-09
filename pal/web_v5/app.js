@@ -14,10 +14,16 @@ function text(parent, content) { const node = document.createElement('pre'); nod
 function button(parent, label, action) { const node = document.createElement('button'); node.textContent=label; node.addEventListener('click', () => action().catch(showError)); parent.appendChild(node); }
 function showError(error) { $('error').textContent=error.message; }
 async function refresh() {
-  const status=await api('/api/status'); previousWorker=status.worker_status; $('status').textContent='テスト用mock — '+(labels[status.worker_status] || '状態不明')+'。実モデルは利用できません。';
+  const status=await api('/api/status'); previousWorker=status.worker_status;
+  const nativeFixture=status.mode==='native_fixture' && status.native_available===false && status.qualification==='NOT_RUN';
+  $('mode').textContent=nativeFixture ? 'native owner接続の合成fixtureです。実モデルは利用できません。qualificationは未実施です。' : 'mock固定例です。実モデルは使用できません。自然言語の理解や有用性の証明ではありません。';
+  $('guide').textContent=nativeFixture ? '入力と結果は合成試験用です。質問には作業欄から回答してください。' : '「下書きデモ」を送ると固定例を開始します。質問には作業欄から日時を回答してください。';
+  $('status').textContent=(nativeFixture ? '合成native fixture — ' : 'テスト用mock — ')+(labels[status.worker_status] || '状態不明')+'。実モデルは利用できません。';
   if (turnId) {
-    const turn=await api('/api/turns?turn_id='+encodeURIComponent(turnId));
-    $('turn').textContent=(labels[turn.status] || '状態不明')+'\n'+(turn.reply || turn.error?.message || '');
+    try {
+      const turn=await api('/api/turns?turn_id='+encodeURIComponent(turnId));
+      $('turn').textContent=(labels[turn.status] || '状態不明')+'\n'+(turn.reply || turn.error?.message || '');
+    } catch(error) { $('turn').textContent=error.message; }
   }
   const works=await api('/api/works'); $('works').replaceChildren();
   for (const work of works.works) {

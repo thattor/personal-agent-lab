@@ -28,7 +28,7 @@ from pal.verification_v5 import VerificationStore
 
 
 def failure(code=ErrorCode.INVALID_INPUT):
-    return Result.failure(code, 'Local mock request unavailable').to_json()
+    return Result.failure(code, 'Local request unavailable').to_json()
 
 
 def _closed(value, keys):
@@ -264,7 +264,9 @@ def create_server(app, port=0):
                     if not post:
                         if parsed.path=='/api/turns':
                             if set(query)!= {'turn_id'} or len(query['turn_id'])!=1: raise ValueError()
-                            _token(query['turn_id'][0]); result=host.get_turn({'turn_id':query['turn_id'][0]})
+                            _token(query['turn_id'][0]);
+                            if host is None: return self.response(503,failure(ErrorCode.UNAVAILABLE))
+                            result=host.get_turn({'turn_id':query['turn_id'][0]})
                         elif query: raise ValueError()
                         elif parsed.path=='/api/status': return self.response(200,app.status())
                         elif parsed.path=='/api/works': result=tasks.list_candidates({'session_id':app.session_id,'limit':20})
