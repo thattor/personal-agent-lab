@@ -144,6 +144,7 @@ class TaskTests(unittest.TestCase):
         self.assertFalse(self.conn.in_transaction)
 
     def test_compose_save_authorization_is_read_only_and_keeps_all_call_sources(self):
+        self.store = self.make_store(artifact_inspect=lambda *args: self.fail('unused inspector'))
         claim = self.start()
         all_refs = [{'kind': 'record', 'id': 'origin'}, {'kind': 'record', 'id': 'extra'}]
         self.value(self.store.register_sources({'work_ref': claim['work_ref'], 'refs': all_refs}))
@@ -183,7 +184,7 @@ class TaskTests(unittest.TestCase):
         finally:
             self.conn.rollback()
         self.assertEqual(before, self.snapshot())
-        self.error(self.finish(claim, step), 'unavailable')
+        self.error(self.finish(claim, step), 'invalid_input')
         self.error(self.release(claim), 'conflict')
         self.assertEqual(self.value(self.store.get_work({'goal_id': claim['work_ref']['goal_id']}))[
             'current_artifact_refs'], [])
@@ -196,6 +197,7 @@ class TaskTests(unittest.TestCase):
         self.assertEqual(self.value(self.release(claim))['state'], 'paused')
 
     def test_compose_save_authority_denies_stopped_inputs_and_corrupt_call_metadata(self):
+        self.store = self.make_store(artifact_inspect=lambda *args: self.fail('unused inspector'))
         claim = self.start()
         call = self.returned(claim)
         action = {'kind': 'compose', 'content': '', 'media_type': 'text/plain', 'source_refs': []}

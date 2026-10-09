@@ -66,12 +66,16 @@ def _wire(refs):
 
 
 class TaskStore(IntakeStore):
-    def __init__(self, connection, *, host_limits, **kwargs):
+    def __init__(self, connection, *, host_limits, artifact_inspect=None, **kwargs):
         if type(host_limits) is not Limits or any(x > _MAX for x in
                 (host_limits.max_operations, host_limits.max_steps, host_limits.max_model_calls)):
             raise ValueError('finite SQLite host limits required')
+        if artifact_inspect is not None and not callable(artifact_inspect):
+            raise TypeError('artifact_inspect must be callable')
+        self._artifact_inspect = artifact_inspect
         super().__init__(connection, **kwargs)
         schema = (
+            'CREATE TABLE IF NOT EXISTS v5_tsk_artifact_set (seq INTEGER PRIMARY KEY,goal TEXT NOT NULL,revision INTEGER NOT NULL,artifact_id TEXT NOT NULL,step_id TEXT NOT NULL,UNIQUE(goal,revision,artifact_id),UNIQUE(goal,revision,step_id))',
             'CREATE TABLE IF NOT EXISTS v5_tsk_lease (id TEXT PRIMARY KEY,runner TEXT NOT NULL,goal TEXT NOT NULL,revision INTEGER NOT NULL,active INTEGER NOT NULL)',
             'CREATE UNIQUE INDEX IF NOT EXISTS v5_tsk_one_lease ON v5_tsk_lease(active) WHERE active=1',
             'CREATE TABLE IF NOT EXISTS v5_tsk_control (goal TEXT,revision INTEGER,pause INTEGER NOT NULL,drain INTEGER NOT NULL,PRIMARY KEY(goal,revision))',
@@ -249,6 +253,40 @@ class TaskStore(IntakeStore):
             return self._claim_wire(row, lease)
         return self._transaction('claim', None, data, operation)
 
+    def _artifact_set(self, work):
+        rows = self._rows('SELECT * FROM v5_tsk_artifact_set WHERE goal=? AND revision=? ORDER BY seq',
+                          (work.goal_id, work.revision))
+        try:
+            for item in rows:
+                _id(item['artifact_id'])
+                _id(item['step_id'])
+                if type(item['seq']) is not int or item['seq'] < 1:
+                    raise ContractError()
+                saved = self._one('SELECT * FROM v5_tsk_step WHERE id=?', (item['step_id'],))
+                if saved is None or (saved['goal'], saved['revision']) != (work.goal_id, work.revision):
+                    raise ContractError()
+                step = loads(saved['wire'])
+                if (step['step_id'] != item['step_id'] or step['status'] != 'finished' or
+                        step['action']['kind'] != 'compose' or
+                        step['result_refs'] != [{'kind': 'artifact', 'id': item['artifact_id']}]):
+                    raise ContractError()
+                binding = _work(step['work_ref'])
+                if (binding.goal_id, binding.revision) != (work.goal_id, work.revision):
+                    raise ContractError()
+        except (ContractError, KeyError, TypeError):
+            _reject('unavailable')
+        return rows
+
+    @_public
+    def get_work(self, request):
+        result = super().get_work(request)
+        if not result.ok:
+            return result
+        value = result.value.to_json()
+        rows = self._artifact_set(_work(value['work_ref']))
+        value['current_artifact_refs'] = [{'kind': 'artifact', 'id': row['artifact_id']} for row in rows]
+        return Result.success(value)
+
     @_public
     def get_execution_context(self, request):
         data = _obj(request, {'lease_id', 'work_ref'})
@@ -257,13 +295,24 @@ class TaskStore(IntakeStore):
         registered = self._registered(row)
         if not set(required) <= set(registered):
             _reject('unavailable')
+        attached = {item['step_id']: item['artifact_id'] for item in self._artifact_set(self._wr(row))}
         provenance = []
         for step in self._steps(row):
             call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (step['call'],))
             if call is None or call['step'] != step['id']:
                 _reject('unavailable')
-            refs = tuple(dict.fromkeys((*_refs(loads(call['sources'])), *_refs(loads(step['wire'])['result_refs']))))
-            if not set(refs) <= set(registered) or not set(required) <= set(refs):
+            inputs = _refs(loads(call['sources']))
+            wire = loads(step['wire'])
+            results = _refs(wire['result_refs'])
+            refs = tuple(dict.fromkeys((*inputs, *results)))
+            if (any(ref.kind.value != 'record' for ref in inputs) or
+                    not set(inputs) <= set(registered) or not set(required) <= set(inputs)):
+                _reject('unavailable')
+            if wire['action']['kind'] == 'compose' and wire['status'] == 'finished':
+                if (len(wire['result_refs']) != 1 or step['id'] not in attached or
+                        results != (Ref('artifact', attached[step['id']]),)):
+                    _reject('unavailable')
+            elif any(ref.kind.value == 'artifact' for ref in results) or not set(results) <= set(registered):
                 _reject('unavailable')
             provenance.append({'step_id': step['id'], 'refs': _wire(refs)})
         return Result.success({'session_id': row['session_id'], 'required_refs': _wire(required),
@@ -384,6 +433,8 @@ class TaskStore(IntakeStore):
             action = parse_model_action(dumps(data['action']), allowed_refs=refs).to_json()
             if action['kind'] not in ('report', 'lookup', 'compose'):
                 _reject('unavailable')
+            if action['kind'] == 'compose' and self._artifact_inspect is None:
+                _reject('unavailable')
             self._gate(refs)
             reservation = self._reserve(row, lease, 'step', None)['reservation_id']
             step_id = self._mint('step')
@@ -451,6 +502,64 @@ class TaskStore(IntakeStore):
         self._gate(refs)
         return Result.success({'source_refs': _wire(refs)})
 
+    def _inspect_artifact(self, ref):
+        if self._artifact_inspect is None:
+            _reject('unavailable')
+        self._require_transaction(self._conn)
+        changes = self._conn.total_changes
+        self._conn.execute('SAVEPOINT v5_tsk_artifact_inspect')
+        result = self._artifact_inspect(self._conn, {'ref': ref.to_json()})
+        if not self._conn.in_transaction:
+            _reject('unavailable')
+        self._conn.execute('RELEASE v5_tsk_artifact_inspect')
+        if self._conn.total_changes != changes or type(result) is not Result:
+            _reject('unavailable')
+        try:
+            result = Result.from_json(result.to_json())
+        except ContractError:
+            _reject('unavailable')
+        if not result.ok:
+            _reject(result.error.code)
+        try:
+            data = _obj(result.value.to_json(), {'artifact_ref', 'work_ref', 'step_id', 'hash', 'bytes', 'source_refs'})
+            inspected = Ref.from_json(data['artifact_ref'])
+            _work(data['work_ref'])
+            _id(data['step_id'])
+            deps = _refs(data['source_refs'])
+            if (inspected != ref or type(data['hash']) is not str or len(data['hash']) != 64 or
+                    any(char not in '0123456789abcdef' for char in data['hash']) or
+                    type(data['bytes']) is not int or not 0 <= data['bytes'] <= 1048576 or
+                    not deps or any(item.kind.value != 'record' for item in deps)):
+                raise ContractError()
+        except ContractError:
+            _reject('unavailable')
+        return data, deps
+
+    def _finish_compose(self, row, step, data, refs, truncated, excluded_refs):
+        if (len(data['result_refs']) != 1 or refs[0].kind.value != 'artifact' or
+                'error' in data or truncated or excluded_refs):
+            raise ContractError()
+        authorized = self.authorize_artifact_save(self._conn, {
+            'work_ref': data['work_ref'], 'step_id': data['step_id'], 'action': step['action']})
+        if not authorized.ok:
+            raise _Rejected(authorized)
+        metadata, deps = self._inspect_artifact(refs[0])
+        if metadata['work_ref'] != data['work_ref']:
+            _reject('stale')
+        if metadata['step_id'] != data['step_id']:
+            _reject('conflict')
+        if set(deps) != set(_refs(authorized.value.to_json()['source_refs'])):
+            _reject('unavailable')
+        self._gate(deps)
+        self._artifact_set(self._wr(row))
+        step.update(status='finished', result_refs=_wire(refs))
+        self._conn.execute('UPDATE v5_tsk_step SET wire=? WHERE id=?', (dumps(step), data['step_id']))
+        self._conn.execute('INSERT INTO v5_tsk_artifact_set(goal,revision,artifact_id,step_id) VALUES (?,?,?,?)',
+                           (row['goal_id'], row['revision'], refs[0].id, data['step_id']))
+        self._register(row, deps)
+        self._event(row, 'progress', 'draft saved and attached', refs)
+        return step
+
     @_public
     def finish_step(self, request, *, truncated=False, excluded_refs=()):
         data = _obj(request, {'work_ref', 'step_id', 'result_refs'}, {'error'})
@@ -470,10 +579,10 @@ class TaskStore(IntakeStore):
                 _reject('stale')
             if step['status'] != 'started':
                 _reject('conflict')
+            if step['action']['kind'] == 'compose':
+                return self._finish_compose(row, step, data, refs, truncated, excluded_refs)
             call = self._one('SELECT * FROM v5_tsk_call WHERE id=?', (saved['call'],))
             if call is None or call['lease'] != lease['id']:
-                _reject('unavailable')
-            if step['action']['kind'] == 'compose':
                 _reject('unavailable')
             self._gate(_refs(loads(call['sources'])))
             if step['action']['kind'] == 'report' and (refs or truncated or excluded_refs):
