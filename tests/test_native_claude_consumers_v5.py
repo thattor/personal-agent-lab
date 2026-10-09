@@ -25,7 +25,7 @@ class ClaudeConsumerTests(unittest.TestCase):
   c=self.primary();turn=c.submit();before=c.used();out=c.run_turn(turn);self.assertEqual(out,{'status':'committed','effect_refs':[],'reply':'fixture reply'});self.assertEqual(c.used(),before+1);self.assertEqual(c.run_turn(turn),out);self.assertEqual(len(c.provider.calls),1)
   row=c.conn.execute('SELECT profile_json,phase,ending_json FROM v5_pri_native').fetchone();self.assertEqual(loads(row[0])['id'],f.ID);self.assertEqual(row[1],'returned');self.assertEqual(loads(row[2])['model_id'],f.MODEL);self.assertEqual(loads(row[2])['evidence_kind'],'fixture')
  def test_primary_unknown_restart_no_refund_no_reinvoke(self):
-  c=self.primary();c.provider.behavior=c.unknown;turn=c.submit();out=c.run_turn(turn);c.held(out);used=c.used();c.restart();c.held(c.run_turn(turn));self.assertEqual(c.used(),used);self.assertEqual(len(c.provider.calls),1);self.assertEqual(c.get(turn)['status'],'pending')
+  c=self.primary();c.provider.behavior=c.unknown;turn=c.submit();out=c.run_turn(turn);c.held(out);used=c.used();c.restart();c.ok(c.host.recover_turns());c.ok(c.tasks.finish_startup());c.held(c.run_turn(turn));self.assertEqual(c.used(),used);self.assertEqual(len(c.provider.calls),1);self.assertEqual(c.get(turn)['status'],'held')
  def test_primary_parser_failure_after_known_ending_never_repairs_or_reinfers(self):
   c=self.primary()
   def behavior(request,hook):
