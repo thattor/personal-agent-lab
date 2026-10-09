@@ -421,6 +421,10 @@ class NativeDevinText:
                         _write(call_dir / 'model-observations.json', model_diagnostic.snapshot())
                     except BaseException:
                         pass
+                    try:
+                        _write(call_dir / 'model-overflow.json', model_diagnostic.overflow_snapshot())
+                    except BaseException:
+                        pass
                 return result
         except NativeNeverEntered:
             raise
@@ -441,6 +445,10 @@ class NativeDevinText:
             if entered and model_diagnostic is not None:
                 try:
                     _write(call_dir / 'model-observations.json', model_diagnostic.snapshot())
+                except BaseException:
+                    pass
+                try:
+                    _write(call_dir / 'model-overflow.json', model_diagnostic.overflow_snapshot())
                 except BaseException:
                     pass
             if entered and adapter is not None and host is not None:

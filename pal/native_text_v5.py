@@ -203,21 +203,24 @@ class _ModelMalformed(Exception):
 
 
 class _ModelOverflow(Exception):
-    pass
+    def __init__(self, reason, site, unit, limit):
+        self.marker = {'reason': reason, 'site': site, 'unit': unit,
+                       'limit': limit, 'observed_at_least': limit + 1}
+        super().__init__('model diagnostic overflow')
 
 
-def _model_token(value, maximum=256, *, nonempty=True):
+def _model_token(value, maximum=256, *, nonempty=True, site=None):
     if not isinstance(value, str) or (nonempty and not value):
         raise _ModelMalformed
     # Avoid encoding unbounded input, while malformed UTF8 remains recoverable.
     if len(value) > maximum:
-        raise _ModelOverflow
+        raise _ModelOverflow('token_length', site, 'codepoints', maximum)
     try:
         encoded = value.encode('utf-8')
     except UnicodeEncodeError:
         raise _ModelMalformed from None
     if len(encoded) > maximum:
-        raise _ModelOverflow
+        raise _ModelOverflow('token_length', site, 'utf8_bytes', maximum)
     return value
 
 
@@ -245,6 +248,7 @@ class NativeModelDiagnostic:
                         'attempt_ref': attempt, 'requested_model_id': model_id,
                         'status': 'complete', 'observations': [],
                         'limits': dict(self._limits)}
+        self._first_overflow = None
 
     @staticmethod
     def _canonical(record):
@@ -254,12 +258,39 @@ class NativeModelDiagnostic:
     def snapshot(self):
         return json.loads(self._canonical(self._record))
 
+    def overflow_snapshot(self):
+        record = {key: self._record[key] for key in
+                  ('authority', 'request_sha256', 'profile_sha256',
+                   'attempt_ref', 'requested_model_id')}
+        record.update(version='PRI02-MODEL-OVERFLOW/1',
+                      status='overflow' if self._first_overflow is not None else 'not_observed',
+                      first_overflow=self._first_overflow,
+                      limits={**self._limits, 'max_marker_record_bytes': 4096})
+        raw = self._canonical(record)
+        if len(raw.encode('utf-8')) > 4096:
+            raise ValueError('model overflow marker exceeds bound')
+        return json.loads(raw)
+
+    def _overflow(self, row, reason, site, unit, limit):
+        self._record['status'] = 'incomplete'
+        if self._first_overflow is None:
+            self._first_overflow = {
+                'retained_index': len(self._record['observations']),
+                **{key: row[key] for key in
+                   ('hook', 'shape', 'original_hook', 'current_update')},
+                'reason': reason, 'site': site, 'unit': unit, 'limit': limit,
+                'observed_at_least': limit + 1,
+                'valid_hint_retained': any(
+                    item['projection_status'] == 'valid'
+                    and item['effective_model_hint'] is not None
+                    for item in self._record['observations'])}
+
     @staticmethod
     def _values(entries):
         if not isinstance(entries, list) or not entries:
             raise _ModelMalformed
         if len(entries) > 32:
-            raise _ModelOverflow
+            raise _ModelOverflow('value_count', 'select_options', 'count', 32)
         values = []
         grouped = None
         for entry in entries:
@@ -270,18 +301,20 @@ class NativeModelDiagnostic:
                 raise _ModelMalformed
             grouped = is_group
             if is_group:
-                _model_token(entry['group'])
+                _model_token(entry['group'], site='group_id')
                 children = entry.get('options')
                 if not isinstance(children, list) or not children:
                     raise _ModelMalformed
-                if len(children) > 32 or len(values) + len(children) > 32:
-                    raise _ModelOverflow
+                if len(children) > 32:
+                    raise _ModelOverflow('value_count', 'group_options', 'count', 32)
+                if len(values) + len(children) > 32:
+                    raise _ModelOverflow('value_count', 'flattened_options', 'count', 32)
             else:
                 children = [entry]
             for child in children:
                 if not isinstance(child, dict) or 'group' in child:
                     raise _ModelMalformed
-                values.append(_model_token(child.get('value')))
+                values.append(_model_token(child.get('value'), site='available_value'))
         return values
 
     @classmethod
@@ -294,18 +327,18 @@ class NativeModelDiagnostic:
         if not isinstance(raw, list):
             raise _ModelMalformed
         if len(raw) > 16:
-            raise _ModelOverflow
+            raise _ModelOverflow('option_count', 'configOptions', 'count', 16)
         options = []
         for entry in raw:
             if not isinstance(entry, dict):
                 raise _ModelMalformed
-            option_id = _model_token(entry.get('id'))
-            category = (_model_token(entry['category'], nonempty=False)
+            option_id = _model_token(entry.get('id'), site='option_id')
+            category = (_model_token(entry['category'], nonempty=False, site='category')
                         if 'category' in entry else None)
             kind = entry.get('type')
             current = entry.get('currentValue')
             if kind == 'select':
-                current = _model_token(current)
+                current = _model_token(current, site='current_value')
                 values = cls._values(entry.get('options'))
             elif kind == 'boolean':
                 if type(current) is not bool or 'options' in entry:
@@ -328,9 +361,6 @@ class NativeModelDiagnostic:
             if ('configOptions' not in fields and 'sessionId' not in fields
                     and fields.get('sessionUpdate') != 'config_option_update'):
                 return
-        if len(self._record['observations']) >= 32:
-            self._record['status'] = 'incomplete'
-            return
         shape = ('preprompt_snapshot' if hook == 'verify_session' else
                  'config_option_update' if isinstance(fields, dict)
                  and fields.get('sessionUpdate') == 'config_option_update' else
@@ -343,6 +373,9 @@ class NativeModelDiagnostic:
                'current_update': current_update if metadata_valid else False,
                'projection_status': 'valid', 'options': [],
                'effective_model_hint': None}
+        if len(self._record['observations']) >= 32:
+            self._overflow(row, 'observation_count', 'observations', 'count', 32)
+            return
         try:
             if not metadata_valid or not isinstance(fields, dict):
                 raise _ModelMalformed
@@ -358,8 +391,10 @@ class NativeModelDiagnostic:
                     and models[0]['current_value'] in models[0]['available_values']):
                 row['effective_model_hint'] = {
                     'option_id': 'model', 'current_value': models[0]['current_value']}
-        except _ModelOverflow:
-            self._record['status'] = 'incomplete'
+        except _ModelOverflow as error:
+            marker = error.marker
+            self._overflow(row, marker['reason'], marker['site'],
+                           marker['unit'], marker['limit'])
             return
         except _ModelMalformed:
             row['projection_status'] = 'malformed'
@@ -368,6 +403,6 @@ class NativeModelDiagnostic:
         candidate = {**self._record, 'status': 'incomplete',
                      'observations': self._record['observations'] + [row]}
         if len(self._canonical(candidate).encode('utf-8')) > 32768:
-            self._record['status'] = 'incomplete'
+            self._overflow(row, 'record_bytes', 'snapshot', 'utf8_bytes', 32768)
             return
         self._record['observations'].append(row)
