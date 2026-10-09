@@ -160,7 +160,11 @@ class NativeHTTPTests(unittest.TestCase):
         self.start(provider); self.submit(); self.idle()
         self.assertEqual([r['role'] for r in provider.requests], ['primary','expert'])
         work = self.works()[0]; self.assertEqual(work['state'], 'completed')
-        self.assertEqual(len(work['current_artifact_refs']), 1)
+        with self.app.owners() as (_, tasks, memory, artifacts, verifier, host):
+            detail = tasks.get_work({'goal_id': work['work_ref']['goal_id'],
+                                     'revision': work['work_ref']['revision']})
+            self.assertIs(detail.ok, True)
+            self.assertEqual(len(detail.value.to_json()['current_artifact_refs']), 1)
         self.assertNotEqual(provider.requests[0]['call_id'], provider.requests[1]['call_id'])
         self.assertEqual(provider.requests[1]['work_ref']['goal_id'], work['work_ref']['goal_id'])
         self.assertIn('SYNTHETIC_SAVED_BODY', json.dumps(self.ok('GET', '/api/inspection')))
