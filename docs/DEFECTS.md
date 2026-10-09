@@ -1427,3 +1427,36 @@ Prevention: provide exact import/constructor and executable input shape in the
 external seam contract, then test the actual metadata load and CLI path as well
 as duck fixtures before any real invocation. Independent review still precedes
 that invocation; Root's repair is not covered by the failed CO verification.
+
+Root then used isolated -I for the whole suite although the project specifies
+cwd-based unittest discovery. The first three artifact modules could not import
+pal before later tests added the root path:1032 discovered/3 import errors, not
+a product regression or full verification. Original log is retained. Re-run the
+existing -E -s -B/cwd full command; keep -I only for isolated verifiers whose
+fixtures deliberately insert their own snapshot root. Do not edit source/tests
+to compensate for the wrong invocation or transfer a partial count as PASS.
+
+## PRI02-T actual prompt mismatch and verification ordering (2026-10-10)
+
+The sole real T call entered; strict normal ATIF parsing refused because the
+original947-byte prompt ended with a generated LF while exported user text was
+946 bytes without it. The original public pure parser accepts the retained export
+only in a separate diagnostic removing that LF; header/model/version/no-tools
+checks then pass. This identifies the formatter incompatibility, not permission
+to adopt the UNKNOWN original output. Owned CLI cleanup/capacity release is
+confirmed independently. Raw export/journal/admission remain local and untouched.
+
+Root removes only the formatter LF; original user text and strict exact comparison
+remain unchanged. Separate Sol wrote two RED cases before repair, then fixed21
+and an independent source review pass. The original19 tests are unchanged. Next
+external prompt formatting is tested against actual documented transcript
+normalization before entry; never normalize a request/result comparison to pass.
+The one T call remains consumed; no automatic retry or substitution.
+
+At T dispatch Root described the whole1092 suite as already PASS while it was
+still running. It subsequently finished PASS30.384s/exit0. Fixed tests/review had
+completed and the frozen T checks did not require the full suite, but the status
+claim and ordering were wrong. Root acknowledged this to the owner. Prevention:
+await final exit0 before a dependent dispatch or a completed-verification claim;
+use the correct cwd -E -s -B command and retain earlier failing invocation logs.
+This is a concrete execution check, not a new per-call approval procedure.

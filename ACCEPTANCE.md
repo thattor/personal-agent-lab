@@ -1,6 +1,6 @@
 # ACCEPTANCE.md
 
-## Current C081 — whole-goal exit still unmet
+## Current C082 — whole-goal exit still unmet
 
 Current-v5 Primary PRI01/1 local mock connection is implemented and verified at
 source d9f0e12; historical C080 and older “next” descriptions below are superseded
@@ -32,7 +32,10 @@ duplicate-Goal repair. Preserve phase-regression1058/1FAIL, initial process fixt
 New actual AGY Opus5.5 C081 design assessment is ALIGNED; PRI02 is REFINE.
 The supplied three public documents do not provide source/test review. PRI02-T/1
 is frozen as one zero-effect CLI compatibility proof, not native C15 adoption.
-The real invocation and native product connection remain NOT_RUN. This establishes
+The sole T invocation is UNKNOWN (original prompt/export mismatch), retained
+without retry. Native product connection remains NOT_RUN. Formatter-only repair
+and pure dynamic buffer have independent fixture/source approval; see
+[actual T receipt](evidence/operations/pri02-20261010/native-t-summary.json). This establishes
 bounded local connection, not real-provider/semantic completion/usefulness or
 whole-product PASS. Continue the approved remaining dependency.
 

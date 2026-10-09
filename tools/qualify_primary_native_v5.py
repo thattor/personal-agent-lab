@@ -139,7 +139,7 @@ def _build_prompt(request):
             'Reply with exactly one strict PRI01-WIRE JSON object of the form '
             '{"reply": <short ordinary reply>, "proposal": {"kind": "none"}} '
             'and nothing else.\n'
-            'request=' + _canonical(request).decode('utf-8') + '\n')
+            'request=' + _canonical(request).decode('utf-8'))
 
 
 def _evaluate(result, pin, pin_digest, request):

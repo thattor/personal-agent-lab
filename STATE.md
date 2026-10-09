@@ -1,8 +1,20 @@
 # STATE.md
 
-## Current C081 — Primary whole mock path verified, overall goal NOT MET
+## Current C082 — native preparation verified; actual T UNKNOWN; goal NOT MET
 
 Latest owner direction: continue remaining work with necessary parallel execution.
+PRI02-T/1 consumed its sole actual CLI prompt: UNKNOWN, strict original-prompt
+comparison failed on a generated terminal LF removed by the CLI export. Pure
+retained-export diagnostics identify that exact difference; no outcome rewrite
+or real retry. Local owned cleanup and capacity release are confirmed, without
+native C15/EOF/remote cessation qualification. Formatter correction has separate
+Sol APPROVE and fixed21 PASS; NATIVE-TEXT01 has CO fixed15 verified:true and
+independent Astra15+19 APPROVE. Root full1092 PASS30.384s covers the pre-LF source.
+[Receipt](evidence/operations/pri02-20261010/native-t-summary.json).
+SOL now freezes PRI02-N/1 as an independently qualified ACP dynamic-text/native
+lifetime path. Separate fixture/source work continues; no new model call yet.
+N must establish its own stronger ending, not count T as successful.
+
 Verified local checkpoint C080b at ef16a93: Root full948 PASS30.157s, actual
 saved-tail process/connection4 PASS with7 child barriers, independent exact
 ART1e37f0/TSK611e05/READebbd03 approvals.
@@ -66,8 +78,8 @@ local under D045. The exact claude-opus-5-5-high design call now completed
 SUCCESS145.984s, effective request-review, no observed tool steps. No hard
 allowlist/plan enforcement claim. See pri02 Opus design summary/report.
 
-Overall gap: one native compatibility proof → separately qualified native C15
-connection/finite functional proof → one authentic improved usefulness judgment.
+Overall gap: independently qualified native ACP/C15 connection and finite
+functional proof → one authentic improved usefulness judgment. T remains UNKNOWN.
 Prior negative owner feedback is known, not another approval wait. Started operate
 external_tail, semantic checks, future P001/multimodal/service scope and old/live
 DB/schedules remain outside this acceptance. Keep exact limits; no new auth/cost.

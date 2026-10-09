@@ -2492,3 +2492,19 @@ previous conflicting flag. Observed steps were input/response only, no tools.
 Do not claim a hard allowlist or plan enforcement; the earlier sole-cause claim
 is unconfirmed. Raw records stay local under D045. Continue independent source,
 tests and native preparation without a new technical human approval gate.
+
+D049 continuation: the sole T call entered and is UNKNOWN after the original
+prompt was not an exact exported user message. The formatter appended LF; a
+pure retained-export diagnostic accepts after removing only that formatting LF,
+but the original outcome remains UNKNOWN. Local owned cleanup/capacity release
+is distinct from correlation/EOF/native proof. Root removes only generated LF,
+with separate Sol review/fixed21; no strict comparison or input normalization.
+
+SOL freezes PRI02-N/1 from the already received Opus/Astra/Sol design work. N
+qualifies the existing public ACP dynamic observer/stronger original ending
+independently, without treating T as a passing dependency or retrying its request.
+Pure host values, external wrapper and Native Primary lifetime are separate owned
+files; tests precede implementation and independent reviews precede actual entry.
+Native unknown is held per turn, never settled by a mock lock. N transport max1
+is separately frozen; later integrated actual cases require a concrete finite
+acceptance envelope, not extra technical human permission. See PRI02-N-SCOPE.

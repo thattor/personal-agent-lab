@@ -1,0 +1,62 @@
+{
+  "actual_cli_prompts": 1,
+  "automatic_retry": false,
+  "cause": "formatter appended one terminal LF; exported user message omitted that LF",
+  "co_tool_original_fixed19_verified": false,
+  "diagnostic_only": {
+    "changes_original_outcome": false,
+    "new_inference": false,
+    "remove_only_formatter_lf": "pure original parser accepts retained export"
+  },
+  "local_capacity_lease_released": true,
+  "local_owned_cleanup_confirmed": true,
+  "observed_export": {
+    "model": "swe-2-high",
+    "schema": "ATIF-v1.7",
+    "sha256": "4e7ef63da49ccedfe2b802630e27f31b93dc6381761a1acf33885895f7decfb0",
+    "tool_calls": 0,
+    "version": "3000.11.3"
+  },
+  "original_parser": "route_failed",
+  "original_prompt_sha256": "2f82ecdc733bed07facad44262114b5e461ef6e502c894eee5a0babcf03fd0c8",
+  "original_request_sha256": "50f3999b1fc5a912eb2a1a9740eb82b12a6fcff6d18face538d00823ab877db3",
+  "original_user_match": false,
+  "overall_goal": "NOT_MET",
+  "profile": "co-measured-native-cli-single-prompt/1",
+  "proof_limits": [
+    "original correlation failed",
+    "not native C15 ending",
+    "not complete EOF proof",
+    "not provider-global remote cessation"
+  ],
+  "pure_buffer": {
+    "additional_probes": 19,
+    "co_fixed15_verified": true,
+    "independent_astra": "APPROVE",
+    "provider_proof": false,
+    "source_sha256": "e000aef8f9491223a1b53d58caf5f4a8b3b683e3d844062cceae45171276941f"
+  },
+  "raw_evidence": "retained locally under D045; not exported",
+  "regression_before_formatter_repair": {
+    "at_actual_entry": "still running; later completed PASS",
+    "exit": 0,
+    "seconds": 30.384,
+    "tests": 1092
+  },
+  "repair": {
+    "independent_sol": "APPROVE",
+    "input_and_strict_comparison_unchanged": true,
+    "only_generated_terminal_lf_removed": true,
+    "targeted_exit": 0,
+    "targeted_tests": 21,
+    "tool_sha256": "ac9c37276c9d5860074166ed4feaf4c5b2aa5e9d75aeac7cb7b1e218fb9ac131"
+  },
+  "requested": {
+    "cost_tier": "Free",
+    "model": "swe-2-high",
+    "route": "devin",
+    "version": "3000.11.3"
+  },
+  "status": "unknown",
+  "version": "PRI02-T/1"
+}
