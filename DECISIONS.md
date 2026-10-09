@@ -1997,3 +1997,13 @@ consumer tests pass. Default mock runner still requires explicit VER wiring.
 No semantic model/verifyAction, general recovery, UI/provider activation, new
 authority/cost or unknown-call retry. Root current VERfab7c77 is independently
 approved; full regression and its milestone review are tracked separately.
+
+
+D038/C075 accepted: sourcefab7c77 deterministic VER/current-status integration
+passes650 host tests/45 focused and independent Sol rereview. Exact CO Opus5.5
+task0e78d5da is ALIGNED, no current-scope blocker; its verified note is not a test
+execution. A proven invalidation may short-circuit diagnosis of co-occurring
+corruption; both remain non-valid. TSK context review provenance stays3f37f78
+(Astra), with finalfab7c77 actual consumer covered by Sol/Root. Continue the already
+dispatched COMPLETE01 TSK/RUN work, not a new owner approval gate. No product/UI,
+semantic, recovery or unknown-call acceptance is implied.

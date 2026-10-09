@@ -1,0 +1,75 @@
+{
+  "task_id": "0e78d5da329c4427a62affbff3290d23",
+  "status": "verified",
+  "verified": true,
+  "attempts": [
+    {
+      "attempt_id": "plan-a1",
+      "call_id": "plan",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:d679129f50a1c659e9a20b23ff4edcd260dd10bb7e5b5376ec077b33fe649ea8",
+      "role": "planner",
+      "route": "claude",
+      "step_id": "plan"
+    },
+    {
+      "attempt_id": "s1-a1",
+      "call_id": "s1",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:aaee89200f8879dfa3a08bb5924e669c2277169b7f892a120dfce1d561a29681",
+      "role": "implement",
+      "route": "claude",
+      "step_id": "s1"
+    }
+  ],
+  "verify": {
+    "after": {
+      "docs/design/contracts-v5/COMPLETE01-SCOPE.md": "sha256:ea4f1ae6b55c80df14942d954e5c4872a4de92aae320979134bd1fae28584783",
+      "docs/design/contracts-v5/VER01-MILESTONE.md": "sha256:e19ea633cbf1d1a61b932ea4a1315ef077aee7c019dbe3ee674f5ba54804c5ff",
+      "docs/design/contracts-v5/VER01-SCOPE.md": "sha256:bb7837dc0d0780802c1dd3af7559011838cf53aa33a824a16b413fa6408e7dba",
+      "evidence/operations/ver01-20261009/independent-review-initial.json": "sha256:2fd0ae813bf02c14405f1d44be803fbbc241e3d0f23f9e7189c31a3cf8b240f7",
+      "evidence/operations/ver01-20261009/opus-milestone-review.md": "sha256:e4e173c55fbc0aa97cca9ff05559f4ab3c0a8069f3c6f9c7194c0cdeee77a0a7",
+      "evidence/operations/ver01-20261009/verification.json": "sha256:fc249cbaad792c7bb4478cf329d8601e13e5019b135b97e2c9e65272db5fee9d",
+      "pal/artifacts_v5.py": "sha256:31ac6ec74b816b2eca5268543ada02abfcef8535f7525a7a08115df23e6afd70",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+      "pal/tasks_v5.py": "sha256:26393c914c0dfdd0aadf409bae549555873d89ed1b8693086902ebc905872c91",
+      "pal/verification_v5.py": "sha256:780643a206ba86845bf103f0bc9e2a783fc61fa16a0e1cd9bdf3655890bc5d80",
+      "tests/test_verification_connection_v5.py": "sha256:c2802b295f76c9afd8be3794b95f1f191ffedd886516bf6293a191d149a6ff17",
+      "tests/test_verification_integrity_v5.py": "sha256:a3a688f64e02b1b4970e16d2c915a586aec8b12fb7e6bbb300b4396a5281a228"
+    },
+    "before": {
+      "docs/design/contracts-v5/COMPLETE01-SCOPE.md": "sha256:ea4f1ae6b55c80df14942d954e5c4872a4de92aae320979134bd1fae28584783",
+      "docs/design/contracts-v5/VER01-MILESTONE.md": "sha256:e19ea633cbf1d1a61b932ea4a1315ef077aee7c019dbe3ee674f5ba54804c5ff",
+      "docs/design/contracts-v5/VER01-SCOPE.md": "sha256:bb7837dc0d0780802c1dd3af7559011838cf53aa33a824a16b413fa6408e7dba",
+      "evidence/operations/ver01-20261009/independent-review-initial.json": "sha256:2fd0ae813bf02c14405f1d44be803fbbc241e3d0f23f9e7189c31a3cf8b240f7",
+      "evidence/operations/ver01-20261009/opus-milestone-review.md": "sha256:e4e173c55fbc0aa97cca9ff05559f4ab3c0a8069f3c6f9c7194c0cdeee77a0a7",
+      "evidence/operations/ver01-20261009/verification.json": "sha256:fc249cbaad792c7bb4478cf329d8601e13e5019b135b97e2c9e65272db5fee9d",
+      "pal/artifacts_v5.py": "sha256:31ac6ec74b816b2eca5268543ada02abfcef8535f7525a7a08115df23e6afd70",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+      "pal/tasks_v5.py": "sha256:26393c914c0dfdd0aadf409bae549555873d89ed1b8693086902ebc905872c91",
+      "pal/verification_v5.py": "sha256:780643a206ba86845bf103f0bc9e2a783fc61fa16a0e1cd9bdf3655890bc5d80",
+      "tests/test_verification_connection_v5.py": "sha256:c2802b295f76c9afd8be3794b95f1f191ffedd886516bf6293a191d149a6ff17",
+      "tests/test_verification_integrity_v5.py": "sha256:a3a688f64e02b1b4970e16d2c915a586aec8b12fb7e6bbb300b4396a5281a228"
+    },
+    "exit": 0,
+    "log": "VER milestone review note structure only\n",
+    "n": 1,
+    "passed": true,
+    "sandbox": "seatbelt-v1",
+    "version": "sha256:ba7c56ce15d86f034ce6a2bcf32b5ab90cc322a4e6e1499d80cb1f84730f6f81"
+  },
+  "base": "a189deb04827ceae17107415144731ea07a796c8",
+  "source": "fab7c77bb4e8ece6b094e7b96c9f7194c04e3d53",
+  "scope": "Milestone opinion ALIGNED; reviewer ran no commands, CO verified note structure only. Full650 is separately host-verified.",
+  "result_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/0e78d5da329c4427a62affbff3290d23/result.json",
+  "diff_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/0e78d5da329c4427a62affbff3290d23/result.diff",
+  "root_binding": "Root compared current tracked implementation/test bytes to exact git fab7c77 objects; matching"
+}

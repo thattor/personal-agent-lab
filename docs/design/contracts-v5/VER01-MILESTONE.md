@@ -1,4 +1,4 @@
-# C075 candidate — saved verification is connected, completion remains separate
+# C075 — saved verification is connected, completion remains separate
 
 Exact implementation source: fab7c77bb4e8ece6b094e7b96c9f7194c04e3d53.
 Root full regression: 650 tests PASS, 24.227 seconds, exit0, authorized temporary
@@ -48,3 +48,14 @@ enable semantic models, service/UI/providers, schedules, new auth or paid fallba
 Still unmet: completed Goals, model-verifier budgets, real source fetching,
 artifact re-input, general recovery, PRI/provider/UI, full v5 activation and actual
 personal usefulness. Earlier unknown CO/AGY calls remain untouched and unadopted.
+
+Exact CO Opus5.5 task0e78d5da returned ALIGNED without current-scope blockers.
+Review note structure was verified by CO; no commands were run by the reviewer.
+Root compared supplied implementation/test bytes to git fab7c77. The full log,
+original component fixture and TSK context tests were receipt-supported, not
+review-read. Earlier Astra review remains exact to3f37f78; Sol covers fab7c77.
+
+Diagnostic precedence is deliberate: a known stale epoch, legitimate append or
+denied source proves non-validity without inspecting all later evidence. Concurrent
+corruption may therefore be masked by invalidated; neither outcome grants validity
+or completion. This does not claim all causes have been diagnosed.

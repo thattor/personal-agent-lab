@@ -18,8 +18,8 @@ milestone review is ALIGNED. Continue the next unfinished
 verification/completion dependency; whole v5 service activation remains unproven.
 Native Sol authored storage under existing owner fallback; the CO timeout remains
 unknown and untouched. Current STATE/DECISIONS supersede historical pending text.
-C075 candidate: deterministic VER is connected atfab7c77, full650 and independent
-review pass; exact Opus milestone assessment is pending. COMPLETE01-SCOPE is frozen
+C075: deterministic VER is connected atfab7c77, full650 and independent review
+pass; exact Opus milestone0e78d5da is ALIGNED. COMPLETE01-SCOPE is frozen
 for isolated TSK/RUN work. Continue the loop; do not activate partial completion.
 
 

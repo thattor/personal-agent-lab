@@ -1,6 +1,6 @@
 # STATE.md
 
-## Current C075 candidate — deterministic verification connected
+## Current C075 — deterministic verification connected
 
 Exact source fab7c77bb4e8ece6b094e7b96c9f7194c04e3d53 passes full650 host tests
 (24.227s, exit0),45 focused tests and separate Sol6.1 rereview APPROVE. TSK context
@@ -8,8 +8,9 @@ has independent Astra approval. CO SWE authored VER; Root corrected reproduced
 strict-boundary defects and connected actual MEM/TSK/ART/VER on temporary SQLite.
 [Receipt](evidence/operations/ver01-20261009/verification.json). Saved historical
 checks and current valid/invalidated evidence are distinct. No Goal completes yet.
-Exact CO Opus5.5 milestone assessment is running; this is a tested local candidate,
-not whole-PAL acceptance, CI, semantic evaluation, real service/UI or usefulness.
+Exact CO Opus5.5 milestone task0e78d5da is ALIGNED, with no current-scope blocker.
+C075 local milestone is MET. This is not whole-PAL acceptance, CI, semantic
+evaluation, real service/UI or usefulness.
 
 COMPLETE01-SCOPE is frozen after actual Opus72fabf04 and SWEd8bd21a2 consultations.
 Isolated native Astra implements the TSK completion/history/terminal boundary;
