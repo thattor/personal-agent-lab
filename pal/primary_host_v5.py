@@ -658,6 +658,12 @@ class PrimaryHost:
             row = self._turn(identity)
             if row['phase'] == 'terminal':
                 return
+            call = self._call(row)
+            if status == 'interrupted' and call is not None and call['status'] == 'admitted':
+                if self._guard.phase != 'startup' or row['host_session'] == self._guard.session_id:
+                    _refuse()
+                self._conn.execute("UPDATE v5_pri_call SET status='interrupted' WHERE id=?", (call['id'],))
+                self._bind_call(identity)
             outcome = {'status': status, 'effect_refs': [Ref.from_json(ref).to_json() for ref in refs]}
             if reply is not None:
                 if len(reply.encode('utf-8')) > 16384:
@@ -842,11 +848,6 @@ class PrimaryHost:
                             self._terminal(identity, 'committed', reply=reply, refs=refs)
                             outcome['committed_turn_ids'].append(identity)
                             continue
-                    if call is not None and call['status'] == 'admitted':
-                        def interrupt():
-                            self._conn.execute("UPDATE v5_pri_call SET status='interrupted' WHERE id=?", (call['id'],))
-                            self._bind_call(identity)
-                        self._write(interrupt)
                     self._terminal(identity, 'interrupted', code='unavailable')
                     outcome['interrupted_turn_ids'].append(identity)
                 except Exception:
