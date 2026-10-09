@@ -77,7 +77,7 @@ step reservation. BaseException rolls back and propagates; ordinary failure roll
 back with bounded errors. Trusted callbacks are not a hostile-code sandbox.
 
 begin_step accepts ask through existing parse_model_action membership checks.
-finish_step explicitly rejects ask after ordinary missing/stale checks; C04 alone
+finish_step explicitly rejects a valid ask with conflict after ordinary missing/stale checks; C04 alone
 finishes it. A committed ask requires no release, and a subsequent release is denied
 on the inactive lease without modifying waiting_input. Existing release remains
 responsible for a fenced, uncommitted ask under pause/cancel/drain.
