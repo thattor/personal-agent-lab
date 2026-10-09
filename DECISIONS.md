@@ -2078,3 +2078,15 @@ resume/retry/cancel or edit its state. Existing direct AGY Opus5.5 alternative
 under D037/D039 is a separate subscribed route; verify current auth/credits/quota
 then use a fresh isolated text-only contract draft. No Claude limit bypass,
 additional credits or unknown conversation action. C077 evidence is unaffected.
+
+
+D040 (2026-10-09) supersedes D039's native-usage restraint, not its SWE/AGY
+participation or cost/unknown-call boundaries. Fresh actual human-lane message
+01a12069-d6d3-7c01-8d18-e56481f1c0ca: "手動リセットしたのでcodex抑制を解除\n最大並列32まで拡張可能". User performed the reset manually; development lane
+called no reset. Current tool shows weekly used0%, ordinaryUsageAllowed true.
+Maximum32 is owner permission, not measured concurrency or authorization for
+CO changes/new services/cost. Native tool has4 slots including Root; CO host12
+per adapter, Claude Pro session still separately limited, AGY provider concurrency
+unknown. Use independent meaningful units only. Native Astra now analyzes actual
+ASK state invariants while AGY Opus drafts a candidate. Root freezes contracts
+before tests/code assignment. Original unknown pauses remain untouched.

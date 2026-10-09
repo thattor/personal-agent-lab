@@ -1,5 +1,15 @@
 # STATE.md
 
+## Latest authority D040 — native restraint lifted
+
+Owner manually reset Codex and authorizes up to32 parallel units (verified user
+message01a12069-d6d3). Current weekly use0%, ordinary usage allowed. This supersedes
+D039 restraint; SWE code and AGY Sonnet implementation preferences continue.
+Actual native slots4 including Root, CO cap12/adapter; Claude Pro separately
+session-limited until22:20 JST. No capacity/permission/cost workaround.
+Native Astra now checks ASK owner-state invariants in parallel with the fresh
+AGY Opus contract candidate. Code waits for one Root-owned shared freeze.
+
 ## C077 — local result readback accepted
 
 Unchanged sourceff1a1ccab553173fa4eae17b29fbe0a79b998313 passes747 local host tests

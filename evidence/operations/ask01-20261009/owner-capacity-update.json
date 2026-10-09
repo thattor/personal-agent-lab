@@ -1,0 +1,26 @@
+{
+  "observed_at": "2026-10-09T11:28:12.654838+00:00",
+  "source_thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "turn": "01a12069-d64a-7001-9c17-e76751a1f932",
+  "user_message": "01a12069-d6d3-7c01-8d18-e56481f1c0ca",
+  "exact_text": "手動リセットしたのでcodex抑制を解除\n最大並列32まで拡張可能",
+  "codex_usage": {
+    "ordinaryUsageAllowed": true,
+    "weekly_used_percent": 0,
+    "reset_action_by_development_agent": false
+  },
+  "constraints": {
+    "owner_max_parallel": 32,
+    "native_tool_slots_including_root": 4,
+    "CO_cap_per_adapter": 12,
+    "CO_Claude": "session limited until22:20JST; prior unknown untouched",
+    "CO_Devin": "Free route available subject to fresh per-call checks",
+    "AGY": "fresh Opus contract draft running; provider simultaneous limit unknown"
+  },
+  "current_delegates": [
+    "native Astra /root/int00_astra ASK state analysis read-only",
+    "direct AGY claude-opus-5-5-high ASK candidate draft"
+  ],
+  "not_thirty_two_running": true,
+  "continuing_preferences": "SWE actively authors code; AGY Sonnet5.5 code participation retained; no new cost/auth or CO modification to reach32"
+}

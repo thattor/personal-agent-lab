@@ -1,13 +1,14 @@
 # AGENTS.md — Personal Agent Lab
 
-Current D039/C077 continuation and D037 route instruction supersede earlier stops
+Current D040/C077 continuation and D037 route instruction supersede earlier stops
 and the CO-only restriction. Evaluate checkpoints, correct within accepted scope,
 then actually continue the next unfinished authorized dependency.
 SWE-2 remains preferred when usable; native Astra/Sol and scoped AGY Opus5.5/Sonnet5.5
 are owner-approved alternatives. Preserve both recorded unknown calls; no implicit
 retry/cancel or state edit. AGY exact-conversation loading was rejected by automatic
 review; its concrete optional approval is in the human lane. D039 now prioritizes
-CO SWE and fresh scoped AGY code, conserving native Codex capacity. Old unknown
+CO SWE and fresh scoped AGY code; D040 lifts native restraint after manual reset.
+Owner max32 is bounded by actual route/tool limits and independent work. Old unknown
 conversation actions remain prohibited. Exact limits are in STATE/DECISIONS.
 INT00/1, TSK01/1, MEM01/1, TSK03/1 and TSK02/RUN01 local mock preparation are
 integrated with separate review and full531 regression, including durable C14,
