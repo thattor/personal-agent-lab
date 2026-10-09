@@ -595,6 +595,65 @@ class TaskTests(unittest.TestCase):
         self.error(self.reserve(claim), 'unavailable')
         self.assertEqual(before, self.snapshot())
 
+    def test_baseexception_after_claim_writes_rolls_back_and_propagates(self):
+        self.create()
+        for interruption in (KeyboardInterrupt, SystemExit):
+            with self.subTest(interruption=interruption.__name__):
+                before = self.snapshot()
+                original = self.store._id_factory
+                def interrupt_event(prefix):
+                    if prefix == 'event':
+                        self.assertTrue(self.conn.in_transaction)
+                        self.assertEqual(self.conn.execute('SELECT active FROM v5_tsk_lease').fetchone()[0], 1)
+                        raise interruption()
+                    return original(prefix)
+                try:
+                    with patch.object(self.store, '_id_factory', interrupt_event):
+                        with self.assertRaises(interruption):
+                            self.store.claim({'runner_id': 'interrupted'})
+                    self.assertFalse(self.conn.in_transaction)
+                    self.assertEqual(before, self.snapshot())
+                    other = self.connect()
+                    other.execute('BEGIN IMMEDIATE')
+                    other.execute('ROLLBACK')
+                finally:
+                    if self.conn.in_transaction:
+                        self.conn.execute('ROLLBACK')
+        self.claim()
+
+    def test_baseexception_during_constructor_rolls_back_schema_and_host_setup(self):
+        class InterruptConnection(sqlite3.Connection):
+            interrupt_prefix = None
+            interruption = None
+
+            def execute(connection, sql, parameters=()):
+                result = super().execute(sql, parameters)
+                if connection.interrupt_prefix and sql.startswith(connection.interrupt_prefix):
+                    raise connection.interruption()
+                return result
+
+        for index, prefix in enumerate(('CREATE TABLE IF NOT EXISTS v5_tsk_lease',
+                                        'INSERT INTO v5_tsk_host')):
+            for interruption in (KeyboardInterrupt, SystemExit):
+                with self.subTest(prefix=prefix, interruption=interruption.__name__):
+                    path = Path(self.temp.name) / f'interruption-{index}-{interruption.__name__}.sqlite'
+                    conn = sqlite3.connect(path, isolation_level=None, factory=InterruptConnection)
+                    self.addCleanup(conn.close)
+                    conn.interrupt_prefix = prefix
+                    conn.interruption = interruption
+                    try:
+                        with self.assertRaises(interruption):
+                            self.make_store(conn)
+                        self.assertFalse(conn.in_transaction)
+                        self.assertEqual(conn.execute("SELECT name FROM sqlite_master WHERE name LIKE 'v5_tsk_%'").fetchall(), [])
+                        other = sqlite3.connect(path, isolation_level=None, timeout=0)
+                        self.addCleanup(other.close)
+                        other.execute('BEGIN IMMEDIATE')
+                        other.execute('ROLLBACK')
+                    finally:
+                        if conn.in_transaction:
+                            conn.execute('ROLLBACK')
+
     def test_malformed_public_shapes_are_bounded_and_nonmutating(self):
         claim = self.start()
         methods = [(self.store.reserve_budget, {'key': 'r', 'work_ref': claim['work_ref'], 'kind': 'model', 'role': 'primary'}),

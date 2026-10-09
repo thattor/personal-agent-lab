@@ -107,3 +107,26 @@ output/status/model_id, external provider termination, recovery/recomputation,
 Operation, PRI, historical revision mutation, question/answer/change, ART/VER,
 completion, scheduling, UI, activation and human-value acceptance remain unmet.
 A persisted admission or end_call receipt is not proof of remote provider cessation.
+
+## Interruption cleanup follow-up
+
+Root inspection found that the new constructor and standalone transaction owner
+caught Exception rather than BaseException. Consequently KeyboardInterrupt or
+SystemExit from trusted host code escaped without rolling back an open transaction.
+The prior ordinary-exception tests did not cover process-control exceptions. A
+pre-fix run retained at `/private/tmp/pal-tsk02-baseexception-before.log` reproduced
+six failures across two new tests: both exception types after work/lease writes,
+after the first TSK DDL statement, and after host-ledger setup. All showed an open
+transaction remaining after interruption.
+
+Both owner cleanup handlers now catch BaseException, roll back and re-raise the
+original interruption. The public Result boundary still catches only Exception:
+process-control exceptions are not converted into a normal failure response.
+The new deterministic tests verify unchanged durable state/schema, an idle original
+connection, and write-lock availability from another connection. They are the next-use
+regression condition for changes to either transaction owner. Caller-owned MEM
+callback transactions retain their existing ownership rules.
+
+The same targeted Python 3.13 command now passes **34 tests**. Retained post-fix log:
+`/private/tmp/pal-tsk02-baseexception-after.log`. This follow-up is an author check;
+Root owns broader consumer regression and independent acceptance.

@@ -88,7 +88,7 @@ class TaskStore(IntakeStore):
             for kind, ceiling in [('model', host_limits.max_model_calls), ('step', host_limits.max_steps)]:
                 connection.execute('INSERT INTO v5_tsk_host VALUES (?,?,0) ON CONFLICT(kind) DO UPDATE SET ceiling=excluded.ceiling', (kind, ceiling))
             connection.execute('COMMIT')
-        except Exception:
+        except BaseException:
             self._rollback()
             raise
 
@@ -113,7 +113,7 @@ class TaskStore(IntakeStore):
                     self._save_replay(command, key, canonical, result)
             self._conn.execute('COMMIT')
             return result
-        except Exception:
+        except BaseException:
             self._rollback()
             raise
 
