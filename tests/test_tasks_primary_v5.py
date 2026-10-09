@@ -101,11 +101,11 @@ class PrimaryTaskTests(unittest.TestCase):
         self.conn.execute('BEGIN');self.conn.execute("UPDATE v5_tsk_host SET ceiling=ceiling-1");before=self.snapshot()
         self.assertEqual(self.value(self.t.get_create_by_key({'key':req['key']})),out);self.assertTrue(self.conn.in_transaction);self.assertEqual(self.snapshot(),before);self.conn.execute('ROLLBACK')
     def test_receipt_corrupt_canonical_input_and_result_fail_closed(self):
-        req,out=self.create();saved=self.conn.execute("SELECT input_json,result_json FROM v5_intake_replay WHERE command='create' AND key=?",(req['key'],)).fetchone()
+        req,out=self.create();saved=self.conn.execute("SELECT input_json,result_json FROM v5_intake_replay WHERE command='C03.create' AND key=?",(req['key'],)).fetchone()
         for column,text in (('input_json','{}'),('input_json',' '+saved[0]),('result_json','{}'),('result_json',dumps(Result.success({'work_ref':{'goal_id':'foreign','revision':1,'epoch':0}})))):
             with self.subTest(column=column,text=text):
-                self.conn.execute(f'UPDATE v5_intake_replay SET {column}=? WHERE command=\'create\' AND key=?',(text,req['key']));before=self.snapshot();self.error(self.t.get_create_by_key({'key':req['key']}),'unavailable');self.assertEqual(self.snapshot(),before)
-                self.conn.execute("UPDATE v5_intake_replay SET input_json=?,result_json=? WHERE command='create' AND key=?",(*saved,req['key']))
+                self.conn.execute(f'UPDATE v5_intake_replay SET {column}=? WHERE command=\'C03.create\' AND key=?',(text,req['key']));before=self.snapshot();self.error(self.t.get_create_by_key({'key':req['key']}),'unavailable');self.assertEqual(self.snapshot(),before)
+                self.conn.execute("UPDATE v5_intake_replay SET input_json=?,result_json=? WHERE command='C03.create' AND key=?",(*saved,req['key']))
     def test_primary_workless_shape_only_shared_counter_and_replay(self):
         before_goal=self.conn.execute('SELECT * FROM v5_tsk_usage').fetchall();before_events=self.f.events();before_used=self.conn.execute("SELECT used FROM v5_tsk_host WHERE kind='model'").fetchone()[0]
         receipt=self.value(self.primary());self.assertEqual(set(receipt),{'reservation_id','remaining'});self.assertEqual(set(receipt['remaining']),{'host'})
