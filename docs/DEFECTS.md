@@ -1045,3 +1045,12 @@ explicitly authorized implementation without CO resume/state edits/shared side e
 Next route failure: reconcile current owner alternatives before inferring a project
 blocker or asking the same authority again. This is PAL-specific route authority,
 not a generic permission to retry unknown external effects.
+
+
+ART01 RUN development defect: after save unavailable x3, receipt not_found was
+incorrectly classified as terminal input failure. Independent Sol probe and Root
+regression reproduced failed Goal/calls1/finish0. Recovery failure now delegates to
+TSK yield_or_retain; only the original explicit nontransient save rejection uses
+terminal handling. Check missing/unavailable receipts and reentry call count in the
+next connected tests. Component evidence is runner-compose-review.md; actual storage
+fault verification remains pending.

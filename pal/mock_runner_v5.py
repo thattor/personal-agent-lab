@@ -8,7 +8,7 @@ import copy
 import threading
 import uuid
 
-from pal.contracts_v5 import ContractError, ErrorCode, Ref, Result, dumps
+from pal.contracts_v5 import ContractError, ErrorCode, Ref, Result, dumps, parse_model_action
 
 
 def _value(result):
@@ -84,7 +84,7 @@ class MockInvoker:
 
 
 class MockRunner:
-    """Run a finite report/lookup slice on supplied same-thread TSK/MEM owners.
+    """Run a finite mock slice on supplied same-thread TSK/MEM/optional ART owners.
 
     expert receives the C12 object and two mock-only diagnostic keyword arguments:
     excluded_refs and excluded_step_ids. They contain identities, never stopped bodies.
@@ -92,9 +92,10 @@ class MockRunner:
     Structured controls use another connection and never acquire an invoker lock.
     """
 
-    def __init__(self, tasks, memory):
+    def __init__(self, tasks, memory, *, artifacts=None):
         self._tasks = tasks
         self._memory = memory
+        self._artifacts = artifacts
         self.runner_id = 'mock-runner-' + uuid.uuid4().hex
         self.invoker = MockInvoker()
 
@@ -237,9 +238,17 @@ class MockRunner:
                         return yield_or_retain('owned call outcome unresolved')
                 return failed(called, 'mock call unavailable or stopped')
             output_pending = True
+            try:
+                action = parse_model_action(dumps(_value(called)['action']),
+                                            allowed_refs=tuple(available)).to_json()
+            except ContractError:
+                return failed(_failure(ErrorCode.INVALID_INPUT, 'invalid mock action'),
+                              'mock action could not be adopted')
+            if action['kind'] == 'compose' and self._artifacts is None:
+                return yield_or_retain('artifact owner unavailable')
             begun = persist(self._tasks.begin_step, {
                 'key': dumps(['C13.begin_step', call_id]), 'work_ref': work,
-                'action': _value(called)['action']})
+                'action': action})
             if not begun.ok:
                 return failed(begun, 'mock action could not be adopted')
             step = _value(begun)
@@ -258,6 +267,30 @@ class MockRunner:
                     return failed(read_error, 'lookup source unavailable')
                 result_refs = [item['ref'] for item in usable]
                 excluded_all.extend(lookup_excluded)
+            elif step['action']['kind'] == 'compose':
+                key = dumps(['C08.save', work, step['step_id']])
+                save_request = {'key': key, 'work_ref': work, 'step_id': step['step_id'],
+                                **{name: step['action'][name]
+                                   for name in ('content', 'media_type', 'source_refs')}}
+                saved = persist(self._artifacts.save, save_request)
+                if not saved.ok and saved.error.code is ErrorCode.UNAVAILABLE:
+                    saved = persist(self._artifacts.get_by_key, {'key': key})
+                    if not saved.ok:
+                        return yield_or_retain('draft receipt remains unresolved')
+                if not saved.ok:
+                    return failed(saved, 'draft save unresolved')
+                try:
+                    receipt = _value(saved)
+                    artifact_ref = Ref.from_json(receipt['artifact_ref'])
+                    if (set(receipt) != {'artifact_ref', 'hash', 'bytes'} or
+                            artifact_ref.kind.value != 'artifact' or
+                            type(receipt['hash']) is not str or len(receipt['hash']) != 64 or
+                            any(c not in '0123456789abcdef' for c in receipt['hash']) or
+                            type(receipt['bytes']) is not int or not 0 <= receipt['bytes'] <= 1048576):
+                        raise ContractError()
+                except (ContractError, KeyError, TypeError):
+                    return yield_or_retain('artifact receipt unavailable')
+                result_refs = [artifact_ref.to_json()]
             ended_step = persist(self._tasks.finish_step,
                 {'work_ref': work, 'step_id': step['step_id'], 'result_refs': result_refs},
                 truncated=truncated, excluded_refs=tuple(lookup_excluded))
