@@ -92,6 +92,25 @@ def _write(path, value):
     _write_raw(path, _bytes(value))
 
 
+def _error_observation(exc, root):
+    kinds = (ValueError, TypeError, KeyError, UnicodeDecodeError, UnicodeEncodeError,
+             RuntimeError, OSError, FileExistsError, FileNotFoundError, PermissionError,
+             BlockingIOError, BrokenPipeError, ChildProcessError, ProcessLookupError,
+             TimeoutError, MemoryError, KeyboardInterrupt, SystemExit, subprocess.TimeoutExpired)
+    kind = type(exc).__name__ if type(exc) in kinds else 'OtherError'
+    number = exc.errno if isinstance(exc, OSError) and type(exc.errno) is int else None
+    paths = {str(root / relative): relative for relative in _SOURCE_FILES}
+    sites = []
+    frame = exc.__traceback__
+    while frame is not None:
+        relative = paths.get(frame.tb_frame.f_code.co_filename)
+        if relative is not None and type(frame.tb_lineno) is int and frame.tb_lineno > 0:
+            sites.append({'file': relative, 'line': frame.tb_lineno})
+            sites = sites[-8:]
+        frame = frame.tb_next
+    return {'kind': kind, 'errno': number, 'sites': sites}
+
+
 def _environment():
     value = {key: val for key, val in os.environ.items()
              if key in {'HOME', 'PATH', 'TMPDIR', 'USER', 'LOGNAME', 'LANG'}
@@ -382,6 +401,9 @@ class NativeClaudeText:
         active_path = self._lane / 'active.json'
         activated = False
         child = None
+        phase = 'durable_admission'
+        observations = None
+        ending_written = capture_written = False
         try:
             value = json.loads(raw)
             _request(value, raw)
@@ -427,56 +449,96 @@ class NativeClaudeText:
                 _write(call_dir / 'entering.json', active)
             finally:
                 os.close(fd)
+            phase = 'buffer'
             buffer = NativeClaudeBuffer(request_sha256=request_hash,
                                         profile_sha256=self.profile.profile_sha256,
                                         attempt_ref=attempt, session_id=session,
                                         argv_sha256=argv_hash)
+            phase = 'entering_hook'
             on_enter(copy.deepcopy(attempt))
+            phase = 'spawn'
             child = subprocess.Popen(argv, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                      stderr=subprocess.PIPE, cwd=workspace,
                                      env=_environment(), start_new_session=True)
             handles = []
+            phase = 'capture_streams'
             try:
                 for name in ('stdout.bin', 'stderr.bin'):
                     stream_fd = os.open(call_dir / name, os.O_WRONLY | os.O_CREAT |
                                         os.O_EXCL | os.O_NOFOLLOW, 0o600)
                     handles.append(os.fdopen(stream_fd, 'wb'))
+                phase = 'pump'
                 _, _, eof, code = _pump(child, raw, seconds=300,
                                        stdout_cap=1048576, stderr_cap=4096,
                                        feed=buffer.feed, stdout_file=handles[0],
                                        stderr_file=handles[1])
+                observations = (eof['stdout'], eof['stderr'], code)
             finally:
+                previous_phase = phase
+                phase = 'close_streams'
                 for handle in handles:
                     handle.flush()
                     os.fsync(handle.fileno())
                     handle.close()
+                phase = previous_phase
+            phase = 'finish'
             pair = buffer.finish(stdout_eof=eof['stdout'], stderr_eof=eof['stderr'],
                                  exit_code=code)
+            phase = 'validate'
             returned = NativeReturned(**pair)
             returned.validate(request_sha256=request_hash, profile=self.profile)
+            phase = 'owned_wait'
             if child.wait(timeout=2) != code:
                 _fail()
+            phase = 'save_ending'
             _write(call_dir / 'ending.json', pair['cessation'])
+            ending_written = True
+            phase = 'save_capture'
             _write(call_dir / 'capture.json', pair['capture'])
+            capture_written = True
+            phase = 'release'
             self._release(active)
             return returned
         except BaseException as exc:
-            if child is not None:
-                try:
-                    _cleanup(child)
-                except BaseException:
-                    pass
-            if not isinstance(exc, Exception):
-                raise
-            if not activated:
+            selected = (RuntimeError('Claude native text unavailable')
+                        if isinstance(exc, Exception) else exc)
+            if not activated and isinstance(exc, Exception):
                 profile_hash = self.profile.profile_sha256
                 evidence = _sha(_bytes({'reason': 'before_entry',
                                         'request_sha256': request_hash,
                                         'profile_sha256': profile_hash}))
-                raise NativeNeverEntered(request_sha256=request_hash,
-                                         profile_sha256=profile_hash,
-                                         evidence_ref='pal-claude-refusal:' + evidence) from None
-            _fail()
+                selected = NativeNeverEntered(request_sha256=request_hash,
+                                             profile_sha256=profile_hash,
+                                             evidence_ref='pal-claude-refusal:' + evidence)
+            cleanup_status, cleanup_error = 'not_attempted', None
+            if child is not None:
+                try:
+                    _cleanup(child)
+                    cleanup_status = 'succeeded'
+                except BaseException as cleanup_exc:
+                    cleanup_status, cleanup_error = 'failed', cleanup_exc
+            if activated:
+                try:
+                    observation = {'version': 'NATIVE-CLAUDE-FAILURE/1',
+                        'request_sha256': request_hash,
+                        'profile_sha256': self.profile.profile_sha256,
+                        'attempt_ref': attempt, 'phase': phase,
+                        'primary_error': _error_observation(exc, self._root),
+                        'cleanup_status': cleanup_status,
+                        'cleanup_error': (_error_observation(cleanup_error, self._root)
+                                          if cleanup_error is not None else None),
+                        'observed_stdout_eof': observations[0] if observations is not None else None,
+                        'observed_stderr_eof': observations[1] if observations is not None else None,
+                        'observed_exit_code': observations[2] if observations is not None else None,
+                        'ending_write_completed': ending_written,
+                        'capture_write_completed': capture_written}
+                    if len(_bytes(observation)) <= 4096:
+                        _write(call_dir / 'failure.json', observation)
+                except BaseException:
+                    pass
+            if not isinstance(exc, Exception):
+                raise
+            raise selected from None
         finally:
             if child is not None:
                 for stream in (child.stdin, child.stdout, child.stderr):
