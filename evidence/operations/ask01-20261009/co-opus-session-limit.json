@@ -1,0 +1,18 @@
+{
+  "task": "8288ddc326e347169ac7ac699a1a80bc",
+  "CO_status": "awaiting_decision",
+  "CO_outcome": "unknown",
+  "pause_id": "64adfca539cc4b5ea99af1f0a3d04da5",
+  "report_sha256": "sha256:edac19da9d781d85bc357d7d2b55a8e5d55fc25871d739502a24781b0bdc8a9c",
+  "options": [],
+  "provider_evidence": {
+    "type": "assistant",
+    "error": "rate_limit",
+    "result_is_error": true,
+    "message": "You've hit your session limit; resets10:20pm Asia/Tokyo"
+  },
+  "code_started": false,
+  "returned_diff": false,
+  "actions": "no resume/retry/cancel/state edits; investigate fresh approved AGY alternative",
+  "old_call_remote_cessation": "not newly established"
+}

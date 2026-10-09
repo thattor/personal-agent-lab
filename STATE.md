@@ -19,8 +19,13 @@ separate. D039 actual code contributors are CO SWE-2 High and direct AGY exact
 claude-sonnet-5-5-high; Root owns integration. No new native author/reviewer.
 
 Next ASK01: SWE2610f221 and Opus de3d5d69 advise REFINE. Exact state/lease/API
-contract is being reconciled by CO Opus8288ddc326e347169ac7ac699a1a80bc
-(basea58cde7, /private/tmp/pal-ask01-scope-candidate-launch.py). Candidate only;
+CO Opus8288ddc326e347169ac7ac699a1a80bc stopped before code at planner rate_limit
+(Claude Pro session resets22:20 JST). CO still marks unknown; preserve it untouched.
+Fresh approved AGY claude-opus-5-5-high contract draft is running froma58cde7
+under /PAL/agy-work/intake-review-20261009/ask01-opus-contract. Launcher:
+/private/tmp/pal-ask01-agy-opus-contract-launch.py. Just-confirmed Google AI Pro,
+Credits off, weekly57.01% and five-hour85.02% remaining. No preflight inference.
+Candidate contract only;
 Root freezes it before code, no owner decision is needed. Preserve
 all old unknown/refused calls and live DBs. Codex remaining2% at last reading,
 ordinary usage allowed; no reset/paid fallback. Use existing CO/AGY for work.

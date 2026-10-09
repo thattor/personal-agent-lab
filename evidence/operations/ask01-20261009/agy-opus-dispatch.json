@@ -1,0 +1,20 @@
+{
+  "time": "2026-10-09T11:23:11.153245+00:00",
+  "model": "claude-opus-5-5-high",
+  "route": "direct AGY CLI1.3.2",
+  "scope": "text-only ASK01 contract candidate; no tools/code changes",
+  "base": "a58cde78e7777a5254f5e5b812fe6ed757576008",
+  "stage": "/Users/hattoritoshiyasu/Documents/PAL/agy-work/intake-review-20261009/ask01-opus-contract",
+  "launcher": "/private/tmp/pal-ask01-agy-opus-contract-launch.py",
+  "preflight": {
+    "authenticated": true,
+    "plan": "Google AI Pro",
+    "weekly_remaining_percent": 57.01,
+    "five_hour_remaining_percent": 85.02,
+    "AI_Credits": "off observed /settings",
+    "settings_changed": false,
+    "inference_during_preflight": false
+  },
+  "CO_unknown_untouched": "8288ddc326e347169ac7ac699a1a80bc",
+  "other_unknown_untouched": true
+}

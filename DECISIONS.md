@@ -2070,3 +2070,11 @@ question IDs/APIs/answer registration and bounded RUN loss handling before code.
 SWE's assumption that waiting_input has no lease conflicts with its own split
 ask/release; do not adopt that assumption. Carry C076 verify-authority note into
 the next RUN edit. Existing D039 model/cost/unknown-call boundaries continue.
+
+ASK01 route condition: CO8288ddc3 stopped during planner launch, provider stream
+rate_limit and session reset22:20 JST; no code step/output/diff. CO reports
+unknown/options[], which remains authoritative for retry handling. Do not
+resume/retry/cancel or edit its state. Existing direct AGY Opus5.5 alternative
+under D037/D039 is a separate subscribed route; verify current auth/credits/quota
+then use a fresh isolated text-only contract draft. No Claude limit bypass,
+additional credits or unknown conversation action. C077 evidence is unaffected.
