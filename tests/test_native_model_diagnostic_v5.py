@@ -67,6 +67,21 @@ class NativeModelDiagnosticTests(unittest.TestCase):
         d=self.make()
         for i in range(32):d.observe({'sessionId':str(i)},hook='observe')
         self.assertEqual(len(d.snapshot()['observations']),32);d.observe({'sessionId':'overflow'},hook='observe');self.assertEqual((len(d.snapshot()['observations']),d.snapshot()['status']),(32,'incomplete'))
+    def test_token_byte_overflow_freezes_but_malformed_utf8_can_continue(self):
+        self.observe({'configOptions':[option('日'*85+'x')]})
+        prefix=self.d.snapshot()['observations']
+        self.observe({'configOptions':[option('日'*85+'xx')]})
+        self.assertEqual(self.d.snapshot()['status'],'incomplete')
+        self.assertEqual(self.d.snapshot()['observations'],prefix)
+        self.d.observe({'configOptions':[option('later')]},hook='observe')
+        self.assertEqual(self.d.snapshot()['observations'],prefix)
+        d=self.make()
+        d.observe({'configOptions':[option('\ud800')]},hook='observe')
+        row=d.snapshot()['observations'][0]
+        self.assertEqual((row['projection_status'],row['options'],row['effective_model_hint']),('malformed',[],None))
+        d.observe({'configOptions':[option('good')]},hook='observe')
+        self.assertEqual(d.snapshot()['status'],'complete')
+        self.assertEqual(d.snapshot()['observations'][1]['effective_model_hint']['current_value'],'good')
     def test_utf8_token_boundary_and_total_byte_cap(self):
         self.assertEqual(self.observe({'configOptions':[option('日'*85+'x')]})['projection_status'],'valid')
         d=self.make();fields={'configOptions':[option('x'*256, id=str(i),options=[{'value':str(j)+'x'*250} for j in range(32)]) for i in range(16)]};d.observe({'sessionId':'prefix'},hook='observe');prefix=d.snapshot()['observations'];d.observe(fields,hook='observe');self.assertEqual(d.snapshot()['status'],'incomplete');self.assertEqual(d.snapshot()['observations'],prefix);self.assertLessEqual(len(canonical(d.snapshot())),32768)
