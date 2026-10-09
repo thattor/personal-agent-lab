@@ -86,6 +86,26 @@ binding. Never enable paid fallback or read credential contents. Credential
 targets are explicit existing files checked by metadata only. Preserve original
 launch_environment, check_launch_template, delegation and model validation.
 
+Fixture seams are _load_runtime(runtime), returning a namespace with contracts,
+DevinTextHost/DevinHostConfig/DevinAdapter/DelegatedScope/CapacityLedger/
+PooledAdapter/gate/check_launch_template/launch_environment/NativeCandidates;
+and _fresh_pin(api, state_dir, executable), which performs metadata-only checks.
+Its exact closed mapping keys are route/model/version/cost_tier/
+measurement_digest/selection_digest/runtime_hashes/wrapper_sha256/
+capture_sha256/executable_sha256. measurement/selection use sha256:lowerhex64;
+the other hashes are bare lowercase64 hex. runtime_hashes is a nonempty strict
+relative CO module path -> SHA mapping; wrapper/capture identify current PAL
+tool and buffer bytes. preflight returns a defensive copy of the exact fresh pin.
+qualification_sha256 is SHA256 of sorted compact UTF8 ensure_ascii=False JSON
+{version:NATIVE-ACP01/1,profile_id:co-devin-acp-dynamic-text/1,pin:closed_pin}.
+preflight must compare that current envelope to NativeProfile.qualification_sha256.
+The envelope is an immutable qualification candidate identity, not proof that
+qualification already succeeded. Root observes the separately frozen actual N
+case and its original native receipt before native product adoption; neither
+profile label nor a supplied digest can substitute for that actual proof. Source
+or selection drift invalidates the envelope. on_enter receives an exact plain
+dict with run_id/job_id/attempt_id strings for the original public native ref.
+
 The canonical ledger is the existing passwd-home/.co-task-host/capacity.db.
 Before any CapacityLedger constructor, require the existing real private parent
 and regular uid-owned0600 single-link file. Missing/replaced targets refuse;
