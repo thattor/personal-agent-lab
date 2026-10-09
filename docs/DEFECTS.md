@@ -1703,3 +1703,10 @@ and reconstructs the approved final tree from498c628 before that addition; actua
 legacy source0e5/fff19/01ae ancestry remains. Source/test bytes are exactly those
 verified at0d60b6f; that local test commit remains preserved. Both summary task-ID
 fields are replaced by anonymous labels. No task is retried or rewritten.
+
+Root export equivalence check initially compared an unstaged tree with a commit,
+so newly added untracked UI files appeared absent. The shell continued to commit
+after that assertion because failure propagation was not enabled. Exact committed
+revisions535993c and0d60b6f now have zero production/test diff; no byte mismatch was
+masked as PASS. Dependent mutations must follow a successful tool result; compare
+explicit committed revisions or file manifests so new untracked files are covered.
