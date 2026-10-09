@@ -3,8 +3,8 @@
 Base da8bf4f25432ff0dbbfedbb54a4cad470fa9ea71; frozen PRI01/RECOVERY01/02.
 Only tests/test_primary_process_v5.py and this note added. No source/owner-fixed
 suite/shared contracts edits; no unapproved TSK candidate copied or accepted.
-5 methods, 14714 UTF8 bytes.
-SHA256 `9c3c56682c429a2d973fd047c93bcde3473e82c8e27d0d15fa8beba6dbe9b52c`.
+5 methods, 14765 UTF8 bytes.
+SHA256 `9916a1309de31091d2472cc1fbfe09b145bd2c5c796e45d2d45da0e250b1174d`.
 
 Independent minimal actual-owner setup, no TestCase inheritance/import duplication:
 MockHostSession, MemoryStore with actual sanitize, TaskStore/ArtifactStore/
@@ -53,3 +53,27 @@ Root source author and independent reviewer own later implementation proof;
 Root runs/fixes genuine fixture issues distinctly from feature failures, records
 actual exact-version results and full regression. Product usefulness and later
 finite provider profile remain separate.
+
+
+## Authorized ready-connection fixture correction
+
+Root first execution:4 PASS/1 FAIL, callback never entered. The second connection
+constructor unconditionally called TSK.register_host on the shared already-ready
+guard; RECOVERY01 explicitly permits registration only in owned/startup. This
+fixture error also left a constructor-open connection unreachable, producing a
+ResourceWarning. The fixture now registers only owned/startup guards; the existing
+ready guard/session is reused and ordinary owner methods still validate it. No
+fake registration, guard/profile change, weaker source/entry/control assertion or
+source edit. Original commit cbfb027 and failure log remain retained. Branch was
+rebased on Root49115b2 (original test already integrated), then this bounded change.
+
+Exact Root source was copied only as an untracked read dependency:
+SHA256 e44a463b3655926d21b84430bba3271b046fcb96961dc53d9a80f02400616310.
+Independent actual execution:
+`/opt/homebrew/bin/python3.13 -E -s -B -W error::ResourceWarning -m unittest discover -s tests -p test_primary_process_v5.py -v`
+5 PASS0.358s: three real SIGKILL/wait barriers, separate-connection thread entry
+and immediate controls/source-stop, whole scripted mock flow. No ResourceWarning
+or other warning appeared. Log /private/tmp/pal-primary-process-fixture-order.log.
+This is fixture selfcheck, not independent Primary source approval; Root reruns
+and owns adoption/full qualification. Next connection fixture must distinguish
+startup registration from reuse of an existing ready managed session.

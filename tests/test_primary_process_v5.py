@@ -53,7 +53,8 @@ class Owners:
         self.art=ArtifactStore(self.conn,authorize_save=self.tasks.authorize_artifact_save,source_gate=self.mem.source_gate)
         self.ver=VerificationStore(self.conn,context=self.tasks.verification_context,
             artifact_inspect=self.art.inspect,source_gate=self.mem.source_gate)
-        value(self.tasks.register_host())
+        if guard.phase in ('owned','startup'):
+            value(self.tasks.register_host())
         self.host=PrimaryHost(self.conn,guard=guard,memory=self.mem,tasks=self.tasks,
                               request_scope=self.grant,invoke=invoke,model_id='mock-process-primary')
     def ready(self):value(self.tasks.finish_startup())
