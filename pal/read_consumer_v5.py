@@ -161,7 +161,7 @@ def _read(reader, ref, work_ref, notices):
         if body['usable']:
             validity = 'current'
         else:
-            work = body['work_ref'] if body['work_ref'] is not None else work_ref
+            work = body.get('work_ref') or work_ref
             goal = (work['goal_id'], work['revision']) if work else None
             sources = {_ref_key(item) for item in body['source_refs']} - {None}
             stopped = goal is not None and any(

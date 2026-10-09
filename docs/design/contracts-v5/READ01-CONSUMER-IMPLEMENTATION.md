@@ -26,3 +26,14 @@ coordinator; this worker did not execute them.
   creation time)'.
 
 All previously listed unresolved limits remain unchanged.
+
+## Root real-owner correction after independent Opus review
+
+Exact Sonnet original source remains at367c1de; CO SWE f2e11233 repairs notice
+selection, malformed-ref isolation and per-kind timestamps, passing frozen14.
+Independent Opus531650 identifies real MEM optional fields; actual Root record
+read and an extra isolated probe reproduce it. Root accepts optional work_ref and
+version according to existing C11 (strict string version, reject other extras),
+and handles absent body WorkRef in conservative source-stop correlation.
+Final focused36 and same-consumer temporary-SQLite demo pass; full regression and
+separate final source review remain required. No owner schema or permission change.

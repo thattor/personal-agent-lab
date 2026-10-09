@@ -1159,3 +1159,12 @@ CO SWE repairs the original3; Root must reconcile Opus F1 and rerun actual owner
 plus demo, then obtain separate final source review. Renderer is display only,
 never completion or semantic authority. This is a source/input-shape coverage gap,
 not evidence for more model-quality gates or a new user decision.
+
+READ01 correction evidence: SWE f2e11233 passes original14 after fixing D1/D2/D3.
+Root's expanded6 leaves only Opus F1 failing, then the minimal optional-C11-field
+correction makes focused36 pass0.152s. The same consumer's actual demo preserves
+completed state and VER body/hash while current -> source stopped, and displays
+the stopped MEM body via the notice. Preserve those structural/local limits;
+final full regression/review is separate. VER CO first attempt propagated context
+not_found; immutable10 caught it and the single declared repair corrected it.
+Both verifier attempts are retained, preventing final PASS from hiding the error.

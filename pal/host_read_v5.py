@@ -13,7 +13,8 @@ __all__ = ['HostReader', 'PURPOSES', 'checked_result']
 
 PURPOSES = frozenset({'model_context', 'verification', 'user_view'})
 _BODY_KEYS = frozenset({'ref', 'content', 'media_type', 'hash', 'observed_at',
-                        'work_ref', 'source_refs', 'usable'})
+                        'source_refs', 'usable'})
+_OPTIONAL_BODY_KEYS = frozenset({'work_ref', 'version'})
 _HEX64 = re.compile(r'[0-9a-f]{64}')
 
 
@@ -24,7 +25,8 @@ def _unavailable(message='owner unavailable'):
 def _valid_body(value, ref):
     """True only for the strict C11 response shape for exactly the requested Ref."""
     try:
-        if type(value) is not dict or set(value) != _BODY_KEYS:
+        if (type(value) is not dict
+                or not _BODY_KEYS <= set(value) <= _BODY_KEYS | _OPTIONAL_BODY_KEYS):
             return False
         if Ref.from_json(value['ref']).to_json() != ref:
             return False
@@ -35,8 +37,10 @@ def _valid_body(value, ref):
         content.encode('utf-8')
         if not media_type or not observed_at or not _HEX64.fullmatch(digest):
             return False
-        if value['work_ref'] is not None:
+        if value.get('work_ref') is not None:
             WorkRef.from_json(value['work_ref'])
+        if 'version' in value and type(value['version']) is not str:
+            return False
         if type(value['source_refs']) is not list:
             return False
         for item in value['source_refs']:
