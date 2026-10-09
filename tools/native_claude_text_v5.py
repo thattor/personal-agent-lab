@@ -356,6 +356,15 @@ class NativeClaudeText:
             _request(value, raw)
             if not callable(on_enter):
                 _fail()
+            # Refuse an occupied lane before even the bounded metadata children.
+            fd = self._lock()
+            try:
+                if os.path.lexists(active_path):
+                    _fail()
+                if os.path.lexists(self._lane / _sha(value['call_id'].encode('utf-8'))):
+                    _fail()
+            finally:
+                os.close(fd)
             self.preflight()
             fd = self._lock()
             try:
