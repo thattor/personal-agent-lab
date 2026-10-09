@@ -1577,3 +1577,44 @@ open/draft PR, published83c01a9 and unchanged main94fcacb. Current code/test sou
 remains4ebab5a. The authorized human window received the report and its agent
 summarized it; no actual owner choice, read receipt or usefulness PASS is inferred.
 Publication/delivery evidence is linked from STATE; later commit changes records only.
+
+## D-036 — diagnosed unknown call and explicit alternative implementation, 2026-10-09
+
+Direct owner sources were independently read in PAL人間判断. Turn
+01a11dfe-89e5-7f81-86ce-7d8b66cf57da/userMessage01a11dfe-8a72-7c63-855f-90eb8ad3acf5
+requests official Devin/SWE information and concrete diagnosis; CO is a development
+tool, with no current owner decision pending. Turn
+01a11e03-d386-77c0-8faa-41f0ab765513/userMessage01a11e03-d444-78c1-9fab-b0e861d29d1d
+directs SWE-2 as primary when usable; Astra, Sol6.1 or AGY Sonnet5.5/Opus5.5 as
+alternatives while unavailable, prioritizing AGY due current usage. Direct calling
+is allowed when the CO adapter cannot support the route. Necessary PAL development
+material is within this specific route instruction; no credentials, irrelevant
+personal data, new auth/fees, publication or broader permissions are added.
+
+The original task is not cancelled, retried, switched or relabelled successful.
+Correlated Native logs, exact prompt digest, official session listing, read-only
+single-session DB metadata and task workspace show: local parent/ACP are absent;
+no stored assistant/tool response or recoverable implementation; no task file changes.
+The900s deadline is corroborated by900.149432s file mtimes. Both observed old runtime
+revisions have identical relevant cleanup code, but that code suppresses stop errors
+and this attempt has no durable cleanup receipt. Its exact loaded revision, remote
+inference terminal outcome and underlying no-response cause remain unconfirmed.
+The old state/pause digest/options=[] are preserved. CO0.4.5 offers no documented
+external-evidence reconciliation command. [Facts/URLs/limits](evidence/operations/co-int00-20261009/diagnosis.json).
+
+Adopt the explicitly authorized separate implementation: isolated workspace/branch,
+fixed baseline and the existing INT00/1 contract/scope/disposition; text/diff adoption
+only by SOL. No old output is automatically applied, and no shared DB/service writes
+are permitted. An independent reviewer uses a fresh context after implementation.
+This is the owner's alternative-route instruction, not a fabricated CO pause choice
+or a workaround for a service/security denial. Keep the old workspace/journal intact.
+
+AGY model listing succeeds with exact Opus5.5/Sonnet5.5 variants on1.3.1, but quota and
+no-credit-fallback are not yet verified. Its PAL cwd trust prompt was declined. A
+home-wide usage/settings startup was rejected by automatic approval review for its
+broad file/read/execute scope; no startup or alternative home access is performed.
+Current task selects native gpt-6-astra for isolated implementation and fresh
+gpt-6.1-sol for independent review. Current Codex Pro ordinary usage is allowed,
+40% weekly used; no credit purchase, usage reset or paid fallback is authorized.
+Report actual launch/results and any remaining AGY limitation to the existing
+human window. Do not ask the owner to repeat the technical implementation decision.

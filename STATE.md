@@ -1,7 +1,39 @@
 # STATE.md
 
 ## Goal
-Current owner instruction in chat 01a11c78-a3bc-76e1-b4ee-2451d5c0f1c2 (2026-10-09): SOL coordination, explicit CO delegation for PAL implementation/research/review, existing-route private development material use, isolated writes, host verification and staged independent reviews. This resumes scoped development preparation after the prior stop; no new authentication, paid fallback, publication or stopped schedules. See D-034.
+
+Latest owner direction is D036/C068 (PAL人間判断 turn
+01a11e03-d386-77c0-8faa-41f0ab765513): use an approved alternative implementation
+route while SWE-2 is unavailable, prioritizing usable AGY; direct calls are allowed
+when CO does not support the route. This overrides the earlier CO-only restriction
+for this PAL work, without new auth/payment/publication or broad permission changes.
+INT00 is the next implementation slice; old unknown status is preserved, not a
+whole-project stop. SOL owns integration; isolated Astra implementation and a fresh
+Sol6.1 review are selected while AGY access/cost conditions are unresolved.
+
+C068 investigation found Devin session unique-cobweb: exact83,547-byte prompt match,
+17 system and3 copied user nodes, no saved assistant/tool response, no ATIF result.
+Parent54709/ACP54710 and matching children/groups are absent in the current snapshot.
+CO workspace inputs are byte-identical and all4 outputs absent. About900.149s between
+prompt/journal mtimes corroborates the900s deadline. Old source attempts group kill
+but lacks a durable cleanup receipt; underlying inference cause remains unknown.
+[Diagnostic facts and limits](evidence/operations/co-int00-20261009/diagnosis.json).
+
+AGY1.3.1 lists exact claude-opus-5-5 and claude-sonnet-5-5 low/medium/high variants.
+Model listing alone is not inference/billing proof. useG1Credits is unset; a narrow
+PAL cwd asked for new workspace trust and was exited with No. Automatic approval
+review rejected a home-wide AGY startup as too broad; no such startup occurred.
+Do not route around that refusal. Existing Codex Pro ordinary usage is allowed
+(40% weekly used); no reset/purchase/paid fallback is enabled. The authorized
+Astra/Sol route remains available independently of the AGY issue.
+
+The former C067 and INT00 continuation records below are retained history. Their
+no-replacement instruction remains binding for CO retry/switch/resume, while D036
+explicitly allows separately isolated alternative implementation under SOL ownership.
+
+## Retained C065–C067 preparation record
+
+Owner instruction in chat 01a11c78-a3bc-76e1-b4ee-2451d5c0f1c2 (2026-10-09): SOL coordination, explicit CO delegation for PAL implementation/research/review, existing-route private development material use, isolated writes, host verification and staged independent reviews. This resumes scoped development preparation after the prior stop; no new authentication, paid fallback, publication or stopped schedules. See D-034.
 
 Current work: two preparation slices MET, five pure helpers remain unused by PAL.
 EXE02-file/1, EXE02-bytes/1, VER01-integrity/1 have independent reviews and a synthetic
@@ -98,7 +130,7 @@ Actual official Japanese functional scenarios and controls PASS on runtime basel
 ## Historical soak (stopped for approved development)
 Soak01 retained after reproduced stale UI warning; soak02 retained and intentionally reset for the user's bilingual UI request. Both old DBs/hash chains/receipts stay intact. [Soak02 directly confirmed receipt and reset](evidence/soak/2026-10-07/soak02-human-and-reset.json). No old human counts/time/restart proof transferred. Bilingual UI only changes display text; fixed controls, canonical values, receipts and provider remain English. [55-test full suite](evidence/tests/ui-bilingual-full.txt), [actual refresh recovery probe](evidence/ui/recovery/bilingual-after.txt). Historical runtime/soak-20261007-03 started 2026-10-07T06:14:18.834450+09:00 from clean pushed baseline 1863ef2a3037b335fa6f257a8d6fd95fb44da9dc on port58500, monitor PID3322/app PID3324. [Fresh start and served bilingual UI](evidence/soak/2026-10-07/start-03.json).
 
-## Exact next action — C067/D035
+## Completed C067/D035 record
 
 Both independent preparation slices are MET. Five unused pure helpers have scoped
 reviews and six synthetic connection cases. Current full399 PASS22.153s and

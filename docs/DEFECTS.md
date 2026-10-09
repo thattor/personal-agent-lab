@@ -799,3 +799,16 @@ Preserve original design/initial findings and final note. Next milestone handoff
 must use the current scope's actual owner/type list and mechanically check any
 explicit output bound. This correction changes no product code or permission.
 Evidence: co-update-045-20261009/task-c-initial-review.json and milestone-review.md.
+# 2026-10-09 — incomplete diagnosis of an unknown Native call
+
+The previous continuation stopped at the CO unknown report without correlating the
+Native PID, per-run logs and persisted session. That left the next technical action
+too vague. This is an investigation gap, not evidence that Devin was still running.
+The targeted follow-up identified unique-cobweb, exact prompt bytes, input-only
+session nodes, absent local PIDs/groups and unchanged task files. No old state was
+rewritten and no vendor timeout cause was invented. Next unknown call: distinguish
+process, model output, file effects and controller record; use existing logs/session
+metadata and report the specific missing recovery condition before deferring.
+The read-only session listing needed an approved host scope because its CLI creates
+a log outside sandbox roots. No trust override, resend or public support submission
+was used. See co-int00-20261009/diagnosis.json for the actual bounds.
