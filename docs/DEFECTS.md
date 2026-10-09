@@ -1034,3 +1034,14 @@ index/status/refs/error before comparisons. The expanded36 tests pass; independe
 rereview follows. Next authority boundary tests distinguish malformed user input
 (invalid_input) from corrupt owner metadata (unavailable), and explicitly include
 bool/int equality cases. No live data or CO state was changed by these probes.
+
+
+C073 continuation boundary: Root initially wrote a blanket no-replacement ART rule
+while preserving a CO unknown outcome. The directly re-read owner route instruction
+01a11e03-d444-78c1-9fab-b0e861d29d1d already authorizes isolated native implementers
+while SWE is unavailable. Correct the overbroad restriction after scoped diagnosis:
+keep the unknown task/pause and remote-cessation uncertainty, but perform the separate
+explicitly authorized implementation without CO resume/state edits/shared side effects.
+Next route failure: reconcile current owner alternatives before inferring a project
+blocker or asking the same authority again. This is PAL-specific route authority,
+not a generic permission to retry unknown external effects.

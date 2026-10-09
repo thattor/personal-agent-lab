@@ -720,3 +720,18 @@ Continuation verification: evidence/tests/stable1-handoff-continuation-full.txt 
 
 ## Stable1 scoped judgment blocked audit
 Same authentic new-flow judgment dependency persisted through three consecutive goal turns: run2 completion/handoff, first continuation readiness/live presentation completion, current continuation terminal/idle readback with no answer. Independent accepted work is now exhausted; parent Issue2 and global Issue6 were synchronized to actual closed3/4, N1-01 through N1-06 PASS and N1-07/08 pending, with readbacks in evidence/operations/stable1-parent-current.json and project-goal-current.json. This does not adopt P001 or close the project. Audit: evidence/operations/stable1-judgment-blocked-audit.json. Controller goal meets blocked threshold, not complete or voluntarily paused. Exact release: authentic scoped HR-STABLE1-001, HR-PLAN-001 or HR-PERM-001 answer; then resume only the work that answer authorizes. No repeated request, provider call, auth renewal, canonical write or schedule change. Last full92-test PASS retained; pal/tests unchanged, so no redundant suite for Issue/docs-only synchronization.
+
+
+C073 route clarification after scoped diagnosis: the prior no-duplicate instruction
+prohibits a blind CO retry, not the owner's explicit separate native implementation.
+Root freshly read actual owner message01a11e03-d444-78c1-9fab-b0e861d29d1d: use
+Astra/Sol6.1/AGY while SWE2 cannot implement; direct call allowed without a CO adapter.
+Diagnosis found no local process, no assistant/tool response and no implementation
+files for task917989. Remote cessation/cause remain unknown. Preserve that pause and
+workspace exactly. A NEW isolated native Sol6.1 workspace implements ART01-store/1
+plus the frozen inspect callback; no late CO output auto-adoption, no shared DB or
+external effects. This applies existing user authority (which supersedes skill
+routing defaults), not a fabricated CO pause decision or new CO engine. AGY's own
+unresolved call/rejection stays untouched. Ordinary Codex usage is allowed; no paid
+fallback, reset, new authorization or external service is used. Independent Astra
+will review ART after its TSK task; separate Sol reviews Root/Astra changes.

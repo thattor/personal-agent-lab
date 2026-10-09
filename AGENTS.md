@@ -141,3 +141,18 @@ The owner later authorizes updating to and using an official CO0.4 parallel-capa
 version when available; follow D034's state-preserving supported migration and actual
 qualification. Continue independent PAL work meanwhile. This permits runtime update
 inside its conditions, not CO implementation edits, a0.3 downgrade or a new monitor.
+
+
+C073 route clarification after scoped diagnosis: the prior no-duplicate instruction
+prohibits a blind CO retry, not the owner's explicit separate native implementation.
+Root freshly read actual owner message01a11e03-d444-78c1-9fab-b0e861d29d1d: use
+Astra/Sol6.1/AGY while SWE2 cannot implement; direct call allowed without a CO adapter.
+Diagnosis found no local process, no assistant/tool response and no implementation
+files for task917989. Remote cessation/cause remain unknown. Preserve that pause and
+workspace exactly. A NEW isolated native Sol6.1 workspace implements ART01-store/1
+plus the frozen inspect callback; no late CO output auto-adoption, no shared DB or
+external effects. This applies existing user authority (which supersedes skill
+routing defaults), not a fabricated CO pause decision or new CO engine. AGY's own
+unresolved call/rejection stays untouched. Ordinary Codex usage is allowed; no paid
+fallback, reset, new authorization or external service is used. Independent Astra
+will review ART after its TSK task; separate Sol reviews Root/Astra changes.
