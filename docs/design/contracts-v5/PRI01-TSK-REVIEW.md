@@ -1,0 +1,16 @@
+# PRI01-TSK independent source review
+
+REQUEST_CHANGES against Astra commit `a778d6f46a936fdb1fdbcfd1ae21c7b0d531e17e`, exact TaskStore SHA256 `226eab3ad2e92a6a056efef537b5f4e88f8a485aff598cb9da49d233ae4a6957`. Separate Sol reviewer authored fixed tests but did not author source. Rootbase37d482d, source overlaid unchanged as a read-only dependency. Only this note and separate probe are committed.
+
+P2 — contradictory historical pause receipt accepted (tasks_v5.py:950–952). Actual managed running work `control('pause')` produces running/pause_requested. Change only its persisted control replay result's control_status to none. `get_control_by_key` returns the forged successful running/none receipt, although that combination cannot be produced by pause on running work. Frozen scope requires malformed/contradictory stored receipt to be unavailable. Validate historical command/result combinations without consulting current flags or changing original historical states. Probe method `test_running_pause_receipt_contradictory_control_status_refused` reproduces; all DB state unchanged apart from deliberate injected corruption. Root/Astra notified immediately.
+
+Independent commands/results:
+
+- Python3.13 `-E -s -B -m unittest discover -s tests -p test_tasks_primary_v5.py -q`: fixed24 PASS0.207s.
+- Same command with `-p 'test_task*.py' -q`:188 PASS3.184s (includes fixed24, not an additional188 unique tests). Log `/private/tmp/pri01-tsk-independent-related.log`.
+- Same command with `-p test_verification_context_v5.py -q`:8 PASS0.009s. Pattern selection gives196 distinct related methods; no assumed author195 count.
+- Same command with `-p test_primary_tasks_review_v5.py -v`:6 methods,5 PASS/1 FAIL,0.089s,exit1. Log `/private/tmp/pri01-tsk-independent-probes-red.log`. Positive probes independently cover actual ART/VER completion receipt after actual source stop invalidates VER; consume row/receipt/session-binding one-sided deletion and consume input+result two-sided corruption; bounded SQLite read failure preserving caller writes/TX; actual two-thread/two-connection final-unit race (one success/one limit, exactly one charge); candidate output ceiling via legitimate long record identity and absent registered required dependency. First disposable completion probe had a wrong fixture stop invocation, corrected before the retained6-method run; not a product defect.
+
+Static inspection covered closed C02 output/read transaction/gate guards, create/control historical receipt evidence and no fresh authority, Primary reserve/consume replay integrity and managed session binding, shared counter/debit and premint/TX boundaries. No further blocker established. The two-thread reservation probe uses actual TaskStore and actual managed HOST; its readonly source gate is unused for this workless branch, no model/provider entry occurs. This is not process-death or whole Primary proof.
+
+Limits: coordinated multirow forgery beyond independent anchors is not proven detectable; exhaustive Brief/Grant/question corruption, tie ordering and all control combinations remain source-review/Root responsibilities. No full regression, Primary call ledger, live services, old DB migration or whole PRI activation was tested. Final approval awaits exact repaired source and affected independent probe; original RED/finding remains retained.
