@@ -1066,3 +1066,25 @@ receives SWE2610f221 advice and the Opus NEXT review. Candidate draft resolves t
 waiting/occupied-lease contradiction and minimal question/answer controls; Root
 will freeze the shared API before code. Independent work has not been made into
 a recurring human gate. Native98% usage/cost/unknown-call boundaries continue.
+
+## C078 — safe question/answer continuation verified, 2026-10-09
+
+ASK01/1 sourceb844706: full787 PASS25.139s, actual temporary-SQLite connection6
+and executable demo PASS. Separate Sol approves final TSK3b07675 (Astra author)
+and RUNf0efa09 (separate Sol author), after two independently reproduced defects.
+Root compares integrated bytes to both exact reviewed commits. Original fixed32
+RED and Root integrity RED evidence remain separate from final green outputs.
+
+Value: PAL can preserve a missing fact question, release execution capacity and
+resume the same bounded work from its saved answer without inferring that answer.
+The result reaches retained draft/check/current-usability readback. Claims remain
+local mock and structural; final ASK Opus alignment is PENDING, not self-awarded.
+No whole-product, semantic, live service, recovery or usefulness completion.
+
+Next independent work is the bounded C10.change seam/grant/revision/old-lease
+design proposal. Opus consultation must precede semantics adoption. CO0.4.5
+qualified design route is session-limited; no SWE planner substitution or CO
+state changes. Native authorized fallbacks completed this slice. The refused
+AGY Sonnet upload never ran, and later manual-approval direction did not trigger
+duplicate work. Root will send only a concrete separately scoped review package
+through an accepted route. Existing unknown calls and live DBs stay untouched.

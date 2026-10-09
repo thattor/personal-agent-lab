@@ -1,5 +1,21 @@
 # ACCEPTANCE.md
 
+## C078 — ASK01 implementation and connection verified
+
+Source b844706eb303f759f14cbd7857dcf86b44f3de99:787 host-local tests PASS25.139s,
+40 new ASK methods, focused114 including existing TSK cases. Actual temporary
+MEM/TSK/RUN/ART/VER/C14 owners and executable demo verify question/wait/answer/
+same-Goal draft/structural completion/readback, slot release, retained receipt and
+tail recovery, answer-source stop and cumulative budgets. Original RED evidence
+is preserved. Separate Sol source reviews approve exact final Astra TSK and Sol
+RUN bytes; Root independently verifies integration and all final source hashes.
+[Receipt](evidence/operations/ask01-20261009/verification.json).
+
+Implementation/connection are PASS. Final milestone Opus alignment is PENDING;
+do not label it ALIGNED or claim whole-product completion. No semantic answer
+sufficiency, real PRI/provider/UI, general restart recovery or usefulness proof.
+Next C10.change remains a design proposal pending technical consultation.
+
 ## C077 — local result readback accepted
 
 Unchanged sourceff1a1ccab553173fa4eae17b29fbe0a79b998313 passes747 local host tests

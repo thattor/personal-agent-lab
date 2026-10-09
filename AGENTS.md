@@ -1,6 +1,6 @@
 # AGENTS.md — Personal Agent Lab
 
-Current D041/D040/C077 continuation and D037 route instruction supersede earlier stops
+Current D042/D041/D040/C078 continuation and D037 route instruction supersede earlier stops
 and the CO-only restriction. Evaluate checkpoints, correct within accepted scope,
 then actually continue the next unfinished authorized dependency.
 SWE-2 remains preferred when usable; native Astra/Sol and scoped AGY Opus5.5/Sonnet5.5
@@ -25,9 +25,15 @@ pass; exact Opus milestone0e78d5da is ALIGNED. COMPLETE01-SCOPE is frozen
 for isolated TSK/RUN work. Continue the loop; do not activate partial completion.
 
 
+C078: ASK01 sourceb844706 passes787 host tests, actual temporary-SQLite demo and
+separate TSK/RUN source reviews. Final Opus milestone review remains pending.
+Continue independent C10.change design preparation; consultation precedes adoption.
+Preserve AGY egress refusals and specific D042 manual-approval scope; do not
+duplicate the finished native ASK implementation or alter CO/approval settings.
+
 C077: READ01 local slice MET atff1a1cc,747 host PASS and independent exact Opus
 code APPROVE. Milestone provenance REFINE was addressed by a saved/rerun harness;
-do not relabel it ALIGNED. ASK01 contract remains under technical reconciliation.
+do not relabel it ALIGNED. C078 supersedes the historical ASK preparation state.
 
 ## Mission
 The project-level destination is the personal assistant described in SPEC.md. Manage project goal → GitHub milestone → goal-bearing Issue → verified work unit under G-001/D-022. [Latest overall plan P-001 v2](docs/plans/P-001-v2.md) is PROPOSED, not human-adopted; v1 is retained history. Stable-0 is released; Stable-1 under D-021 remains the approved current milestone; C065/D034 authorizes the scoped CO development start; shared wire, bounded intake and MEM/TSK queued-source connection are integrated. C14 delivery and the TSK execution/control boundary are next; external product activation remains subject to the reviewed candidate scope. Resume STATE.md, continue independently authorized work, and never activate PROPOSED stages from GitHub metadata alone.

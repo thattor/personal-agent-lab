@@ -11,7 +11,39 @@ Claude Code Pro is session-limited (owner image reset22:19; provider22:20).
 AGY Claude is separate: owner image48% session/39% weekly, not upper100% buckets.
 No new reset, credits, auth, runtime/state edits, service or schedule.
 
-## C077 — local result readback accepted
+## C078 — question/answer implementation verified; milestone review pending
+
+ASK01/1 source b844706eb303f759f14cbd7857dcf86b44f3de99 passes787 local host
+tests (25.139s/exit0), including40 new methods. Focused114 includes existing TSK
+tests; it is not114 new tests. Actual temporary SQLite connects a stored question,
+released slot, saved answer, same-Goal continuation, saved draft, structural
+verification/completion and readback. The executable demo owns its assertions.
+[Verification](evidence/operations/ask01-20261009/verification.json) and
+[milestone candidate](docs/design/contracts-v5/ASK01-MILESTONE.md).
+
+Separate native Sol approves exact Astra TSK3b07675 and Sol RUNf0efa09 after
+reproduced transaction-ownership and closed-Step fixes. Root confirmed integrated
+source bytes equal those reviewed commits; immutable independent32 tests were
+not weakened. AGY Sonnet did not execute this code assignment: its private
+payload was rejected twice before launch. D042's subsequent manual-approval
+direction is retained without duplicating the now-completed native assignment.
+
+Final ASK milestone Opus review is still PENDING, not ALIGNED/MET by self-report.
+CO0.4.5 and its existing shared state are unchanged; latest read-only capacity
+shows0 executing/0 reserved for claude and devin, limit12 per adapter. Claude
+planner remains session-limited until the reported22:20 reset. Fixed role rules
+prohibit substituting SWE as planner; direct AGY code egress rejection is not
+bypassed. Native ASK implementation had two independent delegates, not32.
+
+Next independent work: Astra refines the proposed C10.change seam, original grant,
+revision/old-lease/budget/history invariants before Opus consultation. It is a
+design proposal only; no new semantics or change code adopted. Root prepares a
+concrete ASK milestone/next-design review package. No recurring owner approval
+is introduced for routine development; any actual transport approval remains
+specific to its package. Whole PAL/PRI/UI/provider, semantic usefulness, general
+recovery, auth/cost/publication and unknown-call boundaries remain unchanged.
+
+## Retained C077 — local result readback accepted
 
 Unchanged sourceff1a1ccab553173fa4eae17b29fbe0a79b998313 passes747 local host tests
 (25.142s/exit0), focused36 and actual temporary-SQLite before/after-stop demo.

@@ -1,0 +1,33 @@
+{
+  "observed_at": "2026-10-09T11:59:49.171338+00:00",
+  "version": "0.4.5",
+  "runtime": "/Users/hattoritoshiyasu/Documents/PAL/co-runtime/common-orchestration-v0.4.5",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "capacity": {
+    "limit_per_native_adapter": 12,
+    "claude": {
+      "executing": 0,
+      "reserved": 0
+    },
+    "devin": {
+      "executing": 0,
+      "reserved": 0
+    }
+  },
+  "qualified_models": [
+    "claude/claude-opus-5-5",
+    "devin/swe-2-high"
+  ],
+  "shared_state_concurrency": "supported by installed co-task Independent concurrent tasks; cross-state adapter slots shared",
+  "actual_ASK_code_delegates_peak": 2,
+  "native_slots_including_root": 4,
+  "owner_maximum": 32,
+  "provider_concurrency": "unknown",
+  "new_cost": "not enabled; no reset, paid fallback, new auth or route measurement",
+  "operator_correction": {
+    "mistake": "routes list is not a command",
+    "evidence": "argparse exit2 before any task/provider call; returned choices add/fit/show",
+    "correction": "used supported routes show and inspected successful result",
+    "next_check": "use installed CLI help/observed choices for subcommands"
+  }
+}

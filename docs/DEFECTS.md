@@ -1185,3 +1185,29 @@ the complete digest. Exact byte/hash verification found all10 inputs intact and
 all original manifest hashes correct. The inaccurate draft and receipt limitation
 were removed before commit. Future decisions use complete digest equality and
 byte comparison, never a familiar prefix. This corrective check passed here.
+
+## ASK01 question mint lost its transaction before owned writes
+
+Independent Sol found the initial Astra TSK question-ID callback lacked the
+transaction-ownership guard used at other boundaries. A callback COMMIT could
+make subsequent Step/question/state/event/replay writes autocommit while ask
+returned unavailable. Root reproduced five callback variants before repair in
+tsk-mint-red.log. Exact3b07675 guards a savepoint, active transaction and total
+changes before the first owned ask write; replaced transactions fail closed.
+Root regression1 method/5 subcases and separate final rereview pass. Integrated
+bytes match the reviewed source. This detects a trusted callback's interference;
+it cannot undo the callback's own committed changes or sandbox hostile host code.
+Next callback boundary must verify original transaction ownership before writes,
+including COMMIT/ROLLBACK followed by BEGIN. Retain the regression for reuse.
+
+## ASK01 linked historical Step lacked closed-shape validation
+
+Independent Sol found native Sol RUN accepted a linked finished ask Step with an
+error or unknown field, then reserved and invoked Expert. Relationship checks
+alone did not enforce the committed Step shape. Actual TSK rejected that stored
+corruption; this was a RUN owner-response boundary defect, not a proven TSK bypass.
+Root reproduced all3 variants in run-linked-step-red.log. Exactf0efa09 requires
+the6 committed fields; integrity1 method/3 subcases and separate final rereview
+pass before reservation/inference, without failed release. Legitimate old epochs
+remain valid. Next C12 linkage edit must retain both shape and provenance checks.
+Full787 Root regression and exact-byte source comparison passed after both fixes.
