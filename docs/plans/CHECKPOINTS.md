@@ -969,3 +969,20 @@ cd2a216, TSK02/1; SOL concurrently mock host/consumer; separate Sol6.1 review. O
 and SWE consultations completed and corrections adopted before implementation.
 No recurring checkpoint approval, no complete product/real UI claim. Scope remains
 local mock with controls, budgets and reference-stop, no extra cost/auth/service.
+
+## C072 — controlled mock work and next persistence correction, 2026-10-09
+
+TSK02/1 + RUN01/1 MET at ea2e8fa. Actual MEM/TSK/mock/C14 report/lookup and held-call
+controls now connect; stopped bodies and derived Steps stay out of later context.
+Author34 + root connected14, full531 PASS23.350s. Separate Sol6.1 APPROVE and exact
+CO Opus5.5 ALIGNED; its document-only verification is distinct from root tests.
+Receipt: evidence/operations/tsk02-20261009/verification.json.
+
+Evaluation: this supplies execution/control prerequisites for a useful saved draft,
+not a finished Goal or live product. Opus found a nonblocking next-slice liveness
+issue: transient persistence unavailable becomes failed. RUN01/2 is actually with
+isolated native Astra, base edfad06, while CO SWE taskdc4fbad81715497481bb66a5e02f8f23
+consults ART persistence. Root owns connection/canonical state; Sol reviews changes.
+Follow storage with compose/current-artifact binding, then VER/complete. Before
+those dependencies, add artifact-kind source checks and terminal-history stop rules.
+No model replay, orphan recovery, live DB/provider/UI activation or new owner gate.

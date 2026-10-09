@@ -1,6 +1,22 @@
 # ACCEPTANCE.md — Stable-0 definition of done
 
-## Current C071 durable C14 connection (2026-10-09)
+## Current C072 controlled mock execution (2026-10-09)
+
+TSK02/1 + RUN01/1 local preparation MET at ea2e8fa064cad188e4477d8b534692012083768a.
+Actual MEM/TSK/mock/C14 report and lookup, exact body/hash context, control barriers,
+late-result fencing, stopped source and derived-Step exclusion, persistent budgets,
+occupied-slot retention and no admission-receipt redispatch are connected.
+Author34, root connected14 and full531 PASS23.350s/exit0. Independent native Sol6.1
+APPROVE; exact CO Opus5.5 design ALIGNED. [Receipt](evidence/operations/tsk02-20261009/verification.json).
+
+The frozen slice deliberately leaves Goals unfinished. Saved drafts, verification,
+completion, real providers/termination, recovery, PRI/UI and human usefulness remain
+UNMET/NOT_RUN. Opus F1 transient persistence handling is an active correction before
+compose; F2 artifact dispatch/history and completed-work stop must be addressed
+before their dependent paths. CO verified only the design-note structure. No test
+count or review renews live authorization or proves full CT/product acceptance.
+
+## Retained C071 durable C14 connection (2026-10-09)
 
 TSK03/1 MET at cd2a21621455aebe57d5b94b12ea7e30af1ba4a7. Read-only strict
 session/cursor pagination, malformed-row rejection, caller transaction preservation,

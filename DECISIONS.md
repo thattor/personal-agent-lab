@@ -1881,3 +1881,27 @@ C13 owner-intent precedence: reject SWE's blanket refusal to release fenced outp
 on pause/draining, and its stronger old-epoch restriction. The owned lease and Goal/
 revision permit freeing only occupancy, never stale result adoption. These rulings
 are technical applications of the consulted scope and C13, not new product authority.
+
+D038/C072 outcome: TSK02/RUN01 source ea2e8fa has author34, actual connected14 and
+full531 PASS23.350s, independent native Sol6.1 APPROVE and exact CO Opus5.5 ALIGNED
+(task6bd433a2799a49d2b27d5c5bc9708e7d). CO verified the review document only; the
+reviewer ran no commands, and root binds command/source/hash/full evidence separately.
+The callback-signature and interruption rollback defects have real consumer/fault
+regressions. No Goal completion, persistent live use or recovery is inferred.
+
+Adopt Opus F1: transient local unavailable must not terminally fail otherwise safe
+work. Before admission, yield safely; after return, bounded same-input idempotent
+local write retries, then retain occupancy if persistence remains unresolved. Never
+retry the callable from a receipt or reset ambiguous ownership. Isolated Astra now
+implements RUN01/2 from edfad06; separate Sol reviews it. This is a technical fix
+within existing authorization, not an additional recurring owner checkpoint.
+
+Adopt the next value direction: mock compose -> saved draft -> TSK attachment,
+before VER/complete. Stage ART's immutable bytes/current-source readback first,
+then connect artifact-kind dispatch/current-set binding with the RUN improvement;
+do not mark the full compose path complete at the storage checkpoint. SWE task
+dc4fbad81715497481bb66a5e02f8f23 is currently consulting the proposed storage scope.
+ART keeps conservative actual-call dependency provenance, so model omission of a
+source cannot evade reference stop. Completed-state history/source-stop must be
+handled before complete becomes reachable. Orphan lease recovery and actual real
+provider cessation remain separate requirements before activation.

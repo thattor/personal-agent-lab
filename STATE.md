@@ -2,7 +2,31 @@
 
 ## Goal
 
-Current C071 (2026-10-09): TSK03/1 durable C14 pagination/reconnect is MET at
+Current C072 (2026-10-09): TSK02/1 + RUN01/1 local mock execution is MET at
+source ea2e8fa064cad188e4477d8b534692012083768a. Actual MEM/TSK/mock/C14 connection
+covers report/lookup, immediate controls, finite budgets, source-stop and occupied
+slot retention until callable cessation. Author34, root connected14 and full531
+PASS23.350s/exit0; separate native Sol6.1 APPROVE and exact CO Opus5.5 ALIGNED.
+[Verification](evidence/operations/tsk02-20261009/verification.json).
+
+This is local mock preparation: no saved draft, completed Goal, real provider,
+recover, UI or human-usefulness proof. Persisted orphan leases/calls remain blocked.
+Opus F1 identifies transient-unavailable-to-terminal-failure as the next liveness
+correction; it does not block the frozen mock slice, but must be fixed before the
+compose loop. F2 source-kind dispatch/artifact history is a dependency for binding;
+completed-work invalidation must precede any complete implementation.
+
+Continuation is actually dispatched: native Astra in
+/private/tmp/pal-run01-astra-20261009 from edfad064a776179d5d914d668bb2eb3d7f7694a6
+implements RUN01/2, with isolated runner/test ownership. CO SWE-2 High Free task
+dc4fbad81715497481bb66a5e02f8f23 consults ART01-store/1 persistence in parallel;
+its scope is still proposed until advice/disposition. SOL owns TSK/ART integration,
+contracts and canonical records; separate Sol reviews author changes. No new
+permission, cost, service, live DB or schedule. Unknown old SWE/AGY calls untouched.
+
+## Retained C071 durable reconnect record
+
+C071 (2026-10-09): TSK03/1 durable C14 pagination/reconnect is MET at
 source cd2a21621455aebe57d5b94b12ea7e30af1ba4a7. Exact Opus5.5 independently
 APPROVED the C14 code at0cf8563; full483 host tests PASS30.572s after correcting
 an unrelated template test that treated global idle as its Goal completion signal.
@@ -15,7 +39,7 @@ completed and verified only the review note. Root host verification is separate.
 Two independent CO tasks actually overlapped (Claude1/Devin1); both have now ended.
 No30-parallel claim, provider capacity unknown; qualified host cap stays12/adapter.
 
-Next work has actually begun: isolated native Astra implements TSK02/1 TaskStore
+At C071, next work had actually begun: isolated native Astra implemented TSK02/1 TaskStore
 in /private/tmp/pal-tsk02-astra-20261009 from cd2a216, after completed Opus and SWE
 consultations with root dispositions in TSK02-SCOPE.md. SOL concurrently owns the
 mock invoker/runner and connected fault/control tests; separate Sol6.1 will review.
