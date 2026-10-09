@@ -1,6 +1,8 @@
 # CHANGE01/1 final milestone design review
 
 One bounded report task for exact qualified Opus5.5 through existing CO0.4.5.
+The CO planner must keep step instructions within 2000 UTF-8 bytes: reference
+this request rather than copying its sections (runtime hard limit is 4096).
 SOL integrates; Astra authored TSK; separate Sol reviewed exact repaired source.
 You did not author the implementation. Produce a milestone design verdict, using
 the supplied proofs as attributed evidence, without claiming you ran their tests.
