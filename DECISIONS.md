@@ -2914,3 +2914,29 @@ consumer source, separate Sol owns external wrapper. Disjoint isolated writes an
 independent cross-author review precede Root integration/full verification. Scope
 authorizes no generation or actual qualification. No prose-quality test. Whole
 goal NOT_MET; later real entry needs distinct exact design/operator freeze.
+
+## D062 — C093 Opus disposition before direct source (2026-10-10)
+
+Official CO0.4.5 exact Opus5.5 planner/report completed at contract3f69337.
+Original init/result IDs and all4 input hashes agree; report bytes match original
+returned envelope. CO verified report shape/5 listed files only. Root retains the
+raw REFINE report and anonymous receipt, not a source or product acceptance.
+
+Root adopts meaningful S1/S3-S8 corrections: typed true pre-entry refusal via
+existing owners (no new refund), explicit bytes/block rules, recomputable fixed
+placeholder argv, official resolved target recheck,17-file first-party import
+closure, and immutable provider/derived attempt identity. S2 closed post-active
+failure hold is adopted; saved-ending/release crash remains held with no automatic
+recovery/adoption. Fresh original report elapsed208925ms informs finite300s source
+deadline. Rate observation remains retrospective; pro-only and actual pre-entry
+extra-usage evidence remain entry gates. No actual generation/qualification here.
+
+Root caught pre-implementation fixture errors: ambiguous tick delta spelling,
+constructor negatives stopping at helper TypeError, and a clock accelerating
+metadata before entry. Separate author preserves originalRED and repairs actual
+API reach/estimated_tokens_delta/entry-only clock plus real child reaping checks.
+Current source freeze refinements have new fixed tests before implementation;
+no source was released under incorrect fixtures. Stop relying on helper exceptions
+as production negative proof; compile generated child and inspect API reach.
+Independent cross-author source reviews and Root full remain required. Whole
+goal NOT_MET, original unknowns/state unchanged, CO optional and no prose grading.
