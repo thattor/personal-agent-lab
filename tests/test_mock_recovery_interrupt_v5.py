@@ -44,7 +44,7 @@ class RecoveryInterruptTests(unittest.TestCase):
                     self.assertEqual(calls, [True])
                     self.assertEqual(attempts, [{'call_id': admission['call_id'], 'outcome': 'raised'}])
                     call = f.value(f.tasks.get_call({'call_id': admission['call_id']}))
-                    self.assertEqual((call['status'], call['step_id']), ('admitted', None))
+                    self.assertEqual((call['status'], call.get('step_id')), ('admitted', None))
                     self.assertEqual(f.conn.execute('SELECT active FROM v5_tsk_lease WHERE id=?',
                         (lease['lease_id'],)).fetchone()[0], 1)
                     before = tuple(f.conn.iterdump())
