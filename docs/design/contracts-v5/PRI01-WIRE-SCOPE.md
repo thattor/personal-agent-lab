@@ -26,8 +26,9 @@ current_record_ref is exact public Ref(kind=record). allowed_record_refs is a
 list/tuple of exact record Ref values and includes current_record_ref; duplicates
 are harmless. candidates is the C02 `works` list, <=20 closed entries
 `{work_ref,brief_summary,expert_id,state,open_questions,dependency_refs,text_withheld}`.
-Validate public WorkRef, exact UTF8 summary/expert/state, strict bool withholding,
-list of record Refs, list of closed `{id,text,revision}` questions: nonempty UTF8
+Entries contain plain JSON WorkRef/Ref dictionaries as returned by C02; validate
+with public WorkRef/Ref.from_json. Validate UTF8 summary/expert/state, strict bool
+withholding, list of record Ref dictionaries, list of closed `{id,text,revision}` questions: nonempty UTF8
 id, UTF8 text, strict positive revision matching its candidate WorkRef revision.
 Each Goal appears once and question IDs are unique per candidate. Withheld entries
 have empty summary/all question text; no hidden body. Allowed states are existing
