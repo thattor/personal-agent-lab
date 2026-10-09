@@ -77,3 +77,31 @@ Final source SHA256:
 `226eab3ad2e92a6a056efef537b5f4e88f8a485aff598cb9da49d233ae4a6957`.
 The separate reviewer owns additional complete-receipt, SQL-fault and typed binding
 corruption probes. Candidate test success does not stand in for that review.
+
+## Independent review correction: historical running pause
+
+Independent review of candidate a778d6f / source226eab3 found that the receipt
+validator checked state and control_status enums separately, accepting a stored
+running pause whose original pause_requested was changed to none. Actual
+control() always sets pause=1 for running pause and serializes pause_requested;
+therefore this combination is contradictory without consulting current flags.
+The author reproduced the original independent probe: 5 PASS / 1 FAIL, retained
+in `/private/tmp/pri-tsk-pause-author-red.log`.
+
+The two-line correction requires pause_requested when the historical command is
+pause and its receipt state is running. It changes no current-state or authority
+comparison and does not re-gate sources. The independent probe dependency
+`c17729b11f349a8f4a96692d770d6d6468bb8f95` remains unchanged. Next related receipt
+work must check command/state/control_status relationships, not only each enum.
+
+Python3.13 -E -s -B unittest verification, all exit 0:
+- `discover -s tests -p test_primary_tasks_review_v5.py -v`: 6 PASS, 0.095s;
+  `/private/tmp/pri-tsk-pause-probe6-green.log`.
+- `discover -s tests -p test_tasks_primary_v5.py -v`: 24 PASS, 0.209s;
+  `/private/tmp/pri-tsk-pause-fixed24-green.log`.
+- Same related discovery patterns as above: 195 PASS, 3.429s;
+  `/private/tmp/pri-tsk-pause-related195-green.log`.
+
+Corrected source SHA256:
+`0c63b042f934f5baf5e8f511fced1e0706afeaee7579f7091d8c5161a6498228`.
+These are author reruns; exact-source independent rereview remains separate.

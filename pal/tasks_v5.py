@@ -950,6 +950,8 @@ class TaskStore(IntakeStore):
                 if kind in ('pause', 'resume', 'cancel'):
                     if type(command) is not str or value['state'] not in {'pause': ('paused', 'running'), 'resume': ('queued', 'waiting_input'), 'cancel': ('cancelled',)}[kind]:
                         raise ContractError()
+                    if kind == 'pause' and value['state'] == 'running' and value['control_status'] != 'pause_requested':
+                        raise ContractError()
                 elif kind == 'change':
                     _obj(command, {'kind', 'brief', 'origin_record_ref'})
                     origin = Ref.from_json(command['origin_record_ref'])
