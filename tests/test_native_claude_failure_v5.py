@@ -211,7 +211,8 @@ class ClaudeFailureTests(unittest.TestCase):
                     self.assertTrue(row['primary_error']['sites'])
                     self.assertNotIn('fixture output',(self.call_dir()/'failure.json').read_text())
                 self.assertTrue((self.lane/'active.json').exists())
-                self.assertIn(CANARY.encode(),(self.call_dir()/'stdout.bin').read_bytes())
+                frames=[json.loads(line) for line in (self.call_dir()/'stdout.bin').read_bytes().splitlines()]
+                self.assertIn(CANARY,json.dumps(frames,ensure_ascii=False))
         # Only exact fixed-source traceback frames count; last8, in original order.
         self.setup_provider()
         ns={'error':ValueError(CANARY)}
