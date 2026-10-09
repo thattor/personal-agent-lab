@@ -64,3 +64,32 @@ Full regression and independent review belong to Root and are NOT_RUN here.
 Persistent returned output remains blocked for future recovery; it is not saved
 as a MOD raw response and cannot safely be recomputed. No ART/VER/completion,
 real provider or product activation is claimed.
+
+## Follow-up: preserve control-driven release of fenced output
+
+Root inspection found a regression in the first reliability correction: immediate
+error returns on persistent unavailable and same-runner unfinished-work detection
+also blocked release after a newer pause/cancel/source stop. The call had actually
+ended, so C13 permitted the fenced output to be discarded under the newer intent.
+The runner had conflated preserving unadopted output with always retaining its slot.
+
+The new `yield_or_retain` path attempts only TSK.release(yield). TSK decides from
+its current transaction state: newer control plus ended calls may release; ordinary
+unfinished output or an unended admitted call conflicts and stays occupied. No
+model call, budget reservation, output adoption or refund occurs in this path.
+It is used for persistent post-output unavailable, unfinished-work reentry and
+unresolved invocation outcomes. Failure to release returns a fixed bounded error.
+
+The initial reproduction log `/private/tmp/pal-run01-fenced-release-before.log`
+had cascading subtest occupancy. The improved test always cleans its temporary
+scenario; `/private/tmp/pal-run01-fenced-release-before-isolated.log` independently
+reproduces all 12 combinations: begin/finish × in-loop/reentry × pause/cancel/stop.
+The corrected command passes **24 tests**, 0.238 seconds, at
+`/private/tmp/pal-run01-fenced-release-after.log`. Actual TaskStore/MEM assertions
+cover latest state, slot release, one actual callback, unchanged budget and no
+progress event. An uncertain admitted call remains occupied even after cancel.
+The existing unfenced persistent-failure tests still require retained occupancy.
+
+Next changes to unavailable/reentry handling must run both sides of this boundary:
+unfenced output remains held; ended, control-fenced output can release according to
+TSK's latest intent. The runner must not duplicate the TSK control state machine.

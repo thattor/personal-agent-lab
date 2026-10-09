@@ -588,6 +588,73 @@ class MockExecutionTests(unittest.TestCase):
         self.assertEqual(self.conn.execute('SELECT count(*) FROM v5_tsk_lease WHERE active=1').fetchone()[0], 0)
         self.assertEqual(sum(e['kind'] == 'progress' for e in self.events()), 0)
 
+    def test_fenced_output_releases_after_persistent_write_failure_or_reentry(self):
+        for boundary in ('begin_step', 'finish_step'):
+            for reentry in (False, True):
+                for command in ('pause', 'cancel', 'stop'):
+                    with self.subTest(boundary=boundary, reentry=reentry, command=command):
+                        key = f'{boundary}-{reentry}-{command}'
+                        origin, work = self.create(key=key)
+                        runner = MockRunner(self.tasks, self.memory)
+                        calls, attempts = [], []
+                        def control():
+                            if command == 'stop':
+                                self.stop(origin, key=key)
+                            else:
+                                self.control(work, command)
+                        original = getattr(self.tasks, boundary)
+                        def unavailable(request, **kwargs):
+                            attempts.append(1)
+                            if len(attempts) == 3 and not reentry:
+                                control()
+                            return Result.failure(ErrorCode.UNAVAILABLE, 'local persistence failure')
+                        def expert(*a, **k):
+                            calls.append(1)
+                            return {'kind': 'report', 'summary': 'fenced output'}
+                        setattr(self.tasks, boundary, unavailable)
+                        result = runner.run_once(expert)
+                        setattr(self.tasks, boundary, original)
+                        if reentry:
+                            self.assertFalse(result.ok)
+                            control()
+                            result = runner.run_once(expert)
+                        try:
+                            self.assertEqual(self.value(result)['state'],
+                                             {'pause': 'paused', 'cancel': 'cancelled', 'stop': 'queued'}[command])
+                            self.assertEqual(calls, [1])
+                            self.assertEqual(len(attempts), 3)
+                            self.assertEqual(self.conn.execute('SELECT count(*) FROM v5_tsk_lease WHERE active=1').fetchone()[0], 0)
+                            usage = dict(self.conn.execute('SELECT kind,used FROM v5_tsk_usage WHERE goal=?', (work['goal_id'],)))
+                            self.assertEqual(usage.get('model'), 1)
+                            self.assertEqual(usage.get('step', 0), int(boundary == 'finish_step'))
+                            self.assertFalse(any(e['kind'] == 'progress' and e.get('work_ref', {}).get('goal_id') == work['goal_id'] for e in self.events()))
+                        finally:
+                            held = self.value(self.tasks.claim({'runner_id': runner.runner_id}))
+                            if 'lease_id' in held:
+                                self.value(self.tasks.release({'lease_id': held['lease_id'],
+                                    'work_ref': held['work_ref'], 'outcome': 'failed', 'reason': 'test cleanup'}))
+                            if self.current(work)['state'] not in ('cancelled', 'failed'):
+                                self.control(work, 'cancel')
+
+    def test_reentry_cannot_release_uncertain_admitted_call_even_after_cancel(self):
+        _, work = self.create()
+        runner = MockRunner(self.tasks, self.memory)
+        original = self.tasks.admit_call
+        def lost(request):
+            self.value(original(request))
+            return Result.failure(ErrorCode.UNAVAILABLE, 'lost admission')
+        self.tasks.admit_call = lost
+        calls = []
+        self.assertFalse(runner.run_once(lambda *a, **k: calls.append(1)).ok)
+        self.tasks.admit_call = original
+        self.control(work, 'cancel')
+        before = self.conn.execute('SELECT * FROM v5_tsk_usage').fetchall()
+        self.assertFalse(runner.run_once(lambda *a, **k: calls.append(1)).ok)
+        self.assertEqual(calls, [])
+        self.assertEqual(before, self.conn.execute('SELECT * FROM v5_tsk_usage').fetchall())
+        self.assertEqual(self.conn.execute('SELECT count(*) FROM v5_tsk_lease WHERE active=1').fetchone()[0], 1)
+        self.assertEqual(self.current(work)['state'], 'cancelled')
+
 
 if __name__ == '__main__':
     unittest.main()

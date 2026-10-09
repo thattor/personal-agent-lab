@@ -142,10 +142,17 @@ class MockRunner:
 
         output_pending = False
 
+        def yield_or_retain(reason):
+            # TSK alone knows whether newer control fences this output and whether
+            # every owned call has ended. Ordinary unfinished yield stays blocked.
+            result = release('yield', reason, ErrorCode.UNAVAILABLE)
+            return result if result.ok else _failure(
+                ErrorCode.UNAVAILABLE, 'owned result remains unresolved')
+
         def failed(result, reason):
             if result.error.code is ErrorCode.UNAVAILABLE:
                 if output_pending:
-                    return _failure(ErrorCode.UNAVAILABLE, 'local result persistence unresolved')
+                    return yield_or_retain('local result persistence unresolved')
                 return release('yield', reason, result.error.code)
             return release('failed', reason, result.error.code)
 
@@ -159,11 +166,11 @@ class MockRunner:
         # A returned output has no durable MOD body to recover here. A fresh run
         # must not turn a retained lease into permission for another model unit.
         if any(step['status'] == 'started' for step in steps):
-            return _failure(ErrorCode.UNAVAILABLE, 'unfinished step requires recovery')
+            return yield_or_retain('unfinished step requires recovery')
         next_index = max((step['index'] for step in steps), default=-1) + 1
         existing = self._tasks.get_call({'call_id': dumps(['C15.call', lease_id, next_index])})
         if existing.ok:
-            return _failure(ErrorCode.UNAVAILABLE, 'owned call requires recovery')
+            return yield_or_retain('owned call requires recovery')
         if existing.error.code is not ErrorCode.NOT_FOUND:
             return failed(existing, 'call readiness unavailable')
 
@@ -227,7 +234,7 @@ class MockRunner:
                         return release('failed', 'mock callable raised', ErrorCode.UNAVAILABLE)
                     if (status.ok and _value(status)['status'] in ('admitted', 'returned')) or (
                             not status.ok and status.error.code is not ErrorCode.NOT_FOUND):
-                        return _failure(ErrorCode.UNAVAILABLE, 'owned call outcome unresolved')
+                        return yield_or_retain('owned call outcome unresolved')
                 return failed(called, 'mock call unavailable or stopped')
             output_pending = True
             begun = persist(self._tasks.begin_step, {
