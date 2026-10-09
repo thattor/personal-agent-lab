@@ -24,7 +24,9 @@ ValueError without storing source text.
 prompt send. Calling twice poisons capture. `observe(fields, *, current_update=False)`
 accepts public observer mapping. Before begin ignore all text, retaining none.
 After begin capture only sessionUpdate=agent_message_chunk with content.type=text
-and strict UTF8 content.text. Optional metadata is never captured. Other updates,
+and strict UTF8 content.text. A nontext/missing content in agent_message_chunk
+poisons capture; do not silently treat a partial text subset as the whole answer.
+Optional metadata is never captured. Other updates,
 including agent thoughts/user text/model metadata, add no output. Original host
 still checks model/session/activity. Unknown fields alone grant no authority.
 Observed adapter order is preserved; this API has no outer session/RPC envelope
