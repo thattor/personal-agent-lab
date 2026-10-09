@@ -61,6 +61,15 @@ class ModelOverflowTests(unittest.TestCase):
   for _ in range(40):d.observe({'sessionUpdate':'agent_message_chunk','content':{'type':'text','text':'x'*10000}},hook='observe')
   self.assertEqual(d.snapshot()['observations'],[]);self.assertEqual(self.snapshot(d)['status'],'not_observed')
   d.observe(payload(opt(currentValue='日'*85+'x')),hook='observe');self.assertEqual(self.snapshot(d)['status'],'not_observed')
+ def test_initial_noncount_overflow_exact_marker_for_both_hooks(self):
+  cases=[(payload(opt(id='x'*257)),'token_length','option_id','codepoints',256),
+   ({'configOptions':[opt(id=str(i),currentValue='x'*256,options=[{'value':'x'*256} for _ in range(32)]) for i in range(16)]},'record_bytes','snapshot','utf8_bytes',32768)]
+  for hook in ('observe','verify_session'):
+   for fields,reason,site,unit,limit in cases:
+    with self.subTest(hook=hook,reason=reason):
+     d=make();d.observe(fields,hook=hook)
+     self.marker(d,reason,site,unit,limit,hook=hook,shape='preprompt_snapshot' if hook=='verify_session' else 'field_snapshot')
+     original=d.snapshot();self.assertEqual(original['status'],'incomplete');self.assertEqual(original['observations'],[]);self.assertEqual(len(original),9)
  def test_sidecar_size_refusal_preserves_original_state(self):
   d=make(attempt_ref={k:'\x01'*512 for k in ATT},model_id='\x01'*512);before=d.snapshot()
   with self.assertRaises(ValueError):self.snapshot(d)
