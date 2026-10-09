@@ -36,8 +36,11 @@ precise waiting/source-stop and bounded loss handling. Separate Sol contexts now
 prepare immutable TSK and RUN acceptance tests; source authors follow that input.
 Root owns actual temporary SQLite demo/connection. No live activation.
 CO8288ddc3 remains unknown after planner session limit, untouched. CO's supported
-CLI has no preplanned bypass; do not use SWE as planner under D041. Approved native
-Astra TSK and fresh AGY Sonnet5.5 RUN code are the intended available alternatives.
+CLI has no preplanned bypass; do not use SWE as planner under D041. Native Astra TSK code7caaa2a passed fixed17 and is under independent review.
+AGY Sonnet code upload was rejected before execution even after fresh owner-source
+readback; no further attempt. A separate native Sol now implements RUN from the
+same fixed15 tests. Optional exact AGY egress approval was sent to PAL人間判断;
+no code dependency waits for it. See agy-sonnet-authorization-readback.json.
 SWE remains preferred when the qualified permitted planner can execute again.
 All prior unknown/refused calls, live DBs, cost/auth/publication boundaries remain.
 

@@ -2136,3 +2136,17 @@ conflicts. ASK01-SCOPE owns exact authority/rollback/readiness and bounded RUN l
 handling. Separate fixed tests precede TSK/RUN code. Actual owners/demo and an
 independent review remain required. This is technical completion of the existing
 ask/answer slice, not a new plan/permission/provider/semantic/UI/operational scope.
+
+
+ASK01 actual route correction: automatic approval twice rejected the prepared
+154607-byte private-code/spec/test payload to AGY Sonnet5.5 before process launch.
+First reason: CO authorization did not clearly include AGY. Root freshly verified
+actual subsequent user messages01a12044-1db9 (Sonnet code participation),
+01a11e03-d444 (direct AGY fallback) and01a11e23-a4ad (private PAL AGY use). The same
+command was re-submitted only with that new evidence; review rejected it because
+other-thread tool output was not accepted as trusted sensitive-egress approval.
+No process/run.json/stream was created. Preserve that refusal, make no indirect
+AGY call or payload workaround, and route the concrete optional judgment to the
+already designated human lane. Native Sol separately implements RUN within the
+existing fallback authority; no duplicated AGY execution or owner wait. AGY
+Sonnet contribution to prior READ01 remains true, not to this ASK01 attempt.
