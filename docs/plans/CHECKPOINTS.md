@@ -1,5 +1,24 @@
 # Development checkpoint ledger
 
+## C084 — checkpoint review received; native Expert source contract frozen
+
+Goal: continue toward a native verified saved-result route without borrowing mock
+cessation or weakening unknown semantics. Actual exact Opus5.5 High SUCCESS gives
+C083 REFINE/N2 conditional ALIGNED/Expert REFINE. Root resolves false receipt and
+constructor assumptions against current source in D050 and freezes the smallest
+TSK-owned native result/entry/ending/Step/recovery slice.
+[Report](../../evidence/operations/pri03-20261010/opus-design-report.md) and
+[contract](../design/contracts-v5/PRI03-NATIVE-EXPERT-SCOPE.md).
+
+Contribution: exact responsibilities, durable raw replay and native-aware integrity
+are now fixed before implementation. Source/fixture/real proof remains unearned.
+Next: independent fixed tests, isolated TSK/runner owners, early temporary-owner
+connection and process barriers. In parallel, fixed three RED cleanup-order cases
+feed the distinct CO SWE source task; final exact-source/full/operator proof precedes
+PRIMARY-only N2 MAX1. Expert pairing follows N2 outcome with a new envelope.
+Original unknowns/held capacity are unchanged. Whole goal NOT_MET; held conversation
+is a disclosed release gap and one authentic usefulness judgment remains.
+
 ## C083 — native local lifetime preparation; original qualification UNKNOWN
 
 Goal: connect the current Primary host to a distinct native lifetime without

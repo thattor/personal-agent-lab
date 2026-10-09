@@ -1,6 +1,26 @@
 # STATE.md
 
-## Current C083 — local native preparation verified; actual N UNKNOWN; goal NOT MET
+## Current C084 — native Expert contract frozen; source preparation underway
+
+Actual exact AGY Opus5.5 High review is SUCCESS: C083 REFINE, distinct N2
+conditional ALIGNED, Expert REFINE. Root resolves the scope against actual source
+and freezes [PRI03-NATIVE-EXPERT/1](docs/design/contracts-v5/PRI03-NATIVE-EXPERT-SCOPE.md)
+under D050. TSK owns bounded raw/ending durability and original-call current replay;
+all ended-call consumers validate native bindings; Steps match stored Action bytes.
+Prepared/entering/unknown keeps the global lease/startup held. Structured controls,
+reference-stop and read inspection remain; normal model-led conversation in this
+degraded state is a release gap. No readiness split/unknown retirement is adopted.
+
+Independent Sol fixed TSK/runner tests precede isolated Astra TSK/CO SWE runner
+source; Root owns contracts and integration. The immediate CO SWE cleanup-order
+task follows three independent fixed RED cases. N2 actual qualification is NOT_RUN
+and waits for final corrected source/full/operator proof plus a separate MAX1
+freeze. Wrapper Expert pairing waits for N2 outcome and requires a new envelope.
+Source/fixture preparation continues independently; no old UNKNOWN is retried or
+released. Full1161 at808b05f remains the completed earlier source proof, not proof
+of new code/tests. Whole goal remains NOT_MET.
+
+## Retained C083 — local native preparation verified; actual N UNKNOWN; goal NOT MET
 
 Latest owner instruction remains 「必要なだけ並列作業で開発して」. Root full1161
 PASS30.939s/exit0 at808b05f; the corrected wrapper has independent Sol35 APPROVE.

@@ -1532,3 +1532,15 @@ public_report_sha256 now identify the bytes and transformation; reviewer text an
 verdict are unchanged. Future exported reports bind exact published bytes and
 label original response hashes separately. Public review notes also use local
 evidence labels rather than inaccessible raw host paths; originals stay local.
+
+D050 early checkpoint found that failed-path diagnostic persistence preceded the
+single supported stop. Best-effort catches protected exceptions but could delay
+the stop on diagnostic work. Independent three original RED tests assert stop
+before diagnostic calls/writes, including diagnostic SystemExit and write
+KeyboardInterrupt. A distinct scoped source correction must pass them without
+extra protocol polling/retry. Original N1 outcome/capacity is unchanged.
+
+Opus source-free review assumed a transport version refusal always supplies a
+NeverStarted receipt; actual original adapter fixtures show UNAVAILABLE/no evidence.
+Root reconciles every actual-entry gate against installed public source and does
+not turn reviewer advice into fabricated native cessation or new authority.

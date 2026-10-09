@@ -1,5 +1,14 @@
 # AGENTS.md — Personal Agent Lab
 
+Current C084/D050: native Expert source/fixture contract is frozen in
+PRI03-NATIVE-EXPERT-SCOPE.md after actual exact Opus5.5 REFINE and Root
+reconciliation. Independent fixed tests precede TSK/runner code; Root owns shared
+contracts/integration. Stop-before-diagnostic source refinement is in CO SWE work.
+N2 is NOT_RUN and needs its own final-source MAX1 freeze. No Expert real entry yet.
+Prepared/entering/unknown native Expert remains held, with controls/stop/read and
+no ready-dependent inference. This disclosed degraded state is a release gap.
+Original N1/T/CO unknown calls remain untouched; whole goal remains NOT_MET.
+
 Current C083: overall goal remains unmet. NativeCall, explicit NativePrimary and
 the external ACP wrapper have independent source approval. Corrected candidate
 808b05f has separate wrapper35 APPROVE and Root full1161 PASS;

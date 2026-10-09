@@ -1,0 +1,90 @@
+{
+  "checkpoint": "C083/PRI03",
+  "route": "existing AGY",
+  "requested_model": "claude-opus-5-5-high",
+  "observed_init_model": "claude-opus-5-5-high",
+  "requested_mode": "plan",
+  "observed_permission_mode": "request-review",
+  "response_status": "SUCCESS",
+  "exit_code": 0,
+  "elapsed_seconds": 225.441,
+  "source_documents_commit": "a332c53e79b7e28788f6abbb42099edc122a3535",
+  "anonymous_exact_inputs": [
+    {
+      "path": "SPEC.md",
+      "source_commit": "a332c53e79b7e28788f6abbb42099edc122a3535",
+      "anonymous_http_status": 200,
+      "bytes": 11005,
+      "sha256": "d02c1c9970eaabe8f32f1e4ed2a0031525f3c64da2e02a456a5f8f2f13bed9e8",
+      "exact_local_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-N-SCOPE.md",
+      "source_commit": "a332c53e79b7e28788f6abbb42099edc122a3535",
+      "anonymous_http_status": 200,
+      "bytes": 20005,
+      "sha256": "985d88bb3525abe21995375b7172d1d42decd64e498784b5ecf97aaea30e88a0",
+      "exact_local_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI03-EXPERT-NATIVE-PREPARATION.md",
+      "source_commit": "a332c53e79b7e28788f6abbb42099edc122a3535",
+      "anonymous_http_status": 200,
+      "bytes": 14121,
+      "sha256": "1d46f7fcb6c015cc6ffa54394c0e0ead853f7b7409b248191253663d8f7e5d6c",
+      "exact_local_match": true
+    },
+    {
+      "path": "evidence/operations/pri02-20261010/native-n-summary.json",
+      "source_commit": "a332c53e79b7e28788f6abbb42099edc122a3535",
+      "anonymous_http_status": 200,
+      "bytes": 2887,
+      "sha256": "fb3cf2d4ae6bd99b21e795d8d93af0cd9acc867c321ccc62db70d7b53389eb0c",
+      "exact_local_match": true
+    },
+    {
+      "path": "evidence/operations/pri02-20261010/native-preparation-verification.json",
+      "source_commit": "a332c53e79b7e28788f6abbb42099edc122a3535",
+      "anonymous_http_status": 200,
+      "bytes": 3603,
+      "sha256": "55e3ed1ead08dece6829a96294d28a083fbdee4fc5d828b053950f808e03a6a7",
+      "exact_local_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PAL-contracts-v5.md",
+      "source_commit": "a332c53e79b7e28788f6abbb42099edc122a3535",
+      "anonymous_http_status": 200,
+      "bytes": 42338,
+      "sha256": "3a79b4c8153748743260c61c0de2d19e1e1f0917789ab95346ea875c51212e3c",
+      "exact_local_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/TSK02-SCOPE.md",
+      "source_commit": "a332c53e79b7e28788f6abbb42099edc122a3535",
+      "anonymous_http_status": 200,
+      "bytes": 15176,
+      "sha256": "5031b816ea42e4b1579a058e060e83bb20a7317a804005a4e28119b5f4604a11",
+      "exact_local_match": true
+    }
+  ],
+  "input_prompt_sha256": "1447afbd05ac9a3a2c657ba05da1cfc91209446154f386a1c84f010cc69af6e0",
+  "original_response_sha256": "ea969fff55846050f4b9ec2bc2ba24fc692fef267e3ae7832a54668708a5a1c4",
+  "public_report_sha256": "ea969fff55846050f4b9ec2bc2ba24fc692fef267e3ae7832a54668708a5a1c4",
+  "public_report_bytes": 22784,
+  "public_report_transformation": "none; exact original response bytes",
+  "observed_steps": {
+    "user_input": 1,
+    "agent_response": 1
+  },
+  "tools_observed": false,
+  "new_auth_or_extra_cost_enabled": false,
+  "old_unknown_conversations_or_calls_resumed": false,
+  "verdicts": {
+    "C083": "REFINE",
+    "N2": "ALIGNED conditional",
+    "PRI03_native_expert": "REFINE",
+    "whole_goal": "NOT_MET"
+  },
+  "review_scope": "Design-only inline seven public documents and attributed host correction results; no product source review or test/provider qualification. Requested plan does not prove hard plan/tool enforcement.",
+  "root_adoption": "Adopt minimal stop-before-diagnostic ordering, closed separate execute/diagnostic/stop records, capacity guards and actual ending gates. Adopt TSK-owned raw persistence/current-only replay, strict native consumers, stored-byte Action matching and honest held recovery. Prepared native remains held conservatively. Do not manufacture NativeNeverEntered from wrapper metadata, do not infer original NeverStarted or force release. Retired-unknown/readiness separation is NOT_ADOPTED. Reconcile false assumptions against actual source before entry."
+}

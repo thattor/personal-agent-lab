@@ -1,5 +1,21 @@
 # ACCEPTANCE.md
 
+## Current C084 — contract preparation, no new native acceptance
+
+Actual Opus5.5 High design review completed SUCCESS on seven public documents
+and attributed host results; verdicts C083 REFINE/N2 conditional ALIGNED/Expert
+REFINE. D050 resolves it into PRI03-NATIVE-EXPERT/1 and independent fixed tests
+before source. This is contract adoption only. Cleanup-order refinement and native
+Expert code/full/crash/real-function/UI/usefulness are NOT_RUN or in preparation.
+Full1161 at808b05f remains earlier local source proof. Original N1 UNKNOWN/held
+slot and T/CO unknowns remain; no qualified transport or whole-goal PASS follows.
+
+[Review receipt](evidence/operations/pri03-20261010/opus-design-summary.json) and
+[scope](docs/design/contracts-v5/PRI03-NATIVE-EXPERT-SCOPE.md) fix raw TSK retention,
+current-only replay, stored-byte Action binding, conservative prepared/unknown
+recovery, and honest held startup. Normal conversation under native Expert UNKNOWN
+is a release-relevant gap; unknown retirement/readiness separation are not adopted.
+
 ## Current C083 — native local preparation passes; actual qualification UNKNOWN
 
 Corrected candidate808b05f has Root full **1161 PASS30.939s/exit0** and separate

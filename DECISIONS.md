@@ -2535,3 +2535,51 @@ Anonymous all36 byte/hash readback at public a332c53 follows separate export
 APPROVE. Later source corrections require bounded export verification. The next
 Opus consultation is design-only on seven public documents and attributed host
 results; its verdict is pending, not source review or authority for actual entry.
+
+## D050 — C083 design refinement and bounded native Expert freeze (2026-10-10)
+
+Actual existing AGY claude-opus-5-5-high completed SUCCESS225.441s/exit0. Exact
+init model matches; requested plan, observed request-review, observed input/response
+steps only. Seven anonymous exact public documents at a332c53 and attributed host
+808b05f/35/full1161 results were supplied. This is design consultation, not source
+review or executed provider/test proof. [Report](evidence/operations/pri03-20261010/opus-design-report.md)
+and [receipt](evidence/operations/pri03-20261010/opus-design-summary.json) preserve
+exact original report bytes/hash and scope. Verdicts: C083 REFINE, distinct N2
+conditional ALIGNED, native Expert REFINE; whole goal NOT_MET.
+
+SOL adopts stop-before-diagnostic failure ordering (R2) with independent fixed
+three original RED cases and a distinct CO SWE source task. Existing wrapper
+preflight already checks exact version/hash before reserve/entry and repeats it
+before on_enter. Metadata refusal is a local guard refusal, never a constructed
+NativeNeverEntered. Original constructor refusal can return UNAVAILABLE without
+NeverStarted; R1's suggested guaranteed receipt/release is not adopted. A later
+binary race remains conservative UNKNOWN unless actual original typed cessation
+exists. Closed execute/diagnostic/stop records jointly meet retained-observation
+intent (R3); no duplicate unified receipt or diagnostic status pumping is needed.
+R4 capacity sum must be below12 and original held-slot baseline unchanged at entry.
+R5 qualification is computed from exact actual original receipts, never digests.
+
+SOL freezes PRI03-NATIVE-EXPERT/1 in PRI03-NATIVE-EXPERT-SCOPE.md before source.
+Adopt TSK-owned raw output/ending atomic durability and current-only original-call
+replay; immutable native discriminator/both-side binding; all-consumer integrity;
+stored-byte Action matching; explicit non-callable runner; fresh VER/readback and
+profile-aware known-ended ART recovery. Existing C15 has no index field: Expert
+request adds only WorkRef to its role/output pairing; index is derived by TSK.
+Native prepared/entering/unknown remains conservatively held at restart, without
+not_entered_local or settlement writes. Expert's global lease keeps startup and
+ready-dependent inference unavailable; structured controls/stop/read remain usable.
+This is a disclosed conversation/release gap, not accepted whole-product behavior.
+
+Unknown retirement and separate Primary readiness are NOT_ADOPTED later proposals.
+Stored returned/no-Step cannot be automatically adopted into a new-epoch Step.
+The bounded scope preserves result bytes and current-call replay, rather than
+claiming a general MOD ledger. Mock defaults and existing wire/receipts remain.
+Opus's example constructor connection parameter is unnecessary: runner owns no SQL
+and receives public owners only. Source/test assignments are disjoint and isolated.
+
+N2 remains NOT_RUN, requires final cleanup-order source/full/independent operator
+proof and its own Root PRIMARY-only MAX1 freeze. Expert wrapper changes wait for
+that outcome and invalidate its envelope; a later separately frozen Expert MAX1
+combines exact new-profile qualification with connection proof. No N3 after another
+UNKNOWN without design reassessment. Original N1/T/CO calls remain unchanged and
+unreplayed. No new human method approval, auth, cost, service or runtime/state edit.
