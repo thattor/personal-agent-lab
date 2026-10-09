@@ -312,7 +312,7 @@ class TaskAskTests(unittest.TestCase):
     def test_admitted_or_unadopted_returned_activity_cannot_close_lease(self):
         self.stage()
         for status in ('admitted', 'returned'):
-            self.conn.execute('INSERT INTO v5_tsk_call '
+            self.conn.execute('INSERT INTO v5_tsk_call (id,lease,work,idx,reservation,sources,status,step) '
                 'SELECT ?,lease,work,idx+1,reservation,sources,?,NULL FROM v5_tsk_call WHERE id=?',
                 ('extra-call', status, self.call_id))
             self.error(self.tasks.ask(self.request), 'conflict')
@@ -329,7 +329,7 @@ class TaskAskTests(unittest.TestCase):
         self.conn.execute('UPDATE v5_tsk_call SET work=? WHERE id=?', (original, self.call_id))
         for status in ('returned', 'raised', 'not_entered'):
             old_work = {**self.lease['work_ref'], 'epoch': self.lease['work_ref']['epoch'] - 1}
-            self.conn.execute('INSERT INTO v5_tsk_call '
+            self.conn.execute('INSERT INTO v5_tsk_call (id,lease,work,idx,reservation,sources,status,step) '
                 'SELECT ?,lease,?,idx+1,reservation,sources,?,NULL FROM v5_tsk_call WHERE id=?',
                 ('old-work-call', dumps(old_work), status, self.call_id))
             result = self.tasks.ask(self.request)

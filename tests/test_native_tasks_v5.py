@@ -22,7 +22,14 @@ class NativeTasksTests(unittest.TestCase):
     def ended(self,n):self.ok(n.admit());self.ok(n.enter());self.ok(n.end())
     def test_admission_receipt_replay_native_shape_and_no_extra_budget(self):
         n=self.fixture();n.prepare();used=n.f.usage();expected={'call_id':n.call_id,'status':'admitted'}
-        self.assertEqual(self.ok(n.admit()),expected);self.assertEqual(n.f.usage(),used)
+        self.assertEqual(self.ok(n.admit()),expected)
+        after=n.f.usage();self.assertEqual(after[:2],used[:2])
+        self.assertEqual(len(after[2]),len(used[2]))
+        for original,current in zip(used[2],after[2]):
+            self.assertEqual(current[:-1],original[:-1])
+            if original[0]==n.admission['reservation_id']:
+                self.assertIsNone(original[-1]);self.assertEqual(current[-1],n.call_id)
+            else:self.assertEqual(current,original)
         before=n.f.snapshot();self.assertEqual(self.ok(n.admit()),expected);self.assertEqual(n.f.snapshot(),before)
         call=self.ok(n.t.get_call({'call_id':n.call_id}))
         self.assertEqual(call['profile_id'],'co-devin-acp-dynamic-text/1');self.assertEqual(call['native_phase'],'prepared')
