@@ -9,7 +9,7 @@ import time
 import uuid
 
 from pal.artifacts_v5 import ArtifactStore
-from pal.contracts_v5 import ErrorCode, Grant, Limits, Result
+from pal.contracts_v5 import ErrorCode, ErrorInfo, Grant, Limits, Ref, Result, WorkRef
 from pal.http_v5 import _closed, _token, failure
 from pal.memory_v5 import MemoryStore
 from pal.mock_host_v5 import MockHostSession
@@ -193,6 +193,90 @@ class LocalNativeApp:
             raise ValueError('owner response unavailable')
         return Result.from_json(result.to_json())
 
+    @staticmethod
+    def _primary_value(result):
+        value = result.value.to_json()
+        if (type(value) is not dict or not {'status', 'effect_refs'} <= set(value)
+                or set(value) - {'status', 'effect_refs', 'reply', 'error'}
+                or type(value['effect_refs']) is not list
+                or value['status'] not in {'committed', 'failed', 'interrupted', 'pending', 'held'}):
+            raise ValueError('primary response unavailable')
+        refs = [Ref.from_json(ref) for ref in value['effect_refs']]
+        if len(set(refs)) != len(refs):
+            raise ValueError('primary response unavailable')
+        status = value['status']
+        if status in {'pending', 'held'} and set(value) != {'status', 'effect_refs'}:
+            raise ValueError('primary response unavailable')
+        if status != 'committed' and (refs or 'reply' in value):
+            raise ValueError('primary response unavailable')
+        if status in {'failed', 'interrupted'} and 'error' not in value:
+            raise ValueError('primary response unavailable')
+        if 'reply' in value:
+            reply = value['reply']
+            if (type(reply) is not str or len(reply.encode('utf-8')) > 16384
+                    or sanitize(reply) != reply):
+                raise ValueError('primary response unavailable')
+        if 'error' in value:
+            error = ErrorInfo.from_json(value['error'])
+            message = ('Reply sources unavailable' if status == 'committed'
+                       else 'Primary turn did not commit')
+            if error.refs or error.message != message or (status == 'committed'
+                    and (error.code is not ErrorCode.DENIED or 'reply' in value)):
+                raise ValueError('primary response unavailable')
+        return value
+
+    @staticmethod
+    def _expert_value(result):
+        value = result.value.to_json()
+        if type(value) is not dict:
+            raise ValueError('expert response unavailable')
+        if value == {'status': 'empty'}:
+            return value
+        status = value.get('status')
+        base = {'status', 'work_ref', 'state', 'lease_id', 'steps', 'call_ids',
+                'excluded_refs', 'excluded_step_ids', 'pending_inputs'}
+        if status in {'released', 'completed'}:
+            required = base | {'control_status'}
+        elif status == 'waiting':
+            required = base | {'question_id', 'step_id'}
+        else:
+            raise ValueError('expert response unavailable')
+        optional = {'verification'} | ({'reason_code'} if status == 'released' else set())
+        if not required <= set(value) or set(value) - required - optional:
+            raise ValueError('expert response unavailable')
+        WorkRef.from_json(value['work_ref'])
+        _token(value['lease_id'])
+        if value['state'] not in {'queued', 'running', 'waiting_input', 'paused', 'completed', 'cancelled', 'failed'}:
+            raise ValueError('expert response unavailable')
+        if status == 'completed' and (value['state'] != 'completed' or 'verification' not in value):
+            raise ValueError('expert response unavailable')
+        if status == 'waiting':
+            _token(value['question_id']); _token(value['step_id'])
+            if value['state'] != 'waiting_input':
+                raise ValueError('expert response unavailable')
+        elif value['control_status'] != 'none':
+            raise ValueError('expert response unavailable')
+        for key in ('steps', 'call_ids', 'excluded_refs', 'excluded_step_ids', 'pending_inputs'):
+            if type(value[key]) is not list:
+                raise ValueError('expert response unavailable')
+        for key in ('call_ids', 'excluded_step_ids'):
+            for identifier in value[key]:
+                _token(identifier)
+        for ref in value['excluded_refs']:
+            Ref.from_json(ref)
+        if any(type(item) is not dict for key in ('steps', 'pending_inputs') for item in value[key]):
+            raise ValueError('expert response unavailable')
+        if 'reason_code' in value:
+            ErrorCode(value['reason_code'])
+        if 'verification' in value:
+            receipt = value['verification']
+            if (type(receipt) is not dict or set(receipt) != {'verification_ref', 'checks'}
+                    or type(receipt['checks']) is not list):
+                raise ValueError('expert response unavailable')
+            if Ref.from_json(receipt['verification_ref']).kind.value != 'verification':
+                raise ValueError('expert response unavailable')
+        return value
+
     def _slice(self, kind, identity):
         with self._lock:
             if not self._unchanged():
@@ -208,7 +292,7 @@ class LocalNativeApp:
                     if result.error.code is ErrorCode.UNAVAILABLE:
                         self._hold()
                     return
-                status = result.value.to_json().get('status')
+                status = self._primary_value(result)['status']
                 if status == 'held' or status not in {'committed', 'failed', 'interrupted', 'pending'}:
                     self._hold(); return
                 if status != 'committed':
@@ -223,8 +307,8 @@ class LocalNativeApp:
             if not result.ok:
                 if result.error.code is ErrorCode.UNAVAILABLE:
                     self._hold()
-            elif result.value.to_json().get('status') not in {'released', 'completed', 'waiting', 'empty'}:
-                self._hold()
+            else:
+                self._expert_value(result)
 
     def _discard_queue(self):
         with self._lock:
