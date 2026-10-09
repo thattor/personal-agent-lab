@@ -799,7 +799,7 @@ Preserve original design/initial findings and final note. Next milestone handoff
 must use the current scope's actual owner/type list and mechanically check any
 explicit output bound. This correction changes no product code or permission.
 Evidence: co-update-045-20261009/task-c-initial-review.json and milestone-review.md.
-# 2026-10-09 — incomplete diagnosis of an unknown Native call
+## 2026-10-09 — incomplete diagnosis of an unknown Native call
 
 The previous continuation stopped at the CO unknown report without correlating the
 Native PID, per-run logs and persisted session. That left the next technical action
@@ -812,3 +812,31 @@ metadata and report the specific missing recovery condition before deferring.
 The read-only session listing needed an approved host scope because its CLI creates
 a log outside sandbox roots. No trust override, resend or public support submission
 was used. See co-int00-20261009/diagnosis.json for the actual bounds.
+
+## C068 — deadline shutdown race and misleading command wrapper
+
+The first full419 regression failed the existing CancelProbe deadline subcase:
+serve_operator observed an expired deadline before the watchdog marked it closed,
+then treated the ordinary stop as an operator failure. An unchanged rerun passed;
+that did not resolve the race. New deterministic tests reproduced expiration before
+watchdog close and close between loop checks (two errors); general rejection stayed
+an error. Source inspection confirms the time/check interleaving, with no INT00
+runtime import or source dependency. Preserve both full419 outcomes.
+
+Correction: a private RunRejected subtype identifies only closed/expired checks.
+serve_operator handles that stop with idempotent close_run; the existing first
+reason, cleanup and no-result-application behavior remain. Other rejections still
+fail. The related22 cases and independent Sol6.1 review passed; full422 passed after
+integration. This does not requalify historical live source freezes or restart a
+trial. Next shutdown change must rerun the deterministic interleavings and preserve
+ordinary pin/rejection errors, zero saved effects and lock release.
+
+The first shell wrapper also used zsh's read-only `status` variable and exited1,
+hiding the subprocess exit status. Before reading the retained log, SOL's retry
+justification incorrectly called the tests successful. The log actually had one
+failure; no acceptance row was promoted from that claim. Subsequent verification
+runs use the test command directly, inspect its exit code and final log, and bind
+both to the source commit. Do not infer test success from completion or a wrapper
+error. Evidence: co-int00-20261009/full-initial-wrapper-error.log,
+full-pre-fix-retry.log, deadline-before.log, deadline-after.log,
+full-integrated.log and sol-independent-review.md.

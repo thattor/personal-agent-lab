@@ -1,0 +1,257 @@
+test_closed_keys_for_every_wire_shape (test_contracts_v5.ContractsV5Tests.test_closed_keys_for_every_wire_shape) ... ok
+test_depth_cycles_and_platform_integer_limit_fail_boundedly (test_contracts_v5.ContractsV5Tests.test_depth_cycles_and_platform_integer_limit_fail_boundedly) ... ok
+test_direct_constructors_enforce_the_same_types (test_contracts_v5.ContractsV5Tests.test_direct_constructors_enforce_the_same_types) ... ok
+test_error_does_not_chain_decoder_exception_or_echo_malicious_input (test_contracts_v5.ContractsV5Tests.test_error_does_not_chain_decoder_exception_or_echo_malicious_input) ... ok
+test_examples (test_contracts_v5.ContractsV5Tests.test_examples) ... Trying:
+    dumps(WorkRef.from_json(loads('{"goal_id":"g1","revision":1,"epoch":0}')))
+Expecting:
+    '{"epoch":0,"goal_id":"g1","revision":1}'
+ok
+Trying:
+    action = parse_model_action('{"kind":"report","summary":"done"}', allowed_refs=[])
+Expecting nothing
+ok
+Trying:
+    action.to_json()
+Expecting:
+    {'kind': 'report', 'summary': 'done'}
+ok
+207 items had no tests:
+    pal.contracts_v5.ActionKind
+    pal.contracts_v5.AskAction
+    pal.contracts_v5.AskAction.__delattr__
+    pal.contracts_v5.AskAction.__eq__
+    pal.contracts_v5.AskAction.__hash__
+    pal.contracts_v5.AskAction.__init__
+    pal.contracts_v5.AskAction.__post_init__
+    pal.contracts_v5.AskAction.__repr__
+    pal.contracts_v5.AskAction.__setattr__
+    pal.contracts_v5.Brief
+    pal.contracts_v5.Brief.__delattr__
+    pal.contracts_v5.Brief.__eq__
+    pal.contracts_v5.Brief.__hash__
+    pal.contracts_v5.Brief.__init__
+    pal.contracts_v5.Brief.__post_init__
+    pal.contracts_v5.Brief.__repr__
+    pal.contracts_v5.Brief.__setattr__
+    pal.contracts_v5.Brief._from_json
+    pal.contracts_v5.CheckKind
+    pal.contracts_v5.ComposeAction
+    pal.contracts_v5.ComposeAction.__delattr__
+    pal.contracts_v5.ComposeAction.__eq__
+    pal.contracts_v5.ComposeAction.__hash__
+    pal.contracts_v5.ComposeAction.__init__
+    pal.contracts_v5.ComposeAction.__post_init__
+    pal.contracts_v5.ComposeAction.__repr__
+    pal.contracts_v5.ComposeAction.__setattr__
+    pal.contracts_v5.Condition
+    pal.contracts_v5.Condition.__delattr__
+    pal.contracts_v5.Condition.__eq__
+    pal.contracts_v5.Condition.__hash__
+    pal.contracts_v5.Condition.__init__
+    pal.contracts_v5.Condition.__post_init__
+    pal.contracts_v5.Condition.__repr__
+    pal.contracts_v5.Condition.__setattr__
+    pal.contracts_v5.Condition._from_json
+    pal.contracts_v5.ContractError
+    pal.contracts_v5.ContractError.__init__
+    pal.contracts_v5.DraftBrief
+    pal.contracts_v5.DraftBrief.__delattr__
+    pal.contracts_v5.DraftBrief.__eq__
+    pal.contracts_v5.DraftBrief.__hash__
+    pal.contracts_v5.DraftBrief.__init__
+    pal.contracts_v5.DraftBrief.__post_init__
+    pal.contracts_v5.DraftBrief.__repr__
+    pal.contracts_v5.DraftBrief.__setattr__
+    pal.contracts_v5.DraftBrief._from_json
+    pal.contracts_v5.DraftCondition
+    pal.contracts_v5.DraftCondition.__delattr__
+    pal.contracts_v5.DraftCondition.__eq__
+    pal.contracts_v5.DraftCondition.__hash__
+    pal.contracts_v5.DraftCondition.__init__
+    pal.contracts_v5.DraftCondition.__post_init__
+    pal.contracts_v5.DraftCondition.__repr__
+    pal.contracts_v5.DraftCondition.__setattr__
+    pal.contracts_v5.DraftCondition._from_json
+    pal.contracts_v5.ErrorCode
+    pal.contracts_v5.ErrorInfo
+    pal.contracts_v5.ErrorInfo.__delattr__
+    pal.contracts_v5.ErrorInfo.__eq__
+    pal.contracts_v5.ErrorInfo.__hash__
+    pal.contracts_v5.ErrorInfo.__init__
+    pal.contracts_v5.ErrorInfo.__post_init__
+    pal.contracts_v5.ErrorInfo.__repr__
+    pal.contracts_v5.ErrorInfo.__setattr__
+    pal.contracts_v5.ErrorInfo._from_json
+    pal.contracts_v5.Grant
+    pal.contracts_v5.Grant.__delattr__
+    pal.contracts_v5.Grant.__eq__
+    pal.contracts_v5.Grant.__hash__
+    pal.contracts_v5.Grant.__init__
+    pal.contracts_v5.Grant.__post_init__
+    pal.contracts_v5.Grant.__repr__
+    pal.contracts_v5.Grant.__setattr__
+    pal.contracts_v5.Grant._from_json
+    pal.contracts_v5.JsonValue
+    pal.contracts_v5.JsonValue.__delattr__
+    pal.contracts_v5.JsonValue.__eq__
+    pal.contracts_v5.JsonValue.__hash__
+    pal.contracts_v5.JsonValue.__init__
+    pal.contracts_v5.JsonValue.__repr__
+    pal.contracts_v5.JsonValue.__setattr__
+    pal.contracts_v5.JsonValue.data
+    pal.contracts_v5.JsonValue.to_json
+    pal.contracts_v5.Limits
+    pal.contracts_v5.Limits.__delattr__
+    pal.contracts_v5.Limits.__eq__
+    pal.contracts_v5.Limits.__hash__
+    pal.contracts_v5.Limits.__init__
+    pal.contracts_v5.Limits.__post_init__
+    pal.contracts_v5.Limits.__repr__
+    pal.contracts_v5.Limits.__setattr__
+    pal.contracts_v5.Limits._from_json
+    pal.contracts_v5.LookupAction
+    pal.contracts_v5.LookupAction.__delattr__
+    pal.contracts_v5.LookupAction.__eq__
+    pal.contracts_v5.LookupAction.__hash__
+    pal.contracts_v5.LookupAction.__init__
+    pal.contracts_v5.LookupAction.__post_init__
+    pal.contracts_v5.LookupAction.__repr__
+    pal.contracts_v5.LookupAction.__setattr__
+    pal.contracts_v5.MediaType
+    pal.contracts_v5.OperateAction
+    pal.contracts_v5.OperateAction.__delattr__
+    pal.contracts_v5.OperateAction.__eq__
+    pal.contracts_v5.OperateAction.__hash__
+    pal.contracts_v5.OperateAction.__init__
+    pal.contracts_v5.OperateAction.__post_init__
+    pal.contracts_v5.OperateAction.__repr__
+    pal.contracts_v5.OperateAction.__setattr__
+    pal.contracts_v5.Ref
+    pal.contracts_v5.Ref.__delattr__
+    pal.contracts_v5.Ref.__eq__
+    pal.contracts_v5.Ref.__hash__
+    pal.contracts_v5.Ref.__init__
+    pal.contracts_v5.Ref.__post_init__
+    pal.contracts_v5.Ref.__repr__
+    pal.contracts_v5.Ref.__setattr__
+    pal.contracts_v5.Ref._from_json
+    pal.contracts_v5.RefKind
+    pal.contracts_v5.ReportAction
+    pal.contracts_v5.ReportAction.__delattr__
+    pal.contracts_v5.ReportAction.__eq__
+    pal.contracts_v5.ReportAction.__hash__
+    pal.contracts_v5.ReportAction.__init__
+    pal.contracts_v5.ReportAction.__post_init__
+    pal.contracts_v5.ReportAction.__repr__
+    pal.contracts_v5.ReportAction.__setattr__
+    pal.contracts_v5.Result
+    pal.contracts_v5.Result.__delattr__
+    pal.contracts_v5.Result.__eq__
+    pal.contracts_v5.Result.__hash__
+    pal.contracts_v5.Result.__init__
+    pal.contracts_v5.Result.__post_init__
+    pal.contracts_v5.Result.__repr__
+    pal.contracts_v5.Result.__setattr__
+    pal.contracts_v5.Result.failure
+    pal.contracts_v5.Result.from_json
+    pal.contracts_v5.Result.success
+    pal.contracts_v5.Result.to_json
+    pal.contracts_v5.Target
+    pal.contracts_v5.Target.__delattr__
+    pal.contracts_v5.Target.__eq__
+    pal.contracts_v5.Target.__hash__
+    pal.contracts_v5.Target.__init__
+    pal.contracts_v5.Target.__post_init__
+    pal.contracts_v5.Target.__repr__
+    pal.contracts_v5.Target.__setattr__
+    pal.contracts_v5.Target._from_json
+    pal.contracts_v5.TargetFile
+    pal.contracts_v5.TargetFile.__delattr__
+    pal.contracts_v5.TargetFile.__eq__
+    pal.contracts_v5.TargetFile.__hash__
+    pal.contracts_v5.TargetFile.__init__
+    pal.contracts_v5.TargetFile.__post_init__
+    pal.contracts_v5.TargetFile.__repr__
+    pal.contracts_v5.TargetFile.__setattr__
+    pal.contracts_v5.TargetFile._from_json
+    pal.contracts_v5.VerifyAction
+    pal.contracts_v5.VerifyAction.__delattr__
+    pal.contracts_v5.VerifyAction.__eq__
+    pal.contracts_v5.VerifyAction.__hash__
+    pal.contracts_v5.VerifyAction.__init__
+    pal.contracts_v5.VerifyAction.__post_init__
+    pal.contracts_v5.VerifyAction.__repr__
+    pal.contracts_v5.VerifyAction.__setattr__
+    pal.contracts_v5.WorkRef
+    pal.contracts_v5.WorkRef.__delattr__
+    pal.contracts_v5.WorkRef.__eq__
+    pal.contracts_v5.WorkRef.__hash__
+    pal.contracts_v5.WorkRef.__init__
+    pal.contracts_v5.WorkRef.__post_init__
+    pal.contracts_v5.WorkRef.__repr__
+    pal.contracts_v5.WorkRef.__setattr__
+    pal.contracts_v5.WorkRef._from_json
+    pal.contracts_v5._Action
+    pal.contracts_v5._Action.from_json
+    pal.contracts_v5._Action.to_json
+    pal.contracts_v5._Invalid
+    pal.contracts_v5._Value
+    pal.contracts_v5._Value.from_json
+    pal.contracts_v5._Value.to_json
+    pal.contracts_v5._allowed
+    pal.contracts_v5._array
+    pal.contracts_v5._boundary
+    pal.contracts_v5._brief_fields
+    pal.contracts_v5._brief_from_json
+    pal.contracts_v5._constant
+    pal.contracts_v5._enum
+    pal.contracts_v5._fail
+    pal.contracts_v5._frozen
+    pal.contracts_v5._instance
+    pal.contracts_v5._integer
+    pal.contracts_v5._jsoncopy
+    pal.contracts_v5._keys
+    pal.contracts_v5._membership
+    pal.contracts_v5._normalized
+    pal.contracts_v5._pairs
+    pal.contracts_v5._refs
+    pal.contracts_v5._sequence
+    pal.contracts_v5._text
+    pal.contracts_v5._wire
+    pal.contracts_v5.action_from_json
+    pal.contracts_v5.dumpsok
+test_model_entrypoints_require_allowed_refs (test_contracts_v5.ContractsV5Tests.test_model_entrypoints_require_allowed_refs) ... ok
+test_numbers_keep_json_type_and_sign (test_contracts_v5.ContractsV5Tests.test_numbers_keep_json_type_and_sign) ... ok
+test_optional_lookup_refs_absent_is_not_empty_or_null (test_contracts_v5.ContractsV5Tests.test_optional_lookup_refs_absent_is_not_empty_or_null) ... ok
+test_python_non_json_values_are_rejected_at_decoded_and_serialization_boundaries (test_contracts_v5.ContractsV5Tests.test_python_non_json_values_are_rejected_at_decoded_and_serialization_boundaries) ... 
+  test_python_non_json_values_are_rejected_at_decoded_and_serialization_boundaries (test_contracts_v5.ContractsV5Tests.test_python_non_json_values_are_rejected_at_decoded_and_serialization_boundaries) (value_type='tuple') ... FAIL
+test_raw_boundary_rejects_duplicates_after_escape_decoding (test_contracts_v5.ContractsV5Tests.test_raw_boundary_rejects_duplicates_after_escape_decoding) ... ok
+test_raw_boundary_rejects_invalid_utf8_and_surrogates_everywhere (test_contracts_v5.ContractsV5Tests.test_raw_boundary_rejects_invalid_utf8_and_surrogates_everywhere) ... ok
+test_shared_fixture_acceptance_and_lossless_roundtrip (test_contracts_v5.ContractsV5Tests.test_shared_fixture_acceptance_and_lossless_roundtrip) ... ok
+test_shared_fixture_covers_closed_vocabularies_and_boundary_cases (test_contracts_v5.ContractsV5Tests.test_shared_fixture_covers_closed_vocabularies_and_boundary_cases) ... ok
+test_typed_result_decoder_preserves_value_and_rejects_mutable_or_lossy_output (test_contracts_v5.ContractsV5Tests.test_typed_result_decoder_preserves_value_and_rejects_mutable_or_lossy_output) ... ok
+test_values_and_nested_arguments_are_immutable_snapshots (test_contracts_v5.ContractsV5Tests.test_values_and_nested_arguments_are_immutable_snapshots) ... ok
+
+======================================================================
+FAIL: test_python_non_json_values_are_rejected_at_decoded_and_serialization_boundaries (test_contracts_v5.ContractsV5Tests.test_python_non_json_values_are_rejected_at_decoded_and_serialization_boundaries) (value_type='tuple')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-int00-astra-20261009/tests/test_contracts_v5.py", line 166, in test_python_non_json_values_are_rejected_at_decoded_and_serialization_boundaries
+    with self.assertRaises(c.ContractError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.027s
+
+FAILED (failures=1)
+
+    pal.contracts_v5.loads
+    pal.contracts_v5.parse_model_action
+    pal.contracts_v5.parse_model_draft_brief
+1 item passed all tests:
+   3 tests in pal.contracts_v5
+3 tests in 208 items.
+3 passed.
+Test passed.

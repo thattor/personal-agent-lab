@@ -1,0 +1,20 @@
+test_closed_keys_for_every_wire_shape (test_contracts_v5.ContractsV5Tests.test_closed_keys_for_every_wire_shape) ... ok
+test_depth_cycles_and_platform_integer_limit_fail_boundedly (test_contracts_v5.ContractsV5Tests.test_depth_cycles_and_platform_integer_limit_fail_boundedly) ... ok
+test_direct_constructors_enforce_the_same_types (test_contracts_v5.ContractsV5Tests.test_direct_constructors_enforce_the_same_types) ... ok
+test_error_does_not_chain_decoder_exception_or_echo_malicious_input (test_contracts_v5.ContractsV5Tests.test_error_does_not_chain_decoder_exception_or_echo_malicious_input) ... ok
+test_examples (test_contracts_v5.ContractsV5Tests.test_examples) ... ok
+test_model_entrypoints_require_allowed_refs (test_contracts_v5.ContractsV5Tests.test_model_entrypoints_require_allowed_refs) ... ok
+test_numbers_keep_json_type_and_sign (test_contracts_v5.ContractsV5Tests.test_numbers_keep_json_type_and_sign) ... ok
+test_optional_lookup_refs_absent_is_not_empty_or_null (test_contracts_v5.ContractsV5Tests.test_optional_lookup_refs_absent_is_not_empty_or_null) ... ok
+test_python_non_json_values_are_rejected_at_decoded_and_serialization_boundaries (test_contracts_v5.ContractsV5Tests.test_python_non_json_values_are_rejected_at_decoded_and_serialization_boundaries) ... ok
+test_raw_boundary_rejects_duplicates_after_escape_decoding (test_contracts_v5.ContractsV5Tests.test_raw_boundary_rejects_duplicates_after_escape_decoding) ... ok
+test_raw_boundary_rejects_invalid_utf8_and_surrogates_everywhere (test_contracts_v5.ContractsV5Tests.test_raw_boundary_rejects_invalid_utf8_and_surrogates_everywhere) ... ok
+test_shared_fixture_acceptance_and_lossless_roundtrip (test_contracts_v5.ContractsV5Tests.test_shared_fixture_acceptance_and_lossless_roundtrip) ... ok
+test_shared_fixture_covers_closed_vocabularies_and_boundary_cases (test_contracts_v5.ContractsV5Tests.test_shared_fixture_covers_closed_vocabularies_and_boundary_cases) ... ok
+test_typed_result_decoder_preserves_value_and_rejects_mutable_or_lossy_output (test_contracts_v5.ContractsV5Tests.test_typed_result_decoder_preserves_value_and_rejects_mutable_or_lossy_output) ... ok
+test_values_and_nested_arguments_are_immutable_snapshots (test_contracts_v5.ContractsV5Tests.test_values_and_nested_arguments_are_immutable_snapshots) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.015s
+
+OK

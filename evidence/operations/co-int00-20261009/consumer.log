@@ -1,0 +1,16 @@
+test_duplicate_arguments_stop_before_preparation_and_transport (test_v5_read_content_pipeline.ActionReadContentPipelineTests.test_duplicate_arguments_stop_before_preparation_and_transport) ... ok
+test_model_action_bytes_and_result_round_trip_across_helpers (test_v5_read_content_pipeline.ActionReadContentPipelineTests.test_model_action_bytes_and_result_round_trip_across_helpers) ... ok
+test_structurally_valid_wrong_repository_is_denied_by_read_helper (test_v5_read_content_pipeline.ActionReadContentPipelineTests.test_structurally_valid_wrong_repository_is_denied_by_read_helper) ... ok
+test_unprovided_source_stops_before_preparation_and_transport (test_v5_read_content_pipeline.ActionReadContentPipelineTests.test_unprovided_source_stops_before_preparation_and_transport) ... ok
+test_unsupported_capability_is_rejected_by_read_helper (test_v5_read_content_pipeline.ActionReadContentPipelineTests.test_unsupported_capability_is_rejected_by_read_helper) ... ok
+test_chunked_response_preserves_text_and_checks_expected_bytes (test_v5_read_content_pipeline.ReadContentPipelineTests.test_chunked_response_preserves_text_and_checks_expected_bytes) ... ok
+test_cumulative_transport_overflow_cannot_enter_decode (test_v5_read_content_pipeline.ReadContentPipelineTests.test_cumulative_transport_overflow_cannot_enter_decode) ... ok
+test_denied_repository_never_reaches_transport (test_v5_read_content_pipeline.ReadContentPipelineTests.test_denied_repository_never_reaches_transport) ... ok
+test_empty_file_is_valid_content (test_v5_read_content_pipeline.ReadContentPipelineTests.test_empty_file_is_valid_content) ... ok
+test_same_length_tampering_does_not_match_expected_body (test_v5_read_content_pipeline.ReadContentPipelineTests.test_same_length_tampering_does_not_match_expected_body) ... ok
+test_wrong_provider_size_stops_before_content_preparation (test_v5_read_content_pipeline.ReadContentPipelineTests.test_wrong_provider_size_stops_before_content_preparation) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.001s
+
+OK

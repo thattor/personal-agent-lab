@@ -1,0 +1,18 @@
+{
+  "recorded_at": "2026-10-09T00:39:19.316429+00:00",
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro",
+    "restricted_read": "reported unauthenticated; approved host metadata check confirmed existing authentication"
+  },
+  "official_usage": {
+    "source": "https://claude.ai/new#settings/usage",
+    "session_used_percent": 88,
+    "week_used_percent": 44,
+    "extra_usage_enabled": false,
+    "auto_reload_enabled": false,
+    "settings_changed": false
+  },
+  "scope": "one bounded INT00 design-alignment assessment through existing CO; no new authentication, reset, purchase or paid fallback"
+}

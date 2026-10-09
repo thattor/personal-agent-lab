@@ -54,8 +54,18 @@
     "weekly_used_percent": 40,
     "implementation_model": "gpt-6-astra",
     "independent_review_model": "gpt-6.1-sol",
-    "calls_launched": 0,
-    "reset_or_purchase": false
+    "reset_or_purchase": false,
+    "implementation_status": "committed and integrated",
+    "implementation_agent": "/root/int00_astra",
+    "implementation_base": "a6983916ce78714fd97ae2320be8e374924f4313",
+    "implementation_workspace": "/private/tmp/pal-int00-astra-20261009",
+    "implementation_branch": "codex/pal-int00-astra",
+    "independent_review_status": "APPROVE",
+    "agent_contexts_started": 2,
+    "implementation_turns": 1,
+    "review_turns": 3,
+    "implementation_commit": "d286fe7f1adff074f67b0ae4406c41eac3da9e24",
+    "review_agent": "/root/int00_sol_review"
   },
   "old_co_task": {
     "task_id": "6a9dea446fa241ceb6ee876bbdb08be9",
