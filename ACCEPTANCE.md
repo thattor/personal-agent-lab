@@ -1,3 +1,23 @@
+# Current C093 — direct source1013 passes; qualification not run
+
+Root9ffa093 full **1013 PASS29.866s/exit0** follows independent Sol core APPROVE
+(pure11, consumer10, related166 and2 extra cases) and Astra wrapper APPROVE
+(fixed9 plus actual owned-child cleanup/failure probes). All94 existing test/
+fixture files retain exact bytes;30 new methods verify functional transport,
+owner/profile boundaries and saved replay. No prose or intelligence grading.
+[Exact verification](evidence/operations/c093-direct-claude-20261010/verification.json).
+
+Independent findings fixed descendant survival, post-reap group signals and
+EPERM skipping owned wait. The actual Python3.13 WNOWAIT behavior is verified with
+inert local children. This is source/fixture proof; no genuine provider generation,
+qualification or native UI adoption occurred. Digest equality is a binding rather
+than a qualification verdict. The separate MAX1 operator still needs its fault
+repairs, independent review and Root exact entry freeze. Old UNKNOWNs are unchanged.
+
+Mock default and LOCAL_MOCK_VERIFIED UI remain. Real qualified Primary/Expert/UI,
+authentic useful work flow and release acceptance keep whole goal **NOT_MET**.
+Earlier checkpoints below retain their original source-specific meaning.
+
 # Current C092 — source983 passes; real functional proof still outstanding
 
 Independent source review/native165 and Root full983 PASS19.397s/exit0 establish

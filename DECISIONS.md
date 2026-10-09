@@ -2940,3 +2940,36 @@ no source was released under incorrect fixtures. Stop relying on helper exceptio
 as production negative proof; compile generated child and inspect API reach.
 Independent cross-author source reviews and Root full remain required. Whole
 goal NOT_MET, original unknowns/state unchanged, CO optional and no prose grading.
+
+## D063 — C093 direct source integrated and independently verified (2026-10-10)
+
+Root9ffa093 integrates exact Astra core8d2f580 and Sol wrappera98bbb4 with separate
+source reviews. Sol's core review covers11 pure/10 consumer/166 related/2 extra
+cases; Astra's wrapper review covers fixed9 and owned-child failure probes. Root
+full1013 PASS29.866s/exit0 retains all94 prior test/fixture bytes and983 methods,
+plus30 new functional methods. Exact source/log hashes are in C093 verification.
+The fixed-test author reviewed a different source author; that relationship is
+disclosed. Wrapper authorship is not counted as its independent source review.
+
+Additional fixture corrections preserved original failures and criteria: choose
+the Claude profile before first durable session enrollment; use the public
+recover-turns/startup lifecycle; expect the resolved official executable; inspect
+submitted Popen environment rather than macOS-injected child environment. Do not
+change production migration or broaden environment to satisfy a fixture defect.
+
+Independent actual inert-child probes found three lifecycle defects: TERM ended
+the leader before descendant KILL, metadata signaled a reaped PID, and pump reaped
+before protocol refusal. Darwin could also deny a signal to an exited-only group
+and skip wait. Repair uses actually supported WNOWAIT to retain owned PID until
+last disposition, refuses ECHILD signal authority, and bounded-waits in finally
+even if a group signal fails. Original REDs and repaired exact probes are retained.
+Prevention: verify descendant cessation, no post-reap signals and owned reap on
+signal failure; do not treat provider9 PASS alone as that lifecycle proof.
+
+Separate export audit APPROVE verifies17 changed source/test/contract/evidence
+files at9ffa093, minimized public provenance, prior exact Opus input/report hashes,
+retained tests and safe ancestry. Private account/operator/raw stream records
+stay local. No new generation, qualification or native activation is authorized
+by this source checkpoint. Private operator independent faults are under repair;
+another exact Root design/operator freeze precedes any real MAX1. Whole goal
+NOT_MET; original unknowns unchanged, CO optional and mock remains default.

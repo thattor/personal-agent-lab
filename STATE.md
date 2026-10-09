@@ -1,11 +1,25 @@
-# Current source preparation — direct Claude contract fixed, no entry
+# Current C093 — direct Claude source verified, actual entry still not run
 
-PRI02-CLAUDE-DIRECT/1 defines a separate closed existing first-party CLI profile,
-fixed raw-frame/owned-local-ending/qualification bindings and managed consumer
-mapping. Independent fixed tests precede separate core and wrapper authors with
-cross-author reviews. D061 permits local source work only; no actual generation,
-qualification or native activation. C092983 source proof remains the last full
-verification. Existing unknowns and CO state are unchanged. Whole goal NOT_MET.
+Root9ffa093 integrates the separately authored direct Claude core and owned
+wrapper with independent Sol core and Astra wrapper APPROVE. Full **1013
+PASS29.866s/exit0** retains all94 previous test/fixture files and983 methods, plus
+30 fixed functional methods. The original Devin profile/buffer/replay gate stays
+strict; the separate Claude profile requires exact original model, frames, request,
+owned EOF/wait and durable ending. [Verification](evidence/operations/c093-direct-claude-20261010/verification.json).
+
+Independent probes caught owned-descendant cleanup and post-reap signal hazards.
+The repaired wrapper observes exit without reaping until acceptance/cleanup,
+checks owned-child identity before group signals and waits even on Darwin EPERM.
+No actual generation occurred. Source approval and a pin digest are not authentic
+provider qualification. The private MAX1 operator has independent fault findings
+under repair; actual entry waits for final operator review and a separate Root
+exact freeze with prior account/extra-usage proof. Original UNKNOWNs remain held.
+
+CO is optional; model prose/intelligence is not graded. Mock remains default and
+current UI LOCAL_MOCK_VERIFIED. Actual native qualification, native Expert/UI,
+authentic useful work flow and release acceptance remain **NOT_MET**. Native local
+concurrency is4 including Root; independent work uses the available contexts,
+without claiming30 executions. Earlier rows below are version-bound history.
 
 # Current C092 — local diagnostic verified; CO optional, direct candidate next
 
