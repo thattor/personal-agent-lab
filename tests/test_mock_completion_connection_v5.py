@@ -135,6 +135,8 @@ class MockCompletionConnectionTests(unittest.TestCase):
         self.assert_completed(out)
         self.assertEqual((len(self.inputs), self.f.usage()), (1, {'model': 1, 'step': 1}))
         self.assertEqual(self.tasks.requests[0], self.tasks.requests[-1])
+        self.assertEqual(len(out['steps']), 1)
+        self.assertEqual(len(out['call_ids']), 1)
 
     def test_persistent_verification_loss_yields_then_verifies_new_epoch_without_inference(self):
         runner = self.runner(verify_mode='lost_always')

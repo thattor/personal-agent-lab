@@ -10,7 +10,7 @@ import copy
 import threading
 import uuid
 
-from pal.contracts_v5 import ContractError, ErrorCode, Ref, Result, dumps, parse_model_action
+from pal.contracts_v5 import ContractError, ErrorCode, Ref, Result, WorkRef, dumps, parse_model_action
 
 
 def _value(result):
@@ -132,7 +132,7 @@ class MockRunner:
         steps = list(lease['steps'])
         finished, calls, excluded_steps_all = [], [], []
         excluded_all = list(_refs(lease['checkpoint'].get('lookup_excluded_refs', [])))
-        last_receipt = [None]
+        last_receipt = None
 
         def release(outcome, reason, error_code=None):
             result = self._tasks.release({'lease_id': lease_id, 'work_ref': work,
@@ -145,8 +145,8 @@ class MockRunner:
                          excluded_step_ids=list(dict.fromkeys(excluded_steps_all)))
             if error_code is not None:
                 value['reason_code'] = error_code.value
-            if last_receipt[0] is not None:
-                value['verification'] = last_receipt[0]
+            if last_receipt is not None:
+                value['verification'] = last_receipt
             return Result.success(value)
 
         output_pending = False
@@ -172,37 +172,78 @@ class MockRunner:
                     return result
             return result
 
-        def finalize():
-            got = persist(self._tasks.get_work, {'work_ref': work})
+        def local_call(method, request):
+            for _ in range(3):
+                try:
+                    result = method(copy.deepcopy(request))
+                    if type(result) is not Result:
+                        return None
+                    result = Result.from_json(result.to_json())
+                except Exception:
+                    return None
+                if result.ok or result.error.code is not ErrorCode.UNAVAILABLE:
+                    return result
+            return result
+
+        def current_artifacts():
+            got = local_call(self._tasks.get_work,
+                             {'goal_id': work['goal_id'], 'revision': work['revision']})
+            if got is None:
+                return None, _failure(ErrorCode.UNAVAILABLE, 'work response malformed')
             if not got.ok:
                 if got.error.code is ErrorCode.UNAVAILABLE:
-                    return yield_or_retain('work state unavailable')
-                return failed(got, 'work state unavailable')
-            artifact_refs = list(_value(got).get('current_artifact_refs') or [])
-            verified = persist(self._verifications.verify, {
+                    return None, yield_or_retain('work state unavailable')
+                return None, _failure(ErrorCode.UNAVAILABLE, 'work state unavailable')
+            try:
+                current = _value(got)
+                binding = WorkRef.from_json(current['work_ref'])
+                refs = current['current_artifact_refs']
+                if ((binding.goal_id, binding.revision) != (work['goal_id'], work['revision'])
+                        or type(refs) is not list or len(_refs(refs)) != len(refs)
+                        or any(Ref.from_json(ref).kind.value != 'artifact' for ref in refs)):
+                    raise ContractError()
+            except (ContractError, KeyError, TypeError):
+                return None, _failure(ErrorCode.UNAVAILABLE, 'work response malformed')
+            return refs, None
+
+        def finalize(artifact_refs=None, *, retained=False):
+            nonlocal last_receipt
+            if artifact_refs is None:
+                artifact_refs, error = current_artifacts()
+                if error is not None:
+                    return error
+            verified = local_call(self._verifications.verify, {
                 'key': dumps(['C09.verify', work, artifact_refs]),
                 'work_ref': work, 'artifact_refs': artifact_refs})
+            if verified is None:
+                return _failure(ErrorCode.UNAVAILABLE, 'verification response malformed')
             if not verified.ok:
                 if verified.error.code is ErrorCode.UNAVAILABLE:
                     return yield_or_retain('verification persistence unresolved')
-                return failed(verified, 'verification failed')
+                if verified.error.code in (ErrorCode.CONFLICT, ErrorCode.STALE, ErrorCode.DENIED):
+                    return failed(verified, 'verification authority changed')
+                return _failure(ErrorCode.UNAVAILABLE, 'verification outcome unavailable')
             try:
                 receipt = _value(verified)
                 checks = receipt['checks']
+                expected = [condition['id'] for condition in lease['brief']['conditions']]
                 valid = (type(receipt) is dict
                          and set(receipt) == {'verification_ref', 'checks'}
                          and Ref.from_json(receipt['verification_ref']).kind.value == 'verification'
-                         and type(checks) is list and bool(checks))
+                         and type(checks) is list and bool(checks)
+                         and len(set(expected)) == len(expected)
+                         and [check['condition_id'] for check in checks] == expected)
                 if valid:
                     for check in checks:
                         valid = (type(check) is dict
                                  and set(check) == {'condition_id', 'status', 'reason',
                                                     'evidence_refs'}
                                  and type(check['condition_id']) is str and check['condition_id']
-                                 and type(check['status']) is str
-                                 and type(check['reason']) is str
+                                 and check['status'] in ('met', 'unmet', 'unknown')
+                                 and type(check['reason']) is str and len(check['reason']) <= 1024
                                  and type(check['evidence_refs']) is list
-                                 and all(bool(Ref.from_json(item))
+                                 and all(Ref.from_json(item).kind.value in ('record', 'artifact')
+                                         and (item['kind'] != 'artifact' or item in artifact_refs)
                                          for item in check['evidence_refs']))
                         if not valid:
                             break
@@ -210,14 +251,29 @@ class MockRunner:
                 return _failure(ErrorCode.UNAVAILABLE, 'verification receipt malformed')
             if not valid:
                 return _failure(ErrorCode.UNAVAILABLE, 'verification receipt malformed')
-            last_receipt[0] = receipt
+            last_receipt = receipt
             if any(check['status'] != 'met' for check in checks):
                 return None
-            completed = persist(self._tasks.control, {
+            reported_steps, reported_calls = finished, calls
+            if retained:
+                reported_steps = [step for step in steps if step['status'] == 'finished']
+                reported_calls = []
+                for step in reported_steps:
+                    if step['work_ref'] != work:
+                        continue
+                    call_id = dumps(['C15.call', lease_id, step['index']])
+                    observed = local_call(self._tasks.get_call, {'call_id': call_id})
+                    if observed is None or (not observed.ok and observed.error.code is not ErrorCode.NOT_FOUND):
+                        return _failure(ErrorCode.UNAVAILABLE, 'retained call diagnostics unavailable')
+                    if observed.ok:
+                        reported_calls.append(call_id)
+            completed = local_call(self._tasks.control, {
                 'key': dumps(['C10.complete', work, receipt['verification_ref']]),
                 'work_ref': work,
                 'command': {'kind': 'complete',
                             'verification_ref': receipt['verification_ref']}})
+            if completed is None:
+                return _failure(ErrorCode.UNAVAILABLE, 'completion response malformed')
             if not completed.ok:
                 code = completed.error.code
                 if code in (ErrorCode.UNAVAILABLE, ErrorCode.AMBIGUOUS):
@@ -225,19 +281,20 @@ class MockRunner:
                                     'completion persistence remains unresolved')
                 if code in (ErrorCode.CONFLICT, ErrorCode.STALE, ErrorCode.DENIED):
                     return None
-                return failed(completed, 'completion failed')
+                return _failure(ErrorCode.UNAVAILABLE, 'completion outcome unavailable')
             try:
                 done = _value(completed)
                 valid = (type(done) is dict
                          and set(done) == {'work_ref', 'state', 'control_status'}
-                         and done['work_ref'] == work and done['state'] == 'completed'
+                         and WorkRef.from_json(done['work_ref']) == WorkRef.from_json(work)
+                         and done['state'] == 'completed'
                          and done['control_status'] == 'none')
             except (ContractError, KeyError, TypeError):
                 return _failure(ErrorCode.UNAVAILABLE, 'completion receipt malformed')
             if not valid:
                 return _failure(ErrorCode.UNAVAILABLE, 'completion receipt malformed')
             return Result.success(dict(done, status='completed', lease_id=lease_id,
-                verification=receipt, steps=finished, call_ids=calls,
+                verification=receipt, steps=reported_steps, call_ids=reported_calls,
                 excluded_refs=[ref.to_json() for ref in dict.fromkeys(excluded_all)],
                 excluded_step_ids=list(dict.fromkeys(excluded_steps_all))))
 
@@ -258,14 +315,11 @@ class MockRunner:
             if (last_finished is not None and type(last_finished['action']) is dict
                     and last_finished['action'].get('kind') == 'compose'
                     and last_finished['result_refs']):
-                current = persist(self._tasks.get_work, {'work_ref': work})
-                if not current.ok:
-                    if current.error.code is ErrorCode.UNAVAILABLE:
-                        return yield_or_retain('work state unavailable')
-                    return failed(current, 'work state unavailable')
-                tail = _value(current).get('current_artifact_refs') or []
+                tail, error = current_artifacts()
+                if error is not None:
+                    return error
                 if tail and tail[-1] == last_finished['result_refs'][-1]:
-                    outcome = finalize()
+                    outcome = finalize(tail, retained=True)
                     if outcome is not None:
                         return outcome
 

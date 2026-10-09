@@ -36,3 +36,24 @@ CO verified covers only this verifier command — never whole-product completion
 Excluded: model verify Action, semantic evaluation, provider/EXE/UI, restart
 recovery, external effects, auth/cost changes, production persistence, and old
 unknown-call retries.
+
+## Root integration correction after the CO result
+
+The original CO result39213ad4 passed its immutable16 protocol fixtures. Actual
+SQLite consumers then failed8 methods/10 cases: RUN passed `{work_ref}` to C02,
+whose public request is `{goal_id,revision?}`. The fixture ignored the request,
+and the dispatch supplied the slice text without the full C02 provider contract.
+Root corrected the call and preserved that original failure log and CO hashes.
+
+Independent Sol review9f31ba9 also reproduced unknown VER errors causing a terminal
+failure, and loss of previous finished-step diagnostics at retained-lease reentry.
+Root now treats unknown/malformed local owner replies as unavailable without new
+inference or a terminal failure, validates fixed check IDs/status/evidence and
+strict WorkRefs, and reports saved Steps plus actually observed current-lease calls.
+Six added integrity methods failed19 subcases with2 errors before repair; the
+original16 plus actual8 and integrity6 now pass30 locally. This is not an
+independent approval or full regression; those remain separate source-bound gates.
+
+Prevention: include exact public request/response examples for each new consumer
+edge in future CO inputs, retain independent real-owner connection tests, and
+exercise unexpected owner outcomes independently of the happy-path fixture.

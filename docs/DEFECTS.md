@@ -1099,3 +1099,30 @@ pending. Next owner integration tests must distinguish legitimate monotonic stat
 changes from corruption, compare all immutable binding fields, and probe every
 trusted callable between BEGIN and the first durable write. This finding applies
 to these actual APIs, not a promise to sandbox arbitrary collaborator code.
+
+## C076 COMPLETE01 consumer conformance and unknown outcomes
+
+CO task39213ad4 passed16 immutable synthetic tests, but actual RUN consumers
+failed8 methods/10 cases at9f31ba9. C02 accepts goal_id/revision; the generated
+consumer sent work_ref. The permissive synthetic owner ignored this input, and
+Root's dispatch did not include the full C02 provider contract. Actual connection
+tests caught the error before any milestone or service activation. Root corrected
+both calls and added the exact existing C02 shape to the slice document.
+
+Independent Sol also reproduced unknown VER ambiguous/invalid_input outcomes being
+sent through generic failed/release, and missing old diagnostics on same-lease
+reentry. Root added6 strict boundary tests (19 failures,2 errors before repair),
+then guarded typed local Results/checks/WorkRefs, retained unknown completion
+occupancy and returned saved diagnostics. Actual8 plus fixed16 and new6 pass30;
+independent rereview and full regression remain pending at this record.
+
+Next consumer assignments must include exact provider request/response examples.
+Keep actual-owner tests distinct from permissive protocol fixtures; unknown owner
+outcomes are not proof that the user's work failed. Recheck the previous response
+loss and latest-control cases after corrections. TSK's separate stored-call/index
+defect and independent46-test approval are recorded in COMPLETE01-TSK-IMPLEMENTATION
+and the tsk-integration receipt; no CO pass substitutes for either integration.
+
+A documentation patch used a misremembered context line and was rejected before
+any edit. Root checked the actual file/diff and applied an exact matching context;
+subsequent patches use a fresh narrow source read when the context is uncertain.

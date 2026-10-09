@@ -104,6 +104,15 @@ Unknown/unmet falls through to the normal finite step loop, with the verificatio
 result available in the local response. It does not by itself release/fail work or
 skip a needed next step. Existing actual budget exhaustion can still fail work.
 
+The existing C02 read request is `{goal_id, revision?}`; RUN supplies both from
+its claimed WorkRef, never `{work_ref}`. Its required artifact list and returned
+WorkRef are typed before use. Receipt checks must have the fixed Condition IDs,
+recognized statuses and bounded reasons; an unknown owner error is unavailable,
+not authority to mark the work failed. These are conformance details of C02/C09
+and the malformed-outcome rule, not a new completion authority. At retained-lease
+entry, report saved finished Steps and only call IDs observed through get_call;
+older-epoch Steps do not manufacture calls for the new lease.
+
 Run this finalization seam after each finished compose. At entry, first pass the
 existing started-Step and get_call readiness checks; only trigger finalization
 when the last finished Step is compose and its artifact is the current set tail.

@@ -1,0 +1,365 @@
+test_completion_workref_never_accepts_boolean_integer_equivalence (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_completion_workref_never_accepts_boolean_integer_equivalence) ... FAIL
+test_current_artifact_set_is_typed_and_required (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_current_artifact_set_is_typed_and_required) ... 
+  test_current_artifact_set_is_typed_and_required (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_current_artifact_set_is_typed_and_required) (refs=None) ... FAIL
+  test_current_artifact_set_is_typed_and_required (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_current_artifact_set_is_typed_and_required) (refs='not a list') ... FAIL
+  test_current_artifact_set_is_typed_and_required (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_current_artifact_set_is_typed_and_required) (refs=[{'kind': 'record', 'id': 'r'}]) ... FAIL
+  test_current_artifact_set_is_typed_and_required (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_current_artifact_set_is_typed_and_required) (refs=[{'kind': 'artifact', 'id': 'a'}, {'kind': 'artifact', 'id': 'a'}]) ... FAIL
+test_malformed_checks_do_not_continue_inference_or_complete (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_malformed_checks_do_not_continue_inference_or_complete) ... 
+  test_malformed_checks_do_not_continue_inference_or_complete (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_malformed_checks_do_not_continue_inference_or_complete) (index=0) ... FAIL
+  test_malformed_checks_do_not_continue_inference_or_complete (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_malformed_checks_do_not_continue_inference_or_complete) (index=1) ... FAIL
+  test_malformed_checks_do_not_continue_inference_or_complete (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_malformed_checks_do_not_continue_inference_or_complete) (index=2) ... FAIL
+  test_malformed_checks_do_not_continue_inference_or_complete (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_malformed_checks_do_not_continue_inference_or_complete) (index=3) ... FAIL
+  test_malformed_checks_do_not_continue_inference_or_complete (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_malformed_checks_do_not_continue_inference_or_complete) (index=4) ... FAIL
+  test_malformed_checks_do_not_continue_inference_or_complete (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_malformed_checks_do_not_continue_inference_or_complete) (index=5) ... FAIL
+test_nonresult_or_raising_completion_callback_retains_occupancy (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_nonresult_or_raising_completion_callback_retains_occupancy) ... 
+  test_nonresult_or_raising_completion_callback_retains_occupancy (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_nonresult_or_raising_completion_callback_retains_occupancy) (callback=<function MockCompletionIntegrityTests.test_nonresult_or_raising_completion_callback_retains_occupancy.<locals>.<lambda> at 0x109608ae0>) ... ERROR
+  test_nonresult_or_raising_completion_callback_retains_occupancy (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_nonresult_or_raising_completion_callback_retains_occupancy) (callback=<function MockCompletionIntegrityTests.test_nonresult_or_raising_completion_callback_retains_occupancy.<locals>.raises at 0x10961b920>) ... ERROR
+test_retained_same_lease_completion_returns_durable_diagnostics (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_retained_same_lease_completion_returns_durable_diagnostics) ... FAIL
+test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) ... 
+  test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='verify', code='ambiguous') ... FAIL
+  test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='verify', code='invalid_input') ... FAIL
+  test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='verify', code='not_found') ... FAIL
+  test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='verify', code='limit') ... FAIL
+  test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='control', code='invalid_input') ... FAIL
+  test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='control', code='not_found') ... FAIL
+  test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='control', code='limit') ... FAIL
+
+======================================================================
+ERROR: test_nonresult_or_raising_completion_callback_retains_occupancy (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_nonresult_or_raising_completion_callback_retains_occupancy) (callback=<function MockCompletionIntegrityTests.test_nonresult_or_raising_completion_callback_retains_occupancy.<locals>.<lambda> at 0x109608ae0>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 71, in test_nonresult_or_raising_completion_callback_retains_occupancy
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+                     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/pal/mock_runner_v5.py", line 397, in run_once
+    outcome = finalize()
+  File "/private/tmp/pal-v5-co-20261009/pal/mock_runner_v5.py", line 216, in finalize
+    completed = persist(self._tasks.control, {
+        'key': dumps(['C10.complete', work, receipt['verification_ref']]),
+        'work_ref': work,
+        'command': {'kind': 'complete',
+                    'verification_ref': receipt['verification_ref']}})
+  File "/private/tmp/pal-v5-co-20261009/pal/mock_runner_v5.py", line 171, in persist
+    if result.ok or result.error.code is not ErrorCode.UNAVAILABLE:
+       ^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'ok'
+
+======================================================================
+ERROR: test_nonresult_or_raising_completion_callback_retains_occupancy (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_nonresult_or_raising_completion_callback_retains_occupancy) (callback=<function MockCompletionIntegrityTests.test_nonresult_or_raising_completion_callback_retains_occupancy.<locals>.raises at 0x10961b920>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 71, in test_nonresult_or_raising_completion_callback_retains_occupancy
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+                     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/pal/mock_runner_v5.py", line 397, in run_once
+    outcome = finalize()
+  File "/private/tmp/pal-v5-co-20261009/pal/mock_runner_v5.py", line 216, in finalize
+    completed = persist(self._tasks.control, {
+        'key': dumps(['C10.complete', work, receipt['verification_ref']]),
+        'work_ref': work,
+        'command': {'kind': 'complete',
+                    'verification_ref': receipt['verification_ref']}})
+  File "/private/tmp/pal-v5-co-20261009/pal/mock_runner_v5.py", line 170, in persist
+    result = method(request, **kwargs)
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 66, in raises
+    raise RuntimeError('synthetic response unavailable')
+RuntimeError: synthetic response unavailable
+
+======================================================================
+FAIL: test_completion_workref_never_accepts_boolean_integer_equivalence (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_completion_workref_never_accepts_boolean_integer_equivalence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 62, in test_completion_workref_never_accepts_boolean_integer_equivalence
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'state': 'completed', 'status': 'completed', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'c', 'evidence_refs': [{'id': 'a', 'kind': 'artifact'}], 'reason': 'synthetic evaluator', 'status': 'met'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': True}}}
+
+======================================================================
+FAIL: test_current_artifact_set_is_typed_and_required (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_current_artifact_set_is_typed_and_required) (refs=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 55, in test_current_artifact_set_is_typed_and_required
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'state': 'completed', 'status': 'completed', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'c', 'evidence_refs': [{'id': 'a', 'kind': 'artifact'}], 'reason': 'synthetic evaluator', 'status': 'met'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_current_artifact_set_is_typed_and_required (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_current_artifact_set_is_typed_and_required) (refs='not a list')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 55, in test_current_artifact_set_is_typed_and_required
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'state': 'completed', 'status': 'completed', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'c', 'evidence_refs': [{'id': 'a', 'kind': 'artifact'}], 'reason': 'synthetic evaluator', 'status': 'met'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_current_artifact_set_is_typed_and_required (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_current_artifact_set_is_typed_and_required) (refs=[{'kind': 'record', 'id': 'r'}])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 55, in test_current_artifact_set_is_typed_and_required
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'state': 'completed', 'status': 'completed', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'c', 'evidence_refs': [{'id': 'a', 'kind': 'artifact'}], 'reason': 'synthetic evaluator', 'status': 'met'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_current_artifact_set_is_typed_and_required (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_current_artifact_set_is_typed_and_required) (refs=[{'kind': 'artifact', 'id': 'a'}, {'kind': 'artifact', 'id': 'a'}])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 55, in test_current_artifact_set_is_typed_and_required
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'state': 'completed', 'status': 'completed', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'c', 'evidence_refs': [{'id': 'a', 'kind': 'artifact'}], 'reason': 'synthetic evaluator', 'status': 'met'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_malformed_checks_do_not_continue_inference_or_complete (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_malformed_checks_do_not_continue_inference_or_complete) (index=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 35, in test_malformed_checks_do_not_continue_inference_or_complete
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]', '["C15.call","lease",1]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': ['step-0'], 'lease_id': 'lease', 'state': 'queued', 'status': 'released', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}, {'action': {'kind': 'report', 'summary': 'bounded next step'}, 'index': 1, 'result_refs': [], 'status': 'finished', 'step_id': 'step-1', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'c', 'evidence_refs': [{'id': 'a', 'kind': 'artifact'}], 'reason': 'synthetic evaluator', 'status': 'broken'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_malformed_checks_do_not_continue_inference_or_complete (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_malformed_checks_do_not_continue_inference_or_complete) (index=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 35, in test_malformed_checks_do_not_continue_inference_or_complete
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'state': 'completed', 'status': 'completed', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'other', 'evidence_refs': [{'id': 'a', 'kind': 'artifact'}], 'reason': 'synthetic evaluator', 'status': 'met'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_malformed_checks_do_not_continue_inference_or_complete (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_malformed_checks_do_not_continue_inference_or_complete) (index=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 35, in test_malformed_checks_do_not_continue_inference_or_complete
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'state': 'completed', 'status': 'completed', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'c', 'evidence_refs': [{'id': 'a', 'kind': 'artifact'}], 'reason': 'synthetic evaluator', 'status': 'met'}, {'condition_id': 'c', 'evidence_refs': [{'id': 'a', 'kind': 'artifact'}], 'reason': 'synthetic evaluator', 'status': 'met'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_malformed_checks_do_not_continue_inference_or_complete (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_malformed_checks_do_not_continue_inference_or_complete) (index=3)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 35, in test_malformed_checks_do_not_continue_inference_or_complete
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'state': 'completed', 'status': 'completed', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'c', 'evidence_refs': [{'id': 'a', 'kind': 'artifact'}], 'reason': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'status': 'met'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_malformed_checks_do_not_continue_inference_or_complete (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_malformed_checks_do_not_continue_inference_or_complete) (index=4)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 35, in test_malformed_checks_do_not_continue_inference_or_complete
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'state': 'completed', 'status': 'completed', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'c', 'evidence_refs': [{'id': 'v', 'kind': 'verification'}], 'reason': 'synthetic evaluator', 'status': 'met'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_malformed_checks_do_not_continue_inference_or_complete (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_malformed_checks_do_not_continue_inference_or_complete) (index=5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 35, in test_malformed_checks_do_not_continue_inference_or_complete
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'state': 'completed', 'status': 'completed', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'c', 'evidence_refs': [{'id': 'other', 'kind': 'artifact'}], 'reason': 'synthetic evaluator', 'status': 'met'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_retained_same_lease_completion_returns_durable_diagnostics (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_retained_same_lease_completion_returns_durable_diagnostics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 80, in test_retained_same_lease_completion_returns_durable_diagnostics
+    self.assertEqual(out['steps'], self.f.owners.steps)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [] != [{'step_id': 'step-0', 'work_ref': {'goal_[244 chars]'}]}]
+
+Second list contains 1 additional elements.
+First extra element 0:
+{'step_id': 'step-0', 'work_ref': {'goal_id': 'g', 'revision': 1, 'epoch': 0}, 'index': 0, 'action': {'kind': 'compose', 'content': 'draft', 'media_type': 'text/plain', 'source_refs': [{'kind': 'record', 'id': 'r'}]}, 'status': 'finished', 'result_refs': [{'kind': 'artifact', 'id': 'a'}]}
+
+- []
++ [{'action': {'content': 'draft',
++              'kind': 'compose',
++              'media_type': 'text/plain',
++              'source_refs': [{'id': 'r', 'kind': 'record'}]},
++   'index': 0,
++   'result_refs': [{'id': 'a', 'kind': 'artifact'}],
++   'status': 'finished',
++   'step_id': 'step-0',
++   'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}]
+
+======================================================================
+FAIL: test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='verify', code='ambiguous')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 45, in test_unexpected_owner_errors_are_not_work_failure_authority
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'reason_code': 'ambiguous', 'state': 'queued', 'status': 'released', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='verify', code='invalid_input')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 45, in test_unexpected_owner_errors_are_not_work_failure_authority
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'reason_code': 'invalid_input', 'state': 'queued', 'status': 'released', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='verify', code='not_found')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 45, in test_unexpected_owner_errors_are_not_work_failure_authority
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'reason_code': 'not_found', 'state': 'queued', 'status': 'released', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='verify', code='limit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 45, in test_unexpected_owner_errors_are_not_work_failure_authority
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'reason_code': 'limit', 'state': 'queued', 'status': 'released', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='control', code='invalid_input')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 45, in test_unexpected_owner_errors_are_not_work_failure_authority
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'reason_code': 'invalid_input', 'state': 'queued', 'status': 'released', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'c', 'evidence_refs': [{'id': 'a', 'kind': 'artifact'}], 'reason': 'synthetic evaluator', 'status': 'met'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='control', code='not_found')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 45, in test_unexpected_owner_errors_are_not_work_failure_authority
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'reason_code': 'not_found', 'state': 'queued', 'status': 'released', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'c', 'evidence_refs': [{'id': 'a', 'kind': 'artifact'}], 'reason': 'synthetic evaluator', 'status': 'met'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unexpected_owner_errors_are_not_work_failure_authority (test_mock_completion_integrity_v5.MockCompletionIntegrityTests.test_unexpected_owner_errors_are_not_work_failure_authority) (method='control', code='limit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 45, in test_unexpected_owner_errors_are_not_work_failure_authority
+    self.unavailable(self.f.runner().run_once(self.f.expert, max_steps=2))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_integrity_v5.py", line 16, in unavailable
+    self.f.error(result)
+    ~~~~~~~~~~~~^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_v5.py", line 158, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease', 'reason_code': 'limit', 'state': 'queued', 'status': 'released', 'steps': [{'action': {'content': 'draft', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'a', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}], 'verification': {'checks': [{'condition_id': 'c', 'evidence_refs': [{'id': 'a', 'kind': 'artifact'}], 'reason': 'synthetic evaluator', 'status': 'met'}], 'verification_ref': {'id': 'v', 'kind': 'verification'}}, 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}}
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.012s
+
+FAILED (failures=19, errors=2)
