@@ -27,8 +27,9 @@ and its own connection-fixture key/case mistakes with original failures retained
 Focused36 now PASS0.152s (VER10, consumer11, regression6, actual owners9); the
 actual demo additionally asserts complete/history/hash/source-stop/visible-MEM
 behavior. Full regression is in verification.json, with exact source and exit.
-This candidate still needs independent final source review; green component
-verifiers are not overall acceptance. The original Sonnet candidate is not
+Independent exact CO Opus de3d5d69 approves the final code. Its milestone
+REFINE requests only reproducible demo provenance; Root has addressed it below.
+Green component verifiers alone are not overall acceptance. The original Sonnet candidate is not
 retroactively approved, and its author claim of NOT_RUN remains accurate.
 
 CO stays0.4.5 on the qualified shared state. Actual measured peak3 owned CO calls
@@ -44,3 +45,26 @@ the bounded work and inspect its outcome. Freeze exact same-transaction semantic
 with technical consultation before assigning code; current READ01 acceptance is
 independent of that proposal. C076's retained verify-authority note must accompany
 the next RUN edit. Neither checkpoint introduces a new owner approval gate.
+
+## Evidence provenance correction and Root disposition
+
+Opus de3d5d69 Code APPROVE applies to unchanged ff1a1cc product source. Milestone
+REFINE is preserved verbatim: the original demo-green.log/demo.json came from a
+Root subprocess/runpy wrapper, not the demo script main block. The literal
+assertion harness is now saved as scripts/verify_readback_demo_v5.py. Reproduce:
+
+`/opt/homebrew/bin/python3.13 -E -s -B scripts/verify_readback_demo_v5.py --output-dir evidence/operations/read01-20261009/verified-demo`
+
+This command PASSes and emits verified-demo/demo.json and demo.log. Original
+wrapper outputs remain separate. verification.json now records review limits.
+Root treats the local READ01 slice as MET after satisfying these explicit
+provenance corrections, not by relabeling the Opus milestone REFINE as ALIGNED.
+No source-code change after independent approval and no product/semantic claim.
+
+Retain nonblocking Opus notes for actual consumer/model/UI expansion: prefix or
+escape multiline display strings to prevent misleading layout; derive real-model
+labels from provenance; share a structured notice identity before adding notices.
+Hash recomputation is optional hardening, and the snapshot writer-blocking test
+applies to rollback-journal mode; the one-read-TX guarantee is the claimed boundary.
+Next ASK01 scope must resolve the review's source-stop/waiting/resume/lease cases
+with ongoing SWE advice before assigning implementation.

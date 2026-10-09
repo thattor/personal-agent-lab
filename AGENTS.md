@@ -1,13 +1,14 @@
 # AGENTS.md — Personal Agent Lab
 
-Current D038/C072 continuation and D037 route instruction supersede earlier stops
+Current D039/C077 continuation and D037 route instruction supersede earlier stops
 and the CO-only restriction. Evaluate checkpoints, correct within accepted scope,
 then actually continue the next unfinished authorized dependency.
 SWE-2 remains preferred when usable; native Astra/Sol and scoped AGY Opus5.5/Sonnet5.5
 are owner-approved alternatives. Preserve both recorded unknown calls; no implicit
 retry/cancel or state edit. AGY exact-conversation loading was rejected by automatic
-review; its concrete optional approval is in the human lane. Use independent native
-work meanwhile. Exact routes, scope and current limits are in STATE/DECISIONS.
+review; its concrete optional approval is in the human lane. D039 now prioritizes
+CO SWE and fresh scoped AGY code, conserving native Codex capacity. Old unknown
+conversation actions remain prohibited. Exact limits are in STATE/DECISIONS.
 INT00/1, TSK01/1, MEM01/1, TSK03/1 and TSK02/RUN01 local mock preparation are
 integrated with separate review and full531 regression, including durable C14,
 actual controls/source-stop and callable-cessation occupancy. Real PRI authority,
@@ -22,6 +23,10 @@ C075: deterministic VER is connected atfab7c77, full650 and independent review
 pass; exact Opus milestone0e78d5da is ALIGNED. COMPLETE01-SCOPE is frozen
 for isolated TSK/RUN work. Continue the loop; do not activate partial completion.
 
+
+C077: READ01 local slice MET atff1a1cc,747 host PASS and independent exact Opus
+code APPROVE. Milestone provenance REFINE was addressed by a saved/rerun harness;
+do not relabel it ALIGNED. ASK01 contract remains under technical reconciliation.
 
 ## Mission
 The project-level destination is the personal assistant described in SPEC.md. Manage project goal → GitHub milestone → goal-bearing Issue → verified work unit under G-001/D-022. [Latest overall plan P-001 v2](docs/plans/P-001-v2.md) is PROPOSED, not human-adopted; v1 is retained history. Stable-0 is released; Stable-1 under D-021 remains the approved current milestone; C065/D034 authorizes the scoped CO development start; shared wire, bounded intake and MEM/TSK queued-source connection are integrated. C14 delivery and the TSK execution/control boundary are next; external product activation remains subject to the reviewed candidate scope. Resume STATE.md, continue independently authorized work, and never activate PROPOSED stages from GitHub metadata alone.

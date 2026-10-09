@@ -7,5 +7,12 @@
   "focused": "36 PASS 0.152s",
   "actual_demo": "PASS completed preserved, immutable VER body/hash, current to source stopped, visible stopped MEM notice",
   "scope": "host local synthetic/temporary SQLite; not GitHub CI or full PAL",
-  "independent_final_review": "PENDING"
+  "independent_final_review": {
+    "task": "de3d5d69eee84e79bc549eb2c62cee55",
+    "model": "claude/claude-opus-5-5",
+    "code": "APPROVE",
+    "milestone": "REFINE provenance",
+    "root_provenance_correction": "scripts/verify_readback_demo_v5.py passes and emits verified-demo/{demo.json,demo.log}; original tool-wrapper demo output remains historical",
+    "reviewer_full_suite_evidence": "receipt only; Root ran complete host suite"
+  }
 }

@@ -2054,3 +2054,19 @@ READ01 read-specific error clarification: absence of the requested VER Ref alone
 is not_found; context(status) not_found becomes unavailable in C11 read because
 current status is uncertain. Typed C09 behavior is unchanged. Independent fixture
 83c62fa records this distinction; exact21 tests are immutable during implementation.
+
+
+D038/D039 C077 accepted: sourceff1a1cc has747 host PASS25.142s, focused36 and real
+readback demo. Independent exact Opusde3d5d69 Code APPROVE; its milestone REFINE
+is evidence-only: the original demo outputs were produced by a Root wrapper.
+Root commits that assertion harness and regenerates separate verified-demo output,
+and records reviewer limits in verification.json. This satisfies the requested
+provenance correction; code is unchanged and Opus REFINE remains verbatim. Local
+READ01 MET, not whole PAL/UI/provider/semantic/recovery/usefulness.
+
+Next ASK01 value is supported by Opus and SWE2610f221; both ask technical refinement.
+Reconcile atomic ask/release occupancy, waiting source-stop/paused resume, exact
+question IDs/APIs/answer registration and bounded RUN loss handling before code.
+SWE's assumption that waiting_input has no lease conflicts with its own split
+ask/release; do not adopt that assumption. Carry C076 verify-authority note into
+the next RUN edit. Existing D039 model/cost/unknown-call boundaries continue.

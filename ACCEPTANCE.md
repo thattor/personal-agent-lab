@@ -1,5 +1,29 @@
 # ACCEPTANCE.md
 
+## C077 — local result readback accepted
+
+Unchanged sourceff1a1ccab553173fa4eae17b29fbe0a79b998313 passes747 local host tests
+(25.142s/exit0), focused36 and actual temporary-SQLite before/after-stop demo.
+Exact independent CO Opus5.5 de3d5d69 Code APPROVE; milestone REFINE requested only
+reproducible demo provenance. Root saved scripts/verify_readback_demo_v5.py and
+reran its assertions into verified-demo. The original wrapper outputs remain
+historical; Opus REFINE is not relabeled ALIGNED. Local READ01 slice is MET.
+[Evidence](evidence/operations/read01-20261009/verification.json) and
+[milestone](docs/design/contracts-v5/READ01-MILESTONE.md).
+
+C14 result and history notices now connect to actual MEM/ART/VER bodies. Saved
+checks/hash/history, TSK state and current usability are distinct. No semantic
+quality, whole-product/PRI/UI/provider activation, general recovery or usefulness
+claim. Original Sonnet11 PASS, Root3 RED, Opus F1, SWE14 repair and final36 are
+separate. D039 actual code contributors are CO SWE-2 High and direct AGY exact
+claude-sonnet-5-5-high; Root owns integration. No new native author/reviewer.
+
+Next ASK01: SWE2610f221 and Opus de3d5d69 advise REFINE. Exact state/lease/API
+contract must be reconciled before code; no owner decision is needed. Preserve
+all old unknown/refused calls and live DBs. Codex remaining2% at last reading,
+ordinary usage allowed; no reset/paid fallback. Use existing CO/AGY for work.
+No new auth/cost/publication/schedule. Continue the authorized development loop.
+
 ## C076 — local verified completion and retained source history
 
 Sourcebdce832 passes711 host tests/24.789s/exit0. Separate Sol6.1 approves RUN30
