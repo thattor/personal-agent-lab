@@ -24,6 +24,8 @@ from pal.contracts_v5 import dumps, Ref
 from pal.native_text_v5 import NativeTextBuffer
 from pal.native_call_v5 import NativeProfile, NativeReturned, NativeNeverEntered
 
+_TRANSPORT_VERSION = 'devin 3000.11.3 (9c803229faa4)'
+
 _HEX = re.compile(r'[0-9a-f]{64}\Z')
 _PIN_KEYS = {'route', 'model', 'version', 'cost_tier', 'measurement_digest',
              'selection_digest', 'runtime_hashes', 'wrapper_sha256',
@@ -182,6 +184,8 @@ def _fresh_pin(api, state_dir, executable):
     version = _metadata(executable, ['--version'], env).decode('utf-8', 'strict').strip()
     if not re.fullmatch(r'(?:(?i:Devin(?: CLI)? )?3000\.11\.3|devin 3000\.11\.3 \([0-9a-f]{12}\))', version):
         _fail()
+    if _metadata(executable, ['version'], env).decode('utf-8', 'strict').strip() != _TRANSPORT_VERSION:
+        _fail()
     auth = _metadata(executable, ['auth', 'status'], env).decode('utf-8', 'strict')
     if not re.search(r'(?im)^\s*(?:authenticated|logged in)(?:\s|:|$)', auth) or re.search(r'(?i)(?:unauthenticated|not\s+(?:\w+\s+){0,3}(?:authenticated|logged in))', auth):
         _fail()
@@ -256,7 +260,8 @@ class NativeDevinText:
 
     def invoke(self, request, *, on_enter):
         entered = False
-        pool = ref = None
+        pool = ref = host = adapter = None
+        last_status = None
         stopped = False
         request_hash = None
         try:
@@ -302,7 +307,7 @@ class NativeDevinText:
             native_request = c.ExecuteRequest(ref=ref, job=job, conditions=conditions)
             delegation = api.DelegatedScope(human_intent_ref='sha256:' + request_hash, attempt=ref,
                                             workspace=str(workspace), capability='devin.text.only')
-            config = api.DevinHostConfig(conditions=conditions, executable=self.executable, expected_version=pin['version'],
+            config = api.DevinHostConfig(conditions=conditions, executable=self.executable, expected_version=_TRANSPORT_VERSION,
                 protected_state=(journal, ledger_path), credential_files=self.credentials, delegation=delegation)
             api.check_launch_template(config)
             host = api.DevinTextHost(config, expected_response=None)
@@ -337,12 +342,18 @@ class NativeDevinText:
                 entered = True
                 deadline = time.monotonic() + 60
                 reply = pool.execute(native_request)
-                if type(reply) is not c.OperationReply or reply.ref != ref:
+                if (type(reply) is not c.OperationReply or reply.ref != ref
+                        or type(reply.status) is not c.OperationStatus or type(reply.reason) is not str):
                     _fail()
                 never = reply.never_started
                 if never is not None:
-                    if type(never) is not c.NeverStarted or never.request != native_request:
+                    if (type(never) is not c.NeverStarted or never.request != native_request
+                            or type(never.evidence_ref) is not str or not never.evidence_ref.strip()
+                            or reply.status == c.OperationStatus.ACCEPTED or reply.resume_state is not None):
                         _fail()
+                _write(call_dir / 'execute.json', {'attempt_ref': attempt, 'status': reply.status.value,
+                    'reason': reply.reason, 'never_started_evidence_ref': None if never is None else never.evidence_ref})
+                if never is not None:
                     raise NativeNeverEntered(request_sha256=request_hash, profile_sha256=self.profile.profile_sha256,
                                              evidence_ref=never.evidence_ref)
                 if type(reply.status) is not c.OperationStatus or reply.status != c.OperationStatus.ACCEPTED:
@@ -357,8 +368,12 @@ class NativeDevinText:
                             _fail()
                         cursor = event.event_id
                     status = pool.status(ref)
-                    if type(status) is not c.StatusEvent or status.ref != ref or type(status.state) is not c.State:
+                    if (type(status) is not c.StatusEvent or status.ref != ref or type(status.state) is not c.State
+                            or type(status.event_id) is not str or not status.event_id
+                            or (status.evidence_ref is not None and type(status.evidence_ref) is not str)):
                         _fail()
+                    last_status = {'attempt_ref': dict(attempt), 'event_id': status.event_id,
+                                   'state': status.state.value, 'evidence_ref': status.evidence_ref}
                     if status.state == c.State.COMPLETED:
                         break
                     if status.state not in (c.State.RUNNING, c.State.PENDING):
@@ -381,6 +396,23 @@ class NativeDevinText:
         except NativeNeverEntered:
             raise
         except BaseException as error:
+            if entered and adapter is not None and host is not None:
+                try:
+                    try:
+                        diagnostic = adapter.protocol_diagnostic(ref)
+                        if diagnostic is not None and type(diagnostic) is not dict:
+                            _fail()
+                    except Exception:
+                        diagnostic = {'status': 'unavailable'}
+                    # Status pumps the protocol; only retain the ordinary loop's observation.
+                    observation = copy.deepcopy(host.observation)
+                    if type(observation) is not dict:
+                        _fail()
+                    _write(call_dir / 'diagnostic.json', {'attempt_ref': dict(attempt),
+                        'last_status': copy.deepcopy(last_status), 'protocol_diagnostic': copy.deepcopy(diagnostic),
+                        'host_observation': observation})
+                except BaseException:
+                    pass
             if entered and pool is not None and ref is not None and not stopped:
                 stopped = True
                 try:
