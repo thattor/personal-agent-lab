@@ -11,6 +11,7 @@ from pal.sanitize import sanitize
 
 _PROFILE = 'managed-inprocess-mock/1'
 _NATIVE_PROFILE = 'co-devin-acp-dynamic-text/1'
+_NATIVE_PROFILES = (_NATIVE_PROFILE, 'pal-claude-print-text/1')
 _ACTIVE = ('pending', 'preparing', 'admitted', 'returned', 'applying')
 _SYSTEM = ('Return exactly one JSON object {reply,proposal}. Proposal is none; new_work with a '
            'DraftBrief; answer with disclosed work_ref/question_id and current record_ref; control '
@@ -205,7 +206,7 @@ class PrimaryHost:
         if (saved is None or saved != {'id': row['host_session'], 'runner': row['runner'],
                                       'db_uuid': row['db_uuid'], 'profile': row['profile']}
                 or row['db_uuid'] != self._guard.db_uuid
-                or row['profile'] not in (_PROFILE, _NATIVE_PROFILE)):
+                or row['profile'] not in (_PROFILE, *_NATIVE_PROFILES)):
             _refuse()
 
     def _turn(self, identity):
@@ -264,7 +265,7 @@ class PrimaryHost:
                                     (self._guard.session_id,)):
             row = self._turn(candidate['id'])
             call = self._call(row)
-            if not (row['profile'] == _NATIVE_PROFILE and row['phase'] == 'admitted'
+            if not (row['profile'] in _NATIVE_PROFILES and row['phase'] == 'admitted'
                     and call is not None and call['status'] == 'unknown'):
                 _refuse('conflict')
 
@@ -402,7 +403,7 @@ class PrimaryHost:
     def _view(self, row):
         if row['phase'] != 'terminal':
             call = self._call(row)
-            if row['profile'] == _NATIVE_PROFILE and call is not None and call['status'] == 'unknown':
+            if row['profile'] in _NATIVE_PROFILES and call is not None and call['status'] == 'unknown':
                 return Result.success({'status': 'held', 'effect_refs': []})
             return Result.success({'status': 'pending', 'effect_refs': []})
         outcome = self._outcome(row)
@@ -547,15 +548,14 @@ class PrimaryHost:
             if side is not None or call['status'] == 'unknown':
                 _refuse()
             return None
-        if (side is None or call['profile'] != _NATIVE_PROFILE
+        if (side is None or call['profile'] not in _NATIVE_PROFILES
                 or call['status'] not in ('admitted', 'unknown', 'returned', 'not_entered')
                 or side['request_hash'] != call['input_hash']):
             _refuse()
         data = self._json(side['profile_json'])
         _closed(data, ('id', 'model_id', 'qualification_sha256', 'evidence_kind', 'profile_sha256'))
-        profile = NativeProfile(model_id=data['model_id'], qualification_sha256=data['qualification_sha256'],
-                                evidence_kind=data['evidence_kind'])
-        if data != profile.to_json() or call['model_id'] != profile.model_id:
+        profile = NativeProfile.from_json(data)
+        if data != profile.to_json() or call['model_id'] != profile.model_id or call['profile'] != profile.id:
             _refuse()
         phase = side['phase']
         if phase not in ('prepared', 'entering', 'unknown', 'returned', 'not_entered'):
@@ -611,7 +611,7 @@ class PrimaryHost:
         def unknown():
             row = self._turn(identity)
             call = self._call(row)
-            if call is None or call['profile'] != _NATIVE_PROFILE:
+            if call is None or call['profile'] not in _NATIVE_PROFILES:
                 _refuse()
             if call['status'] == 'unknown':
                 return
@@ -768,7 +768,7 @@ class PrimaryHost:
             if row['phase'] == 'terminal':
                 return
             call = self._call(row)
-            if row['profile'] == _NATIVE_PROFILE and (status == 'interrupted'
+            if row['profile'] in _NATIVE_PROFILES and (status == 'interrupted'
                     or call is not None and call['status'] in ('admitted', 'unknown')):
                 _refuse()
             if status == 'interrupted' and call is not None and call['status'] == 'admitted':
@@ -958,7 +958,7 @@ class PrimaryHost:
         if self._guard.phase != 'startup':
             _refuse('conflict')
         outcome = {'interrupted_turn_ids': [], 'committed_turn_ids': [], 'held_turn_ids': []}
-        if self._profile == _NATIVE_PROFILE:
+        if self._profile in _NATIVE_PROFILES:
             outcome['failed_turn_ids'] = []
         with self._guard.operation():
             rows = self._rows("SELECT id FROM v5_pri_turn WHERE phase!='terminal' AND host_session!=? ORDER BY rowid",
@@ -968,7 +968,7 @@ class PrimaryHost:
                 try:
                     row = self._turn(identity)
                     call = self._call(row)
-                    native = row['profile'] == _NATIVE_PROFILE
+                    native = row['profile'] in _NATIVE_PROFILES
                     if native and call is not None and call['status'] in ('admitted', 'unknown'):
                         self._native_unknown(identity)
                         outcome['held_turn_ids'].append(identity)
@@ -1007,6 +1007,7 @@ class NativePrimaryHost(PrimaryHost):
                 or not callable(getattr(provider, 'invoke', None))):
             raise ValueError('invalid native Primary provider')
         self._provider, self._native_profile = provider, provider.profile
+        self._profile = provider.profile.id
         super().__init__(connection, guard=guard, memory=memory, tasks=tasks,
                          request_scope=request_scope, invoke=provider.invoke,
                          model_id=self._native_profile.model_id)
@@ -1026,7 +1027,7 @@ class NativePrimaryHost(PrimaryHost):
         def end():
             current = self._turn(row['id'])
             call = self._call(current)
-            if call is None or call['status'] != 'admitted' or call['profile'] != _NATIVE_PROFILE:
+            if call is None or call['status'] != 'admitted' or call['profile'] not in _NATIVE_PROFILES:
                 _refuse()
             side = self._native_side(call)
             if status == 'returned' and (side['phase'] != 'entering'

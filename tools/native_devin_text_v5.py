@@ -231,7 +231,7 @@ def _pin(value):
 
 class NativeDevinText:
     def __init__(self, *, runtime, state_dir, attempt_root, executable, credential_files, profile):
-        if type(profile) is not NativeProfile:
+        if type(profile) is not NativeProfile or profile.id != 'co-devin-acp-dynamic-text/1':
             _fail()
         self.runtime, self.state_dir, self.attempt_root, self.executable = map(Path, (runtime, state_dir, attempt_root, executable))
         self.credentials = tuple(Path(p) for p in credential_files)

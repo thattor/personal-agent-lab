@@ -1267,7 +1267,7 @@ class TaskStore(IntakeStore):
                     'session', 'phase', 'attempt', 'ending', 'ending_hash', 'text', 'text_hash'})
                 admission = _obj(side['admission'], {'call_id', 'lease_id', 'work_ref', 'reservation_id', 'source_refs'})
                 p = _obj(side['profile'], {'id', 'model_id', 'qualification_sha256', 'evidence_kind', 'profile_sha256'})
-                profile = NativeProfile(model_id=p['model_id'], qualification_sha256=p['qualification_sha256'], evidence_kind=p['evidence_kind'])
+                profile = NativeProfile.from_json(p)
                 if profile.to_json() != p:
                     raise ContractError()
                 request = self._native_request(admission, side['request'], profile)
@@ -1420,7 +1420,7 @@ class TaskStore(IntakeStore):
         def operation():
             call, side = self._native_side(call_id, owned=True)
             p = side['profile']
-            profile = NativeProfile(model_id=p['model_id'], qualification_sha256=p['qualification_sha256'], evidence_kind=p['evidence_kind'])
+            profile = NativeProfile.from_json(p)
             text = text_hash = None
             if type(ending) is NativeReturned:
                 evidence = ending.validate(request_sha256=side['request_hash'], profile=profile)

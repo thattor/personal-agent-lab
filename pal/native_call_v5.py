@@ -4,6 +4,7 @@ import hashlib
 import json
 
 from .native_text_v5 import NativeTextBuffer
+from .native_claude_text_v5 import CLAUDE_PROFILE_ID, CLAUDE_MODEL_ID, validate_claude_ending
 
 NATIVE_PROFILE_ID = 'co-devin-acp-dynamic-text/1'
 _CAPTURE = frozenset(('text', 'output_sha256', 'utf8_bytes', 'chunks',
@@ -86,6 +87,17 @@ def _bindings(value, request_sha256, profile):
 
 
 def _ending(value, cessation, profile):
+    if profile.id == CLAUDE_PROFILE_ID:
+        checked = validate_claude_ending(
+            cessation, request_sha256=value['request_sha256'],
+            profile_sha256=profile.profile_sha256, attempt_ref=value['attempt_ref'],
+            model_id=profile.model_id, output_sha256=value['output_sha256'],
+            utf8_bytes=value['utf8_bytes'], chunks=value['chunks'])
+        digest = hashlib.sha256(_json_snapshot(checked).encode('utf-8')).hexdigest()
+        if (value['cessation_sha256'] != digest
+                or value['evidence_ref'] != 'pal-claude-text:' + digest):
+            raise ValueError('invalid native ending')
+        return
     # Public buffer validation keeps the original whole receipt hash and facts.
     # A sentinel validates receipt consistency, never reconstructs output text.
     failed = False
@@ -111,9 +123,12 @@ class NativeProfile:
     model_id: str
     qualification_sha256: str
     evidence_kind: str
+    profile_id: str = NATIVE_PROFILE_ID
 
     def __post_init__(self):
-        if (type(self.model_id) is not str or self.model_id != 'swe-2-high'
+        if (type(self.model_id) is not str or type(self.profile_id) is not str
+                or (self.profile_id, self.model_id) not in
+                ((NATIVE_PROFILE_ID, 'swe-2-high'), (CLAUDE_PROFILE_ID, CLAUDE_MODEL_ID))
                 or not _hex(self.qualification_sha256)
                 or type(self.evidence_kind) is not str
                 or self.evidence_kind not in ('fixture', 'native_profile')):
@@ -121,7 +136,19 @@ class NativeProfile:
 
     @property
     def id(self):
-        return NATIVE_PROFILE_ID
+        return self.profile_id
+
+    @classmethod
+    def from_json(cls, value):
+        if type(value) is not dict or set(value) != {
+                'id', 'model_id', 'qualification_sha256', 'evidence_kind', 'profile_sha256'}:
+            raise ValueError('invalid native profile')
+        profile = cls(profile_id=value['id'], model_id=value['model_id'],
+                      qualification_sha256=value['qualification_sha256'],
+                      evidence_kind=value['evidence_kind'])
+        if not _hex(value['profile_sha256']) or value != profile.to_json():
+            raise ValueError('invalid native profile')
+        return profile
 
     @property
     def profile_sha256(self):

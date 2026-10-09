@@ -87,6 +87,11 @@ class NativeExpertRunner(_RunnerCore):
 
         try:
             ending = self._provider.invoke(copy.deepcopy(request), on_enter=on_enter)
+        except NativeNeverEntered as receipt:
+            if type(receipt) is not NativeNeverEntered:
+                self._tasks.mark_native_unknown({'call_id': call_id})
+                return _failure(ErrorCode.UNAVAILABLE, 'native ending unavailable')
+            ending = receipt
         except BaseException as error:
             try:
                 self._tasks.mark_native_unknown({'call_id': call_id})
@@ -101,6 +106,8 @@ class NativeExpertRunner(_RunnerCore):
         ended = self._persist(self._tasks.end_native_call, {'call_id': call_id}, ending=ending)
         if not ended.ok:
             return ended
+        if type(ending) is NativeNeverEntered:
+            return _failure(ErrorCode.DENIED, 'native invocation refused')
         output = self._persist(self._tasks.get_native_output,
             {'call_id': call_id, 'lease_id': admission['lease_id'], 'work_ref': admission['work_ref']})
         if not output.ok:
