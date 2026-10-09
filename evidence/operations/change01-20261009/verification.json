@@ -34,7 +34,16 @@
   "fixed_tests_unchanged": true,
   "other_owner_modules_unchanged": true,
   "schema_migration_executed": false,
-  "milestone_Opus": "PENDING; ASK ALIGNED/CHANGE READY_TO_FREEZE is prior consultation, not final CHANGE alignment",
+  "milestone_Opus": {
+    "model_observed": "claude-opus-5-5",
+    "route": "CO0.4.5 / existing Claude Code",
+    "design_verdict": "ALIGNED",
+    "co_verified": false,
+    "co_error": "verification_failed (NOT_COMPUTED input hashes under disabled tools)",
+    "root_host_input_binding": "exact three workspace files match public base2b1d860; reviewer text/verdict unchanged",
+    "root_report_verifier": "PASS exit0 on host-bound report; does not imply product acceptance",
+    "disposition": "milestone-disposition.json"
+  },
   "files_sha256": {
     "pal/tasks_v5.py": "498b06ca6033c980bfdfe24b54195f247dbc7a46d267c67a1a54b0028f5c3e8f",
     "pal/intake_v5.py": "31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
@@ -67,7 +76,7 @@
     "no general restart recovery or old/live DB migration",
     "no semantic usefulness or whole-PAL completion"
   ],
-  "public_export": "D045: necessary source/test/design/proof export. Contract metadata removes the new AGY conversation ID only; implementation, examples and normative contract are unchanged. Raw transport/account/state records and unneeded logs remain local.",
+  "public_export": "D045 normal minimal-export push2b1d860 and all38 anonymous exact-byte/hash readbacks succeeded; raw original runtime records/local commits retained.",
   "original_local_evidence_sha256": {
     "root-full-final.log": "b4a95efd5701642102eb1ea37a2eb5191240290752faf3a0415b3ccf52e6cacd",
     "connection-tests-fixed-red.log": "acd6303d869f9ba5e06dbf0eb52ebb0a62c63972658cf8ca66bc4ffc6e342679",

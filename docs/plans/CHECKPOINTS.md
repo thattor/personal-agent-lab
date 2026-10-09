@@ -1159,3 +1159,20 @@ Preserve original50 green, later nine corruption REDs and REQUEST_CHANGES. The
 repair restores valid original call/source identity before cleanup. Final Opus
 CHANGE alignment is pending; D045 keeps raw transport evidence local and requires
 normal approval of minimized code/verification export plus public readback.
+
+
+D045 minimized-public-export checkpoint: normal push2b1d860 succeeded and all38
+changed files matched anonymous HTTP200 commit bytes/hashes. Separate Sol APPROVE
+verifies unchanged production/tests/demo and only operational metadata redaction.
+Raw original evidence/local commits remain preserved. Final CHANGE Opus report
+is running through actual available qualified CO Claude5.5; not yet ALIGNED.
+
+
+C079 final outcome: actual exact CO claude-opus-5-5 design ALIGNED, read and
+adopted by SOL alongside845 host tests, actual demo and separate source APPROVE.
+CO verified:false is preserved for NOT_COMPUTED report hashes under disabled
+tools. SOL binds exact snapshot inputs and unchanged evaluation, then original
+report verifier PASS; no source/test verification criterion changes. F3 shared
+state-table wording is corrected. C080 scoped recovery/startup-lock preparation
+starts before PRI routing; ended leases and admitted/unknown states stay distinct.
+General recovery/PRI/provider/UI/semantic usefulness and whole-PAL are unmet.

@@ -24,7 +24,7 @@ D043 directly authorizes project-wide AGY development use and removes repeated
 material-sharing confirmation. Existing cost/auth/service and runtime policy
 boundaries remain. No new reset, credits, auth, runtime/state edits or schedule.
 
-## C079 — CHANGE01/1 source and connection verified; milestone review next
+## C079 — CHANGE01/1 source and connection verified; milestone aligned; scoped recovery preparation next
 
 D045 owner answer in PAL人間判断 at13:18UTC adopts keeping raw review records
 locally and publishing necessary evaluation/verification information. Usage-slot
@@ -33,7 +33,10 @@ blanket exposure of conversation IDs/local paths. Preserve the rejected commits
 and exact raw files; prepare a minimal public summary on clean ancestry from the
 current remote branch, with no force push/history rewrite. Same product/contract
 bytes remain authoritative; public export is distinct from raw execution evidence.
-Normal approval and anonymous readback must succeed before publication is claimed.
+Normal minimized-export push succeeded at2b1d860; all38 changed files matched
+anonymous HTTP200 commit bytes/hashes at13:47UTC. Independent Sol APPROVE
+confirms normative scope/source/test identity; raw records remain locally held.
+[Public readback](evidence/operations/change01-20261009/public-readback.json).
 Source/tests/integration continue. Optional post22:20 official Opus review requires
 actual route availability, not the owner's reset-time estimate. See D045.
 
@@ -53,8 +56,7 @@ payload was rejected twice before launch. D042's subsequent manual-approval
 direction is retained without duplicating the now-completed native assignment.
 
 Final ASK milestone review completed SUCCESS305.502s at12:48UTC via existing AGY
-Google AI Pro, AI Credits OFF, requested/observed claude-opus-5-5-high. Conversation
-the ASK01 final design review: ASK ALIGNED; CHANGE READY_TO_FREEZE.
+Google AI Pro, AI Credits OFF, requested/observed claude-opus-5-5-high. The ASK01 final design review returns ASK ALIGNED; CHANGE READY_TO_FREEZE.
 The17 public inputs atc49bb00 match anonymous HTTP200 bytes/hashes. Public byte
 binding does not prove all inputs were read: the model reports connection-test
 truncation and unsupplied RUN/ART/VER/MEM implementations. It executes no tests.
@@ -86,12 +88,23 @@ APPROVE executes51 focused/122 related and verifies original malformed-ID probes
 refuse without writes. Root full845 PASS26.939s/exit0 and actual temporary-owner
 demo PASS. Original RED/REQUEST_CHANGES remain retained; prior passing50 missed
 consistent corruption because pairwise identity equality alone was insufficient.
-Root owns shared contracts, canonical updates and final verification; final CHANGE
-Opus design review remains pending, distinct from prior READY_TO_FREEZE.
+Root owns shared contracts, canonical updates and final verification. Final exact
+CO claude-opus-5-5 design verdict is ALIGNED, distinct from prior READY_TO_FREEZE.
+CO verified:false/verification_failed remains true: tool-disabled model reports
+NOT_COMPUTED hashes. SOL binds actual workspace bytes to base2b1d860, preserves
+evaluator text/verdict, and independently executes the original report verifier
+PASS. No third model call or CO/state/global-policy edit. See milestone-disposition.
+Root adopts local CHANGE01 design alignment with845/demo/exact-source proof;
+whole-PAL acceptance remains unmet.
 [Receipt](evidence/operations/change01-20261009/verification.json).
-CO0.4.5 existing runtime/state unchanged; last12:47UTC host capacity Claude0/0,
-Devin1 executing/0 reserved, limit12/adapter. That Devin task is not ours. Planner
-reported22:20 JST reset is not observed resumed availability. Native4 slots
+CO0.4.5 runtime/state unchanged; fresh capacity before review Claude0/0 and
+Devin1 executing/0 reserved, limit12/adapter. That Devin task is not ours. Actual
+qualified Claude Opus5.5 planner and report calls completed successfully.
+The report is ALIGNED; CO verification_failed concerns the tool-disabled model
+hash requirement only, not a source/test failure. Quota remains unknown. Original planner-only plan_invalid had4555-byte
+instructions beyond4096; its outcome is known and no report step ran. A corrected
+ordinary task pins the same model and requires planner instructions <=2000 bytes.
+No state/CO-source/unknown-call edit or automatic model replacement. Native4 slots
 including Root; no claim of30 parallel jobs or SWE planner substitution.
 
 Independent READ01 N1 display correction is also verified: sourcea974fc0,793 full
@@ -109,9 +122,14 @@ subcases without releasing occupied work. The2-line guard changes no contract,
 C10.change, old-revision release or recovery. Receipt:
 evidence/operations/release-integrity-20261009/verification.json.
 
-Remaining work is final CHANGE milestone consultation and minimized public
-export/readback. Next scoped recovery/host lock versus PRI routing is a design
-sequence question; no duplicate implementation is queued to fill slots.
+C079 implementation, actual connection, independent source review and final
+design assessment are MET for the bounded mock slice. Public export/readback
+is observed. C080 preparation starts scoped C13 restart recovery/startup lock
+before PRI routing, as Opus recommends and separate Astra actual-owner analysis
+confirms. Known-ended orphan leases and unknown/admitted calls need distinct
+contracts: no invented returned/raised status, lease release or callback-cessation
+proof. Future implementation waits for one frozen recovery scope; no duplicate
+source work is queued. [Preparation](docs/design/contracts-v5/RECOVERY01-PREPARATION.md).
 D043 removes recurring AGY material-sharing questions; actual tool/product
 restrictions remain operative. Whole PAL/PRI/UI/provider,
 semantic usefulness, general

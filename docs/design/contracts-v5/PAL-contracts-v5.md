@@ -172,7 +172,7 @@ CHANGE01/1の新revision/epochは直前の最新値それぞれ+1とし、新Con
 | cancel | 非終端 | cancelled、epoch無効化。残る呼出し終了まで枠は解放しない |
 | change/追加入力 | running | 旧epoch無効化、draining。呼出し終了後queuedで再解釈 |
 | change | paused | 新revisionでもpausedを保持 |
-| change | waiting_input/queued | 旧質問を閉じ、新revisionをqueuedへ |
+| change | waiting_input/queued | 旧open質問をsuperseded履歴にし、新revisionをqueuedへ |
 | complete | runningかつ停止要求なし | 保存検証が全条件metならcompleted |
 | 上限/解消不能 | running | failed、理由と途中成果を保存 |
 | recover | 孤立running | 旧epoch無効化、step照合、queued又は失敗理由を表示 |

@@ -2311,3 +2311,47 @@ verify no-write unavailable; use these checks at subsequent recovery boundaries.
 No new framework, gate, RUN patch or live DB migration is introduced. Exact
 fixed inputs/source hashes and limits are in change01 verification.json. Final
 CHANGE Opus alignment and normal minimized-public-export approval remain pending.
+
+
+D045 observed export result, 2026-10-09
+Normal fast-forward push2b1d860 from the clean public ancestry succeeded. All38
+changed files anonymously returned HTTP200 and matched exact commit bytes/hash.
+Separate Sol's bounded export audit APPROVE checks source/test/demo identity,
+only operational-ID scope redaction, evidence hashes and no newly exported raw
+AGY/host/account/state data. Original local frozen-scope and public metadata-only
+hashes are explicitly distinct; normative requirements are identical. Raw and
+rejected local history remain intact, without force/history rewrite. Source and
+fixed-test verification remain Root-owned; this is observed public delivery, not
+provider/UI deployment or whole-PAL acceptance. See public-readback.json and
+public-export-review.json.
+
+
+C079 final design assessment and C080 sequence, 2026-10-09
+Actual qualified CO0.4.5 Claude Code claude-opus-5-5 planner and report calls
+completed. The model's final design verdict is ALIGNED for CHANGE01/1. Root
+reads the evaluator text against source/contract/845/demo/separate Sol proof and
+adopts that bounded design alignment. It executes no tests and omits many owner
+methods; no whole-PAL/provider/UI/semantic/recovery acceptance follows.
+CO verified:false/verification_failed is preserved. Cause: Root's report verifier
+required the tool-disabled model to compute file hashes. The reviewer honestly
+returned NOT_COMPUTED, so the CO verifier exited1. Root preserves the exact raw
+response/result locally, binds the actual three workspace input files to exact
+public base2b1d860, supplies separately attributed host hashes, and executes the
+unchanged report verifier PASS. No evaluator text/verdict is edited, no failed
+CO record is rewritten, and no third duplicate review or weaker source/test gate
+is used. Prevention: future report tasks leave snapshot hashing to the host.
+The earlier known planner-only4555-byte plan failure was repaired by a <=2000
+request; no unknown process/model outcome exists for these completed calls.
+
+Adopt Opus sequence: scoped C13 restart recovery and startup lock before PRI
+routing. Separate Astra actual-v5-owner analysis supports first distinguishing
+ended orphaned leases from admitted/unknown calls. The latter are not returned
+or raised by assumption. Lock acquisition is not proof that an external child
+ended. C080 preparation records the seam, source/order/control/budget constraints
+and fixed meaningful acceptance candidates; no recovery API/code is adopted yet.
+F3 is repaired now: shared section5 change table says old open questions become
+superseded history, matching operative C02/C10 and source. F2 belongs in the next
+recovery scope (latest intent across revisions); F4 is a PRI host provenance
+obligation; F5 historical artifact refs remain revision-scoped. None is used to
+weaken source-stop or to pretend PRI/recovery works. See CHANGE01-MILESTONE-OUTCOME,
+RECOVERY01-PREPARATION and milestone-disposition.json.

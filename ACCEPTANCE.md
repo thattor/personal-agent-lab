@@ -22,11 +22,16 @@ RUN/intake/shared Python owners are unchanged. No migration of old/live DBs.
 [Verification](evidence/operations/change01-20261009/verification.json) and
 [candidate](docs/design/contracts-v5/CHANGE01-MILESTONE.md).
 
-Implementation/connection PASS; final CHANGE Opus alignment PENDING. Earlier
-ASK ALIGNED/CHANGE READY_TO_FREEZE was contract consultation. No real PRI/model/
+Implementation/connection PASS; final exact CO claude-opus-5-5 design ALIGNED.
+CO verified:false is retained: tool-disabled reviewer could not compute hashes.
+SOL independently bound exact input bytes to base2b1d860 without changing the
+model evaluation and executed the original report verifier PASS.
+[Disposition](evidence/operations/change01-20261009/milestone-disposition.json).
+Earlier ASK ALIGNED/CHANGE READY_TO_FREEZE was contract consultation. No real PRI/model/
 provider/UI, general recovery, semantic sufficiency, authentic usefulness or
 whole-PAL acceptance. D045 publishes necessary summaries and keeps raw runtime
-records locally; approved normal export/readback still need observation.
+records locally; approved normal export2b1d860 and all38 anonymous byte/hash
+readbacks succeeded. Independent minimized-export audit APPROVE.
 
 ## C078 — ASK01 implementation and connection verified
 
