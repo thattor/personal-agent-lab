@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 
 from pal.artifacts_v5 import ArtifactStore
-from pal.contracts_v5 import Result, dumps
+from pal.contracts_v5 import Ref, Result, dumps, parse_model_action
 
 
 class FaultConnection(sqlite3.Connection):
@@ -110,15 +110,52 @@ class ArtifactStoreTests(unittest.TestCase):
 
     def test_strict_requests_and_no_key_burn(self):
         bad = [None, {**self.request, 'extra': 1}, {**self.request, 'content': True},
-               {**self.request, 'content': '\ud800'}, {**self.request, 'content': 'x' * 1048577},
+               {**self.request, 'content': '\ud800'},
                {**self.request, 'media_type': 'text/html'}, {**self.request, 'key': ''},
                {**self.request, 'work_ref': {**self.work, 'epoch': True}},
-               {**self.request, 'work_ref': {**self.work, 'revision': 2**63}},
-               {**self.request, 'source_refs': self.refs * 2}]
+               {**self.request, 'work_ref': {**self.work, 'revision': 2**63}}]
         for request in bad:
             self.error(self.store.save(request), 'invalid_input')
         self.error(self.store.get_by_key({'key': self.request['key']}), 'not_found')
         self.saved()
+
+    def test_content_limit_error_is_preserved_without_burning_key(self):
+        self.error(self.store.save({**self.request, 'content': 'x' * 1048577}), 'limit')
+        self.error(self.store.get_by_key({'key': self.request['key']}), 'not_found')
+        self.saved()
+
+    def test_shared_compose_duplicate_refs_remain_exact_input_identity(self):
+        action = parse_model_action(dumps({'kind': 'compose', 'content': 'shared draft',
+            'media_type': 'text/plain', 'source_refs': self.refs[:1] * 2}),
+            allowed_refs=[Ref.from_json(ref) for ref in self.refs]).to_json()
+        request = {**self.request, **{k: v for k, v in action.items() if k != 'kind'}}
+        self.assertEqual(request['source_refs'], self.refs[:1] * 2)
+        receipt = self.value(self.store.save(request))
+        self.assertEqual(self.value(self.store.save(request)), receipt)
+        self.error(self.store.save({**request, 'source_refs': self.refs[:1]}), 'conflict')
+        self.assertEqual(self.value(self.read(receipt['artifact_ref']))['source_refs'], self.refs)
+
+    def test_inspect_exception_cleans_only_its_savepoint(self):
+        ref = self.saved()['artifact_ref']
+        self.conn.execute('CREATE TABLE synthetic_caller (x)')
+        for failure in (RuntimeError, KeyboardInterrupt, SystemExit):
+            def broken_gate(conn, refs):
+                raise failure('synthetic gate failure')
+            self.store._source_gate = broken_gate
+            self.conn.execute('BEGIN')
+            self.conn.execute('INSERT INTO synthetic_caller VALUES (1)')
+            self.conn.execute('SAVEPOINT synthetic_owner')
+            if issubclass(failure, Exception):
+                self.error(self.store.inspect(self.conn, {'ref': ref}), 'unavailable')
+            else:
+                with self.assertRaises(failure):
+                    self.store.inspect(self.conn, {'ref': ref})
+            self.assertTrue(self.conn.in_transaction)
+            self.assertEqual(self.conn.execute('SELECT count(*) FROM synthetic_caller').fetchone()[0], 1)
+            with self.assertRaises(sqlite3.OperationalError):
+                self.conn.execute('RELEASE v5_art_callback')
+            self.conn.execute('RELEASE synthetic_owner')
+            self.conn.rollback()
 
     def test_missing_and_unsupported_refs_and_invalid_read_shape(self):
         self.error(self.read({'kind': 'artifact', 'id': 'missing'}), 'not_found')

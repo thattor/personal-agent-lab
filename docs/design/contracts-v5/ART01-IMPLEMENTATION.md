@@ -66,3 +66,42 @@ and independent Astra review. Test doubles do not establish that connection.
 No TSK/Goal state, current artifact set, VER, completion, recovery, model re-input,
 provider, UI, live database, auth/cost/runtime or external publication is changed.
 Only this note, `pal/artifacts_v5.py` and `tests/test_artifacts_v5.py` are owned.
+
+## Independent-review correction at the same adopted scope
+
+Independent Astra reviewed author commit `1afcfbe` and requested REFINE. Root
+confirmed the shared C08 wire: content exceeding 1MiB returns `limit`, and
+`ComposeAction` preserves duplicate valid Ref entries. The original ART boundary
+incorrectly collapsed all content preparation errors to `invalid_input`, and its
+generic Ref parser imposed an extra uniqueness constraint. The first author tests
+repeated those assumptions instead of comparing the shared producer contract.
+Neither behavior was an adopted restriction.
+
+Corrections preserve `ArtifactContentError.code` (including `limit`) and accept
+ordered duplicate input Refs as canonical save identity. Set membership still
+checks dependency coverage; callback-provided provenance remains authoritative.
+A duplicate-input replay succeeds, while changing the same key to an otherwise
+identical deduplicated array conflicts. A regression creates the actual shared
+`parse_model_action` ComposeAction and passes its preserved input directly to ART.
+
+The review also found that an inspect gate exception retained ART's callback
+savepoint inside the caller's transaction. Cleanup now rolls back to/releases
+that owned savepoint on Exception or BaseException, preserving earlier caller
+writes and its outer savepoint/transaction. Interrupted inspect still propagates.
+If a callback committed/replaced the transaction, missing-savepoint cleanup cannot
+undo it and is explicitly not claimed to do so.
+
+Three new public regressions were first run against the original implementation:
+20 tests, three expected failures, 0.035s. After the correction: focused20 PASS,
+0.033s, exit0 with the focused command above. Red/green staging logs:
+`/private/tmp/pal-art-native-review-red.log` and
+`/private/tmp/pal-art-native-review-green.log`. No full-suite rerun or additional
+source ownership. Previous full author limitation remains as recorded above.
+
+Prevention/next check: for related wire changes, compare failure codes and accepted
+collections with the actual shared producer before choosing stricter validation;
+retain the size-code and shared Compose duplicate-input regressions. For trusted
+active-transaction callbacks, verify owned-savepoint cleanup and caller-write
+preservation on both ordinary failure and interruption. Independent rereview and
+Root's actual consumer/full integration are still required; this author correction
+does not substitute for either.

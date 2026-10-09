@@ -50,8 +50,6 @@ def _refs(value):
     if type(value) is not list:
         raise ContractError()
     refs = tuple(Ref.from_json(item) for item in value)
-    if len(set(refs)) != len(refs):
-        raise ContractError()
     return refs
 
 
@@ -122,13 +120,22 @@ class ArtifactStore:
         # collaborator commits cannot be undone or represented as rolled back.
         changes = self._conn.total_changes
         self._conn.execute('SAVEPOINT v5_art_callback')
-        result = call()
-        if not self._conn.in_transaction:
-            raise ContractError()
-        self._conn.execute('RELEASE v5_art_callback')
-        if changes != self._conn.total_changes:
-            raise ContractError()
-        return result
+        try:
+            result = call()
+            if not self._conn.in_transaction or changes != self._conn.total_changes:
+                raise ContractError()
+            self._conn.execute('RELEASE v5_art_callback')
+            return result
+        except BaseException:
+            if self._conn.in_transaction:
+                try:
+                    self._conn.execute('ROLLBACK TO v5_art_callback')
+                    self._conn.execute('RELEASE v5_art_callback')
+                except sqlite3.Error:
+                    # A collaborator may have committed/replaced the transaction;
+                    # that cannot be undone by cleanup of our former savepoint.
+                    pass
+            raise
 
     def _gate(self, refs):
         state = self._guard(lambda: self._source_gate(self._conn, refs))
@@ -141,7 +148,9 @@ class ArtifactStore:
         try:
             data, prepared = _request(request)
             canonical = dumps(data)
-        except (ContractError, ArtifactContentError):
+        except ArtifactContentError as exc:
+            return _error(exc.code)
+        except ContractError:
             return _error('invalid_input')
         try:
             self._conn.execute('BEGIN IMMEDIATE')
