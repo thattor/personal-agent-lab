@@ -1,5 +1,7 @@
 """Supplemental runtime/metadata fixtures; imports do not qualify native execution."""
 import hashlib
+import os
+import pwd
 from pathlib import Path
 import sys
 import tempfile
@@ -14,7 +16,9 @@ from pal.contracts_v5 import dumps
 from tools import native_devin_text_v5 as wrapper
 import test_native_devin_text_v5 as fixtures
 
-RUNTIME = Path('/Users/hattoritoshiyasu/Documents/PAL/co-runtime/common-orchestration-v0.4.5')
+RUNTIME = Path(os.environ.get('PAL_CO_RUNTIME',
+    str(Path(pwd.getpwuid(os.getuid()).pw_dir) / 'Documents/PAL/co-runtime/common-orchestration-v0.4.5')))
+INSTALLED_RUNTIME = (RUNTIME / 'VERSION').is_file()
 
 
 class RuntimeBoundaryTests(unittest.TestCase):
@@ -26,6 +30,7 @@ class RuntimeBoundaryTests(unittest.TestCase):
         self.addCleanup(case.doCleanups)
         return case
 
+    @unittest.skipUnless(INSTALLED_RUNTIME, 'Optional installed CO runtime is absent')
     def test_installed_namespace_package_has_valid_runtime_origin(self):
         api = wrapper._load_runtime(RUNTIME)
         namespace = sys.modules['co_v4.adapters']
@@ -37,6 +42,7 @@ class RuntimeBoundaryTests(unittest.TestCase):
         self.assertEqual(api.DevinTextHost.__module__, 'co_v4.devin_host')
         # Loading public symbols is metadata-only: no API invocation/ledger SQL.
 
+    @unittest.skipUnless(INSTALLED_RUNTIME, 'Optional installed CO runtime is absent')
     def test_foreign_or_mixed_namespace_origin_refuses(self):
         with tempfile.TemporaryDirectory() as foreign:
             for locations in ([foreign], [str(RUNTIME / 'co_v4/adapters'), foreign]):
