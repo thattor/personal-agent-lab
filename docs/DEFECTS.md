@@ -1344,3 +1344,42 @@ commands take the exact preflight manifest base, never reconstruct a SHA suffix.
 Authentication freshly reports existing Devin Pro account; the actual exact
 swe-2-high model is advertised Free. Account tier and model price are separate;
 provider quota remains unknown and no billing setting is changed.
+
+
+## C081 Primary integration and independent failure prevention (2026-10-10)
+
+The initial Root host omitted the post-consume source check and stored error
+validation. Independent Astra reproduced stopped-body disclosure at callback
+entry and a raw stored-error canary; independent Sol added8 binding/fault methods
+(10 initial failures). Final host rechecks every exposure inside durable call
+admission and before callback; closed fixed errors and companion admission/call/
+snapshot/intent/outcome hashes reject one-sided inconsistencies. Invalid UTF8 is
+known returned/failed; known lost admission acknowledgement ends not_entered,
+never invokes again or refunds. This protects cooperative owner faults, not a
+hostile-code or coordinated trusted-DB forgery claim. Original probes remain.
+
+Astra then reproduced applying intent downgraded by changing only phase: actual
+Goal creation followed by lost response was wrongly interrupted. Four independent
+phase cases remain. Strict phase/call/intent converse checks fix this, but initially
+exposed Root's separate interrupted-call write: actual admitted child death left
+an impossible admitted/interrupted pair before terminal save. Root full1058 had
+one failure. Final d9f0e12 updates call ending, turn and C14 in one transaction;
+independent process5 and RuntimeError/KeyboardInterrupt rollback/retry prove it.
+Next recovery edits rerun both contradictory-row and real child-death cases;
+mutual identity equality and happy-path counts alone are insufficient.
+
+The fixed test initially corrupted C11 before submit although admission requires
+MEM's immutable hash; the test owner moved injection after normal submit only.
+The process fixture re-registered a shared ready guard on its second connection;
+actual register_host is startup-only. Test owner corrected registration order,
+retaining all callback/control/source/byte expectations and original failure logs.
+Read-transaction replacement now strictly returns unavailable; a read's write
+rolled back under intact savepoint still suppresses reply and preserves prior
+caller writes. This strengthens corrupt-connection handling, not a weaker source
+gate. Final fixed39/binding8/phase4/process5 and full1058 PASS independently verify.
+
+A Root send_message to an already completed agent queued but did not start its
+repair. Agent status confirmed the mistake; followup_task started the intended
+turn. Next continuation uses followup_task for idle/completed agents and treats
+messages as progress only after actual status/output, without duplicate work.
+No model/runtime/policy changes or new recurring approval procedure are introduced.

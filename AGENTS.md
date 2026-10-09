@@ -1,11 +1,13 @@
 # AGENTS.md — Personal Agent Lab
 
-Current C080b: the overall goal remains unmet. C074–C080b establish bounded local
-saved/verified/read/ask/change and managed mock restart recovery; v5 Primary ingress
-and authentic whole-flow usefulness remain. Continue independent approved work
-through these dependencies rather than stopping after a component checkpoint.
-The older next-work descriptions below are retained history; STATE/DECISIONS
-and the latest exact candidate evidence govern continuation.
+Current C081: overall goal remains unmet. PRI01/1 Primary whole managed mock path
+is integrated and independently approved; Root full1058 PASS, actual3 process gaps,
+two-connection thread/control and whole mock5 PASS. Separately qualified finite
+real-provider proof and authentic whole-flow usefulness remain. Consult the next
+Opus checkpoint/profile proposal, freeze the separate native profile and continue
+approved work. No provider under mock profile or old/live DB migration.
+Older next-work descriptions below are retained history; STATE/DECISIONS and the
+latest exact candidate evidence govern continuation.
 
 Current D044/D043/D042/D041/D040/C078 continuation and D037 route instruction supersede earlier stops
 and the CO-only restriction. Evaluate checkpoints, correct within accepted scope,

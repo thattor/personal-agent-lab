@@ -1205,3 +1205,20 @@ No whole-product PASS. PRI-TSK/WIRE owner prerequisites now have separate fixed
 tests before isolated source; full Primary → separately qualified provider → one
 authentic usefulness judgment remain. Opus refinement's session-limit/unknown
 pause is preserved without retry; already reviewed independent work continues.
+
+
+## C081 — current-v5 Primary whole mock connection
+
+MET locally at d9f0e12/SHA81a5ec: Root full1058 PASS30.268s, exact independent
+Astra APPROVE53 plus original gate/error and terminal rollback probes. Actual
+process5 PASS0.351s includes3 owned SIGKILL/wait gaps, two-connection threads and
+ordinary ingress → Expert question → saved user answer → same-Goal correction →
+retained draft/fresh structural VER/readback → source stop. All5 inference contents
+are labeled mock. Preserve initial REJECT/RED, phase downgrade and strict-phase
+settlement regression; the final atomic call/turn/C14 correction is independently
+verified. TSK/WIRE prerequisites are separately approved; CO verified covers its
+original pure WIRE bytes, not Root's subsequent duplicate-Goal fix.
+Next: exact Opus checkpoint/provider design consultation, freeze separate finite
+no-extra-cost native profile, actually prove it, then one authentic usefulness
+judgment. PRI02 provider note is PROPOSED, no model/adapter/cessation acceptance.
+Overall goal NOT_MET; P001/oldDB/live services/unknown retries remain outside scope.

@@ -1,16 +1,37 @@
 # ACCEPTANCE.md
 
-## Current C080 — whole-goal exit still unmet
+## Current C081 — whole-goal exit still unmet
 
-[Independent exit audit](docs/plans/GOAL-EXIT-AUDIT-20261009.md) binds the current
-175cdc6 candidate and preserves all earlier source versions/test counts. Local
-C074–C079 are verified; bounded mock restart recovery is now implemented through
-C080b; Primary ingress remains unimplemented. Authentic usefulness has received non-PASS feedback, not a pending
-answer to be requested again. Historic real-provider P002 functional proof does
-not establish current-v5 Primary functionality or whole-flow usefulness.
-Earlier next-work paragraphs below are checkpoint history superseded by STATE's
-current dependency, not active parallel assignments. Recovery/PRI proposal notes
-and a paused/unreceived Opus refinement are not implementation acceptance.
+Current-v5 Primary PRI01/1 local mock connection is implemented and verified at
+source d9f0e12; historical C080 and older “next” descriptions below are superseded
+by current STATE. Separately qualified real-provider proof and authentic improved
+whole-flow usefulness remain. Historic real-provider P002 proof does not establish
+current-v5 behavior. Earlier non-PASS owner feedback is received, not an unanswered
+permission request. No old/live DB migration, provider under mock profile, new
+cost/auth/service or unknown-call retry is adopted.
+
+## C081 — actual Primary whole mock connection verified locally
+
+Root full **1058 PASS30.268s/exit0**, exact source d9f0e12/SHA81a5ec,
+independent Astra **APPROVE**, fixed53 and additional original gate/error plus
+atomic RuntimeError/KeyboardInterrupt rollback/retry probes.
+[Verification](evidence/operations/pri01-20261010/verification.json).
+Separate fixed39, binding8 and phase1/4cases retain original REDs and show strict
+call/session/nonce/intent/outcome consistency, no raw error/body laundering,
+source gate after budget consumption, and receipt-only startup reconciliation.
+Actual process/connection **5 PASS0.351s** covers3 owned child SIGKILL/wait gaps,
+two live connections/threads with immediate cancel/stop, and ordinary turn →
+Expert question → original-record answer → same-Goal change → saved draft/fresh
+structural VER → readback → source stop. No reinference, reapply or refund; the
+five C15 calls are labeled cooperative in-process mocks.
+
+TSK final0c63b0 has independent24/6/196 distinct proof. WIRE final828aa1 has
+independent25/2; original CO SWE135fca verified:true does not attest Root's later
+duplicate-Goal repair. Preserve phase-regression1058/1FAIL, initial process fixture
+4/5, erroneous pre-admission read injection and all earlier UNKNOWN CO calls.
+New milestone Opus alignment remains due; PRI02 is PROPOSED only. This establishes
+bounded local connection, not real-provider/semantic completion/usefulness or
+whole-product PASS. Continue the approved remaining dependency.
 
 ## C080b — saved compose recovery and current readback verified locally
 

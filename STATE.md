@@ -1,6 +1,6 @@
 # STATE.md
 
-## Current C080 — necessary parallel development, overall goal NOT MET
+## Current C081 — Primary whole mock path verified, overall goal NOT MET
 
 Latest owner direction: continue remaining work with necessary parallel execution.
 Verified local checkpoint C080b at ef16a93: Root full948 PASS30.157s, actual
@@ -34,14 +34,32 @@ Full PRI is now frozen in PRI01-SCOPE.md under D048: additional Opus refinement 
 error, CO outcome unknown/options empty; no report received or adopted and no
 duplicate consultation. Root explicitly adopts actual-exposure closure with full
 uncited visible dependencies after Astra reconciliation, not new Opus endorsement.
-TSK candidate226eab passes24/195 but independent review found a contradictory
-running-pause receipt accepted; narrow repair precedes integration. CO SWE pure
-parser task7df39c is active with immutable25 and verified Free model access;
-native Sol fixed host tests precede Root host source. Stop-aware replies and fixed
-host-only C14 text prevent copied reply context. No new cost/auth or approval wait.
+TSK final0c63b0 is equal-byte integrated after independent fixed24/probe6/related196
+APPROVE. WIRE actual CO SWE7df39c completed verified:true at original135fca;
+Root duplicate-Goal repair final828aa1 has separate Sol fixed25/probe2 APPROVE.
+CO verification does not cover that later Root repair.
 
-Overall gap: bounded Primary whole flow → separately
-qualified finite real-provider proof → one authentic improved usefulness judgment.
+PRI01 source d9f0e12/SHA81a5ec is independently APPROVED by Astra, fixed53 plus
+original gate/error and terminal RuntimeError/KeyboardInterrupt rollback probes.
+Root full1058 PASS30.268s/exit0. Actual process/connection5 PASS includes3 owned
+SIGKILL/wait gaps, two live connections/threads and ordinary turn → Expert question
+→ original-record answer → same-Goal change → saved draft/fresh structural VER →
+readback/source stop. All5 calls in that path are labeled in-process mock.
+[Receipt](evidence/operations/pri01-20261010/verification.json).
+Preserve initial binding/error/gate/phase defects, strict-phase recovery regression
+and fixture-only corrections; no expectations weakened, no stopped body fallback.
+Primary scope is implemented locally; new Opus checkpoint alignment is still due.
+
+Next PRI02-PROVIDER-PROPOSAL is technical preparation only. A subprocess/remote
+provider cannot inherit managed-inprocess-mock/1 lock-cessation proof or hide a
+multi-call CO task as one PAL charge. Separate exact consultation/profile freeze,
+finite current no-extra-cost route and completion/unknown evidence precede entry.
+Fresh existing AGY models advertises claude-opus-5-5-high; read-only availability
+and no-extra-cost settings were checked locally. Account/usage metadata is kept
+local under D045. This does not establish a successful new design call.
+
+Overall gap: Opus checkpoint/profile consultation → separately qualified finite
+real-provider proof → one authentic improved usefulness judgment.
 Prior negative owner feedback is known, not another approval wait. Started operate
 external_tail, semantic checks, future P001/multimodal/service scope and old/live
 DB/schedules remain outside this acceptance. Keep exact limits; no new auth/cost.
