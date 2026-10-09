@@ -205,12 +205,16 @@ class NativePrimaryTests(unittest.TestCase):
             conn=sqlite3.connect(self.path,isolation_level=None,timeout=0)
             self.addCleanup(conn.close)
             with conn:
-                tasks=TaskStore(conn,startup_guard=self.guard,host_grant=self.grant,host_limits=Limits(0,100,100),expert_id='expert')
+                tasks=TaskStore(conn,startup_guard=self.guard,host_grant=self.grant,host_limits=Limits(0,100,100),expert_id='expert',
+                    source_gate=lambda c,r:self.mem.source_gate(c,r))
                 out=self.ok(tasks.control({'key':self.key(),'work_ref':work,'command':'pause'}))
                 self.assertEqual(out['state'],'paused')
             attempt={'run_id':'fixture-run','job_id':'fixture-job','attempt_id':'control'}
             hook(attempt);return self.provider.returned(request,attempt)
-        self.provider.behavior=controlled;turn=self.submit();self.assertEqual(self.run_turn(turn)['status'],'committed')
+        self.provider.behavior=controlled;turn=self.submit();result=self.run_turn(turn)
+        self.assertEqual(result,{'status':'committed','effect_refs':[],'reply':'fixture reply'})
+        self.assertEqual(self.conn.execute('SELECT phase FROM v5_pri_native').fetchone()[0],'returned')
+        self.assertFalse(self.conn.in_transaction);self.assertEqual(len(self.provider.calls),1)
 
     def test_startup_native_unknown_is_held_never_mock_interrupted(self):
         self.provider.behavior=self.unknown;turn=self.submit();self.held(self.run_turn(turn));before=self.used()
@@ -248,7 +252,14 @@ class NativePrimaryTests(unittest.TestCase):
 
     def test_returned_before_intent_startup_fails_local_adoption_preserves_ending(self):
         from unittest.mock import patch
-        with patch('pal.primary_host_v5.parse_primary_output',side_effect=KeyboardInterrupt('fixture interruption')):
+        module=importlib.import_module('pal.primary_host_v5')
+        original=module.parse_primary_output
+        def after_return(text,**kwargs):
+            if self.provider.calls and self.conn.execute(
+                    "SELECT phase FROM v5_pri_native WHERE phase='returned'").fetchone():
+                raise KeyboardInterrupt('fixture interruption')
+            return original(text,**kwargs)
+        with patch('pal.primary_host_v5.parse_primary_output',side_effect=after_return):
             turn=self.submit()
             with self.assertRaises(KeyboardInterrupt):self.host.run_turn({'turn_id':turn})
         self.assertEqual(self.conn.execute('SELECT phase FROM v5_pri_native').fetchone()[0],'returned')
