@@ -86,11 +86,11 @@ class ArtifactRecoveryTests(unittest.TestCase):
         self.assertEqual(self.f.conn.execute("SELECT COUNT(*) FROM v5_intake_replay WHERE command='recover' AND key='saved-recovery'").fetchone()[0],1)
 
     def test_replay_historical_receipt_no_relookup_or_writes_and_changed_input_conflicts(self):
-        self.stage();self.restart();out=self.settled();before=self.snapshot();calls=len(self.calls)
+        self.stage();original_lease_id=self.f.lease['lease_id'];self.restart();out=self.settled();before=self.snapshot();calls=len(self.calls)
         self.assertEqual(self.f.value(self.recover()),out);self.assertEqual(self.snapshot(),before);self.assertEqual(len(self.calls),calls)
         self.f.error(self.f.t.recover({'key':'saved-recovery','lease_id':'other'}),'conflict');self.assertEqual(self.snapshot(),before)
         self.f.value(self.f.t.finish_startup());self.f.lease=self.f.value(self.f.t.claim({'runner_id':self.f.guard.runner_id}))
-        self.restart();before=self.snapshot();self.assertEqual(self.f.value(self.recover()),out);self.assertEqual(self.snapshot(),before)
+        self.restart();before=self.snapshot();self.assertEqual(self.f.value(self.f.t.recover({'key':'saved-recovery','lease_id':original_lease_id})),out);self.assertEqual(self.snapshot(),before)
 
     def test_exhausted_goal_and_host_budget_still_adopts_without_refund(self):
         self.stage();self.restart()
