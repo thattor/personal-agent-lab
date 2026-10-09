@@ -408,7 +408,8 @@ class TaskStore(IntakeStore):
         action = _obj(data['action'], {'kind', 'content', 'media_type', 'source_refs'})
         requested_refs = _refs(action['source_refs'])
         if action['kind'] != 'compose':
-            _reject('conflict')
+            raise ContractError()
+        action = parse_model_action(dumps(action), allowed_refs=requested_refs).to_json()
         row, lease = self._authority(work)
         saved = self._one('SELECT * FROM v5_tsk_step WHERE id=?', (step_id,))
         if saved is None:
@@ -419,6 +420,12 @@ class TaskStore(IntakeStore):
         try:
             step = _obj(loads(saved['wire']),
                         {'step_id', 'work_ref', 'index', 'action', 'status', 'result_refs'}, {'error'})
+            _id(step['step_id'])
+            _refs(step['result_refs'])
+            if (type(step['index']) is not int or not 0 <= step['index'] <= _MAX or
+                    step['status'] not in ('started', 'finished', 'abandoned') or
+                    ('error' in step and type(step['error']) is not str)):
+                raise ContractError()
             step_work, call_work = _work(step['work_ref']), _work(loads(call['work']))
             refs = _refs(loads(call['sources']))
             stored_action = parse_model_action(dumps(step['action']), allowed_refs=refs).to_json()

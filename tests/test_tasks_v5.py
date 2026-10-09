@@ -172,6 +172,10 @@ class TaskTests(unittest.TestCase):
             changed = copy.deepcopy(request)
             changed['action']['content'] = 'changed'
             self.error(self.store.authorize_artifact_save(self.conn, changed), 'conflict')
+            for field, value in [('content', 1), ('media_type', False), ('media_type', 'application/json')]:
+                malformed = copy.deepcopy(request)
+                malformed['action'][field] = value
+                self.error(self.store.authorize_artifact_save(self.conn, malformed), 'invalid_input')
             changed = copy.deepcopy(request)
             changed['action']['source_refs'] = [{'kind': 'record', 'id': 'never supplied'}]
             self.error(self.store.authorize_artifact_save(self.conn, changed), 'denied')
@@ -208,6 +212,17 @@ class TaskTests(unittest.TestCase):
             try:
                 self.conn.execute('UPDATE v5_tsk_call SET ' + column + '=? WHERE id=?',
                                   (value, call['call_id']))
+                self.error(self.store.authorize_artifact_save(self.conn, request), 'unavailable')
+            finally:
+                self.conn.rollback()
+        for field, value in [('index', False), ('index', -1), ('status', 'unknown'),
+                             ('result_refs', {}), ('error', 1)]:
+            malformed = copy.deepcopy(step)
+            malformed[field] = value
+            self.conn.execute('BEGIN IMMEDIATE')
+            try:
+                self.conn.execute('UPDATE v5_tsk_step SET wire=? WHERE id=?',
+                                  (dumps(malformed), step['step_id']))
                 self.error(self.store.authorize_artifact_save(self.conn, request), 'unavailable')
             finally:
                 self.conn.rollback()

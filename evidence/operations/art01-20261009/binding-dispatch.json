@@ -1,0 +1,25 @@
+{
+  "task_id": "f4cba212a4934abaa5175a4f8133e9ff",
+  "base": "57fce7382e3a22f134cf4fe900deca0daec4512c",
+  "CO_version": "0.4.5",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "role": "SWE architecture review of next attachment boundary",
+  "model": "devin/swe-2-high",
+  "planner": "claude/claude-opus-5-5",
+  "owned_session": 55119,
+  "status": "running at snapshot",
+  "write_scope": [
+    "evidence/operations/art01-20261009/swe-binding-review.md"
+  ],
+  "snapshot_at": "2026-10-09T08:47:38Z",
+  "capacity_observed": {
+    "devin_executing": 2,
+    "claude_executing": 0,
+    "reserved": 0,
+    "limit_per_adapter": 12
+  },
+  "other_owned_task": "917989d447f94a09869f7b05e9870d3a",
+  "concurrency_limit": "Published shared-state independent ordinary runs; provider-side quota unknown. No30 claim.",
+  "runtime_observation": "Read-only status on the active implementation at08:44 returned journal_locked; owned process/capacity remained active. No state edits, resume or replacement implementation.",
+  "auth_cost_check": "Existing Claude Pro/claude.ai and Devin login; exact swe-2-high Free. Extra credits remained observed OFF; no configuration change."
+}

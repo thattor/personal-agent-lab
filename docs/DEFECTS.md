@@ -1022,3 +1022,15 @@ role_unknown before task creation. Root preserved the error and corrected only
 that pre-task option, then launched the distinct authorized ART implementation.
 No unknown call was retried. Next dispatch uses supported observed role names;
 recording this correction does not claim a general runtime change or guarantee.
+
+## ART save-authority hook — strict input and stored metadata, 2026-10-09
+
+Independent Sol found two gaps in Root's new TSK callback: keys-only action validation
+mapped content=1 to conflict; a stored Step.index=False matched integer0 and allowed
+save authorization. Cause: equality was used before exact-type validation, despite
+the shared wire contract excluding bool integers. Root reproduced both failures,
+reused the shared model-action parser for requests and strictly checked saved Step
+index/status/refs/error before comparisons. The expanded36 tests pass; independent
+rereview follows. Next authority boundary tests distinguish malformed user input
+(invalid_input) from corrupt owner metadata (unavailable), and explicitly include
+bool/int equality cases. No live data or CO state was changed by these probes.
