@@ -60,7 +60,10 @@ Poll/read/pause/cancel/source-stop schedule no entry. Explicit successful resume
 or structured answer may schedule one Expert slice, preserving UI01/2 idempotency.
 
 Primary held or unavailable/unrecognized owner response latches application held.
-Expert UNAVAILABLE or unexpected/exceptional owner response likewise latches held,
+The existing exact success {"status":"empty"} means no eligible work/action;
+it must not latch held or enter a provider. Keep current public runner result
+shapes for other successful slices. Expert UNAVAILABLE or unexpected/exceptional
+owner response likewise latches held,
 because public owner information cannot establish a safe ending. Known DENIED or
 INVALID_INPUT is not converted into a returned action. No further progression
 while held, including already queued items; pending durable turns remain saved.
@@ -116,6 +119,19 @@ Root read the exact test/fixture bodies and their original API dependencies.
 The missing-module RED is not an executed HTTP/assertion verdict; fixed bodies
 must be exercised after source exists. The standalone typed fixture is validated
 against the current12-field schema, with no CLI. Existing test bytes are unchanged.
+
+First proper-loopback body execution found a fixture reach error: GET/api/works
+is the C02 list projection and omits current_artifact_refs. Root approves only
+the fixed author's public get_work(goal_id,revision) detail read, keeping the
+artifact-count1 expectation. Corrected commit40edcd3f1051bb4c58a086f0ec7b49a5eb092973
+has test SHA256
+bc78be39ae2f97cc85ebbada345e17b0751e3cad5ecbb68bb3f7be7b93a5a7cb;
+helper and all10 method expectations otherwise stay unchanged. Root's first
+suggested get_status name was wrong; no such current API is added. Preserve
+originalefd6 and RED. Source author separately fixes its missing known-empty
+result branch; do not change fixture expectations to absorb that product defect.
+Next freeze checks every asserted projection field and actual public method name,
+not only syntax/module imports. Independent source review still follows.
 
 After Root freezes the exact fixed tests, separate Sol owns only new
 pal/native_http_v5.py and necessary pal/http_v5.py, pal/web_v5/index.html,
