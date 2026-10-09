@@ -59,6 +59,7 @@
 出力：{reply:str,proposal}。proposalはnone / new_work{brief:DraftBrief} / continue{work_ref,record_ref} / answer{work_ref,question_id,record_ref} / control{work_ref,command} / memory{operation}。
 意味解釈とbrief作成は一回のモデル呼出しでよい。UIは最初にC05で原文を保存し、ホストが提案の対象・出典を確認してC03/C05/C10へ渡す。効果は保存後に通知する。効果適用keyはturn_idから導出し、受付結果の保存前に落ちても同keyで既存効果を回収する。全提案のget_by_keyを提供者が持つ。モデル回答文を未確定の効果として先に表示しない。構造化ボタンの停止等は推論を待たずC10へ渡す。
 モデル失敗はエラー表示し、推測操作を行わない。同じclient_keyの再送で推論を二重起動しない。未確定のまま再起動した入力は中断表示し、勝手に再推論しない。
+PRI01/1の初回managed mock実装は[固定スコープ](PRI01-SCOPE.md)、純粋な提案型は[PRI01-WIRE/1](PRI01-WIRE-SCOPE.md)に従う。continue/attach/remember/correctは未実装として明示拒否。全露出出典を保存・再確認し、停止後は返信を抑止して確定済み効果の履歴だけを保つ。構造化control/stop_referenceはモデルを通さない。追加Opus相談は未受領であり、F5の実露出closureはD048のRoot技術判断。
 
 ### C02 候補・現在状態の照会（TSK-01）
 入力：{session_id,query?:str,goal_ids?:[str],limit:int}。
@@ -66,6 +67,7 @@
 get_work入力：{goal_id,revision?}→{work_ref,brief,grant,state,current_artifact_refs,open_questions}。VERはこの窓口から固定条件と現行成果物集合を読む。過去revisionの読出しは履歴であり現行完了には使えない。
 CHANGE01/1では、旧revisionのstateは履歴専用のsuperseded、open_questionsは空とする。最新revisionの状態領域にはsupersededを加えない。回答済み・閉鎖済み質問、旧成果物・Step・受付結果は履歴に残し、旧C04/C10再送の保存応答を最新状態へ書き換えない。
 読取り専用。別セッションの仕事も本人の同一アカウント内で検索できる。候補からの意味選択はPrimary、ID/版の有効性はTSKが確認。候補なしと曖昧を混同しない。
+PRI01-TSK/1ではlist_candidatesはsession_id/limit1..20/goal_idsのみ。queryはunavailable。結果にtruncatedと各候補のdependency_refs/text_withheldを加え、停止・参照不可なら本文を空にしてID/stateは保持する。安全なUTF8要約・質問、最新終端を含む並び、単一read transaction、全保守的依存のgate・破損拒否は[owner固定契約](PRI01-TSK-SCOPE.md)に従う。
 
 ### C03 作成・継続入力の結合（TSK-01）
 create入力：{key,session_id,origin_record_ref,brief:DraftBrief}。
@@ -143,6 +145,7 @@ release入力：{lease_id,work_ref,outcome:yield|paused|failed,reason}→保存�
 CHANGE01/1では、新規claimは各Goalの最新queuedだけを選ぶ。保持された旧leaseは診断値を返すが旧revisionの実行権を与えない。旧leaseの解放は呼出し・予約・Stepの所有結合と終了状態を確認し、旧startedだけをabandonedにする。最新revisionのcancel、pause、その他queuedの順に確定し、応答は最新WorkRef。旧failed結果で置換後の仕事をfailedにしない。
 recoverはホスト起動時だけ実行。起動ロックで旧runner不在を確認し、EXE.recoverで所有呼出しを照合してからTSKのrunningを無効化。未完了stepを照合して再開可能ならqueued、情報待ちはwaiting_input、paused/cancelledは維持する。モデル推論が中断したstepは未確定として同じ出典から再計算できるが、完了済み操作を繰り返さない。復旧で回収した旧epochの確定観測は、現revisionの目的・出典可用性・鮮度を確認して新しいstepへ参照として結合する。ARTの旧epoch保存結果も同revisionかつ有効出典ならホストが復旧採用を記録できる。VERの旧epoch判定はC10.completeへ流用せず現epochで再確認する。これは旧実行の遅延結果を無条件に採用する経路ではない。
 RECOVERY01/1のmanaged in-process mock起動・回収は[固定スコープ](RECOVERY01-SCOPE.md)に従う。終了まで保持したPOSIXロックと登録済みsession/lease/claim epochの結合が揃う場合だけ、admitted/no-Stepを独立したinterruptedへ回収できる。returned/raised/not_enteredへ置換しない。started compose/operateは理由付きheldとして占有とstartupを保持し、後続のART/EXE採用なしに全C13完了とはしない。
+RECOVERY02/1では同revision・利用可能な出典・正確な保存key/action/typed証明が揃うstarted composeだけ、保存済みStep/ART集合を採用して再実行しない。旧VERは現epochで再検証する。started operateのexternal_tailは引き続きheld。通知文はproducer証明ではない。
 checkpointは最後のfinished stepのindexと未解消question参照。内部思考の保存は要件にしない。
 
 ### C14 表示と通知（TSK→PRI/UI）
@@ -158,6 +161,7 @@ TSK.append_event{key,session_id,work_ref?:WorkRef,kind,text,refs}→{event_id}�
 C07.prepareはoperation予約をEXE-01が確保してOperationへ保存し、executeは保存済み予約だけを使う。C12はRUN、C01はPRI、C09はVER、記憶要約はMEMがmodel予約を取得してMODへ渡す。上位と下位で二重予約しない。step予約はC13.begin_stepが確保する。
 出典依存の登録と可用性確認はreserve前にTSK.register_sources{work_ref,refs}で行う。仕事なしの呼出しはMODがsource_refsを保存し、呼出し前/結果採用前にC11で確認する。利用停止済み結果を後からモデル入力へ再利用しない。
 初版は仕事の実行枠と別にPrimaryの受付を処理できる。MODが逐次処理しかできない場合でも構造化制御はMODの待ち行列を通らず動作する。具体的なスレッド構成は担当の裁量。
+PRI01-TSK/1のworkless予約はkind=model/role=primary/work_ref省略だけを許し、managed ready sessionへ予約を結び、既存共有model上限だけを消費する。lease=NULLのみを証明にしない。Primaryが自身の一回のcall台帳を所有し、consumeとsession付き再送を検証する。実provider subprocessはmock profileの資格に含まれない。
 
 ## 5. 状態遷移と競合の決着
 
