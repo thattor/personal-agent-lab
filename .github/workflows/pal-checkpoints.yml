@@ -1,0 +1,51 @@
+name: PAL source and fixture regression (not acceptance)
+
+# A passing run proves source-bound, local functionality only. It cannot
+# qualify a real model, authorize external effects or complete a milestone.
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pal-checkpoint-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  source-and-fixtures:
+    # No checkout or execution of untrusted fork code in this owner-only gate.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: macos-15
+    timeout-minutes: 12
+    steps:
+      - name: Checkout unprivileged pull request
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Select supported Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Record exact check target and Python
+        run: |
+          python -VV
+          git rev-parse HEAD
+          git show -s --format=%P HEAD
+      - name: Keep fixture tests from resolving a live gh CLI
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/no-live-gh"
+          printf '%s\n' '#!/bin/sh' 'echo "live gh disabled in fixture CI" >&2' 'exit 126' > "$RUNNER_TEMP/no-live-gh/gh"
+          chmod 0755 "$RUNNER_TEMP/no-live-gh/gh"
+          echo "$RUNNER_TEMP/no-live-gh" >> "$GITHUB_PATH"
+      - name: Complete PAL regression suite
+        run: python -E -s -B -m unittest discover -s tests -v
+      - name: Exercise saved question and answer mock flow
+        run: python -E -s -B scripts/demo_ask_v5.py
+      - name: Exercise revision replacement mock flow
+        run: python -E -s -B scripts/demo_change_v5.py
+      - name: Exercise saved result readback mock flow
+        run: python -E -s -B scripts/demo_readback_v5.py
