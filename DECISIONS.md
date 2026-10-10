@@ -3341,3 +3341,22 @@ and SWE-2 High implementation, and preserve all actual PASS/UNKNOWN distinctions
 The approval is at most one **new** synthetic qualifying invocation, not a
 general continuous provider allowance. Recorded in PR19 issuecomment-6099779022.
 No real new case, invoke, release or product acceptance is claimed by D074.
+
+## D075 — scoped EXE02 source acceptance (2026-10-11)
+
+Root adopts only isolated EXE02 source/test files, after independent Opus
+security review and source/test confirmation that its two remaining P1
+conditions were repaired. The source is standard-library-only, externally
+inert unless explicitly invoked with a trusted runner; the current PAL
+Primary/Expert/UI does not call this leaf. Root full1103 tests pass at
+50d00a9, preserving prior1037. The Opus HOLD is recorded as its original
+review verdict with conditions subsequently proved by local tests; it is not
+an unqualified release approval. Evidence: c110-exe02-read-20261011.
+
+Next dependency is EXE01's concrete TSK-bound authorization, operation
+reservation/receipt and honest unknown handling, then owner/Expert wiring.
+A separate SWE-2 High candidate for EXE01 exists but cannot be integrated
+until independent P1 finalization findings and full tests are resolved.
+C094 and all other original UNKNOWNs remain held, MAX1/real provider
+approval is separate and finite, and real useful product acceptance
+remains NOT_MET. No additional cost/auth/service or old-call operations.

@@ -1,3 +1,29 @@
+# Current C110 — bounded EXE02 GitHub read leaf integrated (2026-10-11)
+
+Root source commit 50d00a9 integrates four new stdlib-only EXE02 source/test
+files from isolated candidate dd9dcdf. A trusted caller may supply an existing
+absolute gh executable and config directory, but no genuine gh or PAL model
+was invoked. Only the pure request/file/issue payload, one bounded child,
+explicit stdout/stderr/timeout, owned exit/reap/group-empty proof and
+fail-closed UNKNOWN behavior are covered.
+
+Opus 5.5 initial security review identified P0/P1 defects. A second independent
+review held source until a mutation-sensitive pump cancellation test and
+post-validation arguments snapshot/provenance test passed. Both retained
+differentiating tests are present. Controller independent targeted41 executor,
+25 issue and full1103 tests PASS. Root integrated Python3.13 full1103 PASS,
+exit0, unchanged HEAD. See
+evidence/operations/c110-exe02-read-20261011/verification.json
+for exact source and log hashes. This is a source-only conditional acceptance;
+the original Opus HOLD is not silently rewritten into unconditional approval.
+
+EXE01 operation ledger remains on a separate, not-yet-adopted branch. Real
+authorization, actual GitHub reads, Primary/Expert connection, genuine native
+UI, authentic useful work and release remain NOT_MET. C094/N1/N2/N3 original
+UNKNOWN/held records remain untouched. D074 separate MAX1 choice remains
+answered subject to the original strict pre-entry gates. No new auth,
+service, billing setting, native activation, merge or deployment occurs.
+
 # Owner disposition after C097 — 2026-10-11, not a provider qualification
 
 The owner directly answered `max1` in the PAL controller conversation and

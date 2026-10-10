@@ -1,0 +1,52 @@
+{
+  "candidate_commit": "dd9dcdfb26f7246ccf7e823ac51028406130d116",
+  "independent_review": {
+    "claim": "source-only, conditional; not live provider qualification",
+    "condition": "P1-A mutation-sensitive owned-cancellation test and P1-B immutable input snapshot/test, then green full suite",
+    "condition_met_by": "controller source/test inspection and independent Python3.13 test evidence",
+    "model": "claude-opus-5-5",
+    "original_verdict": "HOLD"
+  },
+  "limitations": {
+    "actual_gh_call": false,
+    "actual_pal_model_call": false,
+    "adopted_exe01_ledger": false,
+    "original_unknowns": "unchanged held",
+    "qualified_native_ui": false,
+    "release_acceptance": "NOT_MET"
+  },
+  "source_commit": "50d00a9089e30559dd7e9bbce707dcd96a9c25d2",
+  "source_hashes": {
+    "pal/github_issue_payload_v5.py": "a7b9fcf5b76ef3dcd97f6fa4773f6b3f2fb0f88b045532d27b0feb9d84ca72b4",
+    "pal/github_read_executor_v5.py": "12ac4dbbdbc9b71eb395b0513ae7f700c2f6a974cf2162d5f6aad48dafbb7be5",
+    "tests/test_github_issue_payload_v5.py": "99ee24f801bc6134ba7b059369c2103c8a9ec95bcdc5a596c4dfe822d9f09078",
+    "tests/test_github_read_executor_v5.py": "112ad7c5eac7e76cdd95b2aa0d83205ce6367d3a87b0a8f5a06b315907957975"
+  },
+  "verification": [
+    {
+      "count": 41,
+      "exit_code": 0,
+      "kind": "executor-focused",
+      "log_sha256": "bfd8041250f33d04bcbe6889d79b4985a89ae5c781f987281a27b967c528035b"
+    },
+    {
+      "count": 25,
+      "exit_code": 0,
+      "kind": "issue-focused",
+      "log_sha256": "fa213230aaf6ce6cf25d122beee0b0f3e695ad2c6103741a319414e26497a8b1"
+    },
+    {
+      "count": 1103,
+      "exit_code": 0,
+      "kind": "candidate-full",
+      "log_sha256": "f3ceb7892f07bb81bcf9202c9916135825869a95b5926f697e492d33d1432c0b"
+    },
+    {
+      "count": 1103,
+      "exit_code": 0,
+      "kind": "integrated-full",
+      "log_sha256": "8c431e09a413edd6da2ae43e9b32cedfccfc1ba17875c084e42f235eea458afc"
+    }
+  ],
+  "version": "PAL-EXE02-C110/1"
+}

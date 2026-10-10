@@ -1,3 +1,16 @@
+# Current C110 — EXE02 source-only local acceptance; PAL whole goal NOT_MET
+
+Independent Python3.13 results at exact source50d00a9: 41 executor tests,
+25 issue parser tests and 1103 whole PAL tests PASS/exit0. The suite retains
+every previous 1037 PAL test plus66 new EXE02 unit/owned-child cases.
+Evidence: evidence/operations/c110-exe02-read-20261011/verification.json.
+The two final conditional Opus P1 issues (actual BaseException branch test
+and caller-argument snapshot) are verified in source and discriminating
+tests. Opus's original HOLD is retained and its conditional source-only
+acceptance criteria are met. No real gh read, EXE01/TSK authority,
+real Primary/Expert/UI, authentic usefulness, CI or release is proved.
+Original C094 and other UNKNOWNs remain held.
+
 # Current C097 — private failure source1037 passes; real proof still unmet
 
 Root679f267 full **1037 PASS46.933s/exit0** follows independent Astra APPROVE of
