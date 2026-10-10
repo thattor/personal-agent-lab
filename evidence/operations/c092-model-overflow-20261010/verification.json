@@ -1,0 +1,51 @@
+{
+  "contract": "PRI02-MODEL-OVERFLOW/1",
+  "fixed_test_commits": [
+    "d7bda6f2bc846278852081d62be42f6aaac5d33b",
+    "836fe5d589ad5572ebbf748e8096d726a27714fc"
+  ],
+  "independent_review": {
+    "combined_source": "a84c18e8a13615d8a372835bce3e046df379fc35",
+    "exit": 0,
+    "log_sha256": "1c7f02d7f2449c0070ee8443d534dad78dc8511be3fa5c7cbfe71a30c6fe71d3",
+    "methods": 165,
+    "reviewer": "Native gpt-6.1-sol, fixed-test owner separate from Native gpt-6-astra source author",
+    "test_seconds": 1.56,
+    "verdict": "APPROVE"
+  },
+  "new_methods": 14,
+  "new_provider_entry": false,
+  "old_unknown_records": "unchanged; no retrospective marker construction",
+  "original_model_snapshot_and_limits": "unchanged",
+  "original_red": {
+    "cause": "new API and sidecar absent from original source; previous13 RED retained",
+    "errors": 32,
+    "exit": 1,
+    "failures": 7,
+    "log_sha256": "7713c005728226b986da73bd2e96914cb561b06999030cf9849e623c53200c60",
+    "methods": 14,
+    "test_seconds": 0.069
+  },
+  "proof_scope": "local source/functional fixtures only, no prose-quality grading or native qualification",
+  "qualification_envelope": "invalidated by new source hashes",
+  "retained_methods": 969,
+  "root_full": {
+    "exit": 0,
+    "log_sha256": "59490550cef35e2d0be7d50a5693179d5274c78cc26f76edd89e26dddc682276",
+    "source": "c6eb4690b6261799af0c9e9dae9aa072b203c275",
+    "test_seconds": 19.397,
+    "tests": 983,
+    "wall_seconds": 19.684
+  },
+  "source": "c6eb4690b6261799af0c9e9dae9aa072b203c275",
+  "source_author_commit": "6ea9771fbf7dcd0bc9d2348c1a7917f605685cc6",
+  "source_pins": {
+    "pal/native_text_v5.py": "dd402aa1602ae70923e7f8bb8c2730d50a51c1b77121f2a2664bfc94ec13528e",
+    "tests/test_native_devin_model_overflow_v5.py": "04fafee6aa97ec7616076895a7754fe5110a07e5eb41dfc1bd586dfacf617404",
+    "tests/test_native_model_overflow_v5.py": "9630c61bfdf1929fe5d1fa0af42de11fb1ba0edbc50f5c5428bb9ea244a5ed07",
+    "tools/native_devin_text_v5.py": "22950d06a9cd6d606218e37deec7402240df42fb1d1b7a381ef03485782009cf"
+  },
+  "strict_native_buffer_prefix": "unchanged",
+  "version": "C092-LOCAL-VERIFICATION/1",
+  "whole_goal": "NOT_MET"
+}

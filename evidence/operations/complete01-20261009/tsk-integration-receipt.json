@@ -1,0 +1,50 @@
+{
+  "scope": "COMPLETE01/1 adopted technical local mock completion",
+  "integration_base": "dadac5750533203549f1381ad81049c7d34ba0ac",
+  "tsk_author": "native Astra",
+  "tsk_author_source": "a48d0cf3c72df71a7057f69417cdde7c7fa1beef",
+  "tsk_independent_review": {
+    "reviewer": "separate native gpt-6.1-sol context int00_sol_review",
+    "verdict": "APPROVE",
+    "tests": 46,
+    "breakdown": {
+      "completion": 22,
+      "artifact_binding": 16,
+      "verification_context": 8
+    },
+    "original_blockers": [
+      "mismatched current lease work identity",
+      "boolean wire index",
+      "malformed saved call work mapped invalid_input"
+    ],
+    "fix": "strict saved/current identity and index checks; storage corruption unavailable; older ended lease history remains usable"
+  },
+  "run_fixture": {
+    "author": "separate native Sol6.1 context",
+    "source": "ed1bea7d0355a869cce1a6e99cdfaa69dd13319a",
+    "sha256": "6a6b151740954a0002477aa4bf6f4720dd1c84123cd2681f54c3de83896ca793",
+    "red_tests": 16,
+    "red_errors": 15,
+    "explanation": "new constructor unsupported; downstream behaviors not yet exercised"
+  },
+  "root_actual_connection": {
+    "tests": 9,
+    "elapsed_s": 0.159,
+    "exit_code": 0,
+    "real_owners": [
+      "MEM",
+      "TSK",
+      "ART",
+      "VER",
+      "C14"
+    ],
+    "full_product": "NOT_RUN"
+  },
+  "old_test_update": {
+    "file": "tests/test_tasks_v5.py",
+    "reason": "frozen COMPLETE01 replaces completed-source-stop rejection with history notice; preserve transaction rollback and affected epoch set assertions",
+    "tests": 36,
+    "elapsed_s": 0.182,
+    "exit_code": 0
+  }
+}

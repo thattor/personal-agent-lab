@@ -1,0 +1,166 @@
+{
+  "version": "PRI03-LOCAL-VERIFICATION/1",
+  "overall_goal": "NOT_MET",
+  "real_native_expert_calls": 0,
+  "source_commit": "e4fea1046821068a9684bcc2009252fcc6a38b7e",
+  "verifier_integration_commit": "d3ecd8e",
+  "source_sha256": {
+    "pal/tasks_v5.py": "35d13bc226e4ec9e4cdcd61185a614e0343fb379bd97914019c13c34e8620972",
+    "pal/native_expert_runner_v5.py": "dbe00a98709ae442cd50dd7ec12ab0e52b8ab3b8ea0663586889669c753880c0",
+    "pal/mock_runner_v5.py": "7acad3f6a10b2d7f8fe6fe3e02869d72671f77af9a5faffa941a038748d360ff",
+    "pal/read_consumer_v5.py": "6d4b91e084ac6348d3e67f264d086cbe1878ef798160c80e61ae0dfa71194b55",
+    "tools/native_devin_text_v5.py": "84e5f168786382a661fecd464eb6c5c0421659ccb33d779c7638ebac94710d84",
+    "tools/verify_native_expert_lifetime_v5.py": "99daecdf834d973174b3bea4ea69b2e326a142097d855c4321c3a7125ef89b8c"
+  },
+  "fixed_test_sha256": {
+    "tests/native_expert_fixtures_v5.py": "cfce275f297ac0b09fd6cb39c1207fcaf6e11a29f939677ff4bd95fdf049e3fd",
+    "tests/test_native_tasks_v5.py": "399370a4283bd093eabac0771b992f603140722e1c4ad520c5d5ef872c7be1b7",
+    "tests/test_native_tasks_integrity_v5.py": "b9ac48d8925e1b3364757ccf746ddc7749f1727769699941ee0afeb37d1f0194",
+    "tests/test_native_expert_runner_v5.py": "e1a9a65630aa0d0ef284f6b29214742d1742e5d76ce65afe73f2e32bb4228ee5",
+    "tests/test_native_read_recovery_v5.py": "564a09b8750bd581875ef5939206bb58e5155feade6ad6e5d86fb5025b5564d5",
+    "tests/test_native_devin_stop_order_v5.py": "3c9412daafc9eff73146a3f729fce5463713364bdcef9a4e43dd00c1a771ab18",
+    "tests/test_tasks_ask_v5.py": "1b64fc1e0dd319887aa6773dbeb652f4d94c9e0a6264824e09cecfce4e6bc5b1",
+    "tests/test_read_display_v5.py": "32918b77f1641fd8688c8169e8ed9f17731f2babd98e25e7960d848eeb83dc44",
+    "tests/test_read_connection_v5.py": "3a359605bb2a96df9a7aa22baac647ba5583ea7c7df85ce9236b27bba8ad4d8b",
+    "tests/test_read_consumer_v5.py": "4217745486a6864f4be48d2223ba636b2268228610ed91080dc82e18806fdb96"
+  },
+  "full": {
+    "count": 1202,
+    "seconds": 32.407,
+    "exit": 0,
+    "status": "PASS",
+    "log_sha256": "abd6b2c010b1cdc56118890a8ecb89deff0d487d646fb78c1d9829c4cc4c4d71",
+    "scope": "local source and fixtures; temporary DBs and localhost"
+  },
+  "restricted_attempt": {
+    "count": 1202,
+    "seconds": 19.261,
+    "failures": 3,
+    "errors": 29,
+    "exit": 1,
+    "status": "FAILED",
+    "log_sha256": "6670084eff5be9e7137734e9fb9eb1a2c1794abac66d52ddc7ec91ea7362614c",
+    "scope": "existing localhost/child restrictions retained; criteria unchanged"
+  },
+  "independent_reviews": {
+    "tasks": "APPROVE after retained original native-to-mock downgrade blocker",
+    "runner": "APPROVE in separate execution context with repaired TSK",
+    "read": "APPROVE after genuine and forged fixed recovery tests",
+    "cleanup": "APPROVE completed initial SWE snapshot; Root38 PASS",
+    "lifetime_verifier": "APPROVE separate reviewer6 PASS"
+  },
+  "root_lifetime": {
+    "count": 6,
+    "seconds": 0.685,
+    "exit": 0,
+    "status": "PASS",
+    "raw_json_sha256": "66180e491f62fe0c13fc9d63ac23ff38af8f9b6c2b744236c793d5c845a5d052",
+    "log_sha256": "bb7022717d2c0984f04af186ff45566751b7ba899f849f87c7fe6a591b7fed59",
+    "cases": [
+      {
+        "case": "test_sigkill_entering_orphan_held",
+        "passed": true,
+        "fixture_only": true,
+        "real_provider_calls": 0,
+        "native_cessation_proven": false,
+        "external_effects": 0,
+        "killed": true,
+        "reaped": true
+      },
+      {
+        "case": "test_sigkill_prepared_orphan_held",
+        "passed": true,
+        "fixture_only": true,
+        "real_provider_calls": 0,
+        "native_cessation_proven": false,
+        "external_effects": 0,
+        "killed": true,
+        "reaped": true
+      },
+      {
+        "case": "test_sigkill_returned_without_step_settles_only_lease",
+        "passed": true,
+        "fixture_only": true,
+        "real_provider_calls": 0,
+        "native_cessation_proven": false,
+        "external_effects": 0,
+        "killed": true,
+        "reaped": true
+      },
+      {
+        "case": "test_sigkill_saved_artifact_tail_lookup_fresh_verification",
+        "passed": true,
+        "fixture_only": true,
+        "real_provider_calls": 0,
+        "native_cessation_proven": false,
+        "external_effects": 0,
+        "killed": true,
+        "reaped": true
+      },
+      {
+        "case": "test_two_connections_pause_during_owned_callback",
+        "passed": true,
+        "fixture_only": true,
+        "real_provider_calls": 0,
+        "native_cessation_proven": false,
+        "external_effects": 0,
+        "killed": false,
+        "reaped": false
+      },
+      {
+        "case": "test_two_connections_source_stop_during_owned_callback",
+        "passed": true,
+        "fixture_only": true,
+        "real_provider_calls": 0,
+        "native_cessation_proven": false,
+        "external_effects": 0,
+        "killed": false,
+        "reaped": false
+      }
+    ]
+  },
+  "co_cleanup": {
+    "runtime": "0.4.5",
+    "route": "devin",
+    "model": "swe-2-high",
+    "cost_tier": "Free",
+    "cli_version": "3000.11.3",
+    "planner_completed": true,
+    "initial_implementation_completed": true,
+    "repair_outcome": "unknown",
+    "task_status": "awaiting_decision",
+    "task_exit": 75,
+    "verified": false,
+    "initial_declared_verification": {
+      "count": 35,
+      "failures": 14,
+      "errors": 12,
+      "exit": 1
+    },
+    "independent_complete_checkout": {
+      "count": 38,
+      "exit": 0,
+      "status": "PASS"
+    },
+    "independent_nine_file_reconstruction": {
+      "count": 38,
+      "exit": 0,
+      "status": "PASS"
+    },
+    "observed_environment_errors": [
+      "Path.resolve PermissionError for private temporary path",
+      "pwd.getpwuid KeyError"
+    ],
+    "all_failure_causes_proven": false,
+    "unknown_repair_adopted": false,
+    "completed_snapshot_sha256": "84e5f168786382a661fecd464eb6c5c0421659ccb33d779c7638ebac94710d84"
+  },
+  "limits": [
+    "All native Expert endings are fixtures",
+    "Owned child death is local evidence, not native cessation",
+    "Original N1/T/CO unknowns are unchanged and unreplayed",
+    "Prepared/entering/unknown orphan lease still holds startup",
+    "Existing ready same-process Primary stays budget eligible",
+    "Native provider/UI/authentic usefulness and whole product are unproven"
+  ]
+}

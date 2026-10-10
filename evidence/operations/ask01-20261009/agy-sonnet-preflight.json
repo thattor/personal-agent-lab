@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-09T11:41:23.462357+00:00",
+  "route": "AGY CLI 1.3.2",
+  "model_id": "claude-sonnet-5-5-high",
+  "model_display": "Claude Sonnet 5.5 (High)",
+  "auth_plan": "Google AI Pro",
+  "weekly_remaining_percent": 38.6,
+  "five_hour_remaining_percent": 48.19,
+  "quota_group": "CLAUDE AND GPT MODELS: Opus, Sonnet, GPT-OSS",
+  "use_ai_credits": false,
+  "settings_changed": false,
+  "model_inference_sent": false,
+  "method": "models list, fresh TUI /usage, /settings Credits search; separate keys/menu inspection",
+  "native_initial_sandbox_failure": "local CLI log write/loopback bind denied before model call; existing scoped host invocation allowed by automatic review",
+  "not_current_or_concurrency_guarantee": true
+}

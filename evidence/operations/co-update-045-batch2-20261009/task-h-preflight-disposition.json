@@ -1,0 +1,10 @@
+{
+  "code": "spec_invalid",
+  "cause": "Python -c verifier argument exceeded installed TaskSpec max512 UTF-8 bytes per argv element",
+  "new_task_or_native_attempt_observed": false,
+  "capacity_after_error": {
+    "claude": 0,
+    "devin": 0
+  },
+  "correction": "Saved protected PAL verify_document.py; normal CLI run, no runtime/state edits"
+}

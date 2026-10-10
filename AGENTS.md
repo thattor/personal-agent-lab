@@ -1,117 +1,60 @@
-# AGENTS.md — Personal Agent Lab
+# AGENTS.md — Personal Agent Lab v5
 
-## Mission
-The project-level destination is the personal assistant described in SPEC.md. Manage project goal → GitHub milestone → goal-bearing Issue → verified work unit under G-001/D-022. [Overall plan P-001 v1](docs/plans/P-001-v1.md) is PROPOSED, not human-adopted. Stable-0 is released; Stable-1 under D-021 is the sole ACTIVE implementation milestone. Resume STATE.md, continue independently authorized work, and never activate PROPOSED stages from GitHub metadata alone.
+## Current source of truth
 
-This is a greenfield project. Do not search for, read, copy, migrate, or preserve compatibility with any old PAL implementation, schema, workflow, review, P0/P1 list, or codebase.
+Before starting, resuming or stopping, read the current sections of [STATE.md](STATE.md)
+and [DECISIONS.md](DECISIONS.md), and reconcile the latest owner instruction with
+exact source/evidence. These are the existing project judgment records; do not
+create another authority file.
 
-## Source of truth
-Read at the start of every work session:
-1. AGENTS.md
-2. STATE.md
-3. SPEC.md
-4. DESIGN.md
-5. ACCEPTANCE.md
-6. DECISIONS.md
+Current interfaces: [PAL-contracts-v5](docs/design/contracts-v5/PAL-contracts-v5.md)
+and the applicable frozen scope in `docs/design/contracts-v5/`. Current scope and
+latest explicit decisions govern older proposal headers and historical checkpoints.
+[ACCEPTANCE.md](ACCEPTANCE.md) records evidence, not new authority. SPEC.md and
+DESIGN.md are concise current pointers; their old bodies are retained history and
+are not mandatory model inputs. Use [CODEX-PROMPT.md](CODEX-PROMPT.md) for development.
 
-If documents conflict, later explicit decisions in DECISIONS.md win. Never silently weaken accepted product behavior to make tests pass.
+## Work boundaries
 
-Keep reusable PAL research, design records and data in this private repository with provenance and verification limits (D-030). Temporary folders and chat artifacts are staging copies, not the only retained copy. Historical access receipts and one-time approvals do not grant new execution authority.
+Use Python standard library only. Mock is the default. No new OAuth/auth, billing,
+service, provider invocation or unrelated project change is authorized by these
+documents. Follow actual current model-route assignments and approved alternatives
+in STATE/DECISIONS; do not revive superseded routing or quota instructions.
+Preserve old evidence, DBs and unknown native/CO outcomes. No unknown-call retry,
+resume/cancel, forced lease release or old DB migration without current authorization.
 
-## Roles
-- Codex: controller and implementer. Own project/milestone/Issue loops, coding, tests, commits, evidence, checkpoints and continuation within the current adopted plan.
-- Opus: independent design partner. Consult before adopting a design change.
-- Devin SWE-2 High: implementation-design and code-generation partner. Consult for substantial implementation architecture, concurrency, persistence, recovery, idempotency, test harnesses, provider/tool boundaries, or uncertain substantial code generation.
+Root owns shared contracts, canonical records, integration and publication.
+Respect isolated write assignments and exact frozen fixed tests. Source authors'
+self-checks are not independent reviews. Do not weaken criteria to obtain PASS.
+Do not read/reuse old PAL implementation or preserve backwards compatibility.
+Historical docs/receipts remain evidence, not active specifications or startup paths.
 
-Codex remains responsible for integration and evidence.
+## Verification and reporting
 
-Latest owner operating instruction (2026-10-08): this development chat is the sole
-writer of product code and canonical records. Use the persistent human-judgment chat
-for noninferable owner facts, authority and actual usefulness; use the existing design-change
-chat for material proposals. Current IDs, scope and waiting conditions
-live in STATE.md. Necessary messages between those chats are authorized; external
-support submission is not. Pending future proposals do not block accepted work.
+```sh
+python3.13 -E -s -B -m unittest discover -s tests -v
+```
 
-## Consultation gates
+Retain all current v5 tests, including unsuffixed probes. Use disposable fixtures
+and existing current v5 demos/lifetime verifiers for bounded local verification.
+Report exact source, actual command/exit/count, findings and remaining limits.
+Distinguish source approval, local mock/fixture proof, real transport qualification,
+operational adoption and authentic human usefulness. Current HTTP/UI retains
+LOCAL_MOCK_VERIFIED and LOCAL_NATIVE_FIXTURE_VERIFIED proof; C097 private-failure
+source verification is full1037/exit0. Genuine native UI,
+real qualification/usefulness and whole goal remain
+NOT_MET. Use the existing Python3.13 interpreter for local verification; a Python3.9
+StrEnum import failure is not a product regression.
+Global guidance and saved owner instructions remain independently applicable.
 
-Consult Opus before adoption when a change affects:
-- product scope or Stable-0 definition;
-- Primary/Responder/Expert/Executor responsibilities;
-- Goal/Attempt/Acceptance/Evidence semantics;
-- approval, cancellation, correction, forget/reference-stop, or resume semantics;
-- capability/security boundaries;
-- moving a DEFERRED feature into Stable-0 or removing an accepted Stable-0 behavior.
 
-Record the question, answer, and adopted/rejected conclusion in DECISIONS.md before implementation.
+## Latest owner clarification D060
 
-Consult SWE-2 High before substantial implementation when:
-- choosing or changing persistence/transaction strategy;
-- choosing or changing concurrency/worker model;
-- implementing restart recovery, dedupe, stale-result fencing, artifact atomicity;
-- designing provider/tool adapters or capability enforcement;
-- designing a non-trivial test/fault-injection harness;
-- generating a substantial new module or refactoring a boundary.
-
-Routine naming, local refactors, small bug fixes, test additions, and obvious details do not require consultation.
-
-Ask the user only when:
-- a new login/authentication or broader permission is required;
-- any additional payment or metered paid fallback would be required;
-- external/public exposure is required;
-- a material development-plan/scope/acceptance/priority change needs actual human finalization after Opus agreement under G-001;
-- accepted product behavior cannot be resolved within existing decisions after Opus review.
-
-If a safer, no-cost, no-new-permission alternative exists, use it and continue.
-
-D-028 clarification: first resolve choices using the owner's goal, existing decisions,
-repository evidence and model reasoning. A human question is valid only when it names
-the specific noninferable fact/authority/value judgment and the material outcome it
-changes. Technical methods, model-capability testing, copy, and reviewer caution are
-not approval gates. Opus/SWE advice cannot create owner-approval requirements.
-One end-to-end personal usefulness evaluation remains necessary after working output
-exists; do not fragment it into sentence/example approvals or block independent work.
-Pending future-plan proposals are dormant until a real scope conflict needs a decision.
-
-## Reviewer commands
-Use the installed official CLIs and verify syntax with --help when needed. Do not enable paid fallback.
-
-Opus example:
-claude -p --model opus --permission-mode plan --output-format text "<review prompt>"
-
-SWE-2 High example:
-devin --model swe-2-high --permission-mode auto --sandbox -p "<review prompt>"
-
-Respect official workspace trust. A refusal requires the scoped owner action in
-D029 C046; never use the old trust-check override example to bypass that boundary.
-
-Before each call, confirm the account is already authenticated and the selected route does not require extra payment. Never commit credentials or private account data.
-
-## Development loop
-1. Read source-of-truth docs and git status.
-2. Select the smallest unfinished acceptance slice in the current milestone recorded in STATE.md.
-3. Add or extend a failing deterministic test first when practical.
-4. Consult Opus/SWE-2 High if a gate triggers.
-5. Implement the minimum coherent change.
-6. Run targeted tests, then the full automated suite.
-7. Run required fault injection or live smoke when the slice calls for it.
-8. Update ACCEPTANCE.md with evidence and STATE.md with current state.
-9. Commit a small green increment. Reference acceptance and decision IDs.
-10. Evaluate the unit goal and contribution to its Issue/milestone/project; record outcome/evidence/commit/limits/plan impact/next action. Continue the next unfinished authorized item.
-11. At Issue closure independently verify its objective; at milestone exit/entry evaluate project contribution and plan assumptions. Defects/repeated causes/user feedback/assumption failures trigger early checkpoints. Closed children alone never complete the parent.
-12. Material plan changes: discuss/agreed with Opus → versioned evidence-bound proposal → actual human decision → update docs/GitHub → resume dependencies. Pending judgment blocks only affected work; routine technical decisions remain autonomous. See D-022 and docs/plans/P-001-v1.md. Do not restart paused schedules.
-
-If leaving a red state because of a real blocker, STATE.md must contain the exact failure, evidence, attempts, and next action.
-
-## Stable declaration
-Never call the product Stable-0 until every required Stable-0 row in ACCEPTANCE.md is PASS with linked evidence under the revised functional-first definition adopted in D-019. The historical 72-hour soak row is optional and must not be relabelled PASS.
-
-A mock, fixture, reviewer opinion, or model self-report is not product evidence.
-
-## Security and scope
-- No secrets in repo, logs, memory, prompts, fixtures, or test artifacts.
-- Models/Executors do not write canonical state directly.
-- Host-issued observations/receipts are authoritative evidence.
-- Irreversible/external side effects require host-side policy plus explicit approval.
-- Stable-0 should avoid real irreversible side effects; use a spy/denied tool for negative tests.
-- No extra cost.
-- No external public exposure.
+CO is one development means, not a mandatory product or implementation condition.
+Use approved direct alternatives when appropriate; do not promote one CO-native
+profile's version/receipt limitation into a universal PAL stop. Conversation and
+composition intelligence/quality remain delegated to the model under D031/D033:
+no prose grading, style corpus, model judge or quality release gate. Functional
+I/O, permissions, budgets, work state, controls, saved bytes and replay still need
+verification. A new direct profile needs its own explicit source/functional proof;
+this clarification does not permit new auth/cost/service or old UNKNOWN operations.

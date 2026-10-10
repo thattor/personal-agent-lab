@@ -1,0 +1,43 @@
+{
+  "observed_at": "2026-10-08T22:05:33.585326+00:00",
+  "component_base": "01c5f0c5fa81667063d4ff34fa66fc9911e8943c",
+  "full_command": [
+    "/opt/homebrew/bin/python3.13",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "python": "3.13.15",
+  "host_full_exit": 0,
+  "tests": 316,
+  "elapsed_seconds": 22.074,
+  "full_log_sha256": "cb2bbebd12e3b90515ed13da50e661e7391475e506c58ab11e524695bdebfee8",
+  "full_prior_log": "full-unittest.log (316 tests, 1 historical-freeze test error)",
+  "targeted_after": "39 PASS (21 request, 18 content)",
+  "synthetic_integration": "PASS; real provider/persistence/completion NOT_RUN",
+  "final_source_hashes": {
+    "pal/github_read_request_v5.py": "0fe921cd23f52a2dcb58bed4bdcd6ea7e7c0073bfce927c78e4593a2061e46c3",
+    "pal/artifact_content_v5.py": "e51d0a4c1835ae12fba7af2342fe3e14f956988501e05e15e845c956d4908680",
+    "tests/test_github_read_request_v5.py": "b3a62a117a64f4f6246eeb7b0fa385fdde625b61c31c64b2a2478080914b99be",
+    "tests/test_artifact_content_v5.py": "f63a3063c14404cf4a20a078a2dc4f0b96ecf2cce45c2493e5858c64341bf577",
+    "tests/test_primary_qualification.py": "c5b4fee8962a7de13b0d4ac8425f2f2bef8519ca332a4980f17ea8d048ec650c"
+  },
+  "production_freeze_validator_changed": false,
+  "old_trial_freeze_sha256": "baa73183f52f20028642601f45e7fbb178177abf3740021152a96d12b7aefc3f",
+  "root_corrections": [
+    "Exact str argument key validation; retained failing test log",
+    "Historical freeze is read and hash-checked as history, current validator must reject it"
+  ],
+  "minor_operator_correction": {
+    "event": "A combined patch used an unobserved DEFECTS heading and failed preflight before any file change",
+    "cause": "assumed heading",
+    "fix": "read actual heading, applied code patch and separate record",
+    "next_check": "use observed context for multi-file patches"
+  },
+  "independent_milestone_review": "PASS; Opus5.5 task4fada68c758b4af8b65c4d64eca42dbf, final source hashes confirmed by SOL",
+  "product_service_ct_e2e_and_user_value": "NOT_RUN",
+  "milestone_review_source_commit": "bf1759fdc6bcaac0b8f112ca61f0f35aafc2a1b1"
+}

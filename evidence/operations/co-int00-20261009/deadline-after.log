@@ -1,0 +1,31 @@
+test_changed_product_bytes_rejected_despite_clean_candidate (test_live_cancel_probe.CancelProbePreflightTests.test_changed_product_bytes_rejected_despite_clean_candidate) ... ok
+test_consumed_proof_marker_refused_before_runtime_without_native_call (test_live_cancel_probe.CancelProbePreflightTests.test_consumed_proof_marker_refused_before_runtime_without_native_call) ... ok
+test_existing_run_refused_before_proof_use (test_live_cancel_probe.CancelProbePreflightTests.test_existing_run_refused_before_proof_use) ... ok
+test_wrong_candidate_and_dirty_source_refused_before_proof_use (test_live_cancel_probe.CancelProbePreflightTests.test_wrong_candidate_and_dirty_source_refused_before_proof_use) ... ok
+test_wrong_script_hash_product_identity_and_cap_refused (test_live_cancel_probe.CancelProbePreflightTests.test_wrong_script_hash_product_identity_and_cap_refused) ... ok
+test_binding_refuses_two_goals_instead_of_guessing_running_target (test_live_cancel_probe.CancelProbeTests.test_binding_refuses_two_goals_instead_of_guessing_running_target) ... ok
+test_cancel_then_release_retains_exact_stale_artifact_without_receipt (test_live_cancel_probe.CancelProbeTests.test_cancel_then_release_retains_exact_stale_artifact_without_receipt) ... ok
+test_close_while_held_never_applies_result_and_releases_host_lock (test_live_cancel_probe.CancelProbeTests.test_close_while_held_never_applies_result_and_releases_host_lock) ... ok
+test_close_wins_after_stale_observation_before_pass_publication (test_live_cancel_probe.CancelProbeTests.test_close_wins_after_stale_observation_before_pass_publication) ... ok
+test_evidence_failure_while_held_still_cleans_up_without_apply (test_live_cancel_probe.CancelProbeTests.test_evidence_failure_while_held_still_cleans_up_without_apply) ... {"event": "operator.ready", "url": "http://127.0.0.1:62261"}
+ok
+test_expiry_during_final_snapshot_never_publishes_pass (test_live_cancel_probe.CancelProbeTests.test_expiry_during_final_snapshot_never_publishes_pass) ... ok
+test_hold_filters_primary_and_only_blocks_first_worker_point (test_live_cancel_probe.CancelProbeTests.test_hold_filters_primary_and_only_blocks_first_worker_point) ... ok
+test_live_invalid_preflight_never_constructs_native_owner (test_live_cancel_probe.CancelProbeTests.test_live_invalid_preflight_never_constructs_native_owner) ... ok
+test_needs_input_is_not_complete_result_pass (test_live_cancel_probe.CancelProbeTests.test_needs_input_is_not_complete_result_pass) ... ok
+test_operator_concurrent_close_preserves_original_reason (test_live_cancel_probe.CancelProbeTests.test_operator_concurrent_close_preserves_original_reason) ... {"event": "operator.ready", "url": "http://127.0.0.1:62264"}
+ok
+test_operator_deadline_before_watchdog_exits_cleanly (test_live_cancel_probe.CancelProbeTests.test_operator_deadline_before_watchdog_exits_cleanly) ... {"event": "operator.ready", "url": "http://127.0.0.1:62265"}
+ok
+test_operator_other_rejection_remains_failure (test_live_cancel_probe.CancelProbeTests.test_operator_other_rejection_remains_failure) ... {"event": "operator.ready", "url": "http://127.0.0.1:62266"}
+ok
+test_pause_cannot_satisfy_cancel_release_gate (test_live_cancel_probe.CancelProbeTests.test_pause_cannot_satisfy_cancel_release_gate) ... ok
+test_premature_release_leaves_result_held_and_no_artifact (test_live_cancel_probe.CancelProbeTests.test_premature_release_leaves_result_held_and_no_artifact) ... ok
+test_stale_cancel_is_rejected_and_cannot_release_result (test_live_cancel_probe.CancelProbeTests.test_stale_cancel_is_rejected_and_cannot_release_result) ... ok
+test_subprocess_eof_sigint_and_deadline_while_held_release_lock (test_live_cancel_probe.CancelProbeTests.test_subprocess_eof_sigint_and_deadline_while_held_release_lock) ... ok
+test_wrong_target_cancel_cannot_release_bound_attempt (test_live_cancel_probe.CancelProbeTests.test_wrong_target_cancel_cannot_release_bound_attempt) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 4.208s
+
+OK

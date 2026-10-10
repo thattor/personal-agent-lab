@@ -1,0 +1,78 @@
+{
+  "started_at": "2026-10-09T11:22:50.866696+00:00",
+  "finished_at": "2026-10-09T11:27:14.744405+00:00",
+  "elapsed_seconds": 263.877,
+  "model_requested": "claude-opus-5-5-high",
+  "mode": "default; text-only response; slash expansion disabled",
+  "sandbox": true,
+  "fresh_conversation": true,
+  "prompt_sha256": "4354884432a469c87ef81d0c395bb84bd009e0dc42995bb4d01df2c577609a8b",
+  "exit_code": 0,
+  "route": "direct AGY 1.3.2; not CO",
+  "conversation_id": "2d96c06a-545d-4f7f-8c1d-355b1683809b",
+  "status": "SUCCESS",
+  "base": "a58cde78e7777a5254f5e5b812fe6ed757576008",
+  "inputs_reverified": {
+    "docs/design/contracts-v5/ASK01-PROPOSAL.md": {
+      "sha256": "fad208af67add780090e0ed92af269d95919aab402a11c1d2ec091da16a72acb",
+      "bytes": 2504,
+      "exact_bytes_present_in_prompt": true
+    },
+    "docs/design/contracts-v5/ASK01-SWE-CONSULT.md": {
+      "sha256": "8c70ae08fd4fce0bf82092e8839ac1b25e45ae5af05010b3f0805cf984193bb2",
+      "bytes": 9874,
+      "exact_bytes_present_in_prompt": true
+    },
+    "docs/design/contracts-v5/PAL-contracts-v5.md": {
+      "sha256": "948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "bytes": 37492,
+      "exact_bytes_present_in_prompt": true
+    },
+    "docs/design/contracts-v5/TSK02-SCOPE.md": {
+      "sha256": "5031b816ea42e4b1579a058e060e83bb20a7317a804005a4e28119b5f4604a11",
+      "bytes": 15176,
+      "exact_bytes_present_in_prompt": true
+    },
+    "docs/design/contracts-v5/COMPLETE01-SCOPE.md": {
+      "sha256": "e3b0f384924760d9b0fb7a2ace50954982b2b01a9d2dff725efe785f3371557f",
+      "bytes": 12372,
+      "exact_bytes_present_in_prompt": true
+    },
+    "evidence/operations/read01-20261009/opus-final-review.md": {
+      "sha256": "6e5ce28387e2b13a9dd76e17ead746fd67c73ffeb05dab0fa1f2c9ebcc2b0089",
+      "bytes": 12546,
+      "exact_bytes_present_in_prompt": true
+    },
+    "pal/tasks_v5.py": {
+      "sha256": "7da021a48feb00cc270be85a5e10e2888657feed35d483ca5f7c973e34077d02",
+      "bytes": 47007,
+      "exact_bytes_present_in_prompt": true
+    },
+    "pal/mock_runner_v5.py": {
+      "sha256": "2f7d66bc2ef1bd2e385852b16c87f733d75d31cd47b3e7b6ab58aecfa647ec10",
+      "bytes": 24309,
+      "exact_bytes_present_in_prompt": true
+    },
+    "pal/memory_v5.py": {
+      "sha256": "94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+      "bytes": 13089,
+      "exact_bytes_present_in_prompt": true
+    },
+    "pal/contracts_v5.py": {
+      "sha256": "683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "bytes": 20973,
+      "exact_bytes_present_in_prompt": true
+    }
+  },
+  "original_manifest_discrepancies": [],
+  "tools_observed": [
+    "finish"
+  ],
+  "tests_run": false,
+  "adoption": "candidate only; Root reconciles actual code and freezes",
+  "limitations": [
+    "intake_v5.py not supplied",
+    "candidate reports incomplete contracts tail; Root must inspect actual source"
+  ],
+  "prior_unknown_call": "8288ddc326e347169ac7ac699a1a80bc remains untouched"
+}

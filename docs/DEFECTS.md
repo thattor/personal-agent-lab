@@ -1,5 +1,160 @@
 # Defects and prevention
 
+## 2026-10-09 — managed invoker caught owner faults as host refusal
+
+Root's first RUN01/3 wrapper at e020c5c caught RuntimeError around the whole
+invocation, including unguarded legacy execution. Independent Sol reproduced a
+callback KeyboardInterrupt plus ending-write RuntimeError returning unavailable
+with admitted occupancy retained, concealing the interruption. Existing24 passed;
+they did not cover concurrent primary interruption and failed ending observation.
+Original REQUEST_CHANGES and fixed two-method RED are retained in the review and
+test history. A new guard catch must surround permit acquisition only.
+
+The repair narrows the catch to ExitStack.enter_context and preserves an original
+non-Exception BaseException even if the ending attempt raises. It does not invent
+an ended status or release uncertain occupancy. Fixed two methods cover six
+interruption/end-fault pairs and a direct guardless owner RuntimeError. The first
+test assumed a null step_id field; the historical API omits it, so its author
+corrected that accessor only and reconfirmed RED on unchanged e020c5c. Root's
+repaired two-method run is PASS; exact independent rereview/managed connection
+remain required before acceptance. Next invocation-lifetime changes must verify
+both interruption propagation and failed ending observation, separately from
+host permit refusal. No extra blanket review or model call is introduced.
+
+Two guessed focused test filenames returned exit5/zero tests while preparing
+this change. They are not PASS. The actual test_mock_execution_v5 filename was
+then read from rg inventory and all24 executed PASS. Future focused verification
+uses the observed filename and checks executed count as well as exit status.
+
+## 2026-10-09 — inline document verifier exceeded a CLI argument bound
+
+SOL passed a multi-assert Python -c argument longer than CO's512 UTF-8 byte
+per-argument limit (installed task/spec.py). CLI returned spec_invalid before
+creating a task or model call; capacity stayed0. The orchestration helper then
+tried to store the absent session ID, masking that immediate command result.
+
+Preserve the preflight JSON. Move the same document checks to a saved PAL script
+included as a protected read, keeping normal CLI argv below the bound. Print the
+command result before storing a session ID, and store it only when present.
+Next related invocation checks argv bounds and treats exit2 as a pre-task input
+error only after confirming no task/attempt was created. CO/state/limits are unchanged.
+
+## 2026-10-09 — milestone note lost source attribution while shortening
+
+Task G's first note exceeded the declared500-token limit and blurred the full399
+root suite with the122-test verifier subset. Independent Opus requested bounded
+wording and accurate Mock/lambda description. The allowed repair fixed those, but
+grouped the overlap count/time under verification.json, whereas those detailed
+numbers come from three-way-proof.json. Re-review caught the missing source;
+G ends failed/review_unresolved, verified=false. Source code has no blocking finding.
+
+Preserve both reviews and the475-token candidate. H owns only the explicit source
+line correction with its own independent review and document verifier. No code
+implementation or unknown task is resent. Next assessment: leave margin below
+the word limit, count markdown tokens locally and keep source attribution when
+shortening. Verify the exact requested edit and report a failed CO task honestly;
+do not convert successful tests into review approval. H verified the exact one-line
+correction and independent review approved it; final476 tokens, source unchanged.
+G's failed status and both reviews remain intact. This closure verifies the stated
+document requirement, not a general improvement in model accuracy.
+
+## 2026-10-09 — decoder test helper forwarded an assertion keyword
+
+The first SWE EXE02-file/1 test run failed with TypeError: its assert_error helper
+forwarded msg to decode_file via **kwargs, so the malformed Base64 cases did not
+reach the decoder. The failure log and initial output are preserved. CO's one
+allowed repair replaces that assertion keyword with subTest context; all17 invalid
+Base64 cases remain and28 tests pass. Decoder source is unchanged by the repair.
+
+Separate Opus review approves that version. SOL also adds the suggested public
+case for an oversized declared size with invalid Base64, pinning validation order.
+Next related change: inspect test-helper keyword forwarding and require the
+invalid-input cases to run, rather than removing them to make the suite pass.
+No production validation or acceptance was weakened. Evidence:
+evidence/operations/co-update-045-batch2-20261009/task-d-initial-verify.log.
+
+## 2026-10-09 — byte-buffer error retained a caller-supplied code
+
+Independent Opus review of EXE02-bytes/1 found that PayloadLimitError compared
+an arbitrary code using equality and retained that object when it equalled
+"limit". SOL reproduced both a retained str subclass and an invoked hostile
+comparison in error-code-before.log. Normal buffer calls passed constants, but
+the public error constructor did not satisfy its fixed-value boundary.
+
+Require an exact str before comparison and always store a module constant.
+The public regression now rejects both caller objects without invoking their
+comparison; final22 buffer tests PASS. Extend the existing strict-type check
+to public bounded-error fields when wiring these helpers into a host; this is
+a small code/test rule, not a new approval gate. A fresh milestone review checks
+the corrected source. Copy/pickle and threaded buffer use remain outside this
+single-executor preparation API. Evidence: co-update-045-batch2-20261009.
+
+## 2026-10-09 — EXE02 request keys used equality instead of exact type
+
+The SWE-generated request constructor compared set(arguments) to the required
+keys. A str subclass equal to "repository" was accepted despite the intended
+strict-key contract. Independent Opus review identified this gap; SOL reproduced
+it with a failing public-API test (21 tests, one failure in strict-key-before.log).
+The cause is set equality checking values without enforcing each key's type.
+
+SOL now checks exact str key types before set comparison or field lookup, and
+the same regression plus both component suites pass39 tests. Keep this check
+when extending the C07 constructor; run the public strict-key rejection case and
+the full regression before wiring it into a host. No service/grant/DB behavior
+changed. Further independent review targets the corrected source. Evidence:
+evidence/operations/co-update-045-20261009. The constructor remains unused by PAL.
+
+The scoped Opus design also adds a63-bit positive issue-number boundary so decimal
+formatting cannot raise CPython's giant-integer conversion exception. This local
+preparation constraint is explicit in PARALLEL-SCOPE-1.md; it proves no issue exists
+and does not grant a capability. The ART helper still checks size after encoding;
+an early memory guard and direct-dataclass consistency are optional future consumer
+concerns, not product acceptance or a reason for an extra approval loop.
+
+## 2026-10-08 — C064 component readiness displaced the product-value checkpoint
+
+The owner rejected the C063 conversation/draft-only trial as meaningful PAL usefulness,
+while explicitly allowing necessary component tests. The implementation has a durable
+local-draft Expert control lane but no external-information/task connector. The docs
+already distinguish that limited milestone from the overall assistant. Nevertheless,
+the release handoff asked for usefulness of that narrow screen without first resolving
+its contribution to the owner's desired connected work. No overall release was actually
+declared; the error was work selection and presentation, not a false historical release.
+
+Evidence: [direct owner sources and code map](../evidence/operations/c064-owner-value-gap.json),
+SPEC's Stable-1 local-only limit, runtime.py's local_draft capability and prior C061–063
+release handoffs. Existing G001 checkpoints were insufficiently applied: their conclusions
+did not redirect the next work away from component refinement toward integrated value.
+
+Correction: record the evaluation as received/non-PASS, stop asking the owner to test
+the same draft-only screen, and obtain one official Opus milestone direction review in
+the design lane. Preserve component proofs; do not infer missing code from the complaint
+or new connection permission from the desired outcome.
+
+Prevention: at Issue entry/closure state design role, new practical value, why this work
+is needed now and the remaining gap. At milestone boundaries or repeated/direction failures,
+Opus checks those conclusions and the next work choice. Reuse existing records; no review
+per wording change or extra micro-approval. Next verification: the C064 review must yield
+a minimal evidence-bound connected-work proposal, and the next owner evaluation must show
+that integrated task rather than a component test. This prevention is recorded; its later
+product effectiveness is not yet proven.
+
+Brief sequence: D021/P002 defined a local-draft milestone. D029 moved meaning/target
+selection to the model. Repeated C038–C060 model-quality repairs and cohorts stayed within
+that narrow task; D031 then explicitly stopped quality loops. C061–C063 nevertheless
+presented the component-ready draft flow for owner usefulness. C064's direct negative
+feedback showed the missing connected-work value and led to a pause/design rebuild.
+These facts support a work-selection/acceptance-framing failure. The inference is that
+local pass conditions displaced the project-level outcome; model incapability, an absent
+Expert control component, or lack of owner interest in the actual goal are not established.
+
+Latest correction: preserve this record, pause product work, and rebuild small milestones
+around Expert instructions and actual work. Conversation/draft composition is delegated
+to the model. P001v3 is still an unreviewed proposal, not proof that the prevention worked.
+Opus milestone review has not completed: preparation failed before invocation and the
+design chat was archived. Verify preparation files and successful delivery before claiming
+review progress; never count a failed preparation as a consultation.
+
 ## 2026-10-08 — C063 source pin still called the prior product current
 
 The first full suite after the duration change passed276/277 tests; one repository
@@ -594,3 +749,1005 @@ from the previous commit and applied only within the anchored Exact next action 
 All section headings and operating-authority/phase/design/checkout blocks were compared
 and retained before amending. Future small STATE edits must check their section bounds
 and resulting heading list. No product source, runtime database or remote record changed.
+
+## C065 — CO submission boundaries and reviewer assumptions
+
+The coordinator manually transcribed a wrong full baseline SHA before inspecting the
+completed `git rev-parse` result. CO rejected the input before any task/model call.
+Correction: use the measured `a2d627238c72c61ae9b0ad7b9c7555bd84393dcb`; next submission
+must resolve and compare the SHA before constructing the command. Do not infer a full
+SHA from a short commit label. [Submission record](../evidence/operations/co-int00-20261009/submissions.json).
+
+The first real task failed its verifier canary under the outer restricted sandbox,
+with0 calls confirmed by CLI status. The approved host execution retained CO's own
+isolation. Restricted full tests likewise failed localhost bind, while host full277
+tests passed; an execution-context refusal is not product failure or permission to
+remove containment. Check the actual failed boundary before replacing a run.
+
+Opus returned a valid JSON plan whose design instructions were4435bytes, above CO's
+4096-byte limit. No implementation had begun and the call was completed. The scoped
+replacement explicitly limited each instruction to1000bytes and referenced the shared
+scope rather than repeating it; actual819/815/840-byte steps were accepted. Keep this
+bounded-plan rule for the next task. No output, journal, route or CO source was edited.
+
+The design then incorrectly equated `raise ... from None` with removing raw exception
+context. Python3.13 locally proved the context remains. The cause is confusing display
+suppression with retained objects; preserve the original review, verify the generated
+error path and require bounded errors without decoder context. Current implementation
+and independent review must demonstrate the outcome before this is called fixed.
+
+The actual SWE-2 High implementation call then hit the900-second deadline. CO reports
+unknown result/process outcome and no selectable retry/switch. No code was received.
+The root cause (provider delay, prompt/output size or other remote condition) remains
+UNKNOWN; the83,547-byte prompt is an observation, not proof of the cause. Preserve
+the paused report and do not claim the remote request stopped or bypass it with a
+new same-work run. A supported recovery or confirmed outcome is required first.
+If a later new unit is legitimately possible, reduce generated-output scope while
+keeping the same shared contract and complete case coverage. This prevention is
+proposed and has not been exercised or proved effective.
+
+A follow-up multi-file documentation patch assumed ACCEPTANCE.md had a bare filename
+heading. The atomic patch guard rejected it without changes. Read the actual heading
+before applying the corrected patch; check section headings and diff bounds before
+the next canonical-record edit. This does not require another review/approval gate.
+
+
+## 2026-10-09 — retained trial freeze was assumed to be the current product
+
+The first full regression after adding the two preparation modules ran316 tests
+and failed one RepositoryFreezeTests case. The test passed the retained trial
+freeze to the current-product validator as if it still covered every product file.
+The validator correctly rejected the expanded file set; its security behavior is
+unchanged. The test's old current-version assumption caused the error.
+
+Retain the exact trial manifest and add its literal SHA256 assertion, read it as
+historical evidence, preserve its comparisons with older freezes, and assert that
+current-product validation now rejects it. No old proof is renewed or rescored.
+The existing added/removed/symlink fail-closed tests remain intact. Next product
+file-set change must keep historical hash assertions and demonstrate old-freeze
+rejection rather than regenerating historical manifests or weakening validation.
+The original full failure remains in full-unittest.log; rerun full regression on
+the corrected source and obtain independent review of the exact test diff.
+
+
+## 2026-10-09 — milestone note misassigned Operation to INT00
+
+The new independent milestone design/note named Operation as an INT00 shared type,
+although INT00 owns WorkRef/Ref/Action/Result and C07 Operation belongs to EXE01.
+The note also exceeded its600-word output envelope. A separate CO review returned
+request_changes on both plus a stale hash-check dependency statement. One bounded
+repair corrected ownership, moved already-confirmed hashes to verification and
+reduced the note to486 whitespace words; re-review approved the exact new version.
+
+Cause: the note generalized across C07 and INT00 instead of checking the scoped
+owner/type list, and its author claimed length without the stated counting rule.
+Preserve original design/initial findings and final note. Next milestone handoff
+must use the current scope's actual owner/type list and mechanically check any
+explicit output bound. This correction changes no product code or permission.
+Evidence: co-update-045-20261009/task-c-initial-review.json and milestone-review.md.
+## 2026-10-09 — incomplete diagnosis of an unknown Native call
+
+The previous continuation stopped at the CO unknown report without correlating the
+Native PID, per-run logs and persisted session. That left the next technical action
+too vague. This is an investigation gap, not evidence that Devin was still running.
+The targeted follow-up identified unique-cobweb, exact prompt bytes, input-only
+session nodes, absent local PIDs/groups and unchanged task files. No old state was
+rewritten and no vendor timeout cause was invented. Next unknown call: distinguish
+process, model output, file effects and controller record; use existing logs/session
+metadata and report the specific missing recovery condition before deferring.
+The read-only session listing needed an approved host scope because its CLI creates
+a log outside sandbox roots. No trust override, resend or public support submission
+was used. See co-int00-20261009/diagnosis.json for the actual bounds.
+
+## C068 — deadline shutdown race and misleading command wrapper
+
+The first full419 regression failed the existing CancelProbe deadline subcase:
+serve_operator observed an expired deadline before the watchdog marked it closed,
+then treated the ordinary stop as an operator failure. An unchanged rerun passed;
+that did not resolve the race. New deterministic tests reproduced expiration before
+watchdog close and close between loop checks (two errors); general rejection stayed
+an error. Source inspection confirms the time/check interleaving, with no INT00
+runtime import or source dependency. Preserve both full419 outcomes.
+
+Correction: a private RunRejected subtype identifies only closed/expired checks.
+serve_operator handles that stop with idempotent close_run; the existing first
+reason, cleanup and no-result-application behavior remain. Other rejections still
+fail. The related22 cases and independent Sol6.1 review passed; full422 passed after
+integration. This does not requalify historical live source freezes or restart a
+trial. Next shutdown change must rerun the deterministic interleavings and preserve
+ordinary pin/rejection errors, zero saved effects and lock release.
+
+The first shell wrapper also used zsh's read-only `status` variable and exited1,
+hiding the subprocess exit status. Before reading the retained log, SOL's retry
+justification incorrectly called the tests successful. The log actually had one
+failure; no acceptance row was promoted from that claim. Subsequent verification
+runs use the test command directly, inspect its exit code and final log, and bind
+both to the source commit. Do not infer test success from completion or a wrapper
+error. Evidence: co-int00-20261009/full-initial-wrapper-error.log,
+full-pre-fix-retry.log, deadline-before.log, deadline-after.log,
+full-integrated.log and sol-independent-review.md.
+
+## C068 — oversized planner instructions in a design-assessment task
+
+CO taskad95757c7dd847fcbcabfd3903bec53c completed one exact Opus5.5 planner call,
+then rejected its5795-byte instructions against the installed4096-byte field limit.
+No assessment worker, verifier or file write ran. The Native admission records a
+confirmed stop; this known terminal plan failure is distinct from the old unknown
+SWE call. Preserve plan_invalid and verified=false. The corrected bounded task
+asks the planner for<=1200-byte instructions referring to the goal, without drafting
+or predetermining the assessment. Future assessment requests keep plan instructions
+brief; no runtime/state edit or limit bypass. Evidence: milestone-plan-failure.json.
+
+
+## TSK01 AGY structured-output key rejection — 2026-10-09
+
+The first text-only code-generation invocation ended with INVALID_ARGUMENT400 before
+a response: output-schema properties used repository paths containing slashes, while
+the AGY/provider schema accepts only64-character alphanumeric/underscore/dot/hyphen
+keys. No files or model code were returned; process exited3 in8.068s. The retained
+receipt is evidence/operations/tsk01-20261009/author-schema-rejection.json.
+Root changed only the envelope to fixed module/tests/note keys, with a host-owned
+whitelist mapping to three paths. Next structured-output assignment uses simple
+field names and keeps repository paths as data. Corrected invocation success still
+requires a terminal result, strict JSON decode, whitelist/hash inspection and actual
+tests; an accepted schema alone does not prove code correctness.
+
+
+## AGY timeout surfaced as SUCCESS with incomplete structured output — 2026-10-09
+
+Corrected TSK01 generation ended locally after425.622s with exit0/statusSUCCESS,
+while stderr reports a7-minute print timeout with the turn still in progress.
+Root strict JSON decoding failed on an unterminated tests string; only one complete
+module value was available, and the implementation note was absent. The remote
+turn's terminal outcome is unknown. Receipt and complete unverified module are kept
+under evidence/operations/tsk01-20261009; raw stream remains local.
+
+CLI exit/status is insufficient: inspect deadline warnings, decode the entire JSON,
+enforce all output paths, then syntax, actual test discovery/run and independent
+review. Root initially continued a test command after extraction failed; that
+command exited5 with zero tests. Retained as an invalid attempt, never PASS. Future
+dependent checks require successful extraction and nonempty test discovery.
+
+The same stderr says plan mode has no effect with disabled slash expansion. Keep
+requested flags distinct from effective controls and inspect warnings before route
+qualification. No tool step was observed. Hand the partial source to native Astra
+under the owner-approved fallback; separate Sol6.1 reviews. No new AGY invocation
+or unsupported cancellation/retry resolves the unknown turn.
+
+## C069 — stopped after a checkpoint despite continuing authorized work
+
+Root ended its turn after recording the successful isolated intake unit while the
+reviewed next MEM/TSK dependency remained. The owner challenged that stop. The
+evidence is the C069 final report, STATE's next dependency, AGENTS loop item10 and
+the actual owner turns recorded in D038. No technical project-wide blocker explains
+the stop; treating delivery of a checkpoint report as a stopping condition was the
+controller's mistake. Existing route-specific refusals did not block native work.
+
+Correction: begin independent MEM/TSK boundary and acceptance analysis, then continue
+the next authorized implementation after evaluation. The owner subsequently asked
+to see the loop proposal before trying it and then restated the shown proposal.
+Root briefly inferred a further start-approval requirement; that inference is
+withdrawn. Existing continuation was not revoked, and the loop creates no new scope.
+Do not turn a request for explanation into a new permission gate.
+
+Prevention: at each next checkpoint, inspect the current owner instruction and next
+unmet dependency, then record an actual dispatch or a concrete dependency-specific
+wait. A green result alone is insufficient to end ongoing development. Apply the
+already-existing loop rule, with no new recurring approval or schedule. Its first
+full corrective cycle remains unverified until implementation, connected validation,
+independent assessment and the next authorized dispatch actually occur.
+
+C070 application: MEM01 source013bf52 passed actual local-module connection and471
+regression, independent Sol6.1 APPROVE, then CO task04bc81e770ea479da9ed4b9b38df6628
+was actually dispatched for the next C14 dependency. That first corrective cycle is
+observed. It does not guarantee every future checkpoint or whole-product completion.
+
+## MEM01 design-note verifier length failure — 2026-10-09
+
+The completed Opus response was6885 bytes against a declared6000-byte document cap.
+CO correctly returned verification_failed/verified:false; both model calls finished.
+Root preserved the note and receipt and used its advice with explicit dispositions,
+without claiming CO verification or rerunning inference just to shorten a review.
+Future document bounds should leave room for the necessary answer and be checked
+separately from semantic review. Do not relax a failed result into a PASS or use
+this document formatting failure as a reason to stop independent development.
+
+## C14 connection — source-stop state event sent to the actor session
+
+While connecting the session-scoped C14 reader, root found that queued invalidation
+sent a WorkRef state event to the stopping actor's session. A work created in another
+session would receive no update there. Independent Sol confirmed the C14 delivery
+obligation; the newly explicit cross-session test failed with an empty event list.
+MEM01's frozen tests proved atomic events but had not specified this routing case.
+
+Cause: invalidation reused the initiating session argument without selecting the
+work's persisted session. Correction: route the work state event to work.session_id;
+keep the MEM acknowledgement and replay identity associated with the actor. Do not
+invent a subscription or multi-session-attach framework. Retain the failing log
+event-routing-red.log and run the same case through actual EventReader reconnect
+once available. Future event-owner tests must cover distinct actor/work sessions,
+correct epoch and duplicate suppression, not just an atomic event count.
+
+## TSK03 verifier environment and TSK02 document size — 2026-10-09
+
+CO TSK03 completed SWE generation/repair, but its verifier denied SQLite creation
+under TMPDIR and then mkdir in the workspace. The worker's assumption that cwd was
+writable was false; no behavioral assertion ran and the planned Opus review did not
+run. Preserve failed/verified:false and copy only scoped returned files for separate
+host verification. Do not edit CO sandbox/state or claim the host result as CO PASS.
+Future disk-using CO tests need supported writable-path qualification; use read-only
+CO review/advice while host filesystem tests run under existing PAL authorization.
+
+Root's first host test accidentally resolved python3 to Xcode Python3.9; StrEnum
+import failed, so no behavior was tested. Its log is retained. Corrected command
+uses the already-qualified absolute Python3.13 path and preserves subprocess status.
+Next checks use that exact interpreter, nonzero discovered test counts and exit code.
+
+TSK02's complete Opus advice again exceeded a document-only byte cap. Repeating a
+narrow formatting verifier is unnecessary rework, not a product defect. Retain its
+failure and use reasoned dispositions; future review notes have a generous finite
+bound and structural verdict check, separate from semantic or code acceptance.
+
+## C14 regression — stale idle notification used as Goal completion
+
+Full483 at0cf8563 plus the template-wait correction candidate initially failed one
+existing template test: receipts was empty after idle.wait. Separate Sol6.1 diagnosed
+and root reproduced the ordering with two barriers: an older no-work pass delivers,
+Primary commits/clears idle/sets wake, then the old pass sets idle while the new Goal
+is still queued. New C14 modules are unused by that runtime; no causal change is
+attributed to them. The retained idle-race-probe.py/log prove queued receipts0, then
+failed/incomplete_template with one preview receipt after the actual work finishes.
+
+Correction: this test uses existing work_settled(runtime, goal_id), whose condition
+is the durable Goal outcome. Runtime idle behavior is unchanged; it is not a reliable
+per-Goal completion barrier. Next outcome tests await the specific Goal or receipt,
+not the coarse global idle event. Targeted3 and full483 PASS30.572s after this fix.
+Other uses of idle remain outside this small correction and are not broadly audited.
+
+Evidence clarifications: the first TSK03 SQLite-open failure is reported by the
+worker note; the preserved final verifier directly proves mkdir denial. Do not
+present the first cause as separately reproduced. The first successful-review
+receipt extraction assumed an error field and failed before saving the receipt;
+error is optional on success, and corrected extraction checked the original hash.
+
+## TSK02 consumer signature and interruption rollback — 2026-10-09
+
+The initial synthetic tests repeated a new dictionary-style invalidation signature,
+while actual MEM calls inherited TSK invalidation with keyword arguments. Root's
+consumer inspection found the mismatch. The author corrected the exact callback
+and added actual MemoryStore.stop_reference coverage. An isolated owner test is
+insufficient evidence of a consumer boundary; next callback edits run its real caller.
+
+Root also found that TSK transaction owners caught Exception, leaving a transaction
+open on KeyboardInterrupt/SystemExit. Six deterministic pre-fix cases reproduced
+the lock/schema/data cleanup failure. Both owners now roll back BaseException and
+re-raise; the public Result boundary still lets interruption propagate. Two new tests
+cover original connection cleanup, durable rollback and another connection's write
+access. Retained author34 and actual MEM/TSK/mock/C14 connection14 pass, with broader
+regression and independent review still pending at this entry's creation.
+Evidence: evidence/operations/tsk02-20261009/{author-*,baseexception-*,connected-final.log}.
+
+## RUN01 transient persistence and fenced-release follow-up — 2026-10-09
+
+Opus found that the mock runner treated all unavailable Results as terminal failure.
+Astra added safe pre-admission yield and bounded idempotent begin/finish writes;
+returned output stays owned on unresolved persistence. Root then found that the
+new hold path also prevented ended output from being released after pause/cancel/
+source-stop. Twelve independent combinations reproduced that overbroad hold.
+The correction asks the existing TSK release boundary to decide: unfenced unfinished
+output/unended call stays occupied, ended fenced output follows latest control.
+Same-runner reentry cannot consume another model unit or invoke the callable.
+Root and independent Sol each pass24 connected cases; full regression follows ART
+integration. Red/green logs and review are in run01-reliability-20261009. Next changes
+to held-result handling cover both no-control retention and all latest-control exits.
+
+Minor dispatch corrections: document patches with stale/unnecessary context failed
+before changing files; root checked the actual current text and used an asserted
+single-block replacement. CO rejected an unsupported repair role pin with
+role_unknown before task creation. Root preserved the error and corrected only
+that pre-task option, then launched the distinct authorized ART implementation.
+No unknown call was retried. Next dispatch uses supported observed role names;
+recording this correction does not claim a general runtime change or guarantee.
+
+## ART save-authority hook — strict input and stored metadata, 2026-10-09
+
+Independent Sol found two gaps in Root's new TSK callback: keys-only action validation
+mapped content=1 to conflict; a stored Step.index=False matched integer0 and allowed
+save authorization. Cause: equality was used before exact-type validation, despite
+the shared wire contract excluding bool integers. Root reproduced both failures,
+reused the shared model-action parser for requests and strictly checked saved Step
+index/status/refs/error before comparisons. The expanded36 tests pass; independent
+rereview follows. Next authority boundary tests distinguish malformed user input
+(invalid_input) from corrupt owner metadata (unavailable), and explicitly include
+bool/int equality cases. No live data or CO state was changed by these probes.
+
+
+C073 continuation boundary: Root initially wrote a blanket no-replacement ART rule
+while preserving a CO unknown outcome. The directly re-read owner route instruction
+01a11e03-d444-78c1-9fab-b0e861d29d1d already authorizes isolated native implementers
+while SWE is unavailable. Correct the overbroad restriction after scoped diagnosis:
+keep the unknown task/pause and remote-cessation uncertainty, but perform the separate
+explicitly authorized implementation without CO resume/state edits/shared side effects.
+Next route failure: reconcile current owner alternatives before inferring a project
+blocker or asking the same authority again. This is PAL-specific route authority,
+not a generic permission to retry unknown external effects.
+
+
+ART01 RUN development defect: after save unavailable x3, receipt not_found was
+incorrectly classified as terminal input failure. Independent Sol probe and Root
+regression reproduced failed Goal/calls1/finish0. Recovery failure now delegates to
+TSK yield_or_retain; only the original explicit nontransient save rejection uses
+terminal handling. Check missing/unavailable receipts and reentry call count in the
+next connected tests. Component evidence is runner-compose-review.md; actual storage
+fault verification remains pending.
+
+
+ART01 connection-test correction: Root first tested register_sources after releasing
+its lease and expected a kind error, but live authority correctly rejected denied
+first. Root also expected the MEM source-stop message on the work session although
+MEM emits it on the control session and TSK emits work sources invalidated on the
+work session. Corrected fixture to claim before kind validation and asserted both
+properly scoped notifications. No runtime change/criteria relaxation. Future tests
+must establish authority and choose the owning notification session before checking
+a later boundary. Initial failures retained in actual-connection-initial.log.
+
+
+VER01 context defect: independent Astra reproduced a factual status snapshot for
+state=not-a-work-state at96568a5. Cause: the new status path bypassed execution
+authority as intended but omitted validation of the saved state vocabulary. Root
+added the failing regression, then validated all seven contract states before
+returning a factual snapshot. Save keeps existing authority error precedence.
+Eight focused tests pass; red/green evidence is in ver01-20261009. Next factual
+read callback must distinguish valid nonrunning state from corrupt owner state,
+without treating pause as lost evidence. No live data was changed.
+
+
+VER01 connection-test preparation: independent Sol found that Root invented a
+call key prefix instead of using the exact C15.call binding required by TSK. That
+would reject eleven tests before VER. Corrected staged fixture to the existing
+canonical C15.call and C08.save formats before execution; AST passes, execution
+is NOT_RUN until VER exists. Cause was a locally recreated fixture's shorthand
+identity. Next integration fixture uses the actual host key contract before
+asserting downstream behavior. This is a test correction, not a product defect.
+
+
+VER01 strict boundary defects at9147584: independent Sol found that empty fixed
+Conditions could save checks=[], changed same-revision conditions/required refs or
+set shrink/reorder were reported as ordinary invalidation, and changed artifact
+epoch still returned valid. Root probes additionally found loose owner provenance/
+byte bounds and error mapping, wrong-kind read errors, and an id_factory COMMIT
+that allowed VER inserts to autocommit before the final COMMIT failed. Cause: the
+initial16 fixtures covered successful public paths but not these corrupt snapshots
+and transaction replacement points. Root retained original CO16 PASS and added
+9 integrity methods (20 failing subcases), then closed those validation paths and
+guarded ID minting before writes. Focused45 pass; independent rereview/full suite
+pending. Next owner integration tests must distinguish legitimate monotonic state
+changes from corruption, compare all immutable binding fields, and probe every
+trusted callable between BEGIN and the first durable write. This finding applies
+to these actual APIs, not a promise to sandbox arbitrary collaborator code.
+
+## C076 COMPLETE01 consumer conformance and unknown outcomes
+
+CO task39213ad4 passed16 immutable synthetic tests, but actual RUN consumers
+failed8 methods/10 cases at9f31ba9. C02 accepts goal_id/revision; the generated
+consumer sent work_ref. The permissive synthetic owner ignored this input, and
+Root's dispatch did not include the full C02 provider contract. Actual connection
+tests caught the error before any milestone or service activation. Root corrected
+both calls and added the exact existing C02 shape to the slice document.
+
+Independent Sol also reproduced unknown VER ambiguous/invalid_input outcomes being
+sent through generic failed/release, and missing old diagnostics on same-lease
+reentry. Root added6 strict boundary tests (19 failures,2 errors before repair),
+then guarded typed local Results/checks/WorkRefs, retained unknown completion
+occupancy and returned saved diagnostics. Actual8 plus fixed16 and new6 pass30;
+independent rereview and full regression remain pending at this record.
+
+Next consumer assignments must include exact provider request/response examples.
+Keep actual-owner tests distinct from permissive protocol fixtures; unknown owner
+outcomes are not proof that the user's work failed. Recheck the previous response
+loss and latest-control cases after corrections. TSK's separate stored-call/index
+defect and independent46-test approval are recorded in COMPLETE01-TSK-IMPLEMENTATION
+and the tsk-integration receipt; no CO pass substitutes for either integration.
+
+A documentation patch used a misremembered context line and was rejected before
+any edit. Root checked the actual file/diff and applied an exact matching context;
+subsequent patches use a fresh narrow source read when the context is uncertain.
+
+
+## READ01 AGY inspection command selection (2026-10-09)
+During an owned fresh Sonnet TUI, Root sent ESC plus `/usage` and Enter in one
+input before inspecting the slash-command menu. The CLI displayed `/plan usage`
+and generated an unnecessary response; it read only the scoped AGENTS file and
+returned clarification. No product code was changed; no prior unknown call was
+resumed. The evidence establishes the wrong submitted text, not the exact internal
+key-handler cause. The response ended and Root cleared the input with Ctrl-U.
+Correction: type `/usage` alone, inspect the exact selected `View model quota
+usage` menu, then submit separately. This successfully showed63.20% Claude/GPT
+weekly and97.41% five-hour remaining. Apply the same Observe -> type -> verify
+selection -> Enter sequence to settings inspection; never batch ESC, text, Enter.
+The accidental request was within the existing subscription; no new auth/credits
+setting was enabled. Preserve this distinction from the intended code assignment.
+
+
+## READ01 Sonnet consumer boundary and Root connection fixtures (2026-10-09)
+The first exact AGY Sonnet5.5 response passed immutable11 but omitted historical
+notices, failed a whole page for one malformed Ref and mislabeled saved MEM/ART
+times. Root reproduced3 failures; independent exact CO Opus5.5 task531650 confirmed
+them and found required work_ref rejects actual MEM's optional-field C11 body.
+Root real9 initially reported3 failures: that real MEM defect, a fixture with
+global replay-key reuse across two works, and a case-sensitive prose assertion.
+Correct the latter two in Root tests: the second work uses actual MockRunner's
+scoped keys, and label assertions test meaning case-insensitively. Result8/9 pass;
+MEM still fails, so no product fix is falsely inferred from fixture correction.
+Preserve original logs and Sonnet bytes. Add optional C11 field/malformed notice/
+window regression cases; supplied doubles must include each actual owner variant.
+CO SWE repairs the original3; Root must reconcile Opus F1 and rerun actual owners
+plus demo, then obtain separate final source review. Renderer is display only,
+never completion or semantic authority. This is a source/input-shape coverage gap,
+not evidence for more model-quality gates or a new user decision.
+
+READ01 correction evidence: SWE f2e11233 passes original14 after fixing D1/D2/D3.
+Root's expanded6 leaves only Opus F1 failing, then the minimal optional-C11-field
+correction makes focused36 pass0.152s. The same consumer's actual demo preserves
+completed state and VER body/hash while current -> source stopped, and displays
+the stopped MEM body via the notice. Preserve those structural/local limits;
+final full regression/review is separate. VER CO first attempt propagated context
+not_found; immutable10 caught it and the single declared repair corrected it.
+Both verifier attempts are retained, preventing final PASS from hiding the error.
+
+
+READ01 review packaging: taskf100ab72 failed input validation before any provider
+call because selected blobs273341 exceeded installed CO MAX_CONTEXT262144. Root
+removed duplicated demo JSON and full already-used review, preserving source,
+contracts, test sources, receipts and readable demo. Corrected248512-byte input
+started asde3d5d69. Future launchers preflight committed blob max65536/total262144
+against installed workspace.py; runtime/state limits stay unchanged. Original
+failure/calls0 preserved. This corrects packaging, not an access refusal.
+
+
+## ASK01 hash-prefix false alarm in an uncommitted draft (2026-10-09)
+Root mistook an e3b0-prefixed SHA256 for the empty-content hash before comparing
+the complete digest. Exact byte/hash verification found all10 inputs intact and
+all original manifest hashes correct. The inaccurate draft and receipt limitation
+were removed before commit. Future decisions use complete digest equality and
+byte comparison, never a familiar prefix. This corrective check passed here.
+
+## ASK01 question mint lost its transaction before owned writes
+
+Independent Sol found the initial Astra TSK question-ID callback lacked the
+transaction-ownership guard used at other boundaries. A callback COMMIT could
+make subsequent Step/question/state/event/replay writes autocommit while ask
+returned unavailable. Root reproduced five callback variants before repair in
+tsk-mint-red.log. Exact3b07675 guards a savepoint, active transaction and total
+changes before the first owned ask write; replaced transactions fail closed.
+Root regression1 method/5 subcases and separate final rereview pass. Integrated
+bytes match the reviewed source. This detects a trusted callback's interference;
+it cannot undo the callback's own committed changes or sandbox hostile host code.
+Next callback boundary must verify original transaction ownership before writes,
+including COMMIT/ROLLBACK followed by BEGIN. Retain the regression for reuse.
+
+## ASK01 linked historical Step lacked closed-shape validation
+
+Independent Sol found native Sol RUN accepted a linked finished ask Step with an
+error or unknown field, then reserved and invoked Expert. Relationship checks
+alone did not enforce the committed Step shape. Actual TSK rejected that stored
+corruption; this was a RUN owner-response boundary defect, not a proven TSK bypass.
+Root reproduced all3 variants in run-linked-step-red.log. Exactf0efa09 requires
+the6 committed fields; integrity1 method/3 subcases and separate final rereview
+pass before reservation/inference, without failed release. Legitimate old epochs
+remain valid. Next C12 linkage edit must retain both shape and provenance checks.
+Full787 Root regression and exact-byte source comparison passed after both fixes.
+
+## READ01 N1 display impersonation correction
+
+Existing independent Opus N1 identified direct interpolation of multiline owner
+and model strings into labels. Public inspect/render reproduced5 failures among
+6 new tests before correction; structured data was unchanged. Sol's final display
+boundary prefixes embedded LF continuations and escapes Unicode Cc/Cf/Zl/Zp;
+stored content/hash/inspection bytes are preserved. Separate Sol tested all236
+non-LF controls/format/separator characters in this interpreter, CRLF and blank
+forged labels; approved exact0ff0309. Root integrated equal bytes ata974fc0 and
+verified full793 tests and actual ASK demo. Next renderer-field additions retain
+this display boundary plus serialized-input invariance checks. Evidence and the
+original isolated-import test invocation error are retained separately under
+evidence/operations/read-display-20261009; no HTML/UI security claim is made.
+
+## C080 recovery fixture and history proof corrections (2026-10-10)
+
+Independent fixed22 had four methods/eight subcases create an admitted call but
+expect default empty interrupted IDs after recovery. The actual HOST connection
+made this mistake visible. The test owner captured each original fixture call ID
+and explicitly asserted it, preserving the helper/assertions and original RED/hash.
+No source contract or interrupted status was changed to satisfy wrong fixtures.
+
+Independent source review then reproduced two concrete gaps: historical producing
+Step/call status/index corruption passed pairwise links; a fully managed older
+lease's missing owner/wrong claim epoch also passed. Astra's final8f20d0 validates
+complete original historical Step/call/reservation and original managed claim
+proof, without rewriting/enrolling history. Original five probes plus the later
+two-subcase probe remain; independent final22/6 and intact multi-session history
+pass. Root actual connection6 also passes. Future recovery adoption must retain
+these known-shape and original-owner/claim checks, not mere mutual equality.
+
+## C080 CO verification and report preparation (2026-10-10)
+
+HOST first SWE source passes fixed13 outside CO, while CO reports seven SQLite
+open errors and a downstream child-pipe failure. The environment cause remains
+unconfirmed; no runtime sandbox was weakened. Its bounded repair later times out
+with unknown inference outcome. Preserve that pause without retry/resume/cancel;
+only the known completed first source is independently reviewed and selected.
+Native source/connection proof is distinct from CO verified:false.
+
+RECOVERY02's first launch specified nonexistent wire_v5.py and exited input_invalid
+before any model call. Corrected input uses actual contracts_v5.py; all committed
+paths and64KiB/256KiB limits were host-checked before dispatch. Future launch input
+lists come from the Git snapshot, not guessed filenames. The original failed task
+remains unchanged.
+
+The subsequent planner chose report-producing role implement, whose Root pin still
+pointed to SWE. Its report is a completed SWE evaluation, not Opus adoption. Earlier
+RECOVERY01/PRI consultation records were checked and both report calls actually
+used Opus5.5. Correction pins every role to exact Opus5.5 for a design-only task and
+checks actual call model before attribution/adoption. The corrected report completed with actual Opus5.5, REFINE adopted as D047
+after host input binding and current-code reconciliation. Runtime/state and old unknown
+calls are not altered. Report shape verification cannot prove model attribution.
+
+
+RECOVERY02 ART launch initially used guessed role names reviewer/repair, causing
+role_unknown before a task/model call. The completed selection record proves
+registered names planner/implement/review/design; corrected ordinary launch uses
+those exact names. Next dispatch reads actual route/role metadata rather than
+guesses. Runtime/state unchanged; this is a pre-task argument correction, not a
+retry of an unknown inference. Existing full-suite localhost tests require the
+already authorized loopback-capable local execution; restricted907 errors29 and
+failures3 retained, same907 PASS without source or criterion change.
+
+
+## RECOVERY02 early independent review corrections (2026-10-10)
+
+Root's freeze incorrectly called the fixed event text an independent producer
+marker. Astra consequently scanned arbitrary C14 text; separate Sol reproduced
+ordinary report/release with that text succeeding but making get_work unavailable.
+Correct scope uses the two typed adoption/internal-replay event-ID bindings, then
+validates kind/text/refs/work. Ordinary text is never reserved. Single-row deletion
+still fails closed; coordinated deletion/forgery is outside the trusted DB claim.
+The independent failing probe is preserved and must pass against final source.
+
+ART first real CO planner returned5386byte step instructions, exceeding4096.
+Actual completed planner output was examined; no SWE implementation launched.
+Corrected ordinary task asked a short reference-to-scope plan, kept all limits and
+produced SWE source with fixed16 PASS. Do not clone failed/unknown tasks blindly.
+
+Opus PRI refinement call returned an actual session-limit error (Asia/Tokyo reset
+3:40am). CO labels route_failed, inference/process outcome unknown, no selectable
+options; candidates are informational only. Preserve its pause with no retry,
+resume/cancel, capacity/state edit or paid fallback. First PRI Opus REFINE remains
+valid; additional report not received and cannot be attributed or adopted.
+
+Actual RECOVERY02 process/readback first passed3/4: saved-tail ART adoption was
+correct, but READ discovered only result/completion notices and omitted the new
+state recovery notice. Root adds exact-notice user_view discovery through existing
+owner APIs, not typed recovery proof/model context/completion. Same unchanged4
+then PASS0.672s, separate exact READ review32+4 APPROVE, Root full948 PASS.
+Next new delivery path checks ordinary reader discovery as well as owner storage;
+phrase matching remains display-only and must never classify TSK producers.
+
+PRI wire freeze initially wrote waiting rather than actual waiting_input and
+left candidate Ref representation ambiguous. Both were corrected before fixed
+test dispatch/commit after reading actual TSK and C02 JSON seams. Future freezes
+copy existing state/wire names from owner definitions rather than shorthand.
+
+PRI-WIRE dispatch first mistyped the full base SHA while preparing the command;
+runtime returned input_invalid before task allocation/call. Correct Git rev-parse
+SHA3d0dedc87df60ff0bb2c24e887d8f662580150fc starts ordinary task7df39c. Future
+commands take the exact preflight manifest base, never reconstruct a SHA suffix.
+Authentication freshly reports existing Devin Pro account; the actual exact
+swe-2-high model is advertised Free. Account tier and model price are separate;
+provider quota remains unknown and no billing setting is changed.
+
+
+## C081 Primary integration and independent failure prevention (2026-10-10)
+
+The initial Root host omitted the post-consume source check and stored error
+validation. Independent Astra reproduced stopped-body disclosure at callback
+entry and a raw stored-error canary; independent Sol added8 binding/fault methods
+(10 initial failures). Final host rechecks every exposure inside durable call
+admission and before callback; closed fixed errors and companion admission/call/
+snapshot/intent/outcome hashes reject one-sided inconsistencies. Invalid UTF8 is
+known returned/failed; known lost admission acknowledgement ends not_entered,
+never invokes again or refunds. This protects cooperative owner faults, not a
+hostile-code or coordinated trusted-DB forgery claim. Original probes remain.
+
+Astra then reproduced applying intent downgraded by changing only phase: actual
+Goal creation followed by lost response was wrongly interrupted. Four independent
+phase cases remain. Strict phase/call/intent converse checks fix this, but initially
+exposed Root's separate interrupted-call write: actual admitted child death left
+an impossible admitted/interrupted pair before terminal save. Root full1058 had
+one failure. Final d9f0e12 updates call ending, turn and C14 in one transaction;
+independent process5 and RuntimeError/KeyboardInterrupt rollback/retry prove it.
+Next recovery edits rerun both contradictory-row and real child-death cases;
+mutual identity equality and happy-path counts alone are insufficient.
+
+The fixed test initially corrupted C11 before submit although admission requires
+MEM's immutable hash; the test owner moved injection after normal submit only.
+The process fixture re-registered a shared ready guard on its second connection;
+actual register_host is startup-only. Test owner corrected registration order,
+retaining all callback/control/source/byte expectations and original failure logs.
+Read-transaction replacement now strictly returns unavailable; a read's write
+rolled back under intact savepoint still suppresses reply and preserves prior
+caller writes. This strengthens corrupt-connection handling, not a weaker source
+gate. Final fixed39/binding8/phase4/process5 and full1058 PASS independently verify.
+
+A Root send_message to an already completed agent queued but did not start its
+repair. Agent status confirmed the mistake; followup_task started the intended
+turn. Next continuation uses followup_task for idle/completed agents and treats
+messages as progress only after actual status/output, without duplicate work.
+No model/runtime/policy changes or new recurring approval procedure are introduced.
+
+## C081/PRI02 native preparation corrections (2026-10-10)
+
+The new AGY print review omitted the prior conflicting flag but again reported
+effective request-review after requested plan. The previous sole-cause inference
+is unconfirmed. Observed input/response steps contain no tool actions; that does
+not establish hard plan/tool enforcement. Retain actual init/step evidence and
+check effective mode on later reviews instead of equating requested flags with
+active restrictions. No configuration or permission setting was changed.
+
+Root initially inferred normal NativeCandidates return implied fully drained EOF.
+Independent Astra read _spawn's leader0.5s grace: pipes may be closed before EOF
+and a normal strict ATIF export still returned after owned process/group cleanup.
+PRI02-T records exactly that compatibility scope, not native C15 cessation.
+Also distinguish8MiB in-memory capture from post-exit export size checking; no
+live export disk cap is proved. Native integration must retain its separate
+bound-completion/ending requirements. Scope's code shorthand was corrected to
+the actual CO category coding before any fixed tests or implementation.
+
+Two scope-edit patch attempts failed without changes because Root supplied a
+nonexistent context and then out-of-order hunks. Exact local text was reread and
+the edit applied in file order. No model call or product behavior was affected.
+
+## PRI02-T external qualification implementation (2026-10-10)
+
+CO SWE planner/implementation both completed, but fixed19 verification failed
+one invalid UTF8 output case: serializing the original return with ensure_ascii
+false raised before wire rejection, reporting unknown instead of the known
+returned-invalid ending. Root preserves original RED/CO verified:false and
+escapes raw JSON for lossless local retention; the unchanged19 now pass.
+
+Root source inspection also found guessed import/module/runtime paths, a
+default-state constructor fallback, bytes passed to the string JSON parser, and
+omitted raw request/prompt retention. The isolated writer had no actual runtime
+source and the freeze did not explicitly name the full Python module path.
+Root pins co_v4.task.select/NativeCandidates(state_dir), validates module origin
+and VERSION, uses actual co_v4/task relative source paths, reads strict UTF8
+request text and fsyncs original request/prompt/runtime binding before entry.
+The CLI returns a nonzero exit for unknown/invalid/refused outcomes.
+
+Prevention: provide exact import/constructor and executable input shape in the
+external seam contract, then test the actual metadata load and CLI path as well
+as duck fixtures before any real invocation. Independent review still precedes
+that invocation; Root's repair is not covered by the failed CO verification.
+
+Root then used isolated -I for the whole suite although the project specifies
+cwd-based unittest discovery. The first three artifact modules could not import
+pal before later tests added the root path:1032 discovered/3 import errors, not
+a product regression or full verification. Original log is retained. Re-run the
+existing -E -s -B/cwd full command; keep -I only for isolated verifiers whose
+fixtures deliberately insert their own snapshot root. Do not edit source/tests
+to compensate for the wrong invocation or transfer a partial count as PASS.
+
+## PRI02-T actual prompt mismatch and verification ordering (2026-10-10)
+
+The sole real T call entered; strict normal ATIF parsing refused because the
+original947-byte prompt ended with a generated LF while exported user text was
+946 bytes without it. The original public pure parser accepts the retained export
+only in a separate diagnostic removing that LF; header/model/version/no-tools
+checks then pass. This identifies the formatter incompatibility, not permission
+to adopt the UNKNOWN original output. Owned CLI cleanup/capacity release is
+confirmed independently. Raw export/journal/admission remain local and untouched.
+
+Root removes only the formatter LF; original user text and strict exact comparison
+remain unchanged. Separate Sol wrote two RED cases before repair, then fixed21
+and an independent source review pass. The original19 tests are unchanged. Next
+external prompt formatting is tested against actual documented transcript
+normalization before entry; never normalize a request/result comparison to pass.
+The one T call remains consumed; no automatic retry or substitution.
+
+At T dispatch Root described the whole1092 suite as already PASS while it was
+still running. It subsequently finished PASS30.384s/exit0. Fixed tests/review had
+completed and the frozen T checks did not require the full suite, but the status
+claim and ordering were wrong. Root acknowledged this to the owner. Prevention:
+await final exit0 before a dependent dispatch or a completed-verification claim;
+use the correct cwd -E -s -B command and retain earlier failing invocation logs.
+This is a concrete execution check, not a new per-call approval procedure.
+
+## PRI02-N fixture boundaries and unknown CO implementation (2026-10-10)
+
+CO2ede5937 planner completed, but SWE implementation exceeded the requested240s
+and returned route_timeout/outcome unknown. No verified diff was adopted, no
+decide/resume/cancel/retry or direct state/lease edit was made. The approved
+separate native Sol context implemented NATIVE-CALL01 from the frozen contract
+and independent15 tests. Preserve the unknown CO attempt, not a failed product
+module verdict. Avoid arbitrarily short implementation deadlines for large
+context; keep ordinary qualified runtime timing for later distinct assignments.
+
+Native Primary fixed17 initially injected KeyboardInterrupt into every parser
+call, including pre-admission candidate validation, rather than returned-before-
+intent. A second fixture omitted TaskStore's required source_gate. The test owner
+corrected only those inputs/boundaries, retained original failures and kept the
+paused receipt/committed none expectations. Exact returned-record barrier and
+actual owner constructor prevent those false product failures on next work.
+
+Root's generic review-pattern command again used -I even though its first module
+does not insert the repository path. It produced one import error, then the
+correct cwd -E -s -B command passed. Root now uses cwd-based discovery for all
+ad-hoc tests; -I is confined to explicit frozen verifiers already known to insert
+their own root. Do not compensate with implementation or expectation changes.
+
+Full1094 ran28.030s with one historical K1 missing-context assertion. No current
+v5 source caused that body selection and no old implementation was read/copied.
+The exact same unchanged historical case subsequently passed singly with the
+required temporary loopback access (3.174s). Cause remains unresolved; keep the
+original full failure and separate restricted bind errors, never label that full
+run PASS. Later full regression must complete independently on the final source.
+
+## C083 actual runtime and failure-observation boundaries (2026-10-10)
+
+Independent actual import found that the wrapper assumed every CO module has a
+source file. Installed co_v4.adapters is a legitimate namespace package with
+__file__None. The same source also imposed credential0600, although the original
+host requires regular existing metadata and the active authorized target is0644.
+Its UUID run ID missed public gate's durable task-cwd classification. Astra repairs
+all namespace search-origin checks, retains credential identity without changing
+its permissions, and binds public run ID to canonical cwd. Original fixed19 did
+not exercise actual import/metadata/cwd compatibility; separate four RED fixtures
+now pass, with optional installed-runtime checks skipped only on absent hosts.
+
+Official --version emits a full display with build. The first wrapper regex
+refused it; an independent six-case metadata fixture preceded the exact-format
+repair. Root full1155 and actual process5 then passed. The original N MAX1 still
+returned UNKNOWN: wrapper gave bare semantic version to AcpTransport, whose
+original version-command check requires exact full stdout before ACP spawn.
+Independent real-constructor/adapter doubles reproduce refusal/UNAVAILABLE and
+stop ERROR without Native execution. Because the original OperationReply was
+discarded, this is a proven incompatibility and consistent failure mechanism,
+not uniquely established original-call cause or retroactive NeverStarted proof.
+One unknown shared lease remains held; original case and raw records remain local.
+
+Correction808b05f/SHAac1250 implements the frozen exact full transport-version
+metadata/config plus bounded local execute/cached-status/protocol/host observations.
+Independent fixed diagnostics6 and metadata6 retained REDs before source; final
+separate wrapper35 APPROVE and Root full1161 PASS30.939s confirm local correction.
+Public status is not a read-only diagnostic: it pumps protocol. Save already
+observed status and public non-pumping diagnostic, then the one supported stop;
+never add a diagnostic poll before stop or retry execute on persistence failure.
+Future native entry requires real public constructor/metadata compatibility,
+independent source/full proof and its distinct finite candidate scope. No CO
+transport monkeypatch, runtime/state edit or forced unknown-lease release.
+
+The public Opus summary hashed the13510-byte original response, while Markdown
+added one final LF and has13511 bytes. Raw response and public file independently
+confirm that exact difference. Separate original_response_sha256 and
+public_report_sha256 now identify the bytes and transformation; reviewer text and
+verdict are unchanged. Future exported reports bind exact published bytes and
+label original response hashes separately. Public review notes also use local
+evidence labels rather than inaccessible raw host paths; originals stay local.
+
+D050 early checkpoint found that failed-path diagnostic persistence preceded the
+single supported stop. Best-effort catches protected exceptions but could delay
+the stop on diagnostic work. Independent three original RED tests assert stop
+before diagnostic calls/writes, including diagnostic SystemExit and write
+KeyboardInterrupt. A distinct scoped source correction must pass them without
+extra protocol polling/retry. Original N1 outcome/capacity is unchanged.
+
+Opus source-free review assumed a transport version refusal always supplies a
+NeverStarted receipt; actual original adapter fixtures show UNAVAILABLE/no evidence.
+Root reconciles every actual-entry gate against installed public source and does
+not turn reviewer advice into fabricated native cessation or new authority.
+
+## C085 native Expert integrity, read provenance and verification errors (2026-10-10)
+
+Independent source review found that changing a native base row to mock and
+deleting its side row bypassed native validation despite its retained native
+admission receipt. Original get/begin/output probes failed; corrected TSK35d13
+checks reverse receipt binding before any ended-call authority. Fixed25 plus the
+new one-method/three-subcase regression pass; Root full1202 passes. Coordinated
+forgery/removal of all trusted-host evidence is outside the stated threat scope.
+Retain the original f336 blocker rather than calling the author's initial green
+suite sufficient. Next changes must check both side presence and retained producer
+identity through every ended-call consumer.
+
+The original TSK fixture compared the whole usage tuple, which includes reservation
+rows, while native admission must bind that reservation to its canonical call.
+Independent fixture correction keeps budget counters unchanged and permits only
+the required binding; all other fields and duplicate snapshots remain fixed.
+Two existing mock corruption fixtures used positional INSERT for eight columns
+after the frozen discriminator added columns. Explicit target columns preserve
+the original corruption/authority assertions; no accepted behavior was weakened.
+
+Genuine native saved-tail recovery produced ART and C14 but READ recognized only
+the mock fixed notice. Independent genuine/forged two-case RED precedes READ6d4b91
+correction. The view has no provenance field, so its global mock caption was false
+for native fixture results; it now says provenance is unverified. Three old caption
+expectations were independently corrected while retaining escaping/read-only/hash/
+order/currentness/authority checks. READ32 plus nativeREAD2 pass. A forged fixed
+notice never manufactures an artifact or completion.
+
+Root's isolated READ command sequence ran tests and then committed without checking
+each exit; the later successful commit masked the earlier two caption failures in
+the shell result. The failed log and isolated commit are retained. Source was not
+integrated until independent review, fixture correction and actual separate exit0
+runs. Prevention applied here: issue test calls separately, inspect their explicit
+exit, then commit/integrate; a shell's last-command exit is not a test receipt.
+
+CO cleanup initial step completed at SHA84e5, then its declared35 tests failed
+14/12 and automatic repair timed out UNKNOWN. Independent reconstruction of the
+exact nine inputs and full checkout both38 PASS. Original traces prove restricted
+temporary-path PermissionError and passwd KeyError; all failures were not individually
+classified. No source or credential workaround, runtime/seatbelt edit or unknown
+repair retry was used. Root accepts only hash-bound completed initial source after
+separate review and38 PASS; CO verified remains false. Next similarly constrained
+CO jobs must distinguish worker bytes from supported verifier-environment proof
+and use already-authorized independent local verification where necessary.
+
+Root full restricted1202/3FAIL/29ERROR repeats existing localhost/child restrictions.
+The same frozen criteria/source pass1202 under approved local execution. Preserve
+both logs and scope; local fixture process death never proves native cessation.
+
+## C086 actual N2 model-evidence mismatch (2026-10-10)
+
+Corrected wrapper84e5 executed the sole distinct N2 and retained accepted execute,
+COMPLETED/end_turn/EOF/exit0/tool0/permission0 and matching CONFIRMED stop. Its
+public cessation has requested swe-2-high but effective_model:null/verified:false
+and invocation_bound_only. PAL NativeTextBuffer requires exact verified effective
+model, so this actual receipt cannot qualify NativeReturned. Independent Astra
+recomputes receipt binding and reproduces ValueError model mismatch with explicitly
+synthetic text. CO's native_handoff_verified and unverified model can coexist under
+its native contract; there is no evidence that server model acknowledgement was
+obtained. Full frames/output are not retained, so this is not proven absence of all
+server metadata or the only original failure cause.
+
+Correction/disposition: preserve UNKNOWN and original raw evidence, keep strict
+qualification unmet, no N3/Expert entry before design reassessment. The baseline
+held1 is restored by the original supported own stop, never direct ledger editing.
+Prevention under review: inspect an existing supported server model-ack path and
+consider effective-model checks at the preprompt session barrier. Do not treat
+invocation CLI arguments as server acknowledgement or rewrite verified fields.
+No source/acceptance change is adopted by recording this diagnosis alone.
+
+
+C087 execution/export corrections: Root omitted the implement pin on the first
+fixed-mode report command. CO spec validation returned spec_invalid before task
+creation/model launch; the original error is retained. Public CLI/source showed
+fixed mode requires planner+implement even for a report. Root supplied the same
+Opus model for both; actual call succeeded. Opus then returned9255-byte step
+instructions over4096, so plan_invalid and no design step/verifier. Preserve it
+as a planning proposal. Next related CO goal asks for short instructions referring
+to frozen input; runtime/state is unchanged and that prevention is not yet tested.
+
+Independent export review REQUEST_CHANGES found a raw owner-message UUID newly
+added to D053. It is unnecessary public provenance under D045. Root preserved
+private6a2e312 and built a normal descendant of safe source69c6 with anonymous
+D053 wording and identical eight review inputs. No force push/history rewrite;
+private6a2 is excluded from public ancestry. Recheck reachability and all new
+identifiers before the next push. Full1210 source proof is unchanged.
+
+C088 old-entry cause: v5 development had added current owners while legacy README/
+server/Web/default model-input instructions still advertised the old engine.
+Independent source/import and docs audits confirm the mismatch. LEGACY01/1
+removes the operational old code and makes mandatory inputs/startup references
+current-only. Existing history/evidence remains explicitly historical. Validate
+actual import closure and every retained v5 test rather than classifying by suffix.
+Do not equate removed old UI with a completed new UI.
+
+The first anonymous-export replacement matched a nonexistent newline after the UUID, so it changed zero bytes. Re-review caught the same identifier before publication. Root now requires exactly one bare-identifier match and asserts absence after replacement, preserving both private candidates and creating another clean descendant of source69c6. This is a concrete checked correction; private candidates are excluded from public ancestry.
+
+
+C088 prevention is verified at0e5cdf0: independent import closure and88 retained
+file hashes match, full930 and owned-process5/6 pass, exact prior public SPEC/DESIGN
+bodies remain in history and mandatory entry docs reference current owners. The
+old engine cannot be imported through the removed11 modules in this checkout.
+Current HTTP/UI absence is explicit and remains unfinished work, not hidden by
+old endpoints. Independent export review verifies no private candidate ancestry
+and no new unnecessary owner identifier; bare-ID assertion correction applied.
+
+
+C089 UI independent fixture initially expected failed after in-flight reference
+stop. Actual immutable current TSK/MEM/MockRunner advances epoch and drains to
+queued; C05 explicitly specifies it. The source author preserved owner behavior
+and fixed tests, returning14/15 instead of rewriting status. Root reconciles the
+contract; independent test author corrects state and strengthens epoch/withheld/
+late-output assertions. Original failure is retained. Next fixture uses exact
+current owner transition contract, not an inferred terminal state.
+
+Opus found prototype UI TemporaryDirectory finalizer could delete a held DB and
+post-submit queue refusal could strand a persisted turn. Root adopts UI01/2:
+explicit temp removal only after owned completion and capacity reservation before
+store, with independent failure/hold tests. These are required corrections before
+integration, not accepted product behavior. CO's short-plan instruction prevention
+worked in the new C088 report (plan accepted, report produced, shape verified);
+old plan_invalid output remains unchanged and was never a completed review.
+
+
+C089 URL/refusal and displayed-question correction: independent URL probes found
+urlsplit ValueError escaped the transport guard and absolute foreign targets were
+accepted with a local Host. Source now bounds/origin-form validates the target
+inside refusal handling before owner mutation; independent malformed/foreign URL
+cases prove refusal with no turn/DB effect. UI used question.question but current
+READ exports question.text, masking the actual question with a generic fallback.
+Source now reads the current field; actual Root browser displays the date question
+and saves the answer in the same work. Independent demo hold case requires exit1
+without exposing a private path. Final Astra19 and Root969 pass.
+
+C090 implementation-route/interpreter correction: CO SWE implementation timed
+out with unknown outcome and no selectable option; cause/quota remain unknown.
+Preserve it; a distinct authorized Native implementation has separate source
+review and fixed20/native151 proof. Author's first default Python3 was3.9 and
+could not import existing StrEnum. Python3.13 rerun passes without source/test
+workarounds. Pin the existing3.13 interpreter before related verification and
+record interpreter/setup failure separately from product RED. Old prefix/hash and
+all88 retained fixture hashes are rechecked; new envelope is required before a
+new finite native diagnostic. No accepted mock result becomes native qualification.
+
+C090 publication correction: independent export review caught an unnecessary raw
+CO task identifier in the new decision and minimized receipt. It was a development
+identifier, not required public provenance. The first candidate52489fe is preserved
+on its local branch and excluded from public ancestry. Root creates a normal
+descendant of reviewed source0d60b6f with anonymous evidence label, asserts exactly
+one replacement per affected file and identifier absence, and obtains exact-head
+export review. Future public records use named evidence plus source/file digests;
+private task lookup stays local. No force push or original CO outcome rewrite.
+Export review of the entire next push also found the same unnecessary task-ID
+field in the completed Opus summary. Root preserves all intermediate candidates
+and reconstructs the approved final tree from498c628 before that addition; actual
+legacy source0e5/fff19/01ae ancestry remains. Source/test bytes are exactly those
+verified at0d60b6f; that local test commit remains preserved. Both summary task-ID
+fields are replaced by anonymous labels. No task is retried or rewritten.
+
+Root export equivalence check initially compared an unstaged tree with a commit,
+so newly added untracked UI files appeared absent. The shell continued to commit
+after that assertion because failure propagation was not enabled. Exact committed
+revisions535993c and0d60b6f now have zero production/test diff; no byte mismatch was
+masked as PASS. Dependent mutations must follow a successful tool result; compare
+explicit committed revisions or file manifests so new untracked files are covered.
+
+C091 private operator review: five independent fake-bridge assertions reject
+the first candidate: global post-capacity refusal still left transportPASS and
+malformed normalized diagnostic records still counted AVAILABLE. Cause is early
+qualification assignment and partial row validation. Original failing fixture/log
+is retained; source author must close full schema and delay qualification until
+postchecks, preserving the known original ending. Opus C1-C7 also resolves
+classification precedence and pre-entry guard phases before actual freeze. New
+request nonce must be unpredictable. Actual case/native entry is still absent;
+local operator errors are not live provider outcomes. Re-review exact repaired
+hash with same meaningful fixtures before any new original call.
+
+C091 further validator correction: source inferred config_option_update required
+current_update=True from the flag name. Actual CO public callback uses that flag
+only for legacy model updates; modern config updates legitimately deliverFalse.
+Root and Astra independently used the genuine pure collector to reproduce false
+UNAVAILABLE. Author removed only the invented implication, retaining bool and
+hook/shape validation; independent final probe passes. Future callback fixtures
+use actual public-hook flag semantics, not inferred names. No runtime or gate
+change. Author's initial generator also matched an unanchored HASHES substring
+inside N1_HASHES, causing two pre-import NameErrors; explicit distinct assignments
+and mechanical tracked-path/hash comparisons now prevent that substitution.
+These preparation REDs caused no native entry/effects and remain retained locally.
+
+
+## C091 — bounded model capture loses the first overflow reason
+
+Observed: the one newly frozen diagnostic produced an unqualified incomplete
+record with zero observations/hints. The contract intentionally freezes the
+previous prefix on overflow, and no reason/site/count is retained. Source-local
+12 synthetic cases distinguish option/value/token/record overflow from malformed
+rows and observation-count overflow; they cannot identify the real boundary or
+unique RuntimeError cause. Expected collector overflow returns normally and
+best-effort wrapper diagnostics cannot explain that RuntimeError by themselves.
+
+Correction now: preserve UNKNOWN and original receipts, publish only the verified
+anonymous result, and require new reassessment before further entry. Prospective
+prevention: evaluate one finite first-overflow enum/site/count-only sidecar under
+a separate scope, with unchanged limits/gates and independent fixtures. Do not
+blindly increase limits, parse unqualified text, reconstruct old frames or call
+again solely to retry. That source refinement is not implemented/qualified here.

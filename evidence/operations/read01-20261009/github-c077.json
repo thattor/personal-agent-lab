@@ -1,0 +1,17 @@
+{
+  "issue": {
+    "state": "OPEN",
+    "title": "PAL project goal \u2014 integrated personal assistant delivery",
+    "url": "https://github.com/thattor/personal-agent-lab/issues/6",
+    "body_readback_match": true
+  },
+  "pr": {
+    "headRefOid": "a58cde78e7777a5254f5e5b812fe6ed757576008",
+    "isDraft": true,
+    "state": "OPEN",
+    "statusCheckRollup": [],
+    "title": "Connect mock completion to retained draft and verification readback",
+    "url": "https://github.com/thattor/personal-agent-lab/pull/19",
+    "body_readback_match": true
+  }
+}

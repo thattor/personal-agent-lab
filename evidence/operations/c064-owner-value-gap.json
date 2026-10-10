@@ -1,0 +1,81 @@
+{
+  "recorded_at": "2026-10-08T12:47:48.175848+00:00",
+  "decision_id": "HR-STABLE1-001",
+  "checkpoint": "C064",
+  "source_commit": "94fcacbf506b7514a2380dc1c4e61ccc5dcffca2",
+  "candidate_commit": "a433787ebbd1d9ee64187d640f2437aa42e85246",
+  "product_identity": "content:sha256:04f30387694a8202689b06673c18ec1fb7822b7ba88f83679132bdfb0b0291a5",
+  "direct_sources": [
+    {
+      "thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+      "turn": "01a11b84-9bff-7412-95e9-50f1d4fecbf9",
+      "message": "01a11b84-9d87-7a52-bee4-045a127ea789",
+      "text": "真面目に何やってるの？\n外部接続もしない、Expertもやれない。会話ボットなだけなんて意味ないよ\nただ、パーツの機能テストとして必要なら問題はない。"
+    },
+    {
+      "thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+      "turn": "01a11b85-bdf6-7962-a43e-e3d110710c30",
+      "message": "01a11b85-bf1d-79a3-b88b-9427edf5e26e",
+      "text": "え？これで完成のつもりだったの？\n設計書読んでない？マイルストーンごとにOpusと設計レビューしたら？"
+    },
+    {
+      "thread": "01a11837-e1e3-71f0-8ff8-bbaf8dc14527",
+      "turn": "01a11b86-9a4b-74a1-9708-335f55660010",
+      "message": "01a11b8a-464d-75d1-9a6e-f6fc7b5eaf13",
+      "text": "マイルストーンかIssue単位の開発進捗ごとに設計との認識合わせというか、作業の方向性が間違った方向に行っていないか、細かい枝はの部分に執着していないか確認した方がいいと思うけどな。\n何度も失敗しているから学習してほしい"
+    }
+  ],
+  "verification": "Development independently read the direct human messages with read_thread; not inferred from another agent verdict.",
+  "usefulness_status": "FEEDBACK_RECEIVED / desired usefulness not accepted",
+  "interpretation": [
+    "Necessary component testing is accepted; this is not Stable-1 release approval or whole-project completion.",
+    "The external/Expert complaint is owner experience. Code confirms a durable local-draft Expert lane exists, but external data/task capabilities are absent.",
+    "Do not request the same draft-only evaluation again or delegate synthetic component testing to the owner.",
+    "Check Issue purpose/value/direction at entry and closure; obtain Opus alignment review at milestone boundaries and repeated/direction failures.",
+    "No authorization for new capability, authentication, cost, publication or external write is inferred."
+  ],
+  "implementation_map": [
+    {
+      "source": "pal/primary.py:25",
+      "fact": "Closed model-led none/local_draft/answer/control/remember/forget proposals; host commits state."
+    },
+    {
+      "source": "pal/runtime.py:17",
+      "fact": "WorkOrder capability is local_draft only."
+    },
+    {
+      "source": "pal/runtime.py:93",
+      "fact": "ProviderExecutor makes a bounded text-generation call and returns a draft/question/preview proposal."
+    },
+    {
+      "source": "pal/runtime.py:221",
+      "fact": "Host validates result bindings, issues artifact receipts and controls completion."
+    },
+    {
+      "source": "pal/runtime.py:266",
+      "fact": "Durable single task lane claims the Goal and dispatches Executor; this is a thin Expert outcome controller."
+    },
+    {
+      "source": "pal/primary.py:89",
+      "fact": "External browse/send/schedule/shell capabilities are explicitly unavailable."
+    },
+    {
+      "source": "pal/native.py",
+      "fact": "Official model transport uses empty tools/MCP; model connection is not an external information/task connector."
+    }
+  ],
+  "observation": "c064-host-observation.json",
+  "feasibility": "c064-github-read-feasibility.json",
+  "technical_tests": {
+    "status": "PASS",
+    "count": 277,
+    "seconds": 25.467,
+    "evidence": "../reviews/two-hour-trial/full-green.txt",
+    "scope": "Unchanged product component tests, not usefulness proof; no unnecessary repeat model tests."
+  },
+  "design_lane": "01a11837-e1e3-71f0-8ff8-bbaf8dc14527",
+  "proposal_status": "NOT_ADOPTED: one bounded external-read to Expert to host-verified local result; official Opus review assigned to existing design lane.",
+  "product_changes": false,
+  "canonical_repairs": false,
+  "controller_product_generation_calls": 0
+}

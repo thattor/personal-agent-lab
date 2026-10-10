@@ -1,0 +1,37 @@
+{
+  "schema": "pal.int00-design-disposition/1",
+  "contract_id": "PAL-v5-common-wire",
+  "contract_version": "INT00/1",
+  "input": "PAL-contracts-v5 / section3 + C12",
+  "task_id": "6a9dea446fa241ceb6ee876bbdb08be9",
+  "design_role": "claude/claude-opus-5-5",
+  "design_output_sha256": "964afdefe497533452905ea33a58ac5821822395f1e8245838d92954c629f33f",
+  "design_review_scope": "Common wire definitions and pure parser preparation; not full v5 service/persistence design acceptance",
+  "owner": "SOL",
+  "technical_choices": {
+    "U1": "Only closed error vocabulary here. Later host tests bind not_found for unknown IDs, stale for revision mismatch, conflict for same-revision state conflicts per TEST-STRATEGY; do not implement state mapping in this module.",
+    "U2": "Generic Result value with explicit host-selected decoder; each provider binds its actual result type later.",
+    "U3": "Use one flat kind discriminator for C12 actions and every shared fixture.",
+    "U4": "Unprovided model Ref is invalid_input at the model-output parsing boundary; host availability/permission failures remain separate.",
+    "U5": "Compose supports text/plain and text/markdown consistent with C08.",
+    "U6": "Ref structural validity alone does not prove artifact provenance; VER host must validate artifact kind and saved identity.",
+    "U7": "Do not invent lexical/semantic permission rules in pure types. Target/operation adapters enforce actual resource/grant constraints.",
+    "U8": "Optional lookup source_refs may be absent; explicit null is invalid.",
+    "U9": "Grant non-expansion, request scope, source availability and current epoch checks are mandatory host responsibilities in later modules.",
+    "U10": "Document Python integer parsing limit and bounded invalid_input conversion."
+  },
+  "additional_coordinator_check": "raise ... from None suppresses traceback chaining but retains __context__. Require test evidence that raw JSON decoder exceptions are not reachable as cause/context on ContractError.",
+  "adoption_status": "Technical wire choices scoped for INT00; final code integration waits exact-file independent review and SOL tests. Full v5 product/capability adoption is not implied.",
+  "next_steps": [
+    "Inspect generated files and verifier",
+    "Resolve any concrete review/test defects",
+    "Record final wire disposition and shared examples before downstream modules"
+  ],
+  "not_run": [
+    "C01-C15 services",
+    "persistence/control races",
+    "GitHub connector",
+    "E2E01-09",
+    "human usefulness"
+  ]
+}

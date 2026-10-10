@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "scope": "two pure helpers, synthetic mock read, unsaved content preview",
+  "request_argv": [
+    "gh",
+    "api",
+    "--method",
+    "GET",
+    "--hostname",
+    "github.com",
+    "repos/thattor/personal-agent-lab/issues/7"
+  ],
+  "content_preview": {
+    "hash": "f0ab4d295dfbcd15622ecc7ef9173f4cdce3dfb9e47382b737633c029b8c53e0",
+    "bytes": 40,
+    "media_type": "text/markdown"
+  },
+  "foreign_repository_reaches_mock": false,
+  "real_provider_calls": 0,
+  "saved_artifacts_receipts_or_completion": 0,
+  "ct_e2e_service_acceptance": "NOT_RUN"
+}

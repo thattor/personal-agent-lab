@@ -1,0 +1,31 @@
+{
+  "observed_at": "2026-10-08T22:09:40.040628+00:00",
+  "original_checkout": "/private/tmp/personal-agent-lab-stable0-20261006",
+  "original_head": "94fcacbf506b7514a2380dc1c4e61ccc5dcffca2",
+  "preserved_original_records": 13,
+  "changed_original_records": [],
+  "original_runtime_db_or_service_changed_by_this_task": false,
+  "claude_assistant_model_observations": {
+    "a/plan-a1": [
+      "claude-opus-5-5"
+    ],
+    "a/s1-a1": [
+      "claude-opus-5-5"
+    ],
+    "a/s3-a1": [
+      "claude-opus-5-5"
+    ],
+    "b/plan-a1": [
+      "claude-opus-5-5"
+    ],
+    "b/s1-a1": [
+      "claude-opus-5-5"
+    ],
+    "b/s2-a1": [
+      "claude-opus-5-5"
+    ]
+  },
+  "swe_exact_cli_id": "swe-2-high",
+  "swe_cost_tier": "Free as recorded by CO fresh admission",
+  "old_co_task_state_preserved": true
+}

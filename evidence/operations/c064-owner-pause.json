@@ -1,0 +1,40 @@
+{
+  "observed_at": "2026-10-08T12:52:19.453042+00:00",
+  "reason": "Direct owner instruction to pause development and conduct only retrospective",
+  "source_thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "source_turn": "01a11b8f-79d1-77e3-87a3-72b3e594ce15",
+  "source_message": "01a11b8f-7b09-7600-a09e-8a2cf10b3051",
+  "owner_text": "よし、一旦開発停止して、今回の失敗の学習をして次に繰り返さないようにしよう",
+  "goal_status": "paused",
+  "owned_pid": 20002,
+  "verified_cwd": "/private/tmp/personal-agent-lab-stable0-20261006",
+  "shutdown_signal": "SIGTERM",
+  "process_status_after": "absent",
+  "listener_absent": true,
+  "connect_ex_after": 61,
+  "direct_children_after": [],
+  "counts_before": {
+    "records": 6,
+    "goals": 0,
+    "attempts": 0,
+    "artifacts": 0,
+    "receipts": 0
+  },
+  "counts_after": {
+    "records": 6,
+    "goals": 0,
+    "attempts": 0,
+    "artifacts": 0,
+    "receipts": 0
+  },
+  "counts_unchanged": true,
+  "preserved_original_db": "runtime/stable1-owner-c061/state.sqlite",
+  "local_backup": "runtime/c064-gap-audit/state-before-owner-pause.sqlite",
+  "backup_sha256": "26a06c4ef870a67995284695dad88065af8b39aac40fe91898a4473d1dfd876b",
+  "new_model_calls": 0,
+  "new_tests": 0,
+  "new_product_code": false,
+  "manual_canonical_repair": false,
+  "automatic_restart": false,
+  "resume_condition": "Explicit new owner instruction; completing the retrospective does not resume development."
+}

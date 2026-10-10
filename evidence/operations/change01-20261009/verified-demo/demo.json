@@ -1,0 +1,303 @@
+{
+  "mode": "trusted host / temporary SQLite / mock model / structural checks only",
+  "created": {
+    "expert_id": "mock-expert",
+    "grant": {
+      "capabilities": [],
+      "limits": {
+        "max_model_calls": 6,
+        "max_operations": 0,
+        "max_steps": 6
+      },
+      "repositories": [
+        "demo"
+      ]
+    },
+    "state": "queued",
+    "work_ref": {
+      "epoch": 0,
+      "goal_id": "goal-02aa807e5c1b45dcae1f41f8a3ef9568",
+      "revision": 1
+    }
+  },
+  "changed": {
+    "control_status": "draining",
+    "state": "running",
+    "work_ref": {
+      "epoch": 2,
+      "goal_id": "goal-02aa807e5c1b45dcae1f41f8a3ef9568",
+      "revision": 2
+    }
+  },
+  "settled": {
+    "call_ids": [
+      "[\"C15.call\",\"lease-8deabc85ea5d43ae9c436d837a2029ed\",0]"
+    ],
+    "control_status": "none",
+    "excluded_refs": [],
+    "excluded_step_ids": [],
+    "lease_id": "lease-8deabc85ea5d43ae9c436d837a2029ed",
+    "pending_inputs": [],
+    "reason_code": "stale",
+    "state": "queued",
+    "status": "released",
+    "steps": [],
+    "work_ref": {
+      "epoch": 2,
+      "goal_id": "goal-02aa807e5c1b45dcae1f41f8a3ef9568",
+      "revision": 2
+    }
+  },
+  "completed": {
+    "call_ids": [
+      "[\"C15.call\",\"lease-de71de83070e4fb2be823cc24d5db9ff\",0]"
+    ],
+    "control_status": "none",
+    "excluded_refs": [],
+    "excluded_step_ids": [],
+    "lease_id": "lease-de71de83070e4fb2be823cc24d5db9ff",
+    "pending_inputs": [],
+    "state": "completed",
+    "status": "completed",
+    "steps": [
+      {
+        "action": {
+          "content": "打合せのご案内（訂正版下書き）\n10月12日 午後3時から開催します。\n送信前に内容をご確認ください。",
+          "kind": "compose",
+          "media_type": "text/plain",
+          "source_refs": [
+            {
+              "id": "record-27ad81bc1c334faebc238f38302ebee9",
+              "kind": "record"
+            }
+          ]
+        },
+        "index": 0,
+        "result_refs": [
+          {
+            "id": "artifact-e7add59bc6d0433399ff6728245ef5e4",
+            "kind": "artifact"
+          }
+        ],
+        "status": "finished",
+        "step_id": "step-8efff534e45943a3a715b87156622333",
+        "work_ref": {
+          "epoch": 3,
+          "goal_id": "goal-02aa807e5c1b45dcae1f41f8a3ef9568",
+          "revision": 2
+        }
+      }
+    ],
+    "verification": {
+      "checks": [
+        {
+          "condition_id": "condition-8b4d509da7eb40e79dbe87f6b56bfebf",
+          "evidence_refs": [
+            {
+              "id": "artifact-e7add59bc6d0433399ff6728245ef5e4",
+              "kind": "artifact"
+            }
+          ],
+          "reason": "ordered artifact set saved and verified",
+          "status": "met"
+        }
+      ],
+      "verification_ref": {
+        "id": "verification-00157bba47b04e2c98420cbbd1417413",
+        "kind": "verification"
+      }
+    },
+    "work_ref": {
+      "epoch": 3,
+      "goal_id": "goal-02aa807e5c1b45dcae1f41f8a3ef9568",
+      "revision": 2
+    }
+  },
+  "history": {
+    "brief": {
+      "conditions": [
+        {
+          "check": "artifact_saved",
+          "description": "下書きが保存されている",
+          "id": "condition-7cbffc7a726942d598880fc4ceaded7a"
+        }
+      ],
+      "constraints": [
+        "送信しない"
+      ],
+      "context_refs": [],
+      "purpose": "月曜日の案内を保存する",
+      "target": {
+        "files": [],
+        "issue_numbers": [],
+        "repository": "demo"
+      }
+    },
+    "current_artifact_refs": [],
+    "grant": {
+      "capabilities": [],
+      "limits": {
+        "max_model_calls": 6,
+        "max_operations": 0,
+        "max_steps": 6
+      },
+      "repositories": [
+        "demo"
+      ]
+    },
+    "open_questions": [],
+    "state": "superseded",
+    "work_ref": {
+      "epoch": 1,
+      "goal_id": "goal-02aa807e5c1b45dcae1f41f8a3ef9568",
+      "revision": 1
+    }
+  },
+  "usage": {
+    "model": 2,
+    "step": 1
+  },
+  "inspection": {
+    "items": [
+      {
+        "event": {
+          "event_id": "event-47b1f9b0840e4ee4af62c9abdb869d5e",
+          "kind": "result",
+          "refs": [
+            {
+              "id": "artifact-e7add59bc6d0433399ff6728245ef5e4",
+              "kind": "artifact"
+            },
+            {
+              "id": "verification-00157bba47b04e2c98420cbbd1417413",
+              "kind": "verification"
+            }
+          ],
+          "text": "work completed from saved verification",
+          "work_ref": {
+            "epoch": 3,
+            "goal_id": "goal-02aa807e5c1b45dcae1f41f8a3ef9568",
+            "revision": 2
+          }
+        },
+        "reads": [
+          {
+            "ref": {
+              "id": "artifact-e7add59bc6d0433399ff6728245ef5e4",
+              "kind": "artifact"
+            },
+            "result": {
+              "ok": true,
+              "value": {
+                "content": "打合せのご案内（訂正版下書き）\n10月12日 午後3時から開催します。\n送信前に内容をご確認ください。",
+                "hash": "73ff44ea119bdd8f739e56e137f2d99dfe3818ab08ba62bccc3321a2c791a05d",
+                "media_type": "text/plain",
+                "observed_at": "2026-10-09T13:29:09.218395+00:00",
+                "ref": {
+                  "id": "artifact-e7add59bc6d0433399ff6728245ef5e4",
+                  "kind": "artifact"
+                },
+                "source_refs": [
+                  {
+                    "id": "record-27ad81bc1c334faebc238f38302ebee9",
+                    "kind": "record"
+                  }
+                ],
+                "usable": true,
+                "work_ref": {
+                  "epoch": 3,
+                  "goal_id": "goal-02aa807e5c1b45dcae1f41f8a3ef9568",
+                  "revision": 2
+                }
+              }
+            },
+            "validity": null
+          },
+          {
+            "ref": {
+              "id": "verification-00157bba47b04e2c98420cbbd1417413",
+              "kind": "verification"
+            },
+            "result": {
+              "ok": true,
+              "value": {
+                "content": "{\"artifact_refs\":[{\"id\":\"artifact-e7add59bc6d0433399ff6728245ef5e4\",\"kind\":\"artifact\"}],\"artifacts\":[{\"artifact_ref\":{\"id\":\"artifact-e7add59bc6d0433399ff6728245ef5e4\",\"kind\":\"artifact\"},\"bytes\":137,\"hash\":\"73ff44ea119bdd8f739e56e137f2d99dfe3818ab08ba62bccc3321a2c791a05d\"}],\"checks\":[{\"condition_id\":\"condition-8b4d509da7eb40e79dbe87f6b56bfebf\",\"evidence_refs\":[{\"id\":\"artifact-e7add59bc6d0433399ff6728245ef5e4\",\"kind\":\"artifact\"}],\"reason\":\"ordered artifact set saved and verified\",\"status\":\"met\"}],\"conditions\":[{\"check\":\"artifact_saved\",\"description\":\"下書きが保存されている\",\"id\":\"condition-8b4d509da7eb40e79dbe87f6b56bfebf\"}],\"source_refs\":[{\"id\":\"record-27ad81bc1c334faebc238f38302ebee9\",\"kind\":\"record\"}],\"work_ref\":{\"epoch\":3,\"goal_id\":\"goal-02aa807e5c1b45dcae1f41f8a3ef9568\",\"revision\":2}}",
+                "hash": "5b4cd68056b7afa3b0cdf903b3904285de17542f1b3a1df978e0e1de3f4733b6",
+                "media_type": "application/json",
+                "observed_at": "2026-10-09T13:29:09.224239+00:00",
+                "ref": {
+                  "id": "verification-00157bba47b04e2c98420cbbd1417413",
+                  "kind": "verification"
+                },
+                "source_refs": [
+                  {
+                    "id": "record-27ad81bc1c334faebc238f38302ebee9",
+                    "kind": "record"
+                  }
+                ],
+                "usable": true,
+                "work_ref": {
+                  "epoch": 3,
+                  "goal_id": "goal-02aa807e5c1b45dcae1f41f8a3ef9568",
+                  "revision": 2
+                }
+              }
+            },
+            "validity": "current"
+          }
+        ],
+        "work": {
+          "ok": true,
+          "value": {
+            "brief": {
+              "conditions": [
+                {
+                  "check": "artifact_saved",
+                  "description": "下書きが保存されている",
+                  "id": "condition-8b4d509da7eb40e79dbe87f6b56bfebf"
+                }
+              ],
+              "constraints": [
+                "送信しない"
+              ],
+              "context_refs": [],
+              "purpose": "10月12日午後3時の案内を保存する",
+              "target": {
+                "files": [],
+                "issue_numbers": [],
+                "repository": "demo"
+              }
+            },
+            "current_artifact_refs": [
+              {
+                "id": "artifact-e7add59bc6d0433399ff6728245ef5e4",
+                "kind": "artifact"
+              }
+            ],
+            "grant": {
+              "capabilities": [],
+              "limits": {
+                "max_model_calls": 6,
+                "max_operations": 0,
+                "max_steps": 6
+              },
+              "repositories": [
+                "demo"
+              ]
+            },
+            "open_questions": [],
+            "state": "completed",
+            "work_ref": {
+              "epoch": 3,
+              "goal_id": "goal-02aa807e5c1b45dcae1f41f8a3ef9568",
+              "revision": 2
+            }
+          }
+        }
+      }
+    ],
+    "next_cursor": "event-47b1f9b0840e4ee4af62c9abdb869d5e",
+    "session_id": "change-demo",
+    "truncated": false
+  }
+}

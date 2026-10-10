@@ -1,0 +1,21 @@
+{
+  "task_id": "7cd3d55711f04fee95e26435f00fe3a3",
+  "base": "2b13a63a8e2b0b07b6271d29e2d317cc405f2995",
+  "source": "2e8dfcf531ba0ddfc89dcb83eec0c6e0f58abc00",
+  "runtime_version": "0.4.5",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "model": "claude/claude-opus-5-5",
+  "owned_session": 2655,
+  "status": "running",
+  "write_scope": [
+    "evidence/operations/art01-20261009/opus-milestone-review.md"
+  ],
+  "verifier": "Bounded review note structure only; not product verification",
+  "capacity_observed_UTC": "2026-10-09T09:15:15Z",
+  "capacity": {
+    "claude_executing": 1,
+    "devin_executing": 0,
+    "host_limit_each": 12
+  },
+  "authentication": "Fresh official loggedIn true, authMethod claude.ai, subscription Pro; sandboxed lookup unavailable, authorized host read succeeded. No new authentication or paid fallback. Existing credits/auto-reload OFF proof retained."
+}

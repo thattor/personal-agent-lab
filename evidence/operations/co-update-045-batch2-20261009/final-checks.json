@@ -1,0 +1,331 @@
+{
+  "observed_at": "2026-10-08T23:12:13.852841+00:00",
+  "tasks": [
+    {
+      "label": "D",
+      "id": "d47b8853cad145fa9330407acb617020",
+      "status": "verified",
+      "verified": true,
+      "calls": 5
+    },
+    {
+      "label": "E",
+      "id": "1b22bca6ed14449ba1637d2caa538948",
+      "status": "verified",
+      "verified": true,
+      "calls": 4
+    },
+    {
+      "label": "F",
+      "id": "d84e6010a3584678b8c3a79bfaedaab0",
+      "status": "verified",
+      "verified": true,
+      "calls": 4
+    },
+    {
+      "label": "G",
+      "id": "cc4c676211714e51a18c0f1604d8f0c9",
+      "status": "failed",
+      "verified": false,
+      "calls": 6
+    },
+    {
+      "label": "H",
+      "id": "5c28f94d39ba4a619d39cc3f62b5f3f0",
+      "status": "verified",
+      "verified": true,
+      "calls": 4
+    }
+  ],
+  "verified_tasks": 4,
+  "failed_tasks": 1,
+  "native_calls": 23,
+  "call_routes": {
+    "claude": 20,
+    "devin": 3
+  },
+  "calls": [
+    {
+      "task": "D",
+      "attempt": "plan-a1",
+      "role": "planner",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "D",
+      "attempt": "s1-a1",
+      "role": "design",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "D",
+      "attempt": "s2-a1",
+      "role": "implement",
+      "route": "devin",
+      "model": "swe-2-high",
+      "cost_tier": "Free"
+    },
+    {
+      "task": "D",
+      "attempt": "s2-repair-a1",
+      "role": "implement",
+      "route": "devin",
+      "model": "swe-2-high",
+      "cost_tier": "Free"
+    },
+    {
+      "task": "D",
+      "attempt": "s3-a1",
+      "role": "review",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "E",
+      "attempt": "plan-a1",
+      "role": "planner",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "E",
+      "attempt": "s1-a1",
+      "role": "design",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "E",
+      "attempt": "s2-a1",
+      "role": "implement",
+      "route": "devin",
+      "model": "swe-2-high",
+      "cost_tier": "Free"
+    },
+    {
+      "task": "E",
+      "attempt": "s3-a1",
+      "role": "review",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "F",
+      "attempt": "plan-a1",
+      "role": "planner",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "F",
+      "attempt": "s1-a1",
+      "role": "design",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "F",
+      "attempt": "s2-a1",
+      "role": "implement",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "F",
+      "attempt": "s3-a1",
+      "role": "review",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "G",
+      "attempt": "plan-a1",
+      "role": "planner",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "G",
+      "attempt": "s1-a1",
+      "role": "design",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "G",
+      "attempt": "s2-a1",
+      "role": "implement",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "G",
+      "attempt": "s2-repair-a1",
+      "role": "implement",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "G",
+      "attempt": "s3-a1",
+      "role": "review",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "G",
+      "attempt": "s3-rereview-a1",
+      "role": "review",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "H",
+      "attempt": "plan-a1",
+      "role": "planner",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "H",
+      "attempt": "s1-a1",
+      "role": "design",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "H",
+      "attempt": "s2-a1",
+      "role": "implement",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "task": "H",
+      "attempt": "s3-a1",
+      "role": "review",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    }
+  ],
+  "actual_claude_models": {
+    "D/plan-a1": [
+      "claude-opus-5-5"
+    ],
+    "D/s1-a1": [
+      "claude-opus-5-5"
+    ],
+    "D/s3-a1": [
+      "claude-opus-5-5"
+    ],
+    "E/plan-a1": [
+      "claude-opus-5-5"
+    ],
+    "E/s1-a1": [
+      "claude-opus-5-5"
+    ],
+    "E/s3-a1": [
+      "claude-opus-5-5"
+    ],
+    "F/plan-a1": [
+      "claude-opus-5-5"
+    ],
+    "F/s1-a1": [
+      "claude-opus-5-5"
+    ],
+    "F/s2-a1": [
+      "claude-opus-5-5"
+    ],
+    "F/s3-a1": [
+      "claude-opus-5-5"
+    ],
+    "G/plan-a1": [
+      "claude-opus-5-5"
+    ],
+    "G/s1-a1": [
+      "claude-opus-5-5"
+    ],
+    "G/s2-a1": [
+      "claude-opus-5-5"
+    ],
+    "G/s2-repair-a1": [
+      "claude-opus-5-5"
+    ],
+    "G/s3-a1": [
+      "claude-opus-5-5"
+    ],
+    "G/s3-rereview-a1": [
+      "claude-opus-5-5"
+    ],
+    "H/plan-a1": [
+      "claude-opus-5-5"
+    ],
+    "H/s1-a1": [
+      "claude-opus-5-5"
+    ],
+    "H/s2-a1": [
+      "claude-opus-5-5"
+    ],
+    "H/s3-a1": [
+      "claude-opus-5-5"
+    ]
+  },
+  "actual_max_concurrent_tasks": 3,
+  "capacity_final": {
+    "capacity": {
+      "initialized": true,
+      "limit": 12,
+      "routes": {
+        "claude": {
+          "executing": 0,
+          "reserved": 0
+        },
+        "devin": {
+          "executing": 0,
+          "reserved": 0
+        }
+      }
+    },
+    "status": "ok"
+  },
+  "source_commit": "4ebab5a29e3c4c1b0dac939aa4d9a60364974bef",
+  "source_tests_hashes_reconfirmed": 11,
+  "root_full_tests": "399 PASS22.153s",
+  "targeted_tests": "122 PASS",
+  "document_closure": "H verified exact one-line fix; G remains failed",
+  "preserved_files": {
+    "pre_update_state": 290,
+    "runtime_payload": 96,
+    "original_records": 13
+  },
+  "changed_preserved_files": [],
+  "old_unknown_task": {
+    "status": "awaiting_decision",
+    "verified": false,
+    "options": [],
+    "report_sha256": "sha256:d480fcca2f7859a12badc4dd8dcbb73f65e19f46107f117a3afcda6625e9e175"
+  },
+  "service_product_human_value": "UNMET / NOT_RUN"
+}

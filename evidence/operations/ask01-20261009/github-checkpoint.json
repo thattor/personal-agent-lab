@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-10-09T12:04:47.456350+00:00",
+  "pr": {
+    "headRefOid": "163779d97e0868eaa4432c2a4d228d7cbc1396ac",
+    "isDraft": true,
+    "state": "OPEN",
+    "statusCheckRollup": [],
+    "title": "Connect durable questions and answers to verified mock drafts",
+    "url": "https://github.com/thattor/personal-agent-lab/pull/19"
+  },
+  "issue": {
+    "state": "OPEN",
+    "updatedAt": "2026-10-09T12:04:21Z",
+    "url": "https://github.com/thattor/personal-agent-lab/issues/6"
+  },
+  "bodies_match": true,
+  "prior_history_preserved": true,
+  "scope": "existing private branch and records only; no merge or deployment"
+}

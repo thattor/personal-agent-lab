@@ -1,0 +1,13 @@
+{
+  "source": "9147584f68f8c4a658d513fb65592160d792037f",
+  "reviewer": "native Sol6.1 /root/int00_sol_review separate context",
+  "outcome": "REQUEST_CHANGES",
+  "blockers": [
+    "Corrupt same-revision owner context accepted as ordinary invalidation",
+    "Changed immutable ART epoch returned valid",
+    "Empty fixed Conditions saved checks=[]"
+  ],
+  "independent_tests": 36,
+  "limits": "Readonly current source and disposable probes; no provider/UI/semantic/product evidence",
+  "root_corrections": "See integrity-red.log, integrity-connected-green.log and docs/DEFECTS.md; later exact rereview required"
+}

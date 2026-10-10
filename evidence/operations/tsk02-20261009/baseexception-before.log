@@ -1,0 +1,99 @@
+test_admission_replay_is_historical_end_call_is_canonical (test_tasks_v5.TaskTests.test_admission_replay_is_historical_end_call_is_canonical) ... ok
+test_baseexception_after_claim_writes_rolls_back_and_propagates (test_tasks_v5.TaskTests.test_baseexception_after_claim_writes_rolls_back_and_propagates) ... 
+  test_baseexception_after_claim_writes_rolls_back_and_propagates (test_tasks_v5.TaskTests.test_baseexception_after_claim_writes_rolls_back_and_propagates) (interruption='KeyboardInterrupt') ... FAIL
+  test_baseexception_after_claim_writes_rolls_back_and_propagates (test_tasks_v5.TaskTests.test_baseexception_after_claim_writes_rolls_back_and_propagates) (interruption='SystemExit') ... FAIL
+test_baseexception_during_constructor_rolls_back_schema_and_host_setup (test_tasks_v5.TaskTests.test_baseexception_during_constructor_rolls_back_schema_and_host_setup) ... 
+  test_baseexception_during_constructor_rolls_back_schema_and_host_setup (test_tasks_v5.TaskTests.test_baseexception_during_constructor_rolls_back_schema_and_host_setup) (prefix='CREATE TABLE IF NOT EXISTS v5_tsk_lease', interruption='KeyboardInterrupt') ... FAIL
+  test_baseexception_during_constructor_rolls_back_schema_and_host_setup (test_tasks_v5.TaskTests.test_baseexception_during_constructor_rolls_back_schema_and_host_setup) (prefix='CREATE TABLE IF NOT EXISTS v5_tsk_lease', interruption='SystemExit') ... FAIL
+  test_baseexception_during_constructor_rolls_back_schema_and_host_setup (test_tasks_v5.TaskTests.test_baseexception_during_constructor_rolls_back_schema_and_host_setup) (prefix='INSERT INTO v5_tsk_host', interruption='KeyboardInterrupt') ... FAIL
+  test_baseexception_during_constructor_rolls_back_schema_and_host_setup (test_tasks_v5.TaskTests.test_baseexception_during_constructor_rolls_back_schema_and_host_setup) (prefix='INSERT INTO v5_tsk_host', interruption='SystemExit') ... FAIL
+test_busy_locking_and_idle_connection_requirements (test_tasks_v5.TaskTests.test_busy_locking_and_idle_connection_requirements) ... ok
+test_cessation_write_failure_keeps_occupancy_and_retry_can_finish (test_tasks_v5.TaskTests.test_cessation_write_failure_keeps_occupancy_and_retry_can_finish) ... ok
+test_claim_and_reservation_identifier_collisions_roll_back (test_tasks_v5.TaskTests.test_claim_and_reservation_identifier_collisions_roll_back) ... ok
+test_claim_oldest_retry_occupied_reopen (test_tasks_v5.TaskTests.test_claim_oldest_retry_occupied_reopen) ... ok
+test_control_ignores_old_epoch_but_checks_revision_and_dedupes (test_tasks_v5.TaskTests.test_control_ignores_old_epoch_but_checks_revision_and_dedupes) ... ok
+test_current_sources_are_rechecked_before_begin_and_finish (test_tasks_v5.TaskTests.test_current_sources_are_rechecked_before_begin_and_finish) ... ok
+test_empty_claim_and_strict_inputs (test_tasks_v5.TaskTests.test_empty_claim_and_strict_inputs) ... ok
+test_event_failure_rolls_back_claim_control_finish_release_and_invalidation (test_tasks_v5.TaskTests.test_event_failure_rolls_back_claim_control_finish_release_and_invalidation) ... ok
+test_last_model_unit_admits_and_step_headroom_blocks_before_debit (test_tasks_v5.TaskTests.test_last_model_unit_admits_and_step_headroom_blocks_before_debit) ... ok
+test_lookup_exclusions_truncation_and_provenance_without_copied_body (test_tasks_v5.TaskTests.test_lookup_exclusions_truncation_and_provenance_without_copied_body) ... ok
+test_lookup_unavailable_rolls_back_all_results_and_event (test_tasks_v5.TaskTests.test_lookup_unavailable_rolls_back_all_results_and_event) ... ok
+test_malformed_public_shapes_are_bounded_and_nonmutating (test_tasks_v5.TaskTests.test_malformed_public_shapes_are_bounded_and_nonmutating) ... ok
+test_missing_step_provenance_fails_closed (test_tasks_v5.TaskTests.test_missing_step_provenance_fails_closed) ... ok
+test_mixed_invalidation_prechecks_coverage_states_and_routes_sessions (test_tasks_v5.TaskTests.test_mixed_invalidation_prechecks_coverage_states_and_routes_sessions) ... ok
+test_model_action_closed_shape_membership_and_unimplemented_action (test_tasks_v5.TaskTests.test_model_action_closed_shape_membership_and_unimplemented_action) ... ok
+test_old_owned_epoch_release_and_wrong_lease (test_tasks_v5.TaskTests.test_old_owned_epoch_release_and_wrong_lease) ... ok
+test_pause_fences_while_retaining_lease_until_actual_end (test_tasks_v5.TaskTests.test_pause_fences_while_retaining_lease_until_actual_end) ... ok
+test_pause_then_source_stop_retains_pause (test_tasks_v5.TaskTests.test_pause_then_source_stop_retains_pause) ... ok
+test_queued_pause_resume_cancel_and_terminal_failure (test_tasks_v5.TaskTests.test_queued_pause_resume_cancel_and_terminal_failure) ... ok
+test_raised_calls_require_release_and_do_not_refund (test_tasks_v5.TaskTests.test_raised_calls_require_release_and_do_not_refund) ... ok
+test_real_memory_stop_callback_signature_and_atomic_work_invalidation (test_tasks_v5.TaskTests.test_real_memory_stop_callback_signature_and_atomic_work_invalidation) ... ok
+test_report_roundtrip_replays_next_call_and_checkpoint (test_tasks_v5.TaskTests.test_report_roundtrip_replays_next_call_and_checkpoint) ... ok
+test_required_supplied_registered_membership_and_live_gate (test_tasks_v5.TaskTests.test_required_supplied_registered_membership_and_live_gate) ... ok
+test_reservation_and_step_insert_failure_roll_back_debit (test_tasks_v5.TaskTests.test_reservation_and_step_insert_failure_roll_back_debit) ... ok
+test_reservation_binding_wrong_kind_epoch_index_and_replay (test_tasks_v5.TaskTests.test_reservation_binding_wrong_kind_epoch_index_and_replay) ... ok
+test_reservation_from_old_lease_never_authorizes_new_epoch (test_tasks_v5.TaskTests.test_reservation_from_old_lease_never_authorizes_new_epoch) ... ok
+test_returned_or_started_output_cannot_be_silently_yielded (test_tasks_v5.TaskTests.test_returned_or_started_output_cannot_be_silently_yielded) ... ok
+test_source_gate_errors_do_not_leak_or_commit_mutations (test_tasks_v5.TaskTests.test_source_gate_errors_do_not_leak_or_commit_mutations) ... ok
+test_source_stop_pause_cancel_precedence_and_clear_drain (test_tasks_v5.TaskTests.test_source_stop_pause_cancel_precedence_and_clear_drain) ... ok
+test_work_budget_and_host_counts_survive_release_reopen_and_limit_changes (test_tasks_v5.TaskTests.test_work_budget_and_host_counts_survive_release_reopen_and_limit_changes) ... ok
+test_zero_host_budgets_leave_work_unclaimed (test_tasks_v5.TaskTests.test_zero_host_budgets_leave_work_unclaimed) ... ok
+
+======================================================================
+FAIL: test_baseexception_after_claim_writes_rolls_back_and_propagates (test_tasks_v5.TaskTests.test_baseexception_after_claim_writes_rolls_back_and_propagates) (interruption='KeyboardInterrupt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-tsk02-astra-20261009/tests/test_tasks_v5.py", line 614, in test_baseexception_after_claim_writes_rolls_back_and_propagates
+    self.assertFalse(self.conn.in_transaction)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_baseexception_after_claim_writes_rolls_back_and_propagates (test_tasks_v5.TaskTests.test_baseexception_after_claim_writes_rolls_back_and_propagates) (interruption='SystemExit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-tsk02-astra-20261009/tests/test_tasks_v5.py", line 614, in test_baseexception_after_claim_writes_rolls_back_and_propagates
+    self.assertFalse(self.conn.in_transaction)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_baseexception_during_constructor_rolls_back_schema_and_host_setup (test_tasks_v5.TaskTests.test_baseexception_during_constructor_rolls_back_schema_and_host_setup) (prefix='CREATE TABLE IF NOT EXISTS v5_tsk_lease', interruption='KeyboardInterrupt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-tsk02-astra-20261009/tests/test_tasks_v5.py", line 647, in test_baseexception_during_constructor_rolls_back_schema_and_host_setup
+    self.assertFalse(conn.in_transaction)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_baseexception_during_constructor_rolls_back_schema_and_host_setup (test_tasks_v5.TaskTests.test_baseexception_during_constructor_rolls_back_schema_and_host_setup) (prefix='CREATE TABLE IF NOT EXISTS v5_tsk_lease', interruption='SystemExit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-tsk02-astra-20261009/tests/test_tasks_v5.py", line 647, in test_baseexception_during_constructor_rolls_back_schema_and_host_setup
+    self.assertFalse(conn.in_transaction)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_baseexception_during_constructor_rolls_back_schema_and_host_setup (test_tasks_v5.TaskTests.test_baseexception_during_constructor_rolls_back_schema_and_host_setup) (prefix='INSERT INTO v5_tsk_host', interruption='KeyboardInterrupt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-tsk02-astra-20261009/tests/test_tasks_v5.py", line 647, in test_baseexception_during_constructor_rolls_back_schema_and_host_setup
+    self.assertFalse(conn.in_transaction)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_baseexception_during_constructor_rolls_back_schema_and_host_setup (test_tasks_v5.TaskTests.test_baseexception_during_constructor_rolls_back_schema_and_host_setup) (prefix='INSERT INTO v5_tsk_host', interruption='SystemExit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-tsk02-astra-20261009/tests/test_tasks_v5.py", line 647, in test_baseexception_during_constructor_rolls_back_schema_and_host_setup
+    self.assertFalse(conn.in_transaction)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.158s
+
+FAILED (failures=6)

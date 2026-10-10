@@ -1,0 +1,855 @@
+--- base/pal/github_read_request_v5.py
++++ final/pal/github_read_request_v5.py
+@@ -0,0 +1,156 @@
++"""Pure constructor for fixed GitHub read requests (EXE02-request/1, PAL v5).
++
++This module validates a C07 capability/arguments pair and builds a fixed
++``gh api`` argv tuple for the pinned repository thattor/personal-agent-lab.
++It never executes anything: no subprocess, network, credential, environment,
++filesystem or DB access, and it issues no operation or receipt IDs.
++
++A ``ReadRequest`` is not an authorization decision. Its existence does not
++prove a grant, an operation reservation, or that it came from
++``prepare_read``. Authority checks, C15 reservation, process execution and
++timeout enforcement, response parsing and provenance all belong to EXE01
++and the EXE02 executor. Only ``prepare_read`` output is the supported
++request form.
++"""
++
++from dataclasses import dataclass
++from urllib.parse import quote
++
++__all__ = ("ReadRequest", "ReadRequestError", "prepare_read")
++
++REPOSITORY = "thattor/personal-agent-lab"
++MAX_TIMEOUT_SECONDS = 30
++MAX_BYTES = 1048576
++
++_ISSUE_CAPABILITY = "github.issue.read"
++_FILE_CAPABILITY = "github.file.read"
++_CAPABILITIES = frozenset((_ISSUE_CAPABILITY, _FILE_CAPABILITY))
++_HEX_DIGITS = frozenset("0123456789abcdef")
++
++_MSG_CAPABILITY = "capability must be github.issue.read or github.file.read"
++_MSG_ARGUMENT_KEYS = "arguments must be a dict with exactly the required str keys"
++_MSG_REPOSITORY_TYPE = "repository must be a str"
++_MSG_REPOSITORY_DENIED = "repository is not thattor/personal-agent-lab"
++_MSG_NUMBER = "number must be an int >= 1 with at most 63 bits"
++_MSG_PATH = "path must be a nonempty relative POSIX path without escapes or controls"
++_MSG_REF = "ref must be a lowercase 40-hex commit SHA"
++_MSG_TIMEOUT_TYPE = "timeout_seconds must be an int >= 1"
++_MSG_TIMEOUT_LIMIT = "timeout_seconds exceeds 30"
++_MSG_MAX_BYTES_TYPE = "max_bytes must be an int >= 1"
++_MSG_MAX_BYTES_LIMIT = "max_bytes exceeds 1048576"
++
++
++class ReadRequestError(Exception):
++    """Bounded rejection raised by ``prepare_read``.
++
++    ``code`` is one of ``"invalid_input"``, ``"denied"`` or ``"limit"``;
++    ``message`` is a fixed constant string that never contains raw input
++    data, and the exception retains no caught-exception context.
++    """
++
++    def __init__(self, code: str, message: str) -> None:
++        super().__init__(message)
++        self.code = code
++        self.message = message
++
++
++@dataclass(frozen=True, slots=True)
++class ReadRequest:
++    """Immutable, validated read request for a fixed ``gh api`` argv.
++
++    Only ``prepare_read`` output is the supported form; direct construction
++    is not validated. The value is not an authorization gate.
++    """
++
++    capability: str
++    argv: tuple[str, ...]
++    timeout_seconds: int
++    max_bytes: int
++
++
++def _valid_path(path: str) -> bool:
++    if type(path) is not str or not path:
++        return False
++    for ch in path:
++        code = ord(ch)
++        if (
++            code <= 0x1F
++            or code == 0x7F
++            or 0xD800 <= code <= 0xDFFF
++            or ch == "\\"
++        ):
++            return False
++    for segment in path.split("/"):
++        if segment in ("", ".", ".."):
++            return False
++    return True
++
++
++def _valid_ref(ref: str) -> bool:
++    return (
++        type(ref) is str
++        and len(ref) == 40
++        and all(ch in _HEX_DIGITS for ch in ref)
++    )
++
++
++def prepare_read(
++    capability: str,
++    arguments: dict,
++    *,
++    timeout_seconds: int = MAX_TIMEOUT_SECONDS,
++    max_bytes: int = MAX_BYTES,
++) -> ReadRequest:
++    """Validate a C07 read request and return an immutable ``ReadRequest``.
++
++    Raises ``ReadRequestError`` on any rejection; never returns None or a
++    partial value.
++    """
++    if type(capability) is not str or capability not in _CAPABILITIES:
++        raise ReadRequestError("invalid_input", _MSG_CAPABILITY)
++
++    if capability == _ISSUE_CAPABILITY:
++        required_keys = {"repository", "number"}
++    else:
++        required_keys = {"repository", "path", "ref"}
++    if (
++        type(arguments) is not dict
++        or any(type(key) is not str for key in arguments)
++        or set(arguments) != required_keys
++    ):
++        raise ReadRequestError("invalid_input", _MSG_ARGUMENT_KEYS)
++
++    repository = arguments["repository"]
++    if type(repository) is not str:
++        raise ReadRequestError("invalid_input", _MSG_REPOSITORY_TYPE)
++    if repository != REPOSITORY:
++        raise ReadRequestError("denied", _MSG_REPOSITORY_DENIED)
++
++    if capability == _ISSUE_CAPABILITY:
++        number = arguments["number"]
++        if type(number) is not int or number < 1 or number.bit_length() > 63:
++            raise ReadRequestError("invalid_input", _MSG_NUMBER)
++        endpoint = "repos/" + REPOSITORY + "/issues/" + str(number)
++    else:
++        path = arguments["path"]
++        ref = arguments["ref"]
++        if not _valid_path(path):
++            raise ReadRequestError("invalid_input", _MSG_PATH)
++        if not _valid_ref(ref):
++            raise ReadRequestError("invalid_input", _MSG_REF)
++        encoded = "/".join(
++            quote(segment, safe="") for segment in path.split("/")
++        )
++        endpoint = "repos/" + REPOSITORY + "/contents/" + encoded + "?ref=" + ref
++
++    if type(timeout_seconds) is not int or timeout_seconds < 1:
++        raise ReadRequestError("invalid_input", _MSG_TIMEOUT_TYPE)
++    if timeout_seconds > MAX_TIMEOUT_SECONDS:
++        raise ReadRequestError("limit", _MSG_TIMEOUT_LIMIT)
++    if type(max_bytes) is not int or max_bytes < 1:
++        raise ReadRequestError("invalid_input", _MSG_MAX_BYTES_TYPE)
++    if max_bytes > MAX_BYTES:
++        raise ReadRequestError("limit", _MSG_MAX_BYTES_LIMIT)
++
++    argv = ("gh", "api", "--method", "GET", "--hostname", "github.com", endpoint)
++    return ReadRequest(capability, argv, timeout_seconds, max_bytes)
+--- base/pal/artifact_content_v5.py
++++ final/pal/artifact_content_v5.py
+@@ -0,0 +1,82 @@
++"""ART01-content/1: bounded UTF-8 artifact content preparation.
++
++Pure helper for PAL contract v5 C08. It validates the content and media type,
++encodes the exact text as UTF-8 and hashes exactly those bytes. It mints no Ref,
++key or ID, checks no sources, and performs no DB, filesystem, provider or network
++access. ART-01 later owns WorkRef/source availability, saved IDs, idempotency and
++C11 readback; an ArtifactContent is not a receipt or completion evidence.
++"""
++
++from __future__ import annotations
++
++import hashlib
++from dataclasses import dataclass, field
++
++__all__ = [
++    "ALLOWED_MEDIA_TYPES",
++    "MAX_CONTENT_BYTES",
++    "ArtifactContent",
++    "ArtifactContentError",
++    "prepare_content",
++]
++
++MAX_CONTENT_BYTES = 1048576
++ALLOWED_MEDIA_TYPES = frozenset({"text/plain", "text/markdown"})
++
++INVALID_INPUT = "invalid_input"
++LIMIT = "limit"
++
++
++class ArtifactContentError(ValueError):
++    """Bounded failure: code is invalid_input or limit; message is fixed text."""
++
++    def __init__(self, code: str, message: str) -> None:
++        super().__init__(code, message)
++        self.code = code
++        self.message = message
++
++    def __str__(self) -> str:
++        return f"{self.code}: {self.message}"
++
++
++@dataclass(frozen=True, slots=True)
++class ArtifactContent:
++    """Prepared artifact value; build it with prepare_content()."""
++
++    content: str = field(repr=False)
++    media_type: str
++    data: bytes = field(repr=False)
++    sha256: str
++    byte_count: int
++
++
++def prepare_content(content: str, media_type: str) -> ArtifactContent:
++    """Return the exact UTF-8 bytes and sha256 of content, or raise.
++
++    Checks run in order: content type, media_type type, media_type value,
++    UTF-8 encodability, then the inclusive MAX_CONTENT_BYTES limit.
++    """
++    if type(content) is not str:
++        raise ArtifactContentError(INVALID_INPUT, "content must be str")
++    if type(media_type) is not str:
++        raise ArtifactContentError(INVALID_INPUT, "media_type must be str")
++    if media_type not in ALLOWED_MEDIA_TYPES:
++        raise ArtifactContentError(
++            INVALID_INPUT, "media_type must be text/plain or text/markdown"
++        )
++    # Raise after the handler exits so no encoder exception or input is chained.
++    try:
++        data = content.encode("utf-8")
++    except UnicodeEncodeError:
++        data = None
++    if data is None:
++        raise ArtifactContentError(INVALID_INPUT, "content must be valid UTF-8 text")
++    if len(data) > MAX_CONTENT_BYTES:
++        raise ArtifactContentError(LIMIT, "content exceeds 1048576 UTF-8 bytes")
++    return ArtifactContent(
++        content=content,
++        media_type=media_type,
++        data=data,
++        sha256=hashlib.sha256(data).hexdigest(),
++        byte_count=len(data),
++    )
+--- base/tests/test_github_read_request_v5.py
++++ final/tests/test_github_read_request_v5.py
+@@ -0,0 +1,353 @@
++"""Tests for pal.github_read_request_v5 (EXE02-request/1).
++
++Pure validation tests: no subprocess, network, environment or filesystem use.
++"""
++
++import dataclasses
++import unittest
++
++from pal.github_read_request_v5 import (
++    ReadRequest,
++    ReadRequestError,
++    prepare_read,
++)
++
++REPO = "thattor/personal-agent-lab"
++SHA = "a" * 40
++ISSUE_CAP = "github.issue.read"
++FILE_CAP = "github.file.read"
++
++
++def issue_args(number=42):
++    return {"repository": REPO, "number": number}
++
++
++def file_args(path="README.md", ref=SHA):
++    return {"repository": REPO, "path": path, "ref": ref}
++
++
++class DictSubclass(dict):
++    pass
++
++
++class PrepareReadTest(unittest.TestCase):
++    def _error(self, *args, **kwargs):
++        with self.assertRaises(ReadRequestError) as cm:
++            prepare_read(*args, **kwargs)
++        err = cm.exception
++        self.assertIsNone(err.__cause__)
++        self.assertIsNone(err.__context__)
++        self.assertEqual(err.args, (err.message,))
++        self.assertLessEqual(len(err.message), 120)
++        return err
++
++    def assert_invalid(self, *args, **kwargs):
++        self.assertEqual("invalid_input", self._error(*args, **kwargs).code)
++
++    def assert_denied(self, *args, **kwargs):
++        self.assertEqual("denied", self._error(*args, **kwargs).code)
++
++    def assert_limit(self, *args, **kwargs):
++        self.assertEqual("limit", self._error(*args, **kwargs).code)
++
++    def test_issue_exact_argv_and_defaults(self):
++        req = prepare_read(ISSUE_CAP, issue_args(42))
++        self.assertIsInstance(req, ReadRequest)
++        self.assertEqual(req.capability, ISSUE_CAP)
++        self.assertEqual(
++            req.argv,
++            (
++                "gh",
++                "api",
++                "--method",
++                "GET",
++                "--hostname",
++                "github.com",
++                "repos/thattor/personal-agent-lab/issues/42",
++            ),
++        )
++        self.assertEqual(req.timeout_seconds, 30)
++        self.assertEqual(req.max_bytes, 1048576)
++
++    def test_issue_explicit_bounds(self):
++        req = prepare_read(
++            ISSUE_CAP, issue_args(7), timeout_seconds=12, max_bytes=99
++        )
++        self.assertEqual(
++            req.argv,
++            (
++                "gh",
++                "api",
++                "--method",
++                "GET",
++                "--hostname",
++                "github.com",
++                "repos/thattor/personal-agent-lab/issues/7",
++            ),
++        )
++        self.assertEqual(req.timeout_seconds, 12)
++        self.assertEqual(req.max_bytes, 99)
++
++    def test_file_exact_argv(self):
++        req = prepare_read(FILE_CAP, file_args("README.md"))
++        self.assertEqual(req.capability, FILE_CAP)
++        self.assertEqual(len(req.argv), 7)
++        self.assertEqual(
++            req.argv,
++            (
++                "gh",
++                "api",
++                "--method",
++                "GET",
++                "--hostname",
++                "github.com",
++                "repos/thattor/personal-agent-lab/contents/README.md?ref=" + SHA,
++            ),
++        )
++
++    def test_file_unicode_and_metachar_encoding(self):
++        req = prepare_read(FILE_CAP, file_args("docs/日本 語/a$b;c#d?e.md"))
++        self.assertEqual(
++            req.argv[-1],
++            "repos/thattor/personal-agent-lab/contents/"
++            "docs/%E6%97%A5%E6%9C%AC%20%E8%AA%9E/a%24b%3Bc%23d%3Fe.md"
++            "?ref=" + SHA,
++        )
++
++    def test_file_percent_and_nested_path(self):
++        req = prepare_read(FILE_CAP, file_args("a%b"))
++        self.assertEqual(
++            req.argv[-1],
++            "repos/thattor/personal-agent-lab/contents/a%25b?ref=" + SHA,
++        )
++        req = prepare_read(FILE_CAP, file_args("x/y/z/file name.txt"))
++        self.assertEqual(
++            req.argv[-1],
++            "repos/thattor/personal-agent-lab/contents/x/y/z/file%20name.txt"
++            "?ref=" + SHA,
++        )
++
++    def test_file_ordinary_unicode_and_symbols_accepted(self):
++        req = prepare_read(FILE_CAP, file_args("a b+c&=d/メモ.txt"))
++        self.assertEqual(
++            req.argv[-1],
++            "repos/thattor/personal-agent-lab/contents/"
++            "a%20b%2Bc%26%3Dd/%E3%83%A1%E3%83%A2.txt?ref=" + SHA,
++        )
++
++    def test_immutability(self):
++        req = prepare_read(FILE_CAP, file_args())
++        self.assertIsInstance(req.argv, tuple)
++        self.assertTrue(all(type(item) is str for item in req.argv))
++        for field in ("capability", "argv", "timeout_seconds", "max_bytes"):
++            with self.assertRaises(dataclasses.FrozenInstanceError):
++                setattr(req, field, None)
++        self.assertTrue(
++            issubclass(dataclasses.FrozenInstanceError, AttributeError)
++        )
++
++    def test_input_dict_mutation_after_call(self):
++        args = file_args("README.md")
++        req = prepare_read(FILE_CAP, args)
++        args["path"] = "../escape"
++        args["ref"] = "b" * 40
++        args["extra"] = 1
++        self.assertEqual(
++            req.argv[-1],
++            "repos/thattor/personal-agent-lab/contents/README.md?ref=" + SHA,
++        )
++
++    def test_capability_rejected(self):
++        for bad in (
++            "github.issue.write",
++            "github.unknown.read",
++            "GITHUB.ISSUE.READ",
++            "",
++            42,
++            None,
++            b"github.issue.read",
++        ):
++            self.assert_invalid(bad, issue_args())
++
++    def test_capability_key_mismatch(self):
++        self.assert_invalid(ISSUE_CAP, file_args())
++        self.assert_invalid(FILE_CAP, issue_args())
++        self.assert_invalid(FILE_CAP, {"repository": REPO, "number": 1})
++        self.assert_invalid(
++            ISSUE_CAP, {"repository": REPO, "path": "a", "ref": SHA}
++        )
++
++    def test_arguments_type_and_keys(self):
++        self.assert_invalid(ISSUE_CAP, None)
++        self.assert_invalid(ISSUE_CAP, "repository")
++        self.assert_invalid(ISSUE_CAP, [("repository", REPO), ("number", 1)])
++        self.assert_invalid(ISSUE_CAP, DictSubclass(issue_args()))
++        self.assert_invalid(ISSUE_CAP, {"repository": REPO})
++        self.assert_invalid(
++            ISSUE_CAP, {"repository": REPO, "number": 1, "extra": 1}
++        )
++        self.assert_invalid(ISSUE_CAP, {"repository": REPO, "number": 1, 7: "x"})
++        self.assert_invalid(ISSUE_CAP, {"repository": REPO, b"number": 1})
++
++    def test_argument_keys_require_exact_str_type(self):
++        class TextKey(str):
++            pass
++
++        self.assert_invalid(
++            ISSUE_CAP, {TextKey("repository"): REPO, "number": 1}
++        )
++        self.assert_invalid(
++            FILE_CAP, {"repository": REPO, TextKey("path"): "a", "ref": SHA}
++        )
++
++    def test_repository_denied_or_invalid(self):
++        for foreign in (
++            "other/repo",
++            "Thattor/personal-agent-lab",
++            REPO + " ",
++            " " + REPO,
++            REPO + "\n",
++        ):
++            self.assert_denied(
++                ISSUE_CAP, {"repository": foreign, "number": 1}
++            )
++        self.assert_invalid(ISSUE_CAP, {"repository": 123, "number": 1})
++        self.assert_invalid(ISSUE_CAP, {"repository": None, "number": 1})
++        self.assert_invalid(
++            FILE_CAP, {"repository": ["x"], "path": "a", "ref": SHA}
++        )
++
++    def test_issue_number_validation(self):
++        for bad in (
++            True,
++            False,
++            0,
++            -1,
++            -100,
++            "1",
++            1.0,
++            None,
++            2**63,
++            2**64,
++            10**5000,
++        ):
++            self.assert_invalid(ISSUE_CAP, issue_args(bad))
++        req = prepare_read(ISSUE_CAP, issue_args(1))
++        self.assertEqual(
++            req.argv[-1], "repos/thattor/personal-agent-lab/issues/1"
++        )
++        req = prepare_read(ISSUE_CAP, issue_args(2**63 - 1))
++        self.assertEqual(
++            req.argv[-1],
++            "repos/thattor/personal-agent-lab/issues/9223372036854775807",
++        )
++
++    def test_path_rejections(self):
++        bad_paths = (
++            "/abs",
++            "a//b",
++            "a/./b",
++            "a/../b",
++            "..",
++            ".",
++            "a/",
++            "",
++            "a\\b",
++            "\\",
++            "a\x00b",
++            "a\nb",
++            "a\x1fb",
++            "a\x7fb",
++            "a\ud800b",
++            "\udfff",
++            123,
++            None,
++            b"a/b",
++        )
++        for bad in bad_paths:
++            self.assert_invalid(FILE_CAP, file_args(bad))
++
++    def test_ref_rejections(self):
++        bad_refs = (
++            "A" * 40,
++            "a" * 39,
++            "a" * 41,
++            "main",
++            "refs/heads/main",
++            "g" * 40,
++            "a" * 39 + " ",
++            123,
++            None,
++            True,
++            b"a" * 40,
++        )
++        for bad in bad_refs:
++            self.assert_invalid(FILE_CAP, file_args("README.md", bad))
++
++    def test_ref_accepts_full_lowercase_hex(self):
++        for ref in ("0" * 40, "f" * 40, "0123456789abcdef" * 2 + "01234567"):
++            req = prepare_read(FILE_CAP, file_args("a.txt", ref))
++            self.assertTrue(req.argv[-1].endswith("?ref=" + ref))
++
++    def test_timeout_seconds_bounds(self):
++        for ok in (1, 30):
++            req = prepare_read(ISSUE_CAP, issue_args(), timeout_seconds=ok)
++            self.assertEqual(req.timeout_seconds, ok)
++        self.assert_limit(ISSUE_CAP, issue_args(), timeout_seconds=31)
++        self.assert_limit(ISSUE_CAP, issue_args(), timeout_seconds=10**9)
++        for bad in (0, -1, True, False, 30.0, "30", None):
++            self.assert_invalid(ISSUE_CAP, issue_args(), timeout_seconds=bad)
++
++    def test_max_bytes_bounds(self):
++        for ok in (1, 1048576):
++            req = prepare_read(ISSUE_CAP, issue_args(), max_bytes=ok)
++            self.assertEqual(req.max_bytes, ok)
++        self.assert_limit(ISSUE_CAP, issue_args(), max_bytes=1048577)
++        for bad in (0, -5, True, False, 1.5, "1024", None):
++            self.assert_invalid(ISSUE_CAP, issue_args(), max_bytes=bad)
++
++    def test_rejection_ordering(self):
++        self.assert_denied(
++            FILE_CAP,
++            {"repository": "other/repo", "path": "../x", "ref": "z"},
++        )
++        self.assert_denied(
++            ISSUE_CAP,
++            {"repository": "other/repo", "number": 1},
++            timeout_seconds=99,
++        )
++        self.assert_invalid(
++            "not.a.cap", {"repository": "other/repo", "number": 1}
++        )
++        self.assert_invalid(
++            ISSUE_CAP, {"repository": REPO}, timeout_seconds=31
++        )
++
++    def test_no_raw_input_echo(self):
++        sentinel = "S3NT1NEL-do-not-echo"
++        cases = (
++            (sentinel, issue_args(), {}),
++            (
++                FILE_CAP,
++                {"repository": "x/" + sentinel, "path": "a", "ref": SHA},
++                {},
++            ),
++            (FILE_CAP, file_args("../" + sentinel + "/x"), {}),
++            (FILE_CAP, file_args("a", "ref-" + sentinel), {}),
++            (FILE_CAP, file_args("a\ud800" + sentinel), {}),
++        )
++        for cap, args, kw in cases:
++            err = self._error(cap, args, **kw)
++            self.assertIn(err.code, ("invalid_input", "denied", "limit"))
++            for surface in (
++                str(err),
++                repr(err),
++                err.message,
++                str(err.args),
++                repr(err.args),
++            ):
++                self.assertNotIn(sentinel, surface)
++
++
++if __name__ == "__main__":
++    unittest.main()
+--- base/tests/test_artifact_content_v5.py
++++ final/tests/test_artifact_content_v5.py
+@@ -0,0 +1,232 @@
++"""Tests for ART01-content/1 bounded artifact content preparation."""
++
++import dataclasses
++import hashlib
++import re
++import unittest
++
++from pal.artifact_content_v5 import (
++    MAX_CONTENT_BYTES,
++    ArtifactContent,
++    ArtifactContentError,
++    prepare_content,
++)
++
++MAX = 1048576
++CODES = {"invalid_input", "limit"}
++MARKER = "RAW-INPUT-MARKER"
++
++
++def assert_error(test, content, media_type, code):
++    with test.assertRaises(ArtifactContentError) as cm:
++        prepare_content(content, media_type)
++    test.assertEqual(cm.exception.code, code)
++    return cm.exception
++
++
++class KnownResultTests(unittest.TestCase):
++    def test_ascii_plain_known_bytes_and_hash(self):
++        result = prepare_content("hello", "text/plain")
++        self.assertIsInstance(result, ArtifactContent)
++        self.assertEqual(result.content, "hello")
++        self.assertEqual(result.media_type, "text/plain")
++        self.assertIs(type(result.data), bytes)
++        self.assertEqual(result.data, b"hello")
++        self.assertEqual(result.byte_count, 5)
++        self.assertEqual(
++            result.sha256,
++            "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824",
++        )
++
++    def test_markdown_known_hash(self):
++        result = prepare_content("abc", "text/markdown")
++        self.assertEqual(result.media_type, "text/markdown")
++        self.assertEqual(result.data, b"abc")
++        self.assertEqual(result.byte_count, 3)
++        self.assertEqual(
++            result.sha256,
++            "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
++        )
++
++    def test_empty_content(self):
++        result = prepare_content("", "text/plain")
++        self.assertEqual(result.content, "")
++        self.assertEqual(result.data, b"")
++        self.assertEqual(result.byte_count, 0)
++        self.assertEqual(
++            result.sha256,
++            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
++        )
++
++    def test_multibyte_counts_utf8_bytes(self):
++        cases = [
++            ("\u00e9", b"\xc3\xa9"),
++            ("\u3042", b"\xe3\x81\x82"),
++            ("\U0001f600", b"\xf0\x9f\x98\x80"),
++            ("a\u00e9\u3042\U0001f600", b"a\xc3\xa9\xe3\x81\x82\xf0\x9f\x98\x80"),
++        ]
++        for text, expected in cases:
++            with self.subTest(expected=expected):
++                result = prepare_content(text, "text/plain")
++                self.assertEqual(result.content, text)
++                self.assertEqual(result.data, expected)
++                self.assertEqual(result.byte_count, len(expected))
++                self.assertEqual(result.sha256, hashlib.sha256(expected).hexdigest())
++
++    def test_sha256_is_lowercase_hex(self):
++        result = prepare_content("\u3042", "text/markdown")
++        self.assertRegex(result.sha256, re.compile(r"\A[0-9a-f]{64}\Z"))
++
++    def test_repeated_calls_are_equal(self):
++        first = prepare_content("same", "text/plain")
++        second = prepare_content("same", "text/plain")
++        self.assertEqual(first, second)
++
++
++class PreservationTests(unittest.TestCase):
++    def test_line_endings_preserved(self):
++        text = "a\r\nb\rc\n\r\n"
++        result = prepare_content(text, "text/plain")
++        self.assertEqual(result.content, text)
++        self.assertEqual(result.data, b"a\r\nb\rc\n\r\n")
++        self.assertEqual(result.byte_count, 9)
++
++    def test_unicode_normalization_not_applied(self):
++        nfc = prepare_content("\u00e9", "text/plain")
++        nfd = prepare_content("e\u0301", "text/plain")
++        self.assertEqual(nfc.content, "\u00e9")
++        self.assertEqual(nfd.content, "e\u0301")
++        self.assertEqual(nfc.data, b"\xc3\xa9")
++        self.assertEqual(nfd.data, b"e\xcc\x81")
++        self.assertEqual(nfd.byte_count, 3)
++        self.assertNotEqual(nfc.sha256, nfd.sha256)
++
++    def test_bom_nul_tabs_and_whitespace_preserved(self):
++        text = "\ufeff lead\x00nul\ttab  trailing  "
++        result = prepare_content(text, "text/markdown")
++        self.assertEqual(result.content, text)
++        self.assertEqual(result.data.decode("utf-8"), text)
++        self.assertTrue(result.data.startswith(b"\xef\xbb\xbf"))
++
++
++class LimitTests(unittest.TestCase):
++    def test_limit_constant(self):
++        self.assertEqual(MAX_CONTENT_BYTES, MAX)
++
++    def test_exact_maximum_accepted(self):
++        cases = {
++            "one-byte": "a" * MAX,
++            "two-byte": "\u00e9" * (MAX // 2),
++            "three-byte": "\u3042" * 349525 + "a",
++            "four-byte": "\U0001f600" * (MAX // 4),
++        }
++        for name, text in cases.items():
++            with self.subTest(name):
++                result = prepare_content(text, "text/markdown")
++                self.assertEqual(result.byte_count, MAX)
++                self.assertEqual(len(result.data), MAX)
++                self.assertEqual(result.data, text.encode("utf-8"))
++                self.assertEqual(result.sha256, hashlib.sha256(result.data).hexdigest())
++                self.assertEqual(result.content, text)
++
++    def test_excess_bytes_rejected(self):
++        cases = {
++            "one-byte": "a" * (MAX + 1),
++            "two-byte": "\u00e9" * (MAX // 2) + "a",
++            "three-byte-fewer-chars-than-limit": "\u3042" * 349526,
++            "four-byte": "\U0001f600" * (MAX // 4) + "a",
++        }
++        for name, text in cases.items():
++            with self.subTest(name):
++                assert_error(self, text, "text/plain", "limit")
++
++
++class InvalidInputTests(unittest.TestCase):
++    def test_wrong_content_types(self):
++        class TextSub(str):
++            pass
++
++        for value in (None, b"x", bytearray(b"x"), 1, True, ["x"], TextSub("x")):
++            with self.subTest(type=type(value).__name__):
++                assert_error(self, value, "text/plain", "invalid_input")
++
++    def test_wrong_media_type_types(self):
++        class TextSub(str):
++            pass
++
++        for value in (None, b"text/plain", 1, TextSub("text/plain")):
++            with self.subTest(type=type(value).__name__):
++                assert_error(self, "x", value, "invalid_input")
++
++    def test_unsupported_media_types(self):
++        for value in (
++            "",
++            "text/html",
++            "TEXT/PLAIN",
++            "Text/Markdown",
++            "text/plain; charset=utf-8",
++            " text/plain",
++            "text/plain ",
++            "text/x-markdown",
++            "application/json",
++        ):
++            with self.subTest(media_type=value):
++                assert_error(self, "x", value, "invalid_input")
++
++    def test_surrogates_rejected(self):
++        for value in ("\ud800", "a\udfffb", "\ud83d\ude00", "ok\udc80"):
++            with self.subTest(length=len(value)):
++                assert_error(self, value, "text/plain", "invalid_input")
++
++
++class ErrorBoundaryTests(unittest.TestCase):
++    def test_errors_are_bounded_without_raw_input_or_context(self):
++        cases = [
++            ("content type", MARKER.encode("ascii"), "text/plain", "invalid_input"),
++            ("media type", "x", MARKER, "invalid_input"),
++            ("surrogate", MARKER + "\ud800", "text/plain", "invalid_input"),
++            ("limit", MARKER + "a" * MAX, "text/plain", "limit"),
++        ]
++        for name, content, media_type, code in cases:
++            with self.subTest(name):
++                err = assert_error(self, content, media_type, code)
++                self.assertIn(err.code, CODES)
++                self.assertIsInstance(err.message, str)
++                self.assertTrue(err.message)
++                self.assertLessEqual(len(err.message), 200)
++                self.assertNotIsInstance(err, UnicodeError)
++                self.assertIsNone(err.__cause__)
++                self.assertIsNone(err.__context__)
++                rendered = [str(err), repr(err), err.message]
++                rendered.extend(repr(arg) for arg in err.args)
++                rendered.extend(repr(value) for value in vars(err).values())
++                for text in rendered:
++                    self.assertLessEqual(len(text), 400)
++                    self.assertNotIn(MARKER, text)
++
++
++class ImmutabilityTests(unittest.TestCase):
++    def test_fields_cannot_be_changed_added_or_deleted(self):
++        result = prepare_content("hello", "text/plain")
++        for name, value in (
++            ("content", "x"),
++            ("media_type", "text/markdown"),
++            ("data", b"x"),
++            ("sha256", "0" * 64),
++            ("byte_count", 1),
++        ):
++            with self.subTest(name):
++                with self.assertRaises(dataclasses.FrozenInstanceError):
++                    setattr(result, name, value)
++        with self.assertRaises(AttributeError):
++            result.extra = 1
++        with self.assertRaises(AttributeError):
++            del result.content
++        self.assertIs(type(result.data), bytes)
++        self.assertEqual(result.content, "hello")
++        self.assertEqual(result.data, b"hello")
++        self.assertEqual(result.byte_count, 5)
++
++
++if __name__ == "__main__":
++    unittest.main()
+--- base/tests/test_primary_qualification.py
++++ final/tests/test_primary_qualification.py
+@@ -826,11 +826,16 @@
+                           if grounding['files'][path]!=current['files'][path]}, {'pal/primary.py'})
+         self.assertEqual(grounding['heldout_sha256'], COHORTS['grounding-heldout'][1])
+         self.assertFalse(grounding['heldout_contents_opened_before_freeze'])
+-        trial = validate_freeze(ROOT, 'evidence/reviews/two-hour-trial/candidate-freeze.json')
++        trial_path = ROOT/'evidence/reviews/two-hour-trial/candidate-freeze.json'
++        self.assertEqual(hashlib.sha256(trial_path.read_bytes()).hexdigest(),
++                         'baa73183f52f20028642601f45e7fbb178177abf3740021152a96d12b7aefc3f')
++        trial = json.loads(trial_path.read_text())
+         self.assertEqual(set(trial['files']), set(grounding['files']))
+         self.assertEqual({path for path in trial['files']
+                           if trial['files'][path]!=grounding['files'][path]},
+                          {'pal/native.py','pal/server.py','pal/web/app.js'})
++        with self.assertRaises(RunRejected):
++            validate_freeze(ROOT, 'evidence/reviews/two-hour-trial/candidate-freeze.json')
+         with self.assertRaises(RunRejected):validate_freeze(ROOT, GROUNDING_FREEZE)
+         with self.assertRaises(RunRejected):validate_freeze(ROOT, ASK_FIRST_FREEZE)
+         with self.assertRaises(RunRejected):validate_freeze(ROOT, expert_path)

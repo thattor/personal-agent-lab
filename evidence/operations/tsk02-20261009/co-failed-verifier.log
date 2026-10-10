@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from pathlib import Path; p=Path("evidence/operations/tsk02-20261009/opus-scope-review.md"); b=p.read_bytes(); s=b.decode("utf-8"); assert 100 <= len(b) <= 12000; assert any(v in s for v in ("ALIGNED","REFINE","BLOCKED")); print("Bounded design response; SOL owns semantic disposition")
+                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

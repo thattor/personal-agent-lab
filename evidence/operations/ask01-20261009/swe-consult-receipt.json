@@ -1,0 +1,10 @@
+{
+  "task_id": "2610f22174694d279bd8f722075f0ab6",
+  "base_sha": "3b7fff5edb506ef2bf2ccfc647fbe6631a0a47e8",
+  "status": "verified",
+  "verified": true,
+  "model": "devin/swe-2-high Free",
+  "verdict": "REFINE",
+  "scope": "technical advice only; note verifier not implementation acceptance",
+  "root_status": "reconcile active-lease waiting/source-stop and exact API before freeze"
+}

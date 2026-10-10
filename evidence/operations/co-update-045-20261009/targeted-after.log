@@ -1,0 +1,44 @@
+test_errors_are_bounded_without_raw_input_or_context (test_artifact_content_v5.ErrorBoundaryTests.test_errors_are_bounded_without_raw_input_or_context) ... ok
+test_fields_cannot_be_changed_added_or_deleted (test_artifact_content_v5.ImmutabilityTests.test_fields_cannot_be_changed_added_or_deleted) ... ok
+test_surrogates_rejected (test_artifact_content_v5.InvalidInputTests.test_surrogates_rejected) ... ok
+test_unsupported_media_types (test_artifact_content_v5.InvalidInputTests.test_unsupported_media_types) ... ok
+test_wrong_content_types (test_artifact_content_v5.InvalidInputTests.test_wrong_content_types) ... ok
+test_wrong_media_type_types (test_artifact_content_v5.InvalidInputTests.test_wrong_media_type_types) ... ok
+test_ascii_plain_known_bytes_and_hash (test_artifact_content_v5.KnownResultTests.test_ascii_plain_known_bytes_and_hash) ... ok
+test_empty_content (test_artifact_content_v5.KnownResultTests.test_empty_content) ... ok
+test_markdown_known_hash (test_artifact_content_v5.KnownResultTests.test_markdown_known_hash) ... ok
+test_multibyte_counts_utf8_bytes (test_artifact_content_v5.KnownResultTests.test_multibyte_counts_utf8_bytes) ... ok
+test_repeated_calls_are_equal (test_artifact_content_v5.KnownResultTests.test_repeated_calls_are_equal) ... ok
+test_sha256_is_lowercase_hex (test_artifact_content_v5.KnownResultTests.test_sha256_is_lowercase_hex) ... ok
+test_exact_maximum_accepted (test_artifact_content_v5.LimitTests.test_exact_maximum_accepted) ... ok
+test_excess_bytes_rejected (test_artifact_content_v5.LimitTests.test_excess_bytes_rejected) ... ok
+test_limit_constant (test_artifact_content_v5.LimitTests.test_limit_constant) ... ok
+test_bom_nul_tabs_and_whitespace_preserved (test_artifact_content_v5.PreservationTests.test_bom_nul_tabs_and_whitespace_preserved) ... ok
+test_line_endings_preserved (test_artifact_content_v5.PreservationTests.test_line_endings_preserved) ... ok
+test_unicode_normalization_not_applied (test_artifact_content_v5.PreservationTests.test_unicode_normalization_not_applied) ... ok
+test_argument_keys_require_exact_str_type (test_github_read_request_v5.PrepareReadTest.test_argument_keys_require_exact_str_type) ... ok
+test_arguments_type_and_keys (test_github_read_request_v5.PrepareReadTest.test_arguments_type_and_keys) ... ok
+test_capability_key_mismatch (test_github_read_request_v5.PrepareReadTest.test_capability_key_mismatch) ... ok
+test_capability_rejected (test_github_read_request_v5.PrepareReadTest.test_capability_rejected) ... ok
+test_file_exact_argv (test_github_read_request_v5.PrepareReadTest.test_file_exact_argv) ... ok
+test_file_ordinary_unicode_and_symbols_accepted (test_github_read_request_v5.PrepareReadTest.test_file_ordinary_unicode_and_symbols_accepted) ... ok
+test_file_percent_and_nested_path (test_github_read_request_v5.PrepareReadTest.test_file_percent_and_nested_path) ... ok
+test_file_unicode_and_metachar_encoding (test_github_read_request_v5.PrepareReadTest.test_file_unicode_and_metachar_encoding) ... ok
+test_immutability (test_github_read_request_v5.PrepareReadTest.test_immutability) ... ok
+test_input_dict_mutation_after_call (test_github_read_request_v5.PrepareReadTest.test_input_dict_mutation_after_call) ... ok
+test_issue_exact_argv_and_defaults (test_github_read_request_v5.PrepareReadTest.test_issue_exact_argv_and_defaults) ... ok
+test_issue_explicit_bounds (test_github_read_request_v5.PrepareReadTest.test_issue_explicit_bounds) ... ok
+test_issue_number_validation (test_github_read_request_v5.PrepareReadTest.test_issue_number_validation) ... ok
+test_max_bytes_bounds (test_github_read_request_v5.PrepareReadTest.test_max_bytes_bounds) ... ok
+test_no_raw_input_echo (test_github_read_request_v5.PrepareReadTest.test_no_raw_input_echo) ... ok
+test_path_rejections (test_github_read_request_v5.PrepareReadTest.test_path_rejections) ... ok
+test_ref_accepts_full_lowercase_hex (test_github_read_request_v5.PrepareReadTest.test_ref_accepts_full_lowercase_hex) ... ok
+test_ref_rejections (test_github_read_request_v5.PrepareReadTest.test_ref_rejections) ... ok
+test_rejection_ordering (test_github_read_request_v5.PrepareReadTest.test_rejection_ordering) ... ok
+test_repository_denied_or_invalid (test_github_read_request_v5.PrepareReadTest.test_repository_denied_or_invalid) ... ok
+test_timeout_seconds_bounds (test_github_read_request_v5.PrepareReadTest.test_timeout_seconds_bounds) ... ok
+
+----------------------------------------------------------------------
+Ran 39 tests in 0.007s
+
+OK

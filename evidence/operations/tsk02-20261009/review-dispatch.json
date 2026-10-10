@@ -1,0 +1,25 @@
+{
+  "task_id": "d3ad7fc12edc4abf89b66d3f46f93ba8",
+  "base": "0cf8563378223fa080e8abaf979e42b2bdf73e51",
+  "co_version": "0.4.5",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "role": "SWE-2 High Free architecture consultation",
+  "status": "running_at_2026-10-09T07:49:25Z",
+  "owned_session": 44237,
+  "concurrent_snapshot": {
+    "claude_executing": 1,
+    "devin_executing": 1,
+    "reserved": 0,
+    "per_adapter_limit": 12
+  },
+  "route_check": {
+    "claude_logged_in": true,
+    "auth_method": "claude.ai",
+    "subscription": "pro",
+    "usage_credits_last_observed": "off",
+    "devin_logged_in": true,
+    "exact_devin_model": "swe-2-high",
+    "listed_cost": "Free"
+  },
+  "unknown_old_calls": "untouched"
+}

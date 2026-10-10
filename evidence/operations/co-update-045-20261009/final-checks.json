@@ -1,0 +1,146 @@
+{
+  "observed_at": "2026-10-08T22:19:52.711953+00:00",
+  "runtime_version": "0.4.5",
+  "post_run_payload_hashes": "96 PASS",
+  "old_state_backup_files_preserved": 290,
+  "old_unknown_task_still_deferred": true,
+  "no_decide_resume_or_retry": true,
+  "capacity_after": {
+    "capacity": {
+      "initialized": true,
+      "limit": 12,
+      "routes": {
+        "claude": {
+          "executing": 0,
+          "reserved": 0
+        },
+        "devin": {
+          "executing": 0,
+          "reserved": 0
+        }
+      }
+    },
+    "status": "ok"
+  },
+  "ordinary_tasks_verified": 3,
+  "actual_native_calls": 13,
+  "max_concurrent_tasks_measured": 2,
+  "tasks": [
+    {
+      "label": "a",
+      "task_id": "2363ba2f94ca4183906f00aabb66dd50",
+      "verified": true,
+      "base": "01c5f0c5fa81667063d4ff34fa66fc9911e8943c",
+      "workspace": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/2363ba2f94ca4183906f00aabb66dd50/workspace",
+      "diff_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/2363ba2f94ca4183906f00aabb66dd50/result.diff",
+      "result_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/2363ba2f94ca4183906f00aabb66dd50/result.json",
+      "review_version": "sha256:7bed771298882595b424450fd16689da7d82c166dd5d91e8b56507ed94b0eb10",
+      "calls": [
+        {
+          "role": "planner",
+          "route": "claude",
+          "model": "claude-opus-5-5",
+          "attempt_id": "plan-a1"
+        },
+        {
+          "role": "design",
+          "route": "claude",
+          "model": "claude-opus-5-5",
+          "attempt_id": "s1-a1"
+        },
+        {
+          "role": "implement",
+          "route": "devin",
+          "model": "swe-2-high",
+          "attempt_id": "s2-a1"
+        },
+        {
+          "role": "review",
+          "route": "claude",
+          "model": "claude-opus-5-5",
+          "attempt_id": "s3-a1"
+        }
+      ]
+    },
+    {
+      "label": "b",
+      "task_id": "b0fd78557fc64e2b834aa232060915d0",
+      "verified": true,
+      "base": "01c5f0c5fa81667063d4ff34fa66fc9911e8943c",
+      "workspace": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/b0fd78557fc64e2b834aa232060915d0/workspace",
+      "diff_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/b0fd78557fc64e2b834aa232060915d0/result.diff",
+      "result_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/b0fd78557fc64e2b834aa232060915d0/result.json",
+      "review_version": "sha256:df90009587622e652a6d848e1ad367e3cbe871acfa8d4460ac66744c552dcc8a",
+      "calls": [
+        {
+          "role": "planner",
+          "route": "claude",
+          "model": "claude-opus-5-5",
+          "attempt_id": "plan-a1"
+        },
+        {
+          "role": "implement",
+          "route": "claude",
+          "model": "claude-opus-5-5",
+          "attempt_id": "s1-a1"
+        },
+        {
+          "role": "review",
+          "route": "claude",
+          "model": "claude-opus-5-5",
+          "attempt_id": "s2-a1"
+        }
+      ]
+    },
+    {
+      "label": "c",
+      "task_id": "4fada68c758b4af8b65c4d64eca42dbf",
+      "verified": true,
+      "base": "bf1759fdc6bcaac0b8f112ca61f0f35aafc2a1b1",
+      "workspace": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/4fada68c758b4af8b65c4d64eca42dbf/workspace",
+      "diff_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/4fada68c758b4af8b65c4d64eca42dbf/result.diff",
+      "result_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/4fada68c758b4af8b65c4d64eca42dbf/result.json",
+      "review_version": "sha256:7f060d84d2d52839a749392ab9713ffa2b0ef8371579af46a4e369ef441fa95c",
+      "calls": [
+        {
+          "role": "planner",
+          "route": "claude",
+          "model": "claude-opus-5-5",
+          "attempt_id": "plan-a1"
+        },
+        {
+          "role": "design",
+          "route": "claude",
+          "model": "claude-opus-5-5",
+          "attempt_id": "s1-a1"
+        },
+        {
+          "role": "implement",
+          "route": "claude",
+          "model": "claude-opus-5-5",
+          "attempt_id": "s2-a1"
+        },
+        {
+          "role": "implement",
+          "route": "claude",
+          "model": "claude-opus-5-5",
+          "attempt_id": "s2-repair-a1"
+        },
+        {
+          "role": "review",
+          "route": "claude",
+          "model": "claude-opus-5-5",
+          "attempt_id": "s3-a1"
+        },
+        {
+          "role": "review",
+          "route": "claude",
+          "model": "claude-opus-5-5",
+          "attempt_id": "s3-rereview-a1"
+        }
+      ]
+    }
+  ],
+  "source_review_scope": "five final source/test files match bf1759fdc6bcaac0b8f112ca61f0f35aafc2a1b1 and the full316-test hashes",
+  "service_ct_e2e_user_value": "NOT_RUN"
+}

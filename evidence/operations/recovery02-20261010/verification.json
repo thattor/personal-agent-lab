@@ -1,0 +1,115 @@
+{
+  "schema": "PAL.local-verification/1",
+  "contract": "RECOVERY02/1 + saved-tail READ01 connection",
+  "tested_commit": "ef16a93fce70f6e28d96a97162053d428920b921",
+  "source_sha256": {
+    "pal/tasks_v5.py": "611e05509966df9bb09e85baec9f893625372dc91cc83cf3b692c09461a1ecc1",
+    "pal/artifacts_v5.py": "1e37f0ed0435f97c54166210b1ac2746ce52edb271482030ce646a3e388c3ef1",
+    "pal/read_consumer_v5.py": "ebbd03b1fa4a8d5cd2047ef6e08deff8aa26022fb6d2344f8a4e24f052c2aea0",
+    "pal/mock_runner_v5.py": "a8aad7ba24357a3da1c35e5c17e15719da200751c6a233596b05b662f81f48a0",
+    "pal/mock_host_v5.py": "e9b8f5eda1e01ec9a76ba52f3783845f302df262eea2248f4c5c36738a670208",
+    "pal/memory_v5.py": "3016fa56c33d3bafc3a6165766f0873594145a5d4e77b3c53f3c88a1ec077444"
+  },
+  "fixed_test_sha256": {
+    "tests/test_artifact_recovery_v5.py": "65abe1f22bd54e752f697aac8f937a7d772b3a706f55e9b0f5a2a59d899f3077",
+    "tests/test_tasks_artifact_recovery_v5.py": "0c1090afeb8d6773b93c865394ade58935640c8ed0c1915b2f206e67a7c92f1d",
+    "tests/test_saved_tail_connection_v5.py": "7fa1d4e2dbac6d6be7f2dcf2fee2087f068d4637163a50fce2f2884bac7f1920"
+  },
+  "root_full_suite": {
+    "command": "python3.13 -E -s -B -m unittest discover -s tests -v",
+    "tests": 948,
+    "seconds": 30.157,
+    "exit_code": 0,
+    "execution": "approved local loopback-capable path",
+    "result": "PASS"
+  },
+  "root_real_process_connection": {
+    "tests": 4,
+    "child_barriers": 7,
+    "seconds": 0.672,
+    "result": "PASS",
+    "scope": "actual SIGKILL/wait before/after ART save COMMIT, original Step adoption/no repeat model or save charge, unchanged bytes/hash/current ART set, same-key recovery replay, old VER invalidation and fresh VER/structural complete/readback, ordered pause/change/cancel/source-stop non-adoption"
+  },
+  "independent_reviews": {
+    "ART": "RECOVERY02-ART-REVIEW.md APPROVE exact source; unchanged fixed16 + existing20",
+    "TSK": "RECOVERY02-TSK-REVIEW.md final APPROVE exact611e0550; fixed20 + original ordinary-marker probe2",
+    "READ": "RECOVERY02-READ-REVIEW.md APPROVE exactebbd03b; existing32 + independent protocol probe4"
+  },
+  "art_co": {
+    "task_id": "01441008202d47bca85279a5ad47e320",
+    "actual_calls": [
+      {
+        "role": "planner",
+        "route": "claude",
+        "model": "claude-opus-5-5"
+      },
+      {
+        "role": "implement",
+        "route": "devin",
+        "model": "swe-2-high"
+      }
+    ],
+    "verified": true,
+    "verified_scope": "unchanged fixed16 only",
+    "input_binding": {
+      "base": "e2ba3e00244f8ba75b9444870bc3c6cd8f95e823",
+      "files": [
+        {
+          "path": "docs/design/contracts-v5/RECOVERY02-SCOPE.md",
+          "bytes": 9904,
+          "sha256": "003c9166ecf2819e59d99dd81c40ec1ee17d9971acf2156e0a0cef737df82b94"
+        },
+        {
+          "path": "docs/design/contracts-v5/RECOVERY02-ART-TESTS.md",
+          "bytes": 3034,
+          "sha256": "63fbd8423e3b808ab679647599d498c92623bf5638c57e1ce62f81967a299862"
+        },
+        {
+          "path": "pal/artifacts_v5.py",
+          "bytes": 14442,
+          "sha256": "a24e8dd9a3dcb69f3fc77fb2c8a8bcf5a197e548b14deb59454cad89cc559a91"
+        },
+        {
+          "path": "pal/artifact_content_v5.py",
+          "bytes": 2730,
+          "sha256": "e51d0a4c1835ae12fba7af2342fe3e14f956988501e05e15e845c956d4908680"
+        },
+        {
+          "path": "pal/artifact_integrity_v5.py",
+          "bytes": 2265,
+          "sha256": "1243147aefc9d1cadcd555c9ddfd374606daf653d692e15742cbbb19427d1716"
+        },
+        {
+          "path": "pal/contracts_v5.py",
+          "bytes": 20973,
+          "sha256": "683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f"
+        },
+        {
+          "path": "pal/__init__.py",
+          "bytes": 50,
+          "sha256": "2bdd5650424f91c2d6b0bea2f85bffbf63b1e0c0f3d7ecfc22db9974663da5bc"
+        },
+        {
+          "path": "tests/test_artifact_recovery_v5.py",
+          "bytes": 11851,
+          "sha256": "65abe1f22bd54e752f697aac8f937a7d772b3a706f55e9b0f5a2a59d899f3077"
+        }
+      ]
+    }
+  },
+  "retained_corrections": [
+    "Initial fixed20 actual ART:19 PASS/1 FAIL; test owner captured original lease for same-input replay instead of replaced current lease; expected assertions unchanged",
+    "Root fixed phrase incorrectly treated as producer proof: ordinary report/release marker probe2 FAIL; final two typed event bindings remove phrase inference",
+    "Actual process/readback initial3 PASS/1 FAIL: READ selected only results/completion notice; two-line saved-tail user_view discovery refinement, identical4 PASS",
+    "ART planner instructions5386bytes exceeded4096; completed planner only/no SWE call; corrected scope-reference plan retained runtime limits"
+  ],
+  "design_consultation": "actual Opus5.5 RECOVERY02 REFINE retained and adopted D047; report shape is not source proof",
+  "unknown_calls": "HOST prior repair and PRI additional consultation remain paused/unknown; no retry/resume/cancel or state edit; first completed PRI REFINE remains valid",
+  "unmet": [
+    "started operate external_tail",
+    "full PRI connection",
+    "current-v5 real provider proof",
+    "authentic personal usefulness",
+    "whole C13/product acceptance"
+  ]
+}

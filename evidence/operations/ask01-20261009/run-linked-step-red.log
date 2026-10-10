@@ -1,0 +1,54 @@
+test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget (test_mock_ask_integrity_v5.MockAskIntegrityTests.test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget) ... 
+  test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget (test_mock_ask_integrity_v5.MockAskIntegrityTests.test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget) (field='error', value=1) ... FAIL
+  test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget (test_mock_ask_integrity_v5.MockAskIntegrityTests.test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget) (field='error', value='ask failed') ... FAIL
+  test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget (test_mock_ask_integrity_v5.MockAskIntegrityTests.test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget) (field='unrecognized', value='hidden') ... FAIL
+
+======================================================================
+FAIL: test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget (test_mock_ask_integrity_v5.MockAskIntegrityTests.test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget) (field='error', value=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_ask_integrity_v5.py", line 17, in test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget
+    self.assertEqual((f.inputs, f.o.reserves), ([], []))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ([{'work_ref': {'epoch': 3, 'goal_id': 'g',[1727 chars]t'}]) != ([], [])
+
+First differing element 0:
+[{'work_ref': {'epoch': 3, 'goal_id': 'g',[1594 chars]'}]}]
+[]
+
+Diff is 2786 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget (test_mock_ask_integrity_v5.MockAskIntegrityTests.test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget) (field='error', value='ask failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_ask_integrity_v5.py", line 17, in test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget
+    self.assertEqual((f.inputs, f.o.reserves), ([], []))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ([{'work_ref': {'epoch': 3, 'goal_id': 'g',[1738 chars]t'}]) != ([], [])
+
+First differing element 0:
+[{'work_ref': {'epoch': 3, 'goal_id': 'g',[1605 chars]'}]}]
+[]
+
+Diff is 2797 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget (test_mock_ask_integrity_v5.MockAskIntegrityTests.test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget) (field='unrecognized', value='hidden')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_ask_integrity_v5.py", line 17, in test_invalid_linked_question_shape_never_reaches_model_or_reserves_budget
+    self.assertEqual((f.inputs, f.o.reserves), ([], []))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ([{'work_ref': {'epoch': 3, 'goal_id': 'g',[1741 chars]t'}]) != ([], [])
+
+First differing element 0:
+[{'work_ref': {'epoch': 3, 'goal_id': 'g',[1608 chars]'}]}]
+[]
+
+Diff is 2800 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+FAILED (failures=3)

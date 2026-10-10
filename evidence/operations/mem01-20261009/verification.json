@@ -1,0 +1,50 @@
+{
+  "schema": "pal.mem01-verification/1",
+  "source_commit": "013bf52c5a8ec079614071f251109a9413b08a60",
+  "author_commit": "b35d50874ce3a4a7a65a982cf398d5fc90b0da6b",
+  "author_three_files_byte_identical": true,
+  "source_sha256": {
+    "pal/intake_v5.py": "7e9ef3e52477363e104bea0fd8872984f4e81a289a30c221d3fc07522ce86fb4",
+    "pal/memory_v5.py": "94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+    "tests/test_intake_transactions_v5.py": "5e358cf2d5766452913afe2609db640ffd83f28048becac186202afd559eb22b",
+    "tests/test_memory_v5.py": "b9410f019f5c5e6664b34cb83c761df7757041e314b0e711553052874073ffeb",
+    "tests/test_memory_intake_pipeline_v5.py": "27900d51121b812fd2e269fcc17cf3f87e1221d2863e43860d68d3b93a5960f5",
+    "docs/design/contracts-v5/MEM01-SCOPE.md": "0651644bc7618d1a78be06ebe8c0139426277b3e498d52dcfa4d463cf3ca55ec",
+    "docs/design/contracts-v5/SHARED-EXAMPLES.json": "719fc280132072c4b34f8e882f06f28dd773f5c6d89f44e64823d1a3ab37b2a4"
+  },
+  "targeted": {
+    "tsk": 21,
+    "mem_and_real_connection": 24,
+    "exit": 0
+  },
+  "full": {
+    "tests": 471,
+    "seconds": 23.782,
+    "exit": 0,
+    "log": "full-integrated.log"
+  },
+  "independent_review": {
+    "model": "gpt-6.1-sol",
+    "context": "/root/int00_sol_review",
+    "verdict": "APPROVE",
+    "methods": 45,
+    "report": "sol-independent-review.md"
+  },
+  "design": {
+    "model": "claude-opus-5-5",
+    "task": "b52e1ef96fbc482e88bb5c002b686a1b",
+    "response": "REFINE",
+    "sol_disposition": "Adopt connection and queued invalidation with documented corrections",
+    "co_verified": false,
+    "reason": "6885-byte note exceeds6000-byte verifier"
+  },
+  "outcome": "MET for MEM01/1 bounded queued-source connection",
+  "limits": [
+    "no other-state invalidation",
+    "no derived notes/correction",
+    "no step/artifact/verification dependency coverage",
+    "no runner/models/UI/runtime activation",
+    "full CT20 and product usefulness unmet"
+  ],
+  "next": "TSK03/1 event pagination plus TSK/RUN execution-control boundary; continue within prior owner authority"
+}

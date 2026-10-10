@@ -2,6 +2,63 @@
 
 This file records decisions needed to continue implementation. Newer entries override older conflicting entries.
 
+## D048 — first Primary host connection, Root technical disposition
+Date: 2026-10-10 (local continuing session)
+Completed actual CO claude-opus-5-5 PRI01 REFINE is retained at
+evidence/operations/pri01-20261009/opus-design-review.json. Root consulted that
+report before adoption, reconciled its evidence limits against current actual
+owners with Astra, and freezes PRI01-SCOPE/TSK-SCOPE/WIRE-SCOPE. Additional
+consultation1ec690fc hit a session limit with CO unknown outcome/options empty;
+no new report received or endorsed. Its pause is preserved without retry.
+
+Adopt F1/F2/F4/F6/F7 owner prerequisites, exact original receipts, finite existing
+shared model counter, managed session-owned workless Primary reservation, closed
+proposal grammar, current-record answer/change and fingerprint checks. One
+owned callback has durable CAS/session evidence and no DB transaction. Qualified
+startup reconciles original receipts only; uncertain owner effects remain applying.
+Immediate structured control and record stop bypass inference. One terminal turn
+and fixed host C14 notice are atomic; no model reply in MEM/C14 model context.
+
+Explicit technical refinement of literal F5: require original turn, all C11 bodies
+actually exposed and every dependency of all text-visible candidates, including
+uncited sources. Withheld candidate IDs/state/ref metadata are never bodies,
+selectable hidden records or answer/change authority. Astra's source reconciliation
+shows literal all-candidate union would deny unrelated new work after a historical
+source stop. Visible-source stop before adoption still fails the owner's atomic
+context_refs gate. Root adopts this bounded refinement; do not attribute it to
+the unavailable additional Opus report. No capability/permission or acceptance
+is expanded. Reply source gates cover conversation/control and current rereads;
+historical confirmed effects remain visible even when reply use is stopped.
+
+Separate fixed tests precede isolated code; exact independent review, Root actual
+whole mock/process connection and full regression precede scoped acceptance.
+Separately qualified finite provider proof and one authentic usefulness judgment
+remain. No CLI provider under managed-inprocess-mock/1, P001 adoption, old/live
+DB migration, new auth/service/cost or model completion authority.
+
+## D-046 — continue to the project goal with necessary parallel work
+Date: 2026-10-09
+Owner: latest direct user instructions in the continuing development task.
+Instruction: continue if work remains, report whether the goal is reached, and
+develop using as much parallel work as necessary. This renews continuation under
+the existing scope and route/material permissions; it does not add costs/auth,
+activate PROPOSED P001, alter product acceptance or resolve unknown prior calls.
+
+Independent exit audit at175cdc6 confirms the overall goal remains unmet despite
+845 local tests and CHANGE design alignment. Recovery, current-v5 Primary and a
+materially useful integrated candidate precede the one authentic usefulness
+judgment. C064/D033 feedback is already received and non-PASS; do not treat it as
+an unanswered blocker. A verified component checkpoint is a dependency result,
+not permission to stop while authorized independent development remains.
+
+SOL owns the shared contract/canonical records/integration. Separate contexts
+own isolated source, fixed tests and independent review; unnecessary duplicated
+work is not created to fill slots. CO0.4.5 qualified Opus5.5/Devin SWE-2 High and
+approved native Astra/Sol alternatives keep their actual limits and provenance.
+Root verifies source bytes, connected behavior and required checks independently
+before recording acceptance; model self-reports and CO report verification alone
+are insufficient. Reassess this condition at each subsequent project exit.
+
 ## D-000 — Greenfield only
 Date: 2026-10-06
 Decision: New PAL is designed and implemented from zero. Old PAL code, schema, workflow, reviews, P0/P1 lists, and compatibility constraints are excluded from design input and reuse analysis.
@@ -1277,3 +1334,2047 @@ Pin successful complete() after900, expiry after auth, clock fences, budget exha
 same proof reuse across durations, mock discrimination and HTTP/UI deadline agreement.
 Preserve current120-second generation deadline and supervisor cleanup grace; the displayed
 deadline is new-call admission, not a hard process-stop promise. No further review needed.
+
+## D-033 — align work selection with actual assistant value, 2026-10-08
+
+C064 independently verified three direct owner messages in the persistent human/design
+lanes. [Exact text, message IDs and current source map](evidence/operations/c064-owner-value-gap.json).
+The owner accepts necessary component tests, rejects the current conversation/draft-only
+screen as delivering the desired PAL usefulness, and requests design alignment at Issue/
+milestone progress so repeated attention to details does not displace the actual goal.
+This is received negative value feedback, not an unanswered evaluation, release approval,
+or permission to activate new external capabilities. N1-07 stays non-PASS.
+
+Adopt the directly requested operating correction without another owner question: at
+Issue entry/closure identify its design role, added practical value, necessity now and
+remaining project gap. At milestone entry/exit and direction drift/repeated causes,
+obtain one official Opus alignment review through PAL設計, with existing access/cost gates.
+Use the existing CHECKPOINTS/STATE/Issue records and make the conclusion affect the next
+work choice. Do not add a per-commit review, wording exam, new automatic approval gate,
+or repeat the same draft-only owner trial. D031's stop on prose-quality loops remains.
+
+Current facts: Primary reasoning and durable Goal/WorkOrder/local-draft Executor/host
+receipt control are implemented. Thus an Expert control component exists, but its sole
+capability is local_draft; there is no product external-information/task connector.
+Official Claude model communication and controller GitHub/CUA/reviewer capabilities
+are not PAL external tools. Existing277-test/finite real-function evidence remains
+component evidence with its original limits, not integrated usefulness. No code changed.
+
+Question assigned to one official Opus consultation in PAL設計: challenge the project's
+current direction against SPEC/DESIGN and latest proposed P001v2; identify the smallest
+useful external-information → Expert work → verified reversible result slice, compare
+a repo-bound existing official GitHub read with the smallest useful alternative, and
+separate available existing authority from a real capability/scope adoption decision.
+The review is in progress at this recording. No changed product design is adopted yet,
+and no review/implementation is duplicated in development. Preserve the raw review and
+access evidence before recording its disposition. New capability implementation still
+requires adopted scope and the existing SWE-2 High substantial-implementation review.
+
+The process failure and next verification are recorded in docs/DEFECTS.md. This boundary
+review must produce a value-bearing next unit rather than another conversation-quality
+cohort. P001/future multimodal scope stays unadopted; current safeguards, no-extra-cost,
+no new auth/public exposure, and paused schedules remain unchanged.
+
+### D033/C064 — subsequent pause and design rebuild direction
+
+The owner next explicitly instructed a development pause for learning from this failure,
+then directed rebuilding the design into small milestones, checking actual implementation
+with Opus at each boundary, continuing an unmet milestone and advancing when achieved.
+Conversation and draft composition quality should be delegated to the model; focus on
+giving Expert a concrete work instruction and obtaining its result. [Pause source/actual
+shutdown](evidence/operations/c064-owner-pause.json) and [subsequent direct direction](evidence/operations/c064-redesign-direction.json)
+were independently read. Do not treat this as an indefinite unanswered approval request,
+permission to resume the old plan, or authority to discard all useful components.
+
+Goal was changed to PAUSED. Owned trial PID20002 shut down normally; port59684 is closed,
+original DB and a local private backup are preserved with unchanged6 records and zero
+Goals/Attempts/artifacts/receipts. No new product code, tests, generation, trial extension,
+release or schedule. Design preparation and the retrospective are now the authorized work.
+The prior design turn is interrupted/archived. Its packet-generation command failed on
+source encoding; a subsequent runner invocation failed because the file did not exist.
+No completed Opus review exists. The earlier in-progress expectation above is superseded,
+not review evidence. Do not retry the same missing script or claim another chat received
+a handoff when delivery fails. Preparation should use structured/encoding-safe file writes
+and verify its file before execution; no provider call is needed to diagnose this failure.
+
+[P001v3](docs/plans/P-001-v3.md) is the single new DRAFT/UNREVIEWED/NOT ADOPTED plan,
+not a second authority source. Its first candidate outcome is one actual bounded external
+read through PAL, Expert work and a host-verified reversible result. Controlled continuation
+and integrated evaluation/release are subsequent small candidates. Model composition
+quality is not a gate. Preserve functional targeting, evidence, permissions and cost limits.
+The exact new capability/scope still needs official Opus review and material human adoption;
+the already explicit checkpoint/quality direction does not need another approval.
+
+Next is to establish the designated design lane and review this concrete draft. The old
+archived chat has not been revived and no new chat created. Missing routing does not
+prevent preparing the evidence/plan, but it must not be reported as a completed review.
+No first milestone is activated from this draft alone, and no product automatically restarts.
+
+## D-034 — scoped SOL/CO development start, 2026-10-09
+
+Direct owner source: chat 01a11c78-a3bc-76e1-b4ee-2451d5c0f1c2, latest message titled 開発体制：SOL統括＋Common Orchestrationによる並列実装. Owner explicitly authorizes delegation and necessary private PAL development materials to existing CO SOL/SWE-2 High/Devin/Astra/Opus routes, requests exact runtime/model/capacity identification and isolated scopes, and accepts actual capacity below30 with sequential work. Same existing Opus telemetry uncertainty alone is not a new send-approval gate. No new auth/service/additional cost/publication or refusal bypass is authorized.
+
+Apply this newer direction to the first coherent development-preparation unit, INT-00: preserve/import the v5 candidate, obtain an actual Opus design-delta assessment, implement pure common contract types/examples via SWE, inspect and independently review the same diff. This does not label v5 already reviewed, activate all proposed product capabilities, alter Stable-0 acceptance, or resume old schedules/trials. Later external-capability adoption must be based on the concrete reviewed scope, not GitHub metadata or a collaborator's opinion.
+
+Observed CO0.4.4 task entrypoint supports qualified Claude Opus5.5 and Devin SWE-2 High and one inference at a time per state, not30. Existing state is reused only through CLI; no direct state edits, route substitution, engine/capacity workaround or alternate state. SOL/Astra development APIs are not qualified co-task routes. Current Native quota is unknown; fresh official account observation shows Claude Pro extra usage OFF and SWE Free. Auth metadata alone is not inference proof.
+
+Keep the original checkout's uncommitted record changes, unreviewed P001v3 and runtime data intact. Development uses an isolated local worktree and an explicit committed input baseline. CO's scoped task payload supplies only listed design/source files, not owner history, runtime DB, auth files or private account metadata. Existing Native ancestor/global instruction roots are recorded as potentially loaded in call evidence; measured tool-free setup is not full-machine containment or a completed transcript for the unknown SWE attempt. CO verified means its declared verifier/files/review version only; SOL must inspect/integrate/retest. No review had completed at the initial preparation checkpoint; later actual outcomes follow below.
+
+### D034 / INT00 common-wire disposition
+
+The corrected actual CO task `6a9dea446fa241ceb6ee876bbdb08be9` accepted a three-step
+plan (819/815/840 UTF-8 bytes), completed a separate `claude/claude-opus-5-5` design
+call, and entered `devin/swe-2-high` implementation. [Raw design and scoped SOL
+disposition](evidence/operations/co-int00-20261009/design-disposition.json). This is
+an actual common-wire design consultation, not an independent full-v5 service or
+product review. Final implementation review and integration are still pending.
+
+Adopt the technical binding `PAL-v5-common-wire / INT00/1` for this pure module:
+one flat `kind` discriminator for C12 Action; closed strict Result variants;
+mandatory allowed-Ref set at model DraftBrief/Action entry points; missing optional
+lookup refs distinct from an empty array; text/plain and text/markdown compose;
+zero budgets as exhausted, without implicit unlimited defaults. Do not mint formal
+condition IDs or infer permission from parsed data. These choices settle shared
+serialization only and do not activate a product connector or alter existing runtime.
+
+Retain host obligations for later actual providers: resource/grant validation,
+fixed current revision/epoch and state checks, saved identity/kind/provenance,
+reference availability and no grant expansion. U1/U2/U6/U7/U9 are deferred to those
+providers and their contract tests; parser examples cannot qualify them. The next
+milestone must bind real provider/consumer values without private reinterpretations.
+
+The design's claim that `raise ... from None` removes exception context is false:
+a local Python3.13 check confirmed `__context__` remains while display is suppressed.
+Require bounded errors without retained raw decoder context in the actual returned
+code and tests. Preserve the design output and check implementation instead of
+treating reviewer wording as proof. No state, returned plan or CO code was edited.
+
+### D034 / actual implementation outcome and continuation limit
+
+The same task's SWE implementation reached900seconds and returned exit75 with
+route_timeout/inference and unknown result/process outcome. [CLI status](evidence/operations/co-int00-20261009/paused-status.json)
+confirms no selectable route options, no returned code, no verifier or independent
+code review, and verified=false. Registered Opus/SWE candidates are information only;
+the runtime does not offer them as switches for this unknown call. Do not retry or
+create a replacement task for the same work, alter the report or raise the timeout.
+
+Keep the task deferred; the exact evidence and preservation recommendation were
+delivered to PAL人間判断. No real human choice is recorded. An explicit cancellation
+can close the CO task but cannot prove the prior request stopped. This is a CO
+execution outcome limitation, not a fresh private-source consent issue, extra-cost
+request, or reason to put all PAL work into blanket human approval wait.
+
+Independent preparation is complete: imported candidates with hashes, preserved raw
+Opus design and SOL wire binding, [five shared synthetic expectations](docs/design/contracts-v5/SHARED-EXAMPLES.json),
+original13-record integrity and full277-test baseline PASS. Documentation validation
+is not a CT/E2E implementation PASS. INT00 implementation and later dependent modules
+remain incomplete; no product source, live DB/service, model configuration or CO changed.
+
+### D034 / owner continuation and later parallel-runtime update
+
+Independently read a real userMessage in PAL人間判断, turn
+`01a11c9f-6db9-7f92-ba4a-96ed1ad16b07`: the owner states CO0.3 already has parallel
+implementation, CO0.4 parallel support is in progress, and directs continuing possible
+work until a parallel-capable0.4 version is available, then updating and using it.
+[Original text and source](evidence/operations/co-int00-20261009/continuation-policy.json).
+The0.3 capability/progress statement is owner-provided context, not this task's measured
+CO0.3 performance, and is not an instruction to downgrade or modify CO implementation.
+
+Adopt this continuation/update authority with existing cost/auth/data/public boundaries.
+At normal work milestones or re-entry, inspect the official release and migration
+instructions; preserve current state and the unknown task, use a supported update,
+measure actual parallel/routes/capacity, then report evidence to the human window.
+Do not create a recurring monitor or resume old schedules. The owner did not select
+cancellation, retry or switch for the unknown SWE request; no decide is authorized.
+
+Current official GitHub release check returned only `common-orchestration-v0.4.4`
+(2026-10-08T15:40:28Z), no later formal release at this checkpoint. [Release observation](evidence/operations/co-int00-20261009/release-check.json).
+The existing runtime remains0.4.4. A development HEAD advance is not a published
+parallel-capable version or qualification. No update was performed from this check.
+
+
+## D-035 — official CO0.4.5 update and independent preparation, 2026-10-09
+
+Actual owner update source: PAL人間判断 turn
+01a11d77-e713-7890-8422-e1e683b564d4, userMessage
+01a11d77-e77e-7740-9e1c-dc4c9bd2631d: 「対応版が出ているので写真に更新してください。」
+Read independently as the follow-through to D034's explicit available-release
+update/use direction; the human lane explained the contextual latest-version
+interpretation. This does not resolve or permit retrying the unknown SWE call.
+
+Official common-orchestration-v0.4.5 was published2026-10-08T19:29:43Z. Retain
+published archive/manifest/checksums privately; verify both SHA256SUMS entries and
+all96 manifest files, then install the fixed payload under Documents/PAL/co-runtime.
+Isolated import and VERSION identify this0.4.5 runtime. Existing state is reused via
+CLI after an unchanged private backup; status preserves the same awaiting_decision
+unknown task, no selectable switch. Old CO process inspection observed none;
+no claim of remote cancellation. No CO source/global configuration/route edits.
+[Installation evidence](evidence/operations/co-update-045-20261009/installation.json).
+
+New supported semantics: independent normal tasks have separate workspaces and
+journals under shared qualified state, with12 host slots per Native adapter.
+Available task routes are still only exact Opus5.5 and SWE-2 High; Sol6.1/Astra
+are unsupported here. Capacity readback initially has zero reservations/executions.
+This is capacity evidence; PAL parallel execution and integrated product acceptance
+must be measured separately. No30-task claim or extra jobs to fill slots.
+
+Adopt two independent pure technical preparation boundaries in
+[PARALLEL-SCOPE-1](docs/design/contracts-v5/PARALLEL-SCOPE-1.md): EXE02-request/1
+validates a repo-bound GitHub read request and fixed argv without executing it;
+ART01-content/1 prepares bounded UTF-8 bytes and hash without saving anything.
+They leave operation/grant/recovery, shared contract types, DB, source checks and
+real product capability activation to their owners. Scope does not change live
+PAL behavior or adopt the full v5 service plan. The original unknown task retains
+its four files; no replacement task or duplicate common implementation is sent.
+SWE handles A implementation with Opus design/independent review; separate Opus
+contexts handle B implementation/review. SOL alone integrates and records results.
+Fresh existing CLI auth/versions and official Pro extraOFF/SWE exact Free model
+were observed; no new authentication, billing/publication or stopped schedules.
+
+
+### D035 / actual implementation and milestone disposition
+
+Three ordinary tasks completed through the fixed official0.4.5 runtime and shared
+qualified state: A2363ba2f94ca4183906f00aabb66dd50, Bb0fd78557fc64e2b834aa232060915d0,
+C4fada68c758b4af8b65c4d64eca42dbf. Separate local workspaces and read/write sets;
+13 actual Native calls (12 Opus5.5,1 SWE-2 High Free), two independent calls/tasks
+at most concurrent. Confirmed local process intervals overlap96.164s; no remote
+compute-time inference or30-way execution claim. Final host reserved/executing0.
+[Actual records](evidence/operations/co-update-045-20261009/final-checks.json).
+
+Adopt the pure request/content implementations as scoped preparation, unused by
+PAL. SOL inspected both base diffs, enforced exact str argument keys after a
+reproduced review finding, and corrected a historical-freeze test that wrongly
+accepted the old trial freeze as current. Production validate_freeze and retained
+manifests are unchanged; obsolete proofs must still fail closed. Opus final
+milestone review agrees MET for preparation and UNMET for PAL/service/user value.
+The independent note review caught its own INT00/Operation ownership error and
+length limit; one CO repair/re-review corrected both, without source changes.
+
+SOL confirmed the five reviewed source/test hashes match committedbf1759f and
+full316-test evidence. Targeted39 tests and synthetic mock preview PASS; full316
+PASS22.074s. Raw failures, design, initial request_changes and final review remain
+available. No new host guard, permission, activation, old-proof renewal or existing
+runtime behavior is adopted from these preparation results.
+
+The remaining INT00 task stays unknown/awaiting_decision with options=[], unchanged
+pause digest and preserved pre-update state. No cancellation, resume, retry or
+switch choice was recorded. Common types remain its dependency; Operation ledger
+belongs to later EXE01. This is not a blanket project approval wait. Original13
+records remain byte-identical, original DB/services are not changed, trials and
+schedules remain stopped. Update PR19 with this exact preparation scope and send
+completion evidence to the existing human window; no public release or Issue closure.
+
+
+### D035 / owner parallelism question and next independent batch
+
+Independently read PAL人間判断 turn01a11d9c-c641-7fd1-8a66-5fcca4a9b044, actual
+userMessage01a11d9c-c6bb-7051-be79-bd7f23d31425: asks whether2 parallel meant no
+more work, a blocker, or a choice. [Exact source/selection](evidence/operations/co-update-045-batch2-20261009/selection.json).
+SOL chose a two-module initial runtime pilot; no third concurrent send/rejection
+occurred. The third prior run was dependent review. This was not a global shortage
+of independent work or a two-call runtime cap. The earlier report omitted this
+selection rationale; explain it to the human window without another approval.
+
+Continue within original development authority, using
+[parallel scope2](docs/design/contracts-v5/PARALLEL-SCOPE-2.md): small file-response
+codec, bounded byte accumulator and host-metadata byte-integrity check. They have
+settled local interfaces and disjoint files, no shared types/DB/capability activation.
+These are needed read/storage/verification boundaries, not dummy capacity tests.
+Launch three actual independent tasks under the same qualified state and declared
+caps; independent model reviews and SOL integration remain required. UnknownINT00
+is not repeated; service/provider/whole-product acceptance remains unmet.
+
+
+### D035 / C067 actual three-task preparation and assessment closure
+
+D47b8853cad145fa9330407acb617020, E1b22bca6ed14449ba1637d2caa538948 and
+Fd84e6010a3584678b8c3a79bfaedaab0 completed with separate Opus reviews. SWE Free
+implements D/E; Opus implements F in a different context from its review. SOL
+checks declared files/base/diff/verifier versions and integrates only those files.
+Actual peak3 is proven by eight completed local Native overlap segments,
+total262.733616s. No3+ capacity rejection occurred; first2 was a small pilot choice.
+Local cap remains12 per Native adapter; provider quota unknown,30 not available.
+
+Adopt the three unused pure preparation helpers within PARALLEL-SCOPE-2 and a six-case
+synthetic read-bytes/decode/content/integrity test. Root corrections: exact fixed
+buffer error codes after a reproduced hostile/subclass case; declared-size precedence
+assertion; explicit invalid-integrity results. D's single CO repair corrects only a
+test-helper keyword; all17 malformed Base64 cases remain. No validation is weakened.
+Root full399 PASS22.153s, targeted122 PASS; all11 source/test hashes match committed
+4ebab5a29e3c4c1b0dac939aa4d9a60364974bef. Real service/PAL/value remains UNMET/NOT_RUN.
+
+Independent Opus task Gcc4c676211714e51a18c0f1604d8f0c9 finds no source blocker and
+confirms the same hashes, but its document task remains failed/review_unresolved,
+verified=false after one allowed repair left a citation error. Preserve that result;
+no resume or status rewrite. Known completed calls distinguish this from unknown INT00.
+H5c28f94d39ba4a619d39cc3f62b5f3f0 closes only the specified attribution line, with
+an exact document verifier and independent Opus approval. Final476 tokens, other text
+unchanged. H does not rerun source/product tests or claim a new code review. SOL
+reconfirms the11 unchanged hashes before adopting the corrected assessment.
+
+Batch2 total5 ordinary tasks:4 verified,1 failed,23 actual Native calls (20 exact
+Opus5.5,3 exact SWE-2 High Free), final reserved/executing0. Pre-task verifier/host
+scripting errors created no extra Native task; retain the preflight evidence and
+proportionate prevention in DEFECTS. [Final records](evidence/operations/co-update-045-batch2-20261009/final-checks.json),
+[final assessment](evidence/operations/co-update-045-batch2-20261009/milestone-review.md).
+
+All96 runtime payload files,290 pre-update state files and13 original records remain
+byte-identical. Existing Pro extra usage remainsOFF and SWE exact model remainsFree;
+no authentication/billing changes, public release, old schedule/trial restart or CO
+implementation edit. Old INT00 pause digest/options/unknown outcome unchanged; its
+four files are still absent. Next dependency is its WorkRef/Ref/Action/Result types;
+Operation belongs to EXE01 and canonical ART/grant/source checks to later services.
+Update the same private Draft PR19 and report actual outcome to PAL人間判断. No
+whole-project approval wait or new human usefulness request is inferred.
+
+C067 delivery complete: existing Draft PR19 and Issue6 current continuation updated;
+previous Issue6 body retained as history. Fresh readback confirms private repository,
+open/draft PR, published83c01a9 and unchanged main94fcacb. Current code/test source
+remains4ebab5a. The authorized human window received the report and its agent
+summarized it; no actual owner choice, read receipt or usefulness PASS is inferred.
+Publication/delivery evidence is linked from STATE; later commit changes records only.
+
+## D-036 — diagnosed unknown call and explicit alternative implementation, 2026-10-09
+
+Direct owner sources were independently read in PAL人間判断. Turn
+01a11dfe-89e5-7f81-86ce-7d8b66cf57da/userMessage01a11dfe-8a72-7c63-855f-90eb8ad3acf5
+requests official Devin/SWE information and concrete diagnosis; CO is a development
+tool, with no current owner decision pending. Turn
+01a11e03-d386-77c0-8faa-41f0ab765513/userMessage01a11e03-d444-78c1-9fab-b0e861d29d1d
+directs SWE-2 as primary when usable; Astra, Sol6.1 or AGY Sonnet5.5/Opus5.5 as
+alternatives while unavailable, prioritizing AGY due current usage. Direct calling
+is allowed when the CO adapter cannot support the route. Necessary PAL development
+material is within this specific route instruction; no credentials, irrelevant
+personal data, new auth/fees, publication or broader permissions are added.
+
+The original task is not cancelled, retried, switched or relabelled successful.
+Correlated Native logs, exact prompt digest, official session listing, read-only
+single-session DB metadata and task workspace show: local parent/ACP are absent;
+no stored assistant/tool response or recoverable implementation; no task file changes.
+The900s deadline is corroborated by900.149432s file mtimes. Both observed old runtime
+revisions have identical relevant cleanup code, but that code suppresses stop errors
+and this attempt has no durable cleanup receipt. Its exact loaded revision, remote
+inference terminal outcome and underlying no-response cause remain unconfirmed.
+The old state/pause digest/options=[] are preserved. CO0.4.5 offers no documented
+external-evidence reconciliation command. [Facts/URLs/limits](evidence/operations/co-int00-20261009/diagnosis.json).
+
+Adopt the explicitly authorized separate implementation: isolated workspace/branch,
+fixed baseline and the existing INT00/1 contract/scope/disposition; text/diff adoption
+only by SOL. No old output is automatically applied, and no shared DB/service writes
+are permitted. An independent reviewer uses a fresh context after implementation.
+This is the owner's alternative-route instruction, not a fabricated CO pause choice
+or a workaround for a service/security denial. Keep the old workspace/journal intact.
+
+AGY model listing succeeds with exact Opus5.5/Sonnet5.5 variants on1.3.1, but quota and
+no-credit-fallback are not yet verified. Its PAL cwd trust prompt was declined. A
+home-wide usage/settings startup was rejected by automatic approval review for its
+broad file/read/execute scope; no startup or alternative home access is performed.
+Current task selects native gpt-6-astra for isolated implementation and fresh
+gpt-6.1-sol for independent review. Current Codex Pro ordinary usage is allowed,
+40% weekly used; no credit purchase, usage reset or paid fallback is authorized.
+Report actual launch/results and any remaining AGY limitation to the existing
+human window. Do not ask the owner to repeat the technical implementation decision.
+
+
+D036 implementation/assessment outcome — C068:
+Astra authored d286fe7 (four INT00 files) in an isolated worktree; a fresh native
+Sol6.1 context approved the exact commit. SOL's601df87 cherry-pick is byte-identical.
+Consumer tests8892440 add five pure composition cases. The unrelated probe race
+fix92732afa is separately reviewed; it changes only diagnostic shutdown handling,
+not product authority or historical live acceptance. Root full422 PASS22.424s and
+all seven source hashes are recorded in co-int00-20261009/verification.json.
+
+Exact claude/claude-opus-5-5 via CO0.4.5 independently assessed the shared-wire design
+as ALIGNED at9390c38, with no design blocker. SOL inspected/applied the sole note
+and confirmed its protected inputs and source92732afa hashes at the review base.
+Taska9fdddb584e241b99ad1c748b49fcbb7 is verified for the bounded document verifier;
+there is no CO code-review step or whole-product verification in that flag. Two
+calls completed. Its predecessorad95757c7dd847fcbcabfd3903bec53c completed one call
+but failed plan_invalid (instructions5795>4096 bytes); no worker/verifier/file write
+occurred. Both outcomes are retained, total3 new Native Opus calls. The corrective
+prompt requested<=1200 bytes; actual1367 satisfied the runtime4096-byte bound,
+not that stricter prompt target. No runtime limit was changed.
+
+SOL dispositions of the design note:
+- The author-time pending statements are superseded by current STATE/ACCEPTANCE and
+  verification, preserving the exact author snapshot. D036 replaces only the old
+  model/sequence assignment, not INT00 semantics.
+- The root branch lineage is a698391 ->601df87 ->8892440 ->92732afa ->9390c38.
+  Every supplied source hash at92732afa matches the review base. Source authoring,
+  synthetic consumer work and the independently reviewed probe fix are distinct.
+- The note's phrase "both condition check enums" is imprecise: one CheckKind enum
+  with three values is shared by DraftCondition and Condition. This wording does
+  not change the code or accepted design. Wrong-kind decoder errors remain bounded.
+- Full v5 service adoption, host authority, persistence, providers, live UI and
+  usefulness remain unproven. A parsed Ref/value is never operational authority.
+
+Select the next bounded preparation unit proposed by Opus: TSK-01 C03.create and
+C02.get_work over an isolated mock SQLite schema. Scope includes host condition-ID
+issuance, nonexpanding host/request Grant intersection, zero budgets, atomic
+intake/event storage, key replay/conflict and not_found/stale/rollback tests. SOL
+owns shared schema/integration, with isolated implementation and an independent
+exact-commit review before adoption. No real DB/model/connector/UI is needed.
+This is a technical next-work selection within D036; it is NOT_RUN and does not
+activate the full candidate plan or create a new human approval request.
+
+
+## D-037 — scoped AGY qualification and TSK01/1 intake disposition, 2026-10-09
+
+Actual owner turns in PAL人間判断 were read directly:
+01a11e23-a42e-7431-aefa-10c2fdcb00d2/userMessage01a11e23-a4ad-7c20-a99c-449c3e161ea7
+approves AGY Opus5.5 when the official Claude route is limited, including necessary
+private PAL materials, and requires independent work to continue.
+01a11e25-7a70-72d0-ba3b-694d51b6dd21/userMessage01a11e25-7aeb-70e0-9a88-3154f0532061
+authorizes the specified PAL directory and a narrower dedicated work directory if
+needed. This does not authorize home-wide trust, publication, new auth or extra cost.
+
+Automatic review approved startup and exact workspace trust only for
+`/Users/hattoritoshiyasu/Documents/PAL/agy-work/intake-review-20261009` after that
+owner instruction. The earlier home-wide startup was refused and never retried.
+The exact trusted path was read back; no global trust override was used. Actual
+CLI banner1.3.2, existing Google AI Pro session, `Use AI Credits` OFF, Claude/GPT
+weekly71.83% and five-hour100% remaining were observed before calls. No billing or
+login setting changed. The earlier language-server1.3.1 observation remains a distinct
+observation, not evidence that this task updated software.
+
+Two sequential direct AGY calls requested `claude-opus-5-5-high`, plan+sandbox,
+with PAL-only synthetic contract inputs. First call SUCCESS in74.895s returned REFINE;
+follow-up SUCCESS in40.583s returned ALIGNED. The second stream init independently
+echoes the exact model ID and shows only user_input/system_message/agent_response
+step types, no tool steps. Its327.037s/2-turn result metadata is conversation-cumulative,
+not the second call wall time. Original staged input hashes match. Raw streams may
+contain reasoning/account data and are retained locally, not in this repository.
+[Qualification](evidence/operations/co-int00-20261009/agy-qualified-settings.json),
+[refinement receipt](evidence/operations/co-int00-20261009/agy-refinement-receipt.json),
+[initial review](evidence/operations/co-int00-20261009/agy-intake-review-v1.md),
+[corrected review](evidence/operations/co-int00-20261009/agy-intake-review-v2.md).
+
+SOL rejected the first review's zero-budget/empty-capability denial and its source
+check before BEGIN: exhausted budgets remain valid stored values, and immutable Ref
+IDs do not make availability immutable. Opus explicitly withdrew both recommendations.
+Adopt TSK01/1 scope before implementation: strict C03 create/C02 get_work, host-only
+request_scope, nonexpanding grant, same-transaction required source_gate, atomic
+intake/event/replay, replay-before-current-checks, missing revision=>not_found.
+The root scope follows exact C02 fields (expert is in create output) and permits
+embedded immutable conditions/grant/bindings to avoid redundant persistence tables.
+The gate is trusted host code with no I/O or transaction control; it is no new
+capability for models. Replayed intake grants no current execution authority.
+
+[TSK01/1](docs/design/contracts-v5/TSK01-SCOPE.md) is authorized unused preparation;
+real MEM availability, PRI authorization resolution, shared C14 services, historical
+revisions, execution owners, providers and product activation remain NOT_RUN.
+AGY is not a CO adapter. D036 allows this direct fallback; no new engine/state or
+claimed CO verified flag is added. Use one AGY call at a time until actual route
+concurrency is qualified. CO0.4.5 current capacity snapshot has0 reserved/executing
+on both adapters, host cap12 each; that is neither vendor quota nor30-way proof.
+Assign isolated AGY Opus5.5 High implementation, native Astra independent boundary
+analysis, SOL integration, then a separate independent code review after output.
+No technical human decision or old unknown-call cancellation/retry is implied.
+
+
+D037 implementation-route correction (before adoption): AGY's first code-generation
+request failed with explicit schema-key INVALID_ARGUMENT400 and no code. The corrected
+envelope used fixed module/tests/note keys. That call exited0/reported SUCCESS, but
+stderr says `print timeout after 7m0s with turn in progress; returning partial output`.
+Host wall425.622s is measured; CLI duration0 is not useful. JSON is unterminated, so
+root rejects whole-unit completion. Only the fully closed module string12465bytes,
+hash29f5162c..., was recovered, syntax-checked and retained as unverified. Complete
+tests/note are absent. [Receipt](evidence/operations/tsk01-20261009/author-receipt.json).
+
+AGY conversation67432c30-a8e8-4660-8425-8c3a55feff4e has unknown remote terminal
+status; no retry/resume/cancellation was issued. Its text-only stream has no tool
+steps. Local exit is not proof remote inference stopped. No new AGY call until
+reconciled. The two completed design reviews remain useful; their success does
+not qualify this larger structured code-output request.
+
+stderr also says `--mode plan has no effect while slash command expansion is disabled`.
+Earlier records describe requested flags, not proven plan enforcement. Observed
+no-tool streams and isolated material scope are separate facts; do not rely on that
+ignored flag as a permission boundary. No setting or permission bypass was used.
+Future route checks must resolve effective mode and final-turn status with supported
+controls. No new human technical approval is created by this implementation defect.
+
+Continue through the owner's approved native fallback. Astra now authors completion
+and tests in the isolated candidate worktree; it no longer independently reviews
+this unit. Separate Sol6.1 reviews the completed exact commit and root consumer
+changes. Root owns adoption. Condition IDs are unique within each immutable Brief
+addressed by WorkRef (consistent with C09); no cross-Goal registry is required here.
+Default UUIDs avoid ordinary reuse; injected collisions test the actual Brief/Goal/
+event uniqueness boundaries. This clarification adds no product authority.
+
+
+D037 supported-control check: official AGY documentation describes interactive
+`--conversation ID` as loading the named conversation, and stream ACTIVE/DONE
+states separately from result status. The failed code stream has2423 ACTIVE agent
+updates and no DONE; init reports request-review. Root proposed loading only that
+exact conversation, without a prompt, from the same approved narrow workspace.
+Automatic approval review rejected it before startup because it might resume or
+duplicate the still-unknown generation. No same-operation workaround was used.
+The concrete command, risk and optional scoped approval were sent to PAL人間判断;
+no actual owner response is inferred. This does not block the native completion.
+[Control evidence](evidence/operations/tsk01-20261009/agy-deferred-route.json).
+
+
+D037/C069 actual unit outcome: native Astra completed author commit3e828019 with
+14 targeted tests; the recovered module's hash is unchanged. Root cherry-pick9689462
+preserves all three authored files, then8db45fd adds four synthetic consumer cases.
+Separate native Sol6.1 APPROVES exact8db45fd; root source hashes match and full440
+PASS22.989s, exit0. TSK01/1 unused preparation is MET. Details and retained failed
+attempts are in evidence/operations/tsk01-20261009/verification.json. Real PRI/MEM
+source/permission authority, history, C14 sharing, execution/services/providers/UI
+and human value remain NOT_RUN. The current receipt supersedes author-time pending
+review/full-suite text; it does not rewrite author provenance or promote product
+acceptance. Next dependency is the shared MEM/TSK same-transaction source boundary.
+
+## D-038 — checkpoint continuation and requested loop proposal, 2026-10-09
+
+Actual owner instructions were read in PAL人間判断, not inferred from its agent:
+
+- Turn01a11f76-dac6-7462-959a-a7ab1326f91a, message01a11f76-db05-7470-8f4a-2e5dacf60cf1:
+  the owner challenged why development stopped after the expected-design evaluation.
+- Turn01a11f77-8c93-7560-9709-5e08d419c3e4, message01a11f77-8cf6-75d3-8302-701c63715b49:
+  「閉ループで開発できないの？」
+- Turn01a11f78-c488-75f1-b09f-97f95f3edb55, message01a11f78-c4ce-7133-b8c7-d949f7a50aab:
+  「チェックポイントを置く分にはいいけど設計とズレてないとか、ズレていても対処がわかるとかは待つ必要ないからさ、作業続けていいよ」
+- Later turn01a11f7a-198f-7852-8cfc-1312922a471d, message01a11f7a-1c51-7271-b1ff-c3fa639e3c29:
+  「あなたの考え開発閉ループ作ってみて、それを私もみてから、実際にやってみようか」
+- Latest read turn01a11f7b-b6c0-7ad2-9c1e-66f85947d02a, message01a11f7b-b701-7593-8476-a575d9863aad:
+  「実装、検証、評価、改善。このループってことね」
+
+The continuing rule is implement → verify → assess against accepted design → improve
+or select the next unmet dependency. A checkpoint or reviewer approval alone never
+requires owner confirmation. Clear corrections within accepted scope proceed with
+reverification. Only a material goal/scope/acceptance change or genuinely new authority,
+cost or noninferable owner judgment blocks its dependent work. No schedule restart,
+unknown-call resume, access-refusal bypass, authentication, payment or publication.
+
+The later request asks to see the proposed loop before trying it. The human lane
+has shown that proposal and the owner has restated its four-step meaning. The agent's
+suggestion of a separate approval gate is not an owner instruction. Root initially
+overinterpreted the sequencing as requiring another explicit start authorization;
+that interpretation is withdrawn. No new approval is inferred from the restatement:
+the existing explicit continuation and existing AGENTS loop remain the authority.
+The proposal introduces no scheduler, new execution route, scope or permission.
+Proceed within that scope after technical prerequisites, without a new human wait.
+
+Root's C069 turn termination was an incorrect continuation decision, not evidence of
+a project-wide technical block. Existing AGENTS development-loop item10 already
+required continuing the next authorized item. The corrective step is to record the
+next concrete dependency and its actual dispatch/reason before concluding a checkpoint;
+do not add a scheduler or new approval mechanism. See docs/DEFECTS.md.
+
+Current independent work: native Astra analyzed transaction/ownership boundaries;
+separate native Sol6.1 derived adversarial acceptance conditions, both read-only at
+666506a. Both identify existing-work invalidation as required before execution use.
+The proposed MEM01 scope is in docs/design/contracts-v5/MEM01-SCOPE.md. Official
+CO0.4.5 Opus5.5 consultation taskb52e1ef96fbc482e88bb5c002b686a1b has actually
+started on committedc3ace7a. No code/test change or MEM verification is yet claimed.
+C069 source440-test evidence
+remains historical to8db45fd; no unchanged suite rerun is needed for this record.
+
+D038 technical adoption: actual Opus5.5 review recommends connecting queued-work
+invalidation and public C14 events now, rather than more record-only preparation.
+Adopt that recommendation with the exact shared API in MEM01-SCOPE.md. SOL owns TSK
+source registration, transaction-bound public Result callbacks and integration;
+Astra owns MEM record storage/read/stop/search, with separate Sol code review.
+Use sanitized canonical replay identity and the existing imperfect sanitizer.
+Opaque internal keys use canonical arrays to avoid separator collisions. Optional
+C11 fields are omitted, and empty search means recent eligible records.
+
+Reject the review's claim that a callback COMMIT after writes can be fully rolled
+back. Collaborators are trusted host methods, not a sandbox; tests prove the actual
+methods preserve transaction ownership and that ordinary failure rolls back. A
+committing collaborator violates the contract and cannot receive a rollback claim.
+Unsupported affected work states or missing source coverage fail the whole stop.
+Running/notes/verification/real-service obligations remain unmet before activation.
+
+CO taskb52e1ef96fbc482e88bb5c002b686a1b completed both exact Opus5.5 calls and emitted
+the complete6885-byte REFINE response; its6000-byte document verifier failed. Preserve
+failed/verified:false and the original note. SOL's design consultation/disposition
+is distinct from CO document verification and future code/product verification.
+No blind rerun, relaxed PASS or runtime edit is needed to use the observed advice.
+
+D038/C070 execution outcome: source013bf52 connects actual MEM and TSK in isolated
+SQLite, including queued invalidation, notification, reopen, two explicit lock
+orders and post-write rollback. Astra's three author files remain byte-identical
+to b35d508; SOL's TSK/consumer changes have separate native Sol6.1 APPROVE. Root
+full471 PASS23.782s/exit0; related45 pass. No product/real-provider activation follows.
+The current receipt supersedes the implementation note's author-time pending status.
+
+The next dependency is actually dispatched, not just named: CO task04bc81e770ea479da9ed4b9b38df6628,
+base5c427f0, TSK03/1 read-only durable C14 event delivery, SWE-2 High Free author
+and separate Opus5.5 reviewer. Fresh official Devin3000.11.3 reports existing login
+and exact swe-2-high Free; no new auth/cost/fallback. Native Astra analyzes the
+independent TSK02 control/step boundary while this runs. The first corrected
+implementation→verification→independent assessment→next-dispatch loop is observed;
+ongoing success and complete PAL delivery are not inferred from one cycle.
+
+D038 TSK02 technical disposition: Opus5.5 task0f5365d4c1ba438396ed08a16da2fab2
+completed both calls and returned a full REFINE consultation. Its12000-byte document
+verifier failed; keep that result and original response, no rerun just to shorten it.
+Adopt the corrected connected report/lookup mock, durable lease/call lifecycle,
+nonrefunding finite work+host budgets, immediate structured controls, source-stop
+and latest-intent precedence described in TSK02-SCOPE.md. Required and optional
+sources stay distinct. TSK is sole owner; RUN has no persistent competing state.
+Full MOD raw output/replay and orphan recovery remain explicitly incomplete.
+
+Clarify two limits in the advice: a committed admission is already owned/in-flight,
+not proof of actual Python entry. A last pre-entry check cannot make physical entry
+atomic with another connection's control; late results are fenced and slot retained.
+An ended call with lost in-memory output is also not permission to recompute. The
+mock wrapper, not a supplied stop boolean, observes cessation. Shared C13 Step shape
+is preserved; lookup truncation is host metadata. Technical choices add no new owner
+approval gate or external activation. SWE consultation precedes substantial code;
+isolated Astra authors TSK, SOL integrates mock flow, separate Sol6.1 reviews.
+
+TSK02 implementation consultation d3ad7fc12edc4abf89b66d3f46f93ba8 completed through
+exact SWE-2 High Free; CO verified the bounded review artifact, not implementation.
+Adopt its reservation lease/epoch/index binding, one-shot draining clear, process
+invoker dedupe, step readiness, optional-source exclusions and budget headroom.
+Astra separately found the same unadopted-output/yield gap and supplied strict host
+query shapes. Ordinary yield cannot discard an unfinished returned call. Preserve
+C13 owner-intent precedence: reject SWE's blanket refusal to release fenced output
+on pause/draining, and its stronger old-epoch restriction. The owned lease and Goal/
+revision permit freeing only occupancy, never stale result adoption. These rulings
+are technical applications of the consulted scope and C13, not new product authority.
+
+D038/C072 outcome: TSK02/RUN01 source ea2e8fa has author34, actual connected14 and
+full531 PASS23.350s, independent native Sol6.1 APPROVE and exact CO Opus5.5 ALIGNED
+(task6bd433a2799a49d2b27d5c5bc9708e7d). CO verified the review document only; the
+reviewer ran no commands, and root binds command/source/hash/full evidence separately.
+The callback-signature and interruption rollback defects have real consumer/fault
+regressions. No Goal completion, persistent live use or recovery is inferred.
+
+Adopt Opus F1: transient local unavailable must not terminally fail otherwise safe
+work. Before admission, yield safely; after return, bounded same-input idempotent
+local write retries, then retain occupancy if persistence remains unresolved. Never
+retry the callable from a receipt or reset ambiguous ownership. Isolated Astra now
+implements RUN01/2 from edfad06; separate Sol reviews it. This is a technical fix
+within existing authorization, not an additional recurring owner checkpoint.
+
+Adopt the next value direction: mock compose -> saved draft -> TSK attachment,
+before VER/complete. Stage ART's immutable bytes/current-source readback first,
+then connect artifact-kind dispatch/current-set binding with the RUN improvement;
+do not mark the full compose path complete at the storage checkpoint. SWE task
+dc4fbad81715497481bb66a5e02f8f23 is currently consulting the proposed storage scope.
+ART keeps conservative actual-call dependency provenance, so model omission of a
+source cannot evade reference stop. Completed-state history/source-stop must be
+handled before complete becomes reachable. Orphan lease recovery and actual real
+provider cessation remain separate requirements before activation.
+
+D038 ART storage disposition: SWE scope consultation dc4fbad81715497481bb66a5e02f8f23
+returned REFINE with five API/error/receipt/read/dead-end clarifications. Apply them
+in ART01-SCOPE before dispatch. TSK authorizes the exact started compose action and
+returns conservative actual-call record dependencies; ART owns immutable bytes and
+historical receipts, not task state or completion. A compose step remains unbound
+at this storage stage; do not describe it as the complete compose path. Reject the
+advice's implication that failed work can simply be reclaimed: failed is terminal.
+Next binding/RUN stage is explicitly required by the Opus milestone direction.
+
+
+D038/C073: RUN01/2 and TSK save authorization at1be000a pass full543/23.484s, separate
+Sol reviews APPROVE. Preserve first-hook review findings and red/green reproduction.
+SWE binding consultation f4cba212 completed and advises REFINE. Adopt R1-R9 with the
+explicit narrow compose-result source exception and trusted-callback rollback limit
+in ART01-BINDING. TSK/RUN preparation against this fixed API is independent of the
+unavailable ART implementation; component doubles do not count as connected proof.
+ART task917989d447f94a09869f7b05e9870d3a s1-a1 timed out after900s, with unknown
+outcome/process/quota and no selectable retry. No returned files, verifier or diff.
+Preserve the pause; investigate read-only. Do not retry/resume/switch/cancel, directly
+edit CO state, or start a duplicate ART implementation. The old unknown SWE/AGY calls
+also remain preserved. Current stage is not a saved draft or completed Goal.
+
+
+C073 route clarification after scoped diagnosis: the prior no-duplicate instruction
+prohibits a blind CO retry, not the owner's explicit separate native implementation.
+Root freshly read actual owner message01a11e03-d444-78c1-9fab-b0e861d29d1d: use
+Astra/Sol6.1/AGY while SWE2 cannot implement; direct call allowed without a CO adapter.
+Diagnosis found no local process, no assistant/tool response and no implementation
+files for task917989. Remote cessation/cause remain unknown. Preserve that pause and
+workspace exactly. A NEW isolated native Sol6.1 workspace implements ART01-store/1
+plus the frozen inspect callback; no late CO output auto-adoption, no shared DB or
+external effects. This applies existing user authority (which supersedes skill
+routing defaults), not a fabricated CO pause decision or new CO engine. AGY's own
+unresolved call/rejection stays untouched. Ordinary Codex usage is allowed; no paid
+fallback, reset, new authorization or external service is used. Independent Astra
+will review ART after its TSK task; separate Sol reviews Root/Astra changes.
+
+
+D038/C074 accepted: ART01-store/1 + ART01-bind/1 at source2e8dfcf pass full605
+(23.880s, exit0), actual temporary-SQLite consumer18, ART owner20 and TSK owner52.
+Separate Astra approves ART98b8f12; separate Sol approves TSK/RUNd6e0a72 and actual
+consumer2e8dfcf. Exact CO Opus5.5 task7cd3d55711f04fee95e26435f00fe3a3 is ALIGNED,
+no current-scope blocker. It ran no commands and saw the full-suite receipt only;
+CO verified the note structure, while Root binds actual tests/source independently.
+Source is actual immutable saved/attached drafts under mock execution, not VER,
+complete, live service, full v5 activation or usefulness. Original unknown CO/AGY
+calls remain untouched; native storage provenance is explicit.
+
+Adopt Opus's two staged next dependencies: deterministic C09 storage first, without
+completion; then C10 complete only together with completed-history source-stop and
+terminal-safe lease handling. Under current monotonic epochs/append-only sets and
+irreversible reference stop, VER can derive valid/invalidated from current WorkRef,
+set and source gate without a second invalidation state engine. Unavailable owner
+checks are unavailable, not proof of invalidation or success. Semantic and unbuilt
+source-fetch checks remain unknown; no model claim or changed condition is MET.
+SWE consultation will refine the exact same-TX APIs before substantial persistence
+implementation. This is a technical continuation within D038, not an owner gate.
+
+
+D038 VER01 technical adoption: CO SWE consultation e2477652c7ce43cbb9e20a91386fe2e1
+completed with REFINE. Adopt its deterministic storage/current-status/strict-owner
+boundaries in VER01-SCOPE, preserving existing authority error precedence rather
+than its contradictory blanket queued-state test. Current source gate uncertainty
+is an error, not a status. Structural artifact_saved does not verify arbitrary
+description quality; semantic/source_fetched remain unknown. Split immutable
+in-memory tests from the smaller SWE code-only module assignment; Root owns TSK
+callback/actual connection and a separate reviewer assesses exact source. No C10,
+new model path, state engine, new permission, or unknown-call retry is introduced.
+
+
+D038 COMPLETE01 design consultation72fabf04 (exact CO Opus5.5) returned REFINE.
+Root adopts R1-R8 in the proposed scope before SWE persistence consultation: exact
+host epoch, strict owner comparisons/error precedence, ended-call predicate,
+historical completed-source progress notices, no non-MET zero-cost yield loop,
+no release after complete, forwarding-closure wiring and canonical host keys.
+R4 needs no extra result field: MEM validates closed work_refs and ignores values;
+retain only epoch-invalidated works in that list and use the completed work's
+progress event for historical notice. New field would needlessly alter MEM.
+This is design refinement only; implementation remains gated by the pending SWE
+consultation and Stage A VER evidence. No new owner decision or external action.
+
+
+D038 COMPLETE01 technical adoption: exact CO SWE-2 High consultationd8bd21a2
+returned REFINE after Opus72fabf04. Adopt the frozen complete/terminal/history
+transaction and error order plus host dispositions in COMPLETE01-SCOPE. TSK and
+RUN may now implement independently by file ownership from this shared seam;
+complete remains unaccepted until all three safety parts and actual connected
+consumer tests pass. Default mock runner still requires explicit VER wiring.
+No semantic model/verifyAction, general recovery, UI/provider activation, new
+authority/cost or unknown-call retry. Root current VERfab7c77 is independently
+approved; full regression and its milestone review are tracked separately.
+
+
+D038/C075 accepted: sourcefab7c77 deterministic VER/current-status integration
+passes650 host tests/45 focused and independent Sol rereview. Exact CO Opus5.5
+task0e78d5da is ALIGNED, no current-scope blocker; its verified note is not a test
+execution. A proven invalidation may short-circuit diagnosis of co-occurring
+corruption; both remain non-valid. TSK context review provenance stays3f37f78
+(Astra), with finalfab7c77 actual consumer covered by Sol/Root. Continue the already
+dispatched COMPLETE01 TSK/RUN work, not a new owner approval gate. No product/UI,
+semantic, recovery or unknown-call acceptance is implied.
+
+
+D038/C076 accepted: bdce832 passes711 host tests/24.789s and separate TSK46/RUN30
+review. Exact CO Opus5.5 taskd2abb079 is ALIGNED for the local complete/terminal/
+history slice; Root verifies supplied bytes and unchanged TSK source sincea48d.
+Only structural artifact_saved-only work completes; no semantic/product claim.
+The original CO16 pass, actual C02 failures and unknown-error repair remain distinct.
+
+Adopt READ01 design refinements from the same Opus review (READ01 REFINE), following
+native Astra analysis: useful completion requires a concrete C14-to-owned-body
+consumer, not an unused dispatcher. VER C11 read has fixed historical dumps/UTF-8
+JSON/hash with public ART hash/bytes, current usable separately, and guarded injected
+clock captured in its read transaction. Its observed_at is read-at, unlike existing
+MEM/ART stored observation time; do not invent creation dates. Deny all invalidated
+verification for non-user purposes, retain history for user_view. Consumer keeps
+TSK state, structural/mock labels and not-current wording separate; bounded pages
+preserve cursor and per-ref errors. No cross-owner atomic snapshot claim. Freeze
+exact request/response examples and tests with SWE before code. This is within
+D038 preparation; no new owner decision, model activation or schema migration.
+
+
+D038 READ01 implementation freeze: CO SWE-2 High Free c2027bf7 returned ALIGNED.
+Adopt its owner read/dispatch/pagination advice with Root's exact multi-work item
+shape, UTC clock guard and truthful fault limits in READ01-SCOPE. SQLite
+total_changes is monotonic even after rollback, and trusted callback COMMIT cannot
+be undone; ordinary reads remain mutation-free. Stop-cause wording requires an
+explicit same Goal/revision notice intersecting VER dependencies. Public examples
+for C02/C11/C14 accompany assignments to prevent the prior consumer mismatch.
+Separate immutable tests precede code. This is local readback, not model-context
+or PRI/UI activation, and adds no new permission/cost/schema/live DB.
+
+
+D039 owner implementation/usage steering (2026-10-09): fresh human-lane readback
+confirms user messages01a12044-1db9 (actively use SWE-2 High for code and include
+AGY Sonnet5.5 code) and01a12044-72cd (Codex remaining below5%). Native Sol returns
+READ acceptance21; start no further native author/reviewer. Allocate VER.read to
+existing CO SWE-2 High Free; HostReader+bounded consumer to one fresh isolated
+AGY claude-sonnet-5-5-high context after current no-credit/quota checks. Root owns
+contracts, actual demo/connection and adoption. This changes allocation, not scope.
+Prior unknown/refused calls are neither resumed nor cancelled; no new auth, credit
+consumption setting, reset, publication or stopped-schedule restart. Existing D038
+implementation/verification/evaluation/improvement loop continues.
+
+READ01 read-specific error clarification: absence of the requested VER Ref alone
+is not_found; context(status) not_found becomes unavailable in C11 read because
+current status is uncertain. Typed C09 behavior is unchanged. Independent fixture
+83c62fa records this distinction; exact21 tests are immutable during implementation.
+
+
+D038/D039 C077 accepted: sourceff1a1cc has747 host PASS25.142s, focused36 and real
+readback demo. Independent exact Opusde3d5d69 Code APPROVE; its milestone REFINE
+is evidence-only: the original demo outputs were produced by a Root wrapper.
+Root commits that assertion harness and regenerates separate verified-demo output,
+and records reviewer limits in verification.json. This satisfies the requested
+provenance correction; code is unchanged and Opus REFINE remains verbatim. Local
+READ01 MET, not whole PAL/UI/provider/semantic/recovery/usefulness.
+
+Next ASK01 value is supported by Opus and SWE2610f221; both ask technical refinement.
+Reconcile atomic ask/release occupancy, waiting source-stop/paused resume, exact
+question IDs/APIs/answer registration and bounded RUN loss handling before code.
+SWE's assumption that waiting_input has no lease conflicts with its own split
+ask/release; do not adopt that assumption. Carry C076 verify-authority note into
+the next RUN edit. Existing D039 model/cost/unknown-call boundaries continue.
+
+ASK01 route condition: CO8288ddc3 stopped during planner launch, provider stream
+rate_limit and session reset22:20 JST; no code step/output/diff. CO reports
+unknown/options[], which remains authoritative for retry handling. Do not
+resume/retry/cancel or edit its state. Existing direct AGY Opus5.5 alternative
+under D037/D039 is a separate subscribed route; verify current auth/credits/quota
+then use a fresh isolated text-only contract draft. No Claude limit bypass,
+additional credits or unknown conversation action. C077 evidence is unaffected.
+
+
+D040 (2026-10-09) supersedes D039's native-usage restraint, not its SWE/AGY
+participation or cost/unknown-call boundaries. Fresh actual human-lane message
+01a12069-d6d3-7c01-8d18-e56481f1c0ca: "手動リセットしたのでcodex抑制を解除\n最大並列32まで拡張可能". User performed the reset manually; development lane
+called no reset. Current tool shows weekly used0%, ordinaryUsageAllowed true.
+Maximum32 is owner permission, not measured concurrency or authorization for
+CO changes/new services/cost. Native tool has4 slots including Root; CO host12
+per adapter, Claude Pro session still separately limited, AGY provider concurrency
+unknown. Use independent meaningful units only. Native Astra now analyzes actual
+ASK state invariants while AGY Opus drafts a candidate. Root freezes contracts
+before tests/code assignment. Original unknown pauses remain untouched.
+
+
+D041 (2026-10-09) owner fixes role candidate pools. Fresh actual user message
+01a1206b-70b2-7ed0-896d-6c811fcbe287 in PAL人間判断 specifies:
+- Design: Opus, Astra, Sol6.1.
+- Implementation: SWE-2 High, Astra, Sol6.1, Sonnet5.5, Opus5.5.
+- Lead: Sol6.1, Opus5.5.
+- Low-risk chores: Gemini3.8 Flash, Haiku5.5, Luna6.1.
+Use only verified available IDs/routes; the chores list does not prove connection
+or authorize a substitute. Earlier SWE design consultations predate this rule;
+new design work uses the design pool. Independent review remains a separate
+context under prior role authority. Root Sol6.1 owns canonical integration.
+CO0.4.5 has no supported preplanned-input CLI; fixed run still requires a planner.
+The qualified design route Claude/claude-opus-5-5 is session-limited. Do not assign
+SWE as planner to evade the new role rule or add/modify CO adapters/state. Existing
+direct AGY Opus/Sonnet and native Astra/Sol alternatives continue. SWE implementation
+remains preferred when a permitted planner is available. Capacity status currently
+0 executing/0 reserved each; host12 per adapter is not provider quota or32 concurrency.
+
+Owner quota images were read directly from user messages01a1206d-0f9a and
+01a1206d-eeda. At that screenshot time: Claude Code Pro session0%, reset22:19,
+weekly44%; separate AGY Claude session48%, reset00:49 next day, weekly39%. AGY's
+upper100% buckets are not Claude model capacity. Values are observations, not
+guarantees/current quota or permission to consume credits. Keep additional usage
+off and check the exact route before each new call. No reset/schedule activation.
+
+Fresh direct AGY exact claude-opus-5-5-high contract candidate2d96c06a completed
+SUCCESS263.877s; only finish tool observed, no tests. Candidate and receipt are
+retained under evidence/operations/ask01-20261009. Astra reconciles against actual
+source; Root freezes one contract before implementation. Root verified all10 original input hashes and exact prompt bytes against
+immutable git blobs; all matched. Original candidate provenance is preserved.
+
+
+D038/D041 ASK01/1 frozen: adopt the checked Astra reconciliation of the fresh
+AGY Opus candidate. C04 atomically finishes ask, saves question/event/replay,
+waits and deactivates the ended lease. No split release window. Answer remains
+an optional source and gains question/Step/record linkage in claim. Add optional
+C12 pending_inputs only for eligible question Steps plus available answer bodies;
+Root and Astra reviewed this minimal association extension. Source-stop closes
+questions only for required/full producing-call dependencies; unrelated historic
+optional invalidation preserves waiting. Existing paused states/retained leases
+are not globally redefined. Same-key receipts are history, new-key resolved answer
+conflicts. ASK01-SCOPE owns exact authority/rollback/readiness and bounded RUN loss
+handling. Separate fixed tests precede TSK/RUN code. Actual owners/demo and an
+independent review remain required. This is technical completion of the existing
+ask/answer slice, not a new plan/permission/provider/semantic/UI/operational scope.
+
+
+ASK01 actual route correction: automatic approval twice rejected the prepared
+154607-byte private-code/spec/test payload to AGY Sonnet5.5 before process launch.
+First reason: CO authorization did not clearly include AGY. Root freshly verified
+actual subsequent user messages01a12044-1db9 (Sonnet code participation),
+01a11e03-d444 (direct AGY fallback) and01a11e23-a4ad (private PAL AGY use). The same
+command was re-submitted only with that new evidence; review rejected it because
+other-thread tool output was not accepted as trusted sensitive-egress approval.
+No process/run.json/stream was created. Preserve that refusal, make no indirect
+AGY call or payload workaround, and route the concrete optional judgment to the
+already designated human lane. Native Sol separately implements RUN within the
+existing fallback authority; no duplicated AGY execution or owner wait. AGY
+Sonnet contribution to prior READ01 remains true, not to this ASK01 attempt.
+
+
+D042 owner manual-approval direction (2026-10-09), actual userMessage
+01a1207d-eadc-76e0-81f7-ca257b1efdd4 freshly read: the owner will propose an adopted
+model list in CO separately and asks to obtain permission through explicit manual
+approval here. This follows the concrete154607-byte9-file AGY Sonnet ASK code
+request. By receipt, the same implementation was already completed by native Sol
+a7ceb54 and integrated; do not run a duplicate original assignment. Record the
+owner response without claiming an accepted runtime permission or external send.
+Do not extend it to a materially different review package or edit CO/global approval
+settings. Any needed later operation must be concrete and use a permitted approval
+path. Development and verification continue with the native implementation.
+
+
+D043 — project-wide AGY development approval, 2026-10-09
+Direct owner instruction in this development chat: 「本プロジェクトにおけるAGY使用を全面的に承認します」.
+This supersedes the per-package AGY permission wait. Existing AGY paths may receive
+necessary PAL development code/spec/tests/diffs for the authorized design, code
+and independent review roles; do not re-ask the same project/material permission
+for each new bounded assignment. Proceed with the prepared202200-byte exact
+claude-opus-5-5-high ASK milestone/CHANGE01 consultation. Preserve the previous
+automatic refusals as history; the new direct instruction is the fresh authority,
+not a bypass or an invented acceptance of the old presentation channel.
+Role pools, mock/stdlib-only scope, no secrets/credentials/unneeded personal data,
+no new auth/service/paid fallback/publication/live DB changes, and actual product
+access/org/tool approval limits still apply. No CO/global approval policy is
+edited. Native CLI trust is scoped to the prepared PAL review folder only;
+its ordinary scoped trust prompt was accepted under the owner PAL/AGY authority.
+Unknown old calls remain untouched and the completed native ASK
+code assignment is not duplicated. Confirm each route/model/auth/cost condition
+before use; success must be observed, not inferred from this saved permission.
+
+
+D043 observed execution limit — the prepared AGY review was rejected again by
+automatic approval before launch. Exact reason: broad AGY-use approval did not
+specifically authorize13 private artifacts202200 bytes to the external
+AGY/Google-hosted Claude destination under its egress policy. The direct owner
+project approval remains recorded; this is an actual transport refusal, not
+a claim that the owner withheld approval. No run.json/stream/model call exists.
+Root does not bypass or repeat the refused action without new relevant evidence.
+A direct question now names exact input/hash/destination. CO remains the already
+approved alternative; its qualified Opus route was last session-limited and
+reported22:20 reset, not yet observed available. Independent Sol reviews the
+C10 proposal while that narrow consultation dependency waits. This single review
+condition is not copied into global config, an enduring per-call permission rule,
+or a wider project stop. No claim about unpublished review internals is made.
+
+
+D044 — existing PAL repository publication, 2026-10-09
+Direct owner instruction in this development chat: 「本プロジェクトは公開前提です。それでも実行できないならば、先にrepoをパブリックにしましょう」.
+The D043 exact AGY review was still rejected before launch. This satisfies the
+condition; Root prepares and may change only thattor/personal-agent-lab visibility
+to public after inspecting its actual exposed material. GitHub code/history,
+Issues/PRs and Actions history become public; no product deployment is implied.
+Native independent audits cover the two remote branches' reachable source/text,
+32 image blobs, and GitHub content. No confirmed credentials, unrelated private
+code or actual third-party private conversation was found; ordinary owner
+project approvals, synthetic cases and workflow paths are project provenance,
+not an invented additional owner gate. Two upstream attribution omissions are
+being repaired at their pinned source bytes before public change.
+This supersedes earlier no-publication instructions only for this concrete repo.
+No history rewrite, deletion, license choice for PAL, secret/personal-data send,
+new service/authentication/payment, application hosting or access-policy bypass.
+Visibility change must use normal GitHub authority and automatic review; refusal
+of that operation cannot be bypassed. A saved decision is not successful
+publication or accepted AGY execution; readback and owned-call evidence are required.
+
+C078 existing C13 follow-up — recognized ended calls must precede release.
+Root reproduced that NULL/unknown status could close an occupied lease because
+the previous guard checked admitted only. Source7450202 adds the closed status
+whitelist before writes. Root regression1/18 and related93 pass; independent Sol
+APPROVE54 and full794/26.492s at18813c2 pass. Preserve original red/discovery logs.
+Future ended-call checks use recognized state, not merely absence of admitted;
+composed unittest fixtures use module imports to avoid duplicate discovery.
+No new semantics were adopted; CHANGE01/ASK Opus consultation still precedes
+contract freeze. See release-integrity-20261009/verification.json and C13 note.
+
+
+D044 observed completion: GitHub accepted the normal visibility command.
+Authenticated API and independent anonymous GET at2026-10-09T12:36:47.716835Z
+return public/private:false/HTTP200 for thattor/personal-agent-lab. No auth header
+was used for the anonymous check. Attribution-only PR20 exactc467071, separately
+Astra APPROVE, merged main as3e8cf8d before publication. Source exposure can
+persist through forks; no product deployment, private Projects visibility,
+new auth/cost, history rewrite or CO state change occurred. Evidence:
+evidence/operations/publication-20261009/public-readback.json and readiness.json.
+Prior private AGY refusals remain historical facts. New public-source review
+inputs require actual anonymous byte verification and normal runtime approval;
+public visibility is not a guarantee that a model route executes successfully.
+
+
+C079 — adopted CHANGE01/1 after actual Opus consultation, 2026-10-09
+Question: after the safe question/answer path, what minimal contract lets a saved
+correction replace current work without losing history, authority or budgets?
+Actual existing AGY Google AI Pro/creditsOFF review completed SUCCESS,
+requested/observed claude-opus-5-5-high: ASK ALIGNED / CHANGE READY_TO_FREEZE.
+Inputs are17 anonymous public-byte-matched files atc49bb00. Reviewer runs no tests
+and reports connection-test truncation and unsupplied owner modules. Root adopts
+the actual response after separate Astra v1 source reconciliation04f08d.
+
+Adopt unchanged control(request), latest-prior grant intersection, trusted-host
+all-reused-record provenance, fresh Condition IDs, same-Goal revision/epoch,
+historical superseded, latest-only claim and latest-intent old-lease settlement.
+Adopt stricter WorkRef/index/reservation/Step bindings before cleanup. Qualify
+source-stop ordering: old-only stopped sources do not reject an independent new
+nonterminal replacement; new/reused stopped sources deny, terminal work conflicts.
+Reject new authority kwargs and blanket RUN source changes. Root selects Condition
+and event-ID guarded mint before first owned write in CHANGE only. Callback commits
+cannot be undone; no hostile-host/global callback atomicity claim is made.
+[CHANGE01/1](docs/design/contracts-v5/CHANGE01-SCOPE.md) is the frozen implementation
+scope. Independent fixed tests precede isolated Astra source. Root owns common
+contract/canonical writes, actual connection and final proof. No live DB migration,
+PRI/provider/UI/semantic activation or whole-product acceptance. D041 roles,
+actual capacity, unknown-call preservation and no-new-auth/cost still apply.
+
+C079 review-procedure correction: the AGY print command combined --mode plan with
+--disable-slash-commands. Stderr explicitly says plan has no effect; init records
+request-review. Preserve raw requested mode and annotate effective mode. Observed
+tools were finish only and all17 staged inputs remained unchanged. The next call
+must omit that conflicting flag and inspect init/stderr before asserting plan;
+this prevention is recorded, not yet operationally verified. No approval/CO or
+global trust policy is altered. See opus-public-review-summary.json; raw receipt/stderr retained locally.
+
+
+D045 — public review evidence minimization, 2026-10-09
+Source: actual owner message in PAL人間判断,
+read directly by Root after the lane handoff. Owner adopts the immediately prior
+recommendation to retain raw records locally and publish necessary evaluation and
+verification information: 「そのやり方でいいと思います」. 「利用枠の情報ぐらいは別にいい」
+permits those counts but does not require publishing them. Optional design review
+after reported22:20 reset is allowed after actual provider availability check.
+This supersedes the pending raw8-file publication question only with the minimized
+option. Do not interpret it as whole raw-payload/conversation-ID/local-path
+publication permission. Preserve raw files and rejected local commits exactly;
+create a public summary and code/contract export from existing remote ancestry,
+normal approval, no force/history rewrite. This is a materially reduced payload,
+not another executor for the rejected push. Verify public tree and input hashes.
+A saved decision or lane handoff alone is not actual accepted push.
+
+Prevention within PAL: public input preparation binds code/spec/tests to a real
+public commit and anonymous bytes/hash receipt. Keep runtime/account/transport
+raw data local by default; public evidence describes exact model, verdict, source,
+checks, tool/mode limits and result scope. Confirm actual route availability and
+cost before sending. No global trust/approval or CO-project change, new service,
+auth/cost, stopped schedule or model-use permission question is introduced.
+
+
+C079 implementation proof and defect prevention, 2026-10-09
+Astra source b4baae24 is byte-identically integrated and independently APPROVED
+by separate Sol after51 focused/122 related methods and original linked-ID probes.
+Root full845 PASS26.939s/exit0 and actual temporary MEM/TSK/RUN/ART/VER/C14 demo
+PASS. Independent original50 preceded source; Root later fixed1 method/9 subcases
+before the repair. Original REQUEST_CHANGES/RED and author initial pass remain.
+Cause: consistently malformed call/reservation/Step IDs and saved sources could
+satisfy pairwise equality, allowing old-lease cleanup writes. Nine mechanical
+guards require valid/canonical identities and original source-membership bindings
+before mutation. The unchanged negative cases and independently reproduced probes
+verify no-write unavailable; use these checks at subsequent recovery boundaries.
+No new framework, gate, RUN patch or live DB migration is introduced. Exact
+fixed inputs/source hashes and limits are in change01 verification.json. Final
+CHANGE Opus alignment and normal minimized-public-export approval remain pending.
+
+
+D045 observed export result, 2026-10-09
+Normal fast-forward push2b1d860 from the clean public ancestry succeeded. All38
+changed files anonymously returned HTTP200 and matched exact commit bytes/hash.
+Separate Sol's bounded export audit APPROVE checks source/test/demo identity,
+only operational-ID scope redaction, evidence hashes and no newly exported raw
+AGY/host/account/state data. Original local frozen-scope and public metadata-only
+hashes are explicitly distinct; normative requirements are identical. Raw and
+rejected local history remain intact, without force/history rewrite. Source and
+fixed-test verification remain Root-owned; this is observed public delivery, not
+provider/UI deployment or whole-PAL acceptance. See public-readback.json and
+public-export-review.json.
+
+
+C079 final design assessment and C080 sequence, 2026-10-09
+Actual qualified CO0.4.5 Claude Code claude-opus-5-5 planner and report calls
+completed. The model's final design verdict is ALIGNED for CHANGE01/1. Root
+reads the evaluator text against source/contract/845/demo/separate Sol proof and
+adopts that bounded design alignment. It executes no tests and omits many owner
+methods; no whole-PAL/provider/UI/semantic/recovery acceptance follows.
+CO verified:false/verification_failed is preserved. Cause: Root's report verifier
+required the tool-disabled model to compute file hashes. The reviewer honestly
+returned NOT_COMPUTED, so the CO verifier exited1. Root preserves the exact raw
+response/result locally, binds the actual three workspace input files to exact
+public base2b1d860, supplies separately attributed host hashes, and executes the
+unchanged report verifier PASS. No evaluator text/verdict is edited, no failed
+CO record is rewritten, and no third duplicate review or weaker source/test gate
+is used. Prevention: future report tasks leave snapshot hashing to the host.
+The earlier known planner-only4555-byte plan failure was repaired by a <=2000
+request; no unknown process/model outcome exists for these completed calls.
+
+Adopt Opus sequence: scoped C13 restart recovery and startup lock before PRI
+routing. Separate Astra actual-v5-owner analysis supports first distinguishing
+ended orphaned leases from admitted/unknown calls. The latter are not returned
+or raised by assumption. Lock acquisition is not proof that an external child
+ended. C080 preparation records the seam, source/order/control/budget constraints
+and fixed meaningful acceptance candidates; no recovery API/code is adopted yet.
+F3 is repaired now: shared section5 change table says old open questions become
+superseded history, matching operative C02/C10 and source. F2 belongs in the next
+recovery scope (latest intent across revisions); F4 is a PRI host provenance
+obligation; F5 historical artifact refs remain revision-scoped. None is used to
+weaken source-stop or to pretend PRI/recovery works. See CHANGE01-MILESTONE-OUTCOME,
+RECOVERY01-PREPARATION and milestone-disposition.json.
+
+
+D046 — continue the remaining goal through necessary parallel work, 2026-10-10
+Source: latest direct owner instructions in this development chat:
+「まだ残っているなら続けて、ゴールに達していますか？」 and
+「必要なだけ並列作業で開発して」. The independent goal-exit audit establishes
+that local C074–C079 do not complete the overall destination; v5 recovery/Primary
+and authentic usefulness remain. Received non-PASS feedback is not an unanswered
+permission request. Continue approved dependencies after each verified checkpoint.
+This supplements D041/D045 without activating P001, new fees/auth/services, old
+DB use, unknown-call retries or wider publication.
+
+RECOVERY01 question: what minimal managed mock lifetime and orphan-settlement
+contract distinguishes ceased unknown entry from returned/raised/not_entered?
+Actual qualified CO claude-opus-5-5 planner and separate design report completed;
+REFINE is adopted with F1–F11 in RECOVERY01-SCOPE at06aed962. Host binds11 fixed
+input files to the consultation base. CO verified:true means bounded report shape
+only. Registered DB/session/lease/claim proof, strict provenance/history integrity,
+startup-only settlement and distinct interrupted are required. Started compose
+and operate retain explicit holds. No generic child/provider death proof follows.
+Fixed HOST13/TSK22/connection6 precede isolated source; SOL owns integration.
+
+PRI question: what minimum connection makes an ordinary turn drive same-Goal
+ask/answer/change and saved/check/readback without new routing authority?
+Actual exact CO claude-opus-5-5 returns REFINE; report and host12-input binding are
+retained. Candidate text must be source-safe, provenance conservatively closed,
+workless Primary charged by TSK's finite host counter, effects reconciled through
+public original-receipt lookup and one PRI terminal event. No artificial Expert
+lease, private-owner SQL, reply-to-memory laundering or inferred human approval.
+SOL has not yet frozen this contract. Host wiring follows recovery and ART-tail
+adoption; one actual usefulness judgment follows a materially improved candidate.
+
+
+## D047 — saved compose recovery refinement adopted (2026-10-10)
+
+SOL adopts actual CO Claude Opus5.5 RECOVERY02 REFINE F1–F10, preserving the
+report and nine Git-bound inputs in evidence/operations/recovery02-20261010.
+RECOVERY02-SCOPE.md freezes the active-connection ART lookup, exact canonical
+original action, shared pure RUN/TSK save-key function, denied versus uncertain
+taxonomy, same-revision adoption of the original Step, bidirectional internal
+adoption/replay/event integrity and one atomic state event. Pause non-adoption
+is the deliberate conservative policy; attach/drain preserves pending inputs.
+ROOT checked current RECOVERY01 and actual ART authorization's ordered call
+provenance. Ordinary finish, VER and all counters remain unchanged.
+
+Only actual report-producing claude-opus-5-5 counts as this consultation. The
+earlier mispinned SWE report is retained locally, is not an Opus adoption, and
+its role-selection cause is recorded in docs/DEFECTS.md. CO report-shape verified
+is not source or product approval. Fixed ART/TSK tests precede implementation;
+separate source review and actual crash/VER/readback proof are still required.
+Whole C13, full PRI, provider proof and personal usefulness remain unmet.
+
+## D049 — C081 aligned; separate native compatibility proof (2026-10-10)
+
+Actual existing AGY claude-opus-5-5-high returns C081 ALIGNED and PRI02 REFINE.
+SOL adopts this design assessment against the completed actual1058 tests,
+five process/connection tests and independent exact-source Astra approval.
+The three supplied public documents are hash-bound to6f2e480. This review neither
+read product source nor ran tests. Its actual-exposure F5 endorsement is new;
+the earlier unreceived PRI refinement and all unknown calls remain untouched.
+N1 clarifies the residual race for uncited exposure on answer/control/source-stop:
+the full closure is checked before dispatch but not atomically inside every
+owner mutation. Selected target/revision/current-answer/source gates remain.
+N2's current-answer binding is already enforced by WIRE and the host.
+
+Adopt PRI02's two stages: standalone compatibility then separately qualified
+native C15 lifetime and integration. SOL freezes PRI02-T/1 max1/zeroeffects after
+Astra's actual installed-source comparison. Public NativeCandidates can execute
+one CLI prompt without a multi-call task. Normal return proves strict correlated
+ATIF export/exit0/owned wait/group cleanup; it does not expose complete EOF drain,
+child PID, ACP completion or remote cessation. Export is post-exit bounded, not
+live disk capped. These are recorded limits of T, not lowered native C15 gates.
+Native readiness/unknown policy remains a separate freeze; Opus's per-turn hold
+and Astra's conservative global-block suggestion are not silently equated.
+
+The new AGY run requested plan but init reported request-review even without the
+previous conflicting flag. Observed steps were input/response only, no tools.
+Do not claim a hard allowlist or plan enforcement; the earlier sole-cause claim
+is unconfirmed. Raw records stay local under D045. Continue independent source,
+tests and native preparation without a new technical human approval gate.
+
+D049 continuation: the sole T call entered and is UNKNOWN after the original
+prompt was not an exact exported user message. The formatter appended LF; a
+pure retained-export diagnostic accepts after removing only that formatting LF,
+but the original outcome remains UNKNOWN. Local owned cleanup/capacity release
+is distinct from correlation/EOF/native proof. Root removes only generated LF,
+with separate Sol review/fixed21; no strict comparison or input normalization.
+
+SOL freezes PRI02-N/1 from the already received Opus/Astra/Sol design work. N
+qualifies the existing public ACP dynamic observer/stronger original ending
+independently, without treating T as a passing dependency or retrying its request.
+Pure host values, external wrapper and Native Primary lifetime are separate owned
+files; tests precede implementation and independent reviews precede actual entry.
+Native unknown is held per turn, never settled by a mock lock. N transport max1
+is separately frozen; later integrated actual cases require a concrete finite
+acceptance envelope, not extra technical human permission. See PRI02-N-SCOPE.
+
+D049/C083 observed continuation: full1155 and independently reviewed native
+source/fixtures pass, but the sole original N qualification is UNKNOWN. Supported
+stop ERROR/no evidence leaves one existing Devin slot held. No original output,
+ending, prompt submission or effective native model is proved. NeverStarted is
+not inferred from cleanup, absence of files or a later constructor diagnostic.
+Preserve original T/N/CO unknowns without retry/reclassification/forced release.
+
+SOL adopts Astra's scoped correction: retain the closed semantic pin; bind/check
+the exact full transport-version constant through wrapper/executable hashes;
+pass it unchanged to original CO host. Save original execute replies and cached
+failure observations locally before cleanup, with no diagnostic status pumping.
+Independent installed constructor fixtures precede source, review and finished
+full verification. New candidate entry is separate from the consumed old MAX1
+and requires a checkpoint design assessment plus its own finite Root freeze.
+This is approved technical continuation, not a new service/auth/cost or owner
+permission wait. Native Expert's storage/recovery proposal is not adopted yet.
+
+D049/C083 correction receipt: final candidate808b05f wrapper SHAac1250 implements
+the frozen full-version and bounded failure-observation contract. Independent
+fixed diagnostics6/metadata6 retained REDs precede Astra source; separate Sol35
+APPROVE and Root full1161 PASS30.939s/exit0 bind the final source. The old N1
+UNKNOWN and held slot are unchanged; corrected actual qualification is NOT_RUN.
+Anonymous all36 byte/hash readback at public a332c53 follows separate export
+APPROVE. Later source corrections require bounded export verification. The next
+Opus consultation is design-only on seven public documents and attributed host
+results; its verdict is pending, not source review or authority for actual entry.
+
+## D050 — C083 design refinement and bounded native Expert freeze (2026-10-10)
+
+Actual existing AGY claude-opus-5-5-high completed SUCCESS225.441s/exit0. Exact
+init model matches; requested plan, observed request-review, observed input/response
+steps only. Seven anonymous exact public documents at a332c53 and attributed host
+808b05f/35/full1161 results were supplied. This is design consultation, not source
+review or executed provider/test proof. [Report](evidence/operations/pri03-20261010/opus-design-report.md)
+and [receipt](evidence/operations/pri03-20261010/opus-design-summary.json) preserve
+exact original report bytes/hash and scope. Verdicts: C083 REFINE, distinct N2
+conditional ALIGNED, native Expert REFINE; whole goal NOT_MET.
+
+SOL adopts stop-before-diagnostic failure ordering (R2) with independent fixed
+three original RED cases and a distinct CO SWE source task. Existing wrapper
+preflight already checks exact version/hash before reserve/entry and repeats it
+before on_enter. Metadata refusal is a local guard refusal, never a constructed
+NativeNeverEntered. Original constructor refusal can return UNAVAILABLE without
+NeverStarted; R1's suggested guaranteed receipt/release is not adopted. A later
+binary race remains conservative UNKNOWN unless actual original typed cessation
+exists. Closed execute/diagnostic/stop records jointly meet retained-observation
+intent (R3); no duplicate unified receipt or diagnostic status pumping is needed.
+R4 capacity sum must be below12 and original held-slot baseline unchanged at entry.
+R5 qualification is computed from exact actual original receipts, never digests.
+
+SOL freezes PRI03-NATIVE-EXPERT/1 in PRI03-NATIVE-EXPERT-SCOPE.md before source.
+Adopt TSK-owned raw output/ending atomic durability and current-only original-call
+replay; immutable native discriminator/both-side binding; all-consumer integrity;
+stored-byte Action matching; explicit non-callable runner; fresh VER/readback and
+profile-aware known-ended ART recovery. Existing C15 has no index field: Expert
+request adds only WorkRef to its role/output pairing; index is derived by TSK.
+Native prepared/entering/unknown remains conservatively held at restart, without
+not_entered_local or settlement writes. Expert's global lease keeps startup and
+ready-dependent inference unavailable; structured controls/stop/read remain usable.
+This is a disclosed conversation/release gap, not accepted whole-product behavior.
+
+Unknown retirement and separate Primary readiness are NOT_ADOPTED later proposals.
+Stored returned/no-Step cannot be automatically adopted into a new-epoch Step.
+The bounded scope preserves result bytes and current-call replay, rather than
+claiming a general MOD ledger. Mock defaults and existing wire/receipts remain.
+Opus's example constructor connection parameter is unnecessary: runner owns no SQL
+and receives public owners only. Source/test assignments are disjoint and isolated.
+
+N2 remains NOT_RUN, requires final cleanup-order source/full/independent operator
+proof and its own Root PRIMARY-only MAX1 freeze. Expert wrapper changes wait for
+that outcome and invalidate its envelope; a later separately frozen Expert MAX1
+combines exact new-profile qualification with connection proof. No N3 after another
+UNKNOWN without design reassessment. Original N1/T/CO calls remain unchanged and
+unreplayed. No new human method approval, auth, cost, service or runtime/state edit.
+
+D050 actual-source clarification: independent Astra reconciliation at0a34e42
+shows _own_session/Primary reserve checks current ready identity and shared budget,
+not active Expert lease. finish_startup refuses the lease only for a not-ready
+new session. Preserve existing same-process ready Primary reservation; only orphan
+restart is startup-held. The source-free Opus blanket-readiness assumption is not
+adopted as a new shutdown. Native known-ended recovery uses fixed user text
+"Execution recovered" or "Saved draft recovered", with existing mock IDs unchanged.
+
+## D051 — local native Expert verified; distinct N2 finite freeze (2026-10-10)
+
+Owner continuation remains 「必要なだけ並列作業で開発して」; no new overall stage,
+auth, cost or service is adopted. D050 source/fixture slice is now equal-byte
+integrated after separate TSK/runner/READ/cleanup/verifier APPROVE. Root full1202
+PASS32.407s/exit0 at e4fea10 and owned-process6 PASS0.685s are local fixture proof.
+The native-to-mock downgrade blocker is repaired before ended-call authority.
+All original REDs and fixture/command-order mistakes are retained in DEFECTS.
+No real Expert or whole-goal acceptance follows.
+
+CO SWE planner/initial cleanup step completed, but repair timed out UNKNOWN and
+verified remains false. Frozen initial SHA84e5 is independently38 PASS/APPROVE;
+only those completed bytes are adopted. No unknown repair output, retry/cancel,
+CO/state/global change or new engine. Observed CO verifier environment failures
+are reported without asserting all fourteen failures/twelve errors have one cause.
+
+SOL freezes PRI02-N2/1 at exact e4fea1046821068a9684bcc2009252fcc6a38b7e under
+D050 conditional alignment and current owner authority. Independent operator SHA
+2fbecfbe281d4387549bc727252fcbd771fbfa73ed74ea50ae254869621a187b APPROVE,
+AST/fourteen hashes/exact HEAD/clean scope, finished Root full and cleanup source
+proof are complete. Scope is one distinct synthetic PRIMARY-only ACP prompt,
+zero PAL effects, no original allowance reuse. Actual Free/auth/capacity guards
+run before possible execute. Original N1 evidence hashes and held baseline1 are
+protected; aggregate stays below12. Returned original ending precedes semantic
+comparison; candidate digest alone never qualifies transport. No N3 after another
+UNKNOWN without design reassessment. See PRI02-N2-ROOT-FREEZE.md. N2 is NOT_RUN
+until an actual receipt; further Expert pairing waits for that outcome.
+
+D051/C086 observed result: the distinct N2 allowance is consumed. Actual invoke1/
+entry1 returns UNKNOWN/exit1, effects0, no NativeReturned/output; semantic NOT_RUN.
+Original public host cessation and supported stop match and show owned end_turn/
+EOF/exit0/tool0/permission0; fresh capacity1 baseline remains. Requested swe-2-high
+was invocation-bound-only, effective_model:null/verified:false. Original receipt
+therefore cannot satisfy PAL strict effective-model gate. Independent Astra's
+original-receipt/synthetic-text probe proves a model-mismatch rejection, not the
+unique original exception or reconstructed actual response. No original outcome
+reclassification, field rewrite or forced capacity release. Actual summary is in
+pri03 native-n2-summary.json. Proceed to authorized exact Opus5.5 design reassessment
+and independent technical work before any N3 or real Expert entry. Do not silently
+weaken acceptance; alternative guarantee/profile is an explicit design decision.
+
+
+## D052 — bounded unqualified diagnostic retention (2026-10-10)
+
+Root adopts the independent Native Sol C086 REFINE into
+[PRI02-DIAGNOSTIC/1](docs/design/contracts-v5/PRI02-UNQUALIFIED-DIAGNOSTIC-SCOPE.md).
+Strict exact effective-model/original cessation/NativeReturned gates remain.
+New fixed tests precede separate pure-buffer and wrapper implementation. Valid
+already captured text is retained locally as unqualified after supported stop;
+poisoned text remains discarded. Diagnostic writes cannot qualify output or retry
+inference. No N3/T2/real Expert call, preprompt refusal, new auth/cost/service, CO
+edit, unknown-call reopening or weak-profile adoption. Original N2 remains UNKNOWN.
+
+Fresh AGY quota refresh shows Claude/GPT weekly0%, overages OFF; no new Opus5.5
+review is launched and Native Sol fallback is explicitly attributed. CO0.4.5
+public capacity is Claude0/0, Devin1/0, host12 per adapter. The ordinary entry
+requires a planner and has no supported preplanned-input route. D041's design
+pool is preserved; unavailable Opus is not replaced by a SWE planner. Use approved
+Native Sol buffer and Astra wrapper source work, independent Sol fixed tests,
+separate source review and Root integration, at most the actual four native slots.
+
+Independent Astra identifies current official ACP configOptions/currentValue/
+config_option_update versus installed CO's legacy model observer. Existing public
+callbacks can preserve full session result, a distinct preprompt snapshot and
+validated-session updates; callbacks may duplicate and do not preserve wire order
+or independently carry prompt ID. Model metadata actual presence in N2 remains
+UNCONFIRMED because frames were not saved. Original cessation cannot be elevated
+by diagnostic interpretation. Further bounded source/design work may use these
+public hooks without changing CO or manufacturing original verified fields.
+Source changes invalidate the previous wrapper/capture envelope; later real work
+needs its own reviewed contract/freeze. Whole goal remains NOT_MET.
+
+
+D053 (2026-10-10): the latest actual owner message in PAL人間判断,
+local owner-availability evidence D053, says「claude opusは使える」.
+Root read the actual turn, not only the delegated summary. Use the existing
+qualified official Claude Opus5.5 route for necessary unevaluated design/review;
+no new auth/cost/service, reset, old unknown resume or duplicate evaluated review.
+Current CLI2.1.291 readonly auth is loggedIn/claude.ai/firstParty/Pro under approved
+local execution. Restricted-sandbox auth:false was not logout evidence. AGY's
+separate observed weekly0% remains separate. CO ordinary task measurement and
+product native host qualification are distinct; do not transfer version/availability
+proof between them. The C087 diagnostic/local source proof and model-observation
+feasibility are the new Opus checkpoint, not re-review of completed C083 alone.
+
+
+D053 observed official route: CO ordinary task invoked exact claude-opus-5-5
+planner on CLI2.1.291; original init/result show that model, tools0, success58.702s.
+The returned plan has9255-byte instructions over CO's4096 limit, so the task is
+failed/plan_invalid/verified:false with no design step or declared verification.
+Its embedded diagnostic ALIGNED/next REFINE is a planning proposal, not a completed
+review. Preserve original output/hash; do not edit CO state or claim approval.
+The pre-task spec_invalid was Root's missing fixed-mode implement pin, corrected
+before any first attempt. Future runs pin planner+implement and ask for short
+plan instructions referring to the frozen scope. No provider failure or new fee
+is inferred. See opus-planning-summary.json; official availability differs from AGY.
+
+## D054 — remove actual old operational PAL references (2026-10-10)
+
+Latest actual owner instruction in PAL人間判断:「palの旧版を参照している
+可能性があるなら旧版の削除をしてください。互換は必要ありません」.
+Root read the actual turn. Independent current-repo audits confirm old pal.server/
+web/Runtime/Store and current README/model-input instructions. LEGACY01/1 freezes
+necessary tracked-code removal and current entry correction, with separate Astra
+source and Sol docs, unchanged v5 utility/owners/fixtures, independent reviews
+and Root integration. No old/live DB, conversations, evidence or unknown removal;
+no broad old-checkout deletion, new auth/cost/service or replacement UI claim.
+Current v5 has no HTTP/UI implementation; that remains unfinished product work.
+
+
+D054 observed C088: source0e5cdf0 integrates54 deletion-only paths and separately
+reviewed current entry docs; Root catalog-header correction has independent Sol
+APPROVE. All88 current test/fixture files are equal-byte retained, including the
+unsuffixed integrity probe. Root930/5/6 and three mock demos pass with explicit
+exit0; source-independent930 also passes. Removed280 old-only methods do not lower
+current-v5 acceptance. Source/import closure and exact archived public bodies are
+checked. No current checkout open file was found before deletion; no unrelated
+process was stopped or broad old-service cessation inferred. Old DB/conversation/
+evidence/unknowns remain. No replacement HTTP/UI or real-native completion claim.
+
+
+## D055 — apply actual Opus review and parallel fixed scopes (2026-10-10)
+
+Exact official CO Opus5.5 completed planner+report calls and shape verification
+at01ae956, CO verified:true. It is a document design review, not source review or
+product verification. Raw report bytes are retained; C088/model diagnostic/UI
+all REFINE. Root supplies explicit ancestry/import closure/deleted-test edges in
+legacy01 closure.json without rewriting the protected earlier receipt. fff19cc
+contains the completed0e5cdf0 deletion; baseline930=1210-280, plus new cases.
+
+Root adopts UI01/2 before acceptance: no implicit temp finalizer on hold, bounded
+preadmission before new saved input, explicit turn/answer/resume progression,
+headers and independent fixtures/review. Fresh prototype source is not yet an
+accepted UI. Model diagnostic API remains the frozen/1 without schema changes:
+P1's minimal explicit-limit alternative is adopted (modern configOptions only;
+legacy model advertisements are not projected and hint-null cannot prove absence).
+Session token is lowercase SHA256 over exact UTF8 sessionId, not owner binding.
+Original entered BaseException and stop/ending-write failure stay generic entered
+failure points: retain best-effort after the original supported stop attempt has
+returned/raised and rethrow the original interrupt. Opus's no-file-on-interrupt
+alternative is not adopted because it would discard the stated diagnostic goal
+and contradict fixed preservation cases; no diagnostic grants new authority or
+cessation, and no no-delay timing guarantee is claimed for local fsync. Existing
+source/strict replay isolation is independently checked; no static mirror test is
+required. Supplied report scope is explicit; no N3/T2/real Expert is authorized.
+
+Native Sol UI source and separate Astra HTTP fixtures run in isolated checkouts.
+Separate Sol model fixed20 RED precedes ordinary CO Opusplanner/SWE-2 High pure
+class and separate Astra wrapper; source reviews differ from authors. Devin fresh
+model catalog confirms exact swe-2-high/Free; no additional billing is enabled.
+The shared public capacity retains original Devin held1; native limit4 includes
+Root. Ordinary CO tasks use only existing shared state and fixed exact roles,
+no setup/new route/auth/unknown resume/runtime edit. Whole goal remains NOT_MET.
+
+
+## D056 — reviewed local integration and preserved CO timeout (2026-10-10)
+
+Latest owner continuation authorizes necessary parallel development. The separate CO pure task requested devin/swe-2-high; planner completed,
+implementation timed out300s/exit75, awaiting_decision, outcome/process unknown,
+verified:false and options[]. Informational candidates grant no selectable retry.
+No quota/cause, actual implementation model or remote cessation is inferred.
+Original state/output/workspace is preserved without decide/resume/retry/cancel/
+forced release or late-output auto-adoption. Existing C073 authority allows a
+NEW isolated Native Sol6.1 pure implementation, distinct from that call; separate
+Astra wrapper and separate Sol reviewer keep implementation/review contexts distinct.
+Root adopts exact independently APPROVED bytes only, full969/exit0 and source hashes.
+
+UI01/2 source has separate Astra19 APPROVE and Root scripted browser proof;
+LOCAL_MOCK_VERIFIED replaces current HTTP/UI absence. This is a test surface,
+with fresh disposable DB, no native route or authentic usefulness claim. Previous
+930 owner fixtures remain; all88 old current-v5 test/fixture files equal-byte.
+Model fixed20/native151 APPROVE retains old7619-byte buffer prefix unchanged,
+original stop/hook/result semantics and strict exact-model/replay gates. Its modern
+model record remains unqualified and cannot restore old unsaved N2 frames.
+
+New capture/wrapper hashes invalidate the previous profile envelope; do not reuse
+it. D055 review/dispositions do not authorize a new call. Next Root must freeze a
+distinct bounded diagnostic proposal and obtain independent operator/design proof
+before any N3; no real Expert or profile weakening is implied. No new auth, cost,
+service, public exposure or other-project/CO changes. Whole goal remains NOT_MET.
+See c089-c090 verification and minimized CO summary; public provenance omits raw
+owner message identifiers and private account/runtime paths.
+
+
+## D057 — distinct diagnostic proposal, no new entry yet (2026-10-10)
+
+C090 safe normal push4f0e12c succeeded; anonymous exact94-file readback matches
+40 retained/added files and54 deletion404s. Draft PR19 exact HEAD is4f0e12c with
+no reported CI checks. Independent export APPROVE validates actual legacy
+ancestry, unchanged verified source/test bytes and minimized evidence. Prior
+intermediate candidates/raw task lookup remain local; no force/history rewrite.
+
+Fresh CO0.4.5 public capacity remains limit12, Claude0/0, Devin1/0; official
+Devin3000.11.3 auth/catalog verifies exact swe-2-high/Free, existing route only.
+This is current eligibility metadata, not a real model call or effective-model
+proof. Native local concurrency is4 including Root, not30 observed executions.
+
+Independent Astra confirms model hints cannot pass current original ending/
+durable replay gates. Root proposes PRI02-N3-DIAGNOSTIC/1 for one new original
+synthetic PRIMARY-only zero-effect modern-observation case. Scope authorizes
+local isolated operator preparation, fixtures and exact official Opus5.5 design
+review only. Actual invoke is NOT_RUN and waits for Root's reviewed exact-hash
+freeze after design disposition plus independent operator APPROVE. Existing
+N1/N2/CO UNKNOWNs remain untouched; old envelope cannot be reused. No real Expert,
+weaker profile, additional auth/cost/service or public/native UI entry is implied.
+
+
+D057 actual design disposition: official CO Opus5.5 planner/report completed with
+original init/result model IDs matching exactclaude-opus-5-5, tools0/success and
+report-shape verified:true. Raw report and anonymous input/model/hash receipt are
+retained. Verdict REFINE C1-C7 is adopted into the proposal, with expected strict
+UNKNOWN, strict-only semantic parsing, closed ordered diagnostic classification,
+exact bindings/pins, phased guards/extended original hashes, minimum public facts
+and context-level independence limitations. No actual entry/freeze yet.
+Independent operator review reproduces5 assertion failures: post-capacity error
+still marked transportPASS and4 malformed model records AVAILABLE. Source author
+repairs them in the private candidate; reviewer fixtures remain separate.
+
+
+## D058 — exact one-case diagnostic freeze (2026-10-10)
+
+Root applies D057 actual Opus C1-C7 disposition and independently APPROVED
+operator6d99dc0 after meaningful fake-bridge5 and genuine modernFalse duplicate
+probe. Root checked the exact operator/source/four pins/full-log and absent new
+case. PRI02-N3-DIAGNOSTIC-ROOT-FREEZE fixes PRIMARY-only synthetic nonce/MAX1,
+zero PAL effects, unchanged strict model gates and original UNKNOWN preservation.
+Expected outcome is UNKNOWN unless the original strict path unexpectedly passes.
+Actual case remains NOT_RUN until its real receipt. This is a distinct diagnostic,
+not a retry/release, guarantee change or general further-call permission. Respect
+actual access/tool/policy limits. Every later provider entry needs new reassessment.
+
+
+D058 actual C091 outcome: the separately frozen diagnostic used invoke1/entry1,
+zero PAL effects, exit1/20.708s, UNKNOWN/transport NOT_PROVEN/semantic NOT_RUN.
+Original completed/end_turn/EOF/owned exit0/tool0/permission0 and matching
+CONFIRMED stop are preserved, but effective model null/false still refuses.
+Model record INCOMPLETE/0 rows/0 hints does not prove absent metadata or identify
+the overflow boundary. Separate Astra23 receipt/hash/binding/source/stop/guard
+checks match; original N1/N2 inventory/absence and owned capacity baseline remain.
+No raw session/prompt reconstruction, semantic analysis, retry/pump/state edit or
+further native entry. The one-case allowance is consumed, and each further entry
+needs a new design reassessment. Continue independent local source/route analysis;
+whole goal NOT_MET, C090 source/full/mock UI proof unchanged.
+
+
+## D059 — prospective reason-only source and route reassessment (2026-10-10)
+
+Latest continuing necessary-parallel authority applies to the local bounded
+PRI02-MODEL-OVERFLOW/1 refinement. Original diagnostic/1 nine-key projections,
+all32/16/32/256/32768 limits and strict native/replay gates remain. Separate Sol
+fixed tests precede isolated Astra two-file source and separate Sol review;
+Root integrates/tests exact bytes. No retry/duplicate of the CO pure UNKNOWN.
+Marker source invalidates the envelope but authorizes no new real diagnostic.
+
+Read-only separate Sol feasibility plus actual version-only metadata confirms
+existing native Claude exact2.1.285 versus installed2.1.291, with no older binary
+present, and public model-evidence mapping unresolved. Ordinary task Opus5.5
+remains usable for a bounded checkpoint document review, not native qualification.
+Do not edit CO, install another binary, scrape private fields or weaken profile.
+Root requests checkpoint design assessment of actual N3/local marker/route limits;
+send evidence and recommended proper CO-owner scope to the designated human lane.
+Existing N1/N2/N3/CO UNKNOWNs, held baseline and qualification remain unchanged.
+Each further provider entry needs new reassessment; none is authorized here.
+
+
+D059 actual C092: exact separately authored Astra6ea9771 source has Sol independent
+APPROVE/native165 PASS1.560s; fixed14 original RED is retained unchanged. Root
+c6eb469 full983 PASS19.397s/exit0. Original969 methods remain, nine-key diagnostic/
+limits/native buffer and strict gates unchanged; new hashes invalidate the profile.
+Actual official Opus5.5 C091 report/7-input hashes and original init/result identity
+are retained; CO verified means report shape/listed files only. C1 adopted cheap
+prospective observability/no further entry; C2 corrected to no retained reason/
+UNKNOWN for absent/not_observed, never non-overflow proof, with fixed initial
+non-count cases added; C3 CO-owner dependency is confined to that CO native route
+and superseded as a universal stop by the latest D060 owner clarification.
+
+## D060 — CO is optional; model intelligence is not a quality gate (2026-10-10)
+
+Root freshly read the actual owner message in PAL人間判断 at06:34 JST:
+「開発にcoを使わないといけないという判断はしないでね 手段の一つなので」;
+the owner confirms conversation quality/intelligence is delegated to the model
+and asks whether dependent quality tests exist. This clarifies development means;
+it does not remove functional permission/budget/work/stop/save/replay guarantees,
+permit model mislabelling, new auth/cost/service or UNKNOWN retry/release.
+
+Independent currentc6eb469 audit (84 test modules/983 AST methods plus actual bodies)
+finds no conversational naturalness/style/intelligence grading or prose-quality
+release gate. VER semantic remains unknown; forged semantic met is rejected;
+exact strings are synthetic bytes/replay/display/transport contract fixtures.
+D031/D033 quality-testing stop remains. Root separately executed983 functional
+regression PASS, not a model-intelligence evaluation. Send this evidence to the
+existing designated human lane; canon remains Root-owned.
+
+Continue a distinct existing first-party Claude direct profile proposal with
+original CLI2.1.291 model-bearing frames/request/owned EOF/wait and all managed
+PAL consumers. CO's native2.1.285/public seam is one route's limit, not a product
+prerequisite. No CO edits or alternate CO engine. Current Devin profile remains
+strict; do not convert old evidence or unknowns to Claude, or call a requested
+model an observed one. Proposal/source preparation is not qualification or entry.
+
+## D061 — distinct direct-Claude source contract (2026-10-10)
+
+Root freezes PRI02-CLAUDE-DIRECT/1 for the existing official CLI2.1.291 and exact
+pal-claude-print-text/1 + claude-opus-5-5, independently of CO. Existing concrete
+typed native values, strict Devin branch and managed permission/source/control/
+budget/entry/save/replay/UNKNOWN boundaries remain. One direct-route owned max1
+lane retains an unknown active record across restart; no automatic root rotation,
+refund, old-call conversion or unqualified production adoption.
+
+Read-only actual metadata under approved existing keychain access reports logged
+in/claude.ai/firstParty/pro. Sandbox-only metadata was unavailable; it does not
+prove missing account. No auth or charge change. Original completed task stream
+shows two assistant frames sharing message/request IDs, null assistant stop reason,
+final end_turn/completed, unused advertised skills/plugins and all-zero subagent
+execution counters. Freeze the actual vocabulary instead of treating advertisement
+as use. This is source feasibility, not a new provider qualification.
+
+Separate Sol owns fixed local fixtures first; Astra owns closed collector/value/
+consumer source, separate Sol owns external wrapper. Disjoint isolated writes and
+independent cross-author review precede Root integration/full verification. Scope
+authorizes no generation or actual qualification. No prose-quality test. Whole
+goal NOT_MET; later real entry needs distinct exact design/operator freeze.
+
+## D062 — C093 Opus disposition before direct source (2026-10-10)
+
+Official CO0.4.5 exact Opus5.5 planner/report completed at contract3f69337.
+Original init/result IDs and all4 input hashes agree; report bytes match original
+returned envelope. CO verified report shape/5 listed files only. Root retains the
+raw REFINE report and anonymous receipt, not a source or product acceptance.
+
+Root adopts meaningful S1/S3-S8 corrections: typed true pre-entry refusal via
+existing owners (no new refund), explicit bytes/block rules, recomputable fixed
+placeholder argv, official resolved target recheck,17-file first-party import
+closure, and immutable provider/derived attempt identity. S2 closed post-active
+failure hold is adopted; saved-ending/release crash remains held with no automatic
+recovery/adoption. Fresh original report elapsed208925ms informs finite300s source
+deadline. Rate observation remains retrospective; pro-only and actual pre-entry
+extra-usage evidence remain entry gates. No actual generation/qualification here.
+
+Root caught pre-implementation fixture errors: ambiguous tick delta spelling,
+constructor negatives stopping at helper TypeError, and a clock accelerating
+metadata before entry. Separate author preserves originalRED and repairs actual
+API reach/estimated_tokens_delta/entry-only clock plus real child reaping checks.
+Current source freeze refinements have new fixed tests before implementation;
+no source was released under incorrect fixtures. Stop relying on helper exceptions
+as production negative proof; compile generated child and inspect API reach.
+Independent cross-author source reviews and Root full remain required. Whole
+goal NOT_MET, original unknowns/state unchanged, CO optional and no prose grading.
+
+## D063 — C093 direct source integrated and independently verified (2026-10-10)
+
+Root9ffa093 integrates exact Astra core8d2f580 and Sol wrappera98bbb4 with separate
+source reviews. Sol's core review covers11 pure/10 consumer/166 related/2 extra
+cases; Astra's wrapper review covers fixed9 and owned-child failure probes. Root
+full1013 PASS29.866s/exit0 retains all94 prior test/fixture bytes and983 methods,
+plus30 new functional methods. Exact source/log hashes are in C093 verification.
+The fixed-test author reviewed a different source author; that relationship is
+disclosed. Wrapper authorship is not counted as its independent source review.
+
+Additional fixture corrections preserved original failures and criteria: choose
+the Claude profile before first durable session enrollment; use the public
+recover-turns/startup lifecycle; expect the resolved official executable; inspect
+submitted Popen environment rather than macOS-injected child environment. Do not
+change production migration or broaden environment to satisfy a fixture defect.
+
+Independent actual inert-child probes found three lifecycle defects: TERM ended
+the leader before descendant KILL, metadata signaled a reaped PID, and pump reaped
+before protocol refusal. Darwin could also deny a signal to an exited-only group
+and skip wait. Repair uses actually supported WNOWAIT to retain owned PID until
+last disposition, refuses ECHILD signal authority, and bounded-waits in finally
+even if a group signal fails. Original REDs and repaired exact probes are retained.
+Prevention: verify descendant cessation, no post-reap signals and owned reap on
+signal failure; do not treat provider9 PASS alone as that lifecycle proof.
+
+Separate export audit APPROVE verifies17 changed source/test/contract/evidence
+files at9ffa093, minimized public provenance, prior exact Opus input/report hashes,
+retained tests and safe ancestry. Private account/operator/raw stream records
+stay local. No new generation, qualification or native activation is authorized
+by this source checkpoint. Private operator independent faults are under repair;
+another exact Root design/operator freeze precedes any real MAX1. Whole goal
+NOT_MET; original unknowns unchanged, CO optional and mock remains default.
+
+## D064 — separately reviewed direct PRIMARY MAX1 (2026-10-10)
+
+C093 exact source/full/independent approvals support the distinct existing
+first-party direct candidate. The C093 Opus S1-S8/L1-L5 design dispositions remain;
+CO-native model/version limitations are not a universal product prerequisite.
+The private operator's independent5 fault subcases exposed false NeverEntered,
+saved capture/raw substitution and hook/ending tuple mismatch. The author repairs
+them without changing production gates, and separate Astra approves exact
+operator67e1261 with8 fake cases plus5 independent subcases. Retain original REDs.
+Prevention: compare original saved evidence and entry/raw bindings before PASS or
+functional output parsing; an exception type alone is not pre-entry proof.
+
+Root adopts [PRI02-CLAUDE-QUALIFICATION/1](docs/design/contracts-v5/PRI02-CLAUDE-QUALIFICATION-ROOT-FREEZE.md).
+It permits one exact new synthetic PRIMARY-only invoke/entry after Root privately
+freezes final source/operator/binary/17-file pin, permanent case, full old inventories
+and fresh same-account extra-usage-disabled evidence. No DB/effects, Expert or UI
+entry is included. Expected nonce/none output is functional correlation, not prose
+grading. Actual outcome remains NOT_RUN until its original receipt; no fallback,
+old unknown action, state edit, root rotation or second entry is implied.
+
+Actual existing first-party metadata is pro/claude.ai/loggedIn. Browser profile
+email matches CLI locally, and prior usage view shows credit use OFF. No setting
+or credential was changed. Automatic review rejected clipboard restoration/read
+and overwrite variants because they could touch unrelated clipboard data; Root
+instead compared the visible profile email without clipboard access. Fresh usage
+evidence is still checked immediately before the private exact launch freeze.
+Whole goal NOT_MET; mock default and original UNKNOWNs remain unchanged.
+
+## D065 — C094 direct allowance consumed UNKNOWN (2026-10-10)
+
+The exact D064 private freeze used source8bee45b, operator67e1261 and the17-file
+pin05b71d2. One invoke/entry produced four complete original frames, stdout4943
+bytes, stderr0, no PAL effects and exit1. Exactclaude-opus-5-5 is observed in the
+original init/assistant/modelUsage key; CLI2.1.291, tools/MCP/permissions/subagents0
+and no-overage/org-level-disabled are observed. Prior same-account credit-OFF
+proof is retained. No new authentication or billing setting was enabled.
+
+The outcome remains UNKNOWN/NOT_PROVEN/semantic NOT_RUN: active held, no accepted
+ending/capture and no retained owned EOF/wait receipt. Independent Astra recomputes
+33 matching source/freeze/pin/request/entry/old-inventory checks. All old N1/N2/N3
+files and absent paths are unchanged. Never synthesize ending/exit0 from a model
+result frame or convert these observed IDs into qualification/output adoption.
+The allowance is consumed; no second call, rotation, old unknown action or release.
+
+Feed-only reproduction confirms that the numeric-all-values collector rejects
+the string canonicalModel/provider/costBasis metadata. Original C093 planner and
+report streams already contain the same12-key types, with hashes in the minimized
+C094 receipt. Root's contract/valid fixture omission made this avoidable. This is
+not evidence of a newly changed server shape or missing model ACK. The original
+detailed exception trace is absent, so the unique runtime/cleanup cause is not
+asserted. Preserve raw records privately and send evidence/recommended proper
+held-lane disposition to the designated human-decision lane. Independent source
+and fixture work continues; real activation/recovery remains a separate boundary.
+
+## D066 — explicit observed usage schema, source-only correction (2026-10-10)
+
+Root freezes PRI02-CLAUDE-USAGE/1. Closed12-key typed metadata strengthens the
+actual-shape contract: exact canonicalModel/provider/costBasis strings, positive
+integer input/output/context/max counters, nonnegative integer cache/thinking,
+zero integer web searches and finite nonnegative costUSD excluding bool.
+Cost metadata is informational list-price usage, not an actual new-charge claim.
+All request/model/ordering/caps/owned ending/save/UNKNOWN/replay criteria remain.
+
+Separate Sol changes only the synthetic valid usage helper and adds6 fixed
+methods before Astra changes only the pure collector usage block. Preserve all
+old30 method expectations and94 pre-direct file bytes; retain original fixture
+bytes and RED in Git. Independent Sol reviews the different author's source;
+Root integrates/tests exact bytes. The source hash invalidates the old pin and
+does not convert any old receipt to PASS. No actual invoke/release is authorized.
+
+Prevention is proportional: enumerate every qualification-bearing field name and
+type from available original version-bound streams before freezing a valid
+synthetic shape; do not stop at top-level modelUsage keys. Record this check in
+the correction evidence and apply it to the next profile/operator freeze. Keep
+mock default, CO optional, no prose-quality/intelligence scoring, no new service,
+auth or fee, and whole goal NOT_MET.
+
+D066 actual C095: separately authored Astra76a8d5c modifies only the usage block;
+independent Sol approves exact source8939d18 after36 PASS10.160s/exit0. The reviewer's
+fixed-test authorship is disclosed and the source author is a separate context.
+Root67c93db integrates fixeda8cd and source76a8 with unchanged frozen hashes.
+Full1019 PASS29.885s/exit0 preserves1013 existing expectations plus6;97 of98 previous
+test/fixture files remain byte-equal, with only the explicitly corrected valid
+usage helper changed. Source/pair bytes and three original log hashes are checked
+in C095 verification. No further provider entry or original receipt adoption.
+
+The first restricted full run1019/errors18/exit1 is retained. All18 observed errors
+are socket.bind PermissionErrors. Re-run in approved local loopback/inert-child
+scope passes the same bytes/criteria without changing or skipping tests. Use that
+known required verification scope for the next HTTP full run; do not repeat a
+known blocked bind or change product code to satisfy sandbox restrictions.
+
+## D067 — native-owner HTTP slice with fixture-only admission (2026-10-10)
+
+Root freezes UI02-NATIVE-FIXTURE/1 against current67c93db source. It composes the
+same explicit provider instance into NativePrimaryHost and NativeExpertRunner,
+with finite constructor scope/limits, fresh private DB, separate control/read
+connections and strict committed-turn progression. Exact fixture_only True
+excludes official real-provider wrappers; startup/poll/read cannot enter. Held/
+unavailable responses stop queued progression and do not release/refund UNKNOWN.
+Bounded close retains the native DB; guard closure is not native cessation.
+Changed profiles/markers cannot prevent core controls/ART reads, and cannot
+justify a mock/proxy downgrade. Mock stays default and native qualification NOT_RUN.
+
+Separate Astra fixes10 new methods plus a typed synthetic helper before separate
+Sol writes only the native app/minimal HTTP/web files. Existing tests/owners/
+wrappers remain unchanged. Separate Astra reviews that different author's source,
+disclosing its test authorship; Root owns contract/canon/integration/full/browser
+evidence. No actual entry/root rotation/C094 recovery, old DB, auth/fee/service or
+qualified launch is included. A later authentic operator must additionally bind
+the HTTP/UI/admission/queue bytes and proper transport/lane disposition.
+
+Fresh supported CO0.4.5 VERSION/decide help/capacity confirms limit12 per adapter,
+Claude executing0/reserved0, Devin executing1/reserved0 (preserved held baseline).
+Ordinary concurrent runs are supported by the installed co-task contract, while
+the local native agent maximum4 includes Root. No30-execution or known free-quota
+claim is made. No CO state/runtime/route change or cost enabling follows.
+
+## D068 — C096 current native-owner fixture UI accepted locally (2026-10-10)
+
+Separate Sol source5dc3706 has independent Astra REQUEST_CHANGES:10 new/19 old
+HTTP tests passed but known-status-only checks accepted malformed owner envelopes.
+Original empty+extra and released-without-details stayed idle; malformed committed
+scheduled Expert. Source-only ef918b7 repair validates actual closed Primary/Expert
+shapes before progression. Independent Astra APPROVE includes unchanged fixed10
+PASS10.579s/old19 PASS10.271s and all3 original probes held, malformed Primary
+Expert dispatch0. Reviewer's fixed-test authorship and separate source author
+are disclosed. Minimum prevention: review complete boundary envelopes, including
+malformed trusted-owner shapes, before status-based work progression.
+
+Root20d512a integrates exact source and reviews hashes/logs. Full1029 PASS40.369s/
+exit0 preserves all99 C095 test/fixture files; only new10 methods and their helper
+are added. Only four native HTTP/web source files differ from C095; all core
+owners/wrappers/17-file transport closure stay byte-equal. Qualification pins
+therefore do not acquire UI/whole-flow coverage.
+
+Root actual loopback browser verifies current native owners using an explicitly
+marked synthetic provider: question, answer record/question binding, same-work
+completed state, one saved artifact, literal script-like text and no console
+errors. Final owned server exits0, app close succeeds and DB remains private.
+Four fixture invokes are not four actual model calls. No naturalness/prose/
+intelligence assessment or qualification is implied.
+
+Root's first finalizer incorrectly guessed TaskStore.list_works, which does not
+exist. Browser output was observed, but operator exit1 before app close prevents
+using it as a completed teardown proof. Original operator/receipt/DB are retained.
+The corrected fresh-fixture operator uses the same public list_candidates request
+as HTTP, with identical criteria and source, and ends exit0. This repeats the API
+name assumption already caught in the fixed-test reach correction; the prevention
+had not yet been applied to this ad-hoc operator. Apply the same source/API-name,
+request-shape and response-projection check to operator finalizers before launch,
+and use guaranteed finally closure without masking failed assertion/exit status.
+No test expectation or product source was changed to absorb the operator error.
+
+AGY1.3.2 metadata once succeeds through properly scoped automatic review of its
+existing diagnostic/localhost requirements; catalog lists exact Opus5.5 high.
+No new auth/setup/generation or billing setting changes. Quota/extra fees are
+not reported and remain unverified; metadata does not authorize a charge or
+establish NativeReturned compatibility. Actual underlying access/tool refusals
+remain binding. Original C094/CO/Devin unknowns and no-rotation/no-second-entry
+remain; no output adoption/release. Next milestone design consultation and
+prospective failure observability preparation continue. Whole goal NOT_MET.
+
+## D069 — prospective failure observation proposal for design review (2026-10-10)
+
+[PRI02-CLAUDE-FAILURE/1](docs/design/contracts-v5/PRI02-CLAUDE-FAILURE-SCOPE.md)
+is PROPOSED, not an implementation assignment or provider allowance. Separate
+Astra reads current public owners/wrapper and confirms no supported recovery path
+for the missing original owned observations. Lack of a public recovery path does
+not prove all possible original records absent. C094 stays UNKNOWN/active held.
+
+The minimum future source proposal separates the original exception from local
+cleanup success/failure in a bounded private diagnostic; its best-effort write
+cannot change return/raise/release/strict ending behavior. No message/absolute
+path/private input is serialized. Null observations remain unknown. Root submits
+current C096 connection and this minimum proposal to the existing exact Opus5.5
+design route before freezing new tests/source. Original no-second-entry/rotation
+and extra-cost/auth/service boundaries remain. A concrete old-UNKNOWN/new-MAX1
+human decision is prepared independently after the design/operator evidence;
+no call or irreversible action is implied by the proposal.
+
+## D070 — actual C096 Opus review; minimum prospective failure scope frozen (2026-10-10)
+
+Ordinary CO0.4.5 task dbf5d54b38a64e56959f7ae5ec6507ac completes exit0/verified:true
+at6170c26, strictly REPORT_SHAPE_ONLY. Root verifies all8 supplied inputs equal
+their exact base bytes and the report SHA14bdfa4. Original init/result frames
+identify Claude2.1.291 and exact claude-opus-5-5 in both planner9.083s and report
+142.983s, tools/MCP/permissions0 and no-overage/org-disabled. Current fresh same
+account Pro/credit-OFF evidence preceded launch; no setting/auth/service changed.
+Ordinary supported task records are written by CO itself; no state/runtime manual
+edit or old UNKNOWN operation occurred. [Report](docs/reviews/C096-NATIVE-UI-FAILURE-DESIGN-OPUS.md),
+[minimized receipt](evidence/operations/c096-native-ui-20261010/opus-design-summary.json).
+
+Verdict REFINE, current UI design aligned without source-blocking finding.
+U1 held resume/structured-answer503 before durable admission and U3 retained
+startup-refusal DB without returned object/path are clarified in UI02 scope.
+U2 trusted fixture marker is no attestation and cannot become a real launcher
+gate; actual whole-flow operator remains separate. U4 current C05 release returns
+control_status none; a bounded independent trace of existing concurrent-control
+cases checks the actual shape. U5 Root's four reviewed/integrated UI source hashes
+already match in verification.json. No UI source or fixed test changes follow.
+
+Root adopts P1-P10 in PRI02-CLAUDE-FAILURE/1 before source writers: preserve exact
+existing public outcomes; cleanup once only with child; one suppressed diagnostic
+attempt after cleanup; local phase including close_streams; finite exact exception
+type membership; only last8 exact pinned-file traceback sites, no message/context/
+absolute path/private value; cleanup outcome is local, sometimes stream-close
+only; nullable returned pump WNOWAIT/EOF observations; completed-write flags;
+existing exclusive0600/fsync write with4096 cap and no overwrite/truncation.
+Eight fixed methods include non-Exception object identity, masked pump/close
+failure, four private canary sources and post-wait/write failures. `_pump`, owner
+engines, all old tests and old cases stay unchanged. Root source pin changes when
+the wrapper changes; no old pin/receipt rebinding follows.
+
+Separate Sol fixed-test author precedes separate Sol wrapper source author;
+independent Astra source review and Root full verification complete only this
+source slice. This supersedes D069's PROPOSED source status, while its prohibition
+on actual entry and old UNKNOWN operations continues. B1/B2/B4/B5/B6 remain real
+entry/whole-goal blockers: no C094 recovery, distinct MAX1/new root needs a concrete
+separate human decision, no accepted real ending/qualified launcher/authentic
+usefulness/release. No prose/intelligence grading or additional cost is introduced.
+
+C096 exact6170c26 is normally pushed to existing Draft PR19 and independently
+read back anonymously36/36 HTTP200/equal hashes, image included. CI checks are
+not reported, Draft remains open, no merge/deploy/visibility change. Root source
+20d512a/1029 PASS40.369s remains current proof because this checkpoint is docs-only.
+
+D070 pre-source phase clarification: fixed author reports the final successful
+handles-close phase would overwrite a feed/pump fault phase under literal wording.
+Root explicitly chooses the operation whose exception escapes, restoring the
+prior phase after successful close. Pump error remains pump; masking close error
+is close_streams, with unavailable pump observations null. This resolves the
+shared prerequisite before writers; fixed8 expectations remain unchanged.
+Separate Astra's U4 one-method/three-subcase trace now PASS1.570s/exit0: pause,
+cancel/source-stop return released with states paused/cancelled/queued and
+control_status none; _hold call0. Original results are unchanged by the observer.
+U4 is a clarification, not an incidental held latch or further source repair.
+
+## D071 — C097 prospective failure source independently verified (2026-10-10)
+
+Latest direct owner instruction continues necessary parallel development.
+Separate Solfeaddb1 changes only the Claude wrapper; separate Sold07a631 corrects
+the new fixed fixtures. Independent Astra approves exact wrapper SHAd7b63a2 and
+test SHAbbafd44 after corrected8 PASS8.354s/exit0, old provider9 PASS9.874s/exit0
+and two independent probes. Root679f267 full1037 PASS46.933s/exit0 preserves all101
+C096 test/fixture files and the other16 native qualification paths byte-equal.
+[Actual verification](evidence/operations/c097-private-failure-20261010/verification.json).
+
+Original fixed source RED8/20failures and candidate original-fixture RED8/7failures
+remain. Six failures assumed an exited-only Darwin group's cleanup succeeded,
+although existing cleanup raises EPERM while still reaping/closing; one assumed
+bad_protocol reached finish/RuntimeError, although original feed rejects it with
+ValueError. The unchanged production helpers expose these facts accurately.
+The separate fixture correction uses bounded owned EOF/wait/stream-close for
+deterministic success, retains explicit EPERM failure, and omits final result to
+reach original finish/ValueError. Correction remains old-source RED8/20failures,
+and independent review finds no contract or acceptance weakening.
+Minimum prevention: construct and observe the intended operation's result before
+freezing its phase; distinguish platform-dependent signal outcomes from explicit
+success fixtures. Keep the actual cleanup-outcome independent probe and verify
+the earliest parser rejection site. Preserve the original logs, not only GREEN.
+
+The new failure.json is private/bounded/best effort and cannot qualify an ending,
+release UNKNOWN or prove remote cessation. Public outcomes/one-cleanup/active,
+strict acceptance, pump/cleanup helpers and old tests are unchanged. Root's real
+old inventories compare equal (7/9/12/13 files), C094 active remains held, and this
+source verification enters zero real providers. New wrapper invalidates the old
+17-file pin. UI source is unchanged; its previous local fixture/browser proof
+remains, without a redundant browser run. Real whole-flow usefulness, qualified
+Primary/Expert/UI and release remain NOT_MET. No conversation quality grading.
+
+## D072 — minimum v3 qualification-operator preparation only (2026-10-10)
+
+Read-only current-source audit runs the existing eight fake operator cases once:
+PASS8/1.462s/exit0, preserving operator67e1261 and fake83c4052. It finds three
+concrete preparation gaps: exact original inventory keys omit the now-existing
+C094; a new case inside an old root is created before later mutation detection;
+expiry and fresh usage evidence are checked only before preparation. The nested
+case is reproduced with synthetic entry0/provider0, never an actual old case.
+These are local operator deficiencies, not evidence of safe old-call cessation.
+
+Root freezes [PRI02-CLAUDE-QUALIFICATION/2 preparation](docs/design/contracts-v5/PRI02-CLAUDE-QUALIFICATION-V3-PREPARATION.md).
+Only new private operator/test copies may change: exact four original inventories,
+resolved case/root overlap rejection before mkdir/import, hook-time expiry/fresh
+private proof/hash recheck before entry record, and failure.json as conservative
+entry evidence. All existing seventeen-path/model/binary/request/pair/raw/ending,
+typed refusal/MAX1 and qualification gates remain. Never promote diagnostics.
+
+Separate Sol fixed4 SHA227c810 precedes source author write release. Actual old
+operator RED4/9failures/1error/0.245s/exit1 is retained; the error is its refusal
+of a valid four-inventory input. To reach later guards only, baseline tests use
+the old accepted version1 envelope and an isolated synthetic inventory validator;
+the exact four-key API is tested without that patch. Candidate requires version2.
+Separate Sol owns new operator source; separate Astra reviews exact bytes and
+Root verifies results/old inventories before marking preparation complete.
+
+This scope creates no real attempt root, generation allowance, old UNKNOWN
+disposition, output adoption or release. D065/D070's consumed/no-rotation boundary
+continues. A concrete evidence-backed decision goes to the designated existing
+PAL human-decision chat after preparation; private material sharing itself is
+already authorized and is not asked again. Existing approved independent work
+continues; CO remains optional and no new auth/service/cost is included.
+
+## D073 — exact v3 preparation approved; distinct allowance pending human (2026-10-10)
+
+Separate Sol's new private operator SHA07c7d4f has only the minimum18-added/
+8-removed guard lines. Fixed227c810 and old67e1261/83c4052 bytes remain. Separate
+Astra APPROVE preparation-only executes fixed4 PASS0.249s, old unchanged8
+PASS1.473s and independent fault2 PASS0.057s, all exit0; source17 matches Root679f267.
+Root reads the diff and original logs, recomputes all review/log hashes, confirms
+source17/binary hashes, and executes only the read-only original inventory guard
+against actual N1/N2/N3/C094 metadata. All file/hash/tuple/absence bindings match
+counts7/9/12/13, C094 stays active, and no real CLI or new attempt root is used.
+[Preparation evidence](evidence/operations/c097-private-failure-20261010/operator-preparation-summary.json).
+
+The controlled overlap and missing-fourth-inventory deficiencies are repaired
+only in a new private copy. Prevention is now exercised by explicit pre-mkdir
+overlap refusal, fourth-inventory hook mutation and private-proof/time refusal
+tests; retained RED demonstrates the former holes. Do not call a hash/map PASS
+provider qualification, charge proof or extra available quota.
+
+Root prepares [one concrete disposition](docs/reviews/C097-HELD-LANE-DISPOSITION-PROPOSAL.md)
+for the existing PAL human-decision lane: preserve C094 and all originals held
+and unadopted, and explicitly choose whether to allow a distinct independent
+PRIMARY-only synthetic MAX1. Alternative is no further actual qualification.
+An actual new allowance requires the human choice plus final unchanged exact
+source/operator/17-file pin/binary/full-four-inventory/fresh same-account credit-
+OFF evidence and expiry. The private preparation plan is nonexecuting:
+approved_max1:false, invokes permitted0, no case created, no fresh proof/expiry
+pretended. No source/testing/publication work depends on that choice.
+
+This required disposition arises from D065/D070's consumed MAX1/held/no-rotation
+condition and missing original ending, not private status or unconfirmed Opus
+telemetry. Earlier private material/AGY authorizations continue. No old retry,
+forced release, model-result reconstruction, new auth/service/cost or product
+acceptance weakening is proposed. Whole goal remains NOT_MET; actual Primary
+qualification, Expert/UI, authentic usefulness and release evidence still remain.
+
+C097 exact1d632c3 is normally pushed to the existing Draft PR19 after a separate
+export APP of all17 files/unsafe6 ancestor exclusion/source-test equality. The
+same independent context then reads back anonymously17/17 HTTP200/equal SHA,
+each GET once/max4 parallel/no credentials or retries. Public receipt SHA
+db1182ecd137eca5a4940a1852f5df86984ac4a7b99e742df921cf5a7d51315a.
+The existing PR title/body reflect1037/local-versus-real and pending human
+disposition. No reported CI checks, merge, deployment, visibility change or new
+actual entry follows. This recording changes metadata only; source679f267 proof
+and C094 held remain unchanged.
+
+## D074 — owner choice received; project ordering remains dependency-led (2026-10-11)
+
+Root adopts the owner's explicit prior `max1` reply and subsequent clarification:
+the proposed C097 separate synthetic PRIMARY-only MAX1 is an **answered owner
+choice**, conditional on unchanged pre-entry proof. C094 and N1/N2/N3 remain held
+UNKNOWN; no existing active record, raw output or old receipts may be retired,
+replayed, released or reconstructed. No additional auth, service or charge is
+permitted. Source/operator/binary/hash/old-inventory closure, exclusive case,
+current credit-OFF/automatic-reload-OFF proof and <=300s freshness remain
+mandatory at actual invocation; absent proof refuses entry. A local or CO setup
+model call is never a PAL qualification.
+
+The owner expressly rejects treating MAX1 history as the sole development
+priority. Root shall choose the shortest dependency-correct route to genuine
+Primary/Expert/UI and saved/verified user work, retain independent Opus reviews
+and SWE-2 High implementation, and preserve all actual PASS/UNKNOWN distinctions.
+The approval is at most one **new** synthetic qualifying invocation, not a
+general continuous provider allowance. Recorded in PR19 issuecomment-6099779022.
+No real new case, invoke, release or product acceptance is claimed by D074.
+
+## D075 — scoped EXE02 source acceptance (2026-10-11)
+
+Root adopts only isolated EXE02 source/test files, after independent Opus
+security review and source/test confirmation that its two remaining P1
+conditions were repaired. The source is standard-library-only, externally
+inert unless explicitly invoked with a trusted runner; the current PAL
+Primary/Expert/UI does not call this leaf. Root full1103 tests pass at
+50d00a9, preserving prior1037. The Opus HOLD is recorded as its original
+review verdict with conditions subsequently proved by local tests; it is not
+an unqualified release approval. Evidence: c110-exe02-read-20261011.
+
+Next dependency is EXE01's concrete TSK-bound authorization, operation
+reservation/receipt and honest unknown handling, then owner/Expert wiring.
+A separate SWE-2 High candidate for EXE01 exists but cannot be integrated
+until independent P1 finalization findings and full tests are resolved.
+C094 and all other original UNKNOWNs remain held, MAX1/real provider
+approval is separate and finite, and real useful product acceptance
+remains NOT_MET. No additional cost/auth/service or old-call operations.
+
+## D076 — existing-asset checkpoint cycles without a new Controller (2026-10-11)
+
+Use GitHub Project #1/Milestones/Issues, CO/Opus and existing unittest
+and mock demos as checkpoint infrastructure, not a new bespoke evaluator.
+First cycle at6594585 passed1103 tests/0 skips and3 local demos, showing
+there was no PR-triggered CI. The minimum 51-line workflow was added
+at2e0fedb and independently approved source-only by Opus5.5.
+Second cycle GitHub Actions run38089797768 completed SUCCESS with
+1103 discovered/1101 executed PASS/2 optional installed-CO skips;
+the locally installed CO path was covered by the first cycle.
+All three mock E2E demos passed in both cycles.
+
+Workflow green is not release acceptance: genuine native provider/UI,
+human usefulness, and Stable-1/overall PAL remain NOT_MET. This does
+not make an always-on issue-to-issue development Controller, adopt
+PROPOSED stages, or grant new cost/auth/provider/unknown-call authority.
+[Checkpoint evidence](evidence/operations/c111-checkpoint-two-cycle-20261011/verification.json).

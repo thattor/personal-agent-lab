@@ -1,0 +1,15 @@
+test_all_invalidation_causes_retain_history_and_deny_other_purposes (test_verification_read_v5.VerificationReadTests.test_all_invalidation_causes_retain_history_and_deny_other_purposes) ... ok
+test_changed_read_time_excluded_from_body_hash (test_verification_read_v5.VerificationReadTests.test_changed_read_time_excluded_from_body_hash) ... ok
+test_clock_commit_limit_and_interrupt_cleanup (test_verification_read_v5.VerificationReadTests.test_clock_commit_limit_and_interrupt_cleanup) ... ok
+test_closed_requests_purpose_kind_and_missing_identity (test_verification_read_v5.VerificationReadTests.test_closed_requests_purpose_kind_and_missing_identity) ... ok
+test_default_clock_and_invalid_utc_values (test_verification_read_v5.VerificationReadTests.test_default_clock_and_invalid_utc_values) ... ok
+test_exact_historical_projection_utf8_hash_and_ordinary_readonly (test_verification_read_v5.VerificationReadTests.test_exact_historical_projection_utf8_hash_and_ordinary_readonly) ... ok
+test_mutating_clock_rejects_with_unchanged_durable_dump (test_verification_read_v5.VerificationReadTests.test_mutating_clock_rejects_with_unchanged_durable_dump) ... ok
+test_reopen_into_second_inmemory_connection_preserves_projection (test_verification_read_v5.VerificationReadTests.test_reopen_into_second_inmemory_connection_preserves_projection) ... ok
+test_uncertain_or_corrupt_owner_evidence_is_error (test_verification_read_v5.VerificationReadTests.test_uncertain_or_corrupt_owner_evidence_is_error) ... ok
+test_unknown_checks_still_usable_and_epoch_only_history_is_not_met_claim (test_verification_read_v5.VerificationReadTests.test_unknown_checks_still_usable_and_epoch_only_history_is_not_met_claim) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.023s
+
+OK

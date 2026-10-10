@@ -1,0 +1,266 @@
+test_artifact_epoch_cannot_change_after_its_immutable_snapshot (test_verification_integrity_v5.VerificationIntegrityTests.test_artifact_epoch_cannot_change_after_its_immutable_snapshot) ... FAIL
+test_empty_conditions_and_forged_checks_in_storage_fail_even_historical_replay (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_conditions_and_forged_checks_in_storage_fail_even_historical_replay) ... 
+  test_empty_conditions_and_forged_checks_in_storage_fail_even_historical_replay (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_conditions_and_forged_checks_in_storage_fail_even_historical_replay) (corruption='empty') ... FAIL
+  test_empty_conditions_and_forged_checks_in_storage_fail_even_historical_replay (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_conditions_and_forged_checks_in_storage_fail_even_historical_replay) (corruption='required_empty') ... FAIL
+test_empty_or_duplicate_owner_context_is_unavailable_without_saving (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_or_duplicate_owner_context_is_unavailable_without_saving) ... 
+  test_empty_or_duplicate_owner_context_is_unavailable_without_saving (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_or_duplicate_owner_context_is_unavailable_without_saving) (change={'conditions': []}) ... FAIL
+  test_empty_or_duplicate_owner_context_is_unavailable_without_saving (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_or_duplicate_owner_context_is_unavailable_without_saving) (change={'source_refs': []}) ... FAIL
+  test_empty_or_duplicate_owner_context_is_unavailable_without_saving (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_or_duplicate_owner_context_is_unavailable_without_saving) (change={'source_refs': [{'kind': 'record', 'id': 'required'}, {'kind': 'record', 'id': 'unselected'}, {'kind': 'record', 'id': 'required'}, {'kind': 'record', 'id': 'unselected'}]}) ... FAIL
+  test_empty_or_duplicate_owner_context_is_unavailable_without_saving (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_or_duplicate_owner_context_is_unavailable_without_saving) (change={'artifact_refs': [{'kind': 'artifact', 'id': 'a1'}, {'kind': 'artifact', 'id': 'a2'}, {'kind': 'artifact', 'id': 'a1'}, {'kind': 'artifact', 'id': 'a2'}]}) ... FAIL
+test_id_factory_transaction_replacement_is_detected_before_verification_writes (test_verification_integrity_v5.VerificationIntegrityTests.test_id_factory_transaction_replacement_is_detected_before_verification_writes) ... FAIL
+test_impossible_same_revision_context_changes_are_not_legitimate_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_impossible_same_revision_context_changes_are_not_legitimate_invalidation) ... 
+  test_impossible_same_revision_context_changes_are_not_legitimate_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_impossible_same_revision_context_changes_are_not_legitimate_invalidation) (change={'conditions': [{'id': 'saved', 'description': 'changed', 'check': 'artifact_saved'}, {'id': 'meaning', 'description': 'Meaning fits', 'check': 'semantic'}, {'id': 'fetched', 'description': 'Fetched', 'check': 'source_fetched'}]}) ... FAIL
+  test_impossible_same_revision_context_changes_are_not_legitimate_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_impossible_same_revision_context_changes_are_not_legitimate_invalidation) (change={'source_refs': [{'kind': 'record', 'id': 'required'}, {'kind': 'record', 'id': 'unselected'}]}) ... FAIL
+  test_impossible_same_revision_context_changes_are_not_legitimate_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_impossible_same_revision_context_changes_are_not_legitimate_invalidation) (change={'artifact_refs': [{'kind': 'artifact', 'id': 'a1'}]}) ... FAIL
+  test_impossible_same_revision_context_changes_are_not_legitimate_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_impossible_same_revision_context_changes_are_not_legitimate_invalidation) (change={'artifact_refs': [{'kind': 'artifact', 'id': 'a2'}, {'kind': 'artifact', 'id': 'a1'}]}) ... FAIL
+  test_impossible_same_revision_context_changes_are_not_legitimate_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_impossible_same_revision_context_changes_are_not_legitimate_invalidation) (change={'artifact_refs': [{'kind': 'artifact', 'id': 'a2'}, {'kind': 'artifact', 'id': 'a1'}, {'kind': 'artifact', 'id': 'later'}]}) ... FAIL
+  test_impossible_same_revision_context_changes_are_not_legitimate_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_impossible_same_revision_context_changes_are_not_legitimate_invalidation) (change={'work_ref': {'goal_id': 'g', 'revision': 1, 'epoch': 3}}) ... FAIL
+test_missing_artifact_provenance_and_oversized_metadata_are_unavailable (test_verification_integrity_v5.VerificationIntegrityTests.test_missing_artifact_provenance_and_oversized_metadata_are_unavailable) ... 
+  test_missing_artifact_provenance_and_oversized_metadata_are_unavailable (test_verification_integrity_v5.VerificationIntegrityTests.test_missing_artifact_provenance_and_oversized_metadata_are_unavailable) (change={'source_refs': []}) ... FAIL
+  test_missing_artifact_provenance_and_oversized_metadata_are_unavailable (test_verification_integrity_v5.VerificationIntegrityTests.test_missing_artifact_provenance_and_oversized_metadata_are_unavailable) (change={'source_refs': [{'kind': 'record', 'id': 'required'}, {'kind': 'record', 'id': 'unselected'}, {'kind': 'record', 'id': 'required'}, {'kind': 'record', 'id': 'unselected'}]}) ... FAIL
+  test_missing_artifact_provenance_and_oversized_metadata_are_unavailable (test_verification_integrity_v5.VerificationIntegrityTests.test_missing_artifact_provenance_and_oversized_metadata_are_unavailable) (change={'bytes': 1048577}) ... FAIL
+test_uncertain_owner_errors_do_not_create_successful_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_uncertain_owner_errors_do_not_create_successful_invalidation) ... FAIL
+test_unexpected_save_callback_error_is_unavailable (test_verification_integrity_v5.VerificationIntegrityTests.test_unexpected_save_callback_error_is_unavailable) ... FAIL
+test_wrong_ref_kind_is_invalid_input_in_both_read_apis (test_verification_integrity_v5.VerificationIntegrityTests.test_wrong_ref_kind_is_invalid_input_in_both_read_apis) ... FAIL
+
+======================================================================
+FAIL: test_artifact_epoch_cannot_change_after_its_immutable_snapshot (test_verification_integrity_v5.VerificationIntegrityTests.test_artifact_epoch_cannot_change_after_its_immutable_snapshot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 89, in test_artifact_epoch_cannot_change_after_its_immutable_snapshot
+    self.f.error(store.get_verification({'verification_ref': receipt['verification_ref']}), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'artifact_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'source_refs': [{'id': 'required', 'kind': 'record'}, {'id': 'unselected', 'kind': 'record'}], 'status': 'valid', 'work_ref': {'epoch': 2, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_empty_conditions_and_forged_checks_in_storage_fail_even_historical_replay (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_conditions_and_forged_checks_in_storage_fail_even_historical_replay) (corruption='empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 109, in test_empty_conditions_and_forged_checks_in_storage_fail_even_historical_replay
+    self.f.error(self.f.store.get_by_key({'key': 'verify-one'}), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'checks': [], 'verification_ref': {'id': 'verification-1', 'kind': 'verification'}}}
+
+======================================================================
+FAIL: test_empty_conditions_and_forged_checks_in_storage_fail_even_historical_replay (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_conditions_and_forged_checks_in_storage_fail_even_historical_replay) (corruption='required_empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 109, in test_empty_conditions_and_forged_checks_in_storage_fail_even_historical_replay
+    self.f.error(self.f.store.get_by_key({'key': 'verify-one'}), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'verification_ref': {'id': 'verification-1', 'kind': 'verification'}}}
+
+======================================================================
+FAIL: test_empty_or_duplicate_owner_context_is_unavailable_without_saving (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_or_duplicate_owner_context_is_unavailable_without_saving) (change={'conditions': []})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 35, in test_empty_or_duplicate_owner_context_is_unavailable_without_saving
+    self.f.error(store.verify(request), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'checks': [], 'verification_ref': {'id': 'verification-1', 'kind': 'verification'}}}
+
+======================================================================
+FAIL: test_empty_or_duplicate_owner_context_is_unavailable_without_saving (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_or_duplicate_owner_context_is_unavailable_without_saving) (change={'source_refs': []})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 35, in test_empty_or_duplicate_owner_context_is_unavailable_without_saving
+    self.f.error(store.verify(request), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'verification_ref': {'id': 'verification-2', 'kind': 'verification'}}}
+
+======================================================================
+FAIL: test_empty_or_duplicate_owner_context_is_unavailable_without_saving (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_or_duplicate_owner_context_is_unavailable_without_saving) (change={'source_refs': [{'kind': 'record', 'id': 'required'}, {'kind': 'record', 'id': 'unselected'}, {'kind': 'record', 'id': 'required'}, {'kind': 'record', 'id': 'unselected'}]})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 35, in test_empty_or_duplicate_owner_context_is_unavailable_without_saving
+    self.f.error(store.verify(request), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'verification_ref': {'id': 'verification-3', 'kind': 'verification'}}}
+
+======================================================================
+FAIL: test_empty_or_duplicate_owner_context_is_unavailable_without_saving (test_verification_integrity_v5.VerificationIntegrityTests.test_empty_or_duplicate_owner_context_is_unavailable_without_saving) (change={'artifact_refs': [{'kind': 'artifact', 'id': 'a1'}, {'kind': 'artifact', 'id': 'a2'}, {'kind': 'artifact', 'id': 'a1'}, {'kind': 'artifact', 'id': 'a2'}]})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 35, in test_empty_or_duplicate_owner_context_is_unavailable_without_saving
+    self.f.error(store.verify(request), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 88, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.CONFLICT: 'conflict'> != 'unavailable'
+
+======================================================================
+FAIL: test_id_factory_transaction_replacement_is_detected_before_verification_writes (test_verification_integrity_v5.VerificationIntegrityTests.test_id_factory_transaction_replacement_is_detected_before_verification_writes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 118, in test_id_factory_transaction_replacement_is_detected_before_verification_writes
+    self.assertEqual(self.f.conn.execute('SELECT count(*) FROM v5_ver_body').fetchone()[0], 0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 0
+
+======================================================================
+FAIL: test_impossible_same_revision_context_changes_are_not_legitimate_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_impossible_same_revision_context_changes_are_not_legitimate_invalidation) (change={'conditions': [{'id': 'saved', 'description': 'changed', 'check': 'artifact_saved'}, {'id': 'meaning', 'description': 'Meaning fits', 'check': 'semantic'}, {'id': 'fetched', 'description': 'Fetched', 'check': 'source_fetched'}]})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 62, in test_impossible_same_revision_context_changes_are_not_legitimate_invalidation
+    self.f.error(store.get_verification({'verification_ref': receipt['verification_ref']}), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'artifact_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'source_refs': [{'id': 'required', 'kind': 'record'}, {'id': 'unselected', 'kind': 'record'}], 'status': 'invalidated', 'work_ref': {'epoch': 2, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_impossible_same_revision_context_changes_are_not_legitimate_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_impossible_same_revision_context_changes_are_not_legitimate_invalidation) (change={'source_refs': [{'kind': 'record', 'id': 'required'}, {'kind': 'record', 'id': 'unselected'}]})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 62, in test_impossible_same_revision_context_changes_are_not_legitimate_invalidation
+    self.f.error(store.get_verification({'verification_ref': receipt['verification_ref']}), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'artifact_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'source_refs': [{'id': 'required', 'kind': 'record'}, {'id': 'unselected', 'kind': 'record'}], 'status': 'invalidated', 'work_ref': {'epoch': 2, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_impossible_same_revision_context_changes_are_not_legitimate_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_impossible_same_revision_context_changes_are_not_legitimate_invalidation) (change={'artifact_refs': [{'kind': 'artifact', 'id': 'a1'}]})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 62, in test_impossible_same_revision_context_changes_are_not_legitimate_invalidation
+    self.f.error(store.get_verification({'verification_ref': receipt['verification_ref']}), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'artifact_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'source_refs': [{'id': 'required', 'kind': 'record'}, {'id': 'unselected', 'kind': 'record'}], 'status': 'invalidated', 'work_ref': {'epoch': 2, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_impossible_same_revision_context_changes_are_not_legitimate_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_impossible_same_revision_context_changes_are_not_legitimate_invalidation) (change={'artifact_refs': [{'kind': 'artifact', 'id': 'a2'}, {'kind': 'artifact', 'id': 'a1'}]})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 62, in test_impossible_same_revision_context_changes_are_not_legitimate_invalidation
+    self.f.error(store.get_verification({'verification_ref': receipt['verification_ref']}), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'artifact_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'source_refs': [{'id': 'required', 'kind': 'record'}, {'id': 'unselected', 'kind': 'record'}], 'status': 'invalidated', 'work_ref': {'epoch': 2, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_impossible_same_revision_context_changes_are_not_legitimate_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_impossible_same_revision_context_changes_are_not_legitimate_invalidation) (change={'artifact_refs': [{'kind': 'artifact', 'id': 'a2'}, {'kind': 'artifact', 'id': 'a1'}, {'kind': 'artifact', 'id': 'later'}]})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 62, in test_impossible_same_revision_context_changes_are_not_legitimate_invalidation
+    self.f.error(store.get_verification({'verification_ref': receipt['verification_ref']}), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'artifact_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'source_refs': [{'id': 'required', 'kind': 'record'}, {'id': 'unselected', 'kind': 'record'}], 'status': 'invalidated', 'work_ref': {'epoch': 2, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_impossible_same_revision_context_changes_are_not_legitimate_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_impossible_same_revision_context_changes_are_not_legitimate_invalidation) (change={'work_ref': {'goal_id': 'g', 'revision': 1, 'epoch': 3}})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 62, in test_impossible_same_revision_context_changes_are_not_legitimate_invalidation
+    self.f.error(store.get_verification({'verification_ref': receipt['verification_ref']}), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'artifact_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'source_refs': [{'id': 'required', 'kind': 'record'}, {'id': 'unselected', 'kind': 'record'}], 'status': 'invalidated', 'work_ref': {'epoch': 2, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_missing_artifact_provenance_and_oversized_metadata_are_unavailable (test_verification_integrity_v5.VerificationIntegrityTests.test_missing_artifact_provenance_and_oversized_metadata_are_unavailable) (change={'source_refs': []})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 45, in test_missing_artifact_provenance_and_oversized_metadata_are_unavailable
+    self.f.error(store.verify({**self.f.request, 'key': 'artifact-' + str(index)}), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'verification_ref': {'id': 'verification-1', 'kind': 'verification'}}}
+
+======================================================================
+FAIL: test_missing_artifact_provenance_and_oversized_metadata_are_unavailable (test_verification_integrity_v5.VerificationIntegrityTests.test_missing_artifact_provenance_and_oversized_metadata_are_unavailable) (change={'source_refs': [{'kind': 'record', 'id': 'required'}, {'kind': 'record', 'id': 'unselected'}, {'kind': 'record', 'id': 'required'}, {'kind': 'record', 'id': 'unselected'}]})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 45, in test_missing_artifact_provenance_and_oversized_metadata_are_unavailable
+    self.f.error(store.verify({**self.f.request, 'key': 'artifact-' + str(index)}), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'verification_ref': {'id': 'verification-2', 'kind': 'verification'}}}
+
+======================================================================
+FAIL: test_missing_artifact_provenance_and_oversized_metadata_are_unavailable (test_verification_integrity_v5.VerificationIntegrityTests.test_missing_artifact_provenance_and_oversized_metadata_are_unavailable) (change={'bytes': 1048577})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 45, in test_missing_artifact_provenance_and_oversized_metadata_are_unavailable
+    self.f.error(store.verify({**self.f.request, 'key': 'artifact-' + str(index)}), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'verification_ref': {'id': 'verification-3', 'kind': 'verification'}}}
+
+======================================================================
+FAIL: test_uncertain_owner_errors_do_not_create_successful_invalidation (test_verification_integrity_v5.VerificationIntegrityTests.test_uncertain_owner_errors_do_not_create_successful_invalidation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 67, in test_uncertain_owner_errors_do_not_create_successful_invalidation
+    self.f.error(self.f.status(receipt), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 87, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'artifact_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'checks': [{'condition_id': 'saved', 'evidence_refs': [{'id': 'a1', 'kind': 'artifact'}, {'id': 'a2', 'kind': 'artifact'}], 'reason': 'ordered artifact set saved and verified', 'status': 'met'}, {'condition_id': 'meaning', 'evidence_refs': [], 'reason': 'semantic evaluator unavailable', 'status': 'unknown'}, {'condition_id': 'fetched', 'evidence_refs': [], 'reason': 'no fetch evidence owner connected', 'status': 'unknown'}], 'source_refs': [{'id': 'required', 'kind': 'record'}, {'id': 'unselected', 'kind': 'record'}], 'status': 'invalidated', 'work_ref': {'epoch': 2, 'goal_id': 'g', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unexpected_save_callback_error_is_unavailable (test_verification_integrity_v5.VerificationIntegrityTests.test_unexpected_save_callback_error_is_unavailable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 77, in test_unexpected_save_callback_error_is_unavailable
+    self.f.error(self.f.store.verify(self.f.request), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 88, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.LIMIT: 'limit'> != 'unavailable'
+
+======================================================================
+FAIL: test_wrong_ref_kind_is_invalid_input_in_both_read_apis (test_verification_integrity_v5.VerificationIntegrityTests.test_wrong_ref_kind_is_invalid_input_in_both_read_apis)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_integrity_v5.py", line 17, in test_wrong_ref_kind_is_invalid_input_in_both_read_apis
+    self.f.error(self.f.store.get_verification(request), 'invalid_input')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_v5.py", line 88, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.UNAVAILABLE: 'unavailable'> != 'invalid_input'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.014s
+
+FAILED (failures=20)

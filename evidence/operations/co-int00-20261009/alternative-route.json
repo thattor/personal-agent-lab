@@ -1,0 +1,77 @@
+{
+  "schema": "pal.alternative-route/1",
+  "observed_at": "2026-10-09T00:25:13.204484+00:00",
+  "decision": "D036",
+  "owner_source": {
+    "thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "turn": "01a11e03-d386-77c0-8faa-41f0ab765513",
+    "user_message": "01a11e03-d444-78c1-9fab-b0e861d29d1d",
+    "summary": "SWE-2 primary when usable; alternative Astra/Sol6.1/AGY Sonnet5.5 or Opus5.5, prioritize AGY while usage tight; direct allowed when CO adapter unsupported"
+  },
+  "agy": {
+    "binary": "/Users/hattoritoshiyasu/.local/bin/agy",
+    "language_server_version": "1.3.1",
+    "models_list_exit": 0,
+    "exact_models": [
+      "claude-opus-5-5-low",
+      "claude-opus-5-5-medium",
+      "claude-opus-5-5-high",
+      "claude-sonnet-5-5-low",
+      "claude-sonnet-5-5-medium",
+      "claude-sonnet-5-5-high"
+    ],
+    "useG1Credits": "unset, effective value unverified",
+    "quota": "unverified",
+    "normal_models_error": "sandbox denied log/crash-file creation and local127.0.0.1 bind; scoped host listing approved",
+    "narrow_tui": {
+      "cwd": "/Users/hattoritoshiyasu/Documents/PAL",
+      "purpose": "usage/settings inspection only",
+      "trust_prompt": "requires permission to read, edit and execute files in this project",
+      "choice": "No, exit",
+      "exit_code": 0,
+      "model_inference": false
+    },
+    "home_startup": {
+      "cwd": "/Users/hattoritoshiyasu",
+      "purpose": "usage/settings inspection only",
+      "auto_review": "rejected",
+      "reason": "home-wide file reading/execution boundary was not authorized; do not bypass",
+      "process_created": false
+    },
+    "settings_modified": false,
+    "new_auth_or_billing_enabled": false,
+    "material_sent": false,
+    "selected_for_implementation": false,
+    "sources": [
+      "https://www.antigravity.google/docs/cli/credits/",
+      "https://www.antigravity.google/docs/cli/commands/usage/",
+      "https://www.antigravity.google/docs/cli/headless/"
+    ]
+  },
+  "native_codex": {
+    "ordinary_usage_allowed": true,
+    "plan": "pro",
+    "weekly_used_percent": 40,
+    "implementation_model": "gpt-6-astra",
+    "independent_review_model": "gpt-6.1-sol",
+    "reset_or_purchase": false,
+    "implementation_status": "committed and integrated",
+    "implementation_agent": "/root/int00_astra",
+    "implementation_base": "a6983916ce78714fd97ae2320be8e374924f4313",
+    "implementation_workspace": "/private/tmp/pal-int00-astra-20261009",
+    "implementation_branch": "codex/pal-int00-astra",
+    "independent_review_status": "APPROVE",
+    "agent_contexts_started": 2,
+    "implementation_turns": 1,
+    "review_turns": 3,
+    "implementation_commit": "d286fe7f1adff074f67b0ae4406c41eac3da9e24",
+    "review_agent": "/root/int00_sol_review"
+  },
+  "old_co_task": {
+    "task_id": "6a9dea446fa241ceb6ee876bbdb08be9",
+    "unchanged_unknown": true,
+    "decision_recorded": false,
+    "retry_resume_cancel": false
+  },
+  "isolation_plan": "Dedicated alternative worktree from the committed PAL baseline; only four declared INT00 files; SOL owns adoption; old workspace/state stays untouched; late old output is never auto-applied."
+}

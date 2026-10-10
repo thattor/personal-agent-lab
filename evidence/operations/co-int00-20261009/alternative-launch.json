@@ -1,0 +1,38 @@
+{
+  "schema": "pal.int00-alternative-launch/1",
+  "observed_at": "2026-10-09T00:29:50.341570+00:00",
+  "decision": "D036",
+  "contract_id": "PAL-v5-common-wire",
+  "contract_version": "INT00/1",
+  "owner": "SOL",
+  "implementation": {
+    "ordinary_usage_allowed": true,
+    "plan": "pro",
+    "weekly_used_percent": 40,
+    "implementation_model": "gpt-6-astra",
+    "independent_review_model": "gpt-6.1-sol",
+    "calls_launched": 1,
+    "reset_or_purchase": false,
+    "implementation_status": "running",
+    "implementation_agent": "/root/int00_astra",
+    "implementation_base": "a6983916ce78714fd97ae2320be8e374924f4313",
+    "implementation_workspace": "/private/tmp/pal-int00-astra-20261009",
+    "implementation_branch": "codex/pal-int00-astra",
+    "independent_review_status": "not_started"
+  },
+  "write_set": [
+    "pal/contracts_v5.py",
+    "tests/test_contracts_v5.py",
+    "tests/fixtures/contracts_v5.json",
+    "docs/design/contracts-v5/INT00-IMPLEMENTATION.md"
+  ],
+  "human_window_delivery": {
+    "thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "tool_acknowledged": true,
+    "readback_turn": "01a11e0d-f2b2-7830-a4e0-2741b23be019",
+    "agent_summary_observed": true,
+    "actual_owner_read_or_new_choice_claimed": false
+  },
+  "old_co_unknown_state_changed": false,
+  "product_or_live_service_completion": false
+}

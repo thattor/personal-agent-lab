@@ -1,0 +1,207 @@
+test_added_artifact_rejects_old_whole_set (test_task_completion_v5.CompletionTests.test_added_artifact_rejects_old_whole_set) ... ok
+test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) ... 
+  test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='raised', work='{"epoch":0,"goal_id":"goal-6b018b1f01334a6ea7473130fb6b663c","revision":1}', index=0) ... FAIL
+  test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='raised', work='{', index=0) ... FAIL
+  test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='raised', work='{"epoch":1,"goal_id":"goal-6b018b1f01334a6ea7473130fb6b663c","revision":1}', index=-1) ... FAIL
+  test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='raised', work='{"epoch":1,"goal_id":"goal-6b018b1f01334a6ea7473130fb6b663c","revision":1}', index='bad') ... FAIL
+  test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='not_entered', work='{"epoch":0,"goal_id":"goal-6b018b1f01334a6ea7473130fb6b663c","revision":1}', index=0) ... FAIL
+  test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='not_entered', work='{', index=0) ... FAIL
+  test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='not_entered', work='{"epoch":1,"goal_id":"goal-6b018b1f01334a6ea7473130fb6b663c","revision":1}', index=-1) ... FAIL
+  test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='not_entered', work='{"epoch":1,"goal_id":"goal-6b018b1f01334a6ea7473130fb6b663c","revision":1}', index='bad') ... FAIL
+test_callback_owned_savepoint_cleanup_preserves_outer_transaction (test_task_completion_v5.CompletionTests.test_callback_owned_savepoint_cleanup_preserves_outer_transaction) ... ok
+test_committed_lost_response_replays_without_writes (test_task_completion_v5.CompletionTests.test_committed_lost_response_replays_without_writes) ... ok
+test_complete_closes_lease_once_replay_reopen_and_next_work (test_task_completion_v5.CompletionTests.test_complete_closes_lease_once_replay_reopen_and_next_work) ... ok
+test_completed_and_running_stop_share_one_transaction (test_task_completion_v5.CompletionTests.test_completed_and_running_stop_share_one_transaction) ... ok
+test_completed_notice_rolls_back_with_running_invalidation_failure (test_task_completion_v5.CompletionTests.test_completed_notice_rolls_back_with_running_invalidation_failure) ... ok
+test_completed_stop_notice_is_scoped_replayed_and_preserves_max_epoch (test_task_completion_v5.CompletionTests.test_completed_stop_notice_is_scoped_replayed_and_preserves_max_epoch) ... ok
+test_input_and_authority_precedence (test_task_completion_v5.CompletionTests.test_input_and_authority_precedence) ... ok
+test_malformed_stored_call_work_is_unavailable_not_caller_error (test_task_completion_v5.CompletionTests.test_malformed_stored_call_work_is_unavailable_not_caller_error) ... FAIL
+test_mutually_matching_old_call_and_step_epoch_are_corrupt (test_task_completion_v5.CompletionTests.test_mutually_matching_old_call_and_step_epoch_are_corrupt) ... FAIL
+test_owned_writes_and_interruptions_roll_back_with_retry (test_task_completion_v5.CompletionTests.test_owned_writes_and_interruptions_roll_back_with_retry) ... ok
+test_pause_complete_order_and_source_stop_fence (test_task_completion_v5.CompletionTests.test_pause_complete_order_and_source_stop_fence) ... ok
+test_prior_lease_finished_artifact_can_complete_with_current_verification (test_task_completion_v5.CompletionTests.test_prior_lease_finished_artifact_can_complete_with_current_verification) ... ok
+test_readonly_guard_cleans_writes_exceptions_and_savepoint (test_task_completion_v5.CompletionTests.test_readonly_guard_cleans_writes_exceptions_and_savepoint) ... ok
+test_returned_call_cannot_borrow_another_finished_step (test_task_completion_v5.CompletionTests.test_returned_call_cannot_borrow_another_finished_step) ... ok
+test_step_wire_index_requires_integer_and_saved_index_equality (test_task_completion_v5.CompletionTests.test_step_wire_index_requires_integer_and_saved_index_equality) ... 
+  test_step_wire_index_requires_integer_and_saved_index_equality (test_task_completion_v5.CompletionTests.test_step_wire_index_requires_integer_and_saved_index_equality) (index=False) ... FAIL
+  test_step_wire_index_requires_integer_and_saved_index_equality (test_task_completion_v5.CompletionTests.test_step_wire_index_requires_integer_and_saved_index_equality) (index=-1) ... FAIL
+  test_step_wire_index_requires_integer_and_saved_index_equality (test_task_completion_v5.CompletionTests.test_step_wire_index_requires_integer_and_saved_index_equality) (index=1) ... FAIL
+  test_step_wire_index_requires_integer_and_saved_index_equality (test_task_completion_v5.CompletionTests.test_step_wire_index_requires_integer_and_saved_index_equality) (index='0') ... FAIL
+test_stopped_source_precedes_invalidated_disagreement (test_task_completion_v5.CompletionTests.test_stopped_source_precedes_invalidated_disagreement) ... ok
+test_stored_empty_duplicate_conditions_are_unavailable (test_task_completion_v5.CompletionTests.test_stored_empty_duplicate_conditions_are_unavailable) ... ok
+test_terminal_release_defensively_preserves_completed_and_failed (test_task_completion_v5.CompletionTests.test_terminal_release_defensively_preserves_completed_and_failed) ... ok
+test_typed_callback_validation_and_comparison_precedence (test_task_completion_v5.CompletionTests.test_typed_callback_validation_and_comparison_precedence) ... ok
+test_unfinished_and_corrupt_call_step_states (test_task_completion_v5.CompletionTests.test_unfinished_and_corrupt_call_step_states) ... ok
+
+======================================================================
+FAIL: test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='raised', work='{"epoch":0,"goal_id":"goal-6b018b1f01334a6ea7473130fb6b663c","revision":1}', index=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 311, in test_all_ended_call_states_require_current_work_and_valid_index
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 63, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'completed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-6b018b1f01334a6ea7473130fb6b663c', 'revision': 1}}}
+
+======================================================================
+FAIL: test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='raised', work='{', index=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 311, in test_all_ended_call_states_require_current_work_and_valid_index
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 63, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'completed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-6b018b1f01334a6ea7473130fb6b663c', 'revision': 1}}}
+
+======================================================================
+FAIL: test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='raised', work='{"epoch":1,"goal_id":"goal-6b018b1f01334a6ea7473130fb6b663c","revision":1}', index=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 311, in test_all_ended_call_states_require_current_work_and_valid_index
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 63, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'completed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-6b018b1f01334a6ea7473130fb6b663c', 'revision': 1}}}
+
+======================================================================
+FAIL: test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='raised', work='{"epoch":1,"goal_id":"goal-6b018b1f01334a6ea7473130fb6b663c","revision":1}', index='bad')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 311, in test_all_ended_call_states_require_current_work_and_valid_index
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 63, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'completed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-6b018b1f01334a6ea7473130fb6b663c', 'revision': 1}}}
+
+======================================================================
+FAIL: test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='not_entered', work='{"epoch":0,"goal_id":"goal-6b018b1f01334a6ea7473130fb6b663c","revision":1}', index=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 311, in test_all_ended_call_states_require_current_work_and_valid_index
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 63, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'completed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-6b018b1f01334a6ea7473130fb6b663c', 'revision': 1}}}
+
+======================================================================
+FAIL: test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='not_entered', work='{', index=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 311, in test_all_ended_call_states_require_current_work_and_valid_index
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 63, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'completed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-6b018b1f01334a6ea7473130fb6b663c', 'revision': 1}}}
+
+======================================================================
+FAIL: test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='not_entered', work='{"epoch":1,"goal_id":"goal-6b018b1f01334a6ea7473130fb6b663c","revision":1}', index=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 311, in test_all_ended_call_states_require_current_work_and_valid_index
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 63, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'completed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-6b018b1f01334a6ea7473130fb6b663c', 'revision': 1}}}
+
+======================================================================
+FAIL: test_all_ended_call_states_require_current_work_and_valid_index (test_task_completion_v5.CompletionTests.test_all_ended_call_states_require_current_work_and_valid_index) (status='not_entered', work='{"epoch":1,"goal_id":"goal-6b018b1f01334a6ea7473130fb6b663c","revision":1}', index='bad')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 311, in test_all_ended_call_states_require_current_work_and_valid_index
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 63, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'completed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-6b018b1f01334a6ea7473130fb6b663c', 'revision': 1}}}
+
+======================================================================
+FAIL: test_malformed_stored_call_work_is_unavailable_not_caller_error (test_task_completion_v5.CompletionTests.test_malformed_stored_call_work_is_unavailable_not_caller_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 301, in test_malformed_stored_call_work_is_unavailable_not_caller_error
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 64, in error
+    self.assertEqual(result.error.code, code)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.INVALID_INPUT: 'invalid_input'> != 'unavailable'
+
+======================================================================
+FAIL: test_mutually_matching_old_call_and_step_epoch_are_corrupt (test_task_completion_v5.CompletionTests.test_mutually_matching_old_call_and_step_epoch_are_corrupt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 288, in test_mutually_matching_old_call_and_step_epoch_are_corrupt
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 63, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'completed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-e84abf730d5a4a6f9a70c9149b5bb7cb', 'revision': 1}}}
+
+======================================================================
+FAIL: test_step_wire_index_requires_integer_and_saved_index_equality (test_task_completion_v5.CompletionTests.test_step_wire_index_requires_integer_and_saved_index_equality) (index=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 296, in test_step_wire_index_requires_integer_and_saved_index_equality
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 63, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'completed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-96e1f04a5e5c4a8e90a388b7b6f388b4', 'revision': 1}}}
+
+======================================================================
+FAIL: test_step_wire_index_requires_integer_and_saved_index_equality (test_task_completion_v5.CompletionTests.test_step_wire_index_requires_integer_and_saved_index_equality) (index=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 296, in test_step_wire_index_requires_integer_and_saved_index_equality
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 63, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'completed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-96e1f04a5e5c4a8e90a388b7b6f388b4', 'revision': 1}}}
+
+======================================================================
+FAIL: test_step_wire_index_requires_integer_and_saved_index_equality (test_task_completion_v5.CompletionTests.test_step_wire_index_requires_integer_and_saved_index_equality) (index=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 296, in test_step_wire_index_requires_integer_and_saved_index_equality
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 63, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'completed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-96e1f04a5e5c4a8e90a388b7b6f388b4', 'revision': 1}}}
+
+======================================================================
+FAIL: test_step_wire_index_requires_integer_and_saved_index_equality (test_task_completion_v5.CompletionTests.test_step_wire_index_requires_integer_and_saved_index_equality) (index='0')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_task_completion_v5.py", line 296, in test_step_wire_index_requires_integer_and_saved_index_equality
+    self.error(self.store.control(request), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-complete-tsk-astra-20261009/tests/test_tasks_v5.py", line 63, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'control_status': 'none', 'state': 'completed', 'work_ref': {'epoch': 1, 'goal_id': 'goal-96e1f04a5e5c4a8e90a388b7b6f388b4', 'revision': 1}}}
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.153s
+
+FAILED (failures=14)

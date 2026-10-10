@@ -1,0 +1,20 @@
+{
+  "issue": {
+    "number": 6,
+    "state": "OPEN",
+    "body_readback_match": true,
+    "body_sha256": "7a164bf563b6dc53ef594df0efbddbf93415475065e28441347c160fd946daae"
+  },
+  "pr": {
+    "number": 19,
+    "state": "OPEN",
+    "body_readback_match": true,
+    "body_sha256": "c1627ed1e1055669d466cc34aa98a69b07392c739eb7df38b697edaa1e61898f",
+    "headRefOid": "ffd5d79c7322f117795782bfc507ddf77e4d210e",
+    "isDraft": true,
+    "statusCheckRollup": []
+  },
+  "source": "bdce832b8fdb68f6317c033155474a4204703189",
+  "milestone": "C076 local slice MET;711 host tests, not CI/product completion",
+  "next": "READ01 SWE contract consultation, code gated on freeze"
+}

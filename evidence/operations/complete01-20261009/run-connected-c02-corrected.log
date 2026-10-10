@@ -1,0 +1,13 @@
+test_actual_compose_verify_complete_uses_one_inference_and_no_release (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_actual_compose_verify_complete_uses_one_inference_and_no_release) ... ok
+test_committed_response_loss_replays_same_completion_once (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_committed_response_loss_replays_same_completion_once) ... ok
+test_malformed_successful_completion_receipt_is_not_a_completion_claim (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_malformed_successful_completion_receipt_is_not_a_completion_claim) ... ok
+test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) ... ok
+test_persistent_committed_response_loss_never_reopens_or_reinvokes_completed_work (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_persistent_committed_response_loss_never_reopens_or_reinvokes_completed_work) ... ok
+test_persistent_verification_loss_yields_then_verifies_new_epoch_without_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_persistent_verification_loss_yields_then_verifies_new_epoch_without_inference) ... ok
+test_uncommitted_ambiguity_retains_and_finalizes_before_more_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_uncommitted_ambiguity_retains_and_finalizes_before_more_inference) ... ok
+test_unknown_checks_continue_bounded_loop_and_never_enter_model_or_steps (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_unknown_checks_continue_bounded_loop_and_never_enter_model_or_steps) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.128s
+
+OK

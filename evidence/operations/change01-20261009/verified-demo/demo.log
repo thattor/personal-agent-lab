@@ -1,0 +1,32 @@
+Local temporary SQLite; trusted-host correction; structural verification only.
+実行中の依頼を訂正しました。旧結果を保存せず、同じ仕事の新revisionで下書きを完成しました。
+Saved-result inspection (read-only; not completion authority)
+Model: mock (no real model call; saved drafts are mock output)
+Verification: structural only (no semantic quality judgement)
+Session: change-demo
+Event 1 (result): event-47b1f9b0840e4ee4af62c9abdb869d5e (work completed from saved verification)
+  Work ref: goal goal-02aa807e5c1b45dcae1f41f8a3ef9568 revision 2 epoch 3
+  Work state (TSK, separate from result usability): completed
+  Ref artifact:artifact-e7add59bc6d0433399ff6728245ef5e4
+    Observed at: 2026-10-09T13:29:09.218395+00:00 (stored observation time)
+    Media type: text/plain  hash: 73ff44ea119bdd8f739e56e137f2d99dfe3818ab08ba62bccc3321a2c791a05d
+    Usable: yes
+    Content:
+      打合せのご案内（訂正版下書き）
+      10月12日 午後3時から開催します。
+      送信前に内容をご確認ください。
+  Ref verification:verification-00157bba47b04e2c98420cbbd1417413
+    Read at: 2026-10-09T13:29:09.224239+00:00 (time of this read, not creation time)
+    Media type: application/json  hash: 5b4cd68056b7afa3b0cdf903b3904285de17542f1b3a1df978e0e1de3f4733b6
+    Saved verification (historical, separate from current usability):
+      Fixed Conditions:
+        - condition-8b4d509da7eb40e79dbe87f6b56bfebf [artifact_saved]: 下書きが保存されている
+      Original checks (historical; structural, not a semantic judgement):
+        - condition-8b4d509da7eb40e79dbe87f6b56bfebf: met - ordered artifact set saved and verified (evidence: artifact:artifact-e7add59bc6d0433399ff6728245ef5e4)
+      Saved artifact bindings, in order:
+        - artifact:artifact-e7add59bc6d0433399ff6728245ef5e4 hash=73ff44ea119bdd8f739e56e137f2d99dfe3818ab08ba62bccc3321a2c791a05d bytes=137
+      Dependencies: record:record-27ad81bc1c334faebc238f38302ebee9
+    Current usability: current
+Next cursor: event-47b1f9b0840e4ee4af62c9abdb869d5e
+Page scan truncated: no
+

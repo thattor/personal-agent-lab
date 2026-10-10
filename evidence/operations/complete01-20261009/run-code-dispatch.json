@@ -1,0 +1,32 @@
+{
+  "task_id": "39213ad42322430e9c2f27ec568bd80e",
+  "status": "running",
+  "runtime_version": "0.4.5",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "base": "dadac5750533203549f1381ad81049c7d34ba0ac",
+  "owned_session": 28928,
+  "planner": "claude/claude-opus-5-5",
+  "implementer": "devin/swe-2-high",
+  "read_scope": [
+    "docs/design/contracts-v5/COMPLETE01-SCOPE.md",
+    "docs/design/contracts-v5/COMPLETE01-RUN-TEST-PLAN.md",
+    "tests/test_mock_completion_v5.py",
+    "pal/contracts_v5.py",
+    "pal/mock_runner_v5.py"
+  ],
+  "write_scope": [
+    "pal/mock_runner_v5.py",
+    "docs/design/contracts-v5/COMPLETE01-RUN-IMPLEMENTATION.md"
+  ],
+  "verifier": "16 immutable synthetic RUN public-owner acceptance tests Python3.13 -I -S -B",
+  "auth_cost": "Existing authenticated Claude Pro and Devin exact swe-2-high Free confirmed by launch preflight; no new auth/settings/payment",
+  "capacity_before": {
+    "claude_executing": 0,
+    "devin_executing": 0,
+    "reserved": 0,
+    "host_limit_per_adapter": 12
+  },
+  "actual_owned_co_tasks": 1,
+  "provider_quota": "unknown",
+  "limits": "No30 claim, live DB, product activation, prior unknown retry or canonical worker writes"
+}

@@ -1,0 +1,14 @@
+{
+  "task_id": "f2e112330d7f45e78cd4b1d5b85d2b57",
+  "base_sha": "367c1dede8fb781203f84d660df59e728f257781",
+  "status": "verified",
+  "verified": true,
+  "repairs_used": 0,
+  "diff_digest": "sha256:ce4684046f126e82a168fc8ec98cc9e79089cf17cff4f6fcd9d6c69912d26ab0",
+  "model": "devin/swe-2-high Free",
+  "verified_scope": "original immutable11 + Root original3 regressions",
+  "code_hashes": {
+    "host_read_v5.py": "29b2a91b381e0ba8e650a10d0e0e9f31a771ce60f812c3acf9cfd975837e783c",
+    "read_consumer_v5.py": "247fae8957060e27ea9f0a5e0321c322300b43f0feca3b7cfe4d3896638c3509"
+  }
+}

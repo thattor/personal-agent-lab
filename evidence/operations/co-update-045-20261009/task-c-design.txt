@@ -1,0 +1,85 @@
+**Design assessment: PARALLEL-SCOPE-1 §C (read-only, supplied snapshot only)**
+
+**1. EXE02-request/1 (`pal/github_read_request_v5.py`): consistent with scope**
+- **Pure module.** It imports only `dataclasses` and `urllib.parse.quote` (`:16-17`). It does no I/O, mints no IDs and has no try/except.
+- **Validation matches the scope:**
+  - Capability allowlist (`:109`).
+  - Exact plain dict with the exact key set per capability (`:116-121`).
+  - Repository: wrong type gives invalid_input, a foreign repository gives denied (`:124-127`).
+  - Issue number is a strict int, at least 1, at most 63 bits (`:131`).
+  - Path rejects empty, `.` and `..` segments, backslash, C0/DEL and surrogates (`:71-86`).
+  - Ref must be lowercase 40-hex (`:89-94`).
+  - Each path segment is quoted with `quote(safe="")`, keeping the `/` separators (`:141-144`).
+  - Bounds are 1..30 seconds and 1..1048576 bytes; invalid values give invalid_input, values above the maximum give limit (`:146-153`).
+  - argv is a fixed 7-element tuple (`:155`).
+- **Contract fit.** The values match the C07 initial limits and use only the C07 Result codes.
+- **Errors.** Messages are fixed constants (`:30-40`) and `args=(message,)` (`:52`), so raw input is never echoed.
+- **Documented residual (`:58-63`).** A directly constructed `ReadRequest(...)` is not validated. The future EXE01 executor must accept only `prepare_read` output.
+
+**2. SOL strict-key correction**
+- The fix is `any(type(key) is not str …)` at `:118`.
+- It is necessary: a str subclass that equals and hashes like `"repository"` would otherwise pass the set equality at `:119`.
+- The test is `tests/test_github_read_request_v5.py:192`, covering TextKey keys for both issue and file reads.
+- The failing log from before the fix is cited in `verification.json` root_corrections but not supplied. Treat it as linked evidence.
+
+**3. ART01-content/1 (`pal/artifact_content_v5.py`): consistent with scope**
+- Strict str type and media checks (`:59-66`).
+- UTF-8 encoding raises outside the except block, so no exception is chained (`:67-73`).
+- Inclusive 1048576-byte limit (`:74-75`).
+- sha256 and byte count are computed over the exact bytes (`:80-81`).
+- Result is a frozen, slotted dataclass (`:42-50`); content and data are hidden from repr (`:46`, `:48`).
+- It creates no Ref, ID, source check or DB access.
+
+**4. Freeze gate**
+- `product.diff` has no `scripts/primary_qualification.py` hunk, and `verification.json` records `production_freeze_validator_changed=false`.
+- `validate_freeze` (`scripts/primary_qualification.py:146-165`) still raises RunRejected for:
+  - a file-set mismatch;
+  - malformed hashes;
+  - a missing or mismatched candidate identity;
+  - content drift;
+  - an unreadable manifest.
+- The test change at `tests/test_primary_qualification.py:829-838`:
+  - pins the historical trial manifest hash (`baa731…`, which equals `old_trial_freeze_sha256`);
+  - reads that manifest only as history;
+  - asserts the current validator rejects it.
+- Inference (`product_rel_paths` was not supplied): the new `pal/*_v5.py` files change the product file set. Every retained freeze, including the trial freeze, therefore now fails closed, which is the intended behavior.
+- Consequence: any later freeze-bound run needs a fresh freeze. This is a consequence of the existing gate, not a new gate.
+- Optional: assert that the rejection reason is the file-set mismatch.
+
+**5. C08 mapping**
+- The helper's `sha256` maps to C08 `hash`, and `byte_count` maps to `bytes`.
+- `integration-check.json:13-17` uses hash/bytes with text/markdown, and records 0 saves, receipts and provider calls.
+- Whether the stored `hash` is bare hex or prefixed with the algorithm is an ART01/INT00 decision.
+- The synthetic script and mock text were not supplied, so the 40-byte hash is recorded but not recomputed here.
+
+**6. Parallel evidence**
+- There are two tasks: `2363ba…` is Task A (its s2 step ran swe-2-high) and `b0fd78…` is Task B.
+- All five overlaps (9.5 to 96.2 s) recompute correctly from the interval timestamps. The maximum concurrency is 2.
+- These are local admission-to-cleanup intervals. They are not proof of remote compute time.
+- Optional: the overlap entries name attempts but not task IDs.
+
+**7. Test scope**
+- The verifier runs 39 component tests: 21 for the request helper and 18 for the content helper. `targeted-after.log` ends with OK.
+- The root full suite (316 tests, `host_full_exit` 0) is linked host evidence; its log was not supplied.
+- Neither result is service CT or E2E acceptance.
+- `component_base` (`01c5f0c…`) differs from this review's BASE. SOL should confirm `final_source_hashes` against the committed files.
+
+**8. Blockers vs optional hardening**
+- No concrete blockers in the supplied code or tests.
+- Optional hardening, not gates:
+  - a length check before encoding very large content;
+  - the issue endpoint can also return pull requests (an executor concern);
+  - task IDs in the overlap entries;
+  - an assertion on the freeze rejection reason.
+
+**9. Smallest next dependency**
+- Resolve the shared INT00/1 WorkRef, Ref, Result and Operation types in the unresolved task's four files.
+- Then EXE01 prepare/execute with its ledger can consume ReadRequest (INT-02, CT-04/05/14), and ART01 save can consume ArtifactContent.
+- No substitute types should be created here.
+
+**10. Verdict**
+- Preparation slice: **MET**, subject to SOL's hash confirmation.
+- PAL completion: **UNMET**. Not done: service wiring, real GitHub reads, persistence, reference availability, CT03/04/07/08/25, E2E01–09 and user value.
+
+**Outline for the implement step (note at most 600 words)**
+Scope and inputs; findings 1–7 with locations; blockers (none) vs optional hardening; next dependency; verdict; explicitly not claimed.

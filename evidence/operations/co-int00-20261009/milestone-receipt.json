@@ -1,0 +1,68 @@
+{
+  "schema": "pal.int00-design-review-receipt/1",
+  "task_id": "a9fdddb584e241b99ad1c748b49fcbb7",
+  "base_sha": "9390c38a101ff6f71a39b5cd6cc4bb38fc2fd05c",
+  "source_commit": "92732afa3f4dcaf84ddf7c821e22b35be883ed54",
+  "status": "verified",
+  "verified": true,
+  "verifier": {
+    "after": {
+      "docs/design/contracts-v5/INT00-IMPLEMENTATION.md": "sha256:6b998bda310083ffc5092de7570d9220bff7412c046548428c860280d0ef7fda",
+      "docs/design/contracts-v5/INT00-SCOPE.md": "sha256:189e5d26f266e12f9b10a0a52b35306c09316a362fffaea3c268ee15b9c68876",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "evidence/operations/co-int00-20261009/design-disposition.json": "sha256:abce9f0bc8e0e8233a8bbc7fa1f0900c743e848ee164799dbf96921d6456ef38",
+      "evidence/operations/co-int00-20261009/milestone-review.md": "sha256:630a92581dfb18c6b84c214a74f0417c44885ed9e028580b9946ea4ff903e539",
+      "evidence/operations/co-int00-20261009/sol-independent-review.md": "sha256:7349034116a48433193b2fce603e3b91bd1476dfd71dd1d24916f15dd5c4ef82",
+      "evidence/operations/co-int00-20261009/verification.json": "sha256:635f68d9d39a9092c546648a255eeda1e5c4e5e88acc232b15e6fa6298f5de77",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f"
+    },
+    "before": {
+      "docs/design/contracts-v5/INT00-IMPLEMENTATION.md": "sha256:6b998bda310083ffc5092de7570d9220bff7412c046548428c860280d0ef7fda",
+      "docs/design/contracts-v5/INT00-SCOPE.md": "sha256:189e5d26f266e12f9b10a0a52b35306c09316a362fffaea3c268ee15b9c68876",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "evidence/operations/co-int00-20261009/design-disposition.json": "sha256:abce9f0bc8e0e8233a8bbc7fa1f0900c743e848ee164799dbf96921d6456ef38",
+      "evidence/operations/co-int00-20261009/milestone-review.md": "sha256:630a92581dfb18c6b84c214a74f0417c44885ed9e028580b9946ea4ff903e539",
+      "evidence/operations/co-int00-20261009/sol-independent-review.md": "sha256:7349034116a48433193b2fce603e3b91bd1476dfd71dd1d24916f15dd5c4ef82",
+      "evidence/operations/co-int00-20261009/verification.json": "sha256:635f68d9d39a9092c546648a255eeda1e5c4e5e88acc232b15e6fa6298f5de77",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f"
+    },
+    "exit": 0,
+    "log": "Bounded assessment artifact present; semantic verdict requires SOL review\n",
+    "n": 1,
+    "passed": true,
+    "sandbox": "seatbelt-v1",
+    "version": "sha256:e41040bd244fbf4bd9910181e567cc3152be1b9e9a3cbf5fbad359a263806840"
+  },
+  "reviews": {},
+  "review_scope": "independent Opus design assessment; no CO code-review step",
+  "actual_calls": [
+    {
+      "attempt_id": "plan-a1",
+      "role": "planner",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cli_version": "2.1.291",
+      "claimed_at": "2026-10-09T00:42:02.618974+00:00",
+      "stopped_at": "2026-10-09T00:42:15.277616+00:00",
+      "confirmed": true
+    },
+    {
+      "attempt_id": "s1-a1",
+      "role": "implement",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cli_version": "2.1.291",
+      "claimed_at": "2026-10-09T00:42:15.351664+00:00",
+      "stopped_at": "2026-10-09T00:43:57.366194+00:00",
+      "confirmed": true
+    }
+  ],
+  "note_applied_sha256": "sha256:630a92581dfb18c6b84c214a74f0417c44885ed9e028580b9946ea4ff903e539",
+  "protected_files_match": true,
+  "source_and_review_base_hashes_match": true,
+  "failed_previous_task": "ad95757c7dd847fcbcabfd3903bec53c",
+  "total_native_calls_including_failed_plan": 3,
+  "planner_instruction_bytes": 1367,
+  "planner_instruction_limit": 4096,
+  "sol_disposition": "ALIGNED for pure INT00; source identity checked separately; deferred host/service obligations remain unproven"
+}

@@ -1,0 +1,497 @@
+{
+  "head": "eb3235633c68b852b57962e4b797e328e3106592",
+  "checked_files": 70,
+  "all_match": true,
+  "files": [
+    {
+      "path": "ACCEPTANCE.md",
+      "status": 200,
+      "match": true,
+      "sha256": "a4a5b3b7bf577d13c1940e1061b59013db9f7f01ef6492e11030e01495bd1da1",
+      "bytes": 91241
+    },
+    {
+      "path": "AGENTS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "f8c07d505894fee8b818d343a19ccab103ce779daabaac3b4f499a96016171d6",
+      "bytes": 15819
+    },
+    {
+      "path": "DECISIONS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "2a85f8699f193b47a400218e424ffef794b8b574231dbf6a4c92d775bb66ffa6",
+      "bytes": 228503
+    },
+    {
+      "path": "STATE.md",
+      "status": 200,
+      "match": true,
+      "sha256": "1f244f5d77b0eadd99743ba56ce00a0207364836eb7e7552abeead7a323052cc",
+      "bytes": 121548
+    },
+    {
+      "path": "docs/DEFECTS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "8abd58d79c1e1571d7fd18bc08d658020e284b2d3c0b5f2c4dc91b584f76c063",
+      "bytes": 111357
+    },
+    {
+      "path": "docs/design/contracts-v5/PAL-contracts-v5.md",
+      "status": 200,
+      "match": true,
+      "sha256": "661a37d9abf3192bb6bc3933ce32b96e39559290cffadbfa8c5f890ffd27d7c2",
+      "bytes": 40724
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-COUNTER-EXCERPTS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "ab9c3ac2b6bd6792e7bbaceb4885ca706d574de3b0288b47e294aa145e1fd41d",
+      "bytes": 6612
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-DESIGN-REVIEW-REQUEST.md",
+      "status": 200,
+      "match": true,
+      "sha256": "22c709d86a54d851395cb02d2de088da02e798136dbff8803c1575bf2248e48a",
+      "bytes": 3098
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-MEM-IMPLEMENTATION-REQUEST.md",
+      "status": 200,
+      "match": true,
+      "sha256": "ad95e3aed348ac247a617eb855e6d79fca639931f7d214beb04f296796adcad8",
+      "bytes": 1674
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-MEM-REVIEW.md",
+      "status": 200,
+      "match": true,
+      "sha256": "7ac7c3fe94e94da4a087ced0885ba1dd38f60280a12b19f11091b706ca941570",
+      "bytes": 3024
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-MEM-SCOPE.md",
+      "status": 200,
+      "match": true,
+      "sha256": "8521587d94229954a73e1087c90db9d095c4767101273de1f4eb7b43aa5ea0de",
+      "bytes": 3730
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-MEM-TESTS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "b9904b0ed69dc1a50d85c2c21e6d1c3367f971d89d341e9da1b24d5fd3342c3c",
+      "bytes": 3392
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-OWNER-EXCERPTS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "992717078d9eef2e10c8e3f2ca4a349766eb855d143154b3ddb297b1d16ae5ac",
+      "bytes": 14213
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-PROPOSAL.md",
+      "status": 200,
+      "match": true,
+      "sha256": "be568d0416e43c843902c9c31ce539cc38393a15192640ce9e352517857c618a",
+      "bytes": 11959
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-REFINEMENT-REQUEST.md",
+      "status": 200,
+      "match": true,
+      "sha256": "854ba899f62c52a1ebc7d91a3b8f9b722b6f1f1f3616709f3008de12c5aabcd7",
+      "bytes": 8544
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-TSK-SCOPE.md",
+      "status": 200,
+      "match": true,
+      "sha256": "aed44ebaddeb642eb5f7a1171b628a9439a412fe18a93b4383c22729d9edfbac",
+      "bytes": 7222
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-TSK-SEAMS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "a2647c1ae57624998d2f851501718927ab69dc2eda765ff90280d088400da7d8",
+      "bytes": 11970
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-WIRE-SCOPE.md",
+      "status": 200,
+      "match": true,
+      "sha256": "293c0e1ec060d237cc746c591589300dc1d4365fb79378bafbcf1473241938f9",
+      "bytes": 5797
+    },
+    {
+      "path": "docs/design/contracts-v5/READ01-SCOPE.md",
+      "status": 200,
+      "match": true,
+      "sha256": "fd443caca8ee3aa693a1cf183a49cb7d1fae9345587a1202a73947359598fa28",
+      "bytes": 11381
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY01-DESIGN-REVIEW-REQUEST.md",
+      "status": 200,
+      "match": true,
+      "sha256": "4187552d2abf96d96082fc75ab9d80a1c9de83157f566f5a913946caf36bd995",
+      "bytes": 2751
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY01-HOST-IMPLEMENTATION-REQUEST.md",
+      "status": 200,
+      "match": true,
+      "sha256": "f2a8e9c96992500149d3f601e57fd0b20605b86262bb34055aa703b9c1b7992d",
+      "bytes": 2077
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY01-HOST-TESTS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "5ac8dd063d5db983347750c54f02d95588731000a7c16b112a4df7d53b36d747",
+      "bytes": 2594
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY01-OWNER-EXCERPTS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "6194faf1d2173cf719b233439f1b00bc5e9b963ecc298ecfa4d4394d4e32d279",
+      "bytes": 23918
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY01-PROPOSAL.md",
+      "status": 200,
+      "match": true,
+      "sha256": "a1898afc93c9969f68148cba034c1a2b4fceb4e7ada83480a5ae207a60e04673",
+      "bytes": 11955
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY01-RUN-REVIEW.md",
+      "status": 200,
+      "match": true,
+      "sha256": "c68faa78ac45c2888ed7107ebad9f380284d3f6142251d4db43386e90900a97f",
+      "bytes": 5133
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY01-SCOPE.md",
+      "status": 200,
+      "match": true,
+      "sha256": "4340781b826185c4c53c38eb35212dbe2089294d73dfbeae89bca2e2b8dbdaaa",
+      "bytes": 13755
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY01-TAILS-REVIEW.md",
+      "status": 200,
+      "match": true,
+      "sha256": "b4cbf223de3dbefcd5cebeede18a0c877ad04c9b581958808b812e428f7b98c8",
+      "bytes": 9984
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY01-TSK-IMPLEMENTATION.md",
+      "status": 200,
+      "match": true,
+      "sha256": "e9eea093c8010f12d1c4ab02a0d9649f333b15ecd85e37ec50ef3efe297c639c",
+      "bytes": 8980
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY01-TSK-REVIEW.md",
+      "status": 200,
+      "match": true,
+      "sha256": "c81c9737847d30d4d881aa7d3622afc4798f23e321bd33b17b6b4fb1095f82a6",
+      "bytes": 9575
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY01-TSK-TESTS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "a27808d070ecbed75250ad9dc0639d7c518fc4751fca503bbfb3519498b54bf6",
+      "bytes": 4093
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-ART-REVIEW.md",
+      "status": 200,
+      "match": true,
+      "sha256": "15c46b199785a6d954f52ed9dbfdf0f0d019588cae3ce106550de8a93e6aa8c8",
+      "bytes": 3126
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-ART-TESTS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "63fbd8423e3b808ab679647599d498c92623bf5638c57e1ce62f81967a299862",
+      "bytes": 3034
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-CONNECTION-TESTS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "0564233e0f63495a63b683d1445ea86d4621b5336012906ba7dd870c61f92865",
+      "bytes": 3859
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-DESIGN-REVIEW-REQUEST.md",
+      "status": 200,
+      "match": true,
+      "sha256": "d934726c24897f80801369da854fb3ef6dbeca3730d17a4fef83f980786d90d7",
+      "bytes": 3623
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-OWNER-EXCERPTS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "c2574533c5c7c62e2569f0580ed34164b10ee1da6bd9fcc2c04e770e2c759858",
+      "bytes": 11402
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-PROPOSAL.md",
+      "status": 200,
+      "match": true,
+      "sha256": "77728d188a69b4a9184fced41c2eb5ff863871d027f1d2752f832a9fbc4aeb63",
+      "bytes": 9817
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-READ-REVIEW.md",
+      "status": 200,
+      "match": true,
+      "sha256": "f0113426429fbcdc7e661be3c434b96e7baf0f7d14b12131fd68719dc7f76391",
+      "bytes": 2566
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-SCOPE.md",
+      "status": 200,
+      "match": true,
+      "sha256": "2c22a590d56dff6f97df51423c62c5ffdedff4178fb9100030416457fc7b2f45",
+      "bytes": 10595
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-TSK-IMPLEMENTATION.md",
+      "status": 200,
+      "match": true,
+      "sha256": "2503eb75e0abebe41d39838079c3e907f87c9077a47f5b3c1ffc1d20b51db07a",
+      "bytes": 6720
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-TSK-REVIEW.md",
+      "status": 200,
+      "match": true,
+      "sha256": "94aaa866f7c98bd1b50c0455fa13a96a68190acbe73ea2ea0aa06b44a3ee1e92",
+      "bytes": 4037
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-TSK-TESTS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "d0e6909c91f431e51e733b3aa2097f05516f09d708ac71b9eef84bd926780885",
+      "bytes": 4270
+    },
+    {
+      "path": "docs/plans/CHECKPOINTS.md",
+      "status": 200,
+      "match": true,
+      "sha256": "e819d232ca3ea74f4f320063ce97e95baec99737bdf4464e1da10e01a54f0018",
+      "bytes": 106428
+    },
+    {
+      "path": "docs/plans/GOAL-EXIT-AUDIT-20261009.md",
+      "status": 200,
+      "match": true,
+      "sha256": "1e8c3d48a2aadf92a3d16be6477b04b58485a569917f5a7d00de4686ae35fd7f",
+      "bytes": 8890
+    },
+    {
+      "path": "evidence/operations/pri01-20261009/design-disposition.json",
+      "status": 200,
+      "match": true,
+      "sha256": "a432ded1122c64494f536639498526e4c88e533c8af06ee3fe685cdd1f37b696",
+      "bytes": 2170
+    },
+    {
+      "path": "evidence/operations/pri01-20261009/opus-design-review.json",
+      "status": 200,
+      "match": true,
+      "sha256": "e7e132e15469fb0c71e21b8e294e385d5c8ee74919e98fadbbd4ecd278efb937",
+      "bytes": 12819
+    },
+    {
+      "path": "evidence/operations/pri01-20261010/route-limitation.json",
+      "status": 200,
+      "match": true,
+      "sha256": "f39adecd53f665e140ea55e1e70d6f06a85f4967cfb7e7f4159afcd542d96107",
+      "bytes": 950
+    },
+    {
+      "path": "evidence/operations/recovery01-20261009/design-disposition.json",
+      "status": 200,
+      "match": true,
+      "sha256": "e77ffe3ed482bb618085b51eb14ddf4d116c61125a1b3a6a146a489b21f66683",
+      "bytes": 2153
+    },
+    {
+      "path": "evidence/operations/recovery01-20261009/opus-design-review.json",
+      "status": 200,
+      "match": true,
+      "sha256": "7e0d720cd06d545a5ce676fcfe38aed0cb03f7b834473a7cb5dbf6a286162cf9",
+      "bytes": 11816
+    },
+    {
+      "path": "evidence/operations/recovery01-20261010/verification.json",
+      "status": 200,
+      "match": true,
+      "sha256": "e6a8bdf6c4e43317a04ee161e0fb9ecaa1ae03c64489f59abfb62d8ab9b732fa",
+      "bytes": 4544
+    },
+    {
+      "path": "evidence/operations/recovery02-20261010/design-disposition.json",
+      "status": 200,
+      "match": true,
+      "sha256": "242ebe3b4140236fb9948361f517ea3db86740c81945e33b56ae9155f03eea9b",
+      "bytes": 2729
+    },
+    {
+      "path": "evidence/operations/recovery02-20261010/opus-design-review.json",
+      "status": 200,
+      "match": true,
+      "sha256": "c2b6e5cb1a2def115d19b43d69fdf295126c0f46569c101ea790a3359d1761a0",
+      "bytes": 12855
+    },
+    {
+      "path": "evidence/operations/recovery02-20261010/verification.json",
+      "status": 200,
+      "match": true,
+      "sha256": "b399c12222ed50872073d7c08ce97c23f7ba8167522f407a826f6786163666f3",
+      "bytes": 5261
+    },
+    {
+      "path": "pal/artifacts_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "1e37f0ed0435f97c54166210b1ac2746ce52edb271482030ce646a3e388c3ef1",
+      "bytes": 16686
+    },
+    {
+      "path": "pal/memory_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "3016fa56c33d3bafc3a6165766f0873594145a5d4e77b3c53f3c88a1ec077444",
+      "bytes": 15512
+    },
+    {
+      "path": "pal/mock_host_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "e9b8f5eda1e01ec9a76ba52f3783845f302df262eea2248f4c5c36738a670208",
+      "bytes": 10373
+    },
+    {
+      "path": "pal/mock_runner_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "a8aad7ba24357a3da1c35e5c17e15719da200751c6a233596b05b662f81f48a0",
+      "bytes": 34225
+    },
+    {
+      "path": "pal/read_consumer_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "ebbd03b1fa4a8d5cd2047ef6e08deff8aa26022fb6d2344f8a4e24f052c2aea0",
+      "bytes": 12765
+    },
+    {
+      "path": "pal/tasks_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "611e05509966df9bb09e85baec9f893625372dc91cc83cf3b692c09461a1ecc1",
+      "bytes": 104537
+    },
+    {
+      "path": "scripts/verify_design_report_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "1899fa0da8b4a9e43043781ed99e3f9682faad043410cbdf0502d81f71e57b42",
+      "bytes": 1073
+    },
+    {
+      "path": "tests/test_artifact_recovery_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "65abe1f22bd54e752f697aac8f937a7d772b3a706f55e9b0f5a2a59d899f3077",
+      "bytes": 11851
+    },
+    {
+      "path": "tests/test_memory_primary_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "a994265b0f433fda4fd491de4d5464d345436efe27d494a4a3d0a9b01139b38c",
+      "bytes": 10652
+    },
+    {
+      "path": "tests/test_mock_host_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "bd5aa6c9c6b9c4b0874c55b190e6aeaecf4b7b64f8128ec416fb9cbdc21892b8",
+      "bytes": 11337
+    },
+    {
+      "path": "tests/test_mock_recovery_connection_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "d24ba3827db2f5950c121964e2dcec009cac9e48bda7294f513ab84404349d07",
+      "bytes": 15000
+    },
+    {
+      "path": "tests/test_mock_recovery_interrupt_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "7fab8b3291931c91085f1eb56caefd4a8f8879950c5b86f3cb7bcf0e22793e4e",
+      "bytes": 3645
+    },
+    {
+      "path": "tests/test_recovery02_event_marker_probe.py",
+      "status": 200,
+      "match": true,
+      "sha256": "a8eaa707e5d0b539f465fadc6b34f510a7ec1b2811e2b322107649b9727c58dd",
+      "bytes": 1043
+    },
+    {
+      "path": "tests/test_recovery_history_binding_probe_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "542df65862804a7ff4f707607b7e9a5d15a0940e23c4bcaa0436f2f3a0cd6bf9",
+      "bytes": 1743
+    },
+    {
+      "path": "tests/test_recovery_private_integrity_probe_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "1ea37efa854bd7f35990d3e8e8f08c31942a39584b6825a147f70582853f0f3a",
+      "bytes": 5877
+    },
+    {
+      "path": "tests/test_saved_tail_connection_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "7fa1d4e2dbac6d6be7f2dcf2fee2087f068d4637163a50fce2f2884bac7f1920",
+      "bytes": 14393
+    },
+    {
+      "path": "tests/test_tasks_artifact_recovery_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "0c1090afeb8d6773b93c865394ade58935640c8ed0c1915b2f206e67a7c92f1d",
+      "bytes": 21969
+    },
+    {
+      "path": "tests/test_tasks_recovery_v5.py",
+      "status": 200,
+      "match": true,
+      "sha256": "f659a9bc186d44a1d2ccd46799e8fa7073124ea9690d424c2226c9c760b351e1",
+      "bytes": 29765
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "PAL.public-export/1",
+  "source_sha256": "498b06ca6033c980bfdfe24b54195f247dbc7a46d267c67a1a54b0028f5c3e8f",
+  "original_scope_sha256": "fdd1fe51f1d8931bb900f21f4dd4b097c1e17ea5cab838b905553b22cbfaf62c",
+  "public_scope_sha256": "3d5b137db0590bdee445dfc8baa4a42666aa11e4316f440ef5872f1b05c288f9",
+  "contract_change": "one operational review identifier removed; normative CHANGE01/1 unchanged",
+  "raw_records": "retained locally; no raw AGY conversation/runtime/account paths or streams exported",
+  "parent": "6b4bc457a51be3b9a5cb0b113a21bcbe1f25a32b",
+  "source_tests_demo_byte_identical": true,
+  "files_sha256": {
+    "pal/tasks_v5.py": "498b06ca6033c980bfdfe24b54195f247dbc7a46d267c67a1a54b0028f5c3e8f",
+    "scripts/demo_change_v5.py": "442c0a71913e3dcdf6e9948584d7cb06bb24b1f2c798dec1cd66c4845a29786a",
+    "scripts/verify_change_milestone_review_v5.py": "fd9bbb99ce2d546b0ea9f2830b853581374b5b7bd8cc980316f0cfa601245d6a",
+    "tests/test_tasks_change_v5.py": "a1b8a68a95a8430879e5b73fb83e7c60b5bd9d69d92fa977f6a9a961bccda9fd",
+    "tests/test_mock_change_v5.py": "c26585fed57b80a5bfcd342b3e4469fc688a054dc02a4c3983d69e6cb348dc75",
+    "tests/test_change_connection_v5.py": "31c92e805407689abebae60d5ffd10c4d1811a4d1f0abe6892aabd76a13feaa1",
+    "tests/test_tasks_change_integrity_v5.py": "717cf1f445b9590df3797e6a1f1289e251d24591f139b63babf1c7e36597ffa2"
+  }
+}

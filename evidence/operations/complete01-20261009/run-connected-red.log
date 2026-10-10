@@ -1,0 +1,116 @@
+test_actual_compose_verify_complete_uses_one_inference_and_no_release (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_actual_compose_verify_complete_uses_one_inference_and_no_release) ... ERROR
+test_committed_response_loss_replays_same_completion_once (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_committed_response_loss_replays_same_completion_once) ... ERROR
+test_malformed_successful_completion_receipt_is_not_a_completion_claim (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_malformed_successful_completion_receipt_is_not_a_completion_claim) ... ERROR
+test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) ... 
+  test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) (command='pause') ... ERROR
+  test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) (command='cancel') ... ERROR
+  test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) (command='stop') ... ERROR
+test_persistent_committed_response_loss_never_reopens_or_reinvokes_completed_work (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_persistent_committed_response_loss_never_reopens_or_reinvokes_completed_work) ... ERROR
+test_persistent_verification_loss_yields_then_verifies_new_epoch_without_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_persistent_verification_loss_yields_then_verifies_new_epoch_without_inference) ... ERROR
+test_uncommitted_ambiguity_retains_and_finalizes_before_more_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_uncommitted_ambiguity_retains_and_finalizes_before_more_inference) ... ERROR
+test_unknown_checks_continue_bounded_loop_and_never_enter_model_or_steps (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_unknown_checks_continue_bounded_loop_and_never_enter_model_or_steps) ... ERROR
+
+======================================================================
+ERROR: test_actual_compose_verify_complete_uses_one_inference_and_no_release (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_actual_compose_verify_complete_uses_one_inference_and_no_release)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 77, in test_actual_compose_verify_complete_uses_one_inference_and_no_release
+    runner = self.runner()
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 58, in runner
+    return MockRunner(self.tasks, self.f.memory, artifacts=self.f.artifacts, verifications=self.verifications)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_committed_response_loss_replays_same_completion_once (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_committed_response_loss_replays_same_completion_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 104, in test_committed_response_loss_replays_same_completion_once
+    runner = self.runner(control_mode='lost_once')
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 58, in runner
+    return MockRunner(self.tasks, self.f.memory, artifacts=self.f.artifacts, verifications=self.verifications)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_malformed_successful_completion_receipt_is_not_a_completion_claim (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_malformed_successful_completion_receipt_is_not_a_completion_claim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 172, in test_malformed_successful_completion_receipt_is_not_a_completion_claim
+    runner = self.runner(control_mode='malformed')
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 58, in runner
+    return MockRunner(self.tasks, self.f.memory, artifacts=self.f.artifacts, verifications=self.verifications)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) (command='pause')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 164, in test_new_control_after_verification_fences_completion_and_further_inference
+    runner = self.runner(after_verify=control)
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 58, in runner
+    return MockRunner(self.tasks, self.f.memory, artifacts=self.f.artifacts, verifications=self.verifications)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) (command='cancel')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 164, in test_new_control_after_verification_fences_completion_and_further_inference
+    runner = self.runner(after_verify=control)
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 58, in runner
+    return MockRunner(self.tasks, self.f.memory, artifacts=self.f.artifacts, verifications=self.verifications)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) (command='stop')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 164, in test_new_control_after_verification_fences_completion_and_further_inference
+    runner = self.runner(after_verify=control)
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 58, in runner
+    return MockRunner(self.tasks, self.f.memory, artifacts=self.f.artifacts, verifications=self.verifications)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_persistent_committed_response_loss_never_reopens_or_reinvokes_completed_work (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_persistent_committed_response_loss_never_reopens_or_reinvokes_completed_work)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 113, in test_persistent_committed_response_loss_never_reopens_or_reinvokes_completed_work
+    runner = self.runner(control_mode='lost_always')
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 58, in runner
+    return MockRunner(self.tasks, self.f.memory, artifacts=self.f.artifacts, verifications=self.verifications)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_persistent_verification_loss_yields_then_verifies_new_epoch_without_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_persistent_verification_loss_yields_then_verifies_new_epoch_without_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 140, in test_persistent_verification_loss_yields_then_verifies_new_epoch_without_inference
+    runner = self.runner(verify_mode='lost_always')
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 58, in runner
+    return MockRunner(self.tasks, self.f.memory, artifacts=self.f.artifacts, verifications=self.verifications)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_uncommitted_ambiguity_retains_and_finalizes_before_more_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_uncommitted_ambiguity_retains_and_finalizes_before_more_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 128, in test_uncommitted_ambiguity_retains_and_finalizes_before_more_inference
+    runner = self.runner(control_mode='uncommitted')
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 58, in runner
+    return MockRunner(self.tasks, self.f.memory, artifacts=self.f.artifacts, verifications=self.verifications)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_unknown_checks_continue_bounded_loop_and_never_enter_model_or_steps (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_unknown_checks_continue_bounded_loop_and_never_enter_model_or_steps)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 92, in test_unknown_checks_continue_bounded_loop_and_never_enter_model_or_steps
+    runner = self.runner(all_kinds=True)
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 58, in runner
+    return MockRunner(self.tasks, self.f.memory, artifacts=self.f.artifacts, verifications=self.verifications)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.047s
+
+FAILED (errors=10)

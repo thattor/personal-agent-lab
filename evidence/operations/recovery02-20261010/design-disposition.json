@@ -1,0 +1,78 @@
+{
+  "schema": "PAL.design-disposition/1",
+  "contract": "RECOVERY02/1",
+  "verdict": "REFINE",
+  "disposition": "adopt F1-F10 with RECOVERY02-SCOPE.md resolutions; fixed owner and real connection tests required before acceptance",
+  "runtime_version": "0.4.5",
+  "base": "a699d78f9cbd30f143285c0a408842fa4cdc30a3",
+  "input_files": [
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-DESIGN-REVIEW-REQUEST.md",
+      "bytes": 3623,
+      "sha256": "d934726c24897f80801369da854fb3ef6dbeca3730d17a4fef83f980786d90d7"
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-PROPOSAL.md",
+      "bytes": 9817,
+      "sha256": "77728d188a69b4a9184fced41c2eb5ff863871d027f1d2752f832a9fbc4aeb63"
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY02-OWNER-EXCERPTS.md",
+      "bytes": 11402,
+      "sha256": "c2574533c5c7c62e2569f0580ed34164b10ee1da6bd9fcc2c04e770e2c759858"
+    },
+    {
+      "path": "docs/design/contracts-v5/RECOVERY01-SCOPE.md",
+      "bytes": 13755,
+      "sha256": "4340781b826185c4c53c38eb35212dbe2089294d73dfbeae89bca2e2b8dbdaaa"
+    },
+    {
+      "path": "docs/design/contracts-v5/PAL-contracts-v5.md",
+      "bytes": 40196,
+      "sha256": "d0536c4d4e0cfe6d3a0dfccb9df49b4944c8f44ff39228985f7c3e947c25c4e7"
+    },
+    {
+      "path": "pal/artifacts_v5.py",
+      "bytes": 14305,
+      "sha256": "31ac6ec74b816b2eca5268543ada02abfcef8535f7525a7a08115df23e6afd70"
+    },
+    {
+      "path": "pal/verification_v5.py",
+      "bytes": 22133,
+      "sha256": "6d9cc8bcd9ba1039d9b3573632496ad5e4eec87e1b260c8a148484b0b38982e8"
+    },
+    {
+      "path": "pal/contracts_v5.py",
+      "bytes": 20973,
+      "sha256": "683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f"
+    },
+    {
+      "path": "scripts/verify_design_report_v5.py",
+      "bytes": 1073,
+      "sha256": "1899fa0da8b4a9e43043781ed99e3f9682faad043410cbdf0502d81f71e57b42"
+    }
+  ],
+  "report_sha256": "c2b6e5cb1a2def115d19b43d69fdf295126c0f46569c101ea790a3359d1761a0",
+  "actual_calls": [
+    {
+      "role": "planner",
+      "route": "claude",
+      "model": "claude-opus-5-5"
+    },
+    {
+      "role": "implement",
+      "route": "claude",
+      "model": "claude-opus-5-5"
+    }
+  ],
+  "co_verified": true,
+  "co_verified_scope": "design report closed shape and size only",
+  "source_reconciliation": "Root inspected current RECOVERY01 TSK8f20d0; ART authorize_save returns ordered original call.sources; RUN current key is dumps([C08.save, original WorkRef, step_id]); C02 current artifacts is revision-scoped validated artifact set",
+  "unmet": [
+    "owner source review",
+    "fixed ART/TSK tests",
+    "actual saved-tail crash and fresh VER proof",
+    "whole C13",
+    "PRI/provider/usefulness"
+  ]
+}

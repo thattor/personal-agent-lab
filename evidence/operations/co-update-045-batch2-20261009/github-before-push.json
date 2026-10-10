@@ -1,0 +1,17 @@
+{
+  "observed_at": "2026-10-08T22:50:01+00:00",
+  "latest_official_co_release": {
+    "tag": "common-orchestration-v0.4.5",
+    "published_at": "2026-10-08T19:29:43Z",
+    "url": "https://github.com/thattor/common-orchestration/releases/tag/common-orchestration-v0.4.5"
+  },
+  "pal_main_sha": "94fcacbf506b7514a2380dc1c4e61ccc5dcffca2",
+  "pr_before_batch2_push": {
+    "number": 19,
+    "state": "open",
+    "draft": true,
+    "base": "main",
+    "head_sha": "1f8ba109e02f1e44b27084821bc7d0df9e649e63"
+  },
+  "source": "Fresh gh api official GitHub readbacks; no mutation."
+}

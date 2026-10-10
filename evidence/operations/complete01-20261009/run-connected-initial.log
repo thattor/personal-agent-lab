@@ -1,0 +1,166 @@
+test_actual_compose_verify_complete_uses_one_inference_and_no_release (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_actual_compose_verify_complete_uses_one_inference_and_no_release) ... FAIL
+test_committed_response_loss_replays_same_completion_once (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_committed_response_loss_replays_same_completion_once) ... FAIL
+test_malformed_successful_completion_receipt_is_not_a_completion_claim (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_malformed_successful_completion_receipt_is_not_a_completion_claim) ... FAIL
+test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) ... 
+  test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) (command='pause') ... FAIL
+  test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) (command='cancel') ... FAIL
+  test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) (command='stop') ... FAIL
+test_persistent_committed_response_loss_never_reopens_or_reinvokes_completed_work (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_persistent_committed_response_loss_never_reopens_or_reinvokes_completed_work) ... FAIL
+test_persistent_verification_loss_yields_then_verifies_new_epoch_without_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_persistent_verification_loss_yields_then_verifies_new_epoch_without_inference) ... FAIL
+test_uncommitted_ambiguity_retains_and_finalizes_before_more_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_uncommitted_ambiguity_retains_and_finalizes_before_more_inference) ... FAIL
+test_unknown_checks_continue_bounded_loop_and_never_enter_model_or_steps (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_unknown_checks_continue_bounded_loop_and_never_enter_model_or_steps) ... FAIL
+
+======================================================================
+FAIL: test_actual_compose_verify_complete_uses_one_inference_and_no_release (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_actual_compose_verify_complete_uses_one_inference_and_no_release)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 79, in test_actual_compose_verify_complete_uses_one_inference_and_no_release
+    self.assert_completed(out)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 68, in assert_completed
+    self.assertEqual((output['status'], output['state']), ('completed', 'completed'))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('released', 'failed') != ('completed', 'completed')
+
+First differing element 0:
+'released'
+'completed'
+
+- ('released', 'failed')
++ ('completed', 'completed')
+
+======================================================================
+FAIL: test_committed_response_loss_replays_same_completion_once (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_committed_response_loss_replays_same_completion_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 106, in test_committed_response_loss_replays_same_completion_once
+    self.assert_completed(out)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 68, in assert_completed
+    self.assertEqual((output['status'], output['state']), ('completed', 'completed'))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('released', 'failed') != ('completed', 'completed')
+
+First differing element 0:
+'released'
+'completed'
+
+- ('released', 'failed')
++ ('completed', 'completed')
+
+======================================================================
+FAIL: test_malformed_successful_completion_receipt_is_not_a_completion_claim (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_malformed_successful_completion_receipt_is_not_a_completion_claim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 173, in test_malformed_successful_completion_receipt_is_not_a_completion_claim
+    self.f.error(runner.run_once(self.expert, max_steps=2), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_connection_v5.py", line 60, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease-2a8e40b411b84e8ebe8e7804bfb3de8c",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease-2a8e40b411b84e8ebe8e7804bfb3de8c', 'reason_code': 'invalid_input', 'state': 'failed', 'status': 'released', 'steps': [{'action': {'content': '保存する下書き', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'record-f1e32de15918428d924cad4891936284', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'artifact-03141b01a70548d1bf2713bb7d392643', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-2212df885bd6490f8198ac50dac3e343', 'work_ref': {'epoch': 2, 'goal_id': 'goal-27a276ec48b046988a8fda5dac4a466e', 'revision': 1}}], 'work_ref': {'epoch': 2, 'goal_id': 'goal-27a276ec48b046988a8fda5dac4a466e', 'revision': 1}}}
+
+======================================================================
+FAIL: test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) (command='pause')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 166, in test_new_control_after_verification_fences_completion_and_further_inference
+    self.assertEqual(out['state'], state)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'failed' != 'paused'
+- failed
++ paused
+
+
+======================================================================
+FAIL: test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) (command='cancel')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 166, in test_new_control_after_verification_fences_completion_and_further_inference
+    self.assertEqual(out['state'], state)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'failed' != 'cancelled'
+- failed
++ cancelled
+
+
+======================================================================
+FAIL: test_new_control_after_verification_fences_completion_and_further_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_new_control_after_verification_fences_completion_and_further_inference) (command='stop')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 166, in test_new_control_after_verification_fences_completion_and_further_inference
+    self.assertEqual(out['state'], state)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'failed' != 'queued'
+- failed
++ queued
+
+
+======================================================================
+FAIL: test_persistent_committed_response_loss_never_reopens_or_reinvokes_completed_work (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_persistent_committed_response_loss_never_reopens_or_reinvokes_completed_work)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 114, in test_persistent_committed_response_loss_never_reopens_or_reinvokes_completed_work
+    self.f.error(runner.run_once(self.expert), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_connection_v5.py", line 60, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease-36b6d6777fee4640af6d3da17bb4875b",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease-36b6d6777fee4640af6d3da17bb4875b', 'reason_code': 'invalid_input', 'state': 'failed', 'status': 'released', 'steps': [{'action': {'content': '保存する下書き', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'record-43723e26a1ce4f6abd78ab20dbc8f46a', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'artifact-89d8d8c063d64d2181ba7ab78ba13efe', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-1036a675564045489d344aa5d88436ca', 'work_ref': {'epoch': 2, 'goal_id': 'goal-dc9a2cdb612c40ac8cbea4444907a5f0', 'revision': 1}}], 'work_ref': {'epoch': 2, 'goal_id': 'goal-dc9a2cdb612c40ac8cbea4444907a5f0', 'revision': 1}}}
+
+======================================================================
+FAIL: test_persistent_verification_loss_yields_then_verifies_new_epoch_without_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_persistent_verification_loss_yields_then_verifies_new_epoch_without_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 142, in test_persistent_verification_loss_yields_then_verifies_new_epoch_without_inference
+    self.assertEqual((out['status'], out['state']), ('released', 'queued'))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('released', 'failed') != ('released', 'queued')
+
+First differing element 1:
+'failed'
+'queued'
+
+- ('released', 'failed')
+?               ^^^^
+
++ ('released', 'queued')
+?               ^^^^
+
+
+======================================================================
+FAIL: test_uncommitted_ambiguity_retains_and_finalizes_before_more_inference (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_uncommitted_ambiguity_retains_and_finalizes_before_more_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 129, in test_uncommitted_ambiguity_retains_and_finalizes_before_more_inference
+    self.f.error(runner.run_once(self.expert, max_steps=2), 'unavailable')
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_connection_v5.py", line 60, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'call_ids': ['["C15.call","lease-dfc6071394dd4c268a293919f51da93c",0]'], 'control_status': 'none', 'excluded_refs': [], 'excluded_step_ids': [], 'lease_id': 'lease-dfc6071394dd4c268a293919f51da93c', 'reason_code': 'invalid_input', 'state': 'failed', 'status': 'released', 'steps': [{'action': {'content': '保存する下書き', 'kind': 'compose', 'media_type': 'text/plain', 'source_refs': [{'id': 'record-7c525a295c27425896234d2ea84e698e', 'kind': 'record'}]}, 'index': 0, 'result_refs': [{'id': 'artifact-99227a34b402455d9e1b78720ff26569', 'kind': 'artifact'}], 'status': 'finished', 'step_id': 'step-3932cfbecaf143958289fd7215cdf9a5', 'work_ref': {'epoch': 2, 'goal_id': 'goal-7dd79c4cdc954b78a56c0044ec83f5a7', 'revision': 1}}], 'work_ref': {'epoch': 2, 'goal_id': 'goal-7dd79c4cdc954b78a56c0044ec83f5a7', 'revision': 1}}}
+
+======================================================================
+FAIL: test_unknown_checks_continue_bounded_loop_and_never_enter_model_or_steps (test_mock_completion_connection_v5.MockCompletionConnectionTests.test_unknown_checks_continue_bounded_loop_and_never_enter_model_or_steps)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_completion_connection_v5.py", line 94, in test_unknown_checks_continue_bounded_loop_and_never_enter_model_or_steps
+    self.assertEqual((out['status'], out['state']), ('released', 'queued'))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ('released', 'failed') != ('released', 'queued')
+
+First differing element 1:
+'failed'
+'queued'
+
+- ('released', 'failed')
+?               ^^^^
+
++ ('released', 'queued')
+?               ^^^^
+
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.100s
+
+FAILED (failures=10)

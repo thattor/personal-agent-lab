@@ -1,0 +1,50 @@
+{
+  "version": "C087-OPUS-PLANNING-PROPOSAL/1",
+  "route": "CO0.4.5 / Claude Code first-party Pro",
+  "cli_version": "2.1.291",
+  "requested_model": "claude-opus-5-5",
+  "observed_init_model": "claude-opus-5-5",
+  "observed_result_model": "claude-opus-5-5",
+  "native_call_result": "success",
+  "duration_ms": 58702,
+  "tools": 0,
+  "api_key_source": "none",
+  "supplied_snapshot": "6a2e3129630a75d4b8a915e8653f461662ce5fbb",
+  "supplied_snapshot_public": false,
+  "supplied_inputs_sha256": {
+    "docs/design/contracts-v5/PRI02-UNQUALIFIED-DIAGNOSTIC-SCOPE.md": "fbdf4090fc58e439a0e825b78dc93fb14b407b040d658274a681152a3ab844b1",
+    "evidence/operations/pri02-diagnostic-20261010/model-feasibility.md": "0fc8e71c570152714971675f75d6d9184fc13690c410bfbb3c6ea532f9e14822",
+    "evidence/operations/pri02-diagnostic-20261010/verification.json": "8c23bc8c6fb9e1cb98f7dd6a18d384ca8e8b4c38799c81a27960b63127f4febb",
+    "evidence/operations/pri03-20261010/native-n2-summary.json": "a5287fff603278edbf4aeba490f75a8ac0ced56f44bdeb0910cc2d921ac263ac",
+    "pal/native_text_v5.py": "3c8719b9288dbac3c94d3c4b7ddff89da9f90eb7762fc3c857ebd2bee10edebf",
+    "tools/native_devin_text_v5.py": "7b21343d70f2d57dba9a5c787aa77fa451fe2b287be70743d12b5c4d04b3ce1f",
+    "tests/test_native_text_diagnostic_v5.py": "467c38d72e3de91790e3cd69c35765b3908ef296fa0669312308a1321963d316",
+    "tests/test_native_devin_unqualified_v5.py": "c059c58c59a55910cfd65eefe5fbeb91ae9251dcaa419b7ec53dd55d6e879b5d"
+  },
+  "source_snapshot": "69c6e226ba14da881f0ed11670601b1b5e854c48",
+  "raw_planning_output_sha256": "b27f1648a5a598610078a4c481122c08e96a99696a494539758e72d93ca32c45",
+  "raw_planning_output_bytes": 9491,
+  "planned_instructions_bytes": 9255,
+  "maximum_instructions_bytes": 4096,
+  "co_status": "failed",
+  "co_error": "plan_invalid",
+  "co_exit": 1,
+  "co_verified": false,
+  "declared_verifier_run": false,
+  "design_step_run": false,
+  "completed_design_report": false,
+  "planning_proposal": {
+    "existing_diagnostic_slice": "ALIGNED in embedded planning assessment",
+    "next_model_observation_scope": "REFINE proposal",
+    "recommendation": "Fixture-only bounded unqualified model observations before any model qualification",
+    "original_null_false_unchanged": true,
+    "no_real_case_authorized": true
+  },
+  "root_disposition": "Preserve completed proposal; do not relabel it a verified or completed review; continue approved native source work",
+  "limits": [
+    "No model availability blocker observed on this actual official call",
+    "AGY weekly quota is a separate route",
+    "No native product qualification or whole-goal approval",
+    "No new auth, billing change, CO/state edit or old unknown resume"
+  ]
+}

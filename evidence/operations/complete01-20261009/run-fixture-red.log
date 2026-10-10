@@ -1,0 +1,182 @@
+test_commit_lost_completion_response_replays_without_release_or_model (test_mock_completion_v5.MockCompletionTests.test_commit_lost_completion_response_replays_without_release_or_model) ... ERROR
+test_compose_verify_complete_canonical_keys_receipt_and_no_release (test_mock_completion_v5.MockCompletionTests.test_compose_verify_complete_canonical_keys_receipt_and_no_release) ... ERROR
+test_default_draft_only_behavior_remains_bounded (test_mock_completion_v5.MockCompletionTests.test_default_draft_only_behavior_remains_bounded) ... ok
+test_latest_pause_cancel_or_source_stop_fences_completion_then_execution (test_mock_completion_v5.MockCompletionTests.test_latest_pause_cancel_or_source_stop_fences_completion_then_execution) ... ERROR
+test_lost_verification_response_retries_same_identity (test_mock_completion_v5.MockCompletionTests.test_lost_verification_response_retries_same_identity) ... ERROR
+test_malformed_verification_receipt_fails_without_new_inference (test_mock_completion_v5.MockCompletionTests.test_malformed_verification_receipt_fails_without_new_inference) ... ERROR
+test_noncompose_or_nontail_history_does_not_finalize_at_entry (test_mock_completion_v5.MockCompletionTests.test_noncompose_or_nontail_history_does_not_finalize_at_entry) ... ERROR
+test_nonmet_checks_continue_normal_next_step_with_receipt (test_mock_completion_v5.MockCompletionTests.test_nonmet_checks_continue_normal_next_step_with_receipt) ... ERROR
+test_persistent_completion_unavailable_retains_and_reenters_before_inference (test_mock_completion_v5.MockCompletionTests.test_persistent_completion_unavailable_retains_and_reenters_before_inference) ... ERROR
+test_persistent_verify_unavailable_yields_or_retains_without_inference_repair (test_mock_completion_v5.MockCompletionTests.test_persistent_verify_unavailable_yields_or_retains_without_inference_repair) ... ERROR
+test_readiness_failure_prevents_finalization (test_mock_completion_v5.MockCompletionTests.test_readiness_failure_prevents_finalization) ... ERROR
+test_retained_finished_compose_tail_finalizes_before_new_inference (test_mock_completion_v5.MockCompletionTests.test_retained_finished_compose_tail_finalizes_before_new_inference) ... ERROR
+test_started_step_or_existing_next_call_blocks_entry_finalization (test_mock_completion_v5.MockCompletionTests.test_started_step_or_existing_next_call_blocks_entry_finalization) ... ERROR
+test_verification_ref_never_enters_model_context_or_step_results (test_mock_completion_v5.MockCompletionTests.test_verification_ref_never_enters_model_context_or_step_results) ... ERROR
+test_verifications_without_artifacts_is_invalid_host_configuration (test_mock_completion_v5.MockCompletionTests.test_verifications_without_artifacts_is_invalid_host_configuration) ... ERROR
+test_verify_unavailable_with_release_refused_retains_occupancy (test_mock_completion_v5.MockCompletionTests.test_verify_unavailable_with_release_refused_retains_occupancy) ... ERROR
+
+======================================================================
+ERROR: test_commit_lost_completion_response_replays_without_release_or_model (test_mock_completion_v5.MockCompletionTests.test_commit_lost_completion_response_replays_without_release_or_model)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 246, in test_commit_lost_completion_response_replays_without_release_or_model
+    runner = self.runner()
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_compose_verify_complete_canonical_keys_receipt_and_no_release (test_mock_completion_v5.MockCompletionTests.test_compose_verify_complete_canonical_keys_receipt_and_no_release)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 181, in test_compose_verify_complete_canonical_keys_receipt_and_no_release
+    out = value(self.runner().run_once(self.expert))
+                ~~~~~~~~~~~^^
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_latest_pause_cancel_or_source_stop_fences_completion_then_execution (test_mock_completion_v5.MockCompletionTests.test_latest_pause_cancel_or_source_stop_fences_completion_then_execution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 304, in test_latest_pause_cancel_or_source_stop_fences_completion_then_execution
+    out = value(self.runner().run_once(self.expert, max_steps=2))
+                ~~~~~~~~~~~^^
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_lost_verification_response_retries_same_identity (test_mock_completion_v5.MockCompletionTests.test_lost_verification_response_retries_same_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 256, in test_lost_verification_response_retries_same_identity
+    self.assertEqual(value(self.runner().run_once(self.expert))['status'], 'completed')
+                           ~~~~~~~~~~~^^
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_malformed_verification_receipt_fails_without_new_inference (test_mock_completion_v5.MockCompletionTests.test_malformed_verification_receipt_fails_without_new_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 228, in test_malformed_verification_receipt_fails_without_new_inference
+    self.error(self.runner().run_once(self.expert, max_steps=2))
+               ~~~~~~~~~~~^^
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_noncompose_or_nontail_history_does_not_finalize_at_entry (test_mock_completion_v5.MockCompletionTests.test_noncompose_or_nontail_history_does_not_finalize_at_entry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 291, in test_noncompose_or_nontail_history_does_not_finalize_at_entry
+    value(self.runner().run_once(self.expert))
+          ~~~~~~~~~~~^^
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_nonmet_checks_continue_normal_next_step_with_receipt (test_mock_completion_v5.MockCompletionTests.test_nonmet_checks_continue_normal_next_step_with_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 200, in test_nonmet_checks_continue_normal_next_step_with_receipt
+    out = value(self.runner().run_once(self.expert, max_steps=2))
+                ~~~~~~~~~~~^^
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_persistent_completion_unavailable_retains_and_reenters_before_inference (test_mock_completion_v5.MockCompletionTests.test_persistent_completion_unavailable_retains_and_reenters_before_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 233, in test_persistent_completion_unavailable_retains_and_reenters_before_inference
+    runner = self.runner()
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_persistent_verify_unavailable_yields_or_retains_without_inference_repair (test_mock_completion_v5.MockCompletionTests.test_persistent_verify_unavailable_yields_or_retains_without_inference_repair)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 210, in test_persistent_verify_unavailable_yields_or_retains_without_inference_repair
+    out = value(self.runner().run_once(self.expert, max_steps=2))
+                ~~~~~~~~~~~^^
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_readiness_failure_prevents_finalization (test_mock_completion_v5.MockCompletionTests.test_readiness_failure_prevents_finalization)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 283, in test_readiness_failure_prevents_finalization
+    value(self.runner().run_once(self.expert))
+          ~~~~~~~~~~~^^
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_retained_finished_compose_tail_finalizes_before_new_inference (test_mock_completion_v5.MockCompletionTests.test_retained_finished_compose_tail_finalizes_before_new_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 263, in test_retained_finished_compose_tail_finalizes_before_new_inference
+    self.assertEqual(value(self.runner().run_once(self.expert))['status'], 'completed')
+                           ~~~~~~~~~~~^^
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_started_step_or_existing_next_call_blocks_entry_finalization (test_mock_completion_v5.MockCompletionTests.test_started_step_or_existing_next_call_blocks_entry_finalization)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 272, in test_started_step_or_existing_next_call_blocks_entry_finalization
+    value(self.runner().run_once(self.expert))
+          ~~~~~~~~~~~^^
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_verification_ref_never_enters_model_context_or_step_results (test_mock_completion_v5.MockCompletionTests.test_verification_ref_never_enters_model_context_or_step_results)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 312, in test_verification_ref_never_enters_model_context_or_step_results
+    value(self.runner().run_once(self.expert, max_steps=2))
+          ~~~~~~~~~~~^^
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_verifications_without_artifacts_is_invalid_host_configuration (test_mock_completion_v5.MockCompletionTests.test_verifications_without_artifacts_is_invalid_host_configuration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 171, in test_verifications_without_artifacts_is_invalid_host_configuration
+    MockRunner(self.owners, self.owners, verifications=self.owners)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+======================================================================
+ERROR: test_verify_unavailable_with_release_refused_retains_occupancy (test_mock_completion_v5.MockCompletionTests.test_verify_unavailable_with_release_refused_retains_occupancy)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 220, in test_verify_unavailable_with_release_refused_retains_occupancy
+    self.error(self.runner().run_once(self.expert, max_steps=2))
+               ~~~~~~~~~~~^^
+  File "/private/tmp/pal-complete-run-tests-20261009/tests/test_mock_completion_v5.py", line 148, in runner
+    return MockRunner(self.owners, self.owners, **args)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'verifications'
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.002s
+
+FAILED (errors=15)
