@@ -1,3 +1,17 @@
+# C111 — two actual checkpoint cycles, product acceptance unchanged
+
+At6594585 Python3.13 full1103 PASS52.514s/exit0/0 skipped and mock
+ask/change/readback demos exit0. No PR-triggered CI existed.
+GitHub Actions workflow2e0fedb received Opus5.5 source-only APPROVE,
+triggered on PR19 and run38089797768 concluded SUCCESS. Hosted Python3.13.15
+suite discovered1103/executed1101 PASS, with two optional installed CO
+runtime cases skipped; they passed locally in the first cycle.
+The same three mock demos succeeded in CI. Exact evidence:
+[evidence](evidence/operations/c111-checkpoint-two-cycle-20261011/verification.json).
+This is source/fixture acceptance only. Stable-1, real native
+Primary/Expert/UI, authentic user usefulness, and overall PAL are NOT_MET.
+PR19 is Draft and no actual provider run or release was performed.
+
 # Current C110 — EXE02 source-only local acceptance; PAL whole goal NOT_MET
 
 Independent Python3.13 results at exact source50d00a9: 41 executor tests,

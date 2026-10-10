@@ -1,0 +1,65 @@
+{
+  "change": {
+    "commit_sha": "2e0fedbfea572ea6c0824265e746e8014e22223b",
+    "new_controller": false,
+    "new_paid_service": false,
+    "path": ".github/workflows/pal-checkpoints.yml",
+    "review": "Official Opus 5.5 source-only APPROVE",
+    "review_sha256": "5cecde5c49c8c05c6026ac24f1dfd64603010f6aabb84180634f60d28bd354af",
+    "workflow_sha256": "2209052ff5c2e477878818556ba065f65a2a42931217630f44f7a6ab1d0683f1"
+  },
+  "checkpoint_issue": "https://github.com/thattor/personal-agent-lab/issues/5",
+  "cycle1": {
+    "detected_gap": "No GitHub Actions workflow to verify PR synchronize updates",
+    "elapsed_seconds": 52.514,
+    "exit": 0,
+    "head_sha": "6594585b948eb65d4507820da996e01c74b11aeb",
+    "local_log_sha256": "fddcba6fb484f60bfd88b5aee63f2fe936d2cc47359de352cb415776f0756c3b",
+    "pal_goal": "NOT_MET",
+    "skips": 0,
+    "stable1": "NOT_MET",
+    "tests_discovered": 1103,
+    "tests_executed": 1103,
+    "three_mock_demos_exit": [
+      0,
+      0,
+      0
+    ]
+  },
+  "cycle2": {
+    "checked_merge_sha": "d883fd55969af6befbf51732fa18573bb9a20aef",
+    "conclusion": "success",
+    "head_sha": "2e0fedbfea572ea6c0824265e746e8014e22223b",
+    "hosted_log_sha256": "80f2b0fdee2657a90792f6f8e98f0b8b2baa7e37e47cd01f8b75721d051cacbd",
+    "hosted_runner": "macos-15",
+    "python": "3.13.15",
+    "run_id": 38089797768,
+    "skip_reason": "optional CO installed runtime absent from hosted runner; covered by local tests",
+    "skipped_names": [
+      "test_foreign_or_mixed_namespace_origin_refuses",
+      "test_installed_namespace_package_has_valid_runtime_origin"
+    ],
+    "test_elapsed_seconds": 103.308,
+    "tests_discovered": 1103,
+    "tests_executed": 1101,
+    "tests_skipped": 2,
+    "three_mock_demos": "all steps succeeded",
+    "workflow_url": "https://github.com/thattor/personal-agent-lab/actions/runs/38089797768"
+  },
+  "date_jst": "2026-10-11",
+  "evaluation": {
+    "continuous_development_orchestration": "NOT_PROVEN",
+    "human_usefulness": "NOT_MET",
+    "pal_goal": "NOT_MET",
+    "pr_merged": false,
+    "real_expert_ui": "NOT_MET",
+    "real_provider": "NOT_MET",
+    "scope": "CI success never auto-closes Issues or promotes proposed milestones",
+    "source_fixture_ci": "VERIFIED",
+    "stable1": "NOT_MET",
+    "unknown_calls": "held and unchanged"
+  },
+  "project": "https://github.com/users/thattor/projects/1",
+  "schema": "pal.checkpoint-two-cycles/1",
+  "whole_goal_issue": "https://github.com/thattor/personal-agent-lab/issues/6"
+}

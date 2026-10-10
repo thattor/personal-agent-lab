@@ -3360,3 +3360,21 @@ until independent P1 finalization findings and full tests are resolved.
 C094 and all other original UNKNOWNs remain held, MAX1/real provider
 approval is separate and finite, and real useful product acceptance
 remains NOT_MET. No additional cost/auth/service or old-call operations.
+
+## D076 — existing-asset checkpoint cycles without a new Controller (2026-10-11)
+
+Use GitHub Project #1/Milestones/Issues, CO/Opus and existing unittest
+and mock demos as checkpoint infrastructure, not a new bespoke evaluator.
+First cycle at6594585 passed1103 tests/0 skips and3 local demos, showing
+there was no PR-triggered CI. The minimum 51-line workflow was added
+at2e0fedb and independently approved source-only by Opus5.5.
+Second cycle GitHub Actions run38089797768 completed SUCCESS with
+1103 discovered/1101 executed PASS/2 optional installed-CO skips;
+the locally installed CO path was covered by the first cycle.
+All three mock E2E demos passed in both cycles.
+
+Workflow green is not release acceptance: genuine native provider/UI,
+human usefulness, and Stable-1/overall PAL remain NOT_MET. This does
+not make an always-on issue-to-issue development Controller, adopt
+PROPOSED stages, or grant new cost/auth/provider/unknown-call authority.
+[Checkpoint evidence](evidence/operations/c111-checkpoint-two-cycle-20261011/verification.json).
