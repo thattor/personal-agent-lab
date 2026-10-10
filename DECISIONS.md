@@ -3321,3 +3321,23 @@ The existing PR title/body reflect1037/local-versus-real and pending human
 disposition. No reported CI checks, merge, deployment, visibility change or new
 actual entry follows. This recording changes metadata only; source679f267 proof
 and C094 held remain unchanged.
+
+## D074 — owner choice received; project ordering remains dependency-led (2026-10-11)
+
+Root adopts the owner's explicit prior `max1` reply and subsequent clarification:
+the proposed C097 separate synthetic PRIMARY-only MAX1 is an **answered owner
+choice**, conditional on unchanged pre-entry proof. C094 and N1/N2/N3 remain held
+UNKNOWN; no existing active record, raw output or old receipts may be retired,
+replayed, released or reconstructed. No additional auth, service or charge is
+permitted. Source/operator/binary/hash/old-inventory closure, exclusive case,
+current credit-OFF/automatic-reload-OFF proof and <=300s freshness remain
+mandatory at actual invocation; absent proof refuses entry. A local or CO setup
+model call is never a PAL qualification.
+
+The owner expressly rejects treating MAX1 history as the sole development
+priority. Root shall choose the shortest dependency-correct route to genuine
+Primary/Expert/UI and saved/verified user work, retain independent Opus reviews
+and SWE-2 High implementation, and preserve all actual PASS/UNKNOWN distinctions.
+The approval is at most one **new** synthetic qualifying invocation, not a
+general continuous provider allowance. Recorded in PR19 issuecomment-6099779022.
+No real new case, invoke, release or product acceptance is claimed by D074.

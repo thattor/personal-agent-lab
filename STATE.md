@@ -1,3 +1,32 @@
+# Owner disposition after C097 — 2026-10-11, not a provider qualification
+
+The owner directly answered `max1` in the PAL controller conversation and
+subsequently clarified that this old checkpoint must not dictate the work order.
+The D073/C097 **human choice is ANSWERED**: preserve C094 and the original
+N1/N2/N3 records UNKNOWN/held, and allow **at most one distinct** synthetic
+PRIMARY-only qualification under the C097 proposal. The same approval need not
+be requested again. This is not permission to retry C094, rotate roots, release
+unknown records, adopt original output, change service/auth/billing, or run
+unbounded model calls.
+
+Actual admission remains conditional on the unchanged exact source/operator/
+17-file/executable pins, four original inventories, exclusive new case, fresh
+same-account Pro and extra-credit-use/automatic-reload OFF evidence and
+time-bound hook checks. Missing proof means **NO ENTRY**. No new PAL model
+invocation or real qualification is claimed by this decision.
+
+Work sequencing is based on the real PAL goal: connect genuine Primary, Expert,
+UI and saved/verified work with independently reviewed source and authentic
+functional evidence. The one-case qualification is performed when it becomes the
+necessary prerequisite, not simply as a response to an old MAX1 comment.
+Controller: this chat; review: official Opus; implementation: SWE-2 High,
+using the installed co-task skill and approved Desktop Commander fallback.
+PR owner-decision record:
+https://github.com/thattor/personal-agent-lab/pull/19#issuecomment-6099779022
+
+The C097 code checkpoint, local1037 tests, fixture-only UI, original UNKNOWNs
+and whole-goal NOT_MET claims below remain otherwise unchanged.
+
 # Current C097 — private failure observations verified; real entry still held
 
 Root679f267 integrates separate Solfeaddb1 wrapper and Sold07a631 fixed fixture
