@@ -2,6 +2,36 @@
 
 This file records decisions needed to continue implementation. Newer entries override older conflicting entries.
 
+## Current local UI02 source adoption after C111 (2026-10-11)
+
+Latest direct owner instruction: "最新の進捗状況を確認してから、作業を再開してください。
+Codex残量４０％まで使用可とします". Root treats remaining40% as the floor;
+the official weekly report at this checkpoint gives remaining99%, with ordinary
+usage allowed. It grants no new service/auth/billing, real provider allowance,
+old UNKNOWN operation or product acceptance. Keep checking before new stages.
+
+Root source dc75a54 on current PR19 base d1639a5 adopts only the earlier v5 UI02
+saved-admission source repair and unchanged frozen4. Actual current-base RED,
+GREEN4/full1107, independent Astra source approval and separate Sol6.1
+preservation checks are bound in
+[verification](evidence/operations/ui02-admission-current-20261011/verification.json).
+This corrects the existing UI02-NATIVE-FIXTURE/1 complete-owner-envelope rule;
+there is no contract or design expansion. It adds no genuine native entry.
+
+The fault's cause was status-only submit handling before reservation transfer;
+malformed owner replies or an ordinary exception could dispatch or leave a slot.
+Retained fixed admission tests and independent close/malformed probes verify the
+minimum repair. Separately, the verified historical port had not reached the
+latest public source. Resume/integration checks must inspect exact source and
+diff inclusion. Private historical UI02 and public EXE02/CI records reuse
+D075/D076 numbers; keep both histories intact and disambiguate by base and
+source/evidence hashes. Do not rename either history or transfer its authority.
+
+Source, fixed tests, independent review and preservation have separate ownership;
+Root alone integrates this isolated candidate. Issue22's active candidate and
+shared contracts remain outside this write scope. CI, actual provider/UI,
+authentic usefulness and whole PAL acceptance require their own current proof.
+
 ## D048 — first Primary host connection, Root technical disposition
 Date: 2026-10-10 (local continuing session)
 Completed actual CO claude-opus-5-5 PRI01 REFINE is retained at

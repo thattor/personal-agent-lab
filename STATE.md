@@ -1,3 +1,39 @@
+# Current UI02 admission repair — source dc75a54 (2026-10-11)
+
+Root reconciled public PR19 head d1639a5 with the separately retained v5 UI02
+preparation. Its saved-admission repair was absent from the public source.
+On that exact current base, frozen4 produced a functional RED: four methods,
+five failures/four errors. Root ported the byte-identical repair and fixed tests;
+current GREEN4 and full Python3.13 **1107 PASS55.679s/exit0/0 skips** follow.
+
+Saved owner replies now require the complete typed envelope, closed turn ID/status,
+valid ID and known status before queue transfer. Ordinary owner exceptions latch
+held and return pathless503; saved pending input remains and untransferred
+admission slots are released. Valid pending/committed replay remains deduplicated.
+UI02-NATIVE-FIXTURE/1 and PRI01/1 contracts are unchanged.
+
+Independent gpt-6-astra APPROVE_SOURCE_ONLY includes fixed4 and five original
+probe methods/fifteen cases PASS. Independent gpt-6.1-sol checks3196 source,
+contract and original-evidence bindings with zero differences. Root read the
+actual probe/report/log evidence and recomputed hashes before source adoption.
+[Current exact source evidence](evidence/operations/ui02-admission-current-20261011/verification.json).
+
+Latest direct owner instruction resumes development with Codex remaining40%
+as the floor. The official weekly window reported remaining99% at this checkpoint;
+subsequent stages must refresh it. Installed CO0.4.5 routes remain exact
+claude-opus-5-5 and devin/swe-2-high; capacity status gives12 per route and
+Devin executing1/reserved0, Claude executing0/reserved0. This slice used separate
+approved Codex Astra/Sol6.1
+contexts, with at most three active participants including Root. No new external
+model invocation, auth, service or billing setting was used.
+
+This is local source/fixture acceptance. CI on this source, a genuine current
+native browser, real useful work and the whole goal remain unproved/NOT_MET.
+Prior C111 CI and old browser/provider receipts keep their original versions.
+Issue22's independent owner continues EXE01/TSK/GitHub bridge preparation;
+none of that owner's source or evidence was changed by this repair. Preserve
+all original UNKNOWN calls and existing finite provider permissions.
+
 # Current C111 — two checkpoint cycles using existing assets (2026-10-11)
 
 First cycle: Root6594585 full Python3.13 unittest 1103 PASS/52.514s/exit0,
