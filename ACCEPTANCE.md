@@ -1,4 +1,4 @@
-# Current UI02 admission repair — scoped local source acceptance
+# Current UI02 admission repair — local and hosted source acceptance
 
 Root dc75a54 on PR19 base d1639a5 passes Python3.13 full1107 in55.679s,
 exit0/no skips. The unchanged frozen4 fail against the current pre-port source
@@ -8,12 +8,17 @@ methods/fifteen cases. Separate Sol6.1 preservation checks3196 bindings with
 zero differences. Root verifies actual reports, logs, source and contract hashes.
 [Exact source evidence](evidence/operations/ui02-admission-current-20261011/verification.json).
 
+Existing hosted CI run38112169250 succeeds on published head89f0f39:
+1107 discovered/1105 executed PASS109.426s/two optional installed-CO skips,
+plus three saved ask/change/readback mock demos. Both optional cases pass
+in Root's local suite. [Publication/CI](evidence/operations/ui02-admission-current-20261011/publication.json).
+
 Malformed saved owner responses and ordinary exceptions now fail with pathless503,
 no dispatch and released admission slots while saved input remains. Known replay
 behavior and all prior tests/contracts are retained. No Issue22 source, old native
 case or original evidence is changed. C111 hosted CI and old browser/provider
 receipts remain attached to their original source/operator versions; they are
-not CI or genuine-browser proof for this port. Real native usefulness, Stable-1
+not transferred as current CI or genuine-browser proof. Real native usefulness, Stable-1
 and overall PAL remain NOT_MET.
 
 # C111 — two actual checkpoint cycles, product acceptance unchanged

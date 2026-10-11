@@ -23,16 +23,23 @@ as the floor. The official weekly window reported remaining99% at this checkpoin
 subsequent stages must refresh it. Installed CO0.4.5 routes remain exact
 claude-opus-5-5 and devin/swe-2-high; capacity status gives12 per route and
 Devin executing1/reserved0, Claude executing0/reserved0. This slice used separate
-approved Codex Astra/Sol6.1
-contexts, with at most three active participants including Root. No new external
-model invocation, auth, service or billing setting was used.
+approved Codex Astra/Sol6.1 contexts: three assigned participants including Root,
+with a maximum of two simultaneously active. No new external model invocation,
+auth, service or billing setting was used.
 
-This is local source/fixture acceptance. CI on this source, a genuine current
-native browser, real useful work and the whole goal remain unproved/NOT_MET.
-Prior C111 CI and old browser/provider receipts keep their original versions.
-Issue22's independent owner continues EXE01/TSK/GitHub bridge preparation;
-none of that owner's source or evidence was changed by this repair. Preserve
-all original UNKNOWN calls and existing finite provider permissions.
+Published PR19 head89f0f39 received existing CI run38112169250 SUCCESS.
+Hosted Python3.13.15 discovered1107/executed1105 PASS109.426s, with two
+optional installed-CO cases skipped; both passed in Root's local1107.
+Three saved ask/change/readback fixture demos succeed. Exact merge checkout
+d5e3227 is bound to that head. See
+[publication and CI evidence](evidence/operations/ui02-admission-current-20261011/publication.json).
+
+This is source/fixture acceptance. A genuine current native browser, real useful
+work and the whole goal remain unproved/NOT_MET. Prior C111 CI and old browser/
+provider receipts keep their original versions. Issue22's separately retained
+EXE01/TSK/GitHub bridge candidate is unadopted; none of that owner's source or
+evidence was changed by this repair. Preserve all original UNKNOWN calls and
+existing finite provider permissions.
 
 # Current C111 — two checkpoint cycles using existing assets (2026-10-11)
 

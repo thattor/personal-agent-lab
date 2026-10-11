@@ -18,6 +18,13 @@ preservation checks are bound in
 This corrects the existing UI02-NATIVE-FIXTURE/1 complete-owner-envelope rule;
 there is no contract or design expansion. It adds no genuine native entry.
 
+The reviewed source was published to existing Draft PR19 head89f0f39 by normal
+fast-forward push. Existing CI run38112169250 SUCCESS confirms hosted1107
+discovered/1105 PASS/two optional installed-CO skips and three fixture demos;
+both skipped cases pass locally. This publication changes neither main nor
+repository visibility/deployment. Exact evidence is in
+[publication](evidence/operations/ui02-admission-current-20261011/publication.json).
+
 The fault's cause was status-only submit handling before reservation transfer;
 malformed owner replies or an ordinary exception could dispatch or leave a slot.
 Retained fixed admission tests and independent close/malformed probes verify the
@@ -28,7 +35,7 @@ D075/D076 numbers; keep both histories intact and disambiguate by base and
 source/evidence hashes. Do not rename either history or transfer its authority.
 
 Source, fixed tests, independent review and preservation have separate ownership;
-Root alone integrates this isolated candidate. Issue22's active candidate and
+Root alone integrates this isolated candidate. Issue22's unadopted candidate and
 shared contracts remain outside this write scope. CI, actual provider/UI,
 authentic usefulness and whole PAL acceptance require their own current proof.
 
