@@ -173,13 +173,21 @@ class LocalNativeApp:
             with self.owners() as (_, tasks, memory, artifacts, verifier, host):
                 if host is None:
                     return failure(ErrorCode.UNAVAILABLE), 503
-                result = host.submit({**data, 'session_id': self.session_id})
-                if type(result) is not Result:
+                try:
+                    result = self._result(host.submit({**data, 'session_id': self.session_id}))
+                    if result.ok:
+                        value = result.value.to_json()
+                        _closed(value, ('turn_id', 'status'))
+                        _token(value['turn_id'])
+                        if (type(value['status']) is not str or value['status'] not in
+                                {'pending', 'committed', 'failed', 'interrupted'}):
+                            raise ValueError('owner response unavailable')
+                except Exception:
                     self._hold()
                     return failure(ErrorCode.UNAVAILABLE), 503
-                if result.ok and result.value.to_json().get('status') == 'pending':
+                if result.ok and value['status'] == 'pending':
                     retained = True
-                    self._enqueue_reserved('turn', result.value.to_json()['turn_id'])
+                    self._enqueue_reserved('turn', value['turn_id'])
                 elif not result.ok and result.error.code is ErrorCode.UNAVAILABLE:
                     self._hold()
                 return result.to_json(), 200
