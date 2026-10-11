@@ -1,0 +1,159 @@
+# Design: EXE02-file/1, `pal/github_file_payload_v5.py`
+
+**Assessment:** The bounded, file-only API from section D can be implemented as written, using only the standard library. I found no wire contradiction that blocks implementation. Four points need recording, listed in section 7. The most important is that the decoded bound can never be reached.
+
+## 1. Public surface (settled, unchanged)
+
+- `__all__ = ("DecodedFile", "FilePayloadError", "decode_file")`
+- `decode_file(payload: bytes, *, max_bytes: int = 1048576) -> DecodedFile`
+- Private constant `_HARD_MAX_BYTES = 1048576`.
+- Imports: `base64`, `binascii`, `dataclasses`, `json` only.
+- No I/O, IDs, Ref/Result/Action, common types, or INT00 files.
+
+## 2. Validation order, error codes and fixed messages
+
+The first failure wins. Messages are fixed ASCII constants (`_MSG_*`).
+
+| # | Check | Code | Message |
+|---|---|---|---|
+| 1 | `type(max_bytes) is not int` (rejects bool, float, str, None, int subclass) or `max_bytes <= 0` | invalid_input | "max_bytes must be a positive int" |
+| 2 | `max_bytes > 1048576` | limit | "max_bytes exceeds hard maximum" |
+| 3 | `type(payload) is not bytes` (rejects bytearray, memoryview, subclass, str) | invalid_input | "payload must be bytes" |
+| 4 | `len(payload) > max_bytes` | limit | "payload exceeds max_bytes" |
+| 5 | `payload.decode("utf-8")`, strict; catch `UnicodeDecodeError` | invalid_input | "payload is not valid UTF-8" |
+| 6a | Duplicate key in any object (see note below) | invalid_input | "payload has duplicate JSON keys" |
+| 6b | Non-finite number: NaN, Infinity, -Infinity, or a float that overflows (e.g. 1e400) | invalid_input | "payload has non-finite JSON number" |
+| 6c | Malformed JSON. Catch `ValueError` (covers JSONDecodeError, int-digit limit, BOM) and `RecursionError` (deep nesting) | invalid_input | "payload is not valid JSON" |
+| 7 | Top level is not a dict (array/directory listing, scalar, null) | invalid_input | "payload is not a JSON file object" |
+| 8 | `type`: missing, not exact str, or `!= "file"` | invalid_input | "type must be file" |
+| 9 | `encoding`: missing, not exact str, or `!= "base64"` (includes GitHub's large-file `"none"`) | invalid_input | "encoding must be base64" |
+| 10 | `content`: missing or not exact str | invalid_input | "content must be a string" |
+| 11 | `size`: missing, not exact int (rejects bool and 1.0), or `< 0` | invalid_input | "size must be a nonnegative int" |
+| 12 | `sha`: missing, not exact str, length not 40, or any char outside `0123456789abcdef` (char-set check, not a `$`-anchored regex) | invalid_input | "sha must be 40 lowercase hex" |
+| 13 | Key `"target"` or `"submodule_git_url"` present, with any value including null | invalid_input | "target and submodule_git_url are not allowed" |
+| 14 | `size > max_bytes` | limit | "size exceeds max_bytes" |
+| 15 | Base64 canonicality (see below) | invalid_input | "content is not canonical base64" |
+| 16 | `len(data) > max_bytes` (defensive, see 7.1) | limit | "decoded content exceeds max_bytes" |
+| 17 | `len(data) != size` | invalid_input | "size does not match decoded content" |
+| 18 | `data.decode("utf-8")`, strict, not `utf-8-sig`, so a BOM is kept as U+FEFF | invalid_input | "content is not valid UTF-8" |
+
+**Step 6 parsing:**
+- Call `json.loads(text, object_pairs_hook=_pairs, parse_constant=_reject_constant, parse_float=_finite_float)`.
+- `_pairs` builds a dict and raises a private `_DuplicateKey` if a key repeats, even with equal values. This applies to nested objects too.
+- `_reject_constant` raises a private `_NonFinite`.
+- `_finite_float` raises `_NonFinite` if `float(s)` is not finite.
+- Extra provider fields, including nested `_links` and `download_url`, are ignored and never followed.
+
+**Step 15 Base64:**
+- Set `s = content.replace("\r", "").replace("\n", "")`, stripping all CR/LF anywhere and nothing else. U+2028, U+0085, space, tab, VT and FF stay and therefore fail.
+- Pre-check: every char is in `A–Z a–z 0–9 + / =` (this guarantees ASCII), and `len(s) % 4 == 0`.
+- Decode: `data = base64.b64decode(s, validate=True)`, catching `binascii.Error` and `ValueError`.
+- Require `base64.b64encode(data) == s.encode("ascii")`. This single round-trip catches:
+  - missing or extra padding
+  - `=` in the middle of the string
+  - non-zero pad bits, such as `QR==` or `aGVsbG9=`
+  - url-safe characters
+- An empty string is valid and decodes to an empty file.
+
+**Success:** return `DecodedFile(content=text, data=data, byte_count=len(data), blob_sha=sha)`.
+
+## 3. Raising errors with no `__cause__`, no `__context__` and no input echo
+
+- **Error class:** `class FilePayloadError(Exception)`. Its `__init__(self, code, message)` sets `self.code` and `self.message`, then calls `super().__init__(message)`, so `str(e) == message` and `args == (message,)`.
+- **Messages:** only the module constants are ever passed. No values, offsets, lengths or exception text are interpolated.
+- **Raising rule:** never raise inside an `except` block. `raise ... from None` still keeps `__context__`. Each guarded region therefore follows this pattern:
+  - set `failure = None`
+  - `try: ...`
+  - `except (...): failure = _MSG_X`, with no `as` clause
+  - after the block: `if failure is not None: raise FilePayloadError(code, failure)`
+- **Result:** `__cause__` and `__context__` are None, and no decoder exception or input slice is retained.
+- **Private hook exceptions** (`_DuplicateKey`, `_NonFinite`) carry no data. Hooks are only ever caught inside the module. Each gets its own `except` clause so the message can be chosen.
+
+## 4. `DecodedFile`
+
+- Declared as `@dataclasses.dataclass(frozen=True, slots=True)`.
+- Fields in order: `content: str`, `data: bytes`, `byte_count: int`, `blob_sha: str`.
+- It has the default eq, hash and repr. There is no `__post_init__` validation: values are trusted only when they come from `decode_file`.
+- `blob_sha` is provider metadata only. It is not a commit SHA or verified provenance, and there is no Git object-hash check.
+
+## 5. Synthetic test cases (`tests/test_github_file_payload_v5.py`, unittest only)
+
+Fixtures are built with `json.dumps` and `base64`, plus hand-written raw bytes for duplicates and constants. Nothing is copied from real repositories.
+
+**Valid inputs:**
+- **T01 Known wrapped text:** "héllo 世界\n" encoded and wrapped every 60 chars with `\n`, plus a trailing `\n`. Assert exact content, data, byte_count, blob_sha.
+- **T02 Literal vector:** `"aGVsbG8="` → "hello".
+- **T03 Empty file:** content `""` with size 0, and content `"\n"` with size 0. Both give `""`, `b""` and 0.
+- **T04 CRLF wrapping:** Base64 wrapped with `\r\n` is accepted.
+- **T05 No normalization:** data `b"a\r\nb\rc\n"` is kept exactly. Decomposed `e\u0301` stays decomposed, and a leading BOM stays as `\ufeff`.
+- **T06 Extra fields:** name, path, url, download_url, nested `_links` and null-valued fields are allowed.
+- **T07 Dataclass shape:** assignment raises `FrozenInstanceError`. Field names and order are exact, `type(data) is bytes` and `type(content) is str`.
+
+**Bounds and argument types:**
+- **T08 Size bounds:**
+  - Default is 1048576.
+  - A payload padded with JSON whitespace to exactly `max_bytes` is accepted; one byte more → limit.
+  - `max_bytes=1048576` explicitly is accepted.
+- **T09 max_bytes:**
+  - True, False, 0, -1, 1.0, "10", None and an int subclass → invalid_input.
+  - 1048577 → limit.
+  - max_bytes is checked before payload: `decode_file("x", max_bytes=0)` raises the max_bytes message.
+  - Passing max_bytes positionally raises TypeError, confirming it is keyword-only.
+- **T10 payload type:** str, bytearray, memoryview, a bytes subclass and None → invalid_input.
+
+**Raw UTF-8 and JSON:**
+- **T11 Raw UTF-8:** `\xff`, an overlong encoding and an encoded surrogate → UTF-8 message. A BOM-prefixed JSON payload → JSON message.
+- **T12 Malformed JSON:** empty input, `{`, trailing comma and trailing garbage → invalid JSON. `"["*200000` within the limit → invalid JSON, with no RecursionError leaking. An integer with 5000 digits → invalid JSON.
+- **T13 Duplicate keys:** top-level and nested duplicates, including equal values → duplicate message.
+- **T14 Non-finite numbers:** NaN, Infinity and -Infinity in an extra field, and 1e400 → non-finite message.
+
+**File object shape:**
+- **T15 Not an object:** a directory array of file objects, a string, a number and null → object message.
+- **T16 type:** "dir", "symlink", "submodule", "File", missing, and 1 → type message.
+- **T17 encoding:** "none", "", "BASE64", missing and null → encoding message.
+- **T18 content:** missing, null, an int and a list → content message.
+- **T19 size:** missing, -1, 1.0, true, "3" and null → size message.
+- **T20 sha:** uppercase, 39 or 41 chars, a "g", 64 hex chars, missing, an int, and a trailing `"\n"` → sha message.
+- **T21 Rejected fields:** a valid file plus `"target"` (string or null), or plus `"submodule_git_url"` → rejected-field message.
+
+**Size, Base64 and text:**
+- **T22 Declared size:**
+  - `size = max_bytes+1` with tiny valid content → limit, which proves it is checked before Base64 and before size equality.
+  - `size == max_bytes` with mismatched content → mismatch.
+- **T23 Invalid Base64:**
+  - space, tab, VT, FF, U+2028, U+0085
+  - `-` or `_`
+  - missing padding, extra padding, `=` mid-string, length not a multiple of 4
+  - a non-ASCII letter
+  - non-zero pad bits: `QR==`, `QUJ=`, `aGVsbG9=`
+- **T24 Size mismatch:** "hello" declared as size 4 or size 6 → mismatch.
+- **T25 Binary content:** `b"\xff\xfe\x00"` and truncated `b"\xe3\x81"` with correct size → content UTF-8 message.
+- **T26 Base64 overhead:** 600 decoded bytes with `max_bytes=700` → raw limit. A decoded file that fits can still fail on the JSON size.
+
+**Error hygiene:**
+- **T27** For every failure case above:
+  - `type(e) is FilePayloadError`
+  - `e.code` is in {invalid_input, limit} and matches the table
+  - `e.message` equals the expected constant, ASCII and at most 80 chars
+  - `str(e) == e.message`
+  - `__cause__` and `__context__` are None
+  - a marker such as `"SECRET-MARKER-7Q"` embedded in the payload does not appear in `str(e)`, `repr(e)` or `args`
+- **T28** `__all__` contains exactly the three names.
+
+Verify with: `python3.13 -E -s -B -m unittest discover -s tests -p test_github_file_payload_v5.py -v`
+
+## 6. Proposed SWE instruction (under 1000 bytes)
+
+"Implement section D of docs/design/contracts-v5/PARALLEL-SCOPE-2.md exactly, following the approved design: validation order steps 1–18, the fixed `_MSG` constants, private hook exceptions, raising only outside except blocks (null `__cause__` and `__context__`), Base64 round-trip canonical check, and frozen slots DecodedFile. Write only pal/github_file_payload_v5.py and tests/test_github_file_payload_v5.py with cases T01–T28. Stdlib only; synthetic fixtures; no I/O, IDs, common types or INT00 files. Run the declared unittest command and report exact output."
+
+## 7. Concrete findings to record (no wire invented)
+
+1. **Decoded bound (step 16) can never fire.** The raw payload is at most `max_bytes`, and every JSON string char costs at least one byte. So the Base64 text has at most `max_bytes` chars, and the decoded size is at most ¾ × `max_bytes`, which is always below `max_bytes`.
+   - The check stays as a defensive invariant.
+   - The scope's "decoded bound" case is covered by the declared-size limit (T22) and the overhead case (T26), not by a direct test.
+   - With the default 1 MiB raw budget, the largest decodable file is about 786 KiB, below C07's 1 MiB body limit. Section D already acknowledges this.
+2. **1e400 rejection is my interpretation.** The scope names only NaN/Infinity. Rejecting floats that overflow to infinity follows from the "nonfinite" intent. The reviewer should confirm or drop T14's 1e400 case.
+3. **Rejected fields are rejected even when null.** Rejecting `target` and `submodule_git_url` on presence matches the scope's "explicit fields". GitHub's content-file schema lists both as optional properties, so a provider that emits them as null would be rejected. This is accepted per scope, and the future executor must handle it.
+4. **Duplicate vs non-finite order is parser-defined.** Both checks run during parsing, so the first one hit in the document wins (an object's duplicates are detected when it closes). Both are invalid_input, and the tests do not combine them.
+
+None of this claims that a C07/EXE-01 service contract has passed. Commit-SHA provenance, grants, observation time and receipts remain owned by the host.

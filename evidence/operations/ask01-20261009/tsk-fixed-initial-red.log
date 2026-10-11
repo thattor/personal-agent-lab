@@ -1,0 +1,274 @@
+test_admitted_or_unadopted_returned_activity_cannot_close_lease (test_tasks_ask_v5.TaskAskTests.test_admitted_or_unadopted_returned_activity_cannot_close_lease) ... FAIL
+test_answer_missing_foreign_question_old_revision_and_nonrecord (test_tasks_ask_v5.TaskAskTests.test_answer_missing_foreign_question_old_revision_and_nonrecord) ... FAIL
+test_answer_optional_link_and_claim_replay_not_consumed (test_tasks_ask_v5.TaskAskTests.test_answer_optional_link_and_claim_replay_not_consumed) ... FAIL
+test_answer_post_write_failure_preserves_open_question_and_memory (test_tasks_ask_v5.TaskAskTests.test_answer_post_write_failure_preserves_open_question_and_memory) ... FAIL
+test_answer_stop_invalidates_without_reopening_and_multiple_links_ordered (test_tasks_ask_v5.TaskAskTests.test_answer_stop_invalidates_without_reopening_and_multiple_links_ordered) ... FAIL
+test_ask_post_write_faults_and_baseexception_leave_no_partial_key (test_tasks_ask_v5.TaskAskTests.test_ask_post_write_faults_and_baseexception_leave_no_partial_key) ... FAIL
+test_atomic_wait_history_readback_lease_closed_no_extra_budget (test_tasks_ask_v5.TaskAskTests.test_atomic_wait_history_readback_lease_closed_no_extra_budget) ... FAIL
+test_closed_invalid_inputs_and_wrong_action_or_step_do_not_burn_key (test_tasks_ask_v5.TaskAskTests.test_closed_invalid_inputs_and_wrong_action_or_step_do_not_burn_key) ... FAIL
+test_duplicate_selected_refs_preserved_and_ordinary_finish_refused (test_tasks_ask_v5.TaskAskTests.test_duplicate_selected_refs_preserved_and_ordinary_finish_refused) ... FAIL
+test_every_current_lease_call_workref_and_status_must_be_valid (test_tasks_ask_v5.TaskAskTests.test_every_current_lease_call_workref_and_status_must_be_valid) ... FAIL
+test_foreign_question_cannot_answer_a_different_waiting_work (test_tasks_ask_v5.TaskAskTests.test_foreign_question_cannot_answer_a_different_waiting_work) ... FAIL
+test_historical_ask_and_answer_replay_and_changed_input_conflict (test_tasks_ask_v5.TaskAskTests.test_historical_ask_and_answer_replay_and_changed_input_conflict) ... FAIL
+test_historical_optional_stop_retains_question_and_waiting_or_paused (test_tasks_ask_v5.TaskAskTests.test_historical_optional_stop_retains_question_and_waiting_or_paused) ... FAIL
+test_pause_answer_resume_and_cancel_do_not_revive_question (test_tasks_ask_v5.TaskAskTests.test_pause_answer_resume_and_cancel_do_not_revive_question) ... FAIL
+test_selected_and_unselected_call_source_stop_close_waiting_question (test_tasks_ask_v5.TaskAskTests.test_selected_and_unselected_call_source_stop_close_waiting_question) ... FAIL
+test_sql_index_and_call_binding_corruption_fail_closed (test_tasks_ask_v5.TaskAskTests.test_sql_index_and_call_binding_corruption_fail_closed) ... FAIL
+test_two_connection_pause_cancel_and_stop_order_before_ask (test_tasks_ask_v5.TaskAskTests.test_two_connection_pause_cancel_and_stop_order_before_ask) ... FAIL
+
+======================================================================
+FAIL: test_admitted_or_unadopted_returned_activity_cannot_close_lease (test_tasks_ask_v5.TaskAskTests.test_admitted_or_unadopted_returned_activity_cannot_close_lease)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 313, in test_admitted_or_unadopted_returned_activity_cannot_close_lease
+    self.stage()
+    ~~~~~~~~~~^^
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_answer_missing_foreign_question_old_revision_and_nonrecord (test_tasks_ask_v5.TaskAskTests.test_answer_missing_foreign_question_old_revision_and_nonrecord)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 244, in test_answer_missing_foreign_question_old_revision_and_nonrecord
+    receipt = self.ask(); request = self.answer_request(receipt)
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 102, in ask
+    self.stage()
+    ~~~~~~~~~~^^
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_answer_optional_link_and_claim_replay_not_consumed (test_tasks_ask_v5.TaskAskTests.test_answer_optional_link_and_claim_replay_not_consumed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 140, in test_answer_optional_link_and_claim_replay_not_consumed
+    receipt = self.ask()
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 102, in ask
+    self.stage()
+    ~~~~~~~~~~^^
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_answer_post_write_failure_preserves_open_question_and_memory (test_tasks_ask_v5.TaskAskTests.test_answer_post_write_failure_preserves_open_question_and_memory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 283, in test_answer_post_write_failure_preserves_open_question_and_memory
+    receipt = self.ask(); request = self.answer_request(receipt); before = self.dump()
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 102, in ask
+    self.stage()
+    ~~~~~~~~~~^^
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_answer_stop_invalidates_without_reopening_and_multiple_links_ordered (test_tasks_ask_v5.TaskAskTests.test_answer_stop_invalidates_without_reopening_and_multiple_links_ordered)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 215, in test_answer_stop_invalidates_without_reopening_and_multiple_links_ordered
+    first = self.ask(); answer1 = self.answer_request(first)
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 102, in ask
+    self.stage()
+    ~~~~~~~~~~^^
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_ask_post_write_faults_and_baseexception_leave_no_partial_key (test_tasks_ask_v5.TaskAskTests.test_ask_post_write_faults_and_baseexception_leave_no_partial_key)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 268, in test_ask_post_write_faults_and_baseexception_leave_no_partial_key
+    self.stage(); before = self.dump()
+    ~~~~~~~~~~^^
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_atomic_wait_history_readback_lease_closed_no_extra_budget (test_tasks_ask_v5.TaskAskTests.test_atomic_wait_history_readback_lease_closed_no_extra_budget)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 121, in test_atomic_wait_history_readback_lease_closed_no_extra_budget
+    step = self.stage()
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_closed_invalid_inputs_and_wrong_action_or_step_do_not_burn_key (test_tasks_ask_v5.TaskAskTests.test_closed_invalid_inputs_and_wrong_action_or_step_do_not_burn_key)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 234, in test_closed_invalid_inputs_and_wrong_action_or_step_do_not_burn_key
+    step = self.stage()
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_duplicate_selected_refs_preserved_and_ordinary_finish_refused (test_tasks_ask_v5.TaskAskTests.test_duplicate_selected_refs_preserved_and_ordinary_finish_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 227, in test_duplicate_selected_refs_preserved_and_ordinary_finish_refused
+    step = self.stage(selected=[self.origin, self.origin])
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_every_current_lease_call_workref_and_status_must_be_valid (test_tasks_ask_v5.TaskAskTests.test_every_current_lease_call_workref_and_status_must_be_valid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 324, in test_every_current_lease_call_workref_and_status_must_be_valid
+    self.stage()
+    ~~~~~~~~~~^^
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_foreign_question_cannot_answer_a_different_waiting_work (test_tasks_ask_v5.TaskAskTests.test_foreign_question_cannot_answer_a_different_waiting_work)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 256, in test_foreign_question_cannot_answer_a_different_waiting_work
+    original = self.ask()
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 102, in ask
+    self.stage()
+    ~~~~~~~~~~^^
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_historical_ask_and_answer_replay_and_changed_input_conflict (test_tasks_ask_v5.TaskAskTests.test_historical_ask_and_answer_replay_and_changed_input_conflict)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 158, in test_historical_ask_and_answer_replay_and_changed_input_conflict
+    receipt = self.ask()
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 102, in ask
+    self.stage()
+    ~~~~~~~~~~^^
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_historical_optional_stop_retains_question_and_waiting_or_paused (test_tasks_ask_v5.TaskAskTests.test_historical_optional_stop_retains_question_and_waiting_or_paused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 205, in test_historical_optional_stop_retains_question_and_waiting_or_paused
+    receipt = self.ask()
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 102, in ask
+    self.stage()
+    ~~~~~~~~~~^^
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_pause_answer_resume_and_cancel_do_not_revive_question (test_tasks_ask_v5.TaskAskTests.test_pause_answer_resume_and_cancel_do_not_revive_question)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 172, in test_pause_answer_resume_and_cancel_do_not_revive_question
+    receipt = self.ask()
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 102, in ask
+    self.stage()
+    ~~~~~~~~~~^^
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_selected_and_unselected_call_source_stop_close_waiting_question (test_tasks_ask_v5.TaskAskTests.test_selected_and_unselected_call_source_stop_close_waiting_question)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 190, in test_selected_and_unselected_call_source_stop_close_waiting_question
+    receipt = self.ask()
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 102, in ask
+    self.stage()
+    ~~~~~~~~~~^^
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_sql_index_and_call_binding_corruption_fail_closed (test_tasks_ask_v5.TaskAskTests.test_sql_index_and_call_binding_corruption_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 297, in test_sql_index_and_call_binding_corruption_fail_closed
+    step = self.stage(); before = self.dump()
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_two_connection_pause_cancel_and_stop_order_before_ask (test_tasks_ask_v5.TaskAskTests.test_two_connection_pause_cancel_and_stop_order_before_ask)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 343, in test_two_connection_pause_cancel_and_stop_order_before_ask
+    self.setUp(); self.stage()
+                  ~~~~~~~~~~^^
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 95, in stage
+    step = self.value(self.tasks.begin_step({'key': self.key(), 'work_ref': self.lease['work_ref'], 'action': action}))
+  File "/private/tmp/pal-ask-tsk-tests-20261009/tests/test_tasks_ask_v5.py", line 63, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'task request unavailable', 'refs': []}}
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.104s
+
+FAILED (failures=17)

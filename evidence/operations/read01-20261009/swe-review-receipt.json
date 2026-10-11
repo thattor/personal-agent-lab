@@ -1,0 +1,26 @@
+{
+  "task_id": "c2027bf7247a4985abbbf5fb620c6b79",
+  "base_sha": "ffd5d79c7322f117795782bfc507ddf77e4d210e",
+  "status": "verified",
+  "verified": true,
+  "diff_digest": "sha256:31b124e2473e8bc221749d672a3134930f199e1c4c6bffe7554fbf59c2ee56b3",
+  "calls": [
+    {
+      "role": "planner",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "role": "implement",
+      "route": "devin",
+      "model": "swe-2-high",
+      "cost_tier": "Free"
+    }
+  ],
+  "verdict": "ALIGNED",
+  "input_snapshot_matches": true,
+  "reviewer_commands_run": false,
+  "note_sha256": "c8b48a7a783869c280055ac016aaa50a9e5aff5d9d16f03c1df0281a48b0a5fe",
+  "limits": "review structure only; exact seam refinements below are Root technical dispositions, not implementation evidence"
+}

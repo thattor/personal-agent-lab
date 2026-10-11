@@ -1,0 +1,94 @@
+{
+  "commit": "e39f8b8489b7a4cf5b2a84d4c09054da603a2433",
+  "previous_public_base": "a332c53e79b7e28788f6abbb42099edc122a3535",
+  "anonymous": true,
+  "auth_header_used": false,
+  "files": [
+    {
+      "path": "ACCEPTANCE.md",
+      "http_status": 200,
+      "bytes": 94661,
+      "sha256": "fc8cc78350a34f9eae58a4522b7ecfcf0febabc85d0215e73a3106624170a1de",
+      "exact_commit_match": true
+    },
+    {
+      "path": "AGENTS.md",
+      "http_status": 200,
+      "bytes": 16375,
+      "sha256": "c2ef46b12faa81a8081c7c4e46bb4f1bf9e04b7b20f10781dda58bf62bf7250c",
+      "exact_commit_match": true
+    },
+    {
+      "path": "DECISIONS.md",
+      "http_status": 200,
+      "bytes": 235802,
+      "sha256": "45df521dab933ca516de26c5ce0b9497b6813ac5825b359cd94fb41b9b09891a",
+      "exact_commit_match": true
+    },
+    {
+      "path": "STATE.md",
+      "http_status": 200,
+      "bytes": 127428,
+      "sha256": "ad690b5396daaa6d5841720a73181876adb45f3e8c618ec10664e2bf8f8d2a22",
+      "exact_commit_match": true
+    },
+    {
+      "path": "docs/DEFECTS.md",
+      "http_status": 200,
+      "bytes": 124419,
+      "sha256": "7493ea07bf13604b11aa4c10669312654923b0c47652bc755651f5065551973b",
+      "exact_commit_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-N-SCOPE.md",
+      "http_status": 200,
+      "bytes": 20713,
+      "sha256": "6182fbcabcd3df237ca630d45a2e4f7277b46878486b35116e2b22fb4e3684bf",
+      "exact_commit_match": true
+    },
+    {
+      "path": "docs/plans/CHECKPOINTS.md",
+      "http_status": 200,
+      "bytes": 109263,
+      "sha256": "160256693832fbad481d16b563891486b16472c12cd185ffba6e82550c27c710",
+      "exact_commit_match": true
+    },
+    {
+      "path": "evidence/operations/pri02-20261010/native-preparation-verification.json",
+      "http_status": 200,
+      "bytes": 5422,
+      "sha256": "626debfc93b5cae07d30f24e7bf84801da2ffd0ca9168688d9826c82de0723ad",
+      "exact_commit_match": true
+    },
+    {
+      "path": "evidence/operations/pri02-20261010/public-readback.json",
+      "http_status": 200,
+      "bytes": 14695,
+      "sha256": "480bdeaead4e70964f2e0c8a3f7ff99f360d97ee3f3d386044810c9d267e8974",
+      "exact_commit_match": true
+    },
+    {
+      "path": "tests/test_native_devin_diagnostics_v5.py",
+      "http_status": 200,
+      "bytes": 5928,
+      "sha256": "da8afc989ec9c7cc5b7d4592d16c516be64f9f32e983ee2443a080743ba43949",
+      "exact_commit_match": true
+    },
+    {
+      "path": "tests/test_native_devin_metadata_v5.py",
+      "http_status": 200,
+      "bytes": 6762,
+      "sha256": "ff618dd45ef12613b56011d0e44d914a4290adc2b305a3bf754b1dbab0fb5f2d",
+      "exact_commit_match": true
+    },
+    {
+      "path": "tools/native_devin_text_v5.py",
+      "http_status": 200,
+      "bytes": 21343,
+      "sha256": "ac1250b16395319c6c0b14de815358da97a884c8f823217686730c78c568ad03",
+      "exact_commit_match": true
+    }
+  ],
+  "all_match": true,
+  "scope": "Independently approved bounded native correction export only; original UNKNOWN outcomes and held slot unchanged. No native qualification or whole-goal acceptance."
+}

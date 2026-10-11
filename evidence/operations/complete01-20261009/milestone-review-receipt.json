@@ -1,0 +1,34 @@
+{
+  "task_id": "d2abb079dbad467aa388415d520bd961",
+  "base_sha": "07c0c0731002035944f3e9badf13c5ceb79eb600",
+  "status": "verified",
+  "verified": true,
+  "diff_digest": "sha256:1e16cdc9a90c954ae48fa1a95c40d85893a7687e117e971700d62f936e7967d2",
+  "source_commit": "bdce832b8fdb68f6317c033155474a4204703189",
+  "calls": [
+    {
+      "role": "planner",
+      "route": "claude",
+      "model": "claude-opus-5-5"
+    },
+    {
+      "role": "implement",
+      "route": "claude",
+      "model": "claude-opus-5-5"
+    }
+  ],
+  "verdict": "ALIGNED",
+  "next_read_scope": "REFINE",
+  "current_scope_blockers": [],
+  "note_sha256": "b5fc6c86fc7ee461b3fe0e9b4429742a1b8f60bb4ae8e378e39137a566ecfbce",
+  "input_snapshot_matched": true,
+  "source_and_test_files_still_match": true,
+  "reviewer_commands_run": false,
+  "unsupplied": [
+    "full711 log",
+    "TSK22 tests",
+    "fixedRUN16 tests",
+    "shared real VER connection fixture"
+  ],
+  "limit": "CO verified only review note structure; Root host test and source identity evidence is separate"
+}

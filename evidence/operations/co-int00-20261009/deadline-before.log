@@ -1,0 +1,50 @@
+test_operator_deadline_before_watchdog_exits_cleanly (tests.test_live_cancel_probe.CancelProbeTests.test_operator_deadline_before_watchdog_exits_cleanly) ... {"event": "operator.ready", "url": "http://127.0.0.1:62238"}
+ERROR
+test_operator_concurrent_close_preserves_original_reason (tests.test_live_cancel_probe.CancelProbeTests.test_operator_concurrent_close_preserves_original_reason) ... {"event": "operator.ready", "url": "http://127.0.0.1:62239"}
+ERROR
+test_operator_other_rejection_remains_failure (tests.test_live_cancel_probe.CancelProbeTests.test_operator_other_rejection_remains_failure) ... {"event": "operator.ready", "url": "http://127.0.0.1:62241"}
+ok
+
+======================================================================
+ERROR: test_operator_deadline_before_watchdog_exits_cleanly (tests.test_live_cancel_probe.CancelProbeTests.test_operator_deadline_before_watchdog_exits_cleanly)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_live_cancel_probe.py", line 272, in test_operator_deadline_before_watchdog_exits_cleanly
+    serve_operator(probe, input_fd=read_fd)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/scripts/live_cancel_probe.py", line 313, in serve_operator
+    probe._check()
+    ~~~~~~~~~~~~^^
+  File "/private/tmp/pal-v5-co-20261009/scripts/live_cancel_probe.py", line 93, in _check
+    raise RunRejected('probe closed or expired')
+scripts.live_runner.RunRejected: probe closed or expired
+
+======================================================================
+ERROR: test_operator_concurrent_close_preserves_original_reason (tests.test_live_cancel_probe.CancelProbeTests.test_operator_concurrent_close_preserves_original_reason)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_live_cancel_probe.py", line 295, in test_operator_concurrent_close_preserves_original_reason
+    serve_operator(probe, input_fd=read_fd)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/scripts/live_cancel_probe.py", line 313, in serve_operator
+    probe._check()
+    ~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.15/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.15/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.15/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/mock.py", line 1240, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "/private/tmp/pal-v5-co-20261009/tests/test_live_cancel_probe.py", line 291, in close_then_check
+    check()
+    ~~~~~^^
+  File "/private/tmp/pal-v5-co-20261009/scripts/live_cancel_probe.py", line 93, in _check
+    raise RunRejected('probe closed or expired')
+scripts.live_runner.RunRejected: probe closed or expired
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.179s
+
+FAILED (errors=2)

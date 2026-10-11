@@ -1,0 +1,5 @@
+oversized {'ok': False, 'error': {'code': 'invalid_input', 'message': 'artifact operation invalid_input', 'refs': []}}
+duplicate request refs {'ok': False, 'error': {'code': 'invalid_input', 'message': 'artifact operation invalid_input', 'refs': []}}
+inspect gate exception {'ok': False, 'error': {'code': 'unavailable', 'message': 'artifact operation unavailable', 'refs': []}}
+guard savepoint remained after unavailable: yes
+caller transaction still active: True

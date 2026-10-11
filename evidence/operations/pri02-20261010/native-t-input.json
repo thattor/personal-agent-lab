@@ -1,0 +1,19 @@
+{
+  "call_id": "synthetic-pri02-t-call-1",
+  "reservation_id": "synthetic-pri02-t-reservation-1",
+  "role": "primary",
+  "output_kind": "primary_proposal",
+  "messages": [
+    {
+      "role": "system",
+      "text": "This is one synthetic ordinary Primary compatibility case, without PAL owner effects. Return only strict JSON {\"reply\":\"short Japanese reply\",\"proposal\":{\"kind\":\"none\"}}. No tools, files, commands, grants or identifiers may be created. The source_refs and call/reservation identifiers are synthetic fixture labels."
+    },
+    {
+      "role": "user",
+      "text": "日本語で短く挨拶してください。作業は依頼していません。"
+    }
+  ],
+  "source_refs": [
+    {"kind": "record", "id": "synthetic-pri02-t-record-1"}
+  ]
+}

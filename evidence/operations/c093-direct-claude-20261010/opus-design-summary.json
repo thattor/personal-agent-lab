@@ -1,0 +1,46 @@
+{
+  "version": "C093-DESIGN-RECEIPT/1",
+  "label": "C093-OPUS-CHECKPOINT",
+  "base_sha": "3f6933790ba6816430f485bfb6f4133bd3915e37",
+  "read_sha256": {
+    "docs/design/contracts-v5/PRI02-CLAUDE-DIRECT-SCOPE.md": "db1027b0313c3ef3620c1ecd6aa3439f264a00f64e294c77bdc27c64b79c0cde",
+    "pal/native_call_v5.py": "94f4f63bd1070cb037b8a9220fe0c5b232f78e7aa8f805d268ad8edf03344395",
+    "pal/native_expert_runner_v5.py": "dbe00a98709ae442cd50dd7ec12ab0e52b8ab3b8ea0663586889669c753880c0",
+    "docs/design/contracts-v5/PAL-contracts-v5.md": "52bddae39df30e5da26e76798e855707a0c39946f42f8fae837d7fca7a22ca4d"
+  },
+  "report_sha256": "9a1f2f2f13cc5e9eda57e429a395592accb9553d5715afe3c618650efb7b00bb",
+  "verdict": "REFINE",
+  "verified_scope": "REPORT_SHAPE_ONLY; 5 listed files, no source/product proof",
+  "co_version": "0.4.5",
+  "calls": [
+    {
+      "phase": "planner",
+      "model_id": "claude-opus-5-5",
+      "result_model_ids": [
+        "claude-opus-5-5"
+      ],
+      "cli_version": "2.1.291",
+      "duration_ms": 9949,
+      "tools": 0,
+      "permissions": 0,
+      "extra_usage_observed_disabled": true,
+      "stream_sha256": "19ddf7ede90cf46065a8ec6225fac04ac3985792d13bbaa7bd7631275ba83a29",
+      "frame_count": 10
+    },
+    {
+      "phase": "report",
+      "model_id": "claude-opus-5-5",
+      "result_model_ids": [
+        "claude-opus-5-5"
+      ],
+      "cli_version": "2.1.291",
+      "duration_ms": 208925,
+      "tools": 0,
+      "permissions": 0,
+      "extra_usage_observed_disabled": true,
+      "stream_sha256": "68f48204e0ba62b3386a1e8dc832b0790bf570bf788078541792ba6195b39ad0",
+      "frame_count": 137
+    }
+  ],
+  "product_native_entry": false
+}

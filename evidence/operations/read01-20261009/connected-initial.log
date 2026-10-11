@@ -1,0 +1,50 @@
+test_completed_source_stop_keeps_body_hash_and_state_but_changes_readback_usability (test_read_connection_v5.ReadConnectionTests.test_completed_source_stop_keeps_body_hash_and_state_but_changes_readback_usability) ... ok
+test_epoch_only_nonmet_history_stays_readable_without_claiming_source_stop (test_read_connection_v5.ReadConnectionTests.test_epoch_only_nonmet_history_stays_readable_without_claiming_source_stop) ... ok
+test_missing_actual_artifact_is_visible_and_does_not_drop_the_saved_result (test_read_connection_v5.ReadConnectionTests.test_missing_actual_artifact_is_visible_and_does_not_drop_the_saved_result) ... ok
+test_read_clock_changes_only_observation_time_and_public_artifact_binding_is_exact (test_read_connection_v5.ReadConnectionTests.test_read_clock_changes_only_observation_time_and_public_artifact_binding_is_exact) ... ok
+test_read_snapshot_orders_a_stop_attempt_from_another_connection (test_read_connection_v5.ReadConnectionTests.test_read_snapshot_orders_a_stop_attempt_from_another_connection) ... ok
+test_real_paginated_result_readback_preserves_multiartifact_order_and_cursor (test_read_connection_v5.ReadConnectionTests.test_real_paginated_result_readback_preserves_multiartifact_order_and_cursor) ... FAIL
+test_result_is_discoverable_after_committed_but_lost_runner_response (test_read_connection_v5.ReadConnectionTests.test_result_is_discoverable_after_committed_but_lost_runner_response) ... ok
+test_three_real_owners_return_matching_utf8_hashes_without_writes (test_read_connection_v5.ReadConnectionTests.test_three_real_owners_return_matching_utf8_hashes_without_writes) ... 
+  test_three_real_owners_return_matching_utf8_hashes_without_writes (test_read_connection_v5.ReadConnectionTests.test_three_real_owners_return_matching_utf8_hashes_without_writes) (kind='record') ... FAIL
+test_two_completed_works_in_one_session_keep_separate_state_and_refs (test_read_connection_v5.ReadConnectionTests.test_two_completed_works_in_one_session_keep_separate_state_and_refs) ... FAIL
+
+======================================================================
+FAIL: test_real_paginated_result_readback_preserves_multiartifact_order_and_cursor (test_read_connection_v5.ReadConnectionTests.test_real_paginated_result_readback_preserves_multiartifact_order_and_cursor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_read_connection_v5.py", line 85, in test_real_paginated_result_readback_preserves_multiartifact_order_and_cursor
+    self.assertIn(label, rendered)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: 'mock model' not found in 'Saved-result inspection (read-only; not completion authority)\nModel: mock (no real model call; saved drafts are mock output)\nVerification: structural only (no semantic quality judgement)\nSession: draft-session\nResult event 1: event-94a75d90669642f5b0f935f12f01da62 (work completed from saved verification)\n  Work ref: goal goal-8060119aaacd47bb9a1cdb56d2c2ea19 revision 1 epoch 1\n  Work state (TSK, separate from result usability): completed\n  Ref artifact:artifact-51a6ac08e8a44571902fc39b6b6e0cf4\n    Read at: 2026-10-09T10:59:51.434406+00:00 (time of this read, not creation time)\n    Media type: text/plain  hash: 3a89a2d37aa584eecad185a112c8696ac72348bce25e5418b550c5a0fcb5aa94\n    Usable: yes\n    Content:\n      下書き0\n      確認済み日程は月曜日\n  Ref artifact:artifact-b1a115f18ba94e4b9f723a62a3d1ac2c\n    Read at: 2026-10-09T10:59:51.438427+00:00 (time of this read, not creation time)\n    Media type: text/plain  hash: 69015bc7a0967e9ae8c056c028073bf7d3caae9bd5aefaf86a842d651010fc7d\n    Usable: yes\n    Content:\n      下書き1\n      確認済み日程は月曜日\n  Ref verification:verification-48e5ea485b4143a78aaea79a85ac6b90\n    Read at: 2026-10-09T10:59:51.444448+00:00 (time of this read, not creation time)\n    Media type: application/json  hash: 161261611e19381a3cd4d8c4fe079bed00ca4c98063d759d6de5d8717bd9a880\n    Saved verification (historical, separate from current usability):\n      Fixed Conditions:\n        - condition-87b12792704146b0bf1ad81d474c44ca [artifact_saved]: artifact_saved\n      Original checks (historical; structural, not a semantic judgement):\n        - condition-87b12792704146b0bf1ad81d474c44ca: met - ordered artifact set saved and verified (evidence: artifact:artifact-51a6ac08e8a44571902fc39b6b6e0cf4, artifact:artifact-b1a115f18ba94e4b9f723a62a3d1ac2c)\n      Saved artifact bindings, in order:\n        - artifact:artifact-51a6ac08e8a44571902fc39b6b6e0cf4 hash=3a89a2d37aa584eecad185a112c8696ac72348bce25e5418b550c5a0fcb5aa94 bytes=41\n        - artifact:artifact-b1a115f18ba94e4b9f723a62a3d1ac2c hash=69015bc7a0967e9ae8c056c028073bf7d3caae9bd5aefaf86a842d651010fc7d bytes=41\n      Dependencies: record:record-a8fd3d37eb8f4874b4cb116e3c791002, record:record-c6fbb7c7ae504f74a7689520a8005ed0\n    Current usability: current\nNext cursor: event-94a75d90669642f5b0f935f12f01da62\nPage scan truncated: no\n'
+
+======================================================================
+FAIL: test_three_real_owners_return_matching_utf8_hashes_without_writes (test_read_connection_v5.ReadConnectionTests.test_three_real_owners_return_matching_utf8_hashes_without_writes) (kind='record')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_read_connection_v5.py", line 41, in test_three_real_owners_return_matching_utf8_hashes_without_writes
+    body = self.f.value(self.reader().read({'ref': ref}, purpose='user_view'))
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'owner unavailable', 'refs': []}}
+
+======================================================================
+FAIL: test_two_completed_works_in_one_session_keep_separate_state_and_refs (test_read_connection_v5.ReadConnectionTests.test_two_completed_works_in_one_session_keep_separate_state_and_refs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_read_connection_v5.py", line 130, in test_two_completed_works_in_one_session_keep_separate_state_and_refs
+    self.f.compose()
+    ~~~~~~~~~~~~~~^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_connection_v5.py", line 81, in compose
+    reservation = self.value(self.tasks.reserve_budget({'key': 'model-' + str(index),
+        'work_ref': self.work, 'kind': 'model', 'role': 'expert'}))
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'conflict', 'message': 'key reused with different input', 'refs': []}}
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.120s
+
+FAILED (failures=3)

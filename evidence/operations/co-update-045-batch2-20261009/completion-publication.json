@@ -1,0 +1,36 @@
+{
+  "observed_at": "2026-10-08T23:23:52.245123+00:00",
+  "repository": {
+    "private": true,
+    "visibility": "private",
+    "default_branch": "main"
+  },
+  "local_and_remote_head": "83c01a92b69edebef124963b37187575b2ac963b",
+  "product_test_source_commit": "4ebab5a29e3c4c1b0dac939aa4d9a60364974bef",
+  "main_head_unchanged": "94fcacbf506b7514a2380dc1c4e61ccc5dcffca2",
+  "pr": {
+    "baseRefName": "main",
+    "headRefName": "codex/pal-v5-co",
+    "headRefOid": "83c01a92b69edebef124963b37187575b2ac963b",
+    "isDraft": true,
+    "number": 19,
+    "state": "OPEN",
+    "statusCheckRollup": [],
+    "title": "Prepare bounded v5 file content and integrity with concurrent CO",
+    "updatedAt": "2026-10-08T23:23:17Z",
+    "url": "https://github.com/thattor/personal-agent-lab/pull/19"
+  },
+  "pr_body_matches": true,
+  "issue": {
+    "number": 6,
+    "state": "OPEN",
+    "title": "PAL project goal — integrated personal assistant delivery",
+    "updatedAt": "2026-10-08T23:23:27Z",
+    "url": "https://github.com/thattor/personal-agent-lab/issues/6"
+  },
+  "issue_body_matches": true,
+  "issue_history_preserved_except_old_current_heading": true,
+  "issue_body_sha256": "2c68e736ae2e6080ecd9a0c43711d6bd0de3b9aea5fa67353c51daa2d07c06c3",
+  "ci_claim": "No GitHub CI run claimed; readback checks are recorded only",
+  "merge_or_release": false
+}

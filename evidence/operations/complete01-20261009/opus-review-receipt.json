@@ -1,0 +1,64 @@
+{
+  "task_id": "72fabf04d0fa4dbb9785f30f0310f7f8",
+  "status": "verified",
+  "verified": true,
+  "attempts": [
+    {
+      "attempt_id": "plan-a1",
+      "call_id": "plan",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:14ac38e1117e96eeb3e97bed0afa0a95019f2c98ef1ed843db89d92919b25c15",
+      "role": "planner",
+      "route": "claude",
+      "step_id": "plan"
+    },
+    {
+      "attempt_id": "s1-a1",
+      "call_id": "s1",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:528f4f338f0a4af1a2bf68059085507c1141d6f27fc8939c986504f6fe9ec16c",
+      "role": "implement",
+      "route": "claude",
+      "step_id": "s1"
+    }
+  ],
+  "verify": {
+    "after": {
+      "docs/design/contracts-v5/COMPLETE01-SCOPE.md": "sha256:a41b45a692162573cd9716e227e340714535c8f1447a59e9d1832f77f0bf07d7",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/VER01-SCOPE.md": "sha256:bb7837dc0d0780802c1dd3af7559011838cf53aa33a824a16b413fa6408e7dba",
+      "evidence/operations/art01-20261009/opus-milestone-review.md": "sha256:3717628450e835aef89eae7144074956f349e4aa010ab65236ad730fdec96ae4",
+      "evidence/operations/complete01-20261009/opus-scope-review.md": "sha256:9647d628a6d7a7404be67cde9312d285cea5fac28b3bd64de86d4e09973328ff",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/mock_runner_v5.py": "sha256:421c5980d40691430aa5c69ae72bda77733e14d6d3ee20ec7ddeeec4c5441cf2",
+      "pal/tasks_v5.py": "sha256:26393c914c0dfdd0aadf409bae549555873d89ed1b8693086902ebc905872c91"
+    },
+    "before": {
+      "docs/design/contracts-v5/COMPLETE01-SCOPE.md": "sha256:a41b45a692162573cd9716e227e340714535c8f1447a59e9d1832f77f0bf07d7",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/VER01-SCOPE.md": "sha256:bb7837dc0d0780802c1dd3af7559011838cf53aa33a824a16b413fa6408e7dba",
+      "evidence/operations/art01-20261009/opus-milestone-review.md": "sha256:3717628450e835aef89eae7144074956f349e4aa010ab65236ad730fdec96ae4",
+      "evidence/operations/complete01-20261009/opus-scope-review.md": "sha256:9647d628a6d7a7404be67cde9312d285cea5fac28b3bd64de86d4e09973328ff",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/mock_runner_v5.py": "sha256:421c5980d40691430aa5c69ae72bda77733e14d6d3ee20ec7ddeeec4c5441cf2",
+      "pal/tasks_v5.py": "sha256:26393c914c0dfdd0aadf409bae549555873d89ed1b8693086902ebc905872c91"
+    },
+    "exit": 0,
+    "log": "Completion scope review note structure only\n",
+    "n": 1,
+    "passed": true,
+    "sandbox": "seatbelt-v1",
+    "version": "sha256:c7e8146369b37a45d0a9a7456081130290e463af55909c05f0a68add58700e78"
+  },
+  "base": "903a411451f1ffa34c4a34904c710c23cca1ede2",
+  "result_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/72fabf04d0fa4dbb9785f30f0310f7f8/result.json",
+  "diff_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/72fabf04d0fa4dbb9785f30f0310f7f8/result.diff",
+  "scope": "Design consultation note only; no commands run by reviewer, not implementation acceptance",
+  "disposition": "REFINE: adopt R1-R8 with explicit no-extra-field completed-history notice semantics; see COMPLETE01-SCOPE. SWE persistence consultation follows."
+}

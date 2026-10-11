@@ -1,0 +1,53 @@
+{
+  "calls": [
+    {
+      "duration_ms": 8064,
+      "init_model": "claude-opus-5-5",
+      "permission_mode": "dontAsk",
+      "requested_model": "claude-opus-5-5",
+      "result_model_usage": [
+        "claude-opus-5-5"
+      ],
+      "role": "planner",
+      "stream_sha256": "38672ca8b33e01c9a61f6bc546d52da90a82c65442f3e6164767ca97f0e51d6d",
+      "success": true,
+      "tools": 0,
+      "version": "2.1.291"
+    },
+    {
+      "duration_ms": 79973,
+      "init_model": "claude-opus-5-5",
+      "permission_mode": "dontAsk",
+      "requested_model": "claude-opus-5-5",
+      "result_model_usage": [
+        "claude-opus-5-5"
+      ],
+      "role": "report",
+      "stream_sha256": "af7d9245ed225bf7bbdfe136d10cb6e0fdb31b25871d728d71056d79ea69cf08",
+      "success": true,
+      "tools": 0,
+      "version": "2.1.291"
+    }
+  ],
+  "co_verified": true,
+  "co_version": "0.4.5",
+  "declared_verifier_scope": "REPORT_SHAPE_ONLY plus exact listed file scope; not source/product qualification",
+  "evidence_label": "C091-OPUS-CHECKPOINT",
+  "input_sha256": {
+    "docs/design/contracts-v5/PRI02-MODEL-DIAGNOSTIC-SCOPE.md": "ae0d276e273e693f8518c8b8b6dcef56afe7fc81536fc9f98442a18cbfc50fae",
+    "docs/design/contracts-v5/PRI02-MODEL-OVERFLOW-SCOPE.md": "3ea4d174f694b4bae3554503bc8ee16edcc50f56c6963de8b794b89817107bcc",
+    "docs/design/contracts-v5/PRI02-N3-DIAGNOSTIC-ROOT-FREEZE.md": "94e6e8f763185ceb0a5701906f80007f201e2f0d94a2a97dc75e73e5c86ecbf9",
+    "docs/design/contracts-v5/PRI02-N3-REASSESSMENT-REQUEST.md": "b11697169e2647e4539ada314d40bb201a91d0472fa3742754f7ccc7f7a17d92",
+    "evidence/operations/c089-c090-20261010/verification.json": "b521e544566d459eb780cf78529041e943ea564ec8a55eeb35173a426f67c46c",
+    "evidence/operations/c091-n3-diagnostic-20261010/native-n3-summary.json": "546351ea5ceb2063681138edc22fb1fb91ef601e9afb3c1df5308ba4e8ff35cd",
+    "evidence/operations/c091-n3-diagnostic-20261010/native-route-feasibility.md": "4e63e1ba6a610c702e0f88618eb1d76afcb37eaa5630dbd6be24c4dfa3d66b84"
+  },
+  "provider_product_entry": false,
+  "raw_task_lookup_and_streams": "retained local only",
+  "report": "docs/reviews/C091-NATIVE-REASSESSMENT-OPUS.md",
+  "report_sha256": "615fe9560529d24f0005e6c840d6e421ce8140fb77c16ec89bcefe370023398a",
+  "source_base": "136b684a61bd0b71ca7be095656890eeb7d3c032",
+  "verdict": "REFINE",
+  "version": "C091-OPUS-REASSESSMENT-SUMMARY/1",
+  "whole_goal": "NOT_MET"
+}

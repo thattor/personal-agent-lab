@@ -1,0 +1,31 @@
+{
+  "task_id": "6bd433a2799a49d2b27d5c5bc9708e7d",
+  "base": "ea2e8fa064cad188e4477d8b534692012083768a",
+  "co_version": "0.4.5",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "role": "independent Opus5.5 design alignment review",
+  "status": "running",
+  "owned_session": 32261,
+  "checked_at": "2026-10-09T08:23:02.716051+00:00",
+  "route_check": {
+    "claude_logged_in": true,
+    "auth_method": "claude.ai",
+    "subscription": "pro",
+    "session_used_percent": 0,
+    "week_used_percent": 48,
+    "usage_credits": "off",
+    "auto_reload": "off"
+  },
+  "host_capacity": {
+    "limit_per_adapter": 12,
+    "claude_executing": 1,
+    "devin_executing": 0,
+    "reserved": 0
+  },
+  "parallel_native_work": [
+    "independent Sol6.1 code review completed",
+    "Astra read-only next ART dependency analysis completed"
+  ],
+  "unknown_old_calls": "untouched",
+  "verifier": "bounded note structure only"
+}

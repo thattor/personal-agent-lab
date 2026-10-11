@@ -1,0 +1,11 @@
+{
+  "observed_at": "2026-10-09T12:15:17.419413+00:00",
+  "direct_user_authority": "D043: 本プロジェクトにおけるAGY使用を全面的に承認します",
+  "blocked_action": "one prepared ASK01 milestone/CHANGE01 design review through existing AGY Google-hosted claude-opus-5-5-high;13 private files202200 prompt bytes",
+  "automatic_review": "Rejected unacceptable risk: broad AGY-use approval does not specifically authorize this sensitive payload to this external AGY/Google-hosted Claude destination",
+  "execution_started": false,
+  "run_json_created": false,
+  "stream_created": false,
+  "actions": "No workaround/retry. Specific direct approval question pending; continue CO capacity check and independent native design critique. Preserve earlier refusals and unknown calls.",
+  "new_auth_or_credits": false
+}

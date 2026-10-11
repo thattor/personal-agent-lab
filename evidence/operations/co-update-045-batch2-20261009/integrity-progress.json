@@ -1,0 +1,17 @@
+{
+  "observed_at": "2026-10-08T22:43:11.378933+00:00",
+  "runtime_payload_files_checked": 96,
+  "runtime_changed_files": [],
+  "original_records_checked": 13,
+  "original_changed_records": [],
+  "original_head": "94fcacbf506b7514a2380dc1c4e61ccc5dcffca2",
+  "unknown_task": {
+    "id": "6a9dea446fa241ceb6ee876bbdb08be9",
+    "status": "awaiting_decision",
+    "verified": false,
+    "outcome": "unknown",
+    "options": [],
+    "report_sha256": "sha256:d480fcca2f7859a12badc4dd8dcbb73f65e19f46107f117a3afcda6625e9e175"
+  },
+  "original_database_or_service_modified_by_this_task": false
+}

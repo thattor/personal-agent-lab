@@ -1,0 +1,33 @@
+{
+  "task_id": "ad95757c7dd847fcbcabfd3903bec53c",
+  "base_sha": "9390c38a101ff6f71a39b5cd6cc4bb38fc2fd05c",
+  "status": "failed",
+  "verified": false,
+  "error": {
+    "code": "plan_invalid"
+  },
+  "verify": null,
+  "diff_digest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "attempts": [
+    {
+      "attempt_id": "plan-a1",
+      "call_id": "plan",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:5d4df24cf7ae92e885f0f28a4a2872ad87593e0e24c8bad15625e56b252c6b14",
+      "role": "planner",
+      "route": "claude",
+      "step_id": "plan"
+    }
+  ],
+  "cause": "planner instructions are5795 UTF8 bytes; installed spec.py limit4096",
+  "native_call_completed": true,
+  "admission_confirmed": true,
+  "native_stopped_at": "2026-10-09T00:40:47.972224+00:00",
+  "worker_or_verifier_started": false,
+  "new_note_created": false,
+  "correction": "new bounded assessment request requires planner instructions<=1200 bytes and no predetermined verdict",
+  "old_unknown_swe_task_affected": false
+}

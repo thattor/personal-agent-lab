@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/opt/homebrew/bin/python3.13",
+    "-E",
+    "-s",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "source": "5de49c14e2fef1c150a4a3d6fc23f83829753a02",
+  "exit_code": 0,
+  "seconds": 25.567,
+  "test_scope": "all local unittest tests, temporary fixtures including host loopback and subprocess tests",
+  "ci": false
+}

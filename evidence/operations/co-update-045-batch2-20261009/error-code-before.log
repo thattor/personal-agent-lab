@@ -1,0 +1,51 @@
+test_cumulative_overflow (test_bounded_payload_v5.AppendAndValueTests.test_cumulative_overflow) ... ok
+test_cumulative_overflow_after_small_chunks (test_bounded_payload_v5.AppendAndValueTests.test_cumulative_overflow_after_small_chunks) ... ok
+test_empty_chunk_accepted_when_exactly_full (test_bounded_payload_v5.AppendAndValueTests.test_empty_chunk_accepted_when_exactly_full) ... ok
+test_empty_chunks (test_bounded_payload_v5.AppendAndValueTests.test_empty_chunks) ... ok
+test_exact_maximum_then_excess_by_one (test_bounded_payload_v5.AppendAndValueTests.test_exact_maximum_then_excess_by_one) ... ok
+test_minimum_capacity_and_excess_by_one (test_bounded_payload_v5.AppendAndValueTests.test_minimum_capacity_and_excess_by_one) ... ok
+test_multibyte_split_at_arbitrary_boundaries (test_bounded_payload_v5.AppendAndValueTests.test_multibyte_split_at_arbitrary_boundaries) ... ok
+test_single_oversized_chunk_rejected (test_bounded_payload_v5.AppendAndValueTests.test_single_oversized_chunk_rejected) ... ok
+test_split_multibyte_characters_preserved (test_bounded_payload_v5.AppendAndValueTests.test_split_multibyte_characters_preserved) ... ok
+test_capacity_above_hard_maximum_is_limit (test_bounded_payload_v5.ConstructorTests.test_capacity_above_hard_maximum_is_limit) ... ok
+test_explicit_max_capacity_accepted (test_bounded_payload_v5.ConstructorTests.test_explicit_max_capacity_accepted) ... ok
+test_invalid_max_bytes_types_and_values (test_bounded_payload_v5.ConstructorTests.test_invalid_max_bytes_types_and_values) ... ok
+test_positional_argument_rejected (test_bounded_payload_v5.ConstructorTests.test_positional_argument_rejected) ... ok
+test_chunk_invalid_input_error_no_echo (test_bounded_payload_v5.FixedErrorTests.test_chunk_invalid_input_error_no_echo) ... ok
+test_error_code_cannot_retain_or_compare_caller_objects (test_bounded_payload_v5.FixedErrorTests.test_error_code_cannot_retain_or_compare_caller_objects) ... 
+  test_error_code_cannot_retain_or_compare_caller_objects (test_bounded_payload_v5.FixedErrorTests.test_error_code_cannot_retain_or_compare_caller_objects) (value_type='StrSubclass') ... FAIL
+  test_error_code_cannot_retain_or_compare_caller_objects (test_bounded_payload_v5.FixedErrorTests.test_error_code_cannot_retain_or_compare_caller_objects) (value_type='HostileCode') ... FAIL
+test_invalid_input_error_shape_and_no_input_echo (test_bounded_payload_v5.FixedErrorTests.test_invalid_input_error_shape_and_no_input_echo) ... ok
+test_limit_error_shape_and_no_input_echo (test_bounded_payload_v5.FixedErrorTests.test_limit_error_shape_and_no_input_echo) ... ok
+test_unknown_code_maps_to_invalid_input (test_bounded_payload_v5.FixedErrorTests.test_unknown_code_maps_to_invalid_input) ... ok
+test_invalid_chunk_types_leave_buffer_unchanged (test_bounded_payload_v5.InvalidChunkTests.test_invalid_chunk_types_leave_buffer_unchanged) ... ok
+test_byte_count_is_read_only (test_bounded_payload_v5.RejectionAndSnapshotTests.test_byte_count_is_read_only) ... ok
+test_rejected_append_does_not_poison (test_bounded_payload_v5.RejectionAndSnapshotTests.test_rejected_append_does_not_poison) ... ok
+test_snapshots_are_immutable (test_bounded_payload_v5.RejectionAndSnapshotTests.test_snapshots_are_immutable) ... ok
+
+======================================================================
+FAIL: test_error_code_cannot_retain_or_compare_caller_objects (test_bounded_payload_v5.FixedErrorTests.test_error_code_cannot_retain_or_compare_caller_objects) (value_type='StrSubclass')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_bounded_payload_v5.py", line 275, in test_error_code_cannot_retain_or_compare_caller_objects
+    self.assertIs(type(err.code), str)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <class 'test_bounded_payload_v5.FixedErrorTests.test_error_code_cannot_retain_or_compare_caller_objects.<locals>.StrSubclass'> is not <class 'str'>
+
+======================================================================
+FAIL: test_error_code_cannot_retain_or_compare_caller_objects (test_bounded_payload_v5.FixedErrorTests.test_error_code_cannot_retain_or_compare_caller_objects) (value_type='HostileCode')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_bounded_payload_v5.py", line 274, in test_error_code_cannot_retain_or_compare_caller_objects
+    err = PayloadLimitError(value)
+  File "/private/tmp/pal-v5-co-20261009/pal/bounded_payload_v5.py", line 28, in __init__
+    if code == LIMIT:
+       ^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_bounded_payload_v5.py", line 270, in __eq__
+    raise AssertionError("caller comparison must not run")
+AssertionError: caller comparison must not run
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.001s
+
+FAILED (failures=2)

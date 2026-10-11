@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-10-08T22:06:24.893652+00:00",
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "new_auth_billing_or_route_change": false,
+  "official_usage": {
+    "source": "existing authenticated Chrome Claude usage settings",
+    "subscription": "Pro",
+    "session_used_percent": 0,
+    "week_used_percent": 37,
+    "extra_usage_enabled": false,
+    "auto_reload_enabled": false,
+    "purchased_credit_display": "$0",
+    "settings_changed": false
+  }
+}

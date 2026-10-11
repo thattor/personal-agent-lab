@@ -1,0 +1,102 @@
+{
+  "task_id": "6bd433a2799a49d2b27d5c5bc9708e7d",
+  "base_sha": "ea2e8fa064cad188e4477d8b534692012083768a",
+  "status": "verified",
+  "verified": true,
+  "attempts": [
+    {
+      "attempt_id": "plan-a1",
+      "call_id": "plan",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:7b16819694cf17a5fb340fc6e769641a92367b35dee6ddc512f769118e010cc2",
+      "role": "planner",
+      "route": "claude",
+      "step_id": "plan"
+    },
+    {
+      "attempt_id": "s1-a1",
+      "call_id": "s1",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:948299f6faee12dd8a96b2a4dbb398a8c19542f631c5842b253da7bc7e21ba72",
+      "role": "implement",
+      "route": "claude",
+      "step_id": "s1"
+    }
+  ],
+  "selection": {
+    "mode": "fixed",
+    "targets": {
+      "implement": {
+        "model": "claude-opus-5-5",
+        "route": "claude"
+      },
+      "planner": {
+        "model": "claude-opus-5-5",
+        "route": "claude"
+      },
+      "review": {
+        "model": "claude-opus-5-5",
+        "route": "claude"
+      }
+    }
+  },
+  "workspace": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/6bd433a2799a49d2b27d5c5bc9708e7d/workspace",
+  "diff_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/6bd433a2799a49d2b27d5c5bc9708e7d/result.diff",
+  "result_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/6bd433a2799a49d2b27d5c5bc9708e7d/result.json",
+  "diff_digest": "sha256:da5cbd0078e3a915c0339256442573836a6c4f8cc4399a52c26284861d462f58",
+  "error": null,
+  "verify": {
+    "after": {
+      "DESIGN.md": "sha256:7d988d4ac3bd50b6f3cba4cb938d0e341cbbf4f3d98c25c255a2e1085026c74f",
+      "SPEC.md": "sha256:d02c1c9970eaabe8f32f1e4ed2a0031525f3c64da2e02a456a5f8f2f13bed9e8",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/TSK02-IMPLEMENTATION.md": "sha256:6a266c6479e9f643d0a403843c61b6f20a321b9fe507b12694d21fe1cf6c4e91",
+      "docs/design/contracts-v5/TSK02-SCOPE.md": "sha256:5031b816ea42e4b1579a058e060e83bb20a7317a804005a4e28119b5f4604a11",
+      "evidence/operations/tsk02-20261009/connected-final.log": "sha256:492566dc3ca759a3bbb1984b5408ba1b66205f1b770c69606f2adbc59bf136ea",
+      "evidence/operations/tsk02-20261009/host-author-final.log": "sha256:355012b4d5bdfb5ebc57d6797a4c3d140a3d9a3b0892ceaed2e7a9dac652edd9",
+      "evidence/operations/tsk02-20261009/opus-milestone-review.md": "sha256:8e047d303246d9f8ed0d6b54a30ce93618e0409f7ee7a0c1bbe43dcb2b4daf56",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/events_v5.py": "sha256:da2a74a41622784f0ff85f0201db081e946b3e35cebb8660068ece79e8763102",
+      "pal/intake_v5.py": "sha256:31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+      "pal/mock_runner_v5.py": "sha256:4fcd547f6046ea4a8dfa663ed9ee85e9b446e1b89cb0014709d9a45767df363f",
+      "pal/tasks_v5.py": "sha256:f5f3724279291ae050403081e64fefd74e01bb2ec9a9430ca24955a00e7bc458",
+      "tests/test_mock_execution_v5.py": "sha256:262c4c158c2891ce3a28b7cdccbb6192ff6f7b13f2c90dcbbc1f3be0840f9fa5",
+      "tests/test_tasks_v5.py": "sha256:9c9d1d11cbe0bc55a6b074eb446338c7d563b9d31461cc8c2e53d5b5b63c6166"
+    },
+    "before": {
+      "DESIGN.md": "sha256:7d988d4ac3bd50b6f3cba4cb938d0e341cbbf4f3d98c25c255a2e1085026c74f",
+      "SPEC.md": "sha256:d02c1c9970eaabe8f32f1e4ed2a0031525f3c64da2e02a456a5f8f2f13bed9e8",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/TSK02-IMPLEMENTATION.md": "sha256:6a266c6479e9f643d0a403843c61b6f20a321b9fe507b12694d21fe1cf6c4e91",
+      "docs/design/contracts-v5/TSK02-SCOPE.md": "sha256:5031b816ea42e4b1579a058e060e83bb20a7317a804005a4e28119b5f4604a11",
+      "evidence/operations/tsk02-20261009/connected-final.log": "sha256:492566dc3ca759a3bbb1984b5408ba1b66205f1b770c69606f2adbc59bf136ea",
+      "evidence/operations/tsk02-20261009/host-author-final.log": "sha256:355012b4d5bdfb5ebc57d6797a4c3d140a3d9a3b0892ceaed2e7a9dac652edd9",
+      "evidence/operations/tsk02-20261009/opus-milestone-review.md": "sha256:8e047d303246d9f8ed0d6b54a30ce93618e0409f7ee7a0c1bbe43dcb2b4daf56",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/events_v5.py": "sha256:da2a74a41622784f0ff85f0201db081e946b3e35cebb8660068ece79e8763102",
+      "pal/intake_v5.py": "sha256:31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+      "pal/mock_runner_v5.py": "sha256:4fcd547f6046ea4a8dfa663ed9ee85e9b446e1b89cb0014709d9a45767df363f",
+      "pal/tasks_v5.py": "sha256:f5f3724279291ae050403081e64fefd74e01bb2ec9a9430ca24955a00e7bc458",
+      "tests/test_mock_execution_v5.py": "sha256:262c4c158c2891ce3a28b7cdccbb6192ff6f7b13f2c90dcbbc1f3be0840f9fa5",
+      "tests/test_tasks_v5.py": "sha256:9c9d1d11cbe0bc55a6b074eb446338c7d563b9d31461cc8c2e53d5b5b63c6166"
+    },
+    "exit": 0,
+    "log": "Review note structure only; semantic assessment remains SOL responsibility\n",
+    "n": 1,
+    "passed": true,
+    "sandbox": "seatbelt-v1",
+    "version": "sha256:817ff9def15a73240d83cbebc94e8c0180aca433fd2f96ec09f67e51976f348a"
+  },
+  "artifact_sha256": "8e047d303246d9f8ed0d6b54a30ce93618e0409f7ee7a0c1bbe43dcb2b4daf56",
+  "semantic_verdict": "ALIGNED",
+  "limit": "CO verifies note structure only; no code commands run by Opus",
+  "root_disposition": "Accept TSK02/RUN01 local mock slice. Fix transient-unavailable liveness before next compose loop; implement ART byte persistence and compose binding in bounded dependent stages. Completed-work invalidation remains a prerequisite for complete, not this record-only slice."
+}

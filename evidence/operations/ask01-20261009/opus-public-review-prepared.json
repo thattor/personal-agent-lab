@@ -1,0 +1,239 @@
+{
+  "base": "c49bb005ab9fe18b53e27934a537934325dd26a7",
+  "input_files": [
+    {
+      "path": "SPEC.md",
+      "bytes": 11005,
+      "sha256": "d02c1c9970eaabe8f32f1e4ed2a0031525f3c64da2e02a456a5f8f2f13bed9e8"
+    },
+    {
+      "path": "docs/design/contracts-v5/PAL-contracts-v5.md",
+      "bytes": 37870,
+      "sha256": "734839de47bb128c0e7e8f5fc3ad5e1cb29cb68c49872ec6c5ccf0576b0c68ea"
+    },
+    {
+      "path": "docs/design/contracts-v5/ASK01-SCOPE.md",
+      "bytes": 16382,
+      "sha256": "2d4ccb2837192b4a5728c6351ecc795c5e1d105a3effb59cd3b27be82670fcf7"
+    },
+    {
+      "path": "docs/design/contracts-v5/ASK01-MILESTONE.md",
+      "bytes": 3165,
+      "sha256": "529f31859c6d51299dc1a046a7dd000d2915e975317a4cfc0530045d254533d9"
+    },
+    {
+      "path": "docs/design/contracts-v5/ASK01-INDEPENDENT-REVIEW.md",
+      "bytes": 4777,
+      "sha256": "ed41ca595192ea590095e3c57dba25d99c7e3bb528086dc0b23fe81445762366"
+    },
+    {
+      "path": "docs/design/contracts-v5/AFTER-ASK01-PROPOSAL.md",
+      "bytes": 3891,
+      "sha256": "5d1b541fbdb46e5f94bb18620bd0d48b044667be7a08eed301be81694ebc88cb"
+    },
+    {
+      "path": "docs/design/contracts-v5/CHANGE01-SEAMS-PROPOSAL.md",
+      "bytes": 7395,
+      "sha256": "8a328e7a558e54d4d844a72a830b19ff7492b8cf17bd1f4435f1753e35e9a309"
+    },
+    {
+      "path": "pal/tasks_v5.py",
+      "bytes": 60704,
+      "sha256": "029b0199931b17e629a61b34c2098137399c4b85a996eb44f987965aaf737ef9"
+    },
+    {
+      "path": "pal/intake_v5.py",
+      "bytes": 18876,
+      "sha256": "31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad"
+    },
+    {
+      "path": "pal/contracts_v5.py",
+      "bytes": 20973,
+      "sha256": "683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f"
+    },
+    {
+      "path": "tests/test_ask_connection_v5.py",
+      "bytes": 7883,
+      "sha256": "16cdc4d3a481fc459b19410b3d1c6736cb7c050d32eb2dc0001363ff131cfa83"
+    },
+    {
+      "path": "evidence/operations/ask01-20261009/verification.json",
+      "bytes": 3102,
+      "sha256": "24820511b8ae6994c0bd0f32502d394403bca3b51cafa5201104f2777709257e"
+    },
+    {
+      "path": "evidence/operations/ask01-20261009/verified-demo/demo.log",
+      "bytes": 2120,
+      "sha256": "5c8b8589b975b401a28cb825fed162bf7137882534e67af7a49bafb3e4e04f5d"
+    },
+    {
+      "path": "docs/design/contracts-v5/CHANGE01-INDEPENDENT-DESIGN-NOTES.md",
+      "bytes": 5970,
+      "sha256": "e2156a814db6917f462fd76cb6819afaa3da5a203badf45196d8ce2531e1a711"
+    },
+    {
+      "path": "docs/design/contracts-v5/C13-RELEASE-INTEGRITY.md",
+      "bytes": 1569,
+      "sha256": "4583cf7730719df4b784dde8e9ec1940f2f7be64bb25528f907e9c57fd2f584a"
+    },
+    {
+      "path": "docs/design/contracts-v5/C13-RELEASE-INDEPENDENT-REVIEW.md",
+      "bytes": 1637,
+      "sha256": "485cf6973fe8b00d456ea6e71ed022aece16283aea03b67f757324fd95e7925f"
+    },
+    {
+      "path": "evidence/operations/release-integrity-20261009/verification.json",
+      "bytes": 1672,
+      "sha256": "f610e47fbadfdfe8ed727af6a69acd9baf3f11348c09342815bc2f45be02e841"
+    }
+  ],
+  "input_bytes": 208991,
+  "prepared_at": "2026-10-09T12:38:04.444119+00:00",
+  "status": "immutable public package prepared; credits-off preflight pending",
+  "old_private_package": "163779d/bf69fe23ba35e585cdb547d743859fec65954bb809c6f59fbc31fc2ae97eb3aa retained unchanged; never launched",
+  "anonymous_public_source_checked_at": "2026-10-09T12:38:41.560062+00:00",
+  "anonymous_public_checks": [
+    {
+      "path": "SPEC.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/SPEC.md",
+      "status": 200,
+      "bytes": 11005,
+      "sha256": "d02c1c9970eaabe8f32f1e4ed2a0031525f3c64da2e02a456a5f8f2f13bed9e8",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "docs/design/contracts-v5/PAL-contracts-v5.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/docs/design/contracts-v5/PAL-contracts-v5.md",
+      "status": 200,
+      "bytes": 37870,
+      "sha256": "734839de47bb128c0e7e8f5fc3ad5e1cb29cb68c49872ec6c5ccf0576b0c68ea",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "docs/design/contracts-v5/ASK01-SCOPE.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/docs/design/contracts-v5/ASK01-SCOPE.md",
+      "status": 200,
+      "bytes": 16382,
+      "sha256": "2d4ccb2837192b4a5728c6351ecc795c5e1d105a3effb59cd3b27be82670fcf7",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "docs/design/contracts-v5/ASK01-MILESTONE.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/docs/design/contracts-v5/ASK01-MILESTONE.md",
+      "status": 200,
+      "bytes": 3165,
+      "sha256": "529f31859c6d51299dc1a046a7dd000d2915e975317a4cfc0530045d254533d9",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "docs/design/contracts-v5/ASK01-INDEPENDENT-REVIEW.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/docs/design/contracts-v5/ASK01-INDEPENDENT-REVIEW.md",
+      "status": 200,
+      "bytes": 4777,
+      "sha256": "ed41ca595192ea590095e3c57dba25d99c7e3bb528086dc0b23fe81445762366",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "docs/design/contracts-v5/AFTER-ASK01-PROPOSAL.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/docs/design/contracts-v5/AFTER-ASK01-PROPOSAL.md",
+      "status": 200,
+      "bytes": 3891,
+      "sha256": "5d1b541fbdb46e5f94bb18620bd0d48b044667be7a08eed301be81694ebc88cb",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "docs/design/contracts-v5/CHANGE01-SEAMS-PROPOSAL.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/docs/design/contracts-v5/CHANGE01-SEAMS-PROPOSAL.md",
+      "status": 200,
+      "bytes": 7395,
+      "sha256": "8a328e7a558e54d4d844a72a830b19ff7492b8cf17bd1f4435f1753e35e9a309",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "pal/tasks_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/pal/tasks_v5.py",
+      "status": 200,
+      "bytes": 60704,
+      "sha256": "029b0199931b17e629a61b34c2098137399c4b85a996eb44f987965aaf737ef9",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "pal/intake_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/pal/intake_v5.py",
+      "status": 200,
+      "bytes": 18876,
+      "sha256": "31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "pal/contracts_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/pal/contracts_v5.py",
+      "status": 200,
+      "bytes": 20973,
+      "sha256": "683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "tests/test_ask_connection_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/tests/test_ask_connection_v5.py",
+      "status": 200,
+      "bytes": 7883,
+      "sha256": "16cdc4d3a481fc459b19410b3d1c6736cb7c050d32eb2dc0001363ff131cfa83",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "evidence/operations/ask01-20261009/verification.json",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/evidence/operations/ask01-20261009/verification.json",
+      "status": 200,
+      "bytes": 3102,
+      "sha256": "24820511b8ae6994c0bd0f32502d394403bca3b51cafa5201104f2777709257e",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "evidence/operations/ask01-20261009/verified-demo/demo.log",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/evidence/operations/ask01-20261009/verified-demo/demo.log",
+      "status": 200,
+      "bytes": 2120,
+      "sha256": "5c8b8589b975b401a28cb825fed162bf7137882534e67af7a49bafb3e4e04f5d",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "docs/design/contracts-v5/CHANGE01-INDEPENDENT-DESIGN-NOTES.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/docs/design/contracts-v5/CHANGE01-INDEPENDENT-DESIGN-NOTES.md",
+      "status": 200,
+      "bytes": 5970,
+      "sha256": "e2156a814db6917f462fd76cb6819afaa3da5a203badf45196d8ce2531e1a711",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "docs/design/contracts-v5/C13-RELEASE-INTEGRITY.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/docs/design/contracts-v5/C13-RELEASE-INTEGRITY.md",
+      "status": 200,
+      "bytes": 1569,
+      "sha256": "4583cf7730719df4b784dde8e9ec1940f2f7be64bb25528f907e9c57fd2f584a",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "docs/design/contracts-v5/C13-RELEASE-INDEPENDENT-REVIEW.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/docs/design/contracts-v5/C13-RELEASE-INDEPENDENT-REVIEW.md",
+      "status": 200,
+      "bytes": 1637,
+      "sha256": "485cf6973fe8b00d456ea6e71ed022aece16283aea03b67f757324fd95e7925f",
+      "authorization_header_sent": false
+    },
+    {
+      "path": "evidence/operations/release-integrity-20261009/verification.json",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/c49bb005ab9fe18b53e27934a537934325dd26a7/evidence/operations/release-integrity-20261009/verification.json",
+      "status": 200,
+      "bytes": 1672,
+      "sha256": "f610e47fbadfdfe8ed727af6a69acd9baf3f11348c09342815bc2f45be02e841",
+      "authorization_header_sent": false
+    }
+  ],
+  "prompt_bytes": 215798,
+  "prompt_sha256": "730f5a4ca4b3ace48ba5a2e45e798b47ebb01f23ce9960f2f0990e97c01c53c0",
+  "model_requested": "claude-opus-5-5-high",
+  "mode": "plan; text-only independent design review",
+  "input_visibility": "public, anonymously verified",
+  "execution_started": false
+}

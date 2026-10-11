@@ -1,0 +1,15 @@
+{
+  "version": "0.4.5",
+  "tag": "common-orchestration-v0.4.5",
+  "release_url": "https://github.com/thattor/common-orchestration/releases/tag/common-orchestration-v0.4.5",
+  "git_sha": "5d31d9d2aa9f951f4b356870cc39af6750abb2ec",
+  "archive_sha256": "4c92a0c7834a36b9dede8503ea5c1682d2e7be85708f741fd3061aae61366a1f",
+  "manifest_sha256": "563cc95e3e732128da2045df27f712dc52d260f614d72e376f3631595eafce9d",
+  "verified_payload_files": 96,
+  "runtime": "/Users/hattoritoshiyasu/Documents/PAL/co-runtime/common-orchestration-v0.4.5",
+  "existing_state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "state_backup": "/Users/hattoritoshiyasu/Documents/PAL/co-runtime/backups/co04-qualified-state-before045-20261009",
+  "backup_files": 290,
+  "older_co_task_processes_observed": 0,
+  "remote_unknown_outcome_resolved": false
+}

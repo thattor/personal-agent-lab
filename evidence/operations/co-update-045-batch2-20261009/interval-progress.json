@@ -1,0 +1,88 @@
+{
+  "observed_at": "2026-10-08T22:32:57.631329+00:00",
+  "intervals": [
+    {
+      "task": "d47b8853cad145fa9330407acb617020",
+      "attempt": "s2-a1",
+      "route": "devin",
+      "model": "swe-2-high",
+      "claimed_at": "2026-10-08T22:32:52.401181+00:00",
+      "stopped_at": null,
+      "confirmed": false
+    },
+    {
+      "task": "d47b8853cad145fa9330407acb617020",
+      "attempt": "s1-a1",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "claimed_at": "2026-10-08T22:30:35.433529+00:00",
+      "stopped_at": "2026-10-08T22:32:50.490987+00:00",
+      "confirmed": true
+    },
+    {
+      "task": "d47b8853cad145fa9330407acb617020",
+      "attempt": "plan-a1",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "claimed_at": "2026-10-08T22:30:11.751244+00:00",
+      "stopped_at": "2026-10-08T22:30:35.362784+00:00",
+      "confirmed": true
+    },
+    {
+      "task": "1b22bca6ed14449ba1637d2caa538948",
+      "attempt": "s2-a1",
+      "route": "devin",
+      "model": "swe-2-high",
+      "claimed_at": "2026-10-08T22:31:49.120692+00:00",
+      "stopped_at": null,
+      "confirmed": false
+    },
+    {
+      "task": "1b22bca6ed14449ba1637d2caa538948",
+      "attempt": "s1-a1",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "claimed_at": "2026-10-08T22:30:49.815226+00:00",
+      "stopped_at": "2026-10-08T22:31:46.894666+00:00",
+      "confirmed": true
+    },
+    {
+      "task": "1b22bca6ed14449ba1637d2caa538948",
+      "attempt": "plan-a1",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "claimed_at": "2026-10-08T22:30:27.699828+00:00",
+      "stopped_at": "2026-10-08T22:30:49.737527+00:00",
+      "confirmed": true
+    },
+    {
+      "task": "d84e6010a3584678b8c3a79bfaedaab0",
+      "attempt": "s2-a1",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "claimed_at": "2026-10-08T22:31:52.997974+00:00",
+      "stopped_at": null,
+      "confirmed": false
+    },
+    {
+      "task": "d84e6010a3584678b8c3a79bfaedaab0",
+      "attempt": "s1-a1",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "claimed_at": "2026-10-08T22:31:04.825159+00:00",
+      "stopped_at": "2026-10-08T22:31:52.903284+00:00",
+      "confirmed": true
+    },
+    {
+      "task": "d84e6010a3584678b8c3a79bfaedaab0",
+      "attempt": "plan-a1",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "claimed_at": "2026-10-08T22:30:44.988020+00:00",
+      "stopped_at": "2026-10-08T22:31:04.758476+00:00",
+      "confirmed": true
+    }
+  ],
+  "three_way_final_proof": "PENDING: include completed intervals across steps, not only simultaneous planners",
+  "minor_operator_correction": "An initial check required all three planner intervals to overlap; staggered steps made that condition wrong. It failed before writing proof. Use all call intervals and distinct task identities."
+}

@@ -1,0 +1,17 @@
+{
+  "checked_at": "2026-10-09T12:36:47.716835+00:00",
+  "url": "https://github.com/thattor/personal-agent-lab",
+  "repository": "thattor/personal-agent-lab",
+  "status": 200,
+  "visibility": "public",
+  "private": false,
+  "anonymous": true,
+  "authentication_header_sent": false,
+  "operation": "gh repo edit thattor/personal-agent-lab --visibility public --accept-visibility-change-consequences",
+  "owner_authority": "D044 direct user instruction",
+  "attribution_pr": "https://github.com/thattor/personal-agent-lab/pull/20",
+  "attribution_merge": "3e8cf8db7cb3bc6147c4bc149049b12a25bd8a6b",
+  "new_auth_or_cost": false,
+  "history_rewritten": false,
+  "application_deployed": false
+}

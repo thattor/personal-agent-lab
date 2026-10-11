@@ -1,0 +1,104 @@
+test_bad_host_input_or_unowned_kind_never_falls_back (test_read_consumer_v5.ReadConsumerTests.test_bad_host_input_or_unowned_kind_never_falls_back) ... ERROR
+test_bounded_pages_cursor_and_visible_truncation (test_read_consumer_v5.ReadConsumerTests.test_bounded_pages_cursor_and_visible_truncation) ... ERROR
+test_closed_consumer_requests_and_host_page_bounds (test_read_consumer_v5.ReadConsumerTests.test_closed_consumer_requests_and_host_page_bounds) ... ERROR
+test_host_dispatches_all_kinds_exact_request_and_keyword_purpose (test_read_consumer_v5.ReadConsumerTests.test_host_dispatches_all_kinds_exact_request_and_keyword_purpose) ... ERROR
+test_initial_cursor_is_forwarded_without_new_state_or_guess (test_read_consumer_v5.ReadConsumerTests.test_initial_cursor_is_forwarded_without_new_state_or_guess) ... ERROR
+test_missing_work_and_per_work_per_ref_errors_stay_visible (test_read_consumer_v5.ReadConsumerTests.test_missing_work_and_per_work_per_ref_errors_stay_visible) ... ERROR
+test_owner_exceptions_malformed_results_and_interrupts (test_read_consumer_v5.ReadConsumerTests.test_owner_exceptions_malformed_results_and_interrupts) ... ERROR
+test_pages_advance_unselected_events_and_preserve_multiwork_ref_order (test_read_consumer_v5.ReadConsumerTests.test_pages_advance_unselected_events_and_preserve_multiwork_ref_order) ... ERROR
+test_renderer_separates_state_current_usability_fixed_checks_and_read_time (test_read_consumer_v5.ReadConsumerTests.test_renderer_separates_state_current_usability_fixed_checks_and_read_time) ... ERROR
+test_stalled_cursor_malformed_page_and_page_error_are_failures (test_read_consumer_v5.ReadConsumerTests.test_stalled_cursor_malformed_page_and_page_error_are_failures) ... ERROR
+test_stop_cause_requires_exact_notice_goal_revision_and_dependency_intersection (test_read_consumer_v5.ReadConsumerTests.test_stop_cause_requires_exact_notice_goal_revision_and_dependency_intersection) ... ERROR
+
+======================================================================
+ERROR: test_bad_host_input_or_unowned_kind_never_falls_back (test_read_consumer_v5.ReadConsumerTests.test_bad_host_input_or_unowned_kind_never_falls_back)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-tests-20261009/tests/test_read_consumer_v5.py", line 89, in setUp
+    from pal.host_read_v5 import HostReader
+ModuleNotFoundError: No module named 'pal.host_read_v5'
+
+======================================================================
+ERROR: test_bounded_pages_cursor_and_visible_truncation (test_read_consumer_v5.ReadConsumerTests.test_bounded_pages_cursor_and_visible_truncation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-tests-20261009/tests/test_read_consumer_v5.py", line 89, in setUp
+    from pal.host_read_v5 import HostReader
+ModuleNotFoundError: No module named 'pal.host_read_v5'
+
+======================================================================
+ERROR: test_closed_consumer_requests_and_host_page_bounds (test_read_consumer_v5.ReadConsumerTests.test_closed_consumer_requests_and_host_page_bounds)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-tests-20261009/tests/test_read_consumer_v5.py", line 89, in setUp
+    from pal.host_read_v5 import HostReader
+ModuleNotFoundError: No module named 'pal.host_read_v5'
+
+======================================================================
+ERROR: test_host_dispatches_all_kinds_exact_request_and_keyword_purpose (test_read_consumer_v5.ReadConsumerTests.test_host_dispatches_all_kinds_exact_request_and_keyword_purpose)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-tests-20261009/tests/test_read_consumer_v5.py", line 89, in setUp
+    from pal.host_read_v5 import HostReader
+ModuleNotFoundError: No module named 'pal.host_read_v5'
+
+======================================================================
+ERROR: test_initial_cursor_is_forwarded_without_new_state_or_guess (test_read_consumer_v5.ReadConsumerTests.test_initial_cursor_is_forwarded_without_new_state_or_guess)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-tests-20261009/tests/test_read_consumer_v5.py", line 89, in setUp
+    from pal.host_read_v5 import HostReader
+ModuleNotFoundError: No module named 'pal.host_read_v5'
+
+======================================================================
+ERROR: test_missing_work_and_per_work_per_ref_errors_stay_visible (test_read_consumer_v5.ReadConsumerTests.test_missing_work_and_per_work_per_ref_errors_stay_visible)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-tests-20261009/tests/test_read_consumer_v5.py", line 89, in setUp
+    from pal.host_read_v5 import HostReader
+ModuleNotFoundError: No module named 'pal.host_read_v5'
+
+======================================================================
+ERROR: test_owner_exceptions_malformed_results_and_interrupts (test_read_consumer_v5.ReadConsumerTests.test_owner_exceptions_malformed_results_and_interrupts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-tests-20261009/tests/test_read_consumer_v5.py", line 89, in setUp
+    from pal.host_read_v5 import HostReader
+ModuleNotFoundError: No module named 'pal.host_read_v5'
+
+======================================================================
+ERROR: test_pages_advance_unselected_events_and_preserve_multiwork_ref_order (test_read_consumer_v5.ReadConsumerTests.test_pages_advance_unselected_events_and_preserve_multiwork_ref_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-tests-20261009/tests/test_read_consumer_v5.py", line 89, in setUp
+    from pal.host_read_v5 import HostReader
+ModuleNotFoundError: No module named 'pal.host_read_v5'
+
+======================================================================
+ERROR: test_renderer_separates_state_current_usability_fixed_checks_and_read_time (test_read_consumer_v5.ReadConsumerTests.test_renderer_separates_state_current_usability_fixed_checks_and_read_time)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-tests-20261009/tests/test_read_consumer_v5.py", line 89, in setUp
+    from pal.host_read_v5 import HostReader
+ModuleNotFoundError: No module named 'pal.host_read_v5'
+
+======================================================================
+ERROR: test_stalled_cursor_malformed_page_and_page_error_are_failures (test_read_consumer_v5.ReadConsumerTests.test_stalled_cursor_malformed_page_and_page_error_are_failures)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-tests-20261009/tests/test_read_consumer_v5.py", line 89, in setUp
+    from pal.host_read_v5 import HostReader
+ModuleNotFoundError: No module named 'pal.host_read_v5'
+
+======================================================================
+ERROR: test_stop_cause_requires_exact_notice_goal_revision_and_dependency_intersection (test_read_consumer_v5.ReadConsumerTests.test_stop_cause_requires_exact_notice_goal_revision_and_dependency_intersection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-tests-20261009/tests/test_read_consumer_v5.py", line 89, in setUp
+    from pal.host_read_v5 import HostReader
+ModuleNotFoundError: No module named 'pal.host_read_v5'
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.001s
+
+FAILED (errors=11)

@@ -1,0 +1,103 @@
+# Design: EXE02-bytes/1 (section E)
+
+## Scope check
+
+There is no concrete contradiction with section E, the shared rules, or C07. C07 caps a read body at 1 MiB, and the EXE-01→EXE-02 `read` takes `max_bytes`. This component is a local accumulator only. It is not a `read` implementation, does not satisfy any C07 contract, and does not duplicate INT00.
+
+Naming: `PayloadLimitError` also carries `invalid_input`. That is the settled scope wording, so the name stays.
+
+## pal/bounded_payload_v5.py
+
+The module is stdlib only and needs no imports. Module-level names are immutable constants only:
+
+- `MAX_PAYLOAD_BYTES = 1048576`
+- `INVALID_INPUT = "invalid_input"`, `LIMIT = "limit"`
+- `INVALID_INPUT_MESSAGE = "invalid payload input"`
+- `LIMIT_MESSAGE = "payload byte limit exceeded"`
+- `__all__ = ["MAX_PAYLOAD_BYTES", "PayloadBuffer", "PayloadLimitError"]` (the code and message constants may also be exported for tests)
+
+### `class PayloadLimitError(Exception)`
+
+- `__init__(self, code)` maps `code` to its fixed message.
+  - Any code other than `LIMIT` becomes `INVALID_INPUT`, so arbitrary text can never be carried.
+  - It calls `super().__init__(message)`, so `args == (message,)`.
+  - It sets `self.code` and `self.message`.
+- It never receives, formats, or stores the input value, `max_bytes`, a length, or another exception.
+- The module never catches exceptions, so there is no `raise ... from`. Raised outside any handler, the error has `__cause__` and `__context__` both None.
+
+### `class PayloadBuffer`
+
+- `__slots__ = ("_max_bytes", "_data")`. There is no `__dict__`.
+
+**`__init__(self, *, max_bytes=MAX_PAYLOAD_BYTES)`**, checked in this order:
+1. If `type(max_bytes) is not int`, raise `invalid_input`. This rejects bool, int subclasses, float, str and None.
+2. If `max_bytes <= 0`, raise `invalid_input`.
+3. If `max_bytes > MAX_PAYLOAD_BYTES`, raise `limit`.
+4. Otherwise set `self._max_bytes = max_bytes` and `self._data = bytearray()`.
+
+**`append(self, chunk) -> None`**:
+1. If `type(chunk) is not bytes`, raise `invalid_input`. This rejects bytearray, memoryview, str, bytes subclasses, None, int and list.
+2. If `len(self._data) + len(chunk) > self._max_bytes`, raise `limit`. This check happens before anything is copied or joined, so the buffer is unchanged.
+3. Otherwise call `self._data += chunk`. An empty chunk is accepted as a no-op, including when the buffer is exactly full.
+
+**`getvalue(self) -> bytes`** returns `bytes(self._data)`. This is a fresh immutable copy, so later appends cannot change earlier snapshots. Zero-copy is out of scope.
+
+**`byte_count`** is a property with no setter or deleter that returns `len(self._data)`. Assigning to it or deleting it raises AttributeError.
+
+There is no `__repr__`, `__iter__`, `__len__`, callbacks, I/O, threads, timeouts, or shared state. `max_bytes` is not exposed, because the settled API does not include it.
+
+## tests/test_bounded_payload_v5.py
+
+Uses only `unittest`. Fixtures are synthetic. Each scope Case maps to tests as follows.
+
+1. **Split multibyte:**
+   - `data = "aé漢😀z".encode()`, appended in chunks split inside each character.
+   - `getvalue() == data`, `.decode() == "aé漢😀z"`, and `byte_count == len(data)`.
+
+2. **Empty chunks:**
+   - A new buffer gives `b""` with count 0.
+   - Repeated `b""` appends interleaved with data leave value and count correct.
+   - `b""` is accepted when the buffer is exactly full.
+
+3. **1 / exact maximum / excess by 1:**
+   - `max_bytes=1`: one byte is accepted, then `b"x"` raises `limit`.
+   - Default and explicit 1048576: `b"\0"*1048576` is accepted, then `b"\0"` raises `limit`.
+   - A fresh buffer given a single chunk of 1048577 bytes raises `limit`, with count 0 and value `b""`.
+   - `max_bytes=1048577` raises `limit`; so does `10**12`.
+
+4. **Cumulative overflow:**
+   - `max_bytes=10`; appending `b"abcd"` then `b"efghij"` succeeds.
+   - Appending `b"k"` raises `limit`, and value and count are unchanged.
+   - Also check overflow after several small chunks.
+
+5. **Invalid inputs:**
+   - `max_bytes` values True, False, 0, -1, 1.0, "5", None and an int subclass all raise `invalid_input`.
+   - `chunk` values str, bytearray, memoryview, a bytes subclass, None, 0 and a list all raise `invalid_input`, with the buffer unchanged.
+   - Positional `PayloadBuffer(5)` raises TypeError. This is native keyword-only behaviour, recorded rather than wrapped.
+
+6. **No poisoning:**
+   - After a `limit` rejection and an `invalid_input` rejection, a fitting bytes append succeeds.
+   - The final value and count are exact.
+
+7. **Immutable snapshots and read-only count:**
+   - Take `s1`, append, then check `s1` is unchanged, `type(s1) is bytes`, and a new snapshot reflects the append.
+   - Setting or deleting `byte_count` raises AttributeError.
+   - Setting a new attribute raises AttributeError.
+   - `type(byte_count) is int`.
+
+8. **Fixed errors:**
+   - `code` is the constant for the case.
+   - `message`, `str(err)` and `args == (message,)` match the module constants.
+   - A distinctive chunk (`b"SECRET-CHUNK-7731"`) and an unusual bad `max_bytes` value do not appear in `str`, `repr` or `args`.
+   - `__cause__` and `__context__` are None (raised outside any handler).
+   - The error is an Exception instance.
+
+The verifier command from the plan runs this file unchanged.
+
+## Remaining gaps to report, not to fix here
+
+- Not thread-safe. A single executor feeds the buffer.
+- Each `getvalue` call copies up to 1 MiB.
+- If a caller invokes the buffer inside its own `except` block, the error's `__context__` is that caller's exception. This is caller context, not context retained by this module.
+- The buffer does no reading, termination, timeout, decode or hash. The executor (B) and SOL integration own those.
+- Common services still wait on INT00. CT, E2E and user-value checks have not been met.

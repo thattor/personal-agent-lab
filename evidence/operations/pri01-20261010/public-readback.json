@@ -1,0 +1,253 @@
+{
+  "head": "6f2e4801e48d44d3e6beb1d67701bdf24c3da09d",
+  "base": "eb3235633c68b852b57962e4b797e328e3106592",
+  "checked_files": 35,
+  "all_match": true,
+  "files": [
+    {
+      "path": "ACCEPTANCE.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/ACCEPTANCE.md",
+      "bytes": 92562,
+      "sha256": "a085fa562634e18d689b9e20a0d711f45ae70c4684f8552d17135cc68c3327aa",
+      "status": 200
+    },
+    {
+      "path": "AGENTS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/AGENTS.md",
+      "bytes": 15970,
+      "sha256": "cb298daf41553f668415998607d0cf29ff90b51ec3d01092b9a26c5b100acf40",
+      "status": 200
+    },
+    {
+      "path": "DECISIONS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/DECISIONS.md",
+      "bytes": 230825,
+      "sha256": "5466082d564a524200f4f7db1275275232cbe4c233d701756d13697707cc5712",
+      "status": 200
+    },
+    {
+      "path": "STATE.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/STATE.md",
+      "bytes": 123266,
+      "sha256": "ed09f5539ca687f8b8f987019bfd2a3e5a1f92e6f0af3a3df551ecd0433c3d05",
+      "status": 200
+    },
+    {
+      "path": "docs/DEFECTS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/DEFECTS.md",
+      "bytes": 114537,
+      "sha256": "0a3d8c8236fad74093309c91bf6e2fa6c96f535d00ce1997c4a20ccde10ad1cc",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PAL-contracts-v5.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PAL-contracts-v5.md",
+      "bytes": 42338,
+      "sha256": "3a79b4c8153748743260c61c0de2d19e1e1f0917789ab95346ea875c51212e3c",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-HOST-ASTRA-REVIEW.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI01-HOST-ASTRA-REVIEW.md",
+      "bytes": 9724,
+      "sha256": "5f825475bcb7ef42910342a59e230da48710ea260403d5623e060eb1826f3e0a",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-HOST-BINDING-TESTS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI01-HOST-BINDING-TESTS.md",
+      "bytes": 4920,
+      "sha256": "ad43fcfeb73fadfb456da4190a232adee344d85cc2ab527c25706606372b0384",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-HOST-TESTS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI01-HOST-TESTS.md",
+      "bytes": 6853,
+      "sha256": "5b50b9bd6ea6c464add0f792ccd80d721491be8d3cb374eecea8759b58cbcc3c",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-PROCESS-TESTS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI01-PROCESS-TESTS.md",
+      "bytes": 5166,
+      "sha256": "33ae86189756658d68151a1e538e840ce0960f9445938d5e2c232bdbc1e6aca0",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-PUBLIC-EXPORT-REVIEW.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI01-PUBLIC-EXPORT-REVIEW.md",
+      "bytes": 5120,
+      "sha256": "5116461350dcda92e91f91e4d8dd280996024a29798307164f78f881aad87931",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-SCOPE.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI01-SCOPE.md",
+      "bytes": 13716,
+      "sha256": "64dd904f43dd490c08aea374b4632e5e144dd3a121f0b72a0efe545b62925f6f",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-TSK-IMPLEMENTATION.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI01-TSK-IMPLEMENTATION.md",
+      "bytes": 6287,
+      "sha256": "cfc0bb7992e05514ce7839687500425bb266f6ce716f8b06c18605508455887b",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-TSK-REVIEW.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI01-TSK-REVIEW.md",
+      "bytes": 4567,
+      "sha256": "2bbc7412b9f79c6bbe8f748bfbd2e3704afa3fc0d36a4d1aecafdde83ca228b6",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-TSK-TESTS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI01-TSK-TESTS.md",
+      "bytes": 5104,
+      "sha256": "8af74e39633ad11c1e9759fffccb1f399aa446a5ac1597d13f7210ccbd96f0c3",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-WIRE-IMPLEMENTATION-REQUEST.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI01-WIRE-IMPLEMENTATION-REQUEST.md",
+      "bytes": 1581,
+      "sha256": "181491f0eb04e8f3ce754961e450e5dcd2a1ccc8601e6acb4bab40822641fe6a",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-WIRE-REVIEW.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI01-WIRE-REVIEW.md",
+      "bytes": 2971,
+      "sha256": "fb6396262b75c5af81612f79436ee6b9a0e00cf8eec2046bf40ebd4757a5b5e1",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI01-WIRE-TESTS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI01-WIRE-TESTS.md",
+      "bytes": 2606,
+      "sha256": "b570bb871e990bc0a475fe3ae592538af94a9c0a65de504e2ce3691c90c32348",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-CONSULTATION-REQUEST.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI02-CONSULTATION-REQUEST.md",
+      "bytes": 6488,
+      "sha256": "ec4e050998482258ccb82bd1c77ad4c95c79c74d01ba05b1b984e5daf4ce3628",
+      "status": 200
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-PROVIDER-PROPOSAL.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/design/contracts-v5/PRI02-PROVIDER-PROPOSAL.md",
+      "bytes": 10537,
+      "sha256": "76d0be214bdc6bbe02a0757c091b17bf14fbb82e709b5f0fe16919ce1fc8932d",
+      "status": 200
+    },
+    {
+      "path": "docs/plans/CHECKPOINTS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/docs/plans/CHECKPOINTS.md",
+      "bytes": 107535,
+      "sha256": "4eab31cb71a09792e121f6da86373c40b4c6b7640d4f4481aaf5f98cd56a540e",
+      "status": 200
+    },
+    {
+      "path": "evidence/operations/pri01-20261010/verification.json",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/evidence/operations/pri01-20261010/verification.json",
+      "bytes": 6212,
+      "sha256": "6c2c1b50ffc16f3c1ef9970fcdd6864cf6a07c66ef2ca5f0e9c109d8148979e3",
+      "status": 200
+    },
+    {
+      "path": "evidence/operations/recovery02-20261010/public-readback.json",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/evidence/operations/recovery02-20261010/public-readback.json",
+      "bytes": 15553,
+      "sha256": "ceb3c48b0d887cfff2556006ff1e544f359d5b92dbe82b87863d3c7b68f36095",
+      "status": 200
+    },
+    {
+      "path": "pal/primary_host_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/pal/primary_host_v5.py",
+      "bytes": 42389,
+      "sha256": "81a5ec8b6c65fce3b6aa5f76b0cd0430d4914ea972ea1740a16100842d99bfec",
+      "status": 200
+    },
+    {
+      "path": "pal/primary_wire_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/pal/primary_wire_v5.py",
+      "bytes": 8683,
+      "sha256": "828aa1b9b2c7fbb0500ed56d7ec19c95954ee2de48e19285e1db7437aaefb67f",
+      "status": 200
+    },
+    {
+      "path": "pal/tasks_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/pal/tasks_v5.py",
+      "bytes": 121233,
+      "sha256": "0c63b042f934f5baf5e8f511fced1e0706afeaee7579f7091d8c5161a6498228",
+      "status": 200
+    },
+    {
+      "path": "tests/test_primary_binding_review_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/tests/test_primary_binding_review_v5.py",
+      "bytes": 7522,
+      "sha256": "2e82a1814f6a932f4215766bc42c5d982694395dd76feed330a906c727068c27",
+      "status": 200
+    },
+    {
+      "path": "tests/test_primary_host_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/tests/test_primary_host_v5.py",
+      "bytes": 28730,
+      "sha256": "ff53dc0d2e2fbba566352d46e1dad2c64e108ea51d11407f1271c3e5d721c6e3",
+      "status": 200
+    },
+    {
+      "path": "tests/test_primary_phase_review_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/tests/test_primary_phase_review_v5.py",
+      "bytes": 2246,
+      "sha256": "8080ba1967ef1e0925cbfda8d7351fb7f9b9094336841ffa9f15038458deb6f6",
+      "status": 200
+    },
+    {
+      "path": "tests/test_primary_process_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/tests/test_primary_process_v5.py",
+      "bytes": 14765,
+      "sha256": "9916a1309de31091d2472cc1fbfe09b145bd2c5c796e45d2d45da0e250b1174d",
+      "status": 200
+    },
+    {
+      "path": "tests/test_primary_tasks_review_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/tests/test_primary_tasks_review_v5.py",
+      "bytes": 5387,
+      "sha256": "ead79a804ac59461057de4b278964e01d92e0ec93bb01761ef72b2e7c79af9d4",
+      "status": 200
+    },
+    {
+      "path": "tests/test_primary_wire_review_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/tests/test_primary_wire_review_v5.py",
+      "bytes": 1355,
+      "sha256": "39ed0a0dec5447929cf66158cd903b7e88ec286ce77a19803891045914e76009",
+      "status": 200
+    },
+    {
+      "path": "tests/test_primary_wire_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/tests/test_primary_wire_v5.py",
+      "bytes": 13231,
+      "sha256": "acd76510b73ae0636607fe9149c9330f1aeb8b57e83ea568ce2615e3071962ef",
+      "status": 200
+    },
+    {
+      "path": "tests/test_tasks_primary_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/tests/test_tasks_primary_v5.py",
+      "bytes": 17499,
+      "sha256": "1819ea49af005acfe414e1c98f11357ee2bd0efb1629776daaa60cace17bf1a9",
+      "status": 200
+    },
+    {
+      "path": "tests/test_tasks_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/6f2e4801e48d44d3e6beb1d67701bdf24c3da09d/tests/test_tasks_v5.py",
+      "bytes": 43451,
+      "sha256": "041ccf7f36224389d14bf53c626da102956b80b485b67e64af33bbda008ad256",
+      "status": 200
+    }
+  ]
+}

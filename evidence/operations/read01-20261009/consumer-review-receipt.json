@@ -1,0 +1,11 @@
+{
+  "task_id": "531650441aa4483d9fda75dc91f65890",
+  "base_sha": "367c1dede8fb781203f84d660df59e728f257781",
+  "status": "verified",
+  "verified": true,
+  "model": "claude/claude-opus-5-5",
+  "review": "REQUEST_CHANGES",
+  "ran_tests": false,
+  "verified_scope": "note structure only",
+  "findings": "D1/D2/D3 reproduced; F1 optional C11 fields subsequently reproduced on actual MEM by Root"
+}

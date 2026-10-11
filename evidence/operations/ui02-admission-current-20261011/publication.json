@@ -1,0 +1,41 @@
+{
+  "ci": {
+    "checkout_merge_ref": "d5e3227e2bcf35c1c49fadb53dffa128994b928f",
+    "clean_log_sha256": "e5241834fb054f4ad872e56d46a6891df254c5459d6be9c0f708e4738d0e9720",
+    "conclusion": "success",
+    "discovered": 1107,
+    "executed_pass": 1105,
+    "head_sha": "89f0f397425e199a7f7abb319333ddfc35f098ff",
+    "mock_demos_succeeded": 3,
+    "optional_cases_both_passed_in_root_local_1107": true,
+    "optional_skip_reason": "Optional installed CO runtime is absent",
+    "raw_log_sha256": "7e79ba16431b65c911dc400ba2acab92ad704794e0c63b7667c8eab992e589f1",
+    "run_id": 38112169250,
+    "seconds": 109.426,
+    "skipped": 2,
+    "url": "https://github.com/thattor/personal-agent-lab/actions/runs/38112169250"
+  },
+  "default_branch_unchanged": "3e8cf8db7cb3bc6147c4bc149049b12a25bd8a6b",
+  "frozen_test_sha256": "4f2437f07fc1210bf71e901056ce4e6e6e53093c29c55587b6c4fda83abb0dde",
+  "goal": "NOT_MET",
+  "independent_final_canonical_review": {
+    "differences": 0,
+    "items": 27,
+    "model_id": "gpt-6.1-sol",
+    "report_sha256": "bc7dd1dbe33aaf206cf030b2b3ed08ce07e81e54b4c0e7a8ff0dcba923cd9795"
+  },
+  "local_source": {
+    "exit_code": 0,
+    "methods": 1107,
+    "pass": 1107,
+    "seconds": 55.679,
+    "skipped": 0
+  },
+  "pr_state": "OPEN_DRAFT",
+  "pr_url": "https://github.com/thattor/personal-agent-lab/pull/19",
+  "provider_trial_calls": 0,
+  "published_head": "89f0f397425e199a7f7abb319333ddfc35f098ff",
+  "scope": "source-bound and fixture-bound; not native provider/usefulness/release/whole-goal acceptance",
+  "source_commit": "dc75a54d92a0fd8d3a5ec530a7a287f6af7686e7",
+  "source_sha256": "d6a2140115f4c8546e673a577f6f9ef63492b18064b882d9ad7aee01fccb79e4"
+}

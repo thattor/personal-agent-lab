@@ -1,0 +1,326 @@
+{
+  "contract_id": "PAL-v5-common-wire",
+  "contract_version": "INT00/1",
+  "design_source": "PAL-contracts-v5 / CONTRACT-AUDIT-v5 / TEST-STRATEGY-v5",
+  "status": "SYNTHETIC_SHARED_EXPECTATIONS_ONLY",
+  "validation": "JSON syntax/shape reviewed; no service or contract implementation executed",
+  "cases": [
+    {
+      "id": "CT-24",
+      "owner": "TSK-01",
+      "input_draft_brief": {
+        "purpose": "Summarize the specified issue with cited observations.",
+        "target": {
+          "repository": "thattor/personal-agent-lab",
+          "issue_numbers": [
+            7
+          ],
+          "files": []
+        },
+        "constraints": [
+          "Read only within the supplied grant."
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "record:sample-1"
+          }
+        ]
+      },
+      "expected_formal_brief_example": {
+        "purpose": "Summarize the specified issue with cited observations.",
+        "target": {
+          "repository": "thattor/personal-agent-lab",
+          "issue_numbers": [
+            7
+          ],
+          "files": []
+        },
+        "constraints": [
+          "Read only within the supplied grant."
+        ],
+        "conditions": [
+          {
+            "description": "Save a cited summary.",
+            "check": "artifact_saved",
+            "id": "condition:sample-1"
+          }
+        ],
+        "context_refs": [
+          {
+            "kind": "record",
+            "id": "record:sample-1"
+          }
+        ]
+      },
+      "checks": [
+        "The host assigns the formal condition ID.",
+        "The model DraftBrief must omit condition IDs.",
+        "An empty conditions array is invalid."
+      ],
+      "implementation_status": "NOT_RUN"
+    },
+    {
+      "id": "CT-07",
+      "owner": "TSK-02",
+      "starting_state": "paused",
+      "owner_input_work_ref": {
+        "goal_id": "goal:sample-1",
+        "revision": 1,
+        "epoch": 1
+      },
+      "current_work_ref": {
+        "goal_id": "goal:sample-1",
+        "revision": 1,
+        "epoch": 2
+      },
+      "sequence": [
+        {
+          "command": "answer",
+          "question_id": "question:sample-1",
+          "answer_record_ref": {
+            "kind": "record",
+            "id": "record:sample-2"
+          },
+          "expected_state": "paused"
+        },
+        {
+          "command": "resume",
+          "expected_state": "queued"
+        }
+      ],
+      "checks": [
+        "The same Goal/revision remains.",
+        "The owner command does not fail solely because epoch advanced.",
+        "Answering does not silently resume a paused Goal."
+      ],
+      "implementation_status": "NOT_RUN"
+    },
+    {
+      "id": "CT-08",
+      "owner": "TSK-02 + VER-01",
+      "orders": [
+        {
+          "sequence": [
+            "pause accepted",
+            "complete with saved verification"
+          ],
+          "expected_second_result": {
+            "ok": false,
+            "error": {
+              "code": "conflict",
+              "message": "State conflicts with completion.",
+              "refs": []
+            }
+          },
+          "expected_states": [
+            "running",
+            "paused"
+          ],
+          "if_running_control_status": [
+            "pause_requested",
+            "draining"
+          ],
+          "if_paused_control_status": "none"
+        },
+        {
+          "sequence": [
+            "complete accepted from current saved verification",
+            "pause"
+          ],
+          "expected_second_result": {
+            "ok": false,
+            "error": {
+              "code": "conflict",
+              "message": "Already terminal; read the saved state.",
+              "refs": []
+            }
+          },
+          "expected_state": "completed"
+        }
+      ],
+      "checks": [
+        "No caller-supplied verdict JSON grants completion.",
+        "Inspect current state and saved verification in one transaction."
+      ],
+      "implementation_status": "NOT_RUN"
+    },
+    {
+      "id": "CT-04",
+      "owner": "EXE-01 + TSK-03",
+      "saved_operation": {
+        "operation_id": "operation:sample-1",
+        "work_ref": {
+          "goal_id": "goal:sample-1",
+          "revision": 1,
+          "epoch": 1
+        },
+        "step_id": "step:sample-1",
+        "status": "succeeded",
+        "data_refs": [
+          {
+            "kind": "source",
+            "id": "source:sample-1"
+          }
+        ],
+        "receipt_ref": {
+          "kind": "receipt",
+          "id": "receipt:sample-1"
+        }
+      },
+      "fault_boundary": "Receipt/body/Operation result committed, response acknowledgement lost.",
+      "recovery_call": {
+        "method": "get_by_key",
+        "key": "step:sample-1/github.issue.read/retry:0"
+      },
+      "expected_return": {
+        "operation_id": "operation:sample-1",
+        "work_ref": {
+          "goal_id": "goal:sample-1",
+          "revision": 1,
+          "epoch": 1
+        },
+        "step_id": "step:sample-1",
+        "status": "succeeded",
+        "data_refs": [
+          {
+            "kind": "source",
+            "id": "source:sample-1"
+          }
+        ],
+        "receipt_ref": {
+          "kind": "receipt",
+          "id": "receipt:sample-1"
+        }
+      },
+      "checks": [
+        "Recover the same immutable IDs.",
+        "Do not execute the confirmed operation again.",
+        "Keep retry_index zero when recovering an already committed result."
+      ],
+      "implementation_status": "NOT_RUN"
+    },
+    {
+      "id": "CT-25",
+      "owner": "TSK-02",
+      "owned_lease_id": "lease:sample-1",
+      "release_input_work_ref": {
+        "goal_id": "goal:sample-1",
+        "revision": 1,
+        "epoch": 1
+      },
+      "current_work_ref": {
+        "goal_id": "goal:sample-1",
+        "revision": 2,
+        "epoch": 3
+      },
+      "current_state": "cancelled",
+      "precondition": "The owned call has been reaped and the lease is still the caller-owned occupied slot.",
+      "expected_state_after_release": "cancelled",
+      "checks": [
+        "Free only the matching owned lease.",
+        "Preserve the latest cancel/pause/change intent.",
+        "Reject another lease without freeing the current slot."
+      ],
+      "implementation_status": "NOT_RUN"
+    },
+    {
+      "id": "CT-20-intake",
+      "contract_version": "MEM01/1",
+      "owner": "MEM-01/MEM-04 + TSK-01",
+      "scope": "Queued source invalidation only; full CT-20 remains unmet",
+      "append_request": {
+        "client_key": "shared-record",
+        "session_id": "shared-session",
+        "role": "user",
+        "text": "会議の準備を進めてください。"
+      },
+      "search_request": {
+        "query": "会議",
+        "session_id": "shared-session",
+        "limit": 10
+      },
+      "intake_template": {
+        "key": "shared-intake",
+        "session_id": "shared-session",
+        "origin_record_ref": {
+          "kind": "record",
+          "id": "REPLACE_WITH_HOST_RECORD_ID"
+        },
+        "brief": {
+          "purpose": "会議の準備",
+          "target": {
+            "repository": "thattor/personal-agent-lab",
+            "issue_numbers": [],
+            "files": []
+          },
+          "constraints": [],
+          "conditions": [
+            {
+              "description": "準備結果を保存する",
+              "check": "artifact_saved"
+            }
+          ],
+          "context_refs": []
+        }
+      },
+      "expected": {
+        "initial_state": "queued",
+        "initial_epoch": 0,
+        "stopped_state": "queued",
+        "stopped_epoch": 1,
+        "fresh_intake_error": "denied",
+        "current_model_read_error": "denied",
+        "owner_history_usable": false,
+        "old_receipt_epoch": 0
+      }
+    }
+  ],
+  "wire_samples": [
+    {
+      "kind": "operate",
+      "capability": "github.issue.read",
+      "arguments": {
+        "repository": "thattor/personal-agent-lab",
+        "number": 7
+      },
+      "source_refs": [
+        {
+          "kind": "record",
+          "id": "record:sample-1"
+        }
+      ]
+    },
+    {
+      "kind": "compose",
+      "content": "Synthetic cited summary.",
+      "media_type": "text/markdown",
+      "source_refs": [
+        {
+          "kind": "source",
+          "id": "source:sample-1"
+        }
+      ]
+    },
+    {
+      "kind": "verify",
+      "artifact_refs": [
+        {
+          "kind": "artifact",
+          "id": "artifact:sample-1"
+        }
+      ]
+    }
+  ],
+  "remaining_obligations": [
+    "Actual parser fixture must use the same wire version.",
+    "Provider/consumer tests must share these expectations.",
+    "Transactions, saved provenance, fencing, process cessation, real integration and human usefulness remain unverified."
+  ]
+}

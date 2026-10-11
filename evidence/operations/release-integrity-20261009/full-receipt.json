@@ -1,0 +1,19 @@
+{
+  "source": "18813c2dd28e87236d836451c1e0f2b1267da1fa",
+  "command": [
+    "/opt/homebrew/bin/python3.13",
+    "-E",
+    "-s",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 26.704,
+  "finished_at": "2026-10-09T12:23:32.354735+00:00",
+  "scope": "local host temporary fixtures with loopback/subprocess; no real provider/CI"
+}

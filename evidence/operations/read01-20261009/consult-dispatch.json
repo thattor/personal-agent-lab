@@ -1,0 +1,16 @@
+{
+  "task_id": "c2027bf7247a4985abbbf5fb620c6b79",
+  "base": "ffd5d79c7322f117795782bfc507ddf77e4d210e",
+  "status": "running",
+  "runtime": "CO0.4.5",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "owned_session": 24307,
+  "planner": "claude/claude-opus-5-5",
+  "reviewer": "devin/swe-2-high Free",
+  "write_scope": [
+    "evidence/operations/read01-20261009/swe-scope-review.md"
+  ],
+  "input_scope": "READ01 scope, full public contracts and actual v5 owner APIs, completed Opus review, real VER fixture",
+  "auth_cost": "existing Claude Pro and Devin logged-in/Free model row checked before launch",
+  "limits": "consultation only; no implementation before exact seam freeze, no live DB/auth/payment/publication or old unknown-call retry"
+}

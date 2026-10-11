@@ -1,0 +1,49 @@
+{
+  "observed_at": "2026-10-09T01:29:04.807890+00:00",
+  "head": "337ac3c2a3663ddd608ad8e96b10306ec3b63f3c",
+  "base": "94fcacbf506b7514a2380dc1c4e61ccc5dcffca2",
+  "private": true,
+  "pr": {
+    "url": "https://github.com/thattor/personal-agent-lab/pull/19",
+    "title": "Prepare v5 shared contracts and durable scoped intake",
+    "state": "OPEN",
+    "isDraft": true,
+    "statusCheckRollup": []
+  },
+  "pr_body_sha256": "11100ac0c8fb5102032144e80688cff62ffea879f6b4efceb6dc42eaa7f1e74e",
+  "issue": {
+    "url": "https://github.com/thattor/personal-agent-lab/issues/6",
+    "state": "OPEN",
+    "body_sha256": "d6755f1cb31a4ebdde7656d3ca6d04ca45e692c06dadb61f4cd4abe441413112",
+    "prior_history_preserved": true
+  },
+  "all_verified_source_hashes_unchanged": true,
+  "main_merge_or_publication": false,
+  "ci_claim": "No status checks; local approved-host regression only",
+  "final_co_observation": {
+    "observed_at": "2026-10-09T01:30:33.680038+00:00",
+    "old_task": "6a9dea446fa241ceb6ee876bbdb08be9",
+    "status": "awaiting_decision",
+    "verified": false,
+    "pause_id": "ac2f10b05fc248f9a61d1824454b1a27",
+    "report_sha256": "sha256:d480fcca2f7859a12badc4dd8dcbb73f65e19f46107f117a3afcda6625e9e175",
+    "outcome": "unknown",
+    "process_outcome": "unknown",
+    "options": [],
+    "state_edited": false,
+    "capacity": {
+      "limit_per_adapter": 12,
+      "claude": {
+        "executing": 0,
+        "reserved": 0
+      },
+      "devin": {
+        "executing": 1,
+        "reserved": 0
+      }
+    },
+    "capacity_note": "Host-wide count includes other work; no active root-owned CO command and no30-way claim."
+  },
+  "source_docs_whitespace_check": "PASS; raw failed test log retains original trailing whitespace",
+  "agent_created_usage_tab_closed": true
+}

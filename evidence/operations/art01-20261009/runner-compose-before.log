@@ -1,0 +1,73 @@
+test_corrupt_save_receipt_never_reaches_finish (test_mock_compose_v5.MockComposeTests.test_corrupt_save_receipt_never_reaches_finish) ... ERROR
+test_exact_action_and_canonical_key_are_saved_before_finish (test_mock_compose_v5.MockComposeTests.test_exact_action_and_canonical_key_are_saved_before_finish) ... ERROR
+test_input_conflict_is_not_recovered_via_an_unrelated_receipt (test_mock_compose_v5.MockComposeTests.test_input_conflict_is_not_recovered_via_an_unrelated_receipt) ... ERROR
+test_lost_save_response_recovers_only_after_bounded_identical_retries (test_mock_compose_v5.MockComposeTests.test_lost_save_response_recovers_only_after_bounded_identical_retries) ... ERROR
+test_no_art_owner_preserves_output_without_creating_step_or_repeating_call (test_mock_compose_v5.MockComposeTests.test_no_art_owner_preserves_output_without_creating_step_or_repeating_call) ... FAIL
+test_pause_after_save_still_refences_finish_and_releases_to_pause (test_mock_compose_v5.MockComposeTests.test_pause_after_save_still_refences_finish_and_releases_to_pause) ... ERROR
+test_persistent_receipt_failure_keeps_occupancy_without_model_retry (test_mock_compose_v5.MockComposeTests.test_persistent_receipt_failure_keeps_occupancy_without_model_retry) ... ERROR
+
+======================================================================
+ERROR: test_corrupt_save_receipt_never_reaches_finish (test_mock_compose_v5.MockComposeTests.test_corrupt_save_receipt_never_reaches_finish)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_compose_v5.py", line 159, in test_corrupt_save_receipt_never_reaches_finish
+    runner = MockRunner(self.tasks, self.memory, artifacts=self.owner)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'artifacts'
+
+======================================================================
+ERROR: test_exact_action_and_canonical_key_are_saved_before_finish (test_mock_compose_v5.MockComposeTests.test_exact_action_and_canonical_key_are_saved_before_finish)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_compose_v5.py", line 105, in test_exact_action_and_canonical_key_are_saved_before_finish
+    out = value(MockRunner(self.tasks, self.memory, artifacts=self.owner).run_once(self.expert))
+                ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'artifacts'
+
+======================================================================
+ERROR: test_input_conflict_is_not_recovered_via_an_unrelated_receipt (test_mock_compose_v5.MockComposeTests.test_input_conflict_is_not_recovered_via_an_unrelated_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_compose_v5.py", line 139, in test_input_conflict_is_not_recovered_via_an_unrelated_receipt
+    result = value(MockRunner(self.tasks, self.memory, artifacts=self.owner).run_once(self.expert))
+                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'artifacts'
+
+======================================================================
+ERROR: test_lost_save_response_recovers_only_after_bounded_identical_retries (test_mock_compose_v5.MockComposeTests.test_lost_save_response_recovers_only_after_bounded_identical_retries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_compose_v5.py", line 119, in test_lost_save_response_recovers_only_after_bounded_identical_retries
+    out = value(MockRunner(self.tasks, self.memory, artifacts=self.owner).run_once(self.expert))
+                ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'artifacts'
+
+======================================================================
+ERROR: test_pause_after_save_still_refences_finish_and_releases_to_pause (test_mock_compose_v5.MockComposeTests.test_pause_after_save_still_refences_finish_and_releases_to_pause)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_compose_v5.py", line 150, in test_pause_after_save_still_refences_finish_and_releases_to_pause
+    out = value(MockRunner(self.tasks, self.memory, artifacts=self.owner).run_once(self.expert))
+                ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'artifacts'
+
+======================================================================
+ERROR: test_persistent_receipt_failure_keeps_occupancy_without_model_retry (test_mock_compose_v5.MockComposeTests.test_persistent_receipt_failure_keeps_occupancy_without_model_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_compose_v5.py", line 128, in test_persistent_receipt_failure_keeps_occupancy_without_model_retry
+    runner = MockRunner(self.tasks, self.memory, artifacts=self.owner)
+TypeError: MockRunner.__init__() got an unexpected keyword argument 'artifacts'
+
+======================================================================
+FAIL: test_no_art_owner_preserves_output_without_creating_step_or_repeating_call (test_mock_compose_v5.MockComposeTests.test_no_art_owner_preserves_output_without_creating_step_or_repeating_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_mock_compose_v5.py", line 97, in test_no_art_owner_preserves_output_without_creating_step_or_repeating_call
+    self.assertFalse(result.ok)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.007s
+
+FAILED (failures=1, errors=6)

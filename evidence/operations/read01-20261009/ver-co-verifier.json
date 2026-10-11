@@ -1,0 +1,26 @@
+{
+  "after": {
+    "docs/design/contracts-v5/READ01-SCOPE.md": "sha256:27a77aad52bcfbeb5264fee8eeb63b87098a5bd97cec298a3219cbae565ec895",
+    "docs/design/contracts-v5/READ01-TEST-PLAN.md": "sha256:a274a15e9fd1ef1a4db4ea49188c918aaa872613706bea165855839f901b1c93",
+    "docs/design/contracts-v5/READ01-VER-IMPLEMENTATION.md": "sha256:1d5eab12bd426acf58a8613fef063f6255d91671e9103329ab1f8a0bdc65a9a0",
+    "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+    "pal/verification_v5.py": "sha256:6d9cc8bcd9ba1039d9b3573632496ad5e4eec87e1b260c8a148484b0b38982e8",
+    "tests/test_verification_read_v5.py": "sha256:3e145f6fb6d1aca41450720a96fb535b1cc97a9d0285e53b4d358b38fccfa001",
+    "tests/test_verification_v5.py": "sha256:5da67471eed93361a52eb7bb7c80f18537cda461dac0744f961b426de8a18f8b"
+  },
+  "before": {
+    "docs/design/contracts-v5/READ01-SCOPE.md": "sha256:27a77aad52bcfbeb5264fee8eeb63b87098a5bd97cec298a3219cbae565ec895",
+    "docs/design/contracts-v5/READ01-TEST-PLAN.md": "sha256:a274a15e9fd1ef1a4db4ea49188c918aaa872613706bea165855839f901b1c93",
+    "docs/design/contracts-v5/READ01-VER-IMPLEMENTATION.md": "sha256:1d5eab12bd426acf58a8613fef063f6255d91671e9103329ab1f8a0bdc65a9a0",
+    "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+    "pal/verification_v5.py": "sha256:6d9cc8bcd9ba1039d9b3573632496ad5e4eec87e1b260c8a148484b0b38982e8",
+    "tests/test_verification_read_v5.py": "sha256:3e145f6fb6d1aca41450720a96fb535b1cc97a9d0285e53b4d358b38fccfa001",
+    "tests/test_verification_v5.py": "sha256:5da67471eed93361a52eb7bb7c80f18537cda461dac0744f961b426de8a18f8b"
+  },
+  "exit": 0,
+  "log": "test_all_invalidation_causes_retain_history_and_deny_other_purposes (test_verification_read_v5.VerificationReadTests.test_all_invalidation_causes_retain_history_and_deny_other_purposes) ... ok\ntest_changed_read_time_excluded_from_body_hash (test_verification_read_v5.VerificationReadTests.test_changed_read_time_excluded_from_body_hash) ... ok\ntest_clock_commit_limit_and_interrupt_cleanup (test_verification_read_v5.VerificationReadTests.test_clock_commit_limit_and_interrupt_cleanup) ... ok\ntest_closed_requests_purpose_kind_and_missing_identity (test_verification_read_v5.VerificationReadTests.test_closed_requests_purpose_kind_and_missing_identity) ... ok\ntest_default_clock_and_invalid_utc_values (test_verification_read_v5.VerificationReadTests.test_default_clock_and_invalid_utc_values) ... ok\ntest_exact_historical_projection_utf8_hash_and_ordinary_readonly (test_verification_read_v5.VerificationReadTests.test_exact_historical_projection_utf8_hash_and_ordinary_readonly) ... ok\ntest_mutating_clock_rejects_with_unchanged_durable_dump (test_verification_read_v5.VerificationReadTests.test_mutating_clock_rejects_with_unchanged_durable_dump) ... ok\ntest_reopen_into_second_inmemory_connection_preserves_projection (test_verification_read_v5.VerificationReadTests.test_reopen_into_second_inmemory_connection_preserves_projection) ... ok\ntest_uncertain_or_corrupt_owner_evidence_is_error (test_verification_read_v5.VerificationReadTests.test_uncertain_or_corrupt_owner_evidence_is_error) ... ok\ntest_unknown_checks_still_usable_and_epoch_only_history_is_not_met_claim (test_verification_read_v5.VerificationReadTests.test_unknown_checks_still_usable_and_epoch_only_history_is_not_met_claim) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.023s\n\nOK\n",
+  "n": 2,
+  "passed": true,
+  "sandbox": "seatbelt-v1",
+  "version": "sha256:5a552b4540b3175697fd7c551fcc4d0c3a45647878ca88f4e4227a01d2017960"
+}

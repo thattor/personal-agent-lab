@@ -1,0 +1,32 @@
+test_actual_compose_save_attachment_reconnect_and_later_report (test_artifact_connection_v5.ArtifactConnectionTests.test_actual_compose_save_attachment_reconnect_and_later_report) ... ok
+test_actual_finish_commit_lost_response_replays_one_set_and_event (test_artifact_connection_v5.ArtifactConnectionTests.test_actual_finish_commit_lost_response_replays_one_set_and_event) ... ok
+test_actual_save_commit_lost_responses_recover_one_artifact_then_attach (test_artifact_connection_v5.ArtifactConnectionTests.test_actual_save_commit_lost_responses_recover_one_artifact_then_attach) ... ok
+test_actual_step_action_and_source_membership_are_checked_before_saving (test_artifact_connection_v5.ArtifactConnectionTests.test_actual_step_action_and_source_membership_are_checked_before_saving) ... ok
+test_attachment_interrupt_leaves_saved_history_and_no_partial_set_or_event (test_artifact_connection_v5.ArtifactConnectionTests.test_attachment_interrupt_leaves_saved_history_and_no_partial_set_or_event) ... ok
+test_busy_database_does_not_burn_key_or_save_partial_content (test_artifact_connection_v5.ArtifactConnectionTests.test_busy_database_does_not_burn_key_or_save_partial_content) ... ok
+test_fault_after_actual_artifact_insert_rolls_back_and_key_can_retry (test_artifact_connection_v5.ArtifactConnectionTests.test_fault_after_actual_artifact_insert_rolls_back_and_key_can_retry) ... ok
+test_latest_pause_cancel_stop_after_save_cannot_attach_history (test_artifact_connection_v5.ArtifactConnectionTests.test_latest_pause_cancel_stop_after_save_cannot_attach_history) ... ok
+test_pause_and_cancel_before_save_preserve_latest_owner_intent (test_artifact_connection_v5.ArtifactConnectionTests.test_pause_and_cancel_before_save_preserve_latest_owner_intent) ... ok
+test_process_interrupt_after_artifact_write_releases_transaction_not_execution_lease (test_artifact_connection_v5.ArtifactConnectionTests.test_process_interrupt_after_artifact_write_releases_transaction_not_execution_lease) ... ok
+test_saved_bytes_reopen_and_receipt_do_not_complete_or_attach_work (test_artifact_connection_v5.ArtifactConnectionTests.test_saved_bytes_reopen_and_receipt_do_not_complete_or_attach_work) ... ok
+test_shared_compose_duplicate_selected_refs_preserve_input_identity (test_artifact_connection_v5.ArtifactConnectionTests.test_shared_compose_duplicate_selected_refs_preserve_input_identity) ... FAIL
+test_source_stop_after_attachment_retains_history_but_blocks_body_reuse (test_artifact_connection_v5.ArtifactConnectionTests.test_source_stop_after_attachment_retains_history_but_blocks_body_reuse) ... ok
+test_stop_after_save_blocks_unselected_dependency_but_preserves_history_and_receipt (test_artifact_connection_v5.ArtifactConnectionTests.test_stop_after_save_blocks_unselected_dependency_but_preserves_history_and_receipt) ... ok
+test_stop_committed_before_save_rejects_old_authority_without_artifact (test_artifact_connection_v5.ArtifactConnectionTests.test_stop_committed_before_save_rejects_old_authority_without_artifact) ... ok
+
+======================================================================
+FAIL: test_shared_compose_duplicate_selected_refs_preserve_input_identity (test_artifact_connection_v5.ArtifactConnectionTests.test_shared_compose_duplicate_selected_refs_preserve_input_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_artifact_connection_v5.py", line 217, in test_shared_compose_duplicate_selected_refs_preserve_input_identity
+    self.assertEqual(result['state'], 'queued')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'failed' != 'queued'
+- failed
++ queued
+
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.138s
+
+FAILED (failures=1)

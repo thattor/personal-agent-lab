@@ -1,0 +1,41 @@
+{
+  "task_id": "39213ad42322430e9c2f27ec568bd80e",
+  "base_sha": "dadac5750533203549f1381ad81049c7d34ba0ac",
+  "status": "verified",
+  "verified": true,
+  "diff_digest": "sha256:b32e83dcd1aa05358f16af8138ff14ae441a8dfda2c4bf39c80801d60ab26b00",
+  "repairs_used": 0,
+  "calls": [
+    {
+      "call_id": "plan",
+      "role": "planner",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "cost_tier": null
+    },
+    {
+      "call_id": "s1",
+      "role": "implement",
+      "route": "devin",
+      "model": "swe-2-high",
+      "cost_tier": "Free"
+    }
+  ],
+  "write_scope": [
+    "docs/design/contracts-v5/COMPLETE01-RUN-IMPLEMENTATION.md",
+    "pal/mock_runner_v5.py"
+  ],
+  "hashes": {
+    "docs/design/contracts-v5/COMPLETE01-RUN-IMPLEMENTATION.md": "sha256:cf46c3e47c72e0d18dfdedf45666bcf674218d464b6057acbe4b16ae6ec5dcdf",
+    "pal/mock_runner_v5.py": "sha256:564311893094d8e94df086197f9f227906e4428609498e86adb0fd37b1cfb6dd"
+  },
+  "immutable_inputs_matched": true,
+  "verification": {
+    "tests": 16,
+    "exit_code": 0,
+    "source": "CO sandbox, synthetic owners only"
+  },
+  "independent_review": "pending",
+  "actual_connection": "pending",
+  "whole_product": "NOT_RUN"
+}

@@ -1,0 +1,88 @@
+{
+  "task_id": "b0875839c07f43dc9856011373d76482",
+  "base_sha": "0cf8563378223fa080e8abaf979e42b2bdf73e51",
+  "status": "verified",
+  "verified": true,
+  "attempts": [
+    {
+      "attempt_id": "plan-a1",
+      "call_id": "plan",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:8b015b805d26f31f1f838f21edc833dfa1a93aacab58754eefc24ce328578240",
+      "role": "planner",
+      "route": "claude",
+      "step_id": "plan"
+    },
+    {
+      "attempt_id": "s1-a1",
+      "call_id": "s1",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:630d34857e60219ebb04ebae4409d99ee20d40f1b9aa5e12eee098e50878210d",
+      "role": "implement",
+      "route": "claude",
+      "step_id": "s1"
+    }
+  ],
+  "selection": {
+    "mode": "fixed",
+    "targets": {
+      "implement": {
+        "model": "claude-opus-5-5",
+        "route": "claude"
+      },
+      "planner": {
+        "model": "claude-opus-5-5",
+        "route": "claude"
+      },
+      "review": {
+        "model": "claude-opus-5-5",
+        "route": "claude"
+      }
+    }
+  },
+  "workspace": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/b0875839c07f43dc9856011373d76482/workspace",
+  "diff_digest": "sha256:fc2da45b7a037d9643c94966f0f9b8caff7c71259c68a8da4e1c0debe0b6b01b",
+  "error": null,
+  "verification": {
+    "exit": 0,
+    "n": 1,
+    "passed": true,
+    "sandbox": "seatbelt-v1",
+    "before": {
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/TSK03-SCOPE.md": "sha256:4c7cc420108857dc0bfc3bad811bd3da6067c200da0e7b18113fa7bfaa310d8e",
+      "evidence/operations/tsk03-20261009/connected.log": "sha256:e81b719dfa4eb3e852a75d2f74f34a47683695368145538a43d1fb42de788d85",
+      "evidence/operations/tsk03-20261009/host-targeted.log": "sha256:529bb5769822a768258141c01375f46a380181c88b265d2e37a444006c37f9b4",
+      "evidence/operations/tsk03-20261009/opus-independent-review.md": "sha256:ab6b8b45a36716f1b0f7de3bf6eebad7f5d2b7e062bb4d295631449216227d4d",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/events_v5.py": "sha256:da2a74a41622784f0ff85f0201db081e946b3e35cebb8660068ece79e8763102",
+      "pal/intake_v5.py": "sha256:31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+      "tests/test_events_v5.py": "sha256:56055ff3d13937e2507736700da12ab89fafb2f790238145efc038c879f08aa6",
+      "tests/test_memory_intake_pipeline_v5.py": "sha256:c87d501523231b0e8dfc350b2b6be1468872ed68ca862f9de2a9da2976a7abc9"
+    },
+    "after": {
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/TSK03-SCOPE.md": "sha256:4c7cc420108857dc0bfc3bad811bd3da6067c200da0e7b18113fa7bfaa310d8e",
+      "evidence/operations/tsk03-20261009/connected.log": "sha256:e81b719dfa4eb3e852a75d2f74f34a47683695368145538a43d1fb42de788d85",
+      "evidence/operations/tsk03-20261009/host-targeted.log": "sha256:529bb5769822a768258141c01375f46a380181c88b265d2e37a444006c37f9b4",
+      "evidence/operations/tsk03-20261009/opus-independent-review.md": "sha256:ab6b8b45a36716f1b0f7de3bf6eebad7f5d2b7e062bb4d295631449216227d4d",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/events_v5.py": "sha256:da2a74a41622784f0ff85f0201db081e946b3e35cebb8660068ece79e8763102",
+      "pal/intake_v5.py": "sha256:31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+      "tests/test_events_v5.py": "sha256:56055ff3d13937e2507736700da12ab89fafb2f790238145efc038c879f08aa6",
+      "tests/test_memory_intake_pipeline_v5.py": "sha256:c87d501523231b0e8dfc350b2b6be1468872ed68ca862f9de2a9da2976a7abc9"
+    },
+    "log": "Review artifact structure checked; semantic disposition remains SOL responsibility\n"
+  },
+  "review_artifact_sha256": "ab6b8b45a36716f1b0f7de3bf6eebad7f5d2b7e062bb4d295631449216227d4d",
+  "semantic_verdict": "APPROVE",
+  "limit": "CO verifies review artifact structure, not code tests or product"
+}

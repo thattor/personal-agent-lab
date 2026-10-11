@@ -1,0 +1,92 @@
+{
+  "actual_provider_calls": 0,
+  "model_diagnostic": {
+    "authority": "unqualified",
+    "contract": "PRI02-MODEL-DIAGNOSTIC/1",
+    "exit_code": 0,
+    "file_sha256": {
+      "pal/native_text_v5.py": "8990510b5b793f4f1a58bb60567cc02e3c72c5a1462ae0c516a4bf60caeb12ea",
+      "tests/test_native_devin_model_diagnostic_v5.py": "9f29e5f4b68346c40a52e9881b219efda8a1aba3635443b064464ed643610d78",
+      "tests/test_native_model_diagnostic_v5.py": "38365f480824e141c00c130aa7a9a7731d08dbd533c66907ccc0d7e78ba99c11",
+      "tools/native_devin_text_v5.py": "31e7deb9cb078f7ae411e00dc90bc3c74bb58b954666a0fd3d778e385713b5e6"
+    },
+    "fixed_tests": 20,
+    "independent_reviewer": "Native gpt-6.1-sol, distinct context from implementation authors; also fixed-test owner",
+    "log_sha256": "4d5e181f6070ea08860eecd37fd64b6e8a477c7788793c836f75a7a5e3030569",
+    "native_tests": 151,
+    "new_model_qualification": "NOT_RUN",
+    "old_buffer_prefix_bytes": 7619,
+    "old_buffer_prefix_sha256": "3c8719b9288dbac3c94d3c4b7ddff89da9f90eb7762fc3c857ebd2bee10edebf",
+    "old_qualification_envelope": "INVALIDATED_BY_CAPTURE_AND_WRAPPER_HASH_CHANGE",
+    "original_native_or_co_unknowns": "UNCHANGED",
+    "pure_author": "Native gpt-6.1-sol, separate context",
+    "reviewed_combined_source": "fbdd89555b48520f6d2feb4374a91a84959ab208",
+    "test_seconds": 1.479,
+    "verdict": "APPROVE",
+    "wrapper_author": "Native gpt-6-astra"
+  },
+  "retained_previous_v5_test_fixture_files": {
+    "count": 88,
+    "equal_bytes": true
+  },
+  "root_full": {
+    "command": [
+      "/opt/homebrew/bin/python3.13",
+      "-E",
+      "-s",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "elapsed_seconds": 19.347,
+    "exit_code": 0,
+    "log_sha256": "854e1b784e379a1e8ce6272fa49a1d614f8731ca94127fabf52a5c08356ce7bf",
+    "source": "0d60b6f610010467605b6f6b4d98cef2286978e0",
+    "test_seconds": 18.995,
+    "tests": 969
+  },
+  "source": "0d60b6f610010467605b6f6b4d98cef2286978e0",
+  "ui": {
+    "browser": {
+      "authentic_usefulness": false,
+      "label": "disposable local mock, scripted developer input",
+      "observed": [
+        "turn persisted",
+        "actual question text visible",
+        "answer tied to same work",
+        "saved draft visible",
+        "completed structural result",
+        "script-like answer rendered as text, no injected script element",
+        "browser console errors empty",
+        "owned temporary server stopped with exit0"
+      ],
+      "screenshot_sha256": "2b64009e501d5bfaa0d1016250fc9e4189c0509fc96e2a4ea75c3ccd34cc14b7",
+      "ui_source": "81788a23d646bebeec8b7a54579e38dec055cc4e"
+    },
+    "contract": "UI01/2",
+    "exit_code": 0,
+    "file_sha256": {
+      "pal/http_v5.py": "d19952728c4f05b65eaaec1a9d5ccf210e5ddbf827b02a513e1756b7a90c215f",
+      "pal/web_v5/app.js": "419c22def1016e062a9e96ac97a475867c27151ebd7f75c0865ff6ceb2f67d38",
+      "pal/web_v5/index.html": "0edfa3afebc2913c1aa9fda46ef6f89b7f17c1eb932d854e0f8cde605d4fabf6",
+      "pal/web_v5/style.css": "e341eb8e96c730657ab839659cc0ec8ce60295280c99777308694bf11aec73a0",
+      "scripts/demo_http_v5.py": "f821688dcac358eef8b117afd9b85cad34e0d347d4eac5d4d0e7881b92389038",
+      "tests/test_http_v5.py": "5c0586c600510ecef339022b919d49fca1c1483f1451604d197908d4b5f22985",
+      "tests/test_http_v5_independent.py": "245782e2498adefd186d48c7adf0d68318d49601d263f18204063efb956b4f7c"
+    },
+    "independent_reviewer": "Native gpt-6-astra, separate context",
+    "independent_tests": 19,
+    "log_sha256": "9f233debf0050b7b5e3e258c86c25d4786b66da0e85ccdb5f57f424128360fde",
+    "real_native_ui": "NOT_MET",
+    "reviewed_author_source": "c0ac546ef6e8703e47a6fd02b5b6505595b847c0",
+    "source_author": "Native gpt-6.1-sol",
+    "test_seconds": 10.382,
+    "verdict": "APPROVE"
+  },
+  "version": "C089-C090/1",
+  "whole_goal": "NOT_MET"
+}

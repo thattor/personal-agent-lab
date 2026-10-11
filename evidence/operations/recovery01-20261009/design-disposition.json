@@ -1,0 +1,28 @@
+{
+  "schema": "PAL.RECOVERY01.design-disposition/1",
+  "base": "e22c03611f98365ce70a3b56a5d5147b965aa085",
+  "model": "claude/claude-opus-5-5",
+  "route": "existing CO0.4.5",
+  "co_status": "verified",
+  "co_verified": true,
+  "co_verified_scope": "report structure and byte bound only",
+  "reviewer_verdict": "REFINE",
+  "host_input_sha256": {
+    "DESIGN.md": "7d988d4ac3bd50b6f3cba4cb938d0e341cbbf4f3d98c25c255a2e1085026c74f",
+    "SPEC.md": "d02c1c9970eaabe8f32f1e4ed2a0031525f3c64da2e02a456a5f8f2f13bed9e8",
+    "docs/design/contracts-v5/PAL-contracts-v5.md": "31b456810ec269711c2bcd414c1732797553d59a38d91934998e1db8f953a983",
+    "docs/design/contracts-v5/RECOVERY01-DESIGN-REVIEW-REQUEST.md": "4187552d2abf96d96082fc75ab9d80a1c9de83157f566f5a913946caf36bd995",
+    "docs/design/contracts-v5/RECOVERY01-OWNER-EXCERPTS.md": "6194faf1d2173cf719b233439f1b00bc5e9b963ecc298ecfa4d4394d4e32d279",
+    "docs/design/contracts-v5/RECOVERY01-PREPARATION.md": "58e6417f0019a0c56d2be1eea7393ef187fd0990e98704e78c5683a62b1b8e91",
+    "docs/design/contracts-v5/RECOVERY01-PROPOSAL.md": "a1898afc93c9969f68148cba034c1a2b4fceb4e7ada83480a5ae207a60e04673",
+    "docs/design/contracts-v5/RECOVERY01-TAILS-REVIEW.md": "b4cbf223de3dbefcd5cebeede18a0c877ad04c9b581958808b812e428f7b98c8",
+    "pal/contracts_v5.py": "683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+    "pal/mock_runner_v5.py": "8d6e3046b9df32c324dfed95adf414ece15b639136e66d51ab6b775e9b5e39c1",
+    "scripts/verify_design_report_v5.py": "1899fa0da8b4a9e43043781ed99e3f9682faad043410cbdf0502d81f71e57b42"
+  },
+  "host_report_sha256": "7e0d720cd06d545a5ce676fcfe38aed0cb03f7b834473a7cb5dbf6a286162cf9",
+  "disposition": "Adopt the qualified lifetime guard, durable session ownership and distinct interrupted outcome after incorporating F1-F11 in RECOVERY01-SCOPE. No extra blanket review/human gate required by reviewer. Started compose/operate remain explicit held tails for the next slice.",
+  "implementation_acceptance": false,
+  "whole_goal_complete": false,
+  "limits": "Selected TSK methods only; reviewer executed no tests. Raw runtime evidence is held locally under D045."
+}

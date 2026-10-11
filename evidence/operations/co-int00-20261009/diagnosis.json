@@ -1,0 +1,333 @@
+{
+  "schema": "pal.int00-diagnosis/1",
+  "observed_at": "2026-10-09T00:23:24.521243+00:00",
+  "task_id": "6a9dea446fa241ceb6ee876bbdb08be9",
+  "attempt_id": "s2-a1",
+  "source_owner_turn": "01a11dfe-89e5-7f81-86ce-7d8b66cf57da",
+  "session": {
+    "id": "unique-cobweb",
+    "working_directory": "/Users/hattoritoshiyasu/Documents/ai-company/development/co04-openai/common-orchestration/runtime_v4",
+    "backend_type": "windsurf",
+    "created_at": 1791480117,
+    "last_activity_at": 1791480118,
+    "main_chain_id": 19
+  },
+  "native_version": "3000.11.3 (9c803229faa4)",
+  "selected_model": "swe-2-high",
+  "model_source": "parent log line12; DB model field is empty, not identity evidence",
+  "processes": {
+    "parent_pid": 54709,
+    "acp_pid": 54710,
+    "preflight_pid": 54705,
+    "current_matching_pids_parents_or_groups": [],
+    "snapshot_limit": "point-in-time; not a retrospective kill receipt or remote inference cessation proof",
+    "lock_file_pid": 54710,
+    "lock_file_not_deleted": true
+  },
+  "timing": {
+    "prompt_mtime_utc": "2026-10-08T17:21:57.536029+00:00",
+    "journal_mtime_utc": "2026-10-08T17:36:57.685461+00:00",
+    "mtime_interval_seconds": 900.149432,
+    "declared_call_timeout_seconds": 900,
+    "log_parent_start_utc": "2026-10-08T17:21:57.551921Z",
+    "acp_last_log_utc": "2026-10-08T17:36:42.657002Z",
+    "last_session_activity_utc": "2026-10-08T17:21:58+00:00",
+    "limit": "mtime is corroboration, not an explicit CO start/cleanup timestamp"
+  },
+  "prompt_sha256": "9811a8bbd67aadbef618ffa2f0572cb3d096aaadf42edfa1fb3c680517f96ffc",
+  "logs": [
+    {
+      "basename": "devin_20261009-022155_54705.log",
+      "bytes": 1370,
+      "sha256": "b1d629c77ea37a7c86fc52d64818d7e099e9b5d42764e7c8d8eae3fcb70ea1f1",
+      "mtime_utc": "2026-10-08T17:21:57.414468+00:00"
+    },
+    {
+      "basename": "devin_20261009-022157_54709.log",
+      "bytes": 4062,
+      "sha256": "7ba45a2ca120b5f574f42d9d9bb3401de150a618ee460613f5eada6d304f43dd",
+      "mtime_utc": "2026-10-08T17:22:00.113424+00:00"
+    },
+    {
+      "basename": "devin_20261009-022157_54710.log",
+      "bytes": 45041,
+      "sha256": "7ce073576180becfb2b01788d519c9012804348e1cb6fc94186502639e34f8fc",
+      "mtime_utc": "2026-10-08T17:36:42.657115+00:00"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": 0,
+      "parent": null,
+      "role": "system",
+      "created_at": 1791480117,
+      "raw_sha256": "7cbb422cc96983a62eceb16be8247abfbb25a13507a06ff2bc8eddfa9ff47480"
+    },
+    {
+      "node_id": 1,
+      "parent": 0,
+      "role": "system",
+      "created_at": 1791480117,
+      "raw_sha256": "71ed3dcecb044c5445be6c6bfff68b893c4ea47680bc17633101b3e468f5566a"
+    },
+    {
+      "node_id": 2,
+      "parent": 1,
+      "role": "user",
+      "created_at": 1791480117,
+      "raw_sha256": "d0c185a9622463d598b0aa0a259dd1632d1db51adb961eba9ed58fd57e58bfd9",
+      "content_type": "str",
+      "content_bytes": 83547,
+      "prompt_matches": true
+    },
+    {
+      "node_id": 3,
+      "parent": null,
+      "role": "system",
+      "created_at": 1791480117,
+      "raw_sha256": "9ba0be55fe1d7c4e73f542273f49cdec0b8cdf2db5c887b683abc72b0de30b01"
+    },
+    {
+      "node_id": 4,
+      "parent": 3,
+      "role": "system",
+      "created_at": 1791480117,
+      "raw_sha256": "e6f734971af892f3a5aaad5bcf044000b65564ce165b480ec735e5bba4eb6fbb"
+    },
+    {
+      "node_id": 5,
+      "parent": 4,
+      "role": "system",
+      "created_at": 1791480117,
+      "raw_sha256": "cd1e7ce13e5c21c37e75b06b70aaee4623c5e55199d1b09595470b140e375f53"
+    },
+    {
+      "node_id": 6,
+      "parent": 5,
+      "role": "system",
+      "created_at": 1791480117,
+      "raw_sha256": "aadbb035b48177c9494b0ab6e4b9292e653c122c703218a035b8db74dc818850"
+    },
+    {
+      "node_id": 7,
+      "parent": 6,
+      "role": "system",
+      "created_at": 1791480117,
+      "raw_sha256": "347e63d647331a6928a7d648dbea41bfa4be9039beacf70ab18f380398eaa3c9"
+    },
+    {
+      "node_id": 8,
+      "parent": 7,
+      "role": "system",
+      "created_at": 1791480117,
+      "raw_sha256": "7cbb422cc96983a62eceb16be8247abfbb25a13507a06ff2bc8eddfa9ff47480"
+    },
+    {
+      "node_id": 9,
+      "parent": 8,
+      "role": "system",
+      "created_at": 1791480117,
+      "raw_sha256": "71ed3dcecb044c5445be6c6bfff68b893c4ea47680bc17633101b3e468f5566a"
+    },
+    {
+      "node_id": 10,
+      "parent": 9,
+      "role": "user",
+      "created_at": 1791480117,
+      "raw_sha256": "d0c185a9622463d598b0aa0a259dd1632d1db51adb961eba9ed58fd57e58bfd9",
+      "content_type": "str",
+      "content_bytes": 83547,
+      "prompt_matches": true
+    },
+    {
+      "node_id": 11,
+      "parent": null,
+      "role": "system",
+      "created_at": 1791480118,
+      "raw_sha256": "9ba0be55fe1d7c4e73f542273f49cdec0b8cdf2db5c887b683abc72b0de30b01"
+    },
+    {
+      "node_id": 12,
+      "parent": 11,
+      "role": "system",
+      "created_at": 1791480118,
+      "raw_sha256": "e6f734971af892f3a5aaad5bcf044000b65564ce165b480ec735e5bba4eb6fbb"
+    },
+    {
+      "node_id": 13,
+      "parent": 12,
+      "role": "system",
+      "created_at": 1791480118,
+      "raw_sha256": "cd1e7ce13e5c21c37e75b06b70aaee4623c5e55199d1b09595470b140e375f53"
+    },
+    {
+      "node_id": 14,
+      "parent": 13,
+      "role": "system",
+      "created_at": 1791480118,
+      "raw_sha256": "aadbb035b48177c9494b0ab6e4b9292e653c122c703218a035b8db74dc818850"
+    },
+    {
+      "node_id": 15,
+      "parent": 14,
+      "role": "system",
+      "created_at": 1791480118,
+      "raw_sha256": "347e63d647331a6928a7d648dbea41bfa4be9039beacf70ab18f380398eaa3c9"
+    },
+    {
+      "node_id": 16,
+      "parent": 15,
+      "role": "system",
+      "created_at": 1791480118,
+      "raw_sha256": "7cbb422cc96983a62eceb16be8247abfbb25a13507a06ff2bc8eddfa9ff47480"
+    },
+    {
+      "node_id": 17,
+      "parent": 16,
+      "role": "system",
+      "created_at": 1791480118,
+      "raw_sha256": "71ed3dcecb044c5445be6c6bfff68b893c4ea47680bc17633101b3e468f5566a"
+    },
+    {
+      "node_id": 18,
+      "parent": 17,
+      "role": "user",
+      "created_at": 1791480118,
+      "raw_sha256": "d0c185a9622463d598b0aa0a259dd1632d1db51adb961eba9ed58fd57e58bfd9",
+      "content_type": "str",
+      "content_bytes": 83547,
+      "prompt_matches": true
+    },
+    {
+      "node_id": 19,
+      "parent": 2,
+      "role": "system",
+      "created_at": 1791480118,
+      "raw_sha256": "785927c5c8608d440afefb4efa667184284f7144fde833286b5da6e121b20de5"
+    }
+  ],
+  "role_counts": {
+    "system": 17,
+    "user": 3
+  },
+  "assistant_or_tool_nodes": 0,
+  "saved_output": "No assistant/tool/final response in target session; no ATIF/stdout/stderr files in call directory",
+  "workspace_checks": [
+    {
+      "path": "docs/design/contracts-v5/CONTRACT-AUDIT-v5.md",
+      "baseline": "sha256:afafe5b5e62823e25c878e39ebe61399acf85d1c08f9fbb2824fcef36c2d92c1",
+      "current": "sha256:afafe5b5e62823e25c878e39ebe61399acf85d1c08f9fbb2824fcef36c2d92c1",
+      "matches": true
+    },
+    {
+      "path": "docs/design/contracts-v5/INT00-IMPLEMENTATION.md",
+      "baseline": null,
+      "current": null,
+      "matches": true
+    },
+    {
+      "path": "docs/design/contracts-v5/INT00-SCOPE.md",
+      "baseline": "sha256:189e5d26f266e12f9b10a0a52b35306c09316a362fffaea3c268ee15b9c68876",
+      "current": "sha256:189e5d26f266e12f9b10a0a52b35306c09316a362fffaea3c268ee15b9c68876",
+      "matches": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PAL-contracts-v5.md",
+      "baseline": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "current": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "matches": true
+    },
+    {
+      "path": "docs/design/contracts-v5/TEST-STRATEGY-v5.md",
+      "baseline": "sha256:5fea04744d31c4162af12f3d56bdcd350ca26a196d474bc8216271dcb28ef5a5",
+      "current": "sha256:5fea04744d31c4162af12f3d56bdcd350ca26a196d474bc8216271dcb28ef5a5",
+      "matches": true
+    },
+    {
+      "path": "pal/__init__.py",
+      "baseline": "sha256:2bdd5650424f91c2d6b0bea2f85bffbf63b1e0c0f3d7ecfc22db9974663da5bc",
+      "current": "sha256:2bdd5650424f91c2d6b0bea2f85bffbf63b1e0c0f3d7ecfc22db9974663da5bc",
+      "matches": true
+    },
+    {
+      "path": "pal/contracts_v5.py",
+      "baseline": null,
+      "current": null,
+      "matches": true
+    },
+    {
+      "path": "tests/fixtures/contracts_v5.json",
+      "baseline": null,
+      "current": null,
+      "matches": true
+    },
+    {
+      "path": "tests/test_contracts_v5.py",
+      "baseline": null,
+      "current": null,
+      "matches": true
+    }
+  ],
+  "workspace_extra_files": [],
+  "journal_sha256": "2f5e0dabe20050f604632167f94598d871eaff88b8b7b3b11efb9bfa759691c6",
+  "runtime_source": {
+    "observed_commits": [
+      "8580cf6e1d91a1c53d3a183c306f0f28e01fcc42",
+      "5830d8eb9c961a4175db31eb1d07ae281963c55f"
+    ],
+    "relevant_source_sha256": "8a0a358529578ea590b9dcc0949d10ecaace5350f23cafc0a5af06003208f57c",
+    "findings": [
+      "both observed revisions have identical _stop_group/_spawn/_devin_capture sections",
+      "timeout attempts SIGKILL on the owned process group then waits",
+      "PermissionError/TimeoutExpired cleanup exceptions are suppressed; no durable PID/stop receipt in this attempt",
+      "route_timeout is raised before writing captured stdout/stderr; ATIF is produced by Devin after a turn"
+    ],
+    "limit": "loaded process revision was not captured; source behavior alone does not prove that cleanup succeeded"
+  },
+  "co_state": {
+    "status": "awaiting_decision",
+    "verified": false,
+    "options": [],
+    "outcome": "unknown",
+    "process_outcome": "unknown",
+    "report_sha256": "sha256:d480fcca2f7859a12badc4dd8dcbb73f65e19f46107f117a3afcda6625e9e175",
+    "journal_edited": false,
+    "decide_resume_cancel_reissue": false
+  },
+  "diagnosis": "Local parent/ACP no longer present; saved session has input only and no recoverable implementation. Specific underlying cause of absent model response is unconfirmed. No supported CO0.4.5 command imports this external evidence to reconcile the unknown call.",
+  "sources": [
+    {
+      "url": "https://docs.devin.ai/cli",
+      "applies": "local CLI versus Cloud VM distinction"
+    },
+    {
+      "url": "https://docs.devin.ai/cli/troubleshooting",
+      "applies": "per-run logs and secret-safe handling; generic stuck restart is not CO resend authorization"
+    },
+    {
+      "url": "https://docs.devin.ai/cli/reference/commands",
+      "applies": "installed list --format json supported; --export is after-turn, resume is not read-only"
+    },
+    {
+      "url": "https://github.com/CognitionAI/devin-cli/issues/15",
+      "applies": "same version/model report, different 8s exit0 denied-MCP symptom; not this 900s timeout cause"
+    },
+    {
+      "url": "https://github.com/CognitionAI/devin-cli/issues/7",
+      "applies": "swe-2-max long repeated-output report; this session has no assistant output, no matching evidence"
+    },
+    {
+      "url": "https://docs.devin.ai/cli/changelog/stable",
+      "applies": "3000.11.3 login/tenant fix; no matching timeout resolution identified"
+    }
+  ],
+  "inspection_limits": {
+    "raw_logs_or_conversations_copied": false,
+    "sqlite_mode": "ro; query_only; exact session only",
+    "support_or_public_issue_sent": false,
+    "new_inference": false,
+    "sandbox_list_failure": "exit101: CLI could not create its initial log outside writable roots",
+    "scoped_host_list_and_process_read": "approved; list exit0 and no matching local PID/group"
+  },
+  "next": "D036 explicit alternative-route instruction permits separate implementation after isolation; retain old CO state without relabeling success/cancel/cessation."
+}

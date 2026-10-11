@@ -1,0 +1,17 @@
+{
+  "observed_at": "2026-10-09T10:50:26.318510+00:00",
+  "thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "direct_owner_messages": [
+    {
+      "id": "01a12044-1db9-7092-a9bb-37d8c56a47cd",
+      "text": "コード実装にswe2-highを積極的に使って欲しいのと、agy sonnet5.5もコード実装に参加させてみて"
+    },
+    {
+      "id": "01a12044-72cd-7c00-b297-6ade353361ab",
+      "text": "codexの残り容量が危険水位まできてる5%切った"
+    }
+  ],
+  "readback": "read_thread fresh exact userMessage items",
+  "allocation": "CO SWE-2 High VER.read; new isolated AGY Sonnet5.5 HostReader+consumer; native tests returned, no new native work",
+  "boundaries": "No new auth/payment/reset/publication. Prior unknown/refused calls stay untouched; existing verified direct AGY alternative."
+}

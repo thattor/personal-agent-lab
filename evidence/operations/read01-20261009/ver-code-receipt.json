@@ -1,0 +1,15 @@
+{
+  "task_id": "b981736db1bc4420b66a21ad1dd3032c",
+  "base_sha": "f18a240269aaaa0662ba94e0123c0bc18db29460",
+  "status": "verified",
+  "verified": true,
+  "repairs_used": 1,
+  "diff_digest": "sha256:b7fc87b606fd14390e5836c1bc6b871efe92a3a938c22d929d0db8f68a35b1f2",
+  "models": {
+    "planner": "claude/claude-opus-5-5",
+    "implement": "devin/swe-2-high Free"
+  },
+  "code_sha256": "6d9cc8bcd9ba1039d9b3573632496ad5e4eec87e1b260c8a148484b0b38982e8",
+  "fixture_unchanged": true,
+  "CO_verified_scope": "10 isolated synthetic VER.read tests, not product acceptance"
+}

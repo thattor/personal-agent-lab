@@ -1,0 +1,97 @@
+{
+  "maximum_confirmed_overlapping_tasks": 2,
+  "scope": "local Native call admission-to-confirmed-process-cleanup intervals; not remote compute-time proof",
+  "confirmed_intervals": [
+    {
+      "task": "2363ba2f94ca4183906f00aabb66dd50",
+      "attempt": "plan-a1",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "claimed_at": "2026-10-08T21:52:03.490971+00:00",
+      "stopped_at": "2026-10-08T21:52:24.823965+00:00",
+      "confirmed": true
+    },
+    {
+      "task": "2363ba2f94ca4183906f00aabb66dd50",
+      "attempt": "s1-a1",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "claimed_at": "2026-10-08T21:52:24.899537+00:00",
+      "stopped_at": "2026-10-08T21:54:11.296642+00:00",
+      "confirmed": true
+    },
+    {
+      "task": "2363ba2f94ca4183906f00aabb66dd50",
+      "attempt": "s2-a1",
+      "route": "devin",
+      "model": "swe-2-high",
+      "claimed_at": "2026-10-08T21:54:13.205968+00:00",
+      "stopped_at": "2026-10-08T21:57:43.802795+00:00",
+      "confirmed": true
+    },
+    {
+      "task": "b0fd78557fc64e2b834aa232060915d0",
+      "attempt": "plan-a1",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "claimed_at": "2026-10-08T21:52:15.282443+00:00",
+      "stopped_at": "2026-10-08T21:52:35.047730+00:00",
+      "confirmed": true
+    },
+    {
+      "task": "b0fd78557fc64e2b834aa232060915d0",
+      "attempt": "s1-a1",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "claimed_at": "2026-10-08T21:52:35.132521+00:00",
+      "stopped_at": "2026-10-08T21:55:01.741138+00:00",
+      "confirmed": true
+    },
+    {
+      "task": "b0fd78557fc64e2b834aa232060915d0",
+      "attempt": "s2-a1",
+      "route": "claude",
+      "model": "claude-opus-5-5",
+      "claimed_at": "2026-10-08T21:55:02.102399+00:00",
+      "stopped_at": "2026-10-08T21:56:01.971702+00:00",
+      "confirmed": true
+    }
+  ],
+  "overlaps": [
+    {
+      "a": "plan-a1",
+      "b": "plan-a1",
+      "a_role_model": "claude-opus-5-5",
+      "b_role_model": "claude-opus-5-5",
+      "overlap_seconds": 9.541522
+    },
+    {
+      "a": "s1-a1",
+      "b": "plan-a1",
+      "a_role_model": "claude-opus-5-5",
+      "b_role_model": "claude-opus-5-5",
+      "overlap_seconds": 10.148193
+    },
+    {
+      "a": "s1-a1",
+      "b": "s1-a1",
+      "a_role_model": "claude-opus-5-5",
+      "b_role_model": "claude-opus-5-5",
+      "overlap_seconds": 96.164121
+    },
+    {
+      "a": "s2-a1",
+      "b": "s1-a1",
+      "a_role_model": "swe-2-high",
+      "b_role_model": "claude-opus-5-5",
+      "overlap_seconds": 48.53517
+    },
+    {
+      "a": "s2-a1",
+      "b": "s2-a1",
+      "a_role_model": "swe-2-high",
+      "b_role_model": "claude-opus-5-5",
+      "overlap_seconds": 59.869303
+    }
+  ]
+}

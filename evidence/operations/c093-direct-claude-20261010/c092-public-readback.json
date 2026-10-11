@@ -1,0 +1,185 @@
+{
+  "version": "PUBLIC-READBACK/1",
+  "base": "96e135b4e95a1325cd2c1b5b99efe90c40510b53",
+  "published_head": "50f575eba470f0b9cbd40d7d272f43a94f648844",
+  "files": [
+    {
+      "path": "ACCEPTANCE.md",
+      "status": "M",
+      "http": 200,
+      "expected_sha256": "505ecdb53a8649e206fd7a428ad3aea563673fdf846cc86bb4eb1144919d2c9b",
+      "actual_sha256": "505ecdb53a8649e206fd7a428ad3aea563673fdf846cc86bb4eb1144919d2c9b",
+      "match": true
+    },
+    {
+      "path": "AGENTS.md",
+      "status": "M",
+      "http": 200,
+      "expected_sha256": "bd74fa46bece96658d7e99cc1267936c48fa890cd1bca865a11c2a6932008313",
+      "actual_sha256": "bd74fa46bece96658d7e99cc1267936c48fa890cd1bca865a11c2a6932008313",
+      "match": true
+    },
+    {
+      "path": "DECISIONS.md",
+      "status": "M",
+      "http": 200,
+      "expected_sha256": "0f731a142892627ca9bd57477b44964764d0c443ecde73a2597544dc02a78cad",
+      "actual_sha256": "0f731a142892627ca9bd57477b44964764d0c443ecde73a2597544dc02a78cad",
+      "match": true
+    },
+    {
+      "path": "STATE.md",
+      "status": "M",
+      "http": 200,
+      "expected_sha256": "314d2fe4c986a2aaf5ee278ff9dcb352f2355c4cd4e2d356a4f2ef487e8e6974",
+      "actual_sha256": "314d2fe4c986a2aaf5ee278ff9dcb352f2355c4cd4e2d356a4f2ef487e8e6974",
+      "match": true
+    },
+    {
+      "path": "docs/DEFECTS.md",
+      "status": "M",
+      "http": 200,
+      "expected_sha256": "5e234a127135db342bca3be759f249893a135715ad26713acf2f6a2098ba2f4b",
+      "actual_sha256": "5e234a127135db342bca3be759f249893a135715ad26713acf2f6a2098ba2f4b",
+      "match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-MODEL-OVERFLOW-SCOPE.md",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "0c17ddd3775140eafb4691de7754f008525c153f86fcaaa0d8f3d40b9becaf56",
+      "actual_sha256": "0c17ddd3775140eafb4691de7754f008525c153f86fcaaa0d8f3d40b9becaf56",
+      "match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-N3-DIAGNOSTIC-ROOT-FREEZE.md",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "94e6e8f763185ceb0a5701906f80007f201e2f0d94a2a97dc75e73e5c86ecbf9",
+      "actual_sha256": "94e6e8f763185ceb0a5701906f80007f201e2f0d94a2a97dc75e73e5c86ecbf9",
+      "match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-N3-DIAGNOSTIC-SCOPE.md",
+      "status": "M",
+      "http": 200,
+      "expected_sha256": "a04f60a825d1cef71f2f82ec61533b00e313e60ac2ac0f34c5cc49761c97c6e3",
+      "actual_sha256": "a04f60a825d1cef71f2f82ec61533b00e313e60ac2ac0f34c5cc49761c97c6e3",
+      "match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-N3-REASSESSMENT-REQUEST.md",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "b11697169e2647e4539ada314d40bb201a91d0472fa3742754f7ccc7f7a17d92",
+      "actual_sha256": "b11697169e2647e4539ada314d40bb201a91d0472fa3742754f7ccc7f7a17d92",
+      "match": true
+    },
+    {
+      "path": "docs/reviews/C091-NATIVE-REASSESSMENT-OPUS.md",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "615fe9560529d24f0005e6c840d6e421ce8140fb77c16ec89bcefe370023398a",
+      "actual_sha256": "615fe9560529d24f0005e6c840d6e421ce8140fb77c16ec89bcefe370023398a",
+      "match": true
+    },
+    {
+      "path": "docs/reviews/PRI02-N3-DIAGNOSTIC-OPUS.md",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "7a03da834795a273211aa5aca27387626ee22a35b0ddac08d41ac7e7d39784a0",
+      "actual_sha256": "7a03da834795a273211aa5aca27387626ee22a35b0ddac08d41ac7e7d39784a0",
+      "match": true
+    },
+    {
+      "path": "evidence/operations/c091-n3-diagnostic-20261010/native-n3-summary.json",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "546351ea5ceb2063681138edc22fb1fb91ef601e9afb3c1df5308ba4e8ff35cd",
+      "actual_sha256": "546351ea5ceb2063681138edc22fb1fb91ef601e9afb3c1df5308ba4e8ff35cd",
+      "match": true
+    },
+    {
+      "path": "evidence/operations/c091-n3-diagnostic-20261010/native-route-feasibility.md",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "4e63e1ba6a610c702e0f88618eb1d76afcb37eaa5630dbd6be24c4dfa3d66b84",
+      "actual_sha256": "4e63e1ba6a610c702e0f88618eb1d76afcb37eaa5630dbd6be24c4dfa3d66b84",
+      "match": true
+    },
+    {
+      "path": "evidence/operations/c091-n3-diagnostic-20261010/operator-verification.json",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "4bd07ad0c72f64f5537650fd30af313dec63f0a25f4856ca46ca6fc190ce87b2",
+      "actual_sha256": "4bd07ad0c72f64f5537650fd30af313dec63f0a25f4856ca46ca6fc190ce87b2",
+      "match": true
+    },
+    {
+      "path": "evidence/operations/c091-n3-diagnostic-20261010/opus-design-summary.json",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "fcedd352097a482aa49c6e00e80c5659e1be73d2ae917219dc96dbe01c22b923",
+      "actual_sha256": "fcedd352097a482aa49c6e00e80c5659e1be73d2ae917219dc96dbe01c22b923",
+      "match": true
+    },
+    {
+      "path": "evidence/operations/c091-n3-diagnostic-20261010/reassessment-opus-summary.json",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "51628b0487a64a26e7a7f9eb1b70ce879543c19d046047b7311b94c5d35038e3",
+      "actual_sha256": "51628b0487a64a26e7a7f9eb1b70ce879543c19d046047b7311b94c5d35038e3",
+      "match": true
+    },
+    {
+      "path": "evidence/operations/c092-model-overflow-20261010/test-scope-audit.md",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "07f5a7f1809979d44ce5b05d7376599d8d1d3b00f7c1f78a0ed403729e82f42f",
+      "actual_sha256": "07f5a7f1809979d44ce5b05d7376599d8d1d3b00f7c1f78a0ed403729e82f42f",
+      "match": true
+    },
+    {
+      "path": "evidence/operations/c092-model-overflow-20261010/verification.json",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "d9e9a576d411feb689fe343ce5edd5fb242f89e68bcbd10c77cc08e2edcbe098",
+      "actual_sha256": "d9e9a576d411feb689fe343ce5edd5fb242f89e68bcbd10c77cc08e2edcbe098",
+      "match": true
+    },
+    {
+      "path": "pal/native_text_v5.py",
+      "status": "M",
+      "http": 200,
+      "expected_sha256": "dd402aa1602ae70923e7f8bb8c2730d50a51c1b77121f2a2664bfc94ec13528e",
+      "actual_sha256": "dd402aa1602ae70923e7f8bb8c2730d50a51c1b77121f2a2664bfc94ec13528e",
+      "match": true
+    },
+    {
+      "path": "tests/test_native_devin_model_overflow_v5.py",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "04fafee6aa97ec7616076895a7754fe5110a07e5eb41dfc1bd586dfacf617404",
+      "actual_sha256": "04fafee6aa97ec7616076895a7754fe5110a07e5eb41dfc1bd586dfacf617404",
+      "match": true
+    },
+    {
+      "path": "tests/test_native_model_overflow_v5.py",
+      "status": "A",
+      "http": 200,
+      "expected_sha256": "9630c61bfdf1929fe5d1fa0af42de11fb1ba0edbc50f5c5428bb9ea244a5ed07",
+      "actual_sha256": "9630c61bfdf1929fe5d1fa0af42de11fb1ba0edbc50f5c5428bb9ea244a5ed07",
+      "match": true
+    },
+    {
+      "path": "tools/native_devin_text_v5.py",
+      "status": "M",
+      "http": 200,
+      "expected_sha256": "22950d06a9cd6d606218e37deec7402240df42fb1d1b7a381ef03485782009cf",
+      "actual_sha256": "22950d06a9cd6d606218e37deec7402240df42fb1d1b7a381ef03485782009cf",
+      "match": true
+    }
+  ],
+  "matched": 22,
+  "total": 22
+}

@@ -1,0 +1,11 @@
+{
+  "baseline": "3f37f78f5e3b43fffc120ae7b746ee2107ca5fd4",
+  "author": "Root SOL",
+  "reviewer": "native Sol6.1 separate context /root/int00_sol_review",
+  "status": "NOT_RUN: implementation still in progress",
+  "methods": 12,
+  "syntax": "AST PASS",
+  "scope": "actual temporary SQLite MEM/TSK/ART/VER, two-connection ordering, replay, stops, budgets, interrupts and caller transaction",
+  "review_correction": "Test fixture call ID must use existing C15.call binding, not invented call prefix. Save key also aligned with C08.save convention before executing. No implementation or criteria change.",
+  "staged_sha256": "61cb4771bfb2d8d5db34fc88a3b94fdfb87340c0c479c78bfa9f15eadbe52cbe"
+}

@@ -1,0 +1,12 @@
+test_closed_request_and_host_purpose_are_validated (test_verification_context_v5.VerificationContextTests.test_closed_request_and_host_purpose_are_validated) ... ok
+test_collaborator_preconditions_preserve_caller_work (test_verification_context_v5.VerificationContextTests.test_collaborator_preconditions_preserve_caller_work) ... ok
+test_corrupt_stored_conditions_and_required_index_are_unavailable (test_verification_context_v5.VerificationContextTests.test_corrupt_stored_conditions_and_required_index_are_unavailable) ... ok
+test_old_epoch_and_unknown_goal_keep_specific_errors (test_verification_context_v5.VerificationContextTests.test_old_epoch_and_unknown_goal_keep_specific_errors) ... ok
+test_pause_and_release_preserve_factual_snapshot_and_deny_new_save (test_verification_context_v5.VerificationContextTests.test_pause_and_release_preserve_factual_snapshot_and_deny_new_save) ... ok
+test_queued_status_is_readonly_but_does_not_grant_save (test_verification_context_v5.VerificationContextTests.test_queued_status_is_readonly_but_does_not_grant_save) ... ok
+test_running_snapshot_omits_registered_optional_input (test_verification_context_v5.VerificationContextTests.test_running_snapshot_omits_registered_optional_input) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.008s
+
+OK

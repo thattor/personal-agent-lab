@@ -1,0 +1,169 @@
+{
+  "checkpoint": "C081",
+  "scope": "PRI01/1 managed-inprocess-mock/1 only",
+  "source_commit": "d9f0e12de2db00a24e502dbe06acbf8843ce9be6",
+  "files": [
+    {
+      "path": "pal/primary_host_v5.py",
+      "bytes": 42389,
+      "sha256": "81a5ec8b6c65fce3b6aa5f76b0cd0430d4914ea972ea1740a16100842d99bfec"
+    },
+    {
+      "path": "pal/primary_wire_v5.py",
+      "bytes": 8683,
+      "sha256": "828aa1b9b2c7fbb0500ed56d7ec19c95954ee2de48e19285e1db7437aaefb67f"
+    },
+    {
+      "path": "pal/tasks_v5.py",
+      "bytes": 121233,
+      "sha256": "0c63b042f934f5baf5e8f511fced1e0706afeaee7579f7091d8c5161a6498228"
+    },
+    {
+      "path": "pal/memory_v5.py",
+      "bytes": 15512,
+      "sha256": "3016fa56c33d3bafc3a6165766f0873594145a5d4e77b3c53f3c88a1ec077444"
+    },
+    {
+      "path": "pal/mock_host_v5.py",
+      "bytes": 10373,
+      "sha256": "e9b8f5eda1e01ec9a76ba52f3783845f302df262eea2248f4c5c36738a670208"
+    },
+    {
+      "path": "tests/test_primary_host_v5.py",
+      "bytes": 28730,
+      "sha256": "ff53dc0d2e2fbba566352d46e1dad2c64e108ea51d11407f1271c3e5d721c6e3"
+    },
+    {
+      "path": "tests/test_primary_binding_review_v5.py",
+      "bytes": 7522,
+      "sha256": "2e82a1814f6a932f4215766bc42c5d982694395dd76feed330a906c727068c27"
+    },
+    {
+      "path": "tests/test_primary_phase_review_v5.py",
+      "bytes": 2246,
+      "sha256": "8080ba1967ef1e0925cbfda8d7351fb7f9b9094336841ffa9f15038458deb6f6"
+    },
+    {
+      "path": "tests/test_primary_process_v5.py",
+      "bytes": 14765,
+      "sha256": "9916a1309de31091d2472cc1fbfe09b145bd2c5c796e45d2d45da0e250b1174d"
+    },
+    {
+      "path": "tests/test_primary_wire_v5.py",
+      "bytes": 13231,
+      "sha256": "acd76510b73ae0636607fe9149c9330f1aeb8b57e83ea568ce2615e3071962ef"
+    },
+    {
+      "path": "tests/test_primary_tasks_review_v5.py",
+      "bytes": 5387,
+      "sha256": "ead79a804ac59461057de4b278964e01d92e0ec93bb01761ef72b2e7c79af9d4"
+    },
+    {
+      "path": "tests/test_tasks_primary_v5.py",
+      "bytes": 17499,
+      "sha256": "1819ea49af005acfe414e1c98f11357ee2bd0efb1629776daaa60cace17bf1a9"
+    }
+  ],
+  "full_suite": {
+    "command": "python3.13 -E -s -B -m unittest discover -s tests -v",
+    "tests": 1058,
+    "status": "PASS",
+    "seconds": 30.268,
+    "exit_code": 0,
+    "log": {
+      "sha256": "f4cfc9c845cb767f4300a89d1c97c123adb29ac0a8c257554c5e90d1ea76241b",
+      "bytes": 186319,
+      "retained": "local host log under D045"
+    }
+  },
+  "root_fixed_host": {
+    "tests": 39,
+    "status": "PASS"
+  },
+  "root_independent_binding": {
+    "tests": 8,
+    "status": "PASS"
+  },
+  "root_phase_probe": {
+    "methods": 1,
+    "phase_cases": 4,
+    "status": "PASS"
+  },
+  "root_actual_process_connection": {
+    "tests": 5,
+    "owned_sigkill_wait_barriers": 3,
+    "status": "PASS",
+    "seconds": 0.351,
+    "log": {
+      "sha256": "18ec420ec96c028dd28988d8c44a9ecf6b984317ffda20fb4e0b71612f71086f",
+      "bytes": 1063,
+      "retained": "local host log under D045"
+    },
+    "cases": [
+      "admitted callback child death: original turn interrupted, no inference/refund",
+      "owner create COMMIT child death: original receipt committed, no reapply",
+      "MEM append COMMIT admission gap: identical sanitized resend admits same history",
+      "two connections/threads: duplicate ingress and immediate cancel/stop while callback active",
+      "ordinary ingress, actual Expert question, current-record answer, same-Goal change, saved draft, fresh structural VER, readback, source stop"
+    ],
+    "whole_mock_model_calls": 5,
+    "proof_limit": "All C15 contents are labeled cooperative in-process mocks; no actual provider inference or semantic usefulness proof"
+  },
+  "independent_host_review": {
+    "reviewer": "native Astra, separate execution context",
+    "verdict": "APPROVE",
+    "source_sha256": "81a5ec8b6c65fce3b6aa5f76b0cd0430d4914ea972ea1740a16100842d99bfec",
+    "note_commit": "9e93b1755523ebcfa6aa7382e68a90e0e9094f29",
+    "tests": 53,
+    "seconds": 1.034,
+    "additional_probes": [
+      "original post-consume source stop, zero callback",
+      "closed stored error, no raw canary",
+      "append-event RuntimeError and KeyboardInterrupt rollback of call/turn/event together; qualified retry"
+    ],
+    "note": "docs/design/contracts-v5/PRI01-HOST-ASTRA-REVIEW.md"
+  },
+  "prerequisites": {
+    "TSK": {
+      "source_sha256": "0c63b042f934f5baf5e8f511fced1e0706afeaee7579f7091d8c5161a6498228",
+      "review_commit": "710f52f86e8bcca2165c79c0fbc8bedaa690fe41",
+      "fixed": 24,
+      "independent": 6,
+      "related_distinct": 196
+    },
+    "WIRE": {
+      "co_version": "0.4.5",
+      "co_task": "7df39c9c22664ba6b1265a68f9200f27",
+      "planner_model": "devin/swe-2-high",
+      "implementation_model": "devin/swe-2-high",
+      "co_verified": true,
+      "co_original_source_sha256": "135fcafafd89697637a8f8a3e6b067ca926688e45b4f41c476955429473342d6",
+      "final_source_sha256": "828aa1b9b2c7fbb0500ed56d7ec19c95954ee2de48e19285e1db7437aaefb67f",
+      "root_refinement": "reject duplicate Goal ID across differing WorkRefs",
+      "independent_final_commit": "b3938afc735d38dee5ccbb2bd628613f4726af2c",
+      "fixed": 25,
+      "independent": 2,
+      "proof_limit": "CO verification applies to original bytes; Root repair independently approved and tested"
+    }
+  },
+  "preserved_failures": [
+    "initial malformed read injected before admission: fixture order corrected by test owner without weakening assertion",
+    "initial draft independent binding8:10 failures",
+    "initial source-stop disclosure and raw stored error",
+    "f7bac92 applying-phase downgrade:4 independent failures",
+    "39f08ce full1058:1 actual admitted-child recovery failure",
+    "initial two-connection fixture erroneously re-registers ready host; test owner correction only"
+  ],
+  "goal_status": "NOT_MET",
+  "remaining": [
+    "new checkpoint Opus design alignment",
+    "separately qualified finite actual provider profile/proof",
+    "authentic improved whole-flow usefulness"
+  ],
+  "bounds": [
+    "no old/live DB migration",
+    "no new auth/service/cost",
+    "no change to CO runtime/state",
+    "prior unknown calls and refusals preserved"
+  ]
+}

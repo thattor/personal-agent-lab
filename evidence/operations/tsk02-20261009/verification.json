@@ -1,0 +1,100 @@
+{
+  "checkpoint": "C072",
+  "source_commit": "ea2e8fa064cad188e4477d8b534692012083768a",
+  "recorded_at": "2026-10-09T08:33:05.385816+00:00",
+  "scope": "TSK02/1 and RUN01/1 local mock preparation",
+  "status": "MET within frozen scope",
+  "authors": {
+    "TSK": "native gpt-6-astra f75827c8cd4244a69caebd8dee858a2891d54f85 + 4d99930b52b694c4740ae5875b79092071dece6f",
+    "RUN_and_connection": "SOL root"
+  },
+  "independent_code_review": {
+    "model": "gpt-6.1-sol",
+    "context": "/root/int00_sol_review",
+    "base": "ea2e8fa064cad188e4477d8b534692012083768a",
+    "verdict": "APPROVE",
+    "note": "sol-independent-review.md"
+  },
+  "design_review": {
+    "task_id": "6bd433a2799a49d2b27d5c5bc9708e7d",
+    "route": "claude",
+    "model": "claude-opus-5-5",
+    "verdict": "ALIGNED",
+    "verified_scope": "review note structure only",
+    "receipt": "milestone-review-receipt.json"
+  },
+  "tests": {
+    "interpreter": "/opt/homebrew/bin/python3.13",
+    "full_command": [
+      "-E",
+      "-s",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "full": {
+      "count": 531,
+      "seconds": 23.35,
+      "exit": 0,
+      "log": "full-integrated.log"
+    },
+    "author_host": {
+      "count": 34,
+      "exit": 0,
+      "log": "host-author-final.log"
+    },
+    "connection": {
+      "count": 14,
+      "exit": 0,
+      "log": "connected-final.log"
+    }
+  },
+  "source_sha256": {
+    "pal/tasks_v5.py": "f5f3724279291ae050403081e64fefd74e01bb2ec9a9430ca24955a00e7bc458",
+    "pal/mock_runner_v5.py": "4fcd547f6046ea4a8dfa663ed9ee85e9b446e1b89cb0014709d9a45767df363f",
+    "tests/test_tasks_v5.py": "9c9d1d11cbe0bc55a6b074eb446338c7d563b9d31461cc8c2e53d5b5b63c6166",
+    "tests/test_mock_execution_v5.py": "262c4c158c2891ce3a28b7cdccbb6192ff6f7b13f2c90dcbbc1f3be0840f9fa5",
+    "pal/memory_v5.py": "94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+    "pal/intake_v5.py": "31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+    "pal/events_v5.py": "da2a74a41622784f0ff85f0201db081e946b3e35cebb8660068ece79e8763102"
+  },
+  "evidence_sha256": {
+    "full-integrated.log": "8c06ccd85b78ebd66bab760c34be4a0dcbdd4d50e0f853dda118e42bc88ee03f",
+    "host-author-final.log": "355012b4d5bdfb5ebc57d6797a4c3d140a3d9a3b0892ceaed2e7a9dac652edd9",
+    "connected-final.log": "492566dc3ca759a3bbb1984b5408ba1b66205f1b770c69606f2adbc59bf136ea",
+    "sol-independent-review.md": "729c22e6baef9ef269a16be2ae656bd8e38bc627525b00d59fefab52d3131e8c",
+    "opus-milestone-review.md": "8e047d303246d9f8ed0d6b54a30ce93618e0409f7ee7a0c1bbe43dcb2b4daf56"
+  },
+  "carry_forward": [
+    "RUN01/2 transient persistence handling before compose",
+    "ART provenance/read/current-artifact binding",
+    "completed-work source-stop rule before complete"
+  ],
+  "not_proven": [
+    "saved verified draft",
+    "Goal completion",
+    "MOD raw/replay/recover",
+    "real provider termination",
+    "persistent live activation",
+    "PRI/UI",
+    "human usefulness"
+  ],
+  "actual_next_work": {
+    "RUN01/2": {
+      "owner": "native Astra",
+      "workspace": "/private/tmp/pal-run01-astra-20261009",
+      "base": "edfad064a776179d5d914d668bb2eb3d7f7694a6"
+    },
+    "ART_scope_consultation": {
+      "task_id": "dc4fbad81715497481bb66a5e02f8f23",
+      "model": "devin/swe-2-high",
+      "listed_cost": "Free",
+      "base": "2aaca0a0ea3e47fd7e35d47411e41a3eb6354203"
+    }
+  },
+  "boundary": "No real model/product calls, live DB, new auth/cost, schedule, unknown-call retry or publication"
+}

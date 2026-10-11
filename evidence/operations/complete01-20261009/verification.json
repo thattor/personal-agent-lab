@@ -1,0 +1,53 @@
+{
+  "source_commit": "bdce832b8fdb68f6317c033155474a4204703189",
+  "full_suite": {
+    "command": "/opt/homebrew/bin/python3.13 -E -s -B -m unittest discover -s tests -v",
+    "count": 711,
+    "elapsed_seconds": 24.789,
+    "exit": 0,
+    "log": "full-integrated.log",
+    "environment": "authorized host temporary SQLite/loopback/child processes; not CI/live service"
+  },
+  "new_completion_tests": {
+    "count": 61,
+    "tsk_owner": 22,
+    "immutable_run_fixture": 16,
+    "actual_tsk_connection": 9,
+    "actual_run_connection": 8,
+    "strict_run_integrity": 6
+  },
+  "independent_tsk": {
+    "model": "native Astra author; separate native Sol6.1 reviewer",
+    "source": "a48d0cf3c72df71a7057f69417cdde7c7fa1beef",
+    "outcome": "APPROVE",
+    "tests": 46
+  },
+  "independent_run": {
+    "model": "native Sol6.1",
+    "context": "/root/int00_sol_review",
+    "source": "bdce832b8fdb68f6317c033155474a4204703189",
+    "outcome": "APPROVE",
+    "count": 30,
+    "elapsed_seconds": 0.142,
+    "probes": "unknown VER errors retain running/no release; same-lease completion reentry returns step1/call1 without new inference"
+  },
+  "provenance": "CO task39213ad4 exact devin/swe-2-high Free authored initial RUN against immutable16, all passed. Root actual connection found C02 mismatch and repaired; independent Sol found unknown-error terminal failure. Root added strict regressions and corrected before acceptance. Native Astra authored TSK; separate Sol authored RUN fixture.",
+  "source_sha256": {
+    "pal/tasks_v5.py": "7da021a48feb00cc270be85a5e10e2888657feed35d483ca5f7c973e34077d02",
+    "pal/mock_runner_v5.py": "2f7d66bc2ef1bd2e385852b16c87f733d75d31cd47b3e7b6ab58aecfa647ec10",
+    "pal/verification_v5.py": "780643a206ba86845bf103f0bc9e2a783fc61fa16a0e1cd9bdf3655890bc5d80",
+    "tests/test_task_completion_v5.py": "4cb2d9c04ffdff7ddc4b496f448e59b823220a9c54746a859c069fced4d4c8c6",
+    "tests/test_completion_connection_v5.py": "62f6759cbb5d87633207635a85ba55bc98d04451e7ca2a45d9a31752997c63aa",
+    "tests/test_mock_completion_v5.py": "6a6b151740954a0002477aa4bf6f4720dd1c84123cd2681f54c3de83896ca793",
+    "tests/test_mock_completion_connection_v5.py": "5e4947b0711f9cf71e10dc3218b6188ab21a1d328a80204805351bc0242a37f3",
+    "tests/test_mock_completion_integrity_v5.py": "452fb81b75be80b1a63caabf69c507bbcdbad1ca490829bc0f3cbdb54ff857dc",
+    "tests/test_tasks_v5.py": "26f9a9656a8f2689ad9e8487bc6acf0b9b6dd7c9e33d03b1e26473a575a3d22d"
+  },
+  "limits": [
+    "structural artifact_saved only; semantic/source_fetched unknown",
+    "default VER wiring opt-in local composition",
+    "real provider/PRI/UI and full v5 activation not accepted",
+    "general restart recovery, live DB and human usefulness unproven",
+    "previous unknown calls preserved; no retries or new auth/cost/publication"
+  ]
+}

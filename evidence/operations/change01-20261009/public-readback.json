@@ -1,0 +1,278 @@
+{
+  "schema": "PAL.public-byte-readback/1",
+  "commit": "2b1d860319ca71ea00b710b37146a997544ac49a",
+  "parent": "6b4bc457a51be3b9a5cb0b113a21bcbe1f25a32b",
+  "observed_at": "2026-10-09T13:47:19.725824+00:00",
+  "anonymous": true,
+  "files": [
+    {
+      "path": "ACCEPTANCE.md",
+      "http": 200,
+      "bytes": 87628,
+      "sha256": "851ea726fe8011ca92b4a602ab445dbc44641edcab8e9456016269c5a8c81ace",
+      "matches_commit": true
+    },
+    {
+      "path": "AGENTS.md",
+      "http": 200,
+      "bytes": 14943,
+      "sha256": "34538b75f62b6862433071433481444ab41407a1680d074cfb6fe26fae212fe0",
+      "matches_commit": true
+    },
+    {
+      "path": "DECISIONS.md",
+      "http": 200,
+      "bytes": 220637,
+      "sha256": "1bc5ccd8d0967bf7238a3df521709d91214054ee5c7d55dae8b37523a7fb4d4e",
+      "matches_commit": true
+    },
+    {
+      "path": "STATE.md",
+      "http": 200,
+      "bytes": 117298,
+      "sha256": "b30aa8dfb4ca6975278770b7e4bb7f4e6214cce3754104bfb7e35e2e5468361a",
+      "matches_commit": true
+    },
+    {
+      "path": "docs/design/contracts-v5/ASK01-MILESTONE.md",
+      "http": 200,
+      "bytes": 3562,
+      "sha256": "3a0388fbab79a2809f3ea6289621e7be2091f620ae8ec4271e3cb380a11b6c8e",
+      "matches_commit": true
+    },
+    {
+      "path": "docs/design/contracts-v5/CHANGE01-CONNECTION-TESTS.md",
+      "http": 200,
+      "bytes": 1748,
+      "sha256": "7c00a5c28ec25f9cb32c01402695936d8e39c95aa3dcae3c88cb15df6fb50940",
+      "matches_commit": true
+    },
+    {
+      "path": "docs/design/contracts-v5/CHANGE01-IMPLEMENTATION.md",
+      "http": 200,
+      "bytes": 7165,
+      "sha256": "885726bb5a70e33546c47793d2323d7dc863603ac08f3d8c0a71c0c9c70efe02",
+      "matches_commit": true
+    },
+    {
+      "path": "docs/design/contracts-v5/CHANGE01-INDEPENDENT-REVIEW.md",
+      "http": 200,
+      "bytes": 5143,
+      "sha256": "7192b79740dec1097c90ac43377da9ba6372f3e2d9336263c9e8a8f11b55c9bb",
+      "matches_commit": true
+    },
+    {
+      "path": "docs/design/contracts-v5/CHANGE01-MILESTONE-REVIEW-REQUEST.md",
+      "http": 200,
+      "bytes": 2867,
+      "sha256": "c591fb83285a8438ec244c938714199de8c2658daa33776a42511726cf898d73",
+      "matches_commit": true
+    },
+    {
+      "path": "docs/design/contracts-v5/CHANGE01-MILESTONE.md",
+      "http": 200,
+      "bytes": 3647,
+      "sha256": "862192feb60dd8877ae64c58d5049c4924e9af26765c0850f8370d1b8f6ea507",
+      "matches_commit": true
+    },
+    {
+      "path": "docs/design/contracts-v5/CHANGE01-OWNER-EXCERPTS.md",
+      "http": 200,
+      "bytes": 26158,
+      "sha256": "353a5e119769dc1e4ae6d0334dbe601bac597294e408d43e91b87b65fa31096b",
+      "matches_commit": true
+    },
+    {
+      "path": "docs/design/contracts-v5/CHANGE01-RUN-TESTS.md",
+      "http": 200,
+      "bytes": 4619,
+      "sha256": "f25201edc124571275de48e568044e60cffdaa9c75f52a82d33c973f875d6fa4",
+      "matches_commit": true
+    },
+    {
+      "path": "docs/design/contracts-v5/CHANGE01-SCOPE.md",
+      "http": 200,
+      "bytes": 16556,
+      "sha256": "3d5b137db0590bdee445dfc8baa4a42666aa11e4316f440ef5872f1b05c288f9",
+      "matches_commit": true
+    },
+    {
+      "path": "docs/design/contracts-v5/CHANGE01-TSK-TESTS.md",
+      "http": 200,
+      "bytes": 5550,
+      "sha256": "baf1067aaf600769c61048d4601e1bda2d10a48fb076cba490f551108e971ec2",
+      "matches_commit": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PAL-contracts-v5.md",
+      "http": 200,
+      "bytes": 39701,
+      "sha256": "76bf462a8cf377ef34267e162520fe51a968fc5ee02e9e8edfa30ee8c4af2998",
+      "matches_commit": true
+    },
+    {
+      "path": "docs/plans/CHECKPOINTS.md",
+      "http": 200,
+      "bytes": 103473,
+      "sha256": "fee4b32bc6667b0198042e4aede0015dc244887daf667712ee38d662de00518d",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/ask01-20261009/opus-public-review-summary.json",
+      "http": 200,
+      "bytes": 1147,
+      "sha256": "fd33ce319d6c0fbeafd77fd886c315f2046e2aca1bbc9f97b879584ac9dd9cad",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/connection-tests-fixed-red.log",
+      "http": 200,
+      "bytes": 24960,
+      "sha256": "393197158181adbf7508d74093914679a59d21925e0ef9277abca2d1e570aaa5",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/connection-tests-freeze.json",
+      "http": 200,
+      "bytes": 1477,
+      "sha256": "00e3cea7e55d1fdf32ebe80c9fa7478d7c216053ff081bd9f60fab538c0e7a40",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/integrity-tests-freeze.json",
+      "http": 200,
+      "bytes": 1344,
+      "sha256": "5b981183e442c204131044494ee6dd1b22657c5e5b53febfae41067151b265ef",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/integrity-tests-red.log",
+      "http": 200,
+      "bytes": 12643,
+      "sha256": "92cedb329b143d7a926c6d431f322605647cbac86006725d864596a464704812",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/public-export.json",
+      "http": 200,
+      "bytes": 1385,
+      "sha256": "f983645c96c16f740663b0aa0581e35ac2ec5553424ed898b98dbb147db2e0d5",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/root-full-final.log",
+      "http": 200,
+      "bytes": 146464,
+      "sha256": "ffbff173164c030719c82c7c16d022b11c1549ac709176fe7477accc3ffd0f5f",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/run-tests-final-red.log",
+      "http": 200,
+      "bytes": 2793,
+      "sha256": "7e0c2bb2bea287250a5916436c2cd07095de345accc6f0d0e4b3136768ca697c",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/run-tests-fixed.log",
+      "http": 200,
+      "bytes": 1799,
+      "sha256": "cb67c6bdc6c8d26da072ae7df88fae0de7c8f30b69c2733eafc6ebe8c9677d66",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/tsk-review-linked-id-probe.py",
+      "http": 200,
+      "bytes": 1259,
+      "sha256": "c85ef2255d1b7418d6487225c016c2c1d643efa515500c3319f18e9bb186a4a8",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/tsk-tests-sol-red.log",
+      "http": 200,
+      "bytes": 157575,
+      "sha256": "36ef068c55a1d8dc93cf645402e805b54788e011a01a26ebaabbb720da521728",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/tsk-tests-sol-summary.json",
+      "http": 200,
+      "bytes": 1269,
+      "sha256": "3050867fd2624614b5915999f0e0d6b9dec69c799f83b47f097f2680a4863d5a",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/verification.json",
+      "http": 200,
+      "bytes": 5429,
+      "sha256": "b4dec7916756ee2e2f0ffd759839cd7e4646ba6b0308dd12a61ee9f2b09dcf87",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/verified-demo/demo.json",
+      "http": 200,
+      "bytes": 9488,
+      "sha256": "7331a803324b0add4d7ff0041da0d4bd1e2bcb58761a7aa1315c63ba3daf7ee3",
+      "matches_commit": true
+    },
+    {
+      "path": "evidence/operations/change01-20261009/verified-demo/demo.log",
+      "http": 200,
+      "bytes": 2118,
+      "sha256": "32e1dc4ae88a2866e3789ab1fce432eb0e5995324441a38315ea59f03f44eaee",
+      "matches_commit": true
+    },
+    {
+      "path": "pal/tasks_v5.py",
+      "http": 200,
+      "bytes": 71400,
+      "sha256": "498b06ca6033c980bfdfe24b54195f247dbc7a46d267c67a1a54b0028f5c3e8f",
+      "matches_commit": true
+    },
+    {
+      "path": "scripts/demo_change_v5.py",
+      "http": 200,
+      "bytes": 7874,
+      "sha256": "442c0a71913e3dcdf6e9948584d7cb06bb24b1f2c798dec1cd66c4845a29786a",
+      "matches_commit": true
+    },
+    {
+      "path": "scripts/verify_change_milestone_review_v5.py",
+      "http": 200,
+      "bytes": 1683,
+      "sha256": "fd9bbb99ce2d546b0ea9f2830b853581374b5b7bd8cc980316f0cfa601245d6a",
+      "matches_commit": true
+    },
+    {
+      "path": "tests/test_change_connection_v5.py",
+      "http": 200,
+      "bytes": 19078,
+      "sha256": "31c92e805407689abebae60d5ffd10c4d1811a4d1f0abe6892aabd76a13feaa1",
+      "matches_commit": true
+    },
+    {
+      "path": "tests/test_mock_change_v5.py",
+      "http": 200,
+      "bytes": 15546,
+      "sha256": "c26585fed57b80a5bfcd342b3e4469fc688a054dc02a4c3983d69e6cb348dc75",
+      "matches_commit": true
+    },
+    {
+      "path": "tests/test_tasks_change_integrity_v5.py",
+      "http": 200,
+      "bytes": 3320,
+      "sha256": "717cf1f445b9590df3797e6a1f1289e251d24591f139b63babf1c7e36597ffa2",
+      "matches_commit": true
+    },
+    {
+      "path": "tests/test_tasks_change_v5.py",
+      "http": 200,
+      "bytes": 33663,
+      "sha256": "a1b8a68a95a8430879e5b73fb83e7c60b5bd9d69d92fa977f6a9a961bccda9fd",
+      "matches_commit": true
+    }
+  ],
+  "all_match": true,
+  "source_sha256": "498b06ca6033c980bfdfe24b54195f247dbc7a46d267c67a1a54b0028f5c3e8f",
+  "raw_records_exported": false
+}

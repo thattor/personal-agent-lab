@@ -1,0 +1,64 @@
+{
+  "recorded_at": "2026-10-09T12:34:18.221666+00:00",
+  "repository": "thattor/personal-agent-lab",
+  "owner_instruction": "本プロジェクトは公開前提です。それでも実行できないならば、先にrepoをパブリックにしましょう",
+  "condition": "D043 exact private AGY review refused before launch",
+  "status": "readiness complete; visibility operation not yet executed",
+  "history_audit": {
+    "baseline_refs": [
+      "18813c2dd28e87236d836451c1e0f2b1267da1fa",
+      "94fcacbf506b7514a2380dc1c4e61ccc5dcffca2",
+      "a7562f82192e478d5184947ebb38daa4ff3b38b1"
+    ],
+    "commits": 262,
+    "blobs": 3320,
+    "bytes": 65135667,
+    "images": 32,
+    "raw_review_candidates": 1611,
+    "finding": "no confirmed credentials, unrelated private code or actual third-party private content; ordinary provenance and synthetic material retained"
+  },
+  "remote_audit": {
+    "issues": 18,
+    "prs": 1,
+    "comments": 27,
+    "releases": 1,
+    "release_assets": 0,
+    "actions_runs": 0,
+    "actions_artifacts": 0,
+    "wiki": false,
+    "discussions": false,
+    "forks": 0,
+    "admin_permission": true,
+    "rulesets": "Free-private endpoint HTTP403; unverified, not bypassed"
+  },
+  "audit_notes_sha256": {
+    "docs/design/PUBLICATION-READINESS-AUDIT.md": "1714696206a881b9cec7706c4a8c12aab7ca44522d6784333d556b7a0b068c12",
+    "docs/design/PUBLICATION-IMAGE-AUDIT.md": "a9fefd33e56980a432a552f676c9132b28eb841a8ce52203ad2adc3c3537f464",
+    "docs/design/PUBLICATION-REMOTE-AUDIT.md": "2b619af0ed91988da00c2b38b23d5d1348f9c26bca5266c4a7437cb89386c7e4"
+  },
+  "attribution_repair": {
+    "commit": "c467071a71df1c23b1c7959442e74fffc59a4ca3",
+    "files": 4,
+    "independent_reviewer": "native Astra int00_astra",
+    "verdict": "APPROVE",
+    "review_scope": "exact diff and pinned tree Git blob/SHA256; original24 selected bytes unchanged"
+  },
+  "effects_acknowledged": [
+    "existing repository code/history and Issues/PR become public",
+    "Actions history/logs public (currently zero)",
+    "anyone may fork; source exposure may persist after later privacy changes",
+    "GitHub disables push rulesets on private-to-public; prior endpoint unavailable"
+  ],
+  "excluded": [
+    "history rewrite/deletion",
+    "application deployment or live data publication",
+    "new auth/payment/service",
+    "change of PAL license",
+    "CO state/limits/settings edits"
+  ],
+  "limits": [
+    "bounded scans and semantic reviews cannot certify absence of every encoded/unrecognized secret",
+    "no private Projects board contents accessed or visibility changed",
+    "new Root commits after baseline checked by exact scope/diff, not claimed as originally scanned history"
+  ]
+}

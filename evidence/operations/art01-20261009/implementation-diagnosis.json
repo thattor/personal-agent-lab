@@ -1,0 +1,42 @@
+{
+  "task_id": "917989d447f94a09869f7b05e9870d3a",
+  "attempt": "s1-a1",
+  "independent_investigator": "native gpt-6.1-sol /root/int00_sol_review",
+  "session": "roan-fontina",
+  "prompt_sha256": "7cf454249ba9f8e12969f4a358d3765ba80a401bf30bf5b13601a2e1858b8300",
+  "prompt_bytes": 162741,
+  "local_parent_and_acp_pids_absent": [
+    18893,
+    18898,
+    18899
+  ],
+  "stored_roles": {
+    "system": 25,
+    "user": 4,
+    "assistant": 0,
+    "tool": 0
+  },
+  "admission_start_UTC": "2026-10-09T08:36:37.080Z",
+  "pause_UTC": "2026-10-09T08:51:37.142Z",
+  "returned_implementation_files": [],
+  "observed_log": {
+    "path": "~/.local/share/devin/cli/logs/devin_20261009-173637_18899.log",
+    "lines": "142-143",
+    "UTC": "2026-10-09T08:49:06Z",
+    "fact": "HTTP body decode failure, TLS peer disconnect without close_notify; Native internally logged attempt=1/max=3"
+  },
+  "limits": [
+    "Root has CO status and artifact-path evidence; session/log metadata above are independent read-only investigator observations",
+    "Local absence does not prove remote cessation",
+    "Underlying timeout cause unconfirmed; neither communication failure nor remote-config timeout alone establishes it",
+    "Official devin list sandbox exit101 on initial log write; scoped SQLite metadata opened readonly instead"
+  ],
+  "owner_alternative_source": {
+    "thread": "01a1137a-8de3-7890-b874-cdd0a7125711",
+    "turn": "01a11e03-d386-77c0-8faa-41f0ab765513",
+    "message": "01a11e03-d444-78c1-9fab-b0e861d29d1d",
+    "freshly_read": true,
+    "instruction": "While SWE2 cannot implement use Astra, Sol6.1 or AGY Opus/Sonnet5.5; direct native invocation permitted if CO adapter unavailable"
+  },
+  "next": "Preserve original CO pause. Apply existing explicit owner alternative instruction to new isolated native Sol6.1 implementation; no CO retry/resume/switch or old workspace mutation; no automatic late diff adoption."
+}

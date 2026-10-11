@@ -1,0 +1,22 @@
+{
+  "task_id": "f9f8dd69c40f4ebca78d294deaa5f640",
+  "base": "96568a585ac0a3587de01c013911196a6af8ef93",
+  "runtime_version": "0.4.5",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "owned_session": 30317,
+  "status": "running",
+  "planner": "claude/claude-opus-5-5",
+  "implementer": "devin/swe-2-high",
+  "write_scope": [
+    "pal/verification_v5.py",
+    "docs/design/contracts-v5/VER01-IMPLEMENTATION.md"
+  ],
+  "verifier": "16 immutable in-memory public VER tests under Python3.13 -I -S -B",
+  "auth_cost": "Both existing authenticated routes confirmed; swe-2-high exact model lists Free. Claude existing Pro route; no new auth/settings/extra payment.",
+  "capacity_before": {
+    "claude": 0,
+    "devin": 0,
+    "host_limit_per_adapter": 12
+  },
+  "limitations": "No actual connection, full product or remote cessation claim; Root continues callback/connection work independently."
+}

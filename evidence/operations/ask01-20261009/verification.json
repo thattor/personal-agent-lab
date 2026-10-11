@@ -1,0 +1,77 @@
+{
+  "source_commit": "b844706eb303f759f14cbd7857dcf86b44f3de99",
+  "recorded_at": "2026-10-09T11:58:28.952939+00:00",
+  "contract": "ASK01/1",
+  "full_tests": {
+    "count": 787,
+    "seconds": 25.139,
+    "exit_code": 0,
+    "receipt": "full-final-receipt.json",
+    "log": "full-final.log",
+    "github_ci": false
+  },
+  "focused": {
+    "count": 114,
+    "seconds": 0.802,
+    "exit_code": 0,
+    "pattern": "test_*ask*_v5.py",
+    "note": "Pattern includes existing task tests; these are not 114 new ASK tests."
+  },
+  "new_methods": {
+    "independent_TSK_acceptance": 17,
+    "independent_RUN_acceptance": 15,
+    "actual_owner_connection": 6,
+    "TSK_integrity": 1,
+    "RUN_integrity": 1,
+    "total": 40
+  },
+  "demo": {
+    "command": [
+      "/opt/homebrew/bin/python3.13",
+      "-E",
+      "-s",
+      "-B",
+      "scripts/demo_ask_v5.py",
+      "--output-dir",
+      "evidence/operations/ask01-20261009/verified-demo"
+    ],
+    "status": "PASS",
+    "evidence": [
+      "verified-demo/demo.json",
+      "verified-demo/demo.log"
+    ],
+    "scope": "temporary SQLite; mock model; structural verification only"
+  },
+  "independent_review": {
+    "reviewer": "native Sol6.1, int00_sol_review",
+    "TSK_author": "native Astra",
+    "TSK_exact_commit": "3b076752cd2699421cba91e8401413a2f343d514",
+    "TSK_verdict": "APPROVE",
+    "RUN_author": "native Sol6.1, art_native_sol",
+    "RUN_exact_commit": "f0efa09bb5927030c9bf4c26f79516252a4c0a37",
+    "RUN_verdict": "APPROVE",
+    "integration_bytes_equal": true,
+    "note": "docs/design/contracts-v5/ASK01-INDEPENDENT-REVIEW.md",
+    "limits": "Limited final rereviews of corrections; actual connection and whole local suite executed by Root."
+  },
+  "milestone_opus_review": "PENDING; no final ASK milestone verdict claimed",
+  "sha256": {
+    "pal/tasks_v5.py": "00684b5b25eb6976e24efac1df26ed2607ef6f050a4d630d872b558681e268fa",
+    "pal/mock_runner_v5.py": "8d6e3046b9df32c324dfed95adf414ece15b639136e66d51ab6b775e9b5e39c1",
+    "docs/design/contracts-v5/ASK01-SCOPE.md": "2d4ccb2837192b4a5728c6351ecc795c5e1d105a3effb59cd3b27be82670fcf7",
+    "docs/design/contracts-v5/PAL-contracts-v5.md": "734839de47bb128c0e7e8f5fc3ad5e1cb29cb68c49872ec6c5ccf0576b0c68ea",
+    "tests/test_tasks_ask_v5.py": "5ee0f9fb2a605ea6ef06ff991cb7e028b29ac5de31f0a45f9873c8ea7b26c6a0",
+    "tests/test_mock_ask_v5.py": "3e4552a251d5d55c16ce7496d34d2df4599f70243c429c4b90b92b778847ad36",
+    "tests/test_ask_connection_v5.py": "16cdc4d3a481fc459b19410b3d1c6736cb7c050d32eb2dc0001363ff131cfa83",
+    "tests/test_tasks_ask_integrity_v5.py": "679451ad87966a070ffb6ca463570a18188e1d60c2b5fe5014a47fffab339013",
+    "tests/test_mock_ask_integrity_v5.py": "ae27581b45ed8b8eef197ba15b0bf103c054c5f2627a643c4281d547a0e08ab0",
+    "scripts/demo_ask_v5.py": "c872f9ecd4d477552cbb64fa4eb96cd44db34cda52413e3d939d066cac058931"
+  },
+  "limits": [
+    "No whole PAL activation",
+    "No real model/provider/UI",
+    "No semantic answer sufficiency or usefulness",
+    "No general restart recovery",
+    "No new auth, paid fallback, public exposure or live DB changes"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "imported_at": "2026-10-08T17:12:11.240542+00:00",
+  "documents": {
+    "PAL-contracts-v5.md": {
+      "source": "/private/tmp/pal-design-review-20261008/PAL-contracts-v5.md",
+      "sha256": "948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "bytes": 37492,
+      "status": "candidate; v5 independent review pending"
+    },
+    "CONTRACT-AUDIT-v5.md": {
+      "source": "/private/tmp/pal-design-review-20261008/CONTRACT-AUDIT-v5.md",
+      "sha256": "afafe5b5e62823e25c878e39ebe61399acf85d1c08f9fbb2824fcef36c2d92c1",
+      "bytes": 10256,
+      "status": "candidate; v5 independent review pending"
+    },
+    "TEST-STRATEGY-v5.md": {
+      "source": "/private/tmp/pal-design-review-20261008/TEST-STRATEGY-v5.md",
+      "sha256": "5fea04744d31c4162af12f3d56bdcd350ca26a196d474bc8216271dcb28ef5a5",
+      "bytes": 9411,
+      "status": "candidate; v5 independent review pending"
+    }
+  }
+}

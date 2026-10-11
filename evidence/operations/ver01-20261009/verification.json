@@ -1,0 +1,51 @@
+{
+  "source_commit": "fab7c77bb4e8ece6b094e7b96c9f7194c04e3d53",
+  "full_suite": {
+    "command": "/opt/homebrew/bin/python3.13 -E -s -B -m unittest discover -s tests -v",
+    "count": 650,
+    "elapsed_seconds": 24.227,
+    "exit": 0,
+    "evidence": "full-integrated.log",
+    "environment": "Authorized host temp SQLite/loopback/child-process tests; not CI or live service"
+  },
+  "focused_tests": {
+    "count": 45,
+    "elapsed_seconds": 0.215,
+    "exit": 0,
+    "actual_connection_methods": 12,
+    "immutable_acceptance_methods": 16,
+    "strict_integrity_methods": 9,
+    "task_context_methods": 8
+  },
+  "independent_review": {
+    "model": "native Sol6.1",
+    "context": "/root/int00_sol_review",
+    "source": "fab7c77bb4e8ece6b094e7b96c9f7194c04e3d53",
+    "outcome": "APPROVE",
+    "count": 45,
+    "elapsed_seconds": 0.199,
+    "scope": "VER code plus actual consumer; exact original probes rerun"
+  },
+  "task_context_review": {
+    "model": "native Astra",
+    "source": "3f37f78f5e3b43fffc120ae7b746ee2107ca5fd4",
+    "outcome": "APPROVE",
+    "count": 8
+  },
+  "provenance": "CO taskf9f8dd69c40f4ebca78d294deaa5f640 exact devin/swe-2-high wrote original VER module/note; fixed16 component tests passed. Root integrated real owners and corrected independent-review defects. Native Sol wrote immutable acceptance tests separately.",
+  "source_sha256": {
+    "pal/verification_v5.py": "780643a206ba86845bf103f0bc9e2a783fc61fa16a0e1cd9bdf3655890bc5d80",
+    "pal/tasks_v5.py": "26393c914c0dfdd0aadf409bae549555873d89ed1b8693086902ebc905872c91",
+    "tests/test_verification_v5.py": "5da67471eed93361a52eb7bb7c80f18537cda461dac0744f961b426de8a18f8b",
+    "tests/test_verification_integrity_v5.py": "a3a688f64e02b1b4970e16d2c915a586aec8b12fb7e6bbb300b4396a5281a228",
+    "tests/test_verification_connection_v5.py": "c2802b295f76c9afd8be3794b95f1f191ffedd886516bf6293a191d149a6ff17",
+    "tests/test_verification_context_v5.py": "4cec899a9533c51b83544d4954a55d0caa739cb44f5f55534fbdba370d1ced0b"
+  },
+  "unmet": [
+    "C10 complete and terminal-safe history",
+    "semantic evaluation and EXE source-fetched checks",
+    "provider/PRI/UI/full v5 activation",
+    "general restart recovery and human usefulness"
+  ],
+  "original_unknown_calls": "Preserved; no retries/resumes/cancellations or remote-cessation claim"
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "pal.co-int00-submissions/1",
+  "base_sha": "a2d627238c72c61ae9b0ad7b9c7555bd84393dcb",
+  "pre_task_argument_error": {
+    "code": "input_invalid",
+    "cause": "Coordinator manually transcribed an incorrect full base SHA before inspecting git rev-parse output.",
+    "model_calls": 0,
+    "fix": "Use measured exact SHA.",
+    "prevention": "Read and validate the SHA in a separate completed operation before composing any submission.",
+    "next_check": "Resolve the requested base and compare with the recorded baseline before the next CO run."
+  },
+  "attempts": [
+    {
+      "task_id": "b737df1c688942d4aec6ff7f5d065521",
+      "status": "failed",
+      "error": "sandbox_unavailable",
+      "model_calls": 0,
+      "cause": "CO verifier preflight could not run under the outer restricted sandbox.",
+      "disposition": "CLI status confirmed no attempts; host escalation approved, CO own sandbox retained."
+    },
+    {
+      "task_id": "8cdb26509c1b40a1bae6857c9da8658f",
+      "status": "failed",
+      "error": "plan_invalid",
+      "model_calls": 1,
+      "implementation_calls": 0,
+      "cause": "Returned s1 instructions=4435 UTF-8 bytes exceeds runtime4096 limit. Completed output valid JSON, no unknown call.",
+      "disposition": "Do not edit the returned plan/state. New scoped submission explicitly requires <1000 bytes per instruction, referring to the shared scope.",
+      "next_check": "Inspect returned plan instruction sizes and same contract version."
+    },
+    {
+      "task_id": "6a9dea446fa241ceb6ee876bbdb08be9",
+      "status": "awaiting_decision",
+      "expected_sequence": [
+        "Opus planner",
+        "Opus design",
+        "SWE implementation",
+        "independent Opus review"
+      ],
+      "max_repair_cycles": 1,
+      "error": "route_timeout",
+      "failure_phase": "inference",
+      "prior_outcome": "unknown",
+      "process_outcome": "unknown",
+      "model_calls_completed": 2,
+      "implementation_output_received": false,
+      "independent_code_review_completed": false,
+      "verifier_run": false,
+      "selectable_routes": [],
+      "disposition": "Defer unchanged; no decide/resume/replacement inference. Evidence delivered to PAL人間判断."
+    }
+  ],
+  "authorization": "Current direct owner message in this chat; no new login/payment/service/publication.",
+  "co_state_mutated_directly": false,
+  "alternative_engine_created": false,
+  "capacity": 1
+}

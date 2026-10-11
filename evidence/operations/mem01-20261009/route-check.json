@@ -1,0 +1,31 @@
+{
+  "schema": "pal.mem01-route-check/1",
+  "date": "2026-10-09",
+  "runtime_version": "0.4.5",
+  "runtime": "/Users/hattoritoshiyasu/Documents/PAL/co-runtime/common-orchestration-v0.4.5",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "routes": ["claude/claude-opus-5-5", "devin/swe-2-high"],
+  "host_capacity_snapshot": {
+    "limit_per_adapter": 12,
+    "claude": {"executing": 0, "reserved": 0},
+    "devin": {"executing": 0, "reserved": 0},
+    "provider_quota": "unknown",
+    "measured_development_peak": 3,
+    "thirty_parallel_claimed": false
+  },
+  "claude_auth": {"loggedIn": true, "authMethod": "claude.ai", "subscriptionType": "pro"},
+  "official_usage_ui": {
+    "source": "https://claude.ai/new#settings/usage",
+    "session_used_percent": 9,
+    "weekly_used_percent": 46,
+    "usage_credits_enabled": false,
+    "auto_reload_enabled": false,
+    "settings_changed": false
+  },
+  "native_assignments": {
+    "gpt-6-astra": "read-only MEM/TSK boundary analysis completed",
+    "gpt-6.1-sol": "separate read-only acceptance analysis completed"
+  },
+  "scope": "existing-auth/no-extra-cost technical preparation; no new AGY or old unknown SWE task action",
+  "pre_task_cli_error": "routes list was not a valid command; corrected to documented routes show; no task or inference created"
+}

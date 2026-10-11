@@ -1,0 +1,32 @@
+test_every_path_has_fixed_bounded_reason (test_artifact_integrity_v5.BoundedReasonTests.test_every_path_has_fixed_bounded_reason) ... ok
+test_inputs_are_not_echoed (test_artifact_integrity_v5.BoundedReasonTests.test_inputs_are_not_echoed) ... ok
+test_equal_and_hashable (test_artifact_integrity_v5.ImmutabilityTests.test_equal_and_hashable) ... ok
+test_fields_cannot_be_reassigned_or_deleted (test_artifact_integrity_v5.ImmutabilityTests.test_fields_cannot_be_reassigned_or_deleted) ... ok
+test_no_instance_dict_or_new_attributes (test_artifact_integrity_v5.ImmutabilityTests.test_no_instance_dict_or_new_attributes) ... ok
+test_bool_counts_rejected_even_when_numerically_equal (test_artifact_integrity_v5.InvalidMetadataTests.test_bool_counts_rejected_even_when_numerically_equal) ... ok
+test_invalid_data_is_unknown (test_artifact_integrity_v5.InvalidMetadataTests.test_invalid_data_is_unknown) ... ok
+test_invalid_expected_bytes_is_unknown (test_artifact_integrity_v5.InvalidMetadataTests.test_invalid_expected_bytes_is_unknown) ... ok
+test_invalid_expected_sha256_is_unknown (test_artifact_integrity_v5.InvalidMetadataTests.test_invalid_expected_sha256_is_unknown) ... ok
+test_abc_vector_is_met (test_artifact_integrity_v5.KnownVectorTests.test_abc_vector_is_met) ... ok
+test_empty_body_with_zero_bytes_is_met (test_artifact_integrity_v5.KnownVectorTests.test_empty_body_with_zero_bytes_is_met) ... ok
+test_single_byte_vector_is_met (test_artifact_integrity_v5.KnownVectorTests.test_single_byte_vector_is_met) ... ok
+test_count_mismatch_is_not_hashed (test_artifact_integrity_v5.LimitTests.test_count_mismatch_is_not_hashed) ... ok
+test_exact_limit_is_met_and_hashed_once (test_artifact_integrity_v5.LimitTests.test_exact_limit_is_met_and_hashed_once) ... ok
+test_invalid_inputs_are_not_hashed (test_artifact_integrity_v5.LimitTests.test_invalid_inputs_are_not_hashed) ... ok
+test_limit_count_is_valid_metadata (test_artifact_integrity_v5.LimitTests.test_limit_count_is_valid_metadata) ... ok
+test_over_limit_body_is_unmet_and_not_hashed (test_artifact_integrity_v5.LimitTests.test_over_limit_body_is_unmet_and_not_hashed) ... ok
+test_correct_body_and_hash_with_wrong_count (test_artifact_integrity_v5.MismatchTests.test_correct_body_and_hash_with_wrong_count) ... ok
+test_correct_body_with_wrong_hash (test_artifact_integrity_v5.MismatchTests.test_correct_body_with_wrong_hash) ... ok
+test_empty_body_with_nonzero_count (test_artifact_integrity_v5.MismatchTests.test_empty_body_with_nonzero_count) ... ok
+test_same_length_tampering (test_artifact_integrity_v5.MismatchTests.test_same_length_tampering) ... ok
+test_byte_count_is_not_character_count (test_artifact_integrity_v5.MultibyteTests.test_byte_count_is_not_character_count) ... ok
+test_count_checked_before_data (test_artifact_integrity_v5.PrecedenceTests.test_count_checked_before_data) ... ok
+test_count_mismatch_before_hash_mismatch (test_artifact_integrity_v5.PrecedenceTests.test_count_mismatch_before_hash_mismatch) ... ok
+test_hash_checked_first (test_artifact_integrity_v5.PrecedenceTests.test_hash_checked_first) ... ok
+test_keyword_arguments (test_artifact_integrity_v5.SurfaceTests.test_keyword_arguments) ... ok
+test_public_surface (test_artifact_integrity_v5.SurfaceTests.test_public_surface) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.002s
+
+OK

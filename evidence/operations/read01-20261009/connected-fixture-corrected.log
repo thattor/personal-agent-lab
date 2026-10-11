@@ -1,0 +1,26 @@
+test_completed_source_stop_keeps_body_hash_and_state_but_changes_readback_usability (test_read_connection_v5.ReadConnectionTests.test_completed_source_stop_keeps_body_hash_and_state_but_changes_readback_usability) ... ok
+test_epoch_only_nonmet_history_stays_readable_without_claiming_source_stop (test_read_connection_v5.ReadConnectionTests.test_epoch_only_nonmet_history_stays_readable_without_claiming_source_stop) ... ok
+test_missing_actual_artifact_is_visible_and_does_not_drop_the_saved_result (test_read_connection_v5.ReadConnectionTests.test_missing_actual_artifact_is_visible_and_does_not_drop_the_saved_result) ... ok
+test_read_clock_changes_only_observation_time_and_public_artifact_binding_is_exact (test_read_connection_v5.ReadConnectionTests.test_read_clock_changes_only_observation_time_and_public_artifact_binding_is_exact) ... ok
+test_read_snapshot_orders_a_stop_attempt_from_another_connection (test_read_connection_v5.ReadConnectionTests.test_read_snapshot_orders_a_stop_attempt_from_another_connection) ... ok
+test_real_paginated_result_readback_preserves_multiartifact_order_and_cursor (test_read_connection_v5.ReadConnectionTests.test_real_paginated_result_readback_preserves_multiartifact_order_and_cursor) ... ok
+test_result_is_discoverable_after_committed_but_lost_runner_response (test_read_connection_v5.ReadConnectionTests.test_result_is_discoverable_after_committed_but_lost_runner_response) ... ok
+test_three_real_owners_return_matching_utf8_hashes_without_writes (test_read_connection_v5.ReadConnectionTests.test_three_real_owners_return_matching_utf8_hashes_without_writes) ... 
+  test_three_real_owners_return_matching_utf8_hashes_without_writes (test_read_connection_v5.ReadConnectionTests.test_three_real_owners_return_matching_utf8_hashes_without_writes) (kind='record') ... FAIL
+test_two_completed_works_in_one_session_keep_separate_state_and_refs (test_read_connection_v5.ReadConnectionTests.test_two_completed_works_in_one_session_keep_separate_state_and_refs) ... ok
+
+======================================================================
+FAIL: test_three_real_owners_return_matching_utf8_hashes_without_writes (test_read_connection_v5.ReadConnectionTests.test_three_real_owners_return_matching_utf8_hashes_without_writes) (kind='record')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_read_connection_v5.py", line 42, in test_three_real_owners_return_matching_utf8_hashes_without_writes
+    body = self.f.value(self.reader().read({'ref': ref}, purpose='user_view'))
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'owner unavailable', 'refs': []}}
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.129s
+
+FAILED (failures=1)

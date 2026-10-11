@@ -1,0 +1,44 @@
+test_read_connection_v5 (unittest.loader._FailedTest.test_read_connection_v5) ... ERROR
+test_bad_host_input_or_unowned_kind_never_falls_back (test_read_consumer_v5.ReadConsumerTests.test_bad_host_input_or_unowned_kind_never_falls_back) ... ok
+test_bounded_pages_cursor_and_visible_truncation (test_read_consumer_v5.ReadConsumerTests.test_bounded_pages_cursor_and_visible_truncation) ... ok
+test_closed_consumer_requests_and_host_page_bounds (test_read_consumer_v5.ReadConsumerTests.test_closed_consumer_requests_and_host_page_bounds) ... ok
+test_host_dispatches_all_kinds_exact_request_and_keyword_purpose (test_read_consumer_v5.ReadConsumerTests.test_host_dispatches_all_kinds_exact_request_and_keyword_purpose) ... ok
+test_initial_cursor_is_forwarded_without_new_state_or_guess (test_read_consumer_v5.ReadConsumerTests.test_initial_cursor_is_forwarded_without_new_state_or_guess) ... ok
+test_missing_work_and_per_work_per_ref_errors_stay_visible (test_read_consumer_v5.ReadConsumerTests.test_missing_work_and_per_work_per_ref_errors_stay_visible) ... ok
+test_owner_exceptions_malformed_results_and_interrupts (test_read_consumer_v5.ReadConsumerTests.test_owner_exceptions_malformed_results_and_interrupts) ... ok
+test_pages_advance_unselected_events_and_preserve_multiwork_ref_order (test_read_consumer_v5.ReadConsumerTests.test_pages_advance_unselected_events_and_preserve_multiwork_ref_order) ... ok
+test_renderer_separates_state_current_usability_fixed_checks_and_read_time (test_read_consumer_v5.ReadConsumerTests.test_renderer_separates_state_current_usability_fixed_checks_and_read_time) ... ok
+test_stalled_cursor_malformed_page_and_page_error_are_failures (test_read_consumer_v5.ReadConsumerTests.test_stalled_cursor_malformed_page_and_page_error_are_failures) ... ok
+test_stop_cause_requires_exact_notice_goal_revision_and_dependency_intersection (test_read_consumer_v5.ReadConsumerTests.test_stop_cause_requires_exact_notice_goal_revision_and_dependency_intersection) ... ok
+test_all_envelope_strings_are_display_escaped (test_read_display_v5.ReadDisplayTests.test_all_envelope_strings_are_display_escaped) ... ok
+test_condition_and_reason_multiline_are_nested (test_read_display_v5.ReadDisplayTests.test_condition_and_reason_multiline_are_nested) ... ok
+test_controls_are_visible_and_inactive (test_read_display_v5.ReadDisplayTests.test_controls_are_visible_and_inactive) ... ok
+test_error_multiline_is_nested (test_read_display_v5.ReadDisplayTests.test_error_multiline_is_nested) ... ok
+test_event_multiline_cannot_forge_host_status (test_read_display_v5.ReadDisplayTests.test_event_multiline_cannot_forge_host_status) ... ok
+test_multiline_draft_and_inspection_bytes_remain_unchanged (test_read_display_v5.ReadDisplayTests.test_multiline_draft_and_inspection_bytes_remain_unchanged) ... ok
+test_completed_history_notice_is_a_visible_item_even_without_work_ref (test_read_regressions_v5.ReadRegressionTests.test_completed_history_notice_is_a_visible_item_even_without_work_ref) ... ok
+test_malformed_notice_refs_are_visible_without_correlating_false_cause (test_read_regressions_v5.ReadRegressionTests.test_malformed_notice_refs_are_visible_without_correlating_false_cause) ... ok
+test_real_c11_optional_fields_are_accepted_and_extras_rejected (test_read_regressions_v5.ReadRegressionTests.test_real_c11_optional_fields_are_accepted_and_extras_rejected) ... ok
+test_renderer_preserves_each_owner_timestamp_meaning (test_read_regressions_v5.ReadRegressionTests.test_renderer_preserves_each_owner_timestamp_meaning) ... ok
+test_resumed_window_never_invents_an_unseen_source_stop_notice (test_read_regressions_v5.ReadRegressionTests.test_resumed_window_never_invents_an_unseen_source_stop_notice) ... ok
+test_unknown_and_malformed_refs_remain_visible_per_ref_failures (test_read_regressions_v5.ReadRegressionTests.test_unknown_and_malformed_refs_remain_visible_per_ref_failures) ... ok
+
+======================================================================
+ERROR: test_read_connection_v5 (unittest.loader._FailedTest.test_read_connection_v5)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_read_connection_v5
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.13/3.13.15/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/loader.py", line 403, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.15/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/loader.py", line 346, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/private/tmp/pal-read-display-sol-20261009/tests/test_read_connection_v5.py", line 7, in <module>
+    from pal.contracts_v5 import dumps, loads
+ModuleNotFoundError: No module named 'pal'
+
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.011s
+
+FAILED (errors=1)

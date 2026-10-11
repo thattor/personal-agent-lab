@@ -1,0 +1,294 @@
+# INT-00 design: shared v5 wire contracts
+
+This design is for SWE-2 High, to implement in `pal/contracts_v5.py`. It makes no file changes and adopts no new product authority. INT00-SCOPE.md governs scope. Where this design and the scope differ, the scope wins. Sources: v5 §3, C03, C10, C12 (and the C08/C09/C11/C15 fields they reference), CONTRACT-AUDIT-v5, TEST-STRATEGY-v5 and pal/__init__.py, which only holds a docstring and needs no change.
+
+## 0. Hard constraints
+
+- **Writable files:** only the four scope files. Do not create `tests/__init__.py` (not writable) and do not change `sys.path`. The verifier runs `python -m` with cwd set to the workspace root, so `import pal.contracts_v5` resolves.
+- **Libraries:** standard library only: `json`, `math`, `dataclasses`, `enum`, `types`, `collections.abc`, `typing`, `doctest`, `unittest`, `pathlib`.
+- **Excluded:** services, I/O beyond the tests reading the fixture, SQLite, network, model calls, state machine, ID minting, and grant/capability policy.
+
+## 1. Raw JSON boundary
+
+`loads(raw: str | bytes) -> object` is the only raw decoder. It returns fresh plain dict/list/scalars.
+
+| Input condition | Handling |
+|---|---|
+| `bytes` | `raw.decode("utf-8", "strict")`. Failure gives ContractError. |
+| UTF-8 BOM | Rejected, because `json.loads` raises on `\ufeff`. |
+| Any other type | ContractError. |
+| Duplicate keys at any depth, including inside `operate.arguments` | `object_pairs_hook` rejects them. |
+| `NaN`, `Infinity`, `-Infinity` | `parse_constant` rejects them. |
+| Overflowing floats such as `1e400` | `parse_float` returns `float(s)` and rejects the value unless `math.isfinite`. |
+| Lone surrogates, in keys or values, including from `\ud800` escapes | Every decoded string must pass `s.encode("utf-8")`. |
+| Trailing data, deep nesting (`RecursionError`), ints above Python's 4300-digit limit (`ValueError`) | Map to ContractError. |
+
+- Always `raise ... from None`, so `JSONDecodeError.doc` and the raw text never reach `__cause__` or `__context__`.
+
+**Decoded-data validation.** This applies to `from_json` and to constructors.
+
+- **Allowed types:** exact types only (`type(x) is ...`): `dict` with `str` keys, `list`, `str`, `int`, finite `float`, `bool`, `None`.
+- **Rejected:** `tuple`, `set`, `bytes`, `Decimal`, NaN, subclasses, and non-str keys.
+- `bool` is never an int and an int is never a bool.
+
+**Serialization.** `dumps(value) -> str` is the single normalized form:
+
+```
+json.dumps(value.to_json(), ensure_ascii=False, sort_keys=True,
+           separators=(",", ":"), allow_nan=False)
+```
+
+- It accepts contract objects and also already-valid plain JSON.
+- Key order of JSON objects is not information.
+- Numeric type is information. `1`, `1.0` and `true` stay distinct, and `-0.0` is preserved.
+- The lexical exponent form is not information.
+
+## 2. Values
+
+All value classes are `@dataclass(frozen=True, slots=True)`. Each class has:
+
+- `__post_init__`, which applies the same rules as `from_json`, so direct construction cannot produce invalid values.
+- `from_json(data) -> Self`, which takes decoded data.
+- `to_json() -> dict`, which returns fresh plain data.
+
+Rules that apply to every class:
+
+- **Arrays** are stored as tuples. Constructors copy a list or tuple into a tuple. `from_json` requires an exact `list`.
+- **Keys:** missing and extra keys are both rejected.
+- **Optional fields (`?`)** may be absent. They are never `null`.
+- **IDs** must be non-empty, are opaque, and are not trimmed. The ID fields are `goal_id`, `Ref.id` and `Condition.id`.
+- **Content strings** may be any valid str, including empty. This covers purpose, description, constraints, query, question, missing_fact, content, summary, message, repository, path, ref and capability strings. No semantic rules are added.
+
+**Enums.** All are `enum.StrEnum`. Matching is exact and case-sensitive, with no aliasing.
+
+- `RefKind`: record, note, source, receipt, artifact, verification
+- `CheckKind`: semantic, artifact_saved, source_fetched
+- `ErrorCode`: invalid_input, not_found, ambiguous, stale, denied, unavailable, limit, conflict
+- `ActionKind`: lookup, operate, ask, compose, verify, report
+- `MediaType`: text/plain, text/markdown (taken from C08 for compose)
+
+**Types.**
+
+| Type | Fields and rules |
+|---|---|
+| `WorkRef` | `goal_id`: str, non-empty. `revision`: int ≥1. `epoch`: int ≥0. |
+| `Ref` | `kind`: RefKind. `id`: str, non-empty. Hashable. A Ref of one kind is never converted to another kind. |
+| `TargetFile` | `path`: str. `ref`: str. |
+| `Target` | `repository`: str. `issue_numbers`: tuple of int. `files`: tuple of TargetFile. |
+| `DraftCondition` | `description`: str. `check`: CheckKind. Any `id` key is rejected as an unexpected key. |
+| `Condition` | `id`: str, non-empty. `description`: str. `check`: CheckKind. |
+| `DraftBrief` | `purpose`: str. `target`: Target. `constraints`: tuple of str. `conditions`: tuple of DraftCondition, at least one. `context_refs`: tuple of Ref. |
+| `Brief` | Same as DraftBrief, but `conditions` is a non-empty tuple of Condition. |
+| `Limits` | `max_operations`, `max_steps`, `max_model_calls`: int ≥0, all required. 0 means an exhausted budget. There is no default and no "unlimited" value. |
+| `Grant` | `capabilities`: tuple of str. `repositories`: tuple of str. `limits`: Limits. Empty tuples are valid and mean nothing is granted. |
+
+The module provides no draft→formal conversion and never mints IDs.
+
+**JsonValue.** This is an immutable wrapper for arbitrary JSON.
+
+- `.data` gives frozen data: dicts become `MappingProxyType` with nested freezing, lists become tuples.
+- `__eq__` and `__hash__` work on the canonical `dumps` text, so `{"n":1}` is not equal to `{"n":1.0}`, which is not equal to `{"n":true}`.
+- `to_json()` returns fresh plain data.
+- It is used for `operate.arguments`, which must be an object, and for undecoded `Result.value`.
+
+## 3. Result and error shapes
+
+`ErrorInfo` has three fields:
+
+- `code`: ErrorCode
+- `message`: str
+- `refs`: tuple of Ref
+
+`Result` has three fields:
+
+- `ok`: bool
+- `value`: a JsonValue, a decoded object, or None
+- `error`: ErrorInfo or None
+
+Wire rules for Result:
+
+- **Success:** exactly `{"ok": true, "value": V}`. `V` may be JSON null, which becomes `JsonValue(None)`, distinct from an absent value.
+- **Failure:** exactly `{"ok": false, "error": {"code", "message", "refs"}}`.
+- **`ok` must be an exact bool.** `1` or `"true"` is rejected.
+- **No mixing:** `value` together with `error`, `value` on failure, or `error` on success is rejected.
+
+Constructors and decoding:
+
+- `Result.from_json(data, value_decoder=None)` uses `JsonValue` when no decoder is given. A decoder such as `WorkRef.from_json` produces a typed value.
+- `Result.success(v)` and `Result.failure(code, message, refs=())` are convenience constructors.
+
+`ContractError(Exception)`:
+
+- `.code` is always `"invalid_input"`.
+- `.path` is built only from schema field names and indices, for example `$.target.files[0].ref`.
+- `.reason` comes from a fixed vocabulary: missing key, unexpected key, wrong type, empty id, out of range, invalid enum value, empty conditions, unprovided ref, duplicate key, non-finite number, invalid utf-8, invalid json.
+- `str()` is `invalid_input: <path>: <reason>`, capped at 200 characters.
+- It never contains input values, unexpected key names, ref IDs or raw text.
+
+## 4. C12 Action wire format
+
+There is one flat object with discriminator `"kind"`. It is the only Action encoding and every example uses it.
+
+| kind | fields |
+|---|---|
+| lookup | `query`: str, `source_refs?`: [Ref] |
+| operate | `capability`: str, `arguments`: object (JsonValue), `source_refs`: [Ref] |
+| ask | `question`: str, `missing_fact`: str, `source_refs`: [Ref] |
+| compose | `content`: str, `media_type`: MediaType, `source_refs`: [Ref] |
+| verify | `artifact_refs`: [Ref] |
+| report | `summary`: str |
+
+- **Classes:** `LookupAction`, `OperateAction`, `AskAction`, `ComposeAction`, `VerifyAction` and `ReportAction`, plus the type alias `Action`.
+- **Optional `source_refs`:** in `LookupAction`, `None` means absent, which is distinct from `()`. `to_json` omits the field when it is `None`.
+- **Rejected:** an unknown or missing `kind`, any extra key, and `arguments` that is not a JSON object.
+- **Decoding:** `action_from_json(data) -> Action` decodes the shape only. Hosts use it for already-trusted data.
+
+## 5. Allowed-Ref check for model output
+
+The two entry points for model output are:
+
+- `parse_model_draft_brief(raw: str | bytes, *, allowed_refs: Iterable[Ref]) -> DraftBrief`
+- `parse_model_action(raw: str | bytes, *, allowed_refs: Iterable[Ref]) -> Action`
+
+Rules:
+
+- `allowed_refs` is keyword-only and required. Non-Ref entries raise `TypeError`, since that is host misuse.
+- Processing order is: `loads`, then shape validation, then the ref check.
+- Every Ref in `DraftBrief.context_refs`, `source_refs` or `artifact_refs` must equal an allowed Ref on (kind, id). The same ID with a different kind is rejected.
+- A failure raises `ContractError("unprovided ref")` without the ID.
+- An empty allowed set is valid.
+
+Docstrings must state the limits of this check. It does not:
+
+- authorize capabilities or repositories,
+- prove that a source is available,
+- verify semantic scope,
+- replace host transaction fencing.
+
+Host values are data, not credentials.
+
+## 6. Public API and runnable examples
+
+Exports in `__all__`:
+
+- the enums, `JsonValue` and the value classes,
+- `ContractError`,
+- `loads`, `dumps`, `action_from_json`,
+- `parse_model_draft_brief`, `parse_model_action`.
+
+The module docstring holds these doctests, and a test runs them with `doctest.testmod(pal.contracts_v5)`, asserting zero failures:
+
+```
+>>> from pal.contracts_v5 import Ref, WorkRef, dumps, loads, parse_model_action
+>>> dumps(WorkRef.from_json(loads('{"goal_id":"g1","revision":1,"epoch":0}')))
+'{"epoch":0,"goal_id":"g1","revision":1}'
+>>> allowed = {Ref("source", "s1")}
+>>> a = parse_model_action('{"kind":"lookup","query":"q","source_refs":[{"kind":"source","id":"s1"}]}', allowed_refs=allowed)
+>>> a.source_refs
+(Ref(kind=<RefKind.SOURCE: 'source'>, id='s1'),)
+>>> parse_model_action('{"kind":"verify","artifact_refs":[{"kind":"artifact","id":"x"}]}', allowed_refs=allowed)
+Traceback (most recent call last):
+  ...
+pal.contracts_v5.ContractError: invalid_input: $.artifact_refs[0]: unprovided ref
+```
+
+Adjust the exact reprs to match the implementation. Keep the examples using `kind=`.
+
+## 7. Fixture file and tests
+
+**Fixture format.** `tests/fixtures/contracts_v5.json` contains `{"contract_version":"PAL-contracts-v5","fixture_version":1,"cases":[...]}`. Each case has:
+
+- `id`
+- `target`: one of WorkRef, Ref, DraftCondition, Condition, Target, DraftBrief, Brief, Limits, Grant, Result, Action, ModelAction, ModelDraftBrief
+- `contract`: a list of IDs such as `["sec3","C03","CT-24"]`
+- `expect`: `accepted` or `rejected`
+- exactly one of `input` (decoded JSON) or `input_raw` (raw text as a JSON string)
+- `allowed_refs` for Model* targets
+- an optional `note`
+
+The fixture uses only synthetic data and must itself pass the strict `loads`.
+
+**Minimum cases, with contract mapping.**
+
+1. **WorkRef boundaries** (sec3, CT-10, CT-19):
+   - Accepted: revision 1, epoch 0.
+   - Rejected: revision 0, epoch −1, revision `true`, revision `1.0`, revision `"1"`, goal_id `""`, missing epoch, an extra key.
+2. **Ref kinds** (sec3, C11, CT-05):
+   - Accepted: all six kinds.
+   - Rejected: `"Artifact"`, `"url"`, id `""`, id `1`.
+3. **Draft vs formal conditions** (C03, CT-24):
+   - DraftBrief: accepted without condition IDs. Rejected with a condition `id`, with `"id":null`, or with `conditions:[]`.
+   - Brief: accepted with IDs. Rejected when an ID is missing or `""`, or with `conditions:[]`.
+   - Rejected for either: a bad `check`, issue_numbers containing `true`, a file missing `ref`, an extra key in target.
+4. **Result** (sec3, C10, CT-02, CT-08, CT-10):
+   - Accepted: ok with an object value, ok with a null value, failure with each of the 8 codes.
+   - Rejected: ok `1` or `"true"`, ok with error, failure with value, an unknown code, error missing `refs`, a bad nested Ref in refs.
+5. **Every C12 action** (C12, CT-03):
+   - Accepted: lookup with and without source_refs, operate with deeply nested arguments (mixed int, float, unicode, arrays), ask, compose with each media type, verify, report.
+   - Rejected: an unknown or missing kind, `"Report"`, an extra key, arguments as an array, report with no summary, compose with an invalid media type.
+6. **Unprovided refs** (C01, C09 rule, C12, CT-12, CT-26), all with ModelAction or ModelDraftBrief targets:
+   - Rejected: a ref missing from the allowed set, the same ID with another kind, an unprovided DraftBrief context_ref, an unprovided verify artifact_ref.
+   - Accepted: an empty allowed set when the action has no refs.
+7. **Grant budgets** (sec3, C15, CT-17, CT-29):
+   - Accepted: all limits zero, empty lists.
+   - Rejected: a negative limit, a missing limit, a bool limit.
+8. **Invalid nested shapes:** a bad ref deep inside Brief, Action and Result.
+9. **Raw boundary** (all via `input_raw`):
+   - duplicate keys at the top level and nested inside arguments,
+   - NaN, Infinity, -Infinity and `1e400`,
+   - a `\ud800` escape,
+   - trailing data,
+   - a non-object Action.
+
+**Fixture-driven tests.**
+
+- Use `subTest(case=id)` with a small table mapping each `target` to its parse function.
+- **Accepted cases:**
+  - `to_json()` equals the input under a type-strict deep comparison written in the test.
+  - `from_json(loads(dumps(v))) == v`.
+- **Rejected cases:** raise ContractError with `.code == "invalid_input"`.
+- **Coverage assertion:** the fixture contains all 6 Ref kinds, all 6 action kinds and all 8 error codes as accepted cases, plus at least one rejected case each for `CT-24` and `unprovided`.
+
+**Focused tests** for conditions the fixture cannot express:
+
+- invalid UTF-8 bytes,
+- Python non-JSON values: tuple, set, Decimal, `float("nan")`, int keys,
+- `FrozenInstanceError` on assignment,
+- arguments mapping is not mutable,
+- mutating the source dict after parsing has no effect,
+- `1`, `1.0` and `true` stay unequal inside arguments and as Result values,
+- lookup with absent source_refs differs from lookup with `[]`,
+- the ContractError message omits a sentinel planted in the model text and the unexpected key name, stays at most 200 characters, and has no `__cause__` or `__context__`,
+- omitting `allowed_refs` raises TypeError,
+- the doctests pass.
+
+The tests must not re-implement validators or compare against the implementation's own internal tables.
+
+## 8. Unresolved v5 issues (recorded, not adopted)
+
+Each item gets this pure-implementation handling and is logged in INT00-IMPLEMENTATION.md for SOL to decide.
+
+- **U1.** v5 does not fix state-specific rejection codes (CT-08 "already complete", TEST-STRATEGY §4). Only the closed enum is provided, with no mapping table.
+- **U2.** The `T` in `Result<T>` is generic per contract. Results here are untyped JsonValue with an optional decoder, and binding a type to each contract is left to the module owners.
+- **U3.** The Action wire format is not fixed by v5 notation (`lookup{…}`). This design chooses the flat `kind` discriminator, which needs SOL's disposition.
+- **U4.** v5 gives no error code for an unprovided ref (CT-12 only says "rejected"). This design uses ContractError `invalid_input`; `denied` and `not_found` are alternatives for SOL to consider.
+- **U5.** The compose `media_type` enum is borrowed from C08, because C12 does not list one.
+- **U6.** The Ref kind for `verify.artifact_refs` is unconstrained in the v5 type notation. Any kind is accepted, and C09 enforces the kind at the host.
+- **U7.** The following are unspecified, and all are accepted with no invented rules:
+  - the range of issue numbers,
+  - empty repository, path, ref or capability strings,
+  - duplicate condition IDs or duplicate refs,
+  - an input size bound.
+- **U8.** The meaning of `?` (absent vs null) is unspecified. This design rejects null.
+- **U9.** Grant non-expansion and "proposals broader than the request" are host/TSK semantics and are not checked here.
+- **U10.** Python rejects integers longer than 4300 digits. This is a platform limit, documented as such.
+
+## 9. INT00-IMPLEMENTATION.md outline
+
+1. The API and wire decisions from §1–§6.
+2. The findings in §8 and their disposition: recorded and unresolved.
+3. The exact test scope: the verifier command and the case categories with their C/CT mapping.
+4. The limits of the result:
+   - The parsing examples are not service tests.
+   - CT-04, CT-07, CT-08, CT-25, other persistence and control-race tests, E2E-01–09, real models and services, and the human value evaluation are all NOT RUN.
+   - "CO verified" covers only this verifier and these file versions. It does not mean PAL or the v5 contracts are complete.

@@ -1,0 +1,281 @@
+"""Tests for pal.bounded_payload_v5 (EXE02-bytes/1). Synthetic fixtures only."""
+
+import unittest
+
+from pal.bounded_payload_v5 import (
+    INVALID_INPUT,
+    INVALID_INPUT_MESSAGE,
+    LIMIT,
+    LIMIT_MESSAGE,
+    MAX_PAYLOAD_BYTES,
+    PayloadBuffer,
+    PayloadLimitError,
+)
+
+
+class _IntSubclass(int):
+    pass
+
+
+class _BytesSubclass(bytes):
+    pass
+
+
+class ConstructorTests(unittest.TestCase):
+    def test_explicit_max_capacity_accepted(self):
+        for kwargs in ({}, {"max_bytes": MAX_PAYLOAD_BYTES}):
+            with self.subTest(kwargs=kwargs):
+                buf = PayloadBuffer(**kwargs)
+                buf.append(b"x" * MAX_PAYLOAD_BYTES)
+                self.assertEqual(buf.byte_count, MAX_PAYLOAD_BYTES)
+
+    def test_capacity_above_hard_maximum_is_limit(self):
+        for bad in (MAX_PAYLOAD_BYTES + 1, 10**12):
+            with self.subTest(bad=bad):
+                with self.assertRaises(PayloadLimitError) as cm:
+                    PayloadBuffer(max_bytes=bad)
+                self.assertEqual(cm.exception.code, LIMIT)
+                self.assertEqual(cm.exception.message, LIMIT_MESSAGE)
+
+    def test_invalid_max_bytes_types_and_values(self):
+        for bad in (True, False, 0, -1, -10**6, 1.0, "5", None, _IntSubclass(7)):
+            with self.subTest(bad=repr(bad)):
+                with self.assertRaises(PayloadLimitError) as cm:
+                    PayloadBuffer(max_bytes=bad)
+                self.assertEqual(cm.exception.code, INVALID_INPUT)
+                self.assertEqual(cm.exception.message, INVALID_INPUT_MESSAGE)
+
+    def test_positional_argument_rejected(self):
+        with self.assertRaises(TypeError):
+            PayloadBuffer(5)
+
+
+class AppendAndValueTests(unittest.TestCase):
+    def test_split_multibyte_characters_preserved(self):
+        data = "aé漢😀z".encode("utf-8")
+        buf = PayloadBuffer()
+        for i in range(len(data)):
+            buf.append(data[i:i + 1])
+        self.assertEqual(buf.getvalue(), data)
+        self.assertEqual(buf.getvalue().decode("utf-8"), "aé漢😀z")
+        self.assertEqual(buf.byte_count, len(data))
+        self.assertIs(type(buf.byte_count), int)
+
+    def test_multibyte_split_at_arbitrary_boundaries(self):
+        data = "é漢😀".encode("utf-8")
+        buf = PayloadBuffer()
+        buf.append(data[:2])
+        buf.append(data[2:3])
+        buf.append(data[3:6])
+        buf.append(data[6:])
+        self.assertEqual(buf.getvalue(), data)
+        self.assertEqual(buf.getvalue().decode("utf-8"), "é漢😀")
+
+    def test_empty_chunks(self):
+        buf = PayloadBuffer()
+        self.assertEqual(buf.getvalue(), b"")
+        self.assertEqual(buf.byte_count, 0)
+        buf.append(b"")
+        buf.append(b"ab")
+        buf.append(b"")
+        buf.append(b"")
+        buf.append(b"cd")
+        buf.append(b"")
+        self.assertEqual(buf.getvalue(), b"abcd")
+        self.assertEqual(buf.byte_count, 4)
+
+    def test_empty_chunk_accepted_when_exactly_full(self):
+        buf = PayloadBuffer(max_bytes=3)
+        buf.append(b"xyz")
+        buf.append(b"")
+        self.assertEqual(buf.getvalue(), b"xyz")
+        self.assertEqual(buf.byte_count, 3)
+
+    def test_minimum_capacity_and_excess_by_one(self):
+        buf = PayloadBuffer(max_bytes=1)
+        buf.append(b"a")
+        with self.assertRaises(PayloadLimitError) as cm:
+            buf.append(b"x")
+        self.assertEqual(cm.exception.code, LIMIT)
+        self.assertEqual(buf.getvalue(), b"a")
+        self.assertEqual(buf.byte_count, 1)
+
+    def test_exact_maximum_then_excess_by_one(self):
+        for kwargs in ({}, {"max_bytes": MAX_PAYLOAD_BYTES}):
+            with self.subTest(kwargs=kwargs):
+                buf = PayloadBuffer(**kwargs)
+                buf.append(b"\0" * MAX_PAYLOAD_BYTES)
+                self.assertEqual(buf.byte_count, MAX_PAYLOAD_BYTES)
+                with self.assertRaises(PayloadLimitError) as cm:
+                    buf.append(b"\0")
+                self.assertEqual(cm.exception.code, LIMIT)
+                self.assertEqual(buf.byte_count, MAX_PAYLOAD_BYTES)
+                self.assertEqual(buf.getvalue(), b"\0" * MAX_PAYLOAD_BYTES)
+
+    def test_single_oversized_chunk_rejected(self):
+        buf = PayloadBuffer()
+        with self.assertRaises(PayloadLimitError) as cm:
+            buf.append(b"\0" * (MAX_PAYLOAD_BYTES + 1))
+        self.assertEqual(cm.exception.code, LIMIT)
+        self.assertEqual(buf.byte_count, 0)
+        self.assertEqual(buf.getvalue(), b"")
+
+    def test_cumulative_overflow(self):
+        buf = PayloadBuffer(max_bytes=10)
+        buf.append(b"abcd")
+        buf.append(b"efghij")
+        self.assertEqual(buf.byte_count, 10)
+        with self.assertRaises(PayloadLimitError) as cm:
+            buf.append(b"k")
+        self.assertEqual(cm.exception.code, LIMIT)
+        self.assertEqual(buf.getvalue(), b"abcdefghij")
+        self.assertEqual(buf.byte_count, 10)
+
+    def test_cumulative_overflow_after_small_chunks(self):
+        buf = PayloadBuffer(max_bytes=8)
+        buf.append(b"aa")
+        buf.append(b"bb")
+        buf.append(b"cc")
+        with self.assertRaises(PayloadLimitError) as cm:
+            buf.append(b"ddd")
+        self.assertEqual(cm.exception.code, LIMIT)
+        self.assertEqual(buf.getvalue(), b"aabbcc")
+        self.assertEqual(buf.byte_count, 6)
+
+
+class InvalidChunkTests(unittest.TestCase):
+    def test_invalid_chunk_types_leave_buffer_unchanged(self):
+        buf = PayloadBuffer()
+        buf.append(b"ok")
+        for bad in (
+            "x",
+            bytearray(b"x"),
+            memoryview(b"x"),
+            _BytesSubclass(b"x"),
+            None,
+            0,
+            True,
+            [b"x"],
+        ):
+            with self.subTest(bad=type(bad).__name__):
+                with self.assertRaises(PayloadLimitError) as cm:
+                    buf.append(bad)
+                self.assertEqual(cm.exception.code, INVALID_INPUT)
+        self.assertEqual(buf.getvalue(), b"ok")
+        self.assertEqual(buf.byte_count, 2)
+
+
+class RejectionAndSnapshotTests(unittest.TestCase):
+    def test_rejected_append_does_not_poison(self):
+        buf = PayloadBuffer(max_bytes=6)
+        buf.append(b"abc")
+        with self.assertRaises(PayloadLimitError):
+            buf.append(b"defg")
+        with self.assertRaises(PayloadLimitError):
+            buf.append("nope")
+        buf.append(b"def")
+        self.assertEqual(buf.getvalue(), b"abcdef")
+        self.assertEqual(buf.byte_count, 6)
+
+    def test_snapshots_are_immutable(self):
+        buf = PayloadBuffer()
+        buf.append(b"one")
+        s1 = buf.getvalue()
+        buf.append(b"two")
+        self.assertEqual(s1, b"one")
+        self.assertIs(type(s1), bytes)
+        s2 = buf.getvalue()
+        self.assertIs(type(s2), bytes)
+        self.assertEqual(s2, b"onetwo")
+        buf.append(b"three")
+        self.assertEqual(s1, b"one")
+        self.assertEqual(s2, b"onetwo")
+        self.assertEqual(buf.getvalue(), b"onetwothree")
+
+    def test_byte_count_is_read_only(self):
+        buf = PayloadBuffer()
+        buf.append(b"ab")
+        with self.assertRaises(AttributeError):
+            buf.byte_count = 5
+        with self.assertRaises(AttributeError):
+            del buf.byte_count
+        with self.assertRaises(AttributeError):
+            buf.new_attribute = 1
+        self.assertEqual(buf.byte_count, 2)
+        self.assertIs(type(buf.byte_count), int)
+
+
+class FixedErrorTests(unittest.TestCase):
+    def test_limit_error_shape_and_no_input_echo(self):
+        buf = PayloadBuffer(max_bytes=4)
+        buf.append(b"abcd")
+        secret = b"SECRET-CHUNK-7731"
+        with self.assertRaises(PayloadLimitError) as cm:
+            buf.append(secret)
+        err = cm.exception
+        self.assertIsInstance(err, Exception)
+        self.assertEqual(err.code, LIMIT)
+        self.assertEqual(err.message, LIMIT_MESSAGE)
+        self.assertEqual(str(err), LIMIT_MESSAGE)
+        self.assertEqual(err.args, (LIMIT_MESSAGE,))
+        for surface in (str(err), repr(err), repr(err.args)):
+            self.assertNotIn(secret.decode("ascii"), surface)
+            self.assertNotIn("7731", surface)
+        self.assertIsNone(err.__cause__)
+        self.assertIsNone(err.__context__)
+
+    def test_invalid_input_error_shape_and_no_input_echo(self):
+        bad_value = "weird-max-4242"
+        with self.assertRaises(PayloadLimitError) as cm:
+            PayloadBuffer(max_bytes=bad_value)
+        err = cm.exception
+        self.assertIsInstance(err, Exception)
+        self.assertEqual(err.code, INVALID_INPUT)
+        self.assertEqual(err.message, INVALID_INPUT_MESSAGE)
+        self.assertEqual(str(err), INVALID_INPUT_MESSAGE)
+        self.assertEqual(err.args, (INVALID_INPUT_MESSAGE,))
+        for surface in (str(err), repr(err), repr(err.args)):
+            self.assertNotIn(bad_value, surface)
+            self.assertNotIn("4242", surface)
+        self.assertIsNone(err.__cause__)
+        self.assertIsNone(err.__context__)
+
+    def test_chunk_invalid_input_error_no_echo(self):
+        buf = PayloadBuffer()
+        bad = "distinctive-chunk-9901"
+        with self.assertRaises(PayloadLimitError) as cm:
+            buf.append(bad)
+        err = cm.exception
+        self.assertEqual(err.code, INVALID_INPUT)
+        self.assertEqual(err.message, INVALID_INPUT_MESSAGE)
+        self.assertNotIn(bad, str(err))
+        self.assertNotIn(bad, repr(err))
+        self.assertIsNone(err.__cause__)
+        self.assertIsNone(err.__context__)
+
+    def test_unknown_code_maps_to_invalid_input(self):
+        err = PayloadLimitError("anything-else-555")
+        self.assertEqual(err.code, INVALID_INPUT)
+        self.assertEqual(err.message, INVALID_INPUT_MESSAGE)
+        self.assertEqual(err.args, (INVALID_INPUT_MESSAGE,))
+        self.assertNotIn("555", str(err))
+        self.assertNotIn("555", repr(err))
+
+    def test_error_code_cannot_retain_or_compare_caller_objects(self):
+        class StrSubclass(str):
+            pass
+
+        class HostileCode:
+            def __eq__(self, other):
+                raise AssertionError("caller comparison must not run")
+
+        for value in (StrSubclass(LIMIT), HostileCode()):
+            with self.subTest(value_type=type(value).__name__):
+                err = PayloadLimitError(value)
+                self.assertIs(type(err.code), str)
+                self.assertEqual(err.code, INVALID_INPUT)
+                self.assertEqual(err.args, (INVALID_INPUT_MESSAGE,))
+
+
+if __name__ == "__main__":
+    unittest.main()

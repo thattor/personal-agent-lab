@@ -1,0 +1,34 @@
+Local temporary SQLite; mock question/answer; structural verification only.
+打合せの日時を教えてください。
+回答保存後、同じ仕事を再開しました。
+Saved-result inspection (read-only; not completion authority)
+Model: mock (no real model call; saved drafts are mock output)
+Verification: structural only (no semantic quality judgement)
+Session: ask-demo
+Event 1 (result): event-b7af66fa8d9f46a0b3e727a8a8fd59a1 (work completed from saved verification)
+  Work ref: goal goal-72ccfa71c9ec4c4a9c070158c6d3f081 revision 1 epoch 2
+  Work state (TSK, separate from result usability): completed
+  Ref artifact:artifact-bbf338a8ac8a4d6d8917f8e303d9310d
+    Observed at: 2026-10-09T12:06:24.934764+00:00 (stored observation time)
+    Media type: text/plain  hash: ba7e3a26382eb671548d2569cbb0133096d977c35eb21afe8b88c68899682e25
+    Usable: yes
+    Content:
+      打合せのご案内（下書き）
+      10月12日 午後2時から開催します。
+      送信前に内容をご確認ください。
+  Ref verification:verification-48f821279c7b4189868c3dc80580667c
+    Read at: 2026-10-09T12:06:24.940254+00:00 (time of this read, not creation time)
+    Media type: application/json  hash: 2a0d2577b01d29053b87976a8f5bb483b247426151ceb37b0f5bcf818d29818a
+    Saved verification (historical, separate from current usability):
+      Fixed Conditions:
+        - condition-56ba1be5decb40a78c474c1db6ae3b81 [artifact_saved]: 下書きが保存されている
+      Original checks (historical; structural, not a semantic judgement):
+        - condition-56ba1be5decb40a78c474c1db6ae3b81: met - ordered artifact set saved and verified (evidence: artifact:artifact-bbf338a8ac8a4d6d8917f8e303d9310d)
+      Saved artifact bindings, in order:
+        - artifact:artifact-bbf338a8ac8a4d6d8917f8e303d9310d hash=ba7e3a26382eb671548d2569cbb0133096d977c35eb21afe8b88c68899682e25 bytes=128
+      Dependencies: record:record-e13942f73d9a40b58c2ec764b3d83660, record:record-48c9a023650843ddb34a3f2c5bd6784c
+    Current usability: current
+Next cursor: event-b7af66fa8d9f46a0b3e727a8a8fd59a1
+Page scan truncated: no
+
+

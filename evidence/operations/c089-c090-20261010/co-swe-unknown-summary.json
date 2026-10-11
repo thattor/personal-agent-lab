@@ -1,0 +1,20 @@
+{
+  "actual_implement_model": "NOT_PROVEN",
+  "co_version": "0.4.5",
+  "contract": "PRI02-MODEL-DIAGNOSTIC/1",
+  "evidence_label": "C090 isolated pure implementation CO attempt",
+  "exit_code": 75,
+  "independent_native_candidate_adopted_after_review": true,
+  "late_output_auto_adoption": false,
+  "outcome": "unknown",
+  "pause_code": "route_timeout",
+  "process_outcome": "unknown",
+  "quota": "unknown",
+  "requested_implement_model": "swe-2-high",
+  "requested_implement_route": "devin",
+  "resume_retry_cancel_release": false,
+  "selectable_options": [],
+  "status": "awaiting_decision",
+  "timeout_seconds": 300,
+  "verified": false
+}

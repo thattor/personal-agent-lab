@@ -1,0 +1,62 @@
+{
+  "recorded_at": "2026-10-09T01:25:09.597486+00:00",
+  "source_commit": "8db45fd06b5485bc1af5dd33b13bff8663c3ccf9",
+  "author_commit": "3e828019adaf4a17bcd9f36b5be5a41de7959538",
+  "integrated_author_commit": "9689462",
+  "prerequisite_commit": "d8e4465df049b2fae411b19e04990a08928aaa9c",
+  "sha256": {
+    "pal/intake_v5.py": "29f5162ca648fa25da4ad7714f3fc90319707fefcaad30347b43f9816b31225b",
+    "tests/test_intake_v5.py": "5b09c4d56a5a48b9ca497292b6a071ba28f0e2d9b7cb94b64cb7525b03ee1181",
+    "docs/design/contracts-v5/TSK01-IMPLEMENTATION.md": "6c8cdc070b7a2f9f5bd77d749e2e053e3f48d4d9f150e6bb0d36b1f0da7d7d57",
+    "tests/test_v5_intake_pipeline.py": "8ccad8a5f75590ee44243e7a0df45366083313451391b07137bd0c09cc9f2682",
+    "pal/contracts_v5.py": "683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f"
+  },
+  "root_full_suite": {
+    "test_count": 440,
+    "seconds": 22.989,
+    "exit_code": 0,
+    "log": "full-integrated.log",
+    "environment": "approved host; temporary SQLite/mock localhost only"
+  },
+  "root_consumer": {
+    "test_count": 4,
+    "seconds": 0.009,
+    "exit_code": 0,
+    "log": "consumer.log"
+  },
+  "astra_author": {
+    "tests": 14,
+    "seconds": 0.036,
+    "log": "astra-targeted.log",
+    "initial_test_helper_failure": "astra-initial.log"
+  },
+  "independent_review": {
+    "model": "gpt-6.1-sol",
+    "context": "/root/int00_sol_review",
+    "exact_commit": "8db45fd06b5485bc1af5dd33b13bff8663c3ccf9",
+    "verdict": "APPROVE",
+    "actual_targeted_counts": [
+      14,
+      4
+    ],
+    "report": "sol-independent-review.md"
+  },
+  "agy_provenance": {
+    "whole_output": "REJECTED partial deadline output despite exit0/SUCCESS",
+    "recovered_module_sha256": "29f5162ca648fa25da4ad7714f3fc90319707fefcaad30347b43f9816b31225b",
+    "module_matches_recovered_value": true,
+    "native_completion": "Astra inspected source and authored tests/note; root authored consumer tests"
+  },
+  "acceptance": "TSK01/1 isolated unused preparation MET only",
+  "not_run": [
+    "real PRI request authorization",
+    "real MEM source availability/reference stop",
+    "shared C14 transaction API",
+    "search/attach/claim/expected-version mutation",
+    "historical revisions",
+    "startup lock",
+    "providers/UI/full v5 adoption",
+    "human usefulness"
+  ],
+  "remaining_route_constraint": "AGY remote terminal outcome unknown; official exact conversation load auto-review rejected; no workaround/new call."
+}

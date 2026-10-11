@@ -1,0 +1,61 @@
+{
+  "task_id": "f9f8dd69c40f4ebca78d294deaa5f640",
+  "status": "verified",
+  "verified": true,
+  "attempts": [
+    {
+      "attempt_id": "plan-a1",
+      "call_id": "plan",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:0f43107b692fc8da272a9b1a9fac6c79c657d00fc27a6456dd39089380502f5d",
+      "role": "planner",
+      "route": "claude",
+      "step_id": "plan"
+    },
+    {
+      "attempt_id": "s1-a1",
+      "call_id": "s1",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "swe-2-high",
+      "prompt_sha256": "sha256:827883923801e3cd7d1b3147248c4b561363877305467e114406a5aa27cf2577",
+      "role": "implement",
+      "route": "devin",
+      "step_id": "s1"
+    }
+  ],
+  "verify": {
+    "after": {
+      "docs/design/contracts-v5/VER01-IMPLEMENTATION.md": "sha256:6bb81338cb913029effb9343deef854aacb8dbbfa1fdee5b7a4678f65df2cd3f",
+      "docs/design/contracts-v5/VER01-SCOPE.md": "sha256:bb7837dc0d0780802c1dd3af7559011838cf53aa33a824a16b413fa6408e7dba",
+      "docs/design/contracts-v5/VER01-TEST-PLAN.md": "sha256:1fb4894962ce93ca0fbcb99b1ca4563aebfa03ad936f048f3a37aebeda147455",
+      "pal/artifacts_v5.py": "sha256:31ac6ec74b816b2eca5268543ada02abfcef8535f7525a7a08115df23e6afd70",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/verification_v5.py": "sha256:7af353619c007a76503eaf251bc19f99cdcd09e362cc6143288434fc35d2b108",
+      "tests/test_verification_v5.py": "sha256:5da67471eed93361a52eb7bb7c80f18537cda461dac0744f961b426de8a18f8b"
+    },
+    "before": {
+      "docs/design/contracts-v5/VER01-IMPLEMENTATION.md": "sha256:6bb81338cb913029effb9343deef854aacb8dbbfa1fdee5b7a4678f65df2cd3f",
+      "docs/design/contracts-v5/VER01-SCOPE.md": "sha256:bb7837dc0d0780802c1dd3af7559011838cf53aa33a824a16b413fa6408e7dba",
+      "docs/design/contracts-v5/VER01-TEST-PLAN.md": "sha256:1fb4894962ce93ca0fbcb99b1ca4563aebfa03ad936f048f3a37aebeda147455",
+      "pal/artifacts_v5.py": "sha256:31ac6ec74b816b2eca5268543ada02abfcef8535f7525a7a08115df23e6afd70",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/verification_v5.py": "sha256:7af353619c007a76503eaf251bc19f99cdcd09e362cc6143288434fc35d2b108",
+      "tests/test_verification_v5.py": "sha256:5da67471eed93361a52eb7bb7c80f18537cda461dac0744f961b426de8a18f8b"
+    },
+    "exit": 0,
+    "log": "test_caller_configuration_and_active_connection_preconditions (test_verification_v5.VerificationStoreTests.test_caller_configuration_and_active_connection_preconditions) ... ok\ntest_closed_shape_types_bounds_and_nonartifact_input (test_verification_v5.VerificationStoreTests.test_closed_shape_types_bounds_and_nonartifact_input) ... ok\ntest_context_authority_failures_are_preserved_without_key (test_verification_v5.VerificationStoreTests.test_context_authority_failures_are_preserved_without_key) ... ok\ntest_empty_set_is_unmet_not_missing_evidence (test_verification_v5.VerificationStoreTests.test_empty_set_is_unmet_not_missing_evidence) ... ok\ntest_epoch_append_and_denied_dependency_invalidate_historical_fact (test_verification_v5.VerificationStoreTests.test_epoch_append_and_denied_dependency_invalidate_historical_fact) ... ok\ntest_exact_ordered_whole_set_required (test_verification_v5.VerificationStoreTests.test_exact_ordered_whole_set_required) ... ok\ntest_fixed_conditions_met_unknown_and_no_task_or_budget_change (test_verification_v5.VerificationStoreTests.test_fixed_conditions_met_unknown_and_no_task_or_budget_change) ... ok\ntest_malformed_callbacks_and_duplicate_condition_ids_fail_closed (test_verification_v5.VerificationStoreTests.test_malformed_callbacks_and_duplicate_condition_ids_fail_closed) ... ok\ntest_mutating_and_committing_callbacks_fail_without_false_rollback_claim (test_verification_v5.VerificationStoreTests.test_mutating_and_committing_callbacks_fail_without_false_rollback_claim) ... ok\ntest_older_artifact_epoch_allowed_but_wrong_revision_or_goal_stale (test_verification_v5.VerificationStoreTests.test_older_artifact_epoch_allowed_but_wrong_revision_or_goal_stale) ... ok\ntest_original_replay_precedes_authority_after_invalidation (test_verification_v5.VerificationStoreTests.test_original_replay_precedes_authority_after_invalidation) ... ok\ntest_post_insert_fault_and_interrupt_rollback_and_key_retry (test_verification_v5.VerificationStoreTests.test_post_insert_fault_and_interrupt_rollback_and_key_retry) ... ok\ntest_readonly_inspect_preserves_caller_transaction_and_writes (test_verification_v5.VerificationStoreTests.test_readonly_inspect_preserves_caller_transaction_and_writes) ... ok\ntest_required_artifact_missing_and_source_uncertainty_are_unavailable (test_verification_v5.VerificationStoreTests.test_required_artifact_missing_and_source_uncertainty_are_unavailable) ... ok\ntest_unchanged_pause_valid_and_status_uncertainty_not_invalidated (test_verification_v5.VerificationStoreTests.test_unchanged_pause_valid_and_status_uncertainty_not_invalidated) ... ok\ntest_unknown_verification_and_malformed_read_requests (test_verification_v5.VerificationStoreTests.test_unknown_verification_and_malformed_read_requests) ... ok\n\n----------------------------------------------------------------------\nRan 16 tests in 0.018s\n\nOK\n",
+    "n": 1,
+    "passed": true,
+    "sandbox": "seatbelt-v1",
+    "version": "sha256:2df7415b6fbbc5ac1d3fc0ea68e8e09ee2623d77ccb1f17fc1724020105d0e95"
+  },
+  "base": "96568a585ac0a3587de01c013911196a6af8ef93",
+  "result_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/f9f8dd69c40f4ebca78d294deaa5f640/result.json",
+  "diff_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/f9f8dd69c40f4ebca78d294deaa5f640/result.diff",
+  "scope": "SWE authored only module and note; CO verifier passed16 immutable public tests. Independent review/actual connection/full regression still pending."
+}

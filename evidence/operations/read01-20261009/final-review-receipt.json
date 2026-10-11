@@ -1,0 +1,14 @@
+{
+  "task_id": "de3d5d69eee84e79bc549eb2c62cee55",
+  "base_sha": "3b7fff5edb506ef2bf2ccfc647fbe6631a0a47e8",
+  "status": "verified",
+  "verified": true,
+  "model": "claude/claude-opus-5-5",
+  "code": "APPROVE ff1a1cc",
+  "milestone": "REFINE evidence provenance only",
+  "next_ask": "REFINE",
+  "root_disposition": "Committed the actual assertion harness and regenerated separate outputs; product source unchanged. Original wrapper output preserved; independent review verdict remains REFINE, not relabeled ALIGNED.",
+  "commands_run_by_reviewer": false,
+  "supplied_bytes_match": true,
+  "CO_verified_scope": "note structure only"
+}

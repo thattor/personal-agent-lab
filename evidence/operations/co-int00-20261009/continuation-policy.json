@@ -1,0 +1,18 @@
+{
+  "schema": "pal.co-continuation-policy/1",
+  "source_thread_id": "01a1137a-8de3-7890-b874-cdd0a7125711",
+  "source_turn_id": "01a11c9f-6db9-7f92-ba4a-96ed1ad16b07",
+  "source_type": "userMessage independently read with read_thread",
+  "source_turn_started_at": "2026-10-08T17:46:12+00:00",
+  "owner_original": "はい。CO0.3系では複数並列実行の実装がされており、現在0.４系にも実装を進めている最中です\nそれまでは進められる作業を進めていき、0.４の複数並列実行に対応したバージョンが出たらアップデートして利用してください\n",
+  "authority": "Continue independent PAL work; when an official CO0.4 parallel-capable version is available, update and use after supported state-preserving migration and actual validation.",
+  "user_report_not_measurement": "CO0.3 parallel implementation and ongoing0.4 work are owner statements, not this PAL task measured performance.",
+  "limits": [
+    "Existing cost/auth/data/publication boundaries",
+    "No CO implementation edits",
+    "No0.3 downgrade directed",
+    "No new recurring monitor or paused schedule restart",
+    "Unknown SWE task is not cancelled/retried/switched by this instruction"
+  ],
+  "update_done": false
+}

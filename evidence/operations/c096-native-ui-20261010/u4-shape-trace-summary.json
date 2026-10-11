@@ -1,0 +1,33 @@
+{
+  "source_commit": "20d512ae6b87382a19007b2ca95e613adb7bfefd",
+  "methods": 1,
+  "subcases": 3,
+  "seconds": 1.57,
+  "exit_code": 0,
+  "hold_calls": 0,
+  "result_shapes": [
+    {
+      "control": "pause",
+      "status": "released",
+      "state": "paused",
+      "control_status": "none"
+    },
+    {
+      "control": "cancel",
+      "status": "released",
+      "state": "cancelled",
+      "control_status": "none"
+    },
+    {
+      "control": "source-stop",
+      "status": "released",
+      "state": "queued",
+      "control_status": "none"
+    }
+  ],
+  "observer_changes_results": false,
+  "trace_sha256": "cd2653b44ee257d7d1f5414b5405e4dad0e0fe1aeac26a749228bbd7ae4d1acb",
+  "log_sha256": "beb85071a5e21d49221181c424029bc6be3192aab91e19570ca512476bd3b035",
+  "provider_kind": "typed_synthetic_fixture",
+  "actual_model_call": false
+}

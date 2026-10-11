@@ -1,0 +1,12 @@
+{
+  "task": "f100ab7241ec4f4c83a52fb903a46c3e",
+  "status": "failed",
+  "code": "input_invalid",
+  "calls": 0,
+  "attempts": 0,
+  "reason": "selected source inputs273341 bytes exceed CO MAX_CONTEXT262144; max source65536 retained",
+  "resolution": "remove duplicate structured demo and replace already-consumed full earlier review with receipt; keep final code, exact contracts, tests, actual demo source/output",
+  "prevention": "preflight selected git blobs against installed workspace.py MAX_FILE/MAX_CONTEXT before submit",
+  "state_edited": false,
+  "refusal_bypass": false
+}

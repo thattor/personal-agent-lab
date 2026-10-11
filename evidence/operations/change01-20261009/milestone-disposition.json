@@ -1,0 +1,33 @@
+{
+  "schema": "PAL.CHANGE01.milestone-disposition/1",
+  "input_commit": "2b1d860319ca71ea00b710b37146a997544ac49a",
+  "route": "existing CO0.4.5 / first-party Claude Code",
+  "models_observed": [
+    "claude-opus-5-5"
+  ],
+  "roles_observed": [
+    "planner",
+    "implement(report-producing review focus)"
+  ],
+  "reviewer_verdict": "ALIGNED",
+  "root_disposition": "ADOPT design alignment of the implemented local mock CHANGE01/1 slice",
+  "co_verified": false,
+  "co_error": "verification_failed: report input_sha256 markers NOT_COMPUTED; reviewer had tools disabled",
+  "verification_execution": "one CO verifier ran and exited1; Root host binds original exact input bytes without changing model verdict/evaluation",
+  "root_normalized_report_check": "PASS exit0: original declared schema/input-hash verifier on host-bound report; no product acceptance inferred",
+  "source_sha256": "498b06ca6033c980bfdfe24b54195f247dbc7a46d267c67a1a54b0028f5c3e8f",
+  "scope_public_sha256": "3d5b137db0590bdee445dfc8baa4a42666aa11e4316f440ef5872f1b05c288f9",
+  "scope_original_local_sha256": "fdd1fe51f1d8931bb900f21f4dd4b097c1e17ea5cab838b905553b22cbfaf62c",
+  "next_dependency": "scoped C13 restart recovery and startup host lock before PRI routing",
+  "routine_dispositions": {
+    "F1": "forward recovery dependency, explicitly excluded from CHANGE acceptance",
+    "F2": "next RECOVERY scope must preserve latest-intent settlement and admitted-call uncertainty",
+    "F3": "correct shared state-table wording closed to superseded for change",
+    "F4": "PRI must bind all reused/derived source provenance; current trusted-host-only limit retained",
+    "F5": "historical current_artifact_refs field is scoped by requested revision; consumer must label history",
+    "F6": "host binds file identity; no model-computed hash claim or third duplicate review"
+  },
+  "prevention": "Future bounded model reviews return evaluator text; host binds exact source snapshot hashes separately. Do not require tool-disabled model to compute hashes or weaken an implementation verifier. CO remains unchanged.",
+  "limits": "This is a design review only, based on the supplied snapshot. Only the selected complete methods in CHANGE01-OWNER-EXCERPTS.md were inspected. Omitted methods were not inspected, and no coverage is inferred for them. They include _questions, _intersect, _mint, _event, _claim_wire, _register, _check_sources, admit_call/end_call/get_call, create/answer/complete, IntakeStore, the MEM/ART/VER/READ owners and the contracts_v5 parsers. Fixed TSK, RUN and integrity test files other than tests/test_change_connection_v5.py were not supplied. This reviewer executed no tests, demo, probe or commands. The following are Root evidence: full845 PASS (26.939 s, exit 0), the 51 new methods, the actual demo, the connection tests, the integrity regression and the exact byte/hash checks. The following are the independent Sol reviewer's evidence: the original REQUEST_CHANGES reproduction, the 51 focused and 122 related runs, and the linked-ID probe results (original mutation; now unavailable with mutated=False). Astra authored the source. All execution evidence uses mock callbacks and fresh temporary SQLite only. Nothing here claims a real provider, UI, service or external effect; PRI natural-language or semantic authority; semantic usefulness; general restart recovery; old or live DB migration; or whole-PAL or product acceptance. An arbitrary hostile callback COMMIT is outside the trusted-host boundary. Input identity is insufficient: with all tools disabled, this reviewer cannot compute the SHA256 of the actual bytes of the three input files. The input_sha256 values are therefore explicit NOT_COMPUTED markers rather than guessed or copied hashes, and the declared verifier is expected to fail until hashes computed from the actual files are supplied. No truncation of the supplied files was observed. CHANGE01-SCOPE.md was evaluated as supplied (the public export).",
+  "raw_runtime_evidence": "retained locally under D045; no raw account, state, workspace or conversation fields exported"
+}

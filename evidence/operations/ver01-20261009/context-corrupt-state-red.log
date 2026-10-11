@@ -1,0 +1,25 @@
+test_closed_request_and_host_purpose_are_validated (test_verification_context_v5.VerificationContextTests.test_closed_request_and_host_purpose_are_validated) ... ok
+test_collaborator_preconditions_preserve_caller_work (test_verification_context_v5.VerificationContextTests.test_collaborator_preconditions_preserve_caller_work) ... ok
+test_corrupt_stored_conditions_and_required_index_are_unavailable (test_verification_context_v5.VerificationContextTests.test_corrupt_stored_conditions_and_required_index_are_unavailable) ... ok
+test_factual_status_rejects_unknown_saved_state (test_verification_context_v5.VerificationContextTests.test_factual_status_rejects_unknown_saved_state) ... FAIL
+test_old_epoch_and_unknown_goal_keep_specific_errors (test_verification_context_v5.VerificationContextTests.test_old_epoch_and_unknown_goal_keep_specific_errors) ... ok
+test_pause_and_release_preserve_factual_snapshot_and_deny_new_save (test_verification_context_v5.VerificationContextTests.test_pause_and_release_preserve_factual_snapshot_and_deny_new_save) ... ok
+test_queued_status_is_readonly_but_does_not_grant_save (test_verification_context_v5.VerificationContextTests.test_queued_status_is_readonly_but_does_not_grant_save) ... ok
+test_running_snapshot_omits_registered_optional_input (test_verification_context_v5.VerificationContextTests.test_running_snapshot_omits_registered_optional_input) ... ok
+
+======================================================================
+FAIL: test_factual_status_rejects_unknown_saved_state (test_verification_context_v5.VerificationContextTests.test_factual_status_rejects_unknown_saved_state)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_context_v5.py", line 133, in test_factual_status_rejects_unknown_saved_state
+    self.error(self.snapshot(), 'unavailable')
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_context_v5.py", line 30, in error
+    self.assertFalse(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false : {'ok': True, 'value': {'artifact_refs': [], 'conditions': [{'check': 'artifact_saved', 'description': 'draft stored', 'id': 'condition-c99a68bf41b64cb3a5f2d48f48252e60'}, {'check': 'semantic', 'description': 'wording useful', 'id': 'condition-ad94fda0d52d48bbb9b59be4048901b1'}], 'source_refs': [{'id': 'origin', 'kind': 'record'}, {'id': 'required', 'kind': 'record'}], 'work_ref': {'epoch': 0, 'goal_id': 'goal-165cf2b2353e47edaec8026be032ec3e', 'revision': 1}}}
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.010s
+
+FAILED (failures=1)

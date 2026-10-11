@@ -1,0 +1,118 @@
+# VER01-integrity/1 design
+
+**Basis:** Section F and the shared preamble of PARALLEL-SCOPE-2.md. C08 and C09 are context only. Only two files are writable: `pal/artifact_integrity_v5.py` and `tests/test_artifact_integrity_v5.py`.
+
+## 1. Public surface (settled, unchanged)
+
+- `check_bytes(data, expected_sha256, expected_bytes) -> IntegrityCheck`
+  - All three parameters are positional-or-keyword, as written in scope.
+  - Set `__all__ = ("IntegrityCheck", "check_bytes")`.
+- `IntegrityCheck` is `@dataclass(frozen=True, slots=True)` with two fields: `status: str` and `reason: str`.
+  - Status values are exactly `"met"`, `"unmet"` or `"unknown"`.
+  - It has no other fields and no input echo.
+- The limit is a private constant: `_MAX_BYTES = 1048576`. It is not exported, so the API surface does not grow.
+- Use stdlib only: `import hashlib` and `dataclasses`.
+- Hash at call time as `hashlib.sha256(data).hexdigest()` so tests can patch `hashlib.sha256`.
+
+## 2. Fixed reasons (ASCII module constants)
+
+| Status | Reason |
+|---|---|
+| unknown | `invalid_expected_sha256` |
+| unknown | `invalid_expected_bytes` |
+| unknown | `invalid_data` |
+| unmet | `data_exceeds_limit` |
+| unmet | `byte_count_mismatch` |
+| unmet | `sha256_mismatch` |
+| met | `integrity_match` |
+
+## 3. Precedence
+
+The first failure returns. Every type test uses `type(x) is T`. This rejects bool and all subclasses, and it never calls user `__len__`, `__eq__` or `__iter__`.
+
+1. `type(expected_sha256) is str`, `len == 64`, and every character is in `"0123456789abcdef"`. No regex, so a trailing `"\n"` cannot slip past `$`. Uppercase, non-ASCII digits and str subclasses all fail. Failure returns **unknown / `invalid_expected_sha256`**.
+2. `type(expected_bytes) is int` and `0 <= expected_bytes <= 1048576`. Bool, int subclasses, float, str, negative values and values above the limit all fail. Failure returns **unknown / `invalid_expected_bytes`**.
+3. `type(data) is bytes`. bytearray, memoryview, str, None and bytes subclasses all fail. Failure returns **unknown / `invalid_data`**.
+4. `len(data) > 1048576` returns **unmet / `data_exceeds_limit`**. The body is not hashed.
+5. `len(data) != expected_bytes` returns **unmet / `byte_count_mismatch`**. The body is not hashed.
+6. If `sha256(data).hexdigest() != expected_sha256`, return **unmet / `sha256_mismatch`**.
+7. Otherwise return **met / `integrity_match`**.
+
+Additional rules:
+
+- `expected_bytes == 0` with `b""` and the empty-string SHA-256 is **met**.
+- The function has no try/except and no raise. Every path is a pure type, length or hash comparison, so no exception can occur.
+- Out of scope: Condition, Ref and verification IDs; storage; semantic, UTF-8, media, source and ownership checks; completion; INT00 files.
+
+## 4. Tests (`unittest`, stdlib only, no `tests/__init__.py` needed)
+
+**Known vectors**
+- `b""` with `e3b0c442…b855` and 0 is met.
+- `b"abc"` with `ba7816bf…15ad` and 3 is met.
+
+**Multibyte**
+- `"あい".encode()` has 6 bytes and its correct hash is met.
+- An expected count of 2 (the character count) is unmet / `byte_count_mismatch`.
+
+**Mismatch**
+- Correct body with a wrong valid hash is unmet / `sha256_mismatch`.
+- Correct hash with a wrong count is unmet / `byte_count_mismatch`.
+- Same-length tampering (`b"abd"` against the `abc` hash) is unmet / `sha256_mismatch`.
+
+**Invalid metadata** (each returns unknown with its reason)
+- Hash inputs:
+  - uppercase hex
+  - 63 or 65 characters
+  - `"g"` character
+  - 64 hex characters plus `"\n"`
+  - full-width digits
+  - str subclass
+  - bytes hash
+  - None
+- `expected_bytes` inputs:
+  - True and False
+  - int subclass
+  - -1
+  - 1048577
+  - 3.0
+  - `"3"`
+- `data` inputs:
+  - bytearray
+  - memoryview
+  - str
+  - None
+  - bytes subclass
+  - `object()` whose `__len__` raises; this must not raise
+
+**Precedence**
+- Bad hash plus bad count plus bad data returns `invalid_expected_sha256`.
+- Bad count plus bad data returns `invalid_expected_bytes`.
+
+**Limit**
+- Exactly 1048576 bytes with correct metadata is met.
+- 1048577 bytes is unmet / `data_exceeds_limit`. Assert with `mock.patch("hashlib.sha256")` that the hash function was not called.
+- A count mismatch also does not hash.
+- `expected_bytes = 1048576` is accepted.
+
+**Immutability**
+- `setattr` on `status` or `reason` raises `AttributeError` (FrozenInstanceError).
+- No `__dict__` and no new attributes.
+
+**Bounded reasons**
+- For every path, `reason` is in the fixed set, is ASCII, and is at most 64 characters.
+- A distinctive input (marker string or data) does not appear in `reason` or `repr(result)`.
+- The return type is exactly `IntegrityCheck`.
+
+## 5. Contradictions and remaining gaps
+
+**No contradiction found.** The F limit of 1048576 matches the C08 limit of 1MiB, and met/unmet/unknown matches C09.
+
+Remaining gaps:
+
+- **Hash format:** C08 says only `hash:str`. It does not specify the algorithm or format. The common wire (INT00/SOL) must fix "SHA-256, lowercase 64-hex" for ART output, or this check will report valid ART hashes as unknown.
+- **Host work still required:**
+  - prove the expected metadata comes from canonical storage
+  - map results to C09 `condition_id` and `evidence_refs`
+  - persist the verification
+  - add UTF-8, media and source checks
+- **Integration not yet tested:** the D → E → ART01 → F milestone integration and the full test suite remain undone.

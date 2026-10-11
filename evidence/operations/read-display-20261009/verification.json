@@ -1,0 +1,28 @@
+{
+  "source_commit": "a974fc0d5bd5bf3de1c2d2d7da61c750859800a6",
+  "contract": "READ01/1 + display N1/1; no wire change",
+  "full_tests": {
+    "count": 793,
+    "seconds": 25.447,
+    "exit_code": 0,
+    "receipt": "full-receipt.json"
+  },
+  "focused_read_tests": 32,
+  "new_display_tests": 6,
+  "demo": "ask-demo/demo.json and demo.log: temporary SQLite ASK path PASS after renderer change",
+  "independent_review": {
+    "model": "gpt-6.1-sol",
+    "context": "int00_sol_review; distinct from Sol art_native_sol author",
+    "author_commit": "0ff0309c78404be16f7ae1972b424ee59edb2267",
+    "verdict": "APPROVE",
+    "own_tests": "focused6 + existing32; additional236 non-LF Unicode control/format/separator characters through public inspect/render",
+    "integrated_bytes_identical": true,
+    "note": "docs/design/contracts-v5/READ01-DISPLAY-INDEPENDENT-REVIEW.md"
+  },
+  "hashes": {
+    "pal/read_consumer_v5.py": "fc0b851e81aef9ba8495a1ecc7a9426365b3b47198a0b6ba1a24489eaba76924",
+    "tests/test_read_display_v5.py": "f510b3b19fa9b2c29de682b6ff8ffc4998ec21d29d6ac3bb9998ef8a34680a42"
+  },
+  "original_failures": "author-red.log has5 failures of6; author-green.log retains broad isolated-import error, not a green full result",
+  "limits": "plain-text display only; no storage/hash/inspection modification, no HTML/UI/provider/semantic or whole-PAL acceptance; GitHub CI not claimed"
+}

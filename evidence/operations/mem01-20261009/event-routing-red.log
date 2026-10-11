@@ -1,0 +1,29 @@
+test_context_source_stop_invalidates_only_dependent_work_and_survives_reopen (test_memory_intake_pipeline_v5.MemoryIntakePipelineTests.test_context_source_stop_invalidates_only_dependent_work_and_survives_reopen) ... ok
+test_failure_after_real_invalidation_or_event_rolls_back_all_owners (test_memory_intake_pipeline_v5.MemoryIntakePipelineTests.test_failure_after_real_invalidation_or_event_rolls_back_all_owners) ... ok
+test_shared_append_search_intake_stop_read_and_historical_replay (test_memory_intake_pipeline_v5.MemoryIntakePipelineTests.test_shared_append_search_intake_stop_read_and_historical_replay) ... ok
+test_stop_first_commits_before_intake_and_intake_first_is_invalidated (test_memory_intake_pipeline_v5.MemoryIntakePipelineTests.test_stop_first_commits_before_intake_and_intake_first_is_invalidated) ... ok
+test_unsupported_work_state_rolls_back_source_stop (test_memory_intake_pipeline_v5.MemoryIntakePipelineTests.test_unsupported_work_state_rolls_back_source_stop) ... ok
+test_work_notification_returns_to_its_session_while_stop_ack_goes_to_actor (test_memory_intake_pipeline_v5.MemoryIntakePipelineTests.test_work_notification_returns_to_its_session_while_stop_ack_goes_to_actor) ... FAIL
+
+======================================================================
+FAIL: test_work_notification_returns_to_its_session_while_stop_ack_goes_to_actor (test_memory_intake_pipeline_v5.MemoryIntakePipelineTests.test_work_notification_returns_to_its_session_while_stop_ack_goes_to_actor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_memory_intake_pipeline_v5.py", line 115, in test_work_notification_returns_to_its_session_while_stop_ack_goes_to_actor
+    self.assertEqual([json.loads(row[0]) for row in work_events], [dict(old, epoch=1)])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [] != [{'epoch': 1, 'goal_id': 'goal-9e4e575887c[34 chars]: 1}]
+
+Second list contains 1 additional elements.
+First extra element 0:
+{'epoch': 1, 'goal_id': 'goal-9e4e575887c8423fb741ed48cd9468bc', 'revision': 1}
+
+- []
++ [{'epoch': 1,
++   'goal_id': 'goal-9e4e575887c8423fb741ed48cd9468bc',
++   'revision': 1}]
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.030s
+
+FAILED (failures=1)

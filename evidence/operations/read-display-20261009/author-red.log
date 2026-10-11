@@ -1,0 +1,68 @@
+test_all_envelope_strings_are_display_escaped (test_read_display_v5.ReadDisplayTests.test_all_envelope_strings_are_display_escaped) ... FAIL
+test_condition_and_reason_multiline_are_nested (test_read_display_v5.ReadDisplayTests.test_condition_and_reason_multiline_are_nested) ... FAIL
+test_controls_are_visible_and_inactive (test_read_display_v5.ReadDisplayTests.test_controls_are_visible_and_inactive) ... FAIL
+test_error_multiline_is_nested (test_read_display_v5.ReadDisplayTests.test_error_multiline_is_nested) ... FAIL
+test_event_multiline_cannot_forge_host_status (test_read_display_v5.ReadDisplayTests.test_event_multiline_cannot_forge_host_status) ... FAIL
+test_multiline_draft_and_inspection_bytes_remain_unchanged (test_read_display_v5.ReadDisplayTests.test_multiline_draft_and_inspection_bytes_remain_unchanged) ... ok
+
+======================================================================
+FAIL: test_all_envelope_strings_are_display_escaped (test_read_display_v5.ReadDisplayTests.test_all_envelope_strings_are_display_escaped)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-display-sol-20261009/tests/test_read_display_v5.py", line 78, in test_all_envelope_strings_are_display_escaped
+    self.assert_nested(output, marker)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-read-display-sol-20261009/tests/test_read_display_v5.py", line 33, in assert_nested
+    self.assertTrue(all(line.startswith('      | ') for line in matching), matching)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : ['Session: forged']
+
+======================================================================
+FAIL: test_condition_and_reason_multiline_are_nested (test_read_display_v5.ReadDisplayTests.test_condition_and_reason_multiline_are_nested)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-display-sol-20261009/tests/test_read_display_v5.py", line 47, in test_condition_and_reason_multiline_are_nested
+    self.assert_nested(output, 'Work state: forged')
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-read-display-sol-20261009/tests/test_read_display_v5.py", line 33, in assert_nested
+    self.assertTrue(all(line.startswith('      | ') for line in matching), matching)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : ['Work state: forged']
+
+======================================================================
+FAIL: test_controls_are_visible_and_inactive (test_read_display_v5.ReadDisplayTests.test_controls_are_visible_and_inactive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-display-sol-20261009/tests/test_read_display_v5.py", line 59, in test_controls_are_visible_and_inactive
+    self.assertNotIn(char, output)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: '\x1b' unexpectedly found in 'Saved-result inspection (read-only; not completion authority)\nModel: mock (no real model call; saved drafts are mock output)\nVerification: structural only (no semantic quality judgement)\nSession: session\nEvent 1 (result): e (saved)\n  Work ref: goal g revision 1 epoch 0\n  Work state (TSK, separate from result usability): completed\n  Ref artifact:a\n    Observed at: 2026-10-09T01:00:00Z (stored observation time)\n    Media type: text/plain  hash: 81a4a5931ba29ca4331ee551654b72013a8712f97e0421571aefb16ca5b27c1c\n    Usable: yes\n    Content:\n      日本語\x1b[2J\roverwrite\x08\x00\x7f\x85\u202e\u2028end\nNext cursor: e\nPage scan truncated: no\n'
+
+======================================================================
+FAIL: test_error_multiline_is_nested (test_read_display_v5.ReadDisplayTests.test_error_multiline_is_nested)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-display-sol-20261009/tests/test_read_display_v5.py", line 52, in test_error_multiline_is_nested
+    self.assert_nested(render(self.inspection(failure='failure\nModel: forged')), 'Model: forged')
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-read-display-sol-20261009/tests/test_read_display_v5.py", line 33, in assert_nested
+    self.assertTrue(all(line.startswith('      | ') for line in matching), matching)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : ['Model: forged']
+
+======================================================================
+FAIL: test_event_multiline_cannot_forge_host_status (test_read_display_v5.ReadDisplayTests.test_event_multiline_cannot_forge_host_status)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-read-display-sol-20261009/tests/test_read_display_v5.py", line 37, in test_event_multiline_cannot_forge_host_status
+    self.assert_nested(output, 'Current usability: forged')
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-read-display-sol-20261009/tests/test_read_display_v5.py", line 33, in assert_nested
+    self.assertTrue(all(line.startswith('      | ') for line in matching), matching)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : ['Current usability: forged)']
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.004s
+
+FAILED (failures=5)

@@ -1,0 +1,44 @@
+{
+  "schema": "pal.int00-publication/1",
+  "observed_at": "2026-10-09T00:50:40.984831+00:00",
+  "private": true,
+  "branch": "codex/pal-v5-co",
+  "published_head": "02ff5a6156f6511bd7cff5a8155f1a703123a253",
+  "pr": {
+    "url": "https://github.com/thattor/personal-agent-lab/pull/19",
+    "state": "OPEN",
+    "isDraft": true,
+    "title": "Prepare v5 shared contracts and bounded read pipeline",
+    "statusCheckRollup": []
+  },
+  "pr_body_sha256": "e5a8075c0f2335381b74af47d619500439a1ac073368ddc0e1d6bfbda06d2ed1",
+  "issue": {
+    "url": "https://github.com/thattor/personal-agent-lab/issues/6",
+    "state": "OPEN"
+  },
+  "issue_body_sha256": "c8b88853633b77db2808c1ca50059a5efa144e780e43e3b8f5d63c0d53eb8047",
+  "issue_history_retained": true,
+  "main_unchanged": "94fcacbf506b7514a2380dc1c4e61ccc5dcffca2",
+  "source_hashes_match": true,
+  "old_unknown_status_and_digest_unchanged": true,
+  "capacity_snapshot": {
+    "capacity": {
+      "initialized": true,
+      "limit": 12,
+      "routes": {
+        "claude": {
+          "executing": 0,
+          "reserved": 0
+        },
+        "devin": {
+          "executing": 6,
+          "reserved": 0
+        }
+      }
+    },
+    "status": "ok"
+  },
+  "capacity_scope": "host-wide, including unrelated tasks; not this milestone concurrency",
+  "owned_co_calls_completed": true,
+  "product_acceptance": false
+}

@@ -1,0 +1,60 @@
+{
+  "contract": "PRI02-N/1",
+  "source_commit": "190fcc4e0540984f50ca1ca165ec99116c4a055c",
+  "wrapper_sha256": "67c7ae88456c3b1c3a3d7639baf179112b9d4fc3f5d3185d22ac67f077175d4a",
+  "operator_sha256": "11acda92062bc9b650fce728d64e99577462058b2021b0c258110081ae516e77",
+  "operator_review": "APPROVE; independent source-only review",
+  "status": "unknown",
+  "max_calls": 1,
+  "invoke_count": 1,
+  "entry_observed": true,
+  "actual_prompt_submission": "NOT_PROVEN",
+  "model_requested": "swe-2-high",
+  "effective_native_model_observed": null,
+  "cli_metadata_version": "devin 3000.11.3 (9c803229faa4)",
+  "catalog_exact_model": "swe-2-high",
+  "catalog_cost_tier": "Free",
+  "new_auth_or_cost_enabled": false,
+  "pal_effects": 0,
+  "usable_output_obtained": false,
+  "original_native_ending_obtained": false,
+  "supported_stop_status": "error",
+  "supported_stop_evidence": null,
+  "own_capacity_release_confirmed": false,
+  "shared_capacity_after": {
+    "limit_per_native_adapter": 12,
+    "devin": {
+      "executing": 1,
+      "reserved": 0
+    },
+    "claude": {
+      "executing": 0,
+      "reserved": 0
+    }
+  },
+  "candidate_qualification_sha256": "0dc685a203305bca6d1b85c768dbe6bf3a746a3e750100d5a56a53337558a312",
+  "candidate_profile_sha256": "6b1934e9781ee20eda79cab3a9ff9aeb642b68cb7afc8e5a2f38d6e5538932ae",
+  "profile_is_successful_qualification": false,
+  "original_receipt_hashes": {
+    "case": "6e1edf267266da4b582943875637558fa4020174dcac2df083555733d8053da0",
+    "candidate": "90b230e1ffdc1532110847a80a93b3a9ae5c9af8242fa04186434d97429e3e3d",
+    "controller_entry": "abe2d85b38668edf20e4726378960388da065fd0bba65d2e83e57fb6ccf96a4a",
+    "controller_result": "321b50badc6d45e11efce1dc5c08299813770490480091f1478f3abe37519757",
+    "native_request": "255d825cba7ee0b9e221e970b579c5e818939cfb630a2a1cabaf89da4040a4e1",
+    "native_entry": "539e4f8badbb845a53198ed794a47636aa4084378b1217d5edf64c4b452fc0c2",
+    "native_stop": "cfb37e48ff88d8b114a74491f993c4d09397d0389fcfe867ac3c804174db194f"
+  },
+  "diagnosis": {
+    "verified_mechanism": "Original ACP transport exactly compares version-command stdout before ACP spawn. Bare expected3000.11.3 refuses the observed full devin3000.11.3 build display.",
+    "independent_constructor_and_adapter_fixtures": {
+      "tests": 3,
+      "status": "PASS",
+      "real_cli_or_provider_calls": 0,
+      "source_sha256": "837889dbb9b9cac50c9732a34212aa625b1ac914ea06c4b30b404f884d6f7e1f"
+    },
+    "original_unique_cause": "NOT_PROVEN; original OperationReply was not retained",
+    "original_outcome_reclassified": false,
+    "original_unknown_lease_released_or_retried": false
+  },
+  "limits": "Original MAX1 is consumed and UNKNOWN; raw case/entry/workspace/stop remain local. Version metadata and constructor fixtures do not create an original NeverStarted receipt or native cessation. No whole-product acceptance."
+}

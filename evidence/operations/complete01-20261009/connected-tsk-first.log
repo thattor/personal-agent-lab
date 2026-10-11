@@ -1,0 +1,14 @@
+test_complete_once_closes_lease_preserves_budgets_reopens_and_claims_next (test_completion_connection_v5.CompletionConnectionTests.test_complete_once_closes_lease_preserves_budgets_reopens_and_claims_next) ... ok
+test_complete_write_lock_orders_other_connection_controls (test_completion_connection_v5.CompletionConnectionTests.test_complete_write_lock_orders_other_connection_controls) ... ok
+test_control_or_source_stop_before_complete_wins_on_other_connection (test_completion_connection_v5.CompletionConnectionTests.test_control_or_source_stop_before_complete_wins_on_other_connection) ... ok
+test_corrupt_verification_record_cannot_create_completion (test_completion_connection_v5.CompletionConnectionTests.test_corrupt_verification_record_cannot_create_completion) ... ok
+test_each_actual_completion_write_rolls_back_errors_and_interruptions (test_completion_connection_v5.CompletionConnectionTests.test_each_actual_completion_write_rolls_back_errors_and_interruptions) ... ok
+test_new_attachment_and_new_epoch_require_current_whole_set_verification (test_completion_connection_v5.CompletionConnectionTests.test_new_attachment_and_new_epoch_require_current_whole_set_verification) ... ok
+test_selected_and_unselected_source_stop_keeps_completed_history (test_completion_connection_v5.CompletionConnectionTests.test_selected_and_unselected_source_stop_keeps_completed_history) ... ok
+test_semantic_or_source_fetch_unknown_cannot_complete (test_completion_connection_v5.CompletionConnectionTests.test_semantic_or_source_fetch_unknown_cannot_complete) ... ok
+test_shared_source_stop_is_atomic_for_completed_and_running_work (test_completion_connection_v5.CompletionConnectionTests.test_shared_source_stop_is_atomic_for_completed_and_running_work) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.159s
+
+OK

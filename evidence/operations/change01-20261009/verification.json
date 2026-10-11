@@ -1,0 +1,95 @@
+{
+  "source_author": "b4baae24f226ccd4396cf723d8f31d03ef1e67b3",
+  "source_root_integration": "24342b2",
+  "source_sha256": "498b06ca6033c980bfdfe24b54195f247dbc7a46d267c67a1a54b0028f5c3e8f",
+  "frozen_contract": "CHANGE01/1",
+  "scope_sha256": "3d5b137db0590bdee445dfc8baa4a42666aa11e4316f440ef5872f1b05c288f9",
+  "Root_full": {
+    "count": 845,
+    "seconds": 26.939,
+    "status": "PASS",
+    "exit_code": 0,
+    "command": "/opt/homebrew/bin/python3.13 -E -s -B -m unittest discover -s tests -v"
+  },
+  "new_methods": 51,
+  "fixed_original_methods": 50,
+  "later_integrity_methods": 1,
+  "later_integrity_subcases": 9,
+  "independent_review": {
+    "author": "separate native Sol",
+    "verdict": "APPROVE exact b4baae24",
+    "original_verdict": "REQUEST_CHANGES exact076",
+    "focused_methods": 51,
+    "related_methods": 122,
+    "full_suite_executed_by_reviewer": false
+  },
+  "demo": {
+    "status": "PASS",
+    "temporary_DB_only": true,
+    "mock_callbacks": 2,
+    "goal_count": 1,
+    "replacement_revision": 2,
+    "structural_only": true
+  },
+  "fixed_tests_unchanged": true,
+  "other_owner_modules_unchanged": true,
+  "schema_migration_executed": false,
+  "milestone_Opus": {
+    "model_observed": "claude-opus-5-5",
+    "route": "CO0.4.5 / existing Claude Code",
+    "design_verdict": "ALIGNED",
+    "co_verified": false,
+    "co_error": "verification_failed (NOT_COMPUTED input hashes under disabled tools)",
+    "root_host_input_binding": "exact three workspace files match public base2b1d860; reviewer text/verdict unchanged",
+    "root_report_verifier": "PASS exit0 on host-bound report; does not imply product acceptance",
+    "disposition": "milestone-disposition.json"
+  },
+  "files_sha256": {
+    "pal/tasks_v5.py": "498b06ca6033c980bfdfe24b54195f247dbc7a46d267c67a1a54b0028f5c3e8f",
+    "pal/intake_v5.py": "31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+    "pal/contracts_v5.py": "683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+    "pal/mock_runner_v5.py": "8d6e3046b9df32c324dfed95adf414ece15b639136e66d51ab6b775e9b5e39c1",
+    "tests/test_tasks_change_v5.py": "a1b8a68a95a8430879e5b73fb83e7c60b5bd9d69d92fa977f6a9a961bccda9fd",
+    "tests/test_mock_change_v5.py": "c26585fed57b80a5bfcd342b3e4469fc688a054dc02a4c3983d69e6cb348dc75",
+    "tests/test_change_connection_v5.py": "31c92e805407689abebae60d5ffd10c4d1811a4d1f0abe6892aabd76a13feaa1",
+    "tests/test_tasks_change_integrity_v5.py": "717cf1f445b9590df3797e6a1f1289e251d24591f139b63babf1c7e36597ffa2",
+    "scripts/demo_change_v5.py": "442c0a71913e3dcdf6e9948584d7cb06bb24b1f2c798dec1cd66c4845a29786a",
+    "docs/design/contracts-v5/CHANGE01-SCOPE.md": "3d5b137db0590bdee445dfc8baa4a42666aa11e4316f440ef5872f1b05c288f9"
+  },
+  "evidence_sha256": {
+    "root-full-final.log": "ffbff173164c030719c82c7c16d022b11c1549ac709176fe7477accc3ffd0f5f",
+    "connection-tests-fixed-red.log": "393197158181adbf7508d74093914679a59d21925e0ef9277abca2d1e570aaa5",
+    "connection-tests-freeze.json": "00e3cea7e55d1fdf32ebe80c9fa7478d7c216053ff081bd9f60fab538c0e7a40",
+    "integrity-tests-red.log": "92cedb329b143d7a926c6d431f322605647cbac86006725d864596a464704812",
+    "integrity-tests-freeze.json": "5b981183e442c204131044494ee6dd1b22657c5e5b53febfae41067151b265ef",
+    "run-tests-final-red.log": "7e0c2bb2bea287250a5916436c2cd07095de345accc6f0d0e4b3136768ca697c",
+    "run-tests-fixed.log": "cb67c6bdc6c8d26da072ae7df88fae0de7c8f30b69c2733eafc6ebe8c9677d66",
+    "tsk-tests-sol-red.log": "36ef068c55a1d8dc93cf645402e805b54788e011a01a26ebaabbb720da521728",
+    "tsk-tests-sol-summary.json": "3050867fd2624614b5915999f0e0d6b9dec69c799f83b47f097f2680a4863d5a",
+    "tsk-review-linked-id-probe.py": "c85ef2255d1b7418d6487225c016c2c1d643efa515500c3319f18e9bb186a4a8",
+    "verified-demo/demo.json": "7331a803324b0add4d7ff0041da0d4bd1e2bcb58761a7aa1315c63ba3daf7ee3",
+    "verified-demo/demo.log": "32e1dc4ae88a2866e3789ab1fce432eb0e5995324441a38315ea59f03f44eaee"
+  },
+  "limits": [
+    "trusted host provenance fixture; no PRI natural-language authority",
+    "no real provider/UI/service/external effect",
+    "no general restart recovery or old/live DB migration",
+    "no semantic usefulness or whole-PAL completion"
+  ],
+  "public_export": "D045 normal minimal-export push2b1d860 and all38 anonymous exact-byte/hash readbacks succeeded; raw original runtime records/local commits retained.",
+  "original_local_evidence_sha256": {
+    "root-full-final.log": "b4a95efd5701642102eb1ea37a2eb5191240290752faf3a0415b3ccf52e6cacd",
+    "connection-tests-fixed-red.log": "acd6303d869f9ba5e06dbf0eb52ebb0a62c63972658cf8ca66bc4ffc6e342679",
+    "connection-tests-freeze.json": "2b487c79e93e72298987802fc477fc4001b97a56472269c04969ab412f4aca54",
+    "integrity-tests-red.log": "2884fc9d4e949d18fac3105383a852d718a12444e8ddb49c8359b19ea87003b7",
+    "integrity-tests-freeze.json": "eb7fe49cb492cddc94b2dbc2887480bb3121083f28b68a3a655271de6495a958",
+    "run-tests-final-red.log": "13eb9cda468c356e162152e219266889c7f8221b47890d7d7bfdf5442b700c80",
+    "run-tests-fixed.log": "cb67c6bdc6c8d26da072ae7df88fae0de7c8f30b69c2733eafc6ebe8c9677d66",
+    "tsk-tests-sol-red.log": "fc1c714e54a2adadaf4bf706476b53ebc1800056d28a435b9b8e162bdde3aeb5",
+    "tsk-tests-sol-summary.json": "4e82c536e9a69cb520d54ac1ccdf1941561ae63769c776b5b76dd87f3404f246",
+    "tsk-review-linked-id-probe.py": "c85ef2255d1b7418d6487225c016c2c1d643efa515500c3319f18e9bb186a4a8",
+    "verified-demo/demo.json": "7331a803324b0add4d7ff0041da0d4bd1e2bcb58761a7aa1315c63ba3daf7ee3",
+    "verified-demo/demo.log": "32e1dc4ae88a2866e3789ab1fce432eb0e5995324441a38315ea59f03f44eaee"
+  },
+  "scope_original_sha256": "fdd1fe51f1d8931bb900f21f4dd4b097c1e17ea5cab838b905553b22cbfaf62c"
+}

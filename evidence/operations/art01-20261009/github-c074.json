@@ -1,0 +1,14 @@
+{
+  "at_UTC": "2026-10-09T09:26:29.741752+00:00",
+  "Issue6": "OPEN, C074 body exact readback verified",
+  "PR19": "DRAFT OPEN, title Connect controlled mock work to durable source-bound drafts, C074 body exact readback verified",
+  "pushed_head": "e48342b5a5a632300bfa1a7c2658fc9461cacfbb",
+  "source_commit": "2e8dfcf531ba0ddfc89dcb83eec0c6e0f58abc00",
+  "runtime_or_tests_diff_since_full605": [],
+  "ci_status": "statusCheckRollup=[] at inspected head5e577a4; no CI PASS claimed",
+  "body_sha256": {
+    "issue6": "46c7147f7bdaad632b0225f9ae54fb3e4feaf070934460d8a4fcde01dded13b8",
+    "pr19": "73ac58b0e0fb16e1c80a7a51be0ab81f036d3dd0a40bdf13ff47c5de2b91a773"
+  },
+  "limits": "No merge/deploy/publication/service activation; local code regression proof independent of remote branch/doc save"
+}

@@ -1,0 +1,14 @@
+{
+  "author": "Root SOL",
+  "reviewer": "native Astra separate context /root/int00_astra",
+  "first_source": "96568a585ac0a3587de01c013911196a6af8ef93",
+  "first_outcome": "REFINE: unknown saved state incorrectly returned factual snapshot",
+  "fixed_source": "3f37f78f5e3b43fffc120ae7b746ee2107ca5fd4",
+  "outcome": "APPROVE",
+  "independent_tests": {
+    "count": 8,
+    "seconds": 0.009,
+    "exit": 0
+  },
+  "scope": "Root new TSK verification_context only; no VER implementation, actual connection or full regression claim"
+}

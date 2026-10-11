@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-10-08T22:42:36.369913+00:00",
+  "auth": {
+    "loggedIn": true,
+    "authMethod": "claude.ai",
+    "subscriptionType": "pro"
+  },
+  "official_usage": {
+    "subscription": "Pro",
+    "session_used_percent": 49,
+    "week_used_percent": 41,
+    "extra_usage_enabled": false,
+    "auto_reload_enabled": false,
+    "purchased_credit_display": "$0",
+    "settings_changed": false
+  },
+  "route": "claude/claude-opus-5-5",
+  "new_auth_or_cost_configuration": false
+}

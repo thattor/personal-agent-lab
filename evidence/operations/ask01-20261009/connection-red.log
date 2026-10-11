@@ -1,0 +1,89 @@
+test_lost_committed_ask_response_recovers_by_key_without_reinference (test_ask_connection_v5.AskConnectionTests.test_lost_committed_ask_response_recovers_by_key_without_reinference) ... FAIL
+test_reconnected_owner_recovers_question_and_answer_replay_is_history (test_ask_connection_v5.AskConnectionTests.test_reconnected_owner_recovers_question_and_answer_replay_is_history) ... FAIL
+test_stopping_one_answer_excludes_derived_question_link_without_losing_other_record (test_ask_connection_v5.AskConnectionTests.test_stopping_one_answer_excludes_derived_question_link_without_losing_other_record) ... FAIL
+test_two_questions_keep_distinct_answer_links_and_finish_same_goal (test_ask_connection_v5.AskConnectionTests.test_two_questions_keep_distinct_answer_links_and_finish_same_goal) ... FAIL
+test_uncommitted_tail_is_retried_locally_without_another_model_call (test_ask_connection_v5.AskConnectionTests.test_uncommitted_tail_is_retried_locally_without_another_model_call) ... FAIL
+test_waiting_frees_capacity_for_another_goal (test_ask_connection_v5.AskConnectionTests.test_waiting_frees_capacity_for_another_goal) ... FAIL
+
+======================================================================
+FAIL: test_lost_committed_ask_response_recovers_by_key_without_reinference (test_ask_connection_v5.AskConnectionTests.test_lost_committed_ask_response_recovers_by_key_without_reinference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_ask_connection_v5.py", line 119, in test_lost_committed_ask_response_recovers_by_key_without_reinference
+    waiting = self.waiting(runner)
+  File "/private/tmp/pal-v5-co-20261009/tests/test_ask_connection_v5.py", line 57, in waiting
+    output = self.f.value((runner or self.runner).run_once(self.ask))
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'owned result remains unresolved', 'refs': []}}
+
+======================================================================
+FAIL: test_reconnected_owner_recovers_question_and_answer_replay_is_history (test_ask_connection_v5.AskConnectionTests.test_reconnected_owner_recovers_question_and_answer_replay_is_history)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_ask_connection_v5.py", line 107, in test_reconnected_owner_recovers_question_and_answer_replay_is_history
+    waiting = self.waiting()
+  File "/private/tmp/pal-v5-co-20261009/tests/test_ask_connection_v5.py", line 57, in waiting
+    output = self.f.value((runner or self.runner).run_once(self.ask))
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'owned result remains unresolved', 'refs': []}}
+
+======================================================================
+FAIL: test_stopping_one_answer_excludes_derived_question_link_without_losing_other_record (test_ask_connection_v5.AskConnectionTests.test_stopping_one_answer_excludes_derived_question_link_without_losing_other_record)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_ask_connection_v5.py", line 140, in test_stopping_one_answer_excludes_derived_question_link_without_losing_other_record
+    first = self.waiting()
+  File "/private/tmp/pal-v5-co-20261009/tests/test_ask_connection_v5.py", line 57, in waiting
+    output = self.f.value((runner or self.runner).run_once(self.ask))
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'owned result remains unresolved', 'refs': []}}
+
+======================================================================
+FAIL: test_two_questions_keep_distinct_answer_links_and_finish_same_goal (test_ask_connection_v5.AskConnectionTests.test_two_questions_keep_distinct_answer_links_and_finish_same_goal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_ask_connection_v5.py", line 80, in test_two_questions_keep_distinct_answer_links_and_finish_same_goal
+    first = self.waiting()
+  File "/private/tmp/pal-v5-co-20261009/tests/test_ask_connection_v5.py", line 57, in waiting
+    output = self.f.value((runner or self.runner).run_once(self.ask))
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'owned result remains unresolved', 'refs': []}}
+
+======================================================================
+FAIL: test_uncommitted_tail_is_retried_locally_without_another_model_call (test_ask_connection_v5.AskConnectionTests.test_uncommitted_tail_is_retried_locally_without_another_model_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_ask_connection_v5.py", line 134, in test_uncommitted_tail_is_retried_locally_without_another_model_call
+    waiting = self.waiting(runner)
+  File "/private/tmp/pal-v5-co-20261009/tests/test_ask_connection_v5.py", line 57, in waiting
+    output = self.f.value((runner or self.runner).run_once(self.ask))
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'owned result remains unresolved', 'refs': []}}
+
+======================================================================
+FAIL: test_waiting_frees_capacity_for_another_goal (test_ask_connection_v5.AskConnectionTests.test_waiting_frees_capacity_for_another_goal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-v5-co-20261009/tests/test_ask_connection_v5.py", line 99, in test_waiting_frees_capacity_for_another_goal
+    waiting = self.waiting()
+  File "/private/tmp/pal-v5-co-20261009/tests/test_ask_connection_v5.py", line 57, in waiting
+    output = self.f.value((runner or self.runner).run_once(self.ask))
+  File "/private/tmp/pal-v5-co-20261009/tests/test_verification_connection_v5.py", line 56, in value
+    self.assertTrue(result.ok, result.to_json())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'ok': False, 'error': {'code': 'unavailable', 'message': 'owned result remains unresolved', 'refs': []}}
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.048s
+
+FAILED (failures=6)

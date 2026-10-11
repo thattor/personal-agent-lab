@@ -1,0 +1,39 @@
+{
+  "recorded_at": "2026-10-09T01:06:39.760160+00:00",
+  "run": {
+    "started_at": "2026-10-09T01:02:09.426013+00:00",
+    "conversation_id": "43a7c552-418d-4b32-b4c4-4fa83ef1cf18",
+    "model_requested": "claude-opus-5-5-high",
+    "mode": "plan",
+    "sandbox": true,
+    "cwd": "/Users/hattoritoshiyasu/Documents/PAL/agy-work/intake-review-20261009",
+    "prompt_sha256": "154d235c13b331a74bd550cd2a8500ec7a1260ac82920a39af57bc8916432d0e",
+    "finished_at": "2026-10-09T01:02:50.009251+00:00",
+    "elapsed_seconds": 40.583,
+    "exit_code": 0,
+    "stdout_bytes": 83486,
+    "stderr_bytes": 78
+  },
+  "init_model": "claude-opus-5-5-high",
+  "status": "SUCCESS",
+  "step_type_counts": {
+    "user_input": 1,
+    "system_message": 1,
+    "agent_response": 409
+  },
+  "tool_step_events_observed": 0,
+  "duration_note": "Host wall time is per invocation. CLI result duration/turn count are cumulative conversation metadata, not this invocation wall time.",
+  "cli_cumulative_duration_seconds": 327.036733,
+  "cli_cumulative_num_turns": 2,
+  "input_hashes_unchanged": {
+    "AGENTS.md": "49954722a33245ccce8a2b9db017f5983f6464b32176fb5fdaae5be53773f7a8",
+    "review-request.md": "a52b05bd8ef7c36b166b3e8a375f343b551472860847bf51e9b0d5f7db3fd4fd",
+    "contract-excerpts.md": "062b158f63d4dddae499c4305c62a76148e1f6e023f38b402bba5f30993529fa"
+  },
+  "disposition": "ALIGNED after corrections; adopted for isolated TSK01/1 preparation, not production authority or implementation proof.",
+  "limits": [
+    "No real MEM/PRI service or semantic request authorization proven.",
+    "No AGY shared-state concurrency qualification; calls were sequential.",
+    "Earlier home-wide startup refusal was not bypassed; exact PAL workspace trust was separately owner-authorized and approved."
+  ]
+}

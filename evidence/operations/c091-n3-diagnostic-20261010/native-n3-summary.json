@@ -1,0 +1,95 @@
+{
+  "attempt_file_sha256": {
+    "diagnostic.json": "b1c6668c109e82428e3c57e4b2565af491e3ad11486298ad2788f10c620a3799",
+    "execute.json": "575adbf3f4cc74b67a9d438b7aa88aa4772c03da5a7f1ee3a8e01a2d181183ad",
+    "model-observations.json": "a84cc4ca685102af4b85b92ad44be986349b72b36f2e4b2ab5d6c77e53d9f6ae",
+    "stop.json": "e72a836b42ec624bfa2f2082b0d2addd4f640f0d91383f4e06ccc66ad1fcbff5",
+    "unqualified-output.json": "819be72e17bbbd91c86051649e4b2ad3849bf3fc6a13fdb64ae8e35fa6d8726c"
+  },
+  "candidate_profile_is_qualification": false,
+  "candidate_source": "4f0e12c719dbc6f7e34dc784388ae4d619161cd4",
+  "case_identity": "PRI02-N3-DIAGNOSTIC/1",
+  "diagnostic": {
+    "all_model_metadata_absent": "NOT_PROVEN",
+    "authority": "unqualified",
+    "availability": "INCOMPLETE",
+    "overflow_boundary": "NOT_PROVEN",
+    "retained_hint_count": 0,
+    "retained_observations": 0,
+    "valid_hint_retained": false
+  },
+  "disposition": "No further provider entry without a new evidence-based reassessment; original UNKNOWNs and held baseline preserved",
+  "effects": 0,
+  "elapsed_seconds": 20.708,
+  "entry_observed": true,
+  "error_type": "RuntimeError",
+  "exit": 1,
+  "freeze_commit": "300d40d123e675b354f811b9f2240025730e5daf",
+  "independent_audit": {
+    "all_checks_match": true,
+    "checks": 23,
+    "new_provider_operation": false,
+    "raw_session_and_prompt_hashes_independently_reconstructed": false,
+    "report_sha256": "963b92ad3feb6645324fb5884f7ba3319b9500f285bb9ee576fc640d3549262e",
+    "reviewer": "Native gpt-6-astra, separate receipt-audit context",
+    "source_manifest_files": 123
+  },
+  "invoke_count": 1,
+  "maximum_calls": 1,
+  "native_outcome": "UNKNOWN",
+  "native_returned_saved": false,
+  "operator_sha256": "6d99dc0e862d672b3b017fd3fe92f62284d41f5c065146e64fcc4e7786b5ac2a",
+  "original_observations": {
+    "effective_model": null,
+    "effective_model_verified": false,
+    "execute_status": "accepted",
+    "last_status": "completed",
+    "model_binding": "invocation_bound_only",
+    "native_handoff_verified": true,
+    "native_stop_reason": "end_turn",
+    "owned_exit_code": 0,
+    "pending_permissions": 0,
+    "requested_model": "swe-2-high",
+    "stdout_eof_validated": true,
+    "stop_matches_original_cessation": true,
+    "stop_status": "confirmed",
+    "tool_events": 0
+  },
+  "postchecks": {
+    "capacity": {
+      "claude": {
+        "executing": 0,
+        "reserved": 0
+      },
+      "devin": {
+        "executing": 1,
+        "reserved": 0
+      },
+      "limit": 12
+    },
+    "original_absence_preserved": true,
+    "original_inventory_file_counts": [
+      4,
+      6
+    ],
+    "originals_unchanged": true,
+    "own_capacity_restored": true
+  },
+  "qualified_semantic_output": "NOT_RUN",
+  "raw_sha256": {
+    "capacity-after.json": "ee60ad2ad080d2a1b47c5f6f7cbc638469d31c7dfd4e7ee569b6da1a1bd86d9f",
+    "case.json": "d77dd27db399aa77ce63da3429cad1fcc4a9c22de3de1a29945c44b8be0637a8",
+    "entry.json": "e77f96c7f1bb5fa6ce1c341afa9d4718d47fef3a27d5273f00f8526f96b12a14",
+    "result.json": "c624d6380a9b57bf23ed1cf55e6b4404c093b99520920c4798ad822e2734d3a8"
+  },
+  "transport_qualification": "NOT_PROVEN",
+  "unique_original_exception_cause": "NOT_PROVEN",
+  "unqualified_text": {
+    "chunks": 61,
+    "content_semantically_evaluated": false,
+    "saved": true,
+    "utf8_bytes": 160
+  },
+  "version": "PRI02-N3-ACTUAL-SUMMARY/1",
+  "whole_goal": "NOT_MET"
+}

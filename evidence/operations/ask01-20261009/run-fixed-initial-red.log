@@ -1,0 +1,430 @@
+test_ask_authority_refusals_yield_never_fail_and_never_lookup (test_mock_ask_v5.MockAskTests.test_ask_authority_refusals_yield_never_fail_and_never_lookup) ... 
+  test_ask_authority_refusals_yield_never_fail_and_never_lookup (test_mock_ask_v5.MockAskTests.test_ask_authority_refusals_yield_never_fail_and_never_lookup) (code='conflict') ... FAIL
+  test_ask_authority_refusals_yield_never_fail_and_never_lookup (test_mock_ask_v5.MockAskTests.test_ask_authority_refusals_yield_never_fail_and_never_lookup) (code='stale') ... FAIL
+  test_ask_authority_refusals_yield_never_fail_and_never_lookup (test_mock_ask_v5.MockAskTests.test_ask_authority_refusals_yield_never_fail_and_never_lookup) (code='denied') ... FAIL
+  test_ask_authority_refusals_yield_never_fail_and_never_lookup (test_mock_ask_v5.MockAskTests.test_ask_authority_refusals_yield_never_fail_and_never_lookup) (code='not_found') ... FAIL
+  test_ask_authority_refusals_yield_never_fail_and_never_lookup (test_mock_ask_v5.MockAskTests.test_ask_authority_refusals_yield_never_fail_and_never_lookup) (code='invalid_input') ... FAIL
+test_atomic_waiting_uses_persisted_step_exact_key_and_no_generic_finish (test_mock_ask_v5.MockAskTests.test_atomic_waiting_uses_persisted_step_exact_key_and_no_generic_finish) ... ERROR
+test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause (test_mock_ask_v5.MockAskTests.test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause) ... 
+  test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause (test_mock_ask_v5.MockAskTests.test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause) (code='conflict') ... FAIL
+  test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause (test_mock_ask_v5.MockAskTests.test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause) (code='stale') ... FAIL
+  test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause (test_mock_ask_v5.MockAskTests.test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause) (code='denied') ... FAIL
+test_corrupt_pending_linkage_never_enters_expert (test_mock_ask_v5.MockAskTests.test_corrupt_pending_linkage_never_enters_expert) ... 
+  test_corrupt_pending_linkage_never_enters_expert (test_mock_ask_v5.MockAskTests.test_corrupt_pending_linkage_never_enters_expert) (mutation='unknown_step') ... FAIL
+  test_corrupt_pending_linkage_never_enters_expert (test_mock_ask_v5.MockAskTests.test_corrupt_pending_linkage_never_enters_expert) (mutation='nonask') ... FAIL
+  test_corrupt_pending_linkage_never_enters_expert (test_mock_ask_v5.MockAskTests.test_corrupt_pending_linkage_never_enters_expert) (mutation='duplicate_question') ... FAIL
+  test_corrupt_pending_linkage_never_enters_expert (test_mock_ask_v5.MockAskTests.test_corrupt_pending_linkage_never_enters_expert) (mutation='wrong_ref_kind') ... FAIL
+  test_corrupt_pending_linkage_never_enters_expert (test_mock_ask_v5.MockAskTests.test_corrupt_pending_linkage_never_enters_expert) (mutation='extra') ... FAIL
+  test_corrupt_pending_linkage_never_enters_expert (test_mock_ask_v5.MockAskTests.test_corrupt_pending_linkage_never_enters_expert) (mutation='wrong_revision') ... FAIL
+test_empty_or_all_ineligible_links_omit_optional_c12_field (test_mock_ask_v5.MockAskTests.test_empty_or_all_ineligible_links_omit_optional_c12_field) ... 
+  test_empty_or_all_ineligible_links_omit_optional_c12_field (test_mock_ask_v5.MockAskTests.test_empty_or_all_ineligible_links_omit_optional_c12_field) (historical=False) ... ERROR
+  test_empty_or_all_ineligible_links_omit_optional_c12_field (test_mock_ask_v5.MockAskTests.test_empty_or_all_ineligible_links_omit_optional_c12_field) (historical=True) ... ERROR
+test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) ... 
+  test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt=None) ... FAIL
+  test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt={}) ... FAIL
+  test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt={'question_id': '', 'state': 'waiting_input', 'work_ref': {'goal_id': 'g', 'revision': 1, 'epoch': 0}}) ... FAIL
+  test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt={'question_id': 1, 'state': 'waiting_input', 'work_ref': {'goal_id': 'g', 'revision': 1, 'epoch': 0}}) ... FAIL
+  test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt={'question_id': 'q', 'state': 'queued', 'work_ref': {'goal_id': 'g', 'revision': 1, 'epoch': 0}}) ... FAIL
+  test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt={'question_id': 'q', 'state': 'waiting_input', 'work_ref': {'goal_id': 'g', 'revision': 1, 'epoch': 1}}) ... FAIL
+  test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt={'question_id': 'q', 'state': 'waiting_input', 'work_ref': {'goal_id': 'g', 'revision': 1, 'epoch': 0}, 'extra': True}) ... FAIL
+test_multiple_old_epoch_links_exact_c12_and_complete_local_diagnostics (test_mock_ask_v5.MockAskTests.test_multiple_old_epoch_links_exact_c12_and_complete_local_diagnostics) ... ERROR
+test_optional_answer_unavailable_does_not_become_exclusion_or_inference (test_mock_ask_v5.MockAskTests.test_optional_answer_unavailable_does_not_become_exclusion_or_inference) ... ok
+test_retained_ask_public_call_recheck_without_fresh_inference (test_mock_ask_v5.MockAskTests.test_retained_ask_public_call_recheck_without_fresh_inference) ... ERROR
+test_retained_call_missing_wrong_binding_or_unended_never_asks (test_mock_ask_v5.MockAskTests.test_retained_call_missing_wrong_binding_or_unended_never_asks) ... ok
+test_retry_stops_on_second_success_without_lookup (test_mock_ask_v5.MockAskTests.test_retry_stops_on_second_success_without_lookup) ... ERROR
+test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics (test_mock_ask_v5.MockAskTests.test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics) ... 
+  test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics (test_mock_ask_v5.MockAskTests.test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics) (stopped='answer1') ... ERROR
+  test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics (test_mock_ask_v5.MockAskTests.test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics) (stopped='question-source') ... ERROR
+  test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics (test_mock_ask_v5.MockAskTests.test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics) (stopped='unrelated') ... ERROR
+test_three_same_input_attempts_then_one_lookup_recovers_lost_reply (test_mock_ask_v5.MockAskTests.test_three_same_input_attempts_then_one_lookup_recovers_lost_reply) ... ERROR
+test_unknown_commit_retains_started_step_and_never_repairs_by_inference (test_mock_ask_v5.MockAskTests.test_unknown_commit_retains_started_step_and_never_repairs_by_inference) ... FAIL
+test_unrecognized_or_throwing_ask_owner_fails_closed_without_failed_release (test_mock_ask_v5.MockAskTests.test_unrecognized_or_throwing_ask_owner_fails_closed_without_failed_release) ... 
+  test_unrecognized_or_throwing_ask_owner_fails_closed_without_failed_release (test_mock_ask_v5.MockAskTests.test_unrecognized_or_throwing_ask_owner_fails_closed_without_failed_release) (disposition='limit') ... FAIL
+  test_unrecognized_or_throwing_ask_owner_fails_closed_without_failed_release (test_mock_ask_v5.MockAskTests.test_unrecognized_or_throwing_ask_owner_fails_closed_without_failed_release) (disposition='exception') ... FAIL
+
+======================================================================
+ERROR: test_atomic_waiting_uses_persisted_step_exact_key_and_no_generic_finish (test_mock_ask_v5.MockAskTests.test_atomic_waiting_uses_persisted_step_exact_key_and_no_generic_finish)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 126, in test_atomic_waiting_uses_persisted_step_exact_key_and_no_generic_finish
+    data = self.assert_waiting(self.run_ask())
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 116, in assert_waiting
+    self.assertEqual({k: data[k] for k in ('status', 'question_id', 'state', 'work_ref', 'lease_id', 'step_id')},
+                         ~~~~^^^
+KeyError: 'question_id'
+
+======================================================================
+ERROR: test_empty_or_all_ineligible_links_omit_optional_c12_field (test_mock_ask_v5.MockAskTests.test_empty_or_all_ineligible_links_omit_optional_c12_field) (historical=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 293, in test_empty_or_all_ineligible_links_omit_optional_c12_field
+    self.assertEqual(data['pending_inputs'], self.o.pending)
+                     ~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'pending_inputs'
+
+======================================================================
+ERROR: test_empty_or_all_ineligible_links_omit_optional_c12_field (test_mock_ask_v5.MockAskTests.test_empty_or_all_ineligible_links_omit_optional_c12_field) (historical=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 293, in test_empty_or_all_ineligible_links_omit_optional_c12_field
+    self.assertEqual(data['pending_inputs'], self.o.pending)
+                     ~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'pending_inputs'
+
+======================================================================
+ERROR: test_multiple_old_epoch_links_exact_c12_and_complete_local_diagnostics (test_mock_ask_v5.MockAskTests.test_multiple_old_epoch_links_exact_c12_and_complete_local_diagnostics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 265, in test_multiple_old_epoch_links_exact_c12_and_complete_local_diagnostics
+    self.assertEqual(self.inputs[0]['pending_inputs'], self.o.pending)
+                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'pending_inputs'
+
+======================================================================
+ERROR: test_retained_ask_public_call_recheck_without_fresh_inference (test_mock_ask_v5.MockAskTests.test_retained_ask_public_call_recheck_without_fresh_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 216, in test_retained_ask_public_call_recheck_without_fresh_inference
+    data = self.assert_waiting(self.run_ask())
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 116, in assert_waiting
+    self.assertEqual({k: data[k] for k in ('status', 'question_id', 'state', 'work_ref', 'lease_id', 'step_id')},
+                         ~~~~^^^
+KeyError: 'question_id'
+
+======================================================================
+ERROR: test_retry_stops_on_second_success_without_lookup (test_mock_ask_v5.MockAskTests.test_retry_stops_on_second_success_without_lookup)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 143, in test_retry_stops_on_second_success_without_lookup
+    self.assert_waiting(self.run_ask())
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 116, in assert_waiting
+    self.assertEqual({k: data[k] for k in ('status', 'question_id', 'state', 'work_ref', 'lease_id', 'step_id')},
+                         ~~~~^^^
+KeyError: 'question_id'
+
+======================================================================
+ERROR: test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics (test_mock_ask_v5.MockAskTests.test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics) (stopped='answer1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 277, in test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics
+    self.assertEqual(self.inputs[0]['pending_inputs'], [self.o.pending[i] for i in eligible])
+                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'pending_inputs'
+
+======================================================================
+ERROR: test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics (test_mock_ask_v5.MockAskTests.test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics) (stopped='question-source')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 277, in test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics
+    self.assertEqual(self.inputs[0]['pending_inputs'], [self.o.pending[i] for i in eligible])
+                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'pending_inputs'
+
+======================================================================
+ERROR: test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics (test_mock_ask_v5.MockAskTests.test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics) (stopped='unrelated')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 277, in test_selective_answer_or_question_source_exclusion_keeps_all_diagnostics
+    self.assertEqual(self.inputs[0]['pending_inputs'], [self.o.pending[i] for i in eligible])
+                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'pending_inputs'
+
+======================================================================
+ERROR: test_three_same_input_attempts_then_one_lookup_recovers_lost_reply (test_mock_ask_v5.MockAskTests.test_three_same_input_attempts_then_one_lookup_recovers_lost_reply)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 135, in test_three_same_input_attempts_then_one_lookup_recovers_lost_reply
+    self.assert_waiting(self.run_ask())
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 116, in assert_waiting
+    self.assertEqual({k: data[k] for k in ('status', 'question_id', 'state', 'work_ref', 'lease_id', 'step_id')},
+                         ~~~~^^^
+KeyError: 'question_id'
+
+======================================================================
+FAIL: test_ask_authority_refusals_yield_never_fail_and_never_lookup (test_mock_ask_v5.MockAskTests.test_ask_authority_refusals_yield_never_fail_and_never_lookup) (code='conflict')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 164, in test_ask_authority_refusals_yield_never_fail_and_never_lookup
+    self.assertEqual(len(self.o.asks), 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_ask_authority_refusals_yield_never_fail_and_never_lookup (test_mock_ask_v5.MockAskTests.test_ask_authority_refusals_yield_never_fail_and_never_lookup) (code='stale')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 164, in test_ask_authority_refusals_yield_never_fail_and_never_lookup
+    self.assertEqual(len(self.o.asks), 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_ask_authority_refusals_yield_never_fail_and_never_lookup (test_mock_ask_v5.MockAskTests.test_ask_authority_refusals_yield_never_fail_and_never_lookup) (code='denied')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 164, in test_ask_authority_refusals_yield_never_fail_and_never_lookup
+    self.assertEqual(len(self.o.asks), 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_ask_authority_refusals_yield_never_fail_and_never_lookup (test_mock_ask_v5.MockAskTests.test_ask_authority_refusals_yield_never_fail_and_never_lookup) (code='not_found')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 164, in test_ask_authority_refusals_yield_never_fail_and_never_lookup
+    self.assertEqual(len(self.o.asks), 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_ask_authority_refusals_yield_never_fail_and_never_lookup (test_mock_ask_v5.MockAskTests.test_ask_authority_refusals_yield_never_fail_and_never_lookup) (code='invalid_input')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 164, in test_ask_authority_refusals_yield_never_fail_and_never_lookup
+    self.assertEqual(len(self.o.asks), 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause (test_mock_ask_v5.MockAskTests.test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause) (code='conflict')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 335, in test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause
+    self.assertTrue(all(r['outcome'] != 'failed' for r in self.o.releases), self.o.releases)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : [{'lease_id': 'lease', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}, 'outcome': 'failed', 'reason': 'verification authority changed'}]
+
+======================================================================
+FAIL: test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause (test_mock_ask_v5.MockAskTests.test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause) (code='stale')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 335, in test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause
+    self.assertTrue(all(r['outcome'] != 'failed' for r in self.o.releases), self.o.releases)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : [{'lease_id': 'lease', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}, 'outcome': 'failed', 'reason': 'verification authority changed'}]
+
+======================================================================
+FAIL: test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause (test_mock_ask_v5.MockAskTests.test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause) (code='denied')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 335, in test_c076_ver_authority_is_nonterminal_and_latest_execution_settles_pause
+    self.assertTrue(all(r['outcome'] != 'failed' for r in self.o.releases), self.o.releases)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : [{'lease_id': 'lease', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}, 'outcome': 'failed', 'reason': 'verification authority changed'}]
+
+======================================================================
+FAIL: test_corrupt_pending_linkage_never_enters_expert (test_mock_ask_v5.MockAskTests.test_corrupt_pending_linkage_never_enters_expert) (mutation='unknown_step')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 308, in test_corrupt_pending_linkage_never_enters_expert
+    self.assertEqual(self.inputs, [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'work_ref': {'epoch': 3, 'goal_id': 'g',[1360 chars]8}}}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'work_ref': {'epoch': 3, 'goal_id': 'g', 'revision': 1}, 'brief': {'conditions': [{'check': 'artifact_saved', 'description': 'saved', 'id': 'c'}], 'constraints': [], 'context_refs': [], 'purpose': 'draft', 'target': {'files': [], 'issue_numbers': [], 'repository': 'repo'}}, 'grant_summary': {'capabilities': [], 'limits': {'max_model_calls': 8, 'max_operations': 0, 'max_steps': 8}, 'repositories': ['repo']}, 'context': [{'content': 'draft source', 'ref': {'id': 'r', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'answer1', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'answer2', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'question-source', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'unrelated', 'kind': 'record'}}], 'steps': [{'action': {'kind': 'ask', 'missing_fact': 'fact', 'question': 'Question 0', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [], 'status': 'finished', 'step_id': 'ask-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}, {'action': {'kind': 'ask', 'missing_fact': 'fact', 'question': 'Question 1', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 1, 'result_refs': [], 'status': 'finished', 'step_id': 'ask-1', 'work_ref': {'epoch': 1, 'goal_id': 'g', 'revision': 1}}], 'remaining_budget': {'model': {'host': 8, 'work': 8}, 'step': {'host': 8, 'work': 8}}}
+
+Diff is 2138 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_corrupt_pending_linkage_never_enters_expert (test_mock_ask_v5.MockAskTests.test_corrupt_pending_linkage_never_enters_expert) (mutation='nonask')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 308, in test_corrupt_pending_linkage_never_enters_expert
+    self.assertEqual(self.inputs, [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'work_ref': {'epoch': 3, 'goal_id': 'g',[1292 chars]8}}}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'work_ref': {'epoch': 3, 'goal_id': 'g', 'revision': 1}, 'brief': {'conditions': [{'check': 'artifact_saved', 'description': 'saved', 'id': 'c'}], 'constraints': [], 'context_refs': [], 'purpose': 'draft', 'target': {'files': [], 'issue_numbers': [], 'repository': 'repo'}}, 'grant_summary': {'capabilities': [], 'limits': {'max_model_calls': 8, 'max_operations': 0, 'max_steps': 8}, 'repositories': ['repo']}, 'context': [{'content': 'draft source', 'ref': {'id': 'r', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'answer1', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'answer2', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'question-source', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'unrelated', 'kind': 'record'}}], 'steps': [{'action': {'kind': 'report', 'summary': 'not question'}, 'index': 0, 'result_refs': [], 'status': 'finished', 'step_id': 'ask-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}, {'action': {'kind': 'ask', 'missing_fact': 'fact', 'question': 'Question 1', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 1, 'result_refs': [], 'status': 'finished', 'step_id': 'ask-1', 'work_ref': {'epoch': 1, 'goal_id': 'g', 'revision': 1}}], 'remaining_budget': {'model': {'host': 8, 'work': 8}, 'step': {'host': 8, 'work': 8}}}
+
+Diff is 1992 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_corrupt_pending_linkage_never_enters_expert (test_mock_ask_v5.MockAskTests.test_corrupt_pending_linkage_never_enters_expert) (mutation='duplicate_question')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 308, in test_corrupt_pending_linkage_never_enters_expert
+    self.assertEqual(self.inputs, [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'work_ref': {'epoch': 3, 'goal_id': 'g',[1360 chars]8}}}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'work_ref': {'epoch': 3, 'goal_id': 'g', 'revision': 1}, 'brief': {'conditions': [{'check': 'artifact_saved', 'description': 'saved', 'id': 'c'}], 'constraints': [], 'context_refs': [], 'purpose': 'draft', 'target': {'files': [], 'issue_numbers': [], 'repository': 'repo'}}, 'grant_summary': {'capabilities': [], 'limits': {'max_model_calls': 8, 'max_operations': 0, 'max_steps': 8}, 'repositories': ['repo']}, 'context': [{'content': 'draft source', 'ref': {'id': 'r', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'answer1', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'answer2', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'question-source', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'unrelated', 'kind': 'record'}}], 'steps': [{'action': {'kind': 'ask', 'missing_fact': 'fact', 'question': 'Question 0', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [], 'status': 'finished', 'step_id': 'ask-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}, {'action': {'kind': 'ask', 'missing_fact': 'fact', 'question': 'Question 1', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 1, 'result_refs': [], 'status': 'finished', 'step_id': 'ask-1', 'work_ref': {'epoch': 1, 'goal_id': 'g', 'revision': 1}}], 'remaining_budget': {'model': {'host': 8, 'work': 8}, 'step': {'host': 8, 'work': 8}}}
+
+Diff is 2138 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_corrupt_pending_linkage_never_enters_expert (test_mock_ask_v5.MockAskTests.test_corrupt_pending_linkage_never_enters_expert) (mutation='wrong_ref_kind')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 308, in test_corrupt_pending_linkage_never_enters_expert
+    self.assertEqual(self.inputs, [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'work_ref': {'epoch': 3, 'goal_id': 'g',[1362 chars]8}}}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'work_ref': {'epoch': 3, 'goal_id': 'g', 'revision': 1}, 'brief': {'conditions': [{'check': 'artifact_saved', 'description': 'saved', 'id': 'c'}], 'constraints': [], 'context_refs': [], 'purpose': 'draft', 'target': {'files': [], 'issue_numbers': [], 'repository': 'repo'}}, 'grant_summary': {'capabilities': [], 'limits': {'max_model_calls': 8, 'max_operations': 0, 'max_steps': 8}, 'repositories': ['repo']}, 'context': [{'content': 'draft source', 'ref': {'id': 'r', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'answer1', 'kind': 'artifact'}}, {'content': 'draft source', 'ref': {'id': 'answer2', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'question-source', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'unrelated', 'kind': 'record'}}], 'steps': [{'action': {'kind': 'ask', 'missing_fact': 'fact', 'question': 'Question 0', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [], 'status': 'finished', 'step_id': 'ask-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}, {'action': {'kind': 'ask', 'missing_fact': 'fact', 'question': 'Question 1', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 1, 'result_refs': [], 'status': 'finished', 'step_id': 'ask-1', 'work_ref': {'epoch': 1, 'goal_id': 'g', 'revision': 1}}], 'remaining_budget': {'model': {'host': 8, 'work': 8}, 'step': {'host': 8, 'work': 8}}}
+
+Diff is 2140 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_corrupt_pending_linkage_never_enters_expert (test_mock_ask_v5.MockAskTests.test_corrupt_pending_linkage_never_enters_expert) (mutation='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 308, in test_corrupt_pending_linkage_never_enters_expert
+    self.assertEqual(self.inputs, [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'work_ref': {'epoch': 3, 'goal_id': 'g',[1360 chars]8}}}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'work_ref': {'epoch': 3, 'goal_id': 'g', 'revision': 1}, 'brief': {'conditions': [{'check': 'artifact_saved', 'description': 'saved', 'id': 'c'}], 'constraints': [], 'context_refs': [], 'purpose': 'draft', 'target': {'files': [], 'issue_numbers': [], 'repository': 'repo'}}, 'grant_summary': {'capabilities': [], 'limits': {'max_model_calls': 8, 'max_operations': 0, 'max_steps': 8}, 'repositories': ['repo']}, 'context': [{'content': 'draft source', 'ref': {'id': 'r', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'answer1', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'answer2', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'question-source', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'unrelated', 'kind': 'record'}}], 'steps': [{'action': {'kind': 'ask', 'missing_fact': 'fact', 'question': 'Question 0', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [], 'status': 'finished', 'step_id': 'ask-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 1}}, {'action': {'kind': 'ask', 'missing_fact': 'fact', 'question': 'Question 1', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 1, 'result_refs': [], 'status': 'finished', 'step_id': 'ask-1', 'work_ref': {'epoch': 1, 'goal_id': 'g', 'revision': 1}}], 'remaining_budget': {'model': {'host': 8, 'work': 8}, 'step': {'host': 8, 'work': 8}}}
+
+Diff is 2138 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_corrupt_pending_linkage_never_enters_expert (test_mock_ask_v5.MockAskTests.test_corrupt_pending_linkage_never_enters_expert) (mutation='wrong_revision')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 308, in test_corrupt_pending_linkage_never_enters_expert
+    self.assertEqual(self.inputs, [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'work_ref': {'epoch': 3, 'goal_id': 'g',[1360 chars]8}}}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'work_ref': {'epoch': 3, 'goal_id': 'g', 'revision': 1}, 'brief': {'conditions': [{'check': 'artifact_saved', 'description': 'saved', 'id': 'c'}], 'constraints': [], 'context_refs': [], 'purpose': 'draft', 'target': {'files': [], 'issue_numbers': [], 'repository': 'repo'}}, 'grant_summary': {'capabilities': [], 'limits': {'max_model_calls': 8, 'max_operations': 0, 'max_steps': 8}, 'repositories': ['repo']}, 'context': [{'content': 'draft source', 'ref': {'id': 'r', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'answer1', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'answer2', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'question-source', 'kind': 'record'}}, {'content': 'draft source', 'ref': {'id': 'unrelated', 'kind': 'record'}}], 'steps': [{'action': {'kind': 'ask', 'missing_fact': 'fact', 'question': 'Question 0', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 0, 'result_refs': [], 'status': 'finished', 'step_id': 'ask-0', 'work_ref': {'epoch': 0, 'goal_id': 'g', 'revision': 2}}, {'action': {'kind': 'ask', 'missing_fact': 'fact', 'question': 'Question 1', 'source_refs': [{'id': 'r', 'kind': 'record'}]}, 'index': 1, 'result_refs': [], 'status': 'finished', 'step_id': 'ask-1', 'work_ref': {'epoch': 1, 'goal_id': 'g', 'revision': 1}}], 'remaining_budget': {'model': {'host': 8, 'work': 8}, 'step': {'host': 8, 'work': 8}}}
+
+Diff is 2138 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 181, in test_malformed_waiting_receipts_fail_closed
+    self.unavailable(self.run_ask())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 107, in unavailable
+    self.assertEqual(result.error.code, 'unavailable')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.CONFLICT: 'conflict'> != 'unavailable'
+
+======================================================================
+FAIL: test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 181, in test_malformed_waiting_receipts_fail_closed
+    self.unavailable(self.run_ask())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 107, in unavailable
+    self.assertEqual(result.error.code, 'unavailable')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.CONFLICT: 'conflict'> != 'unavailable'
+
+======================================================================
+FAIL: test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt={'question_id': '', 'state': 'waiting_input', 'work_ref': {'goal_id': 'g', 'revision': 1, 'epoch': 0}})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 181, in test_malformed_waiting_receipts_fail_closed
+    self.unavailable(self.run_ask())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 107, in unavailable
+    self.assertEqual(result.error.code, 'unavailable')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.CONFLICT: 'conflict'> != 'unavailable'
+
+======================================================================
+FAIL: test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt={'question_id': 1, 'state': 'waiting_input', 'work_ref': {'goal_id': 'g', 'revision': 1, 'epoch': 0}})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 181, in test_malformed_waiting_receipts_fail_closed
+    self.unavailable(self.run_ask())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 107, in unavailable
+    self.assertEqual(result.error.code, 'unavailable')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.CONFLICT: 'conflict'> != 'unavailable'
+
+======================================================================
+FAIL: test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt={'question_id': 'q', 'state': 'queued', 'work_ref': {'goal_id': 'g', 'revision': 1, 'epoch': 0}})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 181, in test_malformed_waiting_receipts_fail_closed
+    self.unavailable(self.run_ask())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 107, in unavailable
+    self.assertEqual(result.error.code, 'unavailable')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.CONFLICT: 'conflict'> != 'unavailable'
+
+======================================================================
+FAIL: test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt={'question_id': 'q', 'state': 'waiting_input', 'work_ref': {'goal_id': 'g', 'revision': 1, 'epoch': 1}})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 181, in test_malformed_waiting_receipts_fail_closed
+    self.unavailable(self.run_ask())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 107, in unavailable
+    self.assertEqual(result.error.code, 'unavailable')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.CONFLICT: 'conflict'> != 'unavailable'
+
+======================================================================
+FAIL: test_malformed_waiting_receipts_fail_closed (test_mock_ask_v5.MockAskTests.test_malformed_waiting_receipts_fail_closed) (receipt={'question_id': 'q', 'state': 'waiting_input', 'work_ref': {'goal_id': 'g', 'revision': 1, 'epoch': 0}, 'extra': True})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 181, in test_malformed_waiting_receipts_fail_closed
+    self.unavailable(self.run_ask())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 107, in unavailable
+    self.assertEqual(result.error.code, 'unavailable')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.CONFLICT: 'conflict'> != 'unavailable'
+
+======================================================================
+FAIL: test_unknown_commit_retains_started_step_and_never_repairs_by_inference (test_mock_ask_v5.MockAskTests.test_unknown_commit_retains_started_step_and_never_repairs_by_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 151, in test_unknown_commit_retains_started_step_and_never_repairs_by_inference
+    self.unavailable(self.run_ask())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 107, in unavailable
+    self.assertEqual(result.error.code, 'unavailable')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.CONFLICT: 'conflict'> != 'unavailable'
+
+======================================================================
+FAIL: test_unrecognized_or_throwing_ask_owner_fails_closed_without_failed_release (test_mock_ask_v5.MockAskTests.test_unrecognized_or_throwing_ask_owner_fails_closed_without_failed_release) (disposition='limit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 197, in test_unrecognized_or_throwing_ask_owner_fails_closed_without_failed_release
+    self.unavailable(self.run_ask())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 107, in unavailable
+    self.assertEqual(result.error.code, 'unavailable')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.CONFLICT: 'conflict'> != 'unavailable'
+
+======================================================================
+FAIL: test_unrecognized_or_throwing_ask_owner_fails_closed_without_failed_release (test_mock_ask_v5.MockAskTests.test_unrecognized_or_throwing_ask_owner_fails_closed_without_failed_release) (disposition='exception')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 197, in test_unrecognized_or_throwing_ask_owner_fails_closed_without_failed_release
+    self.unavailable(self.run_ask())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/private/tmp/pal-ask-run-tests-20261009/tests/test_mock_ask_v5.py", line 107, in unavailable
+    self.assertEqual(result.error.code, 'unavailable')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: <ErrorCode.CONFLICT: 'conflict'> != 'unavailable'
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.019s
+
+FAILED (failures=24, errors=10)

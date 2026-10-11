@@ -1,0 +1,56 @@
+# Task G design: milestone-review outline
+
+**Target:** `evidence/operations/co-update-045-batch2-20261009/milestone-review.md` only, under 500 words. It has five sections matching the points below. No source, canonical or state edits.
+
+## 1. Per-module contract check
+
+- **D** (`github_file_payload_v5.py`) matches scope D.
+  - `max_bytes` is an exact int in 1..1048576. Bool and subclasses give `invalid_input`; over the hard maximum gives `limit` (:87-90).
+  - Payload must be exact bytes; raw length is checked first (:91-94).
+  - JSON is strict: duplicate keys, NaN/Infinity, `1e400`, the depth guard and a BOM are all rejected (:105-121).
+  - Field checks cover type, encoding, content, size, sha and forbidden fields (:126-151). Declared size above the limit gives `limit` before Base64 parsing (:153; SOL correction t22).
+  - Canonical Base64 strips only CR/LF, then checks alphabet and modulo, `validate=True` and a re-encode equality (:156-171). All 17 invalid cases are kept.
+  - Decoded length is checked against the limit and the declared size, then strict UTF-8 is applied with no normalization (:173-185).
+- **E** (`bounded_payload_v5.py`): the corrected `PayloadLimitError` uses an exact `type(code) is str` check before comparing, so a hostile `__eq__` or a str subclass maps to `invalid_input`. Only `args=(message,)` is set (:27-36). The size check runs before joining and leaves the buffer unchanged (:57-59). Snapshots are immutable and `byte_count` is read-only.
+- **F** (`artifact_integrity_v5.py`): the precedence order is sha metadata, count, data type, over-limit, length, then hash. Over-limit and wrong-length bodies are never hashed. SOL added an assertion on the invalid-input result.
+- **ART01-content and EXE02-request** are consistent: same 1048576 bound, 30s timeout, pinned repository, 40-hex ref, and error codes within the Result vocabulary.
+
+## 2. Findings
+
+- **Blocking:** none expected after a line-by-line re-check.
+- **Optional hardening** (kept separate):
+  - `FilePayloadError` (:43-47) accepts any code or message. Only constants are passed today, but it does not match E's corrected constructor.
+  - `ArtifactContentError` sets `args=(code,message)` and overrides `__str__`. This shape differs from the other modules, and INT00 Result mapping should normalize it.
+  - GitHub's large-file object (`encoding:"none"`) returns `invalid_input` at :130-132 rather than `limit`. The future executor must handle this explicitly.
+
+## 3. Synthetic chain and its gaps
+
+The chain in `test_v5_read_content_pipeline.py:25-31` is: `prepare_read`, then chunks into `PayloadBuffer`, then `decode_file`, then `prepare_content`, then `check_bytes`. It covers tampering, size mismatch, overflow and a denied repository.
+
+Gaps:
+- **Provenance:** `blob_sha` (`"b"*40`) is unrelated to the pinned ref (`"a"*40`) and is not verified. Nothing proves the ref is a commit or binds the response to it. EXE01 owns provenance.
+- **Base64 overhead:** one `max_bytes` value bounds both the raw JSON and the decoded body. Base64 is about 4/3 larger, and the JSON-escaped `\n` every 60 characters adds more. That caps decoded files at roughly 760KB, not the 1MiB in C07. EXE01/02 needs a deliberate decision on this.
+- **Test-supplied inputs:**
+  - The positive integrity case is self-derived.
+  - The expected metadata is not canonical.
+  - The transport is a Mock with no timeout or cleanup.
+  - There is no issue-response decoder.
+
+## 4. Evidence framing
+
+- **Root full suite:** 399 PASS (22.153s).
+- **Targeted:** 122 PASS. This equals 18+27+22+28+21+6 across the six v5 files, which is the verifier's subset.
+- **Integration:** 6 PASS.
+- **Source hashes:** already confirmed by SOL; not a new gate.
+- **Concurrency:** 13 native calls, with one repair in D. Eight three-task segments totalled about 262.7s, between 22:30:44.988 and 22:35:12.691 UTC. These are local admission-to-cleanup intervals, not remote compute or vendor capacity.
+- **Scope of these tests:** they are local preparation tests. They are not service CT/E2E, persisted evidence or human value.
+
+## 5. Scoped preparation vs. completion
+
+**Delivered:** a deterministic, bounded read-to-content-to-integrity byte path that reduces risk for EXE02, ART01 and VER01.
+
+**Still unmet:** services, IDs and receipts, the DB, real GitHub reads, Goal flow and user value. `verification.json` records these as "UNMET / NOT_RUN".
+
+**Smallest next dependency:** INT00 WorkRef/Ref/Action/Result common wire types. These are needed to wrap these errors and values. EXE01 Operation and C07 prepare/execute come after INT00 and belong to EXE01, not to this task.
+
+No approval gate and no added task.

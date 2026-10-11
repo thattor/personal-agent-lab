@@ -1,0 +1,15 @@
+{
+  "source": "9f31ba9c992b78fe7a14eb036828e533e9bb0370",
+  "reviewer": "native Sol6.1 separate context",
+  "outcome": "REQUEST_CHANGES",
+  "known_blocker": "C02 request shape mismatched; actual8 methods/10 failures",
+  "additional_blocker": "VER ambiguous/invalid_input passed through failed() and released work as failed",
+  "lower_priority": "retained reentry success omitted prior finished Step/call diagnostics",
+  "tests": {
+    "fixed_run": 16,
+    "actual_tsk": 9,
+    "actual_run": 8,
+    "actual_run_with_diagnostic_C02_adapter": "8 PASS, diagnostic adapter only; source unchanged"
+  },
+  "resolution": "bdce832 strict local outcomes and saved diagnostics; independently rereviewed APPROVE"
+}

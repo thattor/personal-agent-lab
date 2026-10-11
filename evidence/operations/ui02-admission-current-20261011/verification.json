@@ -1,0 +1,108 @@
+{
+  "base_commit": "d1639a5fa4a6229fddcd08d53b805cafa10efb9c",
+  "exact_sources": {
+    "pal/native_http_v5.py": "d6a2140115f4c8546e673a577f6f9ef63492b18064b882d9ad7aee01fccb79e4",
+    "tests/test_native_http_admission_v5.py": "4f2437f07fc1210bf71e901056ce4e6e6e53093c29c55587b6c4fda83abb0dde"
+  },
+  "independent_preservation": {
+    "checks": 3196,
+    "differences": 0,
+    "model_id": "gpt-6.1-sol",
+    "old_unknowns_and_original_evidence_unchanged": true,
+    "original_checkout_clean": true,
+    "shared_contracts_unchanged": true,
+    "verification_sha256": "f8af34cddb2112a7c115beffa75354cc15c0903ce72cb0f74adaaad565ace8b7"
+  },
+  "independent_source_review": {
+    "fixed4_log_sha256": "59c63b1957dacbfa2c9f85eb278a580f1ed8b72cecc56b24db5daedefc4fedd5",
+    "fixed4_methods": 4,
+    "independent_cases": 15,
+    "independent_methods": 5,
+    "model_id": "gpt-6-astra",
+    "probe_log_sha256": "cdf57a8dad0cc437d87cfed669aefb69a57fd1cdeaac60989e33b86e9cb3c0bf",
+    "probe_runner_sha256": "3089715f27ff0b27ec93b4e17cdb33629e8cc7ab7450dd8fc57d680a6c9a45be",
+    "review_report_sha256": "11f1e1c4034926b26784c2284963e2c8c027558e80023e52a22fa6eacb09b37c",
+    "verdict": "APPROVE_SOURCE_ONLY",
+    "verification_sha256": "6da147b81a7084556971385ed0a7fa68acb5a03ccab3fe3c1d902c35126ce46c"
+  },
+  "limits": {
+    "actual_usefulness": "NOT_MET",
+    "genuine_native_browser": "NOT_PROVEN",
+    "hosted_ci_on_this_port": "NOT_RUN",
+    "issue22_candidate_changes": false,
+    "new_auth_service_billing": false,
+    "overall_goal": "NOT_MET",
+    "pal_provider_trial_calls": 0,
+    "shared_contract_changes": false
+  },
+  "roles": {
+    "independent_preservation": "Sol6.1, separate context",
+    "independent_review": "Astra, separate context",
+    "source_port_and_integration": "Root"
+  },
+  "root_checked_report_and_log_hashes": true,
+  "root_runs": {
+    "full": {
+      "command": [
+        "/opt/homebrew/bin/python3.13",
+        "-E",
+        "-s",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log_sha256": "7e8a65dd149ed177dc83bfbdf566d298495edc9d84d341beba0f2da189a62afd",
+      "methods": 1107,
+      "seconds": 55.679,
+      "skipped": 0
+    },
+    "green": {
+      "command": [
+        "/opt/homebrew/bin/python3.13",
+        "-E",
+        "-s",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_native_http_admission_v5.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log_sha256": "ea0cc2b0cabcffddeaaa536cadc912bc49deb1bd3790a3582b3064828704a86a",
+      "methods": 4
+    },
+    "red": {
+      "command": [
+        "/opt/homebrew/bin/python3.13",
+        "-E",
+        "-s",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_native_http_admission_v5.py",
+        "-v"
+      ],
+      "errors": 4,
+      "exit_code": 1,
+      "failures": 5,
+      "log_sha256": "158e6b8dadd4ddb33fb7f7cd0fac829a9d8a36b1551f840329b866db2786f629",
+      "methods": 4
+    }
+  },
+  "scope": "UI02-NATIVE-FIXTURE/1 admission source repair only",
+  "source_diff_sha256": "aa89431b81c45229e9040516e2953910be5a63d05bc499de44aa73151ec34592",
+  "source_port": "byte-identical earlier v5 UI02 repair; frozen test expectations unchanged"
+}

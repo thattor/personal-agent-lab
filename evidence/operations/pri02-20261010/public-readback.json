@@ -1,0 +1,298 @@
+{
+  "commit": "a332c53e79b7e28788f6abbb42099edc122a3535",
+  "previous_public_base": "6f2e4801e48d44d3e6beb1d67701bdf24c3da09d",
+  "anonymous": true,
+  "auth_header_used": false,
+  "files": [
+    {
+      "path": "ACCEPTANCE.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/ACCEPTANCE.md",
+      "http_status": 200,
+      "bytes": 94485,
+      "sha256": "159a737d82e992433228cfce5c6a06559bd46a96f104d82a9605b692bab74f63",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "AGENTS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/AGENTS.md",
+      "http_status": 200,
+      "bytes": 16282,
+      "sha256": "c9ebc5d23759d867cd2a0c3287e6765539a0cdf4d507e9c79763c51f7e30900b",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "DECISIONS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/DECISIONS.md",
+      "http_status": 200,
+      "bytes": 235085,
+      "sha256": "a0811a3e048b20425510a36e148d840237744e4067377f57c0c750b5bf014b65",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "STATE.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/STATE.md",
+      "http_status": 200,
+      "bytes": 127186,
+      "sha256": "5055c8254a9946480b07ff3cbe7ed46f07250866e050e4e65339715a1448e509",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "docs/DEFECTS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/docs/DEFECTS.md",
+      "http_status": 200,
+      "bytes": 124254,
+      "sha256": "3fb6f360802bc6a6bf7048dd9f9650fdbd5fde9fe655b235159d56817bee1aa3",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/NATIVE-TEXT01-ASTRA-REVIEW.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/docs/design/contracts-v5/NATIVE-TEXT01-ASTRA-REVIEW.md",
+      "http_status": 200,
+      "bytes": 4239,
+      "sha256": "679c633137ef7d62f92efed090a45228ae9c033ee3435211aa1c9f2180fbd9b0",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/NATIVE-TEXT01-SCOPE.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/docs/design/contracts-v5/NATIVE-TEXT01-SCOPE.md",
+      "http_status": 200,
+      "bytes": 4507,
+      "sha256": "828226743343f4a5783c87d4d7a308ffb8600e5d03875267384f2d711455a2f8",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-N-HOST-PREPARATION.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/docs/design/contracts-v5/PRI02-N-HOST-PREPARATION.md",
+      "http_status": 200,
+      "bytes": 10752,
+      "sha256": "cde3f51a51505add06b3ebe1784feff2a338a1540db87f9eda9bb04df1ec5877",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-N-SCOPE.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/docs/design/contracts-v5/PRI02-N-SCOPE.md",
+      "http_status": 200,
+      "bytes": 20005,
+      "sha256": "985d88bb3525abe21995375b7172d1d42decd64e498784b5ecf97aaea30e88a0",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-NATIVE-BOUNDARY-PROPOSAL.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/docs/design/contracts-v5/PRI02-NATIVE-BOUNDARY-PROPOSAL.md",
+      "http_status": 200,
+      "bytes": 10679,
+      "sha256": "3ea4bcb9a51057ca3da94ca8366192b1b8cc8f7f4918cc59b7768a024c8b9dc9",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-T-SCOPE.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/docs/design/contracts-v5/PRI02-T-SCOPE.md",
+      "http_status": 200,
+      "bytes": 7360,
+      "sha256": "0214ccabb3ff016845fe92ef31a4da9789a60c9edae4d07632dce1fed2f00a01",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-T-SOL-REVIEW.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/docs/design/contracts-v5/PRI02-T-SOL-REVIEW.md",
+      "http_status": 200,
+      "bytes": 2653,
+      "sha256": "d18854ca62fe904d822b5d19ca7f9259e15e3b2cc0b3b2acba34707084ba9bde",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI02-TEXT-SEAM-ANALYSIS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/docs/design/contracts-v5/PRI02-TEXT-SEAM-ANALYSIS.md",
+      "http_status": 200,
+      "bytes": 6935,
+      "sha256": "945cf82d17e82220461b496e9220135e977f20fd1f8fd1e6bd76bbe299b9ea54",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "docs/design/contracts-v5/PRI03-EXPERT-NATIVE-PREPARATION.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/docs/design/contracts-v5/PRI03-EXPERT-NATIVE-PREPARATION.md",
+      "http_status": 200,
+      "bytes": 14121,
+      "sha256": "1d46f7fcb6c015cc6ffa54394c0e0ead853f7b7409b248191253663d8f7e5d6c",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "docs/plans/CHECKPOINTS.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/docs/plans/CHECKPOINTS.md",
+      "http_status": 200,
+      "bytes": 108979,
+      "sha256": "a5c9e138a6ef71d829a08bae63e4d82806e00d3371d7371abc410c405d68dd15",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "evidence/operations/pri01-20261010/public-readback.json",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/evidence/operations/pri01-20261010/public-readback.json",
+      "http_status": 200,
+      "bytes": 12357,
+      "sha256": "50feb266ca0b3e9a366823e261ace009ba6923b3ccc628246bc2867d34d78d16",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "evidence/operations/pri02-20261010/native-n-summary.json",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/evidence/operations/pri02-20261010/native-n-summary.json",
+      "http_status": 200,
+      "bytes": 2887,
+      "sha256": "fb3cf2d4ae6bd99b21e795d8d93af0cd9acc867c321ccc62db70d7b53389eb0c",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "evidence/operations/pri02-20261010/native-preparation-verification.json",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/evidence/operations/pri02-20261010/native-preparation-verification.json",
+      "http_status": 200,
+      "bytes": 3603,
+      "sha256": "55e3ed1ead08dece6829a96294d28a083fbdee4fc5d828b053950f808e03a6a7",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "evidence/operations/pri02-20261010/native-t-input.json",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/evidence/operations/pri02-20261010/native-t-input.json",
+      "http_status": 200,
+      "bytes": 771,
+      "sha256": "cde1f868c29e72edc96179cc3fa71bbc246db8c5d9bbb8677f18be5321a452d2",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "evidence/operations/pri02-20261010/native-t-summary.json",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/evidence/operations/pri02-20261010/native-t-summary.json",
+      "http_status": 200,
+      "bytes": 2095,
+      "sha256": "dd77642560d632a9a5075d5e08837a99726047eca584a298161e85d1e6e885fa",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "evidence/operations/pri02-20261010/opus-design-report.md",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/evidence/operations/pri02-20261010/opus-design-report.md",
+      "http_status": 200,
+      "bytes": 13511,
+      "sha256": "a9a168701ead3c43007f5745536452c07d6219d1259b52ea132630f55f3dc8b6",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "evidence/operations/pri02-20261010/opus-design-summary.json",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/evidence/operations/pri02-20261010/opus-design-summary.json",
+      "http_status": 200,
+      "bytes": 2343,
+      "sha256": "74a81c4c777cb6e8a95b88bc5058a746dbcf3687b150ca9a59f0d7a2e645bf0c",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "pal/native_call_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/pal/native_call_v5.py",
+      "http_status": 200,
+      "bytes": 7882,
+      "sha256": "94f4f63bd1070cb037b8a9220fe0c5b232f78e7aa8f805d268ad8edf03344395",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "pal/native_text_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/pal/native_text_v5.py",
+      "http_status": 200,
+      "bytes": 6795,
+      "sha256": "e000aef8f9491223a1b53d58caf5f4a8b3b683e3d844062cceae45171276941f",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "pal/primary_host_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/pal/primary_host_v5.py",
+      "http_status": 200,
+      "bytes": 55338,
+      "sha256": "a049033e4fb30ce7e1539b1841575cdf3fd5cbe2f06bed7db6dfc67075b5dbb8",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "tests/test_native_call_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/tests/test_native_call_v5.py",
+      "http_status": 200,
+      "bytes": 15705,
+      "sha256": "fcc0e68ed2f7f66f20bc949e43dc7ccb0a57447e4ca97b5befef2532125cd35f",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "tests/test_native_devin_metadata_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/tests/test_native_devin_metadata_v5.py",
+      "http_status": 200,
+      "bytes": 6333,
+      "sha256": "443548e3fc0032dcca1666922c59b74a9788c985d9f0b7751445b0caecb8c6ef",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "tests/test_native_devin_runtime_boundary_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/tests/test_native_devin_runtime_boundary_v5.py",
+      "http_status": 200,
+      "bytes": 4695,
+      "sha256": "75b9ee36dfb7277defa21b1601023d6ccdc8244502c9a44a54b70f079bfb21b9",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "tests/test_native_devin_text_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/tests/test_native_devin_text_v5.py",
+      "http_status": 200,
+      "bytes": 18596,
+      "sha256": "7c703c8d7dd30a748fd5177dc21242e9ec9034f126cd571baf785289efa30250",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "tests/test_native_primary_host_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/tests/test_native_primary_host_v5.py",
+      "http_status": 200,
+      "bytes": 17884,
+      "sha256": "2bd96018409a1af4341899960803622bbaedb5a6c42bebbc87fb594e4c4fa153",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "tests/test_native_text_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/tests/test_native_text_v5.py",
+      "http_status": 200,
+      "bytes": 10854,
+      "sha256": "2f5128f01fce6b9b4c47afe1b864f73c579925373ee0768b08093b630046979d",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "tests/test_primary_native_prompt_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/tests/test_primary_native_prompt_v5.py",
+      "http_status": 200,
+      "bytes": 4923,
+      "sha256": "d8f24f6f6799b410911ac54b433c818e739fd1a92fcfc7bc6d1adfa4547ff864",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "tests/test_primary_native_qualification_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/tests/test_primary_native_qualification_v5.py",
+      "http_status": 200,
+      "bytes": 14883,
+      "sha256": "41da74688383063d75b6546615f0dcb46657089a3e3f73b41b77e59292fbb99e",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "tools/native_devin_text_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/tools/native_devin_text_v5.py",
+      "http_status": 200,
+      "bytes": 19170,
+      "sha256": "67c7ae88456c3b1c3a3d7639baf179112b9d4fc3f5d3185d22ac67f077175d4a",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "tools/qualify_primary_native_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/tools/qualify_primary_native_v5.py",
+      "http_status": 200,
+      "bytes": 13699,
+      "sha256": "ac9c37276c9d5860074166ed4feaf4c5b2aa5e9d75aeac7cb7b1e218fb9ac131",
+      "exact_commit_bytes_match": true
+    },
+    {
+      "path": "tools/verify_native_primary_lifetime_v5.py",
+      "url": "https://raw.githubusercontent.com/thattor/personal-agent-lab/a332c53e79b7e28788f6abbb42099edc122a3535/tools/verify_native_primary_lifetime_v5.py",
+      "http_status": 200,
+      "bytes": 13452,
+      "sha256": "c3616ec994092d55965d59080bbc2b992f14bafa40fe5a16ef322580f5834a60",
+      "exact_commit_bytes_match": true
+    }
+  ],
+  "all_match": true,
+  "scope": "Necessary minimized source/contracts/tests/verification export; no product deployment or actual native qualification."
+}

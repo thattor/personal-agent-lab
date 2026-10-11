@@ -1,0 +1,30 @@
+{
+  "observed_at": "2026-10-08T21:52:42.639972+00:00",
+  "capacity": {
+    "capacity": {
+      "initialized": true,
+      "limit": 12,
+      "routes": {
+        "claude": {
+          "executing": 2,
+          "reserved": 0
+        },
+        "devin": {
+          "executing": 0,
+          "reserved": 0
+        }
+      }
+    },
+    "status": "ok"
+  },
+  "task_ids": {
+    "A": "2363ba2f94ca4183906f00aabb66dd50",
+    "B": "b0fd78557fc64e2b834aa232060915d0"
+  },
+  "base_commit": "01c5f0c5fa81667063d4ff34fa66fc9911e8943c",
+  "owned_sessions": {
+    "A": 57931,
+    "B": 69621
+  },
+  "note": "Executing counts are unresolved local leases; final call interval evidence will establish actual inference overlap."
+}

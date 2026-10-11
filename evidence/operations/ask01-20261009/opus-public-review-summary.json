@@ -1,0 +1,22 @@
+{
+  "source": "c49bb005ab9fe18b53e27934a537934325dd26a7",
+  "model_requested": "claude-opus-5-5-high",
+  "model_observed": "claude-opus-5-5-high",
+  "status": "SUCCESS",
+  "exit_code": 0,
+  "elapsed_seconds": 305.502,
+  "ask_verdict": "ALIGNED",
+  "change_verdict": "READY_TO_FREEZE",
+  "tools_observed": [
+    "finish"
+  ],
+  "requested_mode": "plan",
+  "effective_permission_mode": "request-review",
+  "hard_tool_allowlist_enforced": false,
+  "input_transport": "17/17 anonymous public URL HTTP200 bytes/hash matched",
+  "review_coverage_limit": "model reports connection test truncated and several modules/notebooks/diffs not supplied; public byte binding is not proof of model reading all17 files",
+  "tests": "no reviewer-executed tests; Root/independent receipts cited",
+  "input_files_unchanged_after_review": 17,
+  "prevention": "next AGY print reviews do not combine --mode plan with --disable-slash-commands; inspect init permission_mode and stderr before reporting enforcement",
+  "raw_evidence": "Original transport/runtime records retained locally under D045. This summary excludes conversation IDs and host/workspace/state paths."
+}

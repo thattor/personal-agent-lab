@@ -1,0 +1,12 @@
+{
+  "observed_at": "2026-10-08T23:01:17.556176+00:00",
+  "task_id": "cc4c676211714e51a18c0f1604d8f0c9",
+  "status": "failed",
+  "verified": false,
+  "failure": "review_unresolved after one allowed repair",
+  "all_attempts_known_completed": true,
+  "source_review": "No source blocker; all11 source/test hashes confirmed by independent Opus",
+  "remaining_document_fix": "Root evidence (`verification.json`, `three-way-proof.json`):",
+  "candidate_words": 475,
+  "root_disposition": "Preserve failure. Separate scoped document correction and independent review through normal CO, without resuming state or repeating code implementation."
+}

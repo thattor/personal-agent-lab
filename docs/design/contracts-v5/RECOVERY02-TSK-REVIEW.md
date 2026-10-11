@@ -1,0 +1,20 @@
+# RECOVERY02 draft independent review
+
+Reviewer: separate native Sol context; fixed acceptance-test author, not TSK source author. Early REQUEST_CHANGES against provisional tasks_v5.py SHA256 `3a14f45d3440579d974b9e6057edfc83f2dd11fa7e601f7d3dda9410193f2dd2`. Author source copied unchanged into this isolated worktree; only this note and separate probe are committed.
+
+P1 — ordinary event content is misclassified as recovery provenance. At tasks_v5.py:639 the marker query selects every event with text `mock saved draft recovered`, with no provenance distinction. `_artifact_set` invokes the global integrity check at line789. An ordinary report summary with this exact text finishes successfully, then `get_work({goal_id})` returns unavailable. An ordinary release with the same reason succeeds queued, then the same read fails. Expected: both ordinary histories remain readable. Restricting event kind alone cannot fix the second case; even public append_event can legitimately carry identical content. The check needs recovery provenance without reserving ordinary strings.
+
+Independent command: `/opt/homebrew/bin/python3.13 -E -s -B -m unittest discover -s tests -p test_recovery02_event_marker_probe.py -v`. One method, two subcases, two failures, exit1; both actual disposable SQLite TaskStore fixtures. Two preliminary inline actual API probes reproduced the same outcomes. No callbacks, ART doubles, providers or fake Host were used.
+
+Inspection covered recovery classification ordering, optional lookup and caller-transaction guard, adoption projection/original call and Step linkage, atomic settlement, internal replay and adoption/set/event validation, source and counter preservation. No further concrete blocker established by this inspection. Author's earlier144/6 results are attributed, not independently rerun. Actual ART fixed20, final exact source and broader managed/process integration remain pending. This is an early draft review, not final APPROVE or product acceptance. Root/Astra received the reproduction before any repair.
+
+## Final exact-source disposition
+
+APPROVE for bounded RECOVERY02 TSK source commit `47d4ac2d7e5940efa9f78ccde72696478696a04e`, tasks SHA256 `611e05509966df9bb09e85baec9f893625372dc91cc83cf3b692c09461a1ecc1`. Original REQUEST_CHANGES above remains preserved against its original bytes. Final repair removes the arbitrary text scan; typed adoption and internal replay bindings select recovery events. The remaining checks validate each bound event and canonical result copy, require adoption-to-binding and binding-to-adoption correspondence, and retain original managed lease/claim, call, Step, source, reservation and artifact-set checks. This follows Root's clarified two-binding scope; coordinated deletion/forgery of multiple anchors is not claimed detectable.
+
+Independent isolated execution used exact actual ART dependency SHA256 `1e37f0ed0435f97c54166210b1ac2746ce52edb271482030ce646a3e388c3ef1`, without re-reviewing ART. Corrected fixed20 SHA256 `0c1090afeb8d6773b93c865394ade58935640c8ed0c1915b2f206e67a7c92f1d` remained unchanged. Commands:
+
+- `/opt/homebrew/bin/python3.13 -E -s -B -m unittest discover -s tests -p test_tasks_artifact_recovery_v5.py -q`: 20 PASS, 0.769s, exit0.
+- `/opt/homebrew/bin/python3.13 -E -s -B -m unittest discover -s tests -p test_recovery02_event_marker_probe.py -v`: unchanged independent one method/two cases PASS, 0.011s, exit0.
+
+Prior inspection was reused for unchanged paths, and the exact repair was inspected separately. No remaining concrete blocker found. This approval covers local managed TSK/actual ART recovery acceptance and affected ordinary-content behavior. It does not establish process-death proof, full regression, generic interrupted external-effect recovery, provider cessation or whole-product acceptance; Root owns process4/full suite. Author150 and other reported green suites were not independently duplicated. Only this note is committed; source/ART/fixed-test overlays remain uncommitted review dependencies.

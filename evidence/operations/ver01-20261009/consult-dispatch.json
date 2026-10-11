@@ -1,0 +1,17 @@
+{
+  "task_id": "e2477652c7ce43cbb9e20a91386fe2e1",
+  "base": "e48342b5a5a632300bfa1a7c2658fc9461cacfbb",
+  "runtime_version": "0.4.5",
+  "state": "/private/tmp/co04-human-route-cr3o_bg1/state",
+  "planner": "claude/claude-opus-5-5",
+  "consultant": "devin/swe-2-high",
+  "owned_session": 16386,
+  "status": "running",
+  "write_scope": [
+    "evidence/operations/ver01-20261009/swe-scope-review.md"
+  ],
+  "verifier": "Bounded consultation note structure only",
+  "auth_cost": "Existing Devin authenticated; exact swe-2-high row lists SWE-2 High [262K context, Free]. Existing Claude Pro route qualified; no new auth, paid fallback or settings changes.",
+  "preflight": "devin models required the documented list subcommand; pre-inference argument error corrected, not a model retry",
+  "code_dependencies": "VER01 scope remains proposed; no dependent implementation before consultation/disposition"
+}

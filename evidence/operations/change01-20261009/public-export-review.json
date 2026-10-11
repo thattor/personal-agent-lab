@@ -1,0 +1,24 @@
+{
+  "schema": "PAL.public-export-review/1",
+  "reviewer": "separate native Sol6.1 context",
+  "source_author": "native Astra",
+  "reviewed_commit": "fe628c434a167a84f211e49f266d132659283d21",
+  "parent": "6b4bc457a51be3b9a5cb0b113a21bcbe1f25a32b",
+  "verdict": "APPROVE",
+  "checks": [
+    "all production bytes equal to Root verified implementation",
+    "all seven new/changed source-test-demo-verifier bytes and manifest hashes equal to Root",
+    "12 exported proof hashes and 12 original-local proof hashes match",
+    "scope changes only operational review identifier; normative examples and shared contract unchanged",
+    "one new reachable export commit contains no raw AGY files, new conversation UUID, or new host/account/state path data",
+    "51 methods matches 28TSK+11RUN+11connection+1integrity; full log845/26.939s/OK",
+    "five normalized log line counts and all non-path result bytes unchanged",
+    "relative Markdown proof links resolve"
+  ],
+  "limits": [
+    "reviewer did not rerun full845 or source review",
+    "existing remote historical metadata inherited without rewrite",
+    "Root later merged already-public main with no byte changes and added two planner-instruction-bound lines"
+  ],
+  "raw_evidence": "preserved locally per D045"
+}

@@ -1,0 +1,11 @@
+test_lost_committed_ask_response_recovers_by_key_without_reinference (test_ask_connection_v5.AskConnectionTests.test_lost_committed_ask_response_recovers_by_key_without_reinference) ... ok
+test_reconnected_owner_recovers_question_and_answer_replay_is_history (test_ask_connection_v5.AskConnectionTests.test_reconnected_owner_recovers_question_and_answer_replay_is_history) ... ok
+test_stopping_one_answer_excludes_derived_question_link_without_losing_other_record (test_ask_connection_v5.AskConnectionTests.test_stopping_one_answer_excludes_derived_question_link_without_losing_other_record) ... ok
+test_two_questions_keep_distinct_answer_links_and_finish_same_goal (test_ask_connection_v5.AskConnectionTests.test_two_questions_keep_distinct_answer_links_and_finish_same_goal) ... ok
+test_uncommitted_tail_is_retried_locally_without_another_model_call (test_ask_connection_v5.AskConnectionTests.test_uncommitted_tail_is_retried_locally_without_another_model_call) ... ok
+test_waiting_frees_capacity_for_another_goal (test_ask_connection_v5.AskConnectionTests.test_waiting_frees_capacity_for_another_goal) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.087s
+
+OK

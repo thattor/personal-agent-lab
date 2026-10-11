@@ -1,0 +1,29 @@
+{
+  "schema": "PAL.PRI01.design-disposition/1",
+  "base": "19f491290e7496d1789564bc644191e638963734",
+  "model": "claude/claude-opus-5-5",
+  "route": "existing CO0.4.5",
+  "co_status": "verified",
+  "co_verified": true,
+  "co_verified_scope": "report structure and byte bound only",
+  "reviewer_verdict": "REFINE",
+  "host_input_sha256": {
+    "DESIGN.md": "7d988d4ac3bd50b6f3cba4cb938d0e341cbbf4f3d98c25c255a2e1085026c74f",
+    "SPEC.md": "d02c1c9970eaabe8f32f1e4ed2a0031525f3c64da2e02a456a5f8f2f13bed9e8",
+    "docs/design/contracts-v5/PAL-contracts-v5.md": "d0536c4d4e0cfe6d3a0dfccb9df49b4944c8f44ff39228985f7c3e947c25c4e7",
+    "docs/design/contracts-v5/PRI01-DESIGN-REVIEW-REQUEST.md": "22c709d86a54d851395cb02d2de088da02e798136dbff8803c1575bf2248e48a",
+    "docs/design/contracts-v5/PRI01-OWNER-EXCERPTS.md": "992717078d9eef2e10c8e3f2ca4a349766eb855d143154b3ddb297b1d16ae5ac",
+    "docs/design/contracts-v5/PRI01-PROPOSAL.md": "be568d0416e43c843902c9c31ce539cc38393a15192640ce9e352517857c618a",
+    "docs/design/contracts-v5/RECOVERY01-SCOPE.md": "4340781b826185c4c53c38eb35212dbe2089294d73dfbeae89bca2e2b8dbdaaa",
+    "docs/plans/GOAL-EXIT-AUDIT-20261009.md": "1e8c3d48a2aadf92a3d16be6477b04b58485a569917f5a7d00de4686ae35fd7f",
+    "pal/contracts_v5.py": "683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+    "pal/intake_v5.py": "31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+    "pal/memory_v5.py": "94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+    "scripts/verify_design_report_v5.py": "1899fa0da8b4a9e43043781ed99e3f9682faad043410cbdf0502d81f71e57b42"
+  },
+  "host_report_sha256": "e7e132e15469fb0c71e21b8e294e385d5c8ee74919e98fadbbd4ecd278efb937",
+  "disposition": "Fold F1-F12 into minimal PRI01/1 scope after recovery and precise ART adoption. Necessary additive TSK/MEM prerequisites can be specified before PRI implementation; no second engine or atomic effect hook is required by reviewer.",
+  "implementation_acceptance": false,
+  "whole_goal_complete": false,
+  "limits": "Selected TSK methods only; no reviewer tests, provider or usefulness proof. Raw runtime evidence local under D045."
+}

@@ -1,0 +1,68 @@
+{
+  "task_id": "f4cba212a4934abaa5175a4f8133e9ff",
+  "base": "57fce7382e3a22f134cf4fe900deca0daec4512c",
+  "status": "verified",
+  "verified": true,
+  "attempts": [
+    {
+      "attempt_id": "plan-a1",
+      "call_id": "plan",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "claude-opus-5-5",
+      "prompt_sha256": "sha256:7d7a4600c6fba79e164d198f2fa6ee2019d459fe336bc1b307686d9c65461501",
+      "role": "planner",
+      "route": "claude",
+      "step_id": "plan"
+    },
+    {
+      "attempt_id": "s1-a1",
+      "call_id": "s1",
+      "done": true,
+      "failure": null,
+      "launched": true,
+      "model": "swe-2-high",
+      "prompt_sha256": "sha256:f04341a8e059507e24e4536426ce540a3ef185b28ca6ca65cbe41d961887fb42",
+      "role": "implement",
+      "route": "devin",
+      "step_id": "s1"
+    }
+  ],
+  "verify": {
+    "after": {
+      "docs/design/contracts-v5/ART01-BINDING.md": "sha256:aabcd20eb5e6c0ef6d6c7b18986326d81425d033fe5a607cbd1c6477370c2b5b",
+      "docs/design/contracts-v5/ART01-SCOPE.md": "sha256:fae57ead2cfdc65d6cd0e3efbed8c72e11cdda466214a1de7e23ccd6330f5028",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/RUN01-RELIABILITY.md": "sha256:3442a12aca735e7466e6851377d69e7f0f82e6cbaf58dd094a023b44cf76d671",
+      "evidence/operations/art01-20261009/swe-binding-review.md": "sha256:a985daac6bef8b8e37c238766148cb8124f7780e73cfac3a21a384f35911b687",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/intake_v5.py": "sha256:31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+      "pal/mock_runner_v5.py": "sha256:36ee78afcbc5b0db3eccaead757a16973d7ff5412dfaaa3910319fb1b2f6e2ac",
+      "pal/tasks_v5.py": "sha256:ccc745abb16bad72a925c9257c506bd4a102f31a4999102a7a38060cb3bdde8c"
+    },
+    "before": {
+      "docs/design/contracts-v5/ART01-BINDING.md": "sha256:aabcd20eb5e6c0ef6d6c7b18986326d81425d033fe5a607cbd1c6477370c2b5b",
+      "docs/design/contracts-v5/ART01-SCOPE.md": "sha256:fae57ead2cfdc65d6cd0e3efbed8c72e11cdda466214a1de7e23ccd6330f5028",
+      "docs/design/contracts-v5/PAL-contracts-v5.md": "sha256:948a2190418ee2166be39bd571c69a491529acfc810adefc0689e757752eee7d",
+      "docs/design/contracts-v5/RUN01-RELIABILITY.md": "sha256:3442a12aca735e7466e6851377d69e7f0f82e6cbaf58dd094a023b44cf76d671",
+      "evidence/operations/art01-20261009/swe-binding-review.md": "sha256:a985daac6bef8b8e37c238766148cb8124f7780e73cfac3a21a384f35911b687",
+      "pal/contracts_v5.py": "sha256:683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+      "pal/intake_v5.py": "sha256:31a3c4ce95687e9726ac6a418bf82f865859bf85da1832df6e3359f3b4a592ad",
+      "pal/memory_v5.py": "sha256:94c4182e582a196c898ca5d37d6cc7210261697abaf0f4b553d646296a2c69b4",
+      "pal/mock_runner_v5.py": "sha256:36ee78afcbc5b0db3eccaead757a16973d7ff5412dfaaa3910319fb1b2f6e2ac",
+      "pal/tasks_v5.py": "sha256:ccc745abb16bad72a925c9257c506bd4a102f31a4999102a7a38060cb3bdde8c"
+    },
+    "exit": 0,
+    "log": "Binding consultation structure only\n",
+    "n": 1,
+    "passed": true,
+    "sandbox": "seatbelt-v1",
+    "version": "sha256:6699b1ba02320d545c4a7275709d5abae38a38375d714412111b96fc859a8f0f"
+  },
+  "result_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/f4cba212a4934abaa5175a4f8133e9ff/result.json",
+  "diff_path": "/private/tmp/co04-human-route-cr3o_bg1/state/tasks/f4cba212a4934abaa5175a4f8133e9ff/result.diff",
+  "scope": "Review note structure only; no product acceptance",
+  "root_disposition": "REFINE; adopted with strict registered-source exception only for bound compose results, no arbitrary artifact exception; trusted callback guards are detection, not rollback of a collaborator COMMIT"
+}

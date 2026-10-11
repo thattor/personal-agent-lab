@@ -1,0 +1,81 @@
+{
+  "schema": "pal.int00-verification/1",
+  "recorded_at": "2026-10-09T00:39:19.316429+00:00",
+  "source_commit": "92732afa3f4dcaf84ddf7c821e22b35be883ed54",
+  "contract": "PAL-v5-common-wire / INT00/1",
+  "source_hashes": {
+    "pal/contracts_v5.py": "683ddeeaf0fd1d1a6eba94f338fb206b23ddf6014fc02000b240c4347ea1cf5f",
+    "tests/test_contracts_v5.py": "b1155a8b5cd62560696a14fb8c6969cb82653707ffcada20907425e537a18b05",
+    "tests/fixtures/contracts_v5.json": "1327effe445f87e2f9eacbfb9d19e035acc9e3c1945f523ce916759651fad99d",
+    "docs/design/contracts-v5/INT00-IMPLEMENTATION.md": "6b998bda310083ffc5092de7570d9220bff7412c046548428c860280d0ef7fda",
+    "tests/test_v5_read_content_pipeline.py": "a441371b48530a7c573faadffe37fb640a38630c317ab4a0ef49c5e2d3ab7d0f",
+    "scripts/live_cancel_probe.py": "869aa2e4603084fb875913b704ed5e7212f0a4ea6fc8568765afe91811e93fc9",
+    "tests/test_live_cancel_probe.py": "9a6fb91eaae40bff514f2cbb1cbb8c57dfdac41b4df239cce8e5415b8ac36bbc"
+  },
+  "author_commit": "d286fe7f1adff074f67b0ae4406c41eac3da9e24",
+  "author_four_files_byte_identical": true,
+  "implementation": {
+    "model": "gpt-6-astra",
+    "targeted_tests": 15,
+    "fixture_cases": 119,
+    "doctests": 3
+  },
+  "independent_review": {
+    "model": "gpt-6.1-sol",
+    "report": "sol-independent-review.md",
+    "author_code_verdict": "APPROVE",
+    "consumer_verdict": "APPROVE",
+    "probe_fix_verdict": "APPROVE"
+  },
+  "root_targeted": {
+    "tests": 15,
+    "exit": 0,
+    "log": "sol-targeted.log"
+  },
+  "consumer": {
+    "tests": 11,
+    "added_tests": 5,
+    "exit": 0,
+    "log": "consumer.log"
+  },
+  "probe_regression": {
+    "tests": 22,
+    "exit": 0,
+    "log": "deadline-after.log",
+    "red_tests": 3,
+    "red_errors": 2,
+    "red_log": "deadline-before.log"
+  },
+  "root_full": {
+    "tests": 422,
+    "seconds": 22.424,
+    "exit": 0,
+    "status": "PASS",
+    "log": "full-integrated.log"
+  },
+  "retained_full_before_fix": [
+    {
+      "tests": 419,
+      "failures": 1,
+      "wrapper_exit": 1,
+      "log": "full-initial-wrapper-error.log"
+    },
+    {
+      "tests": 419,
+      "failures": 0,
+      "exit": 0,
+      "log": "full-pre-fix-retry.log"
+    }
+  ],
+  "not_run": [
+    "C01-C15 services",
+    "persistent Operation ledger",
+    "shared transaction races",
+    "real GitHub/provider calls",
+    "saved artifact/Ref provenance",
+    "full Goal flow",
+    "live UI",
+    "human usefulness"
+  ],
+  "old_co_task": "6a9dea446fa241ceb6ee876bbdb08be9 remains unknown; no retry/resume/cancel"
+}

@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-10-09T00:56:47.946622+00:00",
+  "source_turn": "01a11e25-7a70-72d0-ba3b-694d51b6dd21",
+  "workspace": "/Users/hattoritoshiyasu/Documents/PAL/agy-work/intake-review-20261009",
+  "workspace_trust_exact_path": true,
+  "cli_banner_version": "1.3.2",
+  "plan": "Google AI Pro",
+  "selected_model": "claude-opus-5-5-high",
+  "display_model": "Claude Opus 5.5 (High)",
+  "mode": "plan",
+  "sandbox": true,
+  "effective_use_ai_credits": "off observed in CLI /settings",
+  "claude_gpt_weekly_remaining_percent": 71.83,
+  "claude_gpt_five_hour_remaining_percent": 100,
+  "inference_started": false,
+  "new_login_or_billing_change": false,
+  "workspace_inputs": {
+    "AGENTS.md": "49954722a33245ccce8a2b9db017f5983f6464b32176fb5fdaae5be53773f7a8",
+    "review-request.md": "a52b05bd8ef7c36b166b3e8a375f343b551472860847bf51e9b0d5f7db3fd4fd",
+    "contract-excerpts.md": "062b158f63d4dddae499c4305c62a76148e1f6e023f38b402bba5f30993529fa"
+  }
+}

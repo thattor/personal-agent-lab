@@ -1,0 +1,1579 @@
+diff --git a/pal/artifact_integrity_v5.py b/pal/artifact_integrity_v5.py
+new file mode 100644
+index 0000000..573f7cc
+--- /dev/null
++++ b/pal/artifact_integrity_v5.py
+@@ -0,0 +1,70 @@
++"""Byte integrity check of a saved body against host-supplied metadata.
++
++VER01-integrity/1 preparation component. It compares byte length and SHA-256
++only. It issues no Condition/Ref, saves no verification, judges no meaning and
++performs no I/O. The host must prove that the expected metadata is canonical.
++"""
++
++import hashlib
++from dataclasses import dataclass
++
++__all__ = ("IntegrityCheck", "check_bytes")
++
++_MAX_BYTES = 1048576
++_SHA256_HEX_LENGTH = 64
++_LOWER_HEX = frozenset("0123456789abcdef")
++
++_MET = "met"
++_UNMET = "unmet"
++_UNKNOWN = "unknown"
++
++_INVALID_EXPECTED_SHA256 = "invalid_expected_sha256"
++_INVALID_EXPECTED_BYTES = "invalid_expected_bytes"
++_INVALID_DATA = "invalid_data"
++_DATA_EXCEEDS_LIMIT = "data_exceeds_limit"
++_BYTE_COUNT_MISMATCH = "byte_count_mismatch"
++_SHA256_MISMATCH = "sha256_mismatch"
++_INTEGRITY_MATCH = "integrity_match"
++
++
++@dataclass(frozen=True, slots=True)
++class IntegrityCheck:
++    """Outcome of one byte integrity check. It carries no input values."""
++
++    status: str
++    reason: str
++
++
++def _is_sha256_hex(value):
++    return (
++        type(value) is str
++        and len(value) == _SHA256_HEX_LENGTH
++        and all(char in _LOWER_HEX for char in value)
++    )
++
++
++def _is_byte_count(value):
++    return type(value) is int and 0 <= value <= _MAX_BYTES
++
++
++def check_bytes(data, expected_sha256, expected_bytes):
++    """Check data against an expected lowercase SHA-256 hex and byte count.
++
++    Invalid metadata or non-bytes data returns unknown. Over-limit or
++    mismatched data returns unmet. An over-limit or wrong-length body is
++    never hashed.
++    """
++    if not _is_sha256_hex(expected_sha256):
++        return IntegrityCheck(_UNKNOWN, _INVALID_EXPECTED_SHA256)
++    if not _is_byte_count(expected_bytes):
++        return IntegrityCheck(_UNKNOWN, _INVALID_EXPECTED_BYTES)
++    if type(data) is not bytes:
++        return IntegrityCheck(_UNKNOWN, _INVALID_DATA)
++    byte_count = len(data)
++    if byte_count > _MAX_BYTES:
++        return IntegrityCheck(_UNMET, _DATA_EXCEEDS_LIMIT)
++    if byte_count != expected_bytes:
++        return IntegrityCheck(_UNMET, _BYTE_COUNT_MISMATCH)
++    if hashlib.sha256(data).hexdigest() != expected_sha256:
++        return IntegrityCheck(_UNMET, _SHA256_MISMATCH)
++    return IntegrityCheck(_MET, _INTEGRITY_MATCH)
+diff --git a/pal/bounded_payload_v5.py b/pal/bounded_payload_v5.py
+new file mode 100644
+index 0000000..0393b73
+--- /dev/null
++++ b/pal/bounded_payload_v5.py
+@@ -0,0 +1,66 @@
++"""Bounded in-memory byte accumulator for PAL v5 (EXE02-bytes/1).
++
++Local preparation component only: no I/O, no threading, no shared state.
++"""
++
++MAX_PAYLOAD_BYTES = 1048576
++
++INVALID_INPUT = "invalid_input"
++LIMIT = "limit"
++INVALID_INPUT_MESSAGE = "invalid payload input"
++LIMIT_MESSAGE = "payload byte limit exceeded"
++
++__all__ = [
++    "MAX_PAYLOAD_BYTES",
++    "INVALID_INPUT",
++    "LIMIT",
++    "INVALID_INPUT_MESSAGE",
++    "LIMIT_MESSAGE",
++    "PayloadBuffer",
++    "PayloadLimitError",
++]
++
++
++class PayloadLimitError(Exception):
++    """Error with a fixed code/message pair; never carries caller input."""
++
++    def __init__(self, code):
++        if type(code) is str and code == LIMIT:
++            code = LIMIT
++            message = LIMIT_MESSAGE
++        else:
++            code = INVALID_INPUT
++            message = INVALID_INPUT_MESSAGE
++        super().__init__(message)
++        self.code = code
++        self.message = message
++
++
++class PayloadBuffer:
++    """In-memory byte accumulator bounded by a strict positive int maximum."""
++
++    __slots__ = ("_max_bytes", "_data")
++
++    def __init__(self, *, max_bytes=MAX_PAYLOAD_BYTES):
++        if type(max_bytes) is not int:
++            raise PayloadLimitError(INVALID_INPUT)
++        if max_bytes <= 0:
++            raise PayloadLimitError(INVALID_INPUT)
++        if max_bytes > MAX_PAYLOAD_BYTES:
++            raise PayloadLimitError(LIMIT)
++        self._max_bytes = max_bytes
++        self._data = bytearray()
++
++    def append(self, chunk):
++        if type(chunk) is not bytes:
++            raise PayloadLimitError(INVALID_INPUT)
++        if len(self._data) + len(chunk) > self._max_bytes:
++            raise PayloadLimitError(LIMIT)
++        self._data += chunk
++
++    def getvalue(self):
++        return bytes(self._data)
++
++    @property
++    def byte_count(self):
++        return len(self._data)
+diff --git a/pal/github_file_payload_v5.py b/pal/github_file_payload_v5.py
+new file mode 100644
+index 0000000..4ea9966
+--- /dev/null
++++ b/pal/github_file_payload_v5.py
+@@ -0,0 +1,192 @@
++"""Bounded decoder for the GitHub contents file object (PAL v5 slice D).
++
++Local byte-processing helper only: no I/O, IDs, receipts, Git object hash
++checking or provenance verification. blob_sha is provider metadata.
++"""
++
++import base64
++import binascii
++import dataclasses
++import json
++
++__all__ = ("DecodedFile", "FilePayloadError", "decode_file")
++
++_HARD_MAX_BYTES = 1048576
++
++_MSG_MAX_BYTES_INVALID = "max_bytes must be a positive int"
++_MSG_MAX_BYTES_LIMIT = "max_bytes exceeds hard maximum"
++_MSG_PAYLOAD_TYPE = "payload must be bytes"
++_MSG_PAYLOAD_LIMIT = "payload exceeds max_bytes"
++_MSG_PAYLOAD_UTF8 = "payload is not valid UTF-8"
++_MSG_DUPLICATE_KEYS = "payload has duplicate JSON keys"
++_MSG_NON_FINITE = "payload has non-finite JSON number"
++_MSG_JSON = "payload is not valid JSON"
++_MSG_OBJECT = "payload is not a JSON file object"
++_MSG_TYPE = "type must be file"
++_MSG_ENCODING = "encoding must be base64"
++_MSG_CONTENT = "content must be a string"
++_MSG_SIZE = "size must be a nonnegative int"
++_MSG_SHA = "sha must be 40 lowercase hex"
++_MSG_FORBIDDEN_FIELDS = "target and submodule_git_url are not allowed"
++_MSG_SIZE_LIMIT = "size exceeds max_bytes"
++_MSG_BASE64 = "content is not canonical base64"
++_MSG_DECODED_LIMIT = "decoded content exceeds max_bytes"
++_MSG_SIZE_MISMATCH = "size does not match decoded content"
++_MSG_CONTENT_UTF8 = "content is not valid UTF-8"
++
++_B64_ALPHABET = frozenset(
++    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
++)
++_HEX_DIGITS = frozenset("0123456789abcdef")
++
++
++class FilePayloadError(Exception):
++    def __init__(self, code, message):
++        self.code = code
++        self.message = message
++        super().__init__(message)
++
++
++class _DuplicateKey(Exception):
++    pass
++
++
++class _NonFinite(Exception):
++    pass
++
++
++@dataclasses.dataclass(frozen=True, slots=True)
++class DecodedFile:
++    content: str
++    data: bytes
++    byte_count: int
++    blob_sha: str
++
++
++def _pairs(pairs):
++    out = {}
++    for key, value in pairs:
++        if key in out:
++            raise _DuplicateKey
++        out[key] = value
++    return out
++
++
++def _reject_constant(raw):
++    raise _NonFinite
++
++
++def _finite_float(raw):
++    value = float(raw)
++    if value == float("inf") or value == float("-inf"):
++        raise _NonFinite
++    return value
++
++
++def decode_file(payload: bytes, *, max_bytes: int = _HARD_MAX_BYTES) -> DecodedFile:
++    if type(max_bytes) is not int or max_bytes <= 0:
++        raise FilePayloadError("invalid_input", _MSG_MAX_BYTES_INVALID)
++    if max_bytes > _HARD_MAX_BYTES:
++        raise FilePayloadError("limit", _MSG_MAX_BYTES_LIMIT)
++    if type(payload) is not bytes:
++        raise FilePayloadError("invalid_input", _MSG_PAYLOAD_TYPE)
++    if len(payload) > max_bytes:
++        raise FilePayloadError("limit", _MSG_PAYLOAD_LIMIT)
++
++    failure = None
++    text = ""
++    try:
++        text = payload.decode("utf-8")
++    except UnicodeDecodeError:
++        failure = _MSG_PAYLOAD_UTF8
++    if failure is not None:
++        raise FilePayloadError("invalid_input", failure)
++
++    failure = None
++    obj = None
++    try:
++        obj = json.loads(
++            text,
++            object_pairs_hook=_pairs,
++            parse_constant=_reject_constant,
++            parse_float=_finite_float,
++        )
++    except _DuplicateKey:
++        failure = _MSG_DUPLICATE_KEYS
++    except _NonFinite:
++        failure = _MSG_NON_FINITE
++    except (ValueError, RecursionError):
++        failure = _MSG_JSON
++    if failure is not None:
++        raise FilePayloadError("invalid_input", failure)
++
++    if type(obj) is not dict:
++        raise FilePayloadError("invalid_input", _MSG_OBJECT)
++
++    kind = obj.get("type")
++    if type(kind) is not str or kind != "file":
++        raise FilePayloadError("invalid_input", _MSG_TYPE)
++
++    encoding = obj.get("encoding")
++    if type(encoding) is not str or encoding != "base64":
++        raise FilePayloadError("invalid_input", _MSG_ENCODING)
++
++    content = obj.get("content")
++    if type(content) is not str:
++        raise FilePayloadError("invalid_input", _MSG_CONTENT)
++
++    size = obj.get("size")
++    if type(size) is not int or size < 0:
++        raise FilePayloadError("invalid_input", _MSG_SIZE)
++
++    sha = obj.get("sha")
++    if (
++        type(sha) is not str
++        or len(sha) != 40
++        or any(c not in _HEX_DIGITS for c in sha)
++    ):
++        raise FilePayloadError("invalid_input", _MSG_SHA)
++
++    if "target" in obj or "submodule_git_url" in obj:
++        raise FilePayloadError("invalid_input", _MSG_FORBIDDEN_FIELDS)
++
++    if size > max_bytes:
++        raise FilePayloadError("limit", _MSG_SIZE_LIMIT)
++
++    stripped = content.replace("\r", "").replace("\n", "")
++    if len(stripped) % 4 != 0 or any(
++        c not in _B64_ALPHABET for c in stripped
++    ):
++        raise FilePayloadError("invalid_input", _MSG_BASE64)
++
++    failure = None
++    data = b""
++    try:
++        data = base64.b64decode(stripped, validate=True)
++    except (binascii.Error, ValueError):
++        failure = _MSG_BASE64
++    if failure is None and base64.b64encode(data) != stripped.encode("ascii"):
++        failure = _MSG_BASE64
++    if failure is not None:
++        raise FilePayloadError("invalid_input", failure)
++
++    if len(data) > max_bytes:
++        raise FilePayloadError("limit", _MSG_DECODED_LIMIT)
++    if len(data) != size:
++        raise FilePayloadError("invalid_input", _MSG_SIZE_MISMATCH)
++
++    failure = None
++    decoded_text = ""
++    try:
++        decoded_text = data.decode("utf-8")
++    except UnicodeDecodeError:
++        failure = _MSG_CONTENT_UTF8
++    if failure is not None:
++        raise FilePayloadError("invalid_input", failure)
++
++    return DecodedFile(
++        content=decoded_text,
++        data=data,
++        byte_count=len(data),
++        blob_sha=sha,
++    )
+diff --git a/tests/test_artifact_integrity_v5.py b/tests/test_artifact_integrity_v5.py
+new file mode 100644
+index 0000000..6083815
+--- /dev/null
++++ b/tests/test_artifact_integrity_v5.py
+@@ -0,0 +1,328 @@
++"""Tests for the VER01-integrity/1 byte integrity check."""
++
++import dataclasses
++import hashlib
++import unittest
++from unittest import mock
++
++from pal import artifact_integrity_v5
++from pal.artifact_integrity_v5 import IntegrityCheck, check_bytes
++
++EMPTY_SHA256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
++A_SHA256 = "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb"
++ABC_SHA256 = "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
++WRONG_SHA256 = "0" * 64
++LIMIT = 1048576
++
++STATUS_BY_REASON = {
++    "invalid_expected_sha256": "unknown",
++    "invalid_expected_bytes": "unknown",
++    "invalid_data": "unknown",
++    "data_exceeds_limit": "unmet",
++    "byte_count_mismatch": "unmet",
++    "sha256_mismatch": "unmet",
++    "integrity_match": "met",
++}
++
++
++class _Str(str):
++    pass
++
++
++class _Int(int):
++    pass
++
++
++class _Bytes(bytes):
++    pass
++
++
++class _Hostile:
++    def __len__(self):
++        raise RuntimeError("__len__ must not be called")
++
++    def __iter__(self):
++        raise RuntimeError("__iter__ must not be called")
++
++
++class _Case(unittest.TestCase):
++    def assertCheck(self, result, status, reason):
++        self.assertIs(type(result), IntegrityCheck)
++        self.assertEqual((result.status, result.reason), (status, reason))
++
++
++class SurfaceTests(_Case):
++    def test_public_surface(self):
++        self.assertEqual(
++            artifact_integrity_v5.__all__, ("IntegrityCheck", "check_bytes")
++        )
++        self.assertEqual(artifact_integrity_v5._MAX_BYTES, LIMIT)
++        self.assertEqual(
++            [field.name for field in dataclasses.fields(IntegrityCheck)],
++            ["status", "reason"],
++        )
++
++    def test_keyword_arguments(self):
++        result = check_bytes(
++            data=b"abc", expected_sha256=ABC_SHA256, expected_bytes=3
++        )
++        self.assertCheck(result, "met", "integrity_match")
++
++
++class KnownVectorTests(_Case):
++    def test_empty_body_with_zero_bytes_is_met(self):
++        self.assertCheck(check_bytes(b"", EMPTY_SHA256, 0), "met", "integrity_match")
++
++    def test_single_byte_vector_is_met(self):
++        self.assertCheck(check_bytes(b"a", A_SHA256, 1), "met", "integrity_match")
++
++    def test_abc_vector_is_met(self):
++        self.assertCheck(check_bytes(b"abc", ABC_SHA256, 3), "met", "integrity_match")
++
++
++class MultibyteTests(_Case):
++    def test_byte_count_is_not_character_count(self):
++        body = "\u3042\u3044".encode("utf-8")
++        digest = hashlib.sha256(body).hexdigest()
++        self.assertEqual(len(body), 6)
++        self.assertCheck(check_bytes(body, digest, 6), "met", "integrity_match")
++        self.assertCheck(
++            check_bytes(body, digest, 2), "unmet", "byte_count_mismatch"
++        )
++
++
++class MismatchTests(_Case):
++    def test_correct_body_with_wrong_hash(self):
++        for digest in (WRONG_SHA256, EMPTY_SHA256, A_SHA256):
++            with self.subTest(digest=digest):
++                self.assertCheck(
++                    check_bytes(b"abc", digest, 3), "unmet", "sha256_mismatch"
++                )
++
++    def test_correct_body_and_hash_with_wrong_count(self):
++        for count in (0, 2, 4, LIMIT):
++            with self.subTest(count=count):
++                self.assertCheck(
++                    check_bytes(b"abc", ABC_SHA256, count),
++                    "unmet",
++                    "byte_count_mismatch",
++                )
++
++    def test_empty_body_with_nonzero_count(self):
++        self.assertCheck(
++            check_bytes(b"", EMPTY_SHA256, 1), "unmet", "byte_count_mismatch"
++        )
++
++    def test_same_length_tampering(self):
++        for body in (b"abd", b"ABC", b"\x00bc", b"cba"):
++            with self.subTest(body=body):
++                self.assertCheck(
++                    check_bytes(body, ABC_SHA256, 3), "unmet", "sha256_mismatch"
++                )
++
++
++class InvalidMetadataTests(_Case):
++    def test_invalid_expected_sha256_is_unknown(self):
++        cases = (
++            ABC_SHA256.upper(),
++            ABC_SHA256[:63],
++            ABC_SHA256 + "0",
++            "g" + ABC_SHA256[1:],
++            ABC_SHA256 + "\n",
++            ABC_SHA256[:63] + "\n",
++            " " + ABC_SHA256[1:],
++            "\uff10" * 64,
++            "",
++            _Str(ABC_SHA256),
++            ABC_SHA256.encode("ascii"),
++            bytearray(ABC_SHA256, "ascii"),
++            None,
++            0,
++            _Hostile(),
++        )
++        for value in cases:
++            with self.subTest(value=repr(value)):
++                self.assertCheck(
++                    check_bytes(b"abc", value, 3),
++                    "unknown",
++                    "invalid_expected_sha256",
++                )
++
++    def test_invalid_expected_bytes_is_unknown(self):
++        cases = (True, False, _Int(3), -1, LIMIT + 1, 2**64, 3.0, "3", b"3", None)
++        for value in cases:
++            with self.subTest(value=repr(value)):
++                self.assertCheck(
++                    check_bytes(b"abc", ABC_SHA256, value),
++                    "unknown",
++                    "invalid_expected_bytes",
++                )
++
++    def test_bool_counts_rejected_even_when_numerically_equal(self):
++        self.assertCheck(
++            check_bytes(b"", EMPTY_SHA256, False), "unknown", "invalid_expected_bytes"
++        )
++        self.assertCheck(
++            check_bytes(b"a", A_SHA256, True), "unknown", "invalid_expected_bytes"
++        )
++
++    def test_invalid_data_is_unknown(self):
++        cases = (
++            "abc",
++            bytearray(b"abc"),
++            memoryview(b"abc"),
++            _Bytes(b"abc"),
++            None,
++            3,
++            [97, 98, 99],
++            _Hostile(),
++        )
++        for value in cases:
++            with self.subTest(value=type(value).__name__):
++                self.assertCheck(
++                    check_bytes(value, ABC_SHA256, 3), "unknown", "invalid_data"
++                )
++
++
++class PrecedenceTests(_Case):
++    def test_hash_checked_first(self):
++        self.assertCheck(
++            check_bytes(None, "BAD", -1), "unknown", "invalid_expected_sha256"
++        )
++
++    def test_count_checked_before_data(self):
++        self.assertCheck(
++            check_bytes(None, ABC_SHA256, -1), "unknown", "invalid_expected_bytes"
++        )
++
++    def test_count_mismatch_before_hash_mismatch(self):
++        self.assertCheck(
++            check_bytes(b"abd", EMPTY_SHA256, 4), "unmet", "byte_count_mismatch"
++        )
++
++
++class LimitTests(_Case):
++    def test_exact_limit_is_met_and_hashed_once(self):
++        body = b"a" * LIMIT
++        digest = hashlib.sha256(body).hexdigest()
++        with mock.patch.object(hashlib, "sha256", wraps=hashlib.sha256) as spy:
++            result = check_bytes(body, digest, LIMIT)
++        self.assertCheck(result, "met", "integrity_match")
++        spy.assert_called_once()
++
++    def test_over_limit_body_is_unmet_and_not_hashed(self):
++        body = b"a" * (LIMIT + 1)
++        prefix_digest = hashlib.sha256(body[:LIMIT]).hexdigest()
++        with mock.patch.object(hashlib, "sha256", wraps=hashlib.sha256) as spy:
++            for expected in (LIMIT, 0, 3):
++                with self.subTest(expected=expected):
++                    self.assertCheck(
++                        check_bytes(body, prefix_digest, expected),
++                        "unmet",
++                        "data_exceeds_limit",
++                    )
++        spy.assert_not_called()
++
++    def test_count_mismatch_is_not_hashed(self):
++        with mock.patch.object(hashlib, "sha256", wraps=hashlib.sha256) as spy:
++            result = check_bytes(b"abd", ABC_SHA256, 4)
++        self.assertCheck(result, "unmet", "byte_count_mismatch")
++        spy.assert_not_called()
++
++    def test_invalid_inputs_are_not_hashed(self):
++        with mock.patch.object(hashlib, "sha256", wraps=hashlib.sha256) as spy:
++            self.assertCheck(
++                check_bytes(b"abc", "bad", 3), "unknown", "invalid_expected_sha256"
++            )
++            self.assertCheck(
++                check_bytes(b"abc", ABC_SHA256, True), "unknown", "invalid_expected_bytes"
++            )
++            self.assertCheck(
++                check_bytes(bytearray(b"abc"), ABC_SHA256, 3), "unknown", "invalid_data"
++            )
++        spy.assert_not_called()
++
++    def test_limit_count_is_valid_metadata(self):
++        self.assertCheck(
++            check_bytes(b"abc", ABC_SHA256, LIMIT), "unmet", "byte_count_mismatch"
++        )
++        self.assertCheck(
++            check_bytes(b"abc", ABC_SHA256, LIMIT + 1),
++            "unknown",
++            "invalid_expected_bytes",
++        )
++
++
++class ImmutabilityTests(_Case):
++    def setUp(self):
++        self.result = check_bytes(b"abc", ABC_SHA256, 3)
++
++    def test_fields_cannot_be_reassigned_or_deleted(self):
++        for name in ("status", "reason"):
++            with self.subTest(name=name):
++                with self.assertRaises(dataclasses.FrozenInstanceError):
++                    setattr(self.result, name, "unmet")
++                with self.assertRaises(dataclasses.FrozenInstanceError):
++                    delattr(self.result, name)
++        self.assertCheck(self.result, "met", "integrity_match")
++
++    def test_no_instance_dict_or_new_attributes(self):
++        self.assertFalse(hasattr(self.result, "__dict__"))
++        with self.assertRaises(AttributeError):
++            self.result.extra = 1
++        with self.assertRaises(AttributeError):
++            object.__setattr__(self.result, "extra", 1)
++
++    def test_equal_and_hashable(self):
++        same = IntegrityCheck("met", "integrity_match")
++        self.assertEqual(self.result, same)
++        self.assertEqual(hash(self.result), hash(same))
++
++
++class BoundedReasonTests(_Case):
++    def _all_paths(self):
++        return (
++            check_bytes(b"abc", "bad", 3),
++            check_bytes(b"abc", ABC_SHA256, -1),
++            check_bytes("abc", ABC_SHA256, 3),
++            check_bytes(b"a" * (LIMIT + 1), ABC_SHA256, 3),
++            check_bytes(b"abc", ABC_SHA256, 4),
++            check_bytes(b"abd", ABC_SHA256, 3),
++            check_bytes(b"abc", ABC_SHA256, 3),
++        )
++
++    def test_every_path_has_fixed_bounded_reason(self):
++        results = self._all_paths()
++        self.assertEqual({result.reason for result in results}, set(STATUS_BY_REASON))
++        for result in results:
++            with self.subTest(reason=result.reason):
++                self.assertIs(type(result), IntegrityCheck)
++                self.assertIs(type(result.status), str)
++                self.assertIs(type(result.reason), str)
++                self.assertEqual(result.status, STATUS_BY_REASON[result.reason])
++                self.assertTrue(result.reason.isascii())
++                self.assertLessEqual(len(result.reason), 64)
++
++    def test_inputs_are_not_echoed(self):
++        marker = "ZZECHOMARKER91"
++        body = marker.encode("ascii")
++        digest = hashlib.sha256(body).hexdigest()
++        results = (
++            check_bytes(body, marker, len(body)),
++            check_bytes(body, digest, marker),
++            check_bytes(marker, digest, len(body)),
++            check_bytes(body, digest, len(body) + 1),
++            check_bytes(body, ABC_SHA256, len(body)),
++            check_bytes(body, digest, len(body)),
++        )
++        for result in results:
++            with self.subTest(reason=result.reason):
++                rendered = repr(result) + str(result)
++                self.assertNotIn(marker.lower(), rendered.lower())
++                self.assertNotIn(digest, rendered)
++                self.assertNotIn(ABC_SHA256, rendered)
++                self.assertIn(result.reason, STATUS_BY_REASON)
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/tests/test_bounded_payload_v5.py b/tests/test_bounded_payload_v5.py
+new file mode 100644
+index 0000000..38d242b
+--- /dev/null
++++ b/tests/test_bounded_payload_v5.py
+@@ -0,0 +1,281 @@
++"""Tests for pal.bounded_payload_v5 (EXE02-bytes/1). Synthetic fixtures only."""
++
++import unittest
++
++from pal.bounded_payload_v5 import (
++    INVALID_INPUT,
++    INVALID_INPUT_MESSAGE,
++    LIMIT,
++    LIMIT_MESSAGE,
++    MAX_PAYLOAD_BYTES,
++    PayloadBuffer,
++    PayloadLimitError,
++)
++
++
++class _IntSubclass(int):
++    pass
++
++
++class _BytesSubclass(bytes):
++    pass
++
++
++class ConstructorTests(unittest.TestCase):
++    def test_explicit_max_capacity_accepted(self):
++        for kwargs in ({}, {"max_bytes": MAX_PAYLOAD_BYTES}):
++            with self.subTest(kwargs=kwargs):
++                buf = PayloadBuffer(**kwargs)
++                buf.append(b"x" * MAX_PAYLOAD_BYTES)
++                self.assertEqual(buf.byte_count, MAX_PAYLOAD_BYTES)
++
++    def test_capacity_above_hard_maximum_is_limit(self):
++        for bad in (MAX_PAYLOAD_BYTES + 1, 10**12):
++            with self.subTest(bad=bad):
++                with self.assertRaises(PayloadLimitError) as cm:
++                    PayloadBuffer(max_bytes=bad)
++                self.assertEqual(cm.exception.code, LIMIT)
++                self.assertEqual(cm.exception.message, LIMIT_MESSAGE)
++
++    def test_invalid_max_bytes_types_and_values(self):
++        for bad in (True, False, 0, -1, -10**6, 1.0, "5", None, _IntSubclass(7)):
++            with self.subTest(bad=repr(bad)):
++                with self.assertRaises(PayloadLimitError) as cm:
++                    PayloadBuffer(max_bytes=bad)
++                self.assertEqual(cm.exception.code, INVALID_INPUT)
++                self.assertEqual(cm.exception.message, INVALID_INPUT_MESSAGE)
++
++    def test_positional_argument_rejected(self):
++        with self.assertRaises(TypeError):
++            PayloadBuffer(5)
++
++
++class AppendAndValueTests(unittest.TestCase):
++    def test_split_multibyte_characters_preserved(self):
++        data = "aé漢😀z".encode("utf-8")
++        buf = PayloadBuffer()
++        for i in range(len(data)):
++            buf.append(data[i:i + 1])
++        self.assertEqual(buf.getvalue(), data)
++        self.assertEqual(buf.getvalue().decode("utf-8"), "aé漢😀z")
++        self.assertEqual(buf.byte_count, len(data))
++        self.assertIs(type(buf.byte_count), int)
++
++    def test_multibyte_split_at_arbitrary_boundaries(self):
++        data = "é漢😀".encode("utf-8")
++        buf = PayloadBuffer()
++        buf.append(data[:2])
++        buf.append(data[2:3])
++        buf.append(data[3:6])
++        buf.append(data[6:])
++        self.assertEqual(buf.getvalue(), data)
++        self.assertEqual(buf.getvalue().decode("utf-8"), "é漢😀")
++
++    def test_empty_chunks(self):
++        buf = PayloadBuffer()
++        self.assertEqual(buf.getvalue(), b"")
++        self.assertEqual(buf.byte_count, 0)
++        buf.append(b"")
++        buf.append(b"ab")
++        buf.append(b"")
++        buf.append(b"")
++        buf.append(b"cd")
++        buf.append(b"")
++        self.assertEqual(buf.getvalue(), b"abcd")
++        self.assertEqual(buf.byte_count, 4)
++
++    def test_empty_chunk_accepted_when_exactly_full(self):
++        buf = PayloadBuffer(max_bytes=3)
++        buf.append(b"xyz")
++        buf.append(b"")
++        self.assertEqual(buf.getvalue(), b"xyz")
++        self.assertEqual(buf.byte_count, 3)
++
++    def test_minimum_capacity_and_excess_by_one(self):
++        buf = PayloadBuffer(max_bytes=1)
++        buf.append(b"a")
++        with self.assertRaises(PayloadLimitError) as cm:
++            buf.append(b"x")
++        self.assertEqual(cm.exception.code, LIMIT)
++        self.assertEqual(buf.getvalue(), b"a")
++        self.assertEqual(buf.byte_count, 1)
++
++    def test_exact_maximum_then_excess_by_one(self):
++        for kwargs in ({}, {"max_bytes": MAX_PAYLOAD_BYTES}):
++            with self.subTest(kwargs=kwargs):
++                buf = PayloadBuffer(**kwargs)
++                buf.append(b"\0" * MAX_PAYLOAD_BYTES)
++                self.assertEqual(buf.byte_count, MAX_PAYLOAD_BYTES)
++                with self.assertRaises(PayloadLimitError) as cm:
++                    buf.append(b"\0")
++                self.assertEqual(cm.exception.code, LIMIT)
++                self.assertEqual(buf.byte_count, MAX_PAYLOAD_BYTES)
++                self.assertEqual(buf.getvalue(), b"\0" * MAX_PAYLOAD_BYTES)
++
++    def test_single_oversized_chunk_rejected(self):
++        buf = PayloadBuffer()
++        with self.assertRaises(PayloadLimitError) as cm:
++            buf.append(b"\0" * (MAX_PAYLOAD_BYTES + 1))
++        self.assertEqual(cm.exception.code, LIMIT)
++        self.assertEqual(buf.byte_count, 0)
++        self.assertEqual(buf.getvalue(), b"")
++
++    def test_cumulative_overflow(self):
++        buf = PayloadBuffer(max_bytes=10)
++        buf.append(b"abcd")
++        buf.append(b"efghij")
++        self.assertEqual(buf.byte_count, 10)
++        with self.assertRaises(PayloadLimitError) as cm:
++            buf.append(b"k")
++        self.assertEqual(cm.exception.code, LIMIT)
++        self.assertEqual(buf.getvalue(), b"abcdefghij")
++        self.assertEqual(buf.byte_count, 10)
++
++    def test_cumulative_overflow_after_small_chunks(self):
++        buf = PayloadBuffer(max_bytes=8)
++        buf.append(b"aa")
++        buf.append(b"bb")
++        buf.append(b"cc")
++        with self.assertRaises(PayloadLimitError) as cm:
++            buf.append(b"ddd")
++        self.assertEqual(cm.exception.code, LIMIT)
++        self.assertEqual(buf.getvalue(), b"aabbcc")
++        self.assertEqual(buf.byte_count, 6)
++
++
++class InvalidChunkTests(unittest.TestCase):
++    def test_invalid_chunk_types_leave_buffer_unchanged(self):
++        buf = PayloadBuffer()
++        buf.append(b"ok")
++        for bad in (
++            "x",
++            bytearray(b"x"),
++            memoryview(b"x"),
++            _BytesSubclass(b"x"),
++            None,
++            0,
++            True,
++            [b"x"],
++        ):
++            with self.subTest(bad=type(bad).__name__):
++                with self.assertRaises(PayloadLimitError) as cm:
++                    buf.append(bad)
++                self.assertEqual(cm.exception.code, INVALID_INPUT)
++        self.assertEqual(buf.getvalue(), b"ok")
++        self.assertEqual(buf.byte_count, 2)
++
++
++class RejectionAndSnapshotTests(unittest.TestCase):
++    def test_rejected_append_does_not_poison(self):
++        buf = PayloadBuffer(max_bytes=6)
++        buf.append(b"abc")
++        with self.assertRaises(PayloadLimitError):
++            buf.append(b"defg")
++        with self.assertRaises(PayloadLimitError):
++            buf.append("nope")
++        buf.append(b"def")
++        self.assertEqual(buf.getvalue(), b"abcdef")
++        self.assertEqual(buf.byte_count, 6)
++
++    def test_snapshots_are_immutable(self):
++        buf = PayloadBuffer()
++        buf.append(b"one")
++        s1 = buf.getvalue()
++        buf.append(b"two")
++        self.assertEqual(s1, b"one")
++        self.assertIs(type(s1), bytes)
++        s2 = buf.getvalue()
++        self.assertIs(type(s2), bytes)
++        self.assertEqual(s2, b"onetwo")
++        buf.append(b"three")
++        self.assertEqual(s1, b"one")
++        self.assertEqual(s2, b"onetwo")
++        self.assertEqual(buf.getvalue(), b"onetwothree")
++
++    def test_byte_count_is_read_only(self):
++        buf = PayloadBuffer()
++        buf.append(b"ab")
++        with self.assertRaises(AttributeError):
++            buf.byte_count = 5
++        with self.assertRaises(AttributeError):
++            del buf.byte_count
++        with self.assertRaises(AttributeError):
++            buf.new_attribute = 1
++        self.assertEqual(buf.byte_count, 2)
++        self.assertIs(type(buf.byte_count), int)
++
++
++class FixedErrorTests(unittest.TestCase):
++    def test_limit_error_shape_and_no_input_echo(self):
++        buf = PayloadBuffer(max_bytes=4)
++        buf.append(b"abcd")
++        secret = b"SECRET-CHUNK-7731"
++        with self.assertRaises(PayloadLimitError) as cm:
++            buf.append(secret)
++        err = cm.exception
++        self.assertIsInstance(err, Exception)
++        self.assertEqual(err.code, LIMIT)
++        self.assertEqual(err.message, LIMIT_MESSAGE)
++        self.assertEqual(str(err), LIMIT_MESSAGE)
++        self.assertEqual(err.args, (LIMIT_MESSAGE,))
++        for surface in (str(err), repr(err), repr(err.args)):
++            self.assertNotIn(secret.decode("ascii"), surface)
++            self.assertNotIn("7731", surface)
++        self.assertIsNone(err.__cause__)
++        self.assertIsNone(err.__context__)
++
++    def test_invalid_input_error_shape_and_no_input_echo(self):
++        bad_value = "weird-max-4242"
++        with self.assertRaises(PayloadLimitError) as cm:
++            PayloadBuffer(max_bytes=bad_value)
++        err = cm.exception
++        self.assertIsInstance(err, Exception)
++        self.assertEqual(err.code, INVALID_INPUT)
++        self.assertEqual(err.message, INVALID_INPUT_MESSAGE)
++        self.assertEqual(str(err), INVALID_INPUT_MESSAGE)
++        self.assertEqual(err.args, (INVALID_INPUT_MESSAGE,))
++        for surface in (str(err), repr(err), repr(err.args)):
++            self.assertNotIn(bad_value, surface)
++            self.assertNotIn("4242", surface)
++        self.assertIsNone(err.__cause__)
++        self.assertIsNone(err.__context__)
++
++    def test_chunk_invalid_input_error_no_echo(self):
++        buf = PayloadBuffer()
++        bad = "distinctive-chunk-9901"
++        with self.assertRaises(PayloadLimitError) as cm:
++            buf.append(bad)
++        err = cm.exception
++        self.assertEqual(err.code, INVALID_INPUT)
++        self.assertEqual(err.message, INVALID_INPUT_MESSAGE)
++        self.assertNotIn(bad, str(err))
++        self.assertNotIn(bad, repr(err))
++        self.assertIsNone(err.__cause__)
++        self.assertIsNone(err.__context__)
++
++    def test_unknown_code_maps_to_invalid_input(self):
++        err = PayloadLimitError("anything-else-555")
++        self.assertEqual(err.code, INVALID_INPUT)
++        self.assertEqual(err.message, INVALID_INPUT_MESSAGE)
++        self.assertEqual(err.args, (INVALID_INPUT_MESSAGE,))
++        self.assertNotIn("555", str(err))
++        self.assertNotIn("555", repr(err))
++
++    def test_error_code_cannot_retain_or_compare_caller_objects(self):
++        class StrSubclass(str):
++            pass
++
++        class HostileCode:
++            def __eq__(self, other):
++                raise AssertionError("caller comparison must not run")
++
++        for value in (StrSubclass(LIMIT), HostileCode()):
++            with self.subTest(value_type=type(value).__name__):
++                err = PayloadLimitError(value)
++                self.assertIs(type(err.code), str)
++                self.assertEqual(err.code, INVALID_INPUT)
++                self.assertEqual(err.args, (INVALID_INPUT_MESSAGE,))
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/tests/test_github_file_payload_v5.py b/tests/test_github_file_payload_v5.py
+new file mode 100644
+index 0000000..aae799b
+--- /dev/null
++++ b/tests/test_github_file_payload_v5.py
+@@ -0,0 +1,510 @@
++"""Tests for pal.github_file_payload_v5 (PAL v5 slice D).
++
++All fixtures are synthetic, built with json.dumps/base64 or hand-written
++bytes; nothing is copied from real repository responses.
++"""
++
++import base64
++import dataclasses
++import json
++import unittest
++
++import pal.github_file_payload_v5 as module
++from pal.github_file_payload_v5 import (
++    DecodedFile,
++    FilePayloadError,
++    decode_file,
++)
++
++SHA = "0123456789abcdef0123456789abcdef01234567"
++MARKER = "SECRET-MARKER-7Q"
++
++
++def b64(data, newline=None):
++    text = base64.b64encode(data).decode("ascii")
++    if newline is None:
++        return text
++    return newline.join(text[i:i + 60] for i in range(0, len(text), 60))
++
++
++def payload(content, size, sha=SHA, extra=None, drop=()):
++    obj = {
++        "type": "file",
++        "encoding": "base64",
++        "content": content,
++        "size": size,
++        "sha": sha,
++    }
++    if extra:
++        obj.update(extra)
++    for key in drop:
++        obj.pop(key, None)
++    return json.dumps(obj).encode("utf-8")
++
++
++def payload_for(data, **kwargs):
++    return payload(b64(data), len(data), **kwargs)
++
++
++class DecodeFileTests(unittest.TestCase):
++    maxDiff = None
++
++    def assert_error(self, raw, code, message, **kwargs):
++        with self.assertRaises(FilePayloadError) as cm:
++            decode_file(raw, **kwargs)
++        err = cm.exception
++        self.assertIs(type(err), FilePayloadError)
++        self.assertEqual(err.code, code)
++        self.assertEqual(err.message, message)
++        self.assertEqual(str(err), message)
++        self.assertEqual(err.args, (message,))
++        self.assertTrue(message.isascii())
++        self.assertLessEqual(len(message), 80)
++        self.assertIsNone(err.__cause__)
++        self.assertIsNone(err.__context__)
++        for rendered in (str(err), repr(err), str(err.args)):
++            self.assertNotIn(MARKER, rendered)
++        return err
++
++    # --- Valid inputs -----------------------------------------------------
++
++    def test_t01_wrapped_known_text(self):
++        text = "h\u00e9llo \u4e16\u754c\n" * 20
++        data = text.encode("utf-8")
++        wrapped = b64(data, "\n") + "\n"
++        result = decode_file(payload(wrapped, len(data)))
++        self.assertIs(type(result), DecodedFile)
++        self.assertEqual(result.content, text)
++        self.assertEqual(result.data, data)
++        self.assertEqual(result.byte_count, len(data))
++        self.assertEqual(result.blob_sha, SHA)
++
++    def test_t02_literal_vector(self):
++        result = decode_file(payload("aGVsbG8=", 5))
++        self.assertEqual(result.content, "hello")
++        self.assertEqual(result.data, b"hello")
++        self.assertEqual(result.byte_count, 5)
++        self.assertEqual(result.blob_sha, SHA)
++
++    def test_t03_empty_file(self):
++        for content in ("", "\n"):
++            result = decode_file(payload(content, 0))
++            self.assertEqual(result.content, "")
++            self.assertEqual(result.data, b"")
++            self.assertEqual(result.byte_count, 0)
++
++    def test_t04_crlf_wrapping(self):
++        data = b"crlf wrapped data block\n" * 30
++        raw = payload(b64(data, "\r\n") + "\r\n", len(data))
++        result = decode_file(raw)
++        self.assertEqual(result.data, data)
++        self.assertEqual(result.content, data.decode("utf-8"))
++
++    def test_t05_no_normalization(self):
++        data = b"a\r\nb\rc\n"
++        result = decode_file(payload_for(data))
++        self.assertEqual(result.data, data)
++        self.assertEqual(result.content, "a\r\nb\rc\n")
++
++        decomposed = "e\u0301".encode("utf-8")
++        result = decode_file(payload_for(decomposed))
++        self.assertEqual(result.content, "e\u0301")
++        self.assertNotEqual(result.content, "\u00e9")
++
++        bom = "\ufeffbody".encode("utf-8")
++        result = decode_file(payload_for(bom))
++        self.assertEqual(result.content, "\ufeffbody")
++
++    def test_t06_extra_fields_allowed(self):
++        extra = {
++            "name": "f.txt",
++            "path": "dir/f.txt",
++            "url": "https://example.invalid/api/x",
++            "git_url": None,
++            "html_url": None,
++            "download_url": "https://example.invalid/dl",
++            "_links": {
++                "self": "https://example.invalid/api/x",
++                "git": None,
++                "html": None,
++            },
++        }
++        result = decode_file(payload("aGVsbG8=", 5, extra=extra))
++        self.assertEqual(result.content, "hello")
++
++    def test_t07_dataclass_shape(self):
++        self.assertTrue(dataclasses.is_dataclass(DecodedFile))
++        names = [f.name for f in dataclasses.fields(DecodedFile)]
++        self.assertEqual(names, ["content", "data", "byte_count", "blob_sha"])
++        result = decode_file(payload("aGVsbG8=", 5))
++        with self.assertRaises(dataclasses.FrozenInstanceError):
++            result.byte_count = 99
++        self.assertFalse(hasattr(result, "__dict__"))
++        self.assertIs(type(result.data), bytes)
++        self.assertIs(type(result.content), str)
++        self.assertIs(type(result.byte_count), int)
++        self.assertIs(type(result.blob_sha), str)
++        other = decode_file(payload("aGVsbG8=", 5))
++        self.assertEqual(result, other)
++        self.assertEqual(hash(result), hash(other))
++
++    # --- Bounds and argument types ---------------------------------------
++
++    def test_t08_size_bounds(self):
++        small = payload("aGVsbG8=", 5)
++        self.assertEqual(decode_file(small).byte_count, 5)
++
++        padded = small + b" " * (1048576 - len(small))
++        self.assertEqual(len(padded), 1048576)
++        self.assertEqual(decode_file(padded).byte_count, 5)
++        self.assertEqual(
++            decode_file(padded, max_bytes=1048576).byte_count, 5
++        )
++        self.assert_error(
++            padded + b" ", "limit", "payload exceeds max_bytes"
++        )
++        self.assert_error(
++            small,
++            "limit",
++            "payload exceeds max_bytes",
++            max_bytes=len(small) - 1,
++        )
++
++    def test_t09_max_bytes(self):
++        raw = payload("aGVsbG8=", 5)
++
++        class IntSub(int):
++            pass
++
++        for bad in (True, False, 0, -1, 1.0, "10", None, IntSub(10)):
++            self.assert_error(
++                raw,
++                "invalid_input",
++                "max_bytes must be a positive int",
++                max_bytes=bad,
++            )
++        self.assert_error(
++            raw,
++            "limit",
++            "max_bytes exceeds hard maximum",
++            max_bytes=1048577,
++        )
++        self.assert_error(
++            "x",
++            "invalid_input",
++            "max_bytes must be a positive int",
++            max_bytes=0,
++        )
++        with self.assertRaises(TypeError):
++            decode_file(raw, 10)
++
++    def test_t10_payload_type(self):
++        class BytesSub(bytes):
++            pass
++
++        for bad in (
++            "{}",
++            bytearray(b"{}"),
++            memoryview(b"{}"),
++            BytesSub(b"{}"),
++            None,
++            5,
++        ):
++            self.assert_error(bad, "invalid_input", "payload must be bytes")
++
++    # --- Raw UTF-8 and JSON -----------------------------------------------
++
++    def test_t11_raw_utf8(self):
++        for raw in (b"\xff", b"\xc0\xaf", b"\xed\xa0\x80"):
++            self.assert_error(
++                raw, "invalid_input", "payload is not valid UTF-8"
++            )
++        bom_json = b"\xef\xbb\xbf" + payload("aGVsbG8=", 5)
++        self.assert_error(
++            bom_json, "invalid_input", "payload is not valid JSON"
++        )
++
++    def test_t12_malformed_json(self):
++        for raw in (
++            b"",
++            b" ",
++            b"{",
++            b'{"a":',
++            b'{"type": "file",}',
++            b"{} trailing",
++            b'{"a": ' + b"1" * 5000 + b"}",
++        ):
++            self.assert_error(
++                raw, "invalid_input", "payload is not valid JSON"
++            )
++        deep = b"[" * 200000
++        self.assert_error(
++            deep, "invalid_input", "payload is not valid JSON"
++        )
++
++    def test_t13_duplicate_keys(self):
++        dup_top = (
++            b'{"type": "file", "type": "file", "encoding": "base64", '
++            b'"content": "aGVsbG8=", "size": 5, "sha": "'
++            + SHA.encode()
++            + b'"}'
++        )
++        self.assert_error(
++            dup_top, "invalid_input", "payload has duplicate JSON keys"
++        )
++        dup_equal = b'{"a": 1, "a": 1, "type": "file"}'
++        self.assert_error(
++            dup_equal, "invalid_input", "payload has duplicate JSON keys"
++        )
++        dup_nested = (
++            b'{"type": "file", "encoding": "base64", '
++            b'"content": "aGVsbG8=", "size": 5, "sha": "'
++            + SHA.encode()
++            + b'", "x": {"k": 1, "k": 2}}'
++        )
++        self.assert_error(
++            dup_nested, "invalid_input", "payload has duplicate JSON keys"
++        )
++
++    def test_t14_non_finite_numbers(self):
++        base = (
++            b'{"type": "file", "encoding": "base64", '
++            b'"content": "aGVsbG8=", "size": 5, "sha": "'
++            + SHA.encode()
++            + b'", "x": '
++        )
++        for token in (b"NaN", b"Infinity", b"-Infinity", b"1e400"):
++            self.assert_error(
++                base + token + b"}",
++                "invalid_input",
++                "payload has non-finite JSON number",
++            )
++
++    # --- File object shape -------------------------------------------------
++
++    def test_t15_not_an_object(self):
++        entry = json.dumps(
++            {
++                "type": "file",
++                "encoding": "base64",
++                "content": "aGVsbG8=",
++                "size": 5,
++                "sha": SHA,
++            }
++        )
++        for raw in (
++            f"[{entry}, {entry}]".encode("utf-8"),
++            b'"text"',
++            b"5",
++            b"3.5",
++            b"null",
++            b"true",
++        ):
++            self.assert_error(
++                raw, "invalid_input", "payload is not a JSON file object"
++            )
++
++    def test_t16_type_field(self):
++        for value in ("dir", "symlink", "submodule", "File", "FILE", 1, None, True):
++            self.assert_error(
++                payload("aGVsbG8=", 5, extra={"type": value}),
++                "invalid_input",
++                "type must be file",
++            )
++        self.assert_error(
++            payload("aGVsbG8=", 5, drop=("type",)),
++            "invalid_input",
++            "type must be file",
++        )
++
++    def test_t17_encoding_field(self):
++        for value in ("none", "", "BASE64", "Base64", None, 64, True):
++            self.assert_error(
++                payload("aGVsbG8=", 5, extra={"encoding": value}),
++                "invalid_input",
++                "encoding must be base64",
++            )
++        self.assert_error(
++            payload("aGVsbG8=", 5, drop=("encoding",)),
++            "invalid_input",
++            "encoding must be base64",
++        )
++
++    def test_t18_content_field(self):
++        for value in (None, 5, ["aGVs"], True, 1.0, {"x": 1}):
++            self.assert_error(
++                payload("aGVsbG8=", 5, extra={"content": value}),
++                "invalid_input",
++                "content must be a string",
++            )
++        self.assert_error(
++            payload("aGVsbG8=", 5, drop=("content",)),
++            "invalid_input",
++            "content must be a string",
++        )
++
++    def test_t19_size_field(self):
++        for value in (None, -1, 1.0, True, "5", [5]):
++            self.assert_error(
++                payload("aGVsbG8=", 5, extra={"size": value}),
++                "invalid_input",
++                "size must be a nonnegative int",
++            )
++        self.assert_error(
++            payload("aGVsbG8=", 5, drop=("size",)),
++            "invalid_input",
++            "size must be a nonnegative int",
++        )
++
++    def test_t20_sha_field(self):
++        for bad in (
++            "A" * 40,
++            "a" * 39,
++            "a" * 41,
++            "a" * 39 + "g",
++            "a" * 64,
++            "a" * 39 + "\n",
++            "a" * 39 + " ",
++            12345,
++            None,
++            True,
++        ):
++            self.assert_error(
++                payload("aGVsbG8=", 5, extra={"sha": bad}),
++                "invalid_input",
++                "sha must be 40 lowercase hex",
++            )
++        self.assert_error(
++            payload("aGVsbG8=", 5, drop=("sha",)),
++            "invalid_input",
++            "sha must be 40 lowercase hex",
++        )
++
++    def test_t21_forbidden_fields(self):
++        for extra in (
++            {"target": "branch"},
++            {"target": None},
++            {"submodule_git_url": "git://example.invalid/x"},
++            {"submodule_git_url": None},
++        ):
++            self.assert_error(
++                payload("aGVsbG8=", 5, extra=extra),
++                "invalid_input",
++                "target and submodule_git_url are not allowed",
++            )
++
++    # --- Size, Base64 and decoded text ------------------------------------
++
++    def test_t22_declared_size_vs_max(self):
++        self.assert_error(
++            payload("!!!!", 201), "limit", "size exceeds max_bytes", max_bytes=200
++        )
++        raw = payload("aGVsbG8=", 201)
++        self.assert_error(
++            raw, "limit", "size exceeds max_bytes", max_bytes=200
++        )
++        raw_mismatch = payload("aGVsbG8=", 200)
++        self.assert_error(
++            raw_mismatch,
++            "invalid_input",
++            "size does not match decoded content",
++            max_bytes=200,
++        )
++
++    def test_t23_invalid_base64(self):
++        cases = [
++            "aGVs G8=",
++            "aGVs\tG8=",
++            "aGVs\x0bG8=",
++            "aGVs\x0cG8=",
++            "aGVs\u2028G8=",
++            "aGVs\u0085G8=",
++            "aGVs-G8=",
++            "aGVs_G8=",
++            "aGVsbG8",
++            "aGVsbG8=====",
++            "aGVs====",
++            "aGVs=G8=",
++            "aGV",
++            "aGVs\u00e9G8=",
++            "QR==",
++            "QUJ=",
++            "aGVsbG9=",
++        ]
++        for content in cases:
++            with self.subTest(content=content):
++                self.assert_error(
++                    payload(content, 5),
++                    "invalid_input",
++                    "content is not canonical base64",
++                )
++
++    def test_t24_size_mismatch(self):
++        for size in (4, 6):
++            self.assert_error(
++                payload("aGVsbG8=", size),
++                "invalid_input",
++                "size does not match decoded content",
++            )
++
++    def test_t25_binary_content(self):
++        for data in (b"\xff\xfe\x00", b"\xe3\x81", b"\x80"):
++            self.assert_error(
++                payload_for(data),
++                "invalid_input",
++                "content is not valid UTF-8",
++            )
++
++    def test_t26_base64_overhead(self):
++        data = b"x" * 600
++        raw = payload_for(data)
++        self.assertGreater(len(raw), 700)
++        self.assert_error(
++            raw, "limit", "payload exceeds max_bytes", max_bytes=700
++        )
++        result = decode_file(raw)
++        self.assertEqual(result.data, data)
++        self.assertEqual(result.byte_count, 600)
++
++    # --- Error hygiene -----------------------------------------------------
++
++    def test_t27_no_input_echo(self):
++        marked_sha = payload(
++            "aGVsbG8=", 5, sha="z" * 40, extra={"note": MARKER}
++        )
++        self.assertIn(MARKER.encode("ascii"), marked_sha)
++        self.assert_error(
++            marked_sha, "invalid_input", "sha must be 40 lowercase hex"
++        )
++
++        marked_json = MARKER.encode("ascii") + payload("aGVsbG8=", 5)
++        self.assert_error(
++            marked_json, "invalid_input", "payload is not valid JSON"
++        )
++
++        marked_dup = (
++            b'{"note": "'
++            + MARKER.encode("ascii")
++            + b'", "note": "x", "type": "file"}'
++        )
++        self.assert_error(
++            marked_dup, "invalid_input", "payload has duplicate JSON keys"
++        )
++
++        marked_b64 = payload(
++            "aGVs" + MARKER + "==", 5, extra={"note": MARKER}
++        )
++        self.assert_error(
++            marked_b64, "invalid_input", "content is not canonical base64"
++        )
++
++    def test_t28_all_export(self):
++        self.assertEqual(len(module.__all__), 3)
++        self.assertEqual(
++            set(module.__all__),
++            {"DecodedFile", "FilePayloadError", "decode_file"},
++        )
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/tests/test_v5_read_content_pipeline.py b/tests/test_v5_read_content_pipeline.py
+new file mode 100644
+index 0000000..3cd20c0
+--- /dev/null
++++ b/tests/test_v5_read_content_pipeline.py
+@@ -0,0 +1,90 @@
++"""Synthetic preparation pipeline; no provider, saved artifact or Goal proof."""
++
++import base64
++import hashlib
++import json
++import unittest
++from unittest.mock import Mock
++
++from pal.artifact_content_v5 import prepare_content
++from pal.artifact_integrity_v5 import check_bytes
++from pal.bounded_payload_v5 import PayloadBuffer, PayloadLimitError
++from pal.github_file_payload_v5 import FilePayloadError, decode_file
++from pal.github_read_request_v5 import ReadRequestError, prepare_read
++
++
++def file_response(body, *, size=None):
++    encoded = base64.b64encode(body).decode("ascii")
++    wrapped = "\r\n".join(encoded[n:n + 8] for n in range(0, len(encoded), 8))
++    return json.dumps({
++        "type": "file", "encoding": "base64", "content": wrapped,
++        "size": len(body) if size is None else size, "sha": "b" * 40,
++    }).encode("utf-8")
++
++
++def preview(arguments, transport, *, max_bytes=1048576):
++    request = prepare_read("github.file.read", arguments, max_bytes=max_bytes)
++    buffer = PayloadBuffer(max_bytes=request.max_bytes)
++    for chunk in transport(request):
++        buffer.append(chunk)
++    decoded = decode_file(buffer.getvalue(), max_bytes=request.max_bytes)
++    return request, decoded, prepare_content(decoded.content, "text/markdown")
++
++
++class ReadContentPipelineTests(unittest.TestCase):
++    def setUp(self):
++        self.arguments = {
++            "repository": "thattor/personal-agent-lab",
++            "path": "資料/進捗.md", "ref": "a" * 40,
++        }
++
++    def test_chunked_response_preserves_text_and_checks_expected_bytes(self):
++        body = "## 状況\r\n確認中 e\u0301\r\n".encode("utf-8")
++        raw = file_response(body)
++        transport = Mock(return_value=[raw[n:n + 3] for n in range(0, len(raw), 3)])
++        request, decoded, content = preview(self.arguments, transport)
++        transport.assert_called_once_with(request)
++        self.assertTrue(request.argv[-1].endswith("?ref=" + self.arguments["ref"]))
++        self.assertEqual(decoded.blob_sha, "b" * 40)
++        self.assertEqual(decoded.data, body)
++        self.assertEqual(content.data, body)
++        self.assertEqual(content.byte_count, len(body))
++        expected_hash = hashlib.sha256(body).hexdigest()
++        self.assertEqual(content.sha256, expected_hash)
++        outcome = check_bytes(content.data, expected_hash, len(body))
++        self.assertEqual((outcome.status, outcome.reason), ("met", "integrity_match"))
++
++    def test_empty_file_is_valid_content(self):
++        _, decoded, content = preview(self.arguments, lambda request: [file_response(b"")])
++        self.assertEqual(decoded.content, "")
++        outcome = check_bytes(content.data, hashlib.sha256(b"").hexdigest(), 0)
++        self.assertEqual((outcome.status, outcome.reason), ("met", "integrity_match"))
++
++    def test_same_length_tampering_does_not_match_expected_body(self):
++        expected = b"original"
++        _, _, content = preview(self.arguments, lambda request: [file_response(b"tampered")])
++        outcome = check_bytes(content.data, hashlib.sha256(expected).hexdigest(), len(expected))
++        self.assertEqual((outcome.status, outcome.reason), ("unmet", "sha256_mismatch"))
++
++    def test_wrong_provider_size_stops_before_content_preparation(self):
++        with self.assertRaises(FilePayloadError) as cm:
++            preview(self.arguments, lambda request: [file_response(b"text", size=3)])
++        self.assertEqual(cm.exception.code, "invalid_input")
++
++    def test_cumulative_transport_overflow_cannot_enter_decode(self):
++        raw = file_response(b"text")
++        with self.assertRaises(PayloadLimitError) as cm:
++            preview(self.arguments, lambda request: [raw[:-1], raw[-1:]], max_bytes=len(raw) - 1)
++        self.assertEqual(cm.exception.code, "limit")
++
++    def test_denied_repository_never_reaches_transport(self):
++        transport = Mock(side_effect=AssertionError("transport must not run"))
++        arguments = dict(self.arguments, repository="someone/other")
++        with self.assertRaises(ReadRequestError) as cm:
++            preview(arguments, transport)
++        self.assertEqual(cm.exception.code, "denied")
++        transport.assert_not_called()
++
++
++if __name__ == "__main__":
++    unittest.main()

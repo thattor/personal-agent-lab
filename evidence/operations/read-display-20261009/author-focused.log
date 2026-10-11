@@ -1,0 +1,11 @@
+test_all_envelope_strings_are_display_escaped (test_read_display_v5.ReadDisplayTests.test_all_envelope_strings_are_display_escaped) ... ok
+test_condition_and_reason_multiline_are_nested (test_read_display_v5.ReadDisplayTests.test_condition_and_reason_multiline_are_nested) ... ok
+test_controls_are_visible_and_inactive (test_read_display_v5.ReadDisplayTests.test_controls_are_visible_and_inactive) ... ok
+test_error_multiline_is_nested (test_read_display_v5.ReadDisplayTests.test_error_multiline_is_nested) ... ok
+test_event_multiline_cannot_forge_host_status (test_read_display_v5.ReadDisplayTests.test_event_multiline_cannot_forge_host_status) ... ok
+test_multiline_draft_and_inspection_bytes_remain_unchanged (test_read_display_v5.ReadDisplayTests.test_multiline_draft_and_inspection_bytes_remain_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK

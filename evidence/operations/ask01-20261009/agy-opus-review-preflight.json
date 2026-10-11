@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-10-09T12:13:33.058030+00:00",
+  "route": "AGY CLI1.3.2",
+  "model_id": "claude-opus-5-5-high",
+  "model_display": "Claude Opus5.5 High",
+  "auth_plan": "existing Google AI Pro; automatic existing sign-in resolved without new login",
+  "weekly_remaining_percent": 38.6,
+  "five_hour_remaining_percent": 48.19,
+  "quota_group": "CLAUDE AND GPT MODELS",
+  "use_ai_credits": false,
+  "cost_settings_changed": false,
+  "scope_trust": "only prepared review folder; owner project AGY authorization",
+  "model_inference_sent_in_preflight": false,
+  "authorization": "D043 direct user in current chat",
+  "prepared_files_verified": 13,
+  "prompt_bytes": 202200,
+  "prompt_sha256": "bf69fe23ba35e585cdb547d743859fec65954bb809c6f59fbc31fc2ae97eb3aa",
+  "concurrency_not_guaranteed": true
+}

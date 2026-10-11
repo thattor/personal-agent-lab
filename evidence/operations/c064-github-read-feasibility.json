@@ -1,0 +1,18 @@
+{
+  "observed_at": "2026-10-08T12:44:28.668093+00:00",
+  "route": "official gh CLI using existing authentication",
+  "gh_version": "gh version 2.97.0 (2026-07-31)",
+  "method": "GET",
+  "endpoint": "repos/thattor/personal-agent-lab/issues/6",
+  "number": 6,
+  "url": "https://github.com/thattor/personal-agent-lab/issues/6",
+  "state": "open",
+  "updated_at": "2026-10-08T11:16:10Z",
+  "body_sha256": "cced79792d5c36878f0064cebe419660bf3bd625e44ca2499c3eb908c5a229c4",
+  "body_utf8_bytes": 11852,
+  "json_utf8_bytes": 14264,
+  "product_integration": false,
+  "new_authentication": false,
+  "external_write": false,
+  "limitation": "Controller feasibility observation only; not a PAL capability or end-to-end acceptance proof."
+}

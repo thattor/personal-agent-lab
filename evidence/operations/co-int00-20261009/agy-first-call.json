@@ -1,0 +1,23 @@
+{
+  "started_at": "2026-10-09T00:57:18.261969+00:00",
+  "finished_at": "2026-10-09T00:58:33.157322+00:00",
+  "elapsed_seconds": 74.895,
+  "exit_code": 0,
+  "model_requested": "claude-opus-5-5-high",
+  "mode": "plan",
+  "sandbox": true,
+  "cwd": "/Users/hattoritoshiyasu/Documents/PAL/agy-work/intake-review-20261009",
+  "prompt_sha256": "f18ac9fc49094d7c3a48af87c1e900ea34c85772691c3ad5995c18d2d950289c",
+  "stdout_bytes": 7152,
+  "stderr_bytes": 78,
+  "status": "SUCCESS",
+  "conversation_id": "43a7c552-418d-4b32-b4c4-4fa83ef1cf18",
+  "num_turns": 1,
+  "response_sha256": "63b79b6e2029a1691b9201abf467fbe428e488773e1b1ed2d4a8382ad023dbad",
+  "input_files_unchanged": true,
+  "response_has_resolved_model_field": false,
+  "model_evidence": "exact CLI flag plus CLI selected-model banner; result does not independently echo backend model id",
+  "verdict": "REFINE",
+  "tool_call_transcript_available": false,
+  "adopted_without_review": false
+}
