@@ -288,6 +288,108 @@ class OperationBudgetTests(unittest.TestCase):
                         (original_work, original_lease),
                     )
 
+    def test_operation_saved_work_future_epoch_is_unavailable(self):
+        work = self.claim_after_create()
+        self.ok(self.reserve(work, "first"))
+        (raw,) = self.conn.execute(
+            "SELECT work FROM v5_tsk_reservation WHERE kind='operation'"
+        ).fetchone()
+        saved = json.loads(raw)
+        saved["epoch"] += 1  # no claim ever issued for that future epoch
+        self.conn.execute(
+            "UPDATE v5_tsk_reservation SET work=? WHERE kind='operation'",
+            (json.dumps(saved, sort_keys=True, separators=(",", ":")),),
+        )
+        before = self.snapshot()
+        self.rejected(self.reserve(work, "second"), "unavailable")
+        self.assertEqual(before, self.snapshot())
+
+    def test_operation_saved_reservation_role_corruption_is_unavailable(self):
+        work = self.claim_after_create()
+        self.ok(self.reserve(work, "first"))
+        self.conn.execute(
+            "UPDATE v5_tsk_reservation SET role='expert' WHERE kind='operation'"
+        )
+        before = self.snapshot()
+        self.rejected(self.reserve(work, "second"), "unavailable")
+        self.assertEqual(before, self.snapshot())
+
+    def test_persisted_operation_original_replay_epoch_binding(self):
+        # A later *valid* current epoch does not rewrite an earlier debit.
+        old_work = self.claim_after_create()
+        self.ok(self.reserve(old_work, "first"))
+        self.ok(self.t.control({
+            "key": "pause", "work_ref": old_work, "command": "pause",
+        }))
+        old_lease = self.claim()["lease_id"]
+        self.ok(self.t.release({
+            "lease_id": old_lease, "work_ref": old_work,
+            "outcome": "yield", "reason": "done",
+        }))
+        self.ok(self.t.control({
+            "key": "resume", "work_ref": old_work, "command": "resume",
+        }))
+        current = self.claim()["work_ref"]
+        self.assertGreater(current["epoch"], old_work["epoch"])
+        (original_work,) = self.conn.execute(
+            "SELECT work FROM v5_tsk_reservation WHERE kind='operation'"
+        ).fetchone()
+        retagged = json.loads(original_work)
+        retagged["epoch"] = current["epoch"]
+        self.conn.execute(
+            "UPDATE v5_tsk_reservation SET work=? WHERE kind='operation'",
+            (json.dumps(retagged, sort_keys=True, separators=(',', ':')),),
+        )
+        before = self.snapshot()
+        self.rejected(self.reserve(current, "second"), "unavailable")
+        self.assertEqual(before, self.snapshot())
+
+    def test_missing_original_operation_replay_is_unavailable(self):
+        work = self.claim_after_create()
+        self.ok(self.reserve(work, "first"))
+        self.conn.execute(
+            "DELETE FROM v5_intake_replay WHERE command='reserve_budget' AND key='first'"
+        )
+        before = self.snapshot()
+        self.rejected(self.reserve(work, "second"), "unavailable")
+        self.assertEqual(before, self.snapshot())
+
+    def test_rewritten_original_operation_replay_epoch_is_unavailable(self):
+        work = self.claim_after_create()
+        self.ok(self.reserve(work, "first"))
+        (original,) = self.conn.execute(
+            "SELECT input_json FROM v5_intake_replay "
+            "WHERE command='reserve_budget' AND key='first'"
+        ).fetchone()
+        corrupt = json.loads(original)
+        corrupt["work_ref"]["epoch"] += 1
+        self.conn.execute(
+            "UPDATE v5_intake_replay SET input_json=? "
+            "WHERE command='reserve_budget' AND key='first'",
+            (json.dumps(corrupt, sort_keys=True, separators=(',', ':')),),
+        )
+        before = self.snapshot()
+        self.rejected(self.reserve(work, "second"), "unavailable")
+        self.assertEqual(before, self.snapshot())
+
+    def test_duplicate_operation_replay_receipt_is_unavailable(self):
+        work = self.claim_after_create()
+        self.ok(self.reserve(work, "first"))
+        original, result = self.conn.execute(
+            "SELECT input_json,result_json FROM v5_intake_replay "
+            "WHERE command='reserve_budget' AND key='first'"
+        ).fetchone()
+        replay = json.loads(original)
+        replay["key"] = "forged-duplicate"
+        self.conn.execute(
+            "INSERT INTO v5_intake_replay VALUES (?,?,?,?)",
+            ("reserve_budget", "forged-duplicate",
+             json.dumps(replay, sort_keys=True, separators=(',', ':')), result),
+        )
+        before = self.snapshot()
+        self.rejected(self.reserve(work, "second"), "unavailable")
+        self.assertEqual(before, self.snapshot())
+
     def test_valid_old_lease_keeps_lifetime_budget_after_resume(self):
         old_work = self.claim_after_create()
         self.ok(self.reserve(old_work, "old-epoch"))

@@ -780,16 +780,51 @@ class TaskStore(IntakeStore):
         # Operation counters are lifetime debits: no reservation is refunded.
         # A plausible but drifting counter must not mint additional permission.
         saved = self._rows(
-            "SELECT r.work,l.goal,l.revision FROM v5_tsk_reservation r "
-            "LEFT JOIN v5_tsk_lease l ON l.id=r.lease WHERE r.kind='operation'"
+            "SELECT r.id,r.work,r.role,l.goal,l.revision,w.epoch AS current_epoch "
+            "FROM v5_tsk_reservation r "
+            "LEFT JOIN v5_tsk_lease l ON l.id=r.lease "
+            "LEFT JOIN v5_intake_work w "
+            "ON w.goal_id=l.goal AND w.revision=l.revision "
+            "WHERE r.kind='operation'"
         )
         if len(saved) != host['used']:
             _reject('unavailable')
         try:
+            # The existing C15 replay is a separately persisted, original
+            # reservation-to-WorkRef binding; a current epoch alone is not.
+            original_work = {}
+            for receipt in self._rows(
+                "SELECT key,input_json,result_json FROM v5_intake_replay "
+                "WHERE command='reserve_budget'"
+            ):
+                request = loads(receipt['input_json'])
+                if type(request) is not dict or request.get('kind') != 'operation':
+                    continue
+                request = _obj(request, {'key', 'kind', 'work_ref'})
+                if (request['key'] != receipt['key'] or
+                        dumps(request) != receipt['input_json']):
+                    _reject('unavailable')
+                response = Result.from_json(loads(receipt['result_json']))
+                if not response.ok:
+                    _reject('unavailable')
+                details = _obj(response.value.to_json(), {'reservation_id', 'remaining'})
+                remaining = _obj(details['remaining'], {'host', 'work'})
+                if any(type(remaining[k]) is not int or not 0 <= remaining[k] <= _MAX
+                       for k in ('host', 'work')):
+                    _reject('unavailable')
+                reservation_id = _id(details['reservation_id'])
+                if reservation_id in original_work:
+                    _reject('unavailable')
+                original_work[reservation_id] = dumps(_work(request['work_ref']))
+            if len(original_work) != len(saved):
+                _reject('unavailable')
             goal_count = 0
             for item in saved:
                 saved_work = _work(loads(item['work']))
-                if (saved_work.epoch < 1 or
+                if (item['role'] is not None or
+                        item['work'] != original_work.get(item['id']) or
+                        type(item['current_epoch']) is not int or
+                        not 1 <= saved_work.epoch <= item['current_epoch'] or
                         (saved_work.goal_id, saved_work.revision) !=
                         (item['goal'], item['revision'])):
                     _reject('unavailable')
@@ -806,9 +841,10 @@ class TaskStore(IntakeStore):
                      else self._remaining(row)[kind])
         if min(remaining.values()) <= 0:
             _reject('limit')
+        return remaining
 
     def _reserve(self, row, lease, kind, role):
-        self._headroom(row, kind)
+        remaining_before = self._headroom(row, kind)
         if kind == 'model':
             self._headroom(row, 'step')
         reservation = self._mint('reservation')
@@ -817,8 +853,8 @@ class TaskStore(IntakeStore):
         self._conn.execute('INSERT INTO v5_tsk_reservation VALUES (?,?,?,?,?,?,NULL)',
                            (reservation, lease['id'], dumps(self._wr(row)), self._index(row), kind, role))
         return {'reservation_id': reservation, 'remaining':
-                (self._operation_remaining(row) if kind == 'operation'
-                 else self._remaining(row)[kind])}
+                ({k: v - 1 for k, v in remaining_before.items()}
+                 if kind == 'operation' else self._remaining(row)[kind])}
 
     def _bind(self, reservation, binding):
         item = self._one('SELECT * FROM v5_tsk_reservation WHERE id=?', (reservation,))
