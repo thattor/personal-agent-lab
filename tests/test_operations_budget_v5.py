@@ -410,5 +410,35 @@ class OperationBudgetTests(unittest.TestCase):
                          {"work": 0, "host": 1})
 
 
+    def test_operation_idempotent_replay_rejects_corrupt_saved_role(self):
+        work = self.claim_after_create()
+        reservation = self.ok(self.reserve(work, "first"))["reservation_id"]
+        self.conn.execute(
+            "UPDATE v5_tsk_reservation SET role='expert' WHERE id=?",
+            (reservation,),
+        )
+        before = self.snapshot()
+        self.rejected(self.reserve(work, "first"), "unavailable")
+        self.assertEqual(before, self.snapshot())
+
+    def test_operation_idempotent_replay_rejects_corrupt_saved_receipt(self):
+        work = self.claim_after_create()
+        self.ok(self.reserve(work, "first"))
+        (saved,) = self.conn.execute(
+            "SELECT result_json FROM v5_intake_replay "
+            "WHERE command='reserve_budget' AND key='first'"
+        ).fetchone()
+        corrupted = json.loads(saved)
+        corrupted["value"]["reservation_id"] = "forged-operation-reservation"
+        self.conn.execute(
+            "UPDATE v5_intake_replay SET result_json=? "
+            "WHERE command='reserve_budget' AND key='first'",
+            (json.dumps(corrupted, sort_keys=True, separators=(",", ":")),),
+        )
+        before = self.snapshot()
+        self.rejected(self.reserve(work, "first"), "unavailable")
+        self.assertEqual(before, self.snapshot())
+
+
 if __name__ == "__main__":
     unittest.main()
