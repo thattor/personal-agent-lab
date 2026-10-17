@@ -53,7 +53,6 @@ such propagation as ``unknown``, never as success.
 """
 
 import os
-import re
 import selectors
 import signal
 import subprocess
@@ -68,6 +67,8 @@ from pal.github_issue_payload_v5 import (
     decode_issue,
 )
 from pal.github_read_request_v5 import ReadRequestError, prepare_read
+
+from pal.utc_timestamp_v5 import is_canonical_utc
 
 __all__ = ("ReadOutcome", "SubprocessRunner", "read")
 
@@ -88,10 +89,6 @@ _KILL_GRACE_SECONDS = 2.0
 _PEEK_INTERVAL_SECONDS = 0.01
 _CHILD_CWD = os.path.abspath(os.sep)
 
-_OBSERVED_AT = re.compile(
-    r"\A\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])"
-    r"T([01]\d|2[0-3]):[0-5]\d:[0-5]\dZ\Z"
-)
 
 # Non-reaping waitid is the only supported way to prove leader exit while
 # the PID still pins its process group. Without it every spawned path
@@ -300,7 +297,7 @@ class SubprocessRunner:
             value = self._clock()
         except Exception:
             raise _ChildFailed(_MSG_CLOCK) from None
-        if type(value) is not str or _OBSERVED_AT.fullmatch(value) is None:
+        if not is_canonical_utc(value):
             raise _ChildFailed(_MSG_CLOCK)
         return value
 
