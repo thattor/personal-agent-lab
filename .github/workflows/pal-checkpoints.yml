@@ -34,6 +34,8 @@ jobs:
           python -VV
           git rev-parse HEAD
           git show -s --format=%P HEAD
+      - name: Save the exact tracked source for reproduction
+        run: git archive --format=tar.gz --output="$RUNNER_TEMP/pal-source.tar.gz" HEAD
       - name: Keep fixture tests from resolving a live gh CLI
         shell: bash
         run: |
@@ -42,10 +44,23 @@ jobs:
           chmod 0755 "$RUNNER_TEMP/no-live-gh/gh"
           echo "$RUNNER_TEMP/no-live-gh" >> "$GITHUB_PATH"
       - name: Complete PAL regression suite
-        run: python -E -s -B -m unittest discover -s tests -v
+        shell: bash
+        run: |
+          set -o pipefail
+          python -E -s -B -m unittest discover -s tests -v 2>&1 | tee "$RUNNER_TEMP/pal-unittest.log"
       - name: Exercise saved question and answer mock flow
         run: python -E -s -B scripts/demo_ask_v5.py
       - name: Exercise revision replacement mock flow
         run: python -E -s -B scripts/demo_change_v5.py
       - name: Exercise saved result readback mock flow
         run: python -E -s -B scripts/demo_readback_v5.py
+      - name: Retain source and original test outcome, including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pal-checkpoint-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/pal-source.tar.gz
+            ${{ runner.temp }}/pal-unittest.log
+          retention-days: 7
+          if-no-files-found: error
