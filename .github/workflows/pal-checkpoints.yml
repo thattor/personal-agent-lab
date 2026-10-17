@@ -4,7 +4,7 @@ name: PAL source and fixture regression (not acceptance)
 # qualify a real model, authorize external effects or complete a milestone.
 on:
   pull_request:
-    branches: [main]
+    branches: [main, codex/pal-v5-co]
     types: [opened, synchronize, reopened, ready_for_review]
 
 permissions:
