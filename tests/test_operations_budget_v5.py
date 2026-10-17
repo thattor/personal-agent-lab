@@ -4,6 +4,7 @@ The tests use a temporary real TaskStore/SQLite store, not a fake authority
 provider. They prove only the budget seam; no gh invocation or EXE01 ledger.
 """
 import sqlite3
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -256,6 +257,55 @@ class OperationBudgetTests(unittest.TestCase):
             with self.subTest(bad=bad):
                 self.rejected(self.t.reserve_budget(bad), "invalid_input")
         self.assertEqual(before, self.snapshot())
+
+
+    # Reject apparently valid counter values with a corrupt saved lease binding.
+    def test_persisted_operation_lease_binding_integrity(self):
+        work = self.claim_after_create()
+        self.ok(self.reserve(work, "first"))
+        original_work, original_lease = self.conn.execute(
+            "SELECT work,lease FROM v5_tsk_reservation WHERE kind='operation'"
+        ).fetchone()
+        for field, corrupt in (
+            ("work", json.dumps({**work, "revision": work["revision"] + 1},
+                                 sort_keys=True, separators=(",", ":"))),
+            ("work", json.dumps({**work, "epoch": 0},
+                                 sort_keys=True, separators=(",", ":"))),
+            ("lease", "lease-nonexistent"),
+        ):
+            with self.subTest(field=field, corrupt=corrupt):
+                try:
+                    self.conn.execute(
+                        f"UPDATE v5_tsk_reservation SET {field}=? WHERE kind='operation'",
+                        (corrupt,),
+                    )
+                    before = self.snapshot()
+                    self.rejected(self.reserve(work, "second"), "unavailable")
+                    self.assertEqual(before, self.snapshot())
+                finally:
+                    self.conn.execute(
+                        "UPDATE v5_tsk_reservation SET work=?, lease=? WHERE kind='operation'",
+                        (original_work, original_lease),
+                    )
+
+    def test_valid_old_lease_keeps_lifetime_budget_after_resume(self):
+        old_work = self.claim_after_create()
+        self.ok(self.reserve(old_work, "old-epoch"))
+        self.ok(self.t.control({
+            "key": "pause", "work_ref": old_work, "command": "pause",
+        }))
+        old_lease = self.claim()["lease_id"]
+        self.ok(self.t.release({
+            "lease_id": old_lease, "work_ref": old_work,
+            "outcome": "yield", "reason": "done",
+        }))
+        self.ok(self.t.control({
+            "key": "resume", "work_ref": old_work, "command": "resume",
+        }))
+        new_work = self.claim()["work_ref"]
+        self.assertNotEqual(new_work["epoch"], old_work["epoch"])
+        self.assertEqual(self.ok(self.reserve(new_work, "new-epoch"))["remaining"],
+                         {"work": 0, "host": 1})
 
 
 if __name__ == "__main__":

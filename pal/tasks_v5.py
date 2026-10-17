@@ -779,12 +779,21 @@ class TaskStore(IntakeStore):
             _reject('unavailable')
         # Operation counters are lifetime debits: no reservation is refunded.
         # A plausible but drifting counter must not mint additional permission.
-        saved = self._rows("SELECT work FROM v5_tsk_reservation WHERE kind='operation'")
+        saved = self._rows(
+            "SELECT r.work,l.goal,l.revision FROM v5_tsk_reservation r "
+            "LEFT JOIN v5_tsk_lease l ON l.id=r.lease WHERE r.kind='operation'"
+        )
         if len(saved) != host['used']:
             _reject('unavailable')
         try:
-            goal_count = sum(_work(loads(item['work'])).goal_id == row['goal_id']
-                             for item in saved)
+            goal_count = 0
+            for item in saved:
+                saved_work = _work(loads(item['work']))
+                if (saved_work.epoch < 1 or
+                        (saved_work.goal_id, saved_work.revision) !=
+                        (item['goal'], item['revision'])):
+                    _reject('unavailable')
+                goal_count += saved_work.goal_id == row['goal_id']
         except (ContractError, ValueError, TypeError, KeyError):
             _reject('unavailable')
         if goal_count != used:
