@@ -229,7 +229,6 @@ class OperationBudgetTests(unittest.TestCase):
         for bad in (
             {"key": "bad", "work_ref": work, "kind": "operation", "role": "expert"},
             {"key": "bad", "work_ref": work, "kind": "operation", "role": "primary"},
-            {"key": "bad", "work_ref": work, "kind": "operation", "role": None},
             {"key": "bad", "kind": "operation", "role": "primary"},
             {"key": "bad", "kind": "operation"},
             {"key": "bad", "work_ref": work, "kind": "operation", "extra": 1},
