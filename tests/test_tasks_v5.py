@@ -765,7 +765,7 @@ class TaskTests(unittest.TestCase):
             self.error(method(request), 'invalid_input')
             self.assertEqual(before, self.snapshot())
         self.error(self.store.reserve_budget({'key': 'r', 'kind': 'model', 'role': 'expert'}), 'invalid_input')
-        self.error(self.store.reserve_budget({'key': 'r', 'kind': 'operation', 'work_ref': claim['work_ref']}), 'unavailable')
+        self.error(self.store.reserve_budget({'key': 'r', 'kind': 'operation', 'work_ref': claim['work_ref']}), 'limit')
         self.error(self.store.get_call({'call_id': 'unknown'}), 'not_found')
         with self.assertRaises(ValueError):
             self.make_store(host_limits=Limits(0, 2**63, 1))
