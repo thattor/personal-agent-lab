@@ -55,7 +55,7 @@ class OperationBudgetTests(unittest.TestCase):
         self.assertTrue(result.ok, result.to_json())
         return result.to_json()["value"]
 
-    def fail(self, result, code):
+    def rejected(self, result, code):
         self.assertFalse(result.ok, result.to_json())
         self.assertEqual(result.error.code, code)
         return result
@@ -98,14 +98,14 @@ class OperationBudgetTests(unittest.TestCase):
         state = self.snapshot()
         self.assertEqual(self.ok(self.t.reserve_budget(req)), a)
         self.assertEqual(state, self.snapshot())
-        self.fail(
+        self.rejected(
             self.t.reserve_budget({**req, "role": "expert"}), "invalid_input"
         )
         self.assertEqual(state, self.snapshot())
         b = self.ok(self.reserve(work, "o2"))
         self.assertEqual(b["remaining"], {"work": 0, "host": 1})
         state = self.snapshot()
-        self.fail(self.reserve(work, "o3"), "limit")
+        self.rejected(self.reserve(work, "o3"), "limit")
         self.assertEqual(state, self.snapshot())
 
     def test_consume_binding_cannot_be_reused_for_second_operation(self):
@@ -119,7 +119,7 @@ class OperationBudgetTests(unittest.TestCase):
         state = self.snapshot()
         self.assertEqual(saved, command)
         self.assertEqual(self.ok(self.t.consume(command)), saved)
-        self.fail(
+        self.rejected(
             self.t.consume({**command, "call_or_operation_id": "operation-two"}),
             "conflict",
         )
@@ -171,7 +171,7 @@ class OperationBudgetTests(unittest.TestCase):
         work = self.claim_after_create()
         self.ok(self.t.control({"key": "pause", "work_ref": work, "command": "pause"}))
         before = self.snapshot()
-        self.fail(self.reserve(work, "paused"), "conflict")
+        self.rejected(self.reserve(work, "paused"), "conflict")
         self.assertEqual(before, self.snapshot())
         self.ok(self.t.release({
             "lease_id": self.claim()["lease_id"], "work_ref": work,
@@ -181,7 +181,7 @@ class OperationBudgetTests(unittest.TestCase):
         next_work = self.claim()["work_ref"]
         self.assertNotEqual(next_work["epoch"], work["epoch"])
         before = self.snapshot()
-        self.fail(self.reserve(work, "old-epoch"), "stale")
+        self.rejected(self.reserve(work, "old-epoch"), "stale")
         self.assertEqual(before, self.snapshot())
 
     def test_host_operation_ceiling_does_not_block_nonread_claim(self):
@@ -196,7 +196,7 @@ class OperationBudgetTests(unittest.TestCase):
         result = no_operations.reserve_budget(
             {"key": "no-budget", "work_ref": claimed["work_ref"], "kind": "operation"}
         )
-        self.fail(result, "limit")
+        self.rejected(result, "limit")
 
     def test_corrupt_host_and_work_usage_fail_closed(self):
         work = self.claim_after_create()
@@ -210,7 +210,7 @@ class OperationBudgetTests(unittest.TestCase):
                 (ceiling, used),
             )
             before = self.snapshot()
-            self.fail(self.reserve(work, "corrupt"), "unavailable")
+            self.rejected(self.reserve(work, "corrupt"), "unavailable")
             self.assertEqual(before, self.snapshot())
         self.conn.execute(
             "UPDATE v5_tsk_host SET ceiling=?,used=? WHERE kind='operation'",
@@ -220,7 +220,7 @@ class OperationBudgetTests(unittest.TestCase):
             "UPDATE v5_tsk_usage SET used=99 WHERE kind='operation'"
         )
         before = self.snapshot()
-        self.fail(self.reserve(work, "corrupt"), "unavailable")
+        self.rejected(self.reserve(work, "corrupt"), "unavailable")
         self.assertEqual(before, self.snapshot())
 
     def test_bad_role_and_no_work_are_bounded(self):
@@ -234,7 +234,7 @@ class OperationBudgetTests(unittest.TestCase):
             {"key": "bad", "work_ref": work, "kind": "operation", "extra": 1},
         ):
             with self.subTest(bad=bad):
-                self.fail(self.t.reserve_budget(bad), "invalid_input")
+                self.rejected(self.t.reserve_budget(bad), "invalid_input")
         self.assertEqual(before, self.snapshot())
 
 
