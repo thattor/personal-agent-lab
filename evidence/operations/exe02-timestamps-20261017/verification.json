@@ -1,0 +1,40 @@
+{
+  "status": "candidate_not_adopted",
+  "base_head": "3e10b45a96fd5b712cf84a785f75aa72c931071a",
+  "base_ci_checkout": "214fbfffff92d9df6c41c5a63708754d1196dd57",
+  "base_artifact_sha256": "755a793843e688c695181f53424e5c0f51fef29f5d2912225c415bce9e9b0903",
+  "source_sha256": {
+    "pal/utc_timestamp_v5.py": "67855a628ac4f02ca44f44811600f5871b36220630325df0510efc54f8af5549",
+    "pal/github_issue_payload_v5.py": "3179d77f0d1005bf795c3e1df7bc14b457ed7725c5c3c4c87588871587fefb5b",
+    "pal/github_read_executor_v5.py": "bcf17714eefb32178d89a63a938ce27636be39ebedf89f08df35aeb500762b09",
+    "tests/test_exe02_timestamp_v5.py": "86bc3b451191dea6e936148d40b800ec13a9bd02393e5a5319c199ecd99ef7dc"
+  },
+  "verification": {
+    "python": "3.13.5 Linux",
+    "old_decoder_baseline": {"tests": 25, "exit": 0},
+    "fixed_red": {"tests": 7, "failures": 21, "errors": 0, "exit": 1, "seconds": 7.786},
+    "fixed_green": {"tests": 7, "failures": 0, "errors": 0, "exit": 0, "seconds": 7.777},
+    "old_decoder_after": {"tests": 25, "exit": 0},
+    "mock_demos": {"ask": 0, "change": 0, "readback": 0},
+    "calendar_crosscheck": {"years": "2000-2399", "cases": 148800, "failures": 0, "independent_review": false},
+    "old_test_files_byte_equal": 106,
+    "full_local": "NOT_COMPLETED: execution stopped at 120-second tool timeout; no local full PASS is claimed",
+    "environment_probe": "The unchanged original source also fails test_no_socket_or_sqlite_at_runtime: socket is present before any PAL import. Existing tests were not changed to suppress this.",
+    "test_author_correction": "Initial RED had 22 failures including an invalid empty-string assertNotIn check. The check was corrected before source editing. The same frozen corrected seven methods produced RED21 and GREEN0."
+  },
+  "log_sha256": {
+    "hygiene.log": "ae58f7e53fa9999312809537b1304fcba4f92259763bc1eac58f725a01a92e15",
+    "baseline.log": "52099a63ab846aebd4624e3dd7503a6c46c48b1259598f4b91b9aa9e08494005",
+    "red.log": "3ff05490a997940e31974b379fd570cde4d2234f98c442ddc0f58df1ca0ab617",
+    "demo_readback.log": "35b788a1c601198ae366d274386a643628314faaa6cfa8e079c9be731a990146",
+    "demo_ask.log": "c254a11d9482387c8745394e8e72cb8868ef9e4da11f1809e1a0927d07fefca9",
+    "original-hygiene.log": "fdcf3b1be2afad1c81007aa1bffc513aa2d577b90913a9bbb6e9110d39b1a08a",
+    "full.log": "86bb9086e7a57fd9e6f10789eb3613907390e21c8d987ee8dcb56bf8fd79d68b",
+    "original-tests-after.log": "dc38dc5554f5f08c941a780a62a3455418392dd087538b778f80a7ddb849a2bd",
+    "red-fixed-test.log": "ae971f6fd18ea0462054d1582d4b573b41cf42ae20cff280b6995c9cd3d53402",
+    "demo_change.log": "9015341d5f2fed53aef6e4aad9c2a3e9455dd20e94084948c57d2e28282ebfa2",
+    "green.log": "ba9ace4b8a227e5996f0667a6a15649e492ed92070d8d654323e6a874c68d755"
+  },
+  "independent_model_review": "NOT_RUN: existing Mac route offline; no accessible Claude/SWE-2/AGY invocation was made",
+  "limits": ["No Codex invocation or credits", "No new authentication, billing or paid fallback", "No real GitHub/provider read", "Original local EXE01 candidate and UNKNOWN calls untouched", "No PR19/main integration, deployment or product acceptance"]
+}
