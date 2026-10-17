@@ -223,6 +223,26 @@ class OperationBudgetTests(unittest.TestCase):
         self.rejected(self.reserve(work, "corrupt"), "unavailable")
         self.assertEqual(before, self.snapshot())
 
+    def assert_counter_drift_rejected(self, table, corrupted):
+        """Each case runs in a fresh disposable SQLite store."""
+        work = self.claim_after_create()
+        self.ok(self.reserve(work, "first"))
+        self.conn.execute(
+            f"UPDATE {table} SET used=? WHERE kind='operation'", (corrupted,)
+        )
+        before = self.snapshot()
+        self.rejected(self.reserve(work, "drift"), "unavailable")
+        self.assertEqual(before, self.snapshot())
+
+    def test_in_range_host_underreport_rejected(self):
+        self.assert_counter_drift_rejected("v5_tsk_host", 0)
+
+    def test_in_range_host_overreport_rejected(self):
+        self.assert_counter_drift_rejected("v5_tsk_host", 2)
+
+    def test_in_range_goal_underreport_rejected(self):
+        self.assert_counter_drift_rejected("v5_tsk_usage", 0)
+
     def test_bad_role_and_no_work_are_bounded(self):
         work = self.claim_after_create()
         before = self.snapshot()

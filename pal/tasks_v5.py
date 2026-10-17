@@ -777,6 +777,18 @@ class TaskStore(IntakeStore):
                 host['used'] > host['ceiling'] or
                 type(used) is not int or not 0 <= used <= grant.limits.max_operations):
             _reject('unavailable')
+        # Operation counters are lifetime debits: no reservation is refunded.
+        # A plausible but drifting counter must not mint additional permission.
+        saved = self._rows("SELECT work FROM v5_tsk_reservation WHERE kind='operation'")
+        if len(saved) != host['used']:
+            _reject('unavailable')
+        try:
+            goal_count = sum(_work(loads(item['work'])).goal_id == row['goal_id']
+                             for item in saved)
+        except (ContractError, ValueError, TypeError, KeyError):
+            _reject('unavailable')
+        if goal_count != used:
+            _reject('unavailable')
         return {'work': grant.limits.max_operations - used,
                 'host': host['ceiling'] - host['used']}
 
