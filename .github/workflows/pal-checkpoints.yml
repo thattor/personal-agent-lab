@@ -126,7 +126,7 @@ jobs:
                   except OSError:
                       entry[field] = None
               entry['status'] = (
-                  'PASS' if entry['exit_code'] == entry['log_exit_code'] == 0 and log.is_file()
+                  'PASS' if entry['exit_code'] == entry['log_exit_code'] == 0 and log.is_file() and log.read_bytes().strip()
                   else 'FAIL' if any(value not in (0, None) for value in entry.values())
                   else 'UNKNOWN')
               results[name] = entry
@@ -139,7 +139,14 @@ jobs:
           counts = re.findall(r'^Ran ([0-9]+) tests? in ', text, re.M)
           results['unittest']['discovered'] = int(counts[-1]) if counts else None
           summaries = re.findall(r'^(OK(?: \(skipped=[0-9]+\))?|FAILED \(.*\))$', text, re.M)
-          if (not counts or not summaries or not summaries[-1].startswith('OK')) and results['unittest']['status'] == 'PASS':
+          success = re.fullmatch(r'OK(?: \(skipped=([0-9]+)\))?', summaries[-1]) if summaries else None
+          skipped = int(success.group(1) or 0) if success else None
+          discovered = results['unittest']['discovered']
+          executed = discovered - skipped if discovered is not None and skipped is not None and skipped <= discovered else None
+          results['unittest']['skipped'] = skipped
+          results['unittest']['executed'] = executed
+          # An empty/all-skipped discovery is not regression proof; no fixed suite quota.
+          if (executed is None or executed <= 0) and results['unittest']['status'] == 'PASS':
               results['unittest']['status'] = 'UNKNOWN'
           results['unittest']['skip_reasons'] = [line for line in text.splitlines() if ' ... skipped ' in line]
           complete = all(value is not None for value in manifest.values())

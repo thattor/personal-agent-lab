@@ -155,5 +155,44 @@ class CheckpointWorkflowTests(unittest.TestCase):
             self.assertIn(item, upload)
 
 
+    def test_zero_discovered_tests_cannot_pass(self):
+        self.complete_fixture()
+        (self.root/'pal-unittest.log').write_text('Ran 0 tests in 0.000s\n\nOK\n')
+        result, receipt = self.collect()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertFalse(receipt['source_fixture_pass'])
+        self.assertEqual(receipt['results']['unittest']['status'], 'UNKNOWN')
+
+    def test_all_skipped_or_impossible_skip_total_cannot_pass(self):
+        for skipped in (2, 3):
+            with self.subTest(skipped=skipped):
+                self.complete_fixture()
+                (self.root/'pal-unittest.log').write_text(
+                    f'Ran 2 tests in 0.001s\n\nOK (skipped={skipped})\n')
+                result, receipt = self.collect()
+                self.assertNotEqual(result.returncode, 0)
+                self.assertFalse(receipt['source_fixture_pass'])
+                self.assertEqual(receipt['results']['unittest']['status'], 'UNKNOWN')
+
+    def test_empty_or_blank_mock_output_cannot_pass(self):
+        for slug in ('ask', 'change', 'readback'):
+            for output in ('', ' \n\t'):
+                with self.subTest(slug=slug, output=repr(output)):
+                    self.complete_fixture()
+                    (self.root/f'pal-{slug}.log').write_text(output)
+                    result, receipt = self.collect()
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertFalse(receipt['source_fixture_pass'])
+                    self.assertEqual(receipt['results'][slug]['status'], 'UNKNOWN')
+
+    def test_single_executed_test_can_pass_without_a_fixed_suite_quota(self):
+        self.complete_fixture()
+        (self.root/'pal-unittest.log').write_text('test_a (fixture) ... ok\nRan 1 test in 0.001s\n\nOK\n')
+        result, receipt = self.collect()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertTrue(receipt['source_fixture_pass'])
+        self.assertEqual(receipt['results']['unittest']['discovered'], 1)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
