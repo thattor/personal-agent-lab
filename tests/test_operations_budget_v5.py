@@ -109,6 +109,25 @@ class OperationBudgetTests(unittest.TestCase):
         self.rejected(self.reserve(work, "o3"), "limit")
         self.assertEqual(state, self.snapshot())
 
+    def test_operation_explicit_null_role_does_not_poison_budget(self):
+        # The public C15 parser accepts omitted role and explicit null alike.
+        # A valid request must not leave a debit that its integrity gate rejects.
+        work = self.claim_after_create()
+        request = {"key": "nullable-role", "work_ref": work,
+                   "kind": "operation", "role": None}
+        first = self.ok(self.t.reserve_budget(request))
+        before = self.snapshot()
+        self.assertEqual(self.ok(self.t.reserve_budget(request)), first)
+        self.assertEqual(self.snapshot(), before)
+        second = self.ok(self.reserve(work, "next-operation"))
+        self.assertNotEqual(first["reservation_id"], second["reservation_id"])
+        self.assertEqual(second["remaining"], {"host": 1, "work": 0})
+        before = self.snapshot()
+        self.assertEqual(self.ok(self.t.reserve_budget(request)), first)
+        self.assertEqual(self.snapshot(), before)
+        self.rejected(self.reserve(work, "no-more"), "limit")
+        self.assertEqual(self.snapshot(), before)
+
     def test_consume_binding_cannot_be_reused_for_second_operation(self):
         work = self.claim_after_create()
         r = self.ok(self.reserve(work, "op"))

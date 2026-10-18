@@ -122,7 +122,7 @@ class TaskStore(IntakeStore):
             'CREATE TABLE IF NOT EXISTS v5_tsk_host (kind TEXT PRIMARY KEY,ceiling INTEGER NOT NULL,used INTEGER NOT NULL)',
             'CREATE TABLE IF NOT EXISTS v5_tsk_usage (goal TEXT,kind TEXT,used INTEGER NOT NULL,PRIMARY KEY(goal,kind))',
             'CREATE TABLE IF NOT EXISTS v5_tsk_reservation (id TEXT PRIMARY KEY,lease TEXT,work TEXT,idx INTEGER,kind TEXT,role TEXT,binding TEXT)',
-            'CREATE TABLE IF NOT EXISTS v5_tsk_call (id TEXT PRIMARY KEY,lease TEXT,work TEXT,idx INTEGER,reservation TEXT,sources TEXT NOT NULL,status TEXT,step TEXT,native TEXT NOT NULL DEFAULT \"mock\",native_hash TEXT,UNIQUE(lease,idx))',
+            'CREATE TABLE IF NOT EXISTS v5_tsk_call (id TEXT PRIMARY KEY,lease TEXT,work TEXT,idx INTEGER,reservation TEXT,sources TEXT NOT NULL,status TEXT,step TEXT,native TEXT NOT NULL DEFAULT "mock",native_hash TEXT,UNIQUE(lease,idx))',
             'CREATE TABLE IF NOT EXISTS v5_tsk_native (call_id TEXT PRIMARY KEY,wire TEXT NOT NULL)',
             'CREATE TABLE IF NOT EXISTS v5_tsk_step (id TEXT PRIMARY KEY,goal TEXT,revision INTEGER,idx INTEGER,call TEXT UNIQUE,wire TEXT NOT NULL,truncated INTEGER NOT NULL,excluded TEXT NOT NULL,UNIQUE(goal,revision,idx))',
         )
@@ -326,6 +326,17 @@ class TaskStore(IntakeStore):
                         _reject('conflict')
                 canonical = dumps(request)
                 result = self._lookup_replay(command, key, canonical) if key is not None else None
+                if (result is not None and command == 'reserve_budget' and
+                        request.get('kind') == 'operation'):
+                    # A saved receipt must still match its original debit.
+                    # Fresh requests retain their existing authority/error path.
+                    replay_work = _work(request['work_ref'])
+                    row = self._one(
+                        'SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=?',
+                        (replay_work.goal_id, replay_work.revision))
+                    if row is None:
+                        _reject('unavailable')
+                    self._operation_remaining(row)
                 if result is None:
                     value = operation()
                     result = Result.success(value)
@@ -800,8 +811,9 @@ class TaskStore(IntakeStore):
                 request = loads(receipt['input_json'])
                 if type(request) is not dict or request.get('kind') != 'operation':
                     continue
-                request = _obj(request, {'key', 'kind', 'work_ref'})
-                if (request['key'] != receipt['key'] or
+                request = _obj(request, {'key', 'kind', 'work_ref'}, {'role'})
+                if (request.get('role') is not None or
+                        request['key'] != receipt['key'] or
                         dumps(request) != receipt['input_json']):
                     _reject('unavailable')
                 response = Result.from_json(loads(receipt['result_json']))

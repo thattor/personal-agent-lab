@@ -1,5 +1,49 @@
 # AGENTS.md — Personal Agent Lab v5
 
+## Current owner instruction and development closure — 2026-10-19
+
+This ChatGPT conversation is Controller. Codex CLI, API and agents are prohibited
+unless the owner explicitly approves the specific case first, irrespective of
+remaining credits. This supersedes historical Codex/40-percent routing text.
+No new authentication, service, cost, paid fallback or automatic reload is allowed.
+Use only an existing route whose current connectivity and no-extra-cost conditions
+have actually been checked. An offline or unqualified route is not an invocation.
+
+A closed loop is one bounded design -> implementation -> independent review ->
+verification -> repair -> reverification -> evidence/adoption cycle, not a timer.
+Before work, reconcile live head/base/blob identities, current STATE/DECISIONS,
+ACCEPTANCE and the latest comments in existing Issue #22 and PR #19/#23.
+
+The work-item exit requires all of the following against the same final source:
+
+1. Fixed functional acceptance criteria and input/output/error/state contracts;
+   explicit write ownership, dependency and authorized execution boundaries.
+2. The reproduced failure and frozen regression, minimal implementation, and an
+   exact source delta. Existing tests and historical evidence remain intact.
+3. Actual independent official Claude review of final bytes and contract effects;
+   author/Controller self-checks do not satisfy this gate. Changed source makes an
+   earlier review stale. Unavailable review is NOT_RUN, never implicit approval.
+4. Supported Python3.13 full unittest and ask/change/readback mock E2E, original
+   commands/exits/logs, explicit skip reasons, and repaired-source hosted evidence.
+   Failure, timeout, missing output or incomplete evidence cannot count as PASS.
+5. Source archive/tree, environment, logs and hashes saved in existing evidence
+   and Issue/PR lanes; verify the publication head and artifact bytes by readback.
+6. Controller disposition and next dependency recorded in the existing judgment
+   records. A blocked item stays open; proceed only with genuinely independent
+   authorized work. Do not repeatedly rerun unchanged tests or repackage evidence.
+
+CI proves source/fixture behavior only. CI cannot certify independent review,
+qualify a real provider, grant operation authority, accept authentic usefulness or
+complete Stable-1/PAL. Missing product evidence keeps those goals NOT_MET.
+No PR19 adoption until original EXE01 reconciliation, independent review and exact
+source tests all hold; no main mutation, force push, deployment or release.
+
+Parallel work requires disjoint write sets and state owners, fixed shared
+contracts and no unresolved duplicate invocation. EXE02 read-leaf work and
+connection-test work can be isolated. Controller serializes common contracts,
+TaskStore/DB seams and final integration. Preserve the original isolated EXE01
+worktree and all UNKNOWN calls; do not retry, overwrite, kill or force-release them.
+
 ## Current source of truth
 
 Before starting, resuming or stopping, read the current sections of [STATE.md](STATE.md)
