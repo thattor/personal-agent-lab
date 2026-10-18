@@ -44,6 +44,32 @@ connection-test work can be isolated. Controller serializes common contracts,
 TaskStore/DB seams and final integration. Preserve the original isolated EXE01
 worktree and all UNKNOWN calls; do not retry, overwrite, kill or force-release them.
 
+## Work-item sizing — owner instruction 2026-10-19
+
+Milestones retain their user-visible acceptance promise; do not use a milestone
+or umbrella Issue as an implementation assignment. Existing Issue #22 tracks
+linked small Issues in the already-active Stable-1 milestone; future PROPOSED
+milestones are not activated. Preserve parent acceptance and historical evidence.
+
+Each assigned unit has one behavioral objective, explicit dependencies, fixed
+input/output/error/state contracts, one write owner, exact changed paths, a
+frozen regression and a separately reported review/test/adoption disposition.
+Use an active-work budget of at most 60 minutes as a splitting trigger, not a
+promised delivery time. Aim for at most two implementation files and 200 changed
+implementation lines, excluding tests/evidence. Split earlier when it crosses
+owners/contracts; split oversized work before dispatch rather than weakening
+acceptance. A unit can have multiple assertions for its one behavior.
+
+Apply a known minimal remedy after reproducing it; do not keep reporting the same
+solvable finding or ask the owner routine technical questions. A blocked provider
+or original-source dependency blocks only dependent units. Disjoint read/review
+or write scopes may proceed in isolated workspaces; shared files/DB/contracts
+and final integration remain serialized. No duplicate unknown dispatch.
+
+Implemented, tested, independently reviewed and adopted are different states.
+Code Issues remain open until their required exact-source closure gates pass.
+Child completion never substitutes for parent integration or product acceptance.
+
 ## Current source of truth
 
 Before starting, resuming or stopping, read the current sections of [STATE.md](STATE.md)
