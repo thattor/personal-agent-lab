@@ -1,13 +1,50 @@
 # AGENTS.md — Personal Agent Lab v5
 
-## Current owner instruction and development closure — 2026-10-19
+## Current owner instruction and development closure — 2026-10-20
 
-This ChatGPT conversation is Controller. Codex CLI, API and agents are prohibited
-unless the owner explicitly approves the specific case first, irrespective of
-remaining credits. This supersedes historical Codex/40-percent routing text.
+This ChatGPT conversation is Controller. Codex and Claude are prohibited for
+this development phase, including indirect CO/OpenCode/AGY routes, CLI/API/agents,
+helpers and fallbacks, irrespective of remaining credits or existing contracts.
+The owner's 2026-10-20 instruction supersedes historical Codex allowances and
+Claude-mandatory development/review routing in STATE/DECISIONS, Issues and prompts.
+Historical approvals remain evidence for their original bytes, not launch grants.
 No new authentication, service, cost, paid fallback or automatic reload is allowed.
 Use only an existing route whose current connectivity and no-extra-cost conditions
 have actually been checked. An offline or unqualified route is not an invocation.
+
+### Development roles and zero-additional-cost admission
+
+- Controller: fix one small Issue's acceptance/contracts/write set, freeze the
+  exact source, integrate serially, run verification and record the disposition.
+- Implementation: OpenCode models with verified free pricing and ZDR, or SWE-2
+  with a currently verified zero-additional-cost entitlement. A Free catalog label
+  alone is not proof that the current account can execute without an upgrade.
+- Independent review: prefer AGY with an explicitly selected Gemini model within
+  the existing no-extra-cost entitlement; alternatively use a qualified OpenCode
+  ZDR-free model or SWE-2 in a separate fresh reviewer context. The reviewer must
+  not have authored that delta. Fixes invalidate the affected earlier review.
+- Fixed regression/connection tests may use a separate qualified worker with a
+  disjoint test write set. Controller self-checks are not independent review.
+
+CO is preferred when its existing adapter supports the exact qualified model.
+If it does not, an existing direct CLI through Desktop Commander is allowed after
+checking the same permissions, account, cost, model and workspace boundaries.
+Never bypass a permission denial or start new authentication to force a route.
+Do not use generic Adaptive/default/auto model routing or an opaque model identity
+that cannot establish exclusion of Codex/Claude. Pin the exact permitted model.
+For OpenCode, check the selected model/provider's current ZDR and training terms,
+not just a zero price. Its small_model, title generation, compaction and subagents
+must also be pinned to qualified free, non-Codex/non-Claude models or disabled.
+No automatic provider fallback, quota refill or paid upgrade is permitted.
+
+Before each bounded dispatch record route/CLI version, exact model, current free
+or included entitlement, relevant ZDR proof, no-overage/autoreload settings, source
+hashes, isolated write scope and no duplicate invocation. Listing a model is not
+an execution or review. After dispatch retain the actual provider/model identity,
+original result, usage/cost observations, owned ending and source-bound review;
+unavailable evidence stays UNKNOWN/NOT_RUN, not assumed zero-cost success.
+This role assignment changes development routing only. It neither replaces PAL's
+product provider contracts nor qualifies a real Primary/Expert/UI or old UNKNOWN.
 
 A closed loop is one bounded design -> implementation -> independent review ->
 verification -> repair -> reverification -> evidence/adoption cycle, not a timer.
@@ -20,7 +57,7 @@ The work-item exit requires all of the following against the same final source:
    explicit write ownership, dependency and authorized execution boundaries.
 2. The reproduced failure and frozen regression, minimal implementation, and an
    exact source delta. Existing tests and historical evidence remain intact.
-3. Actual independent official Claude review of final bytes and contract effects;
+3. Actual independent review on a qualified permitted route of final bytes and contract effects;
    author/Controller self-checks do not satisfy this gate. Changed source makes an
    earlier review stale. Unavailable review is NOT_RUN, never implicit approval.
 4. Supported Python3.13 full unittest and ask/change/readback mock E2E, original
@@ -82,12 +119,13 @@ and the applicable frozen scope in `docs/design/contracts-v5/`. Current scope an
 latest explicit decisions govern older proposal headers and historical checkpoints.
 [ACCEPTANCE.md](ACCEPTANCE.md) records evidence, not new authority. SPEC.md and
 DESIGN.md are concise current pointers; their old bodies are retained history and
-are not mandatory model inputs. Use [CODEX-PROMPT.md](CODEX-PROMPT.md) for development.
+are not mandatory model inputs. Historical CODEX-PROMPT.md does not authorize execution;
+the current owner routing and the assigned small Issue govern development.
 
 ## Work boundaries
 
 Use Python standard library only. Mock is the default. No new OAuth/auth, billing,
-service, provider invocation or unrelated project change is authorized by these
+service, unqualified provider invocation or unrelated project change is authorized by these
 documents. Follow actual current model-route assignments and approved alternatives
 in STATE/DECISIONS; do not revive superseded routing or quota instructions.
 Preserve old evidence, DBs and unknown native/CO outcomes. No unknown-call retry,
