@@ -168,7 +168,7 @@ class ReadOutcome:
             self.version,
             self.blob_sha,
         ):
-            if value is not None and type(value) is not str:
+            if value is not None and (self.status != SUCCEEDED or type(value) is not str):
                 valid = False
         if not valid:
             raise ValueError("invalid read outcome")
