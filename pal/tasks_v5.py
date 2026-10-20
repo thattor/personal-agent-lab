@@ -122,7 +122,7 @@ class TaskStore(IntakeStore):
             'CREATE TABLE IF NOT EXISTS v5_tsk_host (kind TEXT PRIMARY KEY,ceiling INTEGER NOT NULL,used INTEGER NOT NULL)',
             'CREATE TABLE IF NOT EXISTS v5_tsk_usage (goal TEXT,kind TEXT,used INTEGER NOT NULL,PRIMARY KEY(goal,kind))',
             'CREATE TABLE IF NOT EXISTS v5_tsk_reservation (id TEXT PRIMARY KEY,lease TEXT,work TEXT,idx INTEGER,kind TEXT,role TEXT,binding TEXT)',
-            'CREATE TABLE IF NOT EXISTS v5_tsk_call (id TEXT PRIMARY KEY,lease TEXT,work TEXT,idx INTEGER,reservation TEXT,sources TEXT NOT NULL,status TEXT,step TEXT,native TEXT NOT NULL DEFAULT \"mock\",native_hash TEXT,UNIQUE(lease,idx))',
+            'CREATE TABLE IF NOT EXISTS v5_tsk_call (id TEXT PRIMARY KEY,lease TEXT,work TEXT,idx INTEGER,reservation TEXT,sources TEXT NOT NULL,status TEXT,step TEXT,native TEXT NOT NULL DEFAULT "mock",native_hash TEXT,UNIQUE(lease,idx))',
             'CREATE TABLE IF NOT EXISTS v5_tsk_native (call_id TEXT PRIMARY KEY,wire TEXT NOT NULL)',
             'CREATE TABLE IF NOT EXISTS v5_tsk_step (id TEXT PRIMARY KEY,goal TEXT,revision INTEGER,idx INTEGER,call TEXT UNIQUE,wire TEXT NOT NULL,truncated INTEGER NOT NULL,excluded TEXT NOT NULL,UNIQUE(goal,revision,idx))',
         )
@@ -130,7 +130,8 @@ class TaskStore(IntakeStore):
         try:
             for statement in schema:
                 connection.execute(statement)
-            for kind, ceiling in [('model', host_limits.max_model_calls), ('step', host_limits.max_steps)]:
+            for kind, ceiling in [('model', host_limits.max_model_calls), ('step', host_limits.max_steps),
+                                  ('operation', host_limits.max_operations)]:
                 connection.execute('INSERT INTO v5_tsk_host VALUES (?,?,0) ON CONFLICT(kind) DO UPDATE SET ceiling=excluded.ceiling', (kind, ceiling))
             connection.execute('COMMIT')
         except BaseException:
@@ -325,6 +326,17 @@ class TaskStore(IntakeStore):
                         _reject('conflict')
                 canonical = dumps(request)
                 result = self._lookup_replay(command, key, canonical) if key is not None else None
+                if (result is not None and command == 'reserve_budget' and
+                        request.get('kind') == 'operation'):
+                    # A saved receipt must still match its original debit.
+                    # Fresh requests retain their existing authority/error path.
+                    replay_work = _work(request['work_ref'])
+                    row = self._one(
+                        'SELECT * FROM v5_intake_work WHERE goal_id=? AND revision=?',
+                        (replay_work.goal_id, replay_work.revision))
+                    if row is None:
+                        _reject('unavailable')
+                    self._operation_remaining(row)
                 if result is None:
                     value = operation()
                     result = Result.success(value)
@@ -763,12 +775,88 @@ class TaskStore(IntakeStore):
             result[kind] = {'work': max(0, ceiling - (used['used'] if used else 0)), 'host': max(0, host['ceiling'] - host['used'])}
         return result
 
+    def _operation_remaining(self, row):
+        """Independent C15 operation budget; no model/step quota is consumed."""
+        grant = Grant.from_json(loads(row['grant_json']))
+        host = self._one("SELECT ceiling,used FROM v5_tsk_host WHERE kind='operation'")
+        work = self._one("SELECT used FROM v5_tsk_usage WHERE goal=? AND kind='operation'",
+                         (row['goal_id'],))
+        used = 0 if work is None else work['used']
+        if (host is None or
+                any(type(host[k]) is not int or not 0 <= host[k] <= _MAX
+                    for k in ('used', 'ceiling')) or
+                host['used'] > host['ceiling'] or
+                type(used) is not int or not 0 <= used <= grant.limits.max_operations):
+            _reject('unavailable')
+        # Operation counters are lifetime debits: no reservation is refunded.
+        # A plausible but drifting counter must not mint additional permission.
+        saved = self._rows(
+            "SELECT r.id,r.work,r.role,l.goal,l.revision,w.epoch AS current_epoch "
+            "FROM v5_tsk_reservation r "
+            "LEFT JOIN v5_tsk_lease l ON l.id=r.lease "
+            "LEFT JOIN v5_intake_work w "
+            "ON w.goal_id=l.goal AND w.revision=l.revision "
+            "WHERE r.kind='operation'"
+        )
+        if len(saved) != host['used']:
+            _reject('unavailable')
+        try:
+            # The existing C15 replay is a separately persisted, original
+            # reservation-to-WorkRef binding; a current epoch alone is not.
+            original_work = {}
+            for receipt in self._rows(
+                "SELECT key,input_json,result_json FROM v5_intake_replay "
+                "WHERE command='reserve_budget'"
+            ):
+                request = loads(receipt['input_json'])
+                if type(request) is not dict or request.get('kind') != 'operation':
+                    continue
+                request = _obj(request, {'key', 'kind', 'work_ref'}, {'role'})
+                if (request.get('role') is not None or
+                        request['key'] != receipt['key'] or
+                        dumps(request) != receipt['input_json']):
+                    _reject('unavailable')
+                response = Result.from_json(loads(receipt['result_json']))
+                if not response.ok:
+                    _reject('unavailable')
+                details = _obj(response.value.to_json(), {'reservation_id', 'remaining'})
+                remaining = _obj(details['remaining'], {'host', 'work'})
+                if any(type(remaining[k]) is not int or not 0 <= remaining[k] <= _MAX
+                       for k in ('host', 'work')):
+                    _reject('unavailable')
+                reservation_id = _id(details['reservation_id'])
+                if reservation_id in original_work:
+                    _reject('unavailable')
+                original_work[reservation_id] = dumps(_work(request['work_ref']))
+            if len(original_work) != len(saved):
+                _reject('unavailable')
+            goal_count = 0
+            for item in saved:
+                saved_work = _work(loads(item['work']))
+                if (item['role'] is not None or
+                        item['work'] != original_work.get(item['id']) or
+                        type(item['current_epoch']) is not int or
+                        not 1 <= saved_work.epoch <= item['current_epoch'] or
+                        (saved_work.goal_id, saved_work.revision) !=
+                        (item['goal'], item['revision'])):
+                    _reject('unavailable')
+                goal_count += saved_work.goal_id == row['goal_id']
+        except (ContractError, ValueError, TypeError, KeyError):
+            _reject('unavailable')
+        if goal_count != used:
+            _reject('unavailable')
+        return {'work': grant.limits.max_operations - used,
+                'host': host['ceiling'] - host['used']}
+
     def _headroom(self, row, kind):
-        if min(self._remaining(row)[kind].values()) <= 0:
+        remaining = (self._operation_remaining(row) if kind == 'operation'
+                     else self._remaining(row)[kind])
+        if min(remaining.values()) <= 0:
             _reject('limit')
+        return remaining
 
     def _reserve(self, row, lease, kind, role):
-        self._headroom(row, kind)
+        remaining_before = self._headroom(row, kind)
         if kind == 'model':
             self._headroom(row, 'step')
         reservation = self._mint('reservation')
@@ -776,7 +864,9 @@ class TaskStore(IntakeStore):
         self._conn.execute('INSERT INTO v5_tsk_usage VALUES (?,?,1) ON CONFLICT(goal,kind) DO UPDATE SET used=used+1', (row['goal_id'], kind))
         self._conn.execute('INSERT INTO v5_tsk_reservation VALUES (?,?,?,?,?,?,NULL)',
                            (reservation, lease['id'], dumps(self._wr(row)), self._index(row), kind, role))
-        return {'reservation_id': reservation, 'remaining': self._remaining(row)[kind]}
+        return {'reservation_id': reservation, 'remaining':
+                ({k: v - 1 for k, v in remaining_before.items()}
+                 if kind == 'operation' else self._remaining(row)[kind])}
 
     def _bind(self, reservation, binding):
         item = self._one('SELECT * FROM v5_tsk_reservation WHERE id=?', (reservation,))
@@ -824,7 +914,7 @@ class TaskStore(IntakeStore):
             row = self._one("SELECT * FROM v5_intake_work w WHERE state='queued' AND revision=(SELECT MAX(revision) FROM v5_intake_work WHERE goal_id=w.goal_id) ORDER BY rowid LIMIT 1")
             if row is None:
                 return {'status': 'empty'}
-            for host in self._rows('SELECT * FROM v5_tsk_host'):
+            for host in self._rows("SELECT * FROM v5_tsk_host WHERE kind IN ('model','step')"):
                 if host['used'] >= host['ceiling']:
                     _reject('limit')
             if row['epoch'] == _MAX:
@@ -1181,11 +1271,10 @@ class TaskStore(IntakeStore):
             if data['kind'] != 'model' or data.get('role') != 'primary':
                 raise ContractError()
             return self._transaction('reserve_budget', key, data, lambda: self._reserve_primary(key))
-        if data['kind'] == 'operation':
-            _reject('unavailable')
         work = _work(data['work_ref'])
         role = data.get('role')
-        if data['kind'] == 'model' and role != 'expert' or data['kind'] == 'step' and role is not None:
+        if (data['kind'] == 'model' and role != 'expert' or
+                data['kind'] in ('step', 'operation') and role is not None):
             raise ContractError()
         def operation():
             row, lease = self._authority(work)

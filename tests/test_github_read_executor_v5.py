@@ -966,5 +966,56 @@ class ModuleHygieneTests(unittest.TestCase):
         self.assertEqual(proc.stdout.strip(), "False False")
 
 
+class ReadOutcomeContractTests(unittest.TestCase):
+    """Failure envelopes must not carry successful-read provenance."""
+
+    def failure_fields(self, status):
+        return dict(status=status, body=None, media_type=None, locator=None,
+                    observed_at=None, version=None, error="read failed",
+                    blob_sha=None)
+
+    def assert_provenance_refused(self, status):
+        provenance = dict(media_type="application/json", locator="issues/22",
+                          observed_at=FIXED_NOW, version=SHA, blob_sha=BLOB_SHA)
+        for field, value in provenance.items():
+            with self.subTest(status=status, field=field):
+                fields = self.failure_fields(status)
+                fields[field] = value
+                with self.assertRaisesRegex(ValueError, "^invalid read outcome$"):
+                    ReadOutcome(**fields)
+
+    def test_failed_outcome_rejects_provenance(self):
+        self.assert_provenance_refused("failed")
+
+    def test_unknown_outcome_rejects_provenance(self):
+        self.assert_provenance_refused("unknown")
+
+    def test_failure_envelopes_without_provenance_remain_valid(self):
+        for status in ("failed", "unknown"):
+            with self.subTest(status=status):
+                result = ReadOutcome(**self.failure_fields(status))
+                self.assertEqual(result.status, status)
+                self.assertIsNone(result.body)
+                self.assertEqual(result.error, "read failed")
+                for field in ("media_type", "locator", "observed_at", "version", "blob_sha"):
+                    self.assertIsNone(getattr(result, field))
+
+    def test_successful_file_and_issue_provenance_is_preserved(self):
+        cases = (
+            dict(media_type="application/json", locator="issues/22",
+                 observed_at=FIXED_NOW, version="2026-10-10T01:02:03Z", blob_sha=None),
+            dict(media_type="text/plain; charset=utf-8", locator="README.md@" + SHA,
+                 observed_at=FIXED_NOW, version=SHA, blob_sha=BLOB_SHA),
+        )
+        for provenance in cases:
+            with self.subTest(locator=provenance["locator"]):
+                result = ReadOutcome(status="succeeded", body=b"complete",
+                                     error=None, **provenance)
+                self.assertEqual(result.body, b"complete")
+                for field, value in provenance.items():
+                    self.assertEqual(getattr(result, field), value)
+                self.assertIsNone(result.error)
+
+
 if __name__ == "__main__":
     unittest.main()

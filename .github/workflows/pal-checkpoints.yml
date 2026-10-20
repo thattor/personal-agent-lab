@@ -4,7 +4,7 @@ name: PAL source and fixture regression (not acceptance)
 # qualify a real model, authorize external effects or complete a milestone.
 on:
   pull_request:
-    branches: [main]
+    branches: [main, codex/pal-v5-co]
     types: [opened, synchronize, reopened, ready_for_review]
 
 permissions:
@@ -34,7 +34,20 @@ jobs:
           python -VV
           git rev-parse HEAD
           git show -s --format=%P HEAD
+      - name: Save the exact tracked source for reproduction
+        id: source
+        shell: bash
+        run: |
+          git archive --format=tar.gz --output="$RUNNER_TEMP/pal-source.tar.gz" HEAD
+          {
+            python -VV
+            uname -a
+            git rev-parse HEAD
+            git rev-parse 'HEAD^{tree}'
+            git show -s --format=%P HEAD
+          } > "$RUNNER_TEMP/pal-environment.log" 2>&1
       - name: Keep fixture tests from resolving a live gh CLI
+        id: fixture_guard
         shell: bash
         run: |
           mkdir -p "$RUNNER_TEMP/no-live-gh"
@@ -42,10 +55,133 @@ jobs:
           chmod 0755 "$RUNNER_TEMP/no-live-gh/gh"
           echo "$RUNNER_TEMP/no-live-gh" >> "$GITHUB_PATH"
       - name: Complete PAL regression suite
-        run: python -E -s -B -m unittest discover -s tests -v
+        if: ${{ !cancelled() && steps.source.outcome == 'success' && steps.fixture_guard.outcome == 'success' }}
+        shell: bash
+        run: |
+          set +e
+          python -E -s -B -m unittest discover -s tests -v 2>&1 | tee "$RUNNER_TEMP/pal-unittest.log"
+          statuses=("${PIPESTATUS[@]}")
+          printf '%s\n' "${statuses[0]}" > "$RUNNER_TEMP/pal-unittest.exit"
+          printf '%s\n' "${statuses[1]}" > "$RUNNER_TEMP/pal-unittest-log.exit"
+          if (( statuses[0] != 0 )); then exit "${statuses[0]}"; fi
+          exit "${statuses[1]}"
       - name: Exercise saved question and answer mock flow
-        run: python -E -s -B scripts/demo_ask_v5.py
+        if: ${{ !cancelled() && steps.source.outcome == 'success' && steps.fixture_guard.outcome == 'success' }}
+        shell: bash
+        run: |
+          set +e
+          python -E -s -B scripts/demo_ask_v5.py 2>&1 | tee "$RUNNER_TEMP/pal-ask.log"
+          statuses=("${PIPESTATUS[@]}")
+          printf '%s\n' "${statuses[0]}" > "$RUNNER_TEMP/pal-ask.exit"
+          printf '%s\n' "${statuses[1]}" > "$RUNNER_TEMP/pal-ask-log.exit"
+          if (( statuses[0] != 0 )); then exit "${statuses[0]}"; fi
+          exit "${statuses[1]}"
       - name: Exercise revision replacement mock flow
-        run: python -E -s -B scripts/demo_change_v5.py
+        if: ${{ !cancelled() && steps.source.outcome == 'success' && steps.fixture_guard.outcome == 'success' }}
+        shell: bash
+        run: |
+          set +e
+          python -E -s -B scripts/demo_change_v5.py 2>&1 | tee "$RUNNER_TEMP/pal-change.log"
+          statuses=("${PIPESTATUS[@]}")
+          printf '%s\n' "${statuses[0]}" > "$RUNNER_TEMP/pal-change.exit"
+          printf '%s\n' "${statuses[1]}" > "$RUNNER_TEMP/pal-change-log.exit"
+          if (( statuses[0] != 0 )); then exit "${statuses[0]}"; fi
+          exit "${statuses[1]}"
       - name: Exercise saved result readback mock flow
-        run: python -E -s -B scripts/demo_readback_v5.py
+        if: ${{ !cancelled() && steps.source.outcome == 'success' && steps.fixture_guard.outcome == 'success' }}
+        shell: bash
+        run: |
+          set +e
+          python -E -s -B scripts/demo_readback_v5.py 2>&1 | tee "$RUNNER_TEMP/pal-readback.log"
+          statuses=("${PIPESTATUS[@]}")
+          printf '%s\n' "${statuses[0]}" > "$RUNNER_TEMP/pal-readback.exit"
+          printf '%s\n' "${statuses[1]}" > "$RUNNER_TEMP/pal-readback-log.exit"
+          if (( statuses[0] != 0 )); then exit "${statuses[0]}"; fi
+          exit "${statuses[1]}"
+      - name: Bind all observed results to retained source
+        if: always()
+        shell: bash
+        run: |
+          python -E -s -B - <<'PYTHON'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import platform
+          import re
+          import sys
+
+          root = Path(os.environ['RUNNER_TEMP'])
+          files = ['pal-source.tar.gz', 'pal-environment.log']
+          results = {}
+          for name in ('unittest', 'ask', 'change', 'readback'):
+              log = root / f'pal-{name}.log'
+              files.extend([log.name, f'pal-{name}.exit', f'pal-{name}-log.exit'])
+              entry = {}
+              for field, suffix in (('exit_code', ''), ('log_exit_code', '-log')):
+                  path = root / f'pal-{name}{suffix}.exit'
+                  try:
+                      value = path.read_text().strip()
+                      entry[field] = int(value) if re.fullmatch(r'[0-9]{1,3}', value) else None
+                  except OSError:
+                      entry[field] = None
+              entry['status'] = (
+                  'PASS' if entry['exit_code'] == entry['log_exit_code'] == 0 and log.is_file() and log.read_bytes().strip()
+                  else 'FAIL' if any(value not in (0, None) for value in entry.values())
+                  else 'UNKNOWN')
+              results[name] = entry
+          manifest = {}
+          for name in files:
+              path = root / name
+              manifest[name] = hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
+          log = root / 'pal-unittest.log'
+          text = log.read_text(errors='replace') if log.is_file() else ''
+          counts = re.findall(r'^Ran ([0-9]+) tests? in ', text, re.M)
+          results['unittest']['discovered'] = int(counts[-1]) if counts else None
+          summaries = re.findall(r'^(OK(?: \(skipped=[0-9]+\))?|FAILED \(.*\))$', text, re.M)
+          success = re.fullmatch(r'OK(?: \(skipped=([0-9]+)\))?', summaries[-1]) if summaries else None
+          skipped = int(success.group(1) or 0) if success else None
+          discovered = results['unittest']['discovered']
+          executed = discovered - skipped if discovered is not None and skipped is not None and skipped <= discovered else None
+          results['unittest']['skipped'] = skipped
+          results['unittest']['executed'] = executed
+          # An empty/all-skipped discovery is not regression proof; no fixed suite quota.
+          if (executed is None or executed <= 0) and results['unittest']['status'] == 'PASS':
+              results['unittest']['status'] = 'UNKNOWN'
+          results['unittest']['skip_reasons'] = [line for line in text.splitlines() if ' ... skipped ' in line]
+          complete = all(value is not None for value in manifest.values())
+          passed = complete and all(result['status'] == 'PASS' for result in results.values())
+          receipt = {
+              'scope': 'source_and_fixture_only',
+              'source_fixture_pass': passed,
+              'evidence_complete': complete,
+              'github_sha': os.environ.get('GITHUB_SHA'),
+              'run_id': os.environ.get('GITHUB_RUN_ID'),
+              'run_attempt': os.environ.get('GITHUB_RUN_ATTEMPT'),
+              'python': sys.version,
+              'platform': platform.platform(),
+              'results': results,
+              'sha256': manifest,
+              'independent_review': 'NOT_RUN',
+              'product_acceptance': 'NOT_MET',
+          }
+          (root / 'pal-verification.json').write_text(json.dumps(receipt, indent=2) + '\n')
+          if not passed:
+              raise SystemExit('Verification failed or evidence incomplete; no PASS may be claimed')
+          PYTHON
+      - name: Retain source and original test outcome, including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pal-checkpoint-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/pal-source.tar.gz
+            ${{ runner.temp }}/pal-unittest.log
+            ${{ runner.temp }}/pal-environment.log
+            ${{ runner.temp }}/pal-*.exit
+            ${{ runner.temp }}/pal-ask.log
+            ${{ runner.temp }}/pal-change.log
+            ${{ runner.temp }}/pal-readback.log
+            ${{ runner.temp }}/pal-verification.json
+          retention-days: 7
+          if-no-files-found: error

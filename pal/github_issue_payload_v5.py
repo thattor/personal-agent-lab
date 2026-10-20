@@ -13,7 +13,8 @@ emits a small sorted-key JSON encoding of exactly those five fields.
 
 import dataclasses
 import json
-import re
+
+from pal.utc_timestamp_v5 import is_canonical_utc
 
 __all__ = (
     "DecodedIssue",
@@ -27,10 +28,6 @@ _MAX_NUMBER = (1 << 63) - 1
 _MAX_TITLE_BYTES = 4096
 _MAX_BODY_BYTES = 262144
 _STATES = frozenset(("open", "closed"))
-_UPDATED_AT = re.compile(
-    r"\A\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])"
-    r"T([01]\d|2[0-3]):[0-5]\d:[0-5]\dZ\Z"
-)
 
 _MSG_MAX_BYTES_INVALID = "max_bytes must be a positive int"
 _MSG_MAX_BYTES_LIMIT = "max_bytes exceeds hard maximum"
@@ -171,7 +168,7 @@ def decode_issue(payload: bytes, *, max_bytes: int = _HARD_MAX_BYTES) -> Decoded
         raise IssuePayloadError("invalid_input", _MSG_BODY)
 
     updated_at = obj.get("updated_at")
-    if type(updated_at) is not str or _UPDATED_AT.fullmatch(updated_at) is None:
+    if not is_canonical_utc(updated_at):
         raise IssuePayloadError("invalid_input", _MSG_UPDATED_AT)
 
     return DecodedIssue(
