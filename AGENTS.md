@@ -2,39 +2,43 @@
 
 ## Current owner instruction and development closure — 2026-10-20
 
-This ChatGPT conversation is Controller. Codex and Claude are prohibited for
-this development phase, including indirect CO/OpenCode/AGY routes, CLI/API/agents,
-helpers and fallbacks, irrespective of remaining credits or existing contracts.
-The owner's 2026-10-20 instruction supersedes historical Codex allowances and
-Claude-mandatory development/review routing in STATE/DECISIONS, Issues and prompts.
+Kosuzu (こすず) coordinates PAL development as Controller and assigns each bounded
+unit's author, independent reviewer and integration owner. Any tool or model may
+be used within existing contracts and usage allowances when it incurs no additional
+cost, including Codex and Claude through direct or indirect routes. Sol, Astra,
+Luna, Opus, Sonnet, SWE-2 and OpenCode free ZDR models are examples, not a closed list.
+The latest 2026-10-20 owner instruction supersedes conflicting tool/model bans,
+fixed-person/model requirements and old routing in STATE/DECISIONS and prompts.
+The former 40% remaining-quota floor stays revoked; old unlimited/free periods
+do not establish current entitlement. Check no-extra-cost conditions at execution.
 Historical approvals remain evidence for their original bytes, not launch grants.
-No new authentication, service, cost, paid fallback or automatic reload is allowed.
+No new authentication, credentials, contract, service, cost, permission/safety
+change, paid fallback or automatic reload is allowed. No merge or publication.
 Use only an existing route whose current connectivity and no-extra-cost conditions
 have actually been checked. An offline or unqualified route is not an invocation.
 
 ### Development roles and zero-additional-cost admission
 
-- Controller: fix one small Issue's acceptance/contracts/write set, freeze the
+- Controller (Kosuzu): fix one small Issue's acceptance/contracts/write set, freeze the
   exact source, integrate serially, run verification and record the disposition.
-- Implementation: OpenCode models with verified free pricing and ZDR, or SWE-2
-  with a currently verified zero-additional-cost entitlement. A Free catalog label
+- Implementation: any tool/model assigned by Kosuzu with a currently verified
+  zero-additional-cost entitlement. A Free catalog label
   alone is not proof that the current account can execute without an upgrade.
-- Independent review: prefer AGY with an explicitly selected Gemini model within
-  the existing no-extra-cost entitlement; alternatively use a qualified OpenCode
-  ZDR-free model or SWE-2 in a separate fresh reviewer context. The reviewer must
+- Independent review: any qualified tool/model assigned by Kosuzu within the
+  existing no-extra-cost entitlement, in a separate fresh reviewer context. The reviewer must
   not have authored that delta. Fixes invalidate the affected earlier review.
 - Fixed regression/connection tests may use a separate qualified worker with a
   disjoint test write set. Controller self-checks are not independent review.
 
-CO is preferred when its existing adapter supports the exact qualified model.
-If it does not, an existing direct CLI through Desktop Commander is allowed after
-checking the same permissions, account, cost, model and workspace boundaries.
+CO 0.3 priority is an existing-route candidate, not a mandatory version or route.
+If that route is blocked, choose another existing route with equivalent permission,
+account, cost, model and workspace conditions, including an existing direct CLI.
 Never bypass a permission denial or start new authentication to force a route.
-Do not use generic Adaptive/default/auto model routing or an opaque model identity
-that cannot establish exclusion of Codex/Claude. Pin the exact permitted model.
+No fixed model is universally required. Existing/default selection is allowed when
+its effective route/model and no-extra-cost boundaries can be verified and recorded.
 For OpenCode, check the selected model/provider's current ZDR and training terms,
 not just a zero price. Its small_model, title generation, compaction and subagents
-must also be pinned to qualified free, non-Codex/non-Claude models or disabled.
+must also satisfy the same applicable no-extra-cost/data conditions or be disabled.
 No automatic provider fallback, quota refill or paid upgrade is permitted.
 
 Before each bounded dispatch record route/CLI version, exact model, current free
@@ -126,12 +130,13 @@ the current owner routing and the assigned small Issue govern development.
 
 Use Python standard library only. Mock is the default. No new OAuth/auth, billing,
 service, unqualified provider invocation or unrelated project change is authorized by these
-documents. Follow actual current model-route assignments and approved alternatives
-in STATE/DECISIONS; do not revive superseded routing or quota instructions.
+documents. Follow Kosuzu's current bounded assignments and qualified alternatives
+under the owner instruction above; do not revive superseded routing or quota rules.
 Preserve old evidence, DBs and unknown native/CO outcomes. No unknown-call retry,
 resume/cancel, forced lease release or old DB migration without current authorization.
 
-Root owns shared contracts, canonical records, integration and publication.
+Kosuzu assigns owners for shared contracts, canonical records and serial integration.
+An assignment does not authorize merge or publication.
 Respect isolated write assignments and exact frozen fixed tests. Source authors'
 self-checks are not independent reviews. Do not weaken criteria to obtain PASS.
 Do not read/reuse old PAL implementation or preserve backwards compatibility.
